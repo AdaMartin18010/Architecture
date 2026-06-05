@@ -1,43 +1,64 @@
 # 99 参考索引
 
-## 定位
+> **版本**: 2026-06-06
+> **定位**: 全知识库的参考索引、术语表、可视化资源与外部链接汇总
 
-全体系的支撑层。收集标准、课程、权威来源、术语表，确保所有知识模块可追溯、可验证。
+---
 
-## 子目录说明
+## 子目录导航
 
-### standards-index
+| 目录 | 内容 |
+|------|------|
+| `glossary/` | 术语表、同义词对照、跨标准术语映射 |
+| `visualizations/` | Mermaid 图、架构图、概念映射 |
+| `external-links/` | 外部权威资源链接 |
+| `templates/` | 文档模板、检查清单、评估问卷 |
 
-- ISO/IEC/IEEE 标准族谱总表
-- 工业标准（ISA-95, OPC UA, IEC 61508 等）索引
-- 供应链安全标准（SLSA, SPDX, CycloneDX 等）索引
-- 标准更新追踪日志
+---
 
-### university-courses
+## 快速参考
 
-- Carnegie Mellon SEI: Software Architecture, ATAM
-- USC: COCOMO II, Software Economics
-- ETH Zurich: Systems Group, Prusti, RustBelt
-- Inria: Aeneas, Coq
-- Stanford: CS 250 Formal Methods
-- TU Munich: Software & Systems Engineering (Klaus Pohl)
+### 标准索引
 
-### authoritative-sources
+| 标准 | 主题 | 状态 |
+|------|------|------|
+| ISO/IEC/IEEE 42010 | 01-元模型与标准对齐 | ✅ 已对齐 |
+| ISO/IEC 25010 | 01-元模型与标准对齐 | ✅ 已对齐 |
+| ISO/IEC 26550 | 01-元模型与标准对齐 | ✅ 已对齐 |
+| TOGAF 10 | 01-元模型与标准对齐 | ✅ 已对齐 |
+| ArchiMate 3.2/4.0 | 01-元模型与标准对齐 | ✅ 已对齐 |
+| ISO/IEC 5962 (SPDX) | 10-供应链安全 | ✅ 已对齐 |
+| SLSA 1.0 | 10-供应链安全 | ✅ 已对齐 |
+| IEC 63278 (AAS) | 11-工业 IoT | ✅ 已对齐 |
+| OPC UA FX 1.0 | 11-工业 IoT | ✅ 已对齐 |
+| IEC 61508 / ISO 26262 | 11-工业 IoT | ✅ 已对齐 |
+| TLA+, Alloy, Coq | 07-形式化验证 | ✅ 已对齐 |
+| MCP 2026-07-28 | 12-AI 原生复用 | ✅ 已对齐 |
+| A2A v1.0 | 12-AI 原生复用 | ✅ 已对齐 |
 
-- 学术论文与书籍索引
-- 官方规范文档链接
-- 行业报告（Gartner, CNCF, OpenSSF）
-- 开源项目与工具链
+### 公理-定理索引
 
-### glossary
+完整列表参见 [`glossary/axiom-theorem-tree.md`](./glossary/axiom-theorem-tree.md)。
 
-- 术语表（中英对照）
-- 缩写词索引
-- 公理-定理总表
-- 思维表征模板库（Mermaid 语法）
+### 关键外部资源
+
+- [ISO 42010:2022](https://www.iso.org/standard/74296.html)
+- [SLSA Specification](https://slsa.dev/spec/v1.0/)
+- [CycloneDX Specification](https://cyclonedx.org/specification/overview/)
+- [SPDX Specification](https://spdx.dev/use/specifications/)
+- [OPC Foundation](https://opcfoundation.org/)
+- [IDTA - AAS Specifications](https://industrialdigitaltwin.org/)
+- [MCP Specification](https://modelcontextprotocol.io/)
+- [A2A Protocol](https://a2aprotocol.ai/)
+
+---
 
 ## 维护规则
 
-1. 所有外部链接每季度验证一次有效性
-2. 标准更新后 30 天内更新索引
-3. 术语表随主文档同步更新
+1. 每新增一个公理/定理，必须在 `glossary/axiom-theorem-tree.md` 中登记
+2. 每新增一个外部标准引用，必须在本 README 的标准索引中更新
+3. 每新增一个可视化图表，必须上传至 `visualizations/` 并在相关主题 README 中引用
+
+---
+
+> 最后更新: 2026-06-06
