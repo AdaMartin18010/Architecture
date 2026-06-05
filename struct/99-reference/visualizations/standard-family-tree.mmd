@@ -1,0 +1,32 @@
+graph TD
+    ISO42010[ISO/IEC/IEEE 42010<br/>架构描述] --> ISO42020[ISO/IEC/IEEE 42020<br/>架构过程]
+    ISO42010 --> ISO42030[ISO/IEC/IEEE 42030<br/>架构评估]
+    
+    ISO25010[ISO/IEC 25010<br/>质量模型] --> ISO42010
+    
+    ISO26550[ISO/IEC 26550<br/>产品线工程] --> ISO42010
+    
+    TOGAF[TOGAF 10<br/>企业架构方法] --> ISO42010
+    TOGAF --> ArchiMate[ArchiMate 3.2/4.0<br/>架构建模语言]
+    
+    ArchiMate --> ABB[ABB 架构构建块]
+    ArchiMate --> SBB[SBB 解决方案构建块]
+    
+    SWEBOK[SWEBOK V4<br/>软件工程知识体系] --> ISO42010
+    SWEBOK --> ISO12207[ISO/IEC/IEEE 12207<br/>软件生命周期]
+    
+    SLSA[SLSA 1.0<br/>供应链安全] --> SPDX[SPDX ISO 5962]
+    SLSA --> CycloneDX[CycloneDX OWASP]
+    SLSA --> SWID[SWID ISO 19770-2]
+    
+    IEC63278[IEC 63278<br/>资产管理壳 AAS] --> OPCUA[OPC UA]
+    OPCUA --> OPCUAFX[OPC UA FX 1.0<br/>现场级通信]
+    
+    IEC61508[IEC 61508<br/>功能安全] --> ISO26262[ISO 26262<br/>汽车安全]
+    
+    MCP[MCP 2026-07-28<br/>Model Context Protocol] --> A2A[A2A v1.0<br/>Agent-to-Agent]
+    
+    style ISO42010 fill:#f9f,stroke:#333,stroke-width:2px
+    style SLSA fill:#bbf,stroke:#333
+    style IEC63278 fill:#bfb,stroke:#333
+    style MCP fill:#fbf,stroke:#333

@@ -1,0 +1,61 @@
+graph TB
+    subgraph 业务层
+        BC[业务能力]
+        VS[价值流]
+        BP[业务流程]
+        BS[业务服务]
+    end
+
+    subgraph 应用层
+        APP[应用系统]
+        SVC[应用服务]
+        API[API 契约]
+        DA[数据架构]
+    end
+
+    subgraph 组件层
+        COMP[组件]
+        LIB[库/包]
+        IF[接口契约]
+        DP[设计模式]
+    end
+
+    subgraph 功能层
+        FUNC[函数/方法]
+        ALG[算法/数据结构]
+        BR[业务规则]
+        WF[工作流编排]
+    end
+
+    subgraph 横切
+        GV[治理]
+        FV[形式化验证]
+        SC[供应链安全]
+        VQ[价值量化]
+        AI[AI 原生复用]
+    end
+
+    BC -->|实现为| SVC
+    VS -->|由...组成| BP
+    BP -->|自动化为| WF
+    BS -->|技术实现为| API
+
+    SVC -->|由...实现| COMP
+    API -->|定义| IF
+    DA -->|由...管理| COMP
+
+    COMP -->|包含| FUNC
+    LIB -->|提供| FUNC
+    IF -->|约束| FUNC
+    DP -->|指导| COMP
+
+    GV -.->|管理| BC
+    GV -.->|管理| COMP
+    FV -.->|验证| IF
+    FV -.->|验证| WF
+    SC -.->|审计| LIB
+    SC -.->|审计| COMP
+    VQ -.->|度量| BC
+    VQ -.->|度量| LIB
+    AI -.->|增强| FUNC
+    AI -.->|增强| SVC
