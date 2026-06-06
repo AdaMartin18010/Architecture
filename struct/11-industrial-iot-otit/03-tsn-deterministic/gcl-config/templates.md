@@ -8,12 +8,28 @@
 
 ## 目录
 
-- [1. GCL 基础概念](#1-gcl-基础概念)
-- [2. GCL 配置语法](#2-gcl-配置语法)
-- [3. 工业场景模板](#3-工业场景模板)
-- [4. OPC UA FX 时隙对齐策略](#4-opc-ua-fx-时隙对齐策略)
-- [5. 配置验证与工具链](#5-配置验证与工具链)
-- [6. 参考文献](#6-参考文献)
+- [TSN 门控表（GCL）配置模板](#tsn-门控表gcl配置模板)
+  - [目录](#目录)
+  - [1. GCL 基础概念](#1-gcl-基础概念)
+    - [1.1 Time-Aware Shaper (TAS) 架构](#11-time-aware-shaper-tas-架构)
+    - [1.2 GCL 核心参数](#12-gcl-核心参数)
+  - [2. GCL 配置语法](#2-gcl-配置语法)
+    - [2.1 抽象语法（伪代码）](#21-抽象语法伪代码)
+    - [2.2 队列优先级映射（IEEE 802.1Q + IEC/IEEE 60802）](#22-队列优先级映射ieee-8021q--iecieee-60802)
+    - [2.3 关键约束](#23-关键约束)
+  - [3. 工业场景模板](#3-工业场景模板)
+    - [3.1 模板一：运动控制（Motion Control）](#31-模板一运动控制motion-control)
+    - [3.2 模板二：过程控制（Process Control）](#32-模板二过程控制process-control)
+    - [3.3 模板三：机器人协作（Collaborative Robotics）](#33-模板三机器人协作collaborative-robotics)
+    - [3.4 模板对比总结](#34-模板对比总结)
+  - [4. OPC UA FX 时隙对齐策略](#4-opc-ua-fx-时隙对齐策略)
+    - [4.1 周期对齐原则](#41-周期对齐原则)
+    - [4.2 时隙分配映射](#42-时隙分配映射)
+    - [4.3 配置一致性验证清单](#43-配置一致性验证清单)
+  - [5. 配置验证与工具链](#5-配置验证与工具链)
+    - [5.1 厂商配置工具](#51-厂商配置工具)
+    - [5.2 Linux 内核配置（tc-taprio）](#52-linux-内核配置tc-taprio)
+  - [6. 参考文献](#6-参考文献)
 
 ---
 
@@ -343,10 +359,10 @@ tc qdisc add dev eth0 parent root handle 100 taprio \
 4. [OPC Foundation] OPC UA Part 14: PubSub, v1.05
 5. [IEEE Access] Arest et al., "Optimization of Bandwidth Utilization and Gate Control List Configuration in 802.1Qbv Networks," IEEE Access, 2023
 6. [IEEE] IEEE Std 802.1Qbu-2016 – Frame Preemption
-7. [OPC Foundation] OPC Foundation FLC Initiative – Ethernet-APL, https://opcfoundation.org/about/opc-technologies/opc-ua/apl/
-8. [Intel] Intel TSN Traffic Shaping Guide, https://docs.openedgeplatform.intel.com/2026.0/edge-ai-suites/deterministic-threat-detection/how-to-guides/enable-tsn-traffic-shaping.html
-9. [Linux] Linux Kernel Documentation – tc-taprio, https://www.kernel.org/doc/html/latest/networking/tc-taprio.html
-10. [B&R] OPC UA FX and TSN Technology Overview, https://www.br-automation.com/en/technologies/opc-ua-fx/
+7. [OPC Foundation] OPC Foundation FLC Initiative – Ethernet-APL, <https://opcfoundation.org/about/opc-technologies/opc-ua/apl/>
+8. [Intel] Intel TSN Traffic Shaping Guide, <https://docs.openedgeplatform.intel.com/2026.0/edge-ai-suites/deterministic-threat-detection/how-to-guides/enable-tsn-traffic-shaping.html>
+9. [Linux] Linux Kernel Documentation – tc-taprio, <https://www.kernel.org/doc/html/latest/networking/tc-taprio.html>
+10. [B&R] OPC UA FX and TSN Technology Overview, <https://www.br-automation.com/en/technologies/opc-ua-fx/>
 
 ---
 

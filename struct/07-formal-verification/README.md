@@ -17,8 +17,9 @@
 - **B Method**: 铁路信号系统的形式化精化链
   - `06-b-method/railway-signaling-refinement.md` — B Method / Event-B 铁路信号系统精化链案例（三层精化：M0 进路安全 → M1 区段道岔 → M2 信号联锁）
   - `06-b-method/event-b-railway-refinement.md` — Event-B 与 B Method 体系总览、工具链与工业应用
-- **模型检测**: SPIN, NuSMV, CBMC
+- **模型检测**: SPIN, NuSMV, CBMC（已在 `08-comparative-matrices/spark-ada-vs-rust-verification-matrix.md` 中部分覆盖）
 - 形式化验证的复用决策矩阵（工具 × 层次 × 成本）
+- **自动化验证环境**: Docker 化的 TLA+/Alloy/Coq/Isabelle（详见 [`99-reference/tools/formal-verification-env/README.md`](../../99-reference/tools/formal-verification-env/README.md)）
 
 ## 权威对齐
 
@@ -48,6 +49,23 @@
 - [x] DO-178C MC/DC 形式化定义 (`05-spark-ada/mcdc-formalization.md`)
 - [x] SPARK/Ada 飞控案例 (`05-spark-ada/flight-control-contracts.md`)
 - [x] B Method 铁路信号案例 (`06-b-method/railway-signaling-refinement.md`)
+- [ ] Coq/Isabelle 高安全等级组件案例（`03-coq-isabelle/`，Phase 2 2026-Q4）
+
+## 验证环境
+
+按 `SUBSEQUENT_PLAN_2026.md` 决策 2A，本项目已建立 Docker 化形式化验证环境：
+
+```bash
+cd struct/99-reference/tools/formal-verification-env
+docker compose up -d
+```
+
+新增规约必须通过以下至少一种工具验证：
+
+- TLA+: `tlc <spec>.tla -deadlock`
+- Alloy: `alloy <model>.als`
+- Coq: `coqc <proof>.v`
+- Isabelle: `isabelle build -D <dir>`
 
 ## 关联主题
 

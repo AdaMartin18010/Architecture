@@ -35,20 +35,24 @@
 - 定义 **Worlds** 概念：模块可访问的标准接口集合
 - 支持 `wasi-http` 等高级世界
 
-### 2.2 WASI 0.3（预期 2026-02 发布）
+### 2.2 WASI 0.3（Preview 已发布，Wasmtime 37+ 默认支持）
 
-- **原生异步支持**：Component Model 内置 async/await
-- **效果**：Wasmtime 运行时已有实验性支持
+> **最新实践详见**：[`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
+
+- **原生异步支持**：`stream<T,E>` / `future<T,E>` 类型，Component Model 内置 async/await
+- **状态**：WASI 0.3 Preview 已于 2025 年发布，Wasmtime 37+ 默认启用
+- **效果**：HTTP、文件系统、时钟等世界全面异步化
 - **目标场景**：
   - 边缘设备
   - 异步与事件驱动架构
   - Serverless 环境
-  - 大规模终端节点单次发布部署
+  - MCP / A2A Agent 工具沙箱
 
-### 2.3 WASI 1.0（预期 2026 底–2027 初）
+### 2.3 WASI 1.0（目标 2026 末发布）
 
 - WASI 的完整稳定版
-- Component Model 将在 0.3 或 1.0 后开始推进规范阶段
+- WASI 0.2 将进入维护模式，0.3 成为推荐主线
+- Component Model 规范有望在 1.0 后进入下一阶段
 
 ## 3. 组件模型（Component Model）
 

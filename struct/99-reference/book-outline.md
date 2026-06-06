@@ -9,13 +9,33 @@
 
 ## 目录
 
-- [1. 全书概览](#1-全书概览)
-- [2. 章节总表](#2-章节总表)
-- [3. 逐章设计](#3-逐章设计)
-- [4. 章节依赖关系图](#4-章节依赖关系图)
-- [5. 目标读者分层](#5-目标读者分层)
-- [6. 与 MASTER_PLAN 阶段对齐](#6-与-master-plan-阶段对齐)
-- [7. 权威来源引用](#7-权威来源引用)
+- [《软件工程架构复用视角》全书框架大纲](#软件工程架构复用视角全书框架大纲)
+  - [目录](#目录)
+  - [1. 全书概览](#1-全书概览)
+  - [2. 章节总表](#2-章节总表)
+  - [3. 逐章设计](#3-逐章设计)
+    - [第 1 章：导论 — 复用的本质与演进](#第-1-章导论--复用的本质与演进)
+    - [第 2 章：元模型与标准对齐](#第-2-章元模型与标准对齐)
+    - [第 3 章：业务架构复用](#第-3-章业务架构复用)
+    - [第 4 章：应用架构复用](#第-4-章应用架构复用)
+    - [第 5 章：组件架构复用](#第-5-章组件架构复用)
+    - [第 6 章：功能架构复用](#第-6-章功能架构复用)
+    - [第 7 章：跨层复用治理与成熟度](#第-7-章跨层复用治理与成熟度)
+    - [第 8 章：形式化验证与复用正确性](#第-8-章形式化验证与复用正确性)
+    - [第 9 章：认知架构与价值量化](#第-9-章认知架构与价值量化)
+    - [第 10 章：供应链安全工程](#第-10-章供应链安全工程)
+    - [第 11 章：工业 IoT / OT-IT 融合复用](#第-11-章工业-iot--ot-it-融合复用)
+    - [第 12 章：AI 原生与前沿趋势](#第-12-章ai-原生与前沿趋势)
+    - [附录](#附录)
+  - [4. 章节依赖关系图](#4-章节依赖关系图)
+  - [5. 目标读者分层](#5-目标读者分层)
+    - [架构师（Enterprise / Solution / Software Architect）](#架构师enterprise--solution--software-architect)
+    - [技术经理（Engineering Manager / VP of Engineering）](#技术经理engineering-manager--vp-of-engineering)
+    - [安全工程师（Security Engineer / AppSec / DevSecOps）](#安全工程师security-engineer--appsec--devsecops)
+    - [工业工程师（OT Engineer / Automation Architect / 数字孪生工程师）](#工业工程师ot-engineer--automation-architect--数字孪生工程师)
+    - [AI 工程师（ML Engineer / AI Infra / Agent 开发者）](#ai-工程师ml-engineer--ai-infra--agent-开发者)
+  - [6. 与 MASTER PLAN 阶段对齐](#6-与-master-plan-阶段对齐)
+  - [7. 权威来源引用](#7-权威来源引用)
 
 ---
 
@@ -26,6 +46,7 @@
 **全书定位**：面向软件架构师、技术经理、安全工程师、工业工程师与 AI 工程师的复用工程实践指南，兼具理论深度与工程可操作性。
 
 **核心贡献**：
+
 1. 首次将 ISO/IEC/IEEE 420xx 族谱、TOGAF 10、ArchiMate 4.0、SLSA、MCP/A2A 等 25+ 标准纳入统一的复用元模型
 2. 建立从业务语义到 AI 功能的全栈复用层次体系
 3. 提供形式化验证、价值量化、认知负荷三类可操作方法论
@@ -63,13 +84,14 @@
 **核心论点**：软件复用不是"复制代码"的技术活动，而是从业务语义到 AI 功能的多层次价值创造过程。本书建立的四层复用模型（业务-应用-组件-功能）与六个支持维度（治理、验证、认知、量化、安全、工业/AI）构成完整的复用工程知识体系。
 
 **关键节**：
-1.1 复用的定义边界：从 Dijkstra 的"结构化编程"到 2026 年的 AI 功能复用  
-1.2 历史演进四浪潮：子程序库 → 面向对象框架 → 开源生态 → AI 原生协议  
-1.3 四层复用模型：业务架构（粗粒度）→ 应用架构（系统级）→ 组件架构（模块级）→ 功能架构（细粒度）  
-1.4 本书知识地图：13 个一级主题如何映射到 12 章  
+1.1 复用的定义边界：从 Dijkstra 的"结构化编程"到 2026 年的 AI 功能复用
+1.2 历史演进四浪潮：子程序库 → 面向对象框架 → 开源生态 → AI 原生协议
+1.3 四层复用模型：业务架构（粗粒度）→ 应用架构（系统级）→ 组件架构（模块级）→ 功能架构（细粒度）
+1.4 本书知识地图：13 个一级主题如何映射到 12 章
 1.5 如何使用本书：五条推荐阅读路径（按读者角色定制）
 
 **引用主题来源**：
+
 - `struct/README.md`（知识体系总览）
 - `view/software_architecture_reuse_framework_2026.md`（国际标准对齐与层次化提纲）
 - `view/software_architecture_reuse_full_2026.md`（全面展开论证）
@@ -81,15 +103,16 @@
 **核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 4.0 提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
 
 **关键节**：
-2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042  
-2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展  
-2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库  
-2.4 ArchiMate 4.0 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界  
-2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型  
-2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理  
+2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042
+2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展
+2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
+2.4 ArchiMate 4.0 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界
+2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型
+2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理
 2.7 SWEBOK V4 知识领域对齐：将复用映射到软件工程知识体
 
 **引用主题来源**：
+
 - `struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`
 - `struct/01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md`
 - `struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`
@@ -103,15 +126,16 @@
 **核心论点**：业务复用是 ROI 最高的复用层次，但也是最难治理的层次。业务能力（Capability）是可复用的最小业务语义单元，其边界由价值创造而非组织结构定义。BPMN 2.0 和 DMN 1.5 提供了可执行业务复用元素的标准化语法。
 
 **关键节**：
-3.1 业务复用五层模型：领域 → 能力 → 价值流 → 流程 → 服务  
-3.2 业务能力复用：FEA BRM 与 TOGAF Capability Map 的交叉映射  
-3.3 价值流复用：端到端价值交付序列的组合与编排  
-3.4 BPMN 2.0 复用元素：Call Activity、Event Sub-Process、Message Flow 的复用语义  
-3.5 DMN 1.5 决策复用：Decision Service、Business Knowledge Model、Item Definition  
-3.6 业务复用反模式：流程克隆、能力膨胀、价值流断裂  
+3.1 业务复用五层模型：领域 → 能力 → 价值流 → 流程 → 服务
+3.2 业务能力复用：FEA BRM 与 TOGAF Capability Map 的交叉映射
+3.3 价值流复用：端到端价值交付序列的组合与编排
+3.4 BPMN 2.0 复用元素：Call Activity、Event Sub-Process、Message Flow 的复用语义
+3.5 DMN 1.5 决策复用：Decision Service、Business Knowledge Model、Item Definition
+3.6 业务复用反模式：流程克隆、能力膨胀、价值流断裂
 3.7 行业垂直案例：金融（支付能力地图）、医疗（临床路径复用）、制造（供应链协同）
 
 **引用主题来源**：
+
 - `struct/02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md`
 - `struct/02-business-architecture-reuse/03-value-stream/value-stream-composition.md`
 - `struct/02-business-architecture-reuse/06-bpmn-dmn/bpmn-dmn-executable-cases.md`
@@ -124,15 +148,16 @@
 **核心论点**：应用架构的复用性取决于"耦合度-内聚度-部署独立性"的三元权衡。从单体到 Serverless 的八种架构模式中，不存在"最优"模式，只有"最适配团队规模与发布频率"的模式。Data Mesh 将数据架构从"集中式湖仓"转变为"域导向复用"。
 
 **关键节**：
-4.1 应用架构复用性矩阵 2026：单体 / 模块化单体 / SOA / 微服务 / 微前端 / Serverless / 服务网格 / EDA 的八维对比  
-4.2 微服务复用模式：Sidecar、Ambassador、Anti-Corruption Layer、Strangler Fig  
-4.3 服务网格通信复用：Istio/Envoy/Cilium 的流量管理、安全策略、可观测性抽象  
-4.4 事件驱动架构的四种复用模式：Event Notification、Event-Carried State Transfer、CQRS、Event Sourcing  
-4.5 Data Mesh 域导向复用：数据产品作为自治复用单元  
-4.6 云原生安全复用：NIST SP 800-204 微服务安全指引  
+4.1 应用架构复用性矩阵 2026：单体 / 模块化单体 / SOA / 微服务 / 微前端 / Serverless / 服务网格 / EDA 的八维对比
+4.2 微服务复用模式：Sidecar、Ambassador、Anti-Corruption Layer、Strangler Fig
+4.3 服务网格通信复用：Istio/Envoy/Cilium 的流量管理、安全策略、可观测性抽象
+4.4 事件驱动架构的四种复用模式：Event Notification、Event-Carried State Transfer、CQRS、Event Sourcing
+4.5 Data Mesh 域导向复用：数据产品作为自治复用单元
+4.6 云原生安全复用：NIST SP 800-204 微服务安全指引
 4.7 Gateway API Gamma 与南北向/东西向流量复用
 
 **引用主题来源**：
+
 - `struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`
 - `struct/03-application-architecture-reuse/06-service-mesh/service-mesh-communication-patterns.md`
 - `struct/03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md`
@@ -145,15 +170,16 @@
 **核心论点**：组件的可复用性取决于接口契约的完备性（前置条件、后置条件、不变量、副作用声明），而非实现细节。六大语言生态（JVM、Node.js、Rust、Go、Python、.NET）在包管理、组件模型和变性机制上呈现显著差异，直接影响复用成熟度。
 
 **关键节**：
-5.1 组件复用四层模型：框架 → 库/包 → 组件/Bean → 设计模式  
-5.2 接口契约完备性：契约式设计（DbC）与复用边界  
-5.3 六大语言生态复用成熟度深度对比 2026：包管理、Semver 实践、变性机制、文档质量  
-5.4 依赖治理策略：版本锁定、范围依赖、供应商化、依赖升级自动化  
-5.5 组件版本策略：Semver 的复用语义与 breaking change 管理  
-5.6 开源供应链复用风险： transitive dependency 爆炸与信任传递  
+5.1 组件复用四层模型：框架 → 库/包 → 组件/Bean → 设计模式
+5.2 接口契约完备性：契约式设计（DbC）与复用边界
+5.3 六大语言生态复用成熟度深度对比 2026：包管理、Semver 实践、变性机制、文档质量
+5.4 依赖治理策略：版本锁定、范围依赖、供应商化、依赖升级自动化
+5.5 组件版本策略：Semver 的复用语义与 breaking change 管理
+5.6 开源供应链复用风险： transitive dependency 爆炸与信任传递
 5.7 设计模式复用：GoF / POSA / Enterprise Integration Patterns 的适用边界
 
 **引用主题来源**：
+
 - `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`
 - `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md`
 - `struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md`
@@ -165,15 +191,16 @@
 **核心论点**：功能是最细粒度的复用单元，也是 2026 年变化最剧烈的层次。MCP（Model Context Protocol）和 A2A（Agent-to-Agent Protocol）定义了 AI 时代功能复用的协议边界；Temporal 等工作流引擎将分布式 Saga 提升为可复用的编排模式；AI 功能的复用必须处理概率性而非确定性。
 
 **关键节**：
-6.1 功能复用五层模型：算法 → 函数 → 业务规则 → 工作流 → AI 功能  
-6.2 MCP 2026-07-28 RC 协议架构：无状态核心、tools/resources/prompts/sampling 四层能力  
-6.3 A2A v1.0.0 协议架构：Agent Card → Task → Artifact → Message → Part  
-6.4 MCP + A2A 互补复用架构：工具调用 vs Agent 协作的边界  
-6.5 Temporal 工作流复用模式：Saga、Cron、Child Workflow、Signal  
-6.6 AI 功能复用的概率契约：置信度函数、温度参数、模型版本漂移的确定性边界  
+6.1 功能复用五层模型：算法 → 函数 → 业务规则 → 工作流 → AI 功能
+6.2 MCP 2026-07-28 RC 协议架构：无状态核心、tools/resources/prompts/sampling 四层能力
+6.3 A2A v1.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
+6.4 MCP + A2A 互补复用架构：工具调用 vs Agent 协作的边界
+6.5 Temporal 工作流复用模式：Saga、Cron、Child Workflow、Signal
+6.6 AI 功能复用的概率契约：置信度函数、温度参数、模型版本漂移的确定性边界
 6.7 功能复用粒度-成本-收益决策树
 
 **引用主题来源**：
+
 - `struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md`
 - `struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md`
 - `struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md`
@@ -186,14 +213,15 @@
 **核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC 42020（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。
 
 **关键节**：
-7.1 复用治理的国际标准框架：42020/42030/25010/26566 的协同  
-7.2 五级复用成熟度模型：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL  
-7.3 四级度量指标体系：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）  
-7.4 跨层升级/降级决策矩阵：何时将组件提升为应用服务？何时将业务服务降维为组件？  
-7.5 FinOps 跨层复用成本模型：直接成本 / 间接成本 / 风险成本的分摊  
+7.1 复用治理的国际标准框架：42020/42030/25010/26566 的协同
+7.2 五级复用成熟度模型：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL
+7.3 四级度量指标体系：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）
+7.4 跨层升级/降级决策矩阵：何时将组件提升为应用服务？何时将业务服务降维为组件？
+7.5 FinOps 跨层复用成本模型：直接成本 / 间接成本 / 风险成本的分摊
 7.6 复用治理的组织设计：卓越中心（CoE）vs 联邦制 vs 平台团队
 
 **引用主题来源**：
+
 - `struct/06-cross-layer-governance/01-process-governance/cross-layer-governance.md`
 - `struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`
 - `struct/06-cross-layer-governance/04-finops-cost/cost-allocation-template.md`
@@ -206,15 +234,16 @@
 **核心论点**：将复用组件的正确性从"测试验证"提升到"数学证明"的最高等级保证。形式化验证的复用决策矩阵（工具 × 层次 × 成本）指导团队在何时投入形式化方法。
 
 **关键节**：
-8.1 形式化方法谱系：TLA+（时序行为）、Alloy（约束求解）、Coq/Isabelle（定理证明）、SPIN/NuSMV（模型检测）  
-8.2 TLA+ 复用组件规约：分布式一致性、支付服务、MCP 能力协商的案例库  
-8.3 Rust 类型系统的形式化基础：所有权、借用、生命周期、Polonius 与 NLL 对比  
-8.4 Cargo 依赖解析的 SAT 求解形式化：统一版本策略的完备性  
-8.5 SPARK/Ada 契约验证：飞行控制软件的安全关键复用  
-8.6 B Method 精化链：铁路信号系统的复用正确性传递  
+8.1 形式化方法谱系：TLA+（时序行为）、Alloy（约束求解）、Coq/Isabelle（定理证明）、SPIN/NuSMV（模型检测）
+8.2 TLA+ 复用组件规约：分布式一致性、支付服务、MCP 能力协商的案例库
+8.3 Rust 类型系统的形式化基础：所有权、借用、生命周期、Polonius 与 NLL 对比
+8.4 Cargo 依赖解析的 SAT 求解形式化：统一版本策略的完备性
+8.5 SPARK/Ada 契约验证：飞行控制软件的安全关键复用
+8.6 B Method 精化链：铁路信号系统的复用正确性传递
 8.7 形式化验证的投资回报：何时使用？使用到哪一层？
 
 **引用主题来源**：
+
 - `struct/07-formal-verification/01-tla-plus/case-library.md`
 - `struct/07-formal-verification/04-rust-type-system/formal-semantics.md`
 - `struct/07-formal-verification/04-rust-type-system/cargo-sat-resolution.md`
@@ -228,15 +257,16 @@
 **核心论点**：软件复用不仅是技术问题，更是认知问题与经济问题。开发者在复用决策中的认知负荷（NASA-TLX 适配版）决定了复用资产的实际采纳率；COCOMO II 复用模型将改编调整因子（AAF）与投资回报率（ROI）关联，为管理层提供量化决策依据。
 
 **关键节**：
-9.1 复用决策的认知科学基础：ACT-R 模式匹配、BDI 认知模型、Kahneman 双系统理论  
-9.2 认知负荷量化模型：内在/外在/相关负荷的测量与优化  
-9.3 专家 vs 新手的复用模式识别差异  
-9.4 COCOMO II 复用模型 2026 校准版：ESLOC、AAF、RUSE 乘数的 AI 辅助开发适配  
-9.5 复用 ROI 完整计算模型：直接收益 + 间接收益 + 战略收益 + NPV  
-9.6 盈亏平衡点分析：AAF < 0.7 的经济学含义  
+9.1 复用决策的认知科学基础：ACT-R 模式匹配、BDI 认知模型、Kahneman 双系统理论
+9.2 认知负荷量化模型：内在/外在/相关负荷的测量与优化
+9.3 专家 vs 新手的复用模式识别差异
+9.4 COCOMO II 复用模型 2026 校准版：ESLOC、AAF、RUSE 乘数的 AI 辅助开发适配
+9.5 复用 ROI 完整计算模型：直接收益 + 间接收益 + 战略收益 + NPV
+9.6 盈亏平衡点分析：AAF < 0.7 的经济学含义
 9.7 AI 辅助复用决策的认知增强架构：RAG + LLM 的开发者体验设计
 
 **引用主题来源**：
+
 - `struct/08-cognitive-architecture/03-cognitive-load-theory/quantitative-model.md`
 - `struct/08-cognitive-architecture/05-ai-cognitive-augmentation/augmentation-architecture.md`
 - `struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md`
@@ -249,15 +279,16 @@
 **核心论点**：软件供应链中的信任是传递的，但传递链的长度与信任度成指数反比。SLSA 1.0 四级框架、SBOM（SPDX/CycloneDX/SWID）与零信任架构构成纵深防御的三道防线。
 
 **关键节**：
-10.1 信任传递崩塌公理：形式化定义与实证数据  
-10.2 SLSA 1.0 四级框架：L1（基础构建）→ L4（可复现 + 双因素审查）的复用安全边界  
-10.3 SBOM 深度对比：SPDX 2.3 vs CycloneDX 1.6 vs SWID 的复用安全应用  
-10.4 供应链攻击案例库：Log4j / SolarWinds / XZ Utils / 3CX / PyTorch 的攻击链与检测信号  
-10.5 零信任软件供应链架构：5 层防御矩阵设计模板  
-10.6 Rust 生态复用安全：Cargo 统一版本、unsafe 边界、审计工具链  
+10.1 信任传递崩塌公理：形式化定义与实证数据
+10.2 SLSA 1.0 四级框架：L1（基础构建）→ L4（可复现 + 双因素审查）的复用安全边界
+10.3 SBOM 深度对比：SPDX 2.3 vs CycloneDX 1.6 vs SWID 的复用安全应用
+10.4 供应链攻击案例库：Log4j / SolarWinds / XZ Utils / 3CX / PyTorch 的攻击链与检测信号
+10.5 零信任软件供应链架构：5 层防御矩阵设计模板
+10.6 Rust 生态复用安全：Cargo 统一版本、unsafe 边界、审计工具链
 10.7 EU CRA 与 NIST SSDF 1.2 的合规映射
 
 **引用主题来源**：
+
 - `struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
 - `struct/10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`
 - `struct/10-supply-chain-security/03-attack-vectors/attack-tree.md`
@@ -270,15 +301,16 @@
 **核心论点**：工业 OT 组件的复用必须以确定性为首要约束。ISA-95 五层模型（L0-L4）、OPC UA FX 现场级通信与 IEC 61508 功能安全共同定义了工业复用的特殊边界。
 
 **关键节**：
-11.1 ISA-95 / IEC 62264 五层复用谱系：L0 现场层 → L4 企业层的资产目录  
-11.2 OPC UA FX 协议层次分析：C2C / C2D / D2D 的复用边界与 UADP 帧结构  
-11.3 TSN 确定性网络：IEC/IEEE 60802 配置模板与 GCL 调度  
-11.4 PLCopen 运动控制功能块复用：MC_Power、MC_MoveAbsolute 的跨厂商接口  
-11.5 数字孪生与 AAS：IEC 63278 元模型、子模型模板、OPC UA NodeSet 映射  
-11.6 功能安全复用：IEC 61508 / ISO 26262 的 SEooC 与 Proven-in-Use 统计验证  
+11.1 ISA-95 / IEC 62264 五层复用谱系：L0 现场层 → L4 企业层的资产目录
+11.2 OPC UA FX 协议层次分析：C2C / C2D / D2D 的复用边界与 UADP 帧结构
+11.3 TSN 确定性网络：IEC/IEEE 60802 配置模板与 GCL 调度
+11.4 PLCopen 运动控制功能块复用：MC_Power、MC_MoveAbsolute 的跨厂商接口
+11.5 数字孪生与 AAS：IEC 63278 元模型、子模型模板、OPC UA NodeSet 映射
+11.6 功能安全复用：IEC 61508 / ISO 26262 的 SEooC 与 Proven-in-Use 统计验证
 11.7 棕地/绿地/混合部署决策：工业现场的复用迁移路径
 
 **引用主题来源**：
+
 - `struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md`
 - `struct/11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md`
 - `struct/11-industrial-iot-otit/04-plcopen-motion/plcopen-motion-control.md`
@@ -292,15 +324,16 @@
 **核心论点**：AI/LLM 功能复用是 2026 年软件工程的新边界。传统复用假设确定性，AI 复用必须处理概率性。Conformal Prediction 提供了不确定性量化的统计保证；WebAssembly Component Model 提供了跨语言复用的运行时边界。
 
 **关键节**：
-12.1 MCP 2026-07-28 RC 深度解析：无状态核心、能力发现、安全机制  
-12.2 A2A v1.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证  
-12.3 概率契约框架：置信度函数 γ(x) ∈ [0,1]、校准方法、确定性边界声明  
-12.4 Conformal Prediction：边际覆盖保证 P(y ∈ C(x)) ≥ 1-α 在代码生成中的应用  
-12.5 平台工程作为复用载体：IDP、Golden Path、自服务模板的组织设计  
-12.6 WebAssembly Component Model：WIT 接口、WASI 0.3、跨语言复用决策树  
+12.1 MCP 2026-07-28 RC 深度解析：无状态核心、能力发现、安全机制
+12.2 A2A v1.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
+12.3 概率契约框架：置信度函数 γ(x) ∈ [0,1]、校准方法、确定性边界声明
+12.4 Conformal Prediction：边际覆盖保证 P(y ∈ C(x)) ≥ 1-α 在代码生成中的应用
+12.5 平台工程作为复用载体：IDP、Golden Path、自服务模板的组织设计
+12.6 WebAssembly Component Model：WIT 接口、WASI 0.3、跨语言复用决策树
 12.7 2027-2030 展望：RegTech AI、模块化单体回归、Rust-WASM-形式化三角
 
 **引用主题来源**：
+
 - `struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md`
 - `struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md`
 - `struct/12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md`
@@ -311,19 +344,19 @@
 
 ### 附录
 
-**附录 A：术语表与概念交叉索引**  
+**附录 A：术语表与概念交叉索引**
 来源：`struct/99-reference/glossary/terminology-crosswalk.md`、`cross-topic-index.md`
 
-**附录 B：国际标准对齐总表**  
+**附录 B：国际标准对齐总表**
 来源：`struct/99-reference/standards-index/master-alignment-matrix.md`
 
-**附录 C：公理-定理推理树**  
+**附录 C：公理-定理推理树**
 来源：`struct/99-reference/glossary/axiom-theorem-tree.md`
 
-**附录 D：复用决策快速参考卡**  
+**附录 D：复用决策快速参考卡**
 来源：`struct/99-reference/templates/quick-reference-card.md`
 
-**附录 E：延伸阅读与课程推荐**  
+**附录 E：延伸阅读与课程推荐**
 来源：`struct/99-reference/external-links/authoritative-sources.md`
 
 ---
@@ -381,6 +414,7 @@ flowchart TB
 ```
 
 **依赖关系说明**：
+
 - **纵向依赖**：基础层（Ch1-Ch2）→ 核心四层（Ch3-Ch6）→ 治理/安全（Ch7, Ch10）→ 垂直/前沿（Ch11-Ch12）
 - **横向支撑**：Ch8（形式化验证）支撑 Ch5/Ch11；Ch9（认知与量化）支撑 Ch7/Ch10
 - **安全贯穿**：Ch10（供应链安全）依赖 Ch4（应用）和 Ch5（组件）的技术细节
@@ -449,6 +483,7 @@ flowchart TB
 ---
 
 > **对齐验证**:
+>
 > - 本框架与 `struct/MASTER_PLAN.md` Phase 6 交付物要求一致
 > - 12 章 + 附录覆盖全部 13 个一级主题（08+09 合并为第9章，12+13 合并为第12章）
 > - 字数估算基于 `struct/` 各主题现有文件字节规模与 `view/` 31 万字的分布比例

@@ -8,14 +8,42 @@
 
 ## 目录
 
-- [1. 框架概述](#1-框架概述)
-- [2. 资产级度量 (Asset-Level Metrics)](#2-资产级度量-asset-level-metrics)
-- [3. 项目级度量 (Project-Level Metrics)](#3-项目级度量-project-level-metrics)
-- [4. 组织级度量 (Organization-Level Metrics)](#4-组织级度量-organization-level-metrics)
-- [5. 生态级度量 (Ecosystem-Level Metrics)](#5-生态级度量-ecosystem-level-metrics)
-- [6. 指标采集与治理流程](#6-指标采集与治理流程)
-- [7. 与成熟度模型的映射](#7-与成熟度模型的映射)
-- [8. 参考索引](#8-参考索引)
+- [软件复用度量指标体系框架](#软件复用度量指标体系框架)
+  - [目录](#目录)
+  - [1. 框架概述](#1-框架概述)
+  - [2. 资产级度量 (Asset-Level Metrics)](#2-资产级度量-asset-level-metrics)
+    - [2.1 复用准备度指数 (Reuse Readiness Index, RRI)](#21-复用准备度指数-reuse-readiness-index-rri)
+    - [2.2 接口稳定性率 (Interface Stability Rate, ISR)](#22-接口稳定性率-interface-stability-rate-isr)
+    - [2.3 文档完整度 (Documentation Completeness, DC)](#23-文档完整度-documentation-completeness-dc)
+    - [2.4 测试覆盖率 (Test Coverage, TC)](#24-测试覆盖率-test-coverage-tc)
+    - [2.5 SBOM 完整度 (SBOM Completeness, SC)](#25-sbom-完整度-sbom-completeness-sc)
+    - [2.6 资产检索命中率 (Asset Discovery Hit Rate, ADHR)](#26-资产检索命中率-asset-discovery-hit-rate-adhr)
+  - [3. 项目级度量 (Project-Level Metrics)](#3-项目级度量-project-level-metrics)
+    - [3.1 实际复用率 (Actual Reuse Rate, ARR)](#31-实际复用率-actual-reuse-rate-arr)
+    - [3.2 复用成本节约率 (Reuse Cost Saving Rate, RCSR)](#32-复用成本节约率-reuse-cost-saving-rate-rcsr)
+    - [3.3 复用缺陷引入率 (Reuse Defect Injection Rate, RDIR)](#33-复用缺陷引入率-reuse-defect-injection-rate-rdir)
+    - [3.4 复用资产适配工作量占比 (Adaptation Effort Ratio, AER)](#34-复用资产适配工作量占比-adaptation-effort-ratio-aer)
+    - [3.5 交付周期缩短率 (Time-to-Market Reduction, TTMR)](#35-交付周期缩短率-time-to-market-reduction-ttmr)
+    - [3.6 技术债务增长率 (Technical Debt Growth Rate, TDGR)](#36-技术债务增长率-technical-debt-growth-rate-tdgr)
+  - [4. 组织级度量 (Organization-Level Metrics)](#4-组织级度量-organization-level-metrics)
+    - [4.1 组织复用率 (Organizational Reuse Rate, ORR)](#41-组织复用率-organizational-reuse-rate-orr)
+    - [4.2 复用投资回报率 (Reuse ROI)](#42-复用投资回报率-reuse-roi)
+    - [4.3 资产库增长率与退役率 (Asset Growth vs. Retirement Rate)](#43-资产库增长率与退役率-asset-growth-vs-retirement-rate)
+    - [4.4 开发者复用参与度 (Developer Reuse Engagement, DRE)](#44-开发者复用参与度-developer-reuse-engagement-dre)
+    - [4.5 跨项目复用率 (Cross-Project Reuse Rate, CPRR)](#45-跨项目复用率-cross-project-reuse-rate-cprr)
+    - [4.6 复用资产平均生命周期 (Average Asset Lifecycle, AAL)](#46-复用资产平均生命周期-average-asset-lifecycle-aal)
+  - [5. 生态级度量 (Ecosystem-Level Metrics)](#5-生态级度量-ecosystem-level-metrics)
+    - [5.1 开源依赖健康度 (Open Source Dependency Health, OSDH)](#51-开源依赖健康度-open-source-dependency-health-osdh)
+    - [5.2 供应链复用深度 (Supply Chain Reuse Depth, SCRD)](#52-供应链复用深度-supply-chain-reuse-depth-scrd)
+    - [5.3 跨组织复用协议覆盖率 (Cross-Org Reuse Agreement Coverage, CORAC)](#53-跨组织复用协议覆盖率-cross-org-reuse-agreement-coverage-corac)
+    - [5.4 行业标准采纳率 (Industry Standard Adoption Rate, ISAR)](#54-行业标准采纳率-industry-standard-adoption-rate-isar)
+    - [5.5 生态网络效应系数 (Ecosystem Network Effect Coefficient, ENEC)](#55-生态网络效应系数-ecosystem-network-effect-coefficient-enec)
+    - [5.6 复用知识传播速度 (Reuse Knowledge Velocity, RKV)](#56-复用知识传播速度-reuse-knowledge-velocity-rkv)
+  - [6. 指标采集与治理流程](#6-指标采集与治理流程)
+    - [6.1 数据采集架构](#61-数据采集架构)
+    - [6.2 治理节奏](#62-治理节奏)
+  - [7. 与成熟度模型的映射](#7-与成熟度模型的映射)
+  - [8. 参考索引](#8-参考索引)
 
 ---
 
@@ -387,7 +415,8 @@ ISO/IEC 26564:2022 将软件复用度量定义为"对复用过程、资产和结
 - OpenSSF: *Scorecard Specification v4* — 开源依赖健康度
 - SLSA 1.2: *Supply-chain Levels for Software Artifacts* — SBOM 与 provenance 对齐
 
-> **交叉引用**: 
+> **交叉引用**:
+>
 > - 成熟度评估问卷: [`struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md`](../03-maturity-models/assessment-questionnaire.md)
 > - COCOMO II 2026 校准: [`struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md`](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
 > - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../04-finops-cost/finops-unit-economics-2026.md)

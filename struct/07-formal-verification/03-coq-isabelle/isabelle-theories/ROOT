@@ -1,0 +1,5 @@
+session MyProject = HOL +
+  options [document = false]
+  theories
+    InsertionSort
+    Turnstile

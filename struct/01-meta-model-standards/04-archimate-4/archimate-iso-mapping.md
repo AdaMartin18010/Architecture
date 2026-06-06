@@ -1,14 +1,25 @@
-# ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表
+# ArchiMate 3.2 元素与 ISO 42010:2022 的对照表
 
 > **版本**: 2026-06-06
-> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); ArchiMate 4 Specification (2026 Preview); ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
+> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
+
+> ⚠️ **重要勘误 / CORRECTION**
+>
+> 经权威核实，截至 2026 年中，**The Open Group 官方页面仍仅列出 ArchiMate 3.1 为最新发布规范、3.2 为当前认证版本**。
+> 所谓 "ArchiMate 4.0"、"ArchiMate Next" 或 "ArchiMate 4 Specification (2026 Preview)" **未获 The Open Group 官方确认**，其特性描述仅来源于 Visual Paradigm、archimetric.com 等厂商博客和工具营销材料。
+>
+> **项目立场**：本文件中所有 "ArchiMate 4.0" 映射内容应视为**基于非官方预告的推测性分析**，不代表当前可遵循的标准。架构实践应以 **ArchiMate 3.2** 为当前稳定基准。
+> 详见：[`iso-42024-42042-dis-alignment.md`](../01-iso-420xx-family/iso-42024-42042-dis-alignment.md)
 
 ---
 
 ## 1. 背景与范围
 
-ArchiMate 是 The Open Group 推出的企业架构建模语言，最新版本 ArchiMate 4（2026 年发布预览）在 ArchiMate 3.2 的基础上进行了重大概念简化与扩展。ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
+ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前稳定版本为 ArchiMate 3.2（2022-10 发布）**。ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
+
+本文档建立 ArchiMate 3.2 核心元素与 ISO 42010:2022 概念之间的双向映射。文中保留的 "ArchiMate 4.0" 对照仅供路线图参考，**不具备标准合规效力**。
+ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
 本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射，覆盖以下四层：
 
@@ -17,7 +28,8 @@ ArchiMate 是 The Open Group 推出的企业架构建模语言，最新版本 Ar
 - **技术层（Technology Layer）**
 - **实现与迁移层（Implementation & Migration Layer）**
 
-> **注**: ArchiMate 4 引入了**通用域（Common Domain）**、**策略域（Strategy Domain）**和**动机域（Motivation Domain）**的重大重构。本文档在映射时标注 3.2 与 4.0 的差异，并以 4.0 为基准进行 ISO 42010 对齐。
+> **注**: ArchiMate 4 引入了**通用域（Common Domain）**、**策略域（Strategy Domain）**和**动机域（Motivation Domain）**的重大重构。
+> 本文档在映射时标注 3.2 与 4.0 的差异，并以 4.0 为基准进行 ISO 42010 对齐。
 
 ---
 

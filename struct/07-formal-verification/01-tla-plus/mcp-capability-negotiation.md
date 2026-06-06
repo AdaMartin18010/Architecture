@@ -99,7 +99,7 @@ agreedCaps ⊆ clientCaps ∧ agreedCaps ⊆ serverCaps
 ### 4.1 EventuallyActive（最终到达 Active）
 
 ```
-(networkStatus = "up" ∧ clientCaps ∩ serverCaps ≠ {}) ~> 
+(networkStatus = "up" ∧ clientCaps ∩ serverCaps ≠ {}) ~>
     (clientState = "active" ∧ serverState = "active")
 ```
 
@@ -142,6 +142,6 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 
 [^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
-[^5]: Model Context Protocol Specification. (2025). *Model Context Protocol*. https://spec.modelcontextprotocol.io
+[^5]: Model Context Protocol Specification. (2025). *Model Context Protocol*. <https://spec.modelcontextprotocol.io>
 
-[^6]: DevelopersDigest. (2026). *What Is the Model Context Protocol? A 2026 Primer*. https://www.developersdigest.tech/blog/what-is-model-context-protocol-2026-primer
+[^6]: DevelopersDigest. (2026). *What Is the Model Context Protocol? A 2026 Primer*. <https://www.developersdigest.tech/blog/what-is-model-context-protocol-2026-primer>

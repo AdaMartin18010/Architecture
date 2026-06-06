@@ -59,6 +59,7 @@ $$
 $$
 
 **证明概要**
+
 1. 由 M.1，$\mathrm{Reuse}(A, \mathit{Ctx}_1) \Leftrightarrow \exists V_1 \subseteq V: V_1 \models \mathit{Ctx}_1$。
 2. 同理，$\mathrm{Reuse}(A, \mathit{Ctx}_2) \Leftrightarrow \exists V_2 \subseteq V: V_2 \models \mathit{Ctx}_2$。
 3. 取 $V' = V_1 \cap V_2$。由于 $V_1, V_2 \subseteq V$，故 $V' \subseteq V$。
@@ -86,6 +87,7 @@ $$
 $$
 
 **证明概要**
+
 1. 由 M.2，每个实例由绑定规则 $\Gamma$ 作用于 $(V, \mathit{ctx})$ 生成。
 2. $\Gamma$ 是函数，故每个 $(V, \mathit{ctx})$ 对至多映射到一个实例。
 3. $V$ 有 $|V|$ 个变体点，每个点可从 $\mathcal{Ctx}$ 中取值，故上界为 $|\mathcal{Ctx}|^{|V|}$。
@@ -113,6 +115,7 @@ $$
 特别地，若任一层 $L_k$ 完全失败 ($P_{\text{fail}}(L_k) = 1$)，则 $P_{\text{fail}}(VS) = 1$。
 
 **证明概要**
+
 1. 由 M.3，各层次复用不可约化，即层次间不存在补偿映射。
 2. 价值流 $VS$ 可视为各层次复用结果的串联系统（串联可靠性模型）。
 3. 串联系统中，整体成功概率为各组件成功概率的加权乘积。
@@ -136,6 +139,7 @@ $$
 $$
 
 **证明概要**
+
 1. 由 M.4，单次复用保持同一性：$\mathrm{Id}(\mathrm{Reuse}(r, \mathit{ctx})) = \mathrm{Id}(r)$。
 2. 复用链定义为递归应用：$r_{i+1} = \mathrm{Reuse}(r_i, \mathit{ctx}_i)$。
 3. 对链长度 $n$ 进行数学归纳：
@@ -163,6 +167,7 @@ $$
 $$
 
 **证明概要**
+
 1. 由 E.1，$a \in \mathcal{R} \Leftrightarrow \mathrm{Stable}(a) \land \mathrm{General}(a) \land \mathrm{Encapsulated}(a)$。
 2. 取逆否命题：$a \notin \mathcal{R} \Leftrightarrow \neg\mathrm{Stable}(a) \lor \neg\mathrm{General}(a) \lor \neg\mathrm{Encapsulated}(a)$。
 3. 可持续复用要求 $a \in \mathcal{R}$（可持续复用是复用的子类）。
@@ -183,6 +188,7 @@ $$
 特别地，若仅考虑直接成本（$V_{\text{reuse}} = 0$），则 $AAF < 1$。
 
 **证明概要**
+
 1. 由 E.2，$\mathrm{EconomicallyViable}(a) \Leftrightarrow C_{\text{reuse}} < C_{\text{build}} + V_{\text{reuse}}$。
 2. 两边同除以 $C_{\text{build}}$（$C_{\text{build}} > 0$）：$\frac{C_{\text{reuse}}}{C_{\text{build}}} < 1 + \frac{V_{\text{reuse}}}{C_{\text{build}}}$。
 3. 令 $AAF = \frac{C_{\text{reuse}}}{C_{\text{build}}}$，得 $AAF < 1 + \frac{V_{\text{reuse}}}{C_{\text{build}}}$。
@@ -208,6 +214,7 @@ $$
 其中 $\tau$ 为适配阈值，$\mathrm{Size}(a)$ 为资产规模度量。
 
 **证明概要**
+
 1. 由 E.3，复用要求 $\mathrm{Fit}(a, \mathit{ctx}) \geq \tau$。
 2. 设适配操作将 $a$ 变换为 $a' = a + \Delta(a)$，适配度随之变化。
 3. 假设适配度与变更量成反比（一阶近似）：$\mathrm{Fit}(a', \mathit{ctx}) \approx \mathrm{Fit}(a, \mathit{ctx}) - k \cdot \frac{\Delta}{\mathrm{Size}(a)}$。
@@ -233,6 +240,7 @@ C_1 \simeq C_2 \land C_2 \simeq C_3 \Rightarrow C_1 \simeq C_3
 $$
 
 **证明概要**
+
 1. 自反性：$\forall C: \mathrm{Obs}(C(\mathit{input}, \mathit{ctx})) = \mathrm{Obs}(C(\mathit{input}, \mathit{ctx}))$，故 $C \simeq C$。
 2. 对称性：$C_1 \simeq C_2 \Leftrightarrow \mathrm{Obs}(C_1) = \mathrm{Obs}(C_2) \Leftrightarrow \mathrm{Obs}(C_2) = \mathrm{Obs}(C_1) \Leftrightarrow C_2 \simeq C_1$。
 3. 传递性：设 $C_1 \simeq C_2$ 且 $C_2 \simeq C_3$。
@@ -259,6 +267,7 @@ $$
 前提是接口 $I_1$ 和 $I_2$ 互不干扰。
 
 **证明概要**
+
 1. 由 S.2，组合的正确性由局部正确性和接口兼容性保证。
 2. 设左侧 $(C_1 \circ_{I_1} C_2)$ 满足 $S_{12} = S_1 \circ S_2 \downarrow_{\phi_1}$。
 3. 则左侧整体满足 $(S_1 \circ S_2 \downarrow_{\phi_1}) \circ S_3 \downarrow_{\phi_2}$。
@@ -285,6 +294,7 @@ $$
 其中 $\bar{b}$ 为平均分支因子。
 
 **证明概要**
+
 1. 由 S.3，$\mathrm{Trust}(C) = \{x : C \to^* x\}$，即所有可达节点。
 2. 依赖树深度为 $d$，平均分支因子为 $\bar{b}$。
 3. 第 $i$ 层节点数约为 $\bar{b}^i$（$i=0$ 为根节点）。
@@ -310,6 +320,7 @@ $$
 即越底层的接口越稳定。
 
 **证明概要**
+
 1. 由 S.4，$L_i$ 只能依赖 $L_{i-1}$ 和 $L_i$。
 2. 设 $L_i$ 的接口变更由两部分驱动：自身需求变更和下层接口变更传导。
 3. 由于 $L_i$ 不直接依赖 $L_{i-2}$ 及以下，下下层变更不直接传导到 $L_i$。
@@ -338,6 +349,7 @@ $$
 即两者节奏不可整除同步。
 
 **证明概要**
+
 1. 由 P.1，$\mathrm{Lifecycle}(a) \not\subseteq \mathrm{Lifecycle}(s_i)$。
 2. 若 $\rho(a) = k \cdot \rho(s_i)$（$k \in \mathbb{N}^+$），则 $a$ 的每次演化都落在 $s_i$ 的发布周期内，$s_i$ 可完全主导 $a$ 的演化节奏。
 3. 这与 P.1 矛盾，故 $\rho(a)$ 不能是 $\rho(s_i)$ 的整数倍。
@@ -361,6 +373,7 @@ $$
 $$
 
 **证明概要**
+
 1. 由 P.2，$a_{t+1} = \mathcal{G}(\mathrm{Feedback}(a, t), \mathrm{Strategy}(a))$。
 2. 若 $\mathcal{G}$ 是压缩映射，则 $d(\mathcal{G}(x), \mathcal{G}(y)) \leq L \cdot d(x, y)$，$L < 1$。
 3. 由 Banach 不动点定理，压缩映射在完备度量空间中有唯一不动点。
@@ -386,6 +399,7 @@ $$
 其中 $W$ 为 Lambert W 函数（$x = W(x) \cdot e^{W(x)}$ 的解）。
 
 **证明概要**
+
 1. 由 P.3，可持续条件为 $k \cdot N \cdot \log(N) \leq G_{\text{org}}$。
 2. 取等号：$N \cdot \log(N) = \frac{G_{\text{org}}}{k}$。
 3. 令 $N = e^x$，则 $x \cdot e^x = \frac{G_{\text{org}}}{k}$。
@@ -417,6 +431,7 @@ $$
 因为专家的搜索空间更大（已掌握资产数更多）。
 
 **证明概要**
+
 1. 由 P.4，$\mathrm{Learn}(a, n)$ 单调不增，故专家对熟悉资产的学习成本低。
 2. 但资产识别成本 $\mathrm{Search}$ 取决于候选集大小 $|\mathcal{R}_{\text{candidate}}|$。
 3. 专家的候选集 $\mathcal{R}_{\text{expert}}$ 包含所有已掌握资产及其变体，而新手候选集小。
@@ -444,6 +459,7 @@ $$
 其中 $\alpha > 1$ 为风险传导系数，$\mathrm{depth}(C_i)$ 为组件在依赖树中的深度。
 
 **证明概要**
+
 1. 由 S.2，组合系统的规约为各组件规约的弱化合取。
 2. 若任一组件存在风险（违反规约的可能性），该风险会传导到组合系统。
 3. 由 S.3，信任边界包含所有传递依赖，故深层组件的风险需被上层继承。
@@ -467,10 +483,12 @@ N^* = \min(N_{\text{cognitive}}, N_{\text{governance}})
 $$
 
 其中：
+
 - $N_{\text{cognitive}}$: 开发者能够有效学习的最大资产数，满足 $\sum_{a \in \mathcal{R}} \mathrm{Learn}(a, 1) \leq \mathrm{CL}_{\text{capacity}}$
 - $N_{\text{governance}}$: 组织能够有效治理的最大资产数，即 Th.14 中的 $N_{\text{max}}$
 
 **证明概要**
+
 1. 由 P.4，每个新资产引入初始学习成本 $\mathrm{Learn}(a, 1)$。
 2. 组织总认知负荷 $\mathrm{CL}_{\text{total}} = \sum_{a} \mathrm{Learn}(a, 1) \leq \mathrm{CL}_{\text{capacity}}$。
 3. 故 $N_{\text{cognitive}} = \max\{n : \sum_{i=1}^{n} \mathrm{Learn}(a_i, 1) \leq \mathrm{CL}_{\text{capacity}}\}$。

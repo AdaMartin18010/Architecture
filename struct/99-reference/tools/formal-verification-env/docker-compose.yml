@@ -1,0 +1,54 @@
+# 形式化验证自动化环境
+# 用途：为 TLA+ / Alloy / Coq(Rocq) / Isabelle 提供可复现的容器化验证环境
+# 使用：docker compose up -d
+# 验证：docker compose exec tla-plus tlc --help
+#       docker compose exec alloy alloy --help
+#       docker compose exec coq rocq --version
+#       docker compose exec isabelle isabelle version
+
+services:
+  tla-plus:
+    image: lemmy/tla-toolbox:latest
+    container_name: formal-tla-plus
+    volumes:
+      - ../../../../:/work:rw
+    working_dir: /work/struct/07-formal-verification/01-tla-plus
+    command: tail -f /dev/null
+    environment:
+      - JAVA_OPTS=-Xmx2g
+    mem_limit: 3g
+    stdin_open: true
+    tty: true
+
+  alloy:
+    image: cgswords/alloy:latest
+    container_name: formal-alloy
+    volumes:
+      - ../../../../:/work:rw
+    working_dir: /work/struct/07-formal-verification/02-alloy
+    command: tail -f /dev/null
+    mem_limit: 2g
+    stdin_open: true
+    tty: true
+
+  coq:
+    image: rocq/rocq-prover:9.0
+    container_name: formal-rocq
+    volumes:
+      - ../../../../:/work:rw
+    working_dir: /work/struct/07-formal-verification/03-coq-isabelle
+    command: tail -f /dev/null
+    mem_limit: 2g
+    stdin_open: true
+    tty: true
+
+  isabelle:
+    image: makarius/isabelle:2025-1
+    container_name: formal-isabelle
+    volumes:
+      - ../../../../:/work:rw
+    working_dir: /work/struct/07-formal-verification/03-coq-isabelle
+    command: tail -f /dev/null
+    mem_limit: 4g
+    stdin_open: true
+    tty: true

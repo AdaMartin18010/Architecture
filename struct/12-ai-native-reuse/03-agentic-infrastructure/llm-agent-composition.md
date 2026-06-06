@@ -9,7 +9,7 @@
 
 **定义 AI.1** (LLM Agent): LLM Agent 是一个由大语言模型驱动、具备感知-推理-行动循环的自主软件实体。其形式为：
 
-```
+```text
 Agent := ⟨LLM, Memory, Tools, Planner, EnvironmentInterface⟩
 ```
 
@@ -49,13 +49,13 @@ Agent := ⟨LLM, Memory, Tools, Planner, EnvironmentInterface⟩
 
 ### 模式 1: 串行管道 (Sequential Pipeline)
 
-```
+```text
 Input → Agent A → Agent B → Agent C → Output
 ```
 
 ### 模式 2: 路由分发 (Router)
 
-```
+```text
         ┌→ Agent A
 Input → Router →┼→ Agent B
         └→ Agent C
@@ -63,7 +63,7 @@ Input → Router →┼→ Agent B
 
 ### 模式 3: 投票聚合 (Voting / Ensemble)
 
-```
+```text
         ┌→ Agent A ─┐
 Input → ┼→ Agent B ─┼→ Aggregator → Output
         └→ Agent C ─┘
@@ -71,7 +71,7 @@ Input → ┼→ Agent B ─┼→ Aggregator → Output
 
 ### 模式 4: 主从协作 (Manager-Worker)
 
-```
+```text
 Manager Agent
 ├── 分解任务
 ├── 分配给 Worker Agent
@@ -83,7 +83,7 @@ Manager Agent
 
 A2A 协议支持不同框架、不同厂商的 Agent 之间协作：
 
-```
+```text
 Agent A (Google ADK) --A2A--> Agent B (LangGraph) --A2A--> Agent C (AutoGen)
 ```
 
@@ -109,7 +109,6 @@ Agent A (Google ADK) --A2A--> Agent B (LangGraph) --A2A--> Agent C (AutoGen)
 ## 5. 关键定理
 
 > **定理 AI.1** (Calibration Ceiling): 若 Agent 在训练分布 D_train 上校准良好，但在部署分布 D_deploy 上存在显著漂移，则其复用可靠性存在上界。
-
 > **定理 AI.2** (Human-in-the-Loop Optimality): 对于高风险的 Agent 决策，人在回路的成本低于完全自动化的期望错误成本，当且仅当 C_human < P(error) × C_error。
 
 ---

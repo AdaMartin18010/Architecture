@@ -5,7 +5,11 @@
 
 ## 1. 2026 架构格局概览
 
-2024–2026 年，云原生架构经历了从"微服务默认"到"务实回归"的范式转换。CNCF Q1 2026 报告显示：39% 后端开发者采用微服务，但 42% 的团队正在回归模块化单体（Modular Monolith）；Serverless 持续稳健增长；服务网格进入 Sidecar-less 时代；WebAssembly Component Model 3.0（2025-12 发布）为跨语言组件复用开辟新边界。
+2024–2026 年，云原生架构经历了从"微服务默认"到"务实回归"的范式转换。
+CNCF Q1 2026 报告显示：39% 后端开发者采用微服务，但 42% 的团队正在回归模块化单体（Modular Monolith）；
+Serverless 持续稳健增长；
+服务网格进入 Sidecar-less 时代；
+WebAssembly Component Model 3.0（2025-12 发布）为跨语言组件复用开辟新边界。
 
 ```mermaid
 flowchart TB

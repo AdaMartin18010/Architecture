@@ -36,6 +36,7 @@ MCP 架构
 ```
 
 **关键特征**:
+
 - **Stateful connections**: 连接是有状态的，支持能力协商
 - **Capability negotiation**: 连接时交换能力（capabilities）
 - **JSON-RPC 2.0**: 基于 JSON-RPC 的消息格式
@@ -159,6 +160,7 @@ MCP 规范明确列出以下安全和信任原则：
 **问题**: 当 Agent 连接多个 MCP Server 时，所有 Tool Schema 被塞进 System Prompt，可能消耗 150K tokens。
 
 **缓解**:
+
 - 按需加载工具（ Anthropic 2025-11 提出的 code-execution 模式）
 - 限制每个 Agent 同时连接的 Server 数量
 - 使用工具路由网关
@@ -168,6 +170,7 @@ MCP 规范明确列出以下安全和信任原则：
 **问题**: MCP Server 可能在会话之间修改自己的 Schema，添加恶意参数。
 
 **缓解**:
+
 - 版本锁定（version pinning）
 - Server 代码审计
 - 沙箱化运行
@@ -178,6 +181,7 @@ MCP 规范明确列出以下安全和信任原则：
 **问题**: OAuth 2.1 配置复杂，容易出现错误配置。
 
 **缓解**:
+
 - 使用 RFC 9728 Protected Resource Metadata
 - 使用 RFC 8707 Resource Indicators
 - 遵循官方授权指南
@@ -204,5 +208,5 @@ MCP 规范明确列出以下安全和信任原则：
 ---
 
 > 最后更新: 2026-06-06
-> 权威来源: https://modelcontextprotocol.io/specification/2025-11-25/
+> 权威来源: <https://modelcontextprotocol.io/specification/2025-11-25/>
 > 勘误: 此前文档中关于 2026-07-28 RC 无状态版本的描述不准确，已根据官方规范修正。

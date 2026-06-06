@@ -3,12 +3,26 @@
 > **版本**: 2026-06-06
 > **周期**: 2026 Q2 → 2027 Q4（6 个季度）
 > **目标**: 将 view/ 中 31 万字的知识体系，转化为结构化、可验证、可输出的知识产品
+> **后续详细计划**: 见 [`SUBSEQUENT_PLAN_2026.md`](./SUBSEQUENT_PLAN_2026.md)（含未完成项清单、国际对齐差距、2026-Q3 → 2027-Q4 任务分解、风险与关键决策）
+
+---
+
+## 关键决策确认（2026-06-06）
+
+按用户确认执行以下策略：
+
+- **1A**: 重构 README/MASTER_PLAN 与实际 `struct/` 目录 100% 匹配
+- **2A**: Docker 化 TLA+/Alloy/Coq 环境，新增规约必须自动验证
+- **3A**: 可执行工具采用 Python CLI + Streamlit 快速原型
+- **4A**: 重点补齐 Conformal Prediction+形式化、WASI 0.3、Agentic Governance；暂缓量子计算
+- **5A**: 每篇新增/更新文档必须列出 1-3 个国际权威来源 URL
 
 ---
 
 ## 目录
 
 - [软件工程架构复用视角：MASTER PLAN（总体推进计划）](#软件工程架构复用视角master-plan总体推进计划)
+  - [关键决策确认（2026-06-06）](#关键决策确认2026-06-06)
   - [目录](#目录)
   - [Phase 0：基础奠基（2026-Q2，已完成）](#phase-0基础奠基2026-q2已完成)
   - [Phase 1：核心层次深化（2026-Q3）](#phase-1核心层次深化2026-q3)
@@ -49,7 +63,7 @@
 | P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 | ✅ 完成 |
 | P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
 | P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 | ✅ 完成 |
-| P1 | 05 功能架构复用 | 完成 MCP 2026-07-28 RC + A2A v1.0.0 协议架构的复用分析 | `05/06-mcp-a2a-protocols/protocol-analysis.md` | 含协议栈层次 + 互补架构图 | ✅ 完成 |
+| P1 | 05 功能架构复用 | 完成 MCP 2025-11-25 + A2A v1.0 协议架构的复用分析 | `05/06-mcp-a2a-protocols/protocol-analysis.md` | 含协议栈层次 + 互补架构图 | ✅ 完成 |
 | P1 | 06 跨层复用治理 | 完成复用度量指标体系（基于 ISO/IEC 26564:2022 + NASA RRL） | `06/05-metrics-kpi/metrics-framework.md` | 含资产级/项目级/组织级/生态级四级度量 | ✅ 完成 |
 
 **对齐活动**:
@@ -68,7 +82,7 @@
 | P0 | 07 形式化验证 | 完成 TLA+ / Alloy / Coq 三种方法的复用组件验证案例库（各 2+ 案例） | `07/01-tla-plus/case-library.md` | 含可运行规约 + 验证流程图 | 🔄 预热中（TLA+/Alloy 已启动） |
 | P0 | 07 形式化验证 | 完成 Rust 类型系统（所有权、Trait、Cargo 解析）的形式化语义梳理 | `07/04-rust-type-system/formal-semantics.md` | 含定理证明纲要 | ✅ 提前完成（2026-06） |
 | P0 | 09 价值量化 | 完成 COCOMO II 复用模型的 2026 校准版（适配 AI 辅助开发、Serverless） | `09/01-cocomo-ii-reuse/cocomo-2026-calibration.md` | 含参数调整建议 | ✅ 提前完成（2026-06） |
-| P0 | 09 价值量化 | 完成跨层 FinOps 成本分摊模型的可执行模板 | `09/03-finops-allocation/cost-allocation-template.md` | 含公式 + 计算示例 | ✅ 提前完成（2026-06） |
+| P0 | 09 价值量化 | 完成跨层 FinOps 成本分摊模型的可执行模板 | `06/04-finops-cost/cost-allocation-template.md` | 含公式 + 计算示例 | ✅ 提前完成（2026-06） |
 | P1 | 08 认知架构 | 完成开发者复用决策的认知负荷量化模型（NASA-TLX 适配版） | `08/03-cognitive-load-theory/quantitative-model.md` | 含测量方法对照表 | ✅ 提前完成（2026-06） |
 | P1 | 08 认知架构 | 完成 AI 辅助复用决策的认知增强架构设计 | `08/05-ai-cognitive-augmentation/augmentation-architecture.md` | 含 RAG 增强流程 | ✅ 提前完成（2026-06） |
 
@@ -106,7 +120,7 @@
 
 | 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
 |--------|------|----------|--------|----------|
-| P0 | 10 供应链安全 | 完成 SLSA 1.0 四级框架的复用安全边界详解 | `10/01-slsa-framework/slsa-reuse-boundaries.md` | 含 L1-L4 的复用决策矩阵 |
+| P0 | 10 供应链安全 | 完成 SLSA 1.1/1.2 Multi-Track 框架的复用安全边界详解 | `10/01-slsa-framework/slsa-reuse-boundaries.md` | 含 L1-L4 的复用决策矩阵 |
 | P0 | 10 供应链安全 | 完成 SPDX vs CycloneDX vs SWID 的复用安全应用对比 | `10/02-sbom-standards/sbom-reuse-security.md` | 含 3 标准 × 4 应用场景矩阵 |
 | P0 | 10 供应链安全 | 完成 XZ Utils 后门等 5+ 案例的深度分析 + 防御策略 | `10/05-case-studies/xz-utils-deep-dive.md` | 含攻击链 + 检测信号 |
 | P1 | 10 供应链安全 | 完成零信任软件供应链架构设计模板 | `10/04-zero-trust-supply-chain/zero-trust-template.md` | 含 5 层防御矩阵 |
@@ -126,7 +140,7 @@
 
 | 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
 |--------|------|----------|--------|----------|
-| P0 | 12 AI 原生复用 | 完成 MCP 2026-07-28 规范的中文/英文双语深度解析 | `12/01-mcp-protocol/mcp-2026-deep-dive.md` | 含核心变更对照表 |
+| P0 | 12 AI 原生复用 | 完成 MCP 2025-11-25 规范的中文/英文双语深度解析 | `12/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | 含核心变更对照表（Tasks/Icons/Elicitation/OAuth） |
 | P0 | 12 AI 原生复用 | 完成 A2A v1.0.0 协议的复用流程分析 + 安全机制 | `12/02-a2a-protocol/a2a-reuse-analysis.md` | 含 5 步流程 + Agent Card 模板 |
 | P0 | 12 AI 原生复用 | 完成 AI 功能复用的概率契约框架（含校准方法） | `12/04-probabilistic-contracts/probabilistic-contract-framework.md` | 含 Python 示例代码 |
 | P1 | 12 AI 原生复用 | 完成 Conformal Prediction 在代码生成中的应用案例 | `12/05-conformal-prediction/cp-code-generation.md` | 含统计保证证明 |
@@ -135,7 +149,7 @@
 
 **对齐活动**:
 
-- 对照 Anthropic MCP 官方规范 (2026-07-28 RC)
+- 对照 Anthropic / Linux Foundation Agentic AI Foundation MCP 官方规范 (2025-11-25)
 - 对照 Google A2A / Linux Foundation 官方文档
 - 对照 NVIDIA Omniverse / Microsoft Azure Digital Twins 工业数字孪生实践
 
@@ -200,5 +214,7 @@
 ---
 
 > **声明**: 本计划是"活文档"。随着标准演进（如 ISO 42024/42042 正式发布）、技术突破（如 SLSA 2.0、MCP 1.0）和实践反馈，计划将持续更新。
+>
+> 目录结构以 `struct/README.md` 中"实际文件夹结构导航"为准。历史 MASTER_PLAN 中规划但未创建的子目录（如 `quantum-computing`、`domain-driven-design`、`coq-isabelle` 等）按 `SUBSEQUENT_PLAN_2026.md` 决策 4A 处理。
 >
 > 最后更新: 2026-06-06

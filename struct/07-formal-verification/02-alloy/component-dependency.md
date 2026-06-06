@@ -3,7 +3,7 @@
 > **版本**: 2026-06-06
 > **对应规约**: `component-dependency.als`
 > **交叉引用**: `struct/04-component-architecture-reuse/`（依赖管理、组件架构复用）
-> **理论来源**: Daniel Jackson, *Software Abstractions: Logic, Language, and Analysis* (MIT Press, 2012); Alloy Tools (https://alloytools.org)
+> **理论来源**: Daniel Jackson, *Software Abstractions: Logic, Language, and Analysis* (MIT Press, 2012); Alloy Tools (<https://alloytools.org>)
 
 ---
 
@@ -113,7 +113,7 @@ Component_C -> dependsOn -> Component_A   -- 循环闭合
 ## 7. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 语言与设计哲学的权威教材。
-2. Alloy Tools. https://alloytools.org —— MIT Software Design Group 维护的 Alloy 官方主页与文档。
+2. Alloy Tools. <https://alloytools.org> —— MIT Software Design Group 维护的 Alloy 官方主页与文档。
 3. Clements, P., & Northrop, L. (2001). *Software Product Lines: Practices and Patterns*. Addison-Wesley. —— 组件依赖与产品线工程中循环依赖的危害分析。
 4. Martin, R. C. (2003). *Agile Software Development: Principles, Patterns, and Practices*. Prentice Hall. —— 依赖倒置原则（DIP）与无环依赖原则（Acyclic Dependencies Principle, ADP）。
 

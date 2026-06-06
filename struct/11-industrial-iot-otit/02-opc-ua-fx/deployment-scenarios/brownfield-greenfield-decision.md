@@ -8,14 +8,34 @@
 
 ## 目录
 
-- [1. 场景定义](#1-场景定义)
-- [2. 棕地场景（Brownfield）](#2-棕地场景brownfield)
-- [3. 绿地场景（Greenfield）](#3-绿地场景greenfield)
-- [4. 混合场景（Hybrid）](#4-混合场景hybrid)
-- [5. 决策树](#5-决策树)
-- [6. 数据一致性保障策略](#6-数据一致性保障策略)
-- [7. 迁移成本模型](#7-迁移成本模型)
-- [8. 参考文献](#8-参考文献)
+- [棕地 / 绿地 / 混合场景决策模板](#棕地--绿地--混合场景决策模板)
+  - [目录](#目录)
+  - [1. 场景定义](#1-场景定义)
+  - [2. 棕地场景（Brownfield）](#2-棕地场景brownfield)
+    - [2.1 核心挑战](#21-核心挑战)
+    - [2.2 升级策略](#22-升级策略)
+      - [策略 A：监控层 FX 化（非侵入式）](#策略-a监控层-fx-化非侵入式)
+      - [策略 B：TSN 骨干 + 网关孤岛](#策略-btsn-骨干--网关孤岛)
+      - [策略 C：控制器到期替换](#策略-c控制器到期替换)
+    - [2.3 棕地风险矩阵](#23-棕地风险矩阵)
+  - [3. 绿地场景（Greenfield）](#3-绿地场景greenfield)
+    - [3.1 最优架构原则](#31-最优架构原则)
+      - [原则 1：单一网络融合（One Network）](#原则-1单一网络融合one-network)
+      - [原则 2：原生 FX 设备选型](#原则-2原生-fx-设备选型)
+      - [原则 3：Companion Specification 先行](#原则-3companion-specification-先行)
+    - [3.2 绿地实施路径](#32-绿地实施路径)
+  - [4. 混合场景（Hybrid）](#4-混合场景hybrid)
+    - [4.1 核心策略："网关-led 渐进迁移"](#41-核心策略网关-led-渐进迁移)
+    - [4.2 共存策略](#42-共存策略)
+      - [策略 H1：时间域分离](#策略-h1时间域分离)
+      - [策略 H2：空间域分离](#策略-h2空间域分离)
+      - [策略 H3：功能域分离](#策略-h3功能域分离)
+    - [4.3 过渡期数据一致性保障](#43-过渡期数据一致性保障)
+  - [5. 决策树](#5-决策树)
+    - [决策矩阵速查表](#决策矩阵速查表)
+  - [6. 数据一致性保障策略](#6-数据一致性保障策略)
+  - [7. 迁移成本模型](#7-迁移成本模型)
+  - [8. 参考文献](#8-参考文献)
 
 ---
 
@@ -61,11 +81,11 @@ flowchart LR
     A1[PLC S7-300] -->|Profinet| A2[ET 200 IO]
     A3[PLC ControlLogix] -->|EtherNet/IP| A4[FLEX IO]
     end
-    
+
     subgraph FX 监控层
     B1[OPC UA FX C2C<br/>网关] --> B2[SCADA/MES<br/>统一接口]
     end
-    
+
     A1 -->|以太网旁路| B1
     A3 -->|以太网旁路| B1
 ```
@@ -82,19 +102,19 @@ flowchart LR
     subgraph TSN 骨干网
     T1[TSN Core Switch<br/>Scalance XCM]
     end
-    
+
     subgraph 孤岛 1
     S1[FX C2C Gateway] --> S2[Profinet IRT<br/>孤岛]
     end
-    
+
     subgraph 孤岛 2
     S3[FX C2C Gateway] --> S4[EtherCAT<br/>孤岛]
     end
-    
+
     subgraph 孤岛 3
     S5[FX C2C Gateway] --> S6[Modbus TCP<br/>孤岛]
     end
-    
+
     T1 <-->|FX C2C| S1
     T1 <-->|FX C2C| S3
     T1 <-->|FX C2C| S5
@@ -135,20 +155,20 @@ flowchart TB
     subgraph 企业层
     E1[ERP/PLM]
     end
-    
+
     subgraph 边缘层
     M1[MES/SCADA<br/>OPC UA Client/Server]
     end
-    
+
     subgraph 控制层
     C1[FX C2C<br/>控制器间协调]
     end
-    
+
     subgraph 现场层
     F1[FX C2D<br/>IO/驱动] --> F2[D2D<br/>安全互锁]
     F3[TSN Switch<br/>802.1Qbv/AS/CB]
     end
-    
+
     E1 <-->|OPC UA TCP| M1
     M1 <-->|OPC UA FX C2C| C1
     C1 <-->|FX C2C/C2D| F1
@@ -219,12 +239,12 @@ flowchart LR
     Y2[现有产线 B<br/>EtherCAT] --> G2[FX C2C 网关]
     G1 <-->|FX C2C| G2
     end
-    
+
     subgraph Year 3-5
     Y3[新建产线 C<br/>原生 FX C2D] <-->|FX C2C| G1
     Y3 <-->|FX C2C| G2
     end
-    
+
     subgraph Year 6-10
     Y4[产线 A 控制器到期替换<br/>原生 FX] <-->|FX C2C| Y3
     Y5[产线 B 内循环保留<br/>外循环 FX] <-->|FX C2C| Y4

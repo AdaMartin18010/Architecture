@@ -161,6 +161,7 @@ v1.0 引入 Agent Card 签名：
 ```
 
 **作用**:
+
 - 防止 Agent Card 伪造
 - 确保 Agent 身份可验证
 - 支持 Agent-to-Agent 信任链
@@ -172,6 +173,7 @@ v1.0 将 OAuth 2.1 with PKCE 设为默认认证方案，取代早期草案中的
 ### 6.3 Agent Payments Protocol (AP2)
 
 v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
+
 - 支持 Agent 驱动的安全交易
 - 60+ 组织支持
 - 用于 Agent 服务的市场化支付
@@ -257,7 +259,8 @@ User Request → A2A Gateway
 
 > 最后更新: 2026-06-06
 > 权威来源:
-> - https://a2aprotocol.ai/
+>
+> - <https://a2aprotocol.ai/>
 > - Google Cloud Next 2026 发布资料
 > - Linux Foundation Agentic AI Foundation
 > 勘误: A2A v1.0 正式发布时间为 2026-04，此前文档中的 2026-03-12 日期已修正。

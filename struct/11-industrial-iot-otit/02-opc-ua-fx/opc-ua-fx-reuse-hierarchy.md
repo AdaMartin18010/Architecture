@@ -25,7 +25,7 @@
 
 ## 1. OPC UA FX 的技术栈
 
-```
+```text
 OPC UA FX 技术栈
 ├── 物理层: 标准以太网 (1GbE/10GbE) + Single-Pair Ethernet (Ethernet-APL)
 │   └── 复用: 商用现成以太网芯片，无需专用 ASIC

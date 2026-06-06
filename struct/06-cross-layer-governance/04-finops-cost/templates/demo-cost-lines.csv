@@ -1,0 +1,8 @@
+line_id,provider,resource_id,effective_cost,tag_business_unit,tag_app,tag_component,tag_feature,tag_env,usage_quantity,usage_unit
+L1,aws,ec2-app-a,5000.00,BU1,AppA,frontend,portal,prod,720,hrs
+L2,aws,ec2-app-b,3000.00,BU1,AppB,frontend,portal,prod,360,hrs
+L3,aws,eks-control-plane,800.00,shared,platform,k8s,,prod,1,cluster
+L4,azure,openai-inference,2400.00,BU1,AppA,chatbot,ai-assist,prod,12000000,tokens
+L5,saas,datadog,1200.00,shared,observability,apm,,prod,1,subscription
+L6,gcp,bigquery-analytics,1500.00,BU1,AppA,data,pipeline,prod,4500,GB
+L7,aws,rds-shared,2200.00,shared,platform,database,,prod,1,instance

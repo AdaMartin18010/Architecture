@@ -5,7 +5,7 @@
 
 ## 1. 核心概念三角
 
-```
+```text
 Event-Driven Architecture (EDA)
 ├── Event Notification（事件通知）
 ├── Event-Carried State Transfer（事件携带状态转移）
@@ -46,7 +46,7 @@ Event-Driven Architecture (EDA)
 
 ### 3.1 基本分离
 
-```
+```text
 Command Side（写模型）
 ├── 业务规则验证
 ├── 聚合根（Aggregate Root）
@@ -62,7 +62,7 @@ Query Side（读模型）
 
 ### 3.2 与 Event Sourcing 的集成
 
-```
+```text
 Command → Aggregate → 生成 Event → Event Store
                                         ↓
                                     Event Bus

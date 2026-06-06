@@ -40,22 +40,22 @@ flowchart TD
     Q1 -->|否| Q3{是否仍被使用?}
     Q3 -->|是| Maintain[维持现状]
     Q3 -->|否| Deprecate[标记弃用]
-    
+
     Q2 -->|是| Q4{是否需要跨团队/跨系统?}
     Q2 -->|否| Q5{耦合度是否过高?}
     Q5 -->|是| Downgrade[触发降级]
     Q5 -->|否| Maintain
-    
+
     Q4 -->|是| Q6{技术栈是否兼容?}
     Q4 -->|否| Maintain
-    
+
     Q6 -->|是| Upgrade[触发升级]
     Q6 -->|否| Adapter[引入适配器]
-    
+
     Upgrade --> Q7{安全等级是否匹配?}
     Q7 -->|是| ExecuteUpgrade[执行升级]
     Q7 -->|否| SecurityReview[安全审查]
-    
+
     Downgrade --> Q8{是否有替代方案?}
     Q8 -->|是| ExecuteDowngrade[执行降级]
     Q8 -->|否| Redesign[重新设计]
@@ -66,6 +66,7 @@ flowchart TD
 ## 案例：从算法到平台服务的升级路径
 
 ### 背景
+
 某电商平台的"推荐算法"最初作为项目内的工具函数存在。
 
 ### 升级历程
@@ -90,9 +91,11 @@ flowchart TD
 ## 案例：从共享组件到隔离组件的降级
 
 ### 背景
+
 某金融平台的"支付网关组件"最初作为共享库供多个系统使用。
 
 ### 降级触发
+
 - **安全事件**: 2025 年渗透测试发现共享组件存在高危漏洞
 - **合规要求**: PCI DSS 4.0 要求支付处理环境与其他系统物理/逻辑隔离
 - **影响范围**: 共享组件的漏洞修复需要协调 12 个系统的升级窗口
@@ -109,6 +112,7 @@ flowchart TD
 | 合规等级 | 不满足 PCI DSS | 满足 PCI DSS + 安全审计 |
 
 ### 决策依据
+
 - 虽然运维成本增加，但**合规风险成本**（潜在罚款 + 声誉损失）远高于降级成本
 - 降级后，各系统可独立演进，减少了协调摩擦
 
@@ -119,12 +123,12 @@ flowchart TD
 ```text
 升级决策公式:
   Upgrade_Benefit = (N_future - N_current) × (C_rebuild - C_reuse_future) - C_upgrade
-  
+
   若 Upgrade_Benefit > 0 且 Risk(Upgrade) < Risk_Threshold → 执行升级
 
 降级决策公式:
   Downgrade_Benefit = Risk_Reduction + Flexibility_Gain - C_downgrade - C_future_replicate
-  
+
   若 Downgrade_Benefit > 0 → 执行降级
 ```
 
@@ -141,6 +145,7 @@ flowchart TD
 ---
 
 > **对齐验证**:
+>
 > - 升级矩阵对照 ISO/IEC 26566:2026 成熟度转换指南验证
 > - 降级矩阵对照 Netflix/CNCF 服务拆分最佳实践验证
 > - 经济分析对照 COCOMO II (USC) 和 NASA RRL 成本模型验证

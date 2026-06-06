@@ -44,6 +44,7 @@
 **形式化表述**
 
 设 $A \in \mathcal{A}$ 为一个架构，$A = \langle C, R, V \rangle$，其中：
+
 - $C$: 组件集合
 - $R \subseteq C \times C$: 组件间关系集合
 - $V$: 作用于 $C$ 和 $R$ 的约束集合
@@ -67,11 +68,13 @@ $$
 ### M.2 Variability Axiom (可变性公理)
 
 **自然语言表述**
+
 > 复用的本质是管理**共性 (Commonality)** 与**变性 (Variability)** 的分离与绑定。没有变性管理的复用是克隆，不是工程。
 
 **形式化表述**
 
 设 $S \in \mathcal{R}$ 为软件资产族，$S = \langle B, V, \Gamma \rangle$，其中：
+
 - $B$: 不变的核心（Base）
 - $V = \{v_1, v_2, \ldots, v_n\}$: 可变的点集（Variation Points）
 - $\Gamma: V \times \mathcal{Ctx} \to B'$: 绑定规则，将变体映射到具体实例
@@ -93,6 +96,7 @@ $$
 ### M.3 Hierarchy Non-Reduction (层次不可约性)
 
 **自然语言表述**
+
 > 复用具有层次性（业务→应用→组件→功能），层次间**不可约化**。某一层的复用失败不能通过另一层的优化完全弥补。
 
 **形式化表述**
@@ -116,6 +120,7 @@ $$
 ### M.4 Identity Preservation (同一性保持)
 
 **自然语言表述**
+
 > 复用必须保持被复用资产的**本体同一性 (Ontological Identity)**。若资产 $A$ 被复用到上下文 $Ctx_1$ 和 $Ctx_2$，则 $A$ 在两种上下文中的核心本体标识不变，仅其**角色 (Role)** 和**实现形态**可变。
 
 **形式化表述**
@@ -155,6 +160,7 @@ a \in \mathcal{R} \Leftrightarrow \mathrm{Stable}(a) \land \mathrm{General}(a) \
 $$
 
 其中：
+
 - $\mathrm{Stable}(a) \Leftrightarrow \lambda_{\text{change}}(a) < \lambda_{\text{use}}(a)$，即变更频率低于使用频率
 - $\mathrm{General}(a) \Leftrightarrow |\{\mathit{ctx} \in \mathcal{Ctx} : a \models \mathit{ctx}\}| \geq 2$，即适用于至少两个不同上下文
 - $\mathrm{Encapsulated}(a) \Leftrightarrow \exists \mathrm{Interface}(a): \mathrm{Internal}(a) \cap \mathrm{Visible}(a) = \emptyset$，即内部实现对使用者不可见
@@ -175,6 +181,7 @@ $$
 **形式化表述**
 
 设：
+
 - $C_{\text{reuse}}$: 复用成本（学习、适配、集成、治理）
 - $C_{\text{build}}$: 自研成本
 - $V_{\text{reuse}}$: 复用带来的长期价值（维护、一致性、速度）

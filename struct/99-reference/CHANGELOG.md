@@ -5,6 +5,77 @@
 
 ---
 
+## 2026-06-06 Phase 1.5 修复（用户确认 1A/2A/3A/4A/5A 后执行）
+
+### 修复内容
+
+#### 目录结构与一致性
+
+- 重写 `struct/README.md` — 以实际 `struct/` 目录结构为准，明确标注与早期 MASTER_PLAN 规划树的差异
+- 清理 `.vscode/README.md` — 删除约 200 行 PostgreSQL 18+ 残留内容，恢复为 VSCode/Cursor 配置说明
+- 更新 `struct/MASTER_PLAN.md` — 修正 FinOps 实际路径、MCP 版本引用（2025-11-25）、SLSA 版本引用（1.1/1.2），添加 `SUBSEQUENT_PLAN_2026.md` 链接和关键决策确认
+- 更新 `struct/99-reference/audit/roadmap-consistency-audit.md` — 追加修复记录
+
+#### 形式化验证环境
+
+- 创建 `struct/99-reference/tools/formal-verification-env/`:
+  - `README.md` — 环境使用说明
+  - `docker-compose.yml` — TLA+/Alloy/Coq/Isabelle 四容器配置
+  - `verify-all.sh` — 批量检查脚本
+- 创建 `struct/07-formal-verification/03-coq-isabelle/README.md` — Coq/Isabelle 占位与 Phase 2 计划
+- 更新 `struct/07-formal-verification/README.md` — 添加验证环境引用和验收标准
+- 更新 `struct/07-formal-verification/plans-tasks/roadmap.md` — 修正目录结构声明，移除不存在的 `07-model-checking`
+
+### 关键决策
+
+- **1A**: 目录结构以实际文件为准
+- **2A**: Docker 化形式化验证环境，新增规约必须自动验证
+- **3A**: 可执行工具采用 Python CLI + Streamlit
+- **4A**: 重点补齐 CP+形式化、WASI 0.3、Agentic Governance；暂缓量子计算
+- **5A**: 每篇文档列出 1-3 个国际权威来源 URL
+
+---
+
+## Phase 2 持续推进（2026-06）— 国际权威内容对齐
+
+### 新增标准对齐文档
+
+#### 元模型与标准对齐
+
+- `07-omg-ras/ras-alignment.md` — 对齐 OMG RAS v2.2（formal/05-11-02），覆盖 Core RAS 四元组（Classification/Solution/Usage/RelatedAssets）、Profile 扩展、`.ras` 包格式、仓库服务接口，以及与 ISO 42010 / TOGAF 的映射
+- `08-fair4rs/fair4rs-alignment.md` — 对齐 FAIR4RS Principles v1.0 (RDA, 2022)，覆盖 F/A/I/R 17 条子原则、与 SBOM/MCP/容器注册表的整合、架构资产 FAIR4RS 合规行动清单
+- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 IEEE 1517-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO 12207 / 42020 / TOGAF ADM
+
+#### AI 原生复用
+
+- `01-mcp-protocol/mcp-2025-11-25-deep-dive.md` — **关键勘误**：将项目中所有 "MCP 2026-07-28 RC" 引用更新为官方当前稳定版 **MCP 2025-11-25**。深度解析 Tasks、Icons、Sampling with Tools、Elicitation URL 模式、OAuth 企业级增强、Linux Foundation Agentic AI Foundation 治理变化
+
+### 新增可执行工具原型
+
+- `99-reference/tools/terminology-query.py` — 跨标准术语查询 CLI（ISO 42010 / ISO 25010 / TOGAF / SLSA / MCP / A2A）
+- `99-reference/tools/cocomo-calculator.py` — COCOMO II 复用模型 2026 版计算器
+- `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` — 基于 **Conformal Prediction** 的 AI 功能概率契约校准工具，输出 P(correctness) ≥ 1-α 的统计保证
+- `06-cross-layer-governance/03-maturity-models/assessment-tool.py` — 基于 **ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL** 的复用成熟度评估问卷 CLI，生成分维度雷达图和总体成熟度报告
+
+### 更新的 README/状态
+
+- `struct/01-meta-model-standards/README.md` — 新增 OMG RAS、FAIR4RS、IEEE 1517 内容
+- `struct/12-ai-native-reuse/README.md` — 修正 MCP 版本为 2025-11-25，添加 calibration-tool 状态
+- `struct/05-functional-architecture-reuse/README.md` — 修正 MCP 版本引用
+- `struct/06-cross-layer-governance/README.md` — 标记成熟度评估问卷 CLI 已完成
+
+### 对齐的权威来源
+
+- OMG RAS v2.2 formal/05-11-02: <https://www.omg.org/spec/RAS/2.2/PDF>
+- FAIR4RS v1.0 (RDA, 2022): <https://doi.org/10.15497/RDA00068>
+- IEEE 1517-2010: <https://standards.ieee.org/standard/1517-2010.html>
+- MCP 2025-11-25 Spec: <https://modelcontextprotocol.io/specification/2025-11-25>
+- MCP Linux Foundation Governance: <https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation>
+- Angelopoulos & Bates, "A Gentle Introduction to Conformal Prediction" (2021): <https://arxiv.org/abs/2107.07511>
+- ISO/IEC 26566:2026: <https://www.iso.org/standard/81437.html>
+
+---
+
 ## 2026-06-06 本轮更新
 
 ### 新增文档

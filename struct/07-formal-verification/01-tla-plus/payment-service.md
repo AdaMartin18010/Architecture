@@ -119,4 +119,4 @@
 
 [^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
-[^4]: TLA+ Examples Repository. Two-Phase Commit Specification. https://github.com/tlaplus/Examples
+[^4]: TLA+ Examples Repository. Two-Phase Commit Specification. <https://github.com/tlaplus/Examples>

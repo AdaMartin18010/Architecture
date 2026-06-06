@@ -1,8 +1,18 @@
 # MCP 2026-07-28 RC 深度解析
 
+> ⚠️ **过时文档警告 / OBSOLETE DOCUMENT WARNING**
+>
+> 经官方渠道核实，**MCP 当前稳定版为 `2025-11-25`**，Anthropic 已于 2025-12-09 将其捐赠给 Linux Foundation Agentic AI Foundation。本文件中引用的 **"MCP 2026-07-28 RC" 并不存在**，属于项目早期的错误假设。
+>
+> 请参考最新权威文档：
+>
+> - [`mcp-2025-11-25-deep-dive.md`](./mcp-2025-11-25-deep-dive.md)
+> - [`mcp-2025-11-25-authoritative.md`](./mcp-2025-11-25-authoritative.md)
+> - 官方规范：<https://modelcontextprotocol.io/specification/2025-11-25>
+
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2026-07-28 RC (2026-05-21 锁定)
-> **定位**: 无状态核心架构对 AI 功能复用的深远影响
+> **对齐标准**: MCP 2026-07-28 RC (2026-05-21 锁定) — **已勘误为 2025-11-25**
+> **定位**: 历史存档，保留以展示项目认知迭代过程
 
 ---
 

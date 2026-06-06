@@ -102,7 +102,7 @@ flowchart TB
         B --> C[非共形分数计算<br/>s(x,y) = 1 − 测试通过率]
         C --> D[分位数估计<br/>q̂ = ⌈(n+1)(1−α)⌉ / n 分位数]
     end
-    
+
     subgraph 推理阶段
         E[新需求 x_test] --> F[LLM 生成候选程序]
         F --> G{非共形分数 ≤ q̂?}
@@ -110,7 +110,7 @@ flowchart TB
         G -->|否| I[丢弃]
         H --> J[输出：预测集 + 覆盖保证]
     end
-    
+
     D -.->|传递阈值| G
 ```
 
@@ -195,11 +195,11 @@ def nonconformity_score(code: str, test_cases: List[Tuple]) -> float:
 class CodeConformalPredictor:
     """
     为 LLM 代码生成提供边际覆盖保证的共形预测器。
-    
+
     保证：在可交换性假设下，对于新样本 (x_test, y_test)，
           P(y_test ∈ C(x_test)) >= 1 - alpha
     """
-    
+
     def __init__(self, alpha: float = 0.1):
         """
         Args:
@@ -208,14 +208,14 @@ class CodeConformalPredictor:
         self.alpha = alpha
         self.quantile = None  # 校准分位数
         self.calibration_scores = []
-    
+
     def calibrate(
         self,
         calibration_data: List[Tuple[str, str, List[Tuple]]]
     ) -> None:
         """
         校准阶段：使用标注数据集计算非共形分数分位数。
-        
+
         Args:
             calibration_data: 列表元素为 (prompt, correct_code, test_cases)
         """
@@ -223,20 +223,20 @@ class CodeConformalPredictor:
         for prompt, correct_code, tests in calibration_data:
             score = nonconformity_score(correct_code, tests)
             scores.append(score)
-        
+
         self.calibration_scores = np.array(scores)
         n = len(scores)
-        
+
         # 计算 ⌈(n+1)(1-alpha)⌉ / n 分位数
         # 这是保证有限样本覆盖的关键公式
         q_level = np.ceil((n + 1) * (1 - self.alpha)) / n
         q_level = min(q_level, 1.0)
-        
+
         self.quantile = np.quantile(scores, q_level)
-        
+
         print(f"[校准完成] 样本数: {n}, 分位数水平: {q_level:.4f}, "
               f"阈值 q̂: {self.quantile:.4f}")
-    
+
     def predict_set(
         self,
         prompt: str,
@@ -245,35 +245,35 @@ class CodeConformalPredictor:
     ) -> Tuple[List[str], float]:
         """
         预测阶段：为给定需求构造具有覆盖保证的代码预测集。
-        
+
         Args:
             prompt: 代码需求描述
             test_cases: 用于筛选的测试用例
             n_candidates: 生成的候选数量
-            
+
         Returns:
             (prediction_set, empirical_coverage_on_cal)
         """
         if self.quantile is None:
             raise ValueError("必须先调用 calibrate() 进行校准")
-        
+
         # 生成候选代码
         candidates = generate_candidates(prompt, n=n_candidates)
-        
+
         # 筛选满足覆盖条件的候选
         prediction_set = []
         for code in candidates:
             score = nonconformity_score(code, test_cases)
             if score <= self.quantile:
                 prediction_set.append(code)
-        
+
         # 报告校准集上的经验覆盖（诊断用）
         empirical_coverage = np.mean(
             self.calibration_scores <= self.quantile
         )
-        
+
         return prediction_set, empirical_coverage
-    
+
     def predict_set_with_llm_reranking(
         self,
         prompt: str,
@@ -289,14 +289,14 @@ class CodeConformalPredictor:
         all_candidates = generate_candidates(prompt, n=n_candidates)
         # ... 按模型 log-prob 排序，保留 top_k ...
         shortlisted = all_candidates[:top_k]
-        
+
         # 第 2 步：应用 CP 阈值
         prediction_set = []
         for code in shortlisted:
             score = nonconformity_score(code, test_cases)
             if score <= self.quantile:
                 prediction_set.append(code)
-        
+
         stats = {
             "candidates_generated": n_candidates,
             "shortlisted": top_k,
@@ -304,7 +304,7 @@ class CodeConformalPredictor:
             "quantile_threshold": self.quantile,
             "coverage_guarantee": 1 - self.alpha
         }
-        
+
         return prediction_set, stats
 
 
@@ -314,7 +314,7 @@ class CodeConformalPredictor:
 
 def demo():
     """完整演示流程"""
-    
+
     # 4.1 准备校准数据（实际应用中应使用数百条）
     calibration_data = [
         ("Write a function to reverse a string",
@@ -325,11 +325,11 @@ def demo():
          [("radar", True), ("hello", False)]),
         # ... 更多校准样本
     ] * 50  # 模拟 100 条校准数据
-    
+
     # 4.2 初始化并校准
     predictor = CodeConformalPredictor(alpha=0.1)  # 90% 覆盖保证
     predictor.calibrate(calibration_data)
-    
+
     # 4.3 对新需求进行预测
     test_prompt = "Write a function to find the maximum element in a list"
     test_cases = [
@@ -337,19 +337,19 @@ def demo():
         ([-1, -5, -2], -1),
         ([5], 5)
     ]
-    
+
     pred_set, stats = predictor.predict_set_with_llm_reranking(
         test_prompt,
         test_cases,
         n_candidates=50,
         top_k=10
     )
-    
+
     print("\n=== 预测结果 ===")
     print(f"覆盖保证: {stats['coverage_guarantee']*100:.0f}%")
     print(f"预测集大小: {stats['prediction_set_size']}")
     print(f"候选生成数: {stats['candidates_generated']}")
-    
+
     if pred_set:
         print("\n预测集中的代码示例（前 3 条）:")
         for i, code in enumerate(pred_set[:3], 1):
@@ -386,13 +386,13 @@ flowchart TB
         A1 --> A3[MCP 权限边界]
         A1 --> A4[Agent 行为约束]
     end
-    
+
     subgraph Conformal Prediction 层
         B1[统计保证] --> B2[代码正确性覆盖]
         B1 --> B3[输出不确定性量化]
         B1 --> B4[风险可控预测集]
     end
-    
+
     A2 -.->|约束输入空间| B1
     B4 -.->|量化输出风险| A4
 ```
@@ -460,6 +460,7 @@ flowchart TB
 ---
 
 > **关联主题**:
+>
 > - `struct/12-ai-native-reuse/04-probabilistic-contracts/` — 概率契约与安全对齐
 > - `struct/12-ai-native-reuse/03-llm-reuse-patterns/` — LLM 代码生成复用模式
 > - `struct/07-formal-verification/` — 形式化验证与统计保证的融合路径

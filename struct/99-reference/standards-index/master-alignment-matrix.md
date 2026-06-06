@@ -10,16 +10,16 @@
 
 | 复用层次 | 核心标准 | 辅助标准 | 架构框架 | 建模语言 | 质量度量 | 过程标准 | 协议/接口 | 2026 新增 |
 |----------|----------|----------|----------|----------|----------|----------|-----------|-----------|
-| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288 | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
+| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
 | **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 4.0 Snapshot 1 |
 | **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
 | **组件** | ISO 26566:2026 | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
-| **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | MCP 2026-07-28 RC, A2A v1.0.0, DMN 1.5 |
+| **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
 | **治理** | ISO 26566:2026 | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | IEC 61508 Ed3, ISO 26262:2025 | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
-> **更新说明**: 本轮将功能层 MCP 从 2025-11-25 更新至 2026-07-28 RC（Streamable HTTP 成为默认传输，OAuth 2.1 强制化）；A2A 从 v1.0 更新至 v1.0.0（Signed Agent Cards、gRPC 绑定正式发布）；组件层 WASM Component Model 明确为 3.0（2025-12 W3C 发布）；工业层 UADP 作为 OPC UA FX 底层传输独立标注。[[1]](https://modelcontextprotocol.io)[[2]](https://a2aprotocol.org)[[3]](https://webassembly.org)[[4]](https://opcfoundation.org)
+> **更新说明**: 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。工业层 UADP 作为 OPC UA FX 底层传输独立标注。[[1]][https://modelcontextprotocol.io/specification/2025-11-25]([2)][https://a2aprotocol.org]([3)][https://webassembly.org]([4)](<https://opcfoundation.org>)
 
 ---
 
@@ -39,10 +39,12 @@
 | **SLSA 1.2** | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ★★★★☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ |
 | **ISA-95 / IEC 62264** | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ |
 | **IEC 61508** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★★ | ★★★★☆ | ★★★★☆ | ★★★★★ | ★★★★★ |
-| **MCP 2026-07-28** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ |
+| **MCP 2025-11-25** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ |
 | **A2A v1.0.0** | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★★★☆ | ★★☆☆☆ |
 | **OPC UA FX 1.0** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★★ |
-| **WASM Component Model 3.0** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ |
+| **WASM Component Model** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ |
+| **OMG RAS v2.2** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ |
+| **FAIR4RS** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ |
 
 > **评分依据**: MCP 与 A2A 在功能层均为 ★★★★★（协议设计目标即为功能级 AI 复用）；A2A 在应用层评分高于 MCP（Agent Card 支持服务化发现与编排），在治理层因 Signed Agent Cards 与多租户支持评分 ★★★★☆；OPC UA FX 工业层 ★★★★★（现场层通信基线）；WASM Component Model 组件层 ★★★★★（跨语言组件封装）。评分与 `axiom-theorem-tree.md` 中定理 5.1（Tool Reuse Equivalence）、定理 AI.2（MCP-A2A Complementarity）、公理 I.1（OT Determinism）对齐。
 
@@ -64,14 +66,14 @@
 
 ### 表 C-2：AI 原生协议术语映射
 
-| 本体系概念 | MCP 2026-07-28 RC | A2A v1.0.0 | 通用含义 / 跨标准说明 |
+| 本体系概念 | MCP 2025-11-25 | A2A v1.0 | 通用含义 / 跨标准说明 |
 |-----------|-------------------|-----------|----------------------|
-| **MCP Tool** | Tool (Schema + Implementation) | Skill | 可被 LLM/Agent 调用的具体功能单元；A2A 中通过 Skill 字段声明，MCP 中通过 `tools/list` 与 `tools/call` 暴露 |
+| **MCP Tool** | Tool (Schema + Implementation, optional Icons) | Skill | 可被 LLM/Agent 调用的具体功能单元；A2A 中通过 Skill 字段声明，MCP 中通过 `tools/list` 与 `tools/call` 暴露；2025-11-25 支持 icons |
 | **Agent Card** | — (Host-Client-Server 模型) | Agent Card (Signed JSON) | 智能体能力广告与信任锚；A2A 的核心发现机制，MCP 中无对等概念（能力通过运行时协商） |
 | **Capability** | Capability (Negotiation) | Capability (Advertisement) | 声明可执行的操作集合；MCP 强调运行时协商，A2A 强调预发布目录 |
 | **Resource** | Resource (URI + MIME + ttlMs) | Artifact (Part 数组) | 可被访问的数据/内容；MCP 强调缓存复用，A2A 强调结果的结构化交付 |
 | **Prompt** | Prompt Template | Message Part | 与 LLM 交互的单元；MCP 提供可复用提示模板，A2A 将提示作为消息的一部分 |
-| **Task** | — (无状态请求/响应) | Task (Lifecycle) | A2A 的有状态工作委托单元；MCP 不管理任务状态，状态由 Client 维护 |
+| **Task** | Task (working/input_required/completed/failed/cancelled, SEP-1686) | Task (Lifecycle) | A2A 的有状态工作委托单元；MCP 2025-11-25 新增 Tasks 能力，支持异步轮询和结果获取 |
 | **Sampling** | Sampling (反向模型调用) | — | MCP 特有：Server 请求 Client 的本地模型进行轻量推理 |
 
 ### 表 C-3：工业数字孪生与组件接口术语映射
@@ -96,7 +98,7 @@
 
 | 协议/接口 | 业务编排 | 应用集成 | 组件复用 | 功能调用 | 工业通信 | AI 协作 |
 |-----------|:--------:|:--------:|:--------:|:--------:|:--------:|:-------:|
-| **MCP 2026-07-28** | ★☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★★★☆ |
+| **MCP 2025-11-25** | ★☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★★★☆ |
 | **A2A v1.0.0** | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ☆☆☆☆☆ | ★★★★★ |
 | **OPC UA FX** | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ |
 | **TSN** | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★★ | ☆☆☆☆☆ |
@@ -148,7 +150,8 @@
 | **Kani** | ★★★☆☆ | 中 | kani-verifier (AWS) | Rust unsafe 边界验证、并发原语模型检测、WASM 运行时组件 |
 | **Miri** | ★★★★☆ | 低–中 | miri (Rust 官方) | Rust UB 行为检测、数据竞争发现、内存泄漏诊断 |
 
-> **选型指南**: 
+> **选型指南**:
+>
 > - **分布式协议 + 并发安全** → TLA+（时序逻辑）或 Rust 类型系统（编译期保证）
 > - **高安全等级（SIL 4 / 铁路信号）** → SPARK/Ada 或 B Method（有成熟认证链）
 > - **内存安全 + 现代系统语言** → Rust 类型系统 + Kani/Miri 组合验证
@@ -166,7 +169,7 @@
 | ISO/IEC/IEEE DIS 42024 | 草案 | 预计 2026–2027 发布 | 元模型层定义需更新 | TBD |
 | ISO/IEC/IEEE DIS 42042 | 草案 | 预计 2026–2027 发布 | 参考架构规范补充 | TBD |
 | ArchiMate 4.0 Snapshot 1 | 快照 | 预计 2026 Q2 发布 | Dynamic Connection, AI 资产类别 | TBD |
-| **MCP 2026-07-28 RC** | **Release Candidate** | **2026-07-28 正式发布** | **功能层 AI 协议基线更新：Streamable HTTP 默认化、OAuth 2.1 强制化、Schema 拆分** | TBD |
+| **MCP 2025-11-25** | **已发布** | **后续修订由 Linux Foundation Agentic AI Foundation 治理；跟踪 12 个月废弃窗口** | **功能层 AI 协议基线：Tasks、Icons、Sampling with Tools、Elicitation URL、OAuth 增强** | TBD |
 | **A2A v1.0.0** | **已发布 (Cloud Next 2026-04)** | **v1.1 预计 2026 H2** | **Agent 安全签名增强、多租户、gRPC 绑定** | TBD |
 | **OPC UA FX 1.0** | **Parts 80–84 发布** | **C2D/D2D 完善中** | **工业现场层复用：UADP 极简头、GCL 时隙对齐** | TBD |
 | SLSA 2.0 | 讨论中 | 预计 2027 | 供应链安全框架升级 | TBD |
@@ -180,7 +183,7 @@
 | NIST SP 800-161r1 | 现行 | 供应链风险管理 | 开源组件安全治理 | TBD |
 | NIST SP 800-204 系列 | 2025 更新 | DevSecOps + 供应链集成 | 微服务安全架构复用 | TBD |
 
-> **本轮更新重点**: MCP 2026-07-28 RC（Anthropic）进入最终发布倒计时；A2A v1.0.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 3.0 与 WASI 0.3 使 WASM 从实验走向生产基线。
+> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"；A2A v1.0.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
 
 ---
 
@@ -199,16 +202,16 @@
 
 > 以下来源用于验证本文件中的标准编号、状态及技术细节：
 
-1. **[MCP 2026-07-28 RC]** Anthropic, *Model Context Protocol Specification*, 2026-07-28 Release Candidate. https://modelcontextprotocol.io — 验证 MCP 协议状态、Streamable HTTP 传输绑定、OAuth 2.1 安全模型。
-2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. https://a2aprotocol.org — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
-3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. https://webassembly.org — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
-4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. https://opcfoundation.org — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
+1. **[MCP 2025-11-25]** Anthropic / Linux Foundation Agentic AI Foundation, *Model Context Protocol Specification*, 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25> — 验证 MCP 协议状态、Tasks、Sampling、OAuth 安全模型。
+2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2aprotocol.org> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
+3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
+4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。
 6. **[ISO 26566:2026]** ISO/IEC, *Software and systems engineering — Software reuse — Reuse governance*, 2026 — 验证治理层核心标准状态。
-7. **[TLA+ / TLA+ Hyperbook]** Leslie Lamport, *The TLA+ Hyperbook*, Microsoft Research. https://lamport.azurewebsites.net/tla/tla.html — 验证 TLA+ 在分布式协议与并发安全验证中的定位。
-8. **[SPARK Pro / AdaCore]** AdaCore, *SPARK Pro*, https://www.adacore.com/about-spark — 验证 SPARK/Ada 在安全关键软件（DO-178C / SIL 4）中的工具成熟度。
-9. **[B Method / Atelier B]** Clearsy, *Atelier B*, https://www.atelierb.eu — 验证 B Method 在铁路信号系统形式化精化链中的应用。
-10. **[Coq / Inria]** Inria, *The Coq Proof Assistant*, https://coq.inria.fr — 验证 Coq 在定理证明与程序验证（CompCert, seL4, Iris/RustBelt）中的成熟度。
+7. **[TLA+ / TLA+ Hyperbook]** Leslie Lamport, *The TLA+ Hyperbook*, Microsoft Research. <https://lamport.azurewebsites.net/tla/tla.html> — 验证 TLA+ 在分布式协议与并发安全验证中的定位。
+8. **[SPARK Pro / AdaCore]** AdaCore, *SPARK Pro*, <https://www.adacore.com/about-spark> — 验证 SPARK/Ada 在安全关键软件（DO-178C / SIL 4）中的工具成熟度。
+9. **[B Method / Atelier B]** Clearsy, *Atelier B*, <https://www.atelierb.eu> — 验证 B Method 在铁路信号系统形式化精化链中的应用。
+10. **[Coq / Inria]** Inria, *The Coq Proof Assistant*, <https://coq.inria.fr> — 验证 Coq 在定理证明与程序验证（CompCert, seL4, Iris/RustBelt）中的成熟度。
 
 ---
 

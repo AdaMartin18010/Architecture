@@ -1,7 +1,7 @@
 # 2026-06-06 本轮完成统计报告
 
-> **统计周期**: 2026-06-06 00:00 ~ 2026-06-06 23:59  
-> **数据来源**: Git 提交历史 (`git log --since/--until`)  
+> **统计周期**: 2026-06-06 00:00 ~ 2026-06-06 23:59
+> **数据来源**: Git 提交历史 (`git log --since/--until`)
 > **统计维度**: 新增/更新文件数量、代码规模、按主题分布
 
 ---
@@ -45,22 +45,26 @@
 ## 本轮新增的核心资产
 
 ### 形式化验证资产（07）
+
 - **TLA+ 规约**: `payment-service.tla`、`mcp-capability-negotiation.tla`、`a2a-task-lifecycle.tla`
 - **Alloy 模型**: `component-dependency.als`、`mcp-tool-graph.als`、`cross-layer-mapping.als`、`isa95-hierarchy.als`
 - **Rust 形式化文档**: `formal-semantics.md`、`cargo-sat-resolution.md`、`polonius-vs-nll.md`、`unsafe-verification.md`
 
 ### 工业 IoT 资产（11）
+
 - **ISA-95 五层资产目录**: L0 现场层 ~ L4 企业层完整覆盖
 - **OPC UA FX 深度分析**: `uadp-frame-analysis.md`、`vendor-matrix-2026.md`、Connection Manager TLA+ 规约
 - **数字孪生**: `aas-opcua-mapping.md`、AAS 子模型模板目录
 
 ### 公理体系（01）
+
 - **15 条公理**: `axiom-system.md`
 - **17 条定理推导**: `theorem-derivations.md`
 - **依赖关系图**: `dependency-graph.md`
 - **批判与边界**: `critique-and-boundaries.md`
 
 ### 参考索引（99）
+
 - **公理-定理树**: `axiom-theorem-tree.md`（19,135 bytes）
 - **术语交叉对照**: `terminology-crosswalk.md`
 - **标准总对齐矩阵**: `master-alignment-matrix.md`
@@ -130,5 +134,5 @@
 
 ---
 
-> 统计人: 专业审查代理  
+> 统计人: 专业审查代理
 > 报告生成: 2026-06-06

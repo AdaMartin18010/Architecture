@@ -8,14 +8,33 @@
 
 ## 目录
 
-- [1. 成本分类框架](#1-成本分类框架)
-- [2. 分摊模型矩阵](#2-分摊模型矩阵)
-- [3. Excel 模板结构](#3-excel-模板结构)
-- [4. Python 伪代码实现](#4-python-伪代码实现)
-- [5. 计算示例一：SaaS 平台多团队成本分摊](#5-计算示例一saas-平台多团队成本分摊)
-- [6. 计算示例二：跨层共享服务（AI 推理平台）成本分摊](#6-计算示例二跨层共享服务ai-推理平台成本分摊)
-- [7. 实施检查清单](#7-实施检查清单)
-- [8. 参考索引](#8-参考索引)
+- [FinOps 跨层复用成本分摊模型与执行模板](#finops-跨层复用成本分摊模型与执行模板)
+  - [目录](#目录)
+  - [1. 成本分类框架](#1-成本分类框架)
+    - [1.1 直接成本 (Direct Cost)](#11-直接成本-direct-cost)
+    - [1.2 间接成本 (Indirect Cost / Shared Cost)](#12-间接成本-indirect-cost--shared-cost)
+    - [1.3 风险成本 (Risk Cost / Contingency Cost)](#13-风险成本-risk-cost--contingency-cost)
+    - [1.4 成本分类决策树](#14-成本分类决策树)
+  - [2. 分摊模型矩阵](#2-分摊模型矩阵)
+    - [2.1 四种核心分摊模型](#21-四种核心分摊模型)
+    - [2.2 跨层分摊模型详解 (Layer-Based)](#22-跨层分摊模型详解-layer-based)
+  - [3. Excel 模板结构](#3-excel-模板结构)
+    - [3.1 工作表设计](#31-工作表设计)
+    - [3.2 核心公式模板](#32-核心公式模板)
+  - [4. Python 伪代码实现](#4-python-伪代码实现)
+  - [5. 计算示例一：SaaS 平台多团队成本分摊](#5-计算示例一saas-平台多团队成本分摊)
+    - [5.1 假设数据](#51-假设数据)
+    - [5.2 计算过程](#52-计算过程)
+    - [5.3 最终结果](#53-最终结果)
+  - [6. 计算示例二：跨层共享服务（AI 推理平台）成本分摊](#6-计算示例二跨层共享服务ai-推理平台成本分摊)
+    - [6.1 假设数据](#61-假设数据)
+    - [6.2 Layer-Based 计算过程](#62-layer-based-计算过程)
+    - [6.3 单位经济学视角](#63-单位经济学视角)
+  - [7. 实施检查清单](#7-实施检查清单)
+    - [7.1 第 1-30 天：基础准备](#71-第-1-30-天基础准备)
+    - [7.2 第 31-90 天：试运行](#72-第-31-90-天试运行)
+    - [7.3 第 91-180 天：正式运营](#73-第-91-180-天正式运营)
+  - [8. 参考索引](#8-参考索引)
 
 ---
 
@@ -119,6 +138,7 @@
 ### 3.2 核心公式模板
 
 **直接成本归属（VLOOKUP 模式）**：
+
 ```excel
 =IF(VLOOKUP(A2,TagMapping!A:B,2,FALSE)="Direct",
      VLOOKUP(A2,TagMapping!A:C,3,FALSE),
@@ -126,11 +146,13 @@
 ```
 
 **按比例分摊（SUMIF 模式）**：
+
 ```excel
 =TotalSharedCost * (Usage_TeamA / SUMIF(TeamRange, "*", UsageRange))
 ```
 
 **Layer-Based 双层分摊**：
+
 ```excel
 第一层（层间分摊）:
 =TotalCost * LayerBenefitRatio[Layer]
@@ -190,7 +212,7 @@ class CostAllocationEngine:
             "component": 0.30,
             "functional": 0.15
         }
-    
+
     def allocate_direct_costs(self):
         """直接成本按标签直接归属"""
         for item in self.cost_items:
@@ -199,47 +221,47 @@ class CostAllocationEngine:
                 center = self.find_center(owner)
                 if center:
                     center.direct_costs.append(item)
-    
+
     def allocate_by_usage(self, items: List[CostItem], metric: str):
         """按使用量比例分摊"""
         total_cost = sum(i.amount for i in items)
-        total_usage = sum(c.usage_metrics.get(metric, 0) 
+        total_usage = sum(c.usage_metrics.get(metric, 0)
                          for c in self.cost_centers)
-        
+
         for center in self.cost_centers:
             usage = center.usage_metrics.get(metric, 0)
             if total_usage > 0:
                 ratio = usage / total_usage
                 allocated = total_cost * ratio
                 center.allocated_costs["usage_based"] = allocated
-    
+
     def allocate_by_layer(self, items: List[CostItem]):
         """Layer-Based 跨层分摊：先按受益比例分到各层，再在层内按使用量二次分摊"""
         total_cost = sum(i.amount for i in items)
-        
+
         # 第一层：层间分摊
         for layer, ratio in self.layer_benefit_ratios.items():
             layer_cost = total_cost * ratio
-            
+
             # 第二层：层内按使用量分摊
-            layer_centers = [c for c in self.cost_centers 
+            layer_centers = [c for c in self.cost_centers
                            if c.center_type == layer]
             total_layer_usage = sum(
-                c.usage_metrics.get("cpu_hours", 0) 
+                c.usage_metrics.get("cpu_hours", 0)
                 for c in layer_centers
             )
-            
+
             for center in layer_centers:
                 usage = center.usage_metrics.get("cpu_hours", 0)
                 if total_layer_usage > 0:
                     center.allocated_costs[f"layer_{layer}"] = (
                         layer_cost * usage / total_layer_usage
                     )
-    
+
     def allocate_risk_costs(self, items: List[CostItem]):
         """风险成本按各成本中心的直接+间接成本比例分摊"""
         total_risk = sum(i.amount for i in items)
-        
+
         # 计算各成本中心总成本（直接 + 已分摊间接）
         total_benefit = 0
         for center in self.cost_centers:
@@ -247,57 +269,57 @@ class CostAllocationEngine:
             indirect = sum(center.allocated_costs.values())
             center.usage_metrics["_total_benefit"] = direct + indirect
             total_benefit += direct + indirect
-        
+
         for center in self.cost_centers:
             benefit = center.usage_metrics.get("_total_benefit", 0)
             if total_benefit > 0:
                 center.allocated_costs["risk"] = (
                     total_risk * benefit / total_benefit
                 )
-    
+
     def generate_showback_report(self) -> List[Dict]:
         """生成 Showback 报告（非实际扣费，仅展示）"""
         report = []
         for center in self.cost_centers:
             direct = sum(i.amount for i in (center.direct_costs or []))
-            indirect = sum(v for k, v in center.allocated_costs.items() 
+            indirect = sum(v for k, v in center.allocated_costs.items()
                          if k != "risk")
             risk = center.allocated_costs.get("risk", 0)
-            
+
             report.append({
                 "cost_center": center.center_id,
                 "direct_cost": round(direct, 2),
                 "indirect_cost": round(indirect, 2),
                 "risk_cost": round(risk, 2),
                 "total_cost": round(direct + indirect + risk, 2),
-                "cost_per_dev": round((direct + indirect + risk) / 
+                "cost_per_dev": round((direct + indirect + risk) /
                     center.usage_metrics.get("headcount", 1), 2)
             })
         return report
-    
+
     def find_center(self, center_id: str) -> Optional[CostCenter]:
-        return next((c for c in self.cost_centers 
+        return next((c for c in self.cost_centers
                     if c.center_id == center_id), None)
 
 
 # ============ 使用示例 ============
 if __name__ == "__main__":
     engine = CostAllocationEngine()
-    
+
     # 假设输入数据（见第 5、6 节完整示例）
     # engine.cost_items = [...]
     # engine.cost_centers = [...]
-    
+
     engine.allocate_direct_costs()
-    
-    indirect_items = [i for i in engine.cost_items 
+
+    indirect_items = [i for i in engine.cost_items
                      if i.category == CostCategory.INDIRECT]
     engine.allocate_by_layer(indirect_items)
-    
-    risk_items = [i for i in engine.cost_items 
+
+    risk_items = [i for i in engine.cost_items
                  if i.category == CostCategory.RISK]
     engine.allocate_risk_costs(risk_items)
-    
+
     report = engine.generate_showback_report()
     for row in report:
         print(f"{row['cost_center']}: ${row['total_cost']} "
@@ -347,16 +369,19 @@ if __name__ == "__main__":
 **步骤 2: 间接成本分摊**
 
 *共享 EKS ($30,000) — 按 CPU 核时比例*:
+
 - Team A: $30,000 × (4,500 / 15,000) = **$9,000**
 - Team B: $30,000 × (7,200 / 15,000) = **$14,400**
 - Team C: $30,000 × (3,300 / 15,000) = **$6,600**
 
 *共享 Snowflake ($20,000) — 按计算信用比例*:
+
 - Team A: $20,000 × (320 / 1,000) = **$6,400**
 - Team B: $20,000 × (480 / 1,000) = **$9,600**
 - Team C: $20,000 × (200 / 1,000) = **$4,000**
 
 *安全扫描平台 ($8,000) — 按团队均摊*:
+
 - 每团队: $8,000 / 3 = **$2,667**
 
 **步骤 3: 风险成本分摊**
@@ -386,6 +411,7 @@ if __name__ == "__main__":
 > 差异 $423 为取整误差，实际系统精确保留小数。
 
 **洞察**：
+
 - Team C 人均成本最高 ($5,512)，尽管绝对总成本最低。建议审查其 Snowflake 查询效率与 EKS 资源利用率。
 - 间接成本占总成本 48.5%，表明平台共享度较高，符合 FinOps "Run" 阶段特征。
 
@@ -498,6 +524,7 @@ if __name__ == "__main__":
 - ISO/IEC 26564:2022: *Software Reuse — Measurement and Metrics* — 复用度量标准对齐
 
 > **交叉引用**:
+>
 > - FinOps 单位经济学: [`finops-unit-economics-2026.md`](./finops-unit-economics-2026.md)
 > - 成熟度评估: [`struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md`](../03-maturity-models/assessment-questionnaire.md)
 > - COCOMO II 2026 成本估算: [`struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md`](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)

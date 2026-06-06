@@ -1,7 +1,7 @@
 # Roadmap 进度一致性审查报告
 
-> **审查日期**: 2026-06-06  
-> **审查范围**: struct/01-meta-model-standards、struct/07-formal-verification、struct/11-industrial-iot-otit 的 roadmap.md  
+> **审查日期**: 2026-06-06
+> **审查范围**: struct/01-meta-model-standards、struct/07-formal-verification、struct/11-industrial-iot-otit 的 roadmap.md
 > **审查维度**: 任务状态与文件存在性一致性、时间线合理性
 
 ---
@@ -71,5 +71,21 @@
 
 ---
 
-> 审查人: 专业审查代理  
+## 修复记录（2026-06-06 用户确认后执行）
+
+按 `SUBSEQUENT_PLAN_2026.md` 决策 1A 与 2A，已完成以下修复：
+
+| 原问题 | 修复内容 | 状态 |
+|--------|----------|------|
+| 01-roadmap T05-T08 | 实际 roadmap 中已标记为 `[x]`；T13 `[x]`、T14 `[x]`、T16 `[x]`，T15 `[ ]` 保留（术语查询脚本待 Phase 2 开发） | ✅ 已确认 |
+| 07-roadmap T06-T10 | "当前进度"摘要已更新为 `[x]`；T09/T10 已标注跨主题交付路径；移除不存在的 `07-model-checking` 目录声明；新增 `03-coq-isabelle` 占位 README | ✅ 已修复 |
+| 11-roadmap T13-T17 | 实际 roadmap 中已标记为 `[x]`；当前状态部分已同步；PLCopen TLA+ 与 AAS 映射已确认交付 | ✅ 已确认 |
+| 目录结构一致性 | 重写 `struct/README.md`，以实际 `struct/` 目录为准；清理 `.vscode/README.md` 中 PostgreSQL 残留内容 | ✅ 已修复 |
+| 形式化验证环境 | 创建 `99-reference/tools/formal-verification-env/`，含 Docker Compose + README + `verify-all.sh` | ✅ 已创建 |
+| MASTER_PLAN 更新 | 修正 FinOps 路径、MCP 版本引用（2025-11-25）、SLSA 版本引用（1.1/1.2），添加 `SUBSEQUENT_PLAN_2026.md` 链接和关键决策确认 | ✅ 已更新 |
+
+---
+
+> 审查人: 专业审查代理
 > 报告生成: 2026-06-06
+> 修复完成: 2026-06-06

@@ -7,11 +7,12 @@
 
 ## 1. 业务能力的本质
 
-**定义 2.1** (Business Capability): 业务能力是企业为达成特定结果而具备的**稳定能力**。它不依赖于具体的组织、流程、技术或实现。
+**定义 2.1** (Business Capability): 业务能力是企业为达成特定结果而具备的**稳定能力**。
+它不依赖于具体的组织、流程、技术或实现。
 
 形式化：
 
-```
+```text
 Capability := ⟨What, Why, Outcome, Maturity, Owner⟩
 
 What: 能力做什么（动词+名词，如"管理订单"）
@@ -31,7 +32,7 @@ Owner: 能力所有者
 
 ## 2. 业务能力层级
 
-```
+```text
 Level 0: 企业能力（Enterprise Capability）
     ├── Level 1: 能力组（Capability Group）
     │       ├── Level 2: 能力（Capability）
@@ -41,7 +42,7 @@ Level 0: 企业能力（Enterprise Capability）
 
 **示例**: 零售企业能力地图
 
-```
+```text
 ├── 战略与治理
 ├── 产品开发
 ├── 供应链管理
@@ -62,7 +63,7 @@ Level 0: 企业能力（Enterprise Capability）
 
 ## 3. 业务能力复用的判定
 
-```
+```text
 业务能力复用判定
 │
 ├── 1. 稳定性判定
@@ -95,7 +96,7 @@ Level 0: 企业能力（Enterprise Capability）
 
 ## 4. 业务能力到 IT 实现的映射
 
-```
+```text
 业务能力 "订单管理"
     ├── 业务服务: Order Management Service
     │       ├── 应用服务: createOrder, cancelOrder, getOrderStatus

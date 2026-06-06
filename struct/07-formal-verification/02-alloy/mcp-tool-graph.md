@@ -120,7 +120,7 @@ Server_B (capabilities: {executeSQL})
 ## 7. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 建模方法论。
-2. Anthropic. (2026). *Model Context Protocol Specification* (2026-07-28 RC). https://modelcontextprotocol.io/specification —— MCP 工具能力模型与资源抽象。
+2. Anthropic. (2026). *Model Context Protocol Specification* (2026-07-28 RC). <https://modelcontextprotocol.io/specification> —— MCP 工具能力模型与资源抽象。
 3. Repello. (2026). *CIS MCP Companion Guide* (April 2026). —— MCP 企业部署的 per-tool authorization 与域级网络控制。
 4. Jamshidi et al. (2025). "Sealing the Audit–Runtime Gap for LLM Skills." *arXiv:2603.00195* —— MCP 包签名与能力治理的形式化分析。
 

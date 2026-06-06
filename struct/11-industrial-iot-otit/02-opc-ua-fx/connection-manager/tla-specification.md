@@ -8,20 +8,42 @@
 
 ## 目录
 
-- [1. 规约背景与目标](#1-规约背景与目标)
-- [2. 状态机概览](#2-状态机概览)
-- [3. TLA+ 模块结构解析](#3-tla-模块结构解析)
-- [4. 不变量（Safety Properties）](#4-不变量safety-properties)
-- [5. 活性（Liveness Properties）](#5-活性liveness-properties)
-- [6. 与形式化验证章节的交叉引用](#6-与形式化验证章节的交叉引用)
-- [7. 验证方法](#7-验证方法)
-- [8. 参考文献](#8-参考文献)
+- [FX Connection Manager 状态机 TLA+ 规约说明](#fx-connection-manager-状态机-tla-规约说明)
+  - [目录](#目录)
+  - [1. 规约背景与目标](#1-规约背景与目标)
+  - [2. 状态机概览](#2-状态机概览)
+  - [3. TLA+ 模块结构解析](#3-tla-模块结构解析)
+    - [3.1 常量（CONSTANTS）](#31-常量constants)
+    - [3.2 变量（VARIABLES）](#32-变量variables)
+    - [3.3 关键动作（Actions）](#33-关键动作actions)
+      - [Discovery 阶段](#discovery-阶段)
+      - [Configuration 阶段](#configuration-阶段)
+      - [Operational 阶段](#operational-阶段)
+    - [3.4 能力匹配逻辑（CapabilitiesMatch）](#34-能力匹配逻辑capabilitiesmatch)
+  - [4. 不变量（Safety Properties）](#4-不变量safety-properties)
+    - [INV-1: CapabilityMatchInvariant](#inv-1-capabilitymatchinvariant)
+    - [INV-2: ConfigurationStableInvariant](#inv-2-configurationstableinvariant)
+    - [INV-3: HeartbeatBoundedInvariant](#inv-3-heartbeatboundedinvariant)
+    - [INV-4: OfflineNoFeatures](#inv-4-offlinenofeatures)
+    - [INV-5: ErrorImpliesReset](#inv-5-errorimpliesreset)
+  - [5. 活性（Liveness Properties）](#5-活性liveness-properties)
+    - [LIVE-1: DiscoveryProgress](#live-1-discoveryprogress)
+    - [LIVE-2: ConfigurationProgress](#live-2-configurationprogress)
+    - [LIVE-3: ErrorRecovery](#live-3-errorrecovery)
+  - [6. 与形式化验证章节的交叉引用](#6-与形式化验证章节的交叉引用)
+  - [7. 验证方法](#7-验证方法)
+    - [7.1 TLC 模型检查](#71-tlc-模型检查)
+    - [7.2 SANY 语法检查](#72-sany-语法检查)
+    - [7.3 与代码的关联验证](#73-与代码的关联验证)
+  - [8. 参考文献](#8-参考文献)
 
 ---
 
 ## 1. 规约背景与目标
 
-OPC UA FX Connection Manager 负责建立和维护 Publisher-Subscriber 之间的确定性连接。其生命周期涉及能力发现、配置协商、运行时心跳监控和故障恢复。由于现场级通信的安全关键性（尤其是 D2D 安全互锁），Connection Manager 的行为必须通过形式化方法验证。
+OPC UA FX Connection Manager 负责建立和维护 Publisher-Subscriber 之间的确定性连接。
+其生命周期涉及能力发现、配置协商、运行时心跳监控和故障恢复。
+由于现场级通信的安全关键性（尤其是 D2D 安全互锁），Connection Manager 的行为必须通过形式化方法验证。
 
 **本规约的核心目标**:
 
@@ -122,7 +144,8 @@ CapabilitiesMatch ==
         /\ \A e \in EndpointId : common \subseteq agreedFeatures[e]
 ```
 
-**解释**: 
+**解释**:
+
 1. 所有端点必须处于 "Acked" 状态（已完成能力宣告）
 2. 每个端点的同意能力集合非空
 3. 存在一个非空的公共能力交集 `common`，确保双方至少共享一项可用功能
@@ -238,6 +261,7 @@ java -cp tla2tools.jar tlc2.TLC FXConnectionManager
 ```
 
 **推荐模型参数**:
+
 - `EndpointId = {A, B}`
 - `FeatureSet = {"C2C", "C2D", "TSN"}`
 - `MaxHeartbeatMiss = 2`
@@ -270,7 +294,7 @@ java -cp tla2tools.jar tla2sany.SANY FXConnectionManager.tla
 3. [OPC Foundation] OPC UA FX Part 82: Network Services, v1.0
 4. [IEC] IEC 62541-100: OPC Unified Architecture – Part 100: Device Interface
 5. [OPC Foundation] OPC Foundation FLC Technical Paper – A Theory of Operations OPC UA FX (C2C), 2023
-6. [TLA+] TLA+ GitHub Repository, https://github.com/tlaplus
+6. [TLA+] TLA+ GitHub Repository, <https://github.com/tlaplus>
 
 ---
 

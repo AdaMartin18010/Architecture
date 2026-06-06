@@ -3,6 +3,7 @@
 > **版本**: 2026-06-06
 > **定位**: 供应链安全层——系统化分析软件供应链攻击路径，构建纵深防御的决策基础
 > **权威来源**:
+>
 > - [SLSA Specification v1.0](https://slsa.dev/spec/v1.0/)
 > - [OpenSSF](https://openssf.org) Supply Chain Security
 > - [NIST SP 800-204D](https://csrc.nist.gov) Microservices Security
@@ -27,7 +28,10 @@
     - [3.7 运行时加载恶意组件](#37-运行时加载恶意组件)
   - [4. 典型案例映射](#4-典型案例映射)
   - [5. 防御策略矩阵](#5-防御策略矩阵)
+    - [5.1 SLSA 防御映射](#51-slsa-防御映射)
   - [6. 检测信号与监控](#6-检测信号与监控)
+    - [6.1 早期预警信号](#61-早期预警信号)
+    - [6.2 监控架构](#62-监控架构)
 
 ---
 
@@ -94,6 +98,7 @@
 ```
 
 **检测信号**:
+
 - 开发者账户异常登录（地理位置、时间）
 - IDE 插件请求过多权限
 - 编译输出哈希与预期不符
@@ -121,6 +126,7 @@
 ```
 
 **典型案例**: SolarWinds Orion (2020)
+
 - 攻击路径:  compromise CI/CD → inject backdoor during build → signed as legitimate
 - 影响范围:  18,000+ 组织，包括美国政府机构
 - 驻留时间:  9+ 个月未被发现
@@ -148,6 +154,7 @@
 ```
 
 **典型案例**: PyTorch malicious dependency (2022)
+
 - 攻击路径:  typosquatting `torchtriton` → exfiltrate env variables → upload to external server
 - 影响范围:  PyPI 下载量在窗口期内激增
 
@@ -168,11 +175,13 @@
 ```
 
 **典型案例**: Dependency Confusion by Alex Birsan (2021)
+
 - 攻击路径:  discover internal package names → publish to public npm/PyPI → auto-pulled by CI/CD
 - 影响范围:  35+ 科技公司（Apple, Microsoft, Tesla, Uber 等）
 - 赏金收入:  $130,000+ bug bounties
 
 **防御策略**:
+
 - 使用私有注册表的命名空间隔离（如 `@company/package`）
 - 显式指定注册源，禁止回退到公共注册表
 - 实施包的哈希锁定（lockfile integrity checks）
@@ -200,6 +209,7 @@
 ```
 
 **典型案例**: XZ Utils backdoor (2024)
+
 - 攻击路径:  social engineering → gain maintainer trust → inject backdoor in test files → activate via glibc hook
 - 驻留时间:  3+ 年 social engineering + 数月 code presence
 - 发现者:  Andres Freund (Microsoft PostgreSQL developer)，通过性能异常发现
@@ -340,6 +350,7 @@ SLSA 等级与攻击路径覆盖
 ---
 
 > **对齐验证**:
+>
 > - 攻击树结构对照 Schneier (1999) Attack Trees 方法论验证
 > - SLSA 映射对照 [slsa.dev](https://slsa.dev) v1.0 官方规范验证
 > - 案例对照 OpenSSF、NIST、CISA 官方公告验证

@@ -23,7 +23,7 @@ IEC/IEEE 60802 是 IEC 和 IEEE 的联合项目，旨在为工业自动化定义
 
 TSN 建立在四个关键技术支柱上：
 
-```
+```text
 TSN Four Pillars
 ├── 1. Time Synchronization（时间同步）
 │   └── IEEE 802.1AS - gPTP 精确时间协议

@@ -7,7 +7,7 @@
 
 ### 1.1 生命周期：Inform → Optimize → Operate
 
-```
+```text
 Inform（知情）
 ├── 成本分配与标签治理
 ├── 使用与支出监控

@@ -137,7 +137,7 @@ AAS 的 `Identifier`（IRI 或 IRDI 格式）映射到 OPC UA 的 `NodeId`：
 AAS Identifier:  https://example.com/aas/MotorAAS_001
                  ↓
 OPC UA NodeId:   ns=2;i=1001  或  ns=2;s=https://example.com/aas/MotorAAS_001
-                 
+
 其中 ns=2 对应 NamespaceUri "https://example.com/aas/"
 ```
 

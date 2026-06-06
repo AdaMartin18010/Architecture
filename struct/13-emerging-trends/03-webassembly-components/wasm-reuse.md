@@ -23,7 +23,7 @@ WebAssembly (Wasm) 为架构复用提供了独特价值：
 
 ### 场景 1: 跨语言库复用
 
-```
+```text
 Rust 实现核心算法
     ↓ 编译
 .wasm 模块
@@ -33,7 +33,7 @@ Python / Node.js / Java / Go 应用
 
 ### 场景 2: 插件系统
 
-```
+```text
 宿主应用
 ├── Wasm Runtime (Wasmtime / Wasmer / V8)
 │   ├── Plugin A
@@ -43,7 +43,7 @@ Python / Node.js / Java / Go 应用
 
 ### 场景 3: Serverless 函数
 
-```
+```text
 开发者编写函数 → 编译为 Wasm → 部署到 Wasm 运行时
 优势：
 - 冷启动时间 < 1ms
@@ -57,7 +57,7 @@ Python / Node.js / Java / Go 应用
 
 WASI Preview 2（组件模型）使 Wasm 从单一模块演进为可组合组件：
 
-```
+```text
 Component
 ├── Imports（依赖的接口）
 │   └── 例如: wasi:cli/stdout

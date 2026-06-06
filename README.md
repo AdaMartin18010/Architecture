@@ -21,7 +21,7 @@
 
 ## 🗂️ 知识体系结构
 
-```
+```text
 struct/
 ├── 01-meta-model-standards/          # 元模型与标准对齐
 │   ├── 01-iso-42010-2022/            # ISO 42010:2022 架构描述
@@ -136,6 +136,7 @@ struct/
 本知识体系对齐以下国际标准与行业框架：
 
 **架构标准**
+
 - ISO/IEC/IEEE 42010:2022（架构描述）
 - ISO/IEC/IEEE 42020:2023（架构过程）
 - ISO/IEC 25010:2023（系统与软件质量模型）
@@ -143,17 +144,20 @@ struct/
 - ArchiMate® 3.2 / 4.0 Specification
 
 **软件工程**
+
 - ISO/IEC 26550:2015（产品线工程）
 - ISO/IEC 26564:2022（复用过程评估）
 - SWEBOK V4（软件工程知识体系）
 
 **安全与供应链**
+
 - SLSA 1.2（Supply-chain Levels for Software Artifacts）
 - NIST SP 800-218 / SSDF 1.2
 - EU CRA（网络弹性法案）
 - OWASP SCVS / LLM Top 10 / MCP Top 10
 
 **工业自动化**
+
 - ISA-95（企业-控制系统集成）
 - IEC 61508（功能安全）
 - ISO 26262（道路车辆功能安全）
@@ -161,6 +165,7 @@ struct/
 - PLCopen Motion Control Part 1-4
 
 **新兴协议**
+
 - Model Context Protocol 2025-11-25
 - Google A2A Protocol v1.0
 - WebAssembly Component Model
@@ -195,9 +200,10 @@ struct/
 
 ## ⚠️ 已知限制
 
-- TLA+ 规约未经 SANY/TLC 自动化验证（环境无 Java），依赖人工语法审查
-- Alloy 模型未经 Alloy Analyzer 自动执行，建议后续补跑约束求解
-- 部分前沿标准（如 MCP 2026-07-28 RC）在官方发布后将触发更新
+- TLA+ 规约未经 SANY/TLC 自动化验证（Docker 环境待补齐 Java/TLC）
+- Alloy 模型未经 Alloy Analyzer 自动执行（Docker 环境待补齐 Alloy 6 CLI）
+- Coq/Isabelle 案例已补充，但尚未在 Docker 环境中自动跑通构建
+- MCP 官方当前稳定版为 **2025-11-25**；项目中仍存在个别历史文档引用 "2026-07-28 RC"，已逐步清理
 
 ---
 
@@ -207,6 +213,6 @@ struct/
 
 ---
 
-> **最后更新**: 2026-06-06  
-> **本轮规模**: 新增/更新 ~120 个文件，~46.5 万字  
+> **最后更新**: 2026-06-06
+> **本轮规模**: 新增/更新 ~120 个文件，~46.5 万字
 > **维护者**: 软件工程架构复用知识体系项目组
