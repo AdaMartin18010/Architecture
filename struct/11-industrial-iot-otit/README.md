@@ -39,8 +39,16 @@
 - [x] ISA-95 五层复用资产模型
 - [x] OPC UA FX 协议层次分析
 - [x] PLCopen 功能块接口定义
-- [ ] AAS 到 OPC UA NodeSet 的完整映射规范
-- [ ] PIU 贝叶斯方法扩展工具
+- [x] ISA-95 L0-L4 复用资产目录 (`01-isa-95-model/l*/asset-catalog.md`)
+- [x] 跨层数据流映射 (`01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`)
+- [x] OPC UA FX UADP 帧结构详解 (`02-opc-ua-fx/frame-structure/uadp-frame-analysis.md`)
+- [x] TSN GCL 配置模板 (`03-tsn-deterministic/gcl-config/templates.md`)
+- [x] FX Connection Manager TLA+ 规约 (`02-opc-ua-fx/connection-manager/tla-specification.tla`)
+- [x] 2026 厂商支持矩阵 (`02-opc-ua-fx/vendor-matrix-2026.md`)
+- [x] 棕地/绿地/混合场景决策模板 (`02-opc-ua-fx/deployment-scenarios/brownfield-greenfield-decision.md`)
+- [ ] AAS 到 OPC UA NodeSet 的完整映射规范 (2026-06 第4周)
+- [ ] PIU 贝叶斯方法扩展工具 (2027-Q1)
+- [ ] PLCopen 功能块 TLA+ 验证 (2026-06 第4周)
 
 ## 关联主题
 

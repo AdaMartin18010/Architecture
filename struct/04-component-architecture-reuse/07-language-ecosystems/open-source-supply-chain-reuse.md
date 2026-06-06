@@ -91,7 +91,209 @@
 | SBOM 生成 | `syft` |
 | 模块代理 | `proxy.golang.org`, 校验和数据库 |
 
-## 4. 依赖治理策略
+## 4. 依赖解析算法深度对比
+
+依赖解析是组件复用的核心技术环节。不同语言生态选择了截然不同的算法策略，直接影响依赖地狱（Dependency Hell）的出现概率与构建确定性。
+
+### 4.1 算法谱系
+
+| 算法 | 代表生态 | 时间复杂度 | 多版本共存 | 核心哲学 |
+|------|---------|-----------|-----------|---------|
+| **SAT / CDCL 求解** | Cargo (PubGrub), Poetry, npm (部分) | NP-完全（实践可接受） | ✅ 允许 | 在满足所有约束的前提下选择最新兼容版本 |
+| **Minimal Version Selection (MVS)** | Go Modules | **O(n)** 线性 | ❌ 同一模块仅一个版本 | 选择满足所有最小约束的**最保守**版本 |
+| **图遍历 + 启发式** | pip (legacy), npm (legacy) | 多项式（但可能非终止） | ✅ 允许 | 贪心选择，局部最优 |
+| **SMT 求解** | NuGet (NuGetSolver) | NP-完全 | ✅ 允许 | 多目标优化（最小化版本漂移、最大化安全性） |
+
+### 4.2 SAT / CDCL 与 PubGrub
+
+**PubGrub** 是当前最先进的依赖解析算法之一，被 Cargo（2026 年已采用）、Poetry、Bundler、SwiftPM 使用。其核心是 **Conflict-Driven Clause Learning (CDCL)** 的变种：
+
+```
+1. 迭代选择包版本（按版本号降序优先）
+2. 推导该版本引入的约束
+3. 若发生冲突，记录"不兼容性"（incompatibility）并回溯
+4. 利用已记录的不兼容性剪枝搜索空间
+5. 重复直至找到满足解或证明无解
+```
+
+**PubGrub 优势**：
+
+- **错误消息质量高**：能精确指出冲突根因（"X 需要 Y≥2.0，但 Z 需要 Y<2.0"）
+- **可复用性**：`pubgrub-rs` 作为独立 crate 被 uv 等工具复用
+- **完备性**：总能找到满足解（若存在），或精确报告不可满足
+
+**Cargo 的扩展**：Rust 1.93 (2026) 的 PubGrub 实现增加了 **MSRV (Minimum Supported Rust Version)** 感知，确保解析出的依赖树与目标 Rust 版本兼容。
+
+### 4.3 Minimal Version Selection (MVS)
+
+Go Modules 的 MVS 是**唯一提供线性时间保证**的算法：
+
+```
+MVS(G, R):
+    G = 模块依赖图
+    R = 所有 require 语句中的最小版本集合
+
+    对每个模块 M:
+        selected[M] = max{R 中所有对 M 的最小版本要求}
+
+    返回 selected
+```
+
+**MVS 的假设与代价**：
+
+- **假设**：Semver 被严格遵守，minor/patch 不会破坏兼容性
+- **代价**：无法表达"我需要 X<2.0"的上界约束；若上游违反 Semver，工具无法保护
+- **收益**：解析结果完全确定性，无"解析抖动"；同一 go.mod 永远产生相同结果
+
+### 4.4 算法选择对复用安全的影响
+
+| 场景 | 推荐算法 | 理由 |
+|------|---------|------|
+| 需要严格版本上限约束 | PubGrub / SAT | MVS 不支持上限表达 |
+| 追求极致构建确定性 | MVS | 线性时间，零随机性 |
+| 大型 monorepo（1000+ 依赖） | PubGrub | 冲突学习加速大规模求解 |
+| 需要多目标优化（安全>新功能） | SMT (NuGetSolver) | 可编码优先级约束 |
+
+```mermaid
+graph LR
+    A[依赖解析算法] --> B[SAT/CDCL<br/>PubGrub]
+    A --> C[MVS<br/>Go Modules]
+    A --> D[SMT<br/>NuGetSolver]
+    B --> E[灵活但复杂<br/>NP-Complete]
+    C --> F[极简但受限<br/>O(n)]
+    D --> G[多目标优化<br/>企业级治理]
+```
+
+---
+
+## 5. 版本锁定策略（Lockfile）安全性分析
+
+Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
+
+### 5.1 Lockfile 安全属性
+
+| 属性 | 说明 | 风险 |
+|------|------|------|
+| **完整性** | Lockfile 包含所有传递依赖的精确版本 | 攻击者篡改 lockfile 可注入恶意版本 |
+| **可验证性** | 是否包含密码学哈希（hash）校验 | 无哈希的 lockfile 无法检测包篡改 |
+| **不可伪造性** | 生成过程是否可信 | CI 环境被入侵可生成恶意 lockfile |
+| **时效性** | 更新频率与漏洞响应速度 | 长期不更新的 lockfile 累积已知漏洞 |
+
+### 5.2 各生态 Lockfile 安全能力对比
+
+| 生态 | Lockfile 格式 | 哈希校验 | 生成者验证 | 2026 安全增强 |
+|------|--------------|---------|-----------|--------------|
+| **Rust (Cargo)** | `Cargo.lock` (TOML) | ✅ SHA-256 | Cargo 官方 | MSRV 感知解析、Trusted Publishing |
+| **Go** | `go.sum` | ✅ SHA-256 | Go 官方 + 校验和数据库 | CVE-2026-42501 修复校验和验证 |
+| **Node.js (npm)** | `package-lock.json` | ✅ SHA-512 | npm CLI | provenance attestation (SLSA L3) |
+| **Node.js (pnpm)** | `pnpm-lock.yaml` | ✅ SHA-512 | pnpm CLI | v10 默认禁用生命周期脚本 |
+| **Python (uv)** | `uv.lock` (TOML) | ✅ SHA-256 | uv CLI | `--frozen` 严格模式、hash 验证 |
+| **Python (Poetry)** | `poetry.lock` | ✅ SHA-256 | Poetry CLI | 依赖组隔离、审计日志 |
+| **JVM (Gradle)** | `gradle.lockfile` | ✅ SHA-256 | Gradle CLI | Dependency Verification XML |
+| **.NET (NuGet)** | `packages.lock.json` | ✅ SHA-512 | NuGet CLI | 签名验证 + lockfile 审计 |
+
+### 5.3 Lockfile 攻击向量与防御
+
+**攻击向量 1: Lockfile 注入**
+
+- **方式**：攻击者通过 compromised PR 修改 lockfile，将良性包替换为恶意版本
+- **防御**：PR 审查时强制 lockfile diff 审查；CI 中 `cargo vet` / `npm audit` 自动扫描
+
+**攻击向量 2: 哈希碰撞/降级**
+
+- **方式**：利用弱哈希算法或 registry 重放旧版本
+- **防御**：使用 SHA-256/SHA-512；启用 registry 不可变性（immutable packages）
+
+**攻击向量 3: 传递依赖劫持**
+
+- **方式**：通过直接依赖的传递依赖注入恶意包（如 event-stream 事件）
+- **防御**：定期运行 `cargo tree` / `npm ls` / `go mod graph` 审查传递树；使用 Dependabot/Renovate 自动更新
+
+**最佳实践**：
+
+```bash
+# Rust: 锁定 + 审计
+ cargo generate-lockfile && cargo audit
+
+# Node.js: 确定性安装 + 审计
+ npm ci --ignore-scripts && npm audit --audit-level=moderate
+
+# Go: 校验和验证
+ go mod verify
+
+# Python (uv): 严格冻结模式
+ uv sync --frozen
+
+# .NET: 锁定 + 审计
+ dotnet restore --locked-mode && dotnet list package --vulnerable
+```
+
+---
+
+## 6. 供应商化（Vendoring）vs 代理仓库选择矩阵
+
+当组织需要控制外部依赖的来源与可用性时，面临两种核心策略：**供应商化**（将源码纳入项目仓库）与**代理仓库**（通过内部 registry 缓存/审批）。
+
+### 6.1 策略定义
+
+| 策略 | 定义 | 代表工具/命令 |
+|------|------|-------------|
+| **Vendoring** | 将依赖源码复制到项目 `vendor/` 目录，纳入版本控制 | `go mod vendor`, `cargo vendor`, `npm shrinkwrap`（已废弃） |
+| **Proxy Registry** | 部署内部 registry 代理/缓存公共 registry，支持审批流程 | Nexus, Artifactory, Cloudsmith, Verdaccio, Devpi |
+
+### 6.2 决策矩阵
+
+| 评估维度 | Vendoring | Proxy Registry |
+|---------|:---------:|:--------------:|
+| **构建可复现性** | ⭐⭐⭐⭐⭐ 无需网络 | ⭐⭐⭐⭐ 需内部网络 |
+| **依赖审查便利性** | ⭐⭐⭐⭐⭐ 源码即 diff | ⭐⭐⭐ 需额外工具 |
+| **仓库大小** | ⭐⭐ 仓库膨胀 | ⭐⭐⭐⭐⭐ 无膨胀 |
+| **更新效率** | ⭐⭐ 手动执行 vendor | ⭐⭐⭐⭐ 自动代理同步 |
+| **多项目共享** | ⭐⭐ 每项目独立拷贝 | ⭐⭐⭐⭐⭐ 全局缓存 |
+| **安全隔离** | ⭐⭐⭐⭐⭐ 完全离线 | ⭐⭐⭐⭐ 可控出网 |
+| **合规审计** | ⭐⭐⭐⭐ 源码级审计 | ⭐⭐⭐⭐⭐ 集中审计日志 |
+| **CI/CD 复杂度** | ⭐⭐⭐⭐ 简单（无下载） | ⭐⭐⭐ 需配置代理 |
+| **适用生态** | Go, Rust（原生支持） | Java, Node.js, Python, .NET |
+
+### 6.3 混合策略：分层防御
+
+2026 年最佳实践推荐**分层组合策略**：
+
+```
+Layer 1: Proxy Registry（第一道防线）
+    └── 缓存公共 registry
+    └── 自动漏洞扫描（上传时触发）
+    └── 命名空间隔离（防止 dependency confusion）
+
+Layer 2: 审批工作流（第二道防线）
+    └── 新包/新版本需安全团队审批
+    └── 延迟摄取（7天冷却期，社区充当金丝雀）
+
+Layer 3: Lockfile + 哈希（第三道防线）
+    └── 精确版本锁定
+    └── 密码学哈希验证
+
+Layer 4: Vendoring（可选终极防线）
+    └── 关键系统（金融、军工）完全离线构建
+    └── 源码级补丁能力
+```
+
+### 6.4 各生态具体实践
+
+| 生态 | Vendoring 命令 | Proxy Registry 工具 | 推荐场景 |
+|------|---------------|---------------------|---------|
+| **Go** | `go mod vendor` + `-mod=vendor` | `Athens`, `GOPROXY` 私有代理 | 云原生基础设施（Kubernetes 采用 vendor） |
+| **Rust** | `cargo vendor` + `[source.crates-io]` 替换 | `cloudsmith`, `Artifactory` | 嵌入式/离线环境 |
+| **Node.js** | 不推荐原生 vendor；使用 `pnpm` 离线缓存 | `Verdaccio`, `npm Enterprise` | 前端工程化 |
+| **Python** | `pip download` 近似 | `Devpi`, `Nexus`, `PyPI Cloud` | 数据科学/AI 流水线 |
+| **JVM** | 不支持 | `Nexus`, `Artifactory` | 企业级微服务 |
+| **.NET** | 不支持 | `NuGet.Server`, `Artifactory` | Windows 生态企业 |
+
+**关键洞察**：Go 和 Rust 对 vendoring 提供**一等语言支持**（官方工具链原生集成），而 Java、Node.js、Python、.NET 生态更依赖代理仓库。这反映了系统编程语言对"可自包含构建"的更强诉求。
+
+---
+
+## 7. 依赖治理策略
 
 ### 4.1 最小权限依赖原则
 

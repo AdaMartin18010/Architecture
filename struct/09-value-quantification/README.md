@@ -31,8 +31,9 @@
 
 - [x] COCOMO II 公式与计算示例
 - [x] ROI/NPV 完整模型
-- [ ] 2026 校准参数（AI 辅助开发的影响因子）
-- [ ] 可执行的 Excel/Python 计算模板
+- [x] COCOMO II 2026 校准版 (`01-cocomo-ii-reuse/cocomo-2026-calibration.md`)
+- [ ] 可执行的 Excel/Python 计算模板 (P1, 2026-Q4)
+- [ ] 跨层 FinOps 成本分摊可执行模板 (P1, 2026-Q4)
 
 ## 关联主题
 

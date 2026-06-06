@@ -9,10 +9,10 @@
 
 | 目录 | 内容 |
 |------|------|
-| `glossary/` | 术语表、同义词对照、跨标准术语映射 |
-| `visualizations/` | Mermaid 图、架构图、概念映射 |
-| `external-links/` | 外部权威资源链接 |
-| `templates/` | 文档模板、检查清单、评估问卷 |
+| `glossary/` | 术语表、同义词对照、跨标准术语映射、公理-定理推理树 |
+| `visualizations/` | Mermaid 图、架构图、概念映射、标准族谱图 |
+| `external-links/` | 外部权威资源链接（按主题分类） |
+| `templates/` | 文档模板、快速参考卡、检查清单、评估问卷 |
 
 ---
 

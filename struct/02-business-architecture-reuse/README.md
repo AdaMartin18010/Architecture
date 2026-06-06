@@ -30,8 +30,9 @@
 
 - [x] 五层层次结构定义
 - [x] 决策矩阵与判定树
-- [ ] BPMN/DMN 可执行语义案例补充
-- [ ] 行业垂直场景（金融、医疗、制造）案例库
+- [x] BPMN/DMN 可执行语义案例补充 (`06-bpmn-dmn/bpmn-dmn-executable-cases.md`)
+- [x] FEA BRM 与 TOGAF Capability Map 交叉映射 (`02-business-capability/fea-brm-togaf-mapping.md`)
+- [x] 行业垂直场景（金融、医疗、制造）案例库 (`case-studies/industry-vertical-cases.md`)
 
 ## 关联主题
 

@@ -33,8 +33,12 @@
 
 - [x] SLSA 四级框架详解
 - [x] XZ Utils 后门深度分析
-- [ ] SLSA L4 分布式构建验证（多签名、可复现性）
-- [ ] 供应链攻击树（Attack Tree）可视化
+- [x] 供应链攻击树 (`03-attack-vectors/attack-tree.md`)
+- [x] SLSA 1.0 复用安全边界详解 (`01-slsa-framework/slsa-reuse-boundaries.md`)
+- [x] SPDX/CycloneDX/SWID 复用安全对比 (`02-sbom-standards/sbom-reuse-security.md`)
+- [x] 零信任供应链架构模板 (`04-zero-trust-supply-chain/zero-trust-template.md`)
+- [ ] SLSA L4 分布式构建验证（多签名、可复现性）(2027-Q2)
+- [ ] 供应链攻击树可视化增强 (2027-Q2)
 
 ## 关联主题
 

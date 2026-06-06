@@ -31,8 +31,10 @@
 
 - [x] 架构模式对比矩阵
 - [x] 场景应用树
-- [ ] 2026 技术雷达更新（模块化单体回归、WASM 组件）
-- [ ] 具体平台（Backstage、Port、Cortex）的 IDP 复用实践
+- [x] 2026 云原生架构模式复用性矩阵 (`05-cloud-native-patterns/reusability-matrix-2026.md`)
+- [x] 服务网格通信模式复用 (`06-service-mesh/service-mesh-communication-patterns.md`)
+- [x] Data Mesh 域导向复用深化 (`04-data-architecture/data-mesh-data-product-reuse.md`)
+- [ ] 具体平台（Backstage、Port、Cortex）的 IDP 复用实践 (P1, 2026-Q4)
 
 ## 关联主题
 

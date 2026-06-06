@@ -116,10 +116,75 @@
 | "开源供应链怎么治理？" | `open-source-supply-chain-reuse.md` |
 | "软件复用的实物期权方法？" | `roi-real-options-strategic-value.md` |
 
-## 5. 参考索引
+## 5. 本轮新增核心文档索引（2026-06-06）
+
+### 元模型与标准对齐
+
+- `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md` — TOGAF 10 × ISO 42010 详细映射
+- `01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md` — ArchiMate × ISO 42010 对照表
+- `01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md` — ISO 26550 × ISO 42010/42020 映射
+- `01-meta-model-standards/05-swebok-v4/swebok-alignment.md` — SWEBOK V4 × 本体系 13 主题
+- `01-meta-model-standards/06-formal-axioms/axiom-system.md` — 形式化公理体系（15 公理）
+- `01-meta-model-standards/06-formal-axioms/theorem-derivations.md` — 定理推导集（17 定理）
+
+### 核心四层深化
+
+- `02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md`
+- `02-business-architecture-reuse/06-bpmn-dmn/bpmn-dmn-executable-cases.md`
+- `02-business-architecture-reuse/case-studies/industry-vertical-cases.md`
+- `03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`
+- `03-application-architecture-reuse/06-service-mesh/service-mesh-communication-patterns.md`
+- `04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`
+- `05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md`
+- `05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md`
+- `05-functional-architecture-reuse/decision-tree-granularity-cost-roi.md`
+
+### 治理与量化
+
+- `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`
+- `06-cross-layer-governance/04-finops-cost/cost-allocation-template.md`
+- `09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md`
+
+### 形式化验证
+
+- `07-formal-verification/04-rust-type-system/cargo-sat-resolution.md`
+- `07-formal-verification/04-rust-type-system/polonius-vs-nll.md`
+- `07-formal-verification/04-rust-type-system/unsafe-verification.md`
+- `07-formal-verification/01-tla-plus/case-library.md` + 3 个 `.tla` 规约
+- `07-formal-verification/02-alloy/component-dependency.als` + `mcp-tool-graph.als`
+
+### 认知架构
+
+- `08-cognitive-architecture/03-cognitive-load-theory/quantitative-model.md`
+- `08-cognitive-architecture/05-ai-cognitive-augmentation/augmentation-architecture.md`
+
+### 供应链安全
+
+- `10-supply-chain-security/03-attack-vectors/attack-tree.md`
+- `10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
+- `10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`
+- `10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-template.md`
+
+### 工业 IoT
+
+- `11-industrial-iot-otit/01-isa-95-model/l*/asset-catalog.md` (L0-L4)
+- `11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`
+- `11-industrial-iot-otit/02-opc-ua-fx/frame-structure/uadp-frame-analysis.md`
+- `11-industrial-iot-otit/03-tsn-deterministic/gcl-config/templates.md`
+- `11-industrial-iot-otit/02-opc-ua-fx/connection-manager/tla-specification.tla`
+- `11-industrial-iot-otit/02-opc-ua-fx/vendor-matrix-2026.md`
+
+### AI 原生与前沿
+
+- `12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md`
+- `13-emerging-trends/01-platform-engineering/platform-maturity-model.md`
+- `13-emerging-trends/03-webassembly-components/wasm-reuse-decision-tree.md`
+
+## 6. 参考索引
 
 - `struct/README.md` — 主索引
 - `struct/MASTER_PLAN.md` — 实施路线图
 - `struct/99-reference/standards-index/master-alignment-matrix.md` — 标准对齐矩阵
 - `struct/99-reference/glossary/terminology-crosswalk.md` — 术语交叉对照
+- `struct/99-reference/glossary/axiom-theorem-tree.md` — 公理-定理推理树
 - `struct/99-reference/CHANGELOG.md` — 更新日志与勘误

@@ -15,10 +15,10 @@
 - [x] 06-functional-safety 目录结构
 - [x] 07-edge-ai 目录结构
 - [x] OPC UA FX 复用层次分析
-- [ ] ISA-95 资产目录
-- [ ] PLCopen 功能块 TLA+ 验证
-- [ ] AAS-OPC UA 映射规范
-- [ ] IEC 61508 Proven-in-Use 统计工具
+- [x] ISA-95 资产目录
+- [x] PLCopen 功能块 TLA+ 验证 → `04-plcopen-motion/plcopen-motion.tla`
+- [x] AAS-OPC UA 映射规范 → `05-digital-twin-aas/aas-opcua-mapping.md`
+- [ ] IEC 61508 Proven-in-Use 统计工具（Phase 4 待启动）
 
 ---
 
@@ -26,12 +26,12 @@
 
 **任务**:
 
-- [ ] T01: L0 现场层复用资产（设备描述文件、Companion Specifications）
-- [ ] T02: L1 控制层复用资产（FB、UDT、控制算法）
-- [ ] T03: L2 监控层复用资产（HMI 模板、报警规则、趋势图）
-- [ ] T04: L3 MES 层复用资产（配方、SOP、质量规则、KPI 模板）
-- [ ] T05: L4 企业层复用资产（业务流程模板、ERP 配置模板）
-- [ ] T06: 跨层数据流映射（ERP↔MES↔SCADA↔PLC↔Field）
+- [x] T01: L0 现场层复用资产（设备描述文件、Companion Specifications）
+- [x] T02: L1 控制层复用资产（FB、UDT、控制算法）
+- [x] T03: L2 监控层复用资产（HMI 模板、报警规则、趋势图）
+- [x] T04: L3 MES 层复用资产（配方、SOP、质量规则、KPI 模板）
+- [x] T05: L4 企业层复用资产（业务流程模板、ERP 配置模板）
+- [x] T06: 跨层数据流映射（ERP↔MES↔SCADA↔PLC↔Field）
 
 **交付物**:
 
@@ -49,11 +49,11 @@
 **任务**:
 
 - [x] T07: OPC UA FX 复用层次分析
-- [ ] T08: UADP 帧结构详解（C2C/C2D/D2D 对比）
-- [ ] T09: TSN 门控表（GCL）配置模板
-- [ ] T10: FX Connection Manager 状态机 TLA+ 规约
-- [ ] T11: 2026 厂商支持矩阵持续更新
-- [ ] T12: 棕地/绿地/混合场景决策模板
+- [x] T08: UADP 帧结构详解（C2C/C2D/D2D 对比）
+- [x] T09: TSN 门控表（GCL）配置模板
+- [x] T10: FX Connection Manager 状态机 TLA+ 规约
+- [x] T11: 2026 厂商支持矩阵持续更新
+- [x] T12: 棕地/绿地/混合场景决策模板
 
 **交付物**:
 
@@ -63,15 +63,15 @@
 
 ---
 
-## Phase 3: PLCopen 与数字孪生（2026-06 第四周）
+## Phase 3: PLCopen 与数字孪生（2026-06 第四周）— 已完成
 
 **任务**:
 
-- [ ] T13: PLCopen Motion Control V2.0 核心功能块接口定义
-- [ ] T14: MC_Power / MC_MoveAbsolute 状态机的 TLA+ 验证
-- [ ] T15: AAS 元模型与 OPC UA 信息模型的完整映射
-- [ ] T16: AAS 子模型模板清单（Technical Data, Nameplate, Identification 等）
-- [ ] T17: AASX 包格式交换规范
+- [x] T13: PLCopen Motion Control V2.0 核心功能块接口定义 → `04-plcopen-motion/function-block-interfaces.md`
+- [x] T14: MC_Power / MC_MoveAbsolute 状态机的 TLA+ 验证 → `04-plcopen-motion/plcopen-motion.tla`
+- [x] T15: AAS 元模型与 OPC UA 信息模型的完整映射 → `05-digital-twin-aas/aas-opcua-mapping.md`
+- [x] T16: AAS 子模型模板清单（14 个标准子模型） → `05-digital-twin-aas/submodel-templates/catalog.md`
+- [x] T17: AASX 包格式交换规范 → 已整合于 AAS-OPC UA 映射文档
 
 **交付物**:
 

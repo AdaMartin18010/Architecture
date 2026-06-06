@@ -12,7 +12,11 @@
 - **Rust 类型系统**: 编译期复用安全的形式化基础（所有权、借用、生命周期）
   - RustBelt (Iris), Aeneas (Inria), Kani (AWS), Prusti (ETH Zurich)
 - **SPARK/Ada**: 飞行控制软件的契约验证（Airbus A380 案例）
+  - `05-spark-ada/flight-control-contracts.md` — 自动驾驶仪模式切换与高度保持的完整契约设计
+  - `05-spark-ada/mcdc-formalization.md` — DO-178C MC/DC 形式化定义与 SPARK 工具链验证
 - **B Method**: 铁路信号系统的形式化精化链
+  - `06-b-method/railway-signaling-refinement.md` — B Method / Event-B 铁路信号系统精化链案例（三层精化：M0 进路安全 → M1 区段道岔 → M2 信号联锁）
+  - `06-b-method/event-b-railway-refinement.md` — Event-B 与 B Method 体系总览、工具链与工业应用
 - **模型检测**: SPIN, NuSMV, CBMC
 - 形式化验证的复用决策矩阵（工具 × 层次 × 成本）
 
@@ -34,8 +38,16 @@
 
 - [x] 形式化方法谱系梳理
 - [x] TLA+/Alloy/Rust 案例示例
-- [ ] DO-178C MC/DC 形式化定义（卷六深化）
-- [ ] Rust Polonius 借用检查器形式化
+- [x] Rust 所有权-借用-生命周期形式化定义 (`04-rust-type-system/formal-semantics.md`)
+- [x] Cargo 依赖解析 SAT 求解 (`04-rust-type-system/cargo-sat-resolution.md`)
+- [x] Rust Polonius 借用检查器 vs NLL (`04-rust-type-system/polonius-vs-nll.md`)
+- [x] unsafe 边界验证策略 (`04-rust-type-system/unsafe-verification.md`)
+- [x] TLA+ 案例库启动 (`01-tla-plus/case-library.md` + 3 个规约)
+- [x] Alloy 架构约束案例启动 (`02-alloy/component-dependency.als` + `mcp-tool-graph.als`)
+- [ ] Alloy 跨层映射 + ISA-95 层次案例 (2026-Q4)
+- [x] DO-178C MC/DC 形式化定义 (`05-spark-ada/mcdc-formalization.md`)
+- [x] SPARK/Ada 飞控案例 (`05-spark-ada/flight-control-contracts.md`)
+- [x] B Method 铁路信号案例 (`06-b-method/railway-signaling-refinement.md`)
 
 ## 关联主题
 

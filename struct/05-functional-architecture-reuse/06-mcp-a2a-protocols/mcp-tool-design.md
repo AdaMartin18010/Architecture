@@ -10,7 +10,7 @@
 
 **定义 5.1** (MCP Tool): MCP Tool 是一个**语义化函数签名**，其形式为：
 
-```
+```text
 Tool := ⟨Name, Description, InputSchema, OutputSchema, Annotations, ErrorModel, ExampleSet⟩
 ```
 
@@ -45,7 +45,7 @@ Tool := ⟨Name, Description, InputSchema, OutputSchema, Annotations, ErrorModel
 
 ## 3. Tool 分类与复用策略
 
-```
+```text
 MCP Tool 分类
 ├── 数据访问类 (Data Access)
 │   ├── 数据库查询、文档检索、API 调用

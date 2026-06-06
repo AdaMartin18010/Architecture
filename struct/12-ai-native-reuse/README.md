@@ -40,8 +40,10 @@ AI/LLM 功能复用是 2026 年软件工程的新边界。传统复用假设"确
 
 - [x] MCP + A2A 协议架构分析
 - [x] 概率契约形式化定义
-- [ ] Conformal Prediction 的代码生成应用案例
-- [ ] Agentic Governance 的组织设计模板
+- [x] MCP 2026-07-28 RC + A2A v1.0.0 协议深度解析 (`01-mcp-protocol/mcp-2026-deep-dive.md`)
+- [x] A2A v1.0.0 协议复用分析 (`02-a2a-protocol/a2a-reuse-analysis.md`)
+- [x] Conformal Prediction 代码生成应用案例 (`05-conformal-prediction/cp-code-generation.md`)
+- [ ] Agentic Governance 的组织设计模板 (P1, 2026-Q4)
 
 ## 关联主题
 

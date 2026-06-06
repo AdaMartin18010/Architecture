@@ -36,9 +36,11 @@
 ## 当前状态
 
 - [x] 趋势识别与框架分析
-- [ ] 平台工程成熟度模型
-- [ ] WASM Component Model 的复用决策树
-- [ ] RegTech Agentic 架构的案例验证
+- [x] 平台工程成熟度模型 (`01-platform-engineering/platform-maturity-model.md`)
+- [x] WASM Component Model 复用决策树 (`03-webassembly-components/wasm-reuse-decision-tree.md`)
+- [x] CNCF 平台工程 2026 (`01-platform-engineering/platform-engineering-cncf-2026.md`)
+- [x] WASM 组件模型 2026 (`03-webassembly-components/wasm-component-model-2026.md`)
+- [ ] RegTech Agentic 架构的案例验证 (P2, 2027-Q3)
 
 ## 关联主题
 

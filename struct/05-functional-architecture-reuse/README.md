@@ -32,8 +32,11 @@
 
 - [x] MCP + A2A 协议架构分析
 - [x] 功能复用五层层次结构
-- [ ] MCP 2026-07-28 正式发布后的更新
-- [ ] AI 功能概率契约的校准工具原型
+- [x] MCP + A2A 协议架构复用分析 (`06-mcp-a2a-protocols/protocol-analysis.md`)
+- [x] Temporal 工作流复用模式 (`04-workflow-orchestration/temporal-reuse-patterns.md`)
+- [x] 功能复用粒度-成本-收益决策树 (`decision-tree-granularity-cost-roi.md`)
+- [ ] MCP 2026-07-28 正式发布后的更新 (待外部事件触发)
+- [ ] AI 功能概率契约的校准工具原型 (P1, 2026-Q4)
 
 ## 关联主题
 

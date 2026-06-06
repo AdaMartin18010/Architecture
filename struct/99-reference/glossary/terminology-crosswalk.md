@@ -92,6 +92,48 @@
 | Capability | Agent Card | 声明的能力集合 |
 | Host-Client-Server | Peer-to-Peer | 架构关系 |
 
+## 形式化验证术语映射
+
+| TLA+ | Alloy | Coq/Isabelle | 通用含义 |
+|------|-------|--------------|---------|
+| State | Atom/Signature | Term/Type | 系统状态/元素 |
+| Action | Predicate/Fact | Lemma/Theorem | 状态转移/性质 |
+| Invariant | Assertion | Invariant | 不变量 |
+| Liveness | Assertion (eventually) | Coinductive Proof | 活性性质 |
+| MODULE | Module | Section/Module | 模块化单元 |
+| VARIABLE | sig/field | Variable/Parameter | 状态变量 |
+| Init | fact init | Definition init | 初始状态 |
+| Next | pred step | Inductive step | 下一步关系 |
+
+## 认知架构术语
+
+| ACT-R | BDI | 双系统理论 | 通用含义 |
+|-------|-----|-----------|---------|
+| Chunk | Belief | Memory/Pattern | 知识单元 |
+| Production | Desire-Intention | System 1 (Fast) | 行为规则 |
+| Goal | Intention | System 2 (Slow) | 目标导向 |
+| Retrieval | Belief Update | Recognition | 信息提取 |
+| Cognitive Load | Cognitive Load | Cognitive Load | 认知负荷 |
+
+## 平台工程与 WASM 术语
+
+| 平台工程 | WASM | 通用含义 |
+|---------|------|---------|
+| IDP (Internal Developer Platform) | WASM Runtime | 内部开发者平台 / 运行时 |
+| Golden Path | WIT (Wasm Interface Types) | 标准化路径 / 接口类型 |
+| Software Catalog | Component Registry | 软件目录 / 组件注册表 |
+| Self-Service | WASI | 自助服务 / 系统接口 |
+| Platform Team | Component Producer | 平台团队 / 组件生产者 |
+
+## 供应链安全术语
+
+| SLSA | SBOM | 零信任 | 通用含义 |
+|------|------|--------|---------|
+| Provenance | SPDX Document | Identity Verification | 来源证明 |
+| Attestation | CycloneDX BOM | Device Health | 证明/声明 |
+| Build Integrity | Component Hash | Least Privilege | 构建完整性 |
+| Reproducible Build | Dependency Tree | Continuous Verification | 可复现构建 |
+
 ---
 
 ## 质量标准版本对照

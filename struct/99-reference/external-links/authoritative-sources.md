@@ -80,6 +80,66 @@
 | COCOMO II | <https://csse.usc.edu/tools/cocomoii.php> |
 | WebAssembly | <https://webassembly.org/> |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org/> |
+| wasmCloud | <https://wasmcloud.com/> |
+| WIT (Wasm Interface Types) | <https://component-model.bytecodealliance.org/design/wit.html> |
+
+## 形式化验证
+
+| 资源 | 链接 |
+|------|------|
+| TLA+ Home Page | <https://lamport.azurewebsites.net/tla/tla.html> |
+| Alloy Tools | <https://alloytools.org/> |
+| Coq Proof Assistant | <https://coq.inria.fr/> |
+| Isabelle/HOL | <https://isabelle.in.tum.de/> |
+| RustBelt | <https://plv.mpi-sws.org/rustbelt/> |
+| Prusti (ETH Zurich) | <https://www.pm.inf.ethz.ch/research/prusti.html> |
+| Kani (AWS) | <https://model-checking.github.io/kani/> |
+| Aeneas (Inria) | <https://github.com/AeneasVerif/aeneas> |
+| SPARK Pro (AdaCore) | <https://www.adacore.com/about-spark> |
+| Atelier B | <https://www.atelierb.eu/> |
+
+## 工业自动化
+
+| 资源 | 链接 |
+|------|------|
+| OPC Foundation | <https://opcfoundation.org/> |
+| OPC UA FX 1.0 | <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/> |
+| PLCopen Motion Control | <https://plcopen.org/technical-activities/motion-control> |
+| IDTA - AAS Specifications | <https://industrialdigitaltwin.org/> |
+| IEC 61508 | <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363> |
+| ISA-95 / IEC 62264 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> |
+| NAMUR Open Architecture (NOA) | <https://www.namur.net/en.html> |
+
+## 供应链安全
+
+| 资源 | 链接 |
+|------|------|
+| SLSA.dev | <https://slsa.dev/> |
+| OpenSSF | <https://openssf.org/> |
+| Sigstore | <https://www.sigstore.dev/> |
+| SPDX | <https://spdx.dev/> |
+| CycloneDX | <https://cyclonedx.org/> |
+| NIST SSDF | <https://csrc.nist.gov/projects/ssdf> |
+| OWASP SCVS | <https://owasp.org/www-project-software-component-verification-standard/> |
+
+## 认知科学与 AI
+
+| 资源 | 链接 |
+|------|------|
+| ACT-R Cognitive Architecture | <https://act-r.psy.cmu.edu/> |
+| NASA-TLX | <https://humansystems.arc.nasa.gov/groups/TLX/> |
+| Conformal Prediction Book | <https://arxiv.org/abs/2107.07511> |
+| LangChain | <https://python.langchain.com/> |
+| LlamaIndex | <https://www.llamaindex.ai/> |
+
+## 平台工程与云原生
+
+| 资源 | 链接 |
+|------|------|
+| CNCF Platforms White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platforms/> |
+| Backstage IDP | <https://backstage.io/> |
+| FinOps Foundation | <https://www.finops.org/> |
+| Spring Modulith | <https://spring.io/projects/spring-modulith> |
 
 ---
 

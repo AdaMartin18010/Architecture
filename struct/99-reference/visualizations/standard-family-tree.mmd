@@ -1,32 +1,97 @@
+%% 软件工程架构复用视角：国际标准族谱图
+%% 版本: 2026-06-06
+%% 工具: Mermaid (graph TD)
+%% 说明: 本图展示与本知识体系相关的国际标准之间的演化与依赖关系
+
 graph TD
-    ISO42010[ISO/IEC/IEEE 42010<br/>架构描述] --> ISO42020[ISO/IEC/IEEE 42020<br/>架构过程]
-    ISO42010 --> ISO42030[ISO/IEC/IEEE 42030<br/>架构评估]
+    subgraph ISO_IEC_IEEE_核心架构标准
+        ISO42010[ISO/IEC/IEEE 42010:2022<br/>架构描述]
+        ISO42020[ISO/IEC/IEEE 42020:2019<br/>架构过程]
+        ISO42030[ISO/IEC/IEEE 42030:2019<br/>架构评估]
+        ISO42024[ISO/IEC/IEEE DIS 42024<br/>架构基础]
+        ISO42042[ISO/IEC/IEEE DIS 42042<br/>参考架构]
+        
+        ISO42010 --> ISO42020
+        ISO42010 --> ISO42030
+        ISO42024 --> ISO42010
+        ISO42042 --> ISO42010
+    end
     
-    ISO25010[ISO/IEC 25010<br/>质量模型] --> ISO42010
+    subgraph 质量与治理标准
+        ISO25010[ISO/IEC 25010:2023<br/>SQuaRE 质量模型]
+        ISO26550[ISO/IEC 26550:2015<br/>产品线工程]
+        ISO26566[ISO/IEC 26566:2026<br/>成熟度框架]
+        ISO26564[ISO/IEC 26564:2022<br/>复用度量]
+        
+        ISO42030 --> ISO25010
+        ISO26550 --> ISO42020
+        ISO26566 --> ISO42030
+        ISO26564 --> ISO26566
+    end
     
-    ISO26550[ISO/IEC 26550<br/>产品线工程] --> ISO42010
+    subgraph 企业架构框架
+        TOGAF10[TOGAF Standard 10th Edition]
+        ArchiMate42[ArchiMate 3.2/4.0]
+        FEABRM[FEA BRM 2.0]
+        
+        TOGAF10 --> ISO42010
+        ArchiMate42 --> ISO42010
+        FEABRM --> TOGAF10
+    end
     
-    TOGAF[TOGAF 10<br/>企业架构方法] --> ISO42010
-    TOGAF --> ArchiMate[ArchiMate 3.2/4.0<br/>架构建模语言]
+    subgraph 业务流程标准
+        BPMN20[OMG BPMN 2.0]
+        DMN15[OMG DMN 1.5]
+        
+        BPMN20 --> ISO42020
+        DMN15 --> BPMN20
+    end
     
-    ArchiMate --> ABB[ABB 架构构建块]
-    ArchiMate --> SBB[SBB 解决方案构建块]
+    subgraph 供应链安全标准
+        SLSA10[SLSA 1.0]
+        SPDX[SPDX 2.3/3.0]
+        CycloneDX[CycloneDX 1.6]
+        NISTSSDF[NIST SSDF 1.2]
+        OWASP[OWASP SCVS]
+        
+        SLSA10 --> NISTSSDF
+        SPDX --> SLSA10
+        CycloneDX --> SLSA10
+        OWASP --> SLSA10
+    end
     
-    SWEBOK[SWEBOK V4<br/>软件工程知识体系] --> ISO42010
-    SWEBOK --> ISO12207[ISO/IEC/IEEE 12207<br/>软件生命周期]
+    subgraph 工业自动化标准
+        ISA95[ISA-95 / IEC 62264]
+        OPCUA[OPC UA FX 1.0]
+        IEC61508[IEC 61508 Ed.3]
+        ISO26262[ISO 26262]
+        IEC63278[IEC 63278 AAS]
+        TSN[IEC/IEEE 60802 TSN]
+        
+        ISA95 --> OPCUA
+        IEC61508 --> ISA95
+        ISO26262 --> IEC61508
+        IEC63278 --> OPCUA
+        TSN --> OPCUA
+    end
     
-    SLSA[SLSA 1.0<br/>供应链安全] --> SPDX[SPDX ISO 5962]
-    SLSA --> CycloneDX[CycloneDX OWASP]
-    SLSA --> SWID[SWID ISO 19770-2]
+    subgraph AI 与 Agent 协议
+        MCP[MCP 2026-07-28 RC]
+        A2A[A2A v1.0.0]
+        
+        MCP --> A2A
+    end
     
-    IEC63278[IEC 63278<br/>资产管理壳 AAS] --> OPCUA[OPC UA]
-    OPCUA --> OPCUAFX[OPC UA FX 1.0<br/>现场级通信]
+    %% 跨族连接
+    ISO42010 -.->|概念映射| TOGAF10
+    ISO42010 -.->|元模型对齐| ArchiMate42
+    ISO26550 -.->|产品线过程| ISO42020
+    SLSA10 -.->|构建过程| ISO42020
+    ISA95 -.->|业务层映射| BPMN20
     
-    IEC61508[IEC 61508<br/>功能安全] --> ISO26262[ISO 26262<br/>汽车安全]
-    
-    MCP[MCP 2026-07-28<br/>Model Context Protocol] --> A2A[A2A v1.0<br/>Agent-to-Agent]
-    
-    style ISO42010 fill:#f9f,stroke:#333,stroke-width:2px
-    style SLSA fill:#bbf,stroke:#333
-    style IEC63278 fill:#bfb,stroke:#333
-    style MCP fill:#fbf,stroke:#333
+    %% 样式
+    style ISO42010 fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style ISO26566 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style SLSA10 fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style ISA95 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style MCP fill:#fce4ec,stroke:#880e4f,stroke-width:2px

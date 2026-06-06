@@ -129,4 +129,78 @@
 
 ---
 
+### Phase 1 全面深化（本轮新增）
+
+本轮更新按照 `MASTER_PLAN.md` Phase 1（2026-Q3）计划，对 7 条轨道进行了全面深化：
+
+#### Track A: 01 元模型与标准对齐
+
+- `02-togaf-10-alignment/detailed-mapping.md` — TOGAF 10 ABB/SBB 与 ISO 42010:2022 的详细映射（覆盖10个ADM阶段）
+- `04-archimate-4/archimate-iso-mapping.md` — ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表（四层全覆盖）
+- `03-iso-26550-ple/ple-iso-integration.md` — ISO 26550:2015 与 ISO 42010/42020 的交叉映射（双轨）
+- `05-swebok-v4/swebok-alignment.md` — SWEBOK V4 知识领域与本体系 13 个主题的对应关系
+
+#### Track B1: 02 业务架构复用
+
+- `02-business-capability/fea-brm-togaf-mapping.md` — FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射
+- `06-bpmn-dmn/bpmn-dmn-executable-cases.md` — BPMN 2.0 / DMN 1.5 可执行语义案例集（3个生产级案例）
+- `case-studies/industry-vertical-cases.md` — 行业垂直场景案例库（金融开放银行、医疗 FHIR、制造 ISA-95）
+
+#### Track B2: 03 应用架构复用
+
+- `05-cloud-native-patterns/reusability-matrix-2026.md` — 云原生架构模式复用性矩阵 2026 版（9种模式 × 8维度）
+- `06-service-mesh/service-mesh-communication-patterns.md` — 服务网格通信模式复用（Istio/Envoy/Cilium）
+
+#### Track B3: 04 组件架构复用
+
+- `07-language-ecosystems/comparison-matrix-2026.md` — 6大语言生态复用成熟度深度对比 2026
+- `04-design-patterns/interface-design-patterns.md` — 设计模式与接口设计模式复用（跨语言对比 + 反模式）
+- `07-language-ecosystems/open-source-supply-chain-reuse.md` — 依赖管理策略深度对比（PubGrub/MVS/SAT + 供应链安全）
+
+#### Track B4: 05 功能架构复用
+
+- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2026-07-28 RC + A2A v1.0.0 协议架构复用分析
+- `04-workflow-orchestration/temporal-reuse-patterns.md` — Temporal 工作流复用模式（Saga/Parallel/Child/Schedule）
+- `decision-tree-granularity-cost-roi.md` — 功能复用的粒度-成本-收益决策树
+
+#### Track C: 06 治理与量化 + 09 价值量化
+
+- `05-metrics-kpi/metrics-framework.md` — 复用度量指标体系四级框架（资产/项目/组织/生态级）
+- `04-finops-cost/cost-allocation-template.md` — FinOps 跨层复用成本分摊模型（含 Excel/Python 模板）
+- `01-cocomo-ii-reuse/cocomo-2026-calibration.md` — COCOMO II 2026 校准版（AI辅助开发/Serverless/低代码适配）
+
+#### Track D: 10 供应链安全
+
+- `03-attack-vectors/attack-tree.md` — 软件供应链攻击树（7条路径 + 典型案例映射 + 防御矩阵）
+
+#### Track E: 11 工业 IoT/OT-IT
+
+- `01-isa-95-model/l0-field/asset-catalog.md` — ISA-95 L0 现场层复用资产目录
+- `01-isa-95-model/l1-control/asset-catalog.md` — ISA-95 L1 控制层复用资产目录
+- `01-isa-95-model/l2-supervisory/asset-catalog.md` — ISA-95 L2 监控层复用资产目录
+- `01-isa-95-model/l3-mes/asset-catalog.md` — ISA-95 L3 MES 层复用资产目录
+- `01-isa-95-model/l4-enterprise/asset-catalog.md` — ISA-95 L4 企业层复用资产目录
+- `01-isa-95-model/cross-layer-matrix/data-flow-mapping.md` — 跨层数据流映射（ERP↔MES↔SCADA↔PLC↔Field）
+
+#### Track F: 07 形式化验证
+
+- `04-rust-type-system/cargo-sat-resolution.md` — Cargo 依赖解析的 SAT 求解详细说明（PubGrub 算法）
+- `04-rust-type-system/polonius-vs-nll.md` — Rust Polonius 借用检查器 vs NLL 对比（4个代码示例）
+- `04-rust-type-system/unsafe-verification.md` — unsafe 边界验证策略（7工具对比矩阵 + 4级检查清单）
+
+#### Track 认知架构: 08 认知架构
+
+- `03-cognitive-load-theory/quantitative-model.md` — 开发者复用决策认知负荷量化模型（NASA-TLX 适配版）
+- `05-ai-cognitive-augmentation/augmentation-architecture.md` — AI 辅助复用决策的认知增强架构设计（RAG+LLM）
+
+#### 参考索引: 99 参考索引
+
+- `glossary/axiom-theorem-tree.md` — 公理-定理推理树（24条已确立，目标20+公理30+定理）
+- `visualizations/standard-family-tree.mmd` — 国际标准族谱图（Mermaid）
+- `visualizations/concept-mapping.mmd` — 核心概念映射图（Mermaid）
+- `templates/document-template.md` — 文档写作统一模板
+- `templates/quick-reference-card.md` — 快速参考卡（一页纸速查）
+
+---
+
 > 最后更新: 2026-06-06

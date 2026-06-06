@@ -1,0 +1,183 @@
+%% 公理-定理推理树完整可视化
+%% 版本: 2026-06-06 Phase 3
+%% 说明: 本图整合 15 条公理（4 元公理 + 3 存在性 + 4 结构性 + 4 过程性）与 29 条定理的完整依赖网络
+%% 渲染工具: Mermaid.js 10.x+ (支持 classDef 样式和 subgraph)
+
+graph TB
+    %% ====== 样式定义 ======
+    classDef meta fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef existence fill:#f3e5f5,stroke:#4a148c,stroke-width:1.5px,color:#000
+    classDef structure fill:#e8f5e9,stroke:#1b5e20,stroke-width:1.5px,color:#000
+    classDef process fill:#fff3e0,stroke:#e65100,stroke-width:1.5px,color:#000
+    classDef theorem fill:#fafafa,stroke:#424242,stroke-width:1px,color:#000
+    classDef crossTheorem fill:#ffebee,stroke:#b71c1c,stroke-width:2px,color:#000
+    classDef topicAxiom fill:#fce4ec,stroke:#880e4f,stroke-width:1.5px,stroke-dasharray: 5 5,color:#000
+    classDef topicTheorem fill:#e0f2f1,stroke:#004d40,stroke-width:1px,stroke-dasharray: 3 3,color:#000
+
+    %% ====== 元公理层 ======
+    subgraph META["🧭 元公理层 Meta-Axioms"]
+        M1["M.1 架构-复用二元性"]
+        M2["M.2 可变性公理"]
+        M3["M.3 层次不可约性"]
+        M4["M.4 同一性保持"]
+    end
+
+    %% ====== 存在性公理层 ======
+    subgraph EXISTENCE["📦 存在性公理层 Existence"]
+        E1["E.1 资产存在性"]
+        E2["E.2 成本-收益阈值"]
+        E3["E.3 上下文适配性"]
+    end
+
+    %% ====== 结构性公理层 ======
+    subgraph STRUCTURE["🧱 结构性公理层 Structure"]
+        S1["S.1 接口可替换性"]
+        S2["S.2 组合性"]
+        S3["S.3 信任传递性"]
+        S4["S.4 抽象分层"]
+    end
+
+    %% ====== 过程性公理层 ======
+    subgraph PROCESS["⚙️ 过程性公理层 Process"]
+        P1["P.1 演化独立性"]
+        P2["P.2 反馈收敛性"]
+        P3["P.3 治理复杂度定律"]
+        P4["P.4 学习曲线单调性"]
+    end
+
+    %% ====== 核心定理层 (01 主题) ======
+    subgraph THEOREMS_CORE["📐 核心定理 (01 元模型)"]
+        Th1["Th.1 约束保持"]
+        Th2["Th.2 变体闭包"]
+        Th3["Th.3 层次失败独立"]
+        Th4["Th.4 同一性追溯"]
+        Th5["Th.5 资产存在必要"]
+        Th6["Th.6 复用经济可行性"]
+        Th7["Th.7 适配边界"]
+        Th8["Th.8 可替换传递"]
+        Th9["Th.9 组合结合律"]
+        Th10["Th.10 信任边界扩展"]
+        Th11["Th.11 接口稳定性"]
+        Th12["Th.12 演化独立推论"]
+        Th13["Th.13 反馈收敛"]
+        Th14["Th.14 治理崩溃阈值"]
+        Th15["Th.15 专家悖论"]
+    end
+
+    %% ====== 交叉定理层 ======
+    subgraph THEOREMS_CROSS["🔀 交叉定理 (多公理联合推导)"]
+        Th16["Th.16 组合风险叠加"]
+        Th17["Th.17 认知-治理双重约束"]
+    end
+
+    %% ====== 主题层公理与定理 ======
+    subgraph TOPIC_AXIOMS["🌐 主题层公理与定理"]
+        A21["A.2.1 价值流组合 (02)"]
+        T22["T.2.2 价值流组合保持"]
+        A41["A.4.1 依赖风险传递 (04)"]
+        T42["T.4.2 依赖风险阈值"]
+        A61["A.6.1 治理规模定律 (06)"]
+        T62["T.6.2 成熟度-规模关系"]
+        A81["A.8.1 认知负荷守恒 (08)"]
+        T82["T.8.2 专家悖论深化"]
+        A91["A.9.1 价值可测性 (09)"]
+        TV1["T.V.1 ROI 阈值"]
+        AS1["A.S.1 信任传递崩溃 (10)"]
+        TS2["T.S.2 SBOM 完备性边界"]
+        AI1["A.I.1 OT 确定性不可协商 (11)"]
+        TI2["T.I.2 ISA-95 层独立性"]
+        TAI1["T.AI.1 校准天花板 (12)"]
+        TAI2["T.AI.2 MCP-A2A 互补性"]
+        AF1["A.F.1 组合保持 (07)"]
+        TF2["T.F.2 形式化保持"]
+    end
+
+    %% ====== 公理间依赖 (层次依赖) ======
+    M1 --> E1
+    M1 --> S1
+    M2 --> E2
+    M3 --> S4
+    M3 --> E3
+    M4 --> S3
+    E1 --> S2
+    S1 --> S2
+    S2 --> S3
+    S4 --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+
+    %% ====== 公理到核心定理推导 ======
+    M1 --> Th1
+    M2 --> Th2
+    M3 --> Th3
+    M4 --> Th4
+    E1 --> Th5
+    E2 --> Th6
+    E3 --> Th7
+    S1 --> Th8
+    S2 --> Th9
+    S3 --> Th10
+    S4 --> Th11
+    P1 --> Th12
+    P2 --> Th13
+    P3 --> Th14
+    P4 --> Th15
+
+    %% ====== 交叉定理推导 ======
+    S2 --> Th16
+    S3 --> Th16
+    P3 --> Th17
+    P4 --> Th17
+
+    %% ====== 定理间影响 ======
+    Th1 -.-> Th16
+    Th2 -.-> Th7
+    Th3 -.-> Th11
+    Th4 -.-> Th10
+    Th8 -.-> Th9
+    Th9 --> Th16
+    Th10 --> Th16
+    Th12 -.-> Th14
+    Th13 -.-> Th14
+    Th14 --> Th17
+    Th15 -.-> Th17
+
+    %% ====== 主题层推导 ======
+    A21 --> T22
+    A41 --> T42
+    A61 --> T62
+    A81 --> T82
+    A91 --> TV1
+    AS1 --> TS2
+    AI1 --> TI2
+    AF1 --> TF2
+
+    %% ====== 主题公理与核心公理的关联 ======
+    M2 -.-> A21
+    S2 -.-> A41
+    P3 -.-> A61
+    P4 -.-> A81
+    E2 -.-> A91
+    S3 -.-> AS1
+    M3 -.-> AI1
+    S2 -.-> AF1
+
+    %% ====== 样式应用 ======
+    class M1,M2,M3,M4 meta
+    class E1,E2,E3 existence
+    class S1,S2,S3,S4 structure
+    class P1,P2,P3,P4 process
+    class Th1,Th2,Th3,Th4,Th5,Th6,Th7,Th8,Th9,Th10,Th11,Th12,Th13,Th14,Th15 theorem
+    class Th16,Th17 crossTheorem
+    class A21,A41,A61,A81,A91,AS1,AI1,AF1 topicAxiom
+    class T22,T42,T62,T82,TV1,TS2,TI2,TAI1,TAI2,TF2 topicTheorem
+
+    %% ====== 点击事件 (可选，支持交互式渲染器) ======
+    click M1 "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md#M1"
+    click M2 "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md#M2"
+    click M3 "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md#M3"
+    click M4 "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md#M4"
+    click Th1 "struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md#Th1"
+    click Th16 "struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md#Th16"
+    click Th17 "struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md#Th17"

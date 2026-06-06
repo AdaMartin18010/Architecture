@@ -22,8 +22,12 @@
 ## 当前状态
 
 - [x] 标准族谱梳理
-- [ ] DIS 42024/42042 正式发布后的更新
-- [ ] ArchiMate 4.0 发布后的映射更新
+- [x] TOGAF 10 ABB/SBB 与 ISO 42010 详细映射 (`02-togaf-10-alignment/detailed-mapping.md`)
+- [x] ArchiMate 3.2/4.0 与 ISO 42010 对照表 (`04-archimate-4/archimate-iso-mapping.md`)
+- [x] ISO 26550:2015 与 ISO 42010/42020 交叉映射 (`03-iso-26550-ple/ple-iso-integration.md`)
+- [x] SWEBOK V4 知识领域对应关系 (`05-swebok-v4/swebok-alignment.md`)
+- [ ] DIS 42024/42042 正式发布后的更新 (待外部事件触发)
+- [ ] ArchiMate 4.0 发布后的映射更新 (待外部事件触发)
 
 ## 关联主题
 

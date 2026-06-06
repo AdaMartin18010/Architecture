@@ -29,8 +29,10 @@
 
 - [x] 五级成熟度模型定义
 - [x] 度量指标体系框架
-- [ ] 可执行的成熟度评估问卷
-- [ ] FinOps 成本分摊工具模板
+- [x] 复用度量指标体系四级框架 (`05-metrics-kpi/metrics-framework.md`)
+- [x] FinOps 跨层复用成本分摊模型 (`04-finops-cost/cost-allocation-template.md`)
+- [ ] 可执行的成熟度评估问卷 (P1, 2026-Q4)
+- [ ] FinOps 成本分摊工具模板 Python/Excel 实现 (P1, 2026-Q4)
 
 ## 关联主题
 

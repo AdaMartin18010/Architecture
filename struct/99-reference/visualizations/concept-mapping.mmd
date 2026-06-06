@@ -1,61 +1,105 @@
-graph TB
-    subgraph 业务层
-        BC[业务能力]
-        VS[价值流]
-        BP[业务流程]
-        BS[业务服务]
+%% 软件工程架构复用视角：核心概念映射图
+%% 版本: 2026-06-06
+%% 工具: Mermaid (graph LR)
+%% 说明: 本图展示 13 个一级主题之间的核心概念映射关系
+
+graph LR
+    subgraph 基础层_Foundation
+        A[01 元模型与标准对齐]
+        G[07 形式化验证]
+        H[08 认知架构]
     end
-
-    subgraph 应用层
-        APP[应用系统]
-        SVC[应用服务]
-        API[API 契约]
-        DA[数据架构]
+    
+    subgraph 层次层_Layers
+        B[02 业务架构复用]
+        C[03 应用架构复用]
+        D[04 组件架构复用]
+        E[05 功能架构复用]
     end
-
-    subgraph 组件层
-        COMP[组件]
-        LIB[库/包]
-        IF[接口契约]
-        DP[设计模式]
+    
+    subgraph 治理层_Governance
+        F[06 跨层复用治理]
+        I[09 价值量化]
     end
-
-    subgraph 功能层
-        FUNC[函数/方法]
-        ALG[算法/数据结构]
-        BR[业务规则]
-        WF[工作流编排]
+    
+    subgraph 安全层_Security
+        J[10 供应链安全]
     end
-
-    subgraph 横切
-        GV[治理]
-        FV[形式化验证]
-        SC[供应链安全]
-        VQ[价值量化]
-        AI[AI 原生复用]
+    
+    subgraph 垂直领域层_Vertical
+        K[11 工业 IoT/OT-IT]
     end
-
-    BC -->|实现为| SVC
-    VS -->|由...组成| BP
-    BP -->|自动化为| WF
-    BS -->|技术实现为| API
-
-    SVC -->|由...实现| COMP
-    API -->|定义| IF
-    DA -->|由...管理| COMP
-
-    COMP -->|包含| FUNC
-    LIB -->|提供| FUNC
-    IF -->|约束| FUNC
-    DP -->|指导| COMP
-
-    GV -.->|管理| BC
-    GV -.->|管理| COMP
-    FV -.->|验证| IF
-    FV -.->|验证| WF
-    SC -.->|审计| LIB
-    SC -.->|审计| COMP
-    VQ -.->|度量| BC
-    VQ -.->|度量| LIB
-    AI -.->|增强| FUNC
-    AI -.->|增强| SVC
+    
+    subgraph 前沿层_Frontier
+        L[12 AI 原生复用]
+        M[13 新兴趋势]
+    end
+    
+    %% 基础层 → 层次层
+    A -->|元模型定义| B
+    A -->|标准映射| C
+    A -->|组件模型| D
+    A -->|功能契约| E
+    
+    G -->|正确性保证| D
+    G -->|协议验证| E
+    G -->|安全证明| J
+    G -->|状态机验证| K
+    
+    H -->|决策优化| F
+    H -->|认知增强| L
+    
+    %% 层次层内部
+    B -->|业务服务| C
+    C -->|应用组件| D
+    D -->|功能单元| E
+    E -->|AI 功能| L
+    
+    %% 层次层 → 治理层
+    B -->|能力度量| F
+    C -->|架构评估| F
+    D -->|依赖治理| F
+    E -->|功能治理| F
+    
+    B -->|ROI 计算| I
+    C -->|成本分摊| I
+    D -->|供应链成本| I
+    E -->|功能价值| I
+    
+    %% 层次层 → 安全层
+    D -->|SBOM| J
+    E -->|工具安全| J
+    
+    %% 垂直领域
+    K -->|工业组件| D
+    K -->|OT 协议| E
+    K -->|安全关键| G
+    K -->|工业 AI| L
+    
+    %% 前沿层
+    L -->|Agent 治理| F
+    L -->|概率契约| G
+    M -->|平台工程| C
+    M -->|WASM 组件| D
+    M -->|Rust 安全| J
+    
+    %% 反馈回路
+    F -.->|治理要求| A
+    I -.->|价值反馈| B
+    J -.->|安全约束| C
+    J -.->|安全约束| D
+    
+    %% 样式
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style G fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style H fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:1px
+    style C fill:#e8f5e9,stroke:#1b5e20,stroke-width:1px
+    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:1px
+    style E fill:#e8f5e9,stroke:#1b5e20,stroke-width:1px
+    style F fill:#fff3e0,stroke:#e65100,stroke-width:1px
+    style I fill:#fff3e0,stroke:#e65100,stroke-width:1px
+    style J fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    style K fill:#f3e5f5,stroke:#4a148c,stroke-width:1px
+    style L fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    style M fill:#fce4ec,stroke:#880e4f,stroke-width:1px

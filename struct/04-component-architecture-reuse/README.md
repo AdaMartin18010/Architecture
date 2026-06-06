@@ -31,8 +31,11 @@
 
 - [x] 技术栈对比矩阵
 - [x] 依赖治理框架
-- [ ] Rust 生态深度形式化（所有权、Trait、Cargo SAT 求解）
-- [ ] WASM Component Model 跨语言复用分析
+- [x] 6大语言生态复用成熟度深度对比 2026 (`07-language-ecosystems/comparison-matrix-2026.md`)
+- [x] 设计模式与接口设计模式复用 (`04-design-patterns/interface-design-patterns.md`)
+- [x] 依赖管理策略深度对比 (`07-language-ecosystems/open-source-supply-chain-reuse.md`)
+- [ ] Rust 生态深度形式化（所有权、Trait、Cargo SAT 求解）(07-formal-verification 进行中)
+- [ ] WASM Component Model 跨语言复用分析 (P1, 2026-Q4)
 
 ## 关联主题
 

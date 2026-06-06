@@ -41,14 +41,16 @@
 
 **目标**: 将业务→应用→组件→功能四层核心架构，从"提纲"深化为"可执行框架"
 
-| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
-|--------|------|----------|--------|----------|
-| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 4.0 状态 | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 |
-| P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 |
-| P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 |
-| P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 |
-| P1 | 05 功能架构复用 | 完成 MCP 2026-07-28 RC + A2A v1.0.0 协议架构的复用分析 | `05/06-mcp-a2a-protocols/protocol-analysis.md` | 含协议栈层次 + 互补架构图 |
-| P1 | 06 跨层复用治理 | 完成复用度量指标体系（基于 ISO/IEC 26564:2022 + NASA RRL） | `06/05-metrics-kpi/metrics-framework.md` | 含资产级/项目级/组织级/生态级四级度量 |
+**当前进度（2026-06-06）**: Phase 1 已全面启动，7 条轨道并行推进。元模型、业务架构、应用架构、组件架构、功能架构、工业 IoT、形式化验证 Rust 深化等核心任务已完成或接近完成。详见各主题 `README.md` 和 `CHANGELOG.md`。
+
+| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|----------|--------|----------|------|
+| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 4.0 状态 | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
+| P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 | ✅ 完成 |
+| P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
+| P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 | ✅ 完成 |
+| P1 | 05 功能架构复用 | 完成 MCP 2026-07-28 RC + A2A v1.0.0 协议架构的复用分析 | `05/06-mcp-a2a-protocols/protocol-analysis.md` | 含协议栈层次 + 互补架构图 | ✅ 完成 |
+| P1 | 06 跨层复用治理 | 完成复用度量指标体系（基于 ISO/IEC 26564:2022 + NASA RRL） | `06/05-metrics-kpi/metrics-framework.md` | 含资产级/项目级/组织级/生态级四级度量 | ✅ 完成 |
 
 **对齐活动**:
 
@@ -61,14 +63,14 @@
 
 **目标**: 将形式化验证、认知架构、价值量化三个"深度方向"从理论深化为可操作方法论
 
-| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
-|--------|------|----------|--------|----------|
-| P0 | 07 形式化验证 | 完成 TLA+ / Alloy / Coq 三种方法的复用组件验证案例库（各 2+ 案例） | `07/01-tla-plus/case-library.md` | 含可运行规约 + 验证流程图 |
-| P0 | 07 形式化验证 | 完成 Rust 类型系统（所有权、Trait、Cargo 解析）的形式化语义梳理 | `07/04-rust-type-system/formal-semantics.md` | 含定理证明纲要 |
-| P0 | 09 价值量化 | 完成 COCOMO II 复用模型的 2026 校准版（适配 AI 辅助开发、Serverless） | `09/01-cocomo-ii-reuse/cocomo-2026-calibration.md` | 含参数调整建议 |
-| P0 | 09 价值量化 | 完成跨层 FinOps 成本分摊模型的可执行模板 | `09/03-finops-allocation/cost-allocation-template.md` | 含公式 + 计算示例 |
-| P1 | 08 认知架构 | 完成开发者复用决策的认知负荷量化模型（NASA-TLX 适配版） | `08/03-cognitive-load-theory/quantitative-model.md` | 含测量方法对照表 |
-| P1 | 08 认知架构 | 完成 AI 辅助复用决策的认知增强架构设计 | `08/05-ai-cognitive-augmentation/augmentation-architecture.md` | 含 RAG 增强流程 |
+| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|----------|--------|----------|------|
+| P0 | 07 形式化验证 | 完成 TLA+ / Alloy / Coq 三种方法的复用组件验证案例库（各 2+ 案例） | `07/01-tla-plus/case-library.md` | 含可运行规约 + 验证流程图 | 🔄 预热中（TLA+/Alloy 已启动） |
+| P0 | 07 形式化验证 | 完成 Rust 类型系统（所有权、Trait、Cargo 解析）的形式化语义梳理 | `07/04-rust-type-system/formal-semantics.md` | 含定理证明纲要 | ✅ 提前完成（2026-06） |
+| P0 | 09 价值量化 | 完成 COCOMO II 复用模型的 2026 校准版（适配 AI 辅助开发、Serverless） | `09/01-cocomo-ii-reuse/cocomo-2026-calibration.md` | 含参数调整建议 | ✅ 提前完成（2026-06） |
+| P0 | 09 价值量化 | 完成跨层 FinOps 成本分摊模型的可执行模板 | `09/03-finops-allocation/cost-allocation-template.md` | 含公式 + 计算示例 | ✅ 提前完成（2026-06） |
+| P1 | 08 认知架构 | 完成开发者复用决策的认知负荷量化模型（NASA-TLX 适配版） | `08/03-cognitive-load-theory/quantitative-model.md` | 含测量方法对照表 | ✅ 提前完成（2026-06） |
+| P1 | 08 认知架构 | 完成 AI 辅助复用决策的认知增强架构设计 | `08/05-ai-cognitive-augmentation/augmentation-architecture.md` | 含 RAG 增强流程 | ✅ 提前完成（2026-06） |
 
 **对齐活动**:
 
