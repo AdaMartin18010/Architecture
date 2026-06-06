@@ -5,6 +5,84 @@
 
 ---
 
+## 2026-06-06 Phase 2 前沿标准纠偏 + A2A+MCP PoC 增强
+
+### ArchiMate 4.0 官方发布纠偏
+
+> **关键纠正**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4 Specification**。此前项目中将 "ArchiMate 4.0" 标注为"厂商预告/未获官方确认"属于**过渡期间的保守误判**，现全面纠正。
+
+**已更新文件**：
+
+- `struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md` — 标题改为 "ArchiMate 3.2/4.0"，移除勘误警告，更新参考来源为官方发布链接
+- `struct/01-meta-model-standards/01-iso-420xx-family/iso-42024-42042-dis-alignment.md` — 状态表更新：ArchiMate 4.0 标记为"已发布（2026-04-27）"，ArchiMate 3.2 标记为"仍有效，向后兼容"
+- `struct/01-meta-model-standards/README.md` — 描述更新为 "ArchiMate 4.0（2026-04-27 官方发布）"
+- `struct/01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md` — 移除"未获官方确认"注释
+- `struct/01-meta-model-standards/05-swebok-v4/swebok-alignment.md` — 两处引用更新
+- `struct/07-formal-verification/02-alloy/cross-layer-mapping.md` — 更新为"ArchiMate 4.0（2026-04-27 官方发布）"
+- `struct/99-reference/chapters/ch02.md` — 两处引用更新
+- `struct/99-reference/book-outline.md` — 核心贡献与核心论点中的引用更新
+- `struct/99-reference/standards-index/master-alignment-matrix.md` — 状态表更新
+- `struct/SUBSEQUENT_PLAN_2026.md` — blocker 状态改为 "✅ 已完成"
+
+### ISO 26262 / IEC 61508 状态更新
+
+**已更新文件**：
+
+- `struct/11-industrial-iot-otit/06-functional-safety/iec-61508/iec-61508-ed3-reuse.md` — 对齐来源更新为 "IEC 61508 Ed.3 (CDV 投票已完成 2026-01-28，预计 2026 末正式发布)"
+- `struct/11-industrial-iot-otit/06-functional-safety/iso-26262/iso-26262-seooc-reuse.md` — 对齐来源更新为 "ISO 26262:2018 (当前版); 第三版新工作项已注册 (2026 初)，目标发布 ~2029"；"ISO 26262:2025 关键更新"章节重命名为 "ISO 26262 第三版 (Ed.3) 预期方向"并添加重要说明
+- `struct/11-industrial-iot-otit/06-functional-safety/iec-61508-iso-26262-sotif-alignment.md` — 警告更新为"不存在 ISO 26262:2025 官方版本"
+- `struct/11-industrial-iot-otit/07-edge-ai/tinyml-onnx-edge-ai.md` — "ISO 26262:2025 对 ML 的要求"更新为 "ISO 26262 第三版 (Ed.3) 对 ML 的预期要求"
+- `struct/99-reference/standards-index/master-alignment-matrix.md` — ISO 26262 / IEC 61508 状态行更新
+
+### view/ 目录 ArchiMate 4.0 批量替换（历史文档勘误更新）
+
+**处理原则**：view/ 为历史文档（约 31 万字），保留正文历史记录价值，重点更新头部勘误说明和明确的错误断言。
+
+**已更新文件**：
+
+- `view/software_architecture_reuse_full_2026.md` — 9 处修改：
+  - 对齐标准列表：`ArchiMate 3.2` → `ArchiMate 4.0 (2026-04-27 正式发布, 与 3.2 向后兼容)`
+  - 勘误说明：将 "未获官方确认/厂商预告" 更正为 "【已纠正】The Open Group 已于 2026-04-27 正式发布"
+  - 目录与章节标题：`ArchiMate Next (2026 Q2)` → `ArchiMate 4.0`
+  - 表格内容："Dynamic Connection" → "Path / Realization"；"2026 Q2 预期发布" → "2026-04-27 正式发布"
+  - 标准滞后性说明：划线更正为 "ArchiMate 4.0 已于 2026-04-27 正式发布"
+  - Mermaid 图：节点标签同步更新
+- `view/software_architecture_reuse_extension_2026.md` — 2 处修改：对齐标准列表 + 勘误说明更新
+- `view/software_architecture_reuse_framework_2026.md` — 1 处修改：`ArchiMate 3.2/Next` → `ArchiMate 3.2/4.0`
+
+### A2A + MCP PoC 增强（真实 MCP SDK 集成 + 端到端验证）
+
+**更新文件**：
+
+- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/hybrid_agent_server.py` — 全面升级：
+  - 新增 `RealMCPClient` 类：基于 `mcp.ClientSession` + `stdio_client` 连接外部 MCP Server
+  - 新增 `MCPToolManager` 类：自动管理真实 Client / Mock fallback 切换
+  - 启动时通过 `MCP_SERVER_COMMAND` 环境变量自动连接真实 MCP Server（超时 15s，失败降级）
+  - 新增 `GET /mcp/tools` 端点：列出当前可用的 MCP 工具（含 mode 标识）
+  - 当连接真实 MCP Server 时，支持基于关键词模糊匹配所有可用工具
+  - 根端点返回 `mcp_mode` 和 `mcp_sdk_available` 状态
+  - 保留全部原有 A2A 端点（Agent Card、tasks/send、tasks/get、tasks/sendSubscribe）
+  - `process_task` 修复：search 前缀匹配改为大小写不敏感；真实 MCP 返回的纯文本结果直接透传，不再强制 JSON 解析
+
+**新增测试文件**：
+
+- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/test_mcp_server.py` — 基于 `mcp.server.fastmcp` 的测试 MCP Server，提供 `get_weather` / `calculator` / `search_docs` 三个工具
+- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/test_e2e.py` — 端到端自动化测试脚本（7 项断言）
+
+**端到端验证结果**（7/7 通过 ✓）：
+
+| 测试项 | 结果 |
+|--------|------|
+| Root endpoint / MCP mode | `real (3 tools)` ✓ |
+| Agent Card discovery | 3 skills ✓ |
+| MCP Tool Discovery | get_weather / calculator / search_docs ✓ |
+| Weather Query → real MCP | "Weather in Shanghai: cloudy, 26°C. (Source: TestMCP)" ✓ |
+| Calculator → real MCP | "Result of '15 * 23 + 7' = 352 (Source: TestMCP)" ✓ |
+| Document Search → real MCP | "Found 1 document(s) for 'reusable': - Reusable Component Patterns v2.1" ✓ |
+| Unknown Intent Fallback | 友好提示 ✓ |
+
+---
+
 ## 2026-06-06 Phase 1.5 修复（用户确认 1A/2A/3A/4A/5A 后执行）
 
 ### 修复内容

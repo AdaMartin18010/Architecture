@@ -114,7 +114,7 @@ flowchart TB
 
 **DRD 结构**:
 
-```
+```text
 ClaimEvaluation [决策]
 ├── Input Data: ClaimInfo
 │   ├── incidentType: {"Collision", "Theft", "Fire", "Natural Disaster"}

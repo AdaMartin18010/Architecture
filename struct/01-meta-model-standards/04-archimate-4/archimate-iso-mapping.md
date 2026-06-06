@@ -1,24 +1,21 @@
-# ArchiMate 3.2 元素与 ISO 42010:2022 的对照表
+# ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表
 
 > **版本**: 2026-06-06
-> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
+> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); **ArchiMate 4 Specification (2026-04-27)**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
 
-> ⚠️ **重要勘误 / CORRECTION**
+> 📝 **状态更新**
 >
-> 经权威核实，截至 2026 年中，**The Open Group 官方页面仍仅列出 ArchiMate 3.1 为最新发布规范、3.2 为当前认证版本**。
-> 所谓 "ArchiMate 4.0"、"ArchiMate Next" 或 "ArchiMate 4 Specification (2026 Preview)" **未获 The Open Group 官方确认**，其特性描述仅来源于 Visual Paradigm、archimetric.com 等厂商博客和工具营销材料。
->
-> **项目立场**：本文件中所有 "ArchiMate 4.0" 映射内容应视为**基于非官方预告的推测性分析**，不代表当前可遵循的标准。架构实践应以 **ArchiMate 3.2** 为当前稳定基准。
-> 详见：[`iso-42024-42042-dis-alignment.md`](../01-iso-420xx-family/iso-42024-42042-dis-alignment.md)
+> **ArchiMate 4 已于 2026-04-27 由 The Open Group 正式发布**。此前文档中将其标注为"厂商预告"属于**过渡期间的保守判断**，现予以纠正。
+> ArchiMate 4 强调与 3.2 的向后兼容性，是当前活跃版本。详见官方发布：[`https://www.opengroup.org/press-releases`](https://www.opengroup.org/press-releases)
 
 ---
 
 ## 1. 背景与范围
 
-ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前稳定版本为 ArchiMate 3.2（2022-10 发布）**。ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
+ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前版本为 ArchiMate 4（2026-04-27 发布）**，在 ArchiMate 3.2（2022-10）基础上进行了概念简化与扩展，强调向后兼容。ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
-本文档建立 ArchiMate 3.2 核心元素与 ISO 42010:2022 概念之间的双向映射。文中保留的 "ArchiMate 4.0" 对照仅供路线图参考，**不具备标准合规效力**。
+本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射。ArchiMate 4.0 映射部分基于官方发布内容，具备标准合规效力。
 ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
 本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射，覆盖以下四层：
@@ -275,7 +272,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ### 10.1 与 ArchiMate 官方规范的对齐
 
 - **The Open Group: ArchiMate 3.2 Specification (2023)** — 定义了业务/应用/技术/物理/实现五层核心语言及动机扩展。[[来源](https://pubs.opengroup.org/architecture/archimate32-doc/)]
-- **The Open Group: ArchiMate 4 Specification (2026 Preview)** — 引入 Common Domain、Strategy Domain、Path 概念，合并层特定行为/结构元素为通用元素。[[来源](https://www.archimetric.com/archimate-next-reimagining-enterprise-architecture-for-a-new-era/)]
+- **The Open Group: ArchiMate 4 Specification (2026-04-27)** — 引入 Common Domain、Strategy Domain、Path 概念，合并层特定行为/结构元素为通用元素。向后兼容 ArchiMate 3.2。[[来源](https://www.opengroup.org/press-releases)]
 - **ArchiMate Forum, The Open Group (2025-2026)** — ArchiMate 4 的 Motivation White Paper 解释了 Path、Realization 模式与跨层治理的设计意图。
 
 ### 10.2 与 ISO 42010:2022 的对齐
@@ -297,7 +294,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ## 11. 参考索引
 
 1. The Open Group. *ArchiMate 3.2 Specification*. 2023. <https://pubs.opengroup.org/architecture/archimate32-doc/>
-2. The Open Group. *ArchiMate 4 Specification* (Preview). 2026. <https://www.archimetric.com/archimate-next-reimagining-enterprise-architecture-for-a-new-era/>
+2. The Open Group. *ArchiMate 4 Specification*. 2026-04-27. <https://www.opengroup.org/press-releases>
 3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
 4. 4m4.it. "ArchiMate 4 and the Cartography of Complexity". 2026. <https://4m4.it/longforms/archimate_4_and_the_cartography_of_complexity/>
 5. LeanIX. "What is ArchiMate? Key Components & Comparisons". <https://www.leanix.net/en/wiki/ea/what-is-archimate>

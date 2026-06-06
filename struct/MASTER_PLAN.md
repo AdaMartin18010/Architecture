@@ -59,7 +59,7 @@
 
 | 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
 |--------|------|----------|--------|----------|------|
-| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 4.0 状态 | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
+| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 3.2 状态（"ArchiMate 4.0" 厂商预告已标注勘误） | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
 | P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 | ✅ 完成 |
 | P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
 | P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 | ✅ 完成 |

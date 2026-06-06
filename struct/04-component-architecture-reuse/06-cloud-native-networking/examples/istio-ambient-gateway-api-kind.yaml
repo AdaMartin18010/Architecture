@@ -1,0 +1,268 @@
+# Istio Ambient + Gateway API v1.5 最小可运行部署（Kind 集群）
+# 对齐：Gateway API v1.5、Istio Ambient Mode 1.24+、Kubernetes 1.31+
+#
+# 使用方式：
+#   1. kind create cluster --config=kind-config.yaml
+#   2. kubectl apply -f istio-ambient-gateway-api-kind.yaml
+#   3. istioctl install --set profile=ambient -y
+#   4. kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml
+
+# ---------------------------------------------------------------------------
+# 1. Gateway API CRDs (v1.2 Standard)
+# 实际安装请使用官方 release：
+#   kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml
+# ---------------------------------------------------------------------------
+
+---
+# 2. GatewayClass：定义 Istio 为控制器
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: istio
+spec:
+  controllerName: istio.io/gateway-controller
+  description: "Istio Gateway Controller (Ambient Mode)"
+
+---
+# 3. Gateway：公共入口（TLS termination）
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: public-gateway
+  namespace: default
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "*.example.com"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: example-com-tls
+            kind: Secret
+            group: ""
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: "*.example.com"
+      # 实际生产应配置 HTTP->HTTPS 重定向
+
+---
+# 4. HTTPRoute：路由到后端服务（可复用的路由模板）
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: frontend-route
+  namespace: default
+  labels:
+    app: frontend
+    tier: gateway
+spec:
+  parentRefs:
+    - name: public-gateway
+      sectionName: https
+  hostnames:
+    - "app.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: frontend-service
+          port: 8080
+          weight: 100
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+
+---
+# 5. HTTPRoute：金丝雀发布（可复用的渐进式交付模板）
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: backend-canary
+  namespace: default
+  labels:
+    app: backend
+    strategy: canary
+spec:
+  parentRefs:
+    - name: public-gateway
+      sectionName: https
+  hostnames:
+    - "api.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /api/v1
+      backendRefs:
+        - name: backend-service-v1
+          port: 8080
+          weight: 80
+        - name: backend-service-v2
+          port: 8080
+          weight: 20
+      # 可复用的流量管理策略：超时、重试、CORS
+      filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            add:
+              - name: X-Route-Version
+                value: canary-v1.2
+
+---
+# 6. GAMMA 风格 Producer Route（东西向流量）
+# Route 与 Service 同命名空间，服务所有者定义规则
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: internal-payment-route
+  namespace: payment
+  labels:
+    scope: internal
+    pattern: producer-route
+spec:
+  parentRefs:
+    - name: payment-service
+      kind: Service
+      group: ""
+      port: 8080
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /v1/process
+      backendRefs:
+        - name: payment-service
+          port: 8080
+      # 内部服务默认重试策略（可复用平台策略）
+      filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            add:
+              - name: X-Internal-Trace
+                value: "true"
+
+---
+# 7. ReferenceGrant：允许跨命名空间消费（可复用授权模板）
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-cross-namespace-routes
+  namespace: payment
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: default
+  to:
+    - group: ""
+      kind: Service
+      name: payment-service
+
+---
+# 8. Istio AuthorizationPolicy：mTLS + 身份授权
+# 可复用的安全策略模板
+# ---------------------------------------------------------------------------
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: default-deny-all
+  namespace: default
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            principals: ["cluster.local/ns/default/sa/frontend-sa"]
+      to:
+        - operation:
+            methods: ["GET", "POST"]
+            paths: ["/api/*"]
+
+---
+# 9. BackendTLSPolicy：网关到后端的 TLS（Gateway API v1.4+ Standard）
+# 可复用的端到端加密模板
+# ---------------------------------------------------------------------------
+apiVersion: gateway.networking.k8s.io/v1alpha3
+kind: BackendTLSPolicy
+metadata:
+  name: backend-tls
+  namespace: default
+spec:
+  targetRefs:
+    - group: ""
+      kind: Service
+      name: backend-service-v1
+  validation:
+    hostname: backend.internal.example.com
+    caCertificateRefs:
+      - name: backend-ca-cert
+        group: ""
+        kind: ConfigMap
+
+---
+# 10. 示例服务定义（供完整部署参考）
+# ---------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: default
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service-v1
+  namespace: default
+spec:
+  selector:
+    app: backend
+    version: v1
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service-v2
+  namespace: default
+spec:
+  selector:
+    app: backend
+    version: v2
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+  namespace: payment
+spec:
+  selector:
+    app: payment
+  ports:
+    - port: 8080
+      targetPort: 8080

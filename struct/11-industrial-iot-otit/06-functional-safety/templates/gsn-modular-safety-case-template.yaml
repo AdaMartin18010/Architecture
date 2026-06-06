@@ -1,0 +1,203 @@
+# GSN (Goal Structuring Notation) 模块化安全案例模板
+# 对齐：ISO 26262:2018、IEC 61508 Ed.3、Hawkins Pattern Catalogue
+# 用途：为可复用安全关键组件提供标准化的安全论证结构
+#
+# 使用方式：
+#   1. 复制本模板为 <component-name>-safety-case.yaml
+#   2. 填充 assumptions、guarantees、evidence 字段
+#   3. 用 away_goals 引用上游/下游组件的安全案例
+#   4. 集成到 item-level 安全案例时验证所有 assumptions
+
+metadata:
+  template_version: "1.0.0"
+  alignment:
+    - ISO 26262:2018 (Parts 2, 4, 6, 8)
+    - IEC 61508 Ed.3 (expected)
+    - Hawkins GSN Pattern Catalogue
+  generated_at: "2026-06-06"
+
+# ---------------------------------------------------------------------------
+# 组件身份
+# ---------------------------------------------------------------------------
+component:
+  name: "ReusableMotorController"
+  version: "2.1.0"
+  type: "SEooC"  # SEooC | COTS | Proven-in-use | Fully-qualified
+  assumed_asil: "ASIL B"  # 或 SIL 2 / DAL C
+  actual_item_asil: null  # 集成后由 integrator 填充
+
+# ---------------------------------------------------------------------------
+# 假设 (Assumptions of Use / Assumptions of Environment)
+# 这些必须由集成方验证
+# ---------------------------------------------------------------------------
+assumptions:
+  - id: AOU-001
+    category: "Timing"
+    description: "Watchdog refresh period must be <= 50 ms"
+    derived_from: "Safety Requirement SR-042"
+    verification_method: "Integrator static analysis + runtime measurement"
+    verification_status: "PENDING_INTEGRATION"
+
+  - id: AOU-002
+    category: "Diagnostic"
+    description: "Main CPU clock frequency must be monitored by independent clock supervisor"
+    derived_from: "Safety Requirement SR-043"
+    verification_method: "Integrator FMEA / FMEDA"
+    verification_status: "PENDING_INTEGRATION"
+
+  - id: AOU-003
+    category: "Interface"
+    description: "PWM inputs must be within 0-100% duty cycle; out-of-range values trigger safe state"
+    derived_from: "Safety Requirement SR-044"
+    verification_method: "Integrator boundary testing"
+    verification_status: "PENDING_INTEGRATION"
+
+  - id: AOE-001
+    category: "Environment"
+    description: "Operating temperature range -40°C to +85°C"
+    derived_from: "Hardware Safety Analysis HSA-012"
+    verification_method: "Integrator thermal testing or supplier qualification report"
+    verification_status: "PENDING_INTEGRATION"
+
+# ---------------------------------------------------------------------------
+# 保证 (Guarantees / Safety Properties provided by this component)
+# ---------------------------------------------------------------------------
+guarantees:
+  - id: G-001
+    description: "Component maintains safe torque off within 50 ms of fault detection"
+    asil_allocation: "ASIL B"
+    verification:
+      method: "Fault injection testing"
+      evidence_ref: "EV-FI-001"
+      status: "VERIFIED"
+
+  - id: G-002
+    description: "No single point fault shall lead to unintended torque > 10% of nominal"
+    asil_allocation: "ASIL B"
+    verification:
+      method: "FMEDA + SPFM calculation"
+      evidence_ref: "EV-FMEDA-001"
+      status: "VERIFIED"
+
+  - id: G-003
+    description: "Software implements dual-channel torque command cross-check"
+    asil_allocation: "ASIL B"
+    verification:
+      method: "Structured code coverage (MC/DC)"
+      evidence_ref: "EV-COV-001"
+      status: "VERIFIED"
+
+# ---------------------------------------------------------------------------
+# 顶级安全目标 (Top-Level Safety Goal)
+# ---------------------------------------------------------------------------
+top_level_goal:
+  id: G-TL-001
+  text: "The ReusableMotorController is sufficiently safe to be integrated into [ITEM-NAME] achieving [TARGET-ASIL]"
+  supported_by:
+    - strategy:
+        id: S-001
+        text: "Argument over compliance with assumed safety requirements"
+        supported_by:
+          - goal: { ref: G-001 }
+          - goal: { ref: G-002 }
+          - goal: { ref: G-003 }
+    - strategy:
+        id: S-002
+        text: "Argument over validity of assumptions in target context"
+        supported_by:
+          - goal: { ref: "AOU-001" }
+          - goal: { ref: "AOU-002" }
+          - goal: { ref: "AOU-003" }
+          - goal: { ref: "AOE-001" }
+
+# ---------------------------------------------------------------------------
+# 证据 (Evidence)
+# ---------------------------------------------------------------------------
+evidence:
+  - id: EV-FI-001
+    type: "TestReport"
+    title: "Fault Injection Test Report v2.1"
+    tool_qualification_required: false
+    location: "docs/test/fi-report-v2.1.pdf"
+
+  - id: EV-FMEDA-001
+    type: "AnalysisReport"
+    title: "FMEDA for ReusableMotorController v2.1"
+    tool_qualification_required: true
+    tool_qualification_ref: "TQ-SIM-001"
+    location: "docs/analysis/fmeda-v2.1.xlsx"
+
+  - id: EV-COV-001
+    type: "TestReport"
+    title: "MC/DC Coverage Report (Tessy)"
+    tool_qualification_required: true
+    tool_qualification_ref: "TQ-TESSY-001"
+    location: "docs/test/coverage-mcdc-v2.1.html"
+
+# ---------------------------------------------------------------------------
+# Away Goals (引用外部/上下游组件的安全案例)
+# ---------------------------------------------------------------------------
+away_goals:
+  - id: AG-001
+    description: "Hardware platform provides clock supervisor with independent timebase"
+    responsible_component: "ECU-Hardware-Platform"
+    safety_case_ref: "ecu-platform-safety-case.yaml"
+    status: "REFERENCED"
+
+  - id: AG-002
+    description: "Power supply maintains regulated voltage within ±5% under all load conditions"
+    responsible_component: "PowerSupply-Module"
+    safety_case_ref: "power-supply-safety-case.yaml"
+    status: "REFERENCED"
+
+# ---------------------------------------------------------------------------
+# 变更管理与影响分析
+# ---------------------------------------------------------------------------
+change_management:
+  last_modified: "2026-06-06"
+  change_log:
+    - version: "2.1.0"
+      date: "2026-06-06"
+      changes: "Added AOU-003 for PWM boundary assumption"
+      impact_analysis: "Requires re-verification of integrator boundary tests"
+      approved_by: "Safety Manager"
+
+  # 复用影响矩阵：哪些变更会触发集成方重新验证
+  impact_matrix:
+    - change_type: "Software logic change"
+      triggers_reverification: ["G-001", "G-002", "G-003", "EV-FI-001", "EV-COV-001"]
+    - change_type: "Hardware abstraction layer change"
+      triggers_reverification: ["G-001", "AOE-001"]
+    - change_type: "Assumption relaxation"
+      triggers_reverification: ["ALL_ASSUMPTIONS"]
+    - change_type: "Documentation only"
+      triggers_reverification: []
+
+# ---------------------------------------------------------------------------
+# 工具资质 (Tool Qualification)
+# ---------------------------------------------------------------------------
+tool_qualification:
+  - id: TQ-TESSY-001
+    tool_name: "Tessy"
+    version: "4.3.2"
+    tcl: "TCL-2"  # ISO 26262
+    til: "TIL-2"  # IEC 61508 Ed.3
+    qualification_kit_ref: "QKit-Tessy-4.3-ASIL-D.zip"
+
+  - id: TQ-SIM-001
+    tool_name: "CustomFMEDA-Sim"
+    version: "1.5.0"
+    tcl: "TCL-1"
+    til: "TIL-1"
+    qualification_method: "Increased confidence from use"
+
+# ---------------------------------------------------------------------------
+# 与项目复用体系的映射
+# ---------------------------------------------------------------------------
+reuse_framework_mapping:
+  - project_directory: "struct/11-industrial-iot-otit/06-functional-safety/"
+    role: "安全案例模板存放目录"
+  - project_directory: "struct/10-supply-chain-security/"
+    role: "SBOM + SLSA provenance 作为安全案例的供应链证据"
+  - project_directory: "struct/07-formal-verification/"
+    role: "模型检验 / 定理证明补充动态测试证据"

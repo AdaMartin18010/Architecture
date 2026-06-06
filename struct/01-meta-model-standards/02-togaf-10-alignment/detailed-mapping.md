@@ -295,7 +295,7 @@ TOGAF 10 的 ABB/SBB 可通过 ArchiMate 语言进行实例化描述：
 | Technology Service / Node | 技术 ABB | 具体的云实例/物理服务器 |
 | Work Package / Deliverable | 过渡 ABB | 项目计划中的具体任务包 |
 
-ArchiMate 的 **realization** 关系可直接表达 ABB → SBB 的实现对应（Correspondence），而 ArchiMate 4 引入的 **Path** 概念进一步支持了跨层服务实现的逻辑-物理分离。
+ArchiMate 的 **realization** 关系可直接表达 ABB → SBB 的实现对应（Correspondence）。ArchiMate 4（2026-04-27 官方发布）进一步支持了跨层服务实现的逻辑-物理分离。
 
 ---
 

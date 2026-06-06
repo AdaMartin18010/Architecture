@@ -160,7 +160,7 @@ TOGAF Capability Map
 
 #### 示例 B：信息技术管理（Information & Technology Management LOB）
 
-```
+```text
 FEA BRM 2.0: Information & Technology Management (LOB)
 ├── Sub-function: IT Policy & Planning
 ├── Sub-function: IT Security

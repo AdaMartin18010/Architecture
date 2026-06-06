@@ -126,7 +126,7 @@ ISO/IEC 26550:2015
 |-----------|------------------|-----------|
 | **FEA BRM** (Business Reference Model) | 业务线 (Business Line) → 子功能 (Sub-function) → 活动 (Activity) | 美国联邦政府跨机构业务复用基准 |
 | **TOGAF 10** | 业务能力 (Capability) + 价值流 (Value Stream) + 组织单元 (Organization Unit) | 强调 Capability-Based Planning 作为复用单元 |
-| **ArchiMate 3.2/Next** | 业务行为元素 (Process/Function/Event) + 业务结构元素 (Actor/Role/Entity) | 统一 Service 元素跨层复用 |
+| **ArchiMate 3.2/4.0** | 业务行为元素 (Process/Function/Event) + 业务结构元素 (Actor/Role/Entity) | 统一 Service 元素跨层复用；4.0 引入 Common Domain |
 | **ISO/IEC 15288:2023** | 系统生命周期过程 → 业务或任务分析过程 | 从系统工程视角定义业务需求 |
 
 ### 2.2 业务复用的层次结构（从粗到细）

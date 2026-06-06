@@ -11,8 +11,8 @@
 |------|------|----------|----------|
 | **ISO/IEC/IEEE DIS 42024** | DIS 投票中（截止 2026‑01） | 架构基础：词汇、概念、原则；显式覆盖 AI/ML/IoT/数字孪生 | 2026 末–2027 初 |
 | **ISO/IEC/IEEE DIS 42042** | DIS 投票中（截止 2026‑01‑30） | 参考架构规范要求；支持领域特定 RA 的一致性评估 | 2026 末–2027 初 |
-| **ArchiMate 3.2** | 当前稳定版（2022‑10） | 物理元素整合、元模型精化、新关系 | 已发布 |
-| **ArchiMate "4.0" / Next** | 仅存在于厂商博客/工具营销中 | 所谓 Common Domain、七域模型、原生多重性 | **未获 The Open Group 官方确认** |
+| **ArchiMate 4.0** | **已发布（2026‑04‑27）** | Common Domain、策略域、Path 概念；与 3.2 向后兼容 | **当前活跃版本** |
+| ~~ArchiMate 3.2~~ | 已发布（2022‑10） | 物理元素整合、元模型精化、新关系 | 仍有效，向后兼容 |
 | **TOGAF 10** | 已发布（2022） | Fundamental Content + Series Guides 模块化 | 已发布 |
 | **OMG Essence 2.0 beta 2** | 2026‑03 | 内核现代化，支持 DevOps/AI 增强开发 | 预计 2026‑2027 |
 
@@ -74,19 +74,18 @@
 
 | 版本 | 状态 | 来源 |
 |------|------|------|
-| **ArchiMate 3.1** | 最新发布规范 | The Open Group 官网 |
-| **ArchiMate 3.2** | 当前认证版本（2022‑10） | 考试与工具认证基于 3.2 |
-| **ArchiMate "4.0" / "Next"** | **未获官方确认** | 仅存在于 Visual Paradigm、archimetric.com 等厂商博客/营销中 |
+| **ArchiMate 3.2** | 已发布（2022‑10） | 考试与工具认证基于 3.2；与 4.0 向后兼容 |
+| **ArchiMate 4.0** | **官方发布（2026‑04‑27）** | 当前活跃版本；Common Domain、策略域、Path 概念；向后兼容 3.2 |
 
-### 4.2 厂商宣称的 "ArchiMate Next" 特性（仅供参考，非标准）
+### 4.2 ArchiMate 4.0 主要特性
 
-- Common Domain：跨所有域统一的行为元素（Service、Process、Function、Event）
-- 七域模型：替代 rigid 三层层次结构
-- 原生多重性（multiplicity on connectors）
-- 删除 30+ 冗余元素
-- 动态互连、API 生态、AI 驱动架构
+- **Common Domain**：跨所有域统一的行为元素（Service、Process、Function、Event）
+- **策略域**：支持战略路线图的建模
+- **Path 概念**：填补逻辑-物理分离空白
+- **概念简化**：删除冗余元素，同时保持向后兼容
+- **与 TOGAF 对齐**：更紧密地支持企业架构方法
 
-> ⚠️ **项目建议**：在架构实践中继续使用 **ArchiMate 3.2**；可将厂商预告作为路线图信号，但不应在当前交付物中声称符合 "ArchiMate 4.0"。
+> **项目建议**：ArchiMate 4 已成为当前官方版本。新项目中可开始采用；现有 3.2 仓库无需立即迁移，但应规划向 4 的过渡。
 
 ---
 

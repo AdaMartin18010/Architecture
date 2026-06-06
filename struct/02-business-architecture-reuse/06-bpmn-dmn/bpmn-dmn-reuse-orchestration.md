@@ -55,7 +55,7 @@ BPMN 在 AI 时代的价值不降反升：
 
 ### 4.1 三层结构
 
-```
+```text
 Decision Requirements Diagram (DRD)
 ├── Decisions（决策节点）
 ├── Input Data（输入数据）
@@ -79,7 +79,7 @@ FEEL Expressions（Friendly Enough Expression Language）
 
 ### 4.3 与 BPMN 的集成
 
-```
+```text
 BPMN Process
 ├── Business Rule Task
 │   └── 调用 DMN Decision Service
@@ -100,7 +100,7 @@ BPMN Process
 
 ### 6.1 流程模板库
 
-```
+```text
 Process Template Library
 ├── 审批类
 │   ├── 请假审批（User Task → Manager Approval → HR Record）

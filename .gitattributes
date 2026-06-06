@@ -1,0 +1,31 @@
+# =============================================================================
+# Architecture Reuse Knowledge Base — Git Attributes
+# =============================================================================
+# 统一行尾符为 LF，确保跨平台协作一致性（Windows/macOS/Linux）
+# =============================================================================
+
+# 默认：自动处理行尾符（checkout 按平台，commit 转 LF）
+* text=auto
+
+# 文本文件强制 LF
+*.md        text eol=lf
+*.py        text eol=lf
+*.yaml      text eol=lf
+*.yml       text eol=lf
+*.json      text eol=lf
+*.sh        text eol=lf
+*.toml      text eol=lf
+*.txt       text eol=lf
+*.csv       text eol=lf
+
+# 标记为二进制（不转换行尾符）
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.svg       text
+*.woff      binary
+*.woff2     binary
+*.ttf       binary
+*.eot       binary

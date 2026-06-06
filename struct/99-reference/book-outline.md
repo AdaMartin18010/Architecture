@@ -59,7 +59,7 @@
 | 章 | 标题 | 核心主题 | 合并来源 | 预计字数 | 关键标准 |
 |:---|:---|:---|:---|:---:|:---|
 | 1 | 导论：复用的本质与演进 | 复用定义、历史演进、本书结构 | 全书统领 | 15,000 | ISO/IEC 26550:2015 |
-| 2 | 元模型与标准对齐 | 概念地基、术语体系、标准映射 | `01-meta-model-standards` | 30,000 | ISO 42010:2022, TOGAF 10, ArchiMate 4.0 |
+| 2 | 元模型与标准对齐 | 概念地基、术语体系、标准映射 | `01-meta-model-standards` | 30,000 | ISO 42010:2022, TOGAF 10, ArchiMate 3.2 |
 | 3 | 业务架构复用 | 能力、价值流、BPMN/DMN | `02-business-architecture-reuse` | 25,000 | BPMN 2.0, DMN 1.5, FEA BRM |
 | 4 | 应用架构复用 | 云原生、微服务、Data Mesh | `03-application-architecture-reuse` | 28,000 | CNCF, NIST SP 800-204 |
 | 5 | 组件架构复用 | 语言生态、依赖治理、接口设计 | `04-component-architecture-reuse` | 25,000 | SPDX, Semver, SLSA L1-L2 |
@@ -100,13 +100,13 @@
 
 ### 第 2 章：元模型与标准对齐
 
-**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 4.0 提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
+**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 4.0（2026-04-27 正式发布，与 3.2 向后兼容）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
 
 **关键节**：
 2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042
 2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展
 2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
-2.4 ArchiMate 4.0 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界
+2.4 ArchiMate 3.2 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界（"ArchiMate 4.0" 厂商预告已标注勘误）
 2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型
 2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理
 2.7 SWEBOK V4 知识领域对齐：将复用映射到软件工程知识体
@@ -475,7 +475,7 @@ flowchart TB
 本书框架设计至少引用以下三类权威来源：
 
 1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26566:2026（复用成熟度）、IEC 61508（功能安全）
-2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 4.0、OpenSSF SLSA 1.0、Anthropic MCP 2026-07-28 RC、Google A2A v1.0.0
+2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义
 
 完整权威来源列表参见 `struct/99-reference/external-links/authoritative-sources.md`。
