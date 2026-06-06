@@ -10,11 +10,11 @@
 | 标准 | 链接 | 用途 |
 |------|------|------|
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 架构描述 |
-| ISO/IEC 25010:2011 | <https://www.iso.org/standard/35733.html> | 质量模型 |
+| ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 产品质量模型 |
 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/43006.html> | 产品线工程 |
 | ISO/IEC 5962 (SPDX) | <https://www.iso.org/standard/81800.html> | 软件物料清单 |
 | ISO/IEC 19770-2 (SWID) | <https://www.iso.org/standard/65603.html> | 软件标识 |
-| IEC 63278 (AAS) | <https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363> | 资产管理壳 |
+| IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | AAS 结构 |
 | IEC 61508 | <https://webstore.iec.ch/publication/66912> | 功能安全 |
 | ISO 26262 | <https://www.iso.org/standard/68383.html> | 汽车功能安全 |
 
@@ -31,11 +31,15 @@
 
 | 资源 | 链接 |
 |------|------|
+| SLSA 1.2 | <https://slsa.dev/spec/v1.2/> |
+| SLSA 1.1 | <https://slsa.dev/spec/v1.1/> |
 | SLSA 1.0 | <https://slsa.dev/spec/v1.0/> |
 | SPDX | <https://spdx.dev/> |
 | CycloneDX | <https://cyclonedx.org/> |
 | in-toto | <https://in-toto.io/> |
 | Sigstore | <https://www.sigstore.dev/> |
+| NIST SSDF 1.2 Draft | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> |
+| EU CRA | <https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act> |
 
 ## 工业 IoT
 
@@ -43,6 +47,8 @@
 |------|------|
 | OPC Foundation | <https://opcfoundation.org/> |
 | IDTA (AAS) | <https://industrialdigitaltwin.org/> |
+| IEC/IEEE 60802 TSN Profile | <https://1.ieee802.org/tsn/iec-ieee-60802/> |
+| IEEE 802.1 TSN | <https://1.ieee802.org/tsn/> |
 | ISA-95 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> |
 | PLCopen | <https://plcopen.org/> |
 
@@ -61,10 +67,11 @@
 
 | 资源 | 链接 |
 |------|------|
-| MCP | <https://modelcontextprotocol.io/> |
+| MCP Spec 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25/> |
+| MCP Official | <https://modelcontextprotocol.io/> |
 | A2A Protocol | <https://a2aprotocol.ai/> |
-| Anthropic | <https://www.anthropic.com/> |
-| Google ADK | <https://google.github.io/adk-docs/> |
+| OWASP LLM Top 10 | <https://owasp.org/www-project-top-10-for-large-language-model-applications/> |
+| OWASP MCP Top 10 | <https://owasp.org/www-project-mcp-top-10/> |
 
 ## 其他
 

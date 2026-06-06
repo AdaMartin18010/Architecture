@@ -7,16 +7,19 @@
 
 ## ISO 42010 vs TOGAF 10
 
-| ISO 42010 | TOGAF 10 | 说明 |
+| ISO 42010:2022 | TOGAF 10 | 说明 |
 |-----------|---------|------|
-| Architecture Description | Architecture Repository / Catalog | 架构描述的载体 |
+| Entity of Interest (EoI) | System of Interest | 2022 版新术语 |
+| Architecture Description (AD) | Architecture Repository / Catalog | 架构描述的载体 |
 | Stakeholder | Stakeholder | 利益相关者 |
 | Concern | Concern / Architecture Requirement | 关注点/架构需求 |
 | Viewpoint | Viewpoint | 视点 |
 | View | View / Architecture View | 视图 |
+| Architecture View Component | Model / Artifact | 视图组件（替代 Model） |
 | Model Kind | Model / Artifact | 模型种类 |
 | Correspondence | Relationship / Traceability | 对应关系 |
 | Architecture Rationale | Architecture Decision / ADR | 架构依据 |
+| Architecture Description Framework (ADF) | Architecture Framework | 2022 版新术语 |
 
 ## ArchiMate vs UML
 
@@ -45,13 +48,16 @@
 
 ## SLSA vs NIST SSDF
 
-| SLSA 1.0 | NIST SSDF | 说明 |
+| SLSA 1.2 | NIST SSDF 1.2 | 说明 |
 |-----------|-----------|------|
-| L1 Source / Build | PO.1 Secure Software | 保护软件 |
-| L2 Build Track | PW.4 Reusable Code | 复用代码安全 |
-| L3 Build Environment | PW.6 Configure Compiler | 编译器配置 |
-| L4 Reproducible Build | PW.8 Test Executable | 测试可执行文件 |
-| Provenance | PS.1 Protect Software | 保护软件发布 |
+| Build L1 Provenance | PO.1 Secure Software | 保护软件 |
+| Build L2 Source-aware | PW.4 Reusable Code | 安全复用代码 |
+| Build L3 Hardened | PW.6 Configure Compiler | 配置编译器 |
+| Build L4 Reproducible | PW.8 Test Executable | 测试可执行文件 |
+| Source L1 Version Control | PO.3.1 Store Code | 存储代码 |
+| Source L3 Two-Person Review | PO.3.2 Review Code | 审查代码 |
+| VEX | RV.1 / RV.2 | 漏洞可利用性 |
+| SBOM | PW.7 / RV.2 | 软件物料清单 |
 
 ## Industrial Standards Crosswalk
 
@@ -62,17 +68,44 @@
 | Property | Variable | Tag / Attribute | 属性 |
 | Operation | Method | Operation / Phase | 操作 |
 | ConceptDescription | VariableType | Data Structure | 概念描述 |
+| AASX Package | - | - | 离线数据交换格式 |
+
+## TSN 标准映射
+
+| 标准 | 功能 | 应用场景 |
+|------|------|---------|
+| IEEE 802.1AS | 时间同步 | 所有 TSN 应用 |
+| IEEE 802.1Qbv | 门控调度 | 硬实时流量 |
+| IEEE 802.1Qbu/802.3br | 帧抢占 | 降低非实时流量对实时流量的影响 |
+| IEEE 802.1CB | 帧复制和消除 | 高可靠性应用 |
+| IEEE 802.1Qcc | 流预留 | 资源管理 |
+| IEC/IEEE 60802 | TSN 工业自动化配置文件 | 工业 4.0 |
 
 ## AI Native Terminology
 
-| MCP 2026 | A2A v1.0 | 通用含义 |
+| MCP 2025-11-25 | A2A v1.0 | 通用含义 |
 |----------|---------|---------|
 | Server | Agent | 提供服务/能力的实体 |
 | Tool | Skill | 可调用的具体能力 |
 | Resource | Artifact | 可被访问的数据/内容 |
 | Prompt | Message Part | 与 LLM 交互的单元 |
 | Capability | Agent Card | 声明的能力集合 |
-| Session (removed) | Task | 交互上下文 |
+| Host-Client-Server | Peer-to-Peer | 架构关系 |
+
+---
+
+## 质量标准版本对照
+
+| 标准 | 旧版 | 新版 | 关键变化 |
+|------|------|------|---------|
+| ISO 42010 | 2011 | 2022 | EoI, ADF, View Component, Aspect, Perspective |
+| ISO 25010 | 2011 | 2023 | 9 特性，新增 Safety/Flexibility/Interaction Capability |
+| SLSA | v0.1 | v1.2 | Multi-Track: Build/Source/Environment |
+| NIST SSDF | v1.1 (2022) | v1.2 (2026) | 供应链风险管理、VEX、SBOM |
+| IEC 63278 | - | Part 1: 2023; Parts 2-5 开发中 | AAS 系列标准 |
+| OPC UA FX | - | Parts 80-84 | C2C, Offline Engineering |
+| MCP | 2024-11-05 | 2025-11-25 | Streamable HTTP, OAuth 2.1, schema 拆分 |
+| A2A | v0.1 (2025-04) | v1.0 (2026-04) | Signed Agent Cards, gRPC, 多租户 |
 
 ---
 
