@@ -8,7 +8,8 @@
 
 ## 1. 标准背景
 
-IEC/IEEE 60802 是 IEC 和 IEEE 的联合项目，旨在为工业自动化定义 TSN（Time-Sensitive Networking）配置文件。这是一个**双标徽标准**（dual logo standard），同时是 IEC 和 IEEE 标准。
+IEC/IEEE 60802 是 IEC 和 IEEE 的联合项目，旨在为工业自动化定义 TSN（Time-Sensitive Networking）配置文件。
+这是一个**双标徽标准**（dual logo standard），同时是 IEC 和 IEEE 标准。
 
 | 项目 | 内容 |
 |------|------|
@@ -75,7 +76,7 @@ TSN Four Pillars
 
 OPC UA FX 直接使用 IEC/IEEE 60802 作为其底层网络传输：
 
-```
+```text
 OPC UA FX Stack
 ├── Application Layer: OPC UA PubSub / Client-Server
 ├── Transport Layer: UDP/IP
@@ -113,7 +114,7 @@ IEC/IEEE 60802 要求的时间同步精度：
 
 IEEE 802.1Qbv 的门控调度是 TSN 的核心机制：
 
-```
+```text
 Gate Control List (GCL)
 ├── Base Time: 调度开始时间
 ├── Cycle Time: 循环周期
@@ -133,7 +134,7 @@ Gate Control List (GCL)
 
 ### 网络拓扑
 
-```
+```text
 Star/Ring Topology
 ├── Central TSN Switch (主时钟)
 ├── Edge TSN Switches
@@ -157,7 +158,6 @@ Star/Ring Topology
 ## 9. 复用价值
 
 > **定理 TSN.1** (Profile Interoperability): 严格遵循 IEC/IEEE 60802 的设备可以在不需要自定义配置的情况下实现互操作。任何偏离配置文件的行为都会增加集成成本和风险。
-
 > **定理 TSN.2** (Convergence Benefit): 使用 60802 的融合网络可以将 OT 和 IT 基础设施成本降低 30-50%，但前提是流量工程必须正确实施。
 
 ---

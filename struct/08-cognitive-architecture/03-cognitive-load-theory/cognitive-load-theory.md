@@ -17,7 +17,7 @@
 
 > **公理 C.1** (Cognitive Load Conservation): 架构复用的主要价值之一是将**外在认知负荷**转化为**图式化的相关认知负荷**。形式化：
 >
-> ```
+> ```text
 > ΔTotalLoad = ΔExtraneous + ΔGermane
 > ```
 >
@@ -47,7 +47,7 @@
 
 ### 原则 1: 渐进式揭示 (Progressive Disclosure)
 
-```
+```text
 Level 1: Quick Start （5 分钟上手）
 Level 2: Common Patterns （常见用例）
 Level 3: Advanced Configuration （高级配置）
@@ -74,7 +74,7 @@ Level 4: Source Code / Architecture （源代码与架构）
 
 ### 知识表征层次
 
-```
+```text
 领域知识
 ├── 业务概念模型
 ├── 业务流程规则

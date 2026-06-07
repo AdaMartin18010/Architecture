@@ -21,7 +21,7 @@
 
 ## 2. A2A v1.0 核心对象
 
-```
+```text
 A2A Protocol
 ├── Agent Card（代理卡片）
 │   ├── 发布在: /.well-known/agent.json
@@ -97,7 +97,7 @@ A2A Protocol
 
 ## 4. Task 状态机
 
-```
+```text
 Task Lifecycle
 ├── submitted（已提交）
 ├── working（处理中）
@@ -119,7 +119,7 @@ Task Lifecycle
 
 ## 5. A2A 与 MCP 的互补关系
 
-```
+```text
 完整 Agent 架构
 │
 ├── Agent ↔ Tools: MCP
@@ -205,7 +205,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 
 ### 网络架构
 
-```
+```text
 Kubernetes Deployment
 ├── Agent Pod
 │   └── 暴露 /.well-known/agent.json
@@ -228,7 +228,6 @@ Kubernetes Deployment
 ## 9. 对架构复用的影响
 
 > **定理 A2A.2** (Agent Card Network Effect): A2A Agent 的复用价值与 A2A 生态中其他 Agent 的数量成正比。生态越大，单个 Agent 的价值越高。
-
 > **定理 A2A.3** (Cross-Vendor Interoperability): A2A 的核心价值在于跨厂商 Agent 的互操作。单一厂商内部的 Agent 协调可以使用专有协议，但跨厂商必须使用开放标准。
 
 ---
@@ -237,7 +236,7 @@ Kubernetes Deployment
 
 ### 模式 1: A2A Agent 内部使用 MCP
 
-```
+```text
 Orchestrator Agent (A2A)
     ├── Specialist Agent A (A2A)
     │   └── 内部使用 MCP → Database Server
@@ -249,7 +248,7 @@ Orchestrator Agent (A2A)
 
 ### 模式 2: Gateway 统一路由
 
-```
+```text
 User Request → A2A Gateway
     ├── MCP Tool Calls → MCP Servers
     └── A2A Task Delegation → Specialist Agents

@@ -10,9 +10,12 @@
 
 ## 1. 层定义与复用范围
 
-L3 MES 层是连接企业计划 (L4) 与现场控制 (L1-L2) 的关键枢纽，核心职能包括生产调度、质量合规、物料追溯、维护协调与绩效分析。本层资产的复用价值体现在：**配方 (Recipe) 的标准化**、**SOP 的数字化复用**、**KPI/OEE 计算模型的一致化**。通过复用经 GMP/ISO 审核验证的 MES 模板，可将新产线 MES 上线周期从 6–9 个月压缩至 2–3 个月。
+L3 MES 层是连接企业计划 (L4) 与现场控制 (L1-L2) 的关键枢纽，核心职能包括生产调度、质量合规、物料追溯、维护协调与绩效分析。
+本层资产的复用价值体现在：**配方 (Recipe) 的标准化**、**SOP 的数字化复用**、**KPI/OEE 计算模型的一致化**。
+通过复用经 GMP/ISO 审核验证的 MES 模板，可将新产线 MES 上线周期从 6–9 个月压缩至 2–3 个月。
 
-> **交叉引用**: MES 层是 `struct/02-business-architecture-reuse/03-value-stream/value-stream-composition.md` 中"订单到现金"价值流的核心执行层。价值流的阶段间接口契约（如订单数据、库存预留确认）在 MES 层具体化为 B2MML 消息与生产调度指令。
+> **交叉引用**: MES 层是 `struct/02-business-architecture-reuse/03-value-stream/value-stream-composition.md` 中"订单到现金"价值流的核心执行层。
+> 价值流的阶段间接口契约（如订单数据、库存预留确认）在 MES 层具体化为 B2MML 消息与生产调度指令。
 
 ---
 

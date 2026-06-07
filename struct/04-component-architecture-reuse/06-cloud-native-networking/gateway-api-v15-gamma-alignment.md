@@ -20,7 +20,7 @@
 
 ## 2. Gateway API 版本时间线
 
-```
+```text
 v1.0  (2023-10)  Gateway/GatewayClass/HTTPRoute 进入 v1 Stable
 v1.1  (2024-05)  Service Mesh 支持；GRPCRoute Standard
 v1.2  (2024-11)  WebSockets、Timeouts、Retries

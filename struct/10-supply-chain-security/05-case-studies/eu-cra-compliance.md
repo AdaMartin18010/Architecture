@@ -40,7 +40,7 @@
 
 ## 3. 制造商四大义务
 
-```
+```text
 EU CRA Obligations
 ├── 1. 安全设计与默认 (Security by Design and Default)
 │   ├── 最小化攻击面

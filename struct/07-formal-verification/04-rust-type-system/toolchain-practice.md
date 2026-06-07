@@ -9,7 +9,7 @@
 
 对于可复用 Rust 组件，推荐按以下层次递进，成本从低到高，保证从弱到强：
 
-```
+```text
 Level 1: cargo test + cargo-semver-checks          （功能回归 + API 兼容性）
 Level 2: Miri                                      （UB 动态检测）
 Level 3: Kani                                      （有界模型检验）

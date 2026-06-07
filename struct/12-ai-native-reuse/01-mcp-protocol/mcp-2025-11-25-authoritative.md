@@ -23,7 +23,7 @@
 
 ## 2. MCP 架构模型（官方）
 
-```
+```text
 MCP 架构
 ├── Host（宿主应用）
 │   └── 启动连接的 LLM 应用（如 Claude Desktop, Cursor）
@@ -191,7 +191,6 @@ MCP 规范明确列出以下安全和信任原则：
 ## 9. 对架构复用的影响
 
 > **定理 MCP.2** (Tool Reuse Trust Transfer): MCP Tool 的复用信任从 Server 转移到 Tool 描述，再转移到 Host 的权限控制。任一环节的弱化都会导致整体信任降级。
-
 > **定理 MCP.3** (Context Bloat Limit): MCP Agent 能有效利用的 Tool 数量存在上限。超过该上限后，新增 Tool 的边际收益为负。
 
 ---

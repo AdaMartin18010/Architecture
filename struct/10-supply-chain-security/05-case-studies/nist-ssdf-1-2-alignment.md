@@ -20,7 +20,7 @@
 
 ## 2. SSDF 1.2 四大实践组
 
-```
+```text
 SSDF v1.2
 ├── PO: Prepare the Organization（组织准备）
 ├── PS: Protect the Software（保护软件）

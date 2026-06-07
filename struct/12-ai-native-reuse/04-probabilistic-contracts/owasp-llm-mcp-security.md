@@ -102,7 +102,7 @@ OWASP 针对 MCP 专门发布了 Top 10：
 
 ### 5.1 Defense in Depth
 
-```
+```text
 多层防御
 ├── 网络层: TLS、证书固定
 ├── 认证层: OAuth 2.1 + PKCE、API Key

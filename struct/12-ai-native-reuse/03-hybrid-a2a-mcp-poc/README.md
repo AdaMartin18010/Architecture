@@ -7,7 +7,7 @@
 
 ## 1. 架构设计
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │  A2A Client (LangGraph / CrewAI / ADK / Browser)            │
 │  └── HTTP POST /jsonrpc (tasks/send)                        │
@@ -15,12 +15,12 @@
 │  A2A Server (FastAPI)                                       │
 │  ├── GET /.well-known/agent-card.json                       │
 │  ├── POST /jsonrpc                                          │
-│  │   ├── tasks/send         → 同步任务处理                  │
-│  │   ├── tasks/sendSubscribe → SSE 流式响应                │
-│  │   └── tasks/get          → 查询任务状态                  │
-│  └── 内部：意图识别 → MCP 工具路由                          │
+│  │   ├── tasks/send         → 同步任务处理                   │
+│  │   ├── tasks/sendSubscribe → SSE 流式响应                  │
+│  │   └── tasks/get          → 查询任务状态                   │
+│  └── 内部：意图识别 → MCP 工具路由                            │
 ├─────────────────────────────────────────────────────────────┤
-│  MCP Tool Layer (模拟 / 真实 MCP Server)                    │
+│  MCP Tool Layer (模拟 / 真实 MCP Server)                     │
 │  ├── get_weather(city)                                      │
 │  ├── calculator(expression)                                 │
 │  └── search_docs(query)                                     │

@@ -7,7 +7,7 @@
 
 ## 1. ROI 计算模型
 
-```
+```text
 ROI = (Benefit_total - Cost_total) / Cost_total × 100%
 
 Benefit_total = Benefit_direct + Benefit_indirect + Benefit_strategic
@@ -38,7 +38,7 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 
 ## 2. 成本构成
 
-```
+```text
 复用总成本
 ├── 初始成本
 │   ├── 资产评估
@@ -60,10 +60,9 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 ## 3. 关键定理
 
 > **定理 V.T1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
-
 > **定理 V.T2** (Break-Even Point):
 >
-> ```
+> ```text
 > N* = C_initial / (S_build - S_reuse)
 > ```
 >

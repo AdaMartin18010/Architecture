@@ -127,7 +127,7 @@ A2A 协议复用流程
 
 ## 4. Task 状态机
 
-```
+```text
 Task 状态机（形式化定义）
 ├── 状态集合 S = {submitted, working, input-required, completed, failed, canceled}
 ├── 初始状态: submitted
@@ -195,7 +195,7 @@ Task 状态机（形式化定义）
 
 A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
-```
+```text
 签名验证流程
 ├── 1. 获取 Agent Card
 │   └── GET https://agent.example.com/.well-known/agent.json

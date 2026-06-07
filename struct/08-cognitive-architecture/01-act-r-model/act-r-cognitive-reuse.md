@@ -26,7 +26,7 @@ ACT-R（Adaptive Control of Thought – Rational）是卡内基梅隆大学 John
 
 ### 1.3 双重记忆系统
 
-```
+```text
 Declarative Memory (LTM)
 ├── 事实知识："巴黎是法国首都"
 └── 事件知识："昨天开了会"

@@ -15,7 +15,7 @@
 
 ### 2.1 训练→优化→部署流水线
 
-```
+```text
 PyTorch/TensorFlow 训练
     ↓
 模型转换（ONNX / TFLite）
@@ -65,7 +65,7 @@ PyTorch/TensorFlow 训练
 
 ### 4.1 模型仓库与版本管理
 
-```
+```text
 Model Registry
 ├── Base Model (FP32)
 ├── Quantized Variants

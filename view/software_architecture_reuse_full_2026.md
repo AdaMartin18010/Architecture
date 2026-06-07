@@ -80,7 +80,7 @@
 
 ### 1.1 核心标准族谱（ISO/IEC/IEEE 420xx 系列）
 
-```
+```text
 ISO/IEC/IEEE 42010:2022  ──→ 架构描述 (Architecture Description)
          │                    └── 视图(View)、视点(Viewpoint)、利益相关者(Stakeholder)、关注点(Concern)
          │                    └── 架构描述框架 (ADF) = 视点库 + 视图库 + 模型库 + 架构理由
@@ -104,7 +104,7 @@ ISO/IEC/IEEE 42010:2022  ──→ 架构描述 (Architecture Description)
 
 ### 1.2 ISO/IEC 26550 系列：产品线工程与复用的标准族谱
 
-```
+```text
 ISO/IEC 26550:2015  ──→ 产品线工程与管理参考模型 (Reference Model for PLE)
          │
          ├── 26551:2016 ──→ 需求工程工具与方法 (Requirements Engineering)
@@ -153,7 +153,7 @@ ISO/IEC 26550:2015  ──→ 产品线工程与管理参考模型 (Reference Mo
 
 ### 1.5 产品线工程元模型（ISO/IEC 26550:2015）
 
-```
+```text
 ISO/IEC 26550:2015 参考模型
 ├── 领域工程 (Domain Engineering) ──→ "为复用而生产"
 │   ├── 领域分析 ──→ 共性(Commonality)识别 + 变性(Variability)识别
@@ -173,13 +173,9 @@ ISO/IEC 26550:2015 参考模型
 ### 1.6 元模型层的公理-定理体系
 
 > **公理 M.1** (Architecture-Reuse Duality): 架构的本质是**约束的集合**；复用的本质是**约束的传递**。一个架构的可复用性等于其约束的**可传递性**与**可组合性**的乘积。
-
 > **公理 M.2** (Variability Axiom): 复用的本质是管理**共性 (Commonality)** 与**变性 (Variability)** 的分离与绑定。没有变性管理的复用是克隆，不是工程。
-
 > **公理 M.3** (Hierarchy Non-Reduction): 复用具有层次性（业务→应用→组件→功能），层次间**不可约化**。业务复用不能降维为组件复用，功能复用不能升维为应用复用。
-
 > **定理 M.1** (Viewpoint Composition): 若视点 V₁ 覆盖关注点 C₁，V₂ 覆盖 C₂，且 C₁ ∩ C₂ ≠ ∅，则复合视点 V₁₂ = V₁ ⊗ V₂ 必须显式定义 C₁ ∩ C₂ 的**冲突消解机制**。
-
 > **定理 M.2** (Standard Alignment Transitivity): 若标准 S₁ 对齐 S₂，S₂ 对齐 S₃，则 S₁ 与 S₃ 的对齐关系需通过 S₂ 的**概念映射表**显式定义，不可默认传递。
 
 ---
@@ -427,7 +423,7 @@ Level 4: 数据架构复用 (Data Architecture Reuse)
 
 ### 3.4 应用复用的场景应用树
 
-```
+```text
 应用复用场景树
 ├── 企业级应用集成
 │   ├── ERP 核心 → 应用系统复用（财务、HR、供应链模块）
@@ -456,13 +452,9 @@ Level 4: 数据架构复用 (Data Architecture Reuse)
 ### 3.5 应用复用的形式化约束
 
 > **公理 3.1** (Component Encapsulation): 应用组件的可复用性与其**内部状态暴露度**成反比，与**接口契约完备性**成正比。形式化：Reusability(C) = 1 / (1 + StateExposure(C)) × ContractCompleteness(C)。
-
 > **公理 3.2** (Deployment Independence): 应用组件的可复用性与其部署独立性正相关。强耦合于特定运行时（特定 K8s 版本、特定 OS、特定云厂商）的组件不可复用。
-
 > **定理 3.1** (Service Substitution): 若应用服务 S₁ 与 S₂ 满足同一接口契约 I，且 S₁ 的非功能属性集合 N₁ ⊆ N₂（S₂ 的能力覆盖 S₁），则 S₂ 可在任何使用 S₁ 的上下文中**无侵入替换**。
-
 > **定理 3.2** (Data-Application Coupling): 数据架构与应用架构的复用独立当且仅当数据访问通过**抽象数据服务**（如 Repository 模式、数据 API、数据网格节点）而非**直接存储耦合**（如共享数据库表、直接 SQL）实现。
-
 > **定理 3.3** (Microservice Decomposition Limit): 微服务的分解粒度存在下限。当服务边界内代码量 < 100 LOC 或服务间通信量 > 服务内计算量时，分解产生负收益（运维复杂度 > 复用收益）。
 
 ---
@@ -485,7 +477,7 @@ Level 4: 数据架构复用 (Data Architecture Reuse)
 
 ### 4.2 组件复用的四层层次结构
 
-```
+```text
 Level 1: 框架/平台复用 (Framework/Platform Reuse)
 ├── 定义: 基础设施级组件集合（如 Spring Boot, React, .NET, Django, Rust Actix）
 ├── 复用单元:
@@ -553,7 +545,7 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 
 ### 4.4 组件复用的场景应用树
 
-```
+```text
 组件复用场景树
 ├── 后端服务构建
 │   ├── Web 框架 → 框架复用（Spring Boot, FastAPI, Actix）
@@ -588,13 +580,9 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 ### 4.5 组件复用的形式化约束
 
 > **公理 4.1** (Interface Contract Completeness): 组件的可复用性取决于其**接口契约**的完备性（前置条件、后置条件、不变量、副作用声明），而非实现细节。形式化：Reusability(C) = Σ(Contractᵢ) / (1 + ImplementationComplexity(C))。
-
 > **公理 4.2** (Dependency Acyclicity): 可复用组件的依赖图必须是有向无环图 (DAG)。任何循环依赖均破坏组件的独立复用性。
-
 > **定理 4.1** (Dependency Transitivity): 若组件 A 依赖组件 B，B 依赖组件 C，则 A 的复用隐含了 {B, C} 的传递闭包的复用。传递闭包的**变性冲突**是组件复用的主要风险源。形式化：Risk(A) = |Var(B) ∩ Var(C) ∩ Var(A)|，其中 Var(X) 为组件 X 的变性集合。
-
 > **定理 4.2** (Liskov Substitution for Components): 组件 C₂ 可替换 C₁ 当且仅当 C₂ 的接口是 C₁ 接口的**行为子类型**（前置条件弱化、后置条件强化、不变量保持）。此即组件层面的 LSP。
-
 > **定理 4.3** (Semantic Versioning Validity): 语义化版本 MAJOR.MINOR.PATCH 的有效性前提是接口契约的**向后兼容性**可判定。若接口契约包含非形式化语义（如"快速响应"），则版本号无法保证复用安全。
 
 ---
@@ -616,7 +604,7 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 
 ### 5.2 功能复用的五层层次结构
 
-```
+```text
 Level 1: 算法/数据结构复用 (Algorithm/Data Structure Reuse)
 ├── 定义: 计算逻辑与数据组织的可复用实现
 ├── 复用单元:
@@ -692,7 +680,7 @@ Level 5: AI/LLM 功能复用 (AI Function Reuse)
 
 ### 5.3 功能复用的粒度-成本-收益决策树
 
-```
+```text
 功能复用决策树
 ├── 功能是否跨越业务边界？
 │   ├── 是 → 升级为"业务服务复用" (第2层)
@@ -713,7 +701,7 @@ Level 5: AI/LLM 功能复用 (AI Function Reuse)
 
 ### 5.4 AI 功能复用的协议架构（MCP + A2A）
 
-```
+```text
 AI 功能复用协议栈（2026）
 ├── MCP (Model Context Protocol) ──→ Agent → Tool 层
 │   ├── 工具 (Tools): 函数调用、API 执行、文件操作
@@ -754,7 +742,7 @@ MCP + A2A 组合架构
 
 ### 5.6 功能复用的场景应用树
 
-```
+```text
 功能复用场景树
 ├── 通用计算
 │   ├── 排序/搜索 → 算法复用（标准库）
@@ -791,13 +779,9 @@ MCP + A2A 组合架构
 ### 5.7 功能复用的形式化约束
 
 > **公理 5.1** (Function Purity): 功能的可复用性与其**副作用透明度**正相关。纯函数（无副作用、引用透明）具有最高复用等级。形式化：若 f(x) = f(x) ∀x（引用透明），则 Reusability(f) = 1；否则 Reusability(f) = 1 / (1 + |SideEffects(f)|)。
-
 > **公理 5.2** (Determinism Boundary): 功能的可复用性与其**确定性**正相关。确定性功能（相同输入→相同输出）的复用契约是布尔型的（满足/不满足）；概率性功能（AI 推理）的复用契约必须是**概率型**的（P(正确性) ≥ θ）。
-
 > **定理 5.1** (Functional Composition): 若函数 f: A → B 和 g: B → C 均为可复用功能，则其复合 g ∘ f: A → C 的可复用性取决于**B 的接口稳定性**。若 B 的接口变更频率 > 1/迭代周期，则复合不可复用。
-
 > **定理 5.2** (AI Function Non-Determinism): AI 功能（LLM 调用、模型推理）的可复用性受**温度参数 (temperature)** 和**模型版本漂移**制约。其复用契约必须包含**确定性边界**（如 "P(正确性) ≥ 0.95 @ temperature=0.1"）。无确定性边界的 AI 功能不可复用。
-
 > **定理 5.3** (MCP-A2A Complementarity): MCP 解决 Agent→Tool 的垂直复用，A2A 解决 Agent→Agent 的水平复用。二者在功能复用视角下构成**正交补空间**：MCP 提供功能原子性，A2A 提供功能组合性。缺一不可。
 
 ---

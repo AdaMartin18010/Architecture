@@ -17,7 +17,7 @@
 
 ### 2.1 等价源代码行（Equivalent KSLOC）
 
-```
+```text
 ESLOC = ASLOC × (1 - AT/100) × AAM
 ```
 
@@ -29,7 +29,7 @@ ESLOC = ASLOC × (1 - AT/100) × AAM
 
 ### 2.2 适配调整因子 AAM
 
-```
+```text
 AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100     (AAF ≤ 50)
 AAM = [AA + AAF + (SU × UNFM)] / 100               (AAF > 50)
 ```
@@ -58,7 +58,7 @@ AAM = [AA + AAF + (SU × UNFM)] / 100               (AAF > 50)
 
 适用于原型项目和存在大量复用的场景：
 
-```
+```text
 PM = (NAP × (1 - %reuse/100)) / PROD
 ```
 
@@ -80,7 +80,7 @@ PM = (NAP × (1 - %reuse/100)) / PROD
 
 ### 4.1 基础方程
 
-```
+```text
 PM = A × Size^B × M
 
 其中：
@@ -113,7 +113,7 @@ B = 1.01 + 0.01 × Σ(Wi × Si)
 
 ### 5.1 维护规模方程
 
-```
+```text
 Size_M = (Base Code Size × MCF) × MAF
 
 或
@@ -158,7 +158,7 @@ PMAT 与 CMMI 的映射：
 
 默认校准基于 161 个样本项目。本地校准只需调整常数 A：
 
-```
+```text
 ln(A) = average[ln(PM_actual) - ln(PM_unadjusted)]
 A = e^X
 ```
@@ -182,7 +182,7 @@ A = e^X
 
 ### 8.2 投资回报计算
 
-```
+```text
 复用 ROI = (避免的新开发成本 - 复用成本) / 复用成本 × 100%
 
 其中：

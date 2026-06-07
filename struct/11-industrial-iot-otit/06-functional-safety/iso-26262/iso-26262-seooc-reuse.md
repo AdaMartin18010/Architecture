@@ -38,7 +38,7 @@ SEooC 是为**跨上下文复用**而开发的安全元素。它：
 
 ### 2.2 软件级产品开发（V 模型）
 
-```
+```text
 软件安全需求 (SSR)
     ↓
 软件架构设计 —— ASIL 等级隔离、安全机制嵌入
@@ -81,7 +81,7 @@ SEooC 是为**跨上下文复用**而开发的安全元素。它：
 
 ### 3.2 元模型
 
-```
+```text
 SEooC Component
 ├── Safety Contract
 │   ├── Functional Assumptions

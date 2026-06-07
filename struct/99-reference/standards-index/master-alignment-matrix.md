@@ -19,7 +19,15 @@
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (2026 末), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
-> **更新说明**: 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。工业层 UADP 作为 OPC UA FX 底层传输独立标注。[[1]][https://modelcontextprotocol.io/specification/2025-11-25]([2)][https://a2aprotocol.org]([3)][https://webassembly.org]([4)](<https://opcfoundation.org>)
+> **更新说明**:
+> 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。
+> 新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。
+> A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
+> 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
+> [[1]][https://modelcontextprotocol.io/specification/2025-11-25]
+> ([2)][https://a2aprotocol.org]
+> ([3)][https://webassembly.org]
+> ([4)](<https://opcfoundation.org>)
 
 ---
 
@@ -46,7 +54,11 @@
 | **OMG RAS v2.2** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ |
 | **FAIR4RS** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ |
 
-> **评分依据**: MCP 与 A2A 在功能层均为 ★★★★★（协议设计目标即为功能级 AI 复用）；A2A 在应用层评分高于 MCP（Agent Card 支持服务化发现与编排），在治理层因 Signed Agent Cards 与多租户支持评分 ★★★★☆；OPC UA FX 工业层 ★★★★★（现场层通信基线）；WASM Component Model 组件层 ★★★★★（跨语言组件封装）。评分与 `axiom-theorem-tree.md` 中定理 5.1（Tool Reuse Equivalence）、定理 AI.2（MCP-A2A Complementarity）、公理 I.1（OT Determinism）对齐。
+> **评分依据**:
+> MCP 与 A2A 在功能层均为 ★★★★★（协议设计目标即为功能级 AI 复用）；
+> A2A 在应用层评分高于 MCP（Agent Card 支持服务化发现与编排），在治理层因 Signed Agent Cards 与多租户支持评分 ★★★★☆；
+> OPC UA FX 工业层 ★★★★★（现场层通信基线）；WASM Component Model 组件层 ★★★★★（跨语言组件封装）。
+> 评分与 `axiom-theorem-tree.md` 中定理 5.1（Tool Reuse Equivalence）、定理 AI.2（MCP-A2A Complementarity）、公理 I.1（OT Determinism）对齐。
 
 ---
 

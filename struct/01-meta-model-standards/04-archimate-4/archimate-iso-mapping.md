@@ -3,7 +3,6 @@
 > **版本**: 2026-06-06
 > **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); **ArchiMate 4 Specification (2026-04-27)**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
-
 > 📝 **状态更新**
 >
 > **ArchiMate 4 已于 2026-04-27 由 The Open Group 正式发布**。此前文档中将其标注为"厂商预告"属于**过渡期间的保守判断**，现予以纠正。
@@ -13,9 +12,11 @@
 
 ## 1. 背景与范围
 
-ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前版本为 ArchiMate 4（2026-04-27 发布）**，在 ArchiMate 3.2（2022-10）基础上进行了概念简化与扩展，强调向后兼容。ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
+ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前版本为 ArchiMate 4（2026-04-27 发布）**，在 ArchiMate 3.2（2022-10）基础上进行了概念简化与扩展，强调向后兼容。
+ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
-本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射。ArchiMate 4.0 映射部分基于官方发布内容，具备标准合规效力。
+本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射。
+ArchiMate 4.0 映射部分基于官方发布内容，具备标准合规效力。
 ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
 本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射，覆盖以下四层：

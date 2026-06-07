@@ -155,7 +155,7 @@ let (tx, rx) = channel::<DataType>();
 
 对于超大型安全关键系统，可考虑**分层验证策略**：
 
-```
+```text
 System
 ├── 安全核心 (Safety-Critical Core)
 │   ├── 推荐: SPARK Ada

@@ -7,7 +7,7 @@
 
 ## 1. 模板结构
 
-```
+```text
 gsn-modular-safety-case-template.yaml
 ├── metadata              # 模板版本与对齐标准
 ├── component             # 组件身份（SEooC / COTS / Proven-in-use）

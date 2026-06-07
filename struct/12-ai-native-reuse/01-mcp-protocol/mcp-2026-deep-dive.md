@@ -9,7 +9,7 @@
 > - [`mcp-2025-11-25-deep-dive.md`](./mcp-2025-11-25-deep-dive.md)
 > - [`mcp-2025-11-25-authoritative.md`](./mcp-2025-11-25-authoritative.md)
 > - 官方规范：<https://modelcontextprotocol.io/specification/2025-11-25>
-
+>
 > **版本**: 2026-06-06
 > **对齐标准**: MCP 2026-07-28 RC (2026-05-21 锁定) — **已勘误为 2025-11-25**
 > **定位**: 历史存档，保留以展示项目认知迭代过程
@@ -58,7 +58,7 @@
 
 ## 2. 无状态架构的复用意义
 
-```
+```text
 MCP 无状态架构的复用优势
 ├── 水平扩展
 │   ├── 旧: 粘性会话 → 单实例瓶颈
@@ -79,7 +79,7 @@ MCP 无状态架构的复用优势
 
 **形式化洞察**: 无状态化将 MCP Server 从"会话参与者"降级为"纯函数执行器"。每个请求 r 可表示为：
 
-```
+```text
 Response(r) = f(Capabilities(r), Context(r), Parameters(r))
 ```
 
@@ -89,7 +89,7 @@ Response(r) = f(Capabilities(r), Context(r), Parameters(r))
 
 ## 3. 协议栈的复用层次
 
-```
+```text
 MCP 协议栈复用层次
 ├── 传输层 (Transport)
 │   ├── stdio: 本地进程通信
@@ -224,7 +224,7 @@ Authorization: Bearer <token>
 
 ## 6. 缓存语义与 ttlMs
 
-```
+```text
 缓存决策规则
 ├── ttlMs = undefined
 │   └── 不缓存，每次请求重新获取
@@ -242,7 +242,7 @@ Authorization: Bearer <token>
 
 **形式化定义**: 设缓存副本 C 的生成时间为 t₀，ttlMs 为 T。则在时间 t 时：
 
-```
+```text
 Valid(C, t) ↔ (t - t₀) ≤ T
 ```
 
@@ -254,7 +254,7 @@ Valid(C, t) ↔ (t - t₀) ≤ T
 
 2026-07-28 将 Extensions 从实验性提升为正式框架，允许 MCP 协议的可控演进。
 
-```
+```text
 Extensions 注册机制
 ├── 1. 能力协商
 │   └── Client 和 Server 在初始化时交换支持的 Extensions
@@ -293,7 +293,7 @@ Extensions 注册机制
 
 ### OAuth 2.1 + 防 Issuer 混淆
 
-```
+```text
 安全流程
 ├── 1. 发现
 │   └── Client 从 Server 的 .well-known/mcp-server.json 获取元数据

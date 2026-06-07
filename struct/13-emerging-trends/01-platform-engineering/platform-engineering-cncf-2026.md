@@ -134,7 +134,7 @@ IDP 是平台团队构建和维护的软件系统，为开发者提供：
 
 ### 6.2 Golden Path 模板库
 
-```
+```text
 Golden Path Library
 ├── backend-service/
 │   ├── java-spring-boot/

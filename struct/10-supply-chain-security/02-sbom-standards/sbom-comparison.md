@@ -25,7 +25,7 @@ SPDX (Software Package Data Exchange) 是 Linux Foundation 主导的开放标准
 
 ### 核心元素
 
-```
+```text
 SPDX Document
 ├── SPDXID: SPDXRef-DOCUMENT
 ├── name
@@ -63,7 +63,7 @@ CycloneDX 是 OWASP 主导的标准，专注于软件供应链安全。
 
 ### 核心元素
 
-```
+```text
 bom.json
 ├── metadata
 ├── components[]
@@ -120,7 +120,7 @@ SWID (Software Identification Tags) 是 ISO/IEC 19770-2 标准。
 
 ## 5. 格式选择决策
 
-```
+```text
 SBOM 格式选择
 │
 ├── 主要目标？

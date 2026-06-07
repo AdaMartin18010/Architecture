@@ -20,7 +20,7 @@
 
 SLSA v1.2 将单一 Build Track 扩展为多条独立可认证的轨道：
 
-```
+```text
 SLSA v1.2
 ├── Build Track      (L1–L3, L4 提议中)
 │   L1: Provenance 存在

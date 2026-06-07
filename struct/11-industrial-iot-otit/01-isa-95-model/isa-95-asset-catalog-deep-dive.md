@@ -74,7 +74,7 @@
 
 ### 2.2 设备能力属性清单
 
-```
+```text
 Equipment Capability
 ├── Identification
 │   ├── EquipmentID (全局唯一)
@@ -177,7 +177,7 @@ Equipment Capability
 
 ### 6.2 跨层引用链
 
-```
+```text
 L4 ERP
 ├── 物料主数据 (Material Master)
 └── 工单 (Work Order)

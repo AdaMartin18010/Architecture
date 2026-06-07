@@ -55,7 +55,9 @@ L4 企业层是 ISA-95 五层模型的最高层，面向业务规划与资源优
 
 ### 3.4 形式化验证提示
 
-> **交叉引用**: 企业层业务流程（如 P2P、计划到生产）涉及复杂的并发与资源竞争。可借鉴 `struct/07-formal-verification/06-b-method/event-b-railway-refinement.md` 中的 **Event-B 上下文扩展** 机制：将业务规则（如三单匹配、信用额度检查）建模为可扩展的 Context 公理集，各法人实体通过上下文扩展注入本地法规约束，同时保持核心 Machine（流程状态机）不变，确保全局流程一致性。
+> **交叉引用**:
+> 企业层业务流程（如 P2P、计划到生产）涉及复杂的并发与资源竞争。
+> 可借鉴 `struct/07-formal-verification/06-b-method/event-b-railway-refinement.md` 中的 **Event-B 上下文扩展** 机制：将业务规则（如三单匹配、信用额度检查）建模为可扩展的 Context 公理集，各法人实体通过上下文扩展注入本地法规约束，同时保持核心 Machine（流程状态机）不变，确保全局流程一致性。
 
 ---
 

@@ -22,7 +22,7 @@
 
 ## 2. 版本与治理时间线
 
-```
+```text
 2025-04-09    Google Cloud Next '25 首发，50+ 合作伙伴
 2025-06       捐赠给 Linux Foundation
 2025-07-30    v0.3.0：流式传输、Agent Card 能力协商
@@ -63,7 +63,7 @@
 
 ### 3.2 Task 生命周期状态机
 
-```
+```text
 submitted → working → [input-required | auth-required] → completed
    ↓                                              ↓
  rejected                                      failed / canceled
@@ -145,7 +145,7 @@ submitted → working → [input-required | auth-required] → completed
 
 ### 6.2 生产示例：贷款审批 BPMN
 
-```
+```text
 Start Event → Service Task(欺诈检测 A2A Agent)
    → Gateway(风险过高?)
    → Subprocess(贷款报价准备 — A2A 多轮客户交互)

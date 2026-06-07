@@ -17,7 +17,7 @@ BDI（Belief-Desire-Intention）理论由 Rao & Georgeff (1995) 提出，基于 
 
 ### 1.2 实用推理（Practical Reasoning）
 
-```
+```text
 信念更新（Belief Revision）
     ↓
 愿望生成（Option Generation）
@@ -51,7 +51,7 @@ BDI（Belief-Desire-Intention）理论由 Rao & Georgeff (1995) 提出，基于 
 
 ### 3.1 计划作为可复用资产
 
-```
+```text
 Plan Library
 ├── Generic Plans（通用计划）
 │   ├── move-to-location(X, Y)

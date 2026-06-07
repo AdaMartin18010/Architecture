@@ -37,7 +37,8 @@
 
 ### 1.1 Time-Aware Shaper (TAS) 架构
 
-IEEE 802.1Qbv 定义的时间感知整形器（TAS）是 TSN 实现确定性传输的核心机制。每个 TSN 交换机的出端口配备 8 个硬件队列（对应 IEEE 802.1p 优先级 0–7），每个队列由一个**门（Gate）**控制其开/关状态。
+IEEE 802.1Qbv 定义的时间感知整形器（TAS）是 TSN 实现确定性传输的核心机制。
+每个 TSN 交换机的出端口配备 8 个硬件队列（对应 IEEE 802.1p 优先级 0–7），每个队列由一个**门（Gate）**控制其开/关状态。
 
 ```mermaid
 flowchart LR
@@ -71,7 +72,10 @@ flowchart LR
 | **Time Interval** | Δt | 每个 GCL 条目的持续时间 | ≥ 传输时延 + Guard Band |
 | **Guard Band** | G | 保护带，防止帧跨时隙 | ≥ MTU_max / LineRate + PropagationDelay |
 
-> **门控位图编码**: 8 位二进制 `b7b6b5b4b3b2b1b0` 对应 Queue 7 到 Queue 0。`1` 表示开门（允许发送），`0` 表示关门（阻塞）。例如 `0x80` = `10000000` 仅启用最高优先级队列。[IEEE 802.1Qbv]
+> **门控位图编码**:
+> 8 位二进制 `b7b6b5b4b3b2b1b0` 对应 Queue 7 到 Queue 0。
+> `1` 表示开门（允许发送），`0` 表示关门（阻塞）。
+> 例如 `0x80` = `10000000` 仅启用最高优先级队列。[IEEE 802.1Qbv]
 
 ---
 
@@ -79,7 +83,7 @@ flowchart LR
 
 ### 2.1 抽象语法（伪代码）
 
-```
+```text
 GCL_Configuration := {
     base_time:        IEEE_802_1AS_Time,      // 64-bit nanoseconds since epoch
     cycle_time:       Duration_ns,            // 周期时长

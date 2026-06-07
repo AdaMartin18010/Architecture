@@ -203,7 +203,7 @@ flowchart TB
 
 ### 3.2 绿地实施路径
 
-```
+```text
 Phase 1 (设计月 1-2): 信息模型设计
   └── Companion Specification 选择/定制
   └── AML 离线工程模板开发
@@ -366,7 +366,8 @@ OPC UA FX 部署场景决策树
 
 在混合和棕地场景中，数据一致性是架构复用的核心约束。
 
-> **公理 HYBRID.1** (Source of Truth Uniqueness): 在任何混合架构中，每个过程变量的**单一事实来源（Single Source of Truth, SSOT）**必须被显式声明。禁止同一变量在 FX 网络和原有总线中均被下游系统视为权威来源。
+> **公理 HYBRID.1** (Source of Truth Uniqueness): 在任何混合架构中，每个过程变量的**单一事实来源（Single Source of Truth, SSOT）**必须被显式声明。
+> 禁止同一变量在 FX 网络和原有总线中均被下游系统视为权威来源。
 
 **推荐 SSOT 分配原则**:
 

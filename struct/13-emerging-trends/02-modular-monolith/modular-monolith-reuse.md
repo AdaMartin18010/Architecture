@@ -33,7 +33,7 @@
 
 ### 模块边界设计
 
-```
+```text
 模块化单体
 ├── Module A: 用户管理
 │   ├── API: UserService
@@ -86,7 +86,7 @@
 
 ## 5. 模块化单体 → 微服务的演进路径
 
-```
+```text
 阶段 1: 单体混沌 (Big Ball of Mud)
     ↓ 重构：提取模块边界
 阶段 2: 模块化单体 (Modular Monolith)

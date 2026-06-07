@@ -7,7 +7,7 @@
 
 ## 1. 目录结构
 
-```
+```text
 03-coq-isabelle/
 ├── README.md                         # 本文件
 ├── coq-examples/

@@ -9,13 +9,15 @@
 
 ## 1. 引言：为什么软件供应链需要零信任
 
-传统的网络安全模型假设"内网可信、外网不可信"。然而，在软件供应链中，这一假设完全失效：
+传统的网络安全模型假设"内网可信、外网不可信"。
+然而，在软件供应链中，这一假设完全失效：
 
 - **SolarWinds (2020)**: 攻击者通过入侵构建服务器，将恶意代码注入到受信任的更新包中
 - **XZ Utils (2024)**: 攻击者通过长期维护者身份渗透，在压缩库中植入后门
 - **3CX (2023)**: 供应链上游的钓鱼攻击导致通信软件被篡改
 
-NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心原则是 **"永不信任，始终验证"**（Never Trust, Always Verify）。将其应用于软件供应链，意味着对**每一个组件、每一次构建、每一次部署**都进行持续验证，而非信任上游供应商的安全声明。
+NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心原则是 **"永不信任，始终验证"**（Never Trust, Always Verify）。
+将其应用于软件供应链，意味着对**每一个组件、每一次构建、每一次部署**都进行持续验证，而非信任上游供应商的安全声明。
 
 > **公理 ZT.T1** (Zero Trust Supply Chain Transitivity): 在软件供应链中，零信任要求对每一个组件、每一个环节、每一次构建都进行验证。形式化：Trust(A, M) = Product(Trust(Xi, Xi+1)) -> 0 当链长度 > 5。
 
@@ -23,7 +25,8 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 
 ## 2. 五层防御矩阵
 
-本模板将零信任软件供应链架构划分为五个防御层：身份（Identity）、设备（Device）、网络（Network）、应用（Application）、数据（Data）。每层包含信任验证点、最小权限策略和持续监控指标。
+本模板将零信任软件供应链架构划分为五个防御层：身份（Identity）、设备（Device）、网络（Network）、应用（Application）、数据（Data）。
+每层包含信任验证点、最小权限策略和持续监控指标。
 
 | 防御层 | NIST SP 800-207 对应 | SSDF 1.2 对应 | SLSA 映射 |
 |-------|---------------------|--------------|----------|
@@ -99,7 +102,9 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 | 设备健康评分 | < 80% | P2 |
 | 异常 USB/外设使用 | >= 1 | P2 |
 
-> **交叉引用**: `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` 指出，Rust（Cargo）和 Go（Modules）生态的原生 vendor 支持使得完全离线构建成为可能，是设备层隔离的终极形态。
+> **交叉引用**:
+> `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` 指出，
+> Rust（Cargo）和 Go（Modules）生态的原生 vendor 支持使得完全离线构建成为可能，是设备层隔离的终极形态。
 
 ---
 

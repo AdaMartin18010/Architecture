@@ -66,7 +66,7 @@
 
 ### 3.2 复用架构
 
-```
+```text
 Application Component
 ├── import "wasi:cli/stdout"
 ├── import "wasi:http/incoming-handler"
@@ -131,7 +131,7 @@ Payment Service Component
 
 ### 6.2 边缘-云协同复用
 
-```
+```text
 Cloud
 ├── 大型推理模型（LLM）
 └── 训练与模型更新

@@ -21,7 +21,7 @@
 
 ## 2. SLSA 1.2 轨道体系
 
-```
+```text
 SLSA v1.2 Tracks
 ├── Build Track（构建轨道）
 │   ├── L1: 生成 Provenance

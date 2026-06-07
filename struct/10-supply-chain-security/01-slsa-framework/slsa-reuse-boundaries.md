@@ -57,7 +57,7 @@ SLSA v1.0 采用**多轨道（Multi-Track）模型**，当前发布的 Build Tra
 
 #### 升级路径
 
-```
+```text
 L0 → L1
 ├── 步骤 1: 将手动构建迁移至 CI/CD（GitHub Actions / GitLab CI / Jenkins）
 ├── 步骤 2: 使用 SLSA GitHub Generator 或自研脚本生成 Provenance
@@ -92,7 +92,7 @@ L0 → L1
 
 #### 升级路径
 
-```
+```text
 L1 → L2
 ├── 步骤 1: 将构建迁移至托管 CI/CD（避免本地/自托管 runner）
 ├── 步骤 2: 集成 Sigstore/cosign keyless signing（推荐）

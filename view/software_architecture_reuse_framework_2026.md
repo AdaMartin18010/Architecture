@@ -58,7 +58,7 @@
 
 ### 1.1 核心标准族谱（ISO/IEC/IEEE 420xx 系列）
 
-```
+```text
 ISO/IEC/IEEE 42010:2022  ──→ 架构描述 (AD) ──→ 视图/视点/利益相关者/关注点的形式化分离
          │
          ├── ISO/IEC/IEEE 42020:2019 ──→ 架构过程 (Architecture Processes)
@@ -99,7 +99,7 @@ ISO/IEC/IEEE 42010:2022  ──→ 架构描述 (AD) ──→ 视图/视点/利
 
 ### 1.4 产品线工程标准 (ISO/IEC 26550 / 26566:2026) 的复用元模型
 
-```
+```text
 ISO/IEC 26550:2015
 ├── 领域工程 (Domain Engineering)
 │   ├── 领域分析 ──→ 共性/变性识别
@@ -131,7 +131,7 @@ ISO/IEC 26550:2015
 
 ### 2.2 业务复用的层次结构（从粗到细）
 
-```
+```text
 Level 1: 业务领域复用 (Business Domain Reuse)
     └── 定义：跨行业/跨组织的宏观业务领域（如"支付","物流","合规"）
     └── 标准对齐：FEA BRM Line of Business
@@ -171,9 +171,7 @@ Level 5: 业务服务复用 (Business Service Reuse)
 ### 2.4 业务复用的形式化约束（公理-定理体系）
 
 > **公理 2.1** (Capability Atomicity): 业务能力是可复用的最小业务语义单元，其边界由**价值创造**而非**组织结构**定义。
-
 > **定理 2.1** (Value Stream Composition): 若价值流 V 由阶段 {S₁, S₂, ..., Sₙ} 组成，且每个 Sᵢ 对应业务能力 Cᵢ，则 V 的复用等价于 {Cᵢ} 的**有序组合**加上**阶段间契约**的复用。
-
 > **定理 2.2** (Process-Service Duality): 业务流程是**时序化**的业务服务编排；业务服务是**接口化**的业务流程封装。二者在复用视角下构成对偶关系。
 
 ---
@@ -192,7 +190,7 @@ Level 5: 业务服务复用 (Business Service Reuse)
 
 ### 3.2 应用复用的层次结构
 
-```
+```text
 Level 1: 应用系统复用 (Application System Reuse)
     └── 定义：完整的可部署应用（如 ERP, CRM, WMS）
     └── 标准对齐：FEA ARM "System" 类别
@@ -233,9 +231,7 @@ Level 4: 数据架构复用 (Data Architecture Reuse)
 ### 3.4 应用复用的形式化约束
 
 > **公理 3.1** (Component Encapsulation): 应用组件的可复用性与其**内部状态暴露度**成反比，与**接口契约完备性**成正比。
-
 > **定理 3.1** (Service Substitution): 若应用服务 S₁ 与 S₂ 满足同一接口契约 I，且 S₁ 的非功能属性集合 N₁ ⊆ N₂（S₂ 的能力覆盖 S₁），则 S₂ 可在任何使用 S₁ 的上下文中**无侵入替换**。
-
 > **定理 3.2** (Data-Application Coupling): 数据架构与应用架构的复用独立当且仅当数据访问通过**抽象数据服务**而非**直接存储耦合**实现。
 
 ---
@@ -254,7 +250,7 @@ Level 4: 数据架构复用 (Data Architecture Reuse)
 
 ### 4.2 组件复用的层次结构
 
-```
+```text
 Level 1: 框架/平台复用 (Framework/Platform Reuse)
     └── 定义：基础设施级组件集合（如 Spring Boot, React, .NET）
     └── 复用单元：框架本身、脚手架、代码生成器
@@ -290,9 +286,7 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 ### 4.4 组件复用的形式化约束
 
 > **公理 4.1** (Interface Contract Completeness): 组件的可复用性取决于其**接口契约**的完备性（前置条件、后置条件、不变量、副作用声明），而非实现细节。
-
 > **定理 4.1** (Dependency Transitivity): 若组件 A 依赖组件 B，B 依赖组件 C，则 A 的复用隐含了 {B, C} 的传递闭包的复用。传递闭包的**变性冲突**是组件复用的主要风险源。
-
 > **定理 4.2** (Liskov Substitution for Components): 组件 C₂ 可替换 C₁ 当且仅当 C₂ 的接口是 C₁ 接口的**行为子类型**（前置条件弱化、后置条件强化、不变量保持）。
 
 ---
@@ -310,7 +304,7 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 
 ### 5.2 功能复用的层次结构
 
-```
+```text
 Level 1: 算法/数据结构复用 (Algorithm/Data Structure Reuse)
     └── 定义：计算逻辑与数据组织的可复用实现
     └── 复用单元：排序算法、图遍历、哈希表、树结构
@@ -344,7 +338,7 @@ Level 5: AI/LLM 功能复用 (AI Function Reuse)
 
 ### 5.3 功能复用的粒度-成本-收益决策树
 
-```
+```text
 功能复用决策树
 ├── 功能是否跨越业务边界？
 │   ├── 是 → 升级为"业务服务复用" (第2层)
@@ -366,9 +360,7 @@ Level 5: AI/LLM 功能复用 (AI Function Reuse)
 ### 5.4 功能复用的形式化约束
 
 > **公理 5.1** (Function Purity): 功能的可复用性与其**副作用透明度**正相关。纯函数（无副作用、引用透明）具有最高复用等级。
-
 > **定理 5.1** (Functional Composition): 若函数 f: A → B 和 g: B → C 均为可复用功能，则其复合 g ∘ f: A → C 的可复用性取决于**B 的接口稳定性**。
-
 > **定理 5.2** (AI Function Non-Determinism): AI 功能（LLM 调用、模型推理）的可复用性受**温度参数 (temperature)** 和**模型版本漂移**制约。其复用契约必须包含**确定性边界**（如 "P(正确性) ≥ 0.95"）。
 
 ---
@@ -466,7 +458,7 @@ graph TD
 
 ### 7.3 复用决策判定树（文本版）
 
-```
+```text
 复用决策判定树
 ├── 输入：待复用资产 A，目标上下文 C
 │
@@ -506,7 +498,7 @@ graph TD
 
 ### 7.4 公理-定理推理树（复用认识论）
 
-```
+```text
 公理体系：软件工程复用认识论
 │
 ├── 元公理 (Meta-Axiom)
@@ -552,7 +544,7 @@ graph TD
 
 ### 8.2 每层的细化提纲模板（以业务层为例）
 
-```
+```text
 Layer X: [层次名称]
 ├── X.1 国际标准对齐
 │   ├── 主标准：[标准编号]

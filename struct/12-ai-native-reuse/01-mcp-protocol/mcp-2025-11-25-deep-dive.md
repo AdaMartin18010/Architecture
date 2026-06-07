@@ -166,7 +166,7 @@
 
 ### 版本协商
 
-```
+```text
 Client: "latest_supported": "2025-11-25"
 Server: "protocolVersion": "2025-11-25" 或回退到支持的版本
 ```
