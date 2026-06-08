@@ -1,0 +1,8 @@
+component,site,hours,failures,target_sil
+Component A,Site 1,1000000,0,2
+Component B,Site 1,500000,1,2
+Component C,Site 1,2000000,0,3
+Component D,Site 1,800000,0,2
+Component D,Site 2,600000,1,2
+Component D,Site 3,700000,0,2
+Component E,Site 1,100000,0,2
