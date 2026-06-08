@@ -2,7 +2,7 @@
  * mcp-tool-graph.als
  * T12: MCP Tool 能力依赖图验证
  * 
- * 基于 Model Context Protocol (MCP) 2026-07-28 RC 规范中的工具能力模型，
+ * 基于 Model Context Protocol (MCP) 2025-11-25 规范中的工具能力模型，
  * 使用 Alloy 验证 MCP Server 内 Tool 调用的结构约束：
  *   1) 工具依赖图中不存在循环调用
  *   2) 每个被调用的 Tool 必须在其所属 Server 的能力列表中

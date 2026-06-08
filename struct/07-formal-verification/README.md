@@ -49,7 +49,8 @@
 - [x] DO-178C MC/DC 形式化定义 (`05-spark-ada/mcdc-formalization.md`)
 - [x] SPARK/Ada 飞控案例 (`05-spark-ada/flight-control-contracts.md`)
 - [x] B Method 铁路信号案例 (`06-b-method/railway-signaling-refinement.md`)
-- [ ] Coq/Isabelle 高安全等级组件案例（`03-coq-isabelle/`，Phase 2 2026-Q4）
+- [x] Coq/Isabelle 教学示例（`insertion_sort.v`, `bounded_counter.v`, `Turnstile.thy`）— 基础语法验证
+- [ ] Coq/Isabelle 安全关键组件定理证明（`03-coq-isabelle/`，Phase 2 2026-Q4）— 待启动
 
 ## 验证环境
 

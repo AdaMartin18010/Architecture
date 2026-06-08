@@ -1,22 +1,24 @@
-# ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表
+# ArchiMate 3.2 元素与 ISO 42010:2022 的对照表（含 4.0 预览标注）
 
 > **版本**: 2026-06-06
-> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); **ArchiMate 4 Specification (2026-04-27)**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
+> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); **ArchiMate 4 Specification（厂商预览，未获 The Open Group 官方确认）**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
-> 📝 **状态更新**
+> 📝 **勘误说明（2026-06-08）**
 >
-> **ArchiMate 4 已于 2026-04-27 由 The Open Group 正式发布**。此前文档中将其标注为"厂商预告"属于**过渡期间的保守判断**，现予以纠正。
-> ArchiMate 4 强调与 3.2 的向后兼容性，是当前活跃版本。详见官方发布：[`https://www.opengroup.org/press-releases`](https://www.opengroup.org/press-releases)
+> 此前本文档（及项目其他文件）中声称 "ArchiMate 4 已于 2026-04-27 由 The Open Group 正式发布" **与事实不符**。
+> 经核查 The Open Group 官方网站（`opengroup.org/archimate-forum/archimate-overview`），截至 2026-06-08，官方最新稳定版仍为 **ArchiMate 3.2**。
+> ArchiMate 4.0 目前处于厂商预发布/预览阶段，尚未获得 The Open Group 正式发布确认。
+> 本文档中所有 "ArchiMate 4.0" 映射内容均为基于厂商预览的预测性分析，不具备标准合规效力。
 
 ---
 
 ## 1. 背景与范围
 
-ArchiMate 是 The Open Group 推出的企业架构建模语言，**当前版本为 ArchiMate 4（2026-04-27 发布）**，在 ArchiMate 3.2（2022-10）基础上进行了概念简化与扩展，强调向后兼容。
+ArchiMate 是 The Open Group 推出的企业架构建模语言，**厂商预览版本为 ArchiMate 4（尚未正式发布），当前官方稳定版为 ArchiMate 3.2（2022-10）**，在 ArchiMate 3.2 基础上进行了概念简化与扩展的预览分析。
 ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
 本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射。
-ArchiMate 4.0 映射部分基于官方发布内容，具备标准合规效力。
+ArchiMate 4.0 映射部分基于厂商预览内容，不具备标准合规效力。
 ISO/IEC/IEEE 42010:2022 则规定了架构描述（Architecture Description）的通用元模型，包括视点（Viewpoint）、视图（View）、视图组件（View Component）、模型种类（Model Kind）等核心概念。
 
 本文档建立 ArchiMate 3.2/4.0 核心元素与 ISO 42010:2022 概念之间的双向映射，覆盖以下四层：
@@ -169,9 +171,10 @@ ArchiMate 技术层描述技术基础设施，包括 IT 和物理技术（ArchiM
 
 ### 5.4 ArchiMate 4 的重要变化：Path 与 Realization
 
-ArchiMate 4 引入了 **Path** 概念（位于 Common Domain），用于表达跨层的逻辑路径（数据路径、能源路径、物料路径）。Path 由下层技术元素 **realized by** 具体实现。这与 ISO 42010:2022 的 **Correspondence** 概念高度一致：Path 定义了逻辑对应规则，其实现元素定义了物理对应实例。
+ArchiMate 4 引入了 **Path** 概念（位于 Common Domain），用于表达跨层的逻辑路径（数据路径、能源路径、物料路径）。
+Path 由下层技术元素 **realized by** 具体实现。这与 ISO 42010:2022 的 **Correspondence** 概念高度一致：Path 定义了逻辑对应规则，其实现元素定义了物理对应实例。
 
-```
+```text
 Path "Secure API Gateway Path" (Common Domain)
     └── realized by → Node "Kong Gateway" (Technology Domain)
         └── realized by → Device "AWS ALB" + System Software "Kong 3.5"
@@ -203,7 +206,8 @@ Path "Secure API Gateway Path" (Common Domain)
 
 ### 6.3 与 ISO 42010 架构决策的映射
 
-ISO 42010:2022 要求 Architecture Description 必须包含 **Architecture Decision** 和 **Architecture Rationale**（Clause 6.10）。ArchiMate 的实现与迁移元素提供了决策的载体：
+ISO 42010:2022 要求 Architecture Description 必须包含 **Architecture Decision** 和 **Architecture Rationale**（Clause 6.10）。
+ArchiMate 的实现与迁移元素提供了决策的载体：
 
 | ISO 42010:2022 | ArchiMate 4.0 映射 | 说明 |
 |----------------|--------------------|------|
@@ -295,7 +299,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ## 11. 参考索引
 
 1. The Open Group. *ArchiMate 3.2 Specification*. 2023. <https://pubs.opengroup.org/architecture/archimate32-doc/>
-2. The Open Group. *ArchiMate 4 Specification*. 2026-04-27. <https://www.opengroup.org/press-releases>
+2. The Open Group. *ArchiMate 4 Specification*（厂商预览，未正式发布）. <https://www.opengroup.org/archimate-forum>
 3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
 4. 4m4.it. "ArchiMate 4 and the Cartography of Complexity". 2026. <https://4m4.it/longforms/archimate_4_and_the_cartography_of_complexity/>
 5. LeanIX. "What is ArchiMate? Key Components & Comparisons". <https://www.leanix.net/en/wiki/ea/what-is-archimate>

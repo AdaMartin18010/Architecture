@@ -10,9 +10,9 @@
 - `01-meta-model-standards/01-iso-420xx-family/iso-42010-2022-update.md` — 术语变更
 - `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — TOGAF 与 ISO 42010 映射
 
-### ISO/IEC 25010:2023
+### ISO/IEC 25010:2024
 
-- `01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-update.md` — 九大特性
+- `01-meta-model-standards/01-iso-420xx-family/iso-25010-2024-update.md` — 九大特性
 - `06-cross-layer-governance/02-quality-governance/` — 质量门禁映射
 
 ### ISO 26550 系列（软件产品线）

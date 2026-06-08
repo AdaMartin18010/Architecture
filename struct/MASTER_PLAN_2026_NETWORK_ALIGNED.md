@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-07（网络权威内容对齐版）
 > **定位**: 在 `SUBSEQUENT_PLAN_2026.md`（2026-06-06）基础上，全面对齐国际最新标准、技术生态与学术前沿，重新编排未完成项与后续推进计划
-> **对齐来源**: ISO/IEC/IEEE DIS 42042/42024、ISO 25010:2023、SLSA 1.2、MCP 2025-11-25 / Agentic AI Foundation、A2A v1.0、WASI 0.3 / Wasm 3.0、IEC 63278-1:2023、IEC 61508 Ed.3（预计2026）、ICSA 2026 / ECSA 2025 / GreenArch 2026、CNCF Platform Engineering Maturity Model、Green Software Foundation SCI
+> **对齐来源**: ISO/IEC/IEEE DIS 42042/42024、ISO 25010:2024、SLSA 1.2、MCP 2025-11-25 / Agentic AI Foundation、A2A v1.0、WASI 0.3 / Wasm 3.0、IEC 63278-1:2023、IEC 61508 Ed.3（预计2026）、ICSA 2026 / ECSA 2025 / GreenArch 2026、CNCF Platform Engineering Maturity Model、Green Software Foundation SCI
 
 ---
 
@@ -76,7 +76,7 @@
 | **11 工业 IoT** | T20: 工业边缘 AI 模型部署规范（ONNX/TFLite） | 2027-Q1 | P1 | 规划中，未启动 |
 | **11 工业 IoT** | T21: MCP for Industrial AI 协议草案 | 2027-Q1 | P1 | 规划中，未启动 |
 | **12 AI 原生** | Agentic Governance 组织设计模板 | 2026-Q4 | P1 | 规划中，未启动 |
-| **12 AI 原生** | Conformal Prediction + 形式化验证融合框架 | 2027-Q3 | P1 | 完全空白，国际前沿 |
+| **12 AI 原生** | CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础） | 2027-Q3 | P2 | 完全空白，国际前沿 |
 | **13 新兴趋势** | RegTech Agentic 架构的案例验证 | 2027-Q3 | P2 | 规划中，未启动 |
 | **13 新兴趋势** | 可持续软件架构（GreenArch）初探 | 2027-Q3 | P2 | 完全空白，需对齐 GSF SCI |
 | **99 参考** | 交互式复用决策工具（Web/CLI） | 2027-Q4 | P2 | Phase 6 目标 |
@@ -129,7 +129,7 @@
 |----------|---------------------|---------------|------|----------|
 | **ISO/IEC/IEEE DIS 42042** | 2026-01 关闭投票（Stage 40.60 enquiry phase），预计 2026 年内定稿。覆盖 AI/ML/IoT/云计算/数字孪生等应用领域 | 仅作为待跟踪项 | 草案即将定稿，缺少参考架构元模型与复用框架的对照 | **紧急**：跟踪进展，一旦发布立即补充到 `01-meta-model-standards` |
 | **ISO/IEC/IEEE DIS 42024** | 2026-01-12 截止公开征询，基础架构词汇与概念标准 | 未明确引用 | 缺少基础术语与复用视角的对照 | 补充到 `01-meta-model-standards` |
-| **ISO/IEC 25010:2023** | 已正式发布。Reusability 为 Maintainability 子特性；Modularity 独立；新增 Interaction capability/Flexibility/Safety | 在 06/01 中提及，未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 需补充 25010:2023 质量特性对复用的影响矩阵 | 更新 `01-meta-model-standards` 或 `06-cross-layer-governance` |
+| **ISO/IEC 25010:2024** | 已正式发布（取代 2011 版）。Reusability 为 Maintainability 子特性；Modularity 独立；新增 Interaction capability/Flexibility/Safety；新增 AI/ML 质量考量 | 在 06/01 中提及，未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 需补充 25010:2024 质量特性对复用的影响矩阵 | 更新 `01-meta-model-standards` 或 `06-cross-layer-governance` |
 | **ISO/IEC 25040:2024** | 已发布（Evaluation）。新增"获取或复用预开发产品"的评估流程 | 未明确引用 | 缺少评估流程与复用决策的对照 | 新增对照章节 |
 | **SLSA 1.2** | **已正式发布**（OpenSSF）。Multi-Track：Build / Source / Attested Build Environments。Build Level 4 仍在开发 | 已更新到 1.1/1.2，但 L4 分布式构建验证仍为空白 | L4 多签名/可复现构建实践缺失 | 补充 `slsa-l4-distributed-builds.md` + sigstore/cosign 示例 |
 | **IEC 61508 Ed.3** | **预计 2026 年发布**。关键变化：SIL 2+ 强制使用结构化代码分析工具；AI/ML 组件处理更新；模型驱动开发更清晰指导 | 当前基于 Ed.2，Ed.3 变化未对齐 | 一旦发布需更新功能安全章节 | 建立跟踪，发布后 4 周内更新 |
@@ -143,7 +143,7 @@
 |-----------|----------------------|-----------|------|
 | **MCP** | 1. **治理**：已捐给 Linux Foundation Agentic AI Foundation（AAIF），Anthropic/Block/OpenAI 共创。华为 2026-02 成为金牌会员。 2. **规范**：2025-11-25 为当前稳定版，新增 Tasks、Icons、Elicitation URL mode、JSON Schema 2020-12。 3. **生态**：2026-01 推出 MCP Apps（交互式 UI）；SDK 月下载 9700 万次（970x 年增长）。 4. **安全**：Microsoft 2026-04 发布 Agent Governance Toolkit；OWASP LLM/MCP Top 10 受关注 | 文档提及 2026-07-28 RC（CHANGELOG 已勘误），但 2025-11-25 的 Tasks/Icons/MCP Apps 等新特性覆盖不足 | **需全面更新**：替换旧引用，补充 Tasks/Icons/Elicitation/OAuth 增量，增加 Agent Governance Toolkit 对齐 |
 | **A2A** | Google Cloud Next 2026 发布 **v1.0**；ACP 已并入 A2A（Linux Foundation LF AI & Data） | 已有深度解析（v0.3/v1.0），基本完整 | 更新 v1.0 最终特性，补充 ACP 合并背景 |
-| **WASI / Component Model** | 1. **Wasm 3.0**：2025-09 成为 W3C 标准（WasmGC/异常处理/尾调用/SIMD）。 2. **WASI 0.3**：2026-02 preview 发布（Wasmtime 37+），原生 async（`stream<T>`/`future<T>`），Canonical ABI 级实现。 3. **WASI 1.0**：目标 2026 末/2027 初。 4. **.NET**：.NET 11 preview（2026 末）将包含 CoreCLR WebAssembly runtime，.NET 12（2027）全面支持 C# async/await in WASM | 已有 WASM 决策树，但对 WASI 0.3 async、warg registry、多线程限制覆盖不足 | **需大幅更新**：补充 WASI 0.3 与跨语言复用边界，更新 `wasm-wasi-03-boundaries.md` |
+| **WASI / Component Model** | 1. **Wasm 3.0**：2025-09 成为 W3C 标准（WasmGC/异常处理/尾调用/SIMD）。 2. **WASI 0.3**：2026-02 preview 发布（Wasmtime 37+），原生 async（`stream<T>`/`future<T>`），Canonical ABI 级实现。 3. **WASI 1.0**：目标 2026 末/2027 初。 4. **.NET**：.NET 11 preview（2026 末）将包含 CoreCLR WebAssembly runtime，.NET 12（2027）全面支持 C# async/await in WASM | 已有 WASM 决策树，但对 WASI 0.3 async、warg registry（已停止积极开发，社区转向 OCI-based registry）、多线程限制覆盖不足 | **需大幅更新**：补充 WASI 0.3 与跨语言复用边界，更新 `wasm-wasi-03-boundaries.md` |
 | **CNCF Platform Engineering** | Platform Engineering Maturity Model 五维度（Investment/Adoption/Interfaces/Operations/Measurement）。80% 大企业已建立平台工程团队（Gartner）。Backstage 被 3000+ 组织采用 | 已有 maturity model，但与 CNCF 五维度逐条映射可深化 | 补充五维度评估检查清单，增加 Backstage/Port/Cortex 对比矩阵 |
 | **Rust 安全关键** | AdaCore + Ferrous Systems 2026-03 联合发布 DO-178C DAL A 资质套件（rustc 编译器工具资质+安全手册），使 Rust 成为航空最高安全等级的可行选项 | 已有 Rust 形式化语义文档，但未覆盖 DO-178C 资质路径 | 可选补充到 `07-formal-verification/04-rust-type-system` 或 `05-spark-ada` |
 | **Conformal Prediction** | 在代码生成/验证领域快速兴起。与形式化验证（Lean/Coq）结合的 "AI 生成 + CP 筛选 + 定理证明" 三层保证框架成为前沿方向 | 已有 `cp-code-generation.md` | 可补充与 TLA+/Coq 结合的 AI 验证框架 |
@@ -236,7 +236,7 @@
 |---------|------|--------|----------|----------|
 | P5-T1 | **MCP 2025-11-25 全面更新（替换旧引用）** | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` 更新 | modelcontextprotocol.io/specification/2025-11-25、**AAIF** | 覆盖 Tasks、Icons、Elicitation、OAuth 增量、**MCP Apps**、Agent Governance Toolkit |
 | P5-T2 | **Agentic Governance 组织设计模板** | `12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md` | Google A2A v1.0、Linux Foundation Agentic AI Foundation、**Microsoft Agent Governance Toolkit** | 含 Agent RBAC、Golden Path、模型路由、审计追踪 |
-| P5-T3 | **Conformal Prediction + 形式化验证融合框架** | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | **Verina、AlphaVerus**、Martin Kleppmann 预言 | 提出"AI 生成 + CP 筛选 + 定理证明"三层保证；含最小可运行示例 |
+| P5-T3 | **CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础）** | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | **Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程)** | 提出"AI 生成 + CP 筛选 + 定理证明"三层保证（探索性框架） |
 | P5-T4 | **WASM Component Model + WASI 0.3 复用边界更新** | `13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md` | Bytecode Alliance、Wasmtime 37+、**WASI 1.0 roadmap** | 覆盖 stream/future、async、线程限制、.NET WASM runtime 前瞻 |
 | P5-T5 | **CNCF Platform Engineering 五维度评估检查清单** | `13-emerging-trends/01-platform-engineering/platform-maturity-model.md` 扩展 | **CNCF TAG App Delivery** | 五维度（Investment/Adoption/Interfaces/Operations/Measurement）逐条映射 |
 | P5-T6 | **RegTech Agentic 架构案例验证** | `13-emerging-trends/05-regtech-ai/regtech-case-validation.md` | FCA/SEC/EU regulators | 1+ 真实监管场景 POC 设计 |
@@ -283,7 +283,7 @@
 
 ### 决策 4：前沿主题取舍
 >
-> **选项 A（推荐）**: 2027 年重点补齐 **Conformal Prediction + 形式化验证融合**、**WASI 0.3**、**Agentic Governance**、**GreenArch/可持续软件架构**；**暂缓量子计算和边缘计算通用架构**。
+> **选项 A（推荐）**: 2027 年重点补齐 **CP + 形式化验证融合（研究探索方向，尚无成熟学术基础）**、**WASI 0.3**、**Agentic Governance**、**GreenArch/可持续软件架构**；**暂缓量子计算和边缘计算通用架构**。
 > **选项 B**: 按 MASTER_PLAN 原规划，恢复 `quantum-computing` 和 `sustainable-software` 子目录。
 > **选项 C**: 仅维护现有 13 个主题，不扩展新前沿方向。
 

@@ -131,7 +131,7 @@ wasm-tools compose -o composed.wasm \
 
 | 工具 | 用途 |
 |------|------|
-| `warg` | Wasm 组件注册表协议（CNCF Sandbox 项目） |
+| `wasm-pkg-tools` | 基于 OCI 的 WebAssembly 组件注册表工具链（Bytecode Alliance 推荐） |
 | `cargo component` | Rust 组件开发工作流 |
 | `wasm-tools` | 组件打包、组合、反汇编 |
 | `wasmtime` | 参考运行时 |
@@ -233,7 +233,7 @@ print(add(store, 2, 3))  # 5
 | wasm-tools | ≥ 1.228 | 组件组合、WIT 解析 |
 | cargo-component | ≥ 0.22 | Rust 组件开发 |
 | wit-bindgen | ≥ 0.41 | 多语言绑定生成 |
-| warg-cli | ≥ 0.9 | 组件注册表交互 |
+| `wasm-pkg-tools` | ≥ 0.4 | 基于 OCI 的组件注册表交互 |
 
 ---
 
@@ -243,7 +243,7 @@ print(add(store, 2, 3))  # 5
 2. **Wasmtime Release Notes 37+** — <https://github.com/bytecodealliance/wasmtime/releases>
 3. **WebAssembly Component Model Spec** — <https://component-model.bytecodealliance.org/>
 4. **WIT 设计文档** — <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md>
-5. **warg 注册表协议** — <https://warg.io/>
+5. **wasm-pkg-tools / OCI-based registry** — <https://github.com/bytecodealliance/wasm-pkg-tools>（warg 已停止积极开发，社区转向 OCI-based registry）
 6. **《WebAssembly: The Definitive Guide》2nd ed.**（2026 预计出版）
 
 ---

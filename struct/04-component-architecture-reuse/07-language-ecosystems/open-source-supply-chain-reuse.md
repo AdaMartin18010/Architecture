@@ -108,7 +108,7 @@
 
 **PubGrub** 是当前最先进的依赖解析算法之一，被 Cargo（2026 年已采用）、Poetry、Bundler、SwiftPM 使用。其核心是 **Conflict-Driven Clause Learning (CDCL)** 的变种：
 
-```
+```text
 1. 迭代选择包版本（按版本号降序优先）
 2. 推导该版本引入的约束
 3. 若发生冲突，记录"不兼容性"（incompatibility）并回溯
@@ -128,7 +128,7 @@
 
 Go Modules 的 MVS 是**唯一提供线性时间保证**的算法：
 
-```
+```text
 MVS(G, R):
     G = 模块依赖图
     R = 所有 require 语句中的最小版本集合

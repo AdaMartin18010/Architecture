@@ -1,7 +1,7 @@
 # MCP Tool 的可复用设计
 
 > **版本**: 2026-06-06
-> **对齐标准**: Model Context Protocol (MCP) 2026-07-28 RC
+> **对齐标准**: Model Context Protocol (MCP) 2025-11-25（当前稳定版）
 > **定位**: 设计可复用、可发现、可验证的 MCP Tool
 
 ---

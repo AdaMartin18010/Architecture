@@ -323,7 +323,7 @@ flowchart LR
 ### 6.4 版本标注
 
 - 涉及快速演进的技术（MCP、A2A、WASM），在首次出现时标注版本号
-- 格式："MCP（Model Context Protocol）2026-07-28 RC"
+- 格式："MCP（Model Context Protocol）2025-11-25（当前稳定版）"
 - 附录中维护"技术版本跟踪表"，记录各技术的当前版本与本书引用的版本
 
 ---

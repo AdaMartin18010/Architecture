@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-06（对齐审查版）
 > **定位**: 在 Phase 1 基本完成（2026-06-06 净增 +20,172 行，92 个唯一文件）的基础上，全面梳理未完成项、内容缺口、与国际权威标准的对齐差距，输出 2026-Q3 → 2027-Q4 的后续推进计划
-> **对齐来源**: ISO/IEC/IEEE 42010:2022、ISO/IEC 25010:2023、ISO/IEC 26566:2026、ISO/IEC/IEEE DIS 42042、OMG RAS、TOGAF 10、ArchiMate 3.2/4.0、IEEE 1517、SEI/CMU、FAIR4RS、ICSA/ECSA、SLSA 1.1/1.2、MCP 2025-11-25、WASI 0.3、CNCF Platform Engineering Maturity Model
+> **对齐来源**: ISO/IEC/IEEE 42010:2022、ISO/IEC 25010:2024、ISO/IEC 26566:2026、ISO/IEC/IEEE DIS 42042、OMG RAS、TOGAF 10、ArchiMate 3.2/4.0、IEEE 1517、SEI/CMU、FAIR4RS、ICSA/ECSA、SLSA 1.1/1.2、MCP 2025-11-25、WASI 0.3、CNCF Platform Engineering Maturity Model
 
 ---
 
@@ -58,7 +58,7 @@
 |------|-----------|----------|--------|
 | 01 元模型 | T15: 术语查询脚本（跨标准术语翻译） | 2026-Q3 | P1 |
 | 01 元模型 | DIS 42024/42042 当前 DIS 状态对齐 | ~~待外部事件~~ ✅ 已完成 (`iso-42024-42042-dis-alignment.md`) | P2 |
-| 01 元模型 | ArchiMate 4.0 正式发布后的映射更新 | ✅ **已完成** — ArchiMate 4 已于 2026-04-27 正式发布，全部文件已更新 | P2 |
+| 01 元模型 | ArchiMate 4.0 正式发布后的映射更新 | ⏸️ **已冻结** — 经核查 The Open Group 官方尚未发布 ArchiMate 4.0（当前稳定版仍为 3.2），此前"已正式发布"声明已回退为"厂商预发布/未获官方确认" | P2 |
 | 03 应用架构 | Backstage / Port / Cortex IDP 复用实践 | 2026-Q4 | P1 |
 | 04 组件架构 | Rust 生态深度形式化（所有权、Trait、Cargo SAT） | 07 已大部分完成 | P1 |
 | 04 组件架构 | WASM Component Model 跨语言复用分析 | 2026-Q4 | P1 |
@@ -67,7 +67,8 @@
 | 06 跨层治理 | 可执行的成熟度评估问卷 | ✅ 已完成 (`assessment-tool.py`) | P1 |
 | 06 跨层治理 | FinOps 成本分摊工具模板（Python/Excel） | ✅ 已完成 (`finops-allocation.py` + Excel 导出) | P1 |
 | 07 形式化验证 | Alloy 跨层映射 + ISA-95 层次案例 | 2026-Q4 | P1 |
-| 07 形式化验证 | Coq/Isabelle 在安全关键组件中的应用 | ✅ 已完成 (`insertion_sort.v`, `bounded_counter.v`, `Turnstile.thy`) | P0 |
+| 07 形式化验证 | Coq/Isabelle 教学示例 | ✅ 已完成 (`insertion_sort.v`, `bounded_counter.v`, `Turnstile.thy`) | P0 |
+| 07 形式化验证 | Coq/Isabelle 安全关键组件定理证明 | ⏳ Phase 2 2026-Q4 | P0 |
 | 08 认知架构 | 眼动追踪/EEG 实验设计的复用认知研究方案 | 2027-Q1 | P2 |
 | 08 认知架构 | AI 辅助复用系统原型设计 | 2026-Q4 | P1 |
 | 09 价值量化 | 可执行的 Excel/Python 计算模板 | 2026-Q4 | P1 |
@@ -104,7 +105,7 @@
 |------|------|------|
 | TLA+ 未跑 TLC/SANY | 环境无 Java，仅人工语法审查 | 无法保证规约无死锁/不变量成立 |
 | Alloy 未跑 Alloy Analyzer | 未自动执行约束求解 | 无法验证模型可满足性 |
-| Coq/Isabelle 空白 | 07-formal-verification T18 未开始 | 缺少定理证明层的高保证案例 |
+| Coq/Isabelle 空白 | 仅有教学示例，无安全关键组件证明 | 缺少定理证明层的高保证案例 |
 | Rust 形式化未链接 Kani/Prusti | 文档深入但无实际可跑验证 | 缺少可复现的验证流水线 |
 
 ### 2.4 工具/模板/可执行交付物缺口
@@ -128,7 +129,7 @@
 
 | 国际标准 | 本项目中覆盖状态 | 差距 | 后续行动 |
 |----------|-----------------|------|----------|
-| **ISO/IEC 25010:2023** (SQuaRE) | 在 06/01 中提及，Reusability 作为 Maintainability 子特性 | 未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 补充 25010:2023 质量特性对复用的影响矩阵 |
+| **ISO/IEC 25010:2024** (SQuaRE) | 在 06/01 中提及，Reusability 作为 Maintainability 子特性 | 未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 补充 25010:2024 质量特性对复用的影响矩阵 |
 | **ISO/IEC 25040:2024** (Evaluation) | 未明确引用 | 缺少"获取或复用预开发产品"的评估流程映射 | 增加 25040 评估流程与复用决策的对照 |
 | **ISO/IEC/IEEE 42010:2022** | 已深度映射 | 基本完整，待 DIS 42042 发布后更新 | 跟踪 42042 进展 |
 | **ISO/IEC/IEEE DIS 42042** (Reference Architectures) | 仅作为待跟踪项 | 草案接近 2026 定稿，缺少参考架构元模型 | 一旦发布，补充到 01-meta-model-standards |
@@ -145,7 +146,7 @@
 | **MCP** | Anthropic 2025-11-25 为当前稳定版；已捐给 Linux Foundation Agentic AI Foundation；新增 Tasks、Icons、Elicitation URL mode、JSON Schema 2020-12 | 文档提及 2026-07-28 RC（CHANGELOG 已勘误），但 2025-11-25 的 Tasks/Icons 等新特性覆盖不足 | 需全面更新为 2025-11-25 特性解析 |
 | **A2A** | Google Cloud Next 2026 发布 v1.0 | 已有深度解析 | 基本完整 |
 | **SLSA** | v1.1 已发布，v1.2 引入 Multi-Track（Build/Source/Attested Build Environments）；L4 仍在开发 | 已更新到 1.1/1.2，但 L4 分布式构建验证仍为空白 | 补充 L4 多签名/可复现构建实践 |
-| **WASI / Component Model** | WASI 0.3 preview 已发布（Wasmtime 37+），原生 async（stream/future）；WASI 1.0 目标 2026 末/2027 初 | 已有 WASM 决策树，但对 WASI 0.3 async、warg registry、多线程限制覆盖不足 | 补充 WASI 0.3 与跨语言复用边界 |
+| **WASI / Component Model** | WASI 0.3 preview 已发布（Wasmtime 37+），原生 async（stream/future）；WASI 1.0 目标 2026 末/2027 初 | 已有 WASM 决策树，但对 WASI 0.3 async、warg registry（已停止积极开发，社区转向 OCI-based registry）、多线程限制覆盖不足 | 补充 WASI 0.3 与跨语言复用边界 |
 | **CNCF Platform Engineering** | Platform Engineering Maturity Model 五维度（Investment/Adoption/Interfaces/Operations/Measurement） | 已有 maturity model，但与 CNCF 五维度的逐条映射可深化 | 补充五维度评估检查清单 |
 | **Conformal Prediction** | 在代码生成/验证领域快速兴起（Verina、AlphaVerus、AutoVerus 等） | 已有 `cp-code-generation.md` | 可补充与形式化验证（Lean/Coq）结合的 AI 验证框架 |
 
@@ -177,7 +178,7 @@
 
 ### Phase 2 形式化与量化深化（2026-Q4）
 
-**目标**: 将形式化验证、认知架构、价值量化从"理论文档"转化为"可操作方法论 + 可执行工具"。
+**目标**: 将形式化验证、认知架构、价值量化从"理论文档"转化为"可操作方法论 + 可执行工具"。优先填补03应用架构缺失的基础子目录（分层架构、微服务、Serverless、事件驱动）
 
 | 任务 ID | 任务 | 交付物 | 对齐来源 | 验收标准 |
 |---------|------|--------|----------|----------|
@@ -191,6 +192,8 @@
 | P2-T8 | AI 辅助复用决策系统原型设计 | `08-cognitive-architecture/05-ai-cognitive-augmentation/prototype-design.md` | ACT-R (CMU)、NASA-TLX | 含 RAG+LLM 流程图和 PoC 架构 |
 | P2-T9 | 术语查询脚本 | `99-reference/tools/terminology-query.py` | IREB CPRE Glossary、ISO/IEC 42010 | 支持跨标准术语搜索和别名映射 |
 | P2-T10 | OMG RAS v2.2 对齐章节 | `01-meta-model-standards/07-omg-ras/ras-alignment.md` | OMG RAS v2.2 | 覆盖 Classification/Solution/Usage/Related Assets |
+| P2-T11 | 03应用架构基础子目录内容填充（分层/微服务/Serverless/事件驱动） | `03/01-layered-architecture/`, `03/02-microservices/`, `03/03-serverless/`, `03/04-event-driven/` | SWEBOK v4, CNCF | 每个子目录至少1篇核心文档 |
+| P2-T12 | ISO/IEC 25010:2024 AI/ML质量特性对复用决策的影响矩阵 | `01-meta-model-standards/01-iso-420xx-family/iso-25010-2024-ai-quality.md` | ISO/IEC 25010:2024 | 覆盖AI生成代码/组件的复用质量评估 |
 
 ### Phase 3 垂直领域扩展（2027-Q1）
 
@@ -226,8 +229,8 @@
 |---------|------|--------|----------|----------|
 | P5-T1 | MCP 2025-11-25 全面更新（替换 2026-07-28 RC 旧引用） | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | modelcontextprotocol.io/specification/2025-11-25 | 覆盖 Tasks、Icons、Elicitation、OAuth 增量 |
 | P5-T2 | Agentic Governance 组织设计模板 | `12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md` | Google A2A、Linux Foundation Agentic AI Foundation | 含 Agent RBAC、Golden Path、模型路由 |
-| P5-T3 | Conformal Prediction + 形式化验证融合框架 | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | Verina、AlphaVerus、Martin Kleppmann 预言 | 提出"AI 生成 + CP 筛选 + 定理证明"三层保证 |
-| P5-T4 | WASM Component Model + WASI 0.3 复用边界更新 | `13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md` | Bytecode Alliance、Wasmtime 37+ | 覆盖 stream/future、async、线程限制 |
+| P5-T3 | CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础） | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程) | 提出探索性框架，明确标注为研究空白 | P2 |
+| P5-T4 | WASM Component Model + WASI 0.3 复用边界更新（WASM Component Model 当前处于 W3C Phase 1（Feature Proposal），WASI 1.0 预计 2026年底/2027年初发布；使用 wasm-pkg-tools 替代 Warg registry） | `13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md` | Bytecode Alliance、Wasmtime 37+ | 覆盖 stream/future、async、线程限制，标注标准化阶段 |
 | P5-T5 | Backstage / Port / Cortex IDP 复用实践 | `03-application-architecture-reuse/08-idp-practices/backstage-port-cortex.md` | CNCF Platform Engineering Maturity Model | 三家平台对比 + Golden Path 模板 |
 | P5-T6 | RegTech Agentic 架构案例验证 | `13-emerging-trends/05-regtech-ai/regtech-case-validation.md` | Financial regulators (FCA/SEC/EU) | 1+ 真实监管场景 POC 设计 |
 | P5-T7 | 可持续软件架构（GreenArch）初探 | `13-emerging-trends/06-green-software/green-architecture-reuse.md` | GreenArch 2026、Green Software Foundation | 碳感知架构复用度量 |
@@ -258,6 +261,10 @@
 | R4 | 可执行工具开发工作量大 | Phase 2/3 范围膨胀 | 用 Python CLI + Streamlit 快速原型，避免重前端 |
 | R5 | 目录规划与实际结构长期不一致 | 维护成本增加 | Phase 1.5 彻底重构 README；后续严格执行变更日志 |
 | R6 | AI 领域发展迅速，MCP/A2A 内容易过期 | 前沿章节准确性下降 | 按季度审查 12-ai-native-reuse；建立外部链接健康检查 |
+
+### 持续机制补充
+
+**月度事实核查**：按调整建议3，每月第5周执行事实核查，抽查5-10个外部引用的事实准确性，使用 `99-reference/templates/fact-check-checklist.md`。
 
 ---
 
@@ -297,8 +304,21 @@
 
 ---
 
+## 2026-06-08 HOTFIX 完成记录
+
+| HOTFIX ID | 描述 | 状态 |
+|-----------|------|------|
+| HOTFIX-1 | ArchiMate | ✅ 已完成（2026-06-08） |
+| HOTFIX-2 | MCP | ✅ 已完成（2026-06-08） |
+| HOTFIX-3 | Kleppmann | ✅ 已完成（2026-06-08） |
+| HOTFIX-4 | ISO 25010 | ✅ 已完成（2026-06-08） |
+| HOTFIX-5 | Coq/Isabelle | ✅ 已完成（2026-06-08） |
+| HOTFIX-6 | Warg | ✅ 已完成（2026-06-08） |
+
+---
+
 > **下一步**: 请您审阅以上计划与决策，回复选项编号或提出修改意见。确认后，我将按 Phase 1.5 立即启动目录一致性修复和形式化验证环境搭建。
 
 ---
 
-*最后更新: 2026-06-06*
+*最后更新: 2026-06-08*

@@ -276,6 +276,6 @@ A/B Test Design:
 >
 > - 认知架构对照 ACT-R (Carnegie Mellon) 和 BDI 模型验证
 > - RAG 架构对照 LangChain / LlamaIndex 最佳实践验证
-> - MCP 集成对照 Anthropic MCP 2026-07-28 RC 规范验证
+> - MCP 集成对照 MCP 2025-11-25 规范验证
 >
 > 最后更新: 2026-06-06

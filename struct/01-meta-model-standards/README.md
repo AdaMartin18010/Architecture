@@ -7,9 +7,9 @@
 ## 核心内容
 
 - ISO/IEC/IEEE 420xx 系列（42010/42020/42030/DIS 42024/DIS 42042）的族谱与演进
-- TOGAF 10 + ArchiMate 4.0（2026-04-27 官方发布）与 ISO 标准的概念映射
+- TOGAF 10 + ArchiMate 3.2（当前官方稳定版）；ArchiMate 4.0 处于厂商预发布阶段，未获 The Open Group 官方正式发布确认
 - ISO/IEC 26550:2015 产品线工程参考模型（领域工程 + 应用工程双轨）
-- ISO/IEC 25010:2023 / 25040:2024 质量模型与评估过程
+- ISO/IEC 25010:2024 / 25040:2024 质量模型与评估过程
 - **OMG RAS v2.2** 可复用资产规范（Classification / Solution / Usage / RelatedAssets）
 - **FAIR4RS** 原则与软件资产可持续复用
 - **IEEE 1517-2010** 软件生命周期复用过程

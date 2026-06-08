@@ -1,11 +1,11 @@
-# MCP 2026-07-28 RC + A2A v1.0.0 协议架构复用分析
+# MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2026-07-28 RC (Anthropic), A2A v1.0.0 (Google / Linux Foundation)
+> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0 (Google / Linux Foundation)
 > **定位**: 功能架构层最细粒度复用——AI 功能与 Agent 协作的协议化复用框架
 > **权威来源**:
 >
-> - [Model Context Protocol Specification](https://modelcontextprotocol.io) (Anthropic, 2026-07-28 RC)
+> - [Model Context Protocol Specification](https://modelcontextprotocol.io) (Anthropic / Linux Foundation Agentic AI Foundation, 2025-11-25)
 > - [A2A Protocol Specification](https://a2aprotocol.org) (Google / Linux Foundation, v1.0.0)
 > - [MCP 2026 Deep Dive](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
 > - [A2A Reuse Analysis](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
@@ -14,7 +14,7 @@
 
 ## 目录
 
-- [MCP 2026-07-28 RC + A2A v1.0.0 协议架构复用分析](#mcp-2026-07-28-rc--a2a-v100-协议架构复用分析)
+- [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](#mcp-2025-11-25--a2a-v100-协议架构复用分析)
   - [目录](#目录)
   - [1. 协议定位与互补架构](#1-协议定位与互补架构)
   - [2. 协议栈层次对比](#2-协议栈层次对比)
@@ -50,7 +50,7 @@ AI 原生复用协议栈
 │   └── 模型采样 (Sampling / Inference)
 │
 └── 传输层 (Transport)
-    ├── Streamable HTTP (MCP 2026-07-28 主推)
+    ├── Streamable HTTP (MCP 2025-11-25 当前稳定版)
     ├── SSE / WebSocket
     └── stdio (本地进程)
 ```
@@ -61,7 +61,7 @@ AI 原生复用协议栈
 
 ## 2. 协议栈层次对比
 
-| 对比维度 | MCP 2026-07-28 RC | A2A v1.0.0 | 复用语义差异 |
+| 对比维度 | MCP 2025-11-25 | A2A v1.0.0 | 复用语义差异 |
 |----------|-------------------|-----------|-------------|
 | **核心抽象** | Capability (能力) | Agent (智能体) | MCP 复用「功能单元」；A2A 复用「自主决策单元」 |
 | **通信模型** | 无状态请求/响应 (Stateless) | 有状态任务生命周期 (Stateful) | MCP 适合高频、短周期调用；A2A 适合长周期、多轮协作 |
@@ -78,7 +78,7 @@ AI 原生复用协议栈
 
 ## 3. MCP 状态机：Session Lifecycle
 
-虽然 MCP 2026-07-28 RC 移除了显式的 Session 握手，但**能力协商**和**生命周期管理**仍以隐式状态机存在。
+虽然 MCP 2025-11-25 保留了显式的 Session 握手和能力协商，但**生命周期管理**仍以状态机驱动。
 
 ```text
 MCP Client-Server 交互状态机
@@ -304,7 +304,7 @@ MCP + A2A 联合治理
 
 | 时间 | MCP 演进 | A2A 演进 | 联合影响 |
 |------|---------|---------|---------|
-| **2026-07** | MCP 2026-07-28 正式发布 | A2A v1.0 稳定化 | 企业级 Agent 互操作元年 |
+| **2025-12** | MCP 2025-11-25 正式发布（Linux Foundation Agentic AI Foundation 接管） | A2A v1.0 稳定化 | 企业级 Agent 互操作元年 |
 | **2026-Q3** | MCP Apps (服务器渲染 UI) | A2A Agent 市场启动 | 交互式工具 + 自动化 Agent 交易 |
 | **2026-Q4** | Extensions 生态爆发 | A2A v1.1 (多 Agent 协商) | 复杂多智能体系统标准化 |
 | **2027-H1** | MCP 1.0 (GA) | A2A 2.0 (联邦学习协作) | AI 原生复用成为默认架构 |
@@ -319,7 +319,7 @@ MCP + A2A 联合治理
 
 > **对齐验证**:
 >
-> - MCP 内容对照 [modelcontextprotocol.io](https://modelcontextprotocol.io) 2026-07-28 RC 规范验证
+> - MCP 内容对照 [modelcontextprotocol.io](https://modelcontextprotocol.io) 2025-11-25 规范验证
 > - A2A 内容对照 [a2aprotocol.org](https://a2aprotocol.org) v1.0.0 规范验证
 > - 互补架构设计基于 Anthropic 与 Google 官方博客的联合声明
 >

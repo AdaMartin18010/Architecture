@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-06
 > **对应规约**: `mcp-tool-graph.als`
-> **对齐标准**: Model Context Protocol (MCP) 2026-07-28 RC
+> **对齐标准**: Model Context Protocol (MCP) 2025-11-25（当前稳定版）
 > **交叉引用**: `struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md`
 > **理论来源**: Jackson, D. *Software Abstractions*; MCP Specification (Anthropic, 2026)
 
@@ -10,7 +10,7 @@
 
 ## 1. 建模背景
 
-Model Context Protocol (MCP) 是 AI 代理与外部工具、数据资源之间的标准化接口协议。在 MCP 2026-07-28 RC 规范中，Server 通过 `tool/list` 暴露工具集合，每个工具具有 JSON Schema 定义的输入输出和一组声明的 `capabilities`。当 Agent 调用工具时，工具内部可能进一步调用其他工具，形成工具调用依赖图（Tool Invocation Dependency Graph, TIDG）。
+Model Context Protocol (MCP) 是 AI 代理与外部工具、数据资源之间的标准化接口协议。在 MCP 2025-11-25 规范中，Server 通过 `tools/list` 暴露工具集合，每个工具具有 JSON Schema 定义的输入输出和一组声明的 `annotations`。当 Agent 调用工具时，工具内部可能进一步调用其他工具，形成工具调用依赖图（Tool Invocation Dependency Graph, TIDG）。
 
 本 Alloy 规约将 MCP 的 Server-Tool-Capability-Resource 结构形式化，验证两项关键架构约束：
 
@@ -120,7 +120,7 @@ Server_B (capabilities: {executeSQL})
 ## 7. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 建模方法论。
-2. Anthropic. (2026). *Model Context Protocol Specification* (2026-07-28 RC). <https://modelcontextprotocol.io/specification> —— MCP 工具能力模型与资源抽象。
+2. Anthropic / Linux Foundation Agentic AI Foundation. (2025). *Model Context Protocol Specification* (2025-11-25). <https://modelcontextprotocol.io/specification/2025-11-25> —— MCP 工具能力模型与资源抽象。
 3. Repello. (2026). *CIS MCP Companion Guide* (April 2026). —— MCP 企业部署的 per-tool authorization 与域级网络控制。
 4. Jamshidi et al. (2025). "Sealing the Audit–Runtime Gap for LLM Skills." *arXiv:2603.00195* —— MCP 包签名与能力治理的形式化分析。
 

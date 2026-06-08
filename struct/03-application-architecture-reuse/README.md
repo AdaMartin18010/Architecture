@@ -34,7 +34,25 @@
 - [x] 2026 云原生架构模式复用性矩阵 (`05-cloud-native-patterns/reusability-matrix-2026.md`)
 - [x] 服务网格通信模式复用 (`06-service-mesh/service-mesh-communication-patterns.md`)
 - [x] Data Mesh 域导向复用深化 (`04-data-architecture/data-mesh-data-product-reuse.md`)
+- [x] 分层架构复用框架 (`01-layered-architecture/`)
+- [x] 微服务架构复用框架 (`02-microservices/`)
+- [x] Serverless 架构复用框架 (`03-serverless/`)
+- [x] 事件驱动架构复用框架 (`04-event-driven/`)
 - [ ] 具体平台（Backstage、Port、Cortex）的 IDP 复用实践 (P1, 2026-Q4)
+
+## 子目录导航
+
+| 子目录 | 主题 | 状态 |
+|:---|:---|:---:|
+| `01-layered-architecture/` | 分层架构复用模式 | ⏳ 框架 |
+| `02-microservices/` | 微服务架构复用模式 | ⏳ 框架 |
+| `03-serverless/` | Serverless/FaaS 复用模式 | ⏳ 框架 |
+| `04-event-driven/` | 事件驱动架构复用模式 | ⏳ 框架 |
+| `03-app-service/` | 应用服务复用 | ✅ |
+| `04-data-architecture/` | 数据架构复用（Data Mesh） | ✅ |
+| `05-cloud-native-patterns/` | 云原生架构模式复用性矩阵 | ✅ |
+| `06-service-mesh/` | 服务网格通信复用 | ✅ |
+| `07-eda-cqrs/` | EDA/CQRS 深度内容 | ✅ |
 
 ## 关联主题
 

@@ -139,7 +139,7 @@ struct/
 
 - ISO/IEC/IEEE 42010:2022（架构描述）
 - ISO/IEC/IEEE 42020:2023（架构过程）
-- ISO/IEC 25010:2023（系统与软件质量模型）
+- ISO/IEC 25010:2024（系统与软件质量模型）
 - TOGAF® Standard, 10th Edition
 - ArchiMate® 3.2 / 4.0 Specification
 

@@ -10,7 +10,7 @@
 
 | 复用层次 | 核心标准 | 辅助标准 | 架构框架 | 建模语言 | 质量度量 | 过程标准 | 协议/接口 | 2026 新增 |
 |----------|----------|----------|----------|----------|----------|----------|-----------|-----------|
-| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
+| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2024 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
 | **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
 | **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
 | **组件** | ISO 26566:2026 | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
@@ -180,7 +180,7 @@
 |------|---------|---------|-------------|-----------|
 | ISO/IEC/IEEE DIS 42024 | 草案 | 预计 2026–2027 发布 | 元模型层定义需更新 | TBD |
 | ISO/IEC/IEEE DIS 42042 | 草案 | 预计 2026–2027 发布 | 参考架构规范补充 | TBD |
-| **ArchiMate 4.0** | **已发布（2026-04-27）** | **当前活跃版本；与 3.2 向后兼容** | Common Domain + Business/Application/Technology + Motivation/Implementation | TBD |
+| **ArchiMate 4.0** | **厂商预发布/预览** | **未获 The Open Group 正式发布确认；预览内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation** | 待官方发布后更新 | TBD |
 | **MCP 2025-11-25** | **已发布** | **后续修订由 Linux Foundation Agentic AI Foundation 治理；跟踪 12 个月废弃窗口** | **功能层 AI 协议基线：Tasks、Icons、Sampling with Tools、Elicitation URL、OAuth 增强** | TBD |
 | **A2A v1.0.0** | **已发布 (Cloud Next 2026-04)** | **v1.1 预计 2026 H2** | **Agent 安全签名增强、多租户、gRPC 绑定** | TBD |
 | **OPC UA FX 1.0** | **Parts 80–84 发布** | **C2D/D2D 完善中** | **工业现场层复用：UADP 极简头、GCL 时隙对齐** | TBD |

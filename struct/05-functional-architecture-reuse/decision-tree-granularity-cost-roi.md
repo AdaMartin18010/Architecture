@@ -225,6 +225,6 @@ flowchart TD
 >
 > - 成本模型对齐 USC COCOMO II Model Definition Manual (Boehm et al.)
 > - 决策框架对齐 ISO/IEC 26564:2022 软件复用度量标准
-> - AI 功能层对齐 MCP 2026-07-28 RC 规范与概率契约框架
+> - AI 功能层对齐 MCP 2025-11-25 规范与概率契约框架
 >
 > 最后更新: 2026-06-06

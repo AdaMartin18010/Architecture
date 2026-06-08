@@ -268,7 +268,7 @@
 >
 > 形式化: Reuse(Tool) ⟺ LLM ⊢ Description(Tool) × Schema(Tool) → CorrectInvocation
 >
-> 依据: MCP 2026-07-28 RC Specification
+> 依据: MCP 2025-11-25 Specification
 
 **定理 5.2** (AI Function Non-Determinism)
 > AI 功能（LLM 调用、模型推理）的可复用性受**温度参数 (temperature)** 和**模型版本漂移**制约。其复用契约必须包含**确定性边界**（如 "P(正确性) ≥ 0.95"）。
@@ -360,7 +360,7 @@
 >
 > 形式化: Coverage(MCP ∪ A2A) > Coverage(MCP) + Coverage(A2A) - Coverage(MCP ∩ A2A)
 >
-> 依据: MCP 2026-07-28 RC, A2A v1.0.0 Specification
+> 依据: MCP 2025-11-25, A2A v1.0.0 Specification
 
 ---
 

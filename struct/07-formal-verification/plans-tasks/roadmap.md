@@ -91,7 +91,8 @@
 - [x] T15: SPARK/Ada 飞控软件契约验证案例
 - [x] T16: DO-178C MC/DC 形式化定义
 - [x] T17: B Method 铁路信号系统精化链
-- [ ] T18: Coq/Isabelle 在安全关键组件中的应用
+- [x] T18a: Coq/Isabelle 教学示例（插入排序、有界计数器、旋转门）— 已完成
+- [ ] T18b: Coq/Isabelle 安全关键组件定理证明（如 seL4/CompCert 风格）— Phase 2 2026-Q4
 
 **交付物**:
 

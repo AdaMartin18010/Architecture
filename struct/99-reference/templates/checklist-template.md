@@ -120,7 +120,7 @@
 
 > **对齐验证**:
 >
-> - 检查项设计对照 ISO/IEC 25010:2023 质量模型
+> - 检查项设计对照 ISO/IEC 25010:2024 质量模型
 > - 权重分配对照 NASA RRL (Reuse Readiness Levels) 九维度
 > - 安全性检查项对照 SLSA 1.0 和 OWASP SCVS
 >

@@ -10,7 +10,7 @@
 | 标准 | 链接 | 用途 |
 |------|------|------|
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 架构描述 |
-| ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 产品质量模型 |
+| ISO/IEC 25010:2024 | <https://www.iso.org/standard/78175.html> | 产品质量模型 |
 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/43006.html> | 产品线工程 |
 | ISO/IEC 5962 (SPDX) | <https://www.iso.org/standard/81800.html> | 软件物料清单 |
 | ISO/IEC 19770-2 (SWID) | <https://www.iso.org/standard/65603.html> | 软件标识 |

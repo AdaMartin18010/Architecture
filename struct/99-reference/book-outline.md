@@ -63,7 +63,7 @@
 | 3 | 业务架构复用 | 能力、价值流、BPMN/DMN | `02-business-architecture-reuse` | 25,000 | BPMN 2.0, DMN 1.5, FEA BRM |
 | 4 | 应用架构复用 | 云原生、微服务、Data Mesh | `03-application-architecture-reuse` | 28,000 | CNCF, NIST SP 800-204 |
 | 5 | 组件架构复用 | 语言生态、依赖治理、接口设计 | `04-component-architecture-reuse` | 25,000 | SPDX, Semver, SLSA L1-L2 |
-| 6 | 功能架构复用 | MCP/A2A、Temporal、AI 功能 | `05-functional-architecture-reuse` | 28,000 | MCP 2026-07-28 RC, A2A v1.0.0 |
+| 6 | 功能架构复用 | MCP/A2A、Temporal、AI 功能 | `05-functional-architecture-reuse` | 28,000 | MCP 2025-11-25（当前稳定版）, A2A v1.0.0 |
 | 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps | `06-cross-layer-governance` | 20,000 | ISO/IEC 26566:2026, NASA RRL |
 | 8 | 形式化验证与复用正确性 | TLA+/Alloy/Rust/SPARK 验证 | `07-formal-verification` | 30,000 | TLA+, Coq, RustBelt |
 | 9 | 认知架构与价值量化 | 认知负荷、ROI、COCOMO II | `08` + `09` | 22,000 | COCOMO II, NASA-TLX |
@@ -100,13 +100,13 @@
 
 ### 第 2 章：元模型与标准对齐
 
-**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 4.0（2026-04-27 正式发布，与 3.2 向后兼容）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
+**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 3.2（当前官方稳定版），ArchiMate 4.0 处于厂商预发布阶段（未获官方正式发布确认）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
 
 **关键节**：
 2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042
 2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展
 2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
-2.4 ArchiMate 3.2 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界（"ArchiMate 4.0" 厂商预告已标注勘误）
+2.4 ArchiMate 3.2 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界（"ArchiMate 4.0" 厂商预发布阶段，未获官方正式发布确认）
 2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型
 2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理
 2.7 SWEBOK V4 知识领域对齐：将复用映射到软件工程知识体
@@ -192,7 +192,7 @@
 
 **关键节**：
 6.1 功能复用五层模型：算法 → 函数 → 业务规则 → 工作流 → AI 功能
-6.2 MCP 2026-07-28 RC 协议架构：无状态核心、tools/resources/prompts/sampling 四层能力
+6.2 MCP 2025-11-25 协议架构：tools/resources/prompts/sampling 四层能力（当前稳定版）
 6.3 A2A v1.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
 6.4 MCP + A2A 互补复用架构：工具调用 vs Agent 协作的边界
 6.5 Temporal 工作流复用模式：Saga、Cron、Child Workflow、Signal
@@ -324,7 +324,7 @@
 **核心论点**：AI/LLM 功能复用是 2026 年软件工程的新边界。传统复用假设确定性，AI 复用必须处理概率性。Conformal Prediction 提供了不确定性量化的统计保证；WebAssembly Component Model 提供了跨语言复用的运行时边界。
 
 **关键节**：
-12.1 MCP 2026-07-28 RC 深度解析：无状态核心、能力发现、安全机制
+12.1 MCP 2025-11-25 深度解析：能力发现、安全机制（当前稳定版；2026 RC 历史分析见 `mcp-2026-deep-dive.md`）
 12.2 A2A v1.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
 12.3 概率契约框架：置信度函数 γ(x) ∈ [0,1]、校准方法、确定性边界声明
 12.4 Conformal Prediction：边际覆盖保证 P(y ∈ C(x)) ≥ 1-α 在代码生成中的应用
@@ -334,7 +334,7 @@
 
 **引用主题来源**：
 
-- `struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md`
+- `struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md`
 - `struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md`
 - `struct/12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md`
 - `struct/13-emerging-trends/01-platform-engineering/platform-maturity-model.md`

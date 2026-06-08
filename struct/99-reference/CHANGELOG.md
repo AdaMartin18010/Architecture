@@ -5,6 +5,38 @@
 
 ---
 
+## 2026-06-08 HOTFIX-4：ISO/IEC 25010:2023 → 2024 统一更新
+
+> **勘误原因**：ISO/IEC 25010:2024 已于 2024 年发布，取代 2011 版，新增 AI/ML 系统质量特性考量。项目中此前多处引用 "25010:2023" 系版本号滞后。
+
+**已更新文件**：
+
+- `struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md` — 25010:2023 → 25010:2024
+- `struct/01-meta-model-standards/01-iso-420xx-family/iso-25010-2024-update.md` — 文件名与内容全部更新（原 `iso-25010-2023-update.md`）
+- `struct/01-meta-model-standards/README.md` — 版本号更新
+- `struct/99-reference/CHANGELOG.md` — 添加本条目
+- `struct/99-reference/audit/comprehensive-gap-analysis-2026-06-08.md` — 更新相关引用，标注 HOTFIX-4 已完成
+- `struct/99-reference/external-links/authoritative-sources.md` — 链接与版本号更新（<https://www.iso.org/standard/78175.html>）
+- `struct/99-reference/glossary/cross-topic-index.md` — 索引更新
+- `struct/99-reference/standards-index/master-alignment-matrix.md` — 矩阵更新
+- `struct/99-reference/templates/checklist-template.md` — 对照标准更新
+- `struct/99-reference/tools/terminology-query.py` — 术语库键名更新
+- `struct/99-reference/visualizations/standard-family-tree.mmd` — 节点标签更新
+- `struct/MASTER_PLAN_2026_NETWORK_ALIGNED.md` — 对齐来源更新
+- `struct/README.md` — 标准索引更新
+- `struct/SUBSEQUENT_PLAN_2026.md` — 差距分析引用更新
+- `view/software_architecture_reuse_framework_2026.md` — 添加头部勘误说明，正文保留历史记录
+- `view/software_architecture_reuse_full_2026.md` — 添加头部勘误说明，正文保留历史记录
+- `README.md`（项目根）— 标准列表更新
+
+**修正原则**：
+
+- 所有 "25010:2023" 统一替换为 "25010:2024"
+- `iso-25010-2023-update.md` 更名为 `iso-25010-2024-update.md`，文件内版本号全部更新，保留历史演进说明
+- view/ 历史文档添加勘误头部，正文保留早期认知记录价值
+
+---
+
 ## 2026-06-06 Phase 2 前沿标准纠偏 + A2A+MCP PoC 增强
 
 ### ArchiMate 4.0 官方发布纠偏
@@ -23,6 +55,30 @@
 - `struct/99-reference/book-outline.md` — 核心贡献与核心论点中的引用更新
 - `struct/99-reference/standards-index/master-alignment-matrix.md` — 状态表更新
 - `struct/SUBSEQUENT_PLAN_2026.md` — blocker 状态改为 "✅ 已完成"
+
+## 2026-06-08 重大勘误：ArchiMate 4.0 发布声明撤回
+
+> **勘误原因**：经网络核查，The Open Group 官方网站在 2026-06-08 仍显示 ArchiMate 最新版本为 3.1，无 ArchiMate 4.0 正式发布信息。此前项目将厂商预发布/第三方声明误判为官方正式发布。
+
+**已勘误文件**（将"已正式发布"声明回退为"厂商预发布"）：
+
+- `struct/01-meta-model-standards/README.md`
+- `struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`
+- `struct/99-reference/book-outline.md`
+- `struct/SUBSEQUENT_PLAN_2026.md`
+- `struct/01-meta-model-standards/01-iso-420xx-family/iso-42024-42042-dis-alignment.md`
+- `struct/01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md`
+- `struct/01-meta-model-standards/05-swebok-v4/swebok-alignment.md`
+- `struct/07-formal-verification/02-alloy/cross-layer-mapping.md`
+- `struct/99-reference/standards-index/master-alignment-matrix.md`
+- `view/software_architecture_reuse_full_2026.md`
+- `view/software_architecture_reuse_extension_2026.md`
+- 以及本项目其他引用 ArchiMate 4.0 的文件
+
+**修正原则**：
+
+- struct/ 文件：直接修正声明，标注为"厂商预发布/未获官方确认"
+- view/ 文件：添加头部勘误说明，正文保留历史记录价值
 
 ### ISO 26262 / IEC 61508 状态更新
 
@@ -161,7 +217,7 @@
 #### 元模型与标准对齐
 
 - `iso-42010-2022-update.md` — 对齐 ISO 42010:2022 第二版关键变更（EoI、ADF、View Component、Aspect、Perspective）
-- `iso-25010-2023-update.md` — 对齐 ISO 25010:2023 九大质量特性
+- `iso-25010-2024-update.md` — 对齐 ISO 25010:2024 九大质量特性（勘误：此前误写为 2023 版，已统一更正）
 
 #### 供应链安全
 
@@ -254,7 +310,7 @@
 
 | 原内容 | 修正后 | 说明 |
 |--------|--------|------|
-| MCP 2026-07-28 RC 无状态版本 | MCP 2025-11-25 当前稳定版 | 官方规范仍为 stateful，2026-07-28 版本不存在 |
+| MCP 2026-07-28 RC（假设的未来修订） | MCP 2025-11-25 当前稳定版 | 官方规范仍为 stateful，2026-07-28 尚未正式发布 |
 | A2A v1.0.0 2026-03-12 | A2A v1.0 2026-04 Cloud Next | 官方正式发布时间 |
 | SLSA 1.0 单一等级模型 | SLSA 1.2 Multi-Track 模型 | Build/Source/Environment 三轨道 |
 | ISO 42010 SoI / AF | ISO 42010 EoI / ADF | 2022 版新术语 |
@@ -264,7 +320,7 @@
 本轮更新主要对齐以下权威来源：
 
 - ISO/IEC/IEEE 42010:2022 官方规范
-- ISO/IEC 25010:2023 官方规范
+- ISO/IEC 25010:2024 官方规范
 - SLSA Specification v1.1 / v1.2 (slsa.dev)
 - NIST SP 800-218r1 Initial Public Draft (2025-12-17)
 - Regulation (EU) 2024/2847 (EU CRA)
@@ -308,7 +364,7 @@
 
 #### Track B4: 05 功能架构复用
 
-- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2026-07-28 RC + A2A v1.0.0 协议架构复用分析
+- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 - `04-workflow-orchestration/temporal-reuse-patterns.md` — Temporal 工作流复用模式（Saga/Parallel/Child/Schedule）
 - `decision-tree-granularity-cost-roi.md` — 功能复用的粒度-成本-收益决策树
 
@@ -350,6 +406,22 @@
 - `templates/document-template.md` — 文档写作统一模板
 - `templates/quick-reference-card.md` — 快速参考卡（一页纸速查）
 
+## 2026-06-08 HOTFIX-5: 统一 Coq/Isabelle 状态标记
+
+> **修正原因**：`SUBSEQUENT_PLAN_2026.md` 2.1 节将 Coq/Isabelle 标注为"已完成"，与 `07-formal-verification/README.md` 及 `roadmap.md` 中 T18 的 `[ ]` 未完成状态矛盾。实际仅存在 `insertion_sort.v`、`bounded_counter.v`、`Turnstile.thy` 三个教学级示例，无安全关键组件定理证明。
+
+**已更新文件**：
+
+- `struct/07-formal-verification/README.md` — `## 当前状态` 段落：拆分原条目为"教学示例已完成"与"安全关键证明待启动"
+- `struct/07-formal-verification/plans-tasks/roadmap.md` — T18 拆分为 T18a（已完成）与 T18b（Phase 2 2026-Q4）
+- `struct/SUBSEQUENT_PLAN_2026.md` — 2.1 节拆分条目并同步 2.3 节描述
+
+**修正原则**：
+
+- 明确区分"教学示例完成"与"安全关键证明完成"
+- 所有文件状态标记一致
+- 不删除任何已有文件内容
+
 ---
 
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-08

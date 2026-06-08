@@ -119,7 +119,7 @@ BusinessAsset: "客户订单管理"
 ## 6. 与元模型标准的交叉引用
 
 - `01-meta-model-standards/06-formal-axioms/axiom-system.md`：本规约是 15 条公理中 S.1–S.4 的 Alloy 实例化。特别是 S.4（Abstraction Layering）和 S.2（Compositionality）直接指导了 `AdjacentLayerMapping` 和 `ConcernConsistency` 的设计。
-- `01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`：ArchiMate 4.0（2026-04-27 官方发布）的关系类型（serving、realization、aggregation）与本规约中的 `MappingType`（Refinement、Realization）语义对应。
+- `01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`：ArchiMate 3.2 的关系类型（serving、realization、aggregation）与本规约中的 `MappingType`（Refinement、Realization）语义对应；ArchiMate 4.0 预览内容尚未获官方正式发布确认。
 - `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md`：TOGAF 的 Architecture Continuum（基础→通用→行业→特定组织）与本规约的四层抽象模型同构。
 
 ---
