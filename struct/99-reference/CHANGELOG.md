@@ -5,6 +5,38 @@
 
 ---
 
+## 2026-06-08 Phase 4 安全与供应链纵深完成
+
+### 供应链安全
+
+- **SLSA 1.2 Multi-Track 深度解析**: `10/01-slsa-framework/slsa-1-2-multi-track.md` — Build/Source/Build Environment三轨道×L1-L3矩阵
+- **SLSA L4 分布式构建验证**: `10/01-slsa-framework/slsa-l4-distributed-builds.md` — sigstore/cosign实践、多签名构建概念验证
+- **供应链攻击树可视化**: `10/03-attack-vectors/attack-tree-interactive.py` — 5种攻击场景、纯Python生成单文件HTML、防御矩阵联动
+- **NIST SSDF 1.2 对齐**: `10/05-case-studies/nist-ssdf-1-2-alignment.md` — 四大实践组映射、正式版变化追踪
+- **EU CRA 合规工具**: `10/05-case-studies/eu-cra-checklist.py` — 20项检查清单(Annex I/II/III)、交互式评估、JSON/Markdown报告
+
+### 元模型与标准对齐
+
+- **IEEE 1517 复用过程映射**: `01/01-iso-420xx-family/ieee-1517-reuse-processes.md` — 三过程组(领域/应用/管理)、与12207/26550对照、30项检查清单
+
+---
+
+## 2026-06-08 Phase 3 垂直领域扩展完成
+
+### 工业 IoT / OT-IT 融合
+
+- **IEC 61508 PIU 贝叶斯统计验证工具**: `11/06-functional-safety/piu-bayesian-tool.py` — 支持单组件/多站点池化分析、Gamma-Poisson共轭模型、威布尔过程扩展
+- **ISO 26262 SEooC 复用流程模板**: `11/06-functional-safety/iso26262-seooc-template.md` — 含三阶段流程、安全手册模板、20项集成检查清单、SEooC vs PIU对比
+- **工业边缘 AI 模型部署规范**: `11/07-edge-ai/model-deployment-spec.md` — 五阶段部署框架、TFLite/ONNX Runtime/TensorRT/TVM对比、功能安全约束
+- **MCP for Industrial AI 协议草案**: `11/07-edge-ai/mcp-industrial-ai-draft.md` — Tools/Resources/Prompts工业适配、OPC UA FX映射、IEC 62443安全扩展
+- **AAS-OPC UA NodeSet 完整映射规范**: `11/05-digital-twin-aas/aas-opcua-mapping.md` — 11项映射表、JSON/XML示例、生命周期同步规则
+
+### 元模型与标准对齐
+
+- **FAIR4RS 原则与软件复用对照**: `01/08-fair4rs/fair4rs-alignment.md` — 4×4架构映射矩阵、40项检查清单(0-3分评分)、与ISO 25010/OMG RAS/IEEE 1517对照
+
+---
+
 ## 2026-06-08 Phase 2 形式化与量化深化完成
 
 ### 新增内容

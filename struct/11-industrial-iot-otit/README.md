@@ -46,8 +46,11 @@
 - [x] FX Connection Manager TLA+ 规约 (`02-opc-ua-fx/connection-manager/tla-specification.tla`)
 - [x] 2026 厂商支持矩阵 (`02-opc-ua-fx/vendor-matrix-2026.md`)
 - [x] 棕地/绿地/混合场景决策模板 (`02-opc-ua-fx/deployment-scenarios/brownfield-greenfield-decision.md`)
-- [ ] AAS 到 OPC UA NodeSet 的完整映射规范 (2026-06 第4周)
-- [ ] PIU 贝叶斯方法扩展工具 (2027-Q1)
+- [x] AAS-OPC UA NodeSet 完整映射规范 (`05-digital-twin-aas/aas-opcua-mapping.md`)
+- [x] IEC 61508 PIU 贝叶斯统计验证工具 (Python CLI) (`06-functional-safety/piu-bayesian-tool.py`)
+- [x] ISO 26262 SEooC 复用流程模板 (`06-functional-safety/iso26262-seooc-template.md`)
+- [x] 工业边缘 AI 模型部署规范 (`07-edge-ai/model-deployment-spec.md`)
+- [x] MCP for Industrial AI 协议草案 (`07-edge-ai/mcp-industrial-ai-draft.md`)
 - [ ] PLCopen 功能块 TLA+ 验证 (2026-06 第4周)
 
 ## 关联主题

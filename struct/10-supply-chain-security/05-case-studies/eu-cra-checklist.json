@@ -1,0 +1,161 @@
+{
+  "version": "1.0",
+  "regulation": "EU Cyber Resilience Act (EU) 2024/2847",
+  "annexes": {
+    "annex_i": {
+      "title": "Annex I — Cybersecurity Requirements",
+      "items": [
+        {
+          "id": "I-01",
+          "description": "Products are delivered with secure default configurations, and the most secure state is the default.",
+          "category": ["all"],
+          "evidence": "Configuration hardening guide, default settings audit",
+          "severity": "high"
+        },
+        {
+          "id": "I-02",
+          "description": "Products protect the confidentiality of stored, transmitted, or processed data.",
+          "category": ["all"],
+          "evidence": "Encryption at rest and in transit documentation",
+          "severity": "high"
+        },
+        {
+          "id": "I-03",
+          "description": "Products protect the integrity of stored, transmitted, or processed data.",
+          "category": ["all"],
+          "evidence": "Hash verification, checksums, digital signatures",
+          "severity": "high"
+        },
+        {
+          "id": "I-04",
+          "description": "Products protect the availability of functions critical to the health and safety of users.",
+          "category": ["Class I", "Class II"],
+          "evidence": "Availability testing reports, failover design",
+          "severity": "critical"
+        },
+        {
+          "id": "I-05",
+          "description": "Products are designed to protect against unauthorized access by appropriate control mechanisms.",
+          "category": ["all"],
+          "evidence": "Authentication and authorization architecture",
+          "severity": "high"
+        },
+        {
+          "id": "I-06",
+          "description": "Products protect the confidentiality of authentication credentials.",
+          "category": ["all"],
+          "evidence": "Credential storage policy (hashing, salting, MFA)",
+          "severity": "high"
+        },
+        {
+          "id": "I-07",
+          "description": "Products are designed to limit attack surfaces, including external interfaces.",
+          "category": ["all"],
+          "evidence": "Attack surface analysis, interface inventory",
+          "severity": "medium"
+        },
+        {
+          "id": "I-08",
+          "description": "Products are designed to reduce the impact of security incidents.",
+          "category": ["all"],
+          "evidence": "Incident response plan, containment procedures",
+          "severity": "high"
+        },
+        {
+          "id": "I-09",
+          "description": "Products do not contain known exploitable vulnerabilities at time of placement on the market.",
+          "category": ["all"],
+          "evidence": "Pre-release vulnerability scan report",
+          "severity": "critical"
+        },
+        {
+          "id": "I-10",
+          "description": "Security updates are provided to address vulnerabilities in a timely manner.",
+          "category": ["all"],
+          "evidence": "Patch policy, update mechanism documentation",
+          "severity": "high"
+        }
+      ]
+    },
+    "annex_ii": {
+      "title": "Annex II — Vulnerability Handling Requirements",
+      "items": [
+        {
+          "id": "II-01",
+          "description": "Identify and document vulnerabilities and components contained in the product.",
+          "category": ["all"],
+          "evidence": "SBOM, vulnerability register",
+          "severity": "high"
+        },
+        {
+          "id": "II-02",
+          "description": "Address and remediate vulnerabilities without delay.",
+          "category": ["all"],
+          "evidence": "Remediation SLA, ticketing system records",
+          "severity": "high"
+        },
+        {
+          "id": "II-03",
+          "description": "Apply regular and automatic security updates and patches.",
+          "category": ["all"],
+          "evidence": "Auto-update architecture, OTA mechanism",
+          "severity": "medium"
+        },
+        {
+          "id": "II-04",
+          "description": "Disclose information about fixed vulnerabilities to users in a timely manner.",
+          "category": ["all"],
+          "evidence": "Security advisory process, release notes",
+          "severity": "medium"
+        },
+        {
+          "id": "II-05",
+          "description": "Put in place and enforce a coordinated vulnerability disclosure policy.",
+          "category": ["all"],
+          "evidence": "Published CVD policy, contact channel",
+          "severity": "medium"
+        },
+        {
+          "id": "II-06",
+          "description": "Facilitate user understanding of security risks and safe product use.",
+          "category": ["all"],
+          "evidence": "User documentation, security guides",
+          "severity": "low"
+        },
+        {
+          "id": "II-07",
+          "description": "Ensure that third-party components are covered by the vulnerability management process.",
+          "category": ["all"],
+          "evidence": "Third-party SCA integration, dependency audit",
+          "severity": "high"
+        }
+      ]
+    },
+    "annex_iii": {
+      "title": "Annex III — Technical Documentation and CE Marking",
+      "items": [
+        {
+          "id": "III-01",
+          "description": "Technical documentation demonstrates conformity with Annex I and II requirements.",
+          "category": ["all"],
+          "evidence": "Technical file, risk assessment report",
+          "severity": "high"
+        },
+        {
+          "id": "III-02",
+          "description": "CE marking is affixed visibly, legibly, and indelibly before placement on the market.",
+          "category": ["all"],
+          "evidence": "CE marking placement records",
+          "severity": "medium"
+        },
+        {
+          "id": "III-03",
+          "description": "EU Declaration of Conformity is drawn up and kept available.",
+          "category": ["all"],
+          "evidence": "DoC template, signed declaration",
+          "severity": "medium"
+        }
+      ]
+    }
+  }
+}
