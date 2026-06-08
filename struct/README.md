@@ -164,7 +164,9 @@ struct/
 │   ├── 03-iso-26550-ple/
 │   ├── 04-archimate-4/
 │   ├── 05-swebok-v4/
-│   └── 06-formal-axioms/
+│   ├── 06-formal-axioms/
+│   ├── 07-omg-ras/
+│   └── 08-fair4rs/
 │
 ├── 02-business-architecture-reuse/   # 业务架构复用
 │   ├── README.md
@@ -175,15 +177,21 @@ struct/
 │
 ├── 03-application-architecture-reuse/ # 应用架构复用
 │   ├── README.md
+│   ├── 01-layered-architecture/
+│   ├── 02-microservices/
 │   ├── 03-app-service/
+│   ├── 03-serverless/
 │   ├── 04-data-architecture/
+│   ├── 04-event-driven/
 │   ├── 05-cloud-native-patterns/
 │   ├── 06-service-mesh/
-│   └── 07-eda-cqrs/
+│   ├── 07-eda-cqrs/
+│   └── 07-tosca-dmn-platform/
 │
 ├── 04-component-architecture-reuse/  # 组件架构复用
 │   ├── README.md
 │   ├── 04-design-patterns/
+│   ├── 06-cloud-native-networking/
 │   └── 07-language-ecosystems/
 │
 ├── 05-functional-architecture-reuse/ # 功能架构复用
@@ -205,6 +213,7 @@ struct/
 │   ├── plans-tasks/roadmap.md
 │   ├── 01-tla-plus/
 │   ├── 02-alloy/
+│   ├── 03-coq-isabelle/
 │   ├── 04-rust-type-system/
 │   ├── 05-spark-ada/
 │   ├── 06-b-method/
@@ -227,6 +236,7 @@ struct/
 │   ├── 01-slsa-framework/
 │   ├── 02-sbom-standards/
 │   ├── 03-attack-vectors/
+│   ├── 04-provenance-examples/
 │   ├── 04-zero-trust-supply-chain/
 │   └── 05-case-studies/
 │
@@ -246,6 +256,7 @@ struct/
 │   ├── 01-mcp-protocol/
 │   ├── 02-a2a-protocol/
 │   ├── 03-agentic-infrastructure/
+│   ├── 03-hybrid-a2a-mcp-poc/
 │   ├── 04-probabilistic-contracts/
 │   └── 05-conformal-prediction/
 │
@@ -268,10 +279,23 @@ struct/
     ├── glossary/
     ├── standards-index/
     ├── templates/
+    ├── tools/
     └── visualizations/
 ```
 
-> **历史说明**: 早期 MASTER_PLAN 中规划的部分子目录（如 `02-business-process-reuse`、`03-domain-driven-design`、`01-api-design`、`03-coq-isabelle`、`quantum-computing` 等）在实际演进中被合并、重命名或尚未创建。本导航以实际文件为准。后续如需恢复，按 `SUBSEQUENT_PLAN_2026.md` 执行。
+> **历史说明**: 早期 MASTER_PLAN 中规划的部分子目录（如 `02-business-process-reuse`、`03-domain-driven-design`、`01-api-design`、`quantum-computing` 等）在实际演进中被合并、重命名或尚未创建。本导航以实际文件为准。后续如需恢复，按 `SUBSEQUENT_PLAN_2026.md` 执行。
+>
+> **2026-06-08 更新**: 本次同步新增以下实际已创建的子目录：
+>
+> - `01-meta-model-standards/`: `07-omg-ras/`, `08-fair4rs/`
+> - `03-application-architecture-reuse/`: `01-layered-architecture/`, `02-microservices/`, `03-serverless/`, `04-event-driven/`, `07-tosca-dmn-platform/`
+> - `04-component-architecture-reuse/`: `06-cloud-native-networking/`
+> - `07-formal-verification/`: `03-coq-isabelle/`（此前被标记为未创建，现已恢复）
+> - `10-supply-chain-security/`: `04-provenance-examples/`
+> - `12-ai-native-reuse/`: `03-hybrid-a2a-mcp-poc/`
+> - `99-reference/`: `tools/`
+>
+> 部分主题存在编号重复的子目录（如 `03-app-service/` 与 `03-serverless/`、`04-data-architecture/` 与 `04-event-driven/`、`07-eda-cqrs/` 与 `07-tosca-dmn-platform/`），此为实际文件状态，后续可在整理阶段统一重新编号。
 
 ---
 

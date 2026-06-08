@@ -31,7 +31,7 @@
 - [x] 认知负荷量化公式
 - [x] 开发者复用决策认知负荷量化模型（NASA-TLX 适配版）(`03-cognitive-load-theory/quantitative-model.md`)
 - [ ] 眼动追踪/EEG 实验设计的复用认知研究方案 (P2, 2027-Q1)
-- [ ] AI 辅助复用系统的原型设计 (P1, 2026-Q4)
+- [x] AI辅助复用决策系统原型设计 (`05-ai-cognitive-augmentation/augmentation-architecture.md`)
 
 ## 关联主题
 

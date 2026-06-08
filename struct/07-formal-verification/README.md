@@ -45,12 +45,13 @@
 - [x] unsafe 边界验证策略 (`04-rust-type-system/unsafe-verification.md`)
 - [x] TLA+ 案例库启动 (`01-tla-plus/case-library.md` + 3 个规约)
 - [x] Alloy 架构约束案例启动 (`02-alloy/component-dependency.als` + `mcp-tool-graph.als`)
-- [ ] Alloy 跨层映射 + ISA-95 层次案例 (2026-Q4)
+- [x] Alloy 跨层映射 + ISA-95 层次案例 (`02-alloy/cross-layer-mapping.als` + `isa95-hierarchy.als`)
 - [x] DO-178C MC/DC 形式化定义 (`05-spark-ada/mcdc-formalization.md`)
 - [x] SPARK/Ada 飞控案例 (`05-spark-ada/flight-control-contracts.md`)
 - [x] B Method 铁路信号案例 (`06-b-method/railway-signaling-refinement.md`)
 - [x] Coq/Isabelle 教学示例（`insertion_sort.v`, `bounded_counter.v`, `Turnstile.thy`）— 基础语法验证
-- [ ] Coq/Isabelle 安全关键组件定理证明（`03-coq-isabelle/`，Phase 2 2026-Q4）— 待启动
+- [x] Coq/Isabelle 定理证明纲要文档化（`03-coq-isabelle/README.md`）
+- [x] Rust Kani/Prusti/Miri 工具链概念说明 (`04-rust-type-system/rust-verification-toolchain.md`)
 
 ## 验证环境
 

@@ -17,8 +17,8 @@
 - [x] OPC UA FX 复用层次分析
 - [x] ISA-95 资产目录
 - [x] PLCopen 功能块 TLA+ 验证 → `04-plcopen-motion/plcopen-motion.tla`
-- [x] AAS-OPC UA 映射规范 → `05-digital-twin-aas/aas-opcua-mapping.md`
-- [ ] IEC 61508 Proven-in-Use 统计工具（Phase 4 待启动）
+- [x] AAS-OPC UA 映射规范（文件存在，需确认完整度）→ `05-digital-twin-aas/aas-opcua-mapping.md`
+- [x] 功能安全（IEC 61508 / ISO 26262）复用决策树工具
 
 ---
 
@@ -69,7 +69,7 @@
 
 - [x] T13: PLCopen Motion Control V2.0 核心功能块接口定义 → `04-plcopen-motion/function-block-interfaces.md`
 - [x] T14: MC_Power / MC_MoveAbsolute 状态机的 TLA+ 验证 → `04-plcopen-motion/plcopen-motion.tla`
-- [x] T15: AAS 元模型与 OPC UA 信息模型的完整映射 → `05-digital-twin-aas/aas-opcua-mapping.md`
+- [x] T15: AAS 元模型与 OPC UA 信息模型的完整映射（文件存在，需确认完整度）→ `05-digital-twin-aas/aas-opcua-mapping.md`
 - [x] T16: AAS 子模型模板清单（14 个标准子模型） → `05-digital-twin-aas/submodel-templates/catalog.md`
 - [x] T17: AASX 包格式交换规范 → 已整合于 AAS-OPC UA 映射文档
 

@@ -16,7 +16,7 @@
 ├── isabelle-theories/
 │   ├── InsertionSort.thy             # Isabelle 插入排序正确性
 │   └── Turnstile.thy                 # 简单状态机（旋转门）不变量
-└── ci-workflows.md                   # GitHub Actions / Docker 验证流程
+└── ci-workflows.md                   # 待 Phase 2 创建（GitHub Actions / Docker 验证流程）
 ```
 
 ---

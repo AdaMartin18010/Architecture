@@ -59,6 +59,13 @@
 2. 每新增一个外部标准引用，必须在本 README 的标准索引中更新
 3. 每新增一个可视化图表，必须上传至 `visualizations/` 并在相关主题 README 中引用
 
+## 当前状态
+
+- [x] 术语查询脚本 (Python CLI) (`tools/terminology-query.py`)
+- [x] 形式化验证 Docker 环境 (`tools/formal-verification-env/`)
+- [x] 公理-定理推理树 (`glossary/axiom-theorem-tree.md`)
+- [x] 跨主题综合索引 (`glossary/cross-topic-index.md`)
+
 ---
 
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-08

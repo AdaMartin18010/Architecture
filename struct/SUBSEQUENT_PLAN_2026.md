@@ -174,17 +174,17 @@
 | P1.5-T3 | 更新 07-roadmap：TLA+ 案例库状态；修正跨主题交付物路径 | `07-formal-verification/plans-tasks/roadmap.md` | OPC UA FX / PLCopen 路径指向 11/ 下实际文件 | P0 |
 | P1.5-T4 | 重构 `struct/README.md` 文件夹结构导航 | `struct/README.md` | 与实际 `struct/` 目录一致（允许新增/重命名有说明） | P1 |
 | P1.5-T5 | 清理 `.vscode/README.md` 中疑似 PostgreSQL 残留内容 | `.vscode/README.md` | 内容与项目主题一致 | P1 |
-| P1.5-T6 | 建立形式化验证自动化环境（Java + TLA+ Toolbox + Alloy Analyzer） | `99-reference/tools/formal-verification-env.md` | 能运行 TLC 和 Alloy Analyzer 至少一个案例 | P0 |
+| P1.5-T6 | ~~建立形式化验证自动化环境（Java + TLA+ Toolbox + Alloy Analyzer）~~ ➡️ 形式化验证规约内容梳理与校对 | `99-reference/tools/formal-verification-env.md`（内容梳理文档） | 完成 TLA+/Alloy/Coq 现有规约的内容校对与一致性检查，不搭建运行环境 | P1 |
 
 ### Phase 2 形式化与量化深化（2026-Q4）
 
-**目标**: 将形式化验证、认知架构、价值量化从"理论文档"转化为"可操作方法论 + 可执行工具"。优先填补03应用架构缺失的基础子目录（分层架构、微服务、Serverless、事件驱动）
+**目标**: 将认知架构、价值量化从"理论文档"转化为"可操作方法论 + 可执行工具"；完成形式化验证内容梳理；优先填补03应用架构缺失的基础子目录（分层架构、微服务、Serverless、事件驱动）
 
 | 任务 ID | 任务 | 交付物 | 对齐来源 | 验收标准 |
 |---------|------|--------|----------|----------|
-| P2-T1 | Coq/Isabelle 高安全等级组件验证案例 | `07-formal-verification/03-coq-isabelle/README.md` + `.v`/`.thy` 案例 | Coq (Inria)、Isabelle/HOL (TU Munich)、seL4/CompCert | 2+ 案例，含证明纲要和可执行脚本 |
-| P2-T2 | Alloy 跨层映射 + ISA-95 层次一致性验证 | `07-formal-verification/02-alloy/cross-layer-mapping.md` 扩展 | Alloy Tools (MIT)、ISO/IEC 42010 | 新增 ISA-95 五层约束，Alloy Analyzer 可运行 |
-| P2-T3 | Rust 形式化验证工具链实践（Kani/Prusti/Miri） | `07-formal-verification/04-rust-type-system/toolchain-practice.md` | RustBelt (MPI-SWS)、Kani (AWS)、Prusti (ETH) | 3+ 可运行示例，CI 脚本 |
+| P2-T1 | Coq/Isabelle 高安全等级组件内容梳理（定理证明纲要整理，不搭建运行环境） | `07-formal-verification/03-coq-isabelle/README.md` + `.v`/`.thy` 案例整理 | Coq (Inria)、Isabelle/HOL (TU Munich)、seL4/CompCert | 2+ 案例证明纲要文档化，含概念说明和引用来源 |
+| P2-T2 | Alloy 跨层映射 + ISA-95 层次约束内容梳理（模型文档化，不执行约束求解） | `07-formal-verification/02-alloy/cross-layer-mapping.md` 扩展 | Alloy Tools (MIT)、ISO/IEC 42010 | 新增 ISA-95 五层约束文档，含模型说明和逻辑推演 |
+| P2-T3 | Rust 形式化验证工具链内容梳理（Kani/Prusti/Miri 概念说明与引用整理） | `07-formal-verification/04-rust-type-system/toolchain-practice.md` | RustBelt (MPI-SWS)、Kani (AWS)、Prusti (ETH) | 工具链概念文档化，含对比分析和权威来源引用 |
 | P2-T4 | COCOMO II 2026 可执行计算器 | `09-value-quantification/tools/cocomo-calculator.py` + Excel | USC COCOMO II Manual (Boehm) | 支持 AAM/SU/UNFM 参数输入和 ROI 输出 |
 | P2-T5 | FinOps 跨层成本分摊 Python/Excel 模板 | `06-cross-layer-governance/04-finops-cost/templates/` + `99-reference/tools/finops-template/` | FinOps Foundation | 含四级分摊公式和示例数据 |
 | P2-T6 | 复用成熟度可执行评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-tool/` (YAML + Python CLI) | ISO/IEC 26566:2026、NASA RRL | 生成雷达图 + 成熟度报告 |
@@ -278,11 +278,11 @@
 > **选项 B**: 保留现有规划树，为缺失子目录创建占位符（README + TODO），后续按规划补齐。
 > **选项 C**: 不调整顶层规划，仅在 README 中增加"实际目录与规划存在差异"的免责声明。
 
-### 决策 2：形式化验证工具链投入
+### 决策 2：形式化验证工具链投入（已调整）
 >
-> **选项 A（推荐）**: 建立 Docker 化的 TLA+ Toolbox + Alloy Analyzer + Coq 环境，要求所有新增形式化规约必须通过自动化验证。
-> **选项 B**: 维持当前"人工语法审查"模式，仅在 Phase 6 前统一跑一遍工具。
-> **选项 C**: 只对高优先级规约（MCP/A2A/PLCopen）跑工具，其余保持文档级。
+> ~~选项 A（推荐）: 建立 Docker 化的 TLA+ Toolbox + Alloy Analyzer + Coq 环境~~ ➡️ **已按用户要求调整为内容梳理优先**：
+> **选项 A'（当前执行）**: 不搭建形式化验证运行环境，重点做好 TLA+/Alloy/Coq/Isabelle 现有规约的**内容梳理、校对、权威来源对齐和概念文档化**。保持"文档级正确性"而非"机器验证级正确性"。
+> ~~选项 B~~ / ~~选项 C~~ — 均不适用，已按 A' 执行。
 
 ### 决策 3：可执行工具开发策略
 >

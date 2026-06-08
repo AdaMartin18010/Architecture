@@ -37,6 +37,7 @@
 - [x] FAIR4RS 原则与架构资产复用对齐 (`08-fair4rs/fair4rs-alignment.md`)
 - [x] IEEE 1517-2010 与 ISO 12207 / 42020 映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
 - [x] DIS 42024/42042 当前状态对齐 (`01-iso-420xx-family/iso-42024-42042-dis-alignment.md`)
+- [x] ISO/IEC 25010:2024 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2024-update.md`)
 - [ ] ArchiMate 4.0 **官方确认后**的映射更新 (当前厂商预告未获 The Open Group 认可)
 
 ## 关联主题

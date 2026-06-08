@@ -44,10 +44,10 @@
 
 | 子目录 | 主题 | 状态 |
 |:---|:---|:---:|
-| `01-layered-architecture/` | 分层架构复用模式 | ⏳ 框架 |
-| `02-microservices/` | 微服务架构复用模式 | ⏳ 框架 |
-| `03-serverless/` | Serverless/FaaS 复用模式 | ⏳ 框架 |
-| `04-event-driven/` | 事件驱动架构复用模式 | ⏳ 框架 |
+| `01-layered-architecture/` | 分层架构复用模式 | ✅ 核心文档 |
+| `02-microservices/` | 微服务架构复用模式 | ✅ 核心文档 |
+| `03-serverless/` | Serverless/FaaS 复用模式 | ✅ 核心文档 |
+| `04-event-driven/` | 事件驱动架构复用模式 | ✅ 核心文档 |
 | `03-app-service/` | 应用服务复用 | ✅ |
 | `04-data-architecture/` | 数据架构复用（Data Mesh） | ✅ |
 | `05-cloud-native-patterns/` | 云原生架构模式复用性矩阵 | ✅ |

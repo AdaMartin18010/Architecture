@@ -1,0 +1,119 @@
+# FinOps 四级成本分摊示例数据
+# 对齐: FinOps Foundation Framework 2026
+# 用途: 配合 finops-exporter.py 生成分摊报告
+
+metadata:
+  period: "2026-06"
+  currency: "USD"
+  organization: "Example Corp"
+  amortization_months: 36
+  description: "5个复用资产、3个项目、组织级间接成本与风险评分的完整示例"
+
+# -----------------------------------------------------------------------------
+# L1 资产级: 单个复用组件/服务的直接成本（开发、维护、部署）
+# -----------------------------------------------------------------------------
+assets:
+  - id: "svc-auth"
+    name: "统一认证服务"
+    layer: "component"
+    description: "OAuth2/OIDC 统一认证微服务，被电商平台、移动App、管理后台复用"
+    original_development_cost: 120000
+    monthly_maintenance: 2000
+    monthly_deployment: 800
+    adaptation_adjustment_factor: 0.85
+    usage_unit: "requests"
+
+  - id: "svc-payment"
+    name: "支付网关服务"
+    layer: "component"
+    description: "多渠道支付编排组件，支持支付宝、微信、信用卡"
+    original_development_cost: 200000
+    monthly_maintenance: 3333
+    monthly_deployment: 1200
+    adaptation_adjustment_factor: 0.90
+    usage_unit: "transactions"
+
+  - id: "svc-notification"
+    name: "消息通知服务"
+    layer: "component"
+    description: "短信、推送、邮件统一通知通道"
+    original_development_cost: 80000
+    monthly_maintenance: 1333
+    monthly_deployment: 500
+    adaptation_adjustment_factor: 0.75
+    usage_unit: "messages"
+
+  - id: "svc-analytics"
+    name: "数据分析引擎"
+    layer: "functional"
+    description: "实时数据聚合与报表生成函数集"
+    original_development_cost: 300000
+    monthly_maintenance: 5000
+    monthly_deployment: 2000
+    adaptation_adjustment_factor: 0.95
+    usage_unit: "queries"
+
+  - id: "svc-search"
+    name: "全文检索服务"
+    layer: "component"
+    description: "基于 Elasticsearch 的商品/文档全文检索"
+    original_development_cost: 150000
+    monthly_maintenance: 2500
+    monthly_deployment: 1000
+    adaptation_adjustment_factor: 0.80
+    usage_unit: "searches"
+
+# -----------------------------------------------------------------------------
+# L2 项目级: 各项目对复用资产的使用量
+# -----------------------------------------------------------------------------
+projects:
+  - id: "proj-ecommerce"
+    name: "电商平台"
+    description: "核心电商交易系统"
+    usage:
+      svc-auth: 450000
+      svc-payment: 120000
+      svc-notification: 800000
+      svc-search: 300000
+
+  - id: "proj-mobile"
+    name: "移动App"
+    description: "iOS/Android 客户端后端"
+    usage:
+      svc-auth: 320000
+      svc-notification: 1200000
+      svc-analytics: 50000
+      svc-search: 200000
+
+  - id: "proj-admin"
+    name: "管理后台"
+    description: "内部运营管理系统"
+    usage:
+      svc-auth: 80000
+      svc-analytics: 150000
+      svc-search: 100000
+
+# -----------------------------------------------------------------------------
+# L3 组织级: 卓越中心(CoE)、平台团队的间接成本
+# -----------------------------------------------------------------------------
+organizational_overhead:
+  coe_monthly_cost: 50000
+    # 卓越中心月度运营成本: 架构治理、标准制定、培训
+  platform_team_monthly_cost: 80000
+    # 平台工程团队月度成本: 共享组件维护、CI/CD、平台运维
+  shared_infrastructure_monthly: 30000
+    # 共享基础设施月度成本: K8s 控制面、监控、日志、Registry
+
+# -----------------------------------------------------------------------------
+# L4 生态级: 开源依赖、供应链安全成本
+# -----------------------------------------------------------------------------
+risk:
+  supply_chain_risk_score: 7.5
+    # 供应链风险评分 (1-10, 10为最高风险)
+    # 评估维度: 开源组件老旧程度、CVE 数量、供应商集中度
+  security_investment_factor: 0.15
+    # 安全投入系数: 将风险评分转换为成本占比的转换因子
+  license_compliance_reserve: 5000
+    # 许可证合规准备金 (月度)
+  vendor_lockin_reserve: 3000
+    # 供应商锁定风险准备金 (月度)

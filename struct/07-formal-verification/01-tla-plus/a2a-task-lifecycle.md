@@ -147,4 +147,4 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 
 [^7]: PickAxe. (2026). *MCP vs A2A Protocol: What AI Agent Builders Actually Need to Know in 2026*. <https://pickaxe.co/post/mcp-vs-a2a-protocol>
 
-[^8]: Google A2A Protocol Specification v1.0. (2026, March). *Agent-to-Agent Protocol*. <https://a2a-protocol.org>
+[^8]: Google A2A Protocol. *Agent-to-Agent Protocol*. <https://google.github.io/A2A/>

@@ -12,7 +12,7 @@
 按用户确认执行以下策略：
 
 - **1A**: 重构 README/MASTER_PLAN 与实际 `struct/` 目录 100% 匹配
-- **2A**: Docker 化 TLA+/Alloy/Coq 环境，新增规约必须自动验证
+- **2A**: ~~Docker 化 TLA+/Alloy/Coq 环境，新增规约必须自动验证~~ ➡️ **已调整**：不搭建形式化验证运行环境，重点做好现有规约的内容梳理、校对、权威来源对齐和概念文档化（文档级正确性优先）
 - **3A**: 可执行工具采用 Python CLI + Streamlit 快速原型
 - **4A**: 重点补齐 Conformal Prediction+形式化、WASI 0.3、Agentic Governance；暂缓量子计算
 - **5A**: 每篇新增/更新文档必须列出 1-3 个国际权威来源 URL

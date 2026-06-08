@@ -30,8 +30,8 @@
 - [x] 五级成熟度模型定义
 - [x] 度量指标体系框架
 - [x] 复用度量指标体系四级框架 (`05-metrics-kpi/metrics-framework.md`)
-- [x] FinOps 跨层复用成本分摊模型 (`04-finops-cost/cost-allocation-template.md`)
-- [x] 可执行的成熟度评估问卷 CLI (`03-maturity-models/assessment-tool.py`，基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL)
+- [x] FinOps 跨层成本分摊模板 (Markdown + Python/Excel导出) (`04-finops-cost/cost-allocation-template.md` + `04-finops-cost/templates/finops-exporter.py`)
+- [x] 复用成熟度可执行评估问卷 (Python CLI) (`03-maturity-models/reuse-maturity-assessment-cli.py`，基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL)
 - [ ] FinOps 成本分摊工具模板 Python/Excel 实现 (P1, 2026-Q4)
 
 ## 关联主题

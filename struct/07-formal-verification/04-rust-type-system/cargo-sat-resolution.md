@@ -256,7 +256,7 @@ function 生成错误报告(conflict_term):
     return HumanReadableExplanation(tree)
 ```
 
-**Cargo 特定扩展**: Rust 1.93 (2026) 的 PubGrub 实现增加了 **MSRV (Minimum Supported Rust Version)** 感知，将 Rust 编译器版本作为额外的约束维度：
+**Cargo 特定扩展**: Rust 1.93（预计 2026 年下半年发布，截至 2026-06-08 尚未发布）的 PubGrub 实现增加了 **MSRV (Minimum Supported Rust Version)** 感知，将 Rust 编译器版本作为额外的约束维度：
 
 $$
 \forall p@v \in \text{Solution}: \text{msrv}(p@v) \leq \text{rustc\_version}

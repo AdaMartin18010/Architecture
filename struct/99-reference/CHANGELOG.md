@@ -1,7 +1,32 @@
 # 更新日志
 
-> **版本**: 2026-06-06
+> **版本**: 2026-06-08
 > **定位**: 记录知识库的重大更新、勘误和权威来源对齐
+
+---
+
+## 2026-06-08 Phase 2 形式化与量化深化完成
+
+### 新增内容
+
+- **03 应用架构基础填充**: 分层架构 / 微服务 / Serverless / 事件驱动 四个子目录核心文档
+- **01 元模型标准对齐**: ISO/IEC 25010:2024 AI质量特性影响矩阵、OMG RAS v2.2 对齐章节
+- **07 形式化验证内容梳理**: Coq/Isabelle定理证明纲要、Alloy ISA-95约束、Rust工具链概念说明
+- **09 价值量化工具**: COCOMO II 2026计算器 (Python CLI)
+- **06 跨层治理工具**: FinOps成本分摊模板 + Excel导出脚本、复用成熟度评估问卷CLI
+- **08 认知架构**: AI辅助复用决策系统原型设计
+- **12 AI原生工具**: AI功能概率契约校准工具 (Python CLI)
+- **99 参考工具**: 术语查询脚本 (Python CLI)
+
+### 可执行工具交付
+
+| 工具 | 路径 | 功能 |
+|------|------|------|
+| COCOMO II 2026 计算器 | `09-value-quantification/tools/cocomo-calculator.py` | 成本估算、ROI计算 |
+| FinOps Excel 导出器 | `06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | 四级成本分摊、Excel导出 |
+| 成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | 25题评估、雷达图报告 |
+| AI概率契约校准 | `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` | Conformal Prediction校准、漂移检测 |
+| 术语查询 | `99-reference/tools/terminology-query.py` | 34术语跨标准检索 |
 
 ---
 
