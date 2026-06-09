@@ -1,0 +1,228 @@
+{
+  "version": "2.0.0",
+  "description": "内置常见复用模式数据库，支持分层/微服务/Serverless/事件驱动/MCP 等架构风格",
+  "patterns": [
+    {
+      "id": "PAT-LAYERED-001",
+      "name": "分层架构复用模式",
+      "category": "分层架构",
+      "layers": ["表示层", "业务逻辑层", "数据访问层", "基础设施层"],
+      "semantic_compatibility": {
+        "domain_scope": ["企业应用", "Web 应用", "桌面应用"],
+        "tech_constraints": ["Java/.NET/Python", "关系型数据库", "REST API"]
+      },
+      "variability_model": {
+        "binding_time": ["编译期", "配置期", "运行期"],
+        "variation_points": ["数据库方言", "认证方式", "缓存策略"]
+      },
+      "quality_profile": {
+        "rrl": 4.2,
+        "maturity": 5,
+        "reliability": 0.95,
+        "maintainability": 0.88
+      },
+      "cost_profile": {
+        "aaf_typical": 0.25,
+        "npv_positive": true,
+        "roi_years": 1.5
+      },
+      "security_compliance": {
+        "license": "MIT/Apache-2.0",
+        "security_level": "L2",
+        "slsa_level": 2
+      },
+      "governance": {
+        "org_maturity_required": 3,
+        "process_standardized": true,
+        "asset_catalog_required": true
+      },
+      "upgrade_path": ["功能复用", "组件复用", "应用框架复用"],
+      "reference_standards": ["ISO 25010:2024", "ISO 42010:2022"]
+    },
+    {
+      "id": "PAT-MICRO-002",
+      "name": "微服务架构复用模式",
+      "category": "微服务",
+      "layers": ["API 网关", "服务网格", "业务服务", "数据服务", "可观测性"],
+      "semantic_compatibility": {
+        "domain_scope": ["云原生应用", "电商平台", "金融系统"],
+        "tech_constraints": ["容器化", "Kubernetes", "gRPC/HTTP2", "事件总线"]
+      },
+      "variability_model": {
+        "binding_time": ["部署期", "运行期"],
+        "variation_points": ["服务发现", "负载均衡策略", "熔断策略", "版本路由"]
+      },
+      "quality_profile": {
+        "rrl": 4.5,
+        "maturity": 4,
+        "reliability": 0.92,
+        "maintainability": 0.85
+      },
+      "cost_profile": {
+        "aaf_typical": 0.35,
+        "npv_positive": true,
+        "roi_years": 2.0
+      },
+      "security_compliance": {
+        "license": "Apache-2.0",
+        "security_level": "L3",
+        "slsa_level": 3
+      },
+      "governance": {
+        "org_maturity_required": 4,
+        "process_standardized": true,
+        "asset_catalog_required": true
+      },
+      "upgrade_path": ["容器镜像复用", "Helm Chart 复用", "服务模板复用"],
+      "reference_standards": ["ISO 25010:2024", "CNCF Platform Maturity Model"]
+    },
+    {
+      "id": "PAT-SERVERLESS-003",
+      "name": "Serverless 架构复用模式",
+      "category": "Serverless",
+      "layers": ["函数计算", "事件源", "托管服务", "无服务器数据库"],
+      "semantic_compatibility": {
+        "domain_scope": ["事件驱动处理", "IoT 后端", "定时任务", "Webhook 处理"],
+        "tech_constraints": ["AWS Lambda/Azure Functions", "事件总线", "对象存储", "NoSQL"]
+      },
+      "variability_model": {
+        "binding_time": ["部署期", "运行期"],
+        "variation_points": ["触发器类型", "运行时版本", "内存配置", "超时设置"]
+      },
+      "quality_profile": {
+        "rrl": 3.8,
+        "maturity": 3,
+        "reliability": 0.90,
+        "maintainability": 0.82
+      },
+      "cost_profile": {
+        "aaf_typical": 0.15,
+        "npv_positive": true,
+        "roi_years": 1.0
+      },
+      "security_compliance": {
+        "license": "专有/托管",
+        "security_level": "L2",
+        "slsa_level": 1
+      },
+      "governance": {
+        "org_maturity_required": 3,
+        "process_standardized": false,
+        "asset_catalog_required": false
+      },
+      "upgrade_path": ["函数模板复用", "SAM/Serverless Framework 模板", "平台能力复用"],
+      "reference_standards": ["ISO 25010:2024", "ISO 42042 (DIS)"]
+    },
+    {
+      "id": "PAT-EDA-004",
+      "name": "事件驱动架构复用模式",
+      "category": "事件驱动",
+      "layers": ["事件生产者", "事件总线", "事件消费者", "事件存储", "CQRS 视图"],
+      "semantic_compatibility": {
+        "domain_scope": ["实时分析", " Saga 编排", "日志聚合", "状态同步"],
+        "tech_constraints": ["Kafka/Pulsar", "事件模式注册", "Schema Registry", "流处理引擎"]
+      },
+      "variability_model": {
+        "binding_time": ["设计期", "运行期"],
+        "variation_points": ["序列化格式", "分区策略", "消费者组", "背压策略"]
+      },
+      "quality_profile": {
+        "rrl": 4.0,
+        "maturity": 4,
+        "reliability": 0.93,
+        "maintainability": 0.80
+      },
+      "cost_profile": {
+        "aaf_typical": 0.40,
+        "npv_positive": true,
+        "roi_years": 2.5
+      },
+      "security_compliance": {
+        "license": "Apache-2.0",
+        "security_level": "L3",
+        "slsa_level": 2
+      },
+      "governance": {
+        "org_maturity_required": 4,
+        "process_standardized": true,
+        "asset_catalog_required": true
+      },
+      "upgrade_path": ["事件 Schema 复用", "处理器模板复用", "平台事件总线复用"],
+      "reference_standards": ["ISO 25010:2024", "ISO 42010:2022"]
+    },
+    {
+      "id": "PAT-MCP-005",
+      "name": "MCP (Model Context Protocol) 复用模式",
+      "category": "AI Native",
+      "layers": ["MCP Server", "MCP Client", "工具注册", "资源暴露", "Prompt 模板"],
+      "semantic_compatibility": {
+        "domain_scope": ["AI Agent 系统", "智能助手", "代码生成", "知识检索"],
+        "tech_constraints": ["MCP SDK", "JSON-RPC", "SSE/stdio", "LLM API"]
+      },
+      "variability_model": {
+        "binding_time": ["运行期"],
+        "variation_points": ["工具选择", "模型 provider", "上下文窗口策略", "认证方式"]
+      },
+      "quality_profile": {
+        "rrl": 3.5,
+        "maturity": 2,
+        "reliability": 0.85,
+        "maintainability": 0.75
+      },
+      "cost_profile": {
+        "aaf_typical": 0.20,
+        "npv_positive": true,
+        "roi_years": 1.2
+      },
+      "security_compliance": {
+        "license": "MIT",
+        "security_level": "L2",
+        "slsa_level": 1
+      },
+      "governance": {
+        "org_maturity_required": 3,
+        "process_standardized": false,
+        "asset_catalog_required": false
+      },
+      "upgrade_path": ["MCP Server 复用", "Tool 定义复用", "Prompt 模板复用"],
+      "reference_standards": ["MCP Specification 2025-11-25", "ISO 25010:2024"]
+    },
+    {
+      "id": "PAT-WASM-006",
+      "name": "WebAssembly 组件复用模式",
+      "category": "WASM",
+      "layers": ["WASM 模块", "WASI 接口", "组件模型", "运行时宿主"],
+      "semantic_compatibility": {
+        "domain_scope": ["边缘计算", "插件系统", "跨平台库", "沙箱执行"],
+        "tech_constraints": ["WASM 运行时", "WASI 0.3+", "组件模型 WIT", "语言绑定"]
+      },
+      "variability_model": {
+        "binding_time": ["编译期", "链接期"],
+        "variation_points": ["WASI 接口版本", "内存限制", " capability 授权"]
+      },
+      "quality_profile": {
+        "rrl": 3.2,
+        "maturity": 2,
+        "reliability": 0.88,
+        "maintainability": 0.78
+      },
+      "cost_profile": {
+        "aaf_typical": 0.30,
+        "npv_positive": true,
+        "roi_years": 2.0
+      },
+      "security_compliance": {
+        "license": "Apache-2.0",
+        "security_level": "L4",
+        "slsa_level": 3
+      },
+      "governance": {
+        "org_maturity_required": 4,
+        "process_standardized": true,
+        "asset_catalog_required": true
+      },
+      "upgrade_path": ["WASM 模块复用", "WIT 接口复用", "运行时能力复用"],
+      "reference_standards": ["WASI 0.3", "WebAssembly Component Model"]
+    }
+  ]
+}

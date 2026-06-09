@@ -1,0 +1,284 @@
+{
+  "version": "2.0.0",
+  "description": "复用决策规则配置，支持六阶段决策流程的规则定义与插件扩展",
+  "phases": [
+    {
+      "id": "PHASE-1",
+      "name": "语义兼容性判定",
+      "description": "业务语义是否覆盖需求？技术约束是否在上下文范围内？",
+      "rules": [
+        {
+          "id": "P1-R1",
+          "name": "领域覆盖检查",
+          "condition": "asset.domain_scope intersects context.required_domain",
+          "threshold": 0.6,
+          "operator": ">=",
+          "weight": 0.4,
+          "failure_action": "REJECT",
+          "failure_message": "资产领域范围与需求领域无有效交集，语义不兼容"
+        },
+        {
+          "id": "P1-R2",
+          "name": "技术约束包含检查",
+          "condition": "context.tech_constraints subsetof asset.supported_tech",
+          "threshold": 0.8,
+          "operator": ">=",
+          "weight": 0.35,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "部分技术约束超出资产支持范围，需适配评估"
+        },
+        {
+          "id": "P1-R3",
+          "name": "接口契约兼容性",
+          "condition": "asset.interface_contract compatible_with context.required_interface",
+          "threshold": 0.7,
+          "operator": ">=",
+          "weight": 0.25,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "接口契约不完全兼容，需包装或适配层"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 70,
+      "conditional_threshold": 50
+    },
+    {
+      "id": "PHASE-2",
+      "name": "变性绑定判定",
+      "description": "变性模型是否可交集？绑定时机是否可行？",
+      "rules": [
+        {
+          "id": "P2-R1",
+          "name": "变性点交集检查",
+          "condition": "asset.variation_points intersects context.required_variations",
+          "threshold": 0.5,
+          "operator": ">=",
+          "weight": 0.4,
+          "failure_action": "REJECT",
+          "failure_message": "所需变性点与资产变性模型无交集"
+        },
+        {
+          "id": "P2-R2",
+          "name": "绑定时机可行性",
+          "condition": "asset.binding_times contains context.preferred_binding_time",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.35,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "首选绑定时机不在资产支持范围内，需调整架构"
+        },
+        {
+          "id": "P2-R3",
+          "name": "配置复杂度评估",
+          "condition": "count(context.required_variations) / count(asset.variation_points)",
+          "threshold": 0.7,
+          "operator": "<=",
+          "weight": 0.25,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "所需配置比例过高，资产通用性不足"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 70,
+      "conditional_threshold": 50
+    },
+    {
+      "id": "PHASE-3",
+      "name": "质量达标判定",
+      "description": "RRL ≥ 要求？成熟度 ≥ 可靠性要求？",
+      "rules": [
+        {
+          "id": "P3-R1",
+          "name": "RRL 检查",
+          "condition": "asset.rrl >= context.min_rrl",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.35,
+          "failure_action": "REJECT",
+          "failure_message": "资产复用准备度 (RRL) 低于要求阈值"
+        },
+        {
+          "id": "P3-R2",
+          "name": "成熟度检查",
+          "condition": "asset.maturity >= context.min_maturity",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.3,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "资产成熟度低于要求，建议进一步孵化"
+        },
+        {
+          "id": "P3-R3",
+          "name": "可靠性检查",
+          "condition": "asset.reliability >= context.min_reliability",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.2,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "资产可靠性指标未达标"
+        },
+        {
+          "id": "P3-R4",
+          "name": "可维护性检查",
+          "condition": "asset.maintainability >= context.min_maintainability",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.15,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "资产可维护性指标未达标"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 75,
+      "conditional_threshold": 55
+    },
+    {
+      "id": "PHASE-4",
+      "name": "安全合规判定",
+      "description": "许可证是否在策略范围内？安全等级是否满足要求？",
+      "rules": [
+        {
+          "id": "P4-R1",
+          "name": "许可证策略检查",
+          "condition": "asset.license in context.approved_licenses",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.4,
+          "failure_action": "REJECT",
+          "failure_message": "资产许可证不在组织白名单内"
+        },
+        {
+          "id": "P4-R2",
+          "name": "安全等级检查",
+          "condition": "asset.security_level >= context.min_security_level",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.35,
+          "failure_action": "REJECT",
+          "failure_message": "资产安全等级不满足应用场景要求"
+        },
+        {
+          "id": "P4-R3",
+          "name": "SLSA 等级检查",
+          "condition": "asset.slsa_level >= context.min_slsa_level",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.25,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "资产 SLSA 等级不足，供应链可信度存疑"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 80,
+      "conditional_threshold": 60
+    },
+    {
+      "id": "PHASE-5",
+      "name": "成本收益判定",
+      "description": "COCOMO II AAF < 0.7？NPV > 0？",
+      "rules": [
+        {
+          "id": "P5-R1",
+          "name": "AAF 经济阈值",
+          "condition": "estimated_aaf < 0.7",
+          "threshold": 0.7,
+          "operator": "<",
+          "weight": 0.4,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "AAF ≥ 0.7：复用直接经济价值较低，需依赖战略价值 justify"
+        },
+        {
+          "id": "P5-R2",
+          "name": "NPV 正值检查",
+          "condition": "npv > 0",
+          "threshold": 0.0,
+          "operator": ">",
+          "weight": 0.35,
+          "failure_action": "REJECT",
+          "failure_message": "NPV ≤ 0：复用不具备财务可行性"
+        },
+        {
+          "id": "P5-R3",
+          "name": "回收期检查",
+          "condition": "payback_period <= context.max_payback_years",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.25,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "回收期超出预期，需重新评估投资优先级"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 70,
+      "conditional_threshold": 50
+    },
+    {
+      "id": "PHASE-6",
+      "name": "治理合规判定",
+      "description": "组织成熟度是否满足要求？流程是否标准化？",
+      "rules": [
+        {
+          "id": "P6-R1",
+          "name": "组织成熟度检查",
+          "condition": "org_maturity_level >= asset.required_org_maturity",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.4,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "组织复用成熟度不足，建议先提升治理能力"
+        },
+        {
+          "id": "P6-R2",
+          "name": "流程标准化检查",
+          "condition": "process_standardized == true",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.3,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "复用流程未标准化，存在执行风险"
+        },
+        {
+          "id": "P6-R3",
+          "name": "资产目录就绪检查",
+          "condition": "asset_catalog_exists == true",
+          "threshold": 1.0,
+          "operator": ">=",
+          "weight": 0.3,
+          "failure_action": "CONDITIONAL",
+          "failure_message": "资产目录未建立，复用资产难以发现和追踪"
+        }
+      ],
+      "scoring_formula": "weighted_average",
+      "pass_threshold": 75,
+      "conditional_threshold": 55
+    }
+  ],
+  "global_rules": {
+    "final_decision_logic": {
+      "PASS": "所有阶段通过，或仅条件通过阶段且风险可控",
+      "CONDITIONAL_PASS": "存在条件通过阶段，需附加条件满足后正式通过",
+      "REJECT": "任一阶段被拒绝，或条件通过阶段过多（>2）"
+    },
+    "confidence_calculation": "average(phase_scores) * (1 - risk_penalty)",
+    "risk_penalty_factor": 0.05,
+    "max_conditional_phases": 2,
+    "upgrade_recommendation": {
+      "enabled": true,
+      "hierarchy": ["功能复用", "组件复用", "应用复用", "业务复用"],
+      "trigger": "当前层级评估不通过，但更高层级可能满足"
+    }
+  },
+  "plugin_extensions": {
+    "description": "插件式扩展新的评估维度，需在 plugins/ 目录下注册",
+    "enabled_hooks": [
+      "pre_phase_eval",
+      "post_phase_eval",
+      "final_decision"
+    ],
+    "example_plugin": {
+      "name": "carbon-footprint",
+      "hook": "post_phase_eval",
+      "description": "评估复用资产的碳足迹影响"
+    }
+  }
+}

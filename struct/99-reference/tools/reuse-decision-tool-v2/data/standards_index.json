@@ -1,0 +1,167 @@
+{
+  "version": "2.0.0",
+  "description": "标准版本跟踪数据库，支持复用决策工具的标准对齐状态检查",
+  "last_updated": "2026-06-10",
+  "standards": {
+    "iso42010": {
+      "key": "iso42010",
+      "name": "ISO/IEC/IEEE 42010:2022",
+      "full_name": "Systems and software engineering — Architecture description",
+      "current_version": "2022",
+      "status": "已发布",
+      "url": "https://www.iso.org/standard/74296.html",
+      "relevance_to_reuse": "架构描述标准，定义视点、视图、利益相关者等核心概念",
+      "alignment_checklist": [
+        "是否使用视点（Viewpoint）组织架构视图",
+        "是否定义利益相关者关注（Concern）",
+        "是否遵循模型种类（Model Kind）规范",
+        "架构决策是否可追溯"
+      ],
+      "compliance_levels": {
+        "L1": "基本遵循：使用视图和视点概念",
+        "L2": "规范遵循：完整定义利益相关者和关注",
+        "L3": "深度对齐：模型种类、标注、一致性与对应关系完整"
+      }
+    },
+    "iso42042": {
+      "key": "iso42042",
+      "name": "ISO/IEC/IEEE DIS 42042",
+      "full_name": "Reference architectures for systems and software engineering",
+      "current_version": "DIS (Stage 40.60)",
+      "status": "征询阶段",
+      "url": "https://www.iso.org/standard/87310.html",
+      "relevance_to_reuse": "参考架构标准，直接指导可复用参考架构的定义与使用",
+      "alignment_checklist": [
+        "是否定义参考架构的适用范围",
+        "是否识别参考架构的变体与配置",
+        "是否建立参考架构到具体架构的映射",
+        "参考架构的治理机制是否明确"
+      ],
+      "compliance_levels": {
+        "L1": "概念使用：参考架构作为复用资产",
+        "L2": "规范使用：遵循参考架构的变体管理机制",
+        "L3": "深度集成：参考架构与组织复用体系融合"
+      }
+    },
+    "iso25010": {
+      "key": "iso25010",
+      "name": "ISO/IEC 25010:2024",
+      "full_name": "Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality models",
+      "current_version": "2024",
+      "status": "已发布",
+      "url": "https://www.iso.org/standard/78175.html",
+      "relevance_to_reuse": "质量模型标准，为复用资产的质量评估提供维度框架",
+      "alignment_checklist": [
+        "是否覆盖功能适合性、性能效率、兼容性等 8 大质量特性",
+        "质量度量是否可量化",
+        "复用资产是否有质量基线",
+        "质量评估是否纳入决策流程"
+      ],
+      "compliance_levels": {
+        "L1": "基本覆盖：使用质量特性分类",
+        "L2": "度量对齐：建立可量化的质量度量",
+        "L3": "体系融合：质量模型与复用决策深度集成"
+      }
+    },
+    "iso26566": {
+      "key": "iso26566",
+      "name": "ISO/IEC 26566:2026",
+      "full_name": "Software and systems engineering — Methods and tools for reuse maturity assessment",
+      "current_version": "2026",
+      "status": "已发布",
+      "url": "https://www.iso.org/standard/81437.html",
+      "relevance_to_reuse": "复用成熟度评估标准，提供组织级复用能力评估框架",
+      "alignment_checklist": [
+        "是否建立复用成熟度评估流程",
+        "是否覆盖战略、过程、资产、基础设施、人员、度量 6 维度",
+        "评估结果是否驱动改进",
+        "是否定期复评"
+      ],
+      "compliance_levels": {
+        "L1": "初评完成：完成一次成熟度评估",
+        "L2": "体系建立：评估流程制度化",
+        "L3": "持续改进：评估驱动组织复用能力提升"
+      }
+    },
+    "togaf": {
+      "key": "togaf",
+      "name": "TOGAF Standard, Version 9.2 / 10",
+      "full_name": "The Open Group Architecture Framework",
+      "current_version": "10",
+      "status": "已发布",
+      "url": "https://www.opengroup.org/togaf",
+      "relevance_to_reuse": "企业架构框架，提供架构开发方法论（ADM）和架构内容元模型",
+      "alignment_checklist": [
+        "ADM 阶段是否包含复用活动",
+        "架构存储库（Architecture Repository）是否管理复用资产",
+        "架构内容元模型是否支持组件分类",
+        "企业连续系列（Enterprise Continuum）是否使用"
+      ],
+      "compliance_levels": {
+        "L1": "概念使用：了解 Enterprise Continuum 和架构存储库",
+        "L2": "流程集成：ADM 中明确集成复用活动",
+        "L3": "体系融合：TOGAF 与组织复用体系深度集成"
+      }
+    },
+    "archimate": {
+      "key": "archimate",
+      "name": "ArchiMate 3.2",
+      "full_name": "ArchiMate Specification",
+      "current_version": "3.2",
+      "status": "已发布",
+      "url": "https://www.opengroup.org/archimate-forum",
+      "relevance_to_reuse": "架构建模语言，支持业务/应用/技术三层架构的复用描述",
+      "alignment_checklist": [
+        "是否使用 ArchiMate 描述复用资产",
+        "三层架构视角是否完整",
+        "是否使用视图和视点机制",
+        "与其他标准（如 TOGAF）的映射是否明确"
+      ],
+      "compliance_levels": {
+        "L1": "基本建模：使用核心元素描述架构",
+        "L2": "规范使用：完整使用三层元模型和关系",
+        "L3": "深度集成：与 TOGAF、ISO 42010 协同使用"
+      }
+    },
+    "slsa": {
+      "key": "slsa",
+      "name": "SLSA v1.2",
+      "full_name": "Supply-chain Levels for Software Artifacts",
+      "current_version": "1.2",
+      "status": "已发布",
+      "url": "https://slsa.dev/spec/v1.2/",
+      "relevance_to_reuse": "供应链安全标准，确保复用资产的来源可信和构建过程完整",
+      "alignment_checklist": [
+        "复用资产是否有 provenance 证明",
+        "构建过程是否满足 SLSA 等级要求",
+        "依赖项是否有 SBOM",
+        "是否定期审计供应链"
+      ],
+      "compliance_levels": {
+        "L1": "基础：记录构建 provenance",
+        "L2": "标准：使用托管构建服务和签名",
+        "L3": "高级：构建环境隔离和审计"
+      }
+    },
+    "mcp": {
+      "key": "mcp",
+      "name": "Model Context Protocol",
+      "full_name": "Model Context Protocol Specification",
+      "current_version": "2025-11-25",
+      "status": "稳定版",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+      "relevance_to_reuse": "AI 原生复用的协议标准，支持工具、资源、Prompt 的跨模型复用",
+      "alignment_checklist": [
+        "是否使用 MCP Server 封装可复用能力",
+        "工具定义是否遵循 JSON Schema 规范",
+        "认证和授权机制是否完善",
+        "是否支持多客户端复用"
+      ],
+      "compliance_levels": {
+        "L1": "基础集成：实现基本 MCP Server",
+        "L2": "规范使用：完整支持 tools/resources/prompts",
+        "L3": "生态融合：参与 MCP 生态，贡献标准扩展"
+      }
+    }
+  }
+}
