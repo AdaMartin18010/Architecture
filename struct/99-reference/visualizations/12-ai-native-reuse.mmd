@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph AI 协议层
+        MCP["MCP 2025-11-25"]
+        A2A_AI["A2A v1.0"]
+        OAUTH["OAuth 2.1"]
+    end
+
+    subgraph 复用契约
+        PROB["概率契约 γ(x)"]
+        CP["Conformal Prediction"]
+        CALIB["校准方法"]
+    end
+
+    subgraph 运行时保障
+        TEMP["温度控制"]
+        DRIFT["模型漂移检测"]
+        CONF["置信度边界"]
+    end
+
+    MCP --> PROB
+    A2A_AI --> PROB
+    PROB --> CP
+    CP --> CALIB
+    CALIB --> CONF
+    TEMP --> DRIFT
+    DRIFT --> CONF
+    OAUTH --> MCP
+    OAUTH --> A2A_AI

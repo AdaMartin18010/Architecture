@@ -76,9 +76,9 @@ NIST 于 2024 年发布 **SP 800-218 Rev.1**，将 SSDF 从早期征求意见稿
 ## 5. 权威来源
 
 - NIST. *Secure Software Development Framework (SSDF) Version 1.2*. NIST SP 800-218 Rev.1, 2024.
-- https://csrc.nist.gov/projects/ssdf — NIST SSDF 官方项目主页，含 PDF 下载与变更日志。
-- OpenSSF SLSA Specification v1.0. https://slsa.dev/spec/v1.0/
-- NTIA / CISA SBOM 最小元素指南. https://www.cisa.gov/sbom
+- <https://csrc.nist.gov/projects/ssdf> — NIST SSDF 官方项目主页，含 PDF 下载与变更日志。
+- OpenSSF SLSA Specification v1.0. <https://slsa.dev/spec/v1.0/>
+- NTIA / CISA SBOM 最小元素指南. <https://www.cisa.gov/sbom>
 
 ---
 

@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph 平台工程
+        IDP["内部开发者平台 IDP"]
+        GP["Golden Path"]
+        BACK["Backstage"]
+        MAT["CNCF 成熟度模型"]
+    end
+
+    subgraph 运行时演进
+        WASM["WASM Component Model"]
+        WASI_03["WASI 0.3 async"]
+        MODMON["模块化单体"]
+    end
+
+    subgraph 前沿探索
+        REGTECH["RegTech AI"]
+        GREEN["绿色软件工程"]
+        RUST_ECO["Rust 生态"]
+    end
+
+    IDP --> GP
+    GP --> BACK
+    BACK --> MAT
+    WASM --> WASI_03
+    MODMON --> WASM
+    REGTECH --> IDP
+    GREEN --> WASM
+    RUST_ECO --> WASM

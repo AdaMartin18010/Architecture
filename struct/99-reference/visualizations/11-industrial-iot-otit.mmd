@@ -1,0 +1,37 @@
+flowchart TB
+    subgraph ISA-95 五层
+        L4["L4 企业 ERP"]
+        L3["L3 MES"]
+        L2["L2 监控 SCADA"]
+        L1["L1 控制 PLC"]
+        L0["L0 现场 Field"]
+    end
+
+    subgraph 通信协议
+        OPC["OPC UA FX"]
+        TSN["TSN 确定性网络"]
+        UADP["UADP 帧"]
+    end
+
+    subgraph 数字孪生
+        AAS["资产管理壳 AAS"]
+        SM["子模型模板"]
+    end
+
+    subgraph 功能安全
+        IEC61508["IEC 61508"]
+        ISO26262["ISO 26262"]
+        PIU["Proven-in-Use"]
+        SEooC["SEooC"]
+    end
+
+    L4 --> L3 --> L2 --> L1 --> L0
+    L1 --> OPC
+    L0 --> UADP
+    OPC --> TSN
+    L3 --> AAS
+    AAS --> SM
+    L2 --> IEC61508
+    L1 --> ISO26262
+    IEC61508 --> PIU
+    ISO26262 --> SEooC

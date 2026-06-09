@@ -1,0 +1,29 @@
+flowchart LR
+    subgraph 成本模型
+        COCOMO["COCOMO II 2026"]
+        ESLOC["等效 SLOC"]
+        AAF["AAF 改编因子"]
+        EM["工作量乘数 EM"]
+    end
+
+    subgraph 收益模型
+        DIRECT["直接收益"]
+        INDIRECT["间接收益"]
+        STRATEGIC["战略收益"]
+    end
+
+    subgraph 决策指标
+        ROI["ROI 计算"]
+        NPV["NPV 净现值"]
+        BEP["盈亏平衡点"]
+    end
+
+    COCOMO --> ESLOC
+    ESLOC --> AAF
+    AAF --> EM
+    EM --> ROI
+    DIRECT --> ROI
+    INDIRECT --> NPV
+    STRATEGIC --> NPV
+    ROI --> BEP
+    NPV --> BEP

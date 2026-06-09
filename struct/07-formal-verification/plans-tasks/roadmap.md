@@ -9,7 +9,7 @@
 
 - [x] 01-tla-plus 目录结构
 - [x] 02-alloy 目录结构
-- [ ] 03-coq-isabelle 目录（已规划，Phase 2 创建内容）
+- [x] 03-coq-isabelle 目录结构（含 Coq `.v` 示例与 Isabelle `.thy` 理论）
 - [x] 04-rust-type-system 目录结构
 - [x] 05-spark-ada 目录结构
 - [x] 06-b-method 目录结构
@@ -115,4 +115,4 @@ T03-T05 (Rust) ──────┘
 
 ---
 
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-10

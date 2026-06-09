@@ -31,6 +31,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | **Reusable** | 业务规则库 (DMN 决策表) | 微服务模板 (Helm/Dockerfile) | 开源许可证 (SPDX 标识符) | 概率契约 (Pact/MCP Schema) |
 
 **映射说明**：
+
 - **Findable** 在各层均要求可检索的目录机制：业务能力通过 FEA BRM 分类目录发现；应用服务通过 API 注册表发现；组件通过包管理器索引发现；AI 功能通过 MCP Tool Registry 发现。
 - **Accessible** 要求分层协议透明：业务流程模型以开放标准（BPMN/DMN）发布；应用服务通过 API 网关暴露；组件通过包仓库分发；功能通过标准化端点调用。
 - **Interoperable** 要求跨层格式统一：业务层使用 ArchiMate 交换；应用层使用 CNCF 接口标准；组件层使用 SPDX 描述和 SemVer 版本约束；功能层使用 A2A 或 MCP 协议实现互操作。
@@ -119,6 +120,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | R-10 | 提供可复现的构建环境 (Dockerfile/devcontainer) | 0–3 |
 
 **等级划分**：
+
 - **90–120 分**：优秀 (Excellent) — 资产完全 FAIR4RS 合规，可跨组织安全复用
 - **60–89 分**：良好 (Good) — 核心原则已实施，存在局部改进空间
 - **30–59 分**：及格 (Acceptable) — 基本可发现，但可访问性与可复现性不足

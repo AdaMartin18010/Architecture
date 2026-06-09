@@ -1,6 +1,6 @@
 # 软件工程架构复用视角：MASTER PLAN（总体推进计划）
 
-> **版本**: 2026-06-06
+> **版本**: 2026-06-10
 > **周期**: 2026 Q2 → 2027 Q4（6 个季度）
 > **目标**: 将 view/ 中 31 万字的知识体系，转化为结构化、可验证、可输出的知识产品
 > **后续详细计划**: 见 [`SUBSEQUENT_PLAN_2026.md`](./SUBSEQUENT_PLAN_2026.md)（含未完成项清单、国际对齐差距、2026-Q3 → 2027-Q4 任务分解、风险与关键决策）
@@ -27,10 +27,10 @@
   - [Phase 0：基础奠基（2026-Q2，已完成）](#phase-0基础奠基2026-q2已完成)
   - [Phase 1：核心层次深化（2026-Q3）](#phase-1核心层次深化2026-q3)
   - [Phase 2：形式化与量化（2026-Q4）](#phase-2形式化与量化2026-q4)
-  - [Phase 3：垂直领域扩展（2027-Q1）](#phase-3垂直领域扩展2027-q1)
-  - [Phase 4：安全与供应链（2027-Q2）](#phase-4安全与供应链2027-q2)
-  - [Phase 5：AI 原生与前沿（2027-Q3）](#phase-5ai-原生与前沿2027-q3)
-  - [Phase 6：整合与输出（2027-Q4）](#phase-6整合与输出2027-q4)
+  - [Phase 3：垂直领域扩展（2027-Q1）— ✅ 已完成（提前至 2026-06）](#phase-3垂直领域扩展2027-q1--已完成提前至-2026-06)
+  - [Phase 4：安全与供应链（2027-Q2）— ✅ 已完成（提前至 2026-06）](#phase-4安全与供应链2027-q2--已完成提前至-2026-06)
+  - [Phase 5：AI 原生与前沿（2027-Q3）— ✅ 内容已覆盖，按决策 D3 暂停扩展](#phase-5ai-原生与前沿2027-q3--内容已覆盖按决策-d3-暂停扩展)
+  - [Phase 6：整合与输出（2027-Q4）— 🔄 进行中](#phase-6整合与输出2027-q4--进行中)
   - [持续机制](#持续机制)
     - [月度节奏](#月度节奏)
     - [季度节奏](#季度节奏)
@@ -79,7 +79,7 @@
 
 | 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
 |--------|------|----------|--------|----------|------|
-| P0 | 07 形式化验证 | 完成 TLA+ / Alloy / Coq 三种方法的复用组件验证案例库（各 2+ 案例） | `07/01-tla-plus/case-library.md` | 含可运行规约 + 验证流程图 | 🔄 预热中（TLA+/Alloy 已启动） |
+| P0 | 07 形式化验证 | 完成 TLA+ / Alloy / Coq 三种方法的复用组件验证案例库（各 2+ 案例） | `07/01-tla-plus/case-library.md` | 含可运行规约 + 验证流程图 | ✅ 已完成（TLA+ ×6, Alloy ×4, Coq/Isabelle 教学示例已交付） |
 | P0 | 07 形式化验证 | 完成 Rust 类型系统（所有权、Trait、Cargo 解析）的形式化语义梳理 | `07/04-rust-type-system/formal-semantics.md` | 含定理证明纲要 | ✅ 提前完成（2026-06） |
 | P0 | 09 价值量化 | 完成 COCOMO II 复用模型的 2026 校准版（适配 AI 辅助开发、Serverless） | `09/01-cocomo-ii-reuse/cocomo-2026-calibration.md` | 含参数调整建议 | ✅ 提前完成（2026-06） |
 | P0 | 09 价值量化 | 完成跨层 FinOps 成本分摊模型的可执行模板 | `06/04-finops-cost/cost-allocation-template.md` | 含公式 + 计算示例 | ✅ 提前完成（2026-06） |
@@ -94,17 +94,17 @@
 
 ---
 
-## Phase 3：垂直领域扩展（2027-Q1）
+## Phase 3：垂直领域扩展（2027-Q1）— ✅ 已完成（提前至 2026-06）
 
 **目标**: 将通用框架扩展到工业 IoT/OT-IT 融合领域
 
-| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
-|--------|------|----------|--------|----------|
-| P0 | 11 工业 IoT/OT-IT | 完成 ISA-95 五层模型（L0-L4）的复用资产目录 | `11/01-isa-95-model/asset-catalog.md` | 每层 5+ 复用单元 |
-| P0 | 11 工业 IoT/OT-IT | 完成 OPC UA FX 协议栈的复用层次分析（C2C/C2D/D2D） | `11/02-opc-ua-fx/reuse-hierarchy.md` | 含帧结构 + 厂商支持矩阵 |
-| P0 | 11 工业 IoT/OT-IT | 完成 PLCopen 运动控制功能块的状态机形式化验证（TLA+） | `11/04-plcopen-motion/tla-verification.md` | 含 MC_Power / MC_MoveAbsolute 规约 |
-| P1 | 11 工业 IoT/OT-IT | 完成数字孪生 AAS（IEC 63278）与 OPC UA 的映射规范 | `11/05-digital-twin-aas/aas-opcua-mapping.md` | 含 XML/JSON 示例 |
-| P1 | 11 工业 IoT/OT-IT | 完成功能安全（IEC 61508 / ISO 26262）复用决策树工具 | `11/06-functional-safety/reuse-decision-tool.md` | 含 SIL 等级判定逻辑 |
+| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|----------|--------|----------|------|
+| P0 | 11 工业 IoT/OT-IT | 完成 ISA-95 五层模型（L0-L4）的复用资产目录 | `11/01-isa-95-model/asset-catalog.md` | 每层 5+ 复用单元 | ✅ 已完成 |
+| P0 | 11 工业 IoT/OT-IT | 完成 OPC UA FX 协议栈的复用层次分析（C2C/C2D/D2D） | `11/02-opc-ua-fx/reuse-hierarchy.md` | 含帧结构 + 厂商支持矩阵 | ✅ 已完成 |
+| P0 | 11 工业 IoT/OT-IT | 完成 PLCopen 运动控制功能块的状态机形式化验证（TLA+） | `11/04-plcopen-motion/tla-verification.md` | 含 MC_Power / MC_MoveAbsolute 规约 | ✅ 已完成 |
+| P1 | 11 工业 IoT/OT-IT | 完成数字孪生 AAS（IEC 63278）与 OPC UA 的映射规范 | `11/05-digital-twin-aas/aas-opcua-mapping.md` | 含 XML/JSON 示例 | ✅ 已完成 |
+| P1 | 11 工业 IoT/OT-IT | 完成功能安全（IEC 61508 / ISO 26262）复用决策树工具 | `11/06-functional-safety/reuse-decision-tool.md` | 含 SIL 等级判定逻辑 | ✅ 已完成 |
 
 **对齐活动**:
 
@@ -114,17 +114,17 @@
 
 ---
 
-## Phase 4：安全与供应链（2027-Q2）
+## Phase 4：安全与供应链（2027-Q2）— ✅ 已完成（提前至 2026-06）
 
 **目标**: 构建软件供应链安全的纵深防御体系
 
-| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
-|--------|------|----------|--------|----------|
-| P0 | 10 供应链安全 | 完成 SLSA 1.1/1.2 Multi-Track 框架的复用安全边界详解 | `10/01-slsa-framework/slsa-reuse-boundaries.md` | 含 L1-L4 的复用决策矩阵 |
-| P0 | 10 供应链安全 | 完成 SPDX vs CycloneDX vs SWID 的复用安全应用对比 | `10/02-sbom-standards/sbom-reuse-security.md` | 含 3 标准 × 4 应用场景矩阵 |
-| P0 | 10 供应链安全 | 完成 XZ Utils 后门等 5+ 案例的深度分析 + 防御策略 | `10/05-case-studies/xz-utils-deep-dive.md` | 含攻击链 + 检测信号 |
-| P1 | 10 供应链安全 | 完成零信任软件供应链架构设计模板 | `10/04-zero-trust-supply-chain/zero-trust-template.md` | 含 5 层防御矩阵 |
-| P1 | 07 形式化验证 | 完成 Rust Polonius 借用检查器的形式化语义与 NLL 对比 | `07/04-rust-type-system/polonius-vs-nll.md` | 含代码示例 + 分析过程 |
+| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|----------|--------|----------|------|
+| P0 | 10 供应链安全 | 完成 SLSA 1.1/1.2 Multi-Track 框架的复用安全边界详解 | `10/01-slsa-framework/slsa-reuse-boundaries.md` | 含 L1-L4 的复用决策矩阵 | ✅ 已完成 |
+| P0 | 10 供应链安全 | 完成 SPDX vs CycloneDX vs SWID 的复用安全应用对比 | `10/02-sbom-standards/sbom-reuse-security.md` | 含 3 标准 × 4 应用场景矩阵 | ✅ 已完成 |
+| P0 | 10 供应链安全 | 完成 XZ Utils 后门等 5+ 案例的深度分析 + 防御策略 | `10/05-case-studies/xz-utils-deep-dive.md` | 含攻击链 + 检测信号 | ✅ 已完成 |
+| P1 | 10 供应链安全 | 完成零信任软件供应链架构设计模板 | `10/04-zero-trust-supply-chain/zero-trust-template.md` | 含 5 层防御矩阵 | ✅ 已完成 |
+| P1 | 07 形式化验证 | 完成 Rust Polonius 借用检查器的形式化语义与 NLL 对比 | `07/04-rust-type-system/polonius-vs-nll.md` | 含代码示例 + 分析过程 | ✅ 已完成 |
 
 **对齐活动**:
 
@@ -134,18 +134,18 @@
 
 ---
 
-## Phase 5：AI 原生与前沿（2027-Q3）
+## Phase 5：AI 原生与前沿（2027-Q3）— ✅ 内容已覆盖，按决策 D3 暂停扩展
 
 **目标**: 将 AI/LLM 功能复用从"实验"提升为"工程"
 
-| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 |
-|--------|------|----------|--------|----------|
-| P0 | 12 AI 原生复用 | 完成 MCP 2025-11-25 规范的中文/英文双语深度解析 | `12/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | 含核心变更对照表（Tasks/Icons/Elicitation/OAuth） |
-| P0 | 12 AI 原生复用 | 完成 A2A v1.0.0 协议的复用流程分析 + 安全机制 | `12/02-a2a-protocol/a2a-reuse-analysis.md` | 含 5 步流程 + Agent Card 模板 |
-| P0 | 12 AI 原生复用 | 完成 AI 功能复用的概率契约框架（含校准方法） | `12/04-probabilistic-contracts/probabilistic-contract-framework.md` | 含 Python 示例代码 |
-| P1 | 12 AI 原生复用 | 完成 Conformal Prediction 在代码生成中的应用案例 | `12/05-conformal-prediction/cp-code-generation.md` | 含统计保证证明 |
-| P1 | 13 新兴趋势 | 完成平台工程（Platform Engineering）作为复用载体的组织设计 | `13/01-platform-engineering/platform-as-product.md` | 含 IDP + Golden Path 模板 |
-| P1 | 13 新兴趋势 | 完成 WebAssembly Component Model 的跨语言复用边界分析 | `13/03-webassembly-components/wasm-reuse-boundaries.md` | 含 WIT 接口示例 |
+| 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|----------|--------|----------|------|
+| P0 | 12 AI 原生复用 | 完成 MCP 2025-11-25 规范的中文/英文双语深度解析 | `12/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | 含核心变更对照表（Tasks/Icons/Elicitation/OAuth） | ✅ 已完成 |
+| P0 | 12 AI 原生复用 | 完成 A2A v1.0.0 协议的复用流程分析 + 安全机制 | `12/02-a2a-protocol/a2a-reuse-analysis.md` | 含 5 步流程 + Agent Card 模板 | ✅ 已完成 |
+| P0 | 12 AI 原生复用 | 完成 AI 功能复用的概率契约框架（含校准方法） | `12/04-probabilistic-contracts/probabilistic-contract-framework.md` | 含 Python 示例代码 | ✅ 已完成 |
+| P1 | 12 AI 原生复用 | 完成 Conformal Prediction 在代码生成中的应用案例 | `12/05-conformal-prediction/cp-code-generation.md` | 含统计保证证明 | ✅ 已完成 |
+| P1 | 13 新兴趋势 | 完成平台工程（Platform Engineering）作为复用载体的组织设计 | `13/01-platform-engineering/platform-as-product.md` | 含 IDP + Golden Path 模板 | ✅ 已完成 |
+| P1 | 13 新兴趋势 | 完成 WebAssembly Component Model 的跨语言复用边界分析 | `13/03-webassembly-components/wasm-reuse-boundaries.md` | 含 WIT 接口示例 | ✅ 已完成 |
 
 **对齐活动**:
 
@@ -155,18 +155,18 @@
 
 ---
 
-## Phase 6：整合与输出（2027-Q4）
+## Phase 6：整合与输出（2027-Q4）— 🔄 进行中
 
 **目标**: 将分散的知识模块整合为可交付的知识产品
 
-| 优先级 | 任务 | 交付物 | 验收标准 |
-|--------|------|--------|----------|
-| P0 | 编写《软件工程架构复用视角》全书框架 | `99-reference/book-outline.md` | 12 章 + 附录，每章对应一个一级主题 |
-| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 25+ 标准 × 5 复用层次 |
-| P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、30+ 定理 |
-| P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 |
-| P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26566:2026 |
-| P2 | 制作 Mermaid 思维导图库 | `99-reference/visualizations/` | 覆盖全部 13 个主题的 Mermaid 源文件 |
+| 优先级 | 任务 | 交付物 | 验收标准 | 状态 |
+|--------|------|--------|----------|------|
+| P0 | 编写《软件工程架构复用视角》全书框架 | `99-reference/book-outline.md` | 12 章 + 附录，每章对应一个一级主题 | 🔄 进行中（已有 book-outline.md + ch01-ch06） |
+| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 25+ 标准 × 5 复用层次 | 🔄 进行中（初版已完成，目标 30+ 标准） |
+| P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、30+ 定理 | 🔄 进行中（当前 15+17，目标 20+35） |
+| P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 | ✅ 已完成 Python CLI 原型 |
+| P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26566:2026 | ✅ 已完成（含 CLI 与雷达图报告） |
+| P2 | 制作 Mermaid 思维导图库 | `99-reference/visualizations/` | 覆盖全部 13 个主题的 Mermaid 源文件 | 🔄 进行中（当前 3/13） |
 
 ---
 
@@ -178,6 +178,7 @@
 - **第 2 周**: 对照权威来源（标准、论文、课程）进行对齐验证
 - **第 3 周**: 编写形式化约束（公理/定理/定义）
 - **第 4 周**: 审查、交叉引用、更新 MASTER_PLAN
+- **第 5 周（月度审查）**: 事实核查 — 抽查 5-10 个外部引用的事实准确性（见 `99-reference/templates/fact-check-checklist.md`）
 
 ### 季度节奏
 
@@ -215,6 +216,6 @@
 
 > **声明**: 本计划是"活文档"。随着标准演进（如 ISO 42024/42042 正式发布）、技术突破（如 SLSA 2.0、MCP 1.0）和实践反馈，计划将持续更新。
 >
-> 目录结构以 `struct/README.md` 中"实际文件夹结构导航"为准。历史 MASTER_PLAN 中规划但未创建的子目录（如 `quantum-computing`、`domain-driven-design`、`coq-isabelle` 等）按 `SUBSEQUENT_PLAN_2026.md` 决策 4A 处理。
+> 目录结构以 `struct/README.md` 中"实际文件夹结构导航"为准。历史 MASTER_PLAN 中规划但未创建的子目录（如 `quantum-computing`、`domain-driven-design`）按 `SUBSEQUENT_PLAN_2026.md` 决策 4A 处理。`coq-isabelle` 目录已在实际演进中创建并填充内容。
 >
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-10

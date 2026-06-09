@@ -1,0 +1,29 @@
+flowchart TB
+    subgraph 攻击面
+        SRC["源代码篡改"]
+        BUILD["构建过程植入"]
+        DEP["依赖混淆"]
+        DIST["分发劫持"]
+    end
+
+    subgraph 防御层次
+        SBOM["SBOM 清单"]
+        SLSA["SLSA 1.2<br/>Build/Source/Env"]
+        SIG["Sigstore 签名"]
+        ZT["零信任供应链"]
+    end
+
+    subgraph 合规
+        SSDF["NIST SSDF 1.2"]
+        EU_CRA["EU CRA"]
+        OWASP["OWASP SCVS"]
+    end
+
+    SRC --> SBOM
+    BUILD --> SLSA
+    DEP --> SIG
+    DIST --> ZT
+    SBOM --> SSDF
+    SLSA --> EU_CRA
+    SIG --> OWASP
+    ZT --> SSDF

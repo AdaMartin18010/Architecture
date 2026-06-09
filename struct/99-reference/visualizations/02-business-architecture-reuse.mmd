@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph 业务语义层
+        CAP["业务能力 Capability"]
+        VS["价值流 Value Stream"]
+        BPMN["BPMN 2.0 流程"]
+        DMN["DMN 1.5 决策"]
+    end
+
+    subgraph 复用机制层
+        CALL["Call Activity 调用"]
+        POOL["Pool / Lane 协作"]
+        SERVICE["Decision Service 复用"]
+        BKMM["Business Knowledge Model"]
+    end
+
+    subgraph 治理度量层
+        RCMM["RCMM 成熟度"]
+        ROI_B["业务复用 ROI"]
+    end
+
+    CAP --> VS
+    VS --> BPMN
+    BPMN --> CALL
+    BPMN --> POOL
+    DMN --> SERVICE
+    DMN --> BKMM
+    CALL --> RCMM
+    SERVICE --> ROI_B

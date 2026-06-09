@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph 协议栈
+        MCP["MCP 2025-11-25<br/>工具/资源/提示"]
+        A2A["A2A v1.0<br/>Agent 协作"]
+        REST["REST / gRPC"]
+        EVT["Event / Message"]
+    end
+
+    subgraph 复用单元
+        TOOL["Tool 函数"]
+        RES["Resource 资源"]
+        PROMPT["Prompt 模板"]
+        AGENT["Agent Card"]
+        TASK["Task 任务"]
+    end
+
+    subgraph 运行时
+        LLM["LLM 推理"]
+        ORCH["编排引擎"]
+        WF["工作流 Temporal"]
+    end
+
+    MCP --> TOOL
+    MCP --> RES
+    MCP --> PROMPT
+    A2A --> AGENT
+    A2A --> TASK
+    TOOL --> LLM
+    TASK --> ORCH
+    ORCH --> WF
+    REST --> TOOL
+    EVT --> TASK

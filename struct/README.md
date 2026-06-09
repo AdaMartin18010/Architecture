@@ -1,6 +1,6 @@
 # 软件工程架构复用视角：结构化知识体系
 
-> **版本**: 2026-06-06（对齐审查版）
+> **版本**: 2026-06-10（目录一致性修复版）
 > **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, 26550:2015, 26566:2026, TOGAF 10, SLSA 1.1/1.2, IEC 61508, ISA-95, MCP 2025-11-25, A2A v1.0
 > **权威参考**: Carnegie Mellon SEI, USC COCOMO II, ETH Zurich (RustBelt/Prusti), Inria (Aeneas/Coq), NASA RRL
@@ -266,7 +266,8 @@ struct/
 │   ├── 02-modular-monolith/
 │   ├── 03-webassembly-components/
 │   ├── 04-rust-ecosystem/
-│   └── 05-regtech-ai/
+│   ├── 05-regtech-ai/
+│   └── 06-green-software/
 │
 └── 99-reference/                     # 参考索引
     ├── README.md
@@ -306,15 +307,18 @@ struct/
 - `MASTER_PLAN.md` — 总体阶段划分（Phase 0~6）
 - `SUBSEQUENT_PLAN_2026.md` — 2026-Q3 → 2027-Q4 详细任务、国际对齐差距、风险与关键决策
 
-当前处于 **Phase 1.5 立即修复期**（2026-Q3 剩余 2-4 周），重点：
+当前处于 **阶段 A 修复完成**，即将进入 **阶段 B：深化与工具化**（2026-Q4 → 2027-Q2）。
 
-1. 修复 roadmap 与实际文件状态不一致
-2. 统一目录导航与实际结构
-3. 建立 Docker 化形式化验证环境（TLA+/Alloy/Coq）
-4. 为 Phase 2 可执行工具开发做准备
+阶段 A 已完成：
+
+1. ✅ 修复 roadmap 与实际文件状态不一致（01/07/11 三个 roadmap 已更新）
+2. ✅ 统一目录导航与实际结构（本 README 已同步）
+3. ✅ 术语查询脚本 T15 已确认交付（`99-reference/tools/terminology-query.py`）
+4. ⏸️ 前沿主题（CP+形式化融合、WASI 0.3、Agentic Governance）保持现有深度，按决策 D3 暂停扩展
+5. ⏸️ GitBook/网站输出按决策 D4 推迟
 
 ---
 
 > **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/external-links/authoritative-sources.md` 中登记。
 >
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-10

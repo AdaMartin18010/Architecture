@@ -5,6 +5,7 @@
 > **对齐来源**: IEEE Std 1517-2010; ISO/IEC/IEEE 12207:2017; ISO/IEC 26550:2015; TOGAF 10
 > **状态**: Phase 2（2026-Q4）
 > **权威链接**:
+>
 > - <https://standards.ieee.org/standard/1517-2010.html>
 > - <https://www.iso.org/standard/63712.html> (ISO/IEC/IEEE 12207:2017)
 > - <https://www.iso.org/standard/43089.html> (ISO/IEC 26550:2015)
@@ -115,6 +116,7 @@ ISO/IEC 26550:2015（Software and Systems Engineering — Reference Model for Pr
 | 复用管理 | 管理流程（Management Processes） | 双向映射；26550 的管理流程更聚焦于**产品线范围演化**和**多产品组合管理** |
 
 **核心差异**：
+
 - **通用性 vs 聚焦性**：IEEE 1517 是通用复用过程标准，适用于任何希望引入复用实践的组织；ISO/IEC 26550 更聚焦于**软件/系统产品线**（Software Product Line, SPL）场景，假设存在一组具有显著共性的相关产品家族。
 - **可变性管理**：26550 对可变性建模、绑定和派生提供了更详细的过程定义；1517 的"可变性设计"在 26550 中扩展为完整的产品线可变性管理框架。
 - **组织维度**：26550 明确区分了"领域工程组织"与"应用工程组织"的结构关系；1517 则保持组织中立，允许按实际情况灵活配置。

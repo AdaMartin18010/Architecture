@@ -85,6 +85,7 @@ IEC 62443 定义安全等级（SL），MCP 工业扩展必须对齐：
 | `alarm://{area}/{sev}/{code}` | 活动报警 | OPC UA Condition | Event 推送 |
 
 示例：
+
 ```json
 {
   "uri": "asset://line1/press/temperature",
@@ -188,6 +189,7 @@ MCP Tool 调用安全增强
 ### 4.3 安全上下文传递
 
 多层 MCP Server 级联（边缘网关 → 区域控制器 → 现场设备）时：
+
 - **上下文绑定**：原始 Client 身份、SL 等级作为不可变上下文附加
 - **禁止特权提升**：下游权限必须是上游权限的子集
 - **上下文 TTL**：超过有效期（如 5 分钟）自动失效，需重新认证

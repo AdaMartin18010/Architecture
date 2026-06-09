@@ -1,0 +1,31 @@
+flowchart TB
+    subgraph 接口契约层
+        PRE["前置条件 Precondition"]
+        POST["后置条件 Postcondition"]
+        INV["不变量 Invariant"]
+        SIDE["副作用声明"]
+    end
+
+    subgraph 语言生态层
+        JVM["JVM (Maven/Gradle)"]
+        NODE["Node.js (npm)"]
+        RUST["Rust (Cargo)"]
+        GO["Go (modules)"]
+        PY["Python (pip/uv)"]
+        NET[".NET (NuGet)"]
+    end
+
+    subgraph 依赖治理层
+        SEMVER["Semver 语义"]
+        LOCK["Lockfile 锁定"]
+        VEND["Vendor 化"]
+        SBOM_C["组件 SBOM"]
+    end
+
+    PRE --> POST --> INV --> SIDE
+    JVM --> SEMVER
+    NODE --> LOCK
+    RUST --> SBOM_C
+    GO --> VEND
+    SEMVER --> SBOM_C
+    LOCK --> SBOM_C

@@ -1,0 +1,29 @@
+flowchart TB
+    subgraph 治理框架
+        ISO42020["ISO 42020 过程"]
+        ISO42030["ISO 42030 评估"]
+        ISO26566["ISO 26566 成熟度"]
+    end
+
+    subgraph 四级度量
+        ASSET["资产级 RRL"]
+        PROJ["项目级 复用率"]
+        ORG["组织级 成熟度"]
+        ECO["生态级 供应链健康"]
+    end
+
+    subgraph 成本与决策
+        FINOPS["FinOps 分摊"]
+        UPGRADE["升级决策矩阵"]
+        DOWNGRADE["降级决策矩阵"]
+    end
+
+    ISO42020 --> ISO42030 --> ISO26566
+    ISO26566 --> ASSET
+    ISO26566 --> PROJ
+    ISO26566 --> ORG
+    ISO26566 --> ECO
+    ASSET --> FINOPS
+    PROJ --> UPGRADE
+    ORG --> DOWNGRADE
+    ECO --> FINOPS

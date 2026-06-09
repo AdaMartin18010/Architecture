@@ -1,0 +1,37 @@
+flowchart LR
+    subgraph 架构模式谱系
+        MONO["单体 Monolith"]
+        MMOD["模块化单体 Modular Monolith"]
+        SOA["SOA"]
+        MS["微服务 Microservices"]
+        MFE["微前端 Micro-frontend"]
+        SLS["Serverless"]
+        SM["服务_mesh"]
+        EDA["事件驱动 EDA"]
+    end
+
+    subgraph 复用维度
+        COU["耦合度"]
+        COH["内聚度"]
+        DEP["部署独立性"]
+        RES["复用性"]
+    end
+
+    subgraph 技术栈
+        K8S["Kubernetes"]
+        ISTIO["Istio / Envoy"]
+        GATE["Gateway API"]
+        TEMP["Temporal / Cadence"]
+    end
+
+    MONO --> MMOD --> MS --> SLS
+    SOA --> MS --> SM --> EDA
+    MS --> MFE
+    COU -.-> MONO
+    COH -.-> MMOD
+    DEP -.-> SLS
+    RES -.-> MMOD
+    K8S --> MS
+    ISTIO --> SM
+    GATE --> MS
+    TEMP --> EDA

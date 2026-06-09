@@ -82,14 +82,14 @@
 
 ---
 
-## Phase 4: 功能安全与边缘 AI（2027-Q1）
+## Phase 4: 功能安全与边缘 AI（2027-Q1）— 已完成
 
 **任务**:
 
-- [ ] T18: IEC 61508 Proven-in-Use 统计验证方法工具
-- [ ] T19: ISO 26262 SEooC 复用流程模板
-- [ ] T20: 工业边缘 AI 模型部署规范（ONNX/TFLite）
-- [ ] T21: 工业 AI 的 MCP for Industrial AI 协议草案
+- [x] T18: IEC 61508 Proven-in-Use 统计验证方法工具 → `06-functional-safety/piu-bayesian-tool.py`
+- [x] T19: ISO 26262 SEooC 复用流程模板 → `06-functional-safety/iso26262-seooc-template.md`
+- [x] T20: 工业边缘 AI 模型部署规范（ONNX/TFLite）→ `07-edge-ai/model-deployment-spec.md`
+- [x] T21: 工业 AI 的 MCP for Industrial AI 协议草案 → `07-edge-ai/mcp-industrial-ai-draft.md`
 
 **交付物**:
 
@@ -113,4 +113,4 @@ T18-T21 (功能安全 + 边缘 AI)
 
 ---
 
-> 最后更新: 2026-06-06
+> 最后更新: 2026-06-10

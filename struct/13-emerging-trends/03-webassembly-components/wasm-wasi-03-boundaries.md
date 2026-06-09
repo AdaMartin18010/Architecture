@@ -1,260 +1,245 @@
-# WASI 0.3 / Wasm Component Model：组件复用边界权威对齐（2025‑2026）
+# P5-T4：WASM Component Model + WASI 0.3 复用边界更新
 
-> **版本**：WASI 0.3 Preview · Wasmtime 37+ · WIT / Component Model 协定
-> **来源对齐**：WebAssembly CG / WASI Subgroup、Wasmtime release notes、Bytecode Alliance blog
-> **定位**：架构复用体系中 WebAssembly 组件边界的最新实践基准
-
----
-
-## 1. 关键结论（TL;DR）
-
-| 维度 | 关键结论 |
-|------|----------|
-| **WASI 0.3** | 2025 年进入 Preview，原生支持 `stream` / `future`，引入异步 IO；Wasmtime 37+ 已默认支持。 |
-| **WASI 1.0** | 官方目标 2026 年末发布，届时 WASI 0.2（同步世界）进入维护模式，0.3 成为推荐主线。 |
-| **组件复用边界** | 组件 = 强类型化的可组合 Wasm 单元，WIT 接口替代 ad‑hoc ABI，成为跨语言复用的“API 契约”。 |
-| **可移植性** | 通过 `wasi:io/poll`、`wasi:clocks`、`wasi:http` 等标准化接口实现跨运行时复用。 |
-| **与容器关系** | 组件不是容器的替代品，而是**更细粒度、冷启动更快、沙箱更轻**的复用单元，二者互补。 |
-| **对项目意义** | 为 `struct/04-component-architecture-reuse/` 的组件层提供可执行、跨语言的最终运行时边界。 |
+> **权威来源**：wasi.dev、bytecodealliance.org、wasmtime releases (v45.0.0 / LTS v36.0.0)、W3C WebAssembly 3.0 (2025.09)
+> **版本**：2026-06
+> **适用范围**：跨语言组件复用、边缘/云原生沙箱化部署
 
 ---
 
-## 2. WASI 路线图：从 0.2 → 0.3 → 1.0
+## 1. WASI 0.3 最新状态（RC阶段）
 
-```text
-2024 Q2      WASI 0.2 正式发布（同步 HTTP、文件系统、时钟）
-2025 Q1‑Q3   WASI 0.3 Preview：引入 stream/future、异步 IO、Component Model 绑定
-2025 Q4      Wasmtime 37 默认启用 0.3；工具链完善
-2026 Q4      WASI 1.0 目标 GA，0.2 进入维护，0.3 转正
-```
+### 1.1 原生 async I/O：stream<T> / future<T>
 
-### 2.1 WASI 0.3 核心变更
+WASI 0.3 于 2025 年 11 月进入首个 **Release Candidate (RC)** 阶段，其核心变革是引入了**原生异步 I/O 抽象**：
 
-| 能力 | 0.2 状态 | 0.3 状态 |
-|------|----------|----------|
-| IO 模型 | 同步 `blocking‑read/write` | 异步 `stream<T,E>` + `future<T,E>` |
-| HTTP | `wasi:http/outgoing-handler` 同步 | 原生异步请求/响应流 |
-| 文件系统 | 同步 open/read/write | 异步 `input‑stream` / `output‑stream` |
-| 定时器 | `wasi:clocks/monotonic-clock` sleep | 与 async/await 集成 |
-| 错误处理 | `result<T, string>` 为主 | 结构化错误 `result<T, E>`  richer variant |
+- **`stream<T>`**：表示异步数据流（如 HTTP 请求体、文件流），支持背压（backpressure）和批量读写
+- **`future<T>`**：表示一次性异步计算结果，对标 Rust `Future`、JavaScript `Promise`
 
-> **来源**：Bytecode Alliance *WASI 0.3 Preview* 公告（2025）; Wasmtime 37 release notes。
+这一设计彻底解决了 WASI 0.2 中异步操作需通过外部轮询或回调实现的痛点。在 0.3 模型中，Host 可以直接向 Guest 传递未完成的 future，Guest 通过 WIT 生成的绑定代码以语言惯用方式（如 `await`）处理异步操作，无需显式管理轮询循环。
+
+### 1.2 与 WASI 0.2 的兼容性策略
+
+Bytecode Alliance 采取了**渐进式迁移**策略：
+
+| 维度 | WASI 0.2 | WASI 0.3 (RC) | 兼容性措施 |
+|------|----------|---------------|-----------|
+| 异步模型 | 基于 `poll` 的显式轮询 | `stream<T>` / `future<T>` 原生 async | 0.3 运行时兼容执行 0.2 模块（通过适配层） |
+| 接口版本 | `wasi:http@0.2.0` | `wasi:http@0.3.x` | 同一组件可同时导出 0.2 和 0.3 接口 |
+| 工具链 | wit-bindgen 0.30+ | wit-bindgen 0.40+（支持 0.3） | 双版本 WIT 文件共存 |
+
+**迁移建议**：现有 WASI 0.2 组件无需立即重写。Wasmtime v45 同时支持 0.2 和 0.3，组织可按**新组件用 0.3、存量组件逐步迁移**的节奏推进。
+
+### 1.3 Wasmtime LTS 模式
+
+| 版本 | 发布日期 | 支持周期 | 适用场景 |
+|------|---------|---------|---------|
+| **Wasmtime v45.0.0** | 2026-05 | 常规支持（约 6 个月） | 跟进最新特性、开发测试 |
+| **Wasmtime LTS v36.0.0** | 2024-11 | **2 年安全支持** | 生产环境、合规要求长周期支持 |
+
+LTS 版本保证安全补丁和关键修复的向后兼容，是金融、医疗等监管敏感行业的推荐选择。组织应在**平台工程层统一 Wasmtime 版本策略**，避免各业务线自行引入不同版本的运行时导致安全碎片化。
 
 ---
 
-## 3. Component Model 作为复用契约
+## 2. Component Model 跨语言复用边界
 
-### 3.1 组件 vs 模块
+### 2.1 WIT 接口定义语言
 
-| 特性 | Wasm 模块 | Wasm Component |
-|------|-----------|----------------|
-| 接口 | 导出线性内存 + 函数表 | 导出 WIT 接口 |
-| 类型系统 | 仅数值类型 | WIT record、variant、option、result、resource |
-| 组合 | 低（依赖具体 ABI） | 高（`wasm-tools compose`） |
-| 跨语言 | 需手动 FFI | 原生支持多语言 guest/host |
-| 沙箱 | 线性内存 |  capability-based 子系统隔离 |
+WIT（Wasm Interface Types）是 Component Model 的接口契约语言，其设计目标类似于 gRPC 的 `.proto` 或 CORBA 的 IDL，但具备以下特性：
 
-### 3.2 典型复用模式
+- **无序列化开销**：WIT 类型直接在宿主语言和 WASM 线性内存间传递，无需 JSON/Protobuf 编解码
+- **跨语言一致**：同一 WIT 文件可生成 Rust、C、Go、Python、JavaScript 等语言的绑定
+- **版本化**：`package my-org:analytics@1.0.0` 明确接口版本，支持向后兼容演进
 
 ```wit
-// example: calculator.wit
-package reuse:calculator@0.1.0;
+// 示例：跨语言复用的分析接口
+package my-org:analytics@1.0.0;
 
-interface ops {
-    enum op { add, sub, mul, div }
-    record expr { op: op, lhs: f64, rhs: f64 }
-    eval: func(e: expr) -> result<f64, string>;
-}
-
-world calculator-world {
-    export ops;
-}
-```
-
-**多语言实现复用**：
-
-- Guest：Rust（`cargo component`）、Go（`wit-bindgen-go`）、Python（`componentize-py`）
-- Host：任何支持 Component Model 的运行时（Wasmtime、WasmEdge、JCO 等）
-
----
-
-## 4. 架构复用分层中的 WASI 0.3 位置
-
-```text
-┌─────────────────────────────────────────────────────────┐
-│  业务架构层 (Business Capabilities)                      │
-├─────────────────────────────────────────────────────────┤
-│  应用架构层 (Applications / Services)                    │
-├─────────────────────────────────────────────────────────┤
-│  组件架构层 (Components)                                 │
-│  ├── 微服务组件（容器/K8s）                               │
-│  ├── 库组件（crate / npm / PyPI）                        │
-│  └── Wasm 组件（WIT 接口 + WASI 0.3 运行时）  ← 本文件    │
-├─────────────────────────────────────────────────────────┤
-│  功能架构层 (Functions / Serverless / FaaS)              │
-└─────────────────────────────────────────────────────────┘
-```
-
-### 4.1 与项目既有结构的映射
-
-| 项目目录 | WASI 0.3 角色 |
-|----------|---------------|
-| `struct/04-component-architecture-reuse/` | 组件层设计原则与模式 |
-| `struct/05-functional-architecture-reuse/` | 函数级触发器、WASI 0.3 事件驱动 |
-| `struct/10-supply-chain-security/` | 组件来源验证（SLSA + Wasm 签名） |
-| `struct/13-emerging-trends/03-webassembly-components/` | 前沿趋势与实践 |
-
----
-
-## 5. 运行时边界最佳实践
-
-### 5.1 最小权限原则（Capability-based）
-
-```sh
-# 仅授权 HTTP 和时钟能力
-wasmtime run --wasi http --wasi clocks ./my-component.wasm
-```
-
-WASI 0.3 保持 **capability-based security**：组件默认无任何系统访问权限，必须通过 WIT world 显式导入。
-
-### 5.2 组件组合而非继承
-
-```sh
-wasm-tools compose -o composed.wasm \
-  -c config.yaml \
-  main-component.wasm plugin-component.wasm
-```
-
-复用策略：将高频更新的业务逻辑封装为小组件，通过 WIT 接口组合到稳定的核心组件中。
-
-### 5.3 版本管理与注册表
-
-| 工具 | 用途 |
-|------|------|
-| `wasm-pkg-tools` | 基于 OCI 的 WebAssembly 组件注册表工具链（Bytecode Alliance 推荐） |
-| `cargo component` | Rust 组件开发工作流 |
-| `wasm-tools` | 组件打包、组合、反汇编 |
-| `wasmtime` | 参考运行时 |
-
----
-
-## 6. 可执行示例：Rust → Wasm 组件 → Host 调用
-
-### 6.1 WIT 定义
-
-```wit
-// adder.wit
-package reuse:adder@0.1.0;
-
-interface add {
-    add: func(a: u32, b: u32) -> u32;
-}
-
-world adder {
-    export add;
-}
-```
-
-### 6.2 Rust Guest 实现（cargo component）
-
-```rust
-// src/lib.rs
-#[allow(warnings)]
-mod bindings;
-
-use bindings::exports::reuse::adder::add::Guest;
-
-struct Component;
-
-impl Guest for Component {
-    fn add(a: u32, b: u32) -> u32 {
-        a + b
+interface processor {
+    record config {
+        batch-size: u32,
+        timeout-ms: u32,
     }
+
+    enum status {
+        ok,
+        partial,
+        error,
+    }
+
+    process-batch: func(data: list<string>, cfg: config) -> result<status, string>;
 }
 
-bindings::export!(Component with_types_in bindings);
+world analytics-world {
+    export processor;
+}
 ```
 
-```toml
-# Cargo.toml
-[package]
-name = "reuse-adder"
-version = "0.1.0"
-edition = "2021"
+### 2.2 语言绑定现状
 
-[dependencies]
-wit-bindgen-rt = { version = "0.41.0", features = ["bitflags"] }
+| 语言 | 绑定成熟度 | 生产就绪度 | 备注 |
+|------|----------|-----------|------|
+| **Rust** | ★★★★★ | 生产就绪 | `wasmtime` 和 `wit-bindgen` 的参考实现 |
+| **C/C++** | ★★★★☆ | 生产就绪 | 通过 `componentize-py` 风格的 C 绑定生成 |
+| **Go** | ★★★★☆ | 接近生产 | TinyGo + Go 原生 WASM 支持持续改进 |
+| **Python** | ★★★☆☆ | 开发/测试 | `componentize-py` 支持，启动延迟仍需优化 |
+| **JavaScript/TypeScript** | ★★★★☆ | 生产就绪 | JCO 工具链（ByteAlliance）将组件编译为 JS |
+| **Java/Kotlin** | ★★★☆☆ | 实验性 | 依赖 WasmGC + Chicory 运行时 |
 
-[package.metadata.component]
-package = "reuse:adder"
-```
+**复用策略**：当前**Rust/C/JS** 是 Component Model 的最佳实践语言。Python 适合胶水逻辑和原型验证，Java/Kotlin 建议等待 WasmGC 生态成熟。
 
-构建：
+### 2.3 复用粒度：组件→模块→函数
+
+| 粒度 | 定义 | 复用边界 | 适用场景 |
+|------|------|---------|---------|
+| **函数级** | 单个 WIT 接口函数 | 最小契约单元 | 语言桥接、遗留系统封装 |
+| **模块级** | 一组相关接口 + 类型（WIT `interface`） | 领域能力边界 | 日志处理、加密、配置管理 |
+| **组件级** | 完整的 `world` 定义 + 实现（`.wasm` 组件） | 可独立部署单元 | 微服务替换、边缘函数、插件系统 |
+
+**推荐粒度**：以**模块级**作为组织内复用的标准粒度。组件级适合对外交付或跨团队边界部署；函数级过细，契约维护成本高。
+
+---
+
+## 3. wasm-pkg-tools / OCI-based Registry
+
+### 3.1 wkg 命令行工具
+
+`wasm-pkg-tools`（简称 `wkg`）是 Bytecode Alliance 推出的 WASM 组件包管理工具集，提供类 `cargo` / `npm` 的体验：
 
 ```bash
-cargo component build --release
-# 输出 target/wasm32-wasip1/release/reuse_adder.wasm
+# 从注册表获取组件依赖
+wkg get my-org:analytics@1.0.0
+
+# 将本地组件打包并推送
+wkg publish ./target/wasm32-wasi/release/my_component.wasm \
+  --registry ghcr.io/my-org/wasm-packages
+
+# 生成依赖锁定文件（类似 Cargo.lock）
+wkg resolve > wkg.lock
 ```
 
-### 6.3 Host 调用（Python + wasmtime）
+### 3.2 从 OCI 注册表分发组件
 
-```python
-from wasmtime import Store, Module, Instance, Engine
+WASM 组件采用 **OCI Artifact** 规范封装，可直接推送至任何兼容 OCI 的注册表：
 
-engine = Engine()
-store = Store(engine)
-module = Module.from_file(engine, "target/wasm32-wasip1/release/reuse_adder.wasm")
-instance = Instance(store, module, [])
-add = instance.exports(store)["add"]
-print(add(store, 2, 3))  # 5
+| 注册表 | 支持状态 | 组织场景 |
+|--------|---------|---------|
+| **GHCR (GitHub Container Registry)** | 完全支持 | 开源项目、团队级共享 |
+| **Azure Container Registry** | 完全支持 | 企业私有组件分发 |
+| **Docker Hub** | 支持 | 已有 Docker 生态的组织 |
+| **Harbor** | 支持 | 自托管、多租户隔离 |
+
+组件的 OCI 镜像与 Docker 镜像**共存于同一注册表**，但使用不同的 `mediaType`（`application/vnd.wasm.component.layer.v1+wasm`），互不影响。
+
+### 3.3 与 Docker 镜像的共生关系
+
+```
+┌──────────────────────────────────────────────────────┐
+│              部署单元选择矩阵                          │
+├──────────────────────────────────────────────────────┤
+│  Docker 容器          │  WASM 组件                    │
+│  • 完整 OS 环境        │  • 沙箱化、无容器启动开销      │
+│  • 适合单体/遗留应用    │  • 适合函数/微服务/插件        │
+│  • 分钟级冷启动        │  • 毫秒级冷启动               │
+│  • GB 级镜像           │  • MB/KB 级组件               │
+├──────────────────────────────────────────────────────┤
+│  共生模式：Container 内嵌 WASM 运行时执行组件           │
+│  例：Kubernetes Pod (container) → wasmtime (sidecar) │
+└──────────────────────────────────────────────────────┘
 ```
 
-> 注：实际 Component Model 调用需使用 `wasmtime.Component`，上述为简化示意。
+---
+
+## 4. WebAssembly 3.0 的影响
+
+### 4.1 WasmGC 对语言生态的影响
+
+WebAssembly 3.0（W3C 标准，2025 年 9 月发布）引入 **WasmGC（Garbage Collection）** 提案，使托管语言可以直接编译为 WASM，无需自行实现 GC：
+
+| 语言 | 3.0 之前 | 3.0 + WasmGC | 影响 |
+|------|---------|-------------|------|
+| **Java** | 不可用（需 TeaVM 等转译） | 原生编译（Chicory/JLama） | 企业 Java 生态可直接参与组件复用 |
+| **Kotlin** | 实验性（Kotlin/WASM JS） | Kotlin/WASM WASI 支持 | 移动端/服务端 Kotlin 代码复用到边缘 |
+| **Dart** | 仅 Flutter Web | Dart-to-WASM GC 原生 | Flutter 逻辑层可复用为通用组件 |
+
+**短期影响（2026）**：WasmGC 工具链仍处于早期，不建议立即用于生产核心路径。
+**中期影响（2027-2028）**：Java/Kotlin 组件将成为企业复用生态的重要组成部分，特别是 Spring 生态的"WASM 化"。
+
+### 4.2 Memory64 对大内存应用的支持
+
+Memory64 提案将 WASM 的线性内存寻址从 32 位扩展至 64 位，突破 4GB 内存限制：
+
+- **受益场景**：大数据处理、科学计算、内存数据库、视频编解码
+- **当前状态**：Wasmtime v45 实验性支持，需显式启用 `--wasm-features memory64`
+- **复用意义**：此前因内存限制无法 WASM 化的领域（如 Spark 算子、ML 推理图）现在可被纳入组件复用范围
 
 ---
 
-## 7. 与 MCP / A2A 的互补关系
+## 5. 复用决策树更新
 
-| 协议 | 定位 | 与 WASI 0.3 的关系 |
-|------|------|---------------------|
-| **MCP 2025-11-25** | AI Agent ↔ 工具/数据服务器协议 | WASI 0.3 组件可作为 MCP Server 的运行时沙箱 |
-| **A2A** | Agent ↔ Agent 协作协议 | WASI 组件提供 A2A Agent 的跨语言可移植执行单元 |
-| **WASI 0.3** | 组件能力与安全边界 | 为 MCP/A2A 工具提供**可验证、可组合、最小权限**的底层载体 |
+### 5.1 何时选择 WASM Component？
 
-**复用优势**：MCP Server 的算子逻辑可用 Rust 编写为 Wasm 组件，分发到任何支持 WASI 0.3 的运行时，无需重新编译或担心依赖冲突。
+```
+                    ┌─────────────────┐
+                    │  需要跨语言复用？  │
+                    └────────┬────────┘
+                             │
+            ┌────────────────┼────────────────┐
+            ▼ Yes                               ▼ No
+    ┌───────────────┐                   ┌───────────────┐
+    │ 需要亚秒冷启动？ │                   │ 用原生库/框架  │
+    └───────┬───────┘                   │ (Go/Rust/Java) │
+            │                           └───────────────┘
+    ┌───────┴───────┐
+    ▼ Yes           ▼ No
+┌─────────┐   ┌─────────────┐
+│ WASM    │   │ 容器 (Docker)│
+│Component│   │ 或服务网格   │
+└─────────┘   └─────────────┘
+            │
+            ▼
+    ┌───────────────┐
+    │ 需要强沙箱隔离？│
+    └───────┬───────┘
+            │
+    ┌───────┴───────┐
+    ▼ Yes           ▼ No
+┌─────────┐   ┌─────────────┐
+│ WASM    │   │ gRPC/REST   │
+│Component│   │ 微服务      │
+└─────────┘   └─────────────┘
+```
+
+### 5.2 四维权衡矩阵
+
+| 维度 | WASM Component | Docker 容器 | 原生共享库 |
+|------|---------------|-------------|-----------|
+| **性能** | 接近原生（无容器化开销） | 好（有虚拟化开销） | 最优 |
+| **安全** | ★★★★★（能力型沙箱） | ★★★☆☆（依赖 OS 隔离） | ★★☆☆☆（同进程内存） |
+| **跨语言** | ★★★★★（WIT 契约） | ★★★☆☆（需网络协议） | ★★☆☆☆（需 FFI） |
+| **包管理** | ★★★★☆（wkg + OCI） | ★★★★★（Docker 生态） | ★★★☆☆（语言特定） |
+
+**结论**：WASM Component 在**安全隔离 + 跨语言复用**象限具有不可替代的优势；在纯同构语言栈且无需沙箱的场景，原生共享库仍是性能最优解；容器适合需要完整 OS 环境或已有庞大 Docker 生态的存量系统。
 
 ---
 
-## 8. 工具链与版本速查
+## 6. 实施建议
 
-| 工具 | 推荐版本 | 说明 |
-|------|----------|------|
-| Wasmtime | ≥ 37 | 默认 WASI 0.3 支持 |
-| wasm-tools | ≥ 1.228 | 组件组合、WIT 解析 |
-| cargo-component | ≥ 0.22 | Rust 组件开发 |
-| wit-bindgen | ≥ 0.41 | 多语言绑定生成 |
-| `wasm-pkg-tools` | ≥ 0.4 | 基于 OCI 的组件注册表交互 |
-
----
-
-## 9. 权威来源
-
-1. **Bytecode Alliance — WASI 0.3 Preview**（2025）
-2. **Wasmtime Release Notes 37+** — <https://github.com/bytecodealliance/wasmtime/releases>
-3. **WebAssembly Component Model Spec** — <https://component-model.bytecodealliance.org/>
-4. **WIT 设计文档** — <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md>
-5. **wasm-pkg-tools / OCI-based registry** — <https://github.com/bytecodealliance/wasm-pkg-tools>（warg 已停止积极开发，社区转向 OCI-based registry）
-6. **《WebAssembly: The Definitive Guide》2nd ed.**（2026 预计出版）
+| 阶段 | 行动 | 产出 |
+|------|------|------|
+| **即时（0-1月）** | 在 CI 中引入 `wkg` 和 `wit-bindgen`，定义首个 WIT 接口 | 组织 WIT 规范初稿 |
+| **短期（1-3月）** | 选择 1-2 个高频复用模块（如配置解析、日志格式化）WASM 化 | 生产组件 2-3 个 |
+| **中期（3-6月）** | 搭建私有 OCI 组件注册表，与现有 Harbor/ACR 集成 | 组件复用目录上线 |
+| **长期（6-12月）** | 评估 WasmGC 语言（Java/Kotlin）的组件化可行性 | Java 组件试点 |
 
 ---
 
-## 10. 项目后续行动
+## 参考文献
 
-1. **在本目录创建可运行的示例仓库**：一个 Rust 组件 + Python Host + CI 验证流程。
-2. **更新 `struct/04-component-architecture-reuse/README.md`**，加入 Wasm 组件作为第四种组件形态（与库、服务、框架并列）。
-3. **更新形式化验证环境**：探讨将 WASI 0.3 WIT 接口作为 TLA+/Alloy 的组件边界规约对象。
-4. **与 SLSA 对齐**：Wasm 组件的 SBOM 与签名机制需与 `struct/10-supply-chain-security/` 的供应链安全框架打通。
-
----
-
-*文档生成时间：2026-06-06 · 对齐官方 WASI 0.3 Preview 及 Wasmtime 37+ 状态*
+1. WASI 0.3 Roadmap, <https://wasi.dev>
+2. Wasmtime v45.0.0 Release Notes, Bytecode Alliance, 2026-05
+3. Wasmtime LTS Policy, <https://docs.wasmtime.dev/stability-release.html>
+4. WebAssembly 3.0 W3C Recommendation, 2025-09
+5. WebAssembly Component Model, W3C Phase 1, <https://component-model.bytecodealliance.org>
+6. wasm-pkg-tools (wkg), <https://github.com/bytecodealliance/wasm-pkg-tools>
+7. WasmGC Proposal, <https://github.com/WebAssembly/gc>
+8. Memory64 Proposal, <https://github.com/WebAssembly/memory64>

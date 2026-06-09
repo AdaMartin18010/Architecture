@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph 认知模型
+        ACTR["ACT-R 模式匹配"]
+        BDI["BDI 意图模型"]
+        DUAL["Kahneman 双系统"]
+    end
+
+    subgraph 认知负荷
+        INTRIN["内在负荷"]
+        EXTRAN["外在负荷"]
+        GERMANE["相关负荷"]
+    end
+
+    subgraph 复用决策
+        SEARCH["信息检索"]
+        EVAL["评估匹配度"]
+        ADAPT["适配改造"]
+    end
+
+    subgraph AI 增强
+        RAG["RAG 检索"]
+        LLM_A["LLM 推荐"]
+    end
+
+    ACTR --> SEARCH
+    BDI --> EVAL
+    DUAL --> ADAPT
+    INTRIN --> SEARCH
+    EXTRAN --> RAG
+    GERMANE --> LLM_A
+    SEARCH --> EVAL --> ADAPT
+    RAG --> SEARCH
+    LLM_A --> EVAL
