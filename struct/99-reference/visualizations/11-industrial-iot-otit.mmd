@@ -1,37 +1,64 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 11 工业 IoT/OT-IT 融合
 flowchart TB
-    subgraph ISA-95 五层
-        L4["L4 企业 ERP"]
-        L3["L3 MES"]
-        L2["L2 监控 SCADA"]
-        L1["L1 控制 PLC"]
-        L0["L0 现场 Field"]
+    subgraph "ISA-95 五层架构"
+        L4["L4 企业层<br/>ERP / MES 集成 / 商务决策"]
+        L3["L3 制造运营<br/>MES / 批次管理 / 质量"]
+        L2["L2 监控层<br/>SCADA / HMI / 历史数据库"]
+        L1["L1 控制层<br/>PLC / DCS / 运动控制"]
+        L0["L0 现场层<br/>传感器 / 执行器 / 驱动器"]
     end
 
-    subgraph 通信协议
-        OPC["OPC UA FX"]
-        TSN["TSN 确定性网络"]
-        UADP["UADP 帧"]
+    subgraph "通信协议栈"
+        OPC["OPC UA FX<br/>Publisher/Subscriber / C2C/C2D/D2D"]
+        TSN["TSN 确定性网络<br/>IEEE 802.1Qbv / IEC 60802"]
+        UADP["UADP 帧格式<br/>PubSub 二进制编码"]
+        MQTT_I["MQTT-IA<br/>工业自动化配置文件"]
+        MODBUS["Modbus TCP<br/>传统设备兼容"]
     end
 
-    subgraph 数字孪生
-        AAS["资产管理壳 AAS"]
-        SM["子模型模板"]
+    subgraph "数字孪生与资产管理"
+        AAS["资产管理壳 AAS<br/>IEC 63278 / 数字孪生入口"]
+        SM["子模型模板<br/>Identification / Technical Data"]
+        DTWIN["数字孪生运行时<br/>实时同步 / 仿真预测"]
+        NODES["OPC UA NodeSet<br/> companion 规范复用"]
     end
 
-    subgraph 功能安全
-        IEC61508["IEC 61508"]
-        ISO26262["ISO 26262"]
-        PIU["Proven-in-Use"]
-        SEooC["SEooC"]
+    subgraph "功能安全与复用"
+        IEC61508["IEC 61508<br/>通用功能安全"]
+        ISO26262["ISO 26262<br/>汽车安全生命周期"]
+        IEC62443["IEC 62443<br/>工业自动化网络安全"]
+        PIU["Proven-in-Use<br/>运行历史数据论证"]
+        SEooC["SEooC<br/>独立安全单元复用"]
+    end
+
+    subgraph "边缘智能"
+        EDGE["边缘计算网关<br/>数据采集 / 协议转换"]
+        TINYML["TinyML<br/>MCU 级机器学习推理"]
+        ONNX_R["ONNX Runtime<br/>跨平台模型部署"]
+        MCP_I["MCP Industrial<br/>工业 Agent 接口实验"]
     end
 
     L4 --> L3 --> L2 --> L1 --> L0
     L1 --> OPC
     L0 --> UADP
     OPC --> TSN
+    TSN --> MQTT_I
+    L0 --> MODBUS
     L3 --> AAS
     AAS --> SM
+    SM --> DTWIN
+    AAS --> NODES
     L2 --> IEC61508
     L1 --> ISO26262
+    L2 --> IEC62443
     IEC61508 --> PIU
     ISO26262 --> SEooC
+    L1 --> EDGE
+    EDGE --> TINYML
+    TINYML --> ONNX_R
+    EDGE --> MCP_I
+
+    style TSN fill:#e3f2fd,stroke:#333
+    style AAS fill:#f3e5f5,stroke:#333
+    style SEooC fill:#fff3e0,stroke:#333
+    style TINYML fill:#e8f5e9,stroke:#333

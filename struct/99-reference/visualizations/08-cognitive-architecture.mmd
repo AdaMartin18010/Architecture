@@ -1,33 +1,49 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 08 认知架构与知识管理
 flowchart TB
-    subgraph 认知模型
-        ACTR["ACT-R 模式匹配"]
-        BDI["BDI 意图模型"]
-        DUAL["Kahneman 双系统"]
+    subgraph "认知理论基础"
+        ACTR["ACT-R 认知架构<br/>产生式规则 + 陈述性记忆"]
+        BDI["BDI 意图模型<br/>Belief-Desire-Intention"]
+        DUAL["Kahneman 双系统<br/>系统1直觉 / 系统2推理"]
+        CHUNK["认知组块理论<br/>7±2 工作记忆限制"]
     end
 
-    subgraph 认知负荷
-        INTRIN["内在负荷"]
-        EXTRAN["外在负荷"]
-        GERMANE["相关负荷"]
+    subgraph "认知负荷维度"
+        INTRIN["内在负荷<br/>任务本身复杂度"]
+        EXTRAN["外在负荷<br/>信息呈现方式"]
+        GERMANE["相关负荷<br/>图式构建与自动化"]
+        COG_CAP["认知容量上限<br/>工作记忆瓶颈"]
     end
 
-    subgraph 复用决策
-        SEARCH["信息检索"]
-        EVAL["评估匹配度"]
-        ADAPT["适配改造"]
+    subgraph "复用决策过程"
+        SEARCH["信息检索<br/>代码库 / 知识库 / 文档"]
+        EVAL["评估匹配度<br/>功能/质量/许可/维护"]
+        COMP["心智模拟<br/>运行时行为预测"]
+        ADAPT["适配改造<br/>理解→修改→验证"]
+        INTEG["集成调试<br/>环境配置 / 依赖解决"]
     end
 
-    subgraph AI 增强
-        RAG["RAG 检索"]
-        LLM_A["LLM 推荐"]
+    subgraph "AI 认知增强"
+        RAG["RAG 语义检索<br/>向量搜索 + 重排序"]
+        LLM_A["LLM 推荐<br/>上下文感知建议"]
+        AGENT_C["Agent 辅助分析<br/>多步推理 / 工具调用"]
+        EXPLAIN["可解释性输出<br/>决策依据 / 置信度"]
     end
 
     ACTR --> SEARCH
     BDI --> EVAL
-    DUAL --> ADAPT
+    DUAL --> COMP
+    CHUNK --> COG_CAP
     INTRIN --> SEARCH
     EXTRAN --> RAG
     GERMANE --> LLM_A
-    SEARCH --> EVAL --> ADAPT
+    COG_CAP --> ADAPT
+    SEARCH --> EVAL --> COMP --> ADAPT --> INTEG
     RAG --> SEARCH
     LLM_A --> EVAL
+    AGENT_C --> COMP
+    EXPLAIN --> EVAL
+
+    style ACTR fill:#e3f2fd,stroke:#333
+    style RAG fill:#e8f5e9,stroke:#333
+    style AGENT_C fill:#f3e5f5,stroke:#333
+    style COG_CAP fill:#ffebee,stroke:#333

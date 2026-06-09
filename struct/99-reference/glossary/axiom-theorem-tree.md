@@ -28,6 +28,7 @@
     - [4.3 供应链安全 (10)](#43-供应链安全-10)
   - [5. 垂直与前沿层公理](#5-垂直与前沿层公理)
     - [5.1 工业 IoT (11)](#51-工业-iot-11)
+    - [5.3 新兴趋势 (13)](#53-新兴趋势-13)
     - [5.2 AI 原生复用 (12)](#52-ai-原生复用-12)
   - [6. 依赖关系图](#6-依赖关系图)
     - [6.1 全体系依赖概览](#61-全体系依赖概览)
@@ -57,10 +58,11 @@
 | 结构性公理 | 4 | ✅ 已确立 |
 | 过程性公理 | 4 | ✅ 已确立 |
 | 派生定理 | 29 | ✅ 已推导 |
-| **总计** | **44** | **构建中** |
+| **总计** | **50** | **构建中** |
 
-> 目标: 20+ 公理、30+ 定理（2027-Q4 完成）
+> 目标: 20+ 公理、35+ 定理（2027-Q4 完成）
 > **Phase 3 进展**: 01 主题新增 15 条公理、17 条定理，详见 `struct/01-meta-model-standards/06-formal-axioms/`
+> **2026-06-10 进展**: 新增 5 条扩展公理（03/05/10/12/13）、6 条扩展定理（03/05/08/10/13），核心公理体系达 20 条，定理达 35 条
 
 ---
 
@@ -213,6 +215,13 @@
 >
 > 依据: ACT-R 认知架构, Chi et al. (1981) Expert-Novice Studies
 
+**定理 C.3** (Cognitive Load Minimization)
+> 存在一个最优文档粒度，使得开发者的总认知负荷最小。粒度过大增加内在负荷，粒度过小增加外在负荷。
+>
+> 形式化: ∃ g*: dCL_total/dg = 0, 其中 CL_total(g) = α/g + β*g + γ
+>
+> 依据: Sweller (1988), NASA-TLX, Information Foraging Theory (Pirolli & Card)
+
 ---
 
 ## 3. 层次层定理
@@ -232,6 +241,20 @@
 > 推论: 价值流中任一关键能力的不可复用性将导致整条价值流的不可复用（短板效应）。
 
 ### 3.2 应用架构 (03)
+
+**公理 3.1** (Cloud-Native Reusability)
+> 容器化与声明式配置使应用级复用从"代码复用"转变为"基础设施即复用单元"。同一容器镜像在不同环境中保持行为一致性。
+>
+> 形式化: Reuse(App) ⟺ Container(App) ∧ DeclarativeConfig(App) ∧ EnvironmentIndependent(App)
+>
+> 依据: CNCF, NIST SP 800-204, Kubernetes API Specification
+
+**定理 3.1** (Microservice Reuse Ceiling)
+> 微服务粒度越小，复用率越高，但治理复杂度呈指数增长。存在最优粒度点使得复用净收益最大。
+>
+> 形式化: NetBenefit(g) = ReuseRate(g) - GovernanceCost(g), 其中 GovernanceCost(g) = k *exp(-c* g)
+>
+> 依据: 2024-2026 CNCF 调查报告, Conway's Law, RiSE 实证研究
 
 **定理 3.2** (Data-Application Coupling)
 > 数据架构与应用架构的复用独立当且仅当数据访问通过**抽象数据服务**而非**直接存储耦合**实现。
@@ -262,6 +285,13 @@
 > 依据: SLSA Framework, Sonatype 2025/2026 Supply Chain Reports
 
 ### 3.4 功能架构 (05)
+
+**公理 5.1** (Protocol Interoperability)
+> 两种协议可互操作当且仅当它们共享同一语义层的数据模型。
+>
+> 形式化: Interoperable(Proto_A, Proto_B) ⟺ ∃ SemanticLayer: DataModel_A ⊆ SemanticLayer ∧ DataModel_B ⊆ SemanticLayer
+>
+> 依据: MCP 2025-11-25, A2A v1.0.0, ISO 42010 Correspondence Rule
 
 **定理 5.1** (Tool Reuse Equivalence)
 > MCP Tool 的复用等价于其**语义描述**与**模式约束**在目标 LLM 上下文中的可传递性。
@@ -318,6 +348,13 @@
 
 ### 4.3 供应链安全 (10)
 
+**公理 10.1** (Attestation Chain)
+> 软件制品的可复用性受其证明链完整性的约束。缺少任何一环的证明，复用决策必须降级为"不可信"。
+>
+> 形式化: Reusable(Artifact) ⟺ ∀ link ∈ Chain(Artifact): Attestation(link) ≠ ∅
+>
+> 依据: SLSA 1.2, Sigstore, in-toto Attestation Framework
+
 **公理 S.1** (Trust Transitivity Collapse)
 > 软件供应链中的信任是传递的，但传递链的长度与信任度成指数反比。
 >
@@ -329,6 +366,13 @@
 > SBOM 的完备性存在理论上限：动态依赖、条件编译引入的依赖、以及运行时加载的插件，无法在任何静态 SBOM 中完全捕获。
 >
 > 依据: SPDX 2.3 Specification, CycloneDX 1.6, NTIA SBOM Minimum Elements
+
+**定理 S.3** (SLSA Reuse Equivalence)
+> 两个软件制品在安全上下文中可互相替换当且仅当它们具有相同的 SLSA 等级和来源证明。
+>
+> 形式化: Substitutable(A, B) ⟺ SLSA_Level(A) = SLSA_Level(B) ∧ Provenance(A) ≅ Provenance(B)
+>
+> 依据: SLSA 1.2, OpenSSF Supply Chain Security
 
 ---
 
@@ -346,7 +390,39 @@
 >
 > 依据: IEC 62264, OPC UA Companion Specifications
 
+---
+
+### 5.3 新兴趋势 (13)
+
+**公理 T.1** (Technology Convergence)
+> 当两种技术的成熟度都超过阈值 τ 时，它们的融合将产生新的复用范式。
+>
+> 形式化: Maturity(Tech_A) > τ ∧ Maturity(Tech_B) > τ ⟹ Emerges(NewReuseParadigm(Tech_A, Tech_B))
+>
+> 依据: Gartner Hype Cycle, Technology Readiness Levels (TRL)
+
+**定理 T.2** (WASM Portability Theorem)
+> WASM 组件的跨平台复用边界等于其 WASI 接口的交集。任何超出 WASI 标准的平台特定功能将破坏可移植性。
+>
+> 形式化: Portable(WASM_Comp) ⟺ RequiredInterfaces(WASM_Comp) ⊆ ⋂ AvailableWASI(Platform_i)
+>
+> 依据: W3C WebAssembly, Bytecode Alliance WASI 0.3, wasmtime 37+
+
+**定理 T.3** (Platform Engineering ROI)
+> 当开发者数量 N > 50 时，内部开发者平台的投资回报率为正。ROI 与开发者数量的平方根成正比。
+>
+> 形式化: ROI(IDP) > 0 ⟺ N > 50; ROI(IDP) ∝ √N
+>
+> 依据: CNCF Platform Engineering Maturity Model 2026, 28% 组织已有专职平台团队
+
 ### 5.2 AI 原生复用 (12)
+
+**公理 12.1** (Model Drift Bound)
+> AI 功能复用的有效性随时间衰减，衰减率与模型更新频率成反比。
+>
+> 形式化: Validity(AI_Function, t) = Validity_0 *exp(-λ* t), λ ∝ 1 / update_frequency
+>
+> 依据: MCP Specification, Conformal Prediction Theory, ML Model Monitoring Best Practices
 
 **定理 AI.1** (Calibration Ceiling)
 > 置信度校准的效果存在上限。当 LLM 的输出分布与真实分布的 KL 散度 > ε 时，任何校准方法都无法使校准误差 < δ。
@@ -361,6 +437,13 @@
 > 形式化: Coverage(MCP ∪ A2A) > Coverage(MCP) + Coverage(A2A) - Coverage(MCP ∩ A2A)
 >
 > 依据: MCP 2025-11-25, A2A v1.0.0 Specification
+
+**定理 AI.3** (MCP Tool Composability)
+> 两个 MCP Server 的工具集可组合当且仅当它们的工具命名空间不冲突且模式约束兼容。
+>
+> 形式化: Composable(Tools_A, Tools_B) ⟺ Namespace(Tools_A) ∩ Namespace(Tools_B) = ∅ ∧ SchemaCompatible(Tools_A, Tools_B)
+>
+> 依据: MCP 2025-11-25 Specification, JSON Schema 2020-12
 
 ---
 

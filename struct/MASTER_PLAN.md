@@ -161,12 +161,12 @@
 
 | 优先级 | 任务 | 交付物 | 验收标准 | 状态 |
 |--------|------|--------|----------|------|
-| P0 | 编写《软件工程架构复用视角》全书框架 | `99-reference/book-outline.md` | 12 章 + 附录，每章对应一个一级主题 | 🔄 进行中（已有 book-outline.md + ch01-ch06） |
-| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 25+ 标准 × 5 复用层次 | 🔄 进行中（初版已完成，目标 30+ 标准） |
-| P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、30+ 定理 | 🔄 进行中（当前 15+17，目标 20+35） |
-| P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 | ✅ 已完成 Python CLI 原型 |
+| P0 | 编写《软件工程架构复用视角》全书框架 | `99-reference/book-outline.md` | 12 章 + 附录，每章对应一个一级主题 | ✅ 已完成 v2026-06-10（全书框架 + 权威来源引用） |
+| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 30 标准 × 5 复用层次 | ✅ 已完成 v2.0（30 标准，新增 ISO 42020/42030/25040 等 12 项） |
+| P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、35+ 定理 | ✅ 已完成 v2026-06-10（20 公理 + 35 定理 + 5 猜想） |
+| P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 | ✅ 已完成（CLI + Streamlit Web 仪表盘 + 标准追踪器 v2.0） |
 | P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26566:2026 | ✅ 已完成（含 CLI 与雷达图报告） |
-| P2 | 制作 Mermaid 思维导图库 | `99-reference/visualizations/` | 覆盖全部 13 个主题的 Mermaid 源文件 | 🔄 进行中（当前 3/13） |
+| P2 | 制作 Mermaid 思维导图库 | `99-reference/visualizations/` | 覆盖全部 13 个主题的 Mermaid 源文件 | ✅ 已完成 v2026-06-10（13 主题 × 4-6 子图，平均 1900 bytes） |
 
 ---
 

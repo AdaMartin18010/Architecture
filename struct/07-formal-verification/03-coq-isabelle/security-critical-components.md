@@ -7,6 +7,35 @@
 
 ---
 
+## 目录
+
+- [Coq / Isabelle Theorem Proving for Safety-Critical Components](#coq--isabelle-theorem-proving-for-safety-critical-components)
+  - [目录](#目录)
+  - [1. Gap Between Teaching Examples and Industrial Verification](#1-gap-between-teaching-examples-and-industrial-verification)
+  - [2. seL4 Microkernel Style Case Study](#2-sel4-microkernel-style-case-study)
+    - [2.1 Verification Goals](#21-verification-goals)
+    - [2.2 Three-Layer Abstraction Stack](#22-three-layer-abstraction-stack)
+    - [2.3 Core Proof Obligations with Coq / Isabelle Code Sketches](#23-core-proof-obligations-with-coq--isabelle-code-sketches)
+      - [PO-1: Representation Relation (Bijection / Refinement Function)](#po-1-representation-relation-bijection--refinement-function)
+      - [PO-2: Syscall Refinement (Forward Simulation)](#po-2-syscall-refinement-forward-simulation)
+      - [PO-3: Invariant Preservation](#po-3-invariant-preservation)
+    - [2.4 Mapping to `struct/` Topics](#24-mapping-to-struct-topics)
+  - [3. CompCert Compiler Correctness Case Study](#3-compcert-compiler-correctness-case-study)
+    - [3.1 Verification Goals](#31-verification-goals)
+    - [3.2 Multi-Pass Compiler Refinement Chain](#32-multi-pass-compiler-refinement-chain)
+    - [3.3 Simulation Relation Technique with Coq Code Sketch](#33-simulation-relation-technique-with-coq-code-sketch)
+    - [3.4 Mapping to `struct/` Topics](#34-mapping-to-struct-topics)
+  - [4. Mixed-Criticality Systems — Rate-Monotonic Scheduling Verification](#4-mixed-criticality-systems--rate-monotonic-scheduling-verification)
+    - [4.1 Problem Definition (Liu \& Layland 1973)](#41-problem-definition-liu--layland-1973)
+    - [4.2 Isabelle/HOL Proof Sketch for RM Schedulability Theorem](#42-isabellehol-proof-sketch-for-rm-schedulability-theorem)
+    - [4.3 Alignment with Industrial Standards](#43-alignment-with-industrial-standards)
+  - [5. Methodology Summary](#5-methodology-summary)
+    - [5.1 Generic Pattern for Safety-Critical Verification (4 Layers)](#51-generic-pattern-for-safety-critical-verification-4-layers)
+    - [5.2 Coq vs Isabelle Selection Guide](#52-coq-vs-isabelle-selection-guide)
+    - [5.3 Authoritative Sources and Further Reading](#53-authoritative-sources-and-further-reading)
+  - [6. Cross-References to Other `struct/` Topics](#6-cross-references-to-other-struct-topics)
+  - [Status](#status)
+
 ## 1. Gap Between Teaching Examples and Industrial Verification
 
 Classical theorem-proving courses introduce induction over `nat`, list reversal, or a toy imperative language (WHILE).  Industrial verification must deal with C semantics, unbounded heap models, concurrency, and machine-code equivalence.  The table below maps the gap along seven dimensions.

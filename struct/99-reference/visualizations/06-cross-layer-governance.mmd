@@ -1,29 +1,53 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 06 跨层复用治理与成熟度
 flowchart TB
-    subgraph 治理框架
-        ISO42020["ISO 42020 过程"]
-        ISO42030["ISO 42030 评估"]
-        ISO26566["ISO 26566 成熟度"]
+    subgraph "治理框架体系"
+        ISO42020["ISO/IEC 42020<br/>架构治理过程"]
+        ISO42030["ISO/IEC 42030<br/>架构评估框架"]
+        ISO26566["ISO/IEC 26566<br/>复用成熟度模型"]
+        TOGAF_G["TOGAF 治理<br/>架构委员会 / 合规评审"]
     end
 
-    subgraph 四级度量
-        ASSET["资产级 RRL"]
-        PROJ["项目级 复用率"]
-        ORG["组织级 成熟度"]
-        ECO["生态级 供应链健康"]
+    subgraph "四级度量模型"
+        ASSET["资产级 RRL<br/>Reusability Requirement Level<br/>每个组件的复用等级"]
+        PROJ["项目级 复用率<br/>复用 SLOC / 总 SLOC"]
+        ORG["组织级 成熟度<br/>RCMM 5 级 / CMM 衍生"]
+        ECO["生态级 供应链健康<br/>SBOM 完整度 / 漏洞密度"]
     end
 
-    subgraph 成本与决策
-        FINOPS["FinOps 分摊"]
-        UPGRADE["升级决策矩阵"]
-        DOWNGRADE["降级决策矩阵"]
+    subgraph "决策支持"
+        ADR["架构决策记录 ADR<br/>上下文 / 决策 / 后果"]
+        RACI["RACI 责任矩阵<br/>谁负责 / 谁批准 / 咨询谁"]
+        FINOPS["FinOps 成本分摊<br/> showback / chargeback"]
+        UPGRADE["升级决策矩阵<br/>成本-风险-收益三维"]
+        DOWNGRADE["降级决策矩阵<br/>技术债务 / 替代方案"]
+    end
+
+    subgraph "自动化治理"
+        LINT["架构 Lint<br/>架构规则静态检查"]
+        SCORECARD["Scorecard 评分<br/>健康度仪表盘"]
+        POLICY["策略即代码<br/>OPA / Sentinel"]
+        AUTO_R["自动化报告<br/>复用度量自动生成"]
     end
 
     ISO42020 --> ISO42030 --> ISO26566
+    TOGAF_G --> ISO42020
     ISO26566 --> ASSET
     ISO26566 --> PROJ
     ISO26566 --> ORG
     ISO26566 --> ECO
-    ASSET --> FINOPS
-    PROJ --> UPGRADE
-    ORG --> DOWNGRADE
+    ASSET --> ADR
+    PROJ --> RACI
+    ORG --> FINOPS
     ECO --> FINOPS
+    ADR --> UPGRADE
+    RACI --> DOWNGRADE
+    LINT --> SCORECARD
+    SCORECARD --> AUTO_R
+    POLICY --> LINT
+    UPGRADE --> AUTO_R
+    DOWNGRADE --> AUTO_R
+
+    style ISO26566 fill:#e3f2fd,stroke:#333
+    style RCMM fill:#fff3e0,stroke:#333
+    style ADR fill:#f3e5f5,stroke:#333
+    style AUTO_R fill:#e8f5e9,stroke:#333

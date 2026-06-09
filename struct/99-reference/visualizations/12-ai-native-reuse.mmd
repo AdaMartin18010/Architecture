@@ -1,28 +1,62 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 12 AI 原生架构复用
 flowchart TB
-    subgraph AI 协议层
-        MCP["MCP 2025-11-25"]
-        A2A_AI["A2A v1.0"]
-        OAUTH["OAuth 2.1"]
+    subgraph "协议与接口层"
+        MCP["MCP 2025-11-25<br/>Agent↔Tool 标准接口"]
+        A2A["A2A v1.0<br/>Agent↔Agent 协作协议"]
+        OAUTH["OAuth 2.1 / mTLS<br/>安全认证基底"]
+        ANP["ANP (Agent Network Protocol)<br/>开放互联实验性"]
     end
 
-    subgraph 复用契约
-        PROB["概率契约 γ(x)"]
-        CP["Conformal Prediction"]
-        CALIB["校准方法"]
+    subgraph "复用契约与保障"
+        PROB["概率契约 γ(x)<br/>期望输出分布"]
+        CP["Conformal Prediction<br/>置信边界校准"]
+        CALIB["在线校准方法<br/>Platt Scaling / Isotonic"]
+        CONF["置信度边界输出<br/>[ŷ-ε, ŷ+ε]"]
     end
 
-    subgraph 运行时保障
-        TEMP["温度控制"]
-        DRIFT["模型漂移检测"]
-        CONF["置信度边界"]
+    subgraph "Agent 架构模式"
+        REACT["ReAct / CoT<br/>推理-行动循环"]
+        PLAN["Plan-and-Execute<br/>任务分解编排"]
+        MULTI["Multi-Agent 协作<br/>主管-工作者模式"]
+        MCP_T["MCP Tool Server<br/>可复用工具注册"]
     end
 
-    MCP --> PROB
-    A2A_AI --> PROB
+    subgraph "模型资产复用"
+        RAG["RAG 管道<br/>向量检索 + 上下文增强"]
+        FT["参数高效微调<br/>LoRA / QLoRA / DoRA"]
+        ADAPTER["Adapter 推理<br/>多任务动态切换"]
+        PROMPT["Prompt 模板库<br/>少样本 / CoT 模板"]
+    end
+
+    subgraph "运行时治理"
+        TEMP["温度 / Top-p 控制<br/>采样策略治理"]
+        DRIFT["模型漂移检测<br/>KL 散度 / PSI 监控"]
+        GUARD["Guardrails / 护栏<br/>输出安全过滤"]
+        COST["Token 预算管控<br/>成本配额机制"]
+    end
+
+    OAUTH --> MCP
+    OAUTH --> A2A
+    MCP --> MCP_T
+    A2A --> MULTI
+    MCP_T --> REACT
+    MCP_T --> PLAN
+    REACT --> PROB
+    PLAN --> PROB
+    MULTI --> PROB
     PROB --> CP
     CP --> CALIB
     CALIB --> CONF
     TEMP --> DRIFT
-    DRIFT --> CONF
-    OAUTH --> MCP
-    OAUTH --> A2A_AI
+    DRIFT --> GUARD
+    GUARD --> CONF
+    RAG --> REACT
+    FT --> ADAPTER
+    ADAPTER --> MCP_T
+    PROMPT --> REACT
+    COST --> MCP_T
+
+    style MCP fill:#e1f5fe,stroke:#333
+    style A2A fill:#e1f5fe,stroke:#333
+    style PROB fill:#fff3e0,stroke:#333
+    style GUARD fill:#fbe9e7,stroke:#333

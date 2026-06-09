@@ -8,6 +8,24 @@
 
 ---
 
+## 目录
+
+- [T12: MCP Tool 能力依赖图验证 (Alloy)](#t12-mcp-tool-能力依赖图验证-alloy)
+  - [目录](#目录)
+  - [1. 建模背景](#1-建模背景)
+  - [2. 签名设计与 MCP 规范映射](#2-签名设计与-mcp-规范映射)
+    - [2.1 MCPServer（服务器）](#21-mcpserver服务器)
+    - [2.2 MCPTool（工具）](#22-mcptool工具)
+    - [2.3 Capability（能力）](#23-capability能力)
+    - [2.4 Resource（资源）](#24-resource资源)
+  - [3. 核心约束的形式化](#3-核心约束的形式化)
+    - [F3: AcyclicToolCalls（调用无环）](#f3-acyclictoolcalls调用无环)
+    - [F4: CapabilityClosure（能力封闭）](#f4-capabilityclosure能力封闭)
+  - [4. 断言与验证](#4-断言与验证)
+  - [5. 反例教学：能力越权调用](#5-反例教学能力越权调用)
+  - [6. 与功能架构复用的交叉引用](#6-与功能架构复用的交叉引用)
+  - [7. 权威来源](#7-权威来源)
+
 ## 1. 建模背景
 
 Model Context Protocol (MCP) 是 AI 代理与外部工具、数据资源之间的标准化接口协议。在 MCP 2025-11-25 规范中，Server 通过 `tools/list` 暴露工具集合，每个工具具有 JSON Schema 定义的输入输出和一组声明的 `annotations`。当 Agent 调用工具时，工具内部可能进一步调用其他工具，形成工具调用依赖图（Tool Invocation Dependency Graph, TIDG）。

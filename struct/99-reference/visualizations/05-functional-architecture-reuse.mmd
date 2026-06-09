@@ -1,23 +1,36 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 05 功能架构复用
 flowchart TB
-    subgraph 协议栈
-        MCP["MCP 2025-11-25<br/>工具/资源/提示"]
-        A2A["A2A v1.0<br/>Agent 协作"]
-        REST["REST / gRPC"]
-        EVT["Event / Message"]
+    subgraph "协议与接口层"
+        MCP["MCP 2025-11-25<br/>Tool / Resource / Prompt"]
+        A2A["A2A v1.0<br/>Agent Card / Task / Artifact"]
+        REST["REST / OpenAPI<br/>同步请求-响应"]
+        GRPC["gRPC / Protobuf<br/>高性能 RPC"]
+        EVT["Event / Message<br/>异步事件流"]
+        GRAPHQL["GraphQL<br/>客户端驱动查询"]
     end
 
-    subgraph 复用单元
-        TOOL["Tool 函数"]
-        RES["Resource 资源"]
-        PROMPT["Prompt 模板"]
-        AGENT["Agent Card"]
-        TASK["Task 任务"]
+    subgraph "复用单元粒度"
+        FUNC["纯函数<br/>无副作用 / 可测试"]
+        TOOL["Tool 函数<br/>MCP 可调用工具"]
+        RES["Resource 资源<br/>只读数据引用"]
+        PROMPT["Prompt 模板<br/>少样本 / 系统提示"]
+        AGENT["Agent Card<br/>能力声明与端点"]
+        TASK["Task 任务定义<br/>输入-输出契约"]
+        WORKFLOW["工作流编排<br/>DAG / 状态机"]
     end
 
-    subgraph 运行时
-        LLM["LLM 推理"]
-        ORCH["编排引擎"]
-        WF["工作流 Temporal"]
+    subgraph "运行时执行"
+        LLM["LLM 推理引擎<br/>模型加载 / 批处理"]
+        ORCH["编排引擎<br/>LangChain / LlamaIndex"]
+        WF_E["工作流执行<br/>Temporal / Windmill"]
+        FUNC_R["函数运行时<br/>WebAssembly / V8"]
+    end
+
+    subgraph "质量保障"
+        TEST["单元测试<br/>属性测试 / 模糊测试"]
+        MOCK["Mock / Stub<br/>依赖隔离"]
+        CONT_I["契约测试<br/>Pact / Bi-directional"]
+        PERF["性能基准<br/>延迟 / 吞吐 / 内存"]
     end
 
     MCP --> TOOL
@@ -25,8 +38,22 @@ flowchart TB
     MCP --> PROMPT
     A2A --> AGENT
     A2A --> TASK
+    REST --> FUNC
+    GRPC --> FUNC
+    EVT --> TASK
+    GRAPHQL --> RES
+    FUNC --> LLM
     TOOL --> LLM
     TASK --> ORCH
-    ORCH --> WF
-    REST --> TOOL
-    EVT --> TASK
+    WORKFLOW --> WF_E
+    FUNC --> FUNC_R
+    AGENT --> ORCH
+    LLM --> TEST
+    FUNC_R --> MOCK
+    ORCH --> CONT_I
+    WF_E --> PERF
+
+    style MCP fill:#e1f5fe,stroke:#333
+    style A2A fill:#e1f5fe,stroke:#333
+    style FUNC fill:#e8f5e9,stroke:#333
+    style CONT_I fill:#fff3e0,stroke:#333

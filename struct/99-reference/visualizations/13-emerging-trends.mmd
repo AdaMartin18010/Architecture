@@ -1,28 +1,59 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 13 前沿趋势
 flowchart TB
-    subgraph 平台工程
+    subgraph "平台工程与开发者体验"
         IDP["内部开发者平台 IDP"]
-        GP["Golden Path"]
-        BACK["Backstage"]
-        MAT["CNCF 成熟度模型"]
+        GP["Golden Path<br/> paved roads"]
+        BACK["Backstage / Port<br/>服务目录与脚手架"]
+        MAT["平台工程成熟度<br/>CNCF / Team Topologies"]
+        DX["开发者体验度量<br/>DORA / SPACE 框架"]
     end
 
-    subgraph 运行时演进
-        WASM["WASM Component Model"]
-        WASI_03["WASI 0.3 async"]
-        MODMON["模块化单体"]
+    subgraph "运行时演进"
+        WASM["WASM Component Model<br/>WIT 接口类型"]
+        WASI_03["WASI 0.3 async<br/>虚拟表 + 流控制"]
+        MODMON["模块化单体<br/>Modular Monolith"]
+        SPIN["Spin / wasmCloud<br/>边缘 WASM 运行时"]
     end
 
-    subgraph 前沿探索
-        REGTECH["RegTech AI"]
-        GREEN["绿色软件工程"]
-        RUST_ECO["Rust 生态"]
+    subgraph "智能体经济"
+        AGENT_ECO["Agent 服务市场<br/>可发现 / 可计价"]
+        PAY["微支付 / Token 计费<br/>按调用付费"]
+        REP["信誉与评级系统<br/>链上 / 链下声誉"]
+    end
+
+    subgraph "可持续与合规"
+        GREEN["绿色软件工程<br/>SCI 碳强度指标"]
+        REGTECH["RegTech AI<br/>自动化合规检查"]
+        SBOM_E["SBOM 经济<br/>漏洞定价 / 保险模型"]
+    end
+
+    subgraph "语言与生态"
+        RUST_ECO["Rust 生态扩展<br/>嵌入式 / 内核 / WASM"]
+        FFI["FFI 边界治理<br/>unsafe 代码审计"]
+        MEM["内存安全倡议<br/>CISA / NSA 推 Rust"]
     end
 
     IDP --> GP
     GP --> BACK
     BACK --> MAT
+    MAT --> DX
     WASM --> WASI_03
     MODMON --> WASM
-    REGTECH --> IDP
+    SPIN --> WASM
+    AGENT_ECO --> PAY
+    PAY --> REP
+    REP --> MCP
     GREEN --> WASM
-    RUST_ECO --> WASM
+    REGTECH --> IDP
+    SBOM_E --> REGTECH
+    RUST_ECO --> FFI
+    FFI --> MEM
+    MEM --> SE_L4
+
+    MCP[("MCP 协议")]
+    SE_L4[("seL4 验证")]
+
+    style WASM fill:#e8f5e9,stroke:#333
+    style GREEN fill:#e8f5e9,stroke:#333
+    style AGENT_ECO fill:#e1f5fe,stroke:#333
+    style REGTECH fill:#fff3e0,stroke:#333

@@ -1,29 +1,52 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 10 供应链安全工程
 flowchart TB
-    subgraph 攻击面
-        SRC["源代码篡改"]
-        BUILD["构建过程植入"]
-        DEP["依赖混淆"]
-        DIST["分发劫持"]
+    subgraph "攻击面"
+        SRC["源代码篡改<br/>恶意提交 / 后门植入"]
+        BUILD["构建过程植入<br/>编译器攻击 / CI 注入"]
+        DEP["依赖混淆 / 混淆包<br/>typosquatting / 劫持"]
+        DIST["分发劫持<br/>镜像篡改 / CDN 污染"]
+        RUN["运行时漏洞利用<br/>0-day / 已知 CVE"]
     end
 
-    subgraph 防御层次
-        SBOM["SBOM 清单"]
-        SLSA["SLSA 1.2<br/>Build/Source/Env"]
-        SIG["Sigstore 签名"]
-        ZT["零信任供应链"]
+    subgraph "防御层次"
+        SBOM["SBOM 清单<br/>SPDX / CycloneDX / SWID"]
+        SLSA["SLSA 1.2<br/>Build L3 / Source L3 / Env"]
+        SIG["Sigstore 签名<br/>Fulcio / Rekor / Cosign"]
+        ZT["零信任供应链<br/>持续验证 / 最小权限"]
+        VEX["VEX 漏洞利用交换<br/>已知未利用声明"]
     end
 
-    subgraph 合规
-        SSDF["NIST SSDF 1.2"]
-        EU_CRA["EU CRA"]
-        OWASP["OWASP SCVS"]
+    subgraph "SLSA 等级递进"
+        L1["SLSA L1<br/>Provenance 存在"]
+        L2["SLSA L2<br/>Signed Provenance"]
+        L3["SLSA L3<br/>Hardened Build"]
+        L4["SLSA L4<br/>Reproducible + 2-party"]
+    end
+
+    subgraph "合规框架"
+        SSDF["NIST SSDF 1.2<br/>准备/保护/生产/响应"]
+        EU_CRA["EU CRA 2027<br/>关键产品义务"]
+        OWASP["OWASP SCVS<br/>软件组件验证标准"]
+        EO14028["US EO 14028<br/>SBOM 强制要求"]
     end
 
     SRC --> SBOM
     BUILD --> SLSA
     DEP --> SIG
     DIST --> ZT
-    SBOM --> SSDF
-    SLSA --> EU_CRA
-    SIG --> OWASP
-    ZT --> SSDF
+    RUN --> VEX
+    SBOM --> L1
+    SLSA --> L2
+    SIG --> L3
+    ZT --> L4
+    L1 --> SSDF
+    L2 --> EU_CRA
+    L3 --> OWASP
+    L4 --> EO14028
+    VEX --> OWASP
+    COMP["CompCert<br/>验证编译器"] --> BUILD
+
+    style SLSA fill:#e8f5e9,stroke:#333
+    style L4 fill:#c8e6c9,stroke:#333
+    style EU_CRA fill:#fff3e0,stroke:#333
+    style SIG fill:#e3f2fd,stroke:#333

@@ -1,28 +1,54 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 02 业务架构复用
 flowchart TB
-    subgraph 业务语义层
-        CAP["业务能力 Capability"]
-        VS["价值流 Value Stream"]
-        BPMN["BPMN 2.0 流程"]
-        DMN["DMN 1.5 决策"]
+    subgraph "业务语义层"
+        CAP["业务能力 Capability<br/>稳定、可组合、可度量"]
+        VS["价值流 Value Stream<br/>端到端价值交付路径"]
+        BPMN["BPMN 2.0 流程模型<br/>可执行编排"]
+        DMN["DMN 1.5 决策模型<br/>业务规则外部化"]
+        CMMN["CMMN 案例管理<br/>不可预测流程"]
     end
 
-    subgraph 复用机制层
-        CALL["Call Activity 调用"]
-        POOL["Pool / Lane 协作"]
-        SERVICE["Decision Service 复用"]
-        BKMM["Business Knowledge Model"]
+    subgraph "架构对齐层"
+        TOGAF["TOGAF 10 ADM<br/>业务架构阶段 B"]
+        ARCHI["ArchiMate 4.0<br/>业务层元模型"]
+        DDD["领域驱动设计 DDD<br/>限界上下文 / 通用语言"]
+        BIZCOMP["业务组件目录<br/>CBM / Component Business Model"]
     end
 
-    subgraph 治理度量层
-        RCMM["RCMM 成熟度"]
-        ROI_B["业务复用 ROI"]
+    subgraph "复用机制层"
+        CALL["Call Activity 调用<br/>跨流程复用"]
+        POOL["Pool / Lane 协作<br/>组织边界建模"]
+        SERVICE["Decision Service 复用<br/>DMN 可调用决策"]
+        BKMM["Business Knowledge Model<br/>可复用知识库"]
+        EV["事件驱动的业务复用<br/>Domain Event"]
     end
 
-    CAP --> VS
-    VS --> BPMN
+    subgraph "治理度量层"
+        RCMM["RCMM 复用成熟度<br/>5 级评估模型"]
+        RRL_B["业务级 RRL<br/>复用需求等级"]
+        ROI_B["业务复用 ROI<br/>战略价值量化"]
+        KPI["业务 KPI 对齐<br/>能力度量指标"]
+    end
+
+    CAP --> VS --> BPMN
+    VS --> CMMN
+    BPMN --> DMN
+    TOGAF --> CAP
+    ARCHI --> VS
+    DDD --> CAP
+    BIZCOMP --> CAP
     BPMN --> CALL
     BPMN --> POOL
     DMN --> SERVICE
     DMN --> BKMM
+    DDD --> EV
     CALL --> RCMM
-    SERVICE --> ROI_B
+    SERVICE --> RRL_B
+    BKMM --> ROI_B
+    RCMM --> KPI
+    RRL_B --> KPI
+
+    style CAP fill:#e3f2fd,stroke:#333
+    style DDD fill:#f3e5f5,stroke:#333
+    style RCMM fill:#fff3e0,stroke:#333
+    style ROI_B fill:#e8f5e9,stroke:#333

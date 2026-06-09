@@ -1,31 +1,56 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 04 组件架构复用
 flowchart TB
-    subgraph 接口契约层
-        PRE["前置条件 Precondition"]
-        POST["后置条件 Postcondition"]
-        INV["不变量 Invariant"]
-        SIDE["副作用声明"]
+    subgraph "接口契约层"
+        PRE["前置条件 Precondition<br/>requires 子句"]
+        POST["后置条件 Postcondition<br/>ensures 子句"]
+        INV["不变量 Invariant<br/>对象状态约束"]
+        SIDE["副作用声明<br/>modify / pure / view"]
+        DBCON["Design-by-Contract<br/>Eiffel / CodeContracts / JML"]
     end
 
-    subgraph 语言生态层
-        JVM["JVM (Maven/Gradle)"]
-        NODE["Node.js (npm)"]
-        RUST["Rust (Cargo)"]
-        GO["Go (modules)"]
-        PY["Python (pip/uv)"]
-        NET[".NET (NuGet)"]
+    subgraph "组件封装形态"
+        LIB["静态库 / 动态库<br/>编译期链接"]
+        MOD["OSGi / JPMS 模块<br/>运行时模块化"]
+        WASM_C["WASM Component<br/>WIT 接口 + 跨语言"]
+        CONT["容器镜像<br/>OCI 标准 / Dockerfile"]
+        SVC["微服务接口<br/>OpenAPI / gRPC / GraphQL"]
     end
 
-    subgraph 依赖治理层
-        SEMVER["Semver 语义"]
-        LOCK["Lockfile 锁定"]
-        VEND["Vendor 化"]
-        SBOM_C["组件 SBOM"]
+    subgraph "语言生态层"
+        JVM["JVM 生态<br/>Maven Central / Gradle Plugin"]
+        NODE["Node.js 生态<br/>npm / pnpm / yarn"]
+        RUST["Rust 生态<br/>crates.io / Cargo workspace"]
+        GO["Go 生态<br/>modules / GOPROXY / sumdb"]
+        PY["Python 生态<br/>PyPI / pip / uv / poetry"]
+        NET[".NET 生态<br/>NuGet / Central Package Management"]
     end
 
-    PRE --> POST --> INV --> SIDE
+    subgraph "依赖治理层"
+        SEMVER["Semver 语义化版本<br/>MAJOR.MINOR.PATCH"]
+        LOCK["Lockfile 锁定<br/>确定性依赖解析"]
+        VEND["Vendor 化<br/>vendoring / 源码内嵌"]
+        SBOM_C["组件 SBOM<br/>SPDX / CycloneDX"]
+        AUDIT["依赖审计<br/>CVE 扫描 / 许可证合规"]
+    end
+
+    PRE --> POST --> INV --> SIDE --> DBCON
+    DBCON --> LIB
+    DBCON --> WASM_C
+    LIB --> JVM
+    LIB --> NODE
+    WASM_C --> RUST
+    CONT --> GO
+    SVC --> PY
+    SVC --> NET
     JVM --> SEMVER
     NODE --> LOCK
     RUST --> SBOM_C
     GO --> VEND
-    SEMVER --> SBOM_C
-    LOCK --> SBOM_C
+    SEMVER --> AUDIT
+    LOCK --> AUDIT
+    SBOM_C --> AUDIT
+
+    style WASM_C fill:#e8f5e9,stroke:#333
+    style SBOM_C fill:#fff3e0,stroke:#333
+    style AUDIT fill:#fbe9e7,stroke:#333
+    style DBCON fill:#e3f2fd,stroke:#333

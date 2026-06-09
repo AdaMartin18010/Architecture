@@ -1,37 +1,60 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 03 应用架构复用
 flowchart LR
-    subgraph 架构模式谱系
-        MONO["单体 Monolith"]
-        MMOD["模块化单体 Modular Monolith"]
-        SOA["SOA"]
-        MS["微服务 Microservices"]
-        MFE["微前端 Micro-frontend"]
-        SLS["Serverless"]
-        SM["服务_mesh"]
-        EDA["事件驱动 EDA"]
+    subgraph "架构模式谱系"
+        MONO["单体 Monolith<br/>单一代码库"]
+        MMOD["模块化单体<br/>Modular Monolith<br/>代码级边界"]
+        SOA["SOA<br/>企业服务总线 ESB"]
+        MS["微服务 Microservices<br/>独立部署单元"]
+        MFE["微前端 Micro-frontend<br/>独立构建部署"]
+        SLS["Serverless / FaaS<br/>事件驱动无服务器"]
+        SM["Service Mesh<br/>Istio / Linkerd / Envoy"]
+        EDA["事件驱动 EDA<br/>Event Sourcing / CQRS"]
+        DMESH["数据网格 Data Mesh<br/>域所有权 + 数据产品"]
     end
 
-    subgraph 复用维度
-        COU["耦合度"]
-        COH["内聚度"]
-        DEP["部署独立性"]
-        RES["复用性"]
+    subgraph "复用维度评估"
+        COU["耦合度 Coupling<br/>Afferent / Efferent"]
+        COH["内聚度 Cohesion<br/>功能 / 通信 / 顺序"]
+        DEP["部署独立性<br/>CI/CD 流水线隔离"]
+        RES["复用性 Reusability<br/>通用性 × 稳定性"]
+        API_Q["API 质量<br/>成熟度 / 一致性 / 文档"]
     end
 
-    subgraph 技术栈
-        K8S["Kubernetes"]
-        ISTIO["Istio / Envoy"]
-        GATE["Gateway API"]
-        TEMP["Temporal / Cadence"]
+    subgraph "技术栈支撑"
+        K8S["Kubernetes<br/>容器编排"]
+        ISTIO["Istio / Envoy<br/>流量治理 / mTLS"]
+        GATE["Gateway API<br/>统一入口 / 限流"]
+        TEMP["Temporal / Cadence<br/> durable 工作流"]
+        DAPR["Dapr<br/>分布式应用运行时"]
+    end
+
+    subgraph "云原生模式"
+        SIDECAR["Sidecar 模式<br/>可复用横切关注点"]
+        ADAPTER_P["适配器模式<br/>遗留系统封装"]
+        BFF["BFF 模式<br/>Backend-for-Frontend"]
+        STRANGLER["绞杀者模式<br/>渐进式迁移"]
     end
 
     MONO --> MMOD --> MS --> SLS
     SOA --> MS --> SM --> EDA
     MS --> MFE
+    MS --> DMESH
     COU -.-> MONO
     COH -.-> MMOD
     DEP -.-> SLS
     RES -.-> MMOD
+    API_Q -.-> MS
     K8S --> MS
     ISTIO --> SM
     GATE --> MS
     TEMP --> EDA
+    DAPR --> MS
+    SM --> SIDECAR
+    MMOD --> ADAPTER_P
+    MS --> BFF
+    MONO --> STRANGLER
+
+    style MMOD fill:#e8f5e9,stroke:#333
+    style MS fill:#e3f2fd,stroke:#333
+    style DMESH fill:#f3e5f5,stroke:#333
+    style SM fill:#fff3e0,stroke:#333

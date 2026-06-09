@@ -1,29 +1,50 @@
+%% 版本: 2026-06-10 | 状态: B3 完成 | 主题: 09 价值量化与计量经济学
 flowchart LR
-    subgraph 成本模型
-        COCOMO["COCOMO II 2026"]
-        ESLOC["等效 SLOC"]
-        AAF["AAF 改编因子"]
-        EM["工作量乘数 EM"]
+    subgraph "成本基线模型"
+        COCOMO["COCOMO II 2026<br/>成本估算模型"]
+        ESLOC["等效源代码行数<br/>ESLOC = SLOC × AAF"]
+        AAF["改编适应因子 AAF<br/>0.0(完全复用) ~ 1.0(全新开发)"]
+        EM["工作量乘数 EM<br/>17 个成本驱动因子"]
+        AF["体系结构因子 AF<br/>早期设计阶段校准"]
     end
 
-    subgraph 收益模型
-        DIRECT["直接收益"]
-        INDIRECT["间接收益"]
-        STRATEGIC["战略收益"]
+    subgraph "收益度量维度"
+        DIRECT["直接收益<br/>开发成本节约 ΔC"]
+        INDIRECT["间接收益<br/>缺陷减少 × 修复成本"]
+        STRATEGIC["战略收益<br/>TTM 缩短 / 市场份额"]
+        QUALITY["质量溢价<br/>MTBF 提升 / 客户满意度"]
     end
 
-    subgraph 决策指标
-        ROI["ROI 计算"]
-        NPV["NPV 净现值"]
-        BEP["盈亏平衡点"]
+    subgraph "决策经济指标"
+        ROI["ROI 计算<br/>(收益-成本)/成本 × 100%"]
+        NPV["NPV 净现值<br/>∑(CF_t / (1+r)^t)"]
+        BEP["盈亏平衡点<br/>累计收益 = 累计成本"]
+        IRR["IRR 内部收益率<br/>NPV=0 时的折现率"]
+    end
+
+    subgraph "组织度量框架"
+        DORA["DORA 四大指标<br/>部署频率/变更前置时间/恢复时间/变更失败率"]
+        SPACE["SPACE 框架<br/>满意度/绩效/活动/沟通/效率"]
+        DEVEX["DevEx 三维度<br/>反馈循环/认知负荷/心流状态"]
     end
 
     COCOMO --> ESLOC
     ESLOC --> AAF
     AAF --> EM
-    EM --> ROI
+    EM --> AF
+    AF --> ROI
     DIRECT --> ROI
     INDIRECT --> NPV
     STRATEGIC --> NPV
+    QUALITY --> NPV
     ROI --> BEP
     NPV --> BEP
+    BEP --> IRR
+    DORA --> DIRECT
+    SPACE --> INDIRECT
+    DEVEX --> QUALITY
+
+    style COCOMO fill:#e3f2fd,stroke:#333
+    style ROI fill:#fff3e0,stroke:#333
+    style NPV fill:#fff3e0,stroke:#333
+    style DORA fill:#e8f5e9,stroke:#333
