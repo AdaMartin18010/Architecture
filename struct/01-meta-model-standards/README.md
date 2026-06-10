@@ -9,7 +9,7 @@
 - ISO/IEC/IEEE 420xx 系列（42010/42020/42030/DIS 42024/DIS 42042）的族谱与演进
 - TOGAF 10 + ArchiMate 3.2（当前官方稳定版）；ArchiMate 4.0 处于厂商预发布阶段，未获 The Open Group 官方正式发布确认
 - ISO/IEC 26550:2015 产品线工程参考模型（领域工程 + 应用工程双轨）
-- ISO/IEC 25010:2024 / 25040:2024 质量模型与评估过程
+- ISO/IEC 25010:2023 / 25040:2024 质量模型与评估过程
 - **OMG RAS v2.2** 可复用资产规范（Classification / Solution / Usage / RelatedAssets）
 - **FAIR4RS** 原则与软件资产可持续复用
 - **IEEE 1517-2010** 软件生命周期复用过程
@@ -37,7 +37,7 @@
 - [x] FAIR4RS 原则与软件复用对照 (`08-fair4rs/fair4rs-alignment.md`)
 - [x] IEEE 1517-2010 与 ISO 12207 / 42020 复用过程映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
 - [x] DIS 42024/42042 当前状态对齐 (`01-iso-420xx-family/iso-42024-42042-dis-alignment.md`)
-- [x] ISO/IEC 25010:2024 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2024-update.md`)
+- [x] ISO/IEC 25010:2023 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2023-update.md`)
 - [ ] ArchiMate 4.0 **官方确认后**的映射更新 (当前厂商预告未获 The Open Group 认可)
 
 ## 关联主题

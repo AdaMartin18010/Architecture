@@ -43,7 +43,7 @@
       - [调整 1：优先填补 03 应用架构基础缺口（Phase 2 提前）](#调整-1优先填补-03-应用架构基础缺口phase-2-提前)
       - [调整 2：降低 Conformal Prediction + 形式化验证融合的优先级（Phase 5 降级）](#调整-2降低-conformal-prediction--形式化验证融合的优先级phase-5-降级)
       - [调整 3：增加事实核查作为持续机制（月度节奏新增）](#调整-3增加事实核查作为持续机制月度节奏新增)
-      - [调整 4：ISO/IEC 25010:2024 与 AI 质量特性（Phase 2 新增）](#调整-4isoiec-250102024-与-ai-质量特性phase-2-新增)
+      - [调整 4：ISO/IEC 25010:2023 与 AI 质量特性（Phase 2 新增）](#调整-4isoiec-250102024-与-ai-质量特性phase-2-新增)
       - [调整 5：WASM Component Model 标准化阶段标注（Phase 5 调整）](#调整-5wasm-component-model-标准化阶段标注phase-5-调整)
   - [附录：权威来源索引](#附录权威来源索引)
 
@@ -290,11 +290,11 @@
 
 **问题描述**：项目多处引用 "ISO/IEC 25010:2023"，但 2024 版已发布。
 >
-> **修正状态**：✅ 已完成（HOTFIX-4，2026-06-08）。所有引用已统一更新为 ISO/IEC 25010:2024。
+> **修正状态**：✅ 已完成（HOTFIX-4，2026-06-08）。所有引用已统一更新为 ISO/IEC 25010:2023。
 
 **事实核查**：
 
-- **ISO/IEC 25010:2024** 已于 2024 年发布，取代 2011 版
+- **ISO/IEC 25010:2023** 已于 2024 年发布，取代 2011 版
 - 2024 版新增对 AI/ML 系统质量特性的考量
 - 被广泛应用于 AI 生成代码的质量评估框架
 
@@ -302,7 +302,7 @@
 
 **修正建议**：
 
-1. ~~统一更新为 **ISO/IEC 25010:2024**~~ ✅ 已完成
+1. ~~统一更新为 **ISO/IEC 25010:2023**~~ ✅ 已完成
 2. 补充 2024 版新增内容（如 AI/ML 质量考量）对复用的影响（后续 Phase 2 补充）
 
 ### 3.6 形式化验证完成状态自我矛盾
@@ -415,9 +415,9 @@
 第 5 周（月度审查）: 事实核查 — 抽查 5-10 个外部引用的事实准确性
 ```
 
-#### 调整 4：ISO/IEC 25010:2024 与 AI 质量特性（Phase 2 新增）
+#### 调整 4：ISO/IEC 25010:2023 与 AI 质量特性（Phase 2 新增）
 
-**建议**：新增 P2-T11 任务，补充 ISO/IEC 25010:2024 中新增的 AI/ML 质量特性对复用决策的影响矩阵。
+**建议**：新增 P2-T11 任务，补充 ISO/IEC 25010:2023 中新增的 AI/ML 质量特性对复用决策的影响矩阵。
 
 #### 调整 5：WASM Component Model 标准化阶段标注（Phase 5 调整）
 
@@ -437,7 +437,7 @@
 | WASI 路线图 | <https://wasi.dev/roadmap> | 2026-06-08 | WASI 版本核实 |
 | Warg Registry | <https://github.com/bytecodealliance/registry/>（已停止积极开发，社区转向 OCI-based registry） | 2026-06-08 | Warg 状态核实 |
 | Bytecode Alliance | <https://bytecodealliance.org/> | 2026-06-08 | WASM 生态 |
-| ISO 25010:2024 | <https://www.iso.org/standard/78175.html> | 2026-06-08 | 质量模型版本 |
+| ISO 25010:2023 | <https://www.iso.org/standard/78175.html> | 2026-06-08 | 质量模型版本 |
 | Verina 论文 | arXiv (Ye et al., 2025/2026) | 2026-06-08 | CP + 代码生成 |
 | AutoVerus (OOPSLA) | Yang et al., 2025 | 2026-06-08 | Rust 形式化验证 |
 | Cherian & Candès (NeurIPS 2024) | Large language model validity via enhanced conformal prediction methods | 2026-06-08 | CP + LLM |

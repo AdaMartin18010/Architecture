@@ -158,7 +158,7 @@ reuse-decision-tool-v2/
 
 - ISO/IEC/IEEE 42010:2022
 - ISO/IEC/IEEE DIS 42042
-- ISO/IEC 25010:2024
+- ISO/IEC 25010:2023
 - ISO/IEC 26566:2026
 - TOGAF Standard 10
 - ArchiMate 3.2
@@ -302,4 +302,4 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 ---
 
 > **最后更新**: 2026-06-10
-> **对齐标准**: ISO/IEC 26566:2026 · ISO 25010:2024 · ISO 42010:2022 · NASA RRL
+> **对齐标准**: ISO/IEC 26566:2026 · ISO 25010:2023 · ISO 42010:2022 · NASA RRL

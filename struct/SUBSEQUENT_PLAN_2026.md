@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-10（Phase D/E/F 更新版）
 > **定位**: 在 Phase 1 基本完成（2026-06-06 净增 +20,172 行，92 个唯一文件）的基础上，全面梳理未完成项、内容缺口、与国际权威标准的对齐差距，输出 2026-Q3 → 2027-Q4 的后续推进计划
-> **对齐来源**: ISO/IEC/IEEE 42010:2022、ISO/IEC 25010:2024、ISO/IEC 26566:2026、ISO/IEC/IEEE DIS 42042、OMG RAS、TOGAF 10、ArchiMate 3.2/4.0、IEEE 1517、SEI/CMU、FAIR4RS、ICSA/ECSA、SLSA 1.1/1.2、MCP 2025-11-25、WASI 0.3、CNCF Platform Engineering Maturity Model
+> **对齐来源**: ISO/IEC/IEEE 42010:2022、ISO/IEC 25010:2023、ISO/IEC 26566:2026、ISO/IEC/IEEE DIS 42042、OMG RAS、TOGAF 10、ArchiMate 3.2/4.0、IEEE 1517、SEI/CMU、FAIR4RS、ICSA/ECSA、SLSA 1.1/1.2、MCP 2025-11-25、WASI 0.3、CNCF Platform Engineering Maturity Model
 
 ---
 
@@ -135,7 +135,7 @@
 
 | 国际标准 | 本项目中覆盖状态 | 差距 | 后续行动 |
 |----------|-----------------|------|----------|
-| **ISO/IEC 25010:2024** (SQuaRE) | 在 06/01 中提及，Reusability 作为 Maintainability 子特性 | 未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 补充 25010:2024 质量特性对复用的影响矩阵 |
+| **ISO/IEC 25010:2023** (SQuaRE) | 在 06/01 中提及，Reusability 作为 Maintainability 子特性 | 未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 补充 25010:2023 质量特性对复用的影响矩阵 |
 | **ISO/IEC 25040:2024** (Evaluation) | 未明确引用 | 缺少"获取或复用预开发产品"的评估流程映射 | 增加 25040 评估流程与复用决策的对照 |
 | **ISO/IEC/IEEE 42010:2022** | 已深度映射 | 基本完整，待 DIS 42042 发布后更新 | 跟踪 42042 进展 |
 | **ISO/IEC/IEEE DIS 42042** (Reference Architectures) | 仅作为待跟踪项 | 草案接近 2026 定稿，缺少参考架构元模型 | 一旦发布，补充到 01-meta-model-standards |
@@ -199,7 +199,7 @@
 | P2-T9 | 术语查询脚本 | `99-reference/tools/terminology-query.py` | IREB CPRE Glossary、ISO/IEC 42010 | 支持跨标准术语搜索和别名映射 |
 | P2-T10 | OMG RAS v2.2 对齐章节 | `01-meta-model-standards/07-omg-ras/ras-alignment.md` | OMG RAS v2.2 | 覆盖 Classification/Solution/Usage/Related Assets |
 | P2-T11 | 03应用架构基础子目录内容填充（分层/微服务/Serverless/事件驱动） | `03/01-layered-architecture/`, `03/02-microservices/`, `03/03-serverless/`, `03/04-event-driven/` | SWEBOK v4, CNCF | 每个子目录至少1篇核心文档 |
-| P2-T12 | ISO/IEC 25010:2024 AI/ML质量特性对复用决策的影响矩阵 | `01-meta-model-standards/01-iso-420xx-family/iso-25010-2024-ai-quality.md` | ISO/IEC 25010:2024 | 覆盖AI生成代码/组件的复用质量评估 |
+| P2-T12 | ISO/IEC 25010:2023 AI/ML质量特性对复用决策的影响矩阵 | `01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md` | ISO/IEC 25010:2023 | 覆盖AI生成代码/组件的复用质量评估 |
 
 ### Phase 3 垂直领域扩展（2027-Q1）
 

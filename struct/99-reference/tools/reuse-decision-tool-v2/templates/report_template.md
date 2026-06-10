@@ -132,7 +132,7 @@
 ### B. 参考标准
 
 - ISO/IEC/IEEE 42010:2022 — Architecture description
-- ISO/IEC 25010:2024 — SQuaRE Quality Models
+- ISO/IEC 25010:2023 — SQuaRE Quality Models
 - ISO/IEC 26566:2026 — Reuse Maturity Assessment
 - NASA Reuse Readiness Levels (RRL)
 

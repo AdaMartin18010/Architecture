@@ -37,7 +37,7 @@
         "asset_catalog_required": true
       },
       "upgrade_path": ["功能复用", "组件复用", "应用框架复用"],
-      "reference_standards": ["ISO 25010:2024", "ISO 42010:2022"]
+      "reference_standards": ["ISO 25010:2023", "ISO 42010:2022"]
     },
     {
       "id": "PAT-MICRO-002",
@@ -74,7 +74,7 @@
         "asset_catalog_required": true
       },
       "upgrade_path": ["容器镜像复用", "Helm Chart 复用", "服务模板复用"],
-      "reference_standards": ["ISO 25010:2024", "CNCF Platform Maturity Model"]
+      "reference_standards": ["ISO 25010:2023", "CNCF Platform Maturity Model"]
     },
     {
       "id": "PAT-SERVERLESS-003",
@@ -111,7 +111,7 @@
         "asset_catalog_required": false
       },
       "upgrade_path": ["函数模板复用", "SAM/Serverless Framework 模板", "平台能力复用"],
-      "reference_standards": ["ISO 25010:2024", "ISO 42042 (DIS)"]
+      "reference_standards": ["ISO 25010:2023", "ISO 42042 (DIS)"]
     },
     {
       "id": "PAT-EDA-004",
@@ -148,7 +148,7 @@
         "asset_catalog_required": true
       },
       "upgrade_path": ["事件 Schema 复用", "处理器模板复用", "平台事件总线复用"],
-      "reference_standards": ["ISO 25010:2024", "ISO 42010:2022"]
+      "reference_standards": ["ISO 25010:2023", "ISO 42010:2022"]
     },
     {
       "id": "PAT-MCP-005",
@@ -185,7 +185,7 @@
         "asset_catalog_required": false
       },
       "upgrade_path": ["MCP Server 复用", "Tool 定义复用", "Prompt 模板复用"],
-      "reference_standards": ["MCP Specification 2025-11-25", "ISO 25010:2024"]
+      "reference_standards": ["MCP Specification 2025-11-25", "ISO 25010:2023"]
     },
     {
       "id": "PAT-WASM-006",

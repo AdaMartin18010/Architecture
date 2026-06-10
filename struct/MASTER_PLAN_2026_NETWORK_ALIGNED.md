@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-07（网络权威内容对齐版）
 > **定位**: 在 `SUBSEQUENT_PLAN_2026.md`（2026-06-06）基础上，全面对齐国际最新标准、技术生态与学术前沿，重新编排未完成项与后续推进计划
-> **对齐来源**: ISO/IEC/IEEE DIS 42042/42024、ISO 25010:2024、SLSA 1.2、MCP 2025-11-25 / Agentic AI Foundation、A2A v1.0、WASI 0.3 / Wasm 3.0、IEC 63278-1:2023、IEC 61508 Ed.3（预计2026）、ICSA 2026 / ECSA 2025 / GreenArch 2026、CNCF Platform Engineering Maturity Model、Green Software Foundation SCI
+> **对齐来源**: ISO/IEC/IEEE DIS 42042/42024、ISO 25010:2023、SLSA 1.2、MCP 2025-11-25 / Agentic AI Foundation、A2A v1.0、WASI 0.3 / Wasm 3.0、IEC 63278-1:2023、IEC 61508 Ed.3（预计2026）、ICSA 2026 / ECSA 2025 / GreenArch 2026、CNCF Platform Engineering Maturity Model、Green Software Foundation SCI
 
 ---
 
@@ -129,7 +129,7 @@
 |----------|---------------------|---------------|------|----------|
 | **ISO/IEC/IEEE DIS 42042** | 2026-01 关闭投票（Stage 40.60 enquiry phase），预计 2026 年内定稿。覆盖 AI/ML/IoT/云计算/数字孪生等应用领域 | 仅作为待跟踪项 | 草案即将定稿，缺少参考架构元模型与复用框架的对照 | **紧急**：跟踪进展，一旦发布立即补充到 `01-meta-model-standards` |
 | **ISO/IEC/IEEE DIS 42024** | 2026-01-12 截止公开征询，基础架构词汇与概念标准 | 未明确引用 | 缺少基础术语与复用视角的对照 | 补充到 `01-meta-model-standards` |
-| **ISO/IEC 25010:2024** | 已正式发布（取代 2011 版）。Reusability 为 Maintainability 子特性；Modularity 独立；新增 Interaction capability/Flexibility/Safety；新增 AI/ML 质量考量 | 在 06/01 中提及，未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 需补充 25010:2024 质量特性对复用的影响矩阵 | 更新 `01-meta-model-standards` 或 `06-cross-layer-governance` |
+| **ISO/IEC 25010:2023** | 已正式发布（取代 2011 版）。Reusability 为 Maintainability 子特性；Modularity 独立；新增 Interaction capability/Flexibility/Safety；新增 AI/ML 质量考量 | 在 06/01 中提及，未深入展开 Reusability 与 Modularity/Analysability/Testability 的相互作用 | 需补充 25010:2023 质量特性对复用的影响矩阵 | 更新 `01-meta-model-standards` 或 `06-cross-layer-governance` |
 | **ISO/IEC 25040:2024** | 已发布（Evaluation）。新增"获取或复用预开发产品"的评估流程 | 未明确引用 | 缺少评估流程与复用决策的对照 | 新增对照章节 |
 | **SLSA 1.2** | **已正式发布**（OpenSSF）。Multi-Track：Build / Source / Attested Build Environments。Build Level 4 仍在开发 | 已更新到 1.1/1.2，但 L4 分布式构建验证仍为空白 | L4 多签名/可复现构建实践缺失 | 补充 `slsa-l4-distributed-builds.md` + sigstore/cosign 示例 |
 | **IEC 61508 Ed.3** | **预计 2026 年发布**。关键变化：SIL 2+ 强制使用结构化代码分析工具；AI/ML 组件处理更新；模型驱动开发更清晰指导 | 当前基于 Ed.2，Ed.3 变化未对齐 | 一旦发布需更新功能安全章节 | 建立跟踪，发布后 4 周内更新 |

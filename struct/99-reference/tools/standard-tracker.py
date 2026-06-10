@@ -58,7 +58,7 @@ STANDARDS: Dict[str, Dict] = {
         "action_on_release": "更新 13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md",
     },
     "iso-25010": {
-        "name": "ISO/IEC 25010:2024 — SQuaRE Quality Models",
+        "name": "ISO/IEC 25010:2023 — SQuaRE Quality Models",
         "status_url": "https://www.iso.org/standard/78175.html",
         "rss_url": None,
         "current_status": "2024 已发布",

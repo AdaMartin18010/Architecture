@@ -272,7 +272,7 @@ TERM_DB: dict[str, dict[str, Any]] = {
                 "The degree to which a software asset can be used in systems other than the one "
                 "for which it was originally designed, with little or no modification."
             ),
-            "ISO/IEC 25010:2024": (
+            "ISO/IEC 25010:2023": (
                 "The degree to which an asset can be used in more than one system, or in building other assets."
             ),
         },
@@ -326,7 +326,7 @@ TERM_DB: dict[str, dict[str, Any]] = {
             "IEEE 1517-2010": (
                 "The process of modifying a reusable asset so that it conforms to the specific requirements of a target system or application."
             ),
-            "ISO/IEC 25010:2024": (
+            "ISO/IEC 25010:2023": (
                 "The degree to which a product or system can be effectively and efficiently adapted for different or evolving environments."
             ),
         },
@@ -483,7 +483,7 @@ STD_ALIASES: dict[str, list[str]] = {
     "IEEE 1517-2010": ["ieee1517", "1517"],
     "SLSA 1.2": ["slsa", "slsa1.2", "slsa12"],
     "MCP 2025-11-25": ["mcp", "mcp2025"],
-    "ISO/IEC 25010:2024": ["iso25010", "25010", "iso_iec_25010"],
+    "ISO/IEC 25010:2023": ["iso25010", "25010", "iso_iec_25010"],
     "General": ["general"],
 }
 
@@ -754,7 +754,7 @@ def print_compare(
     notes: list[str] = []
     if canonical == "Reusability":
         notes.append("- IEEE 1517-2010 强调资产在'其他系统'中复用，突出跨系统迁移能力。")
-        notes.append("- ISO/IEC 25010:2024 强调资产在'多个系统'或'构建其他资产'中的通用程度。")
+        notes.append("- ISO/IEC 25010:2023 强调资产在'多个系统'或'构建其他资产'中的通用程度。")
     elif canonical == "Domain Engineering":
         notes.append("- ISO/IEC 26550:2015 侧重产品线的共性与可变性管理，产出领域资产。")
         notes.append("- IEEE 1517-2010 侧重领域信息的识别与组织，以支持系统化复用。")
@@ -763,7 +763,7 @@ def print_compare(
         notes.append("- IEEE 1517-2010 强调从复用库中选取合格资产来构造特定系统。")
     elif canonical == "Adaptation":
         notes.append("- IEEE 1517-2010 将适配视为针对特定目标系统的修改过程。")
-        notes.append("- ISO/IEC 25010:2024 将适应性视为系统对环境变化的固有能力（质量特性）。")
+        notes.append("- ISO/IEC 25010:2023 将适应性视为系统对环境变化的固有能力（质量特性）。")
     elif canonical == "Asset":
         notes.append("- IEEE 1517-2010 将资产视为复用候选（软件产品、工作产物）。")
         notes.append("- General 定义将资产视为系统中可替换的模块化部件（与 Component 类似）。")

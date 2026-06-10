@@ -413,7 +413,7 @@ ACQ.4 要求建立供应商监控机制，对应到复用领域即：
 
 SPICE SUP.1 要求建立 QA 策略与计划，在复用场景中应扩展为：
 
-- 定义复用资产专用的质量模型（基于 ISO/IEC 25010:2024 的 Reusability、Modularity 等特性）；
+- 定义复用资产专用的质量模型（基于 ISO/IEC 25010:2023 的 Reusability、Modularity 等特性）；
 - 建立资产发布前的质量门禁（Code Review + 自动化测试 + 文档完整性检查）；
 - 建立消费者反馈驱动的质量改进闭环。
 
@@ -920,4 +920,4 @@ SPICE 与 26565 的协同基于以下互补关系：
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |
 | RiSE 复用成熟度框架参考 | <https://rise.org.br> | 2026-06-10 |
-| ISO/IEC 25010:2024 系统与软件质量模型 | <https://www.iso.org/standard/78175.html> | 2026-06-10 |
+| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78175.html> | 2026-06-10 |

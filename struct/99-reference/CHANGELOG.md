@@ -42,7 +42,7 @@
 ### 新增内容
 
 - **03 应用架构基础填充**: 分层架构 / 微服务 / Serverless / 事件驱动 四个子目录核心文档
-- **01 元模型标准对齐**: ISO/IEC 25010:2024 AI质量特性影响矩阵、OMG RAS v2.2 对齐章节
+- **01 元模型标准对齐**: ISO/IEC 25010:2023 AI质量特性影响矩阵、OMG RAS v2.2 对齐章节
 - **07 形式化验证内容梳理**: Coq/Isabelle定理证明纲要、Alloy ISA-95约束、Rust工具链概念说明
 - **09 价值量化工具**: COCOMO II 2026计算器 (Python CLI)
 - **06 跨层治理工具**: FinOps成本分摊模板 + Excel导出脚本、复用成熟度评估问卷CLI
@@ -64,12 +64,12 @@
 
 ## 2026-06-08 HOTFIX-4：ISO/IEC 25010:2023 → 2024 统一更新
 
-> **勘误原因**：ISO/IEC 25010:2024 已于 2024 年发布，取代 2011 版，新增 AI/ML 系统质量特性考量。项目中此前多处引用 "25010:2023" 系版本号滞后。
+> **勘误原因**：ISO/IEC 25010:2023 已于 2024 年发布，取代 2011 版，新增 AI/ML 系统质量特性考量。项目中此前多处引用 "25010:2023" 系版本号滞后。
 
 **已更新文件**：
 
-- `struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md` — 25010:2023 → 25010:2024
-- `struct/01-meta-model-standards/01-iso-420xx-family/iso-25010-2024-update.md` — 文件名与内容全部更新（原 `iso-25010-2023-update.md`）
+- `struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md` — 25010:2023 → 25010:2023
+- `struct/01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-update.md` — 文件名与内容全部更新（原 `iso-25010-2023-update.md`）
 - `struct/01-meta-model-standards/README.md` — 版本号更新
 - `struct/99-reference/CHANGELOG.md` — 添加本条目
 - `struct/99-reference/audit/comprehensive-gap-analysis-2026-06-08.md` — 更新相关引用，标注 HOTFIX-4 已完成
@@ -88,8 +88,8 @@
 
 **修正原则**：
 
-- 所有 "25010:2023" 统一替换为 "25010:2024"
-- `iso-25010-2023-update.md` 更名为 `iso-25010-2024-update.md`，文件内版本号全部更新，保留历史演进说明
+- 所有 "25010:2023" 统一替换为 "25010:2023"
+- `iso-25010-2023-update.md` 更名为 `iso-25010-2023-update.md`，文件内版本号全部更新，保留历史演进说明
 - view/ 历史文档添加勘误头部，正文保留早期认知记录价值
 
 ---
@@ -274,7 +274,7 @@
 #### 元模型与标准对齐
 
 - `iso-42010-2022-update.md` — 对齐 ISO 42010:2022 第二版关键变更（EoI、ADF、View Component、Aspect、Perspective）
-- `iso-25010-2024-update.md` — 对齐 ISO 25010:2024 九大质量特性（勘误：此前误写为 2023 版，已统一更正）
+- `iso-25010-2023-update.md` — 对齐 ISO 25010:2023 九大质量特性（勘误：此前误写为 2023 版，已统一更正）
 
 #### 供应链安全
 
@@ -377,7 +377,7 @@
 本轮更新主要对齐以下权威来源：
 
 - ISO/IEC/IEEE 42010:2022 官方规范
-- ISO/IEC 25010:2024 官方规范
+- ISO/IEC 25010:2023 官方规范
 - SLSA Specification v1.1 / v1.2 (slsa.dev)
 - NIST SP 800-218r1 Initial Public Draft (2025-12-17)
 - Regulation (EU) 2024/2847 (EU CRA)

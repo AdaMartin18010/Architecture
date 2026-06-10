@@ -9,7 +9,7 @@
 | SLSA (Supply-chain Levels for Software Artifacts) | ✅ 可达 | v1.2 已发布 (Multi-Track: Build/Source/Build Environment) | 更新 10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md |
 | Model Context Protocol (MCP) | ✅ 可达 | 2025-11-25 稳定版 (Linux Foundation Agentic AI Foundation) | 更新 12-ai-native-reuse/01-mcp-protocol/ |
 | WASI (WebAssembly System Interface) | ✅ 可达 | WASI 0.3 preview (Wasmtime 37+)，WASI 1.0 目标 2026末/2027初 | 更新 13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md |
-| ISO/IEC 25010:2024 — SQuaRE Quality Models | ✅ 可达 | 2024 已发布 | N/A — 已是最新版 |
+| ISO/IEC 25010:2023 — SQuaRE Quality Models | ✅ 可达 | 2024 已发布 | N/A — 已是最新版 |
 | ISO/IEC 26566:2026 — Reuse Maturity | ✅ 可达 | 2026-05 正式发布 | N/A — 已是最新版 |
 | ArchiMate Specification | ✅ 可达 | 3.2 稳定版；4.0 厂商预发布（未获官方确认） | 更新 01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md |
 | CNCF Platform Engineering Maturity Model | ✅ 可达 | 五维度模型 (Investment/Adoption/Interfaces/Operations/Measurement) | 更新 13-emerging-trends/01-platform-engineering/platform-maturity-model.md |

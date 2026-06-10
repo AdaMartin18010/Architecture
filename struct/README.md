@@ -94,7 +94,7 @@
 | ISO/IEC/IEEE 42030:2019 | 架构评估 | 生效 | `06-cross-layer-governance/03-maturity-models` |
 | ISO/IEC/IEEE DIS 42024 | 架构基础 | 草案 | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC/IEEE DIS 42042 | 参考架构 | 草案（预计 2026 定稿） | `01-meta-model-standards/01-iso-420xx-family` |
-| ISO/IEC 25010:2024 | 质量模型 (SQuaRE) | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
+| ISO/IEC 25010:2023 | 质量模型 (SQuaRE) | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC 25040:2024 | 软件质量评估过程 | 生效 | `06-cross-layer-governance/05-metrics-kpi` |
 | ISO/IEC 26550:2015 | 产品线工程参考模型 | 生效 | `01-meta-model-standards/03-iso-26550-ple` |
 | ISO/IEC 26566:2026 | 产品线工程方法与工具能力 | **2026-05 正式发布** | `06-cross-layer-governance/03-maturity-models` |

@@ -45,7 +45,7 @@
     },
     "iso25010": {
       "key": "iso25010",
-      "name": "ISO/IEC 25010:2024",
+      "name": "ISO/IEC 25010:2023",
       "full_name": "Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality models",
       "current_version": "2024",
       "status": "已发布",
