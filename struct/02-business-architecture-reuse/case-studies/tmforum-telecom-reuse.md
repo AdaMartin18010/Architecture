@@ -358,8 +358,8 @@ O2 是英国主要的移动运营商，其母公司 Telefónica 在全球范围�
 | 4 | TMForum ODA (Open Digital Architecture) | <https://www.tmforum.org/oda/> | 2026-06-10 |
 | 5 | TMForum Open APIs | <https://www.tmforum.org/oda/apis/> | 2026-06-10 |
 | 6 | CAMARA Project — Open Source APIs for Telecom Networks | <https://camaraproject.org/> | 2026-06-10 |
-| 7 | Vodafone Annual Report & Digital Transformation Strategy | <https://www.vodafone.com/investors/financial-results-and-presentations> | 2026-06-10 |
-| 8 | Telefónica Open Gateway | <https://www.telefonica.com/en/communication-room/open-gateway/> | 2026-06-10 |
+| 7 | Vodafone Annual Report & Digital Transformation Strategy | <https://www.vodafone.com/> | 2026-06-10 |
+| 8 | Telefónica Open Gateway | <https://www.telefonica.com/en/> | 2026-06-10 |
 | 9 | BIAN — Banking Industry Architecture Network | <https://www.bian.org/> | 2026-06-10 |
 | 10 | The Open Group TOGAF Standard Version 10 | <https://www.opengroup.org/togaf> | 2026-06-10 |
 | 11 | TMForum ODA Component Catalog | <https://www.tmforum.org/oda/components/> | 2026-06-10 |

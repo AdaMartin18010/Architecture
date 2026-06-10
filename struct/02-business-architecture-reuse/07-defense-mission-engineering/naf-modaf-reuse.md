@@ -533,7 +533,7 @@ JISR 的架构复用实践在互操作性等级（LOI）上取得了显著进展
    核查日期: 2026-06-10
 
 2. **MODAF 1.2.004, UK Ministry of Defence**
-   URL: <https://www.gov.uk/modaf>
+   URL: <https://www.gov.uk/guidance/mod-architecture-framework>
    核查日期: 2026-06-10
 
 3. **DoDAF 2.02 官方规范, U.S. DoD CIO**
@@ -577,7 +577,7 @@ JISR 的架构复用实践在互操作性等级（LOI）上取得了显著进展
     核查日期: 2026-06-10
 
 13. **UK Defence Architecture Framework (MOD) — CADMID/T Acquisition Cycle**
-    URL: <https://www.gov.uk/guidance/defence-architecture-framework>
+    URL: <https://www.gov.uk/guidance/mod-architecture-framework>
     核查日期: 2026-06-10
 
 14. **NATO Information Security (INFOSEC) Standard**

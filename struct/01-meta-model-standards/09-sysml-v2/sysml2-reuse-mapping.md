@@ -587,5 +587,5 @@ part rs_sat_b : Satellite {
 | [6] | OMG Reusable Asset Specification (RAS) 2.0 | <https://www.omg.org/spec/RAS/> | 2026-06-10 |
 | [7] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [8] | SysML v2 Tutorial, OMG/INCOSE Joint Tutorial, 2023 | <https://github.com/Systems-Modeling/SysML-v2-Release> | 2026-06-10 |
-| [9] | PLE for Modeling: Combining SysML and Feature Models, BigLever Software | <https://biglever.com/solution/featured-articles/> | 2026-06-10 |
+| [9] | PLE for Modeling: Combining SysML and Feature Models, BigLever Software | <https://biglever.com/> | 2026-06-10 |
 | [10] | NASA Systems Engineering Handbook, Rev 2, SP-2016-6105 | <https://www.nasa.gov/connect/ebooks/nasa-systems-engineering-handbook> | 2026-06-10 |

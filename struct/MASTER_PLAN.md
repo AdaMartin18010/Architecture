@@ -3,6 +3,7 @@
 > **版本**: 2026-06-10
 > **周期**: 2026 Q2 → 2027 Q4（6 个季度）
 > **目标**: 将 view/ 中 31 万字的知识体系，转化为结构化、可验证、可输出的知识产品
+> **项目统计**: 241 Markdown 文档 · 23 Python 工具 · 4.9 MB · 50 万+ 词 · 42+ 国际标准
 > **后续详细计划**: 见 [`SUBSEQUENT_PLAN_2026.md`](./SUBSEQUENT_PLAN_2026.md)（含未完成项清单、国际对齐差距、2026-Q3 → 2027-Q4 任务分解、风险与关键决策）
 
 ---
@@ -30,6 +31,7 @@
   - [Phase 3：垂直领域扩展（2027-Q1）— ✅ 已完成（提前至 2026-06）](#phase-3垂直领域扩展2027-q1--已完成提前至-2026-06)
   - [Phase 4：安全与供应链（2027-Q2）— ✅ 已完成（提前至 2026-06）](#phase-4安全与供应链2027-q2--已完成提前至-2026-06)
   - [Phase 5：AI 原生与前沿（2027-Q3）— ✅ 内容已覆盖，按决策 D3 暂停扩展](#phase-5ai-原生与前沿2027-q3--内容已覆盖按决策-d3-暂停扩展)
+  - [Phase C：扩展对齐与纵深（2026-06-10）— ✅ 已完成](#phase-c扩展对齐与纵深2026-06-10--已完成)
   - [Phase 6：整合与输出（2027-Q4）— 🔄 进行中](#phase-6整合与输出2027-q4--进行中)
   - [持续机制](#持续机制)
     - [月度节奏](#月度节奏)
@@ -155,6 +157,31 @@
 
 ---
 
+## Phase C：扩展对齐与纵深（2026-06-10）— ✅ 已完成
+
+**目标**: 在 Phase 1-5 基础上，引入 MBSE、数字孪生通用架构、国防/电信垂直行业、供应链验证与工具链 v2.0 等扩展内容
+
+| 任务 ID | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
+|---------|------|----------|--------|----------|------|
+| C-01 | 元模型标准层 | 完成 OMG SysML v2 复用语义与架构资产映射 | 01/09-sysml-v2/sysml2-reuse-mapping.md | 覆盖 ItemDefinition/PartDefinition/ActionDefinition/ConnectionDefinition 复用语义 | ✅ 已完成（2026-06-10） |
+| C-02 | 元模型标准层 | 完成 MBSE 模型复用与产品线工程整合框架 | 01/10-mbse-reuse/mbse-ple-integration.md | 含 4 层复用层次 + 150% 模型与变体推导 | ✅ 已完成（2026-06-10） |
+| C-03 | 工业 IoT/OT-IT | 完成数字孪生通用参考架构（非工业 AAS） | 11/08-digital-twin-general/dt-reference-architecture.md | 含 ISO 23247 / AEDT / Gartner 五维模型 + 与 AAS 互补分析 | ✅ 已完成（2026-06-10） |
+| C-04 | 供应链安全 | 完成 OWASP SCVS 软件组件验证标准映射 | 10/06-owasp-scvs/scvs-reuse-controls.md | 含 6 大控制族 × 3 成熟度等级与复用决策映射 | ✅ 已完成（2026-06-10） |
+| C-05 | 供应链安全 | 完成 GUAC 供应链图谱与复用风险评估 | 10/07-guac-supply-chain/guac-reuse-risk.md | 含知识图谱数据模型 + 传递风险分析 + 关键路径识别 | ✅ 已完成（2026-06-10） |
+| C-06 | 业务架构复用 | 完成 TMForum ODF / eTOM 电信架构复用案例 | 02/case-studies/tmforum-telecom-reuse.md | 含 eTOM L1-L3 + SID + ODA + CAMARA 复用机制 | ✅ 已完成（2026-06-10） |
+| C-07 | 业务架构复用 | 完成 NAF 4.0 / MODAF 与北约架构复用视角映射 | 02/07-defense-mission-engineering/naf-modaf-reuse.md | 含 NMM 元模型 + 7 个核心视点 + 与 DoDAF/UAF 互补 | ✅ 已完成（2026-06-10） |
+| C-08 | 工具链 | 完成交互式复用决策工具 v2.0（CLI + Streamlit Web） | 99-reference/tools/reuse-decision-tool-v2/ | 支持 6 阶段决策流程 + 测试覆盖 + 数据驱动模板 | ✅ 已完成（2026-06-10） |
+
+**对齐活动**:
+
+- 对照 OMG SysML v2 官方规范验证模型元素复用语义
+- 对照 INCOSE SE Vision 2035 与 ISO 26550:2023 验证 MBSE-PLE 整合框架
+- 对照 OWASP SCVS 1.0 与 SLSA 1.2 验证组件验证控制族映射
+- 对照 TMForum ODF / eTOM / SID 验证电信业务架构复用点
+- 对照 NATO NAF 4.0 / UK MODAF 验证国防架构复用视角
+
+---
+
 ## Phase 6：整合与输出（2027-Q4）— 🔄 进行中
 
 **目标**: 将分散的知识模块整合为可交付的知识产品
@@ -162,7 +189,7 @@
 | 优先级 | 任务 | 交付物 | 验收标准 | 状态 |
 |--------|------|--------|----------|------|
 | P0 | 编写《软件工程架构复用视角》全书框架 | `99-reference/book-outline.md` | 12 章 + 附录，每章对应一个一级主题 | ✅ 已完成 v2026-06-10（全书框架 + 权威来源引用） |
-| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 30 标准 × 5 复用层次 | ✅ 已完成 v2.0（30 标准，新增 ISO 42020/42030/25040 等 12 项） |
+| P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 42+ 标准 × 5 复用层次 | ✅ 已完成 v2.0（42+ 标准，新增 ISO 42020/42030/25040/SysML/SCVS/GUAC 等 18 项） |
 | P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、35+ 定理 | ✅ 已完成 v2026-06-10（20 公理 + 35 定理 + 5 猜想） |
 | P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 | ✅ 已完成（CLI + Streamlit Web 仪表盘 + 标准追踪器 v2.0） |
 | P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26566:2026 | ✅ 已完成（含 CLI 与雷达图报告） |

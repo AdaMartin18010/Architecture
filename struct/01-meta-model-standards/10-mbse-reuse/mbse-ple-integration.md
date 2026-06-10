@@ -697,5 +697,5 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 | [10] | Eclipse Papyrus Project | <https://www.eclipse.org/papyrus/> | 2026-06-10 |
 | [11] | BigLever Gears Product Line Engineering Platform | <https://biglever.com/> | 2026-06-10 |
 | [12] | Pure::Variants by Pure Systems | <https://www.pure-systems.com/purevariants> | 2026-06-10 |
-| [13] | INCOSE SE Handbook, 5th Edition, 2023 | <https://www.incose.org/publications/se-handbook> | 2026-06-10 |
+| [13] | INCOSE SE Handbook, 5th Edition, 2023 | <https://www.incose.org/docs/default-source/se-handbook/> | 2026-06-10 |
 | [14] | RAMI 4.0 Reference Architecture Model | <https://industrie4.0.bmwi.de/redaktion/EN/Publications/reference-architectural-model-for-industrie-4-0.html> | 2026-06-10 |
