@@ -75,7 +75,9 @@ CycloneDX 的原生 vulnerabilities[] 数组和 dependency 图结构使 OWASP De
 
 **推荐格式**: **SPDX 3.0.1 JSON**（法律/合规主导）或 **CycloneDX 1.6 JSON**（安全主导）
 
-**理由**: 采购审计通常由法务和安全团队联合执行。SPDX 的许可证表达能力（SPDX License Expressions、文件级版权文本）使其成为法务审计的首选；CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可将审计证据直接嵌入 SBOM。若需满足欧盟 CRA（Cyber Resilience Act），BSI TR-03183-2 明确接受 SPDX 3.0.1+ 和 CycloneDX 1.6+ [^3]。
+**理由**:
+采购审计通常由法务和安全团队联合执行。SPDX 的许可证表达能力（SPDX License Expressions、文件级版权文本）使其成为法务审计的首选；
+CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可将审计证据直接嵌入 SBOM。若需满足欧盟 CRA（Cyber Resilience Act），BSI TR-03183-2 明确接受 SPDX 3.0.1+ 和 CycloneDX 1.6+ [^3]。
 
 ---
 
@@ -94,7 +96,9 @@ CycloneDX 的原生 vulnerabilities[] 数组和 dependency 图结构使 OWASP De
 
 **推荐格式**: **CycloneDX 1.6 JSON + VEX**
 
-**理由**: 事件响应的核心是速度。CycloneDX 的原生漏洞支持和清晰的 dependencies 图使安全团队能够在数分钟内完成全系统影响分析。2026 年的最佳实践是将 VEX（Vulnerability Exploitability eXchange）直接嵌入 CycloneDX BOM，而非作为独立文件分发，减少查询时的文件关联开销。
+**理由**:
+事件响应的核心是速度。CycloneDX 的原生漏洞支持和清晰的 dependencies 图使安全团队能够在数分钟内完成全系统影响分析。
+2026 年的最佳实践是将 VEX（Vulnerability Exploitability eXchange）直接嵌入 CycloneDX BOM，而非作为独立文件分发，减少查询时的文件关联开销。
 
 > **引用**: "CISA Framing Software Component Transparency (2024) elevates SBOMs from simple component lists to verifiable security assets." [^4]
 
@@ -116,7 +120,9 @@ CycloneDX 的原生 vulnerabilities[] 数组和 dependency 图结构使 OWASP De
 
 **推荐格式**: **SPDX 3.0.1 JSON**（全球合规首选）或 **CycloneDX 1.6 JSON**（安全合规一体化）
 
-**理由**: 2026 年，欧盟 CRA 的实施指导 BSI TR-03183-2 是全球最严格的 SBOM 合规框架，它明确要求 SPDX 3.0.1+ 或 CycloneDX 1.6+，JSON 或 XML 格式，且强制要求密码学哈希、许可证标识符和签名机制 [^3]。SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA 的深度要求 [^5]。
+**理由**:
+2026 年，欧盟 CRA 的实施指导 BSI TR-03183-2 是全球最严格的 SBOM 合规框架，它明确要求 SPDX 3.0.1+ 或 CycloneDX 1.6+，JSON 或 XML 格式，且强制要求密码学哈希、许可证标识符和签名机制 [^3]。
+SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA 的深度要求 [^5]。
 
 ---
 

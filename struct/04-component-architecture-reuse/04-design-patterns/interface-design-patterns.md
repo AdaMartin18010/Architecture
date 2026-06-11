@@ -40,7 +40,7 @@
 
 组件接口契约不是单一事物，而是由浅入深的四个层次：
 
-```
+```text
 Layer 1: 语法契约 (Syntax Contract)
     └── "调用的形状是什么"
     └── 方法签名、参数类型、返回类型、异常声明
@@ -60,7 +60,7 @@ Layer 4: 语义契约 (Semantic Contract)
 
 **定义 C.1** (Contract Strength): 接口契约的强度 S 定义为上述四个层级的覆盖完整性：
 
-```
+```text
 S = (s_syntax × 0.15) + (s_prepost × 0.25) + (s_protocol × 0.30) + (s_semantic × 0.30)
 
 其中 s ∈ [0, 1]
@@ -76,7 +76,7 @@ S = (s_syntax × 0.15) + (s_prepost × 0.25) + (s_protocol × 0.30) + (s_semanti
 
 **描述**: 包的抽象程度应与其稳定性成正比。稳定的包应更抽象，易变的包可以更具体。
 
-```
+```text
 抽象性 A = 抽象类数 / 总类数
 不稳定性 I = 出向依赖数 / (出向依赖数 + 入向依赖数)
 
@@ -103,7 +103,7 @@ S = (s_syntax × 0.15) + (s_prepost × 0.25) + (s_protocol × 0.30) + (s_semanti
 
 **形式化**:
 
-```
+```text
 Let C 是组件，C' 是 C 的替代。
 C' ⊑ C  iff
     Pre(C') ⊆ Pre(C)   (弱化前置条件)

@@ -1,0 +1,206 @@
+# 依赖管理与架构复用
+
+> **版本**: 2026-06-10
+> **定位**: 组件架构层 —— 依赖解析、锁定与治理：复用组件的供应链基础
+> **对齐标准**: Semver 2.0.0, SPDX, CycloneDX, SLSA 1.2, OpenSSF OSPS Baseline
+> **状态**: ✅ 已完成
+
+---
+
+## 目录
+
+- [依赖管理与架构复用](#依赖管理与架构复用)
+  - [目录](#目录)
+  - [1. 依赖管理演进](#1-依赖管理演进)
+    - [1.1 历史脉络](#11-历史脉络)
+    - [1.2 现代依赖管理工具对比](#12-现代依赖管理工具对比)
+  - [2. 依赖解析算法](#2-依赖解析算法)
+    - [2.1 版本冲突](#21-版本冲突)
+    - [2.2 传递依赖深度](#22-传递依赖深度)
+  - [3. 依赖锁定机制](#3-依赖锁定机制)
+    - [3.1 Lockfile 的复用保证作用](#31-lockfile-的复用保证作用)
+    - [3.2 Lockfile 与 SBOM 的关系](#32-lockfile-与-sbom-的关系)
+  - [4. 依赖升级策略](#4-依赖升级策略)
+    - [4.1 自动化升级工具](#41-自动化升级工具)
+    - [4.2 升级策略矩阵](#42-升级策略矩阵)
+  - [5. 依赖复用的风险](#5-依赖复用的风险)
+    - [5.1 依赖膨胀（Dependency Bloat）](#51-依赖膨胀dependency-bloat)
+    - [5.2 供应链攻击面](#52-供应链攻击面)
+    - [5.3 许可证冲突](#53-许可证冲突)
+  - [6. 权威来源](#6-权威来源)
+
+---
+
+## 1. 依赖管理演进
+
+### 1.1 历史脉络
+
+| 时代 | 工具/机制 | 创新 | 局限 |
+|:---|:---|:---|:---|
+| 1990s | 手动 JAR / `#include` | 简单直接 | 版本冲突、传递依赖地狱 |
+| 2000s | Maven / Ivy | 中央仓库、传递依赖自动解析 | XML 繁琐、版本冲突 |
+| 2010s | npm / Bundler / pip | 语义化版本、lockfile | 依赖膨胀、left-pad 事件 |
+| 2010s | Go Modules / Cargo | 最小版本选择、原生支持 | 生态迁移成本 |
+| 2020s | pnpm / uv / Yarn Berry | 内容寻址存储、零安装 | 工具链碎片化 |
+| **2020s** | **SBOM + SLSA** | **供应链安全 + 溯源** | **adoption 进行中** |
+
+### 1.2 现代依赖管理工具对比
+
+| 工具 | 生态 | 锁文件 |  workspaces | 内容寻址 | 安全扫描 |
+|:---|:---|:---:|:---:|:---:|:---:|
+| **Maven** | Java | `pom.xml` + lock plugin | ✅ | ❌ | 插件支持 |
+| **Gradle** | Java/Kotlin/Android | `gradle.lockfile` | ✅ | ❌ | 插件支持 |
+| **npm** | JavaScript | `package-lock.json` | ✅ | ❌ | `npm audit` |
+| **pnpm** | JavaScript | `pnpm-lock.yaml` | ✅ | ✅ | `pnpm audit` |
+| **Yarn Berry** | JavaScript | `yarn.lock` | ✅ | ✅ | `yarn npm audit` |
+| **pip** | Python | `requirements.txt` / `poetry.lock` | ✅ (Poetry) | ❌ | `pip-audit` |
+| **uv** | Python | `uv.lock` | ✅ | ✅ | `uv pip audit` |
+| **Cargo** | Rust | `Cargo.lock` | ✅ (workspace) | ❌ | `cargo audit` |
+| **Go Modules** | Go | `go.sum` | ✅ | ❌ | `govulncheck` |
+
+---
+
+## 2. 依赖解析算法
+
+### 2.1 版本冲突
+
+**钻石依赖问题（Diamond Dependency Problem）**:
+
+```
+        App
+       /   \
+    Lib A   Lib B
+       \   /
+      Lib C v1.0  vs  Lib C v2.0
+```
+
+**解决策略**:
+
+| 策略 | 工具 | 说明 |
+|:---|:---|:---|
+| **最近优先** | npm | 选择离根最近的版本 |
+| **最高满足** | Maven | 选择满足约束的最高版本 |
+| **最小版本** | Go Modules, Cargo | 选择满足约束的最低版本 |
+| **强制统一** | Maven Enforcer | 构建失败，要求人工解决 |
+| **多版本共存** | npm, pnpm | 允许同一包多版本并存 |
+
+### 2.2 传递依赖深度
+
+```
+传递依赖风险评估
+├── 深度 1-2: 低风险
+│   └── 直接依赖和一层传递依赖
+├── 深度 3-5: 中风险
+│   └── 需要 SBOM 追踪
+└── 深度 >5: 高风险
+    └── 依赖膨胀、难以审计
+    └── 建议：定期审查和裁剪
+```
+
+---
+
+## 3. 依赖锁定机制
+
+### 3.1 Lockfile 的复用保证作用
+
+Lockfile 是依赖管理的"**时间机器**"，确保：
+
+- **可重现构建**: 任何时间、任何环境构建结果一致
+- **安全基线**: 已知无漏洞的依赖组合
+- **审计追踪**: 精确知道构建中包含哪些组件
+
+### 3.2 Lockfile 与 SBOM 的关系
+
+```
+Lockfile vs SBOM
+├── Lockfile
+│   ├── 面向: 构建工具
+│   ├── 目的: 可重现构建
+│   └── 格式: 工具特定（package-lock.json, Cargo.lock）
+└── SBOM
+    ├── 面向: 安全审计和合规
+    ├── 目的: 供应链透明
+    └── 格式: 标准化（SPDX, CycloneDX, SWID）
+
+关系: Lockfile 是 SBOM 的输入之一
+      最佳实践: 从 Lockfile 自动生成 SBOM
+```
+
+---
+
+## 4. 依赖升级策略
+
+### 4.1 自动化升级工具
+
+| 工具 | 功能 | 集成方式 |
+|:---|:---|:---|
+| **Dependabot** | GitHub 原生，自动 PR | GitHub 集成 |
+| **Renovate** | 多平台，高度可配置 | CLI / CI / 托管 |
+| **Snyk** | 安全导向的升级建议 | CLI / IDE / CI |
+| **FOSSA** | 许可证 + 安全双检查 | CI 集成 |
+
+### 4.2 升级策略矩阵
+
+| 变更类型 | Semver | 自动升级 | 人工审查 | 回滚计划 |
+|:---|:---:|:---:|:---:|:---:|
+| Patch (bugfix) | x.x.Z | ✅ 自动 | ❌ | 自动 |
+| Minor (feature) | x.Y.x | ⚠️ 条件自动 | ⚠️ 快速审查 | 自动 |
+| Major (breaking) | X.x.x | ❌ 禁止自动 | ✅ 详细审查 | 手动 |
+| Security | 任意 | ✅ 紧急自动 | ✅ 事后审查 | 自动 |
+
+---
+
+## 5. 依赖复用的风险
+
+### 5.1 依赖膨胀（Dependency Bloat）
+
+**现象**: 项目引入大量不必要的依赖。
+
+**影响**:
+
+- 构建时间增加
+- 部署包体积膨胀
+- 攻击面扩大
+- 碳足迹增加
+
+**缓解措施**:
+
+- 定期使用 `depcheck` 等工具检测未使用依赖
+- 优先选择零依赖或轻依赖的库
+- 评估"微包"（如 left-pad）是否值得引入
+
+### 5.2 供应链攻击面
+
+每个依赖都是潜在的攻击入口：
+
+- 恶意包（typosquatting、账户劫持）
+- 漏洞传递（传递依赖中的 CVE）
+- 构建时攻击（安装脚本执行恶意代码）
+
+### 5.3 许可证冲突
+
+**常见冲突**:
+
+- GPL 传染性: 复用 GPL 组件可能导致整个项目需开源
+- 商业许可证: 超出免费使用范围
+- 专利条款: 某些许可证（如 Apache 2.0）的专利授权条款
+
+**缓解措施**:
+
+- 使用 `license-checker`、`FOSSA` 等工具扫描
+- 建立组织许可证策略（允许/禁止/需审批列表）
+- 在复用决策中纳入许可证合规检查
+
+---
+
+## 6. 权威来源
+
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Semver 2.0.0 | <https://semver.org/> | 2026-06-10 |
+| SPDX | <https://spdx.dev/> | 2026-06-10 |
+| CycloneDX | <https://cyclonedx.org/> | 2026-06-10 |
+| SLSA 1.2 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
+| OpenSSF OSPS | <https://baseline.openssf.org> | 2026-06-10 |
+| OWASP Dependency-Check | <https://owasp.org/www-project-dependency-check/> | 2026-06-10 |
+| Renovate | <https://docs.renovatebot.com/> | 2026-06-10 |

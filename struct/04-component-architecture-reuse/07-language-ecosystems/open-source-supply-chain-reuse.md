@@ -259,7 +259,7 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 
 2026 年最佳实践推荐**分层组合策略**：
 
-```
+```text
 Layer 1: Proxy Registry（第一道防线）
     └── 缓存公共 registry
     └── 自动漏洞扫描（上传时触发）
@@ -311,7 +311,7 @@ Layer 4: Vendoring（可选终极防线）
 
 ### 4.3 内部源（Private Registry）模式
 
-```
+```text
 Public Registry (npm/pypi/crates.io)
     ↓ 拉取并审查
 Internal Registry (Nexus/Artifactory/Cloudsmith)

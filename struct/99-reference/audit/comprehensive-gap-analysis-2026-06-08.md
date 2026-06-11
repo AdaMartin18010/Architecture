@@ -43,7 +43,7 @@
       - [调整 1：优先填补 03 应用架构基础缺口（Phase 2 提前）](#调整-1优先填补-03-应用架构基础缺口phase-2-提前)
       - [调整 2：降低 Conformal Prediction + 形式化验证融合的优先级（Phase 5 降级）](#调整-2降低-conformal-prediction--形式化验证融合的优先级phase-5-降级)
       - [调整 3：增加事实核查作为持续机制（月度节奏新增）](#调整-3增加事实核查作为持续机制月度节奏新增)
-      - [调整 4：ISO/IEC 25010:2023 与 AI 质量特性（Phase 2 新增）](#调整-4isoiec-250102024-与-ai-质量特性phase-2-新增)
+      - [调整 4：ISO/IEC 25010:2023 与 AI 质量特性（Phase 2 新增）](#调整-4isoiec-250102023-与-ai-质量特性phase-2-新增)
       - [调整 5：WASM Component Model 标准化阶段标注（Phase 5 调整）](#调整-5wasm-component-model-标准化阶段标注phase-5-调整)
   - [附录：权威来源索引](#附录权威来源索引)
 

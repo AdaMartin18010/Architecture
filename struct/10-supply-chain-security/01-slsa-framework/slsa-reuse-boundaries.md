@@ -9,7 +9,9 @@
 
 ## 1. 引言：为什么复用需要 SLSA 边界
 
-软件架构复用的核心悖论在于：**复用度越高，供应链攻击面越大**。当一个系统 80–90% 的代码来自外部依赖（参见 Sonatype 2026 报告），任何上游组件的构建过程被篡改，都将直接传导至下游所有消费者。SLSA（Supply-chain Levels for Software Artifacts）框架通过分级构建证明（Build Provenance）为这一悖论提供了形式化的安全边界。
+软件架构复用的核心悖论在于：**复用度越高，供应链攻击面越大**。
+当一个系统 80–90% 的代码来自外部依赖（参见 Sonatype 2026 报告），任何上游组件的构建过程被篡改，都将直接传导至下游所有消费者。
+SLSA（Supply-chain Levels for Software Artifacts）框架通过分级构建证明（Build Provenance）为这一悖论提供了形式化的安全边界。
 
 > **定理 S.RB.1** (SLSA Reuse Boundary Monotonicity): 若组件 C 被复用于系统 S，则 S 在供应链安全维度的有效 SLSA 等级不超过 C 的 SLSA 等级。即 `SLSA(S) ≤ min{SLSA(Cᵢ)}`。
 
@@ -19,7 +21,8 @@
 
 ## 2. SLSA 等级总览与复用安全边界
 
-SLSA v1.0 采用**多轨道（Multi-Track）模型**，当前发布的 Build Track 定义了 L1–L3 三个正式等级，L4 处于社区规划阶段（Build Level 4 Workstream，由 David A. Wheeler 主导）。为完整覆盖复用安全边界，本文沿用 v0.1 中 L4 的成熟实践（可复现构建、双人审查）并结合 v1.2 草案进行前瞻性分析。
+SLSA v1.0 采用**多轨道（Multi-Track）模型**，当前发布的 Build Track 定义了 L1–L3 三个正式等级，L4 处于社区规划阶段（Build Level 4 Workstream，由 David A. Wheeler 主导）。
+为完整覆盖复用安全边界，本文沿用 v0.1 中 L4 的成熟实践（可复现构建、双人审查）并结合 v1.2 草案进行前瞻性分析。
 
 | 等级 | 核心目标 | 复用安全边界含义 | 2026 工具链支持 |
 |------|---------|-----------------|----------------|
@@ -102,7 +105,9 @@ L1 → L2
 └── 验证: cosign verify --certificate-identity=ci@org.com --certificate-oidc-issuer=<issuer> <image>
 ```
 
-> **2026 Sigstore/cosign 新特性**: Cosign v2.4.1 支持 Rekor v1.2 透明日志，提供非否认性证明。keyless signing 通过 OIDC 将短期签名密钥绑定至 CI 身份，彻底消除长期密钥管理风险 [^2]。
+> **2026 Sigstore/cosign 新特性**:
+> Cosign v2.4.1 支持 Rekor v1.2 透明日志，提供非否认性证明。
+> keyless signing 通过 OIDC 将短期签名密钥绑定至 CI 身份，彻底消除长期密钥管理风险 [^2]。
 
 ---
 
@@ -131,7 +136,7 @@ L1 → L2
 
 #### 升级路径
 
-```
+```text
 L2 → L3
 ├── 步骤 1: 启用隔离构建环境
 │   ├── GitHub Actions: 使用 hosted runners（非 self-hosted）
@@ -150,7 +155,9 @@ L2 → L3
 └── 验证: 使用 slsa-verifier 检查 Provenance 的 builder.id 和 buildLevel
 ```
 
-> **交叉引用**: `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` §4.4 指出，Rust（Cargo）和 Node.js（npm）生态在 2026 年已原生支持 SLSA L3 provenance（npm provenance via Sigstore，crates.io Trusted Publishing），而 JVM 生态仍需手动配置。
+> **交叉引用**: `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` §4.4 指出，
+> Rust（Cargo）和 Node.js（npm）生态在 2026 年已原生支持 SLSA L3 provenance（npm provenance via Sigstore，crates.io Trusted Publishing），
+> 而 JVM 生态仍需手动配置。
 
 ---
 
@@ -179,7 +186,7 @@ L2 → L3
 
 #### 升级路径
 
-```
+```text
 L3 → L4
 ├── 步骤 1: 实施 Source Track L3
 │   ├── 强制分支保护（main 分支禁止直接推送）
@@ -205,7 +212,8 @@ L3 → L4
 
 ## 4. SLSA 等级与依赖治理的交叉引用
 
-`struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` 提出了分层防御策略。本文件将其与 SLSA 等级映射如下：
+`struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` 提出了分层防御策略。
+本文件将其与 SLSA 等级映射如下：
 
 | 防御层 | 依赖治理措施 | 对应 SLSA 等级 | 理由 |
 |-------|-------------|---------------|------|
@@ -216,7 +224,8 @@ L3 → L4
 
 > **定理 S.RB.2** (Dependency-SLSA Composition): 若系统 S 依赖组件集合 {C₁, C₂, ..., Cₙ}，且各组件 SLSA 等级为 {L₁, L₂, ..., Lₙ}，则 S 的有效 SLSA 等级为 `min(L₁, L₂, ..., Lₙ)`，与 S 自身的构建等级无关。
 
-这意味着：**即使你的构建达到 L4，但只要有一个依赖是 L1，整个系统的复用安全边界就降级为 L1**。这正是 `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` §6.3 强调"分层组合策略"的根本原因。
+这意味着：**即使你的构建达到 L4，但只要有一个依赖是 L1，整个系统的复用安全边界就降级为 L1**。
+这正是 `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` §6.3 强调"分层组合策略"的根本原因。
 
 ---
 

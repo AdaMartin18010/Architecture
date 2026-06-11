@@ -47,7 +47,7 @@
 
 ### 2.3 工具组合模式
 
-```
+```text
 Agent Session
 ├── Tool A: retrieve_documents(vector_db)
 ├── Tool B: query_database(sql_engine)
@@ -128,7 +128,7 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 
 ### 5.2 版本与兼容性
 
-```
+```text
 Tool Registry
 ├── query_db@v1.0.0 (stable)
 ├── query_db@v1.1.0-beta (new features)

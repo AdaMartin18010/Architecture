@@ -232,7 +232,7 @@
 **目标**: 将 AI/LLM 功能复用、Agentic Infrastructure、WASM、平台工程提升到工程化水平。
 
 | 任务 ID | 任务 | 交付物 | 对齐来源 | 验收标准 |
-|---------|------|--------|----------|----------|
+|---------|------|--------|----------|----------|----------|
 | P5-T1 | MCP 2025-11-25 全面更新（替换 2026-07-28 RC 旧引用） | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | modelcontextprotocol.io/specification/2025-11-25 | 覆盖 Tasks、Icons、Elicitation、OAuth 增量 |
 | P5-T2 | Agentic Governance 组织设计模板 | `12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md` | Google A2A、Linux Foundation Agentic AI Foundation | 含 Agent RBAC、Golden Path、模型路由 |
 | P5-T3 | CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础） | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程) | 提出探索性框架，明确标注为研究空白 | P2 |

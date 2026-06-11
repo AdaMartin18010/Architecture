@@ -17,7 +17,9 @@
 | **SLSA v1.1** | 2024 | 正式版 | 澄清性刷新；增强验证指南；VSA（Verification Summary Attestation）新增验证器元数据字段 |
 | **SLSA v1.2** | 2025-11 | 正式版 | **Source Track** 从实验提升为正式轨道；引入 **Multi-Track** 架构；新增 **Build Environment Track**（草案） |
 
-SLSA v1.2 的最大范式转变是从"单一 Build Track 覆盖全部"演进为"多轨道独立认证"。在 v1.0 中，Build L3 的 provenance 无法回答"源码是否经过审查"或"构建环境是否可信"的问题；v1.2 通过 Source Track 和 Build Environment Track 将这些问题显性化，使消费者能够按需验证供应链的不同环节。
+SLSA v1.2 的最大范式转变是从"单一 Build Track 覆盖全部"演进为"多轨道独立认证"。
+在 v1.0 中，Build L3 的 provenance 无法回答"源码是否经过审查"或"构建环境是否可信"的问题；
+v1.2 通过 Source Track 和 Build Environment Track 将这些问题显性化，使消费者能够按需验证供应链的不同环节。
 
 ### 1.2 Multi-Track 架构的引入
 
