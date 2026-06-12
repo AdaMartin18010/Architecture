@@ -17,7 +17,9 @@
 - **B Method**: 铁路信号系统的形式化精化链
   - `06-b-method/railway-signaling-refinement.md` — B Method / Event-B 铁路信号系统精化链案例（三层精化：M0 进路安全 → M1 区段道岔 → M2 信号联锁）
   - `06-b-method/event-b-railway-refinement.md` — Event-B 与 B Method 体系总览、工具链与工业应用
-- **模型检测**: SPIN, NuSMV, CBMC（已在 `08-comparative-matrices/spark-ada-vs-rust-verification-matrix.md` 中部分覆盖）
+- **V&V 标准**: IEEE 1012-2024 等验证确认标准与复用资产的符合性
+- **新兴趋势**: LLM 辅助形式化验证、神经符号验证等前沿方向
+- **模型检测**: SPIN, NuSMV, CBMC（已在 `09-comparative-matrices/spark-ada-vs-rust-verification-matrix.md` 中部分覆盖）
 - 形式化验证的复用决策矩阵（工具 × 层次 × 成本）
 - **自动化验证环境**: Docker 化的 TLA+/Alloy/Coq/Isabelle（详见 [`99-reference/tools/formal-verification-env/README.md`](../../99-reference/tools/formal-verification-env/README.md)）
 
@@ -49,6 +51,8 @@
 - [x] DO-178C MC/DC 形式化定义 (`05-spark-ada/mcdc-formalization.md`)
 - [x] SPARK/Ada 飞控案例 (`05-spark-ada/flight-control-contracts.md`)
 - [x] B Method 铁路信号案例 (`06-b-method/railway-signaling-refinement.md`)
+- [x] IEEE 1012-2024 V&V 标准与复用对齐 (`07-vv-standards/ieee-1012-2024-reuse-vv.md`)
+- [x] 形式化验证方法对比矩阵 (`09-comparative-matrices/spark-ada-vs-rust-verification-matrix.md`)
 - [x] Coq/Isabelle 教学示例（`insertion_sort.v`, `bounded_counter.v`, `Turnstile.thy`）— 基础语法验证
 - [x] Coq/Isabelle 定理证明纲要文档化（`03-coq-isabelle/README.md`）
 - [x] Rust Kani/Prusti/Miri 工具链概念说明 (`04-rust-type-system/rust-verification-toolchain.md`)

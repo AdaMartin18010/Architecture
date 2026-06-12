@@ -23,93 +23,138 @@
 
 ```text
 struct/
-├── 01-meta-model-standards/          # 元模型与标准对齐
-│   ├── 01-iso-42010-2022/            # ISO 42010:2022 架构描述
-│   ├── 02-togaf-10-alignment/        # TOGAF 10 企业架构
-│   ├── 03-iso-26550-ple/             # ISO 26550 产品线工程
-│   ├── 04-archimate-4/               # ArchiMate 3.2/4.0
-│   ├── 05-swebok-v4/                 # SWEBOK V4 知识领域
-│   └── 06-formal-axioms/             # 形式化公理体系（15 公理 + 29 定理）
-├── 02-business-architecture-reuse/   # 业务架构复用
-│   ├── 01-business-capability-model/ # 业务能力建模
-│   ├── 02-business-process-reuse/    # 业务流程复用
-│   ├── 03-domain-driven-design/      # 领域驱动设计
-│   ├── 04-business-rules/            # 业务规则与决策
-│   ├── 05-value-stream/              # 价值流映射
-│   ├── 06-bpmn-dmn/                  # BPMN 2.0 / DMN 1.5 可执行案例
-│   └── case-studies/                 # 行业垂直场景库
-├── 03-application-architecture-reuse/# 应用架构复用
-│   ├── 01-layered-architecture/      # 分层架构模式
-│   ├── 02-microservices/             # 微服务架构
-│   ├── 03-serverless/                # Serverless 架构
-│   ├── 04-event-driven/              # 事件驱动架构
-│   ├── 05-cloud-native-patterns/     # 云原生复用性矩阵 2026
-│   └── 06-service-mesh/              # 服务网格通信模式
-├── 04-component-architecture-reuse/  # 组件架构复用
-│   ├── 01-component-models/          # 组件模型理论
-│   ├── 02-interface-contracts/       # 接口契约设计
-│   ├── 03-dependency-management/     # 依赖管理策略
-│   ├── 04-design-patterns/           # 设计模式与反模式
-│   └── 07-language-ecosystems/       # 6 大语言生态深度对比
-├── 05-functional-architecture-reuse/ # 功能架构复用
-│   ├── 01-api-design/                # API 设计模式
-│   ├── 02-function-as-a-service/     # FaaS 复用模式
-│   ├── 03-event-functions/           # 事件函数模式
-│   ├── 04-workflow-orchestration/    # Temporal 工作流复用
-│   └── 06-mcp-a2a-protocols/         # MCP + A2A 协议分析
-├── 06-cross-layer-governance/        # 跨层治理与量化
-│   ├── 01-governance-framework/      # 治理框架
-│   ├── 02-reuse-process/             # 复用过程模型
-│   ├── 03-policy-automation/         # 策略自动化
-│   ├── 04-finops-cost/               # FinOps 成本分摊模板
-│   └── 05-metrics-kpi/               # 四级度量指标体系
-├── 07-formal-verification/           # 形式化验证
-│   ├── 01-tla-plus/                  # TLA+ 案例库（4 规约）
-│   ├── 02-alloy/                     # Alloy 案例库（4 模型）
-│   ├── 03-coq-isabelle/              # Coq / Isabelle 方向
-│   └── 04-rust-type-system/          # Rust 类型系统深化
-├── 08-cognitive-architecture/        # 认知架构
-│   ├── 01-human-factors/             # 人因工程
-│   ├── 02-knowledge-representation/  # 知识表示
-│   ├── 03-cognitive-load-theory/     # NASA-TLX 认知负荷模型
-│   ├── 04-decision-making/           # 复用决策机制
-│   └── 05-ai-cognitive-augmentation/ # AI 认知增强架构
-├── 09-value-quantification/          # 价值量化
-│   ├── 01-cocomo-ii-reuse/           # COCOMO II 2026 校准
-│   ├── 02-roi-models/                # ROI 与实物期权模型
-│   ├── 03-finops-allocation/         # FinOps 单位经济学
-│   └── 04-risk-adjusted-value/       # 风险调整价值
-├── 10-supply-chain-security/         # 供应链安全
-│   ├── 01-threat-model/              # 威胁建模
-│   ├── 02-sbom-standards/            # SPDX / CycloneDX / SWID
-│   ├── 03-attack-vectors/            # 攻击树与案例
-│   ├── 04-zero-trust/                # 零信任 5 层模板
-│   └── 05-compliance/                # 合规映射
-├── 11-industrial-iot-otit/           # 工业 IoT / OT-IT 融合
-│   ├── 01-isa-95-model/              # ISA-95 五层资产目录
-│   ├── 02-opc-ua-fx/                 # OPC UA FX 深化
-│   ├── 03-plcopen/                   # PLCopen Motion + TLA+
-│   ├── 04-aas/                       # 资产管理壳 AAS
-│   └── 05-safety-standards/          # IEC 61508 / ISO 26262
-├── 12-ai-native-reuse/               # AI 原生复用
-│   ├── 01-llm-prompt-reuse/          # 提示工程复用
-│   ├── 02-model-reuse/               # 模型复用与微调
-│   ├── 03-ai-agent-reuse/            # Agent 架构复用
-│   ├── 04-rag-patterns/              # RAG 模式库
-│   └── 05-conformal-prediction/      # 共形预测代码生成
-├── 13-emerging-trends/               # 前沿趋势
-│   ├── 01-platform-engineering/      # 平台工程成熟度
-│   ├── 02-webassembly/               # WASM Component Model
-│   ├── 03-edge-computing/            # 边缘计算复用
-│   ├── 04-quantum-computing/         # 量子计算架构
-│   └── 05-sustainable-software/      # 可持续软件工程
-└── 99-reference/                     # 参考索引
-    ├── standards-index/              # 标准对齐多维矩阵
-    ├── terminology-crosswalk/        # 术语交叉对照
-    ├── cross-topic-index.md          # 跨主题快速查找表
-    ├── CHANGELOG.md                  # 更新日志与勘误
-    ├── chapters/                     # 全书章节框架（ch01-ch06）
-    └── book-format-guide.md          # 写作与排版规范
+├── 01-meta-model-standards/            # 元模型与标准对齐
+│   ├── 01-iso-420xx-family/            # ISO 42010/42020/42030 与 12207 族
+│   ├── 02-togaf-10-alignment/          # TOGAF 10 企业架构
+│   ├── 03-iso-26550-ple/               # ISO 26550 产品线工程
+│   ├── 04-archimate-4/                 # ArchiMate 3.2/4.0
+│   ├── 05-swebok-v4/                   # SWEBOK V4 知识领域
+│   ├── 06-formal-axioms/               # 形式化公理体系
+│   ├── 07-omg-ras/                     # OMG RAS 可复用资产
+│   ├── 08-fair4rs/                     # FAIR4RS 研究软件复用
+│   ├── 09-sysml-v2/                    # SysML v2 对齐
+│   ├── 10-mbse-reuse/                  # MBSE 与复用集成
+│   └── plans-tasks/                    # plans tasks
+├── 02-business-architecture-reuse/     # 业务架构复用
+│   ├── 01-business-domain-reuse/       # 01 business domain reuse
+│   ├── 02-business-capability/         # 业务能力建模
+│   ├── 03-value-stream/                # 价值流映射
+│   ├── 04-business-process-reuse/      # 04 business process reuse
+│   ├── 05-business-service-reuse/      # 05 business service reuse
+│   ├── 06-bpmn-dmn/                    # BPMN 2.0 / DMN 1.5
+│   ├── 07-defense-mission-engineering/ # 国防任务工程
+│   ├── 08-zachman-reuse-mapping/       # Zachman 框架复用映射
+│   └── case-studies/                   # case studies
+├── 03-application-architecture-reuse/  # 应用架构复用
+│   ├── 01-layered-architecture/        # 分层架构模式
+│   ├── 02-microservices/               # 微服务架构
+│   ├── 03-app-service/                 # 应用服务复用
+│   ├── 04-serverless/                  # Serverless 架构
+│   ├── 05-data-architecture/           # 数据架构复用
+│   ├── 06-event-driven/                # 事件驱动架构
+│   ├── 07-cloud-native-patterns/       # 云原生复用性矩阵 2026
+│   ├── 08-service-mesh/                # 服务网格通信模式
+│   ├── 09-eda-cqrs/                    # EDA/CQRS 深度
+│   ├── 10-tosca-dmn-platform/          # TOSCA v2.0 / DMN 1.6
+│   └── 11-idp-practices/               # IDP 复用实践
+├── 04-component-architecture-reuse/    # 组件架构复用
+│   ├── 01-component-models/            # 组件模型理论
+│   ├── 02-interface-contracts/         # 接口契约设计
+│   ├── 03-dependency-management/       # 依赖管理策略
+│   ├── 04-design-patterns/             # 设计模式与反模式
+│   ├── 05-version-strategy/            # 版本策略
+│   ├── 06-cloud-native-networking/     # 云原生网络
+│   └── 07-language-ecosystems/         # 6 大语言生态深度对比
+├── 05-functional-architecture-reuse/   # 功能架构复用
+│   ├── 01-api-design/                  # API 设计模式
+│   ├── 02-function-as-a-service/       # FaaS 复用模式
+│   ├── 03-event-functions/             # 事件函数模式
+│   ├── 04-workflow-orchestration/      # Temporal 工作流复用
+│   ├── 05-ai-llm-functions/            # AI/LLM 功能复用
+│   └── 06-mcp-a2a-protocols/           # MCP + A2A 协议分析
+├── 06-cross-layer-governance/          # 跨层治理与量化
+│   ├── 01-process-governance/          # 复用过程治理
+│   ├── 02-reuse-process/               # 02 reuse process
+│   ├── 03-maturity-models/             # 成熟度模型（RCMM/RiSE/SPICE）
+│   ├── 04-finops-cost/                 # FinOps 成本分摊模板
+│   ├── 05-metrics-kpi/                 # 四级度量指标体系
+│   ├── 06-up-downgrade-matrix/         # 升降级决策矩阵
+│   ├── 07-policy-automation/           # 07 policy automation
+│   └── 09-agentic-governance/          # Agentic 治理
+├── 07-formal-verification/             # 形式化验证
+│   ├── 01-tla-plus/                    # TLA+ 案例库
+│   ├── 02-alloy/                       # Alloy 案例库
+│   ├── 03-coq-isabelle/                # Coq / Isabelle
+│   ├── 04-rust-type-system/            # Rust 类型系统深化
+│   ├── 05-spark-ada/                   # SPARK/Ada 契约验证
+│   ├── 06-b-method/                    # B Method / Event-B
+│   ├── 07-vv-standards/                # V&V 标准（IEEE 1012）
+│   ├── 08-emerging-trends/             # 形式化验证前沿
+│   ├── 09-comparative-matrices/        # 方法对比矩阵
+│   └── plans-tasks/                    # plans tasks
+├── 08-cognitive-architecture/          # 认知架构
+│   ├── 01-act-r-model/                 # ACT-R 模型
+│   ├── 02-bdi-model/                   # BDI 模型
+│   ├── 03-cognitive-load-theory/       # 认知负荷理论
+│   ├── 04-decision-making/             # 决策机制
+│   └── 05-ai-cognitive-augmentation/   # AI 认知增强
+├── 09-value-quantification/            # 价值量化
+│   ├── 01-cocomo-ii-reuse/             # COCOMO II 2026 校准
+│   ├── 02-roi-npv-models/              # ROI 与 NPV 模型
+│   ├── 03-carbon-dimension/            # 碳排维度
+│   └── tools/                          # 工具脚本
+├── 10-supply-chain-security/           # 供应链安全
+│   ├── 01-slsa-framework/              # SLSA 框架
+│   ├── 02-sbom-standards/              # SBOM 标准
+│   ├── 03-attack-vectors/              # 攻击向量
+│   ├── 04-provenance-examples/         # 来源示例
+│   ├── 05-zero-trust-supply-chain/     # 零信任供应链
+│   ├── 06-case-studies/                # 案例研究
+│   ├── 07-owasp-scvs/                  # OWASP SCVS
+│   ├── 08-guac-supply-chain/           # GUAC 供应链图
+│   ├── 09-owasp-asvs/                  # OWASP ASVS
+│   ├── 10-owasp-top10-2025/            # OWASP Top 10 2025
+│   ├── 11-osps-baseline/               # OSPS 基线
+│   └── 12-nist-ssdf-update/            # NIST SSDF 更新
+├── 11-industrial-iot-otit/             # 工业 IoT / OT-IT 融合
+│   ├── 01-isa-95-model/                # ISA-95 五层资产目录
+│   ├── 02-opc-ua-fx/                   # OPC UA FX 深化
+│   ├── 03-tsn-deterministic/           # TSN 确定性网络
+│   ├── 04-plcopen-motion/              # PLCopen Motion
+│   ├── 05-digital-twin-aas/            # 数字孪生 / AAS
+│   ├── 06-functional-safety/           # 功能安全（IEC 61508 / ISO 26262）
+│   ├── 07-edge-ai/                     # 工业边缘 AI
+│   ├── 08-digital-twin-general/        # 数字孪生通用
+│   ├── 09-network-digital-twin/        # 网络数字孪生
+│   └── plans-tasks/                    # plans tasks
+├── 12-ai-native-reuse/                 # AI 原生复用
+│   ├── 01-mcp-protocol/                # MCP 协议
+│   ├── 02-a2a-protocol/                # A2A 协议
+│   ├── 03-agentic-infrastructure/      # Agentic Infrastructure
+│   ├── 04-hybrid-a2a-mcp-poc/          # A2A/MCP 混合 PoC
+│   ├── 05-probabilistic-contracts/     # 概率契约
+│   ├── 06-ai-governance/               # AI 治理
+│   └── 07-conformal-prediction/        # Conformal Prediction
+├── 13-emerging-trends/                 # 前沿趋势
+│   ├── 01-platform-engineering/        # 平台工程成熟度
+│   ├── 02-modular-monolith/            # 模块化单体
+│   ├── 03-webassembly-components/      # WASM Component Model
+│   ├── 04-green-architecture/          # 绿色架构
+│   ├── 05-rust-ecosystem/              # Rust 生态
+│   ├── 06-regtech-ai/                  # RegTech AI
+│   ├── 07-green-software/              # 绿色软件
+│   └── 09-frontier-tracking/           # 前沿跟踪
+└── 99-reference/                       # 参考索引
+│   ├── audit/                          # 审计报告
+│   ├── chapters/                       # 全书章节框架
+│   ├── external-links/                 # 外部链接
+│   ├── frontier-tracking/              # 前沿跟踪
+│   ├── glossary/                       # 术语表
+│   ├── knowledge-index/                # 知识索引
+│   ├── standards-index/                # 标准索引
+│   ├── templates/                      # 模板
+│   ├── tools/                          # 工具脚本
+│   └── visualizations/                 # 可视化
 ```
 
 ---
@@ -121,7 +166,7 @@ struct/
 | 整个体系的逻辑基础 | [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) |
 | 6 大编程语言生态怎么选 | [`04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`](struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) |
 | MCP / A2A 协议深度分析 | [`05-functional-architecture-reuse/06-mcp-a2a-protocols/`](struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/) |
-| 云原生架构模式对比 | [`03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`](struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md) |
+| 云原生架构模式对比 | [`03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`](struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md) |
 | 软件供应链攻击与防御 | [`10-supply-chain-security/03-attack-vectors/attack-tree.md`](struct/10-supply-chain-security/03-attack-vectors/attack-tree.md) |
 | ISA-95 + OPC UA 工业资产 | [`11-industrial-iot-otit/01-isa-95-model/`](struct/11-industrial-iot-otit/01-isa-95-model/) |
 | TLA+ / Alloy 形式化案例 | [`07-formal-verification/`](struct/07-formal-verification/) |
@@ -138,10 +183,10 @@ struct/
 **架构标准**
 
 - ISO/IEC/IEEE 42010:2022（架构描述）
-- ISO/IEC/IEEE 42020:2023（架构过程）
-- ISO/IEC 25010:2024（系统与软件质量模型）
+- ISO/IEC/IEEE 42020:2019（架构过程）
+- ISO/IEC 25010:2023（系统与软件质量模型）
 - TOGAF® Standard, 10th Edition
-- ArchiMate® 3.2 / 4.0 Specification
+- ArchiMate® 3.2 / 4.0 Specification（4.0 于 2026-04-27 正式发布）
 
 **软件工程**
 
@@ -213,6 +258,8 @@ struct/
 
 ---
 
-> **最后更新**: 2026-06-06
+> **最后更新**: 2026-06-12（Phase A P0 权威来源对齐修复）
 > **本轮规模**: 新增/更新 ~120 个文件，~46.5 万字
 > **维护者**: 软件工程架构复用知识体系项目组
+>
+> **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v2.md`。

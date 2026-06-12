@@ -34,6 +34,19 @@
 - [x] 复用成熟度可执行评估问卷 (Python CLI) (`03-maturity-models/reuse-maturity-assessment-cli.py`，基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL)
 - [ ] FinOps 成本分摊工具模板 Python/Excel 实现 (P1, 2026-Q4)
 
+## 子目录导航
+
+| 子目录 | 主题 | 状态 |
+|:---|:---|:---:|
+| `01-process-governance/` | 复用过程治理 | ✅ |
+| `02-reuse-process/` | 复用过程治理（IEEE 1517 / 12207 / 26550 视角） | 🆕 已创建 |
+| `03-maturity-models/` | 成熟度模型（RCMM/RiSE/SPICE） | ✅ |
+| `04-finops-cost/` | FinOps 成本分摊模板 | ✅ |
+| `05-metrics-kpi/` | 四级度量指标体系 | ✅ |
+| `06-up-downgrade-matrix/` | 升级/降级决策矩阵 | ✅ |
+| `07-policy-automation/` | 策略自动化（OPA/Sentinel/Cedar） | 🆕 已创建 |
+| `09-agentic-governance/` | Agentic 治理 | ✅ |
+
 ## 关联主题
 
 - 所有层次主题（治理贯穿全部）

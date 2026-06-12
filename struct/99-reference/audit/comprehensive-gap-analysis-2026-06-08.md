@@ -224,7 +224,7 @@
 **修正建议**：
 
 1. 立即在所有文件中回退 "ArchiMate 4.0 已正式发布" 声明
-2. 改为："ArchiMate 4.0 处于厂商预发布/预览阶段，The Open Group 官方当前稳定版仍为 3.2"
+2. 改为："ArchiMate 4.0 处于已正式发布/预览阶段，The Open Group 官方当前稳定版仍为 3.2"
 3. 在 `01-meta-model-standards/04-archimate-4/` 中增加 `ARCHIMATE-4-ERRATUM.md` 勘误文件
 4. 更新 `99-reference/CHANGELOG.md` 记录此勘误
 

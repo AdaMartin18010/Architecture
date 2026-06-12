@@ -154,7 +154,7 @@
 |-----------|---------------|-----------|------|
 | **ICSA 2026** (Amsterdam, Jun 22-26) | "Architecting in Continuous Software Engineering: Evolving Roles, Enduring Principles"。强调 AI 与架构融合、30 周年反思（1996-2026） | 提及但未系统对齐 | **高优先级**：增加 ICSA 主题与本框架的映射，为 Phase 6 白皮书/投稿做准备 |
 | **ECSA 2025** (Limassol, Sep 15-19) | "impactful software architecture"。关注 AI/LLM 密集系统架构、可持续架构、数字孪生、量子软件 | 未引用 | 补充 ECSA 架构影响力模型，对齐 "impactful" 度量 |
-| **GreenArch 2026** (ICSA Workshop) | "Software Architecture for Green Sustainable Carbon-aware Software Systems"。首个 ICSA 绿色架构 Workshop | 未覆盖 | **新增**：`13-emerging-trends/06-green-software/` 对齐 GSF SCI、碳感知架构复用度量 |
+| **GreenArch 2026** (ICSA Workshop) | "Software Architecture for Green Sustainable Carbon-aware Software Systems"。首个 ICSA 绿色架构 Workshop | 未覆盖 | **新增**：`13-emerging-trends/07-green-software/` 对齐 GSF SCI、碳感知架构复用度量 |
 | **GREENS'26** | 绿色软件工程、Green AI、碳感知计算、LLM 可持续性 | 未覆盖 | 与 GreenArch 内容可合并或互补 |
 | **SAGAI / SEAMS 2026** | 生成式 AI + 自适应系统、自适应性根因分析 | 未系统覆盖 | 可选：AI 辅助复用决策与自适应性结合 |
 
@@ -194,11 +194,11 @@
 | P2-T4 | **COCOMO II 2026 可执行计算器** | `09-value-quantification/tools/cocomo-calculator.py` + Excel | USC COCOMO II Manual (Boehm) | 支持 AAM/SU/UNFM 参数输入和 ROI 输出；Streamlit 可选 |
 | P2-T5 | **FinOps 跨层成本分摊 Python/Excel 模板** | `06-cross-layer-governance/04-finops-cost/templates/` + `99-reference/tools/finops-template/` | FinOps Foundation | Excel 带公式导出；含四级分摊公式和示例数据 |
 | P2-T6 | **复用成熟度可执行评估问卷** | `06-cross-layer-governance/03-maturity-models/assessment-tool/` (YAML + Python CLI) | ISO/IEC 26566:2026、NASA RRL、**CNCF Maturity Model 五维度** | 生成雷达图 + 成熟度报告；CNCF 五维度可选评估 |
-| P2-T7 | **AI 功能概率契约校准工具原型** | `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` | Conformal Prediction (Vovk et al.)、OWASP LLM/MCP Top 10、**Microsoft Agent Governance Toolkit** | 支持温度/Top-p/模型版本漂移的边界计算；可视化输出 |
+| P2-T7 | **AI 功能概率契约校准工具原型** | `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction (Vovk et al.)、OWASP LLM/MCP Top 10、**Microsoft Agent Governance Toolkit** | 支持温度/Top-p/模型版本漂移的边界计算；可视化输出 |
 | P2-T8 | **AI 辅助复用决策系统原型设计** | `08-cognitive-architecture/05-ai-cognitive-augmentation/prototype-design.md` + PoC 架构 | ACT-R (CMU)、NASA-TLX | 含 RAG+LLM 流程图和最小可运行 PoC（Python） |
 | P2-T9 | **术语查询脚本** | `99-reference/tools/terminology-query.py` | IREB CPRE Glossary、ISO/IEC 42010/42024 | 支持跨标准术语搜索和别名映射；CLI 可用 |
 | P2-T10 | **OMG RAS v2.2 对齐章节** | `01-meta-model-standards/07-omg-ras/ras-alignment.md` | OMG RAS v2.2 | 覆盖 Classification/Solution/Usage/Related Assets |
-| P2-T11 | **Backstage / Port / Cortex IDP 复用实践** | `03-application-architecture-reuse/08-idp-practices/backstage-port-cortex.md` | CNCF Platform Engineering Maturity Model、Backstage.io | 三家平台对比 + Golden Path 模板 + 选型决策树 |
+| P2-T11 | **Backstage / Port / Cortex IDP 复用实践** | `03-application-architecture-reuse/11-idp-practices/backstage-port-cortex.md` | CNCF Platform Engineering Maturity Model、Backstage.io | 三家平台对比 + Golden Path 模板 + 选型决策树 |
 
 ### Phase 3 垂直领域扩展（2027-Q1）
 
@@ -216,16 +216,16 @@
 
 ### Phase 4 安全与供应链纵深（2027-Q2）
 
-**目标**: 构建 SLSA L4、SBOM 深度应用、攻击树可视化的纵深防御体系；对齐 NIST SSDF 1.2 正式版。
+**目标**: 构建 SLSA L4、SBOM 深度应用、攻击树可视化的纵深防御体系；对齐 NIST SSDF 1.2 Initial Public Draft（征求意见稿），并跟踪其正式版发布。
 
 | 任务 ID | 任务 | 交付物 | 对齐来源 | 验收标准 |
 |---------|------|--------|----------|----------|
 | P4-T1 | **SLSA 1.2 Multi-Track 深度解析（Build/Source/Environment）** | `10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md` | **SLSA.dev (OpenSSF) 正式版** | 三轨道 × L1-L3 要求矩阵；与复用决策矩阵联动 |
 | P4-T2 | **SLSA L4 分布式构建验证实践** | `10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md` + sigstore/cosign 示例 | OpenSSF、Sigstore | 多签名 + 可复现构建 POC；GitHub Actions 流水线可运行 |
 | P4-T3 | **供应链攻击树交互式可视化** | `10-supply-chain-security/03-attack-vectors/attack-tree-interactive.html` / `.py` | MITRE ATT&CK、OWASP SCVS | 支持点击展开/防御矩阵联动；Streamlit/Dash 可选 |
-| P4-T4 | **NIST SSDF 1.2 正式版对齐** | `10-supply-chain-security/05-case-studies/nist-ssdf-1-2-alignment.md` 更新 | NIST SP 800-218r1 正式版 | 同步正式版变更；与 SLSA 1.2 的映射 |
-| P4-T5 | **EU CRA 合规检查清单工具** | `10-supply-chain-security/05-case-studies/eu-cra-checklist.json` + CLI | Regulation (EU) 2024/2847 | 自动评估合规项；生成差距报告 |
-| P4-T6 | **IEEE 1517 复用过程映射** | `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` | IEEE 1517-2010 | 与 ISO 12207:2017 的对照；复用活动细化 |
+| P4-T4 | **NIST SSDF 1.2 Initial Public Draft 对齐** | `10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` 更新 | NIST SP 800-218r1 IPD | 同步征求意见稿内容；跟踪正式版发布；与 SLSA 1.2 的映射 |
+| P4-T5 | **EU CRA 合规检查清单工具** | `10-supply-chain-security/06-case-studies/eu-cra-checklist.json` + CLI | Regulation (EU) 2024/2847 | 自动评估合规项；生成差距报告 |
+| P4-T6 | **IEEE 1517 复用过程映射** | `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` | IEEE 1517-2010; ISO/IEC/IEEE 12207:2026 | 与 12207:2026 的对照；复用活动细化；2017 版仅作历史对照 |
 | P4-T7 | **ISO/IEC 33000 (SPICE) 与复用成熟度映射（可选）** | `06-cross-layer-governance/03-maturity-models/spice-rcmm-mapping.md` | ISO/IEC 33000 系列 | 六级过程能力与 RCMM/RiSE 的映射 |
 
 ### Phase 5 AI 原生与前沿（2027-Q3）
@@ -236,11 +236,11 @@
 |---------|------|--------|----------|----------|
 | P5-T1 | **MCP 2025-11-25 全面更新（替换旧引用）** | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` 更新 | modelcontextprotocol.io/specification/2025-11-25、**AAIF** | 覆盖 Tasks、Icons、Elicitation、OAuth 增量、**MCP Apps**、Agent Governance Toolkit |
 | P5-T2 | **Agentic Governance 组织设计模板** | `12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md` | Google A2A v1.0、Linux Foundation Agentic AI Foundation、**Microsoft Agent Governance Toolkit** | 含 Agent RBAC、Golden Path、模型路由、审计追踪 |
-| P5-T3 | **CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础）** | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | **Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程)** | 提出"AI 生成 + CP 筛选 + 定理证明"三层保证（探索性框架） |
+| P5-T3 | **CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础）** | `12-ai-native-reuse/07-conformal-prediction/cp-formal-verification.md` | **Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程)** | 提出"AI 生成 + CP 筛选 + 定理证明"三层保证（探索性框架） |
 | P5-T4 | **WASM Component Model + WASI 0.3 复用边界更新** | `13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md` | Bytecode Alliance、Wasmtime 37+、**WASI 1.0 roadmap** | 覆盖 stream/future、async、线程限制、.NET WASM runtime 前瞻 |
 | P5-T5 | **CNCF Platform Engineering 五维度评估检查清单** | `13-emerging-trends/01-platform-engineering/platform-maturity-model.md` 扩展 | **CNCF TAG App Delivery** | 五维度（Investment/Adoption/Interfaces/Operations/Measurement）逐条映射 |
-| P5-T6 | **RegTech Agentic 架构案例验证** | `13-emerging-trends/05-regtech-ai/regtech-case-validation.md` | FCA/SEC/EU regulators | 1+ 真实监管场景 POC 设计 |
-| P5-T7 | **可持续软件架构（GreenArch）初探** | `13-emerging-trends/06-green-software/green-architecture-reuse.md` | **GreenArch 2026**、Green Software Foundation SCI、Carbon Aware SDK | 碳感知架构复用度量；与 FinOps 成本模型的关联 |
+| P5-T6 | **RegTech Agentic 架构案例验证** | `13-emerging-trends/06-regtech-ai/regtech-case-validation.md` | FCA/SEC/EU regulators | 1+ 真实监管场景 POC 设计 |
+| P5-T7 | **可持续软件架构（GreenArch）初探** | `13-emerging-trends/07-green-software/green-architecture-reuse.md` | **GreenArch 2026**、Green Software Foundation SCI、Carbon Aware SDK | 碳感知架构复用度量；与 FinOps 成本模型的关联 |
 | P5-T8 | **ICSA 2026 / ECSA 2025 主题映射与投稿准备（可选）** | `99-reference/publications/icsa-2026-whitepaper-draft.md` | ICSA 2026、ECSA 2025 | 完成 1 份白皮书/短篇论文初稿 |
 
 ### Phase 6 整合与输出（2027-Q4）

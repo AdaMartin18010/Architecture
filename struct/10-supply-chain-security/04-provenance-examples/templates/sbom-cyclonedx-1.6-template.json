@@ -1,0 +1,99 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000000",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-12T00:00:00Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "sbom-generator",
+          "version": "1.0.0",
+          "purl": "pkg:generic/sbom-generator@1.0.0"
+        }
+      ]
+    },
+    "authors": [
+      {
+        "name": "Alice Example",
+        "email": "alice@example.org"
+      }
+    ],
+    "component": {
+      "type": "library",
+      "name": "reuse-component",
+      "version": "1.0.0",
+      "purl": "pkg:maven/org.example/reuse-component@1.0.0",
+      "swid": {
+        "tagId": "org.example.reuse-component.1.0.0",
+        "name": "reuse-component",
+        "version": "1.0.0"
+      }
+    },
+    "manufacture": {
+      "name": "Example Inc.",
+      "url": [
+        "https://example.org"
+      ]
+    },
+    "supplier": {
+      "name": "Example Inc.",
+      "url": [
+        "https://example.org"
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "reuse-component",
+      "version": "1.0.0",
+      "purl": "pkg:maven/org.example/reuse-component@1.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "copyright": "Copyright 2026 Example Inc.",
+      "supplier": {
+        "name": "Example Inc."
+      },
+      "author": "Alice Example",
+      "description": "可复用组件示例（CycloneDX 1.6 模板）。",
+      "properties": [
+        {
+          "name": "reuse:admission:status",
+          "value": "approved"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:maven/org.example/reuse-component@1.0.0",
+      "dependsOn": []
+    }
+  ],
+  "annotations": [
+    {
+      "subjects": [
+        "pkg:maven/org.example/reuse-component@1.0.0"
+      ],
+      "annotator": {
+        "organization": "Example Inc. Supply Chain Security Team"
+      },
+      "timestamp": "2026-06-12T00:00:00Z",
+      "text": "CycloneDX 1.6 最小要素模板。请替换 serialNumber、purl、hashes、supplier、authors 及工具信息为实际值。"
+    }
+  ]
+}

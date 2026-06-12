@@ -1,9 +1,9 @@
 # 软件工程架构复用视角：国际标准对齐与层次化提纲
 
 > **版本**: 2026-06-05
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC/IEEE 42020:2019, ISO/IEC/IEEE 42030:2019, ISO/IEC/IEEE DIS 42024, ISO/IEC/IEEE DIS 42042, ISO/IEC 25010:2024, TOGAF 10, ISO/IEC 26550:2015, ISO/IEC 26566:2026, FEA 2.0, IEEE 1517
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC/IEEE 42020:2019, ISO/IEC/IEEE 42030:2019, ISO/IEC/IEEE DIS 42024, ISO/IEC/IEEE DIS 42042, ISO/IEC 25010:2023, TOGAF 10, ISO/IEC 26550:2015, ISO/IEC 26566:2026, FEA 2.0, IEEE 1517
 >
-> ⚠️ **勘误说明（2026-06-08）**: 本文档中 "ISO/IEC 25010:2023" 已更正为 **ISO/IEC 25010:2024**。2024 版已发布并取代 2011 版，新增 AI/ML 系统质量特性考量。正文保留早期认知记录。
+> ⚠️ **勘误说明（2026-06-08）**: 本文档中 "ISO/IEC 25010:2023" 已更正为 **ISO/IEC 25010:2023**。2024 版已发布并取代 2011 版，新增 AI/ML 系统质量特性考量。正文保留早期认知记录。
 > **视角**: 业务复用 → 应用复用 → 组件复用 → 功能复用
 > **目标**: 建立可持续推进的精细化提纲层次，支持后续逐层深入论证
 
@@ -187,7 +187,7 @@ Level 5: 业务服务复用 (Business Service Reuse)
 | **TOGAF 10 Phase C** | 信息系统架构 = 数据架构 + 应用架构 | ABB/SBB 在应用层的映射 |
 | **FEA ARM** (Application Reference Model) | 系统 (System) → 应用组件 (App Component) → 接口 (Interface) | 跨机构应用组件复用分类 |
 | **FEA SRM** (Service Component Reference Model) | 水平/垂直服务域 → 服务组件 | 服务组件的政府级复用目录 |
-| **ISO/IEC 25010:2024** | 软件质量模型 → 可复用性 (Reusability) 作为质量特性 | 定义复用性的质量度量维度 |
+| **ISO/IEC 25010:2023** | 软件质量模型 → 可复用性 (Reusability) 作为质量特性 | 定义复用性的质量度量维度 |
 | **C4 Model** | System Context → Container → Component → Code | 可视化应用架构复用边界 |
 
 ### 3.2 应用复用的层次结构
@@ -299,7 +299,7 @@ Level 4: 设计模式/架构模式复用 (Pattern Reuse)
 
 | 标准/框架 | 功能复用核心概念 | 2026 状态 |
 |-----------|------------------|-----------|
-| **ISO/IEC 25010:2024** | 功能适合性 (Functional Suitability) + 可复用性 (Reusability) | 功能级质量度量 |
+| **ISO/IEC 25010:2023** | 功能适合性 (Functional Suitability) + 可复用性 (Reusability) | 功能级质量度量 |
 | **IEEE 1517** | 复用过程：获取、评估、适配、集成 | 功能获取的标准过程 |
 | **Serverless/FaaS** | Function as a Unit of Deployment | 功能级部署与复用 |
 | **Temporal/Workflow** | Workflow as Code = 可复用业务功能编排 | 2026 工作流即复用模式 |
@@ -374,7 +374,7 @@ Level 5: AI/LLM 功能复用 (AI Function Reuse)
 | 治理维度 | 标准/框架 | 核心机制 |
 |----------|-----------|----------|
 | **过程治理** | ISO/IEC/IEEE 42020:2019 | 架构过程的标准化、裁剪、执行 |
-| **质量治理** | ISO/IEC 25010:2024 | 复用性的质量特性度量（模块化、可组合性、可替换性） |
+| **质量治理** | ISO/IEC 25010:2023 | 复用性的质量特性度量（模块化、可组合性、可替换性） |
 | **评估治理** | ISO/IEC/IEEE 42030:2019 | 架构评估的准则、方法、证据 |
 | **成熟度治理** | RiSE Maturity Model / RCMM | 复用能力的五级成熟度评估 |
 | **资产治理** | IEEE 1517 + ISO/IEC 26550 | 复用资产的生命周期管理（获取、评估、存储、退役） |

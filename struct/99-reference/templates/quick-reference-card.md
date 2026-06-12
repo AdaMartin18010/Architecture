@@ -106,7 +106,7 @@ COCOMO II 复用调整:
 
 | 问题类型 | 参考文档 |
 |---------|---------|
-| 架构模式选择 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` |
+| 架构模式选择 | `03/07-cloud-native-patterns/reusability-matrix-2026.md` |
 | 供应链攻击响应 | `10/03-attack-vectors/attack-tree.md` |
 | MCP 协议问题 | `05/06-mcp-a2a-protocols/protocol-analysis.md` |
 | 工业协议映射 | `11/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md` |

@@ -74,7 +74,7 @@ V4 特别强调模型驱动的需求规格（Model-Driven Requirements Specifica
 | 本体系主题 | 对应关系说明 |
 |:-----------|:-------------|
 | **03-应用架构复用** | 软件架构是应用架构复用的核心载体。架构风格（Architectural Styles）、参考架构（Reference Architectures）和架构决策记录（ADR）作为可复用资产，在应用架构层被直接复用。微服务架构、事件驱动架构等风格定义了应用组合的标准模式。 |
-| **01-元模型与标准** | 架构描述标准 ISO 42010:2022、架构过程标准 ISO 42020:2019 和架构建模语言 ArchiMate 3.2（当前官方稳定版）构成了架构描述与治理的元模型基础；ArchiMate 4.0 处于厂商预发布阶段，未获官方正式发布确认。TOGAF 10 的 ABB/SBB 机制提供了架构复用的分层实现路径。 |
+| **01-元模型与标准** | 架构描述标准 ISO 42010:2022、架构过程标准 ISO 42020:2019 和架构建模语言 ArchiMate 3.2/4.0 构成了架构描述与治理的元模型基础；其中 ArchiMate 4 Specification 已于 2026-04-27 正式发布，与 ArchiMate 3.2 向后兼容。TOGAF 10 的 ABB/SBB 机制提供了架构复用的分层实现路径。 |
 | **05-功能架构复用** | 功能架构（Functional Architecture）是软件架构的逻辑视图。功能分解模型、接口契约定义和端口-连接器模型（Port-Connector Model）在功能架构层被复用，支撑多种技术实现（SBB）。 |
 
 > **本体系扩展**: 本体系在 03-应用架构复用 中扩展了**架构契约复用**（Architecture Contract Reuse）和**接口即服务**（Interface-as-a-Service）模式，将 SWEBOK 的架构知识从"项目内资产"提升为"组织级可交易资产"。

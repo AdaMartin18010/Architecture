@@ -5,6 +5,48 @@
 
 ---
 
+## 2026-06-12 Phase A P0 权威来源对齐修复
+
+> **触发原因**: 经与国际权威来源（ISO、The Open Group、NIST、IEC）交叉复核，发现项目中对部分标准版本/状态的描述存在事实性错误，集中修复以恢复知识库权威性。
+
+### 已修正的标准状态
+
+| 标准 | 原表述 | 修正后 | 权威来源 |
+|------|--------|--------|----------|
+| **ISO/IEC 25010** | 2024 版已发布 | **2023** 版为正式版 | ISO 78175 |
+| **ArchiMate 4.0** | 厂商预发布/未获官方确认 | **已正式发布（2026-04-27）** | The Open Group 新闻稿 |
+| **ISO/IEC/IEEE 12207** | 仍在制定中 | **已发布（2026-04-29）** | ISO 90219 |
+| **ISO/IEC 30141** | 被误审为“不存在 2024 版” | **已发布（2024-08）**，确认存在 | ISO 88800 |
+| **NIST SSDF 1.2** | 正式版 | **Initial Public Draft（征求意见稿）** | NIST CSRC |
+| **ISO/IEC 26550** | 多处误写为 2023/2025 | **2015** 版为现行版 | ISO 69529 |
+| **IEC 62443-4-2** | 误写为 2025 版 | **2019** 版为现行版 | IEC 67463 |
+| **ISO/IEC 5338** | 制定中 | **2023** 版已发布 | ISO 81118 |
+| **ISO/IEC 25040** | URL 指向 /standard/64768.html | 修正为 /standard/83467.html | ISO 83467 |
+| **ISO/IEC/IEEE 42030 AWI** | URL 指向 /standard/82606.html | 区分现行版（73436）与 AWI 项目（93814） | ISO |
+
+### 关键勘误说明
+
+**ArchiMate 4.0 状态追溯（2026-06-12 最终结论）**
+
+项目早期曾因 The Open Group 官网未即时更新，将 ArchiMate 4.0 标记为“厂商预发布”；随后又基于第三方信息误判为“已正式发布”，并在 2026-06-08 二次勘误中回退为“厂商预发布”。经最终复核 The Open Group 官方新闻稿（Document C260, April 2026），**ArchiMate 4 Specification 已于 2026-04-27 正式发布**，与 ArchiMate 3.2 向后兼容。2026-06-12 起，项目统一采用“已正式发布（2026-04-27）”作为权威表述，并在 view/ 历史文档中以三次勘误标记保留认知演进记录。
+
+### 新增文件
+
+- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 全项目事实基准索引
+- `struct/99-reference/tools/standards-version-audit.py` — 全项目标准编号一致性扫描脚本
+- `struct/99-reference/tools/fix-p0-standards.py` — P0 事实修复批量替换脚本
+
+### 主要修改文件
+
+- `README.md` — 更新标准列表与勘误说明
+- `view/software_architecture_reuse_framework_2026.md` — 回滚 ISO 25010 版本号、修正勘误说明
+- `view/software_architecture_reuse_full_2026.md` — 回滚 ISO 25010 版本号、更新 ArchiMate 勘误
+- `struct/99-reference/standards-index/master-alignment-matrix.md` — 更新 ArchiMate 4.0 状态
+- `struct/13-emerging-trends/09-frontier-tracking/frontier-status-2026-06.md` — 更新 12207/26550/5338/62443/ArchiMate 状态与 URL
+- `struct/10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` — 修正 SSDF 1.2 为征求意见稿
+
+---
+
 ## 2026-06-08 Phase 4 安全与供应链纵深完成
 
 ### 供应链安全
@@ -12,8 +54,8 @@
 - **SLSA 1.2 Multi-Track 深度解析**: `10/01-slsa-framework/slsa-1-2-multi-track.md` — Build/Source/Build Environment三轨道×L1-L3矩阵
 - **SLSA L4 分布式构建验证**: `10/01-slsa-framework/slsa-l4-distributed-builds.md` — sigstore/cosign实践、多签名构建概念验证
 - **供应链攻击树可视化**: `10/03-attack-vectors/attack-tree-interactive.py` — 5种攻击场景、纯Python生成单文件HTML、防御矩阵联动
-- **NIST SSDF 1.2 对齐**: `10/05-case-studies/nist-ssdf-1-2-alignment.md` — 四大实践组映射、正式版变化追踪
-- **EU CRA 合规工具**: `10/05-case-studies/eu-cra-checklist.py` — 20项检查清单(Annex I/II/III)、交互式评估、JSON/Markdown报告
+- **NIST SSDF 1.2 对齐**: `10/06-case-studies/nist-ssdf-1-2-alignment.md` — 四大实践组映射、正式版变化追踪
+- **EU CRA 合规工具**: `10/06-case-studies/eu-cra-checklist.py` — 20项检查清单(Annex I/II/III)、交互式评估、JSON/Markdown报告
 
 ### 元模型与标准对齐
 
@@ -57,7 +99,7 @@
 | COCOMO II 2026 计算器 | `09-value-quantification/tools/cocomo-calculator.py` | 成本估算、ROI计算 |
 | FinOps Excel 导出器 | `06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | 四级成本分摊、Excel导出 |
 | 成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | 25题评估、雷达图报告 |
-| AI概率契约校准 | `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` | Conformal Prediction校准、漂移检测 |
+| AI概率契约校准 | `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction校准、漂移检测 |
 | 术语查询 | `99-reference/tools/terminology-query.py` | 34术语跨标准检索 |
 
 ---
@@ -117,6 +159,8 @@
 
 > **勘误原因**：经网络核查，The Open Group 官方网站在 2026-06-08 仍显示 ArchiMate 最新版本为 3.1，无 ArchiMate 4.0 正式发布信息。此前项目将厂商预发布/第三方声明误判为官方正式发布。
 
+> **2026-06-12 更新**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4 Specification**（Document C260, April 2026），官方新闻稿确认。项目已据此更新为正式发布状态。
+
 **已勘误文件**（将"已正式发布"声明回退为"厂商预发布"）：
 
 - `struct/01-meta-model-standards/README.md`
@@ -167,7 +211,7 @@
 
 **更新文件**：
 
-- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/hybrid_agent_server.py` — 全面升级：
+- `struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/hybrid_agent_server.py` — 全面升级：
   - 新增 `RealMCPClient` 类：基于 `mcp.ClientSession` + `stdio_client` 连接外部 MCP Server
   - 新增 `MCPToolManager` 类：自动管理真实 Client / Mock fallback 切换
   - 启动时通过 `MCP_SERVER_COMMAND` 环境变量自动连接真实 MCP Server（超时 15s，失败降级）
@@ -179,8 +223,8 @@
 
 **新增测试文件**：
 
-- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/test_mcp_server.py` — 基于 `mcp.server.fastmcp` 的测试 MCP Server，提供 `get_weather` / `calculator` / `search_docs` 三个工具
-- `struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/test_e2e.py` — 端到端自动化测试脚本（7 项断言）
+- `struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/test_mcp_server.py` — 基于 `mcp.server.fastmcp` 的测试 MCP Server，提供 `get_weather` / `calculator` / `search_docs` 三个工具
+- `struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/test_e2e.py` — 端到端自动化测试脚本（7 项断言）
 
 **端到端验证结果**（7/7 通过 ✓）：
 
@@ -245,7 +289,7 @@
 
 - `99-reference/tools/terminology-query.py` — 跨标准术语查询 CLI（ISO 42010 / ISO 25010 / TOGAF / SLSA / MCP / A2A）
 - `99-reference/tools/cocomo-calculator.py` — COCOMO II 复用模型 2026 版计算器
-- `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` — 基于 **Conformal Prediction** 的 AI 功能概率契约校准工具，输出 P(correctness) ≥ 1-α 的统计保证
+- `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` — 基于 **Conformal Prediction** 的 AI 功能概率契约校准工具，输出 P(correctness) ≥ 1-α 的统计保证
 - `06-cross-layer-governance/03-maturity-models/assessment-tool.py` — 基于 **ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL** 的复用成熟度评估问卷 CLI，生成分维度雷达图和总体成熟度报告
 
 ### 更新的 README/状态

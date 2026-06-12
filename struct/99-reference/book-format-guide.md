@@ -237,7 +237,7 @@ $$ESLOC = ASLOC \times \frac{AAF}{100} \tag{9-2}$$
 ```markdown
 ![图 4-2：八种云原生架构模式的复用性雷达图](path/to/image.png)
 
-> **图 4-2** 八种云原生架构模式在耦合度、内聚度、部署独立性、团队自治性、技术异构性、可观测性、安全性、演化弹性八个维度的评估。数据来源：`struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`。
+> **图 4-2** 八种云原生架构模式在耦合度、内聚度、部署独立性、团队自治性、技术异构性、可观测性、安全性、演化弹性八个维度的评估。数据来源：`struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`。
 ```
 
 ### 4.3 公式引用

@@ -36,7 +36,7 @@
 - [x] Temporal 工作流复用模式 (`04-workflow-orchestration/temporal-reuse-patterns.md`)
 - [x] 功能复用粒度-成本-收益决策树 (`decision-tree-granularity-cost-roi.md`)
 - [x] MCP 2025-11-25 权威深度解析（替换旧 2026-07-28 RC 引用） (`../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md`)
-- [x] AI 功能概率契约校准工具原型 (`../12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py`，基于 Conformal Prediction)
+- [x] AI 功能概率契约校准工具原型 (`../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py`，基于 Conformal Prediction)
 
 ## 关联主题
 

@@ -379,7 +379,7 @@ if __name__ == "__main__":
 
 ## 5. 与概率契约框架的关联
 
-本项目的 **概率契约框架**（`struct/12-ai-native-reuse/04-probabilistic-contracts/`）从**规约层面**定义了 AI 组件的行为边界（如 OWASP LLM/MCP 安全约束）。
+本项目的 **概率契约框架**（`struct/12-ai-native-reuse/05-probabilistic-contracts/`）从**规约层面**定义了 AI 组件的行为边界（如 OWASP LLM/MCP 安全约束）。
 Conformal Prediction 从**统计层面**提供了量化工具，两者形成互补：
 
 ```mermaid
@@ -457,6 +457,6 @@ flowchart TB
 
 > **关联主题**:
 >
-> - `struct/12-ai-native-reuse/04-probabilistic-contracts/` — 概率契约与安全对齐
+> - `struct/12-ai-native-reuse/05-probabilistic-contracts/` — 概率契约与安全对齐
 > - `struct/12-ai-native-reuse/03-llm-reuse-patterns/` — LLM 代码生成复用模式
 > - `struct/07-formal-verification/` — 形式化验证与统计保证的融合路径

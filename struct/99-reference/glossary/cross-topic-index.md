@@ -23,8 +23,8 @@
 
 ### NIST SP 800-204 系列
 
-- `03-application-architecture-reuse/05-cloud-native-patterns/nist-sp-800-204-microservices-security.md` — 微服务安全
-- `10-supply-chain-security/05-case-studies/nist-ssdf-1-2-alignment.md` — SSDF 1.2
+- `03-application-architecture-reuse/07-cloud-native-patterns/nist-sp-800-204-microservices-security.md` — 微服务安全
+- `10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` — SSDF 1.2
 
 ### MCP / A2A
 
@@ -37,20 +37,20 @@
 
 ### 微服务与服务网格
 
-- `03-application-architecture-reuse/05-cloud-native-patterns/nist-sp-800-204-microservices-security.md`
-- `03-application-architecture-reuse/06-service-mesh/gateway-api-gamma-2026.md`
-- `03-application-architecture-reuse/07-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
+- `03-application-architecture-reuse/07-cloud-native-patterns/nist-sp-800-204-microservices-security.md`
+- `03-application-architecture-reuse/08-service-mesh/gateway-api-gamma-2026.md`
+- `03-application-architecture-reuse/09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
 - `13-emerging-trends/01-platform-engineering/platform-engineering-cncf-2026.md`
 
 ### 事件驱动与 CQRS
 
-- `03-application-architecture-reuse/07-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
+- `03-application-architecture-reuse/09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
 - `02-business-architecture-reuse/06-bpmn-dmn/bpmn-dmn-reuse-orchestration.md` — BPMN 事件子流程
 - `11-industrial-iot-otit/04-plcopen-motion/plcopen-motion-control.md` — 工业事件驱动
 
 ### 数据架构
 
-- `03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md`
+- `03-application-architecture-reuse/05-data-architecture/data-mesh-data-product-reuse.md`
 - `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — 数据架构交付物
 
 ### 功能安全
@@ -79,7 +79,7 @@
 | **元模型/标准** | `01-meta-model-standards/` 全部 |
 | **业务架构** | `02-business-architecture-reuse/` + BPMN/DMN 文件 |
 | **应用架构** | `03-application-architecture-reuse/` + Data Mesh + EDA/CQRS + Service Mesh |
-| **数据架构** | `03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md` |
+| **数据架构** | `03-application-architecture-reuse/05-data-architecture/data-mesh-data-product-reuse.md` |
 | **组件架构** | `04-component-architecture-reuse/` + 开源供应链 |
 | **功能架构** | `05-functional-architecture-reuse/` + LLM 函数 |
 | **跨层治理** | `06-cross-layer-governance/` + FinOps + 成熟度模型 |
@@ -132,8 +132,8 @@
 - `02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md`
 - `02-business-architecture-reuse/06-bpmn-dmn/bpmn-dmn-executable-cases.md`
 - `02-business-architecture-reuse/case-studies/industry-vertical-cases.md`
-- `03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`
-- `03-application-architecture-reuse/06-service-mesh/service-mesh-communication-patterns.md`
+- `03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`
+- `03-application-architecture-reuse/08-service-mesh/service-mesh-communication-patterns.md`
 - `04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`
 - `05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md`
 - `05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md`
@@ -163,7 +163,7 @@
 - `10-supply-chain-security/03-attack-vectors/attack-tree.md`
 - `10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
 - `10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`
-- `10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-template.md`
+- `10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-template.md`
 
 ### 工业 IoT
 
@@ -176,7 +176,7 @@
 
 ### AI 原生与前沿
 
-- `12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md`
+- `12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md`
 - `13-emerging-trends/01-platform-engineering/platform-maturity-model.md`
 - `13-emerging-trends/03-webassembly-components/wasm-reuse-decision-tree.md`
 

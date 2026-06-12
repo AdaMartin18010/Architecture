@@ -55,13 +55,13 @@
   - A: 定理 3.2 指出，独立当且仅当数据访问通过**抽象数据服务**而非**直接存储耦合**实现。详见 `03-application-architecture-reuse/README.md`。
 
 - **Q: 2026 云原生架构模式复用性矩阵覆盖了哪些模式？**
-  - A: 覆盖单体、模块化单体、SOA、微服务、微前端、Serverless、服务网格、EDA、模块化宏服务等模式的复用性、复杂度和适用场景对比。详见 `03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`。
+  - A: 覆盖单体、模块化单体、SOA、微服务、微前端、Serverless、服务网格、EDA、模块化宏服务等模式的复用性、复杂度和适用场景对比。详见 `03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`。
 
 - **Q: Data Mesh 的域导向复用核心理念是什么？**
-  - A: 数据作为产品由域团队自治拥有，通过标准化接口和联邦治理实现跨域数据复用，而非集中式数据仓库。详见 `03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md`。
+  - A: 数据作为产品由域团队自治拥有，通过标准化接口和联邦治理实现跨域数据复用，而非集中式数据仓库。详见 `03-application-architecture-reuse/05-data-architecture/data-mesh-data-product-reuse.md`。
 
 - **Q: 服务网格（Istio/Envoy/Cilium）的通信模式复用包括哪些？**
-  - A: 包括 mTLS、流量镜像、金丝雀发布、熔断、重试、超时等可复用通信策略。详见 `03-application-architecture-reuse/06-service-mesh/service-mesh-communication-patterns.md`。
+  - A: 包括 mTLS、流量镜像、金丝雀发布、熔断、重试、超时等可复用通信策略。详见 `03-application-architecture-reuse/08-service-mesh/service-mesh-communication-patterns.md`。
 
 ---
 
@@ -137,7 +137,7 @@
   - A: 基于 SAT 求解的 NP 完全问题；实际使用 PubGrub 算法，采用统一版本策略（依赖图中每个包仅一个版本）。详见 `07-formal-verification/04-rust-type-system/cargo-sat-resolution.md`。
 
 - **Q: SPARK Ada 与 Rust 在航空电子领域的认证路径有何差异？**
-  - A: SPARK Ada 拥有完整的 DO-178C/DO-333 FAA/EASA 认证路径和工具资格（TQL-1）；Rust 目前尚无航空级 DO-178C 认证路径，但内存安全保证已通过 RustBelt (Iris) 形式化证明。详见 `07-formal-verification/08-comparative-matrices/spark-ada-vs-rust-verification-matrix.md`。
+  - A: SPARK Ada 拥有完整的 DO-178C/DO-333 FAA/EASA 认证路径和工具资格（TQL-1）；Rust 目前尚无航空级 DO-178C 认证路径，但内存安全保证已通过 RustBelt (Iris) 形式化证明。详见 `07-formal-verification/09-comparative-matrices/spark-ada-vs-rust-verification-matrix.md`。
 
 - **Q: B Method / Event-B 在铁路信号系统中的典型应用是什么？**
   - A: 通过三层精化（M0 进路安全 → M1 区段道岔 → M2 信号联锁）对铁路信号系统进行形式化精化链验证。详见 `07-formal-verification/06-b-method/railway-signaling-refinement.md`。
@@ -203,7 +203,7 @@
   - A: SPDX 适用于许可证合规与法律咨询（ISO 5962）；CycloneDX 适用于安全漏洞管理与 DevSecOps；SWID 适用于软件资产盘点与 ITAM（NIST 对齐）。详见 `10-supply-chain-security/02-sbom-standards/sbom-comparison.md`。
 
 - **Q: 零信任软件供应链的五个验证点是什么？**
-  - A: 源代码验证、依赖验证、构建验证、制品验证、部署验证。公理 ZT.1 要求对每一个环节都进行验证。详见 `10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-principles.md` §2。
+  - A: 源代码验证、依赖验证、构建验证、制品验证、部署验证。公理 ZT.1 要求对每一个环节都进行验证。详见 `10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-principles.md` §2。
 
 - **Q: XZ Utils 后门的攻击路径属于哪类供应链攻击？**
   - A: 上游代码植入（3.5）：通过社交工程获取维护者信任 → 在测试文件中植入后门 → 通过 glibc hook 激活。详见 `10-supply-chain-security/03-attack-vectors/attack-tree.md` §3.5。
@@ -265,10 +265,10 @@
   - A: A2A Client Agent 将复杂任务委托给 A2A Server Agent；Server Agent **内部使用 MCP** 与其工具、API 和数据源交互。将 Agent 简单包装为 MCP tool 是本质上的限制。详见 `12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md` §5.3。
 
 - **Q: 概率契约框架中的置信度函数 γ(x) 取值范围是什么？**
-  - A: γ(x) ∈ [0, 1]，用于量化 AI 功能输出的可信度，需结合温度参数、Top-p、模型版本漂移进行校准。详见 `12-ai-native-reuse/04-probabilistic-contracts/README.md`。
+  - A: γ(x) ∈ [0, 1]，用于量化 AI 功能输出的可信度，需结合温度参数、Top-p、模型版本漂移进行校准。详见 `12-ai-native-reuse/05-probabilistic-contracts/README.md`。
 
 - **Q: Conformal Prediction 的边际覆盖保证公式是什么？**
-  - A: `P(y ∈ C(x)) ≥ 1 − α`，即在 α 显著性水平下，真实标签落在预测集合中的概率不低于 `1−α`。详见 `12-ai-native-reuse/04-probabilistic-contracts/README.md` 及 `05-conformal-prediction/cp-code-generation.md`。
+  - A: `P(y ∈ C(x)) ≥ 1 − α`，即在 α 显著性水平下，真实标签落在预测集合中的概率不低于 `1−α`。详见 `12-ai-native-reuse/05-probabilistic-contracts/README.md` 及 `05-conformal-prediction/cp-code-generation.md`。
 
 - **Q: 定理 AI.1 (Calibration Ceiling) 的核心结论是什么？**
   - A: 当 LLM 输出分布与真实分布的 KL 散度 > ε 时，任何校准方法都无法使校准误差 < δ，即置信度校准存在理论上限。详见 `12-ai-native-reuse/README.md`。

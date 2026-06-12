@@ -136,7 +136,7 @@
 ├── 06-b-method/
 │   ├── event-b-railway-refinement.md
 │   └── railway-signaling-refinement.md
-└── 08-comparative-matrices/
+└── 09-comparative-matrices/
     └── spark-ada-vs-rust-verification-matrix.md
 ```
 

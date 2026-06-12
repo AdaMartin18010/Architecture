@@ -155,7 +155,7 @@ elif tool == "🤖 AI 概率契约校准":
         demo_mode = st.checkbox("使用演示数据", value=True)
 
     if st.button("运行校准", type="primary"):
-        script = tool_path("struct/12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py")
+        script = tool_path("struct/12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py")
         cmd = [sys.executable, str(script), "--alpha", str(alpha), "--candidates", str(n_candidates)]
         if demo_mode:
             cmd.append("--sample")

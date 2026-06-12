@@ -11,6 +11,7 @@
 
 import argparse
 import json
+import subprocess
 import sys
 import urllib.request
 from datetime import datetime, timezone
@@ -61,8 +62,8 @@ STANDARDS: Dict[str, Dict] = {
         "name": "ISO/IEC 25010:2023 — SQuaRE Quality Models",
         "status_url": "https://www.iso.org/standard/78175.html",
         "rss_url": None,
-        "current_status": "2024 已发布",
-        "last_checked": "2026-06-10",
+        "current_status": "2023-11-15 已发布（取代 2011 版，新增 AI/ML 质量考量）；不存在 2024 版",
+        "last_checked": "2026-06-12",
         "expected_release": "已稳定",
         "action_on_release": "N/A — 已是最新版",
     },
@@ -79,19 +80,37 @@ STANDARDS: Dict[str, Dict] = {
         "name": "ArchiMate Specification",
         "status_url": "https://www.opengroup.org/archimate-forum",
         "rss_url": "https://www.opengroup.org/press-releases/feed",
-        "current_status": "3.2 稳定版；4.0 厂商预发布（未获官方确认）",
-        "last_checked": "2026-06-10",
-        "expected_release": "ArchiMate 4.0 正式发布时间未知",
-        "action_on_release": "更新 01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md",
+        "current_status": "ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 3.2 向后兼容",
+        "last_checked": "2026-06-12",
+        "expected_release": "已稳定",
+        "action_on_release": "N/A — 已更新为正式发布状态",
     },
     "cncf-platform": {
         "name": "CNCF Platform Engineering Maturity Model",
         "status_url": "https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/",
         "rss_url": None,
         "current_status": "五维度模型 (Investment/Adoption/Interfaces/Operations/Measurement)",
-        "last_checked": "2026-06-10",
+        "last_checked": "2026-06-12",
         "expected_release": "持续演进",
         "action_on_release": "更新 13-emerging-trends/01-platform-engineering/platform-maturity-model.md",
+    },
+    "iso-12207": {
+        "name": "ISO/IEC/IEEE 12207:2026 — Software Life Cycle Processes",
+        "status_url": "https://www.iso.org/standard/90219.html",
+        "rss_url": None,
+        "current_status": "2026-04-29 已发布，取代 2017 版",
+        "last_checked": "2026-06-12",
+        "expected_release": "已稳定",
+        "action_on_release": "N/A — 已更新为 2026 版",
+    },
+    "nist-ssdf-1-2": {
+        "name": "NIST SP 800-218 Rev.1 / SSDF v1.2",
+        "status_url": "https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2",
+        "rss_url": "https://csrc.nist.gov/news/feed",
+        "current_status": "Initial Public Draft（征求意见稿，2025-12-17 发布），非最终版",
+        "last_checked": "2026-06-12",
+        "expected_release": "最终版发布时间待定",
+        "action_on_release": "更新 10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md",
     },
 }
 
@@ -137,7 +156,7 @@ def generate_report(results: List[Dict]) -> str:
     lines = [
         "# 标准跟踪监控报告",
         f"> 生成时间: {datetime.now(timezone.utc).isoformat()}",
-        "> 监控范围: 8 项国际标准/行业框架",
+        "> 监控范围: 10 项国际标准/行业框架",
         "",
         "| 标准 | 链接状态 | 当前状态 | 建议行动 |",
         "|------|----------|----------|----------|",
@@ -162,6 +181,65 @@ def generate_report(results: List[Dict]) -> str:
     return "\n".join(lines)
 
 
+def run_version_audit() -> str:
+    """调用 standards-version-audit.py 获取项目内版本一致性报告。"""
+    audit_script = Path(__file__).resolve().parent / "standards-version-audit.py"
+    project_root = Path(__file__).resolve().parent.parent.parent.parent
+    try:
+        result = subprocess.run(
+            [sys.executable, str(audit_script), str(project_root)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        return result.stdout + result.stderr
+    except Exception as e:
+        return f"[ERROR] 运行 standards-version-audit.py 失败: {e}"
+
+
+def generate_quarterly_report(results: List[Dict]) -> str:
+    """生成季度综合报告：外部标准跟踪 + 内部版本一致性审计。"""
+    lines = [
+        "# 季度标准跟踪与一致性报告",
+        f"> 生成时间: {datetime.now(timezone.utc).isoformat()}",
+        "> 范围: 外部标准权威来源 + 项目内部引用一致性",
+        "",
+        "## 1. 外部标准跟踪",
+        "",
+        "| 标准 | 链接状态 | 当前状态 | 建议行动 |",
+        "|------|----------|----------|----------|",
+    ]
+    for r in results:
+        url_ok = "✅ 可达" if r["status_url_check"]["reachable"] else "❌ 不可达"
+        lines.append(
+            f"| {r['name']} | {url_ok} | {r['current_status']} | {r['action_on_release']} |"
+        )
+    lines.extend([
+        "",
+        "## 2. 项目内部标准版本一致性审计",
+        "",
+        "```text",
+    ])
+    audit_output = run_version_audit()
+    lines.append(audit_output)
+    lines.extend([
+        "```",
+        "",
+        "## 3. 下季度重点跟踪项",
+        "",
+        "1. MCP 2026-07-28 RC 是否按期发布",
+        "2. NIST SSDF 1.2 IPD 反馈期后是否进入正式版",
+        "3. IEC 61508 Ed.3 / ISO 26262 Ed.3 进展",
+        "4. ISO/IEC/IEEE DIS 42024 / DIS 42042 投票结果",
+        "5. WASI 1.0 发布计划更新",
+        "",
+        "---",
+        "> 本报告由 `99-reference/tools/standard-tracker.py --quarterly-report` 自动生成",
+    ])
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -172,6 +250,7 @@ def main() -> int:
     parser.add_argument("--check-all", action="store_true", help="检查所有标准链接健康状态")
     parser.add_argument("--standard", type=str, help="检查指定标准 (如 iso-42042)")
     parser.add_argument("--generate-report", action="store_true", help="生成 Markdown 监控报告")
+    parser.add_argument("--quarterly-report", action="store_true", help="生成季度综合报告（外部跟踪 + 内部审计）")
     parser.add_argument("--json", action="store_true", help="以 JSON 格式输出")
     args = parser.parse_args()
 
@@ -210,6 +289,15 @@ def main() -> int:
         with open(report_path, "w", encoding="utf-8") as f:
             f.write(report)
         print(f"报告已生成: {report_path}")
+        return 0
+
+    if args.quarterly_report:
+        results = check_all()
+        report = generate_quarterly_report(results)
+        report_path = Path(__file__).resolve().parent / "standard-tracker-quarterly-report.md"
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write(report)
+        print(f"季度报告已生成: {report_path}")
         return 0
 
     parser.print_help()

@@ -40,6 +40,9 @@
 - [x] WASM Component Model 复用决策树 (`03-webassembly-components/wasm-reuse-decision-tree.md`)
 - [x] CNCF 平台工程 2026 (`01-platform-engineering/platform-engineering-cncf-2026.md`)
 - [x] WASM 组件模型 2026 (`03-webassembly-components/wasm-component-model-2026.md`)
+- [x] Rust 生态与 WASM 形式化验证 (`05-rust-ecosystem/rust-wasm-formal-verification.md`)
+- [x] RegTech AI 复用框架 (`06-regtech-ai/regtech-ai-reuse.md`)
+- [x] 绿色软件碳排复用模型 (`07-green-software/sci-reuse-carbon-model.md`)
 - [ ] RegTech Agentic 架构的案例验证 (P2, 2027-Q3)
 
 ## 关联主题

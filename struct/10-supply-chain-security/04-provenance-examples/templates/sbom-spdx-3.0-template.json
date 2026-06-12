@@ -1,0 +1,64 @@
+{
+  "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
+  "@type": "SpdxDocument",
+  "spdxId": "https://example.org/spdxdoc/reuse-component-1.0.0",
+  "name": "reuse-component-1.0.0-sbom",
+  "creationInfo": {
+    "type": "CreationInfo",
+    "spdxId": "https://example.org/spdxdoc/reuse-component-1.0.0/creationInfo",
+    "specVersion": "3.0.1",
+    "created": "2026-06-12T00:00:00Z",
+    "createdBy": [
+      "https://example.org/ persons/alice"
+    ],
+    "createdUsing": [
+      "https://example.org/tools/sbom-generator-1.0"
+    ],
+    "profile": [
+      "core",
+      "software"
+    ],
+    "dataLicense": "CC0-1.0"
+  },
+  "element": [
+    {
+      "type": "Package",
+      "spdxId": "https://example.org/spdxdoc/reuse-component-1.0.0/package",
+      "name": "reuse-component",
+      "software_primaryPurpose": "LIBRARY",
+      "software_version": "1.0.0",
+      "software_packageVersion": "1.0.0",
+      "verifiedUsing": [
+        {
+          "type": "Hash",
+          "algorithm": "sha256",
+          "hashValue": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "downloadLocation": "https://github.com/example/reuse-component/releases/download/v1.0.0/reuse-component-1.0.0.jar",
+      "filesAnalyzed": true,
+      "verificationCode": {
+        "type": "PackageVerificationCode",
+        "packageVerificationCode": "0000000000000000000000000000000000000000"
+      },
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Example Inc.",
+      "supplier": "https://example.org/organizations/example-inc",
+      "originator": "https://example.org/persons/alice"
+    }
+  ],
+  "relationship": [
+    {
+      "type": "Relationship",
+      "spdxId": "https://example.org/spdxdoc/reuse-component-1.0.0/relationship/1",
+      "from": "https://example.org/spdxdoc/reuse-component-1.0.0",
+      "relationshipType": "describes",
+      "to": [
+        "https://example.org/spdxdoc/reuse-component-1.0.0/package"
+      ]
+    }
+  ],
+  "comment": "SPDX 3.0.1 最小要素模板。使用时请替换 spdxId、name、hash、downloadLocation、supplier、originator 及 createdBy 为实际值。",
+  "_usageNote": "该模板满足 SPDX 3.0.1 Core + Software Profile 的最小可复用组件 SBOM 要求。"
+}

@@ -1,35 +1,34 @@
-# SLSA Build L3 Provenance 生成示例（GitHub Actions）
-# 对齐：SLSA v1.2 Build Track、Sigstore/Cosign、GitHub Actions SLSA generator
-# 使用：将本文件复制到 .github/workflows/slsa-provenance.yml
+# SLSA Provenance + Sigstore Keyless Signing + SBOM 验证示例
+# 对齐：SLSA v1.2 Build Track L3、Sigstore/Cosign、OCI v1.1 Reference Types
+# 使用：复制到 .github/workflows/slsa-provenance.yml 并根据组织/仓库名修改
 
-name: SLSA Build L3 Provenance
+name: SLSA Provenance and SBOM Attestation
 
 on:
   push:
-    branches: [main, release/*]
+    branches: [main]
     tags: ["v*"]
   workflow_dispatch:
-
-permissions:
-  id-token: write   # 用于 Sigstore  Fulcio 身份令牌
-  contents: read
-  actions: read
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
+permissions:
+  contents: read
+  id-token: write  # 用于 Sigstore keyless 签名
+  packages: write  # 用于推送镜像到 GHCR
+  attestations: write  # 用于生成 GitHub provenance attestation
+
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      digest: ${{ steps.build.outputs.digest }}
       image: ${{ steps.image.outputs.image }}
+      digest: ${{ steps.build.outputs.digest }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0   # SLSA Source Track 需要完整历史
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -49,18 +48,18 @@ jobs:
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
-            type=sha
+            type=sha,prefix=,suffix=,format=short
 
       - name: Build and push image
         id: build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          provenance: true          # 生成 OCI v1.1 provenance attestation
-          sbom: true                # 生成 SBOM attestation
+          provenance: true
+          sbom: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -69,78 +68,91 @@ jobs:
         run: |
           echo "image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" >> "$GITHUB_OUTPUT"
 
-  # ---------------------------------------------------------------------------
-  # SLSA Build L3 Provenance (GitHub Actions SLSA generator)
-  # ---------------------------------------------------------------------------
+  # SLSA Build L3 provenance using the official generator
   provenance:
     needs: [build]
-    runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      packages: write
       actions: read
-    steps:
-      - name: Generate SLSA provenance
-        uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
-        with:
-          image: ${{ needs.build.outputs.image }}
-          digest: ${{ needs.build.outputs.digest }}
-          registry-username: ${{ github.actor }}
-          registry-password: ${{ secrets.GITHUB_TOKEN }}
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
+    with:
+      image: ${{ needs.build.outputs.image }}
+      digest: ${{ needs.build.outputs.digest }}
+      registry-username: ${{ github.actor }}
+    secrets:
+      registry-password: ${{ secrets.GITHUB_TOKEN }}
 
-  # ---------------------------------------------------------------------------
-  # Cosign 签名（Sigstore keyless）
-  # ---------------------------------------------------------------------------
+  # Sigstore keyless signing with Cosign
   sign:
     needs: [build]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      packages: write
     steps:
       - name: Install Cosign
-        uses: sigstore/cosign-installer@v3
+        uses: sigstore/cosign-installer@v3.6.0
 
       - name: Sign image with Cosign (keyless)
         run: |
           cosign sign --yes \
             "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}"
 
-      - name: Verify signature
-        run: |
-          cosign verify \
-            --certificate-identity-regexp="https://github.com/${{ github.repository }}/" \
-            --certificate-oidc-issuer="https://token.actions.githubusercontent.com" \
-            "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}"
-
-  # ---------------------------------------------------------------------------
-  # SBOM 验证与策略检查
-  # ---------------------------------------------------------------------------
-  verify:
-    needs: [build, provenance, sign]
+  # SBOM generation and vulnerability scanning
+  sbom:
+    needs: [build]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
-      - name: Install Syft + Grype
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+      - name: Install Syft and Grype
+        uses: anchore/sbom-action/download-syft@v0
+      - run: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
-      - name: Download SBOM from registry
+      - name: Generate SPDX 3.0 SBOM
         run: |
-          # Docker BuildKit 生成的 SBOM 已作为 OCI v1.1 reference type 附加
-          # 此处演示使用 Syft 重新生成以进行交叉验证
           syft "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}" \
-            -o spdx-json=/tmp/sbom.spdx.json \
-            -o cyclonedx-json=/tmp/sbom.cdx.json
+            -o spdx-json=sbom.spdx.json
 
-      - name: Vulnerability scan
+      - name: Generate CycloneDX 1.7 SBOM
         run: |
-          grype sbom:/tmp/sbom.cdx.json --fail-on high
+          syft "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}" \
+            -o cyclonedx-json=sbom.cyclonedx.json
+
+      - name: Scan SBOM for vulnerabilities
+        run: |
+          grype sbom.spdx.json --fail-on high --output sarif=vuln-report.sarif
 
       - name: Upload SBOM artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: sboms
+          name: sbom-artifacts
           path: |
-            /tmp/sbom.spdx.json
-            /tmp/sbom.cdx.json
+            sbom.spdx.json
+            sbom.cyclonedx.json
+            vuln-report.sarif
+
+  # OCI v1.1 referrer verification (example)
+  verify:
+    needs: [build, provenance, sign]
+    runs-on: ubuntu-latest
+    permissions:
+      packages: read
+    steps:
+      - name: Install regctl
+        uses: regclient/actions/regctl-installer@main
+
+      - name: Verify image signatures and referrers
+        run: |
+          echo "=== Image referrers (OCI v1.1) ==="
+          regctl manifest get \
+            "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}" \
+            --referrers
+
+          echo "=== Cosign verify ==="
+          cosign verify \
+            --certificate-identity-regexp="https://github.com/${{ github.repository }}/" \
+            --certificate-oidc-issuer="https://token.actions.githubusercontent.com" \
+            "${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}"

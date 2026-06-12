@@ -29,6 +29,16 @@
 | 概念映射图 | 核心概念间的语义关联 | `concept-mapping.mmd` |
 | 标准族谱树 | 30 个标准的层次与依赖关系 | `standard-family-tree.mmd` |
 
+## 按主题子目录索引
+
+部分主题因内容纵深，在子目录中维护独立的可视化源文件，统一在此索引以便引用。
+
+| 主题 | 子图名 | Mermaid 源文件 | Graphviz 源文件 | 位置 |
+|------|--------|---------------|-----------------|------|
+| 10 供应链安全 | 供应链攻击树 | `10-supply-chain-security/03-attack-vectors/attack-tree.mmd` | `10-supply-chain-security/03-attack-vectors/attack-tree.dot` | `struct/10-supply-chain-security/03-attack-vectors/` |
+
+> 说明: 该攻击树基于 `attack-tree.md` 的 7 大攻击路径绘制，区分 OR/AND/叶节点并按风险等级着色。可使用 `attack-tree-interactive.py --format mermaid|graphviz` 重新生成。
+
 ## 使用方式
 
 ### 嵌入 Markdown 文档

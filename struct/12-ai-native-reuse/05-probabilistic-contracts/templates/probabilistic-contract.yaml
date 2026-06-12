@@ -1,0 +1,148 @@
+# AI 概率契约 YAML Schema
+# 版本: 2026-06-12
+# 用途: 定义 AI 功能的概率契约，供校准工具、运行时监控与 SLA 治理使用。
+
+schema_version: "1.0"
+
+contract:
+  # 契约唯一标识
+  contract_id: "ai-func-code-review-v1"
+
+  # 功能元数据
+  function:
+    name: "code_review"
+    description: "使用 LLM 对代码片段进行静态审查，输出问题列表与总结。"
+    owner: "platform-ai-team@example.com"
+    domain: "software-engineering"
+    criticality: "medium"  # low | medium | high | critical
+
+  # 输入空间 X
+  input_space:
+    schema_uri: "https://example.com/schemas/code-review-input.json"
+    fields:
+      - name: "code"
+        type: "string"
+        required: true
+        description: "待审查代码片段"
+      - name: "language"
+        type: "string"
+        required: true
+        description: "编程语言标识，如 python、rust、go"
+      - name: "context"
+        type: "string"
+        required: false
+        description: "函数签名、类定义等上下文"
+    constraints:
+      - "code.length <= 2000"
+      - "language in ['python', 'rust', 'go', 'java', 'typescript']"
+
+  # 输出空间 Y
+  output_space:
+    schema_uri: "https://example.com/schemas/code-review-output.json"
+    fields:
+      - name: "issues"
+        type: "array"
+        items:
+          - name: "line"
+            type: "integer"
+          - name: "severity"
+            type: "string"
+            enum: ["low", "medium", "high", "critical"]
+          - name: "description"
+            type: "string"
+          - name: "suggestion"
+            type: "string"
+      - name: "summary"
+        type: "string"
+
+  # 置信度函数 γ(x)
+  confidence:
+    base_gamma: 0.90
+    function: |
+      # 伪代码：复杂度折扣 × 领域熟悉度 × 历史表现
+      complexity_discount = max(0.5, 1.0 - complexity_score * 0.1)
+      familiarity_bonus = 1.0 if familiarity > 0.8 else 0.9
+      gamma = min(0.99, base_gamma * complexity_discount * familiarity_bonus)
+    factors:
+      - name: "input_complexity"
+        weight: 0.5
+        source: "static-analysis"
+      - name: "domain_familiarity"
+        weight: 0.3
+        source: "historical-accuracy-by-language"
+      - name: "historical_performance"
+        weight: 0.2
+        source: "rolling-ece-window"
+
+  # 采样与模型参数约束
+  sampling:
+    model_version: "llm-v2.0"
+    temperature: 0.2
+    top_p: 0.90
+    max_tokens: 2048
+    seed: 42
+    determinism_level: "medium"  # low | medium | high | critical
+    constraints:
+      - "temperature in [0, 2]"
+      - "top_p in [0, 1]"
+      - "if determinism_level == 'critical' then temperature <= 0.1"
+      - "model_version pinned: true"
+
+  # Conformal Prediction 边界
+  conformal:
+    alpha: 0.10
+    target_coverage: 0.90
+    calibrated_q: null  # 由 calibration-tool.py report 子命令填充
+    calibration_dataset: "s3://ai-contracts/calibration/code-review-v2.parquet"
+    recalibration_schedule: "weekly"
+
+  # SLO / SLA 转换
+  slo:
+    correctness_rate: 0.90
+    availability: 0.90
+    latency_p99_ms: 800
+    human_in_the_loop_rate: 0.20
+    error_budget: 0.10
+    review_cycle: "7d"
+
+  # 违约阈值
+  breach:
+    hard_threshold:
+      delta: 0.03
+      action: "block_and_alert"
+      escalation: "page-oncall"
+    soft_threshold:
+      delta: 0.02
+      action: "retry_with_higher_confidence"
+      escalation: "log_and_notify"
+    human_in_the_loop_threshold: 0.80
+
+  # 运行时监控指标
+  monitoring:
+    metrics:
+      - "contract_coverage"
+      - "calibration_error_ece"
+      - "prediction_set_size"
+      - "model_drift_ks_stat"
+      - "low_confidence_rate"
+      - "human_in_the_loop_rate"
+    dashboards:
+      - "https://grafana.example.com/d/ai-contracts/code-review"
+    alerts:
+      - name: "HardBreach"
+        condition: "contract_coverage < slo.correctness_rate - breach.hard_threshold.delta"
+        severity: "critical"
+      - name: "CalibrationDrift"
+        condition: "model_drift_ks_stat > 0.1 and model_drift_p_value < 0.05"
+        severity: "warning"
+
+  # 治理与版本
+  governance:
+    approved_by: "architecture-board"
+    review_date: "2026-06-12"
+    next_review_date: "2026-07-12"
+    version: "1.0.0"
+    changelog:
+      - version: "1.0.0"
+        date: "2026-06-12"
+        change: "初始概率契约定义"

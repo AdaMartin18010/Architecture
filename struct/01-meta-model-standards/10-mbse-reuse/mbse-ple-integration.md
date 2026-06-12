@@ -4,7 +4,7 @@
 |---|---|
 | **版本** | 2026-06-10 |
 | **定位** | Phase C-02：元模型标准层 — MBSE 复用层次与产品线工程整合框架 |
-| **对齐标准** | INCOSE SE Vision 2035、ISO/IEC 26550:2023、ISO/IEC 42010:2022、IEC 63278（AAS）、ISO 15288:2023、OMG SysML v2 |
+| **对齐标准** | INCOSE SE Vision 2035、ISO/IEC 26550:2015、ISO/IEC 42010:2022、IEC 63278（AAS）、ISO 15288:2023、OMG SysML v2 |
 | **状态** | ✅ 已完成 |
 
 ---
@@ -687,7 +687,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 |---|---|---|---|
 | [1] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [2] | DoD Digital Engineering Strategy, 2018 | <https://www.dau.edu/sites/default/files/2023-11/Digital-Engineering-Strategy_2018.pdf> | 2026-06-10 |
-| [3] | ISO/IEC 26550:2023, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/81739.html> | 2026-06-10 |
+| [3] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/81739.html> | 2026-06-10 |
 | [4] | ISO/IEC/IEEE 15288:2023, System Life Cycle Processes | <https://www.iso.org/standard/81713.html> | 2026-06-10 |
 | [5] | IEC 63278:2023, Asset Administration Shell for Industrial Applications | <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363> | 2026-06-10 |
 | [6] | OMG SysML v2 Specification, Version 2.0 | <https://www.omg.org/spec/SysML/> | 2026-06-10 |

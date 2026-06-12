@@ -100,13 +100,13 @@
 
 ### 第 2 章：元模型与标准对齐
 
-**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 3.2（当前官方稳定版），ArchiMate 4.0 处于厂商预发布阶段（未获官方正式发布确认）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
+**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 3.2（仍有效，向后兼容）与 ArchiMate 4.0（已正式发布，2026-04-27）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
 
 **关键节**：
 2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042
 2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展
 2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
-2.4 ArchiMate 3.2 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界（"ArchiMate 4.0" 厂商预发布阶段，未获官方正式发布确认）
+2.4 ArchiMate 3.2/4.0 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界；ArchiMate 4.0 Common Domain 与跨层行为元素统一
 2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型
 2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理
 2.7 SWEBOK V4 知识领域对齐：将复用映射到软件工程知识体
@@ -158,10 +158,10 @@
 
 **引用主题来源**：
 
-- `struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`
-- `struct/03-application-architecture-reuse/06-service-mesh/service-mesh-communication-patterns.md`
-- `struct/03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md`
-- `struct/03-application-architecture-reuse/07-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
+- `struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`
+- `struct/03-application-architecture-reuse/08-service-mesh/service-mesh-communication-patterns.md`
+- `struct/03-application-architecture-reuse/05-data-architecture/data-mesh-data-product-reuse.md`
+- `struct/03-application-architecture-reuse/09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
 
 ---
 
@@ -292,7 +292,7 @@
 - `struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
 - `struct/10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`
 - `struct/10-supply-chain-security/03-attack-vectors/attack-tree.md`
-- `struct/10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-template.md`
+- `struct/10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-template.md`
 
 ---
 
@@ -336,7 +336,7 @@
 
 - `struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md`
 - `struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md`
-- `struct/12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md`
+- `struct/12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md`
 - `struct/13-emerging-trends/01-platform-engineering/platform-maturity-model.md`
 - `struct/13-emerging-trends/03-webassembly-components/wasm-reuse-decision-tree.md`
 

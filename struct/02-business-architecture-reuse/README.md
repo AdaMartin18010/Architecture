@@ -34,6 +34,20 @@
 - [x] FEA BRM 与 TOGAF Capability Map 交叉映射 (`02-business-capability/fea-brm-togaf-mapping.md`)
 - [x] 行业垂直场景（金融、医疗、制造）案例库 (`case-studies/industry-vertical-cases.md`)
 
+## 子目录导航
+
+| 子目录 | 主题 | 状态 |
+|:---|:---|:---:|
+| `01-business-domain-reuse/` | 业务域复用 | 🆕 已创建 |
+| `02-business-capability/` | 业务能力建模 | ✅ 核心文档 |
+| `03-value-stream/` | 价值流复用 | ✅ 核心文档 |
+| `04-business-process-reuse/` | 业务流程复用 | 🆕 已创建 |
+| `05-business-service-reuse/` | 业务服务复用 | 🆕 已创建 |
+| `06-bpmn-dmn/` | BPMN 2.0 / DMN 1.5 可执行案例 | ✅ 核心文档 |
+| `07-defense-mission-engineering/` | 国防任务工程 | ✅ |
+| `08-zachman-reuse-mapping/` | Zachman 框架复用映射 | ✅ |
+| `case-studies/` | 行业垂直场景案例库 | ✅ |
+
 ## 关联主题
 
 - `03-application-architecture-reuse`（业务服务是业务层与应用层的桥接点）

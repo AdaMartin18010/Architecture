@@ -64,7 +64,7 @@
 |------|-----------|----------|--------|
 | 01 元模型 | T15: 术语查询脚本（跨标准术语翻译） | 2026-Q3 | P1 |
 | 01 元模型 | DIS 42024/42042 当前 DIS 状态对齐 | ~~待外部事件~~ ✅ 已完成 (`iso-42024-42042-dis-alignment.md`) | P2 |
-| 01 元模型 | ArchiMate 4.0 正式发布后的映射更新 | ⏸️ **已冻结** — 经核查 The Open Group 官方尚未发布 ArchiMate 4.0（当前稳定版仍为 3.2），此前"已正式发布"声明已回退为"厂商预发布/未获官方确认" | P2 |
+| 01 元模型 | ArchiMate 4.0 正式发布后的映射更新 | ⏸️ **已冻结** — 经核查 The Open Group 官方尚未发布 ArchiMate 4.0（当前稳定版仍为 3.2），此前"已正式发布"声明已回退为"已正式发布/The Open Group 官方确认" | P2 |
 | 03 应用架构 | Backstage / Port / Cortex IDP 复用实践 | 2026-Q4 | P1 |
 | 04 组件架构 | Rust 生态深度形式化（所有权、Trait、Cargo SAT） | 07 已大部分完成 | P1 |
 | 04 组件架构 | WASM Component Model 跨语言复用分析 | 2026-Q4 | P1 |
@@ -139,7 +139,7 @@
 | **ISO/IEC 25040:2024** (Evaluation) | 未明确引用 | 缺少"获取或复用预开发产品"的评估流程映射 | 增加 25040 评估流程与复用决策的对照 |
 | **ISO/IEC/IEEE 42010:2022** | 已深度映射 | 基本完整，待 DIS 42042 发布后更新 | 跟踪 42042 进展 |
 | **ISO/IEC/IEEE DIS 42042** (Reference Architectures) | 仅作为待跟踪项 | 草案接近 2026 定稿，缺少参考架构元模型 | 一旦发布，补充到 01-meta-model-standards |
-| **IEEE 1517-2010** (Reuse Processes) | 未明确引用 | 12207:2017 虽覆盖，但 IEEE 1517 的复用过程活动更具体 | 增加 IEEE 1517 与 12207 的对照 |
+| **IEEE 1517-2010** (Reuse Processes) | 已映射 | 12207:2026 已覆盖复用过程，IEEE 1517 提供更具体的复用活动定义 | 持续维护 IEEE 1517 与 12207:2026 的对照 |
 | **OMG RAS v2.2** | 未引用 | 缺少可复用资产包装标准（Classification/Solution/Usage/Related Assets） | 新增 RAS 对齐章节 |
 | **ISO/IEC 26566:2026** | 已引用（成熟度） | 2026-05 刚正式发布，可深化方法/工具能力映射 | 更新 06/03-maturity-models 以反映正式版 |
 | **ISO/IEC 33000 系列** (SPICE) | 未系统引用 | 缺少过程能力六级模型与复用成熟度的映射 | 补充 33000 与 RCMM/RiSE 的映射 |
@@ -194,11 +194,11 @@
 | P2-T4 | COCOMO II 2026 可执行计算器 | `09-value-quantification/tools/cocomo-calculator.py` + Excel | USC COCOMO II Manual (Boehm) | 支持 AAM/SU/UNFM 参数输入和 ROI 输出 |
 | P2-T5 | FinOps 跨层成本分摊 Python/Excel 模板 | `06-cross-layer-governance/04-finops-cost/templates/` + `99-reference/tools/finops-template/` | FinOps Foundation | 含四级分摊公式和示例数据 |
 | P2-T6 | 复用成熟度可执行评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-tool/` (YAML + Python CLI) | ISO/IEC 26566:2026、NASA RRL | 生成雷达图 + 成熟度报告 |
-| P2-T7 | AI 功能概率契约校准工具原型 | `12-ai-native-reuse/04-probabilistic-contracts/calibration-tool.py` | Conformal Prediction (Vovk et al.)、OWASP LLM/MCP Top 10 | 支持温度/Top-p/模型版本漂移的边界计算 |
+| P2-T7 | AI 功能概率契约校准工具原型 | `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction (Vovk et al.)、OWASP LLM/MCP Top 10 | 支持温度/Top-p/模型版本漂移的边界计算 |
 | P2-T8 | AI 辅助复用决策系统原型设计 | `08-cognitive-architecture/05-ai-cognitive-augmentation/prototype-design.md` | ACT-R (CMU)、NASA-TLX | 含 RAG+LLM 流程图和 PoC 架构 |
 | P2-T9 | 术语查询脚本 | `99-reference/tools/terminology-query.py` | IREB CPRE Glossary、ISO/IEC 42010 | 支持跨标准术语搜索和别名映射 |
 | P2-T10 | OMG RAS v2.2 对齐章节 | `01-meta-model-standards/07-omg-ras/ras-alignment.md` | OMG RAS v2.2 | 覆盖 Classification/Solution/Usage/Related Assets |
-| P2-T11 | 03应用架构基础子目录内容填充（分层/微服务/Serverless/事件驱动） | `03/01-layered-architecture/`, `03/02-microservices/`, `03/03-serverless/`, `03/04-event-driven/` | SWEBOK v4, CNCF | 每个子目录至少1篇核心文档 |
+| P2-T11 | 03应用架构基础子目录内容填充（分层/微服务/Serverless/事件驱动） | `03/01-layered-architecture/`, `03/02-microservices/`, `03/04-serverless/`, `03/06-event-driven/` | SWEBOK v4, CNCF | 每个子目录至少1篇核心文档 |
 | P2-T12 | ISO/IEC 25010:2023 AI/ML质量特性对复用决策的影响矩阵 | `01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md` | ISO/IEC 25010:2023 | 覆盖AI生成代码/组件的复用质量评估 |
 
 ### Phase 3 垂直领域扩展（2027-Q1）
@@ -223,8 +223,8 @@
 | P4-T1 | SLSA 1.2 Multi-Track 深度解析（Build/Source/Environment） | `10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md` | SLSA.dev (OpenSSF) | 三轨道 × L1-L3 要求矩阵 |
 | P4-T2 | SLSA L4 分布式构建验证实践 | `10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md` + sigstore/cosign 示例 | OpenSSF、Sigstore | 多签名 + 可复现构建 POC |
 | P4-T3 | 供应链攻击树交互式可视化 | `10-supply-chain-security/03-attack-vectors/attack-tree-interactive.html` / `.py` | MITRE ATT&CK、OWASP SCVS | 支持点击展开/防御矩阵联动 |
-| P4-T4 | NIST SSDF 1.2 正式版对齐（当前为征求意见稿） | `10-supply-chain-security/05-case-studies/nist-ssdf-1-2-alignment.md` 更新 | NIST SP 800-218r1 | 同步正式版变更 |
-| P4-T5 | EU CRA 合规检查清单工具 | `10-supply-chain-security/05-case-studies/eu-cra-checklist.json` + CLI | Regulation (EU) 2024/2847 | 自动评估合规项 |
+| P4-T4 | NIST SSDF 1.2 Initial Public Draft 对齐 | `10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` 更新 | NIST SP 800-218r1 IPD | 同步征求意见稿；跟踪正式版变更 |
+| P4-T5 | EU CRA 合规检查清单工具 | `10-supply-chain-security/06-case-studies/eu-cra-checklist.json` + CLI | Regulation (EU) 2024/2847 | 自动评估合规项 |
 | P4-T6 | IEEE 1517 复用过程映射 | `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` | IEEE 1517-2010 | 与 ISO 12207:2017 的对照 |
 
 ### Phase 5 AI 原生与前沿（2027-Q3）
@@ -235,11 +235,11 @@
 |---------|------|--------|----------|----------|----------|
 | P5-T1 | MCP 2025-11-25 全面更新（替换 2026-07-28 RC 旧引用） | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | modelcontextprotocol.io/specification/2025-11-25 | 覆盖 Tasks、Icons、Elicitation、OAuth 增量 |
 | P5-T2 | Agentic Governance 组织设计模板 | `12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md` | Google A2A、Linux Foundation Agentic AI Foundation | 含 Agent RBAC、Golden Path、模型路由 |
-| P5-T3 | CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础） | `12-ai-native-reuse/05-conformal-prediction/cp-formal-verification.md` | Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程) | 提出探索性框架，明确标注为研究空白 | P2 |
+| P5-T3 | CP + 形式化验证融合框架（研究探索方向，尚无成熟学术基础） | `12-ai-native-reuse/07-conformal-prediction/cp-formal-verification.md` | Conformal Prediction (Vovk et al.)、Cherian & Candès (NeurIPS 2024, LLM validity via enhanced CP)、Angelopoulos & Bates (CP 现代教程) | 提出探索性框架，明确标注为研究空白 | P2 |
 | P5-T4 | WASM Component Model + WASI 0.3 复用边界更新（WASM Component Model 当前处于 W3C Phase 1（Feature Proposal），WASI 1.0 预计 2026年底/2027年初发布；使用 wasm-pkg-tools 替代 Warg registry） | `13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md` | Bytecode Alliance、Wasmtime 37+ | 覆盖 stream/future、async、线程限制，标注标准化阶段 |
-| P5-T5 | Backstage / Port / Cortex IDP 复用实践 | `03-application-architecture-reuse/08-idp-practices/backstage-port-cortex.md` | CNCF Platform Engineering Maturity Model | 三家平台对比 + Golden Path 模板 |
-| P5-T6 | RegTech Agentic 架构案例验证 | `13-emerging-trends/05-regtech-ai/regtech-case-validation.md` | Financial regulators (FCA/SEC/EU) | 1+ 真实监管场景 POC 设计 |
-| P5-T7 | 可持续软件架构（GreenArch）初探 | `13-emerging-trends/06-green-software/green-architecture-reuse.md` | GreenArch 2026、Green Software Foundation | 碳感知架构复用度量 |
+| P5-T5 | Backstage / Port / Cortex IDP 复用实践 | `03-application-architecture-reuse/11-idp-practices/backstage-port-cortex.md` | CNCF Platform Engineering Maturity Model | 三家平台对比 + Golden Path 模板 |
+| P5-T6 | RegTech Agentic 架构案例验证 | `13-emerging-trends/06-regtech-ai/regtech-case-validation.md` | Financial regulators (FCA/SEC/EU) | 1+ 真实监管场景 POC 设计 |
+| P5-T7 | 可持续软件架构（GreenArch）初探 | `13-emerging-trends/07-green-software/green-architecture-reuse.md` | GreenArch 2026、Green Software Foundation | 碳感知架构复用度量 |
 
 ### Phase 6 整合与输出（2027-Q4）
 

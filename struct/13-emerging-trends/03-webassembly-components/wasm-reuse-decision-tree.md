@@ -304,7 +304,7 @@ flowchart TB
 
 ### 6.1 WASM 组件在云原生架构中的位置
 
-结合 `struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md`：
+结合 `struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`：
 
 | 架构模式 | WASM 角色 | 示例 |
 |---------|----------|------|
@@ -436,6 +436,6 @@ Figma 是 WASM 在浏览器内大规模复用的标杆案例。其核心渲染�
 > **关联主题**:
 >
 > - `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` — 六大语言生态组件复用成熟度对比
-> - `struct/03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md` — 云原生架构模式复用性矩阵
+> - `struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md` — 云原生架构模式复用性矩阵
 > - `struct/13-emerging-trends/03-webassembly-components/wasm-component-model-2026.md` — WASM 组件模型技术全景
 > - `struct/13-emerging-trends/03-webassembly-components/wasm-reuse.md` — WASM 复用场景与挑战

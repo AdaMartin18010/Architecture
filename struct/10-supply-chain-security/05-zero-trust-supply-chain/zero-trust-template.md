@@ -3,7 +3,7 @@
 > **版本**: 2026-06-06
 > **权威来源**: NIST SP 800-207 (Zero Trust Architecture), NIST SSDF 1.2 Draft (SP 800-218r1), Google BeyondCorp, Microsoft Zero Trust Supply Chain
 > **定位**: Track D 供应链安全工程深化内容，为 Phase 4（2027-Q2）预热
-> **交叉引用**: `struct/10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-principles.md`, `struct/07-formal-verification/`
+> **交叉引用**: `struct/10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-principles.md`, `struct/07-formal-verification/`
 
 ---
 

@@ -39,7 +39,7 @@
       - [过程：REU.4 — 复用资产消费（Reuse Asset Consumption）](#过程reu4--复用资产消费reuse-asset-consumption)
       - [过程：REU.5 — 复用资产管理（Reuse Asset Governance）](#过程reu5--复用资产管理reuse-asset-governance)
   - [3. SPICE 过程维度与复用过程的映射](#3-spice-过程维度与复用过程的映射)
-    - [3.1 ISO/IEC 12207:2017 过程维度概述](#31-isoiec-122072017-过程维度概述)
+    - [3.1 ISO/IEC/IEEE 12207:2026 过程维度概述](#31-isoiecieee-122072026-过程维度概述)
     - [3.2 ACQ — 获取过程（Acquisition）](#32-acq--获取过程acquisition)
       - [3.2.1 ACQ.4 — 供应商监控（Supplier Monitoring）](#321-acq4--供应商监控supplier-monitoring)
       - [3.2.2 ACQ.5 — 技术验收（Technical Acceptance）](#322-acq5--技术验收technical-acceptance)
@@ -351,9 +351,9 @@ ISO/IEC 33004 要求评估使用四级评定标度：
 
 ## 3. SPICE 过程维度与复用过程的映射
 
-### 3.1 ISO/IEC 12207:2017 过程维度概述
+### 3.1 ISO/IEC/IEEE 12207:2026 过程维度概述
 
-SPICE 默认的过程参考模型是 ISO/IEC 12207:2017《系统和软件工程 — 软件生命周期过程》。该标准将软件生命周期过程分为四大类：
+SPICE 默认的软件过程参考模型为 ISO/IEC/IEEE 12207:2026《系统和软件工程 — 软件生命周期过程》（现行版，2026-04-29 发布，取代 2017 版）。该标准将软件生命周期过程分为四大类（与 2017 版保持一致，2026 版在敏捷、MBSSE 和风险/配置管理方面进行了扩展）：
 
 - **协议过程组（Agreement Processes）**：ACQ（获取）、SUP（供应）
 - **组织项目使能过程组（Organizational Project-Enabling Processes）**：MAN（管理）、PM（项目管理）、QA（质量保证）等
@@ -915,7 +915,8 @@ SPICE 与 26565 的协同基于以下互补关系：
 |------|-----|----------|
 | ISO/IEC 33020:2019 过程能力评估框架 | <https://www.iso.org/standard/54175.html> | 2026-06-10 |
 | ISO/IEC 33004:2022 评估参考模型要求 | <https://www.iso.org/standard/80240.html> | 2026-06-10 |
-| ISO/IEC 12207:2017 软件生命周期过程 | <https://www.iso.org/standard/63712.html> | 2026-06-10 |
+| ISO/IEC/IEEE 12207:2026 软件生命周期过程 | <https://www.iso.org/standard/90219.html> | 2026-06-12 |
+| ISO/IEC/IEEE 12207:2017 软件生命周期过程（历史对照版） | <https://www.iso.org/standard/63712.html> | 2026-06-12 |
 | ISO/IEC 26565:2026 产品线成熟度模型 | <https://www.iso.org/standard/43091.html> | 2026-06-10 |
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |

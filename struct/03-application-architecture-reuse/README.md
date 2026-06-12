@@ -31,13 +31,14 @@
 
 - [x] 架构模式对比矩阵
 - [x] 场景应用树
-- [x] 2026 云原生架构模式复用性矩阵 (`05-cloud-native-patterns/reusability-matrix-2026.md`)
-- [x] 服务网格通信模式复用 (`06-service-mesh/service-mesh-communication-patterns.md`)
-- [x] Data Mesh 域导向复用深化 (`04-data-architecture/data-mesh-data-product-reuse.md`)
+- [x] 2026 云原生架构模式复用性矩阵 (`07-cloud-native-patterns/reusability-matrix-2026.md`)
+- [x] 服务网格通信模式复用 (`08-service-mesh/service-mesh-communication-patterns.md`)
+- [x] Data Mesh 域导向复用深化 (`05-data-architecture/data-mesh-data-product-reuse.md`)
 - [x] 分层架构复用框架 (`01-layered-architecture/`)
 - [x] 微服务架构复用框架 (`02-microservices/`)
-- [x] Serverless 架构复用框架 (`03-serverless/`)
-- [x] 事件驱动架构复用框架 (`04-event-driven/`)
+- [x] 应用服务复用框架 (`03-app-service/`)
+- [x] Serverless 架构复用框架 (`04-serverless/`)
+- [x] 事件驱动架构复用框架 (`06-event-driven/`)
 - [ ] 具体平台（Backstage、Port、Cortex）的 IDP 复用实践 (P1, 2026-Q4)
 
 ## 子目录导航
@@ -46,13 +47,15 @@
 |:---|:---|:---:|
 | `01-layered-architecture/` | 分层架构复用模式 | ✅ 核心文档 |
 | `02-microservices/` | 微服务架构复用模式 | ✅ 核心文档 |
-| `03-serverless/` | Serverless/FaaS 复用模式 | ✅ 核心文档 |
-| `04-event-driven/` | 事件驱动架构复用模式 | ✅ 核心文档 |
-| `03-app-service/` | 应用服务复用 | ✅ |
-| `04-data-architecture/` | 数据架构复用（Data Mesh） | ✅ |
-| `05-cloud-native-patterns/` | 云原生架构模式复用性矩阵 | ✅ |
-| `06-service-mesh/` | 服务网格通信复用 | ✅ |
-| `07-eda-cqrs/` | EDA/CQRS 深度内容 | ✅ |
+| `03-app-service/` | 应用服务复用 | ✅ 核心文档 |
+| `04-serverless/` | Serverless/FaaS 复用模式 | ✅ 核心文档 |
+| `05-data-architecture/` | 数据架构复用（Data Mesh） | ✅ 核心文档 |
+| `06-event-driven/` | 事件驱动架构复用模式 | ✅ 核心文档 |
+| `07-cloud-native-patterns/` | 云原生架构模式复用性矩阵 | ✅ |
+| `08-service-mesh/` | 服务网格通信复用 | ✅ |
+| `09-eda-cqrs/` | EDA/CQRS 深度内容 | ✅ |
+| `10-tosca-dmn-platform/` | TOSCA v2.0 / DMN 1.6 平台对齐 | ✅ |
+| `11-idp-practices/` | IDP（Backstage/Port/Cortex）复用实践 | 🚧 规划中 |
 
 ## 关联主题
 

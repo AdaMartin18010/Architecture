@@ -13,7 +13,7 @@
 - [x] 04-rust-type-system 目录结构
 - [x] 05-spark-ada 目录结构
 - [x] 06-b-method 目录结构
-- [x] 08-comparative-matrices 目录结构
+- [x] 09-comparative-matrices 目录结构
 - [x] Rust 形式化语义初稿
 - [x] TLA+ 案例库（T06-T08 已完成，T09-T10 跨主题交付于工业 IoT）
 - [x] Alloy 架构约束案例（T11-T14 已完成）

@@ -34,7 +34,7 @@
 ### 安装依赖
 
 ```bash
-cd struct/12-ai-native-reuse/03-hybrid-a2a-mcp-poc/
+cd struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/
 pip install fastapi uvicorn
 ```
 

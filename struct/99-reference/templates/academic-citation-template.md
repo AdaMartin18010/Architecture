@@ -245,9 +245,9 @@
 
 | # | 核心论点 | 权威来源 | SAR-KB 支撑文件 |
 |---|---------|---------|----------------|
-| 03-1 | **云原生复用三元条件**：容器化 ∧ 声明式配置 ∧ 环境独立性是应用级复用的充要条件。 | CNCF; NIST SP 800-204 | `03-application-architecture-reuse/05-cloud-native-patterns/reusability-matrix-2026.md` |
+| 03-1 | **云原生复用三元条件**：容器化 ∧ 声明式配置 ∧ 环境独立性是应用级复用的充要条件。 | CNCF; NIST SP 800-204 | `03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md` |
 | 03-2 | **微服务复用天花板**：微服务粒度越小复用率越高，但治理复杂度呈指数增长，存在最优粒度点。 | Conway's Law; 2024–2026 CNCF 调查报告 | 同上 |
-| 03-3 | **数据-应用解耦定理**：数据架构与应用架构的复用独立当且仅当数据访问通过抽象数据服务实现。 | Data Mesh 原则; Hohpe & Woolf, *Enterprise Integration Patterns* | `03-application-architecture-reuse/04-data-architecture/data-mesh-data-product-reuse.md` |
+| 03-3 | **数据-应用解耦定理**：数据架构与应用架构的复用独立当且仅当数据访问通过抽象数据服务实现。 | Data Mesh 原则; Hohpe & Woolf, *Enterprise Integration Patterns* | `03-application-architecture-reuse/05-data-architecture/data-mesh-data-product-reuse.md` |
 | 03-4 | **模块化单体最优性**：在团队规模 N < 50 且部署频率 f < 1/天的约束下，模块化单体的总体复用成本低于微服务。 | 2024–2026 CNCF 调查报告; Spring Modulith 实践 | 同上 |
 
 ### 3.4 组件架构复用（04）
@@ -308,7 +308,7 @@
 | 10-1 | **信任传递崩塌公理**：软件供应链中的信任是传递的，但传递链长度与信任度成指数反比；chain_length > 5 时 Trust ≈ 0。 | SLSA Framework; OpenSSF Supply Chain Security | `10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md` |
 | 10-2 | **SLSA 1.2 四级框架**：L1（基础构建）→ L4（可复现 + 双因素审查）的复用安全边界。 | SLSA 1.2; OpenSSF | 同上 |
 | 10-3 | **SBOM 完备性边界定理**：动态依赖、条件编译引入的依赖、运行时加载的插件无法在任何静态 SBOM 中完全捕获。 | SPDX 2.3; CycloneDX 1.6; NTIA SBOM Minimum Elements | `10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md` |
-| 10-4 | **零信任软件供应链架构**：5 层防御矩阵设计模板。 | NIST SSDF 1.2; NIST SP 800-161r1 | `10-supply-chain-security/04-zero-trust-supply-chain/zero-trust-template.md` |
+| 10-4 | **零信任软件供应链架构**：5 层防御矩阵设计模板。 | NIST SSDF 1.2; NIST SP 800-161r1 | `10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-template.md` |
 
 ### 3.11 工业 IoT / OT-IT 融合（11）
 
@@ -324,9 +324,9 @@
 | # | 核心论点 | 权威来源 | SAR-KB 支撑文件 |
 |---|---------|---------|----------------|
 | 12-1 | **MCP-A2A 互补性定理**：MCP 解决「Agent 如何调用功能」，A2A 解决「Agent 如何与其他 Agent 协作」；联合覆盖度大于简单相加。 | MCP 2025-11-25; A2A v1.0.0 Specification | `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` |
-| 12-2 | **概率契约框架**：AI 功能复用契约必须包含置信度函数 γ(x) ∈ [0,1]、校准方法与确定性边界声明。 | Conformal Prediction Theory; Vovk et al. (2005) | `12-ai-native-reuse/04-probabilistic-contracts/` |
-| 12-3 | **校准上限定理**：当 LLM 输出分布与真实分布的 KL 散度 > ε 时，任何校准方法都无法使校准误差 < δ。 | Vovk, Gammerman, Shafer (2005) *Algorithmic Learning in a Random World* | `12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md` |
-| 12-4 | **模型漂移边界公理**：AI 功能复用有效性随时间指数衰减，衰减率与模型更新频率成反比。 | ML Model Monitoring Best Practices; MCP Specification | `12-ai-native-reuse/05-conformal-prediction/cp-code-generation.md` |
+| 12-2 | **概率契约框架**：AI 功能复用契约必须包含置信度函数 γ(x) ∈ [0,1]、校准方法与确定性边界声明。 | Conformal Prediction Theory; Vovk et al. (2005) | `12-ai-native-reuse/05-probabilistic-contracts/` |
+| 12-3 | **校准上限定理**：当 LLM 输出分布与真实分布的 KL 散度 > ε 时，任何校准方法都无法使校准误差 < δ。 | Vovk, Gammerman, Shafer (2005) *Algorithmic Learning in a Random World* | `12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md` |
+| 12-4 | **模型漂移边界公理**：AI 功能复用有效性随时间指数衰减，衰减率与模型更新频率成反比。 | ML Model Monitoring Best Practices; MCP Specification | `12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md` |
 
 ### 3.13 新兴趋势（13）
 
@@ -393,7 +393,7 @@
 | **WASM 跨语言复用决策树** | `13-emerging-trends/03-webassembly-components/wasm-reuse-decision-tree.md` | 语言边界、WASI 接口交集、平台特定功能排除决策 |
 | **复用决策快速参考卡** | `quick-reference-card.md` | 一页纸速查：四层架构关键问题、标准速查、反模式清单 |
 | **跨层升级/降级决策矩阵** | `06-cross-layer-governance/06-up-downgrade-matrix/` | 组件↔应用↔业务服务的升级/降级条件与触发阈值 |
-| **形式化验证投资回报率矩阵** | `07-formal-verification/08-comparative-matrices/` | 工具 × 层次 × 成本的三维选型决策支持 |
+| **形式化验证投资回报率矩阵** | `07-formal-verification/09-comparative-matrices/` | 工具 × 层次 × 成本的三维选型决策支持 |
 
 ---
 

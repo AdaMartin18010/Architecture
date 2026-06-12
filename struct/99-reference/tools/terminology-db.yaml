@@ -1,0 +1,554 @@
+terms:
+  Architecture Description:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A work product used to express an architecture. It encompasses architecture views, viewpoint
+        specifications, and correspondence rules.
+    aliases:
+    - 架构描述
+    - AD
+    related:
+    - View
+    - Viewpoint
+    - Correspondence
+    - Stakeholder
+  View:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A representation of a whole system from the perspective of a related set of concerns.
+    aliases:
+    - 视图
+    - 架构视图
+    - Architecture View
+    related:
+    - Viewpoint
+    - Concern
+    - Architecture Description
+    - Model Kind
+  Viewpoint:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A specification of the conventions for constructing and using views, including model kinds,
+        languages, notations, and analysis rules.
+    aliases:
+    - 视点
+    - 视角
+    related:
+    - View
+    - Concern
+    - Stakeholder
+    - Model Kind
+  Model Kind:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A kind of model defined by conventions for its construction and usage within a viewpoint.
+    aliases:
+    - 模型种类
+    - 模型类型
+    related:
+    - Viewpoint
+    - View
+    - Model
+  Concern:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: An interest in a system relevant to one or more of its stakeholders.
+    aliases:
+    - 关注点
+    related:
+    - Stakeholder
+    - Viewpoint
+    - View
+  Stakeholder:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: An individual, team, or organization with interests in, or concerns relative to, a system.
+    aliases:
+    - 利益相关者
+    - 干系人
+    related:
+    - Concern
+    - Viewpoint
+    - Architecture Description
+  Correspondence:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A relationship between two or more architecture description elements, such as views or models.
+    aliases:
+    - 对应关系
+    - Correspondence Rule
+    - 对应规则
+    related:
+    - Architecture Description
+    - View
+    - Viewpoint
+  Architecture Description Framework:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: Conventions, principles, and practices for the description of architectures in a specific domain
+        of application or community of stakeholders. (ADF)
+    aliases:
+    - ADF
+    - 架构描述框架
+    related:
+    - Architecture Description
+    - Viewpoint
+    - Model Kind
+  System:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A combination of interacting elements organized to achieve one or more stated purposes.
+    aliases:
+    - 系统
+    related:
+    - Concern
+    - Stakeholder
+    - Architecture Description
+  Product Line Engineering:
+    definitions:
+      ISO/IEC 26550:2015: An approach to developing and maintaining software-intensive systems using a shared set of software
+        assets and a common means of production.
+    aliases:
+    - 产品线工程
+    - PLE
+    - Software Product Line Engineering
+    related:
+    - Domain Engineering
+    - Application Engineering
+    - Variability
+  Domain Engineering:
+    definitions:
+      ISO/IEC 26550:2015: The process of defining and realizing the commonality and variability of the product line, producing
+        reusable domain assets.
+      IEEE 1517-2010: The process of identifying, collecting, organizing, and representing the relevant information in a domain
+        to support reuse.
+    aliases:
+    - 领域工程
+    related:
+    - Application Engineering
+    - Variability
+    - Commonality
+    - Domain Analysis
+  Application Engineering:
+    definitions:
+      ISO/IEC 26550:2015: Building individual products by reusing domain assets and exploiting the variability captured during
+        domain engineering.
+      IEEE 1517-2010: The process of constructing a specific system or application by reusing qualified assets from a reuse
+        library.
+    aliases:
+    - 应用工程
+    related:
+    - Domain Engineering
+    - Variability
+    - Reusability
+  Variability:
+    definitions:
+      ISO/IEC 26550:2015: The ability of a software artifact to be efficiently extended, changed, customized, or configured
+        for use in a specific context.
+    aliases:
+    - 可变性
+    - 变异性
+    related:
+    - Variability Model
+    - Commonality
+    - Adaptability
+    - Feature Model
+  Commonality:
+    definitions:
+      ISO/IEC 26550:2015: Properties that are shared across all members of a product line and are not subject to variation.
+    aliases:
+    - 共性
+    - 公共性
+    related:
+    - Variability
+    - Domain Engineering
+    - Product Line Engineering
+  Feature Model:
+    definitions:
+      ISO/IEC 26550:2015: A hierarchically arranged set of features with relationships and constraints, used to model and
+        manage product line variability.
+    aliases:
+    - 特征模型
+    - Variability Model
+    - 可变性模型
+    related:
+    - Variability
+    - Commonality
+    - Domain Engineering
+  Product:
+    definitions:
+      ISO/IEC 26550:2015: A software-intensive system that is developed and delivered to a customer.
+    aliases:
+    - 产品
+    related:
+    - Application Engineering
+    - Product Line Engineering
+  Architecture Building Block:
+    definitions:
+      TOGAF 10: 'Architecture Building Block (ABB): A constituent of the architecture model that describes a single aspect
+        of the overall architecture; typically independent of implementation.'
+    aliases:
+    - ABB
+    - 架构构建块
+    related:
+    - Solution Building Block
+    - Building Block
+    - Architecture Repository
+  Solution Building Block:
+    definitions:
+      TOGAF 10: 'Solution Building Block (SBB): A candidate physical component that will realize one or more Architecture
+        Building Blocks.'
+    aliases:
+    - SBB
+    - 解决方案构建块
+    related:
+    - Architecture Building Block
+    - Building Block
+    - Implementation
+  Architecture Repository:
+    definitions:
+      TOGAF 10: A logical place to hold all architecture-related outputs, including deliverables, models, patterns, and standards.
+    aliases:
+    - 架构仓库
+    - 架构资源库
+    related:
+    - Enterprise Continuum
+    - Architecture Description
+    - Architecture Development Method
+  Enterprise Continuum:
+    definitions:
+      TOGAF 10: A view of the Architecture Repository that provides methods for classifying architecture and solution artifacts.
+    aliases:
+    - 企业连续体
+    related:
+    - Architecture Repository
+    - Foundation Architecture
+    - Architecture Development Method
+  Architecture Development Method:
+    definitions:
+      TOGAF 10: 'Architecture Development Method (ADM): The core iterative method for developing architectures in TOGAF, covering
+        phases from Preliminary to Architecture Change Management.'
+    aliases:
+    - ADM
+    - 架构开发方法
+    related:
+    - Architecture Repository
+    - Building Block
+    - Architecture Building Block
+  Building Block:
+    definitions:
+      TOGAF 10: A potentially reusable component of business, IT, or architectural capability that combines with other building
+        blocks to deliver architectures and solutions.
+    aliases:
+    - 构建块
+    related:
+    - Architecture Building Block
+    - Solution Building Block
+    - Reusability
+  Foundation Architecture:
+    definitions:
+      TOGAF 10: Generic building blocks and their inter-relationships, together with associated standards, that define a generic
+        foundational platform.
+    aliases:
+    - 基础架构
+    related:
+    - Enterprise Continuum
+    - Architecture Repository
+    - Building Block
+  Reusability:
+    definitions:
+      IEEE 1517-2010: The degree to which a software asset can be used in systems other than the one for which it was originally
+        designed, with little or no modification.
+      ISO/IEC 25010:2023: The degree to which an asset can be used in more than one system, or in building other assets.
+    aliases:
+    - 可复用性
+    - 复用性
+    related:
+    - Adaptability
+    - Variability
+    - Component
+    - Asset
+  Reuse Library:
+    definitions:
+      IEEE 1517-2010: An organized collection of reusable assets, together with the processes, methods, and tools needed to
+        support their storage, retrieval, and maintenance.
+    aliases:
+    - 复用库
+    - 资产库
+    - Asset Library
+    related:
+    - Asset
+    - Domain Engineering
+    - Reusability
+  Asset:
+    definitions:
+      IEEE 1517-2010: A software product, work product, or other item of value that is a candidate for reuse in the development
+        or maintenance of software systems.
+      General: A modular, deployable, and replaceable part of a system that encapsulates implementation and exposes interfaces.
+    aliases:
+    - 资产
+    - 软件资产
+    related:
+    - Component
+    - Reuse Library
+    - Reusability
+    - Building Block
+  Domain Analysis:
+    definitions:
+      IEEE 1517-2010: The process of identifying, collecting, organizing, and representing relevant information in a domain,
+        based on the study of existing systems and their development histories.
+    aliases:
+    - 领域分析
+    related:
+    - Domain Engineering
+    - Asset
+    - Reuse Library
+  Qualification:
+    definitions:
+      IEEE 1517-2010: The process of evaluating a reusable asset to determine whether it meets specified requirements for
+        reuse in a given context.
+    aliases:
+    - 资格认定
+    - 资质认定
+    - Asset Qualification
+    related:
+    - Asset
+    - Reuse Library
+    - Certification
+  Adaptation:
+    definitions:
+      IEEE 1517-2010: The process of modifying a reusable asset so that it conforms to the specific requirements of a target
+        system or application.
+      ISO/IEC 25010:2023: The degree to which a product or system can be effectively and efficiently adapted for different
+        or evolving environments.
+    aliases:
+    - 适配
+    - 适应性
+    related:
+    - Reusability
+    - Variability
+    - Asset
+  Certification:
+    definitions:
+      IEEE 1517-2010: The process of formally confirming that a reusable asset satisfies specified standards or requirements
+        for reuse.
+    aliases:
+    - 认证
+    - 资格认证
+    related:
+    - Qualification
+    - Asset
+    - Reuse Library
+  Provenance:
+    definitions:
+      SLSA 1.2: The verifiable record describing how a software artifact was built, including the build process, inputs, and
+        dependencies.
+    aliases:
+    - 来源证明
+    - 出处
+    - Build Provenance
+    related:
+    - Attestation
+    - Artifact
+    - Supply Chain
+  Attestation:
+    definitions:
+      SLSA 1.2: A cryptographically signed statement about a software artifact, typically used to assert facts such as provenance
+        or test results.
+    aliases:
+    - 证明
+    - 数字证明
+    related:
+    - Provenance
+    - Artifact
+    - Supply Chain
+  Artifact:
+    definitions:
+      SLSA 1.2: An immutable blob of data, typically a software package, container image, or binary, described by attestations
+        and provenance.
+    aliases:
+    - 制品
+    - 构件
+    related:
+    - Provenance
+    - Attestation
+    - Supply Chain
+    - Asset
+  Source Integrity:
+    definitions:
+      SLSA 1.2: The property that the source code used to build a software artifact has not been tampered with and is traceable
+        to its origin.
+    aliases:
+    - 源代码完整性
+    related:
+    - Provenance
+    - Supply Chain
+    - Artifact
+  Build Level:
+    definitions:
+      SLSA 1.2: A numbered level in the SLSA framework (Build L1–L3) that indicates the strength of build integrity guarantees.
+    aliases:
+    - 构建等级
+    - SLSA Level
+    related:
+    - Provenance
+    - Source Integrity
+    - Artifact
+  Supply Chain:
+    definitions:
+      SLSA 1.2: The series of steps and actors involved in producing and distributing software, including dependencies, build
+        tools, and distribution channels.
+    aliases:
+    - 供应链
+    related:
+    - Provenance
+    - Attestation
+    - Artifact
+    - Source Integrity
+  Model Context Protocol:
+    definitions:
+      MCP 2025-11-25: An open protocol that standardizes how applications provide context to large language models, enabling
+        secure, bi-directional connections between AI systems and data sources.
+    aliases:
+    - MCP
+    - 模型上下文协议
+    related:
+    - Server
+    - Tool
+    - Resource
+    - Prompt
+  Server:
+    definitions:
+      MCP 2025-11-25: An MCP server exposes capabilities (tools, resources, prompts) to clients over a standardized transport,
+        typically local stdio or HTTP.
+    aliases:
+    - 服务器
+    - MCP Server
+    related:
+    - Model Context Protocol
+    - Tool
+    - Resource
+    - Client
+  Tool:
+    definitions:
+      MCP 2025-11-25: A capability exposed by an MCP server that allows models to perform actions, such as querying a database
+        or calling an API.
+    aliases:
+    - 工具
+    related:
+    - Model Context Protocol
+    - Server
+    - Resource
+  Resource:
+    definitions:
+      MCP 2025-11-25: A read-only capability exposed by an MCP server that provides contextual data to models, such as file
+        contents or database schemas.
+    aliases:
+    - 资源
+    related:
+    - Model Context Protocol
+    - Server
+    - Tool
+  Prompt:
+    definitions:
+      MCP 2025-11-25: A pre-defined prompt template exposed by an MCP server that helps users accomplish specific tasks or
+        workflows.
+    aliases:
+    - 提示词
+    - 提示模板
+    related:
+    - Model Context Protocol
+    - Server
+    - Tool
+  Sampling:
+    definitions:
+      MCP 2025-11-25: A mechanism by which an MCP server can request that the client generate model completions or embeddings,
+        enabling server-side orchestration.
+    aliases:
+    - 采样
+    related:
+    - Model Context Protocol
+    - Server
+    - Client
+  Client:
+    definitions:
+      MCP 2025-11-25: An MCP client connects to one or more MCP servers, aggregates their capabilities, and makes them available
+        to an application or model.
+    aliases:
+    - 客户端
+    related:
+    - Model Context Protocol
+    - Server
+aliases:
+  ISO/IEC/IEEE 42010:2022:
+  - iso42010
+  - ieee42010
+  - '42010'
+  - iso_iec_ieee_42010
+  ISO/IEC 26550:2015:
+  - iso26550
+  - '26550'
+  - ple
+  - iso_iec_26550
+  TOGAF 10:
+  - togaf
+  - togaf10
+  IEEE 1517-2010:
+  - ieee1517
+  - '1517'
+  SLSA 1.2:
+  - slsa
+  - slsa1.2
+  - slsa12
+  MCP 2025-11-25:
+  - mcp
+  - mcp2025
+  ISO/IEC 25010:2023:
+  - iso25010
+  - '25010'
+  - iso_iec_25010
+  ISO/IEC/IEEE 12207:2026:
+  - iso12207
+  - '12207'
+  - ieee12207
+  ArchiMate 4.0:
+  - archimate
+  - archimate4
+  NIST SSDF 1.2:
+  - ssdf
+  - nistssdf
+  - 800-218
+  General:
+  - general
+version_hints:
+  ISO/IEC/IEEE 42010:2022:
+    version: '2022'
+    status: 已发布
+    note: ''
+  ISO/IEC 26550:2015:
+    version: '2015'
+    status: 现行
+    note: 不存在 2025 版
+  TOGAF 10:
+    version: '10'
+    status: 已发布
+    note: ''
+  IEEE 1517-2010:
+    version: '2010'
+    status: 现行
+    note: ''
+  SLSA 1.2:
+    version: '1.2'
+    status: 已发布
+    note: Build/Source Track 已发布
+  MCP 2025-11-25:
+    version: '2025-11-25'
+    status: 现行稳定版
+    note: RC 2026-07-28 预期
+  ISO/IEC 25010:2023:
+    version: '2023'
+    status: 已发布
+    note: 不存在 2024 版
+  ISO/IEC/IEEE 12207:2026:
+    version: '2026'
+    status: 已发布
+    note: 2026-04-29 发布
+  ArchiMate 4.0:
+    version: '4.0'
+    status: 已发布
+    note: 2026-04-27 正式发布
+  NIST SSDF 1.2:
+    version: '1.2'
+    status: Initial Public Draft
+    note: 非最终版

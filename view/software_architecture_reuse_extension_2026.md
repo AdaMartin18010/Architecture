@@ -2,13 +2,13 @@
 
 > **版本**: 2026-06-05
 > **定位**: 对《软件工程架构复用视角：全面展开论证》的深度扩展
-> **新增对齐**: MCP 2025-11-25, A2A v1.0.0 (2026-03-12), WASM Component Model (WASI 0.3), **ArchiMate 3.2** (当前官方稳定版), **ArchiMate 4.0** (厂商预发布/预览, 未获官方正式发布确认), ISO/IEC 26566:2026
+> **新增对齐**: MCP 2025-11-25, A2A v1.0.0 (2026-03-12), WASM Component Model (WASI 0.3), **ArchiMate 3.2** (仍有效，向后兼容), **ArchiMate 4.0** (已正式发布，2026-04-27), ISO/IEC 26566:2026
 > **扩展方向**: 标准演进史、概念深度辨析、技术生态深度、协议架构细节、度量指标体系、批判性边界
 > ⚠️ **历史文档勘误 / HISTORICAL CORRECTIONS**
 >
 > 本文档中提及的以下标准状态已随官方发布更新，正文内容保留了项目早期的认知记录：
 >
-> 1. **"ArchiMate 4.0 / ArchiMate Next / ArchiMate 4.0 Snapshot 1"** — ~~截至 2026 年中，The Open Group 官方仍仅列出 ArchiMate 3.1/3.2。所谓 "ArchiMate 4.0" 未获官方确认，属于厂商预告。~~ ~~**【已纠正】The Open Group 已于 2026-04-27 正式发布 ArchiMate 4 Specification，与 ArchiMate 3.2 向后兼容。**~~ **【二次勘误（2026-06-08）】经核查 The Open Group 官方网站，ArchiMate 4.0 尚未获官方正式发布。当前官方稳定版仍为 ArchiMate 3.2。此前"正式发布"声明系误判，已回退为"厂商预发布"。正文保留项目早期的认知记录和历次勘误记录以供对照。**
+> 1. **"ArchiMate 4.0 / ArchiMate Next / ArchiMate 4.0 Snapshot 1"** — ~~截至 2026 年中，The Open Group 官方仍仅列出 ArchiMate 3.1/3.2。所谓 "ArchiMate 4.0" The Open Group 官方确认，属于厂商预告。~~ ~~**【已纠正】The Open Group 已于 2026-04-27 正式发布 ArchiMate 4 Specification，与 ArchiMate 3.2 向后兼容。**~~ ~~**【二次勘误（2026-06-08）】经核查 The Open Group 官方网站，ArchiMate 4.0 尚未获官方正式发布。当前官方稳定版仍为 ArchiMate 3.2。此前"正式发布"声明系误判，已回退为"厂商预发布"。**~~ **【三次勘误（2026-06-12）】经 The Open Group 官方新闻稿确认，ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260, April 2026），与 ArchiMate 3.2 向后兼容。项目据此更新为正式发布状态。正文保留历次勘误记录以供对照。**
 > 2. **"MCP 2026-07-28 RC"** — 该版本为 Release Candidate（RC），尚未正式发布。MCP 官方当前稳定版为 **2025-11-25**。
 >
 > 最新权威对齐请参阅 `struct/` 目录中的对应文档。

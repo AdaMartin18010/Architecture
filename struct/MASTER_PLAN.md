@@ -63,7 +63,7 @@
 |--------|------|----------|--------|----------|------|
 | P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 3.2 状态（"ArchiMate 4.0" 厂商预告已标注勘误） | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
 | P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 | ✅ 完成 |
-| P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/05-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
+| P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/07-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
 | P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 | ✅ 完成 |
 | P1 | 05 功能架构复用 | 完成 MCP 2025-11-25 + A2A v1.0 协议架构的复用分析 | `05/06-mcp-a2a-protocols/protocol-analysis.md` | 含协议栈层次 + 互补架构图 | ✅ 完成 |
 | P1 | 06 跨层复用治理 | 完成复用度量指标体系（基于 ISO/IEC 26564:2022 + NASA RRL） | `06/05-metrics-kpi/metrics-framework.md` | 含资产级/项目级/组织级/生态级四级度量 | ✅ 完成 |
@@ -124,8 +124,8 @@
 |--------|------|----------|--------|----------|------|
 | P0 | 10 供应链安全 | 完成 SLSA 1.1/1.2 Multi-Track 框架的复用安全边界详解 | `10/01-slsa-framework/slsa-reuse-boundaries.md` | 含 L1-L4 的复用决策矩阵 | ✅ 已完成 |
 | P0 | 10 供应链安全 | 完成 SPDX vs CycloneDX vs SWID 的复用安全应用对比 | `10/02-sbom-standards/sbom-reuse-security.md` | 含 3 标准 × 4 应用场景矩阵 | ✅ 已完成 |
-| P0 | 10 供应链安全 | 完成 XZ Utils 后门等 5+ 案例的深度分析 + 防御策略 | `10/05-case-studies/xz-utils-deep-dive.md` | 含攻击链 + 检测信号 | ✅ 已完成 |
-| P1 | 10 供应链安全 | 完成零信任软件供应链架构设计模板 | `10/04-zero-trust-supply-chain/zero-trust-template.md` | 含 5 层防御矩阵 | ✅ 已完成 |
+| P0 | 10 供应链安全 | 完成 XZ Utils 后门等 5+ 案例的深度分析 + 防御策略 | `10/06-case-studies/xz-utils-deep-dive.md` | 含攻击链 + 检测信号 | ✅ 已完成 |
+| P1 | 10 供应链安全 | 完成零信任软件供应链架构设计模板 | `10/05-zero-trust-supply-chain/zero-trust-template.md` | 含 5 层防御矩阵 | ✅ 已完成 |
 | P1 | 07 形式化验证 | 完成 Rust Polonius 借用检查器的形式化语义与 NLL 对比 | `07/04-rust-type-system/polonius-vs-nll.md` | 含代码示例 + 分析过程 | ✅ 已完成 |
 
 **对齐活动**:
@@ -144,8 +144,8 @@
 |--------|------|----------|--------|----------|------|
 | P0 | 12 AI 原生复用 | 完成 MCP 2025-11-25 规范的中文/英文双语深度解析 | `12/01-mcp-protocol/mcp-2025-11-25-deep-dive.md` | 含核心变更对照表（Tasks/Icons/Elicitation/OAuth） | ✅ 已完成 |
 | P0 | 12 AI 原生复用 | 完成 A2A v1.0.0 协议的复用流程分析 + 安全机制 | `12/02-a2a-protocol/a2a-reuse-analysis.md` | 含 5 步流程 + Agent Card 模板 | ✅ 已完成 |
-| P0 | 12 AI 原生复用 | 完成 AI 功能复用的概率契约框架（含校准方法） | `12/04-probabilistic-contracts/probabilistic-contract-framework.md` | 含 Python 示例代码 | ✅ 已完成 |
-| P1 | 12 AI 原生复用 | 完成 Conformal Prediction 在代码生成中的应用案例 | `12/05-conformal-prediction/cp-code-generation.md` | 含统计保证证明 | ✅ 已完成 |
+| P0 | 12 AI 原生复用 | 完成 AI 功能复用的概率契约框架（含校准方法） | `12/05-probabilistic-contracts/probabilistic-contract-framework.md` | 含 Python 示例代码 | ✅ 已完成 |
+| P1 | 12 AI 原生复用 | 完成 Conformal Prediction 在代码生成中的应用案例 | `12/07-conformal-prediction/cp-code-generation.md` | 含统计保证证明 | ✅ 已完成 |
 | P1 | 13 新兴趋势 | 完成平台工程（Platform Engineering）作为复用载体的组织设计 | `13/01-platform-engineering/platform-as-product.md` | 含 IDP + Golden Path 模板 | ✅ 已完成 |
 | P1 | 13 新兴趋势 | 完成 WebAssembly Component Model 的跨语言复用边界分析 | `13/03-webassembly-components/wasm-reuse-boundaries.md` | 含 WIT 接口示例 | ✅ 已完成 |
 
@@ -166,18 +166,18 @@
 | C-01 | 元模型标准层 | 完成 OMG SysML v2 复用语义与架构资产映射 | 01/09-sysml-v2/sysml2-reuse-mapping.md | 覆盖 ItemDefinition/PartDefinition/ActionDefinition/ConnectionDefinition 复用语义 | ✅ 已完成（2026-06-10） |
 | C-02 | 元模型标准层 | 完成 MBSE 模型复用与产品线工程整合框架 | 01/10-mbse-reuse/mbse-ple-integration.md | 含 4 层复用层次 + 150% 模型与变体推导 | ✅ 已完成（2026-06-10） |
 | C-03 | 工业 IoT/OT-IT | 完成数字孪生通用参考架构（非工业 AAS） | 11/08-digital-twin-general/dt-reference-architecture.md | 含 ISO 23247 / AEDT / Gartner 五维模型 + 与 AAS 互补分析 | ✅ 已完成（2026-06-10） |
-| C-04 | 供应链安全 | 完成 OWASP SCVS 软件组件验证标准映射 | 10/06-owasp-scvs/scvs-reuse-controls.md | 含 6 大控制族 × 3 成熟度等级与复用决策映射 | ✅ 已完成（2026-06-10） |
-| C-05 | 供应链安全 | 完成 GUAC 供应链图谱与复用风险评估 | 10/07-guac-supply-chain/guac-reuse-risk.md | 含知识图谱数据模型 + 传递风险分析 + 关键路径识别 | ✅ 已完成（2026-06-10） |
+| C-04 | 供应链安全 | 完成 OWASP SCVS 软件组件验证标准映射 | 10/07-owasp-scvs/scvs-reuse-controls.md | 含 6 大控制族 × 3 成熟度等级与复用决策映射 | ✅ 已完成（2026-06-10） |
+| C-05 | 供应链安全 | 完成 GUAC 供应链图谱与复用风险评估 | 10/08-guac-supply-chain/guac-reuse-risk.md | 含知识图谱数据模型 + 传递风险分析 + 关键路径识别 | ✅ 已完成（2026-06-10） |
 | C-06 | 业务架构复用 | 完成 TMForum ODF / eTOM 电信架构复用案例 | 02/case-studies/tmforum-telecom-reuse.md | 含 eTOM L1-L3 + SID + ODA + CAMARA 复用机制 | ✅ 已完成（2026-06-10） |
 | C-07 | 业务架构复用 | 完成 NAF 4.0 / MODAF 与北约架构复用视角映射 | 02/07-defense-mission-engineering/naf-modaf-reuse.md | 含 NMM 元模型 + 7 个核心视点 + 与 DoDAF/UAF 互补 | ✅ 已完成（2026-06-10） |
 | C-08 | 工具链 | 完成交互式复用决策工具 v2.0（CLI + Streamlit Web） | 99-reference/tools/reuse-decision-tool-v2/ | 支持 6 阶段决策流程 + 测试覆盖 + 数据驱动模板 | ✅ 已完成（2026-06-10） |
-| C-09 | 供应链安全 | OWASP ASVS 5.0.0 + Top 10:2025 映射 | 10/08-owasp-asvs/ + 10/09-owasp-top10-2025/ | 14 个控制类别 × 3 等级与复用安全映射 | ✅ 已完成（2026-06-10） |
-| C-10 | 供应链安全 | OpenSSF OSPS Baseline 映射 | 10/10-osps-baseline/ | 3 级成熟度 × 8 控制类别与复用评估 | ✅ 已完成（2026-06-10） |
-| C-11 | AI 原生复用 | NIST AI RMF + 600-1 + CI Profile 映射 | 12/05-ai-governance/ | 4 大功能 × 4 层复用模型的 AI 风险映射 | ✅ 已完成（2026-06-10） |
+| C-09 | 供应链安全 | OWASP ASVS 5.0.0 + Top 10:2025 映射 | 10/09-owasp-asvs/ + 10/10-owasp-top10-2025/ | 14 个控制类别 × 3 等级与复用安全映射 | ✅ 已完成（2026-06-10） |
+| C-10 | 供应链安全 | OpenSSF OSPS Baseline 映射 | 10/11-osps-baseline/ | 3 级成熟度 × 8 控制类别与复用评估 | ✅ 已完成（2026-06-10） |
+| C-11 | AI 原生复用 | NIST AI RMF + 600-1 + CI Profile 映射 | 12/06-ai-governance/ | 4 大功能 × 4 层复用模型的 AI 风险映射 | ✅ 已完成（2026-06-10） |
 | C-12 | 跨层治理 | Agentic AI Governance 框架映射 | 06/09-agentic-governance/ | IMDA/NIST/TRACE 五级自主模型 + 七阶段决策扩展 | ✅ 已完成（2026-06-10） |
-| C-13 | 形式化验证 | IEEE 1012-2024 + NIST SSDF v1.2 更新 | 07/06-vv-standards/ + 10/11-nist-ssdf-update/ | SIL 四级完整性 + PW.4 复用组件安全实践 | ✅ 已完成（2026-06-10） |
-| C-14 | 新兴趋势 | 平台工程深化（CNCF 毕业项目 + IDP AI） | 13/07-platform-engineering/ | Crossplane/Knative/Dragonfly + AI/ML IDP 参考架构 | ✅ 已完成（2026-06-10） |
-| C-15 | 形式化验证 | LLM + 定理证明前沿趋势 | 07/07-emerging-trends/ | LeanDojo/Verus/Agent Behavioral Contracts | ✅ 已完成（2026-06-10） |
+| C-13 | 形式化验证 | IEEE 1012-2024 + NIST SSDF v1.2 更新 | 07/07-vv-standards/ + 10/12-nist-ssdf-update/ | SIL 四级完整性 + PW.4 复用组件安全实践 | ✅ 已完成（2026-06-10） |
+| C-14 | 新兴趋势 | 平台工程深化（CNCF 毕业项目 + IDP AI） | 13/01-platform-engineering/ | Crossplane/Knative/Dragonfly + AI/ML IDP 参考架构；已合并至 01-platform-engineering | ✅ 已完成（2026-06-10） |
+| C-15 | 形式化验证 | LLM + 定理证明前沿趋势 | 07/08-emerging-trends/ | LeanDojo/Verus/Agent Behavioral Contracts | ✅ 已完成（2026-06-10） |
 | C-16 | 新兴趋势 | 绿色软件与碳成本量化 | 13/04-green-architecture/ | GSF SCI ISO + EU CSRD + 碳预算驱动复用 | ✅ 已完成（2026-06-10） |
 | C-17 | 工业 IoT | 数字孪生网络级扩展 | 11/09-network-digital-twin/ | IETF NMRG Network DT + GB/T 45616-2025 | ✅ 已完成（2026-06-10） |
 | C-18 | 认知架构 | 决策理论与复用决策 | 08/04-decision-making/ | Prospect Theory/MAUT/认知偏差与复用决策 | ✅ 已完成（2026-06-10） |

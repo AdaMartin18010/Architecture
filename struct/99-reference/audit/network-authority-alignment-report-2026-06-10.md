@@ -212,7 +212,7 @@
 |:---|:---|:---|:---|
 | TOGAF 10 | ✅ 深度映射 | 最广泛使用的 EA 框架 | 无 |
 | ArchiMate 3.2 | ✅ 深度映射 | 官方稳定版 | 无 |
-| ArchiMate 4.0 | ⚠️ 勘误中 | **厂商预发布，The Open Group 官方仍为 3.2** | 已回退声明 |
+| ArchiMate 4.0 | ⚠️ 勘误中 | **已正式发布，The Open Group 官方仍为 3.2** | 已回退声明 |
 | FEA 2.0 (BRM/ARM/SRM/DRM) | ✅ 已映射 | 美国联邦政府基准 | 无 |
 | Zachman Framework | ❌ 未覆盖 | 1987 创立，EA 本体论基石 | **缺失：六维分类与复用映射** |
 | DoDAF / UAF 1.3 | ❌ 未覆盖 | 美国防部/北约在用，UAF 1.3 2025-11 发布 | **缺失：国防架构复用视角** |
@@ -384,7 +384,7 @@
 | A-01 | ISO/IEC 12207:2026 发布状态跟踪与映射更新 | `01/01-iso-420xx-family/iso-12207-2026-alignment.md` | 覆盖新版与 2017 版差异，特别是复用过程变化 | P1 |
 | A-02 | AWI 42030 修订状态跟踪 | `01/01-iso-420xx-family/awi-42030-tracking.md` | 记录修订启动时间、预期方向 | P2 |
 | A-03 | ISO/IEC 26565:2026 + 26566:2026 正式版内容深化 | `06/03-maturity-models/iso-26565-26566-final.md` | 对照 2026-05 正式版更新成熟度模型描述 | P1 |
-| A-04 | EU CRA 2024/2847 合规检查清单 | `10/05-case-studies/eu-cra-checklist.md` | 覆盖 Annex I/II/III 关键条款 | P1 |
+| A-04 | EU CRA 2024/2847 合规检查清单 | `10/06-case-studies/eu-cra-checklist.md` | 覆盖 Annex I/II/III 关键条款 | P1 |
 | A-05 | Warg Registry → wasm-pkg-tools 更新 | `13/03-webassembly-components/wasm-registry-update.md` | 移除 Warg 引用，更新为 OCI-based registry | P2 |
 | A-06 | 03 应用架构基础子目录内容补全（分层/微服务/Serverless/事件驱动） | `03/01/02/03/04/` 各至少 1 篇核心文档 | 每篇 ≥500 行，含复用模式+反模式 | P1 |
 | A-07 | 建立标准引用"版本+URL+核查日期"三元组规范 | `99-reference/templates/citation-standard.md` | 所有新增/更新文档强制执行 | P2 |
@@ -404,7 +404,7 @@
 | B-07 | DORA 2025 认知负荷指标与复用采纳率关联 | `08/03-cognitive-load-theory/dora-2025-cognitive-load.md` | Google DORA 2025 Report | P2 |
 | B-08 | ISO 30141:2024 IoT 参考架构对齐 | `11/01-isa-95-model/iso-30141-iot-ra-alignment.md` | ISO 30141:2024 | P2 |
 | B-09 | IEC 62443 工业网络安全与复用 | `11/06-functional-safety/iec-62443-reuse-security.md` | IEC 62443-3-3 / -4-2 | P2 |
-| B-10 | GreenArch / SCI 软件碳强度与复用度量 | `13/06-green-software/sci-reuse-carbon-model.md` | Green Software Foundation / SCI Spec | P3 |
+| B-10 | GreenArch / SCI 软件碳强度与复用度量 | `13/07-green-software/sci-reuse-carbon-model.md` | Green Software Foundation / SCI Spec | P3 |
 | B-11 | 术语查询脚本完善（跨标准术语翻译+别名映射） | `99-reference/tools/terminology-query-v2.py` | IREB CPRE / ISO 42010 | P2 |
 | B-12 | 全书框架 v2.0 更新（纳入新视角） | `99-reference/book-outline-v2.md` | — | P1 |
 
@@ -417,8 +417,8 @@
 | C-01 | OMG SysML v2 与架构复用 | `01/09-sysml-v2/sysml2-reuse-mapping.md` | OMG SysML v2 Spec | P2 |
 | C-02 | MBSE 模型复用与产品线工程整合 | `01/10-mbse-reuse/mbse-ple-integration.md` | INCOSE / ISO 26550 | P2 |
 | C-03 | 数字孪生通用参考架构（非工业 AAS） | `11/08-digital-twin-general/dt-reference-architecture.md` | ISO 23247 / AEDT | P3 |
-| C-04 | OWASP SCVS 软件组件验证标准映射 | `10/06-owasp-scvs/scvs-reuse-controls.md` | OWASP SCVS 1.0 | P2 |
-| C-05 | GUAC 供应链图谱与复用风险评估 | `10/07-guac-supply-chain/guac-reuse-risk.md` | Google GUAC / OpenSSF | P2 |
+| C-04 | OWASP SCVS 软件组件验证标准映射 | `10/07-owasp-scvs/scvs-reuse-controls.md` | OWASP SCVS 1.0 | P2 |
+| C-05 | GUAC 供应链图谱与复用风险评估 | `10/08-guac-supply-chain/guac-reuse-risk.md` | Google GUAC / OpenSSF | P2 |
 | C-06 | TMForum ODF / eTOM 电信架构复用 | `02/case-studies/tmforum-telecom-reuse.md` | TMForum | P3 |
 | C-07 | NAF 4.0 / MODAF 与北约架构复用 | `02/07-defense-mission-engineering/naf-modaf-reuse.md` | NATO / UK MOD | P3 |
 | C-08 | 交互式复用决策工具 v2.0（Web/CLI） | `99-reference/tools/reuse-decision-tool-v2/` | — | P1 |

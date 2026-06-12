@@ -1,0 +1,182 @@
+%% 版本: 2026-06-12 | 状态: 完成 | 主题: 10 供应链安全工程 — 攻击树
+%% 说明: 基于 attack-tree.md 的 7 大攻击路径，使用 flowchart TD 绘制
+%% 图例: 菱形=AND 节点，圆角矩形=OR 节点，椭圆=叶节点；颜色按风险等级
+flowchart TD
+    R["[OR] 损害软件供应链<br/>Compromise Software Supply Chain"]:::orCritical
+    P1["[OR] 3.1 开发环境渗透<br/>Compromise Development Environment"]:::orHigh
+    P1A1{"[AND] 窃取开发者凭证<br/>Steal Developer Credentials"}:::andHigh
+    P1A1L1["网络钓鱼攻击<br/>Phishing Attack"]:::leafHigh
+    P1A1 --> P1A1L1
+    P1A1L2["凭证填充攻击<br/>Credential Stuffing"]:::leafHigh
+    P1A1 --> P1A1L2
+    P1A1L3["键盘记录恶意软件<br/>Malware Keylogger"]:::leafHigh
+    P1A1 --> P1A1L3
+    P1 --> P1A1
+    P1A2{"[AND] 攻陷 IDE / 编辑器<br/>Compromise IDE or Editor"}:::andHigh
+    P1A2L1["恶意扩展 / 插件<br/>Malicious Extension/Plugin"]:::leafHigh
+    P1A2 --> P1A2L1
+    P1A2L2["IDE 自身供应链污染<br/>Supply Chain of IDE Itself"]:::leafMedium
+    P1A2 --> P1A2L2
+    P1A2L3["被攻陷的 LSP 服务器<br/>Compromised LSP Server"]:::leafHigh
+    P1A2 --> P1A2L3
+    P1 --> P1A2
+    P1A3{"[AND] 污染本地工具链<br/>Poison Local Toolchain"}:::andMedium
+    P1A3L1["被篡改的编译器<br/>Tampered Compiler"]:::leafCritical
+    P1A3 --> P1A3L1
+    P1A3L2["恶意 Linter / Formatter<br/>Malicious Linter/Formatter"]:::leafMedium
+    P1A3 --> P1A3L2
+    P1A3L3["被攻陷的调试器<br/>Compromised Debugger"]:::leafMedium
+    P1A3 --> P1A3L3
+    P1 --> P1A3
+    R --> P1
+    P2["[OR] 3.2 构建系统篡改<br/>Compromise Build System"]:::orCritical
+    P2A1{"[AND] 注入恶意构建步骤<br/>Inject Malicious Build Step"}:::andCritical
+    P2A1L1["被攻陷的 CI/CD 流水线<br/>Compromised CI/CD Pipeline"]:::leafCritical
+    P2A1 --> P2A1L1
+    P2A1L2["恶意构建脚本<br/>Malicious Build Script"]:::leafHigh
+    P2A1 --> P2A1L2
+    P2A1L3["被篡改的容器镜像<br/>Tampered Container Image"]:::leafHigh
+    P2A1 --> P2A1L3
+    P2 --> P2A1
+    P2A2{"[AND] 绕过构建验证<br/>Bypass Build Verification"}:::andHigh
+    P2A2L1["伪造构建来源证明<br/>Forge Build Provenance"]:::leafHigh
+    P2A2 --> P2A2L1
+    P2A2L2["重放旧的有效签名<br/>Replay Old Valid Signature"]:::leafHigh
+    P2A2 --> P2A2L2
+    P2A2L3["利用构建工具 RCE 漏洞<br/>Exploit RCE in Build Tool"]:::leafHigh
+    P2A2 --> P2A2L3
+    P2 --> P2A2
+    P2A3{"[AND] 破坏构建产物<br/>Compromise Build Artifacts"}:::andHigh
+    P2A3L1["构建后替换二进制<br/>Replace Binary After Build"]:::leafCritical
+    P2A3 --> P2A3L1
+    P2A3L2["注入构建后钩子<br/>Inject Post-Build Hook"]:::leafHigh
+    P2A3 --> P2A3L2
+    P2A3L3["操纵制品仓库<br/>Manipulate Artifact Repository"]:::leafHigh
+    P2A3 --> P2A3L3
+    P2 --> P2A3
+    R --> P2
+    P3["[OR] 3.3 包管理器投毒<br/>Compromise Package Manager"]:::orHigh
+    P3O1["[OR] 发布恶意包<br/>Publish Malicious Package"]:::orHigh
+    P3O1L1["拼写混淆 Typosquatting"]:::leafHigh
+    P3O1 --> P3O1L1
+    P3O1L2["品牌抢注 Brandjacking"]:::leafHigh
+    P3O1 --> P3O1L2
+    P3O1L3["依赖混淆 Dependency Confusion"]:::leafHigh
+    P3O1 --> P3O1L3
+    P3 --> P3O1
+    P3A1{"[AND] 攻陷已有包<br/>Compromise Existing Package"}:::andHigh
+    P3A1L1["窃取维护者凭证<br/>Steal Maintainer Credentials"]:::leafHigh
+    P3A1 --> P3A1L1
+    P3A1L2["社会工程学接管<br/>Social Engineering Takeover"]:::leafHigh
+    P3A1 --> P3A1L2
+    P3A1L3["购买废弃包<br/>Buy Abandoned Package"]:::leafMedium
+    P3A1 --> P3A1L3
+    P3 --> P3A1
+    P3A2{"[AND] 操纵注册表元数据<br/>Manipulate Registry Metadata"}:::andMedium
+    P3A2L1["篡改下载统计<br/>Alter Download Statistics"]:::leafLow
+    P3A2 --> P3A2L1
+    P3A2L2["伪造正面评价<br/>Fake Positive Reviews"]:::leafLow
+    P3A2 --> P3A2L2
+    P3A2L3["压制安全公告<br/>Suppress Security Advisories"]:::leafMedium
+    P3A2 --> P3A2L3
+    P3 --> P3A2
+    R --> P3
+    P4["[OR] 3.4 依赖混淆<br/>Dependency Confusion Attack"]:::orHigh
+    P4A1{"[AND] 识别内部包名<br/>Identify Internal Package Names"}:::andMedium
+    P4A1L1["扫描公开仓库<br/>Scan Public Repositories"]:::leafMedium
+    P4A1 --> P4A1L1
+    P4A1L2["分析错误信息<br/>Analyze Error Messages"]:::leafMedium
+    P4A1 --> P4A1L2
+    P4A1L3["社会工程学<br/>Social Engineering"]:::leafMedium
+    P4A1 --> P4A1L3
+    P4 --> P4A1
+    P4A2{"[AND] 向公共注册表发布更高版本<br/>Publish Higher Version to Public Registry"}:::andHigh
+    P4A2L1["版本号膨胀 (9999.0.0)<br/>Version Number Inflation"]:::leafHigh
+    P4A2 --> P4A2L1
+    P4A2L2["预发布版本操纵 (1.0.0-rc999)<br/>Pre-release Manipulation"]:::leafHigh
+    P4A2 --> P4A2L2
+    P4 --> P4A2
+    R --> P4
+    P5["[OR] 3.5 上游代码植入<br/>Compromise Upstream Source"]:::orCritical
+    P5A1{"[AND] 提交恶意贡献<br/>Submit Malicious Contribution"}:::andHigh
+    P5A1L1["伪装良性的隐藏后门 PR<br/>Benign-Looking PR with Hidden Backdoor"]:::leafCritical
+    P5A1 --> P5A1L1
+    P5A1L2["利用对维护者的信任<br/>Exploit Trust in Maintainer"]:::leafHigh
+    P5A1 --> P5A1L2
+    P5A1L3["攻陷贡献者账户<br/>Compromise Contributor Account"]:::leafHigh
+    P5A1 --> P5A1L3
+    P5 --> P5A1
+    P5A2{"[AND] 操纵源代码仓库<br/>Manipulate Source Repository"}:::andHigh
+    P5A2L1["强制推送重写历史<br/>Force-push to Rewrite History"]:::leafHigh
+    P5A2 --> P5A2L1
+    P5A2L2["攻陷 Git 托管服务<br/>Compromise Git Hosting Service"]:::leafHigh
+    P5A2 --> P5A2L2
+    P5A2L3["利用 Git 漏洞<br/>Exploit Git Vulnerability"]:::leafMedium
+    P5A2 --> P5A2L3
+    P5 --> P5A2
+    P5A3{"[AND] 破坏代码审查<br/>Subvert Code Review"}:::andHigh
+    P5A3L1["审查者疲劳攻击<br/>Reviewer Fatigue Attack"]:::leafHigh
+    P5A3 --> P5A3L1
+    P5A3L2["被攻陷的审查者账户<br/>Compromised Reviewer Account"]:::leafHigh
+    P5A3 --> P5A3L2
+    P5A3L3["利用合并竞态条件<br/>Exploit Race Condition in Merge"]:::leafMedium
+    P5A3 --> P5A3L3
+    P5 --> P5A3
+    R --> P5
+    P6["[OR] 3.6 分发渠道劫持<br/>Compromise Distribution Channel"]:::orHigh
+    P6A1{"[AND] DNS 劫持<br/>DNS Hijacking"}:::andHigh
+    P6A1L1["攻陷 DNS 注册商<br/>Compromise DNS Registrar"]:::leafHigh
+    P6A1 --> P6A1L1
+    P6A1L2["BGP 劫持<br/>BGP Hijacking"]:::leafHigh
+    P6A1 --> P6A1L2
+    P6A1L3["污染 DNS 解析器<br/>Poison DNS Resolver"]:::leafMedium
+    P6A1 --> P6A1L3
+    P6 --> P6A1
+    P6A2{"[AND] 下载过程 MITM<br/>MITM on Download"}:::andHigh
+    P6A2L1["攻陷 CDN 边缘节点<br/>Compromise CDN Edge Node"]:::leafHigh
+    P6A2 --> P6A2L1
+    P6A2L2["伪造 WiFi 热点<br/>Rogue WiFi Hotspot"]:::leafMedium
+    P6A2 --> P6A2L2
+    P6A2L3["攻陷证书颁发机构<br/>Compromise Certificate Authority"]:::leafHigh
+    P6A2 --> P6A2L3
+    P6 --> P6A2
+    P6A3{"[AND] 镜像篡改<br/>Mirror Tampering"}:::andMedium
+    P6A3L1["攻陷官方镜像<br/>Compromise Official Mirror"]:::leafHigh
+    P6A3 --> P6A3L1
+    P6A3L2["搭建 rogue 镜像<br/>Setup Rogue Mirror"]:::leafMedium
+    P6A3 --> P6A3L2
+    P6A3L3["利用镜像同步延迟<br/>Exploit Mirror Sync Lag"]:::leafMedium
+    P6A3 --> P6A3L3
+    P6 --> P6A3
+    R --> P6
+    P7["[OR] 3.7 运行时加载恶意组件<br/>Runtime Malicious Component Loading"]:::orHigh
+    P7A1{"[AND] 动态依赖解析<br/>Dynamic Dependency Resolution"}:::andHigh
+    P7A1L1["运行时无验证下载<br/>Runtime Download Without Verification"]:::leafHigh
+    P7A1 --> P7A1L1
+    P7A1L2["无沙箱的插件系统<br/>Plugin System Without Sandbox"]:::leafHigh
+    P7A1 --> P7A1L2
+    P7 --> P7A1
+    P7A2{"[AND] 运行时自身供应链污染<br/>Supply Chain of Runtime Itself"}:::andHigh
+    P7A2L1["被攻陷的 JVM 运行时<br/>Compromised JVM Runtime"]:::leafCritical
+    P7A2 --> P7A2L1
+    P7A2L2["被篡改的 Node.js 二进制<br/>Tampered Node.js Binary"]:::leafCritical
+    P7A2 --> P7A2L2
+    P7A2L3["恶意 Python 解释器<br/>Malicious Python Interpreter"]:::leafCritical
+    P7A2 --> P7A2L3
+    P7 --> P7A2
+    P7A3{"[AND] 运行时依赖混淆<br/>Dependency Confusion at Runtime"}:::andMedium
+    P7A3L1["动态版本解析歧义<br/>Dynamic Version Resolution Ambiguity"]:::leafMedium
+    P7A3 --> P7A3L1
+    P7 --> P7A3
+    R --> P7
+
+    %% 样式定义
+    classDef andCritical fill:#e53e3e,stroke:#333,stroke-width:3px,color:#fff,stroke-dasharray: 5 5
+    classDef andHigh fill:#dd6b20,stroke:#333,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+    classDef andMedium fill:#d69e2e,stroke:#333,stroke-width:1px,color:#000,stroke-dasharray: 5 5
+    classDef leafCritical fill:#e53e3e,stroke:#333,stroke-width:3px,color:#fff
+    classDef leafHigh fill:#dd6b20,stroke:#333,stroke-width:2px,color:#fff
+    classDef leafLow fill:#38a169,stroke:#333,stroke-width:1px,color:#fff
+    classDef leafMedium fill:#d69e2e,stroke:#333,stroke-width:1px,color:#000
+    classDef orCritical fill:#e53e3e,stroke:#333,stroke-width:3px,color:#fff
+    classDef orHigh fill:#dd6b20,stroke:#333,stroke-width:2px,color:#fff

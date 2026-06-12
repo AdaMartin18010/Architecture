@@ -33,6 +33,8 @@
 - [x] ROI/NPV 完整模型
 - [x] COCOMO II 2026 校准版 (`01-cocomo-ii-reuse/cocomo-2026-calibration.md`)
 - [x] 可执行的 Python 计算模板 (`tools/cocomo-calculator.py`)
+  - 支持官方 COCOMO II Reuse 模型（ASLOC/AAM/AAF/AT/DM/CM/IM/SU/UNFM）、5 个规模因子、17 个成本驱动因子综合乘数、工期估算、JSON/CSV/Markdown 导出、敏感性分析及 YAML 批量场景。
+  - `struct/99-reference/tools/cocomo-calculator.py` 为早期旧版/简单版原型，功能已合并到上述主工具中。
 - [ ] Excel 计算模板 (P1, 2026-Q4)
 - [ ] 跨层 FinOps 成本分摊可执行模板 (P1, 2026-Q4)
 

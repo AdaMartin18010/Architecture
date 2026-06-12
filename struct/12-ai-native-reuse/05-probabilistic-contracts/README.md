@@ -17,7 +17,12 @@
 
 | 文件 | 说明 |
 |---|---|
-| `calibration-tool.py` | 核心校准脚本，支持 calibrate / predict / drift / report 四个子命令 |
+| `calibration-tool.py` | 核心校准脚本，支持 calibrate / predict / drift / report / calibrate-temperature / calibrate-platt / calibrate-isotonic 子命令，以及 `--test` 内置测试 |
+| `probabilistic-contract-framework.md` | 概率契约框架：四元组定义、满足条件、γ(x) 设计、参数约束、违约阈值、SLA 转换、与布尔契约/DbC 区别 |
+| `monitoring-metrics.md` | 运行时监控指标定义、Prometheus 示例、Grafana 面板配置 |
+| `templates/probabilistic-contract.yaml` | 概率契约 YAML Schema 模板 |
+| `templates/ai-sla-template.md` | AI 功能 SLA 模板 |
+| `templates/calibration-report-template.md` | 校准报告模板 |
 | `example_calibration.csv` | 示例校准数据（模型 v1.0，含真实标签） |
 | `example_drift.csv` | 示例漂移数据（模型 v1.1，用于与基线比较） |
 | `example_new_inputs.csv` | 示例待预测数据（可用于 predict 子命令） |
@@ -56,7 +61,7 @@ python calibration-tool.py calibrate --data example_calibration.csv --alpha 0.05
 
 输出示例：
 
-```
+```text
 在 α=0.050 水平下，预测集合覆盖率为 95.0%；经验校准覆盖率 95.8%；conformal 阈值 q=0.3124
 平均预测集合大小: 1.23
 ```
@@ -93,7 +98,52 @@ python calibration-tool.py drift \
 python calibration-tool.py report --data example_calibration.csv --alpha 0.05
 ```
 
-输出 JSON 格式的完整报告，包含契约边界声明、平均预测集合大小、温度/Top-p 统计及分数分布。
+输出 JSON 格式的完整报告，包含契约边界声明、平均预测集合大小、温度/Top-p 统计、分数分布、ECE、Brier Score、Reliability Diagram 数据及预测集合分布。
+
+### 5. calibrate-temperature — 温度缩放校准
+
+```bash
+python calibration-tool.py calibrate-temperature \
+  --data example_calibration.csv \
+  --metric ece \
+  --n-bins 10
+```
+
+寻找最优温度 `T`，使 ECE、Brier 或负对数似然最小，并输出 ECE、Brier、Brier 分解与 reliability diagram 数据。
+
+### 6. calibrate-platt — Platt Scaling 校准
+
+```bash
+python calibration-tool.py calibrate-platt --data example_calibration.csv --n-bins 10
+```
+
+用逻辑回归校准置信度分数，输出参数 `a`、`b` 及校准质量指标。
+
+### 7. calibrate-isotonic — Isotonic Regression 校准
+
+```bash
+python calibration-tool.py calibrate-isotonic --data example_calibration.csv --n-bins 10
+```
+
+使用 PAVA 算法得到单调非减校准映射，输出映射片段与校准质量指标。
+
+### 8. 分层校准
+
+以上三种校准命令均支持 `--stratify-by` 按 `model_version`、`temperature`、`top_p` 等字段分层：
+
+```bash
+python calibration-tool.py calibrate-temperature \
+  --data example_calibration.csv \
+  --stratify-by model_version,temperature
+```
+
+### 9. --test — 内置测试
+
+```bash
+python calibration-tool.py --test
+```
+
+运行内置单元测试，验证 conformal 校准、漂移检测、ECE/Brier 计算、三种校准方法、分层校准及 CSV round-trip。
 
 ## 边界声明格式
 
@@ -102,3 +152,11 @@ python calibration-tool.py report --data example_calibration.csv --alpha 0.05
 > 在 α=0.050 水平下，预测集合覆盖率为 95.0%；经验校准覆盖率 95.8%；conformal 阈值 q=0.3124
 
 该声明可直接嵌入架构治理文档或 SLA 中，作为 AI 功能复用的量化信任边界。
+
+## 相关文档
+
+- 概率契约框架：`probabilistic-contract-framework.md`
+- 运行时监控指标：`monitoring-metrics.md`
+- SLA 模板：`templates/ai-sla-template.md`
+- 校准报告模板：`templates/calibration-report-template.md`
+- 契约 YAML Schema：`templates/probabilistic-contract.yaml`

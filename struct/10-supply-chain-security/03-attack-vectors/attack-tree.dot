@@ -1,0 +1,261 @@
+// 版本: 2026-06-12 | 状态: 完成 | 主题: 10 供应链安全工程 — 攻击树
+// 说明: 基于 attack-tree.md 的 7 大攻击路径的 Graphviz DOT 源文件
+// 图例: 菱形=AND 节点，圆角矩形=OR 节点，椭圆=叶节点；颜色按风险等级
+digraph SupplyChainAttackTree {
+    rankdir=TB;
+    graph [fontname="Microsoft YaHei,Segoe UI,sans-serif", bgcolor=white, margin=0];
+    node [fontname="Microsoft YaHei,Segoe UI,sans-serif", shape=box, style="rounded,filled", fontsize=10];
+    edge [fontname="Microsoft YaHei,Segoe UI,sans-serif", fontsize=9, arrowhead=none];
+
+    // 风险等级颜色（与 Mermaid 一致）
+    // critical=#e53e3e, high=#dd6b20, medium=#d69e2e, low=#38a169
+
+    R [label="[OR] 损害软件供应链
+Compromise Software Supply Chain", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=box, style="rounded,filled"];
+    P1 [label="[OR] 3.1 开发环境渗透
+Compromise Development Environment", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P1A1 [label="[AND] 窃取开发者凭证
+Steal Developer Credentials", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P1A1L1 [label="网络钓鱼攻击
+Phishing Attack", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P1A1 -> P1A1L1;
+    P1A1L2 [label="凭证填充攻击
+Credential Stuffing", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P1A1 -> P1A1L2;
+    P1A1L3 [label="键盘记录恶意软件
+Malware Keylogger", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P1A1 -> P1A1L3;
+    P1 -> P1A1;
+    P1A2 [label="[AND] 攻陷 IDE / 编辑器
+Compromise IDE or Editor", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P1A2L1 [label="恶意扩展 / 插件
+Malicious Extension/Plugin", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P1A2 -> P1A2L1;
+    P1A2L2 [label="IDE 自身供应链污染
+Supply Chain of IDE Itself", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P1A2 -> P1A2L2;
+    P1A2L3 [label="被攻陷的 LSP 服务器
+Compromised LSP Server", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P1A2 -> P1A2L3;
+    P1 -> P1A2;
+    P1A3 [label="[AND] 污染本地工具链
+Poison Local Toolchain", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=diamond];
+    P1A3L1 [label="被篡改的编译器
+Tampered Compiler", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P1A3 -> P1A3L1;
+    P1A3L2 [label="恶意 Linter / Formatter
+Malicious Linter/Formatter", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P1A3 -> P1A3L2;
+    P1A3L3 [label="被攻陷的调试器
+Compromised Debugger", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P1A3 -> P1A3L3;
+    P1 -> P1A3;
+    R -> P1;
+    P2 [label="[OR] 3.2 构建系统篡改
+Compromise Build System", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=box, style="rounded,filled"];
+    P2A1 [label="[AND] 注入恶意构建步骤
+Inject Malicious Build Step", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=diamond];
+    P2A1L1 [label="被攻陷的 CI/CD 流水线
+Compromised CI/CD Pipeline", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P2A1 -> P2A1L1;
+    P2A1L2 [label="恶意构建脚本
+Malicious Build Script", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A1 -> P2A1L2;
+    P2A1L3 [label="被篡改的容器镜像
+Tampered Container Image", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A1 -> P2A1L3;
+    P2 -> P2A1;
+    P2A2 [label="[AND] 绕过构建验证
+Bypass Build Verification", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P2A2L1 [label="伪造构建来源证明
+Forge Build Provenance", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A2 -> P2A2L1;
+    P2A2L2 [label="重放旧的有效签名
+Replay Old Valid Signature", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A2 -> P2A2L2;
+    P2A2L3 [label="利用构建工具 RCE 漏洞
+Exploit RCE in Build Tool", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A2 -> P2A2L3;
+    P2 -> P2A2;
+    P2A3 [label="[AND] 破坏构建产物
+Compromise Build Artifacts", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P2A3L1 [label="构建后替换二进制
+Replace Binary After Build", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P2A3 -> P2A3L1;
+    P2A3L2 [label="注入构建后钩子
+Inject Post-Build Hook", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A3 -> P2A3L2;
+    P2A3L3 [label="操纵制品仓库
+Manipulate Artifact Repository", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P2A3 -> P2A3L3;
+    P2 -> P2A3;
+    R -> P2;
+    P3 [label="[OR] 3.3 包管理器投毒
+Compromise Package Manager", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P3O1 [label="[OR] 发布恶意包
+Publish Malicious Package", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P3O1L1 [label="拼写混淆 Typosquatting", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P3O1 -> P3O1L1;
+    P3O1L2 [label="品牌抢注 Brandjacking", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P3O1 -> P3O1L2;
+    P3O1L3 [label="依赖混淆 Dependency Confusion", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P3O1 -> P3O1L3;
+    P3 -> P3O1;
+    P3A1 [label="[AND] 攻陷已有包
+Compromise Existing Package", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P3A1L1 [label="窃取维护者凭证
+Steal Maintainer Credentials", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P3A1 -> P3A1L1;
+    P3A1L2 [label="社会工程学接管
+Social Engineering Takeover", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P3A1 -> P3A1L2;
+    P3A1L3 [label="购买废弃包
+Buy Abandoned Package", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P3A1 -> P3A1L3;
+    P3 -> P3A1;
+    P3A2 [label="[AND] 操纵注册表元数据
+Manipulate Registry Metadata", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=diamond];
+    P3A2L1 [label="篡改下载统计
+Alter Download Statistics", fillcolor="#38a169", fontcolor="white", penwidth=1, shape=ellipse];
+    P3A2 -> P3A2L1;
+    P3A2L2 [label="伪造正面评价
+Fake Positive Reviews", fillcolor="#38a169", fontcolor="white", penwidth=1, shape=ellipse];
+    P3A2 -> P3A2L2;
+    P3A2L3 [label="压制安全公告
+Suppress Security Advisories", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P3A2 -> P3A2L3;
+    P3 -> P3A2;
+    R -> P3;
+    P4 [label="[OR] 3.4 依赖混淆
+Dependency Confusion Attack", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P4A1 [label="[AND] 识别内部包名
+Identify Internal Package Names", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=diamond];
+    P4A1L1 [label="扫描公开仓库
+Scan Public Repositories", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P4A1 -> P4A1L1;
+    P4A1L2 [label="分析错误信息
+Analyze Error Messages", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P4A1 -> P4A1L2;
+    P4A1L3 [label="社会工程学
+Social Engineering", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P4A1 -> P4A1L3;
+    P4 -> P4A1;
+    P4A2 [label="[AND] 向公共注册表发布更高版本
+Publish Higher Version to Public Registry", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P4A2L1 [label="版本号膨胀 (9999.0.0)
+Version Number Inflation", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P4A2 -> P4A2L1;
+    P4A2L2 [label="预发布版本操纵 (1.0.0-rc999)
+Pre-release Manipulation", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P4A2 -> P4A2L2;
+    P4 -> P4A2;
+    R -> P4;
+    P5 [label="[OR] 3.5 上游代码植入
+Compromise Upstream Source", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=box, style="rounded,filled"];
+    P5A1 [label="[AND] 提交恶意贡献
+Submit Malicious Contribution", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P5A1L1 [label="伪装良性的隐藏后门 PR
+Benign-Looking PR with Hidden Backdoor", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P5A1 -> P5A1L1;
+    P5A1L2 [label="利用对维护者的信任
+Exploit Trust in Maintainer", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A1 -> P5A1L2;
+    P5A1L3 [label="攻陷贡献者账户
+Compromise Contributor Account", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A1 -> P5A1L3;
+    P5 -> P5A1;
+    P5A2 [label="[AND] 操纵源代码仓库
+Manipulate Source Repository", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P5A2L1 [label="强制推送重写历史
+Force-push to Rewrite History", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A2 -> P5A2L1;
+    P5A2L2 [label="攻陷 Git 托管服务
+Compromise Git Hosting Service", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A2 -> P5A2L2;
+    P5A2L3 [label="利用 Git 漏洞
+Exploit Git Vulnerability", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P5A2 -> P5A2L3;
+    P5 -> P5A2;
+    P5A3 [label="[AND] 破坏代码审查
+Subvert Code Review", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P5A3L1 [label="审查者疲劳攻击
+Reviewer Fatigue Attack", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A3 -> P5A3L1;
+    P5A3L2 [label="被攻陷的审查者账户
+Compromised Reviewer Account", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P5A3 -> P5A3L2;
+    P5A3L3 [label="利用合并竞态条件
+Exploit Race Condition in Merge", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P5A3 -> P5A3L3;
+    P5 -> P5A3;
+    R -> P5;
+    P6 [label="[OR] 3.6 分发渠道劫持
+Compromise Distribution Channel", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P6A1 [label="[AND] DNS 劫持
+DNS Hijacking", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P6A1L1 [label="攻陷 DNS 注册商
+Compromise DNS Registrar", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P6A1 -> P6A1L1;
+    P6A1L2 [label="BGP 劫持
+BGP Hijacking", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P6A1 -> P6A1L2;
+    P6A1L3 [label="污染 DNS 解析器
+Poison DNS Resolver", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P6A1 -> P6A1L3;
+    P6 -> P6A1;
+    P6A2 [label="[AND] 下载过程 MITM
+MITM on Download", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P6A2L1 [label="攻陷 CDN 边缘节点
+Compromise CDN Edge Node", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P6A2 -> P6A2L1;
+    P6A2L2 [label="伪造 WiFi 热点
+Rogue WiFi Hotspot", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P6A2 -> P6A2L2;
+    P6A2L3 [label="攻陷证书颁发机构
+Compromise Certificate Authority", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P6A2 -> P6A2L3;
+    P6 -> P6A2;
+    P6A3 [label="[AND] 镜像篡改
+Mirror Tampering", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=diamond];
+    P6A3L1 [label="攻陷官方镜像
+Compromise Official Mirror", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P6A3 -> P6A3L1;
+    P6A3L2 [label="搭建 rogue 镜像
+Setup Rogue Mirror", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P6A3 -> P6A3L2;
+    P6A3L3 [label="利用镜像同步延迟
+Exploit Mirror Sync Lag", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P6A3 -> P6A3L3;
+    P6 -> P6A3;
+    R -> P6;
+    P7 [label="[OR] 3.7 运行时加载恶意组件
+Runtime Malicious Component Loading", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=box, style="rounded,filled"];
+    P7A1 [label="[AND] 动态依赖解析
+Dynamic Dependency Resolution", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P7A1L1 [label="运行时无验证下载
+Runtime Download Without Verification", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P7A1 -> P7A1L1;
+    P7A1L2 [label="无沙箱的插件系统
+Plugin System Without Sandbox", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=ellipse];
+    P7A1 -> P7A1L2;
+    P7 -> P7A1;
+    P7A2 [label="[AND] 运行时自身供应链污染
+Supply Chain of Runtime Itself", fillcolor="#dd6b20", fontcolor="white", penwidth=2, shape=diamond];
+    P7A2L1 [label="被攻陷的 JVM 运行时
+Compromised JVM Runtime", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P7A2 -> P7A2L1;
+    P7A2L2 [label="被篡改的 Node.js 二进制
+Tampered Node.js Binary", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P7A2 -> P7A2L2;
+    P7A2L3 [label="恶意 Python 解释器
+Malicious Python Interpreter", fillcolor="#e53e3e", fontcolor="white", penwidth=3, shape=ellipse];
+    P7A2 -> P7A2L3;
+    P7 -> P7A2;
+    P7A3 [label="[AND] 运行时依赖混淆
+Dependency Confusion at Runtime", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=diamond];
+    P7A3L1 [label="动态版本解析歧义
+Dynamic Version Resolution Ambiguity", fillcolor="#d69e2e", fontcolor="black", penwidth=1, shape=ellipse];
+    P7A3 -> P7A3L1;
+    P7 -> P7A3;
+    R -> P7;
+}

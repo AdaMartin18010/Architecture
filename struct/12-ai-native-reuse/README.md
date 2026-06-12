@@ -43,9 +43,11 @@ AI/LLM 功能复用是 2026 年软件工程的新边界。传统复用假设"确
 - [x] MCP + A2A 协议架构分析
 - [x] 概率契约形式化定义
 - [x] MCP 2025-11-25 + A2A v1.0 协议深度解析 (`01-mcp-protocol/mcp-2025-11-25-deep-dive.md`)
-- [x] AI 概率契约校准工具原型 (`04-probabilistic-contracts/calibration-tool.py`，基于 Conformal Prediction)
+- [x] AI 概率契约校准工具原型 (`05-probabilistic-contracts/calibration-tool.py`，基于 Conformal Prediction)
 - [x] A2A v1.0.0 协议复用分析 (`02-a2a-protocol/a2a-reuse-analysis.md`)
-- [x] Conformal Prediction 代码生成应用案例 (`05-conformal-prediction/cp-code-generation.md`)
+- [x] A2A/MCP 混合 Agent PoC (`04-hybrid-a2a-mcp-poc/`)
+- [x] Conformal Prediction 代码生成应用案例 (`07-conformal-prediction/cp-code-generation.md`)
+- [x] NIST AI RMF 复用映射 (`06-ai-governance/nist-ai-rmf-reuse-mapping.md`)
 - [ ] Agentic Governance 的组织设计模板 (P1, 2026-Q4)
 
 ## 关联主题

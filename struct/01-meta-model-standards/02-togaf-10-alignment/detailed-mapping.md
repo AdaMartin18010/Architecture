@@ -297,7 +297,7 @@ TOGAF 10 的 ABB/SBB 可通过 ArchiMate 语言进行实例化描述：
 | Work Package / Deliverable | 过渡 ABB | 项目计划中的具体任务包 |
 
 ArchiMate 的 **realization** 关系可直接表达 ABB → SBB 的实现对应（Correspondence）。
-ArchiMate 4（厂商预览，未获 The Open Group 官方正式发布确认）进一步支持了跨层服务实现的逻辑-物理分离（基于预览内容分析）。
+ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层服务实现的逻辑-物理分离，并通过通用域（Common Domain）和 Path 概念强化了 ABB/SBB 映射表达。
 
 ---
 
