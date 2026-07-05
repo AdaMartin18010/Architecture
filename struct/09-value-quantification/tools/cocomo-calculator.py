@@ -37,6 +37,20 @@ Post-Architecture / 2026 工作量模型::
         --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \
         --a 2.20 --sf 4,3,3,3,3 --em 0.815 --output result.json
 
+实际 ROI（给定实际投入工作量）::
+
+    python cocomo-calculator.py \
+        --sloc 10000 --asloc 3000 --aa 10 \
+        --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \
+        --a 2.20 --sf 4,3,3,3,3 --em 0.815 \
+        --actual-effort 15.0 --output result.json
+
+导出 Excel（含 Inputs / Results / ROI / Sensitivity 四张工作表）::
+
+    python cocomo-calculator.py --sloc 10000 --asloc 3000 --aa 10 \
+        --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \
+        --a 2.20 --sf 4,3,3,3,3 --em 0.815 --sensitivity --output result.xlsx
+
 敏感性分析::
 
     python cocomo-calculator.py --sloc 10000 --asloc 3000 --dm 30 --cm 20 --im 50 \
@@ -44,7 +58,11 @@ Post-Architecture / 2026 工作量模型::
 
 批量场景对比（YAML 配置）::
 
-    python cocomo-calculator.py --config scenario.yaml --output report.md
+    python cocomo-calculator.py --config cocomo-scenario.yaml --output report.md
+
+交互式 Streamlit 应用::
+
+    streamlit run cocomo-streamlit.py
 
 单元测试::
 
@@ -71,6 +89,10 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Any
+
+from openpyxl import Workbook, load_workbook
+from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
+from openpyxl.utils import get_column_letter
 
 # ---------------------------------------------------------------------------
 # 默认常量
@@ -568,6 +590,80 @@ def export_md(results: list[dict[str, Any]], path: str) -> None:
         f.write("\n".join(lines) + "\n")
 
 
+def _xlsx_value(value: Any) -> Any:
+    """将可能包含列表/字典的值转换为 Excel 可写的标量。"""
+    if value is None:
+        return ""
+    if isinstance(value, (list, dict, tuple)):
+        return json.dumps(value, ensure_ascii=False)
+    return value
+
+
+def export_xlsx(results: list[dict[str, Any]], path: str) -> None:
+    """导出为 Excel，包含 Inputs、Results、ROI、Sensitivity（如有）工作表。"""
+    wb = Workbook()
+    # 删除默认空白工作表
+    wb.remove(wb.active)
+
+    header_fill = PatternFill(start_color="366092", end_color="366092", fill_type="solid")
+    header_font = Font(color="FFFFFF", bold=True)
+    thin_border = Border(
+        left=Side(style="thin"),
+        right=Side(style="thin"),
+        top=Side(style="thin"),
+        bottom=Side(style="thin"),
+    )
+
+    # Inputs 工作表
+    ws_inputs = wb.create_sheet("Inputs")
+    input_keys = ["scenario"] + list(dict.fromkeys(k for r in results for k in r["inputs"].keys()))
+    ws_inputs.append(input_keys)
+    for r in results:
+        ws_inputs.append([r["scenario"]] + [_xlsx_value(r["inputs"].get(k, "")) for k in input_keys[1:]])
+
+    # Results 工作表
+    ws_results = wb.create_sheet("Results")
+    result_keys = ["scenario", "esloc", "total_size", "size_ksloc", "effort_pm", "schedule_months", "team_size"]
+    ws_results.append(result_keys)
+    for r in results:
+        ws_results.append([_xlsx_value(r.get(k, "")) for k in result_keys])
+
+    # ROI 工作表
+    ws_roi = wb.create_sheet("ROI")
+    roi_keys = ["scenario"] + list(dict.fromkeys(k for r in results for k in r["roi"].keys()))
+    ws_roi.append(roi_keys)
+    for r in results:
+        ws_roi.append([r["scenario"]] + [_xlsx_value(r["roi"].get(k, "")) for k in roi_keys[1:]])
+
+    # Sensitivity 工作表（任一结果包含敏感性分析时创建）
+    has_sensitivity = any("sensitivity" in r for r in results)
+    if has_sensitivity:
+        ws_sens = wb.create_sheet("Sensitivity")
+        sens_header = ["scenario", "parameter", "base_value", "effort_low", "effort_high", "impact", "impact_percent"]
+        ws_sens.append(sens_header)
+        for r in results:
+            for row in r.get("sensitivity", []):
+                ws_sens.append([r["scenario"]] + [_xlsx_value(row.get(k, "")) for k in sens_header[1:]])
+
+    # 样式与列宽
+    for ws in wb.worksheets:
+        for cell in ws[1]:
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(horizontal="center", vertical="center")
+        for row in ws.iter_rows(min_row=2):
+            for cell in row:
+                cell.border = thin_border
+                if isinstance(cell.value, (int, float)):
+                    cell.number_format = "#,##0" if isinstance(cell.value, int) else "0.00"
+        for col in ws.columns:
+            col_letter = get_column_letter(col[0].column)
+            max_length = max((len(str(cell.value)) for cell in col if cell.value is not None), default=0)
+            ws.column_dimensions[col_letter].width = min(max(max_length + 2, 10), 50)
+
+    wb.save(path)
+
+
 def export_results(results: list[dict[str, Any]], path: str) -> None:
     """根据扩展名自动选择导出格式。"""
     ext = Path(path).suffix.lower()
@@ -577,8 +673,10 @@ def export_results(results: list[dict[str, Any]], path: str) -> None:
         export_csv(results, path)
     elif ext in (".md", ".markdown"):
         export_md(results, path)
+    elif ext == ".xlsx":
+        export_xlsx(results, path)
     else:
-        raise ValueError(f"不支持的输出格式: {ext}（请使用 .json/.csv/.md）")
+        raise ValueError(f"不支持的输出格式: {ext}（请使用 .json/.csv/.md/.xlsx）")
 
 
 # ---------------------------------------------------------------------------
@@ -772,12 +870,16 @@ def print_report(result: dict[str, Any], sensitivity: list[dict[str, Any]] | Non
 # ---------------------------------------------------------------------------
 
 def run_config(args: argparse.Namespace) -> list[dict[str, Any]]:
-    """读取 YAML 配置文件并批量运行场景。"""
+    """读取 YAML 配置文件并批量运行场景。优先使用 PyYAML，回退到内置最小解析器。"""
     config_path = Path(args.config)
     if not config_path.exists():
         raise FileNotFoundError(f"配置文件不存在: {config_path}")
 
-    raw = load_yaml_simple(config_path.read_text(encoding="utf-8"))
+    try:
+        import yaml  # type: ignore
+        raw = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    except ImportError:
+        raw = load_yaml_simple(config_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise ValueError("配置文件根节点必须是映射（mapping）")
 
@@ -876,7 +978,15 @@ def run_tests() -> None:
     assert abs(result["esloc"] - 1488.0) < 1.0, f"scenario esloc mismatch: {result['esloc']}"
     assert 16.0 < result["effort_pm"] < 19.0, f"scenario effort out of range: {result['effort_pm']}"
 
-    # 7. 敏感性分析
+    # 7. ROI 计算（含实际投入）
+    roi = compute_roi(20.0, 50.0)
+    assert abs(roi["cost_saving"] - 30.0) < 0.01
+    assert abs(roi["roi_nominal_percent"] - 150.0) < 0.01
+    roi_actual = compute_roi(20.0, 50.0, 25.0)
+    assert abs(roi_actual["actual_saving"] - 25.0) < 0.01
+    assert abs(roi_actual["roi_actual_percent"] - 100.0) < 0.01
+
+    # 8. 敏感性分析
     sens = sensitivity_analysis(params)
     assert len(sens) > 0
     assert all("impact" in row for row in sens)
@@ -884,11 +994,12 @@ def run_tests() -> None:
     for i in range(len(sens) - 1):
         assert abs(sens[i]["impact"]) >= abs(sens[i + 1]["impact"])
 
-    # 8. 导出格式验证
+    # 9. 导出格式验证
     with tempfile.TemporaryDirectory() as tmpdir:
         json_path = os.path.join(tmpdir, "result.json")
         csv_path = os.path.join(tmpdir, "result.csv")
         md_path = os.path.join(tmpdir, "result.md")
+        xlsx_path = os.path.join(tmpdir, "result.xlsx")
 
         export_json([result], json_path)
         with open(json_path, encoding="utf-8") as f:
@@ -907,7 +1018,13 @@ def run_tests() -> None:
         assert "COCOMO II" in md_content
         assert str(result["effort_pm"]) in md_content
 
-    # 9. YAML 配置解析
+        export_xlsx([result], xlsx_path)
+        assert os.path.exists(xlsx_path)
+        wb = load_workbook(xlsx_path)
+        sheet_names = set(wb.sheetnames)
+        assert {"Inputs", "Results", "ROI"}.issubset(sheet_names)
+
+    # 10. YAML 配置解析
     sample_yaml = """
 defaults:
   sloc: 10000
@@ -953,12 +1070,25 @@ def _build_parser() -> argparse.ArgumentParser:
       --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \\
       --a 2.20 --sf 4,3,3,3,3 --em 0.815 --output result.json
 
+  # 实际 ROI（--actual-effort 与 --effort 等价）
+  python cocomo-calculator.py --sloc 10000 --asloc 3000 --aa 10 \\
+      --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \\
+      --a 2.20 --sf 4,3,3,3,3 --em 0.815 --actual-effort 15.0
+
+  # Excel 导出（含 Inputs / Results / ROI / Sensitivity 工作表）
+  python cocomo-calculator.py --sloc 10000 --asloc 3000 --aa 10 \\
+      --dm 30 --cm 20 --im 50 --su 20 --unfm 0.5 \\
+      --a 2.20 --sf 4,3,3,3,3 --em 0.815 --sensitivity --output report.xlsx
+
   # 敏感性分析
   python cocomo-calculator.py --sloc 10000 --asloc 3000 --dm 30 --cm 20 --im 50 \\
       --su 20 --unfm 0.5 --sensitivity
 
   # 批量场景（YAML 配置）
-  python cocomo-calculator.py --config scenario.yaml --output report.md
+  python cocomo-calculator.py --config cocomo-scenario.yaml --output report.md
+
+  # 交互式 Streamlit 应用
+  streamlit run cocomo-streamlit.py
 
   # 单元测试
   python cocomo-calculator.py --test
@@ -973,7 +1103,7 @@ def _build_parser() -> argparse.ArgumentParser:
     # 运行控制
     parser.add_argument("--test", action="store_true", help="运行内置单元测试")
     parser.add_argument("--config", type=str, default=None, help="YAML 配置文件路径（批量多场景）")
-    parser.add_argument("--output", type=str, default=None, help="导出报告路径（.json/.csv/.md）")
+    parser.add_argument("--output", type=str, default=None, help="导出报告路径（.json/.csv/.md/.xlsx）")
     parser.add_argument("--sensitivity", action="store_true", help="执行敏感性分析并输出 tornado 表")
 
     # 原有参数（向后兼容）
@@ -981,7 +1111,8 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--aam", type=float, default=None, help="改编调整因子 AAM [0.0, 1.0]（简化模式）")
     parser.add_argument("--su", type=float, default=0.0, help="软件理解度 SU（简化模式 0-1，官方模型 0-100%%）")
     parser.add_argument("--unfm", type=float, default=1.0, help="未熟悉度 UNFM [0.0, 2.0]")
-    parser.add_argument("--effort", type=float, default=None, help="实际投入工作量（人月），用于 ROI 计算")
+    parser.add_argument("--effort", "--actual-effort", type=float, default=None,
+                        help="实际投入工作量（人月），用于 ROI 计算（--actual-effort 为等价写法）")
     parser.add_argument("--mode", type=str, choices=["basic", "intermediate", "official"], default="basic",
                         help="计算模式: basic=简化（向后兼容）, intermediate=中间模型, official=官方复用模型")
 

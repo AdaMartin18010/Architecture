@@ -1,0 +1,43 @@
+# COCOMO II 2026 复用成本计算示例场景
+# 用法: python cocomo-calculator.py --config cocomo-scenario.yaml --output report.xlsx
+
+defaults:
+  mode: official
+  sloc: 10000
+  asloc: 3000
+  aa: 10
+  at: 0
+  dm: 30
+  cm: 20
+  im: 50
+  su: 20
+  unfm: 0.5
+  a: 2.20
+  b: 0.91
+  sf: [4, 3, 3, 3, 3]
+  em: 0.815
+  schedule: "3.67,0.3179"
+  sced: 1.0
+
+scenarios:
+  - name: baseline
+    description: 基线复用场景，改编因子AAF=33%
+
+  - name: high_reuse
+    description: 高度复用，降低DM/CM/IM
+    dm: 10
+    cm: 5
+    im: 20
+    asloc: 6000
+
+  - name: low_reuse_high_adaptation
+    description: 低复用且改编成本高，AAF接近重新开发阈值
+    dm: 50
+    cm: 40
+    im: 60
+    su: 40
+    unfm: 1.0
+
+  - name: actual_effort_baseline
+    description: 基线场景并记录实际投入工作量，用于计算实际ROI
+    effort: 16.0

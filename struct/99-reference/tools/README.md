@@ -1,8 +1,24 @@
 # 可执行工具目录
 
 > **定位**: 将知识体系中的理论模型转化为可运行的代码原型
-> **开发策略**: 按 `SUBSEQUENT_PLAN_2026.md` 决策 3A，采用 Python CLI + Streamlit 快速原型
-> **版本**: 2026-06-12
+> **开发策略**: 按 `SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` 决策 3A，采用 Python CLI + Streamlit 快速原型
+> **版本**: 2026-07-06
+
+---
+
+## 依赖安装
+
+在项目根目录激活 `.venv` 后安装全部依赖：
+
+```bash
+# Windows PowerShell / Git Bash
+source .venv/Scripts/activate
+pip install -r struct/99-reference/tools/requirements.txt
+```
+
+依赖列表：`numpy`、`scipy`、`openpyxl`、`pyyaml`、`streamlit`、`pytest`。
+
+`reuse-decision-tool-v2/` 也可使用自身 `requirements.txt`：`pip install -r struct/99-reference/tools/reuse-decision-tool-v2/requirements.txt`。
 
 ---
 
@@ -10,10 +26,19 @@
 
 | 工具 | 路径 | 用途 | 状态 |
 |------|------|------|------|
-| 术语查询 | `terminology-query.py` | 跨标准术语搜索、对比、版本提示、导出、同步（ISO/Togaf/SLSA/MCP/A2A） | ✅ 可用 |
+| 术语查询 | `terminology-query.py` | 跨标准术语搜索、对比、版本提示、导出、同步 | ✅ 可用 |
 | COCOMO II 计算器 | `cocomo-calculator.py` | 复用模型工作量估算 | ✅ 可用 |
-| 形式化验证环境 | `formal-verification-env/` | Docker 化 TLA+/Alloy/Coq/Isabelle | ✅ 已创建 |
-| 复用决策工具 | `reuse-decision-tool/` | 交互式六阶段复用决策（Web/CLI） | 🔄 Phase 6 |
+| 成熟度评估 CLI | `../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | ISO/IEC 26566 / RCMM / RiSE 复用成熟度评估 | ✅ 可用 |
+| FinOps 成本分摊 | `../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | L1–L4 成本分摊 Excel/CSV 导出 | ✅ 可用 |
+| 概率契约校准 | `../../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction 校准、漂移检测 | ✅ 可用 |
+| PIU 贝叶斯验证 | `../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | IEC 61508 Proven-in-Use 统计验证 | ✅ 依赖就绪 |
+| 供应链攻击树可视化 | `../../10-supply-chain-security/03-attack-vectors/attack-tree-interactive.py` | 5 种攻击场景、单文件 HTML 生成 | ✅ 可用 |
+| EU CRA 合规检查 | `../../10-supply-chain-security/06-case-studies/eu-cra-checklist.py` | 20 项检查清单、JSON/Markdown 报告 | ✅ 可用 |
+| 复用决策工具 v1 | `reuse-decision-tool/` | 交互式六阶段复用决策（Web/CLI） | 🔄 Phase 6 |
+| 复用决策工具 v2 | `reuse-decision-tool-v2/main.py` | 增强版复用决策（Streamlit / CLI） | ✅ help 可用 |
+| 形式化验证环境 | `formal-verification-env/` | Docker 化 TLA+/Alloy/Coq/Isabelle | ⚠️ 仅文档/占位，未安装验证 |
+
+> **说明**: 形式化验证工具按用户要求仅保留内容与占位，不进行 Docker 安装或运行时验证。
 
 ---
 
@@ -65,23 +90,47 @@ python terminology-query.py --test
 # COCOMO II 计算
 python cocomo-calculator.py --ksloc-reused 50 --aaf 0.4 --em 1.2
 
-# 启动形式化验证环境
+# 形式化验证环境（仅文档占位，不启动容器）
 cd formal-verification-env
-docker compose up -d
-bash verify-all.sh
+# docker compose up -d
+# bash verify-all.sh
 ```
 
 ---
 
-## 计划中的工具（按 `SUBSEQUENT_PLAN_2026.md`）
+## 验证记录（2026-07-06）
 
-- `maturity-assessment-cli.py` — ISO/IEC 26566:2026 复用成熟度评估问卷（Phase 2）
-- `finops-allocation.py` — 跨层 FinOps 成本分摊计算器（Phase 2）
-- `probabilistic-contract-calibration.py` — AI 概率契约校准工具（Phase 2）
-- `piu-bayesian-tool.py` — IEC 61508 Proven-in-Use 统计验证（Phase 3）
-- `supply-chain-attack-tree-viz.py` — 供应链攻击树可视化（Phase 4）
-- `reuse-decision-tool/` — 交互式复用决策 Web/CLI（Phase 6）
+已执行的最小验证命令：
+
+```bash
+python cocomo-calculator.py --test
+python terminology-query.py --test
+python ../../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py --test
+python ../../10-supply-chain-security/03-attack-vectors/attack-tree-interactive.py --test
+python ../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py --demo
+python ../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py --input ../../06-cross-layer-governance/04-finops-cost/templates/example-costs.yaml --output /tmp/finops.xlsx
+python ../../10-supply-chain-security/06-case-studies/eu-cra-checklist.py --help
+python ../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py --help
+python reuse-decision-tool-v2/main.py --help
+```
+
+结果：全部通过或 help 输出正常。部分脚本需用户提供输入数据/YAML/JSON 才能跑完整流程。
 
 ---
 
-> 最后更新: 2026-06-12
+---
+
+## 计划中的工具（按 `SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md`）
+
+- 成熟度评估 CLI 增强（导出 Markdown/JSON、权重自定义） — Phase 1
+- FinOps 单位经济学与 AI 成本模块 — Phase 1
+- 概率契约校准 GUI / Streamlit 版 — Phase 1
+- MCP/Agentic 安全治理扫描器（策略/工具清单） — Phase 1
+- ISO 25010/25040 质量矩阵评估器 — Phase 1
+- PIU 贝叶斯验证完整输入示例 — Phase 2
+- 供应链攻击树可视化扩展（MCP/Agentic 攻击向量） — Phase 2
+- `reuse-decision-tool/` 与 v2 能力对齐 — Phase 6
+
+---
+
+> 最后更新: 2026-07-06

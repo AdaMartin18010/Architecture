@@ -5,6 +5,47 @@
 
 ---
 
+## 2026-07-06 Phase 0 执行与基础修复完成
+
+> **触发原因**: 在启动 Phase 1 内容深化前，按 `SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` 执行 Phase 0：对齐目录结构、修复工具依赖、验证可执行脚本、建立统一依赖索引，并完成权威来源索引更新。
+
+### 关键决策
+
+- **1-A**: 以实际 `struct/` 目录结构为准，重写 `struct/README.md` 并同步 `MASTER_PLAN`。
+- **2-A（已按用户要求调整）**: 形式化验证仅做内容审阅，不安装/验证 TLA+/Alloy/Coq/Isabelle/Kani/Prusti/Miri。
+- **3-A**: 可执行工具采用 Python CLI + Streamlit MVP。
+- **4-A**: 优先 MCP/Agentic 安全治理、IDP、ISO 25010/25040 质量矩阵、COCOMO/FinOps 增强；量子计算暂缓。
+- **5-A**: 每篇文档需引用 1–3 个权威来源并登记到 `authoritative-sources-v2.md`。
+- **6-A**: 追踪 IEC 61508 Ed.3 / ISO 21448 Ed.2，发布后 4 周内更新。
+
+### 工具验证与依赖修复
+
+| 工具路径 | 修复内容 | 当前状态 |
+|---|---|---|
+| `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | 安装 `numpy`、`scipy` | ✅ `--test` 通过 |
+| `11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | 安装 `numpy`、`scipy` | ✅ `--help` 通过 |
+| `06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | 安装 `pyyaml` | ✅ Excel 报告可生成 |
+| `09-value-quantification/tools/cocomo-calculator.py` | 已可用 | ✅ `--test` 通过 |
+| `99-reference/tools/terminology-query.py` | 已可用 | ✅ `--test` 通过 |
+| `10-supply-chain-security/03-attack-vectors/attack-tree-interactive.py` | 已可用 | ✅ `--test` 通过 |
+| `06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | 已可用 | ✅ 评估演示运行 |
+| `10-supply-chain-security/06-case-studies/eu-cra-checklist.py` | 已可用 | ✅ `--help` 通过 |
+| `99-reference/tools/reuse-decision-tool-v2/main.py` | 已可用 | ✅ `--help` 通过 |
+
+### 新增/更新文件
+
+- `struct/SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` — Phase 0–5 + Phase D 完整路线图。
+- `struct/README.md` — 对齐实际目录结构与最新路线图。
+- `struct/99-reference/tools/requirements.txt` — 项目级 Python 依赖索引。
+- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
+
+### 已知边界
+
+- 形式化验证环境未安装，仅保留文档与代码占位；不执行 `docker-compose` 或验证器。
+- 部分脚本（如 `finops-exporter.py`、`piu-bayesian-tool.py`）需用户提供输入数据/YAML 才能跑完整流程，当前仅验证依赖与 `--help`/`--test`。
+
+---
+
 ## 2026-06-12 Phase A P0 权威来源对齐修复
 
 > **触发原因**: 经与国际权威来源（ISO、The Open Group、NIST、IEC）交叉复核，发现项目中对部分标准版本/状态的描述存在事实性错误，集中修复以恢复知识库权威性。

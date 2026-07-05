@@ -3,7 +3,7 @@
 > **版本**: 2026-06-12
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-06-12
+> **上次复核**: 2026-07-06
 > **下次复核**: 2026-09-30
 
 ---
@@ -39,8 +39,9 @@
 | **ISO/IEC/IEEE 42020** | 2019 | 现行；计划修订 | <https://www.iso.org/standard/68982.html> | 架构过程（Architecture Processes） |
 | **ISO/IEC/IEEE 42030** | 2019 | 现行；AWI 修订中 | <https://www.iso.org/standard/73436.html> | 架构评估（Architecture Evaluation） |
 | **ISO/IEC/IEEE AWI 42030** | — | 已注册工作项 | <https://www.iso.org/standard/93814.html> | 42030 修订项目 |
-| **ISO/IEC/IEEE DIS 42024** | — | 草案 | <https://www.iso.org/standard/87510.html> | 架构基础（Architecture Fundamentals） |
-| **ISO/IEC/IEEE DIS 42042** | — | 草案 | 待官方项目页发布 | 参考架构（Reference Architectures） |
+| **ISO/IEC/IEEE DIS 42024** | — | 草案；enquiry 2026-01-12 结束 | <https://www.iso.org/standard/87510.html> | 架构基础（Architecture Fundamentals） |
+| **ISO/IEC/IEEE DIS 42042** | — | 草案；stage 40.60，enquiry 2026-01-30 结束 | <https://www.iso.org/standard/87310.html> | 参考架构（Reference Architectures） |
+| **ISO/IEC/IEEE 12207** | **2026** | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
 | **ISO/IEC/IEEE 12207** | 2026 | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
 | **ISO/IEC/IEEE 15288** | 2023 | 现行 | <https://www.iso.org/standard/81702.html> | 系统生命周期过程 |
 | **ISO/IEC/IEEE 24765** | 2017 | 现行；计划修订 | <https://www.iso.org/standard/71952.html> | 系统与软件工程词汇 |
@@ -64,7 +65,7 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **TOGAF Standard** | 10th Edition | 现行 | <https://www.opengroup.org/togaf> | The Open Group 企业架构框架 |
-| **ArchiMate** | 4.0 | **已发布** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 正式发布** |
+| **ArchiMate** | 4.0 | **已发布** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 正式发布（Document C260）** |
 | **ArchiMate** | 3.2 | 仍有效 | <https://pubs.opengroup.org/architecture/archimate32-doc/> | 与 4.0 向后兼容 |
 | **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://www.whitehouse.gov/omb/management/egov/> | 美国联邦企业架构参考模型 |
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
@@ -77,8 +78,11 @@
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
-| **SLSA** | 1.2 | 已发布 | <https://slsa.dev/spec/v1.2/> | Multi-Track；Build/Source Track 已发布；Build Environment Track / L4 仍在开发 |
-| **NIST SSDF** | v1.2 | **Initial Public Draft** | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> | SP 800-218 Rev. 1，2025-12-17 发布征求意见稿；**非最终版** |
+| **SLSA** | 1.2 | 已发布 | <https://slsa.dev/spec/v1.2/> | Multi-Track；Build/Source Track 已发布；Build Environment Track / Build Level 4 仍在开发 |
+| **NIST SSDF** | v1.2 | **Initial Public Draft（最终版预计 2026-Q3）** | <https://csrc.nist.gov/publications/detail/sp/800-218r1/draft> | SP 800-218 Rev. 1，2025-12-17 发布征求意见稿；**非最终版** |
+| **OWASP Top 10 for Agentic AI** | 2025/2026 | 已发布 | <https://owasp.org/www-project-agentic-ai/> | 自主 Agent 应用安全风险（ASI01–ASI10） |
+| **OWASP MCP Top 10** | 2025/2026 | 已发布 | <https://cycode.com/blog/owasp-mcp-top-10/> | Model Context Protocol 专用安全风险 |
+| **Microsoft Agent Governance Toolkit** | 1.0 | **2026-04-02 开源** | <https://github.com/microsoft/agent-governance-toolkit> | Agent 运行时治理、审计、策略执行；覆盖 OWASP Agentic Top 10 |
 | **NIST SP 800-218** | v1.1 | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-218/final> | SSDF v1.1 正式版 |
 | **NIST SP 800-218A** | — | 已发布 | <https://csrc.nist.gov/publications/detail/sp/800-218a/final> | 生成式 AI 安全开发实践社区配置文件 |
 | **OWASP Top 10** | 2025 | 已发布 | <https://owasp.org/www-project-top-ten/> | — |
@@ -103,8 +107,9 @@
 |-----------|------|------|----------|------|
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
-| **IEC 61508** | Ed.2 (2010) | 现行；Ed.3 开发中 | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准 |
-| **ISO 26262** | 2018 | 现行；Ed.3 开发中 | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
+| **IEC 61508** | **Ed.3 (2026)** | **CDV 投票完成；2026-06 起在部分 CE 国家强制执行** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；SIL 2+ 强制结构化分析工具 |
+| **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
+| **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
 | **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/> | 现场级通信 |
 | **IEC/IEEE 60802** | — | 草案/完善中 | <https://www.iec.ch/dyn/www/f?p=103:38:0::::::> | TSN 工业自动化配置文件 |
@@ -117,12 +122,12 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **MCP** | 2025-11-25 | 现行稳定版 | <https://modelcontextprotocol.io/specification/2025-11-25> | Model Context Protocol；已捐给 Linux Foundation Agentic AI Foundation |
-| **A2A** | v1.0.0 | 已发布 | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google / Linux Foundation |
+| **A2A** | **v1.0.0** | **已发布** | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google Cloud Next 2026-04 GA；Signed Agent Cards / AP2 |
 | **NIST AI RMF** | 1.0 | 已发布 | <https://www.nist.gov/itl/ai-risk-management-framework> | AI 风险管理框架 |
 | **NIST AI 600-1** | — | 已发布 | <https://www.nist.gov/artificial-intelligence/ai-600-1> | AI 红队测试 |
 | **WebAssembly Core** | 3.0 | 已发布 | <https://webassembly.org> | W3C WebAssembly 核心规范 |
 | **WASM Component Model** | — | W3C Phase 1 | <https://component-model.bytecodealliance.org/> | 跨语言组件模型 |
-| **WASI** | 0.3 Preview | 提案/预览 | <https://github.com/WebAssembly/WASI> | 原生 async I/O；**非 1.0** |
+| **WASI** | 0.3 Preview | 2026-02 发布 preview；Wasmtime 37+ 支持 | <https://github.com/WebAssembly/WASI> | 原生 async I/O（stream/future）；WASI 1.0 目标 2026末/2027初 |
 | **DMN** | 1.5 | 2024 发布 | <https://www.omg.org/spec/DMN/1.5> | 决策模型与符号 |
 | **CloudEvents** | 1.0.2 | 已发布 | <https://cloudevents.io/> | 事件数据规范 |
 
@@ -151,7 +156,8 @@
 |-----------|------|------|----------|------|
 | **COCOMO II** | 2000.1 / 后续校准 | 现行 | <https://csse.usc.edu/tools/cocomoii.php> | 软件成本估算模型 |
 | **FinOps Foundation** | — | 现行 | <https://www.finops.org/> | 云成本管理框架 |
-| **GSF SCI** | — | 现行 | <https://sci.greensoftware.foundation/> | 软件碳强度规范 |
+| **GSF SCI** | — | 现行；已 ISO/IEC 21031:2024 | <https://sci.greensoftware.foundation/> | 软件碳强度规范 |
+| **GSF SCI for AI** | — | **2026-Q1 ratified** | <https://greensoftware.foundation/standards/sci-ai/> | AI 系统全生命周期碳强度度量 |
 | **ISO/IEC 14040** | 系列 | 现行 | <https://www.iso.org/standard/37456.html> | 生命周期评价 |
 
 ---
@@ -162,6 +168,7 @@
 |:---|:---|:---|
 | 2026-06-12 | 创建 v2.0；修正 ISO/IEC 25010:2023、ArchiMate 4.0、ISO/IEC 30141:2024、ISO/IEC/IEEE 12207:2026、NIST SSDF 1.2、IEC 62443 等状态 | 自动对齐代理 |
 | 2026-06-12 | 新增 ISO/IEC 5338:2023、ISO/IEC 42001:2023、IEC TS 62443-6-2:2025 等条目 | 自动对齐代理 |
+| 2026-07-06 | 更新为 v2.1：更新 DIS 42024/42042 状态、IEC 61508 Ed.3、ISO 21448 Ed.2、SLSA 1.2、NIST SSDF 1.2 状态；新增 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI | 自动对齐代理 |
 
 ---
 

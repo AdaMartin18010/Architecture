@@ -1,8 +1,8 @@
 # 软件工程架构复用视角：结构化知识体系
 
-> **版本**: 2026-06-10（目录一致性修复版）
+> **版本**: 2026-07-06（Phase 0 网络对齐更新版）
 > **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, 26550:2015, 26566:2026, TOGAF 10, SLSA 1.1/1.2, IEC 61508, ISA-95, MCP 2025-11-25, A2A v1.0
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 26550:2015, 26566:2026, TOGAF 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, ISA-95, MCP 2025-11-25, A2A v1.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
 > **权威参考**: Carnegie Mellon SEI, USC COCOMO II, ETH Zurich (RustBelt/Prusti), Inria (Aeneas/Coq), NASA RRL
 
 ---
@@ -97,9 +97,10 @@
 | ISO/IEC 25010:2023 | 质量模型 (SQuaRE) | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC 25040:2024 | 软件质量评估过程 | 生效 | `06-cross-layer-governance/05-metrics-kpi` |
 | ISO/IEC 26550:2015 | 产品线工程参考模型 | 生效 | `01-meta-model-standards/03-iso-26550-ple` |
+| ISO/IEC/IEEE 12207:2026 | 软件生命周期过程 | **2026-04-29 发布** | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC 26566:2026 | 产品线工程方法与工具能力 | **2026-05 正式发布** | `06-cross-layer-governance/03-maturity-models` |
 | IEEE 1517-2010 | 软件生命周期复用过程 | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
-| OMG RAS v2.2 | 可复用资产规范 | 生效 | 待补充（见 `SUBSEQUENT_PLAN_2026.md` P2-T10） |
+| OMG RAS v2.2 | 可复用资产规范 | 生效 | `01-meta-model-standards/07-omg-ras` |
 
 ### 3.2 工业与垂直领域标准
 
@@ -108,7 +109,8 @@
 | ISA-95 / IEC 62264 | 企业-控制系统集成 | 生效 | `11-industrial-iot-otit/01-isa-95-model` |
 | OPC UA FX 1.0 (2026) | 现场级确定性通信 | **新兴** | `11-industrial-iot-otit/02-opc-ua-fx` |
 | IEC/IEEE 60802 TSN | 时间敏感网络 | 草案 | `11-industrial-iot-otit/03-tsn-deterministic` |
-| IEC 61508-3-1:2016 | 功能安全软件复用 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
+| IEC 61508 Ed.3 | 功能安全（含软件复用） | **2026 强制实施** | `11-industrial-iot-otit/06-functional-safety` |
+| ISO 21448 Ed.2 | 预期功能安全 (SOTIF) | 制定中/预计 2026 发布 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 26262 | 汽车功能安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
 | IEC 63278 (AAS) | 资产管理壳 | 生效 | `11-industrial-iot-otit/05-digital-twin-aas` |
 | IEC 62443 | 工业网络安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
@@ -117,11 +119,12 @@
 
 | 标准/框架 | 主题 | 状态 | 对应文件夹 |
 |-----------|------|------|-----------|
-| SLSA 1.1 / 1.2 | 供应链安全等级（Multi-Track） | 生效/草案 | `10-supply-chain-security/01-slsa-framework` |
+| SLSA 1.2 | 供应链安全等级（Multi-Track） | **Build/Source Track 生效**；Build L4 开发中 | `10-supply-chain-security/01-slsa-framework` |
 | SPDX 2.3 | SBOM 格式 | 生效 | `10-supply-chain-security/02-sbom-standards` |
 | CycloneDX 1.6 | SBOM 格式 | 生效 | `10-supply-chain-security/02-sbom-standards` |
-| NIST SSDF 1.2 | 安全软件开发框架 | 征求意见稿 | `10-supply-chain-security/05-case-studies` |
-| OWASP SCVS / LLM / MCP / Agentic AI | 软件组件验证 / AI 安全 | 生效 | `10-supply-chain-security/03-attack-vectors`, `12-ai-native-reuse/04-probabilistic-contracts` |
+| NIST SSDF 1.2 | 安全软件开发框架 | Initial Public Draft（预计 2026-Q3 定稿） | `10-supply-chain-security/12-nist-ssdf-update` |
+| OWASP SCVS / LLM / Agentic AI / MCP Top 10 | 软件组件验证 / AI 安全 | **MCP/Agentic Top 10 已发布** | `10-supply-chain-security/03-attack-vectors`, `12-ai-native-reuse/06-ai-governance` |
+| Microsoft Agent Governance Toolkit | Agent 运行时治理 | **2026-04 开源** | `12-ai-native-reuse/03-agentic-infrastructure` |
 | Sigstore/cosign | 构件签名 | 生效 | `10-supply-chain-security/01-slsa-framework` |
 
 ---
@@ -288,17 +291,15 @@ struct/
 
 > **历史说明**: 早期 MASTER_PLAN 中规划的部分子目录（如 `02-business-process-reuse`、`03-domain-driven-design`、`01-api-design`、`quantum-computing` 等）在实际演进中被合并、重命名或尚未创建。本导航以实际文件为准。后续如需恢复，按 `SUBSEQUENT_PLAN_2026.md` 执行。
 >
-> **2026-06-08 更新**: 本次同步新增以下实际已创建的子目录：
+> **2026-07-06 更新**: 本次同步根据实际目录修正导航，并标注以下编号特点：
 >
-> - `01-meta-model-standards/`: `07-omg-ras/`, `08-fair4rs/`
-> - `03-application-architecture-reuse/`: `01-layered-architecture/`, `02-microservices/`, `03-serverless/`, `04-event-driven/`, `07-tosca-dmn-platform/`
-> - `04-component-architecture-reuse/`: `06-cloud-native-networking/`
-> - `07-formal-verification/`: `03-coq-isabelle/`（此前被标记为未创建，现已恢复）
-> - `10-supply-chain-security/`: `04-provenance-examples/`
-> - `12-ai-native-reuse/`: `03-hybrid-a2a-mcp-poc/`
-> - `99-reference/`: `tools/`
+> - `03-application-architecture-reuse/` 实际编号为：`03-app-service/`、`04-serverless/`、`05-data-architecture/`、`06-event-driven/`、`07-cloud-native-patterns/`、`08-service-mesh/`、`09-eda-cqrs/`、`10-tosca-dmn-platform/`、`11-idp-practices/`。
+> - `04-component-architecture-reuse/` 包含 `06-cloud-native-networking/`（编号 06 为历史保留，与 05 不连续）。
+> - `06-cross-layer-governance/` 包含 `09-agentic-governance/`（编号 09 为后续新增，与 07/08 不连续）。
+> - `10-supply-chain-security/` 包含 `12-nist-ssdf-update/`（编号 12 为后续新增）。
+> - `13-emerging-trends/` 包含 `09-frontier-tracking/`（编号 09 为后续新增）。
 >
-> 部分主题存在编号重复的子目录（如 `03-app-service/` 与 `03-serverless/`、`04-data-architecture/` 与 `04-event-driven/`、`07-eda-cqrs/` 与 `07-tosca-dmn-platform/`），此为实际文件状态，后续可在整理阶段统一重新编号。
+> 以上编号不连续均为实际演进结果，不影响内容检索；在 Phase 5 全书整合阶段可统一重新编号。
 
 ---
 
@@ -307,20 +308,20 @@ struct/
 详见：
 
 - `MASTER_PLAN.md` — 总体阶段划分（Phase 0~6）
-- `SUBSEQUENT_PLAN_2026.md` — 2026-Q3 → 2027-Q4 详细任务、国际对齐差距、风险与关键决策
+- `SUBSEQUENT_PLAN_2026.md` — 2026-Q3 → 2027-Q4 详细任务（历史版）
+- `SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` — **当前执行版**：2026-07 网络权威对齐后的更新计划
 
-当前处于 **阶段 A 修复完成**，即将进入 **阶段 B：深化与工具化**（2026-Q4 → 2027-Q2）。
+当前处于 **Phase 0 立即修复与交付物验证**（2026-Q3 第 1-2 周），已确认关键决策：
 
-阶段 A 已完成：
-
-1. ✅ 修复 roadmap 与实际文件状态不一致（01/07/11 三个 roadmap 已更新）
-2. ✅ 统一目录导航与实际结构（本 README 已同步）
-3. ✅ 术语查询脚本 T15 已确认交付（`99-reference/tools/terminology-query.py`）
-4. ⏸️ 前沿主题（CP+形式化融合、WASI 0.3、Agentic Governance）保持现有深度，按决策 D3 暂停扩展
-5. ⏸️ GitBook/网站输出按决策 D4 推迟
+1. **1-A**: 重构目录导航以匹配实际结构。
+2. **2-A'**: 形式化验证不安装/不运行工具，仅做内容梳理与校对。
+3. **3-A**: 可执行工具采用 Python CLI + Streamlit MVP 策略。
+4. **4-A**: 重点 MCP/Agentic 安全、WASI 0.3、Agentic Governance、GreenArch/SCI for AI；暂缓量子计算。
+5. **5-A**: 每篇文档列出权威来源 URL 并登记。
+6. **6-A**: 建立 IEC 61508 Ed.3 / ISO 21448 Ed.2 跟踪通道。
 
 ---
 
 > **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/external-links/authoritative-sources.md` 中登记。
 >
-> 最后更新: 2026-06-10
+> 最后更新: 2026-07-06
