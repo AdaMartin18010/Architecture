@@ -45,3 +45,29 @@
 - `02-business-architecture-reuse`（业务视点定义）
 - `06-cross-layer-governance`（治理过程标准 42020/42030）
 - `07-formal-verification`（形式化公理体系）
+
+
+---
+
+## 补充说明：01 元模型与标准对齐
+
+## 概念定义
+
+**定义**：元模型（Meta-model）是对架构描述元素、关系与规则的抽象规约；标准对齐则指将本知识体系的术语、过程与视图与国际/行业权威标准建立可追溯的映射。
+
+## 示例
+
+**示例**：在架构描述中采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，使架构视图与评估框架可直接对标国际标准。
+
+## 反例
+
+**反例**：团队自创“业务域/技术域/数据域”三分法却未与 TOGAF/ArchiMate 术语映射，导致与外部审计、供应商交流时出现语义偏差。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO/IEC/IEEE Standards](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - 核查日期：2026-07-07

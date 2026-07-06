@@ -166,3 +166,32 @@ SP 800-204 系列与 SP 800-207（零信任架构）形成互补：
 - NIST SP 800-233: *Service Mesh Proxy Models for Cloud-Native Applications*
 - NIST SP 800-207: *Zero Trust Architecture*
 - PCI DSS 4.0 实施参考
+
+
+---
+
+## 补充说明：NIST SP 800-204 微服务安全策略与架构复用
+
+## 概念定义
+
+**定义**：微服务架构将系统拆分为围绕业务能力组织、可独立部署的小服务，服务间通过轻量级机制通信；微服务复用强调跨团队共享服务与 API 契约。
+
+## 示例
+
+**示例**：企业将用户画像、消息通知、文件存储构建为独立微服务，通过OpenAPI 契约供各业务线复用，降低重复开发。
+
+## 反例
+
+**反例**：为追求复用将两个高内聚但变更频率不同的业务能力强行合并为一个微服务，导致发布耦合与团队摩擦。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Microservices by Martin Fowler](https://martinfowler.com/articles/microservices.html)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：微服务复用需要清晰的领域边界与版本治理，否则共享服务会成为跨团队协作瓶颈。

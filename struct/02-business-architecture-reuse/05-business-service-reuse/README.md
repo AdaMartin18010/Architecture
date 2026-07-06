@@ -54,3 +54,28 @@
 - `03-application-architecture-reuse/03-app-service/` — 应用服务复用的技术实现
 - `05-functional-architecture-reuse/01-api-design/` — API 设计与服务契约
 - `10-supply-chain-security/` — 外部服务的供应链安全评估
+
+
+---
+
+## 补充说明：05 业务服务复用（Business Service Reuse）
+
+## 示例
+
+**示例**：电信公司将“号码携带”封装为标准业务服务，供线上线下渠道、合作伙伴 API 统一调用，避免各渠道重复实现。
+
+## 反例
+
+**反例**：业务服务边界过大，包含下单、支付、履约等多个子领域，导致消费方被迫引入不必要的耦合。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - [OMG BPMN](https://www.omg.org/spec/BPMN)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：业务服务复用的粒度应与客户契约和变更频率相匹配，过大或过小的服务都会降低复用收益。

@@ -54,3 +54,28 @@
 - `02-business-architecture-reuse/06-bpmn-dmn/` — BPMN/DMN 可执行案例
 - `02-business-architecture-reuse/05-business-service-reuse/` — 流程到业务服务的映射
 - `05-functional-architecture-reuse/` — 工作流与函数级复用
+
+
+---
+
+## 补充说明：04 业务流程复用（Business Process Reuse）
+
+## 示例
+
+**示例**：制造企业将“供应商准入流程”建模为标准 BPMN 2.0 流程并在 Camunda 引擎上部署，各工厂按本地法规配置差异规则后复用。
+
+## 反例
+
+**反例**：将高度监管流程的 BPMN 模板复制到新国家时未本地化合规规则，导致审计失败。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [OMG BPMN](https://www.omg.org/spec/BPMN)
+> - [OMG DMN](https://www.omg.org/spec/DMN)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：流程复用需要区分“不变流程主干”与“可变本地化规则”，并通过决策表管理差异。

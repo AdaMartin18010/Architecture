@@ -142,3 +142,32 @@ GAMMA 是 Kubernetes SIG Network  initiative，将 Gateway API 扩展至**服务
 - CNCF: "CNCF Archives the Service Mesh Interface (SMI) Project" (2023-10-03)
 - CNCF: "Istio Brings Future Ready Service Mesh to the AI Era" (2026-03-25)
 - CKA Curriculum Changes 2025-2026
+
+
+---
+
+## 补充说明：Gateway API、GAMMA 与服务网格演进 2026
+
+## 概念定义
+
+**定义**：服务网格（Service Mesh）将服务间通信能力（流量管理、安全、可观测性）从应用代码中剥离，作为基础设施层统一复用。
+
+## 示例
+
+**示例**：企业采用 Istio 作为服务网格，所有微服务自动获得 mTLS、金丝雀发布、重试与分布式追踪能力，无需修改业务代码。
+
+## 反例
+
+**反例**：每个微服务自行实现重试、熔断与认证逻辑，导致代码冗余、行为不一致且难以统一升级。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io)
+> - [Istio](https://istio.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：服务网格将横切关注点下沉到基础设施，是应用层复用的重要补充，但需权衡性能与运维复杂度。

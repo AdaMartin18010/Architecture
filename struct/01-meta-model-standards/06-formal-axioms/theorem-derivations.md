@@ -205,24 +205,45 @@ $$
 **前提**: E.3 (Contextual Fitness)
 
 **结论**
-> 资产 $a$ 在上下文 $\mathit{ctx}$ 中的最大可适配量 $\Delta(a, \mathit{ctx})$ 受适配度下界约束：
+> 资产 $a$ 在上下文 $\mathit{ctx}$ 中的最大可适配量 $\Delta(a, \mathit{ctx})$ 受适配度下界约束。设适配后资产 $a'$ 的适配度随变更量指数衰减：
 
 $$
-\Delta(a, \mathit{ctx}) \leq \frac{1 - \tau}{1 - \mathrm{Fit}(a, \mathit{ctx})} \cdot \mathrm{Size}(a)
+\mathrm{Fit}(a', \mathit{ctx}) = \mathrm{Fit}(a, \mathit{ctx}) \cdot \exp\left(-\lambda \cdot \frac{\Delta(a, \mathit{ctx})}{\mathrm{Size}(a)}\right)
 $$
 
-其中 $\tau$ 为适配阈值，$\mathrm{Size}(a)$ 为资产规模度量。
+其中 $\lambda > 0$ 为适配衰减率，$\mathrm{Size}(a)$ 为资产规模度量。为保证复用后仍满足 $\mathrm{Fit}(a', \mathit{ctx}) \geq \tau$，最大可适配量为：
+
+$$
+\Delta(a, \mathit{ctx}) \leq \frac{\mathrm{Size}(a)}{\lambda} \cdot \ln\left(\frac{\mathrm{Fit}(a, \mathit{ctx})}{\tau}\right)
+$$
+
+仅当 $\mathrm{Fit}(a, \mathit{ctx}) > \tau$ 时存在正的可适配量。
 
 **证明概要**
 
-1. 由 E.3，复用要求 $\mathrm{Fit}(a, \mathit{ctx}) \geq \tau$。
-2. 设适配操作将 $a$ 变换为 $a' = a + \Delta(a)$，适配度随之变化。
-3. 假设适配度与变更量成反比（一阶近似）：$\mathrm{Fit}(a', \mathit{ctx}) \approx \mathrm{Fit}(a, \mathit{ctx}) - k \cdot \frac{\Delta}{\mathrm{Size}(a)}$。
-4. 复用要求变为：$\mathrm{Fit}(a, \mathit{ctx}) - k \cdot \frac{\Delta}{\mathrm{Size}(a)} \geq \tau$。
-5. 解得 $\Delta \leq \frac{\mathrm{Fit}(a, \mathit{ctx}) - \tau}{k} \cdot \mathrm{Size}(a)$。取 $k = \mathrm{Fit}(a, \mathit{ctx}) - 1$（归一化），得上述公式。 $\square$
+1. 由 E.3，复用要求 $\mathrm{Fit}(a', \mathit{ctx}) \geq \tau$。
+2. 设适配操作将 $a$ 变换为 $a' = a + \Delta(a)$，适配度按指数模型衰减：
+   $$
+   \mathrm{Fit}(a', \mathit{ctx}) = \mathrm{Fit}(a, \mathit{ctx}) \cdot \exp\left(-\lambda \cdot \frac{\Delta}{\mathrm{Size}(a)}\right)
+   $$
+3. 代入阈值约束：
+   $$
+   \mathrm{Fit}(a, \mathit{ctx}) \cdot \exp\left(-\lambda \cdot \frac{\Delta}{\mathrm{Size}(a)}\right) \geq \tau
+   $$
+4. 两边取自然对数并整理（$\lambda > 0$，不等号方向不变）：
+   $$
+   \Delta \leq \frac{\mathrm{Size}(a)}{\lambda} \cdot \ln\left(\frac{\mathrm{Fit}(a, \mathit{ctx})}{\tau}\right)
+   $$
+5. 当 $\mathrm{Fit}(a, \mathit{ctx}) \leq \tau$ 时，右端非正，即不存在正的可适配量。 $\square$
 
 **应用示例**
-某物流系统试图复用电商系统的"订单管理"模块。语义相似度 0.8，技术兼容性 0.6，组织对齐度 0.9，权重 $(0.5, 0.3, 0.2)$。则 $\mathrm{Fit} = 0.79$，若 $\tau = 0.6$，最大可适配量约为模块规模的 0.9 倍——意味着几乎需要重写。团队最终决定不复用，而是参考其设计自研。
+某物流系统试图复用电商系统的"订单管理"模块。语义相似度 0.8，技术兼容性 0.6，组织对齐度 0.9，权重 $(0.5, 0.3, 0.2)$。则 $\mathrm{Fit} = 0.79$，若 $\tau = 0.6$，取适配衰减率 $\lambda = 0.3$，最大可适配量约为：
+
+$$
+\Delta \leq \frac{\mathrm{Size}(a)}{0.3} \cdot \ln\left(\frac{0.79}{0.6}\right) \approx 0.92 \cdot \mathrm{Size}(a)
+$$
+
+意味着几乎需要重写。团队最终决定不复用，而是参考其设计自研。
 
 ---
 
@@ -306,7 +327,7 @@ $$
 
 ---
 
-### Th.11 接口稳定性定律 (Interface Stability Law)
+### Th.11 接口稳定性定律 (Interface Stability Law) [条件定理]
 
 **前提**: S.4 (Abstraction Layering)
 
@@ -335,29 +356,29 @@ $$
 
 ## 过程性公理定理 (Process Axioms Theorems)
 
-### Th.12 演化独立性推论 (Evolution Independence Corollary)
+### Th.12 演化独立性推论 (Evolution Independence Corollary) [启发式推论]
 
-**前提**: P.1 (Evolution Independence)
+**前提**: P.1 (Evolution Independence) [工程启发式原则]
 
 **结论**
-> 核心复用资产 $a$ 的演化节奏 $\rho(a)$ 与任何单一消费者 $s_i$ 的发布节奏 $\rho(s_i)$ 满足：
+> 核心复用资产 $a$ 的演化节奏 $\rho(a)$ 与任何单一消费者 $s_i$ 的发布节奏 $\rho(s_i)$ 应满足**连续解耦条件**：两者节奏之比不能近似等于任意正整数。给定容差阈值 $\delta > 0$：
 
 $$
-\rho(a) \neq \rho(s_i) \quad \text{且} \quad \mathrm{GCD}(\rho(a), \rho(s_i)) < \min(\rho(a), \rho(s_i))
+\forall k \in \mathbb{N}^+: \left| \frac{\rho(a)}{\rho(s_i)} - k \right| > \delta \quad \text{且} \quad \forall k \in \mathbb{N}^+: \left| \frac{\rho(s_i)}{\rho(a)} - k \right| > \delta
 $$
 
-即两者节奏不可整除同步。
+即两者节奏不可近似整除同步。
 
 **证明概要**
 
 1. 由 P.1，$\mathrm{Lifecycle}(a) \not\subseteq \mathrm{Lifecycle}(s_i)$。
-2. 若 $\rho(a) = k \cdot \rho(s_i)$（$k \in \mathbb{N}^+$），则 $a$ 的每次演化都落在 $s_i$ 的发布周期内，$s_i$ 可完全主导 $a$ 的演化节奏。
-3. 这与 P.1 矛盾，故 $\rho(a)$ 不能是 $\rho(s_i)$ 的整数倍。
-4. 同理，$\rho(s_i)$ 也不能是 $\rho(a)$ 的整数倍。
-5. 故 $\mathrm{GCD}(\rho(a), \rho(s_i)) < \min(\rho(a), \rho(s_i))$。 $\square$
+2. 若 $\rho(a) \approx k \cdot \rho(s_i)$（$k \in \mathbb{N}^+$，在容差 $\delta$ 内），则 $a$ 的多次演化会系统性地落在 $s_i$ 的发布周期内，$s_i$ 可实质主导 $a$ 的演化节奏。
+3. 这与 P.1 矛盾，故 $\rho(a)/\rho(s_i)$ 不能近似等于正整数。
+4. 同理，$\rho(s_i)/\rho(a)$ 也不能近似等于正整数。
+5. 故上述连续解耦条件成立。 $\square$
 
 **应用示例**
-Linux 内核演化节奏约 6-10 周一个版本，而 Android 手机厂商的发布节奏约 12-18 个月。两者节奏不同步（GCD 很小），这使得内核可以独立演进，不被单一手机厂商绑架。但这也造成了 Android 生态的碎片化问题。
+Linux 内核演化节奏约 6-10 周一个版本，而 Android 手机厂商的发布节奏约 12-18 个月。两者节奏之比约为 6.5（取内核 7 周、厂商 45 周），不接近任何小整数，因此内核可独立演进，不被单一手机厂商绑架。但这也造成了 Android 生态的碎片化问题。
 
 ---
 
@@ -385,7 +406,7 @@ $$
 
 ---
 
-### Th.14 治理崩溃阈值 (Governance Collapse Threshold)
+### Th.14 治理崩溃阈值 (Governance Collapse Threshold) [P.3 模型条件下的条件定理]
 
 **前提**: P.3 (Governance Complexity Law)
 
@@ -471,7 +492,7 @@ $$
 
 ---
 
-### Th.17 认知-治理双重约束 (Cognitive-Governance Dual Constraint)
+### Th.17 认知-治理双重约束 (Cognitive-Governance Dual Constraint) [条件定理]
 
 **前提**: P.3 (Governance Complexity Law) + P.4 (Learning Curve Monotonicity)
 
@@ -510,7 +531,9 @@ $$
 | 结构性定理 | 4 | S.1 - S.4 |
 | 过程性定理 | 4 | P.1 - P.4 |
 | 交叉定理 | 2 | S.2+S.3, P.3+P.4 |
-| **总计** | **17** | 15 条公理 |
+| **总计** | **17** | 10 条严格公理 + 5 条工程启发式 |
+
+> **注**: S.4、P.1-P.4 已在 `axiom-system.md` 中降级为工程启发式原则。依赖它们的定理（如 Th.11、Th.12-Th.15）相应标注为条件定理或启发式推论。
 
 ---
 
@@ -530,3 +553,20 @@ $$
 ---
 
 > 最后更新: 2026-06-06 (Phase 3)
+
+
+---
+
+## 补充说明：定理推导集
+
+## 概念定义
+
+**定义**：形式化公理体系是通过公理、定理与推导规则对复用概念进行严格数学刻画的知识基础，用于消除自然语言的歧义性。
+
+## 示例
+
+**示例**：定义“复用关系”为偏序关系（自反、传递、反对称），并据此证明资产组合的一致性与可替换性定理。
+
+## 反例
+
+**反例**：团队用日常语言描述复用规则，出现“复用等于复制”“复用必然降低成本”等不严谨论断，导致决策失误。

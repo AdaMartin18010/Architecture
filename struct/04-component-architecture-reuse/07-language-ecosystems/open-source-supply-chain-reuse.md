@@ -361,3 +361,24 @@ Artifact Repository
 - CycloneDX: [cyclonedx.org](https://cyclonedx.org)
 - SPDX: [spdx.dev](https://spdx.dev)
 - OSV (Open Source Vulnerabilities): [osv.dev](https://osv.dev)
+
+
+---
+
+## 补充说明：开源语言生态与供应链复用治理
+
+## 示例
+
+**示例**：企业使用 Rust 构建高性能网络组件，使用 Python 构建数据科学流水线，通过 gRPC/Protobuf 实现跨语言复用。
+
+## 反例
+
+**反例**：为统一技术栈，强制所有项目使用不擅长特定领域的语言，导致开发效率与运行时性能双重损失。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Rust](https://www.rust-lang.org)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07

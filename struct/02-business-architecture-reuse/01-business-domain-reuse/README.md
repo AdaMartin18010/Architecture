@@ -51,3 +51,28 @@
 - `02-business-architecture-reuse/03-value-stream/` — 价值流驱动的复用机会识别
 - `02-business-architecture-reuse/04-business-process-reuse/` — 业务流程级复用
 - `03-application-architecture-reuse/` — 业务能力到应用架构的映射
+
+
+---
+
+## 补充说明：01 业务域复用（Business Domain Reuse）
+
+## 示例
+
+**示例**：BIAN 银行业架构参考模型将银行业务划分为 300+ 业务服务组件，为银行数字化转型提供可复用的领域蓝图。
+
+## 反例
+
+**反例**：将其他行业的“库存管理”模型直接套用于航空维修备件管理，忽视行业法规与生命周期差异，导致模型失真。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [BIAN](https://www.bian.org)
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：业务域复用强调领域知识的沉淀，过早抽象或过晚抽象都会削弱复用价值。

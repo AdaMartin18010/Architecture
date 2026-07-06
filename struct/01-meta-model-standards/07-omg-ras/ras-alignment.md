@@ -168,3 +168,28 @@ TrustScore(A) = α × Completeness(Classification(A))
 - [OMG RAS v2.2 Normative PDF](https://www.omg.org/spec/RAS/2.2/PDF)
 - [OMG RAS Default Profile XSD](https://www.omg.org/spec/RAS/20060101/DefaultprofileXML.xsd)
 - [OMG RAS Default Component Profile XSD](https://www.omg.org/spec/RAS/20060101/DefaultcomponentprofileXML.xsd)
+
+
+---
+
+## 补充说明：OMG RAS v2.2 与四层复用架构对齐
+
+## 示例
+
+**示例**：企业资产库为每个微服务模板建立 RAS 描述：分类标签标明技术栈与领域，解决方案提供代码与配置文件，使用文档说明集成步骤，相关资产链接到配套测试与监控模板。
+
+## 反例
+
+**反例**：资产库中只有压缩包文件名，缺乏分类、使用说明与依赖关系，使用者难以判断适用性。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [OMG RAS](https://www.omg.org/spec/RAS)
+> - [OMG BPMN](https://www.omg.org/spec/BPMN)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：RAS 提供了一套标准化资产描述契约，是资产目录可检索、可比较、可治理的基础。

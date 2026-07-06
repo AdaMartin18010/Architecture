@@ -27,7 +27,7 @@
 
 ## 关键公理
 >
-> **公理 S.1** (Trust Transitivity Collapse): 软件供应链中的信任是传递的，但传递链的长度与信任度成指数反比。形式化：Trust(A, M) = ∏ Trust(Xᵢ, Xᵢ₊₁) ≈ 0 当链长度 > 5。
+> **公理 S.10** (Trust Transitivity Collapse): 软件供应链中的信任是传递的，但传递链的长度与信任度成指数反比。形式化：Trust(A, M) = ∏ Trust(Xᵢ, Xᵢ₊₁) ≈ 0 当链长度 > 5（工程启发式，依赖低单段信任度假设）。
 
 ## 当前状态
 

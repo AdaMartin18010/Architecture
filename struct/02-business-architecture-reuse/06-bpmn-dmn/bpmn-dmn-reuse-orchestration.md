@@ -146,3 +146,28 @@ Process Template Library
 - SAP Signavio: BPMN 2.0 for Efficient Process Design
 - Australia NSW Transport Standards: BPMN / DMN Layered Approach
 - Freund & Rücker: "Practical Process Automation" (O'Reilly)
+
+
+---
+
+## 补充说明：BPMN 2.0 / DMN 业务过程与决策的复用编排
+
+## 示例
+
+**示例**：信贷审批流程使用 BPMN 定义审批步骤，使用 DMN 决策表管理利率、额度规则，业务人员可直接调整规则而无需修改流程代码。
+
+## 反例
+
+**反例**：将业务规则硬编码在 BPMN 网关条件中，导致规则变更需要重新部署流程，业务人员无法参与。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [OMG BPMN](https://www.omg.org/spec/BPMN)
+> - [OMG DMN](https://www.omg.org/spec/DMN)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：BPMN/DMN 的分离使流程结构稳定、规则灵活，是业务-IT 对齐的关键实践。

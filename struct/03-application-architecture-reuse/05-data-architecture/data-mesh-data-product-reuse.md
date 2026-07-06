@@ -1,9 +1,142 @@
 # Data Mesh 与数据产品复用架构
->
-> 版本: 2026-06-06
-> 对齐来源: Zhamak Dehghani (2019–2022), Socratopia IDP-for-data 分析 (2026), LTTS Databricks 白皮书, Nokia 电信实践, Data Product Canvas 2026, AI/LLM 数据管道趋势
 
-## 1. Data Mesh 四原则
+> **版本**: 2026-07-07
+> **定位**: 03 应用架构复用层核心子主题 —— 数据架构复用：Data Mesh、数据产品与联邦计算治理
+> **对齐标准**: Zhamak Dehghani Data Mesh, DAMA-DMBOK, TOGAF 10 Data Architecture, ISO/IEC/IEEE 42010:2022
+> **来源 URL**:
+>
+> - Data Mesh by Zhamak Dehghani: <https://martinfowler.com/articles/data-mesh-intro.html>
+> - DAMA-DMBOK: <https://dama.org/content/body-knowledge>
+> - TOGAF 10: <https://www.opengroup.org/togaf>
+> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> **核查日期**: 2026-07-07
+
+---
+
+## 目录
+
+- [Data Mesh 与数据产品复用架构](#data-mesh-与数据产品复用架构)
+  - [目录](#目录)
+  - [3. 概念定义（CARC 本体）](#3-概念定义carc-本体)
+    - [1.1 Data Mesh（数据网格）](#11-data-mesh数据网格)
+    - [1.2 数据产品（Data Product）](#12-数据产品data-product)
+    - [1.3 联邦计算治理（Federated Computational Governance）](#13-联邦计算治理federated-computational-governance)
+  - [4. 概念谱系与学术来源](#4-概念谱系与学术来源)
+  - [5. Data Mesh 四原则](#5-data-mesh-四原则)
+  - [4. 从 hype 到实践：2025–2026 演进](#4-从-hype-到实践20252026-演进)
+    - [2.1 四阶段演进](#21-四阶段演进)
+    - [2.2 2026 工作模式（Truce）](#22-2026-工作模式truce)
+  - [5. 数据产品作为复用单元](#5-数据产品作为复用单元)
+    - [3.1 数据产品定义](#31-数据产品定义)
+    - [3.2 数据产品分层](#32-数据产品分层)
+    - [3.3 保险行业领域映射示例](#33-保险行业领域映射示例)
+  - [6. 数据产品契约定义：输入端口、输出端口、策略与 SLO](#6-数据产品契约定义输入端口输出端口策略与-slo)
+    - [4.1 数据产品契约结构](#41-数据产品契约结构)
+    - [4.2 输入端口（Input Port）](#42-输入端口input-port)
+    - [4.3 输出端口（Output Port）](#43-输出端口output-port)
+    - [4.4 策略（Policy）](#44-策略policy)
+    - [4.5 SLO（Service Level Objective）](#45-sloservice-level-objective)
+  - [7. 域间数据产品复用的治理模型](#7-域间数据产品复用的治理模型)
+    - [5.1 三层治理架构](#51-三层治理架构)
+    - [5.2 域间复用模式](#52-域间复用模式)
+    - [5.3 复用冲突解决机制](#53-复用冲突解决机制)
+  - [8. 自助数据平台能力栈](#8-自助数据平台能力栈)
+    - [6.1 平台能力目录](#61-平台能力目录)
+    - [6.2 与平台工程的融合](#62-与平台工程的融合)
+  - [9. 与 AI/LLM 数据管道的结合点](#9-与-aillm-数据管道的结合点)
+    - [7.1 数据产品 → LLM 训练管道](#71-数据产品--llm-训练管道)
+    - [7.2 AI 原生数据产品类型](#72-ai-原生数据产品类型)
+    - [7.3 LLM 数据管道中的联邦治理](#73-llm-数据管道中的联邦治理)
+    - [7.4 Data Mesh 支持 LLMOps 的关键能力](#74-data-mesh-支持-llmops-的关键能力)
+  - [10. 联邦计算治理机制](#10-联邦计算治理机制)
+    - [8.1 治理维度](#81-治理维度)
+    - [8.2 计算契约（Computational Contracts）](#82-计算契约computational-contracts)
+  - [11. 与架构复用视角的映射](#11-与架构复用视角的映射)
+  - [12. 2026 数据与 AI 架构趋势](#12-2026-数据与-ai-架构趋势)
+    - [10.1 趋势全景](#101-趋势全景)
+    - [10.2 技术突破](#102-技术突破)
+  - [13. 正向示例](#13-正向示例)
+    - [示例 1：保险行业风险评分数据产品](#示例-1保险行业风险评分数据产品)
+    - [示例 2：电信运营商网络优化数据产品](#示例-2电信运营商网络优化数据产品)
+  - [14. 反例与失败案例](#14-反例与失败案例)
+    - [反例 1：零售企业过度去中心化导致数据沼泽](#反例-1零售企业过度去中心化导致数据沼泽)
+    - [案例：某银行集中式数据湖复用失败](#案例某银行集中式数据湖复用失败)
+  - [15. 与四层架构的关系](#15-与四层架构的关系)
+  - [16. Data Mesh 引入决策分析](#16-data-mesh-引入决策分析)
+    - [16.1 收益侧分析](#161-收益侧分析)
+    - [16.2 成本侧分析](#162-成本侧分析)
+    - [16.3 决策建议](#163-决策建议)
+  - [17. 权威来源](#17-权威来源)
+
+---
+
+## 3. 概念定义（CARC 本体）
+
+### 1.1 Data Mesh（数据网格）
+
+**定义**：Data Mesh 是由 Zhamak Dehghani 提出的一种**社会技术（socio-technical）**数据架构范式，将产品思维、领域驱动设计和自服务平台应用于分析型数据管理，把数据从集中式数据仓库/数据湖转变为**分布式、域导向、可自服务**的数据产品网络。
+
+**属性**：
+
+| 属性 | 说明 |
+|------|------|
+| **领域所有权** | 数据所有权归属于生成数据的领域团队 |
+| **数据即产品** | 领域团队以产品思维设计、交付和维护数据 |
+| **自助平台** | 平台团队提供底层基础设施与 Golden Path |
+| **联邦治理** | 全局标准与领域灵活性的自动化平衡 |
+
+**关系**：
+
+- **owns（拥有）**：领域团队拥有其生成的数据产品。
+- **publishes（发布）**：数据产品通过标准化输出端口对外暴露。
+- **consumes（消费）**：消费者通过数据目录发现并消费数据产品。
+- **governs（治理）**：联邦治理委员会制定跨域标准并由平台自动执行。
+
+**约束**：
+
+1. **领域边界约束**：数据产品边界应对齐业务领域（限界上下文）。
+2. **契约稳定性约束**：输出端口 Schema、SLA 变更必须遵循兼容性规则。
+3. **平台分层约束**：平台团队运营底层基础设施，领域团队不直接管理底层存储/计算。
+
+### 1.2 数据产品（Data Product）
+
+**定义**：数据产品是将数据、代码、基础设施和元数据封装为**可独立部署、可发现、可消费**的单元，具有明确的所有者、输入端口、输出端口、策略和 SLO。
+
+| 组成部分 | 内容 | 复用接口 |
+|---------|------|---------|
+| **数据** | 数据集、表、流、API 响应 | SQL、REST、gRPC、Kafka Topic |
+| **代码** | 转换逻辑、质量检查、血缘生成 | Git 仓库、共享库 |
+| **基础设施** | 计算、存储、调度 | 平台抽象 |
+| **元数据** | Schema、文档、SLA、所有者 | 数据目录、OpenLineage |
+
+### 1.3 联邦计算治理（Federated Computational Governance）
+
+**定义**：通过自动化策略、计算契约和标准化接口，在全球标准与领域灵活性之间取得平衡，使跨域数据产品能够互操作。
+
+---
+
+## 4. 概念谱系与学术来源
+
+```mermaid
+flowchart LR
+    A[企业数据仓库<br/>Inmon 1990s] --> B[数据湖 Data Lake<br/>2010s]
+    B --> C[集中式数据中台<br/>2015-2020]
+    C --> D[Data Mesh<br/>Dehghani 2019]
+    D --> E[数据产品化<br/>2020-2022]
+    E --> F[IDP-for-Data<br/>2025-2026]
+    F --> G[AI/LLM 数据管道<br/>2026]
+    D --> H[联邦计算治理<br/>自动化策略]
+```
+
+**权威条目**：
+
+- [Data Mesh by Zhamak Dehghani](https://martinfowler.com/articles/data-mesh-intro.html)
+- [DAMA-DMBOK](https://dama.org/content/body-knowledge)
+- [OpenLineage](https://openlineage.io/)
+
+---
+
+## 5. Data Mesh 四原则
 
 Data Mesh 由 Zhamak Dehghani 于 2019 年提出，是一种**社会技术（socio-technical）**方法，将产品思维和领域驱动设计应用于分析型数据管理：
 
@@ -14,7 +147,7 @@ Data Mesh 由 Zhamak Dehghani 于 2019 年提出，是一种**社会技术（soc
 | **自助数据平台（Self-Serve Data Platform）** | 平台团队提供基础设施，领域团队自主交付 | 平台能力（存储、处理、目录、访问控制）作为内部产品复用 |
 | **联邦计算治理（Federated Computational Governance）** | 全球标准与领域灵活性的平衡 | 通过自动化策略和计算契约实现跨领域互操作 |
 
-## 2. 从 hype 到实践：2025–2026 演进
+## 4. 从 hype 到实践：2025–2026 演进
 
 ### 2.1 四阶段演进
 
@@ -70,7 +203,7 @@ flowchart TB
     B3 --> C4
 ```
 
-## 3. 数据产品作为复用单元
+## 5. 数据产品作为复用单元
 
 ### 3.1 数据产品定义
 
@@ -100,7 +233,7 @@ flowchart TB
 | 保单管理 | 保单主数据、批单历史、保障详情 | 客户服务、理赔、财务共享 |
 | 理赔管理 | 理赔详情、医疗/维修成本基准、欺诈信号 | 反欺诈、准备金、再保险 |
 
-## 4. 数据产品契约定义：输入端口、输出端口、策略与 SLO
+## 6. 数据产品契约定义：输入端口、输出端口、策略与 SLO
 
 数据产品的可复用性依赖于**标准化契约**。2026 年，Data Product Canvas 方法和计算契约（Computational Contracts）已成为行业最佳实践。
 
@@ -291,7 +424,7 @@ slos:
     alert_channel: pagerduty://data-platform-oncall
 ```
 
-## 5. 域间数据产品复用的治理模型
+## 7. 域间数据产品复用的治理模型
 
 ### 5.1 三层治理架构
 
@@ -342,7 +475,7 @@ flowchart LR
 3. **平台中介原则**：平台提供流-批转换、格式转换等中介能力
 4. **成本分摊原则**：派生产品的基础设施成本由消费者域承担
 
-## 6. 自助数据平台能力栈
+## 8. 自助数据平台能力栈
 
 ### 6.1 平台能力目录
 
@@ -364,7 +497,7 @@ Data Mesh 的自助平台与 Platform Engineering 的 IDP 理念趋同：
 - **Golden Path for Data**：新数据产品的标准脚手架（目录注册、质量检查、血统追踪）
 - **开发者门户**：Backstage 插件展示数据产品目录、SLA 状态、下游消费者
 
-## 7. 与 AI/LLM 数据管道的结合点
+## 9. 与 AI/LLM 数据管道的结合点
 
 2026 年，Data Mesh 与 AI/LLM 管道的融合成为企业数据架构的核心议题。
 
@@ -425,7 +558,7 @@ flowchart LR
 | Prompt 版本管理 | Prompt 作为代码产品 | Git + 注册表 + A/B 测试指标 |
 | 模型评估数据 | 评估数据集作为标准化产品 | 结构化输出 + 质量门 |
 
-## 8. 联邦计算治理机制
+## 10. 联邦计算治理机制
 
 ### 8.1 治理维度
 
@@ -446,7 +579,7 @@ flowchart LR
 - **新鲜度契约**：数据更新延迟上限
 - **访问契约**：谁可以访问什么，以何种粒度
 
-## 9. 与架构复用视角的映射
+## 11. 与架构复用视角的映射
 
 | 复用层次 | Data Mesh 对应 | 标准/框架 |
 |---------|---------------|----------|
@@ -456,7 +589,7 @@ flowchart LR
 | 功能架构 | 数据质量规则 = 函数复用 | Great Expectations suites |
 | 治理 | 联邦策略 = 跨层治理 | OPA, Data Contracts |
 
-## 10. 2026 数据与 AI 架构趋势
+## 12. 2026 数据与 AI 架构趋势
 
 ### 10.1 趋势全景
 
@@ -472,15 +605,146 @@ flowchart LR
 - **神经形态计算**：脑启发架构实现超低功耗 AI
 - **光子处理**：光基计算实现大规模并行
 
-## 11. 参考索引
+## 13. 正向示例
 
-- Dehghani, Z.: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh" (2019)
-- Dehghani, Z.: *Data Mesh* (O'Reilly, 2022)
-- Socratopia: "Data Mesh, Data Products, and Internal Data Platforms — Honestly" (2026)
-- LTTS: "Data Mesh Architecture in Databricks" (Whitepaper)
-- Nokia: Data Mesh in Telecom (Whitepaper)
-- OpenLineage: [openlineage.io](https://openlineage.io)
-- Data Product Canvas: Datamesh-Avans / Data Product Manifesto (2025-2026)
-- Simor Consulting: "2025 Year-in-Review & 2026 Trends in Data & AI Architecture"
-- Databricks: "LLM Data Pipelines with Unity Catalog" (2026)
-- DataHub Project: [datahubproject.io](https://datahubproject.io) (AI/ML Metadata 扩展)
+### 示例 1：保险行业风险评分数据产品
+
+**场景**：某大型保险集团需要在承保、理赔、再保险、监管报送等多个业务域共享风险评分。
+
+**复用方式**：
+
+- 承保领域团队拥有并维护 `risk-scores` 数据产品。
+- 输出端口包括 REST API（实时查询）和 S3 Parquet 快照（批量分析）。
+- 数据产品附带 Schema、SLO（freshness ≤ 1h）、质量规则（空值率 < 0.1%）。
+- 通过 DataHub 数据目录注册，消费者可自助发现。
+
+**关键成功因素**：
+
+1. 风险评分模型由承保领域拥有，避免多个部门各自建模导致不一致。
+2. 输出端口采用全局标准 OAuth2 + RBAC，确保合规。
+3. 数据产品版本遵循兼容性规则，v2 升级时 v1 仍保留 6 个月。
+
+**复用收益**：
+
+- 理赔、再保险、监管团队无需重复开发评分逻辑。
+- 跨渠道定价一致性提升，客户投诉率下降 18%。
+- 新产品上线时可复用已有数据产品，数据准备周期从 3 个月缩短至 2 周。
+
+### 示例 2：电信运营商网络优化数据产品
+
+**场景**：某电信运营商需要在网络运维、客户服务、市场营销之间共享基站流量、故障、客户体验数据。
+
+**复用方式**：
+
+- 网络运维领域发布 `network-performance` 数据产品，输出 Kafka 实时流和 Delta Lake 小时快照。
+- 客户服务领域订阅实时流，用于故障预判和主动客服。
+- 市场营销领域消费快照，用于区域化套餐推荐。
+
+**关键成功因素**：
+
+1. 网络数据产品附带 OpenLineage 血缘，消费者可追踪字段来源。
+2. 联邦治理委员会统一基站 ID、时间粒度等全局标识符。
+3. 平台团队提供流-批转换、格式转换等中介能力。
+
+**复用收益**：
+
+- 三个领域共享同一份权威网络数据，避免数据孤岛。
+- 客服主动预警准确率提升 25%，营销转化率提升 8%。
+
+---
+
+## 14. 反例与失败案例
+
+### 反例 1：零售企业过度去中心化导致数据沼泽
+
+**场景**：一家跨国零售企业 2021 年推行 Data Mesh，要求每个业务域完全自建数据栈（选型、存储、ETL、质量）。
+
+**后果**：
+
+- 各域技术栈碎片化：AWS Glue、Azure Data Factory、Databricks、Snowflake 并存。
+- 数据目录蔓延，同名指标在不同域定义不一致。
+- 缺乏统一质量门，下游消费者频繁遇到数据缺失、延迟、口径冲突。
+
+**判定**：误将"领域所有权"理解为"每个域拥有底层基础设施所有权"，缺少自助平台和联邦治理，最终退化为**数据沼泽**。
+
+### 案例：某银行集中式数据湖复用失败
+
+**背景**：某银行投入 3 年建设集中式数据湖，期望统一全行数据复用。
+
+**失败原因**：
+
+- 数据湖团队远离业务，无法及时理解数据语义和变更。
+- 所有数据需求集中到数据湖团队，排队时间长达数月。
+- 数据血缘和质量责任不清晰，"谁生产谁负责"未落实。
+
+**教训**：集中式数据架构在规模扩大后容易成为瓶颈；Data Mesh 的核心不是简单去中心化，而是**平台赋能下的领域自治**。
+
+---
+
+## 15. 与四层架构的关系
+
+```mermaid
+flowchart LR
+    subgraph CARC 四层映射
+        B[02 业务架构层<br/>业务域 / 业务能力]
+        A[03 应用架构层<br/>数据产品 / 数据服务]
+        C[04 组件架构层<br/>ETL 组件 / 质量库]
+        F[05 功能架构层<br/>SQL / API / 事件处理]
+    end
+    B -- realizes --> A
+    A -- decomposes-to --> C
+    C -- implements --> F
+    F -- enables --> B
+```
+
+- **业务架构层**：业务域划分决定数据产品的所有权边界。
+- **应用架构层**：数据产品、数据服务作为应用系统承载数据复用。
+- **组件架构层**：数据转换组件、质量规则库、血缘生成器作为复用组件。
+- **功能架构层**：SQL 查询、REST/gRPC API、事件处理器作为具体复用接口。
+
+---
+
+## 16. Data Mesh 引入决策分析
+
+引入 Data Mesh 不是"去中心化数据"的口号，而是组织、平台、治理三要素的协同变革。
+
+### 16.1 收益侧分析
+
+| 收益 | 量化表现 | 适用组织 |
+|------|---------|---------|
+| 缩短数据需求响应 | 从数月缩短至数周 | 多业务域、数据需求激增 |
+| 提升数据可信度 | 领域所有者对质量负责 | 数据质量问题频发 |
+| 消除数据孤岛 | 跨域数据产品可发现、可消费 | 大型集团、并购后整合 |
+| 支撑 AI/LLM 管道 | 训练数据可追溯、可版本化 | AI 驱动型企业 |
+
+### 16.2 成本侧分析
+
+| 成本 | 风险 | 缓解措施 |
+|------|------|---------|
+| 平台建设成本 | 自助平台不成熟导致领域自建孤岛 | 平台团队先运营底层，再开放 Golden Path |
+| 治理复杂度 | 联邦治理流于形式，标准不一致 | 策略即代码 + 自动化质量门 |
+| 组织变革成本 | 领域团队缺乏数据工程能力 | 嵌入数据产品经理和平台赋能 |
+| 数据产品运营成本 | 数据产品生命周期管理不足 | 建立退役、版本、SLA 机制 |
+
+### 16.3 决策建议
+
+- **暂缓 Data Mesh**：组织 < 5 个业务域、无专职平台团队、无数据目录和质量工具。
+- **试点 Data Mesh**：5-15 个业务域、已有数据仓库但响应缓慢，选择 2-3 个高价值域 pilot。
+- **全面 Data Mesh**：> 15 个业务域、数据产品化需求强烈、平台团队和联邦治理委员会已成立。
+
+---
+
+## 17. 权威来源
+
+- Dehghani, Z. — "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh" (2019): <https://martinfowler.com/articles/data-mesh-intro.html>
+- Dehghani, Z. — *Data Mesh* (O'Reilly, 2022): <https://www.oreilly.com/library/view/data-mesh/9781492092384/>
+- DAMA International — DAMA-DMBOK Data Management Body of Knowledge: <https://dama.org/content/body-knowledge>
+- TOGAF 10 — Data Architecture: <https://www.opengroup.org/togaf>
+- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
+- OpenLineage: <https://openlineage.io/>
+- DataHub Project: <https://datahubproject.io/>
+- Databricks — Unity Catalog and Data Governance: <https://www.databricks.com/product/unity-catalog>
+- Great Expectations: <https://greatexpectations.io/>
+- Soda Core: <https://www.soda.io/>
+
+**核查日期**: 2026-07-07

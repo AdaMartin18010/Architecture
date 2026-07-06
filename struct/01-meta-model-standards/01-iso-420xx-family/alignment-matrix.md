@@ -120,3 +120,29 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 
 > 最后更新: 2026-06-06
 > 注意: 本矩阵将随标准更新持续维护。
+
+
+---
+
+## 补充说明：核心标准对齐矩阵
+
+## 示例
+
+**示例**：在架构描述中采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，使架构视图与评估框架可直接对标国际标准。
+
+## 反例
+
+**反例**：团队自创“业务域/技术域/数据域”三分法却未与 TOGAF/ArchiMate 术语映射，导致与外部审计、供应商交流时出现语义偏差。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO/IEC/IEEE Standards](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：元模型是复用知识体系的地基。缺乏元模型约束的复用会退化为局部约定，难以跨组织、跨工具链保持一致性。

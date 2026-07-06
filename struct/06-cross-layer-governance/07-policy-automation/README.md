@@ -62,3 +62,28 @@
 - `06-cross-layer-governance/01-process-governance/` — 复用过程治理框架
 - `10-supply-chain-security/` — 供应链安全策略
 - `12-ai-native-reuse/06-ai-governance/` — AI 治理策略
+
+
+---
+
+## 补充说明：07 策略自动化（Policy Automation）
+
+## 示例
+
+**示例**：组织使用 OPA Gatekeeper 强制所有部署到生产的服务必须使用经批准的 Golden Path 模板与 SBOM，否则拒绝部署。
+
+## 反例
+
+**反例**：策略仅存在于文档中，依赖人工检查，导致违规部署频繁发生且难以追溯。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Open Policy Agent](https://www.openpolicyagent.org)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：策略自动化将治理从“事后审计”转变为“事前预防”，大幅提升治理可扩展性。

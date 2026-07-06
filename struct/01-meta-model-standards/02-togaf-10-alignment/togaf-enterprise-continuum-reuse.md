@@ -134,3 +134,28 @@ SBB: Keycloak + 定制扩展
 - Visual Paradigm: "Comprehensive Guide to the Enterprise Continuum in TOGAF" (2025-02)
 - Paradigma Digital: "The 5 Key Components of TOGAF" (2025-03)
 - Sparx Systems: Enterprise Architect User Guide — TOGAF Enterprise Continuum
+
+
+---
+
+## 补充说明：TOGAF 10 企业连续体与构建块复用
+
+## 示例
+
+**示例**：企业将 CRM 能力抽象为 ABB，并基于 Salesforce、自研或混合方案实现为 SBB，在不同业务单元中按需复用。
+
+## 反例
+
+**反例**：团队混淆 ABB 与 SBB，将具体技术实现直接作为能力标准，导致业务架构被技术绑定。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - [ArchiMate Specification](https://www.opengroup.org/archimate)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：TOGAF 的企业 continuum 提供了从基础架构到组织特定架构的复用梯度，是业务-技术对齐的重要工具。

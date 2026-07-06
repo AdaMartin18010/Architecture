@@ -69,3 +69,28 @@
 
 - `04-component-architecture-reuse/02-interface-contracts/` — 接口契约设计
 - `04-component-architecture-reuse/03-dependency-management/` — 依赖管理策略
+
+
+---
+
+## 补充说明：组件设计模式选择指南
+
+## 概念定义
+
+**定义**：设计模式是在特定上下文下可重复使用的面向对象/组件设计解决方案，如工厂、策略、适配器、观察者、依赖注入等。
+
+## 示例
+
+**示例**：系统使用策略模式封装不同的定价算法，新算法只需实现统一接口即可接入，无需修改订单核心逻辑。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：设计模式复用需要结合上下文判断，模式的价值在于解决真实问题而非展示技巧。

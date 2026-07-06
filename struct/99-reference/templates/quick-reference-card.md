@@ -32,7 +32,7 @@
 | F.1 | Formal Verification Trust Transfer | 形式化验证的性质可被继承 |
 | C.1 | Cognitive Load Conservation | 降低外在负荷，优化相关负荷 |
 | V.1 | ROI Threshold | AAF < 0.7 是 ROI 为正的必要条件 |
-| S.1 | Trust Transitivity Collapse | 信任链长度 > 5 时信任度 ≈ 0 |
+| S.10 | Trust Transitivity Collapse | 信任链长度 > 5 时信任度 ≈ 0（工程启发式） |
 | I.1 | OT Determinism Non-Negotiable | OT 复用必须以确定性为首要约束 |
 
 ---

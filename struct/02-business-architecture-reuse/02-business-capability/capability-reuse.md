@@ -129,3 +129,24 @@ Level 0: 企业能力（Enterprise Capability）
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：业务能力复用
+
+## 概念定义
+
+**定义**：业务能力（Business Capability）是组织为达成特定业务成果而具备的稳定能力单元，独立于组织结构和实现技术。
+
+## 反例
+
+**反例**：将“市场部审批流程”直接建模为业务能力，导致能力边界随组织调整频繁变化，无法稳定复用。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
+> - [FEA BRM](https://www.govloop.com/community/blog/federal-enterprise-architecture/)
+> - 核查日期：2026-07-07

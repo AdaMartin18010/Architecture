@@ -152,3 +152,32 @@ Stage 4: Cloud COGS (GAAP 毛利率就绪)
 - Sedai: "Top 17 FinOps Cloud Optimization Strategies" (2026-01)
 - Cloudaware: "What Is FinOps? Framework, Roles, Strategy & Tools" (2026-01)
 - DORA State of DevOps Report 2024
+
+
+---
+
+## 补充说明：FinOps 云成本治理与架构复用价值量化
+
+## 概念定义
+
+**定义**：FinOps 成本分摊治理是将云成本、平台成本与复用资产成本按业务价值归集到团队、产品与功能，实现成本透明与优化问责。
+
+## 示例
+
+**示例**：平台团队按“每活跃用户”“每千次请求”将共享服务成本分摊给消费方，并在仪表盘展示各产品的单位经济学指标。
+
+## 反例
+
+**反例**：共享平台成本由中央 IT 统一承担，消费方没有成本意识，导致资源浪费与利用率低下。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [FinOps Foundation](https://www.finops.org)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：成本分摊是复用治理的经济杠杆，只有让消费方感受到真实成本，才能驱动理性复用决策。

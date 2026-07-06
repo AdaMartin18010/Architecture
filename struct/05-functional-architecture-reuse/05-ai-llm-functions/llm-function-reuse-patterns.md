@@ -166,3 +166,32 @@ Agent 声明依赖：
 - Microsoft Agent Framework (MAF): 2025-10 Announcement, 2026-Q1 GA
 - Model Context Protocol: Specification 2025-11-25
 - Google A2A Protocol: v1.0 (Cloud Next 2026-04)
+
+
+---
+
+## 补充说明：LLM 函数复用与智能体功能架构
+
+## 概念定义
+
+**定义**：AI/LLM 功能复用是将提示模板、RAG 管道、模型推理服务与 Agent 技能封装为可复用功能单元，并通过概率契约管理非确定性。
+
+## 示例
+
+**示例**：团队将“客户意图识别”封装为可复用 LLM 函数，通过 Prompt 版本管理、温度参数约束与输出模式校验，在客服机器人与工单分类系统中复用。
+
+## 反例
+
+**反例**：多个团队各自调用底层 LLM 并硬编码 Prompt，导致输出不一致、成本不可控且难以审计。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - [OpenAI API](https://platform.openai.com/docs)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：AI 功能复用需要引入概率边界、版本管理与监控，以应对模型漂移与输出不确定性。

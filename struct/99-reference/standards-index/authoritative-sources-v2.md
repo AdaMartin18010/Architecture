@@ -1,16 +1,17 @@
-# 国际标准与权威来源索引 v2.0
+# 国际标准与权威来源索引 v2.2
 
-> **版本**: 2026-06-12
+> **版本**: 2026-07-07
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-06
+> **上次复核**: 2026-07-07
 > **下次复核**: 2026-09-30
+> **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../audit/content-fact-fix-2026-07.md)
 
 ---
 
 ## 目录
 
-- [国际标准与权威来源索引 v2.0](#国际标准与权威来源索引-v20)
+- [国际标准与权威来源索引 v2.2](#国际标准与权威来源索引-v22)
   - [目录](#目录)
   - [使用说明](#使用说明)
   - [架构与软件工程标准](#架构与软件工程标准)
@@ -65,7 +66,7 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **TOGAF Standard** | 10th Edition | 现行 | <https://www.opengroup.org/togaf> | The Open Group 企业架构框架 |
-| **ArchiMate** | 4.0 | **已发布** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 正式发布（Document C260）** |
+| **ArchiMate** | 4.0 | **已发布（存在官方页面更新滞后争议）** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 发布（Document C260，白皮书 W262）**；部分官方页面/工具厂商仍在过渡，引用时请复核 |
 | **ArchiMate** | 3.2 | 仍有效 | <https://pubs.opengroup.org/architecture/archimate32-doc/> | 与 4.0 向后兼容 |
 | **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://www.whitehouse.gov/omb/management/egov/> | 美国联邦企业架构参考模型 |
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
@@ -107,7 +108,7 @@
 |-----------|------|------|----------|------|
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
-| **IEC 61508** | **Ed.3 (2026)** | **CDV 投票完成；2026-06 起在部分 CE 国家强制执行** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；SIL 2+ 强制结构化分析工具 |
+| **IEC 61508** | **Ed.3 (2026)** | **CDV 投票完成；IEC 61508-3:2026 已被 TÜV Rheinland 等主要认证机构于 2026-06 起作为 SIL 2+ 认证基准强制采用** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
 | **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
@@ -121,7 +122,8 @@
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
-| **MCP** | 2025-11-25 | 现行稳定版 | <https://modelcontextprotocol.io/specification/2025-11-25> | Model Context Protocol；已捐给 Linux Foundation Agentic AI Foundation |
+| **MCP** | 2025-11-25 | **现行稳定版** | <https://modelcontextprotocol.io/specification/2025-11-25> | Model Context Protocol；已捐给 Linux Foundation Agentic AI Foundation |
+| **MCP** | 2026-07-28 | **Release Candidate（RC），最终版预计 2026-07-28 发布** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
 | **A2A** | **v1.0.0** | **已发布** | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google Cloud Next 2026-04 GA；Signed Agent Cards / AP2 |
 | **NIST AI RMF** | 1.0 | 已发布 | <https://www.nist.gov/itl/ai-risk-management-framework> | AI 风险管理框架 |
 | **NIST AI 600-1** | — | 已发布 | <https://www.nist.gov/artificial-intelligence/ai-600-1> | AI 红队测试 |
@@ -169,6 +171,7 @@
 | 2026-06-12 | 创建 v2.0；修正 ISO/IEC 25010:2023、ArchiMate 4.0、ISO/IEC 30141:2024、ISO/IEC/IEEE 12207:2026、NIST SSDF 1.2、IEC 62443 等状态 | 自动对齐代理 |
 | 2026-06-12 | 新增 ISO/IEC 5338:2023、ISO/IEC 42001:2023、IEC TS 62443-6-2:2025 等条目 | 自动对齐代理 |
 | 2026-07-06 | 更新为 v2.1：更新 DIS 42024/42042 状态、IEC 61508 Ed.3、ISO 21448 Ed.2、SLSA 1.2、NIST SSDF 1.2 状态；新增 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI | 自动对齐代理 |
+| 2026-07-07 | 更新为 v2.2：ArchiMate 4.0 增加“官方页面更新滞后”备注；新增 MCP 2026-07-28 RC 条目；细化 IEC 61508 Ed.3“认证机构采用 vs 标准发布”区分；关联 `content-fact-fix-2026-07.md` 勘误报告 | 自动对齐代理 |
 
 ---
 

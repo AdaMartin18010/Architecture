@@ -135,3 +135,28 @@ MCP Tool 分类
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：MCP Tool 的可复用设计
+
+## 概念定义
+
+**定义**：MCP（Model Context Protocol）规范 Agent 与工具/上下文源之间的交互，A2A（Agent-to-Agent Protocol）规范 Agent 之间的协作；二者共同构成 AI 原生复用的协议基础。
+
+## 示例
+
+**示例**：企业构建 MCP 工具目录，将数据库查询、文档检索、代码分析等能力暴露为标准化工具，不同 Agent 可按能力清单调用。
+
+## 反例
+
+**反例**：各 Agent 使用私有 RPC 协议与工具交互，导致工具无法在 Agent 之间共享，形成新的孤岛。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - [A2A Protocol](https://google.github.io/A2A)
+> - 核查日期：2026-07-07

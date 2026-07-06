@@ -31,6 +31,9 @@
     - [6.1 架构](#61-架构)
     - [6.2 可复用组件](#62-可复用组件)
   - [7. 权威来源](#7-权威来源)
+  - [补充说明：事件驱动函数复用模式](#补充说明事件驱动函数复用模式)
+  - [概念定义](#概念定义)
+  - [分析](#分析)
 
 ---
 
@@ -291,3 +294,16 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 | Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-06-10 |
 | Saga Pattern (Microservices.io) | <https://microservices.io/patterns/data/saga.html> | 2026-06-10 |
 | Event Sourcing (Martin Fowler) | <https://martinfowler.com/eaaDev/EventSourcing.html> | 2026-06-10 |
+
+
+---
+
+## 补充说明：事件驱动函数复用模式
+
+## 概念定义
+
+**定义**：事件函数复用是将事件处理逻辑封装为可复用函数，并通过事件 Schema、路由规则与错误处理策略实现跨系统的事件驱动集成。
+
+## 分析
+
+**分析**：事件函数复用的关键在于统一事件契约与处理语义，避免隐式依赖。

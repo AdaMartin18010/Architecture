@@ -76,3 +76,28 @@ IEEE 1517 将复用过程分为三大过程组：
 - `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` — IEEE 1517 与 12207:2026 的对照
 - `06-cross-layer-governance/03-maturity-models/` — 复用成熟度评估
 - `06-cross-layer-governance/05-metrics-kpi/` — 复用度量指标
+
+
+---
+
+## 补充说明：02 复用过程治理（Reuse Process Governance）
+
+## 示例
+
+**示例**：产品线工程团队执行 26550 的领域工程过程，建立领域模型、可复用资产与配置机制，应用工程团队基于这些资产定制具体产品。
+
+## 反例
+
+**反例**：只有应用工程没有领域工程，团队不断从头开发相似功能，无法积累可复用资产。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO/IEC 26550:2015](https://www.iso.org/standard/43007.html)
+> - [IEEE Standards](https://standards.ieee.org)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：复用过程的双轨模型（领域工程 + 应用工程）是系统化复用的核心组织模式。

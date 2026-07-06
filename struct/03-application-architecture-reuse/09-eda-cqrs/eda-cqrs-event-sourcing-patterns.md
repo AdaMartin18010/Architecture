@@ -158,3 +158,28 @@ EDA/CQRS/ES 与领域驱动设计（DDD）天然契合：
 - WJARR 2025: "Demystifying cloud-native enterprise architecture"
 - Axon Framework: [axoniq.io](https://axoniq.io)
 - EventStoreDB: [eventstore.com](https://eventstore.com)
+
+
+---
+
+## 补充说明：事件驱动架构（EDA）、CQRS 与事件溯源复用模式
+
+## 示例
+
+**示例**：金融交易系统采用事件溯源记录所有账户变更事件，支持任意时间点的状态重建、审计追踪与多视图投影。
+
+## 反例
+
+**反例**：在简单的 CRUD 场景中强行引入 CQRS 与事件溯源，增加开发复杂度与数据一致性挑战，得不偿失。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Martin Fowler - CQRS](https://martinfowler.com/bliki/CQRS.html)
+> - [EventStoreDB](https://www.eventstore.com)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：CQRS/事件溯源是高杠杆但高复杂度的模式，适用于需要完整审计、复杂查询或事件驱动集成的场景。

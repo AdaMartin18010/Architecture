@@ -39,6 +39,8 @@
     - [第 31–60 天：试运行与 Showback](#第-3160-天试运行与-showback)
     - [第 61–90 天：正式运营与持续改进](#第-6190-天正式运营与持续改进)
   - [7. 参考索引](#7-参考索引)
+  - [补充说明：FinOps 四级成本分摊模型模板 (L1–L4 Allocation Model)](#补充说明finops-四级成本分摊模型模板-l1l4-allocation-model)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -457,3 +459,16 @@ python templates/finops-exporter.py --input costs.json --output report.xlsx
 > - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 
 > 最后更新: 2026-06-08
+
+
+---
+
+## 补充说明：FinOps 四级成本分摊模型模板 (L1–L4 Allocation Model)
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [FinOps Foundation](https://www.finops.org)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
