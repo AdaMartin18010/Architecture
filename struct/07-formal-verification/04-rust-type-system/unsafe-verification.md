@@ -35,6 +35,10 @@
     - [6.3 复用成熟度评分调整](#63-复用成熟度评分调整)
   - [7. 关键定理与形式化保证](#7-关键定理与形式化保证)
   - [8. 参考索引](#8-参考索引)
+  - [补充说明：Rust unsafe 边界的验证策略：工具链对比与可复用组件检查清单](#补充说明rust-unsafe-边界的验证策略工具链对比与可复用组件检查清单)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -450,3 +454,25 @@ Layer 4: 源码审查 + Vendoring
 > **交叉引用**: 本文与 struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md 中"Rust 生态组件模型"和"供应链安全"章节直接对齐；与 struct/07-formal-verification/04-rust-type-system/formal-semantics.md 中"Unsafe Boundary"定理 (R.3) 形成深化；与 struct/10-supply-chain-security/ 的漏洞管理框架共享分层防御思想。
 >
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：Rust unsafe 边界的验证策略：工具链对比与可复用组件检查清单
+
+## 示例
+
+**示例**：某跨平台网络库用 Rust 编写核心协议解析器，所有权系统保证并发访问安全，被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。
+
+## 反例
+
+**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [Aeneas](https://github.com/AeneasVerif/aeneas)
+> - 核查日期：2026-07-07

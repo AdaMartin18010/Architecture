@@ -137,3 +137,28 @@ ____________________________________
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：内部开发者平台 (IDP) 与架构复用
+
+## 概念定义
+
+**定义**：平台工程是通过构建内部开发者平台（IDP）与 Golden Path，将基础设施、安全、可观测性能力产品化，供应用团队自助复用。
+
+## 示例
+
+**示例**：某电商企业 IDP 提供一键创建服务仓库、CI/CD、监控与密钥管理，团队上线时间从 2 周缩短到 2 小时，平台使用率达到 90%。
+
+## 反例
+
+**反例**：平台团队闭门造车，强制所有团队使用不灵活的模板，忽视反馈循环，导致开发者绕过平台自行部署。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
+> - [Platform Engineering - Martin Fowler](https://martinfowler.com/articles/platform-engineering-summit.html)
+> - 核查日期：2026-07-07

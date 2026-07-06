@@ -162,3 +162,30 @@
 4. **标准跟踪**: 运行 `python 99-reference/tools/standard-tracker.py --generate-report`
 5. **学术引用**: 参考 `99-reference/templates/academic-citation-template.md`
 6. **问题检索**: 查阅 `99-reference/knowledge-index/qa-index.md`
+
+
+---
+
+## 补充说明：全量交付物清单
+
+## 概念定义
+
+**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
+
+## 示例
+
+**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
+
+## 反例
+
+**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [NIST](https://www.nist.gov)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07

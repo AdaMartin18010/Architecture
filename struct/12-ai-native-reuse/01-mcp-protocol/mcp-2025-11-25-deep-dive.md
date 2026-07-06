@@ -40,6 +40,12 @@
   - [9. 与四层复用架构的映射](#9-与四层复用架构的映射)
   - [10. 项目中的引用更新建议](#10-项目中的引用更新建议)
   - [11. 参考链接](#11-参考链接)
+  - [补充说明：MCP 2025-11-25 规范深度解析](#补充说明mcp-2025-11-25-规范深度解析)
+  - [概念定义](#概念定义)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
+  - [分析](#分析)
 
 ## 1. 关键勘误
 
@@ -318,3 +324,32 @@ MCP 和 A2A **互补而非竞争**:
 - Anthropic Donation Announcement: <https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation>
 - GitHub Blog on LF Move: <https://github.blog/open-source/maintainers/mcp-joins-the-linux-foundation-what-this-means-for-developers-building-the-next-era-of-ai-tools-and-agents/>
 - A2A Protocol: <https://github.com/google/A2A>
+
+
+---
+
+## 补充说明：MCP 2025-11-25 规范深度解析
+
+## 概念定义
+
+**定义**：MCP 是由 Anthropic 主导的开放协议，规范 AI 模型如何发现、调用工具并交换上下文，使工具成为可复用资产。
+
+## 示例
+
+**示例**：代码助手通过 MCP 调用统一代码搜索工具，返回结构化上下文；不同 IDE 插件复用同一工具，无需各自实现代码索引。
+
+## 反例
+
+**反例**：Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制，工具变更导致所有调用方失效。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - [MCP Introduction](https://modelcontextprotocol.io/introduction)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：MCP 将工具从“代码片段”提升为“可发现服务”，是 Agent 生态互操作的关键。

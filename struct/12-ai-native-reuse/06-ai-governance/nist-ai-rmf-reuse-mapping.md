@@ -34,6 +34,10 @@
     - [5.2 AI RMF 映射评估](#52-ai-rmf-映射评估)
     - [5.3 信任评分计算](#53-信任评分计算)
   - [6. 权威来源](#6-权威来源)
+  - [补充说明：NIST AI 风险管理框架与架构复用映射](#补充说明nist-ai-风险管理框架与架构复用映射)
+  - [概念定义](#概念定义)
+  - [反例](#反例)
+  - [分析](#分析)
 
 ---
 
@@ -300,3 +304,20 @@ AI 组件复用信任评分 =
 | ISO/IEC 42001 (AI Management Systems) | <https://www.iso.org/standard/81230.html> | 2026-06-10 |
 | Conformal Prediction (Vovk et al.) | <https://arxiv.org/abs/2107.07511> | 2026-06-10 |
 | Model Cards (Mitchell et al.) | <https://arxiv.org/abs/1810.03993> | 2026-06-10 |
+
+
+---
+
+## 补充说明：NIST AI 风险管理框架与架构复用映射
+
+## 概念定义
+
+**定义**：AI 原生复用是在大模型与 Agent 系统中，通过 MCP（Model Context Protocol）、A2A（Agent-to-Agent Protocol）与概率契约，将提示模板、RAG 管道、工具与 Agent 技能封装为可组合、可治理的资产。
+
+## 反例
+
+**反例**：各团队在不同 Agent 中硬编码相同 Prompt 与 API 调用，无版本管理与输出契约，导致行为不一致、成本失控且难以审计。
+
+## 分析
+
+**分析**：AI 原生复用需要接受概率性，并通过协议、契约与治理将其约束在可接受范围内。

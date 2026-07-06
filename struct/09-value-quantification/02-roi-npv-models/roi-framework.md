@@ -84,3 +84,28 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：架构复用 ROI 框架
+
+## 概念定义
+
+**定义**：ROI（投资回报率）与 NPV（净现值）将复用资产的现金流（节省、收入、维护成本、机会成本）贴现到当前，用于比较不同复用投资策略。
+
+## 示例
+
+**示例**：平台工程投资 200 万元，预计每年节省各团队 120 万元运维与重复开发成本，按 8% 折现率 NPV 为正，ROI 三年达 95%。
+
+## 反例
+
+**反例**：仅计算一次性采购成本，忽视后续版本升级、培训与耦合导致的迁移成本，项目三年后实际 ROI 为负。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Investopedia NPV](https://www.investopedia.com/terms/n/npv.asp)
+> - [FinOps Foundation](https://www.finops.org)
+> - 核查日期：2026-07-07

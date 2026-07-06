@@ -166,3 +166,28 @@ Edge
 - WASI Roadmap: [github.com/WebAssembly/WASI](https://github.com/WebAssembly/WASI)
 - Platform.Uno: "The State of WebAssembly – 2025 and 2026" (2026-01-27)
 - InfoQ / The New Stack: "WASI 1.0: WebAssembly 可能在 2026 悄然普及" (2026-01)
+
+
+---
+
+## 补充说明：WebAssembly 组件模型与 WASI 复用生态
+
+## 示例
+
+**示例**：使用 Rust 实现图像处理组件，编译为 WIT 接口的 WASM 组件，在 Node.js、Python 与边缘运行时中复用同一二进制。
+
+## 反例
+
+**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，性能与可维护性反而下降。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
+> - [WASI Preview 2](https://wasi.dev)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。

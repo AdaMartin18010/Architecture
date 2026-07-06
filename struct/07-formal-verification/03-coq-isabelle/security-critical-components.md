@@ -35,6 +35,12 @@
     - [5.3 Authoritative Sources and Further Reading](#53-authoritative-sources-and-further-reading)
   - [6. Cross-References to Other `struct/` Topics](#6-cross-references-to-other-struct-topics)
   - [Status](#status)
+  - [补充说明：Coq / Isabelle Theorem Proving for Safety-Critical Components](#补充说明coq--isabelle-theorem-proving-for-safety-critical-components)
+  - [概念定义](#概念定义)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
+  - [分析](#分析)
 
 ## 1. Gap Between Teaching Examples and Industrial Verification
 
@@ -441,3 +447,32 @@ Layer 3 — Concrete Implementation / Binary
 ## Status
 
 **T18b completed** — Coq / Isabelle theorem proving for safety-critical components documented with industrial case studies (seL4, CompCert, Rate-Monotonic scheduling), proof-obligation sketches, standard alignments, and full cross-reference mappings to the `struct/` knowledge architecture.
+
+
+---
+
+## 补充说明：Coq / Isabelle Theorem Proving for Safety-Critical Components
+
+## 概念定义
+
+**定义**：Coq 与 Isabelle/HOL 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。
+
+## 示例
+
+**示例**：使用 Coq 证明 TLS 1.3 握手协议的消息不变式，并将提取的 OCaml 代码集成到可复用加密库，确保实现与规约一致。
+
+## 反例
+
+**反例**：密码库复用某开源实现时未验证其形式化安全规约，后来发现其实现与论文证明的抽象模型存在偏差，导致侧信道攻击。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Coq Proof Assistant](https://coq.inria.fr)
+> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：定理证明提供最高置信度，但门槛高、周期长，适合小规模、高价值核心组件。

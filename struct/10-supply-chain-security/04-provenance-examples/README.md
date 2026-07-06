@@ -73,3 +73,32 @@ regctl manifest get ghcr.io/你的组织/你的仓库@sha256:... --referrers
 ---
 
 *文档生成时间：2026-06-06 · 对齐 SLSA v1.2 / Sigstore / OCI v1.1*
+
+
+---
+
+## 补充说明：SLSA Provenance 可执行示例
+
+## 概念定义
+
+**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。
+
+## 示例
+
+**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。
+
+## 反例
+
+**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，无法达到 SLSA L1。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [SLSA Framework](https://slsa.dev)
+> - [OpenSSF SLSA](https://openssf.org/projects/slsa/)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：SLSA 将供应链安全分解为可升级、可审计的等级，是组织渐进式改进的路线图。

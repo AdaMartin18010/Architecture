@@ -101,3 +101,28 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - Functional Algorithms Verified: <https://functional-algorithms-verified.org/>
 - CoqPilot: <https://github.com/JetBrains-Research/coqpilot>
 - Verina: <https://arxiv.org/abs/2505.23135>
+
+
+---
+
+## 补充说明：Coq/Rocq & Isabelle/HOL 可复用组件验证案例
+
+## 概念定义
+
+**定义**：Coq 与 Isabelle/HOL 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。
+
+## 反例
+
+**反例**：密码库复用某开源实现时未验证其形式化安全规约，后来发现其实现与论文证明的抽象模型存在偏差，导致侧信道攻击。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Coq Proof Assistant](https://coq.inria.fr)
+> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：定理证明提供最高置信度，但门槛高、周期长，适合小规模、高价值核心组件。

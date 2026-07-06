@@ -243,3 +243,20 @@ Memory64 提案将 WASM 的线性内存寻址从 32 位扩展至 64 位，突破
 6. wasm-pkg-tools (wkg), <https://github.com/bytecodealliance/wasm-pkg-tools>
 7. WasmGC Proposal, <https://github.com/WebAssembly/gc>
 8. Memory64 Proposal, <https://github.com/WebAssembly/memory64>
+
+
+---
+
+## 补充说明：P5-T4：WASM Component Model + WASI 0.3 复用边界更新
+
+## 示例
+
+**示例**：使用 Rust 实现图像处理组件，编译为 WIT 接口的 WASM 组件，在 Node.js、Python 与边缘运行时中复用同一二进制。
+
+## 反例
+
+**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，性能与可维护性反而下降。
+
+## 分析
+
+**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。

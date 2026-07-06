@@ -107,3 +107,28 @@ Level 4: Source Code / Architecture （源代码与架构）
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：认知负荷理论与架构复用
+
+## 概念定义
+
+**定义**：认知负荷理论（Cognitive Load Theory, CLT）描述工作记忆容量有限性，将负荷分为内在负荷、外在负荷与相关负荷，指导学习材料与工具设计。
+
+## 示例
+
+**示例**：平台工程团队将 Golden Path 文档按“决策树 + 可运行模板 + 失败案例”组织，减少外在认知负荷，使开发者 10 分钟即可上手复用。
+
+## 反例
+
+**反例**：某平台要求开发者阅读 50 页 Markdown 才能部署首个服务，外在负荷过高，新用户流失率超过 60%。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Cognitive Load Theory - ScienceDirect Topics](https://www.sciencedirect.com/topics/psychology/cognitive-load-theory)
+> - [Sweller - Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-010-9135-0)
+> - 核查日期：2026-07-07

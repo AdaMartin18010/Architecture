@@ -210,3 +210,32 @@ A = e^X
 - COCOMO II.2000 Calibration Data (161 projects)
 - Jones, C.: *Applied Software Measurement* (SLOC/FP 转换表)
 - IFPUG: Function Point Counting Practices Manual (1994+)
+
+
+---
+
+## 补充说明：COCOMO II 复用模型深度解析
+
+## 概念定义
+
+**定义**：COCOMO II（Constructive Cost Model II）通过规模、复用程度、人员能力、平台成熟度等因子预测软件成本；其复用模型（REVL、AA、SU 等）量化复用带来的生产率提升。
+
+## 示例
+
+**示例**：估算企业级消息中间件复用时，COCOMO II 将等效新代码行数按复用适配度从 100 KSLOC 降至 35 KSLOC，工期预测缩短 40%。
+
+## 反例
+
+**反例**：未计入文档、测试与治理成本，仅凭代码行复用率宣称“节省 80%”，上线后维护 overrun 30%。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [USC COCOMO II](https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/)
+> - [Barry Boehm - USC CSSE](https://cssed.usc.edu/)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：COCOMO II 的复用因子将“复用 ≠ 复制”量化，但需定期用组织历史数据校准。

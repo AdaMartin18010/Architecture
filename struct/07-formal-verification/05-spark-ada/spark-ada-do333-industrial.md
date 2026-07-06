@@ -28,6 +28,10 @@
     - [5.2 证明级复用](#52-证明级复用)
     - [5.3 跨项目验证策略复用](#53-跨项目验证策略复用)
   - [6. 参考索引](#6-参考索引)
+  - [补充说明：SPARK Ada 形式化验证与工业复用](#补充说明spark-ada-形式化验证与工业复用)
+  - [概念定义](#概念定义)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ## 1. SPARK 语言与工具链
 
@@ -165,3 +169,24 @@ Low_Level_Service (Ada)
 - FOSDEM 2025: "Understanding liquid types, contracts and formal verification with Ada/SPARK"
 - Military Embedded Systems: "Formal program verification in avionics certification" (2017/2025)
 - SPARK 2014: "Formal Program Verification For All" (SOS-Vo)
+
+
+---
+
+## 补充说明：SPARK Ada 形式化验证与工业复用
+
+## 概念定义
+
+**定义**：SPARK 是 Ada 的子集，支持通过前置条件、后置条件、循环不变式与类型约束进行契约式程序验证，可达到 DO-178C 最高安全等级。
+
+## 反例
+
+**反例**：某航空项目直接复用未经 SPARK 验证的 C 代码到 DO-178C A 级软件，审查阶段因无法提供覆盖率与不变式证据被否决。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [SPARK Pro](https://www.adacore.com/sparkpro)
+> - [DO-178C](https://rtca.org/product/do-178c-2/)
+> - 核查日期：2026-07-07

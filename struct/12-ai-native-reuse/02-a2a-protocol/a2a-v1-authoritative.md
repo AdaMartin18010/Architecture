@@ -263,3 +263,20 @@ User Request → A2A Gateway
 > - Google Cloud Next 2026 发布资料
 > - Linux Foundation Agentic AI Foundation
 > 勘误: A2A v1.0 正式发布时间为 2026-04，此前文档中的 2026-03-12 日期已修正。
+
+
+---
+
+## 补充说明：A2A v1.0 权威规范解读
+
+## 概念定义
+
+**定义**：A2A（Agent-to-Agent Protocol）由 Google 提出，旨在让不同框架、不同厂商的 Agent 能够相互发现能力、协商任务并协作完成复杂工作流。
+
+## 示例
+
+**示例**：旅行规划 Agent 通过 A2A 调用酒店预订 Agent 与航班查询 Agent，基于能力清单与信任凭证自动协商，无需硬编码集成。
+
+## 反例
+
+**反例**：各 Agent 使用私有消息格式与认证机制，跨团队协作时需要为每对 Agent 写适配器，形成 N² 集成问题。

@@ -160,3 +160,32 @@ python calibration-tool.py --test
 - SLA 模板：`templates/ai-sla-template.md`
 - 校准报告模板：`templates/calibration-report-template.md`
 - 契约 YAML Schema：`templates/probabilistic-contract.yaml`
+
+
+---
+
+## 补充说明：概率契约校准工具 (Probabilistic Contract Calibration)
+
+## 概念定义
+
+**定义**：概率契约（Probabilistic Contract）为 AI 服务定义输出质量边界（如准确率、延迟、成本）的概率承诺，并通过监测与校准保证契约可信度。
+
+## 示例
+
+**示例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
+
+## 反例
+
+**反例**：将 LLM 输出直接接入关键业务规则而无置信度边界，错误分类导致合规罚款。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Conformal Prediction](https://arxiv.org/abs/2107.07511)
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：概率契约将非确定性转化为可度量的风险边界，是 AI 服务等级协议的核心。

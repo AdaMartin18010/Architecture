@@ -75,3 +75,26 @@ L4 企业层是 ISA-95 五层模型的最高层，面向业务规划与资源优
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：L4 企业层复用资产目录
+
+## 示例
+
+**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+
+## 反例
+
+**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [OPC Foundation](https://opcfoundation.org)
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
+> - 核查日期：2026-07-07

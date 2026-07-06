@@ -28,6 +28,11 @@
     - [5.2 EU CSRD（企业可持续发展报告指令）](#52-eu-csrd企业可持续发展报告指令)
     - [5.3 合规建议](#53-合规建议)
   - [6. 权威来源](#6-权威来源)
+  - [补充说明：绿色软件架构与复用碳成本量化](#补充说明绿色软件架构与复用碳成本量化)
+  - [概念定义](#概念定义)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [分析](#分析)
 
 ---
 
@@ -189,3 +194,24 @@ SCI(复用) < SCI(重建) × 1.2 时，优先复用
 | EU CSRD | <https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en> | 2026-06-10 |
 | EU Data Center Regulation | <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1364> | 2026-06-10 |
 | ISO 14040/14044 | <https://www.iso.org/iso-14040-environmental-management.html> | 2026-06-10 |
+
+
+---
+
+## 补充说明：绿色软件架构与复用碳成本量化
+
+## 概念定义
+
+**定义**：绿色软件通过能效优化、硬件利用率提升、低碳能源调度与生命周期延长，减少软件系统全生命周期的环境影响；复用经优化的组件可放大减排效果。
+
+## 示例
+
+**示例**：复用支持 ARM graceful degradation 的压缩库，在闲时降低 CPU 频率，使云账单与碳排同时下降 20%。
+
+## 反例
+
+**反例**：为追求微服务“弹性”而将单体拆分为 200 个服务，每个服务常驻空闲实例，整体能耗翻倍。
+
+## 分析
+
+**分析**：绿色复用要求从架构层面减少冗余计算，并将碳排指标纳入资产准入评估。

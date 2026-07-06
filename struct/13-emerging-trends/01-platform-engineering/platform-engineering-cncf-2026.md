@@ -169,3 +169,24 @@ Golden Path Library
 - Platform Engineering 2025 Summit 资料
 - Backstage: [backstage.io](https://backstage.io)
 - Crossplane: [crossplane.io](https://crossplane.io)
+
+
+---
+
+## 补充说明：平台工程与内部开发者平台（IDP）复用
+
+## 反例
+
+**反例**：平台团队闭门造车，强制所有团队使用不灵活的模板，忽视反馈循环，导致开发者绕过平台自行部署。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
+> - [Platform Engineering - Martin Fowler](https://martinfowler.com/articles/platform-engineering-summit.html)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：平台工程的成功取决于“产品化运营”与“开发者体验”，而非单纯的技术标准化。

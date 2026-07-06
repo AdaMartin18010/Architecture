@@ -143,3 +143,32 @@
 ---
 
 > **维护建议**: 本报告随 Phase 2 推进定期更新。建议每次新增/修改规约后，同步更新 `case-library.md` 索引、`roadmap.md` 进度与根 `README.md` 状态，避免多文件状态漂移。
+
+
+---
+
+## 补充说明：07 形式化验证 — 内容梳理报告
+
+## 概念定义
+
+**定义**：形式化验证（Formal Verification）是使用数学方法（逻辑、自动机、类型论）严格证明系统或其模型满足规约的过程；在复用场景中，它通过显式契约、不变式与精化关系保证可复用资产在多变上下文中的行为一致性。
+
+## 示例
+
+**示例**：TLA+ 规约刻画分布式支付服务的原子性：PlusCal 算法描述“扣款-记账”步骤，模型检验器 TLC 验证所有可达状态下账户总额守恒，确保该服务被 10+ 业务系统复用时不会出现重复记账。
+
+## 反例
+
+**反例**：某团队将并发队列组件复用到金融核心系统，仅依赖单元测试与代码评审，未对内存序与边界条件进行形式化分析，生产环境出现偶发数据竞态，造成资金缺口。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
+> - [Alloy Analyzer](http://alloy.mit.edu)
+> - [Coq Proof Assistant](https://coq.inria.fr)
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [SPARK Pro](https://www.adacore.com/sparkpro)
+> - [Event-B](https://www.event-b.org)
+> - 核查日期：2026-07-07

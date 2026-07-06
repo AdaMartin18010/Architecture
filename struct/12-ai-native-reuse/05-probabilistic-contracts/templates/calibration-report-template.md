@@ -146,3 +146,29 @@ Brier = Reliability − Resolution + Uncertainty
 - 概率契约框架：`probabilistic-contract-framework.md`
 - 校准工具 CLI：`calibration-tool.py`
 - SLA 模板：`templates/ai-sla-template.md`
+
+
+---
+
+## 补充说明：概率契约校准报告模板
+
+## 概念定义
+
+**定义**：AI 原生复用是在大模型与 Agent 系统中，通过 MCP（Model Context Protocol）、A2A（Agent-to-Agent Protocol）与概率契约，将提示模板、RAG 管道、工具与 Agent 技能封装为可组合、可治理的资产。
+
+## 示例
+
+**示例**：企业构建 MCP 工具目录，把数据库查询、代码检索、文档解析发布为标准工具；客服 Agent 与运维 Agent 按统一协议调用，避免各自封装重复能力。
+
+## 反例
+
+**反例**：各团队在不同 Agent 中硬编码相同 Prompt 与 API 调用，无版本管理与输出契约，导致行为不一致、成本失控且难以审计。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - [A2A Protocol](https://google.github.io/A2A)
+> - [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/)
+> - 核查日期：2026-07-07

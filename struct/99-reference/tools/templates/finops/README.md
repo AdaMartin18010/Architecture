@@ -20,6 +20,12 @@
   - [4. 使用建议](#4-使用建议)
   - [5. 可执行脚本](#5-可执行脚本)
   - [6. 版本与更新](#6-版本与更新)
+  - [补充说明：FinOps 工具模板聚合入口](#补充说明finops-工具模板聚合入口)
+  - [概念定义](#概念定义)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
+  - [分析](#分析)
 
 ---
 
@@ -119,3 +125,34 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 > - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
 
 > 最后更新: 2026-06-12
+
+
+---
+
+## 补充说明：FinOps 工具模板聚合入口
+
+## 概念定义
+
+**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
+
+## 示例
+
+**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
+
+## 反例
+
+**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [NIST](https://www.nist.gov)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。

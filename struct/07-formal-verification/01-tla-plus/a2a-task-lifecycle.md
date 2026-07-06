@@ -148,3 +148,28 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 [^7]: PickAxe. (2026). *MCP vs A2A Protocol: What AI Agent Builders Actually Need to Know in 2026*. <https://pickaxe.co/post/mcp-vs-a2a-protocol>
 
 [^8]: Google A2A Protocol. *Agent-to-Agent Protocol*. <https://google.github.io/A2A/>
+
+
+---
+
+## 补充说明：T08: A2A Task 状态机的 TLA+ 规约说明
+
+## 概念定义
+
+**定义**：TLA+（Temporal Logic of Actions）是由 Leslie Lamport 提出的规约语言，通过状态、动作与时不变量描述并发与分布式系统行为，常用于验证算法与架构设计的正确性。
+
+## 示例
+
+**示例**：使用 TLA+ 规约两阶段提交协议，定义协调者、参与者的状态机与“所有节点最终一致”的不变式，TLC 模型检验器穷举状态空间并确认无死锁与活锁。
+
+## 反例
+
+**反例**：一个分布式缓存系统未对“网络分区+节点失效”场景建模，上线后在真实分区下丢失写入，因为自然语言需求遗漏了边界条件。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
+> - [Specifying Systems](https://lamport.azurewebsites.net/tla/book.html)
+> - 核查日期：2026-07-07

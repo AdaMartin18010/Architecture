@@ -136,3 +136,20 @@ MODULE <case_name>
 [^1]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 
 [^2]: Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., & Deardeuff, M. (2015). How Amazon Web Services Uses Formal Methods. *Communications of the ACM*, 58(4), 66-73.
+
+
+---
+
+## 补充说明：TLA+ 案例库总览
+
+## 概念定义
+
+**定义**：TLA+（Temporal Logic of Actions）是由 Leslie Lamport 提出的规约语言，通过状态、动作与时不变量描述并发与分布式系统行为，常用于验证算法与架构设计的正确性。
+
+## 反例
+
+**反例**：一个分布式缓存系统未对“网络分区+节点失效”场景建模，上线后在真实分区下丢失写入，因为自然语言需求遗漏了边界条件。
+
+## 分析
+
+**分析**：TLA+ 的价值在于暴露自然语言需求无法覆盖的并发边界，但建模抽象程度需要与验证目标匹配。

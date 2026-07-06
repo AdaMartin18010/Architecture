@@ -431,3 +431,16 @@ FinOps（Cloud Financial Operations）是云成本优化的方法论，其核心
 11. Linux Foundation, *Green Software Foundation Annual Report 2025*. <https://greensoftware.foundation/articles/annual-report-2025> （核查日期：2026-06-10）
 
 12. European Environment Agency, *Carbon pricing in the EU*. <https://www.eea.europa.eu/en/analysis/indicators/carbon-pricing-in-the-eu> （核查日期：2026-06-10）
+
+
+---
+
+## 补充说明：GreenArch / SCI 软件碳强度与复用度量
+
+## 概念定义
+
+**定义**：绿色软件通过能效优化、硬件利用率提升、低碳能源调度与生命周期延长，减少软件系统全生命周期的环境影响；复用经优化的组件可放大减排效果。
+
+## 反例
+
+**反例**：为追求微服务“弹性”而将单体拆分为 200 个服务，每个服务常驻空闲实例，整体能耗翻倍。

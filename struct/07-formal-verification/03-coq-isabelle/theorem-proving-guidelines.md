@@ -32,6 +32,10 @@
     - [3.2 `bounded_counter.v` → 不变量保持](#32-bounded_counterv--不变量保持)
     - [3.3 从教学示例到安全关键证明的过渡路径](#33-从教学示例到安全关键证明的过渡路径)
   - [4. 权威来源](#4-权威来源)
+  - [补充说明：Coq/Isabelle 安全关键组件定理证明纲要](#补充说明coqisabelle-安全关键组件定理证明纲要)
+  - [概念定义](#概念定义)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ## 1. Coq/Isabelle 在安全关键系统中的定位
 
@@ -347,3 +351,24 @@ Step 5: 跨工具信任链（CompCert + Coq / Isabelle 代码生成）
 
 > 最后更新: 2026-06-08
 > 关联: `coq-examples/insertion_sort.v`, `coq-examples/bounded_counter.v`, `isabelle-theories/Turnstile.thy`
+
+
+---
+
+## 补充说明：Coq/Isabelle 安全关键组件定理证明纲要
+
+## 概念定义
+
+**定义**：Coq 与 Isabelle/HOL 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。
+
+## 反例
+
+**反例**：密码库复用某开源实现时未验证其形式化安全规约，后来发现其实现与论文证明的抽象模型存在偏差，导致侧信道攻击。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Coq Proof Assistant](https://coq.inria.fr)
+> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - 核查日期：2026-07-07

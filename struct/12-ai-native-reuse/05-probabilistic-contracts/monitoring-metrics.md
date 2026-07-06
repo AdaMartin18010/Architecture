@@ -336,3 +336,24 @@ latency_seconds = Histogram(
 | `ai_contract_model_drift_ks_stat` | 公理 12.1 Model Drift Bound |
 | `ai_contract_low_confidence_rate` | 置信度函数 `γ(x)` |
 | `ai_contract_human_in_the_loop_rate` | 定理 AI.2 Human-in-the-Loop Optimality |
+
+
+---
+
+## 补充说明：概率契约运行时监控指标
+
+## 示例
+
+**示例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
+
+## 反例
+
+**反例**：将 LLM 输出直接接入关键业务规则而无置信度边界，错误分类导致合规罚款。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Conformal Prediction](https://arxiv.org/abs/2107.07511)
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - 核查日期：2026-07-07

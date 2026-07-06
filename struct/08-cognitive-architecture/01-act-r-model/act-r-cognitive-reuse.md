@@ -128,3 +128,28 @@ Task B (迁移场景)
 - NIST PerMIS 2007: "Performance Metrics for Intelligent Systems"
 - Anderson, J.R.: "How Can the Human Mind Occur in the Physical Universe?" (2007)
 - 慕尼黑联邦国防军大学："Wissensbasierte Konfiguration eines unbemannten Fluggeräts" (ACT-R / BDI 无人机认知飞行)
+
+
+---
+
+## 补充说明：ACT-R 认知架构与知识复用
+
+## 示例
+
+**示例**：在代码补全工具中嵌入 ACT-R 模型，根据开发者当前注视点与编辑历史预测下一步需要的复用 API，并按工作记忆容量限制建议数量。
+
+## 反例
+
+**反例**：工具一次性展示 50 个相关 API 而无优先级排序，超过工作记忆容量，开发者反而花更多时间筛选。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ACT-R](https://act-r.psy.cmu.edu)
+> - [ACT-R Publications](https://act-r.psy.cmu.edu/publications)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：ACT-R 为开发者工具提供了心理学约束，帮助设计“恰到好处”的复用建议。

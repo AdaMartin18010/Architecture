@@ -30,6 +30,9 @@
     - [5.1 厂商配置工具](#51-厂商配置工具)
     - [5.2 Linux 内核配置（tc-taprio）](#52-linux-内核配置tc-taprio)
   - [6. 参考文献](#6-参考文献)
+  - [补充说明：TSN 门控表（GCL）配置模板](#补充说明tsn-门控表gcl配置模板)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -372,3 +375,22 @@ tc qdisc add dev eth0 parent root handle 100 taprio \
 
 > 最后更新: 2026-06-06
 > 下次更新时机: IEC/IEEE 60802 正式发布后更新默认参数
+
+
+---
+
+## 补充说明：TSN 门控表（GCL）配置模板
+
+## 反例
+
+**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [OPC Foundation](https://opcfoundation.org)
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
+> - 核查日期：2026-07-07

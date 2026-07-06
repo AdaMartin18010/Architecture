@@ -154,3 +154,25 @@ Step 4: Report Generator Agent
 > **结语**
 > 全球 AI 监管正以 EU AI Act（2026 年 8 月硬截止）、FCA AI Live Testing（2025 年 10 月启动）和 SEC FY2026（AI Washing 打击）为三极加速落地。
 > RegTech Agentic 架构通过"感知-推理-行动"三层设计，将分散的监管要求转化为可执行的合规工作流，但必须在"自动化效率"与"人工最终责任"之间保持审慎平衡。
+
+
+---
+
+## 补充说明：RegTech Agentic 架构案例验证
+
+## 反例
+
+**反例**：追逐 WASM 潮流将所有服务重写为组件，忽视工具链成熟度与团队技能，导致调试困难、交付延期。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [CNCF Platform Engineering](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
+> - [Green Software Foundation](https://greensoftware.foundation)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：新兴技术扩展了复用的边界，但技术采纳必须匹配组织成熟度与真实业务痛点。

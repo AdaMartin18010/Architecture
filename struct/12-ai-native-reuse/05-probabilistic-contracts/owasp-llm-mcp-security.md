@@ -150,3 +150,24 @@ OWASP 针对 MCP 专门发布了 Top 10：
 > - <https://owasp.org/www-project-top-10-for-large-language-model-applications/>
 > - <https://owasp.org/www-project-mcp-top-10/>
 > - OWASP Top 10 for Agentic AI Applications 2026
+
+
+---
+
+## 补充说明：OWASP LLM / MCP 安全对齐
+
+## 概念定义
+
+**定义**：MCP 是由 Anthropic 主导的开放协议，规范 AI 模型如何发现、调用工具并交换上下文，使工具成为可复用资产。
+
+## 示例
+
+**示例**：代码助手通过 MCP 调用统一代码搜索工具，返回结构化上下文；不同 IDE 插件复用同一工具，无需各自实现代码索引。
+
+## 反例
+
+**反例**：Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制，工具变更导致所有调用方失效。
+
+## 分析
+
+**分析**：MCP 将工具从“代码片段”提升为“可发现服务”，是 Agent 生态互操作的关键。

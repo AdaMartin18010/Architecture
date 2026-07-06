@@ -83,6 +83,8 @@
     - [阶段二：自动化与扩展（3-6 个月）](#阶段二自动化与扩展3-6-个月)
     - [阶段三：深度集成与持续优化（6-12 个月）](#阶段三深度集成与持续优化6-12-个月)
   - [附录：权威来源](#附录权威来源)
+  - [补充说明：OpenSSF Scorecard + Security Baseline 与复用决策](#补充说明openssf-scorecard--security-baseline-与复用决策)
+  - [概念定义](#概念定义)
 
 ---
 
@@ -774,3 +776,12 @@ XZ Utils 案例是 Scorecard 作为复用决策工具价值的极端验证。
 10. ISO/IEC 5230:2024 — OpenChain 规范（与 SPDX 和 SBOM 相关）
     - URL: <https://www.iso.org/standard/81039.html>
     - 核查日期: 2026-06-10
+
+
+---
+
+## 补充说明：OpenSSF Scorecard + Security Baseline 与复用决策
+
+## 概念定义
+
+**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。

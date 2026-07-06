@@ -32,6 +32,10 @@
   - [6. 与布尔契约、Design-by-Contract 的区别](#6-与布尔契约design-by-contract-的区别)
   - [7. 相关公理与定理](#7-相关公理与定理)
   - [8. 参考文献](#8-参考文献)
+  - [补充说明：AI 概率契约（Probabilistic Contract）框架](#补充说明ai-概率契约probabilistic-contract框架)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -347,3 +351,24 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 3. Meyer, B. (1988). Object-Oriented Software Construction. Prentice Hall. (Design-by-Contract)
 4. MCP Specification 2025-11-25.
 5. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*.
+
+
+---
+
+## 补充说明：AI 概率契约（Probabilistic Contract）框架
+
+## 示例
+
+**示例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
+
+## 反例
+
+**反例**：将 LLM 输出直接接入关键业务规则而无置信度边界，错误分类导致合规罚款。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Conformal Prediction](https://arxiv.org/abs/2107.07511)
+> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
+> - 核查日期：2026-07-07

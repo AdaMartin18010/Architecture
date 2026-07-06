@@ -1346,6 +1346,756 @@ TOPIC_TEMPLATES: Dict[str, Dict] = {
             ),
         },
     },
+    "07-formal-verification": {
+        "default": {
+            "title": "形式化验证与可复用资产正确性",
+            "definition": (
+                "**定义**：形式化验证（Formal Verification）是使用数学方法（逻辑、自动机、类型论）"
+                "严格证明系统或其模型满足规约的过程；在复用场景中，它通过显式契约、不变式与精化关系"
+                "保证可复用资产在多变上下文中的行为一致性。"
+            ),
+            "example": (
+                "**示例**：TLA+ 规约刻画分布式支付服务的原子性：PlusCal 算法描述“扣款-记账”步骤，"
+                "模型检验器 TLC 验证所有可达状态下账户总额守恒，确保该服务被 10+ 业务系统复用时"
+                "不会出现重复记账。"
+            ),
+            "counter_example": (
+                "**反例**：某团队将并发队列组件复用到金融核心系统，仅依赖单元测试与代码评审，"
+                "未对内存序与边界条件进行形式化分析，生产环境出现偶发数据竞态，造成资金缺口。"
+            ),
+            "authority_pairs": [
+                ("TLA+ Home Page", "https://lamport.azurewebsites.net/tla/tla.html"),
+                ("Alloy Analyzer", "http://alloy.mit.edu"),
+                ("Coq Proof Assistant", "https://coq.inria.fr"),
+                ("The Rust Programming Language", "https://www.rust-lang.org"),
+                ("SPARK Pro", "https://www.adacore.com/sparkpro"),
+                ("Event-B", "https://www.event-b.org"),
+            ],
+            "analysis": (
+                "**分析**：形式化验证为复用提供了“可证明的正确性”基础，但其成本与建模复杂度成正比；"
+                "实践中通常对安全关键、高并发或高价值复用资产进行选择性形式化验证。"
+            ),
+        },
+        "tla-plus": {
+            "title": "TLA+ 时序逻辑规约",
+            "definition": (
+                "**定义**：TLA+（Temporal Logic of Actions）是由 Leslie Lamport 提出的规约语言，"
+                "通过状态、动作与时不变量描述并发与分布式系统行为，常用于验证算法与架构设计的正确性。"
+            ),
+            "example": (
+                "**示例**：使用 TLA+ 规约两阶段提交协议，定义协调者、参与者的状态机与“所有节点最终一致”"
+                "的不变式，TLC 模型检验器穷举状态空间并确认无死锁与活锁。"
+            ),
+            "counter_example": (
+                "**反例**：一个分布式缓存系统未对“网络分区+节点失效”场景建模，上线后在真实分区下丢失写入，"
+                "因为自然语言需求遗漏了边界条件。"
+            ),
+            "authority_pairs": [
+                ("TLA+ Home Page", "https://lamport.azurewebsites.net/tla/tla.html"),
+                ("Specifying Systems", "https://lamport.azurewebsites.net/tla/book.html"),
+            ],
+            "analysis": (
+                "**分析**：TLA+ 的价值在于暴露自然语言需求无法覆盖的并发边界，但建模抽象程度需要"
+                "与验证目标匹配。"
+            ),
+        },
+        "alloy": {
+            "title": "Alloy 结构建模与约束分析",
+            "definition": (
+                "**定义**：Alloy 是 MIT 开发的基于关系一阶逻辑的轻量级建模语言，通过 SAT 求解器在小范围内"
+                "自动寻找反例，适合分析结构约束与依赖关系。"
+            ),
+            "example": (
+                "**示例**：用 Alloy 对微服务授权模型建模，声明“每个请求必须关联有效角色”约束，"
+                "分析器在 5 秒内发现某场景下角色继承导致的越权路径。"
+            ),
+            "counter_example": (
+                "**反例**：团队仅绘制架构图表示服务间调用关系，未形式化“无循环依赖”约束，"
+                "导致运行时出现隐式循环调用与级联故障。"
+            ),
+            "authority_pairs": [
+                ("Alloy Analyzer", "http://alloy.mit.edu"),
+                ("Alloy Tools", "https://alloytools.org"),
+            ],
+            "analysis": (
+                "**分析**：Alloy 擅长快速发现结构设计缺陷，是早期架构评审与复用依赖分析的有效工具。"
+            ),
+        },
+        "coq-isabelle": {
+            "title": "Coq/Isabelle 定理证明",
+            "definition": (
+                "**定义**：Coq 与 Isabelle/HOL 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造"
+                "机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。"
+            ),
+            "example": (
+                "**示例**：使用 Coq 证明 TLS 1.3 握手协议的消息不变式，并将提取的 OCaml 代码集成到"
+                "可复用加密库，确保实现与规约一致。"
+            ),
+            "counter_example": (
+                "**反例**：密码库复用某开源实现时未验证其形式化安全规约，后来发现其实现与论文证明的"
+                "抽象模型存在偏差，导致侧信道攻击。"
+            ),
+            "authority_pairs": [
+                ("Coq Proof Assistant", "https://coq.inria.fr"),
+                ("Isabelle/HOL", "https://isabelle.in.tum.de"),
+            ],
+            "analysis": (
+                "**分析**：定理证明提供最高置信度，但门槛高、周期长，适合小规模、高价值核心组件。"
+            ),
+        },
+        "rust-type-system": {
+            "title": "Rust 类型系统与形式化语义",
+            "definition": (
+                "**定义**：Rust 通过所有权（ownership）、借用（borrowing）与生命周期（lifetime）"
+                "在类型系统层面消除数据竞态与悬垂指针，其形式化语义（RustBelt、Aeneas）为内存安全"
+                "复用组件提供基础。"
+            ),
+            "example": (
+                "**示例**：某跨平台网络库用 Rust 编写核心协议解析器，所有权系统保证并发访问安全，"
+                "被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。"
+            ),
+            "counter_example": (
+                "**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，"
+                "导致复用该 unsafe 包装的多个项目出现未定义行为。"
+            ),
+            "authority_pairs": [
+                ("The Rust Programming Language", "https://www.rust-lang.org"),
+                ("RustBelt", "https://iris-project.org/rustbelt.html"),
+                ("Aeneas", "https://github.com/AeneasVerif/aeneas"),
+            ],
+            "analysis": (
+                "**分析**：Rust 将形式化安全保证编译进类型系统，是系统级复用组件的“零成本”安全基础。"
+            ),
+        },
+        "spark-ada": {
+            "title": "SPARK/Ada 契约式验证",
+            "definition": (
+                "**定义**：SPARK 是 Ada 的子集，支持通过前置条件、后置条件、循环不变式与类型约束"
+                "进行契约式程序验证，可达到 DO-178C 最高安全等级。"
+            ),
+            "example": (
+                "**示例**：飞控软件使用 SPARK 证明“襟翼控制函数在任意输入下不会越界”，"
+                "复用到不同机型时仅需重验证机型特定配置。"
+            ),
+            "counter_example": (
+                "**反例**：某航空项目直接复用未经 SPARK 验证的 C 代码到 DO-178C A 级软件，"
+                "审查阶段因无法提供覆盖率与不变式证据被否决。"
+            ),
+            "authority_pairs": [
+                ("SPARK Pro", "https://www.adacore.com/sparkpro"),
+                ("DO-178C", "https://rtca.org/product/do-178c-2/"),
+            ],
+            "analysis": (
+                "**分析**：SPARK 将验证融入编程语言子集，是航空、轨道交通等高可信复用的典型路径。"
+            ),
+        },
+        "b-method": {
+            "title": "B Method / Event-B 精化验证",
+            "definition": (
+                "**定义**：B Method 与 Event-B 是基于集合论与精化演算的形式化方法，通过从抽象规约"
+                "逐步精化到可执行代码，并证明每步精化保持规约性质。"
+            ),
+            "example": (
+                "**示例**：铁路信号系统使用 Event-B 从“列车不碰撞”的高层不变式精化到联锁逻辑，"
+                "模型检验与证明义务保证软件复用时安全性质不被破坏。"
+            ),
+            "counter_example": (
+                "**反例**：某地铁项目复用上一代联锁代码但未重建精化链，新增功能破坏了“敌对进路互锁”"
+                "不变式，导致信号冲突风险。"
+            ),
+            "authority_pairs": [
+                ("Event-B", "https://www.event-b.org"),
+                ("Atelier B", "https://www.atelierb.eu/en/"),
+            ],
+            "analysis": (
+                "**分析**：Event-B 的精化方法论与铁路等分层安全设计天然契合，但工具链与工程师培训"
+                "是成功复用的关键。"
+            ),
+        },
+    },
+    "08-cognitive-architecture": {
+        "default": {
+            "title": "认知架构与复用决策",
+            "definition": (
+                "**定义**：认知架构（Cognitive Architecture）是对人类或智能体信息处理结构"
+                "（感知、记忆、决策、学习）的计算模型；在复用工程中，它解释开发者如何选择、理解与"
+                "适配可复用资产，并指导工具设计以降低认知负荷。"
+            ),
+            "example": (
+                "**示例**：基于 ACT-R 建模，IDE 在开发者调用不熟悉的复用组件时自动提示参数示例与"
+                "依赖约束，减少工作记忆负荷并降低集成错误。"
+            ),
+            "counter_example": (
+                "**反例**：某公司强制所有团队使用统一的 200 页架构手册而不提供可搜索的示例与决策树，"
+                "开发者因认知超载而回到复制-粘贴。"
+            ),
+            "authority_pairs": [
+                ("ACT-R", "https://act-r.psy.cmu.edu"),
+                ("BDI Agent Architecture", "https://www.cs.ox.ac.uk/people/michael.georgeff/"),
+                ("Cognitive Load Theory", "https://www.sciencedirect.com/topics/psychology/cognitive-load-theory"),
+            ],
+            "analysis": (
+                "**分析**：认知架构将“人”重新置于复用中心：再完美的资产，若超出人类工作记忆与"
+                "决策能力，也难以被有效复用。"
+            ),
+        },
+        "act-r": {
+            "title": "ACT-R 认知架构",
+            "definition": (
+                "**定义**：ACT-R（Adaptive Control of Thought–Rational）是由卡内基梅隆大学开发的"
+                "认知架构，通过声明性知识（facts）与产生式规则（production rules）模拟人类记忆、"
+                "注意与决策过程。"
+            ),
+            "example": (
+                "**示例**：在代码补全工具中嵌入 ACT-R 模型，根据开发者当前注视点与编辑历史预测"
+                "下一步需要的复用 API，并按工作记忆容量限制建议数量。"
+            ),
+            "counter_example": (
+                "**反例**：工具一次性展示 50 个相关 API 而无优先级排序，超过工作记忆容量，"
+                "开发者反而花更多时间筛选。"
+            ),
+            "authority_pairs": [
+                ("ACT-R", "https://act-r.psy.cmu.edu"),
+                ("ACT-R Publications", "https://act-r.psy.cmu.edu/publications"),
+            ],
+            "analysis": (
+                "**分析**：ACT-R 为开发者工具提供了心理学约束，帮助设计“恰到好处”的复用建议。"
+            ),
+        },
+        "bdi": {
+            "title": "BDI 智能体模型",
+            "definition": (
+                "**定义**：BDI（Belief-Desire-Intention）模型将自主智能体的状态表示为信念（Beliefs）、"
+                "愿望（Desires）与意图（Intentions），支持目标驱动推理与计划复用。"
+            ),
+            "example": (
+                "**示例**：在 Agentic 系统中，一个故障排查 Agent 复用标准化“诊断计划”意图库："
+                "信念为监控数据，愿望为恢复 SLO，意图为按优先级执行检查清单。"
+            ),
+            "counter_example": (
+                "**反例**：Agent 缺乏明确的愿望优先级与意图承诺机制，在多个目标冲突时反复切换，"
+                "导致复用计划无法收敛。"
+            ),
+            "authority_pairs": [
+                ("BDI Architecture - Michael Georgeff", "https://www.cs.ox.ac.uk/people/michael.georgeff/"),
+                ("AgentSpeak / Jason", "http://jason.sourceforge.net/wp/"),
+            ],
+            "analysis": (
+                "**分析**：BDI 为 Agent 计划复用提供了心智模型，使自主系统行为可解释、可审计。"
+            ),
+        },
+        "cognitive-load": {
+            "title": "认知负荷理论",
+            "definition": (
+                "**定义**：认知负荷理论（Cognitive Load Theory, CLT）描述工作记忆容量有限性，"
+                "将负荷分为内在负荷、外在负荷与相关负荷，指导学习材料与工具设计。"
+            ),
+            "example": (
+                "**示例**：平台工程团队将 Golden Path 文档按“决策树 + 可运行模板 + 失败案例”组织，"
+                "减少外在认知负荷，使开发者 10 分钟即可上手复用。"
+            ),
+            "counter_example": (
+                "**反例**：某平台要求开发者阅读 50 页 Markdown 才能部署首个服务，外在负荷过高，"
+                "新用户流失率超过 60%。"
+            ),
+            "authority_pairs": [
+                ("Cognitive Load Theory - ScienceDirect Topics", "https://www.sciencedirect.com/topics/psychology/cognitive-load-theory"),
+                ("Sweller - Educational Psychology Review", "https://link.springer.com/article/10.1007/s10648-010-9135-0"),
+            ],
+            "analysis": (
+                "**分析**：认知负荷理论是复用采纳的关键人因指标，文档与工具应以降低外在负荷为设计目标。"
+            ),
+        },
+    },
+    "09-value-quantification": {
+        "default": {
+            "title": "复用价值量化与决策",
+            "definition": (
+                "**定义**：复用价值量化是使用成本模型、财务指标与可持续性指标（碳排、能耗）对"
+                "可复用资产的开发、维护与消费收益进行系统评估，以支持投资、共享与退役决策。"
+            ),
+            "example": (
+                "**示例**：使用 COCOMO II 的复用调整因子估算“统一支付服务”可节省 2400 人月，"
+                "结合 NPV 计算三年净现值为正，决策升级为组织级资产。"
+            ),
+            "counter_example": (
+                "**反例**：某团队仅统计“代码行复用率”作为 KPI，导致大量复制低价值代码，"
+                "维护成本上升，真实业务价值反而下降。"
+            ),
+            "authority_pairs": [
+                ("USC COCOMO II", "https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/"),
+                ("Green Software Foundation SCI", "https://sci.greensoftware.foundation"),
+                ("FinOps Foundation", "https://www.finops.org"),
+            ],
+            "analysis": (
+                "**分析**：价值量化将复用从“经验倡导”转为“数据驱动决策”，但需要同时度量收益、"
+                "成本与风险。"
+            ),
+        },
+        "cocomo": {
+            "title": "COCOMO II 复用成本估算",
+            "definition": (
+                "**定义**：COCOMO II（Constructive Cost Model II）通过规模、复用程度、人员能力、"
+                "平台成熟度等因子预测软件成本；其复用模型（REVL、AA、SU 等）量化复用带来的生产率提升。"
+            ),
+            "example": (
+                "**示例**：估算企业级消息中间件复用时，COCOMO II 将等效新代码行数按复用适配度"
+                "从 100 KSLOC 降至 35 KSLOC，工期预测缩短 40%。"
+            ),
+            "counter_example": (
+                "**反例**：未计入文档、测试与治理成本，仅凭代码行复用率宣称“节省 80%”，"
+                "上线后维护 overrun 30%。"
+            ),
+            "authority_pairs": [
+                ("USC COCOMO II", "https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/"),
+                ("Barry Boehm - USC CSSE", "https://cssed.usc.edu/"),
+            ],
+            "analysis": (
+                "**分析**：COCOMO II 的复用因子将“复用 ≠ 复制”量化，但需定期用组织历史数据校准。"
+            ),
+        },
+        "roi-npv": {
+            "title": "ROI/NPV 与战略价值评估",
+            "definition": (
+                "**定义**：ROI（投资回报率）与 NPV（净现值）将复用资产的现金流（节省、收入、维护成本、"
+                "机会成本）贴现到当前，用于比较不同复用投资策略。"
+            ),
+            "example": (
+                "**示例**：平台工程投资 200 万元，预计每年节省各团队 120 万元运维与重复开发成本，"
+                "按 8% 折现率 NPV 为正，ROI 三年达 95%。"
+            ),
+            "counter_example": (
+                "**反例**：仅计算一次性采购成本，忽视后续版本升级、培训与耦合导致的迁移成本，"
+                "项目三年后实际 ROI 为负。"
+            ),
+            "authority_pairs": [
+                ("Investopedia NPV", "https://www.investopedia.com/terms/n/npv.asp"),
+                ("FinOps Foundation", "https://www.finops.org"),
+            ],
+            "analysis": (
+                "**分析**：ROI/NPV 帮助比较不同复用路径的全生命周期价值，但折现率与收益估算具有主观性。"
+            ),
+        },
+        "carbon": {
+            "title": "碳排维度与绿色复用",
+            "definition": (
+                "**定义**：软件碳强度（SCI）等指标将复用决策与环境影响挂钩：复用成熟组件可减少"
+                "重复开发与运行时能耗，但需权衡更新频率、设备寿命与数据中心位置。"
+            ),
+            "example": (
+                "**示例**：通过复用经能效优化的 Rust 数据解析库，某云服务将 CPU 利用率从 45% 降至 22%，"
+                "按 SCI 公式计算单位请求碳排下降 48%。"
+            ),
+            "counter_example": (
+                "**反例**：为“绿色”标签强行复用旧版本低能效组件，未考虑新硬件能效提升，"
+                "整体碳排反而增加。"
+            ),
+            "authority_pairs": [
+                ("Green Software Foundation SCI", "https://sci.greensoftware.foundation"),
+                ("GSF Principles", "https://learn.greensoftware.foundation/"),
+            ],
+            "analysis": (
+                "**分析**：碳维度将复用决策从经济效率扩展到可持续责任，需用 SCI 等标准化指标衡量。"
+            ),
+        },
+    },
+    "10-supply-chain-security": {
+        "default": {
+            "title": "供应链安全与复用信任",
+            "definition": (
+                "**定义**：软件供应链安全关注从源代码、依赖、构建、分发到部署全链路中，"
+                "复用资产不被篡改、注入漏洞或引入许可证风险；SLSA、SBOM 与签名验证是核心机制。"
+            ),
+            "example": (
+                "**示例**：组织采用 SLSA L3 构建流程：源码托管、构建环境隔离、构建产物签名并生成"
+                "SPDX SBOM；Log4j 类事件发生时 2 小时内定位受影响服务。"
+            ),
+            "counter_example": (
+                "**反例**：XZ Utils 后门事件显示，未对压缩依赖进行来源验证与行为审计，"
+                "恶意代码可潜伏数年并随复用传播到大量系统。"
+            ),
+            "authority_pairs": [
+                ("SLSA Framework", "https://slsa.dev"),
+                ("OpenSSF", "https://openssf.org"),
+                ("SPDX", "https://spdx.dev"),
+                ("CycloneDX", "https://cyclonedx.org"),
+            ],
+            "analysis": (
+                "**分析**：供应链安全是复用的信任基础，缺乏可追溯性的复用会放大单点风险。"
+            ),
+        },
+        "slsa": {
+            "title": "SLSA 供应链安全等级",
+            "definition": (
+                "**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，"
+                "通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。"
+            ),
+            "example": (
+                "**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建"
+                "与可复现构建证明，达到 SLSA Build L3。"
+            ),
+            "counter_example": (
+                "**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，"
+                "无法达到 SLSA L1。"
+            ),
+            "authority_pairs": [
+                ("SLSA Framework", "https://slsa.dev"),
+                ("OpenSSF SLSA", "https://openssf.org/projects/slsa/"),
+            ],
+            "analysis": (
+                "**分析**：SLSA 将供应链安全分解为可升级、可审计的等级，是组织渐进式改进的路线图。"
+            ),
+        },
+        "sbom": {
+            "title": "SBOM 标准与复用透明度",
+            "definition": (
+                "**定义**：SBOM（Software Bill of Materials）以机器可读格式（SPDX、CycloneDX、SWID）"
+                "枚举软件组件、版本、许可证与来源，是复用资产透明化的基础。"
+            ),
+            "example": (
+                "**示例**：在 CI 中为每个服务生成 CycloneDX SBOM，漏洞数据库匹配后自动生成影响范围报告，"
+                "复用组件升级决策从数周缩短到数小时。"
+            ),
+            "counter_example": (
+                "**反例**：组织复用开源库多年却从未维护 SBOM，许可证冲突与安全漏洞只能在诉讼或"
+                "事件爆发后被动发现。"
+            ),
+            "authority_pairs": [
+                ("SPDX", "https://spdx.dev"),
+                ("CycloneDX", "https://cyclonedx.org"),
+                ("NTIA SBOM", "https://www.ntia.gov/page/software-bill-materials"),
+            ],
+            "analysis": (
+                "**分析**：SBOM 将“黑盒依赖”变为可查询清单，是漏洞响应与许可证治理的前提。"
+            ),
+        },
+        "attack-vectors": {
+            "title": "供应链攻击向量",
+            "definition": (
+                "**定义**：供应链攻击向量指攻击者通过依赖注入、构建环境污染、仓库劫持、"
+                "typosquatting、恶意贡献等路径，将有害代码引入复用资产并传播到下游系统。"
+            ),
+            "example": (
+                "**示例**：攻击者在流行 npm 包名中注册拼写错误包（typosquat），诱导开发者安装并窃取"
+                "环境变量；通过依赖扫描与私有仓库策略可有效缓解。"
+            ),
+            "counter_example": (
+                "**反例**：安全团队仅关注自有代码漏洞扫描，忽视第三方依赖与 CI/CD 凭证安全，"
+                "导致攻击者通过被入侵的构建代理注入后门。"
+            ),
+            "authority_pairs": [
+                ("OWASP Top 10 CI/CD Risks", "https://owasp.org/www-project-top-10-ci-cd-security-risks/"),
+                ("MITRE ATT&CK Supply Chain Compromise", "https://attack.mitre.org/techniques/T1195/"),
+            ],
+            "analysis": (
+                "**分析**：攻击向量分析应从“防御自家代码”转向“审计整条供应链”，覆盖人、工具与仓库。"
+            ),
+        },
+    },
+    "11-industrial-iot-otit": {
+        "default": {
+            "title": "工业 IoT/OT-IT 复用",
+            "definition": (
+                "**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）"
+                "融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。"
+            ),
+            "example": (
+                "**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），"
+                "通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。"
+            ),
+            "counter_example": (
+                "**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，"
+                "导致停机与安全事故。"
+            ),
+            "authority_pairs": [
+                ("ISA-95 / IEC 62264", "https://www.isa.org/standards-and-publications/isa-standards/isa-95"),
+                ("OPC Foundation", "https://opcfoundation.org"),
+                ("IEC 61508", "https://webstore.iec.ch/publication/66912"),
+                ("IEC 63278 AAS", "https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363"),
+            ],
+            "analysis": (
+                "**分析**：OT-IT 复用需要在实时性、安全性与 IT 敏捷性之间取得平衡，"
+                "标准信息模型是打破竖井的关键。"
+            ),
+        },
+        "isa-95": {
+            "title": "ISA-95 企业-控制系统集成",
+            "definition": (
+                "**定义**：ISA-95 / IEC 62264 定义了企业层（L4）到控制系统层（L0）的分层模型、"
+                "数据流与接口，用于统一 OT 与 IT 语义并支持跨层级复用。"
+            ),
+            "example": (
+                "**示例**：制药企业依据 ISA-95 建立标准批次执行模型，新工厂复用相同 MES 接口与"
+                "配方模板，将上线时间从 12 个月缩短到 6 个月。"
+            ),
+            "counter_example": (
+                "**反例**：某工厂忽略 ISA-95 层级边界，让 ERP 直接写入 PLC 标签，"
+                "破坏实时控制闭环并造成批次污染风险。"
+            ),
+            "authority_pairs": [
+                ("ISA-95", "https://www.isa.org/standards-and-publications/isa-standards/isa-95"),
+                ("IEC 62264", "https://webstore.iec.ch/publication/66912"),
+            ],
+            "analysis": (
+                "**分析**：ISA-95 提供了 OT-IT 集成的共同语言，但落地时需结合行业工艺与设备能力进行适配。"
+            ),
+        },
+        "opc-ua-fx": {
+            "title": "OPC UA FX 现场级确定性通信",
+            "definition": (
+                "**定义**：OPC UA FX（Field eXchange）扩展 OPC UA 至现场级，支持确定性时间同步、"
+                "PubSub 帧结构与冗余，实现 OT 设备间可互操作的信息模型复用。"
+            ),
+            "example": (
+                "**示例**：包装线集成不同厂商伺服驱动，通过 OPC UA FX 的 PubSub 帧与 PLCopen Motion "
+                "接口复用统一运动控制模型，减少 70% 的协议转换网关。"
+            ),
+            "counter_example": (
+                "**反例**：各设备使用私有现场总线，IT 系统需为每种协议开发适配器，"
+                "信息模型无法复用，扩展成本高昂。"
+            ),
+            "authority_pairs": [
+                ("OPC Foundation UA", "https://opcfoundation.org/about/opc-technologies/opc-ua/"),
+                ("OPC UA FX", "https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/"),
+            ],
+            "analysis": (
+                "**分析**：OPC UA FX 将 OPC UA 的互操作性下沉到现场级，是工业 4.0 互联互通的骨干。"
+            ),
+        },
+        "functional-safety": {
+            "title": "功能安全与复用（IEC 61508 / ISO 26262）",
+            "definition": (
+                "**定义**：功能安全标准（IEC 61508 通用、ISO 26262 汽车、IEC 62443 工业网络安全）"
+                "要求安全相关软件在生命周期内满足指定安全完整性等级（SIL/ASIL），复用组件必须提供"
+                "验证证据与变更影响分析。"
+            ),
+            "example": (
+                "**示例**：某供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 SEooC 复用到多款车型，"
+                "通过安全手册明确假设与使用约束。"
+            ),
+            "counter_example": (
+                "**反例**：团队复用开源运动控制库到医疗机器人，未评估其 SIL 符合性，"
+                "认证阶段无法证明诊断覆盖率，项目被迫返工。"
+            ),
+            "authority_pairs": [
+                ("IEC 61508", "https://webstore.iec.ch/publication/66912"),
+                ("ISO 26262", "https://www.iso.org/standard/68383.html"),
+                ("IEC 62443", "https://www.iec.ch/cybersecurity"),
+            ],
+            "analysis": (
+                "**分析**：功能安全复用不是简单复制代码，而是复用经过验证的安全证据与假设约束。"
+            ),
+        },
+    },
+    "12-ai-native-reuse": {
+        "default": {
+            "title": "AI 原生复用与 Agent 协议",
+            "definition": (
+                "**定义**：AI 原生复用是在大模型与 Agent 系统中，通过 MCP（Model Context Protocol）、"
+                "A2A（Agent-to-Agent Protocol）与概率契约，将提示模板、RAG 管道、工具与 Agent 技能"
+                "封装为可组合、可治理的资产。"
+            ),
+            "example": (
+                "**示例**：企业构建 MCP 工具目录，把数据库查询、代码检索、文档解析发布为标准工具；"
+                "客服 Agent 与运维 Agent 按统一协议调用，避免各自封装重复能力。"
+            ),
+            "counter_example": (
+                "**反例**：各团队在不同 Agent 中硬编码相同 Prompt 与 API 调用，无版本管理与输出契约，"
+                "导致行为不一致、成本失控且难以审计。"
+            ),
+            "authority_pairs": [
+                ("Model Context Protocol", "https://modelcontextprotocol.io/specification/2025-11-25"),
+                ("A2A Protocol", "https://google.github.io/A2A"),
+                ("OWASP LLM Top 10", "https://genai.owasp.org/llm-top-10/"),
+            ],
+            "analysis": (
+                "**分析**：AI 原生复用需要接受概率性，并通过协议、契约与治理将其约束在可接受范围内。"
+            ),
+        },
+        "mcp": {
+            "title": "MCP 协议与工具复用",
+            "definition": (
+                "**定义**：MCP 是由 Anthropic 主导的开放协议，规范 AI 模型如何发现、调用工具并交换上下文，"
+                "使工具成为可复用资产。"
+            ),
+            "example": (
+                "**示例**：代码助手通过 MCP 调用统一代码搜索工具，返回结构化上下文；"
+                "不同 IDE 插件复用同一工具，无需各自实现代码索引。"
+            ),
+            "counter_example": (
+                "**反例**：Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制，"
+                "工具变更导致所有调用方失效。"
+            ),
+            "authority_pairs": [
+                ("Model Context Protocol", "https://modelcontextprotocol.io/specification/2025-11-25"),
+                ("MCP Introduction", "https://modelcontextprotocol.io/introduction"),
+            ],
+            "analysis": (
+                "**分析**：MCP 将工具从“代码片段”提升为“可发现服务”，是 Agent 生态互操作的关键。"
+            ),
+        },
+        "a2a": {
+            "title": "A2A Agent 协作协议",
+            "definition": (
+                "**定义**：A2A（Agent-to-Agent Protocol）由 Google 提出，旨在让不同框架、不同厂商的 "
+                "Agent 能够相互发现能力、协商任务并协作完成复杂工作流。"
+            ),
+            "example": (
+                "**示例**：旅行规划 Agent 通过 A2A 调用酒店预订 Agent 与航班查询 Agent，"
+                "基于能力清单与信任凭证自动协商，无需硬编码集成。"
+            ),
+            "counter_example": (
+                "**反例**：各 Agent 使用私有消息格式与认证机制，跨团队协作时需要为每对 Agent 写适配器，"
+                "形成 N² 集成问题。"
+            ),
+            "authority_pairs": [
+                ("A2A Protocol", "https://google.github.io/A2A"),
+                ("Google A2A Blog", "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"),
+            ],
+            "analysis": (
+                "**分析**：A2A 关注 Agent 之间的协作语义，与 MCP 形成“工具-代理”双层协议体系。"
+            ),
+        },
+        "probabilistic-contracts": {
+            "title": "概率契约与 AI SLA",
+            "definition": (
+                "**定义**：概率契约（Probabilistic Contract）为 AI 服务定义输出质量边界"
+                "（如准确率、延迟、成本）的概率承诺，并通过监测与校准保证契约可信度。"
+            ),
+            "example": (
+                "**示例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，"
+                "并在运行时监控漂移触发重新校准。"
+            ),
+            "counter_example": (
+                "**反例**：将 LLM 输出直接接入关键业务规则而无置信度边界，错误分类导致合规罚款。"
+            ),
+            "authority_pairs": [
+                ("Conformal Prediction", "https://arxiv.org/abs/2107.07511"),
+                ("Model Context Protocol", "https://modelcontextprotocol.io/specification/2025-11-25"),
+            ],
+            "analysis": (
+                "**分析**：概率契约将非确定性转化为可度量的风险边界，是 AI 服务等级协议的核心。"
+            ),
+        },
+    },
+    "13-emerging-trends": {
+        "default": {
+            "title": "新兴趋势与复用范式",
+            "definition": (
+                "**定义**：新兴趋势包括平台工程、模块化单体、WebAssembly 组件、绿色软件与 RegTech AI，"
+                "它们通过新抽象层或新约束推动复用资产的可移植性、可持续性与治理自动化。"
+            ),
+            "example": (
+                "**示例**：平台工程团队构建内部开发者平台（IDP），将部署、可观测性、安全策略封装为"
+                "自助服务模板，产品团队复用 Golden Path 快速交付。"
+            ),
+            "counter_example": (
+                "**反例**：追逐 WASM 潮流将所有服务重写为组件，忽视工具链成熟度与团队技能，"
+                "导致调试困难、交付延期。"
+            ),
+            "authority_pairs": [
+                ("CNCF Platform Engineering", "https://tag-app-delivery.cncf.io/whitepapers/platforms/"),
+                ("WebAssembly Component Model", "https://component-model.bytecodealliance.org"),
+                ("Green Software Foundation", "https://greensoftware.foundation"),
+            ],
+            "analysis": (
+                "**分析**：新兴技术扩展了复用的边界，但技术采纳必须匹配组织成熟度与真实业务痛点。"
+            ),
+        },
+        "platform-engineering": {
+            "title": "平台工程与内部开发者平台",
+            "definition": (
+                "**定义**：平台工程是通过构建内部开发者平台（IDP）与 Golden Path，将基础设施、安全、"
+                "可观测性能力产品化，供应用团队自助复用。"
+            ),
+            "example": (
+                "**示例**：某电商企业 IDP 提供一键创建服务仓库、CI/CD、监控与密钥管理，"
+                "团队上线时间从 2 周缩短到 2 小时，平台使用率达到 90%。"
+            ),
+            "counter_example": (
+                "**反例**：平台团队闭门造车，强制所有团队使用不灵活的模板，忽视反馈循环，"
+                "导致开发者绕过平台自行部署。"
+            ),
+            "authority_pairs": [
+                ("CNCF Platforms White Paper", "https://tag-app-delivery.cncf.io/whitepapers/platforms/"),
+                ("Platform Engineering - Martin Fowler", "https://martinfowler.com/articles/platform-engineering-summit.html"),
+            ],
+            "analysis": (
+                "**分析**：平台工程的成功取决于“产品化运营”与“开发者体验”，而非单纯的技术标准化。"
+            ),
+        },
+        "wasm": {
+            "title": "WebAssembly 组件模型复用",
+            "definition": (
+                "**定义**：WebAssembly Component Model 将 WASM 模块升级为具有显式接口、类型化导入导出的"
+                "可组合组件，支持跨语言、跨运行时复用。"
+            ),
+            "example": (
+                "**示例**：使用 Rust 实现图像处理组件，编译为 WIT 接口的 WASM 组件，"
+                "在 Node.js、Python 与边缘运行时中复用同一二进制。"
+            ),
+            "counter_example": (
+                "**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，"
+                "性能与可维护性反而下降。"
+            ),
+            "authority_pairs": [
+                ("WebAssembly Component Model", "https://component-model.bytecodealliance.org"),
+                ("WASI Preview 2", "https://wasi.dev"),
+            ],
+            "analysis": (
+                "**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。"
+            ),
+        },
+        "green-software": {
+            "title": "绿色软件与可持续复用",
+            "definition": (
+                "**定义**：绿色软件通过能效优化、硬件利用率提升、低碳能源调度与生命周期延长，"
+                "减少软件系统全生命周期的环境影响；复用经优化的组件可放大减排效果。"
+            ),
+            "example": (
+                "**示例**：复用支持 ARM graceful degradation 的压缩库，在闲时降低 CPU 频率，"
+                "使云账单与碳排同时下降 20%。"
+            ),
+            "counter_example": (
+                "**反例**：为追求微服务“弹性”而将单体拆分为 200 个服务，每个服务常驻空闲实例，"
+                "整体能耗翻倍。"
+            ),
+            "authority_pairs": [
+                ("Green Software Foundation", "https://greensoftware.foundation"),
+                ("SCI Specification", "https://sci.greensoftware.foundation"),
+            ],
+            "analysis": (
+                "**分析**：绿色复用要求从架构层面减少冗余计算，并将碳排指标纳入资产准入评估。"
+            ),
+        },
+    },
+    "99-reference": {
+        "default": {
+            "title": "参考索引与知识治理",
+            "definition": (
+                "**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、"
+                "课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。"
+            ),
+            "example": (
+                "**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 "
+                "URL 与核查日期，确保全书引用可验证。"
+            ),
+            "counter_example": (
+                "**反例**：参考层链接长期不更新，术语表与正文定义冲突，"
+                "读者无法确认内容准确性与时效性。"
+            ),
+            "authority_pairs": [
+                ("ISO", "https://www.iso.org"),
+                ("IEEE Standards", "https://standards.ieee.org"),
+                ("NIST", "https://www.nist.gov"),
+                ("CNCF", "https://www.cncf.io"),
+            ],
+            "analysis": (
+                "**分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；"
+                "必须随标准演进定期审计与更新。"
+            ),
+        },
+    },
 }
 
 
@@ -1417,6 +2167,31 @@ def select_template(path: Path, topic_key: str) -> Dict:
         ("up-downgrade", ["up-downgrade", "upgrade-downgrade"]),
         ("policy-automation", ["policy-automation"]),
         ("agentic-governance", ["agentic"]),
+        # 07-13 & 99-reference
+        ("tla-plus", ["tla-plus", "tla", "temporal-logic"]),
+        ("alloy", ["alloy", "kodkod"]),
+        ("coq-isabelle", ["coq", "isabelle", "theorem-proving"]),
+        ("rust-type-system", ["rust-type-system", "rust", "borrow-checker"]),
+        ("spark-ada", ["spark-ada", "spark", "ada", "do-178c"]),
+        ("b-method", ["b-method", "event-b", "refinement"]),
+        ("act-r", ["act-r", "actr", "cognitive-architecture"]),
+        ("bdi", ["bdi", "belief-desire-intention", "agent"]),
+        ("cognitive-load", ["cognitive-load", "cognitive-load-theory", "load"]),
+        ("cocomo", ["cocomo", "cost-model"]),
+        ("roi-npv", ["roi", "npv", "real-options"]),
+        ("carbon", ["carbon", "sci", "green", "sustainability"]),
+        ("slsa", ["slsa", "provenance", "sigstore"]),
+        ("sbom", ["sbom", "spdx", "cyclonedx"]),
+        ("attack-vectors", ["attack", "threat", "mitre"]),
+        ("isa-95", ["isa-95", "isa95", "iec-62264"]),
+        ("opc-ua-fx", ["opc-ua-fx", "opc-ua", "pubsub"]),
+        ("functional-safety", ["functional-safety", "iec-61508", "iso-26262", "iec-62443"]),
+        ("mcp", ["mcp", "model-context-protocol"]),
+        ("a2a", ["a2a", "agent-to-agent"]),
+        ("probabilistic-contracts", ["probabilistic", "conformal", "ai-sla"]),
+        ("platform-engineering", ["platform-engineering", "idp", "golden-path"]),
+        ("wasm", ["wasm", "webassembly", "component-model"]),
+        ("green-software", ["green-software", "green-architecture", "sci"]),
     ]
 
     path_str = f"{parent}/{stem}/{name}"
@@ -1467,12 +2242,14 @@ def generate_supplement(path: Path, content: str, checks: Dict[str, bool], topic
 # ---------- 主流程 ----------
 
 TARGETS = [
-    ("struct/01-meta-model-standards", None),
-    ("struct/02-business-architecture-reuse", None),
-    ("struct/03-application-architecture-reuse", 35),
-    ("struct/04-component-architecture-reuse", None),
-    ("struct/05-functional-architecture-reuse", None),
-    ("struct/06-cross-layer-governance", None),
+    ("struct/07-formal-verification", None),
+    ("struct/08-cognitive-architecture", None),
+    ("struct/09-value-quantification", None),
+    ("struct/10-supply-chain-security", None),
+    ("struct/11-industrial-iot-otit", None),
+    ("struct/12-ai-native-reuse", None),
+    ("struct/13-emerging-trends", None),
+    ("struct/99-reference", None),
 ]
 
 
@@ -1487,7 +2264,7 @@ def collect_target_files() -> List[Tuple[Path, int, GateResult]]:
         for md in dir_path.rglob("*.md"):
             rel = md.relative_to(PROJECT_ROOT)
             # 跳过 plans-tasks、CHANGELOG 等
-            if any(sp in str(rel).replace("\\", "/") for sp in ["plans-tasks/", "99-reference/"]):
+            if any(sp in str(rel).replace("\\", "/") for sp in ["plans-tasks/", "99-reference/audit/", "99-reference/CHANGELOG", "99-reference/frontier-tracking/"]):
                 continue
             r = check_file(md)
             if r.passed:

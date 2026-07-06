@@ -33,6 +33,9 @@
     - [6.2 启用 Polonius](#62-启用-polonius)
   - [7. 关键定理与形式化保证](#7-关键定理与形式化保证)
   - [8. 参考索引](#8-参考索引)
+  - [补充说明：Rust Polonius 借用检查器 vs NLL：形式化对比与复用影响](#补充说明rust-polonius-借用检查器-vs-nll形式化对比与复用影响)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -490,3 +493,21 @@ rustflags = ["-Z", "polonius"]
 > **交叉引用**: 本文与 `struct/07-formal-verification/04-rust-type-system/formal-semantics.md` 中"所有权-借用-生命周期形式化定义"章节形成递进关系；与 `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` 中 Rust 组件模型分析互为补充。
 >
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：Rust Polonius 借用检查器 vs NLL：形式化对比与复用影响
+
+## 反例
+
+**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [Aeneas](https://github.com/AeneasVerif/aeneas)
+> - 核查日期：2026-07-07

@@ -32,6 +32,9 @@
   - [7. 推荐组合工作流](#7-推荐组合工作流)
   - [8. 文件索引](#8-文件索引)
   - [9. 权威参考](#9-权威参考)
+  - [补充说明：Rust 形式化验证工具链实践（2025‑2026）](#补充说明rust-形式化验证工具链实践20252026)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ## 1. 分层验证策略
 
@@ -290,3 +293,21 @@ cargo semver-checks
 ---
 
 *文档生成时间：2026-06-08 · 对齐 Kani 0.66 / Prusti 活跃维护 / Miri POPL 2026 论文 · Phase 2 修订版*
+
+
+---
+
+## 补充说明：Rust 形式化验证工具链实践（2025‑2026）
+
+## 反例
+
+**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [Aeneas](https://github.com/AeneasVerif/aeneas)
+> - 核查日期：2026-07-07

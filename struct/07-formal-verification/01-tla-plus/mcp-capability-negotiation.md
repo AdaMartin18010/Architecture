@@ -145,3 +145,28 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 [^5]: Model Context Protocol Specification. (2025-11-25). *Model Context Protocol*. <https://modelcontextprotocol.io/specification/2025-11-25>
 
 [^6]: Model Context Protocol Specification. (2025-03-26). *Initialization Flow*. <https://modelcontextprotocol.io/specification/2025-03-26/basic/lifecycle/#initialization>
+
+
+---
+
+## 补充说明：T07: MCP Server 能力协商协议的 TLA+ 规约说明
+
+## 概念定义
+
+**定义**：TLA+（Temporal Logic of Actions）是由 Leslie Lamport 提出的规约语言，通过状态、动作与时不变量描述并发与分布式系统行为，常用于验证算法与架构设计的正确性。
+
+## 示例
+
+**示例**：使用 TLA+ 规约两阶段提交协议，定义协调者、参与者的状态机与“所有节点最终一致”的不变式，TLC 模型检验器穷举状态空间并确认无死锁与活锁。
+
+## 反例
+
+**反例**：一个分布式缓存系统未对“网络分区+节点失效”场景建模，上线后在真实分区下丢失写入，因为自然语言需求遗漏了边界条件。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
+> - [Specifying Systems](https://lamport.azurewebsites.net/tla/book.html)
+> - 核查日期：2026-07-07

@@ -146,3 +146,28 @@ Plan Library
 - dMARS: distributed Multi-Agent Reasoning System
 - Bova, V.V. & Lezhebokov, A.A.: "Development of Cognitive Architecture BDI of the Intellectual Agent" (Izvestiya Kabardino-Balkarskogo Nauchnogo Tsentra RAN)
 - ArXiv (2026-05): "From Multi-Agent Systems and the Semantic Web to Agentic AI: A Unified Narrative of the Web of Agents"
+
+
+---
+
+## 补充说明：BDI 智能体架构与复用模式
+
+## 概念定义
+
+**定义**：BDI（Belief-Desire-Intention）模型将自主智能体的状态表示为信念（Beliefs）、愿望（Desires）与意图（Intentions），支持目标驱动推理与计划复用。
+
+## 示例
+
+**示例**：在 Agentic 系统中，一个故障排查 Agent 复用标准化“诊断计划”意图库：信念为监控数据，愿望为恢复 SLO，意图为按优先级执行检查清单。
+
+## 反例
+
+**反例**：Agent 缺乏明确的愿望优先级与意图承诺机制，在多个目标冲突时反复切换，导致复用计划无法收敛。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [BDI Architecture - Michael Georgeff](https://www.cs.ox.ac.uk/people/michael.georgeff/)
+> - [AgentSpeak / Jason](http://jason.sourceforge.net/wp/)
+> - 核查日期：2026-07-07

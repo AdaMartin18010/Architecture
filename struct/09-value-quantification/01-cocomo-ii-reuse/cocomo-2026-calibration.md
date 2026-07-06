@@ -26,6 +26,11 @@
     - [6.2 AI 辅助开发的权衡矩阵](#62-ai-辅助开发的权衡矩阵)
   - [7. 局限性声明](#7-局限性声明)
   - [参考索引](#参考索引)
+  - [补充说明：COCOMO II 复用模型 2026 校准版](#补充说明cocomo-ii-复用模型-2026-校准版)
+  - [概念定义](#概念定义)
+  - [示例](#示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -401,3 +406,28 @@ PM_2026 = A_2026 × (Size_2026)^E × ∏(EMᵢ_2026)
 > - COCOMO II 深度解析: [`cocomo-ii-reuse-model-deep-dive.md`](./cocomo-ii-reuse-model-deep-dive.md)
 > - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 > - 复用度量指标: [`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../../06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+
+
+---
+
+## 补充说明：COCOMO II 复用模型 2026 校准版
+
+## 概念定义
+
+**定义**：COCOMO II（Constructive Cost Model II）通过规模、复用程度、人员能力、平台成熟度等因子预测软件成本；其复用模型（REVL、AA、SU 等）量化复用带来的生产率提升。
+
+## 示例
+
+**示例**：估算企业级消息中间件复用时，COCOMO II 将等效新代码行数按复用适配度从 100 KSLOC 降至 35 KSLOC，工期预测缩短 40%。
+
+## 反例
+
+**反例**：未计入文档、测试与治理成本，仅凭代码行复用率宣称“节省 80%”，上线后维护 overrun 30%。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [USC COCOMO II](https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/)
+> - [Barry Boehm - USC CSSE](https://cssed.usc.edu/)
+> - 核查日期：2026-07-07

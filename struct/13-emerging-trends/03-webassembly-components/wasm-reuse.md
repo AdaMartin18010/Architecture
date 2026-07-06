@@ -87,3 +87,32 @@ Component
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：WebAssembly 与架构复用
+
+## 概念定义
+
+**定义**：WebAssembly Component Model 将 WASM 模块升级为具有显式接口、类型化导入导出的可组合组件，支持跨语言、跨运行时复用。
+
+## 示例
+
+**示例**：使用 Rust 实现图像处理组件，编译为 WIT 接口的 WASM 组件，在 Node.js、Python 与边缘运行时中复用同一二进制。
+
+## 反例
+
+**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，性能与可维护性反而下降。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
+> - [WASI Preview 2](https://wasi.dev)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。

@@ -149,3 +149,24 @@ EN 50128（铁路领域软件安全标准）推荐使用形式化方法，尤其
 - CLEARSY Safety Platform 资料
 - Butler, M.: "Modelling and verification with Event-B" (SETSS 2016 讲义)
 - Sabatier, D.: CLEARSY 铁路形式证明项目 (2016)
+
+
+---
+
+## 补充说明：Event-B 与 B Method：铁路信号系统的精化复用
+
+## 概念定义
+
+**定义**：B Method 与 Event-B 是基于集合论与精化演算的形式化方法，通过从抽象规约逐步精化到可执行代码，并证明每步精化保持规约性质。
+
+## 反例
+
+**反例**：某地铁项目复用上一代联锁代码但未重建精化链，新增功能破坏了“敌对进路互锁”不变式，导致信号冲突风险。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [Event-B](https://www.event-b.org)
+> - [Atelier B](https://www.atelierb.eu/en/)
+> - 核查日期：2026-07-07

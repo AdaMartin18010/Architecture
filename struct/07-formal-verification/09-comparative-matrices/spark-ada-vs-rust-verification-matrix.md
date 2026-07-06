@@ -181,3 +181,33 @@ System
 - Prusti (ETH Zurich): <https://www.pm.inf.ethz.ch/research/prusti>
 - Kani (AWS): <https://github.com/model-checking/kani>
 - Ferrocene (Ferrous Systems): Rust 工业认证计划
+
+
+---
+
+## 补充说明：SPARK Ada vs Rust：安全关键系统验证方法对比矩阵
+
+## 概念定义
+
+**定义**：Rust 通过所有权（ownership）、借用（borrowing）与生命周期（lifetime）在类型系统层面消除数据竞态与悬垂指针，其形式化语义（RustBelt、Aeneas）为内存安全复用组件提供基础。
+
+## 示例
+
+**示例**：某跨平台网络库用 Rust 编写核心协议解析器，所有权系统保证并发访问安全，被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。
+
+## 反例
+
+**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [Aeneas](https://github.com/AeneasVerif/aeneas)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：Rust 将形式化安全保证编译进类型系统，是系统级复用组件的“零成本”安全基础。

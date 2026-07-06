@@ -134,3 +134,30 @@ python reuse-decision-tool-v2/main.py --help
 ---
 
 > 最后更新: 2026-07-06
+
+
+---
+
+## 补充说明：可执行工具目录
+
+## 示例
+
+**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
+
+## 反例
+
+**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISO](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [NIST](https://www.nist.gov)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。

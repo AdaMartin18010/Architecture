@@ -28,6 +28,10 @@
     - [5.3 攻击面与防御](#53-攻击面与防御)
   - [6. 关键定理与证明概要](#6-关键定理与证明概要)
   - [7. 参考索引](#7-参考索引)
+  - [补充说明：Cargo 依赖解析的 SAT 求解：PubGrub 算法与复用一致性](#补充说明cargo-依赖解析的-sat-求解pubgrub-算法与复用一致性)
+  - [概念定义](#概念定义)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -402,3 +406,25 @@ uv (Astral, 2026) 使用 `pubgrub-rs` crate 直接实现 PubGrub 算法，是算
 > **交叉引用**: 本文与 `struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md` 中"依赖解析算法深度对比"章节互为补充；与 `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` 中"Lockfile 安全属性"分析直接对齐。
 >
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充说明：Cargo 依赖解析的 SAT 求解：PubGrub 算法与复用一致性
+
+## 概念定义
+
+**定义**：Rust 通过所有权（ownership）、借用（borrowing）与生命周期（lifetime）在类型系统层面消除数据竞态与悬垂指针，其形式化语义（RustBelt、Aeneas）为内存安全复用组件提供基础。
+
+## 反例
+
+**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [The Rust Programming Language](https://www.rust-lang.org)
+> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [Aeneas](https://github.com/AeneasVerif/aeneas)
+> - 核查日期：2026-07-07

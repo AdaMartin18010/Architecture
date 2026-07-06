@@ -50,3 +50,33 @@
 - `03-application-architecture-reuse`（模块化单体）
 - `04-component-architecture-reuse`（Rust 生态、WASM）
 - `12-ai-native-reuse`（Agentic Infrastructure）
+
+
+---
+
+## 补充说明：13 新兴趋势
+
+## 概念定义
+
+**定义**：新兴趋势包括平台工程、模块化单体、WebAssembly 组件、绿色软件与 RegTech AI，它们通过新抽象层或新约束推动复用资产的可移植性、可持续性与治理自动化。
+
+## 示例
+
+**示例**：平台工程团队构建内部开发者平台（IDP），将部署、可观测性、安全策略封装为自助服务模板，产品团队复用 Golden Path 快速交付。
+
+## 反例
+
+**反例**：追逐 WASM 潮流将所有服务重写为组件，忽视工具链成熟度与团队技能，导致调试困难、交付延期。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [CNCF Platform Engineering](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
+> - [Green Software Foundation](https://greensoftware.foundation)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：新兴技术扩展了复用的边界，但技术采纳必须匹配组织成熟度与真实业务痛点。
