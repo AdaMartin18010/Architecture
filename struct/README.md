@@ -20,6 +20,8 @@
   - [4. 国际大学课程对标](#4-国际大学课程对标)
   - [5. 实际文件夹结构导航](#5-实际文件夹结构导航)
   - [6. 持续推进路线图](#6-持续推进路线图)
+  - [7. 反例：目录规划与实际结构长期不一致](#7-反例目录规划与实际结构长期不一致)
+  - [8. 权威来源](#8-权威来源)
 
 ---
 
@@ -322,6 +324,30 @@ struct/
 
 ---
 
+## 7. 反例：目录规划与实际结构长期不一致
+
+本项目早期曾出现规划子目录与实际文件结构系统性偏离的问题，例如：
+
+- `03-application-architecture-reuse/` 中规划的分层架构、微服务、Serverless、事件驱动子目录一度只有占位 README，导致初学者无法建立从单体→分层→微服务→Serverless→事件驱动的完整认知路径。
+- `coq-isabelle`、`quantum-computing` 等目录在规划中存在，但实际演进中被合并或暂缓，造成维护者困惑。
+
+**教训**：知识体系结构必须与目录结构同步演进，每次重大结构调整都应更新 README 和 MASTER_PLAN，并记录变更原因。
+
+---
+
+## 8. 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
+>
+> **核查日期**: 2026-07-07
+
+---
+
 > **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/external-links/authoritative-sources.md` 中登记。
 >
-> 最后更新: 2026-07-06
+> 最后更新: 2026-07-07

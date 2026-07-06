@@ -135,6 +135,34 @@ Markdownlint 规则配置（项目根目录）：
 <!-- markdownlint-enable MD033 -->
 ```
 
+## 概念定义
+
+- **Markdownlint**：基于 Node.js 的 Markdown 静态检查工具，通过规则集（如 MD013 行长度、MD033 HTML 标签、MD024 重复标题）统一文档格式。
+- **EditorConfig / VSCode Settings**：编辑器配置层，定义保存行为、格式化规则与文件编码，确保多维护者环境下文档风格一致。
+- **Lint-as-Code**：将文档格式规则纳入版本控制，使写作规范像代码一样可审计、可复用、可自动化。
+
+## 反例/反模式
+
+- **反模式 1：禁用所有 Linter 规则**。为省事关闭 MD013/MD024，导致长行、重复标题泛滥，降低长文档可维护性。
+- **反模式 2：本地不安装扩展，依赖 CI 发现格式问题**。反馈循环过长，返工成本高。
+- **反模式 3：配置文件与项目约定脱节**。例如允许 HTML 但实际文档大量依赖 HTML 布局，破坏 Markdown 原生可移植性。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - David Anson. *markdownlint*. GitHub. <https://github.com/DavidAnson/markdownlint>
+> - Microsoft. *Markdown and Visual Studio Code*. <https://code.visualstudio.com/docs/languages/markdown>
+> - EditorConfig. *EditorConfig Specification*. <https://editorconfig-specification.readthedocs.io/>
+>
+> **核查日期**: 2026-07-07
+
+## 分析
+
+`.vscode/` 配置将文档格式规则下沉到编辑器层，是本项目“质量左移”策略的一部分。它把原本由 `scripts/quality-gate.py` 在 CI 阶段发现的问题提前到保存瞬间，降低修复成本。但该层仅解决格式问题，概念正确性、权威来源、反例完整性仍需人工与门控脚本共同保证。
+
+---
+
 ## 📚 参考文档
 
 - [Markdownlint 规则列表](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)

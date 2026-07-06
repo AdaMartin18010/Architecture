@@ -55,6 +55,10 @@
     - [E.1 工业协议栈对比矩阵（2026）](#e1-工业协议栈对比矩阵2026)
     - [E.2 ISA-95 复用对象层次图](#e2-isa-95-复用对象层次图)
     - [E.3 功能安全复用决策判定树](#e3-功能安全复用决策判定树)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -844,3 +848,42 @@ ISA-95 复用对象层次
 > **工业扩展卷结束**。
 > 本卷将软件工程架构复用视角从通用IT领域扩展到工业OT-IT融合领域，建立了现场层→控制层→MES→ERP的完整复用谱系。
 > 后续可针对特定工业领域（如汽车、化工、能源、半导体）或特定技术（如TSN配置的形式化验证、PLC代码的模型检测、数字孪生的知识图谱集成）继续推进。
+
+
+---
+
+## 概念定义
+
+- **OT (Operational Technology)**：运营技术，用于监测、控制物理过程的硬件与软件系统，如 PLC、SCADA、DCS。
+- **IT/OT Convergence**：IT/OT 融合，将企业信息技术与工业运营技术在网络、数据、应用和安全层面集成的过程。
+- **ISA-95 / IEC 62264**：企业-控制系统集成国际标准，定义从 Level 0（现场设备）到 Level 4（企业规划）的五层模型。
+- **OPC UA FX (Field eXchange)**：OPC UA 的现场级扩展，支持基于 TSN 的确定性通信，实现控制器与现场设备之间的即插即用互操作。
+
+## 正向示例
+
+某汽车总装车间采用 ISA-95 + OPC UA FX 重构产线：
+
+1. **Level 3（MES）**：统一生产调度与质量追溯。
+2. **Level 2（监控）**：SCADA 通过 OPC UA 信息模型采集设备状态。
+3. **Level 1（控制）**：PLC 使用 OPC UA FX 与伺服驱动进行确定性运动控制。
+4. **Level 0（现场）**：传感器/执行器通过 TSN 网络接入。
+
+效果：产线换型时间减少 35%，设备互操作性从 60% 提升至 95%。
+
+## 反例/反模式
+
+- **反模式 1：在 OT 环境中盲目采用 IT 微服务**。微服务的动态发现、容器编排与 OT 的确定性、长周期稳定性要求冲突，可能导致产线停机。
+- **反模式 2：忽视功能安全完整性等级**。将 SIL 3 控制功能复用到 SIL 1 平台，或未按 IEC 61508 进行 Proven-in-Use 统计验证。
+- **反模式 3：TSN 配置与现场时钟同步脱节**。GCL 门控表配置精美，但设备时钟未实现 IEEE 802.1AS 同步，导致确定性通信失败。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISA. *ISA-95 / IEC 62264 — Enterprise-Control System Integration*. <https://www.isa.org/standards-and-publications/isa-standards/isa-95/>
+> - IEC. *IEC 61508 — Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://www.iec.ch/functionalsafety/explained/>
+> - OPC Foundation. *OPC Unified Architecture*. <https://opcfoundation.org/about/opc-technologies/opc-ua/>
+> - IEC/IEEE. *IEC/IEEE 60802 — TSN Profile for Industrial Automation*. <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363>
+> - NAMUR. *NAMUR Open Architecture (NOA)*. <https://namur.net/en/recommendations/namur-open-architecture.html>
+>
+> **核查日期**: 2026-07-07

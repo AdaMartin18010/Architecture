@@ -53,6 +53,7 @@
     - [C.1 TLA+ 规约的复用组件验证流程图](#c1-tla-规约的复用组件验证流程图)
     - [C.2 认知负荷的量化测量方法](#c2-认知负荷的量化测量方法)
     - [C.3 COCOMO II 参数速查表](#c3-cocomo-ii-参数速查表)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -943,3 +944,18 @@ TLA+ 规约验证流程
 > **深度扩展卷结束**。
 > 本卷将形式化验证、认知架构、价值量化三个方向从提纲深化为可操作的框架、方程和示例。
 > 后续可针对任一方向继续递归扩展（如 TLA+ 的分布式共识规约、ACT-R 的复用模拟实验、COCOMO II 的机器学习校准等）。
+
+
+---
+
+## 权威来源
+
+> **权威来源**:
+>
+> - Leslie Lamport. *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. 2002. <https://lamport.azurewebsites.net/tla/book.html>
+> - Daniel Jackson. *Software Abstractions: Logic, Language, and Analysis*. MIT Press, 2012. <https://alloytools.org/about.html>
+> - Anderson, J. R. et al. *An Integrated Theory of the Mind*. Psychological Review, 2004. <https://act-r.psy.cmu.edu/>
+> - Boehm, B. W. et al. *Software Cost Estimation with COCOMO II*. Prentice Hall, 2000. <http://csse.usc.edu/csse/research/COCOMOII/cocomo_main.html>
+> - SWEBOK V4. *Guide to the Software Engineering Body of Knowledge*. IEEE Computer Society, 2024. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
+>
+> **核查日期**: 2026-07-07

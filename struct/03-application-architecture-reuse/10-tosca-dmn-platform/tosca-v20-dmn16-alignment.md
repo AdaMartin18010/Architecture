@@ -227,4 +227,31 @@ spec:
 
 ---
 
+---
+
+## 9. 概念定义
+
+- **TOSCA (Topology and Orchestration Specification for Cloud Applications)**：OASIS 制定的面向云应用的拓扑与编排规范，以声明式、图原生的服务模板描述应用组件、关系及生命周期操作。
+- **DMN (Decision Model and Notation)**：OMG 制定的决策建模与标记规范，将业务规则、决策逻辑与执行语义分离，支持在异构引擎间交换决策资产。
+- **Platform Engineering**：构建自助式内部开发者平台（IDP）的学科，通过 Golden Path、可复用模板和标准化 API 降低认知负载并提升交付效率。
+- **Golden Path**：平台团队推荐的默认路径/模板，内建安全、合规、可观测性最佳实践，允许开发团队在受控边界内快速复用。
+
+---
+
+## 10. 反例/反模式
+
+- **反模式 1：将 TOSCA 模板与特定云厂商强耦合**。若 `node_types` 直接使用 `aws.ec2.Instance`，则模板的可移植性被摧毁，TOSCA 的核心价值丧失。
+- **反模式 2：把 DMN 决策表当作万能规则引擎**。在需要复杂流程编排、长时间运行的场景强行使用 DMN，会导致模型膨胀、性能下降。
+- **反模式 3：平台工程做成“中央集权”**。平台团队过度控制技术选型、禁止开发者自定义，会扼杀创新并导致 Shadow IT 泛滥。
+
+---
+
+## 11. 论证分析
+
+TOSCA v2.0、DMN 1.6 与 Platform Engineering 的协同，本质上是将“基础设施描述—业务决策逻辑—组织交付流程”三条独立演进的主线统一到可复用资产视角：
+
+1. **横向可移植**：TOSCA 2.0 的图原生模型与 DMN 的标准化决策表，分别降低了部署描述和决策逻辑对特定运行时/引擎的依赖。
+2. **纵向可治理**：Backstage Catalog、Crossplane XRD、OpenTofu Module 在平台层形成可发现、可版本化、可审计的复用资产清单。
+3. **风险平衡**：DMN 1.6 引入 ONNX 虽增强预测能力，但也带来模型解释性与合规性挑战，需配套 MLOps 治理与决策可解释性审计。
+
 *文档生成时间：2026-06-06 · 对齐 TOSCA v2.0 OASIS Standard / DMN 1.6 Beta1 / Crossplane Graduated / Backstage CNCF*

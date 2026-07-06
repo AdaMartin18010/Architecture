@@ -262,4 +262,25 @@ struct/
 > **本轮规模**: 新增/更新 ~120 个文件，~46.5 万字
 > **维护者**: 软件工程架构复用知识体系项目组
 >
+## 反例：知识体系项目常见的失败模式
+
+- **失败模式 1：标准引用不更新**。将 ISO/IEC 25010:2011 或草案版本当作当前有效版引用，导致架构决策基于过时质量模型。
+- **失败模式 2：权威来源仅列标准号而无 URL**。无法快速核查的引用在工程实践中难以取信，也容易因记忆偏差产生勘误。
+- **失败模式 3：view/ 与 struct/ 两层内容不同步**。长文档更新后未同步到结构化主题，造成读者获得矛盾信息。
+
+---
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
+>
+> **核查日期**: 2026-07-07
+
+---
+
 > **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v2.md`。

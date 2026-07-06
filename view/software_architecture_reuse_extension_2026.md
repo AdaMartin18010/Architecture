@@ -71,6 +71,10 @@
     - [B.1 复用层次与标准映射的完整矩阵](#b1-复用层次与标准映射的完整矩阵)
     - [B.2 复用决策的完整判定树（扩展版）](#b2-复用决策的完整判定树扩展版)
     - [B.3 2026 技术雷达：复用相关技术成熟度](#b3-2026-技术雷达复用相关技术成熟度)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -1037,3 +1041,39 @@ COCOMO II 复用模型
 ---
 
 > **扩展卷结束**。本卷与《全面展开论证》共同构成完整的软件工程架构复用视角框架。后续可针对任意章节继续递归深化。
+
+
+---
+
+## 概念定义
+
+- **Architecture Description (AD)**：依据 ISO/IEC/IEEE 42010:2022，对系统架构进行组织、记录和交流的制品集合，由利益相关者、关注点、视角、视图、模型等核心概念构成。
+- **Viewpoint**：视角，定义视图的内容、表示技术和解释规则的规约；一个视角可实例化多个视图。
+- **View**：视图，从一组关注点出发对系统进行表示；视图必须符合某个视角的规约。
+- **Commonality & Variability**：共性/可变性分析，产品线工程中识别复用资产与可变点的基础方法。
+
+## 正向示例
+
+企业基于 ISO/IEC/IEEE 42010:2022 建立架构复用知识库：
+
+1. 识别利益相关者（架构师、开发、运维、安全、审计）。
+2. 为复用决策定义专门视角（复用候选识别视角、复用风险评估视角、复用 ROI 视角）。
+3. 每个视角对应一组视图模板，新项目只需填充实例数据即可生成架构描述。
+4. 视图模板在 Backstage Catalog 中注册，实现可发现、可版本化复用。
+
+## 反例/反模式
+
+- **反模式 1：将 Viewpoint 与 View 混用**。团队把一份具体部署图称为“部署视角”，导致后续项目无法基于统一规约生成一致的部署视图。
+- **反模式 2：忽视可变性边界**。把业务规则硬编码到复用框架中，当规则变化时需要修改框架本身，破坏复用资产的稳定性。
+- **反模式 3：标准标签化而非内化**。只在文档封面列出 ISO 42010，实际架构描述完全不遵循其元模型，无法通过外部审计。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
+>
+> **核查日期**: 2026-07-07

@@ -60,6 +60,9 @@
     - [N.1 安全关键-金融-技术硬核的交叉矩阵](#n1-安全关键-金融-技术硬核的交叉矩阵)
     - [N.2 形式化验证工具链对比（三卷交叉）](#n2-形式化验证工具链对比三卷交叉)
     - [N.3 三卷公理-定理补充](#n3-三卷公理-定理补充)
+  - [概念定义](#概念定义)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -836,3 +839,31 @@ else:
 > **卷六·卷九·卷四综合深化卷结束**。
 > 本卷对三卷的核心技术点进行了源码级/形式化级/协议级的递归深化：卷六（DO-178C MC/DC形式化、IEC 62304 Ed.2 AI/ML生命周期、SPARK/Ada飞控契约、B Method铁路信号）、卷九（ISO 20022消息形式化、支付Saga编排、高频交易FPGA全栈、RegTech Agentic框架）、卷四（SLSA L4分布式构建、Rust Polonius形式化、AI Conformal Prediction、零信任供应链纵深防御）。
 > 软件工程架构复用视角的完整知识体系至此构建为十二卷本+深化卷+综合深化卷+速查手册，总计约310,000字符，31万字。
+
+
+---
+
+## 概念定义
+
+- **MC/DC (Modified Condition/Decision Coverage)**：修改条件/判定覆盖，航空安全关键软件中用于证明每个独立条件对判定结果具有可观测影响的结构性覆盖准则。
+- **SLSA (Supply Chain Levels for Software Artifacts)**：由 OpenSSF 提出的四级供应链安全框架，从 Provenance、构建、源码、依赖四个维度提升软件供应链可信度。
+- **ISO 20022**：全球金融报文标准，采用通用数据字典与 XML/JSON 语法，支持跨支付、证券、贸易金融的报文互操作。
+- **Conformal Prediction**：一种能在给定置信水平下提供预测集合的机器学习框架，保证边际或条件覆盖概率。
+
+## 反例/反模式
+
+- **反模式 1：在高完整性系统复用通用开源库而不做适航/安全认证**。例如将未经 MC/DC 验证的 C 库直接用于飞控软件，会导致 DO-178C 认证失败。
+- **反模式 2：SBOM 仅在发布时生成，运行期不复审**。供应链攻击（如 XZ Utils 后门）往往在运行期通过依赖更新引入，静态 SBOM 无法防御。
+- **反模式 3：在金融核心系统中复用概率模型而不设置确定性回退**。Conformal Prediction 提供概率边界，但支付路由等关键决策仍需确定性规则兜底。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - RTCA. *DO-178C: Software Considerations in Airborne Systems and Equipment Certification*. 2011. <https://my.rtca.org/>
+> - IEC. *IEC 62304:2006+A1:2015 — Medical device software — Software life cycle processes*. <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363>
+> - ISO. *ISO 20022 — Universal financial industry message scheme*. <https://www.iso20022.org/>
+> - OpenSSF. *SLSA Specification v1.0*. <https://slsa.dev/spec/v1.0/>
+> - Angelopoulos, N. et al. *Conformal Prediction: A Gentle Introduction*. Foundations and Trends in Machine Learning, 2021. <https://arxiv.org/abs/2007.12692>
+>
+> **核查日期**: 2026-07-07

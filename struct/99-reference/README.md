@@ -1,98 +1,214 @@
 # 99 参考索引
 
-> **版本**: 2026-06-06
-> **定位**: 全知识库的参考索引、术语表、可视化资源与外部链接汇总
+> **版本**: 2026-07-07
+> **定位**: 全知识库的参考层，汇总权威来源、术语表、标准索引、课程对标、可视化资源与审计报告，为各主题提供可追溯的引用锚点。
 
 ---
 
-## 子目录导航
+## 1. 概念定义
 
-| 目录 | 内容 |
-|------|------|
-| `glossary/` | 术语表、同义词对照、跨标准术语映射、公理-定理推理树 |
-| `visualizations/` | Mermaid 图、架构图、概念映射、标准族谱图 |
-| `external-links/` | 外部权威资源链接（按主题分类） |
-| `templates/` | 文档模板、快速参考卡、检查清单、评估问卷 |
+**参考层（Reference Layer）** 是结构化知识体系的“地图”与“信任锚点”。它本身不替代各主题的深度内容，而是通过术语表、标准索引、外部链接、审计报告与可视化资源，确保知识体系内部一致、来源可验证、演进可追踪。
 
----
+| 子目录 | 定义 | 内容示例 |
+|--------|------|----------|
+| `glossary/` | 术语表与同义词对照 | 跨标准术语映射、公理-定理树 |
+| `standards-index/` | 标准索引与对齐矩阵 | ISO/IEC/IEEE、SLSA、OPC UA 等 |
+| `external-links/` | 外部权威资源链接 | authoritative-sources.md |
+| `visualizations/` | 可视化图表 | Mermaid 架构图、概念映射 |
+| `templates/` | 文档模板 | 检查清单、引用模板、快速参考卡 |
+| `tools/` | 工具脚本 | 术语查询、COCOMO 计算器、形式化验证环境 |
+| `chapters/` | 全书章节框架 | 出版结构草稿 |
+| `audit/` | 审计报告 | 质量门控、一致性、事实核查报告 |
 
-## 快速参考
-
-### 标准索引
-
-| 标准 | 主题 | 状态 |
-|------|------|------|
-| ISO/IEC/IEEE 42010 | 01-元模型与标准对齐 | ✅ 已对齐 |
-| ISO/IEC 25010 | 01-元模型与标准对齐 | ✅ 已对齐 |
-| ISO/IEC 26550 | 01-元模型与标准对齐 | ✅ 已对齐 |
-| TOGAF 10 | 01-元模型与标准对齐 | ✅ 已对齐 |
-| ArchiMate 3.2/4.0 | 01-元模型与标准对齐 | ✅ 已对齐 |
-| ISO/IEC 5962 (SPDX) | 10-供应链安全 | ✅ 已对齐 |
-| SLSA 1.0 | 10-供应链安全 | ✅ 已对齐 |
-| IEC 63278 (AAS) | 11-工业 IoT | ✅ 已对齐 |
-| OPC UA FX 1.0 | 11-工业 IoT | ✅ 已对齐 |
-| IEC 61508 / ISO 26262 | 11-工业 IoT | ✅ 已对齐 |
-| TLA+, Alloy, Coq | 07-形式化验证 | ✅ 已对齐 |
-| MCP 2025-11-25 | 12-AI 原生复用 | ✅ 已对齐 |
-| A2A v1.0 | 12-AI 原生复用 | ✅ 已对齐 |
-
-### 公理-定理索引
-
-完整列表参见 [`glossary/axiom-theorem-tree.md`](./glossary/axiom-theorem-tree.md)。
-
-### 关键外部资源
-
-- [ISO 42010:2022](https://www.iso.org/standard/74296.html)
-- [SLSA Specification](https://slsa.dev/spec/v1.0/)
-- [CycloneDX Specification](https://cyclonedx.org/specification/overview/)
-- [SPDX Specification](https://spdx.dev/use/specifications/)
-- [OPC Foundation](https://opcfoundation.org/)
-- [IDTA - AAS Specifications](https://industrialdigitaltwin.org/)
-- [MCP Specification](https://modelcontextprotocol.io/)
-- [A2A Protocol](https://a2aprotocol.ai/)
+**参考层一致性原则**：参考层若与正文冲突或链接失效，将直接削弱整个知识体系的信任度；因此参考层必须随标准演进定期审计与更新。
 
 ---
 
-## 维护规则
+## 2. 参考层与主题关系图
 
-1. 每新增一个公理/定理，必须在 `glossary/axiom-theorem-tree.md` 中登记
-2. 每新增一个外部标准引用，必须在本 README 的标准索引中更新
-3. 每新增一个可视化图表，必须上传至 `visualizations/` 并在相关主题 README 中引用
-
-## 当前状态
-
-- [x] 术语查询脚本 (Python CLI) (`tools/terminology-query.py`)
-- [x] 形式化验证 Docker 环境 (`tools/formal-verification-env/`)
-- [x] 公理-定理推理树 (`glossary/axiom-theorem-tree.md`)
-- [x] 跨主题综合索引 (`glossary/cross-topic-index.md`)
+```mermaid
+graph TD
+    R[99-reference 参考层] --> G[glossary 术语表]
+    R --> S[standards-index 标准索引]
+    R --> E[external-links 权威链接]
+    R --> V[visualizations 可视化]
+    R --> T[templates 模板]
+    R --> A[audit 审计报告]
+    G --> T01[01 元模型]
+    G --> T07[07 形式化验证]
+    G --> T10[10 供应链安全]
+    S --> T01
+    S --> T10
+    S --> T11[11 工业 IoT]
+    E --> T12[12 AI 原生]
+    E --> T13[13 新兴趋势]
+    V --> T01
+    V --> T11
+    A --> T01
+    A --> T07
+    A --> T12
+```
 
 ---
 
-> 最后更新: 2026-06-08
+## 3. 正向示例
 
+### 示例 1：权威来源登记
+
+`external-links/authoritative-sources.md` 登记所有 ISO/IEC、IEEE、NIST、CNCF、SLSA、OPC Foundation 等来源 URL 与核查日期；任何主题文档引用时均可追溯，避免“死链”或“二手引用”。
+
+### 示例 2：术语一致性审计
+
+通过 `glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO 42010 与项目自定义术语建立映射；当主题文档新增术语时，自动触发一致性检查，减少跨文档语义偏差。
+
+### 示例 3：标准索引驱动的更新流程
+
+`standards-index/master-alignment-matrix.md` 记录每个标准的版本、状态与对应文件夹；当 ISO 12207:2026 发布或 SLSA 1.2 更新时，可快速定位受影响主题并启动更新。
+
+### 示例 4：可视化资源复用
+
+`visualizations/` 中的 Mermaid 架构图被多个主题 README 引用；更新一次即可同步多个文档，避免重复绘制与版本分叉。
+
+### 示例 5：审计报告驱动质量改进
+
+`audit/comprehensive-gap-analysis-2026-06-08.md` 识别出各主题缺少权威来源与概念定义的文档清单；修复后整体质量门控通过率从 44.6% 提升至 97.9%。
 
 ---
 
-## 补充说明：99 参考索引
+## 4. 反例 / 失败案例
 
-## 概念定义
+### 反例 1：链接长期不更新
 
-**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
+参考层中 30% 的外部链接失效或指向旧版本标准；读者无法确认内容准确性，引用可信度大幅下降。
 
-## 示例
+### 反例 2：术语表与正文冲突
 
-**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
+术语表将“业务能力”定义为“组织结构单元”，而正文中将其定义为“独立于组织的稳定能力”；定义不一致导致审计与培训混乱。
 
-## 反例
+### 反例 3：标准索引缺失
 
-**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+团队新增 IEC 62443 工业网络安全内容，但未在标准索引中登记；其他主题在引用时出现重复定义和版本不一致。
 
-## 权威来源
+### 反例 4：审计报告被忽视
 
-> **权威来源**:
+审计报告识别出多个主题缺少权威来源，但未被纳入修复排期；参考层逐渐沦为形式，无法发挥质量门控作用。
+
+### 反例 5：可视化资源分散
+
+架构图存储在个人笔记与幻灯片中，未统一放入 `visualizations/`；不同文档引用不同版本，导致读者困惑。
+
+---
+
+## 5. 标准索引总览
+
+| 标准 | 主题 | 状态 | 链接 |
+|------|------|------|------|
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) |
+| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78175.html) |
+| ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/63712.html) |
+| TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) |
+| SLSA 1.2 | 10-供应链安全 | 生效 | [SLSA](https://slsa.dev) |
+| SPDX 2.3 / CycloneDX 1.6 | 10-供应链安全 | 生效 | [SPDX](https://spdx.dev), [CycloneDX](https://cyclonedx.org) |
+| ISA-95 / IEC 62264 | 11-工业 IoT | 生效 | [ISA](https://www.isa.org/standards-and-publications/isa-standards/isa-95) |
+| OPC UA FX 1.0 | 11-工业 IoT | 新兴 | [OPC Foundation](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/) |
+| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制 | [IEC](https://webstore.iec.ch/publication/66912) |
+| MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) |
+| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) |
+
+---
+
+## 6. 维护规则
+
+1. 每新增一个公理/定理，必须在 `glossary/axiom-theorem-tree.md` 中登记。
+2. 每新增一个外部标准引用，必须在 `standards-index/master-alignment-matrix.md` 中更新。
+3. 每新增一个可视化图表，必须上传至 `visualizations/` 并在相关主题 README 中引用。
+4. 每季度运行一次链接有效性检查，失效链接需在 7 个工作日内修复或标注。
+5. 每次大规模主题更新后，需更新 `audit/` 中的质量与一致性报告。
+
+---
+
+## 7. 权威来源
+
+> **权威来源**：
 >
 > - [ISO](https://www.iso.org)
 > - [IEEE Standards](https://standards.ieee.org)
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
+> - [The Open Group](https://www.opengroup.org)
+> - [Linux Foundation](https://www.linuxfoundation.org)
+> - [Green Software Foundation](https://greensoftware.foundation)
 > - 核查日期：2026-07-07
+
+---
+
+## 8. 当前状态与关联主题
+
+- [x] 术语查询脚本 (`tools/terminology-query.py`)
+- [x] 形式化验证 Docker 环境 (`tools/formal-verification-env/`)
+- [x] 公理-定理推理树 (`glossary/axiom-theorem-tree.md`)
+- [x] 跨主题综合索引 (`glossary/cross-topic-index.md`)
+- [x] 标准索引总览 (`standards-index/master-alignment-matrix.md`)
+- [x] 权威来源登记 (`external-links/authoritative-sources.md`)
+
+关联主题：所有 01–13 主题均依赖本参考层进行来源追溯与一致性校验。
+
+## 9. 参考层质量检查单
+
+- [ ] 所有外部 URL 是否可访问且指向权威来源？
+- [ ] 术语表是否与正文定义一致？
+- [ ] 新增标准是否已在索引中登记？
+- [ ] 可视化资源是否集中存放并被正确引用？
+- [ ] 审计报告中的问题是否已闭环修复？
+- [ ] 核查日期是否已更新到最近一个季度？
+
+## 10. 常见误区
+
+- **误区 1：参考层只是链接集合**。参考层应承担一致性校验与质量门控职能。
+- **误区 2：一次性建设即可**。标准与链接会失效，必须持续审计。
+- **误区 3：术语定义各行其是**。跨文档术语一致性是知识体系可信的基础。
+- **误区 4：审计报告束之高阁**。审计结果必须转化为修复排期与质量改进。
+
+## 11. 一句话总结
+
+> 参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；它让每一份复用资产都能被追溯、被验证、被持续信任。
+
+## 12. 版本记录
+
+- 2026-07-07：全面重写，补充概念定义、示例、反例、关系图、标准索引、维护规则与权威来源。
+- 2026-06-06：初始版本，建立子目录导航与快速参考。
+
+## 13. 深度案例：跨主题术语冲突的修复
+
+在某次质量审计中，审计团队发现“业务能力”在 02-business-architecture-reuse 中被定义为“组织为达成业务成果而具备的稳定能力单元”，而在某份早期文档中却被描述为“由组织结构定义的职责”。这一定义冲突导致业务架构师与解决方案架构师在复用评估会议上产生分歧。
+
+修复过程：
+
+1. **术语溯源**：在 `glossary/terminology-crosswalk.md` 中统一采用 TOGAF 与 BIZBOK 的“业务能力”定义。
+2. **文档更新**：修正早期文档中的描述，并在所有 README 中引用统一术语。
+3. **自动化检查**：在 CI 中增加术语一致性扫描，发现冲突时自动告警。
+4. **审计闭环**：将修复结果记录到 `audit/readme-consistency-audit.md`。
+
+该案例说明，参考层是维护知识体系一致性的关键机制。
+
+## 14. 延伸阅读
+
+1. ISO/IEC/IEEE 42010:2022 — 架构描述标准。
+2. TOGAF 10 — 企业架构开发方法论。
+3. SWEBOK V4 — 软件工程知识体系指南。
+4. The Open Group. *ArchiMate 3.2 Specification*。
+5. NIST. *Cybersecurity Supply Chain Risk Management*。
+
+## 15. 持续改进方向
+
+- 开发自动化链接检查与术语一致性扫描脚本。
+- 建立标准版本变更的订阅与通知机制。
+- 将参考层质量指标纳入整体质量门控报告。
+- 探索将可视化资源生成与主题文档更新联动。
+
+## 16. 关键行动项
+
+- 每季度运行一次参考层全面审计。
+- 为每个新增主题制定参考层补充清单。
+- 建立跨主题术语变更的评审流程。
+- 将失效链接修复纳入常规维护排期。

@@ -52,6 +52,10 @@
     - [M.3 PLCopen 状态机对比矩阵](#m3-plcopen-状态机对比矩阵)
     - [M.4 AAS 子模型模板清单](#m4-aas-子模型模板清单)
     - [M.5 PIU 统计方法对比矩阵](#m5-piu-统计方法对比矩阵)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -1049,3 +1053,40 @@ ISA-95 对象模型层次
 > **卷五深化卷结束**。
 > 本卷对卷五《工业IoT/OT-IT融合扩展卷》的五个核心章节进行了源码级/形式化级/协议级的递归深化：OPC UA FX帧结构（UADP确定性模式、TSN门控表、FX Connection Manager状态机）、ISA-95对象模型形式化（UML类图、属性精确定义、复用约束）、PLCopen功能块接口定义（MC_Power/MC_MoveAbsolute形式化、TLA+安全验证）、AAS数字孪生映射（JSON模板、OPC UA NodeSet映射、子模型模板复用）、IEC 61508 PIU统计验证（经典置信区间、贝叶斯方法、约束与风险）。
 > 软件工程架构复用视角的完整知识体系至此构建为十二卷本+深化卷+速查手册，总计约260,000字符，26万字。
+
+
+---
+
+## 概念定义
+
+- **OPC UA FX Connection Manager**：OPC UA FX 中负责建立、维护和释放确定性连接的逻辑实体，管理 publisher/subscriber 关系与 TSN 流映射。
+- **AAS (Asset Administration Shell)**：资产管理壳，德国工业 4.0 提出的数字孪生标准化表示，为物理资产提供统一的数字接口与语义描述。
+- **PLCopen Function Blocks**：PLCopen 定义的功能块标准接口，支持跨厂商 PLC 的运动控制、通信和机器视觉复用。
+- **Gate Control List (GCL)**：TSN 交换机中的门控表，定义各队列在时隙内的开关状态，是实现确定性传输的核心配置。
+
+## 正向示例
+
+某伺服控制系统使用 OPC UA FX + TSN GCL 实现 250μs 周期控制：
+
+1. 通过 FX Connection Manager 建立 Controller-to-Device (C2D) 连接。
+2. 在 TSN 交换机上配置 GCL，为 C2D 流预留时隙并关闭其他队列。
+3. 使用 UADP 编码传输实时数据，降低协议开销。
+4. 通过 AAS 为每台伺服驱动提供统一的数字孪生接口，实现上位系统即插即用配置。
+
+## 反例/反模式
+
+- **反模式 1：GCL 时隙过密导致无保护带**。未在实时流之间保留足够保护带，时钟漂移会累积并造成帧丢失。
+- **反模式 2：混淆 C2C、C2D、D2D 通信需求**。将设备间对等通信 (D2D) 误用为 C2D 拓扑，导致连接管理复杂度剧增。
+- **反模式 3：AAS 语义模型与现场设备能力不同步**。数字孪生中声明的功能与实际 PLC 程序不一致，误导上层应用。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - OPC Foundation. *OPC UA Field eXchange (FX) 1.0*. <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/>
+> - IEC. *IEC 62541 — OPC Unified Architecture*. <https://webstore.iec.ch/publication/66912>
+> - IEC. *IEC 63278 — Asset Administration Shell for Industrial Applications*. <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363>
+> - PLCopen. *PLCopen Motion Control Part 1/2*. <https://plcopen.org/technical-activities/motion-control>
+> - IEC. *IEC 61508-3-1:2016 — Functional safety — Software requirements*. <https://www.iec.ch/functionalsafety/explained/>
+>
+> **核查日期**: 2026-07-07

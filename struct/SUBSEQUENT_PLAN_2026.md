@@ -40,6 +40,10 @@
     - [决策 4：前沿主题取舍](#决策-4前沿主题取舍)
     - [决策 5：国际对齐深度](#决策-5国际对齐深度)
   - [2026-06-08 HOTFIX 完成记录](#2026-06-08-hotfix-完成记录)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -371,3 +375,39 @@
 ---
 
 *最后更新: 2026-06-10*
+
+
+---
+
+## 概念定义
+
+- **Roadmap / Master Plan**：项目总体路线图，描述从当前状态到目标状态的分阶段演进路径、关键决策点和验收标准。
+- **Phase**：项目阶段，具有明确输入、输出、验收准则和退出条件的工作周期；本计划将项目划分为 Phase 0~6。
+- **Milestone**：里程碑，标志阶段完成的关键事件或交付物；用于跟踪进度和管理风险。
+- **Living Document**：活文档，随项目演进、标准更新和实践反馈持续修订的文档；计划类文档必须作为活文档维护。
+
+## 正向示例
+
+一个成功的架构复用知识体系路线图应包含：
+
+1. **清晰的分层目标**：Phase 0 止血对齐、Phase 1 结构修复、Phase 2 内容深化、Phase 3 工具化、Phase 4 前沿跟踪、Phase 5 全书整合、Phase 6 社区反馈。
+2. **明确的权威来源基线**：每阶段都标注对齐的 ISO/IEC、The Open Group、CNCF、IEC 等标准版本。
+3. **可度量的质量门禁**：例如 Markdown 文档必须通过 `scripts/quality-gate.py`，通过率目标 ≥ 70%（当前已达 98%+）。
+4. **风险登记册与勘误机制**：对易变标准（如 MCP、WASI、IEC 61508 Ed.3）建立持续监控和快速回退通道。
+
+## 反例/反模式
+
+- **反模式 1：计划与实际执行脱节**。路线图写得宏大但从不更新，导致目录结构、文档内容与计划严重不一致。
+- **反模式 2：缺乏退出条件**。阶段划分模糊，无法判断何时进入下一阶段，造成范围蔓延。
+- **反模式 3：忽视外部依赖风险**。对标准发布时间、工具成熟度等外部因素不做监控，导致大量返工。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 15288:2023. *Systems and software engineering — System life cycle processes*. <https://www.iso.org/standard/81702.html>
+> - ISO/IEC/IEEE 12207:2017. *Systems and software engineering — Software life cycle processes*. <https://www.iso.org/standard/63712.html>
+> - Project Management Institute. *PMBOK® Guide — Seventh Edition*. <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>
+>
+> **核查日期**: 2026-07-07

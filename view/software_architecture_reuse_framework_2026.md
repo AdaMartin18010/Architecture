@@ -53,6 +53,10 @@
   - [9. 批判性审视与边界声明](#9-批判性审视与边界声明)
     - [9.1 当前提纲的局限性](#91-当前提纲的局限性)
     - [9.2 与国际前沿的差距](#92-与国际前沿的差距)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -603,3 +607,42 @@ Layer X: [层次名称]
 ---
 
 > **文档结束**。本提纲为持续推进的基础框架，每层可依据上述模板独立展开为完整论证文档。
+
+
+---
+
+## 概念定义
+
+- **Metamodel**：元模型，定义架构描述中允许使用的概念、关系、约束和表示规则；是架构知识可复用的语法与语义基础。
+- **Product Line Engineering (PLE)**：产品线工程，通过显式管理共性与可变性，系统化地生产一族相关产品并最大化复用。
+- **Architecture Reuse Viewpoint**：本框架提出的专门视角，用于从业务、应用、组件、功能四个层次识别、评估和管理可复用架构资产。
+- **Binding Time**：可变性绑定时机，指在需求、设计、实现、部署或运行时将可变点具体化的时刻。
+
+## 正向示例
+
+某金融科技公司依据本框架建立复用体系：
+
+- **业务层**：统一支付业务能力模型（基于 ISO 20022 与 BIAN）。
+- **应用层**：定义标准微服务模板（Golden Service Template），内建可观测性与安全基线。
+- **组件层**：将风控引擎、身份认证、日志审计封装为可复用组件。
+- **功能层**：使用 DMN 决策表管理业务规则，通过 ONNX 嵌入 ML 模型推理。
+
+结果：新产品上线周期从 6 个月缩短至 8 周，缺陷密度降低 40%。
+
+## 反例/反模式
+
+- **反模式 1：复用层次混淆**。把业务规则直接嵌入组件代码，导致业务变化时被迫修改组件实现。
+- **反模式 2：忽视绑定时机**。所有可变性都在编译期硬编码，丧失运行时配置灵活性。
+- **反模式 3：元模型与标准脱节**。团队自定义大量非标准术语，无法与 TOGAF/ArchiMate/ISO 42010 映射，形成知识孤岛。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42020:2019. *Architecture processes*. <https://www.iso.org/standard/64844.html>
+> - ISO/IEC/IEEE 42030:2019. *Architecture evaluation*. <https://www.iso.org/standard/70017.html>
+> - ISO/IEC 25010:2023. *Systems and software Quality Requirements and Evaluation (SQuaRE)*. <https://www.iso.org/standard/80623.html>
+> - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+>
+> **核查日期**: 2026-07-07

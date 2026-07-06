@@ -58,6 +58,9 @@
     - [D.1 供应链攻击树（Attack Tree）](#d1-供应链攻击树attack-tree)
     - [D.2 Rust 所有权-借用-生命周期决策矩阵](#d2-rust-所有权-借用-生命周期决策矩阵)
     - [D.3 AI 概率契约的校准曲线](#d3-ai-概率契约的校准曲线)
+  - [概念定义](#概念定义)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -1017,3 +1020,31 @@ AI 概率契约校准曲线
 > **技术深度扩展卷结束**。
 > 本卷将供应链安全、Rust 形式化、AI 概率边界三个技术方向从概念深化为可操作的技术框架、算法和决策模型。
 > 后续可针对任一方向继续递归扩展（如 SLSA L4 的分布式构建验证实现、Rust 的 Polonius 借用检查器形式化语义、AI 的 conformal prediction 不确定性量化等）。
+
+
+---
+
+## 概念定义
+
+- **Software Supply Chain**：软件供应链，从源码、依赖、构建、分发到部署的全链路；每个环节都可能引入恶意或被篡改的制品。
+- **Provenance**：来源证明，记录软件制品如何被构建的元数据；SLSA 要求来源证明具备可验证性、不可伪造性和可审计性。
+- **SBOM (Software Bill of Materials)**：软件物料清单，枚举软件制品所含组件、依赖、许可证和漏洞信息的标准化文档。
+- **Ownership in Rust**：Rust 的所有权系统，通过编译期借用检查消除数据竞争和悬垂指针，为复用组件提供内存安全保证。
+
+## 反例/反模式
+
+- **反模式 1：SBOM 生成即完事**。仅生成 SPDX 文件但不与 CI/CD 集成，新漏洞发布时无法自动触发影响分析。
+- **反模式 2：信任所有公共 Registry**。对 crates.io、npm、PyPI 等来源的包不做签名验证，直接使用 `cargo install` 或 `pip install`。
+- **反模式 3：为追求性能在 unsafe Rust 中复用 C 库而不加隔离**。一旦 C 库出现内存漏洞，会绕过 Rust 的安全保证，污染整个进程。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - OpenSSF. *SLSA Specification v1.0*. <https://slsa.dev/spec/v1.0/>
+> - SPDX. *SPDX Specification v2.3*. <https://spdx.dev/use/specifications/>
+> - OWASP. *Software Component Verification Standard (SCVS)*. <https://owasp.org/www-project-software-component-verification-standard/>
+> - NIST. *Secure Software Development Framework (SSDF) SP 800-218*. <https://csrc.nist.gov/publications/detail/white-paper/2023/04/18/secure-software-development-framework>
+> - Jung, R. et al. *RustBelt: Securing the Foundations of the Rust Programming Language*. POPL 2018. <https://plv.mpi-sws.org/rustbelt/>
+>
+> **核查日期**: 2026-07-07

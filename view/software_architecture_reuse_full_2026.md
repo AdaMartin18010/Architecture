@@ -74,6 +74,10 @@
     - [A.2 国际标准对齐多维矩阵](#a2-国际标准对齐多维矩阵)
     - [A.3 公理-定理推理树（复用认识论完整版）](#a3-公理-定理推理树复用认识论完整版)
     - [A.4 持续推进路线图](#a4-持续推进路线图)
+  - [概念定义](#概念定义)
+  - [正向示例](#正向示例)
+  - [反例/反模式](#反例反模式)
+  - [权威来源](#权威来源)
 
 ---
 
@@ -1179,3 +1183,43 @@ graph TD
 ---
 
 > **文档结束**。本框架为持续推进的基础，每层可依据上述模板独立展开为完整论证文档，支持递归深度扩展。
+
+
+---
+
+## 概念定义
+
+- **Reusable Architecture Asset**：可复用架构资产，包括但不限于参考架构、设计模式、组件、服务接口、决策表、测试用例、文档模板和度量指标。
+- **Architecture Conformance**：架构一致性，系统实现与其架构描述之间的符合程度；是复用资产能否被正确消费的前提。
+- **Traceability**：可追溯性，在需求、设计、实现、测试、运维之间建立并维护关联的能力；对于复用资产的变更影响分析至关重要。
+- **Architecture Debt**：架构债务，因短视复用决策（如硬编码、绕过标准接口）累积的技术债务，会在后续演进中产生指数级成本。
+
+## 正向示例
+
+某大型制造企业采用本框架进行全球工厂 MES 系统复用：
+
+1. 基于 ISA-95/IEC 62264 建立统一业务架构。
+2. 使用 TOSCA 2.0 描述可移植的 MES 应用拓扑。
+3. 通过 OAM/KubeVela 定义跨工厂的组件与 Trait。
+4. 利用 Backstage Catalog 管理所有复用资产与 Golden Path。
+5. 结合 SLSA 与 SBOM 确保供应链安全。
+
+效果：新工厂 MES 部署周期从 12 个月缩短至 3 个月，合规审计一次通过。
+
+## 反例/反模式
+
+- **反模式 1：复制-粘贴式复用**。直接复制代码而不抽象共同点和可变性，导致同一缺陷在多个系统中重复出现。
+- **反模式 2：为复用而复用**。强行把不相似的业务场景塞进同一框架，增加不必要的复杂度和耦合。
+- **反模式 3：缺乏一致性验证**。架构资产不断更新，但消费系统不重新评估一致性，最终架构描述与实际实现严重偏离。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - ISO/IEC/IEEE 42010:2022. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC 26550:2015. <https://www.iso.org/standard/69529.html>
+> - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - IEEE. *SWEBOK V4*. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
+>
+> **核查日期**: 2026-07-07
