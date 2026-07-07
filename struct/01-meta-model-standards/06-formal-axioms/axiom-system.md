@@ -507,7 +507,132 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 
 ---
 
-## 6. 参考文献
+## 7. 公理补全：证明草图、反模型与体系关联
+
+> 本节为 M.1–M.4、E.1–E.3 以及 S.1 等核心公理补充：证明/推导思路、反模型示例、与本知识体系中其他主题的关联，以及边界条件。所有形式化陈述均延续前文符号约定，不引入新的未定公理。
+
+### 7.1 M.1 Architecture-Reuse Duality
+
+**公理重述**：$\mathrm{Reuse}(A, \mathit{Ctx}) \Leftrightarrow \exists V' \subseteq V(A): V' \models \mathit{Ctx}$。
+
+**证明草图**：设上下文 $\mathit{Ctx}$ 可表示为若干约束的合取 $c_1 \land c_2 \land \dots \land c_n$。若复用发生，则存在 $V'$ 使得 $V' \models \mathit{Ctx}$；反之，若存在这样的 $V'$，则按“约束传递”定义即构成复用。该等价关系建立了“复用”与“约束可满足性”之间的同态，使得复用判定问题可约化为约束满足问题（Constraint Satisfaction Problem, CSP）。
+
+**反模型示例**：考虑一个架构 $A$ 仅包含组件集合而无任何接口契约、版本约束或质量属性，即 $V = \emptyset$。此时对任何非空上下文 $\mathit{Ctx}$，$V' \models \mathit{Ctx}$ 均不成立，因此 $A$ 的“复用”退化为文件拷贝（Clone）。这正是 M.1 的证伪条件：空约束集不构成复用。
+
+**体系关联**：与本体系中 `04-component-architecture-reuse` 的接口契约、`06-cross-layer-governance` 的治理约束、`09-value-quantification` 的价值约束直接相关。
+
+**边界条件**：若上下文 $\mathit{Ctx}$ 包含相互矛盾的约束，则 $V'$ 不存在，复用不可行。
+
+### 7.2 M.2 Variability Axiom
+
+**公理重述**：$\mathrm{Reuse}(S) \Leftrightarrow B \neq \emptyset \land V \neq \emptyset \land \forall \mathit{ctx}: \Gamma(V, \mathit{ctx})$ 良定义。
+
+**证明草图**：由产品线工程（PLE）的形式化模型，资产族 $S$ 的实例空间为 $\Gamma$ 在 $\mathcal{Ctx}$ 上的像。$B \neq \emptyset$ 保证共性存在，$V \neq \emptyset$ 保证可变性存在，$\Gamma$ 良定义保证每个上下文产生唯一实例。三者合取恰为“可配置复用”的充要条件。
+
+**反模型示例**：一个日志库没有任何配置项（$V=\emptyset$），被 1000 个项目以完全相同方式引入。按 M.2 这不构成工程复用，而是克隆；只有当其支持日志级别、输出格式、Appender 等变体点时，才进入复用范畴。
+
+**体系关联**：对应 `02-business-architecture-reuse` 的业务变体管理、`04-component-architecture-reuse` 的特性开关与插件化、`12` 的产品线工程。
+
+### 7.3 M.3 Hierarchy Non-Reduction
+
+**公理重述**：不存在保持复用语义的双射 $f: \mathcal{R}_{L_i} \to \mathcal{R}_{L_j}$。
+
+**证明草图**：采用反证法。假设存在这样的双射，则层次 $L_i$ 的所有复用决策都可由 $L_j$ 的复用决策等价替代。但不同层次的复用资产具有不同的本体类别：业务层资产回答“做什么有价值”，组件层资产回答“如何实现接口”。这两类资产的属性集合不同，无法建立保持语义的双射（由 BWW 本体论的“thing-kind”不可还原性支持）。
+
+**反模型示例**：若某团队声称“微服务框架的组件复用可以完全替代业务价值流设计”，则当业务目标变化时，组件优化无法补偿价值定义错误。这对应 `09-value-quantification` 中“技术债无法转化为业务价值”的失效模式。
+
+**体系关联**：与 `01-meta-model-standards/06-formal-axioms` 的层次公理、`03-application-architecture-reuse` 的层次视图、`11-industrial-iot-otit` 的 ISA-95 层次直接对应。
+
+### 7.4 M.4 Identity Preservation
+
+**公理重述**：$\mathrm{Id}(\mathrm{Reuse}(r, \mathit{ctx})) = \mathrm{Id}(r)$。
+
+**证明草图**：同一性函数 $\mathrm{Id}$ 抽取资产的本质属性（如功能、责任、契约）。复用仅改变角色 $\mathrm{Role}(r, \mathit{ctx})$ 和实现形态，不改变本质属性。形式化上，若 $\mathrm{Reuse}$ 被视为一个函子，则 $\mathrm{Id}$ 是该函子的不变量（invariant）。
+
+**反模型示例**：把“日志服务”复用后通过配置改造成“支付网关”，却仍称为同一资产。此时 $\mathrm{Id}$ 已改变，属于误用（Misuse）而非复用。
+
+**体系关联**：对应 `08-cognitive-architecture` 的概念稳定性、`12` 的资产目录与版本管理、`10-supply-chain-security` 的 SBOM 同一性追踪。
+
+### 7.5 E.1 Reuse Asset Existence
+
+**公理重述**：$a \in \mathcal{R} \Leftrightarrow \mathrm{Stable}(a) \land \mathrm{General}(a) \land \mathrm{Encapsulated}(a)$。
+
+**证明草图**：稳定性保证资产在被使用前不会频繁失效；通用性保证至少存在两个上下文使其价值可被摊销；封装性保证内部变更不影响使用者。三者缺一不可：无稳定性则维护成本不可控；无通用性则无法跨上下文摊销；无封装则变更传播不可控。
+
+**反模型示例**：每日变更的促销计算逻辑被封装为组件。虽然被封装，但因 $\neg\mathrm{Stable}$，三个月产生 47 个版本，下游升级成本超过自研——E.1 预言其不可持续复用。
+
+**体系关联**：与 `09-value-quantification` 的 NASA RRL 成本模型、`04-component-architecture-reuse` 的 API 稳定性管理、`06-cross-layer-governance` 的资产准入策略相关。
+
+### 7.6 E.2 Cost-Benefit Threshold
+
+**公理重述**：$\mathrm{EconomicallyViable}(a) \Leftrightarrow C_{\text{reuse}}(a) < C_{\text{build}}(a) + V_{\text{reuse}}(a)$。
+
+**证明草图**：将复用视为投资决策。净收益 $N = (C_{\text{build}} + V_{\text{reuse}}) - C_{\text{reuse}}$。$N>0$ 即经济可行。阈值 $\theta=0.7$ 来自 COCOMO II 的改编调整因子 AAF 经验数据。
+
+**反模型示例**：某团队为复用开源 ERP 投入 $C_{\text{reuse}} = 600$ 万人天，自研仅需 $C_{\text{build}} = 400$ 万人天，且长期价值 $V_{\text{reuse}} = 100$ 万人天。此时 $600 \not< 500$，E.2 判定不可行。若管理层因政治原因强制复用，则项目净收益为负。
+
+**体系关联**：与 `09-value-quantification` 的 ROI 模型、`06-cross-layer-governance` 的投资评审、`10-supply-chain-security` 的开源治理成本相关。
+
+### 7.7 E.3 Contextual Fitness
+
+**公理重述**：$\mathrm{Reuse}(a, \mathit{ctx}) \Rightarrow \mathrm{Fit}(a, \mathit{ctx}) \geq \tau$。
+
+**证明草图**：将适配度 $\mathrm{Fit}$ 分解为语义、技术、组织三个加权维度，是经典技术采纳模型（TTF/Task-Technology Fit）在复用领域的特例。若 $\mathrm{Fit} < \tau$，则复用将引入过高的适配、集成与治理成本，破坏 E.2 的经济可行性。
+
+**反模型示例**：物流系统复用电商订单模块，语义相似度 0.8，技术兼容性 0.6，组织对齐度 0.9，权重 $(0.5,0.3,0.2)$，得 $\mathrm{Fit}=0.79$。若 $\tau=0.85$，则即使模块功能相似，E.3 仍禁止直接复用。
+
+**体系关联**：与 `02-business-architecture-reuse` 的上下文适配、`03-application-architecture-reuse` 的技术选型、`12` 的领域上下文映射相关。
+
+### 7.8 S.1 Interface Substitution 边界说明
+
+**公理重述**：$C_1 \simeq C_2 \Leftrightarrow \forall \mathit{input}, \mathit{ctx}: \mathrm{Obs}(C_1) = \mathrm{Obs}(C_2)$。
+
+**边界条件**：S.1 仅保证可观察行为等价，不保证非功能属性（性能、延迟、能耗、安全侧信道）等价。因此在高性能或高安全场景中，需扩展 $\mathrm{Obs}$ 为带 QoS 标注的观察函数 $\mathrm{Obs}_{\text{QoS}}$，否则可能产生“行为等价但替换后系统失效”的反例。
+
+---
+
+## 8. 公理→定理推理链（Mermaid）
+
+```mermaid
+graph TD
+    M1["M.1 Architecture-Reuse Duality"] --> Th1["Th.1 约束保持定理"]
+    M2["M.2 Variability Axiom"] --> Th2["Th.2 变体闭包定理"]
+    M3["M.3 Hierarchy Non-Reduction"] --> Th3["Th.3 层次失败独立性"]
+    M4["M.4 Identity Preservation"] --> Th4["Th.4 同一性追溯定理"]
+    E1["E.1 Reuse Asset Existence"] --> Th5["Th.5 资产存在必要性"]
+    E2["E.2 Cost-Benefit Threshold"] --> Th6["Th.6 复用经济可行性定理"]
+    E3["E.3 Contextual Fitness"] --> Th7["Th.7 适配边界定理"]
+    S1["S.1 Interface Substitution"] --> Th8["Th.8 可替换性传递性"]
+    S2["S.2 Compositionality"] --> Th9["Th.9 组合结合律"]
+    S3["S.3 Dependency Transitivity of Trust"] --> Th10["Th.10 信任边界扩展定理"]
+    P3["P.3 Governance Complexity Law"] --> Th14["Th.14 治理崩溃阈值"]
+    P4["P.4 Learning Curve Monotonicity"] --> Th15["Th.15 专家悖论定理"]
+    S2 --> Th16["Th.16 组合风险叠加定理"]
+    S3 --> Th16
+    P3 --> Th17["Th.17 认知-治理双重约束"]
+    P4 --> Th17
+```
+
+该图展示了从 10 条严格公理到 `theorem-derivations.md` 中 17 条定理的主要推导路径。间接推导可进一步通过 Assume-Guarantee 与组合逻辑展开。
+
+---
+
+## 9. 权威来源与延伸阅读
+
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- [TLA+ - Wikipedia](https://en.wikipedia.org/wiki/TLA%2B)
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [SPARK (programming language) - Wikipedia](https://en.wikipedia.org/wiki/SPARK_(programming_language))
+- [Liskov substitution principle - Wikipedia](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
+- [DOLCE - Wikipedia](https://en.wikipedia.org/wiki/DOLCE)
+- [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
+- Bunge, M. (1977). *Treatise on Basic Philosophy: Ontology I*. <https://www.springer.com/gp/book/9789027707188>
+- ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/74307.html>
+- Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
+
+---
+
+## 10. 参考文献
 
 1. Bunge, M. (1977). *Treatise on Basic Philosophy: Ontology I: The Furniture of the World*. D. Reidel Publishing.
 2. Wand, Y., & Weber, R. (1993). On the ontological expressiveness of information systems analysis and design grammars. *Information Systems Journal*, 3(4), 217-237.

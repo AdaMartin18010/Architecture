@@ -26,11 +26,6 @@
     - [4.1 跨域复用挑战](#41-跨域复用挑战)
     - [4.2 SDF (Semantic Definition Format) for Digital Twin](#42-sdf-semantic-definition-format-for-digital-twin)
   - [5. 权威来源](#5-权威来源)
-  - [补充说明：数字孪生网络级扩展：IETF Network DT 与 GB/T 45616](#补充说明数字孪生网络级扩展ietf-network-dt-与-gbt-45616)
-  - [概念定义](#概念定义)
-  - [示例](#示例)
-  - [反例](#反例)
-  - [分析](#分析)
 
 ---
 
@@ -177,24 +172,3 @@ SDF for Digital Twin
 | ISO 23247 | <https://www.iso.org/standard/78743.html> | 2026-06-10 |
 | ISO/IEC 30173 | <https://www.iso.org/standard/79819.html> | 2026-06-10 |
 | ITU-T Y.4600 | <https://www.itu.int/rec/T-REC-Y.4600> | 2026-06-10 |
-
-
----
-
-## 补充说明：数字孪生网络级扩展：IETF Network DT 与 GB/T 45616
-
-## 概念定义
-
-**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。
-
-## 示例
-
-**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
-
-## 反例
-
-**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
-
-## 分析
-
-**分析**：OT-IT 复用需要在实时性、安全性与 IT 敏捷性之间取得平衡，标准信息模型是打破竖井的关键。

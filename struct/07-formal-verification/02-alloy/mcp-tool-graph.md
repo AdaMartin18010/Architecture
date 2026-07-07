@@ -24,7 +24,14 @@
   - [4. 断言与验证](#4-断言与验证)
   - [5. 反例教学：能力越权调用](#5-反例教学能力越权调用)
   - [6. 与功能架构复用的交叉引用](#6-与功能架构复用的交叉引用)
-  - [7. 权威来源](#7-权威来源)
+  - [8. Alloy 命令模板与预期输出](#8-alloy-命令模板与预期输出)
+    - [8.1 检查命令](#81-检查命令)
+    - [8.2 模拟命令](#82-模拟命令)
+    - [8.3 断言深度解释](#83-断言深度解释)
+    - [8.4 反例可视化](#84-反例可视化)
+    - [8.5 边界条件与扩展](#85-边界条件与扩展)
+    - [8.6 延伸阅读](#86-延伸阅读)
+  - [10. 权威来源](#10-权威来源)
   - [补充说明：T12: MCP Tool 能力依赖图验证 (Alloy)](#补充说明t12-mcp-tool-能力依赖图验证-alloy)
   - [概念定义](#概念定义)
   - [示例](#示例)
@@ -140,7 +147,80 @@ Server_B (capabilities: {executeSQL})
 
 ---
 
-## 7. 权威来源
+## 8. Alloy 命令模板与预期输出
+
+### 8.1 检查命令
+
+```alloy
+check NoCyclicToolCalls for 4 but 8 MCPTool, 6 Capability
+check CapabilityContainment for 4 but 8 MCPTool, 6 Capability, 5 Resource
+check ResourceBoundary for 4 but 8 MCPTool, 5 Resource
+```
+
+**命令说明**：
+
+| 命令 | 搜索空间 | 验证目标 |
+|------|----------|----------|
+| `check NoCyclicToolCalls` | 最多 4 个 Server、8 个 Tool、6 个 Capability | 工具调用图无环 |
+| `check CapabilityContainment` | 同上 + 最多 5 个 Resource | 被调用工具能力是调用者 Server 能力的子集 |
+| `check ResourceBoundary` | 同上 | 工具只能访问所属 Server 的资源 |
+
+### 8.2 模拟命令
+
+```alloy
+run ShowValidMCPServer for 3 but 6 MCPTool, 4 Capability, 4 Resource
+```
+
+该命令生成一个合法的 MCP Server 实例，要求至少一个 Server 拥有 ≥3 个 Tool、≥2 个 Capability，且存在至少一次 Tool 子调用。
+
+### 8.3 断言深度解释
+
+- **NoCyclicToolCalls**：禁止 `Tool_A -> Tool_B -> ... -> Tool_A` 的调用链。失败时 Alloy 会高亮循环路径，对应 JSON-RPC 请求死循环、上下文窗口无限膨胀。
+- **CapabilityContainment**：实现 MCP 的“能力委托”原则。失败反例通常为 `Server_A` 的 `Tool_1` 调用了 `Server_B` 的 `Tool_2`，而 `Tool_2` 提供的能力不在 `Server_A.capabilities` 中。
+- **ResourceBoundary**：防止跨 Server 数据泄漏。失败时反例显示某 `Tool` 访问了 `owner` 为其他 Server 的 `Resource`。
+- **ServerCapabilityNonEmpty**：确保空能力 Server 不会暴露工具。该断言在 `.als` 中已定义但尚未 `check`；建议补充：
+
+```alloy
+check ServerCapabilityNonEmpty for 4 but 8 MCPTool, 6 Capability
+```
+
+### 8.4 反例可视化
+
+临时注释 `F4` 后执行：
+
+```alloy
+run CapabilityViolation for 3 but 6 MCPTool, 4 Capability
+```
+
+典型反例：
+
+```text
+MCPServer$0 (capabilities: {readFile})
+  └── MCPTool$0 (provides: {readFile}, calls: {MCPTool$1})
+
+MCPServer$1 (capabilities: {executeSQL})
+  └── MCPTool$1 (provides: {executeSQL})
+```
+
+这构成了**能力越权（Capability Escalation）**：Agent 通过 `Server$0` 间接获得了未声明的数据库执行能力。
+
+### 8.5 边界条件与扩展
+
+- **Scope 边界**：MCP Tool 调用图的结构性错误（循环、越权）通常在 ≤4 Server、≤8 Tool 的 scope 内即可暴露。
+- **动态能力**：当前模型假设能力在初始化后静态不变。若需建模运行时能力协商，可引入 `sessionCaps` 变量并增加时序约束（此时建议结合 TLA+）。
+- **资源共享**：当前 `ResourceAccessIsolation` 完全禁止跨 Server 资源访问。若需建模显式共享，可引入 `sharedWith: set MCPServer` 字段并放宽事实。
+
+### 8.6 延伸阅读
+
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- Model Context Protocol Specification. <https://modelcontextprotocol.io/specification/2025-11-25>
+- CIS MCP Companion Guide (April 2026). <https://www.cisecurity.org/insights/blog/cis-mcp-companion-guide>
+
+---
+
+## 10. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 建模方法论。
 2. Anthropic / Linux Foundation Agentic AI Foundation. (2025). *Model Context Protocol Specification* (2025-11-25). <https://modelcontextprotocol.io/specification/2025-11-25> —— MCP 工具能力模型与资源抽象。

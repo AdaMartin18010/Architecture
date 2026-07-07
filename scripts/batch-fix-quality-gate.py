@@ -2283,9 +2283,11 @@ class FixSummary:
     passed: bool
 
 
-def run_fix(dry_run: bool = False) -> List[FixSummary]:
+def run_fix(apply: bool = False) -> List[FixSummary]:
     targets = collect_target_files()
     print(f"待处理文件数: {len(targets)}")
+    if not apply:
+        print("当前为报告模式（默认），不会修改任何文件。如需自动追加模板，请使用 --apply。")
     summaries = []
 
     for md, threshold, original in sorted(targets, key=lambda x: x[2].score):
@@ -2298,11 +2300,11 @@ def run_fix(dry_run: bool = False) -> List[FixSummary]:
             continue
 
         new_content = content + supplement
-        if not dry_run:
+        if apply:
             md.write_text(new_content, encoding="utf-8")
 
-        # 重新检查（dry-run 在内存中检查补充后的内容）
-        if dry_run:
+        # 重新检查（报告模式在内存中检查补充后的内容）
+        if not apply:
             text = new_content
             word_count = len(re.findall(r"[\u4e00-\u9fa5]", text)) + len(text.split())
             checks = {}
@@ -2329,7 +2331,7 @@ def run_fix(dry_run: bool = False) -> List[FixSummary]:
             r = check_file(md)
         summaries.append(FixSummary(md, original.score, r.score, r.passed))
 
-        if not dry_run and not r.passed:
+        if apply and not r.passed:
             print(f"  ⚠️ 仍未通过 [{r.score:>3}] {md.relative_to(PROJECT_ROOT)}")
 
     return summaries
@@ -2351,11 +2353,13 @@ def print_summary(summaries: List[FixSummary]):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="批量修复质量门控未通过文件")
-    parser.add_argument("--dry-run", action="store_true", help="仅预览不写入")
+    parser = argparse.ArgumentParser(
+        description="批量检查质量门控未通过文件，并可选地自动追加模板段落。默认仅报告，不修改文件。"
+    )
+    parser.add_argument("--apply", action="store_true", help="应用自动修复（向文件末尾追加模板段落）")
     args = parser.parse_args()
 
-    summaries = run_fix(dry_run=args.dry_run)
+    summaries = run_fix(apply=args.apply)
     print_summary(summaries)
 
 

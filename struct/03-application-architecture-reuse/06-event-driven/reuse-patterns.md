@@ -19,6 +19,7 @@
   - [1. 概念定义（CARC 本体）](#1-概念定义carc-本体)
     - [1.1 事件驱动架构（Event-Driven Architecture, EDA）](#11-事件驱动架构event-driven-architecture-eda)
     - [1.2 EDA 中的复用单元](#12-eda-中的复用单元)
+    - [1.3 属性与特征](#13-属性与特征)
   - [2. 概念谱系与学术来源](#2-概念谱系与学术来源)
   - [3. 核心复用模式](#3-核心复用模式)
     - [3.1 事件通知（Event Notification）](#31-事件通知event-notification)
@@ -38,12 +39,20 @@
     - [反例 2：缺乏 Schema 治理](#反例-2缺乏-schema-治理)
     - [反例 3：忽视事件顺序和幂等性](#反例-3忽视事件顺序和幂等性)
     - [案例：分布式 Saga 补偿失败](#案例分布式-saga-补偿失败)
+    - [6.5 分析：反例根因总结](#65-分析反例根因总结)
   - [7. 多维对比矩阵](#7-多维对比矩阵)
     - [7.1 EDA 模式 × 适用场景](#71-eda-模式--适用场景)
     - [7.2 EDA vs 同步 API vs 批处理](#72-eda-vs-同步-api-vs-批处理)
   - [8. 场景决策树](#8-场景决策树)
-  - [9. 与四层架构的关系](#9-与四层架构的关系)
-  - [10. 权威来源](#10-权威来源)
+  - [9. 关系与映射](#9-关系与映射)
+    - [9.1 与四层架构的关系](#91-与四层架构的关系)
+    - [9.2 与微服务架构的关系](#92-与微服务架构的关系)
+    - [9.3 与 Serverless / FaaS 的关系](#93-与-serverless--faas-的关系)
+    - [9.4 与同步 API、批处理的关系](#94-与同步-api批处理的关系)
+    - [9.5 概念谱系关系](#95-概念谱系关系)
+  - [10. EDA 与微服务/Serverless 协同 Mermaid 图](#10-eda-与微服务serverless-协同-mermaid-图)
+  - [11. 交叉引用](#11-交叉引用)
+  - [12. 权威来源](#12-权威来源)
 
 ---
 
@@ -88,6 +97,17 @@
 | **拓扑模式** | Pub/Sub、Event Bus、Event Mesh | 模式级 |
 | **Saga 编排** | 分布式事务工作流 | 业务流程级 |
 | **Schema Registry** | Confluent Schema Registry、AWS Glue Schema Registry | 治理级 |
+
+### 1.3 属性与特征
+
+| 属性 | 说明 | 重要性 |
+|---|---|---|
+| **异步解耦** | 生产者与消费者无需同时在线，降低系统间直接依赖 | 高 |
+| **事件不可变** | 事件代表已发生事实，发布后不可修改，支持审计与重放 | 高 |
+| **契约驱动** | 事件 Schema 是跨系统复用的核心契约，需版本治理 | 高 |
+| **最终一致性** | 消费者看到的系统状态 eventual consistent，需幂等性与顺序控制 | 高 |
+| **一对多广播** | 同一事件可被多个独立消费者订阅，实现一次生产、多处复用 | 高 |
+| **可观测性要求高** | 异步链路的调试复杂度高于同步调用，需分布式追踪与事件审计 | 中 |
 
 ---
 
@@ -315,6 +335,17 @@ OrderCreated ──> InventoryReserved ──> PaymentProcessed ──> OrderShi
 - Saga 补偿操作也可能失败，需要重试、人工干预和审计机制。
 - 需设计“不确定状态”的处理策略。
 
+### 6.5 分析：反例根因总结
+
+上述反例与失败案例的共同根因可归纳为四类：
+
+1. **语义混淆**：将事件（事实）与命令（请求）混用，破坏了 EDA 的异步解耦语义。
+2. **契约缺失**：事件 Schema 未作为一等公民治理，导致消费者与生产者之间的隐性依赖。
+3. **顺序与幂等性假设错误**：未对乱序、重复投递等分布式消息基本特性做防御性设计。
+4. **补偿机制不完善**： Saga 等长事务模式未充分考虑补偿操作自身的失败场景。
+
+避免这些根因的关键在于：将事件契约、Schema 治理、幂等性设计纳入架构评审的必检项，并在 CI 中通过契约测试与兼容性检查持续验证。
+
 ---
 
 ## 7. 多维对比矩阵
@@ -362,7 +393,9 @@ flowchart TD
 
 ---
 
-## 9. 与四层架构的关系
+## 9. 关系与映射
+
+### 9.1 与四层架构的关系
 
 事件驱动架构位于 **03 应用架构复用层**，是连接业务能力与功能实现的集成纽带：
 
@@ -382,12 +415,93 @@ flowchart TB
 - 事件处理函数、Saga、CQRS 处理器属于 05 功能架构复用范畴。
 - Schema Registry 和事件治理属于 06 跨层治理范畴。
 
+### 9.2 与微服务架构的关系
+
+微服务架构将系统拆分为围绕业务能力自治的服务；事件驱动是微服务间实现松耦合复用的首选机制。在微服务上下文中：
+
+- **领域事件**作为跨服务契约，替代了部分同步 REST/gRPC 调用；
+- **Saga 模式**利用事件协调分布式长事务；
+- **CQRS**通过事件将写模型同步到多个读模型；
+- **事件总线 / Kafka**成为服务间共享的基础设施，实现"一次生产、多处复用"。
+
+当两个微服务需要共享数据时，优先选择事件驱动的数据同步（Event-Carried State Transfer）而非共享数据库，以保持服务自治。
+
+### 9.3 与 Serverless / FaaS 的关系
+
+Serverless 函数天然适合事件驱动模型：
+
+- 函数由事件源触发，事件 Schema 即函数输入契约；
+- 事件 broker（EventBridge、EventGrid、Kafka）解耦函数生产与消费；
+- 函数的无状态、短时运行特性与事件的不可变、异步语义高度契合；
+- Serverless 函数可作为 EDA 中的轻量级消费者或处理器，快速扩展事件处理管道的计算能力。
+
+### 9.4 与同步 API、批处理的关系
+
+| 维度 | EDA | 同步 API | 批处理 |
+|---|---|---|---|
+| 耦合度 | 低 | 高 | 低 |
+| 实时性 | 近实时 | 即时 | 延迟 |
+| 一致性 | 最终一致 | 强一致 | 最终一致 |
+| 故障隔离 | 高 | 低 | 高 |
+| 调试难度 | 高 | 低 | 中 |
+| 适用场景 | 解耦集成、流处理 | 请求-响应、事务 | 大数据、报表 |
+
+### 9.5 概念谱系关系
+
+| 关系类型 | 目标概念 | 说明 |
+|---|---|---|
+| 上位概念 | [Event-driven architecture - Wikipedia](https://en.wikipedia.org/wiki/Event-driven_architecture) | EDA 是软件架构风格的一种 |
+| 下位概念 | Publish-Subscribe、Message Queue、Event Streaming | EDA 的具体拓扑实现 |
+| 下位概念 | Event Sourcing、CQRS、Saga | EDA 在数据一致性与事务领域的深化模式 |
+| 等价概念 | Complex Event Processing（CEP） | 从事件流中识别复杂模式的技术 |
+| 依赖概念 | Microservices、Serverless、Service Mesh | EDA 为这些架构样式提供解耦与复用机制 |
+| 映射概念 | CloudEvents、AsyncAPI、ISO/IEC/IEEE 42010:2022 | 事件契约的标准化描述框架 |
+
 ---
 
-## 10. 权威来源
+## 10. EDA 与微服务/Serverless 协同 Mermaid 图
+
+```mermaid
+graph TB
+    subgraph 微服务层
+        S1[订单服务]
+        S2[支付服务]
+        S3[库存服务]
+    end
+    subgraph Serverless 函数层
+        F1[邮件通知函数]
+        F2[缓存失效函数]
+        F3[审计日志函数]
+    end
+    EB[事件总线 / Kafka / EventBridge]
+    S1 -->|OrderCreated| EB
+    S2 -->|PaymentProcessed| EB
+    EB -->|订阅| S3
+    EB -->|触发| F1 & F2 & F3
+    F1 --> SES[SES / SendGrid]
+    F2 --> Redis[Redis Cache]
+    F3 --> S3Obj[S3 / 审计存储]
+```
+
+---
+
+## 11. 交叉引用
+
+- [02 微服务架构复用模式](../02-microservices/microservices-reuse-patterns.md)：微服务间通过事件实现解耦与复用
+- [04 Serverless 架构复用模式](../04-serverless/serverless-reuse-patterns.md)：Serverless 函数作为事件消费者的设计
+- [09 EDA/CQRS 事件溯源模式](../09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md)：CQRS 与 Event Sourcing 的深度复用模式
+- [01 分层架构复用模式](../01-layered-architecture/layered-architecture-reuse.md)：分层架构与事件驱动在边界上的互补
+- [05 数据架构复用](../05-data-architecture/data-mesh-data-product-reuse.md)：数据网格中事件作为数据产品的集成界面
+
+---
+
+## 12. 权威来源
 
 > **权威来源**:
 >
+> - [Event-driven architecture - Wikipedia](https://en.wikipedia.org/wiki/Event-driven_architecture) (核查日期: 2026-07-07)
+> - [Publish–subscribe pattern - Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) (核查日期: 2026-07-07)
+> - [Complex event processing - Wikipedia](https://en.wikipedia.org/wiki/Complex_event_processing) (核查日期: 2026-07-07)
 > - Hohpe, G., & Woolf, B. (2003). *Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions*. Addison-Wesley.
 > - Fowler, M. (2005). *Event-Driven Architecture*. Martin Fowler. <https://martinfowler.com/articles/201701-event-driven.html>
 > - CNCF. *CloudEvents Specification*. <https://cloudevents.io/>

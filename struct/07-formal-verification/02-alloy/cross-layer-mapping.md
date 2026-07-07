@@ -34,7 +34,14 @@
     - [6.3 工业 IoT 复用中的典型约束冲突](#63-工业-iot-复用中的典型约束冲突)
   - [7. 反例教学：跳跃式映射的危害](#7-反例教学跳跃式映射的危害)
   - [8. 与元模型标准的交叉引用](#8-与元模型标准的交叉引用)
-  - [9. 权威来源](#9-权威来源)
+  - [10. Alloy 命令模板与预期输出](#10-alloy-命令模板与预期输出)
+    - [10.1 检查命令](#101-检查命令)
+    - [10.2 模拟命令](#102-模拟命令)
+    - [10.3 断言深度解释](#103-断言深度解释)
+    - [10.4 反例可视化](#104-反例可视化)
+    - [10.5 边界条件](#105-边界条件)
+    - [10.6 延伸阅读](#106-延伸阅读)
+  - [12. 权威来源](#12-权威来源)
   - [补充说明：T13: 跨层复用映射的约束验证 (Alloy)](#补充说明t13-跨层复用映射的约束验证-alloy)
   - [概念定义](#概念定义)
   - [示例](#示例)
@@ -302,7 +309,65 @@ BusinessAsset: "客户订单管理"
 
 ---
 
-## 9. 权威来源
+## 10. Alloy 命令模板与预期输出
+
+### 10.1 检查命令
+
+```alloy
+check AllMappingsAreAdjacent for 3 but 6 Mapping, 4 Concern
+check NoConcernConflicts for 3 but 6 Mapping, 4 Concern
+check NoReverseMapping for 3 but 6 Mapping
+```
+
+**命令说明**：
+
+| 命令 | 搜索空间 | 验证目标 |
+|------|----------|----------|
+| `check AllMappingsAreAdjacent` | 每层 3 个实例，最多 6 个 Mapping、4 个 Concern | 映射仅发生在相邻层 |
+| `check NoConcernConflicts` | 同上 | 同一关注点不映射到冲突目标 |
+| `check NoReverseMapping` | 同上 | 映射方向只能从高层到低层 |
+
+### 10.2 模拟命令
+
+```alloy
+run ShowValidMapping for 3 but 6 Mapping, 4 Concern, 3 QoSAttribute
+```
+
+该命令生成一个合法跨层映射实例，要求至少存在一个包含 ≥1 个关注点的 Mapping、至少一个包含 ≥2 个关注点的 Asset，以及至少 3 个 Mapping。
+
+### 10.3 断言深度解释
+
+- **AllMappingsAreAdjacent**：强制 `BusinessAsset → ApplicationAsset → ComponentAsset → FunctionAsset` 的逐层精化路径。若失败，Alloy 会生成从业务资产直接指向组件资产的红色边，即“跳跃式映射”。
+- **NoConcernConflicts**：防止同一关注点被映射到相互矛盾的实现。反例中，同一 `Concern` 实例会同时关联到两个不同的 `target` Asset。
+- **NoReverseMapping**：保证架构描述的因果方向。反向映射（如 FunctionAsset → BusinessAsset）会破坏“实现依赖需求”的本体关系。
+
+### 10.4 反例可视化
+
+当 `AllMappingsAreAdjacent` 失败时，Alloy 可视化图中通常出现：
+
+```text
+BusinessAsset$0 -> Mapping$0 -> ComponentAsset$1
+                 (跳过 ApplicationLayer)
+```
+
+这对应真实项目中的“业务逻辑直接下沉到组件实现”的架构违规，会导致业务规则与实现细节耦合、应用层服务缺失、跨项目复用困难。
+
+### 10.5 边界条件
+
+- `MappingDirection` fact 当前允许 `ApplicationAsset → BusinessAsset` 等反向映射（用于回溯/追溯），但 `NoReverseMapping` 断言禁止这些反向映射成为规约的合法状态。设计时需明确区分“允许追溯”与“禁止反向实现”。
+- 版本兼容性、时间特性、SIL 等扩展约束在第 4 节以伪代码形式给出，若要在 Alloy 中验证，需补充对应的签名与事实。
+
+### 10.6 延伸阅读
+
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- ISO/IEC/IEEE 42010:2022. <https://www.iso.org/standard/74296.html>
+- The Open Group. *TOGAF Standard, Version 10*. <https://pubs.opengroup.org/togaf-standard/>
+
+---
+
+## 12. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 建模方法论与"小范围建模，大思路验证"哲学。
 2. ISO/IEC/IEEE 42010:2022. *Software, systems and enterprise — Architecture description*. —— 架构描述、关注点、对应关系（correspondence）的权威标准。

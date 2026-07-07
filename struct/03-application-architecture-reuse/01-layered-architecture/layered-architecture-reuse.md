@@ -3,8 +3,8 @@
 > **版本**: 2026-06-10
 > **定位**: 应用架构层（Level 2）—— 经典与现代分层架构的复用边界、模式与反模式
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK v4, ISO/IEC 12207:2026
-> **状态**: ✅ 已完成（Phase A 深化）
-> **字数**: ~5000字
+> **状态**: ✅ 已完成（Phase A 深化 + 内容要素补全）
+> **字数**: ~7000字
 
 ---
 
@@ -12,6 +12,14 @@
 
 - [分层架构复用模式](#分层架构复用模式)
   - [目录](#目录)
+  - [0. 概念定义](#0-概念定义)
+  - [0.1 属性与特征](#01-属性与特征)
+  - [0.2 关系与映射](#02-关系与映射)
+  - [0.3 解释：分层架构为什么能促进复用](#03-解释分层架构为什么能促进复用)
+    - [核心矛盾：稳定性与灵活性的平衡](#核心矛盾稳定性与灵活性的平衡)
+    - [复用价值分布](#复用价值分布)
+    - [何时使用分层架构复用](#何时使用分层架构复用)
+    - [MVC、三层与 N 层的演变关系](#mvc三层与-n-层的演变关系)
   - [1. 核心概念](#1-核心概念)
     - [1.1 经典分层 vs. 现代演进](#11-经典分层-vs-现代演进)
   - [2. 复用模式](#2-复用模式)
@@ -29,6 +37,7 @@
     - [6.2 开发视图（Development View）映射](#62-开发视图development-view映射)
     - [6.3 过程视图与物理视图的边界](#63-过程视图与物理视图的边界)
   - [7. 分层架构的复用反模式](#7-分层架构的复用反模式)
+    - [7.0 反例：分层架构复用失败模式总览](#70-反例分层架构复用失败模式总览)
     - [7.1 Blob 层（The Blob Layer）](#71-blob-层the-blob-layer)
     - [7.2 循环依赖层（Layer Cyclic Dependency）](#72-循环依赖层layer-cyclic-dependency)
     - [7.3 Leaking Abstraction（泄漏抽象）](#73-leaking-abstraction泄漏抽象)
@@ -56,6 +65,85 @@
     - [12.1 成功案例：Spotify 的模块化单体与分层复用](#121-成功案例spotify-的模块化单体与分层复用)
     - [12.2 失败案例：某金融核心系统的分层泄漏](#122-失败案例某金融核心系统的分层泄漏)
   - [13. 总结与决策指南](#13-总结与决策指南)
+  - [14. 交叉引用](#14-交叉引用)
+  - [15. 分层架构复用决策与演化 Mermaid 图](#15-分层架构复用决策与演化-mermaid-图)
+    - [15.1 模式选型决策树](#151-模式选型决策树)
+    - [15.2 经典分层与 Clean Architecture 的复用边界对比](#152-经典分层与-clean-architecture-的复用边界对比)
+
+## 0. 概念定义
+
+**定义**：分层架构（Layered Architecture）是一种按照职责垂直切分软件系统的结构化组织方式：系统被划分为若干相互独立的层（Layer），每层仅通过显式接口与直接相邻层交互，且依赖方向遵循外层依赖内层、内层不依赖外层的规则。在本知识体系中，分层架构的层边界被视为天然复用边界——变更频率低、外部依赖少的内层（如领域层、实体层）具有最高复用价值；而直接面向技术栈与具体用例的外层（如表示层、基础设施适配器）复用价值较低。
+
+> **形式化表达**：设系统为 $S$，层集合为 $L = \\{L_1, L_2, ..., L_n\\}$，其中 $L_1$ 为最内层（领域层），$L_n$ 为最外层（表示/外部适配层）。分层架构的依赖约束可表示为：
+> $$\\forall i < j, \\text{AllowDep}(L_j \\rightarrow L_i) = \\text{true}; \\quad \\forall i < j, \\text{AllowDep}(L_i \\rightarrow L_j) = \\text{false}$$
+> 即只允许外层依赖内层，禁止反向依赖。
+
+Wikipedia 对应条目：
+
+- [Software architecture](https://en.wikipedia.org/wiki/Software_architecture)
+- [Multilayered architecture](https://en.wikipedia.org/wiki/Multilayered_architecture)
+- [Model–view–controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+
+---
+
+## 0.1 属性与特征
+
+| 属性 | 说明 | 重要性 |
+|---|---|---|
+| **职责隔离** | 每层只负责一类职责（表示、应用、领域、基础设施），避免混杂 | 高 |
+| **依赖方向约束** | 外层 → 内层，禁止反向依赖，确保内层稳定 | 高 |
+| **接口契约稳定性** | 层间接口变更频率低于层内实现，契约稳定是复用前提 | 高 |
+| **可测试性** | 内层无外部依赖，可用纯单元测试覆盖 | 中 |
+| **可替换性** | 符合契约的实现可在不影响上层的情况下替换 | 高 |
+| **可演化性** | 层边界为架构演化（单体 → 模块化单体 → 微服务）提供清晰中间状态 | 中 |
+
+---
+
+## 0.2 关系与映射
+
+| 关系类型 | 目标概念 | 说明 |
+|---|---|---|
+| **上位概念** | [Software architecture](https://en.wikipedia.org/wiki/Software_architecture) | 分层架构是软件架构的一种经典组织风格 |
+| **下位概念** | 三层架构 / MVC / MVP / MVVM / N-tier | 经典分层模式的具体实现 |
+| **下位概念** | Clean Architecture / Onion Architecture / Hexagonal Architecture | 现代分层演进，强调领域核心 |
+| **等价/映射概念** | ISO/IEC/IEEE 42010:2022 Architecture View | 每层可映射为 Architecture View Component；逻辑视图、开发视图、过程视图、物理视图均与层存在对应关系 |
+| **映射概念** | TOGAF® ADM | 业务架构 → 信息系统架构（应用/数据） → 技术架构 的层级映射与分层架构同构 |
+| **依赖概念** | 模块化单体、微服务、事件驱动 | 分层可存在于单体、模块、服务内部，是更粗粒度架构样式的内部组织方式 |
+| **依赖概念** | 依赖倒置原则（DIP）、单一职责原则（SRP）、接口隔离原则（ISP） | 分层是这些设计原则在架构层面的结构化表达 |
+
+---
+
+## 0.3 解释：分层架构为什么能促进复用
+
+分层架构之所以成为软件复用的经典组织方式，根源在于它通过**职责隔离**将系统内部不同变化速率的部分分离到不同层中。根据 David Parnas 的信息隐藏原则（Information Hiding），模块边界应围绕"可能发生变化的设计决策"来划分；分层架构正是这一原则在架构层面的结构化表达。
+
+### 核心矛盾：稳定性与灵活性的平衡
+
+分层架构面临的核心矛盾是：**越靠近业务核心的层越需要稳定，越靠近技术边界的层越需要灵活**。如果将所有代码混在一起，任何技术栈的变更（如数据库替换、UI 框架升级）都可能波及业务规则，导致业务逻辑无法被稳定复用。分层通过将业务规则隔离到内层，使其免受外层技术波动的影响。
+
+### 复用价值分布
+
+| 层级 | 复用价值 | 原因 |
+|---|---|---|
+| 领域层 / 实体层 | 最高 | 直接承载业务规则，技术无关，变更频率低 |
+| 应用层 / 用例层 | 中低 | 与特定业务流程绑定，跨系统复用需抽象 |
+| 基础设施层 | 中 | 适配器模式使同一抽象可在不同技术实现间切换 |
+| 表示层 | 低 | 与前端框架、用户交互强绑定 |
+
+### 何时使用分层架构复用
+
+- 需要跨项目复用核心业务规则时
+- 系统需要长期演化，且技术栈可能更换时
+- 团队规模较大，需要明确的代码所有权边界时
+- 需要为单体、模块化单体、微服务提供一致的内部结构时
+
+> **定理 L.0** (Layer Reuse Value): 分层架构的复用价值 $V$ 与层的稳定性 $S$ 成正比，与层的技术无关性 $I$ 成正比，即 $V(L_i) \\propto S(L_i) \\times I(L_i)$。
+
+### MVC、三层与 N 层的演变关系
+
+MVC（Model-View-Controller）起源于 1970 年代的 Smalltalk 用户界面框架，其核心是将数据（Model）、表现（View）与控制（Controller）分离。随着企业应用的复杂化，MVC 演化为经典三层架构（Presentation / Business / Data），并在大型系统中进一步扩展为 N 层架构（表示层、应用层、领域层、基础设施层等）。Clean Architecture、Onion Architecture 和 Hexagonal Architecture 可以视为 N 层架构在现代面向对象语言中的精炼：它们将"业务逻辑层"进一步拆分为应用层与领域层，并显式引入端口-适配器边界，以最大化领域核心的复用潜力。
+
+---
 
 ## 1. 核心概念
 
@@ -220,6 +308,10 @@ ISO/IEC/IEEE 42010:2022 定义了架构描述的框架，其中**架构视图（
 ---
 
 ## 7. 分层架构的复用反模式
+
+### 7.0 反例：分层架构复用失败模式总览
+
+反例（Counter-example）与反模式（Anti-pattern）是理解分层架构复用边界的镜子：它们展示了当层边界、依赖方向或接口契约被错误处理时，复用如何从"资产"退化为"负债"。本节通过四个典型反模式与两个真实案例，说明复用失败的根因、后果与修复路径。
 
 反模式（Anti-pattern）是看似合理实则导致负面后果的解决方案。在分层架构的复用实践中，以下四种反模式尤为常见。
 
@@ -694,15 +786,70 @@ Spotify 在 2010 年代初期经历了从单体到模块化单体的演化，其
 
 ---
 
-> 最后更新: 2026-06-10
+---
+
+## 14. 交叉引用
+
+- [02 业务架构复用](../02-business-architecture-reuse/)：业务能力如何映射为领域层与限界上下文
+- [04 Serverless 架构复用模式](../04-serverless/serverless-reuse-patterns.md)：分层思想在 FaaS 函数内部的应用
+- [06 事件驱动架构复用模式](../06-event-driven/reuse-patterns.md)：事件驱动与分层架构的互补关系
+- [模块化单体复用策略](./reuse-patterns.md)：模块化单体内部的分层复用策略
+- [07 云原生模式](../07-cloud-native-patterns/)：服务网格、网关与分层边界的协同
+
+---
+
+## 15. 分层架构复用决策与演化 Mermaid 图
+
+### 15.1 模式选型决策树
+
+```mermaid
+flowchart TD
+    Start([开始：选择分层架构模式]) --> Q1{是否需要跨技术栈复用<br/>领域模型?}
+    Q1 -->|是| A1[Clean Architecture /<br/>Onion / Hexagonal]
+    Q1 -->|否| Q2{团队规模与代码量?}
+    Q2 -->|小| A2[经典三层 / MVC]
+    Q2 -->|大| Q3{用例变更是否频繁?}
+    Q3 -->|是| A3[Vertical Slice Architecture]
+    Q3 -->|否| A4[Modular Monolith +<br/>Clean Architecture]
+    A1 --> Q4{是否需要独立部署?}
+    Q4 -->|是| A5[微服务，保留内部分层]
+    Q4 -->|否| A1
+```
+
+### 15.2 经典分层与 Clean Architecture 的复用边界对比
+
+```mermaid
+graph TB
+    subgraph 经典三层架构
+        P1[Presentation 表示层]
+        B1[Business Logic 业务逻辑层]
+        D1[Data Access 数据访问层]
+    end
+    subgraph Clean Architecture
+        Pres[Controllers / Presenters]
+        App[Use Cases / Application Services]
+        Dom[Entities / Domain Services]
+    end
+    D1 --> B1 --> P1
+    Dom --> App --> Pres
+    style Dom fill:#9f9,stroke:#333,stroke-width:2px
+    style B1 fill:#99f,stroke:#333,stroke-width:2px
+```
+
+---
+
+> 最后更新: 2026-07-07
 > 权威来源:
 >
-> - Clean Architecture: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html> (核查日期: 2026-06-10)
-> - Onion Architecture: <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/> (核查日期: 2026-06-10)
-> - ISO/IEC/IEEE 42010:2022: <https://iso.org/standard/74296.html> (核查日期: 2026-06-10)
-> - DCI Architecture: <https://fulloo.info/Documents/ArtimaDCI/> (核查日期: 2026-06-10)
-> - Vertical Slice Architecture: <https://www.jimmybogard.com/vertical-slice-architecture/> (核查日期: 2026-06-10)
-> - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-06-10)
-> - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-06-10)
-> - SWEBOK v4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-06-10)
-> - ISO/IEC 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-06-10)
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO (核查日期: 2026-07-07)
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group (核查日期: 2026-07-07)
+> - [Software architecture - Wikipedia](https://en.wikipedia.org/wiki/Software_architecture) (核查日期: 2026-07-07)
+> - [Multilayered architecture - Wikipedia](https://en.wikipedia.org/wiki/Multilayered_architecture) (核查日期: 2026-07-07)
+> - Clean Architecture: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html> (核查日期: 2026-07-07)
+> - Onion Architecture: <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/> (核查日期: 2026-07-07)
+> - DCI Architecture: <https://fulloo.info/Documents/ArtimaDCI/> (核查日期: 2026-07-07)
+> - Vertical Slice Architecture: <https://www.jimmybogard.com/vertical-slice-architecture/> (核查日期: 2026-07-07)
+> - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-07)
+> - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-07)
+> - SWEBOK v4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-07)
+> - ISO/IEC 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-07)

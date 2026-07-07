@@ -54,11 +54,15 @@
   - [10. 选型决策树](#10-选型决策树)
   - [11. 参考索引](#11-参考索引)
   - [补充说明：6大语言生态组件复用成熟度深度对比 2026](#补充说明6大语言生态组件复用成熟度深度对比-2026)
-  - [概念定义](#概念定义)
-  - [示例](#示例)
-  - [反例](#反例)
-  - [权威来源](#权威来源)
-  - [分析](#分析)
+    - [概念定义](#概念定义)
+    - [核心属性](#核心属性)
+    - [与其他概念的关系](#与其他概念的关系)
+    - [解释：为什么需要跨语言生态复用](#解释为什么需要跨语言生态复用)
+    - [正例：多语言数据平台](#正例多语言数据平台)
+    - [反例：为统一技术栈强制单一语言](#反例为统一技术栈强制单一语言)
+    - [形式化分析：语言生态选型决策树](#形式化分析语言生态选型决策树)
+    - [权威来源](#权威来源)
+    - [交叉引用](#交叉引用)
 
 ---
 
@@ -618,26 +622,99 @@ quadrantChart
 
 ## 补充说明：6大语言生态组件复用成熟度深度对比 2026
 
-## 概念定义
+### 概念定义
 
-**定义**：语言生态复用是利用不同编程语言及其包管理、工具链与社区资产，在性能、安全性、生产力与可维护性之间做出复用决策。
+**定义**：语言生态复用（Language Ecosystem Reuse）是在共同接口与数据契约约束下，依据性能、安全性、生产力与可维护性等目标，选择并组合不同编程语言及其包管理器、组件模型、变性机制与供应链安全工具链的复用策略。它是 [Component-based software engineering](https://en.wikipedia.org/wiki/Component-based_software_engineering) 在多语言工程环境中的具体实践。
 
-## 示例
+### 核心属性
 
-**示例**：企业使用 Rust 构建高性能网络组件，使用 Python 构建数据科学流水线，通过 gRPC/Protobuf 实现跨语言复用。
+| 属性 | 说明 | 重要性 |
+|---|---|---|
+| **包管理成熟度** | 版本锁定、范围依赖、依赖解析算法与供应商化能力 | 高 |
+| **组件模型强度** | 模块边界、可见性控制、接口定义与编译期检查 | 高 |
+| **变性机制** | 泛型、JIT、宏/元编程、单态化等提升复用表达力的机制 | 中 |
+| **供应链安全** | SBOM、签名验证、漏洞扫描、来源证明与冷却期 | 高 |
+| **生态规模** | 可用包/模块数量、社区活跃度与商业支持 | 中 |
+| **工具链完整性** | IDE 集成、CI/CD 插件、审计与治理工具覆盖度 | 中 |
 
-## 反例
+### 与其他概念的关系
 
-**反例**：为统一技术栈，强制所有项目使用不擅长特定领域的语言，导致开发效率与运行时性能双重损失。
+- **上位概念**：[Component-based software engineering](https://en.wikipedia.org/wiki/Component-based_software_engineering) 提供基于组件复用的通用方法论；
+- **下位概念**：具体语言生态（JVM、Node.js、Rust、Go、Python、.NET）的复用实践；
+- **依赖概念**：[组件模型](../01-component-models/component-models-reuse.md) 决定语言内组件的封装与组合方式；[接口契约](../02-interface-contracts/interface-contracts-reuse.md) 支撑跨语言/跨服务复用；
+- **映射概念**：各生态的组件模型、包管理器特性与本文件六维评分矩阵形成量化映射。
 
-## 权威来源
+### 解释：为什么需要跨语言生态复用
+
+单一语言难以在所有维度取得最优：Rust 擅长高性能与安全，Python 擅长 AI/数据科学，Go 擅长云原生基础设施，.NET 擅长企业级 IDE 与治理。通过跨语言生态复用，组织可以在**共同契约**（如 gRPC/Protobuf、OpenAPI、WIT）下，将最适合的语言用于最适合的领域，同时通过标准化接口控制集成复杂度。
+
+核心矛盾是：**语言多样性带来领域最优解，但也带来工具链异构、技能分散与供应链攻击面扩大**。因此，跨语言复用必须伴随统一的依赖治理、SBOM 管理与接口契约规范。
+
+### 正例：多语言数据平台
+
+**示例**：
+
+**背景**：某金融科技公司构建实时风控平台。
+
+**做法**：
+
+- 用 Rust 实现高性能规则引擎与网络组件；
+- 用 Python 实现模型训练与特征工程流水线；
+- 用 Go 实现高并发网关与配置中心；
+- 各服务通过 gRPC + Protobuf 共享数据契约，使用统一的 SLSA/SBOM 流程管理依赖。
+
+**效果**：在性能、算法迭代速度与运维成本之间取得平衡，各团队使用最擅长的语言，同时通过接口契约保证集成一致性。
+
+### 反例：为统一技术栈强制单一语言
+
+**场景**：某企业要求所有新项目使用 Java，即使实时计算与数据科学团队明显更适合 Scala/Python。
+
+**后果**：
+
+- 实时计算组件被迫用 Java 重写，丢失 Scala 的函数式抽象与 Spark 原生生态优势；
+- 数据科学家用 Java 写算法原型，迭代速度下降 50% 以上；
+- 团队士气下降，优秀人才流失。
+
+**正确做法**：在统一接口契约、安全治理与 CI/CD 标准的前提下，允许团队根据领域特征选择最优语言。
+
+### 形式化分析：语言生态选型决策树
+
+```mermaid
+flowchart TD
+    Start([语言生态选型]) --> Q1{是否需要零开销泛型?}
+    Q1 -->|是| Rust[Rust / C++]
+    Q1 -->|否| Q2{是否云原生基础设施?}
+    Q2 -->|是| Go[Go]
+    Q2 -->|否| Q3{是否 AI/数据科学?}
+    Q3 -->|是| Python[Python]
+    Q3 -->|否| Q4{是否企业级 IDE 与治理?}
+    Q4 -->|是| DOTNET[.NET]
+    Q4 -->|否| Q5{是否最大生态库覆盖?}
+    Q5 -->|是| NodeJVM[Node.js / JVM]
+    Q5 -->|否| Rust2[Rust]
+```
+
+该决策树与正文第 10 节的选型决策树、第 8 节的六维总对比矩阵相互印证。
+
+### 权威来源
 
 > **权威来源**:
 >
-> - [Rust](https://www.rust-lang.org)
-> - [CNCF](https://www.cncf.io)
-> - 核查日期：2026-07-07
+> - [Component-based software engineering — Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
+> - [Rust Programming Language](https://www.rust-lang.org/) — 官方站点
+> - [The Go Programming Language](https://go.dev/) — 官方站点
+> - [Python.org](https://www.python.org/) — 官方站点
+> - [Node.js](https://nodejs.org/) — 官方站点
+> - [.NET](https://dotnet.microsoft.com/) — 官方站点
+> - [OpenJDK](https://openjdk.org/) — Java 官方
+> - [Sonatype 2026 State of the Software Supply Chain Report](https://www.sonatype.com/state-of-the-software-supply-chain) — 供应链安全趋势
+> - [OpenSSF Scorecard](https://scorecard.dev/) — 开源安全基线
+>
+> **核查日期**: 2026-07-07
 
-## 分析
+### 交叉引用
 
-**分析**：语言生态复用不是追求单一语言，而是在共同接口与数据契约下发挥各语言优势。
+- [组件模型与架构复用](../01-component-models/component-models-reuse.md) — 语言内组件模型对比
+- [接口契约与架构复用](../02-interface-contracts/interface-contracts-reuse.md) — 跨语言复用的接口契约
+- [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
+- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系总览

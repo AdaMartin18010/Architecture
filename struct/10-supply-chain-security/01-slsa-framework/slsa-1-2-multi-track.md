@@ -1,9 +1,10 @@
 # SLSA 1.2 Multi-Track 深度解析
 
-> **版本**: 2026-06-08
+> **版本**: 2026-07-07
 > **权威来源**: SLSA Specification v1.2 (slsa.dev), OpenSSF Active Workstreams
 > **定位**: Phase 4（2027-Q2）供应链安全核心交付物，建立三轨道 × L1-L3 的复用信任矩阵
 > **交叉引用**: `struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
+> **历史文件**: [`_HISTORICAL_slsa-1-1-1-2-update.md`](./_HISTORICAL_slsa-1-1-1-2-update.md)、[`_HISTORICAL_slsa-1-2-multi-track-update.md`](./_HISTORICAL_slsa-1-2-multi-track-update.md)（内容已合并或过时，仅作存档）
 
 ---
 
@@ -259,20 +260,3 @@ flowchart LR
 
 > 最后更新: 2026-06-08
 > 关联文件: `slsa-reuse-boundaries.md`, `slsa-1-1-1-2-update.md`, `slsa-1-2-multi-track-update.md`
-
-
----
-
-## 补充说明：SLSA 1.2 Multi-Track 深度解析
-
-## 概念定义
-
-**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。
-
-## 示例
-
-**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。
-
-## 反例
-
-**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，无法达到 SLSA L1。

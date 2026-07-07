@@ -1,7 +1,7 @@
 # AI 概率契约（Probabilistic Contract）框架
 
 > **定位**：为 AI 原生复用提供可验证的统计信任边界，将 LLM/模型输出的不确定性纳入架构治理与 SLA。
-> **版本**：2026-06-12
+> **版本**：2026-07-07
 > **适用范围**：`struct/12-ai-native-reuse/05-probabilistic-contracts/`
 
 ---
@@ -14,6 +14,15 @@
     - [1.1 概率契约四元组 ⟨f, X, Y, γ⟩](#11-概率契约四元组-f-x-y-γ)
     - [1.2 契约满足条件](#12-契约满足条件)
     - [1.3 预测集合与 Conformal 边界](#13-预测集合与-conformal-边界)
+    - [1.4 浓度不等式：Hoeffding 与 Bernstein 边界](#14-浓度不等式hoeffding-与-bernstein-边界)
+      - [1.4.1 Hoeffding 边界](#141-hoeffding-边界)
+      - [1.4.2 Bernstein 边界](#142-bernstein-边界)
+      - [1.4.3 边界对比矩阵](#143-边界对比矩阵)
+      - [1.4.4 样本量计算示例](#144-样本量计算示例)
+    - [1.5 覆盖保证示例](#15-覆盖保证示例)
+      - [Conformal Prediction 流程图](#conformal-prediction-流程图)
+      - [示例 1：代码生成任务的预测集合](#示例-1代码生成任务的预测集合)
+      - [示例 2：SQL 生成服务的覆盖率监控](#示例-2sql-生成服务的覆盖率监控)
   - [2. 置信度函数 γ(x) 设计指南](#2-置信度函数-γx-设计指南)
     - [2.1 输入复杂度](#21-输入复杂度)
     - [2.2 领域熟悉度](#22-领域熟悉度)
@@ -26,13 +35,20 @@
     - [4.1 硬阈值（Hard Threshold）](#41-硬阈值hard-threshold)
     - [4.2 软阈值（Soft Threshold）](#42-软阈值soft-threshold)
     - [4.3 人在回路阈值（Human-in-the-Loop Threshold）](#43-人在回路阈值human-in-the-loop-threshold)
+    - [4.4 违约处理决策树](#44-违约处理决策树)
   - [5. 与 SLA/SLO 的转换规则](#5-与-slaslo-的转换规则)
     - [5.1 转换公式](#51-转换公式)
     - [5.2 转换示例](#52-转换示例)
   - [6. 与布尔契约、Design-by-Contract 的区别](#6-与布尔契约design-by-contract-的区别)
   - [7. 相关公理与定理](#7-相关公理与定理)
-  - [8. 参考文献](#8-参考文献)
+  - [8. 误用反例](#8-误用反例)
+    - [反例 1：将概率契约当作布尔契约使用](#反例-1将概率契约当作布尔契约使用)
+    - [反例 2：忽略可交换性假设导致覆盖保证失效](#反例-2忽略可交换性假设导致覆盖保证失效)
+    - [反例 3：样本量不足导致置信区间过宽](#反例-3样本量不足导致置信区间过宽)
+  - [9. 参考文献与权威来源](#9-参考文献与权威来源)
+  - [10. 交叉引用](#10-交叉引用)
   - [补充说明：AI 概率契约（Probabilistic Contract）框架](#补充说明ai-概率契约probabilistic-contract框架)
+  - [概念定义](#概念定义)
   - [示例](#示例)
   - [反例](#反例)
   - [权威来源](#权威来源)
@@ -99,6 +115,126 @@ s(x, y) = p(x)       若 y 错误
 ```
 
 `p(x)` 为模型输出的正确性概率。Conformal 阈值 `q` 取校准集非一致性分数的 `(1 − α)` 分位数，由此得到接受/拒绝/不确定三种决策。
+
+### 1.4 浓度不等式：Hoeffding 与 Bernstein 边界
+
+在实际部署中，我们只能基于有限样本 `n` 估计经验覆盖率 `p̂`。浓度不等式（Concentration Inequalities）提供了样本覆盖率与真实覆盖率之间偏差的概率上界，是概率契约可验证性的数学基础。
+
+#### 1.4.1 Hoeffding 边界
+
+设 `X₁, X₂, ..., Xₙ` 为独立同分布的伯努利随机变量，`P(Xᵢ = 1) = p`，经验均值为 `p̂ = (1/n)ΣXᵢ`。则对任意 `ε > 0`：
+
+```text
+P(|p̂ − p| ≥ ε) ≤ 2 exp(−2nε²)
+```
+
+等价地，置信水平 `1 − δ` 下的置信区间为：
+
+```text
+p ∈ [p̂ − √(ln(2/δ) / 2n), p̂ + √(ln(2/δ) / 2n)]
+```
+
+**适用场景**：对任何有界随机变量都成立，不依赖分布假设，是最保守但最通用的边界。
+
+#### 1.4.2 Bernstein 边界
+
+当已知随机变量的方差上界 `σ²` 时，Bernstein 边界可以给出更紧的估计：
+
+```text
+P(|p̂ − p| ≥ ε) ≤ 2 exp( − nε² / (2σ² + 2Mε/3) )
+```
+
+其中 `M` 是随机变量的绝对上界（对伯努利变量 `M = 1`）。
+
+**适用场景**：当模型输出的置信度分布已知或可通过校准集估计方差时，Bernstein 边界通常比 Hoeffding 更紧，需要的样本量更少。
+
+#### 1.4.3 边界对比矩阵
+
+| 边界 | 分布假设 | 所需信息 | 样本效率 | 适用场景 |
+|------|---------|---------|---------|---------|
+| Hoeffding | 有界变量，无其他假设 | 上界 M | 保守 | 黑盒模型、无分布信息 |
+| Bernstein | 有界变量 + 方差上界 | M 与 σ² | 较紧 | 白盒/灰盒模型、可估计方差 |
+| Chernoff | 独立同分布伯努利 | 仅 p | 紧 | 二元正确性指标 |
+| Clopper-Pearson | 二项分布 | 成功/失败次数 | 精确 | 小样本、高可信场景 |
+
+#### 1.4.4 样本量计算示例
+
+假设概率契约要求 `γ = 0.95`，允许的估计误差 `ε = 0.02`，置信水平 `1 − δ = 0.99`（即 `δ = 0.01`）。使用 Hoeffding 边界：
+
+```text
+n ≥ ln(2/δ) / (2ε²)
+n ≥ ln(200) / (2 × 0.0004)
+n ≥ 5.30 / 0.0008
+n ≥ 6,625
+```
+
+因此，至少需要约 **6,625** 个独立样本，才能以 99% 的置信度确认经验覆盖率 `p̂` 与真实覆盖率 `p` 的偏差不超过 ±2%。
+
+若使用 Bernstein 边界且估计方差 `σ² = 0.04`：
+
+```text
+n ≥ (2σ² + 2Mε/3) × ln(2/δ) / ε²
+n ≥ (0.08 + 0.0133) × 5.30 / 0.0004
+n ≥ 0.0933 × 13,250
+n ≥ 1,236
+```
+
+在方差信息可用的情况下，样本量需求从 6,625 降至约 **1,236**，显著降低校准成本。
+
+### 1.5 覆盖保证示例
+
+#### Conformal Prediction 流程图
+
+```mermaid
+flowchart TD
+    A[收集校准数据集 D_cal] --> B[训练模型或获取基础模型]
+    B --> C[计算非一致性分数 s(x, y)]
+    C --> D[确定目标错误率 α]
+    D --> E[计算分位数阈值 q = quantile(1−α)]
+    E --> F[对新输入 x 生成候选集合]
+    F --> G{候选 y 的 s(x, y) ≤ q?}
+    G -->|是| H[纳入预测集合 C(x)]
+    G -->|否| I[排除]
+    H --> J[输出 C(x) 并声明 P(y ∈ C(x)) ≥ 1−α]
+```
+
+#### 示例 1：代码生成任务的预测集合
+
+**背景**：某 LLM 代码生成服务承诺为 Python 函数生成任务提供 `γ = 0.90` 的正确性保证。
+
+**实现**：
+
+1. 使用 Split Conformal Prediction，在 1,000 个校准样本上计算非一致性分数。
+2. 选择 `α = 0.10`，得到 conformal 阈值 `q`。
+3. 对于新输入 `x`，模型输出 5 个候选代码片段，每个候选的非一致性分数 `s(x, yᵢ)` 与 `q` 比较。
+4. 最终预测集合 `C(x)` 包含所有分数 ≤ `q` 的候选。
+
+**结果**：
+
+- 若 `C(x)` 包含 1 个候选：直接输出。
+- 若 `C(x)` 包含多个候选：返回候选列表，要求开发者选择或触发人在回路。
+- 若 `C(x)` 为空：拒绝生成，触发模型重训或 Prompt 调整。
+
+**保证**：在可交换性假设下，`P(y_true ∈ C(x)) ≥ 0.90`。
+
+#### 示例 2：SQL 生成服务的覆盖率监控
+
+**背景**：SQL 生成服务承诺语法与执行结果正确率 `γ = 0.95`。
+
+**监控指标**：
+
+```text
+empirical_coverage = (# 正确调用) / (# 总调用)
+confidence_interval = [p̂ − ε, p̂ + ε]   （使用 Hoeffding 或 Bernstein）
+```
+
+**决策规则**：
+
+| 条件 | 动作 |
+|------|------|
+| `empirical_coverage ≥ 0.95` 且 CI 下限 ≥ 0.93 | 继续服务 |
+| `0.93 ≤ empirical_coverage < 0.95` | 软违约：增加人在回路比例 |
+| `empirical_coverage < 0.93` | 硬违约：熔断并重新校准 |
 
 ---
 
@@ -255,6 +391,23 @@ HitL Trigger:  γ(x) < θ_hitl  OR  C(x) = {0, 1}
 | 代码审查 | 0.75 |
 | 文档生成 | 0.60 |
 
+### 4.4 违约处理决策树
+
+```mermaid
+flowchart TD
+    A[运行时调用 AI 功能] --> B[计算经验覆盖率 p̂]
+    B --> C{是否 Hard Breach?}
+    C -->|是| D[立即熔断]
+    C -->|否| E{是否 Soft Breach?}
+    E -->|是| F[增加验证/重新采样]
+    E -->|否| G{是否 HitL Trigger?}
+    G -->|是| H[引入人工审查]
+    G -->|否| I[正常输出]
+    D --> J[告警并启动重新校准]
+    F --> K[记录并调整置信度]
+    H --> L[人工确认后放行或拒绝]
+```
+
 ---
 
 ## 5. 与 SLA/SLO 的转换规则
@@ -344,7 +497,65 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 
 ---
 
-## 8. 参考文献
+## 8. 误用反例
+
+### 反例 1：将概率契约当作布尔契约使用
+
+**场景**：某金融系统将 LLM 信用评分模型输出的“通过/拒绝”二值结果直接接入自动审批流程，并宣称“模型准确率 95%”。
+
+**问题**：
+
+1. 95% 准确率意味着每 20 个决策中仍有 1 个可能错误，在高风险金融场景中不可接受。
+2. 没有为剩余的 5% 错误设计熔断、人在回路或降级路径。
+3. 当输入分布发生漂移（如经济周期变化）时，95% 的准确率假设可能迅速失效。
+
+**后果**：错误审批导致坏账、合规罚款、声誉损失。
+
+**避免建议**：
+
+- 将自动审批仅限制在置信度 `γ(x) ≥ θ_hitl` 且预测集合大小为 1 的场景。
+- 对 `γ(x)` 较低或预测集合包含多个候选的场景，强制人工复核。
+- 使用 Hoeffding/Bernstein 边界持续监控真实准确率，并在置信区间下界跌破阈值时熔断。
+
+### 反例 2：忽略可交换性假设导致覆盖保证失效
+
+**场景**：某医疗影像诊断系统使用 Split Conformal Prediction 构建预测集合，并承诺 `1 − α = 0.95` 的覆盖保证。但该系统将训练集、校准集、测试集按时间顺序切分，而未检查时间漂移。
+
+**问题**：
+
+1. Conformal Prediction 的边际覆盖保证依赖于样本的可交换性（exchangeability）。
+2. 医疗设备升级、患者群体变化、季节性疾病分布变化都会破坏可交换性。
+3. 系统在部署后 6 个月未重新校准，实际覆盖率跌至 0.82，但团队仍按 0.95 报告。
+
+**后果**：漏诊率上升，患者安全风险增加，监管机构介入。
+
+**避免建议**：
+
+- 在应用 Conformal Prediction 前，使用统计检验（如 KS 检验、PSI）验证训练/校准/部署分布的可交换性。
+- 对非交换场景使用 **Adaptive Conformal Inference（ACI）** 或 **Conformal Prediction under Distribution Shift** 方法进行在线校正。
+- 设定重新校准周期（如每月或每 1,000 次调用），并监控经验覆盖率的趋势。
+
+### 反例 3：样本量不足导致置信区间过宽
+
+**场景**：某团队为新上线的代码补全功能声明 `γ = 0.90`，但仅使用 50 个样本进行校准。
+
+**问题**：
+
+- 使用 Hoeffding 边界计算 99% 置信区间：`ε = √(ln(2/0.01) / (2×50)) ≈ 0.24`。
+- 即真实覆盖率可能在 `[0.66, 0.90]` 之间，区间过宽无法证明契约满足。
+- 但团队仅报告点估计 `p̂ = 0.90`，误导下游系统认为契约已被满足。
+
+**后果**：下游系统基于不可靠的契约进行自动化决策，导致错误累积。
+
+**避免建议**：
+
+- 在声明契约前，先使用 Hoeffding 或 Bernstein 边界计算所需最小样本量。
+- 在监控仪表板中同时展示点估计、置信区间、样本量与可交换性假设状态。
+- 当置信区间宽度超过业务容忍度时，增加样本量或降低声明的 `γ`。
+
+---
+
+## 9. 参考文献与权威来源
 
 1. Vovk, V., Gammerman, A., & Shafer, G. (2005). *Algorithmic Learning in a Random World*. Springer.
 2. Angelopoulos, A. N., & Bates, S. (2021). A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification. *arXiv:2107.07511*.
@@ -352,14 +563,41 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 4. MCP Specification 2025-11-25.
 5. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*.
 
+> **权威来源**:
+>
+> - [Conformal Prediction - Wikipedia](https://en.wikipedia.org/wiki/Conformal_prediction) — 百科定义与方法概述
+> - [Conformal Prediction: A Gentle Introduction](https://arxiv.org/abs/2107.07511) — Angelopoulos & Bates (2021)
+> - [Hoeffding's Inequality - Wikipedia](https://en.wikipedia.org/wiki/Hoeffding%27s_inequality) — 浓度不等式
+> - [Bernstein Inequalities - Wikipedia](https://en.wikipedia.org/wiki/Bernstein_inequalities) — Bernstein 边界
+> - [Model Context Protocol Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/) — MCP 官方规范
+> - [Design by Contract - Wikipedia](https://en.wikipedia.org/wiki/Design_by_contract) — DbC 基础
+>
+> **核查日期**: 2026-07-07
+
+---
+
+## 10. 交叉引用
+
+- Conformal Prediction 与形式化验证的交叉见 [`../07-conformal-prediction/cp-formal-verification.md`](../07-conformal-prediction/cp-formal-verification.md)
+- MCP 协议规范见 [`../01-mcp-protocol/mcp-2025-11-25-authoritative.md`](../01-mcp-protocol/mcp-2025-11-25-authoritative.md)
+- A2A 协议规范见 [`../02-a2a-protocol/a2a-v1-authoritative.md`](../02-a2a-protocol/a2a-v1-authoritative.md)
+- Agent 组合与不确定性组合见 [`../03-agentic-infrastructure/llm-agent-composition.md`](../03-agentic-infrastructure/llm-agent-composition.md)
+- 监控指标与运行时验证见 [`./monitoring-metrics.md`](./monitoring-metrics.md)
+- OWASP LLM 安全映射见 [`./owasp-llm-mcp-security.md`](./owasp-llm-mcp-security.md)
+- AI SLA 模板见 [`./templates/ai-sla-template.md`](./templates/ai-sla-template.md)
+- 校准报告模板见 [`./templates/calibration-report-template.md`](./templates/calibration-report-template.md)
 
 ---
 
 ## 补充说明：AI 概率契约（Probabilistic Contract）框架
 
+## 概念定义
+
+**定义**：概率契约（Probabilistic Contract）为 AI 服务定义输出质量边界（如准确率、延迟、成本）的概率承诺，并通过监测与校准保证契约可信度。
+
 ## 示例
 
-**示例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
+**正例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
 
 ## 反例
 
@@ -369,6 +607,6 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 
 > **权威来源**:
 >
-> - [Conformal Prediction](https://arxiv.org/abs/2107.07511)
+> - [Conformal Prediction](https://en.wikipedia.org/wiki/Conformal_prediction)
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
 > - 核查日期：2026-07-07

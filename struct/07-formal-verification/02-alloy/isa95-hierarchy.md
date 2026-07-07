@@ -23,7 +23,14 @@
   - [4. 断言与验证](#4-断言与验证)
   - [5. 反例教学：跳层引用的危害](#5-反例教学跳层引用的危害)
   - [6. 与工业 IoT/OT-IT 的交叉引用](#6-与工业-iotot-it-的交叉引用)
-  - [7. 权威来源](#7-权威来源)
+  - [8. Alloy 命令模板与预期输出](#8-alloy-命令模板与预期输出)
+    - [8.1 检查命令](#81-检查命令)
+    - [8.2 模拟命令](#82-模拟命令)
+    - [8.3 断言深度解释](#83-断言深度解释)
+    - [8.4 反例可视化](#84-反例可视化)
+    - [8.5 边界条件与扩展](#85-边界条件与扩展)
+    - [8.6 延伸阅读](#86-延伸阅读)
+  - [10. 权威来源](#10-权威来源)
   - [补充说明：T14: ISA-95 资源层次一致性验证 (Alloy)](#补充说明t14-isa-95-资源层次一致性验证-alloy)
   - [示例](#示例)
   - [反例](#反例)
@@ -167,7 +174,74 @@ Resource: "ERP_SAP" (EnterpriseResource, L4)
 
 ---
 
-## 7. 权威来源
+## 8. Alloy 命令模板与预期输出
+
+### 8.1 检查命令
+
+```alloy
+check AllParentsAreAdjacent for 3
+check CrossLayerRequiresInterface for 3 but 4 InterfaceDef
+check AcyclicResourceHierarchy for 3
+check ProcessCellAtL2OrL3 for 3 but 2 ProcessCell
+```
+
+**命令说明**：
+
+| 命令 | 搜索空间 | 验证目标 |
+|------|----------|----------|
+| `check AllParentsAreAdjacent for 3` | 每层最多 3 个 `Resource` | 父子节点必须位于相邻层 |
+| `check CrossLayerRequiresInterface for 3 but 4 InterfaceDef` | 最多 4 个接口定义 | 非相邻层引用必须通过接口 |
+| `check AcyclicResourceHierarchy for 3` | 同上 | 资源层次无环 |
+| `check ProcessCellAtL2OrL3 for 3 but 2 ProcessCell` | 最多 2 个 ProcessCell | ProcessCell 仅允许在 L2/L3 |
+
+### 8.2 模拟命令
+
+```alloy
+run ShowValidHierarchy for 3 but 4 InterfaceDef, 2 ProcessCell
+```
+
+该命令生成一个合法的 ISA-95 资源层次实例，要求存在从 L4 到 L0 的完整路径、至少一个包含 ≥2 个资源的 ProcessCell。
+
+### 8.3 断言深度解释
+
+- **AllParentsAreAdjacent**：确保 ISA-95 五层金字塔结构的严格性。失败时 Alloy 会生成例如 `ControlModuleResource$0` 以 `AreaResource$1` 为父节点的反例，即 L0 资源直接挂接到 L3 资源。
+- **CrossLayerRequiresInterface**：失败时反例会显示两个非相邻层资源之间存在 `children`/`parent` 关系，但没有 `InterfaceDef` 连接。这对应真实系统中的“ERP 直接读 PLC 寄存器”。
+- **AcyclicResourceHierarchy**：防止配置错误导致的逻辑环。虽然 `parent` 字段是 `lone`（最多一个），但 `children` 集合仍可能通过其他关系形成环。
+
+### 8.4 反例可视化
+
+临时注释 `F2` 后执行：
+
+```alloy
+run { some r: Resource | SkipLevelParent[r] } for 3
+```
+
+可能得到：
+
+```text
+EnterpriseResource$0 (L4)
+  └── parent: EquipmentModuleResource$1 (L1)
+```
+
+这违反了 ISA-95 的层次原则，真实后果包括：安全策略绕过、语义/时间尺度失配、运维追溯断裂。
+
+### 8.5 边界条件与扩展
+
+- **Scope 边界**：ISA-95 五层深度固定，小 scope 即可覆盖绝大多数结构错误。
+- **多父节点**：当前 `parent: lone Resource` 禁止一个资源拥有多个父节点。若需建模冗余 PLC 被多个 Area 共享，可将 `parent` 改为 `set Resource` 并增加“共享资源必须显式声明”约束。
+- **协议约束**：当前 `InterfaceDef` 支持 OPC UA、MQTT、REST API、Modbus TCP。可根据项目实际补充 Profinet、EtherCAT 等协议签名。
+
+### 8.6 延伸阅读
+
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- ANSI/ISA-95.00.01-2010 / IEC 62264-1. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
+- IEC 62443. <https://webstore.iec.ch/publication/66912>
+
+---
+
+## 10. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 建模方法论。
 2. ANSI/ISA-95.00.01-2010 / IEC 62264-1. *Enterprise-Control System Integration — Part 1: Models and Terminology*. —— ISA-95 功能层次模型与资源层次结构的权威定义。

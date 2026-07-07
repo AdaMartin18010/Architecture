@@ -4,7 +4,7 @@
 > **定位**: 应用架构层（Level 2）—— 微服务粒度边界、复用模式与治理实践
 > **对齐标准**: CNCF Cloud Native Trail Map, NIST SP 800-204, ISO/IEC 12207:2026
 > **状态**: ✅ 已完成（Phase A 深化）
-> **字数**: ~5000字
+> **字数**: ~6500字
 
 ---
 
@@ -12,6 +12,14 @@
 
 - [微服务架构复用模式](#微服务架构复用模式)
   - [目录](#目录)
+  - [0. 概念定义](#0-概念定义)
+  - [0.1 属性与特征](#01-属性与特征)
+  - [0.2 关系与映射](#02-关系与映射)
+  - [0.3 解释：微服务复用为什么以契约为核心](#03-解释微服务复用为什么以契约为核心)
+    - [核心矛盾：自治与共享的平衡](#核心矛盾自治与共享的平衡)
+    - [契约的多层含义](#契约的多层含义)
+    - [Bounded Context 与 API 版本策略](#bounded-context-与-api-版本策略)
+    - [分布式单体：微服务复用的典型反例](#分布式单体微服务复用的典型反例)
   - [1. 核心概念](#1-核心概念)
     - [1.1 复用粒度边界](#11-复用粒度边界)
   - [2. 核心复用模式](#2-核心复用模式)
@@ -56,6 +64,92 @@
     - [12.2 Amazon：API 契约驱动的内部服务市场](#122-amazonapi-契约驱动的内部服务市场)
     - [12.3 Uber：从多语言混沌到统一平台的标准化复用](#123-uber从多语言混沌到统一平台的标准化复用)
   - [13. 总结与决策框架](#13-总结与决策框架)
+  - [14. 交叉引用](#14-交叉引用)
+  - [15. 微服务复用架构与限界上下文 Mermaid 图](#15-微服务复用架构与限界上下文-mermaid-图)
+    - [15.1 基于服务目录的微服务复用拓扑](#151-基于服务目录的微服务复用拓扑)
+    - [15.2 限界上下文映射与服务复用决策树](#152-限界上下文映射与服务复用决策树)
+
+## 0. 概念定义
+
+**定义**：微服务架构（Microservices Architecture）是一种将单一应用程序构建为**围绕业务能力组织、可独立部署、自治且通过轻量级通信机制协作**的服务集合的架构风格。从复用视角看，微服务的复用单元不再是源代码或类库，而是**服务契约（Service Contract）**：包括 API 定义、事件 Schema、版本约定、SLA 以及运行实例本身。服务的边界应由领域驱动设计（DDD）中的**限界上下文（Bounded Context）**界定，跨边界的复用只能通过显式契约实现，禁止绕过契约直接共享数据库或代码库。
+
+> **形式化表达**：设服务集合为 $M = \\{m_1, m_2, ..., m_k\\}$，每个服务 $m_i$ 拥有独立的数据存储 $D_i$、部署单元 $U_i$ 与公开契约 $C_i$。微服务复用的合法性条件为：
+> $$\\text{Reuse}(m_i, m_j) \\Leftrightarrow \\exists C_{ij} \\subseteq C_i \\cap C_j \\land \\nexists D_{ij} \\neq \\emptyset \\land \\nexists U_{ij} \\neq \\emptyset$$
+> 即复用仅通过契约交集发生，不允许共享数据存储或部署单元。
+
+Wikipedia 对应条目：
+
+- [Microservices](https://en.wikipedia.org/wiki/Microservices)
+- [Service-oriented architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)
+- [Domain-driven design](https://en.wikipedia.org/wiki/Domain-driven_design)
+
+---
+
+## 0.1 属性与特征
+
+| 属性 | 说明 | 重要性 |
+|---|---|---|
+| **业务能力对齐** | 每个服务对应一个业务能力或限界上下文，边界清晰 | 高 |
+| **独立部署** | 服务可独立构建、测试、发布与回滚，变更影响范围可控 | 高 |
+| **契约驱动** | 服务间交互必须通过 API 契约或事件契约，契约是复用的唯一合法接口 | 高 |
+| **数据自治** | 每个服务拥有独立数据存储，禁止跨服务直接访问数据库 | 高 |
+| **版本化兼容** | 契约变更遵循 SemVer 与向后兼容策略，避免版本地狱 | 高 |
+| **组织映射** | 服务边界与团队边界对齐，平台团队负责高复用性服务 | 中 |
+| **故障隔离** | 单个服务故障不应导致级联崩溃，依赖关系需显式治理 | 中 |
+
+---
+
+## 0.2 关系与映射
+
+| 关系类型 | 目标概念 | 说明 |
+|---|---|---|
+| **上位概念** | [Service-oriented architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture) | 微服务是 SOA 的轻量级、去 ESB 化演进 |
+| **上位概念** | [Distributed computing](https://en.wikipedia.org/wiki/Distributed_computing) | 微服务本质上是遵循特定组织原则的分布式系统 |
+| **下位概念** | Bounded Context、Aggregate、Domain Event | 来自 DDD，用于界定服务边界与内部结构 |
+| **下位概念** | API Gateway、Service Mesh、Sidecar、BFF | 支撑微服务通信与横切关注点复用的技术模式 |
+| **等价/映射概念** | Modular Monolith | 模块化单体是微服务的前置演化形态，二者在内部边界上同构 |
+| **依赖概念** | Serverless / FaaS | 微服务可进一步拆分为事件驱动的函数，或反过来由函数组合成服务 |
+| **依赖概念** | Event-Driven Architecture | 事件驱动是微服务解耦的核心机制之一 |
+| **映射概念** | NIST SP 800-204 | 定义微服务安全策略与服务间通信复用约束 |
+
+---
+
+## 0.3 解释：微服务复用为什么以契约为核心
+
+微服务架构将系统拆分为自治服务后，复用的最大障碍不再是"代码能否共享"，而是"服务能否在保持独立演进的同时被安全复用"。代码级复用（如共享库）在微服务中会引发版本依赖、语言锁定和部署耦合；因此，微服务的复用必须退回到**契约级复用**。
+
+### 核心矛盾：自治与共享的平衡
+
+微服务强调每个服务拥有独立的数据、团队和发布节奏。如果两个服务共享代码库或数据库，它们的边界就被人为打通，自治性随之丧失。复用的正确方式是通过**显式、稳定、可验证的契约**（API、事件 Schema、SLA）实现"松耦合的共享"。
+
+### 契约的多层含义
+
+| 契约层级 | 示例 | 复用含义 |
+|---|---|---|
+| 协议契约 | REST / gRPC / GraphQL | 决定消费者与服务的技术交互方式 |
+| 接口契约 | OpenAPI / Protobuf | 生成类型安全的客户端与服务器 Stub |
+| 数据契约 | JSON Schema / Avro | 保证跨服务的数据语义一致 |
+| 行为契约 | Pact / CDC | 在 CI 中验证提供者变更不会破坏消费者 |
+| 运维契约 | SLA / SLO / 错误预算 | 定义复用服务的可用性与支持责任 |
+
+### Bounded Context 与 API 版本策略
+
+限界上下文是微服务边界的领域语义基础。一个 Bounded Context 内的服务共享同一领域语言，跨 Bounded Context 的复用必须通过"发布语言（Published Language）"——即标准化的 API 或事件 Schema。
+
+API 版本策略应遵循：
+
+1. **向后兼容优先**：新增可选字段，不删除、不修改已有字段语义
+2. **SemVer Major 版本**：仅在破坏性变更时提升 Major 版本
+3. **弃用窗口**：旧版本至少保留 6-12 个月，并通过监控确认无消费者后下线
+4. **消费者驱动契约**：由消费者定义期望，提供者在发布前自动验证兼容性
+
+> **定理 M.0** (Contract Stability): 微服务复用的净收益 $R$ 与契约稳定时间 $T_s$ 成正比，与契约消费者数量 $N$ 成正比，即 $R \\propto T_s \\times N$。
+
+### 分布式单体：微服务复用的典型反例
+
+当多个服务在物理上独立部署，但逻辑上通过共享数据库、同步调用链或共享代码库高度耦合时，就形成了"分布式单体"。这种反例的危害在于：团队承担了微服务的运维复杂度（多服务监控、多流水线、分布式调试），却未获得微服务的自治与复用收益。任何变更仍需协调多个服务同时发布，复用契约形同虚设。避免分布式单体的关键在于：每个服务必须拥有独立的数据存储，服务间交互必须通过 API 或事件契约，禁止绕过契约直接访问对方数据。
+
+---
 
 ## 1. 核心概念
 
@@ -526,26 +620,84 @@ Uber 的早期快速增长导致技术栈极度分散（Python、Node.js、Go、
 
 ---
 
-> **版本**: 2026-06-10
-> **最后更新**: 2026-06-10
-> **状态**: ✅ 已完成（Phase A 深化）
-> **字数**: ~5200字
+---
+
+## 14. 交叉引用
+
+- [01 分层架构复用模式](../01-layered-architecture/layered-architecture-reuse.md)：微服务内部仍可保留 Clean / Onion 分层
+- [04 Serverless 架构复用模式](../04-serverless/serverless-reuse-patterns.md)：微服务与 Serverless/FaaS 的混合复用策略
+- [06 事件驱动架构复用模式](../06-event-driven/reuse-patterns.md)：事件驱动作为微服务解耦与复用的核心机制
+- [08 服务网格通信模式](../08-service-mesh/service-mesh-communication-patterns.md)：服务网格对微服务通信模式的复用
+- [09 EDA/CQRS 事件溯源模式](../09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md)：微服务中的 CQRS 与 Event Sourcing 复用
+- [11 IDP 实践](../11-idp-practices/backstage-port-cortex.md)：服务目录与内部开发者平台对微服务复用的治理支撑
+
+---
+
+## 15. 微服务复用架构与限界上下文 Mermaid 图
+
+### 15.1 基于服务目录的微服务复用拓扑
+
+```mermaid
+graph TB
+    subgraph 消费者
+        Web[Web App]
+        Mobile[iOS/Android]
+        Partner[Partner API]
+    end
+    GW[API Gateway] -->|路由/限流/认证| Web & Mobile & Partner
+    subgraph 内部服务市场
+        direction TB
+        Catalog[Service Catalog<br/>Backstage / Port]
+        BC1[用户服务<br/>Bounded Context: User]
+        BC2[订单服务<br/>Bounded Context: Order]
+        BC3[支付服务<br/>Bounded Context: Payment]
+        BC4[库存服务<br/>Bounded Context: Inventory]
+    end
+    GW --> BC1 & BC2 & BC3 & BC4
+    BC2 -->|REST/gRPC + OpenAPI| BC3
+    BC2 -->|Domain Event| BC4
+    BC3 -->|Domain Event| BC4
+    Catalog -.->|发现/文档/依赖图谱| BC1 & BC2 & BC3 & BC4
+```
+
+### 15.2 限界上下文映射与服务复用决策树
+
+```mermaid
+flowchart TD
+    Start([识别业务能力]) --> Q1{是否属于同一<br/>Bounded Context?}
+    Q1 -->|是| A1[同一微服务内复用<br/>共享内核 / 内部模块]
+    Q1 -->|否| Q2{是否需要强一致性?}
+    Q2 -->|是| A2[编排式 Saga +<br/>显式 API 契约]
+    Q2 -->|否| Q3{是否需要一对多通知?}
+    Q3 -->|是| A3[事件通知 / ECST]
+    Q3 -->|否| A4[同步 API +<br/>Consumer-Driven Contract]
+```
+
+---
+
+> **版本**: 2026-07-07
+> **最后更新**: 2026-07-07
+> **状态**: ✅ 已完成（Phase A 深化 + 内容要素补全）
+> **字数**: ~6500字
 >
 > 权威来源:
 >
-> - <https://landscape.cncf.io> (CNCF Cloud Native Trail Map, 核查日期: 2026-06-10)
-> - <https://csrc.nist.gov/publications/detail/sp/800-204/final> (NIST SP 800-204 Security Strategies for Microservices-based Application Systems, 核查日期: 2026-06-10)
-> - <https://docs.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer> (Microsoft Azure Architecture Patterns - Anti-Corruption Layer, 核查日期: 2026-06-10)
-> - <https://microservices.io/patterns/> (Microservices.io - Patterns Catalog by Chris Richardson, 核查日期: 2026-06-10)
-> - <https://martinfowler.com/bliki/BoundedContext.html> (Martin Fowler - Bounded Context, 核查日期: 2026-06-10)
-> - <https://istio.io/latest/docs/> (Istio Documentation, 核查日期: 2026-06-10)
-> - <https://linkerd.io/2.14/overview/> (Linkerd Documentation, 核查日期: 2026-06-10)
-> - <https://netflixtechblog.com/> (Netflix Tech Blog - Microservices and Platform Engineering, 核查日期: 2026-06-10)
-> - <https://www.uber.com/en-US/blog/unified-platform/> (Uber Engineering Blog - Unified Platform, 核查日期: 2026-06-10)
-> - <https://docs.pact.io/> (Pact - Consumer Driven Contracts, 核查日期: 2026-06-10)
-> - <https://backstage.io/docs/> (Backstage - Service Catalog and Developer Portal, 核查日期: 2026-06-10)
-> - <https://docs.confluent.io/platform/current/schema-registry/index.html> (Confluent Schema Registry, 核查日期: 2026-06-10)
-> - <https://docs.temporal.io/> (Temporal - Microservices Orchestration Platform, 核查日期: 2026-06-10)
-> - <https://www.apollographql.com/docs/federation/> (Apollo GraphQL Federation, 核查日期: 2026-06-10)
-> - <https://teamtopologies.com/> (Team Topologies - Organizing Business and Technology Teams, 核查日期: 2026-06-10)
+> - [Microservices - Wikipedia](https://en.wikipedia.org/wiki/Microservices) (核查日期: 2026-07-07)
+> - [Service-oriented architecture - Wikipedia](https://en.wikipedia.org/wiki/Service-oriented_architecture) (核查日期: 2026-07-07)
+> - [Domain-driven design - Wikipedia](https://en.wikipedia.org/wiki/Domain-driven_design) (核查日期: 2026-07-07)
+> - <https://landscape.cncf.io> (CNCF Cloud Native Trail Map, 核查日期: 2026-07-07)
+> - <https://csrc.nist.gov/publications/detail/sp/800-204/final> (NIST SP 800-204 Security Strategies for Microservices-based Application Systems, 核查日期: 2026-07-07)
+> - <https://docs.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer> (Microsoft Azure Architecture Patterns - Anti-Corruption Layer, 核查日期: 2026-07-07)
+> - <https://microservices.io/patterns/> (Microservices.io - Patterns Catalog by Chris Richardson, 核查日期: 2026-07-07)
+> - <https://martinfowler.com/bliki/BoundedContext.html> (Martin Fowler - Bounded Context, 核查日期: 2026-07-07)
+> - <https://istio.io/latest/docs/> (Istio Documentation, 核查日期: 2026-07-07)
+> - <https://linkerd.io/2.14/overview/> (Linkerd Documentation, 核查日期: 2026-07-07)
+> - <https://netflixtechblog.com/> (Netflix Tech Blog - Microservices and Platform Engineering, 核查日期: 2026-07-07)
+> - <https://www.uber.com/en-US/blog/unified-platform/> (Uber Engineering Blog - Unified Platform, 核查日期: 2026-07-07)
+> - <https://docs.pact.io/> (Pact - Consumer Driven Contracts, 核查日期: 2026-07-07)
+> - <https://backstage.io/docs/> (Backstage - Service Catalog and Developer Portal, 核查日期: 2026-07-07)
+> - <https://docs.confluent.io/platform/current/schema-registry/index.html> (Confluent Schema Registry, 核查日期: 2026-07-07)
+> - <https://docs.temporal.io/> (Temporal - Microservices Orchestration Platform, 核查日期: 2026-07-07)
+> - <https://www.apollographql.com/docs/federation/> (Apollo GraphQL Federation, 核查日期: 2026-07-07)
+> - <https://teamtopologies.com/> (Team Topologies - Organizing Business and Technology Teams, 核查日期: 2026-07-07)
 > - <https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1492034029> (Sam Newman - Building Microservices, 2nd Edition, O'Reilly Media, 2021)

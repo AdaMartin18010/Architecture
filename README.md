@@ -1,20 +1,22 @@
 # 软件工程架构复用视角 · 结构化知识体系
 
-> **版本**: 2026-06-06 Phase 1 完成
-> **定位**: 将 31 万字源文档转化为结构化、可验证、可输出的知识产品
+> **版本**: 2026-07-07 Phase 1.5 修复中
+> **定位**: 将 ~31 万字源文档转化为结构化、可验证、可输出的知识产品；当前正在进行内容深度补齐、模板污染清理与权威来源对齐
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF 10, SLSA 1.2, IEC 61508, MCP 2025-11-25, A2A v1.0 等 25+ 国际标准
 
 ---
 
 ## 📊 项目规模
 
+> **统计口径**: 截至 2026-07-07；Markdown 按 `.md` 文件计数；字数按中文字符 + 英文词（连续字母）计数；形式化代码按扩展名计数。
+
 | 指标 | 数据 |
 |------|------|
-| **Markdown 文件** | **157** 个 |
-| **形式化规约/代码** | **12** 个（TLA+ × 4, Alloy × 4, Mermaid × 3, Python × 1） |
-| **累计内容** | **~50.2 万字** / **~150 万字符** |
-| **一级主题** | **14** 个（01-13 + 99-reference） |
-| **形式化规约** | TLA+ × 4, Alloy × 4, 公理-定理体系 × 29 |
+| **Markdown 文件** | **309** 个（`struct/` 301 + `view/` 8） |
+| **形式化规约/代码** | **62** 个（TLA+ × 5, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 16, Python × 33） |
+| **累计内容** | **~75.5 万中文字** / **~93.1 万总词** / **~464 万字符** |
+| **一级主题** | **13** 个（01-13）+ **99-reference** 参考层 |
+| **形式化规约** | TLA+ × 5, Alloy × 4, Coq × 2, Isabelle × 2, 公理-定理体系 × 71 |
 | **权威来源对齐** | 25+ 国际标准与行业框架 |
 
 ---
@@ -80,6 +82,7 @@ struct/
 │   ├── 05-metrics-kpi/                 # 四级度量指标体系
 │   ├── 06-up-downgrade-matrix/         # 升降级决策矩阵
 │   ├── 07-policy-automation/           # 07 policy automation
+│   ├── 08-reserved/                    # 预留编号
 │   └── 09-agentic-governance/          # Agentic 治理
 ├── 07-formal-verification/             # 形式化验证
 │   ├── 01-tla-plus/                    # TLA+ 案例库
@@ -143,6 +146,7 @@ struct/
 │   ├── 05-rust-ecosystem/              # Rust 生态
 │   ├── 06-regtech-ai/                  # RegTech AI
 │   ├── 07-green-software/              # 绿色软件
+│   ├── 08-reserved/                    # 预留编号
 │   └── 09-frontier-tracking/           # 前沿跟踪
 └── 99-reference/                       # 参考索引
 │   ├── audit/                          # 审计报告
@@ -172,7 +176,8 @@ struct/
 | TLA+ / Alloy 形式化案例 | [`07-formal-verification/`](struct/07-formal-verification/) |
 | 复用成熟度评估问卷 | [`06-cross-layer-governance/05-metrics-kpi/maturity-assessment-questionnaire.md`](struct/06-cross-layer-governance/05-metrics-kpi/maturity-assessment-questionnaire.md) |
 | 国际标准对齐总览 | [`99-reference/standards-index/master-alignment-matrix.md`](struct/99-reference/standards-index/master-alignment-matrix.md) |
-| 术语中英文对照 | [`99-reference/terminology-crosswalk/terminology-crosswalk.md`](struct/99-reference/terminology-crosswalk/terminology-crosswalk.md) |
+| 术语中英文对照 | [`99-reference/glossary/terminology-crosswalk.md`](struct/99-reference/glossary/terminology-crosswalk.md) |
+| 主术语表 | [`99-reference/glossary/glossary-master.md`](struct/99-reference/glossary/glossary-master.md) |
 
 ---
 
@@ -258,8 +263,8 @@ struct/
 
 ---
 
-> **最后更新**: 2026-06-12（Phase A P0 权威来源对齐修复）
-> **本轮规模**: 新增/更新 ~120 个文件，~46.5 万字
+> **最后更新**: 2026-07-07（Phase A 止血：统计口径与模板污染修复启动）
+> **本轮目标**: 恢复统计真实性、停止模板污染、建立单一真源与清晰导航
 > **维护者**: 软件工程架构复用知识体系项目组
 >
 ## 反例：知识体系项目常见的失败模式
@@ -283,4 +288,4 @@ struct/
 
 ---
 
-> **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v2.md`。
+> **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v3.md`。

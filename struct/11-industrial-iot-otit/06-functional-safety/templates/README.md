@@ -83,22 +83,3 @@ GSN 的 **Away Goals** 允许子系统安全案例引用组件级论证而不嵌
 ---
 
 *文档生成时间：2026-06-06 · 对齐 ISO 26262:2018 / IEC 61508 Ed.3 / GSN*
-
-
----
-
-## 补充说明：功能安全 GSN 模块化安全案例模板
-
-## 反例
-
-**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
-> - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
-> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
-> - 核查日期：2026-07-07

@@ -131,7 +131,84 @@ MODULE <case_name>
 
 ---
 
-## 参考文献
+## 7. 每个案例的 Init / Next / Invariant / Property 规格速查
+
+下表汇总 T06–T10 四个案例的初始状态谓词、下一步关系、核心不变量与活性性质，便于读者快速对照 `.tla` 文件进行 TLC 配置。
+
+| 编号 | Init | Next | 核心不变量 (Safety) | 活性 (Liveness) |
+|------|------|------|---------------------|-----------------|
+| **T06** 支付服务 | `balances ∈ [Accounts→Nat]`，`reservedFunds = 0`，`txStatus = [tx↦"idle"]`，`initialTotalBalance = AccountBalanceTotal` | `∃ tx: CreateTx(tx,...) ∨ Commit(tx) ∨ Abort(tx) ∨ TimeoutAbort(tx)` | `FundConservationInv`、`NoDoubleSpending`、`CommittedBalanceCorrect`、`ReservedFundsConsistent`、`TypeOK` | `AllRequestsProcessed` |
+| **T07** MCP 协商 | `clientState = serverState = "disconnected"`，`agreedCaps = {}`，`networkStatus = "up"`，`messageQueue = <<>>` | `ClientConnect ∨ ServerRespondInit ∨ ClientReceiveInitAck ∨ ServerReceiveNegotiate ∨ ClientActivate ∨ ServerActivate ∨ ClientTerminate ∨ ServerTerminate ∨ NetworkFailure ∨ ClientRetry` | `ActiveImpliesCommonCaps`、`ConsistentProtocolVersion`、`NegotiationSubset`、`ErrorImpliesNetworkDown`、`TerminatedImpliesNoCaps`、`TypeOK` | `EventuallyActive`、`EventuallyTerminatedOrError` |
+| **T08** A2A Task | `taskState = [t↦"submitted"]`，`taskMessages = [t↦<<>>]`，`taskArtifacts = [t↦{}]`，`taskStepCount = [t↦0]` | `StartWork ∨ RequestInput ∨ ProvideInput ∨ CompleteTask ∨ FailTask ∨ CancelTask ∨ TimeoutTask` | `TerminalNoMessages`、`CompletedHasArtifact`、`NonTerminalHasMessages`、`InputRequiredImpliesPending`、`FailedCanceledNoArtifacts`、`CompletedLastMessageIsComplete`、`TypeOK` | `WorkingEventuallyTerminates`、`InputRequiredEventuallyResolved` |
+| **T10** PLCopen 运动 | `powerState = [a↦"Disabled"]`，`moveState = [a↦"Idle"]`，`axisState = [a↦"Disabled"]`，`stepCount = [a↦0]`，所有输出标志为 `FALSE`，ErrorID 为 0 | `PowerEnableOn ∨ PowerEnableReady ∨ PowerEnableError ∨ PowerDisable ∨ PowerDisabled ∨ PowerAxisError ∨ PowerReset ∨ MoveStart ∨ MoveStartError ∨ MoveActivate ∨ MoveComplete ∨ MoveAbort ∨ MoveError ∨ MoveIdle ∨ IncrementStepCount` | `StandstillRequiredForMove`、`ErrorImpliesErrorID`、`PowerStatusConsistency`、`MoveOutputConsistency`、`NoInvalidTransition`、`TypeOK` | `BusyEventuallyTerminates`、`PowerEnableEventuallyStandstill`、`ActiveEventuallyTerminates` |
+
+> **说明**：T10 的完整规约与验证说明位于 `struct/11-industrial-iot-otit/04-plcopen-motion/tla-verification.md`，本表仅提供与案例库索引对应的速查入口。
+
+---
+
+## 8. TLC 验证命令模板与预期结果
+
+### 8.1 命令行调用模板
+
+在使用 [TLA+ Toolbox](https://lamport.azurewebsites.net/tla/toolbox.html) 或命令行工具时，可按以下模板执行模型检查：
+
+```bash
+# 1. 语法检查（SANY）
+java -cp tla2tools.jar tla2sany.SANY payment_service.tla
+
+# 2. TLC 模型检查（以 T06 为例）
+java -cp tla2tools.jar tlc2.TLC -deadlock -config payment_service.cfg payment_service.tla
+```
+
+其中 `.cfg` 文件示例（T06）：
+
+```tla
+CONSTANTS
+    Accounts = {a1, a2, a3}
+    TxIds = {tx1, tx2}
+    MaxAmount = 5
+
+INIT Init
+NEXT Next
+
+INVARIANTS
+    TypeOK
+    FundConservationInv
+    NoDoubleSpending
+    CommittedBalanceCorrect
+    ReservedFundsConsistent
+
+PROPERTIES
+    AllRequestsProcessed
+```
+
+### 8.2 各案例推荐配置与预期输出
+
+| 编号 | 常量赋值 | 预期状态数 | 预期结果 |
+|------|----------|-----------|----------|
+| **T06** | `Accounts={a1,a2,a3}, TxIds={tx1,tx2}, MaxAmount=5, balances=[a1|->10,a2|->10,a3|->10]` | 约 5×10⁴–2×10⁵ 个不同状态（取决于 TLC 优化） | 所有不变量与活性通过，`No error` |
+| **T07** | `AllCapabilities={"tools","resources","prompts"}, ProtocolVersions={"2025-03-26"}, MaxRetries=2` | 约 1×10⁴–5×10⁴ 个不同状态 | 所有不变量与活性通过 |
+| **T08** | `Tasks={t1,t2}, Agents={client,server}, Artifacts={art1,art2}, MaxMessages=5, TimeoutThreshold=10` | 约 1×10⁵–5×10⁵ 个不同状态 | 所有不变量与活性通过 |
+| **T10** | `Axes={axis1}, MaxTimeoutSteps=5, ErrorIDs={0,0x8A01,0x8A02,0x9001}` | 约 890 个不同状态（单轴） | 所有不变量与活性通过 |
+
+> **边界条件**：若 TLC 报告不变量违反，通常意味着：
+>
+> - 遗漏了动作中的状态更新（如 `Abort` 未退回资金）；
+> - 前置条件过弱，允许非法状态转移；
+> - 公平性假设缺失，导致活性反例。
+> 反例轨迹（Error Trace）会精确给出从 `Init` 到违反状态的动作序列，这是形式化方法相较于随机测试的核心优势。
+
+### 8.3 与 Wikipedia 及权威来源的链接
+
+- [TLA+ - Wikipedia](https://en.wikipedia.org/wiki/TLA%2B)
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
+- TLA+ Examples Repository. <https://github.com/tlaplus/Examples>
+- Newcombe et al. (2015). *How Amazon Web Services Uses Formal Methods*. <https://doi.org/10.1145/2699415>
+
+---
+
+## 9. 参考文献
 
 [^1]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 

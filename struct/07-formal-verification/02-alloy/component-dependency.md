@@ -21,7 +21,14 @@
   - [4. 断言与验证策略](#4-断言与验证策略)
   - [5. 循环依赖的危害：反例分析](#5-循环依赖的危害反例分析)
   - [6. 与组件架构复用的交叉引用](#6-与组件架构复用的交叉引用)
-  - [7. 权威来源](#7-权威来源)
+  - [8. Alloy 命令详解与预期输出](#8-alloy-命令详解与预期输出)
+    - [8.1 检查命令（check）](#81-检查命令check)
+    - [8.2 模拟命令（run）](#82-模拟命令run)
+    - [8.3 预期输出](#83-预期输出)
+    - [8.4 反例教学：观察循环依赖](#84-反例教学观察循环依赖)
+    - [8.5 边界条件与扩展](#85-边界条件与扩展)
+    - [8.6 权威来源与延伸阅读](#86-权威来源与延伸阅读)
+  - [10. 权威来源](#10-权威来源)
   - [补充说明：T11: 组件依赖无环性验证 (Alloy)](#补充说明t11-组件依赖无环性验证-alloy)
   - [概念定义](#概念定义)
   - [示例](#示例)
@@ -131,7 +138,80 @@ Component_C -> dependsOn -> Component_A   -- 循环闭合
 
 ---
 
-## 7. 权威来源
+## 8. Alloy 命令详解与预期输出
+
+### 8.1 检查命令（check）
+
+`component-dependency.als` 包含三条 `check` 命令，分别验证组件级、模块级和依赖局部性约束：
+
+```alloy
+check NoCircularDependencies for 5
+check NoCircularModuleImports for 4
+check DependencyLocality for 5 but 3 Module
+```
+
+**命令含义**：
+
+| 命令 | 搜索空间 | 验证目标 |
+|------|----------|----------|
+| `check NoCircularDependencies for 5` | 最多 5 个 `Component` 实例 | 组件依赖图无环 |
+| `check NoCircularModuleImports for 4` | 最多 4 个 `Module` 实例 | 模块导入图无环 |
+| `check DependencyLocality for 5 but 3 Module` | 最多 5 个组件、3 个模块 | 跨模块依赖必须通过导入声明 |
+
+### 8.2 模拟命令（run）
+
+```alloy
+run ShowValidSystem for 5 but 3 Module
+```
+
+该命令要求 Alloy Analyzer 生成一个满足所有 `fact` 的实例，其中至少存在一个包含 ≥2 个组件的模块，且至少有一个组件依赖其他组件。执行后应在可视化视图中看到 DAG 结构的组件依赖图。
+
+### 8.3 预期输出
+
+- **断言成立**：`No counterexample found. Assertion is valid for the given scope.`
+- **run 成功**：生成实例图，节点为 `Component` / `Module`，边为 `dependsOn` / `imports`。
+- **断言失败**：Alloy 会高亮最短反例路径，例如 `Component_A -> Component_B -> Component_A` 的循环边。
+
+### 8.4 反例教学：观察循环依赖
+
+若要主动生成循环依赖反例，可临时注释 `F3` 与 `F4`，并取消注释：
+
+```alloy
+run CyclicDependencyViolation for 4
+```
+
+Alloy 将给出类似下面的最小反例：
+
+```text
+Component$0 dependsOn: {Component$1}
+Component$1 dependsOn: {Component$2}
+Component$2 dependsOn: {Component$0}
+```
+
+该反例清晰展示了“三元循环”。在真实工程中，循环依赖会导致：
+
+1. **构建不可判定**：Maven/Cargo 无法确定编译顺序；
+2. **测试不可隔离**：单元测试需要 mock 整个循环链；
+3. **部署顺序不可确定**：微服务启动时出现级联失败；
+4. **复用退化**：循环中的组件在逻辑上成为“超级组件”。
+
+### 8.5 边界条件与扩展
+
+- **Scope 边界**：`for 5` 不是数学证明，但 Jackson 的“小范围建模”经验表明，结构性错误通常在极小 scope 即可暴露。
+- **接口粒度**：当前 `Interface` / `Implementation` 二分简化了实际 OO 系统。可扩展为 `abstract sig Interface { providedBy: set Implementation }` 以支持多实现。
+- **版本约束**：可引入 `Version` 字段的语义版本约束，验证“依赖版本兼容性”。
+
+### 8.6 权威来源与延伸阅读
+
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- Alloy Analyzer. <https://alloytools.org/download.html>
+- Martin, R. C. *Agile Software Development: Principles, Patterns, and Practices*. <https://www.pearson.com/en-us/subject-catalog/p/agile-software-development-principles-patterns-and-practices/P200000005481>
+
+---
+
+## 10. 权威来源
 
 1. Jackson, D. (2012). *Software Abstractions: Logic, Language, and Analysis* (Revised ed.). MIT Press. —— Alloy 语言与设计哲学的权威教材。
 2. Alloy Tools. <https://alloytools.org> —— MIT Software Design Group 维护的 Alloy 官方主页与文档。

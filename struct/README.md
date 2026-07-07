@@ -1,7 +1,7 @@
 # 软件工程架构复用视角：结构化知识体系
 
-> **版本**: 2026-07-06（Phase 0 网络对齐更新版）
-> **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构
+> **版本**: 2026-07-07（Phase A 止血与基础修复版）
+> **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构；当前正在进行统计口径校准、模板污染清理与内容深度补齐
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 26550:2015, 26566:2026, TOGAF 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, ISA-95, MCP 2025-11-25, A2A v1.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
 > **权威参考**: Carnegie Mellon SEI, USC COCOMO II, ETH Zurich (RustBelt/Prusti), Inria (Aeneas/Coq), NASA RRL
 
@@ -27,7 +27,7 @@
 
 ## 1. 体系概览
 
-本结构将 `view/` 中约 **31 万字** 的 8 份文档，按照 **13 个一级主题**、**约 60 个实际二级主题** 进行系统化重组，形成可独立演进、可交叉引用的知识模块。
+本结构将 `view/` 中约 **31 万字** 的 8 份文档，按照 **13 个一级主题**、**约 60 个实际二级主题** 进行系统化重组，形成可独立演进、可交叉引用的知识模块。当前 `struct/` 实际包含 **301 个 Markdown 文件**，`view/` 包含 **8 个 Markdown 文件**，累计约 **75.5 万中文字 / 93.1 万总词**。
 
 ```text
 软件工程架构复用视角
@@ -214,6 +214,7 @@ struct/
 │   ├── 05-metrics-kpi/                 # 四级度量指标体系
 │   ├── 06-up-downgrade-matrix/         # 升降级决策矩阵
 │   ├── 07-policy-automation/           # 07 policy automation
+│   ├── 08-reserved/                    # 预留编号
 │   └── 09-agentic-governance/          # Agentic 治理
 ├── 07-formal-verification/             # 形式化验证
 │   ├── 01-tla-plus/                    # TLA+ 案例库
@@ -277,17 +278,18 @@ struct/
 │   ├── 05-rust-ecosystem/              # Rust 生态
 │   ├── 06-regtech-ai/                  # RegTech AI
 │   ├── 07-green-software/              # 绿色软件
+│   ├── 08-reserved/                    # 预留编号
 │   └── 09-frontier-tracking/           # 前沿跟踪
 └── 99-reference/                       # 参考索引
 │   ├── audit/                          # 审计报告
 │   ├── chapters/                       # 全书章节框架
 │   ├── external-links/                 # 外部链接
 │   ├── frontier-tracking/              # 前沿跟踪
-│   ├── glossary/                       # 术语表
+│   ├── glossary/                       # 术语表（含主术语表、跨标准对照、公理树）
 │   ├── knowledge-index/                # 知识索引
 │   ├── standards-index/                # 标准索引
-│   ├── templates/                      # 模板
-│   ├── tools/                          # 工具脚本
+│   ├── templates/                      # 写作模板
+│   ├── tools/                          # 工具脚本与模板子目录
 │   └── visualizations/                 # 可视化
 ```
 
@@ -348,6 +350,6 @@ struct/
 
 ---
 
-> **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/external-links/authoritative-sources.md` 中登记。
+> **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/standards-index/authoritative-sources-v3.md` 中登记与复核。
 >
 > 最后更新: 2026-07-07

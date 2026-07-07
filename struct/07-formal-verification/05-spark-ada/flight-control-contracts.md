@@ -30,7 +30,21 @@
     - [5.1 合同级复用](#51-合同级复用)
     - [5.2 证明级复用](#52-证明级复用)
     - [5.3 工具资格证据复用](#53-工具资格证据复用)
-  - [6. 权威来源](#6-权威来源)
+  - [7. 补充 SPARK 契约示例](#7-补充-spark-契约示例)
+    - [7.1 襟翼-模式互锁的完整契约](#71-襟翼-模式互锁的完整契约)
+    - [7.2 高度跟踪循环不变式](#72-高度跟踪循环不变式)
+    - [7.3 Contract\_Cases 的使用](#73-contract_cases-的使用)
+  - [8. DO-333 目标映射详表](#8-do-333-目标映射详表)
+  - [9. GNATprove 形式化验证流程](#9-gnatprove-形式化验证流程)
+    - [9.1 标准工作流](#91-标准工作流)
+    - [9.2 验证条件（VC）分类](#92-验证条件vc分类)
+    - [9.3 证明器配置](#93-证明器配置)
+  - [10. 边界条件与反例](#10-边界条件与反例)
+    - [10.1 算术溢出](#101-算术溢出)
+    - [10.2 循环终止](#102-循环终止)
+    - [10.3 需求遗漏反例](#103-需求遗漏反例)
+    - [10.4 权威来源与延伸阅读](#104-权威来源与延伸阅读)
+  - [11. 权威来源](#11-权威来源)
   - [补充说明：SPARK Ada 飞控软件契约验证案例](#补充说明spark-ada-飞控软件契约验证案例)
   - [反例](#反例)
   - [权威来源](#权威来源)
@@ -532,7 +546,179 @@ DO-330 要求形式化验证工具链本身需经过资格认定。AdaCore SPARK
 
 ---
 
-## 6. 权威来源
+## 7. 补充 SPARK 契约示例
+
+### 7.1 襟翼-模式互锁的完整契约
+
+以下 `Valid_Flap_For_Mode` 函数的后置条件直接对应需求 R.3：
+
+```ada
+function Valid_Flap_For_Mode
+  (Flap_Cmd    : Flap_Angle_Degrees;
+   Target_Mode : AP_Mode) return Boolean
+  with
+    Post => Valid_Flap_For_Mode'Result =
+            (if Target_Mode = Approach then Flap_Cmd <= 20 else True);
+```
+
+GNATprove 会生成验证条件：对于所有满足前置条件的输入，函数返回值与 `if ... then ... else ...` 表达式等价。由于函数实现是直接的结构化返回，证明器通常可自动 discharge。
+
+### 7.2 高度跟踪循环不变式
+
+`Simulate_Altitude_Tracking` 中的循环不变式是证明“高度误差不发散”的关键：
+
+```ada
+pragma Loop_Invariant
+  (abs (Alt - Target_Alt) <= abs (Initial_Alt - Target_Alt));
+```
+
+该不变式要求：
+
+1. **初始化**：`Alt` 初始化为 `Initial_Alt`，不变式显然成立；
+2. **保持**：每次迭代通过 `Compute_Vertical_Speed` 更新 `Alt`，由于控制器增益 $K_p=2$ 且存在饱和限制，新高度误差不会大于初始误差；
+3. **退出**：循环退出时，不变式与退出条件合取可推出后置条件。
+
+若取消该不变式，GNATprove 将无法证明 `abs (Final_Alt - Target_Alt) <= abs (Initial_Alt - Target_Alt)`，因为自动工具无法猜测程序员的“不发散”意图。
+
+### 7.3 Contract_Cases 的使用
+
+`Compute_Next_Mode` 使用 `Contract_Cases` 将后置条件分解为互斥情形：
+
+```ada
+Contract_Cases =>
+  (System_OK = False                 => Compute_Next_Mode'Result = Off,
+   Current_State.Flap_Position > 20  => Compute_Next_Mode'Result /= Approach,
+   Current_State.Current_Alt < 1000  => Compute_Next_Mode'Result /= Altitude_Hold,
+   others                            => True)
+```
+
+GNATprove 会分别验证每个 case：
+
+- 若 `System_OK = False`，函数必须返回 `Off`；
+- 若襟翼位置 > 20，返回结果不能是 `Approach`；
+- 若当前高度 < 1000，返回结果不能是 `Altitude_Hold`；
+- 其他情形无额外限制。
+
+这种分情形契约比单一后置条件更易于自动证明，也更便于审查员逐条对应需求。
+
+---
+
+## 8. DO-333 目标映射详表
+
+DO-333 / ED-216 将形式化方法可替代的 DO-178C 目标分为三类，下表给出 SPARK 契约与具体目标的映射：
+
+| DO-178C / DO-333 目标 | 目标描述 | SPARK 覆盖方式 | 适航证据 |
+|----------------------|---------|---------------|---------|
+| FM.A-1 | 软件需求正确且完整 | 形式化契约精确表达 LLR | `Pre`/`Post` 规格 |
+| FM.A-2 | 软件需求无冲突 | 契约一致性自动证明 | GNATprove 报告 |
+| FM.A-3 | 软件需求可验证 | 每个契约对应可证明的 VC | VC 清单与证明日志 |
+| FM.A-4 | 源代码符合 LLR | `Pre`/`Post` 证明代码实现契约 | 子程序证明报告 |
+| FM.A-5 | 源代码可追踪到 LLR | 契约中的需求标识注释 | 需求追踪矩阵 |
+| FM.A-6 | 源代码符合标准 | SPARK 子集限制与 Ada 标准符合性 | 语言子集分析报告 |
+| FM.A-7 | 形式化方法正确性 | 规范正确、实现正确、工具合格 | DO-330 工具资格包 |
+| FM.A-8 | 测试无法覆盖的方面由形式化方法覆盖 | 溢出、数组越界、信息流等 | 无运行时错误证明 |
+| FM.A-9 | 附加验证目标 | 并发 Ravenscar 分析、任务间无死锁 | 并发分析报告 |
+| FM.A-10 | 形式化方法结果可审查 | 契约、证明日志、反例（如有） | 审定数据包 |
+
+> 注：具体目标编号在不同版本的 DO-333 材料中可能略有差异，实际项目应以 RTCA/EUROCAE 发布的正式标准为准。
+
+---
+
+## 9. GNATprove 形式化验证流程
+
+### 9.1 标准工作流
+
+```bash
+# 1. 语法与 SPARK 子集检查
+gnatprove -P autopilot.gpr --mode=check
+
+# 2. 生成并证明验证条件（默认使用 Alt-Ergo）
+gnatprove -P autopilot.gpr --level=2
+
+# 3. 查看证明报告
+gnatprove -P autopilot.gpr --report=all
+```
+
+### 9.2 验证条件（VC）分类
+
+GNATprove 为每个子程序生成以下类别的 VC：
+
+| VC 类别 | 说明 | 示例 |
+|---------|------|------|
+| **VC_PRE** | 调用点满足被调用子程序的前置条件 | `Compute_Next_Mode` 调用前 `State_Invariant` 成立 |
+| **VC_POST** | 子程序实现满足后置条件 | `Compute_Vertical_Speed` 返回值在 `Min_VS..Max_VS` |
+| **VC_LOOP_INVARIANT** | 循环不变式初始化与保持 | `Simulate_Altitude_Tracking` 的高度误差不发散 |
+| **VC_RANGE** | 数值运算无溢出 | `Altitude_Delta / Integer (Time_To_Reach)` |
+| **VC_DIVISION** | 除数非零 | `Time_To_Reach > 0` 已在前置条件保证 |
+| **VC_INFOFLOW** | 信息流约束满足 `Global`/`Depends` | `Update_Autopilot_State` 的输出依赖正确 |
+
+### 9.3 证明器配置
+
+GNATprove 默认调用 Alt-Ergo，也可配置 Z3、CVC5：
+
+```ada
+-- 在项目配置文件 autopilot.gpr 中
+package Prove is
+   for Proof_Switches ("Ada") use ("--prover=altergo,z3,cvc5", "--timeout=60");
+end Prove;
+```
+
+多证明器可提高自动证明成功率，但也会增加验证时间。
+
+---
+
+## 10. 边界条件与反例
+
+### 10.1 算术溢出
+
+`Calculate_Climb_Rate` 中 `Altitude_Delta / Integer (Time_To_Reach) * 60` 在原始代码中存在潜在溢出风险。虽然当前类型范围较宽，但若 `Altitude_Delta` 接近类型上限，`* 60` 可能溢出。修复方式：
+
+```ada
+Raw_Rate : constant Integer := (Altitude_Delta / Integer (Time_To_Reach)) * 60;
+```
+
+并在前置条件中增加 `abs (Altitude_Delta) <= Max_Altitude_Delta / 60`。GNATprove 的 `VC_RANGE` 会强制开发者显式处理此类边界。
+
+### 10.2 循环终止
+
+`Simulate_Altitude_Tracking` 的循环可能因 `Time_Steps` 过大而不终止。当前前置条件 `Time_Steps <= 1000` 限制了上界，但并未证明循环一定在 `Time_Steps` 内捕获目标高度。更强的规约应引入 **循环变体（Loop Variant）**：
+
+```ada
+pragma Loop_Variant (Decreases => abs (Alt - Target_Alt));
+```
+
+但由于控制器存在超调可能，该变体在当前简化模型中并不单调；工业实践中通常使用 `for` 循环的固定上界作为终止保证。
+
+### 10.3 需求遗漏反例
+
+假设实现者忘记在 `Compute_Next_Mode` 中检查襟翼位置，则 `Contract_Cases` 的第二个 case 将验证失败：
+
+```ada
+-- 错误实现：直接返回 Command 对应的模式
+return Command;
+```
+
+GNATprove 会报告：
+
+```text
+medium: postcondition might fail, cannot prove Compute_Next_Mode'Result /= Approach
+```
+
+这对应 DO-333 中“源代码不符合 LLR”的缺陷，在编码阶段即可捕获。
+
+### 10.4 权威来源与延伸阅读
+
+- [SPARK (programming language) - Wikipedia](https://en.wikipedia.org/wiki/SPARK_(programming_language))
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- [DO-178C - Wikipedia](https://en.wikipedia.org/wiki/DO-178C)
+- AdaCore. *SPARK Pro*. <https://www.adacore.com/sparkpro>
+- RTCA DO-178C / ED-12C. <https://rtca.org/product/do-178c-2/>
+- RTCA DO-333 / ED-216. <https://rtca.org/product/do-333/>
+- Moy et al. (2013). *Testing or Formal Verification: DO-178C Alternatives and Industrial Experience*. <https://doi.org/10.1109/MS.2013.59>
+
+---
+
+## 11. 权威来源
 
 [^1]: AdaCore. *SPARK Pro — Introduction to Formal Verification with SPARK*. [https://www.adacore.com/about-spark](https://www.adacore.com/about-spark). 官方文档涵盖契约语法、证明工具链、工业案例。
 

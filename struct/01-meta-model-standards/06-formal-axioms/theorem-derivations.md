@@ -537,7 +537,62 @@ $$
 
 ---
 
-## 参考文献
+## 8. 定理补全：直观解释、边界条件与证明方法
+
+> 本节补充关键定理的直观解释、边界条件、常见反例，以及所依赖的证明方法。所有定理陈述均延续前文，未引入新的形式命题。
+
+### 8.1 元公理定理的直观解释
+
+| 定理 | 核心直觉 | 典型反例/边界条件 |
+|------|---------|------------------|
+| Th.1 约束保持定理 | 同一架构在不同上下文复用时，真正传递的是共享约束子集 | 若两上下文需求互斥，$V_1 \cap V_2 = \emptyset$，则“同一架构”的复用语义为空 |
+| Th.2 变体闭包定理 | 变体点的组合空间构成有限上界 | 当绑定规则 $\Gamma$ 引入约束时，实际实例数可能远小于 $Card(\mathcal{Ctx})^{Card(V)}$ |
+| Th.3 层次失败独立性 | 串联可靠性：任一层完全失败则整条价值流失败 | 若假设层间失败独立，而实际存在共因故障（如共享库漏洞），则公式给出的是下界 |
+| Th.4 同一性追溯定理 | 复用链不改变资产本体身份 | 若中间环节对资产进行语义重写（如 fork 后改变核心责任），则同一性追溯断裂 |
+
+### 8.2 存在性与结构性定理的边界条件
+
+**Th.5 资产存在必要性**：E.1 将 $\mathrm{Stable} \land \mathrm{General} \land \mathrm{Encapsulated}$ 定义为强可复用资产的充要条件。边界上存在“弱可复用资产”——例如 copy-paste 的代码片段，不满足封装性但仍在短期内被传播。此时应使用弱化的存在性谓词 $\mathrm{WeakReuse}(a) \Leftrightarrow \mathrm{Stable}(a) \lor \mathrm{General}(a)$，并将强/弱复用分别治理。
+
+**Th.6 复用经济可行性定理**：当 $V_{\text{reuse}} = 0$ 时，经济可行简化为 $AAF < 1$。边界问题在于 $V_{\text{reuse}}$ 的量化：它包含维护节省、一致性收益、上市时间加速等难以精确货币化的因素。实践中常采用蒙特卡洛模拟估计 $V_{\text{reuse}}$ 的分布，再判断 $P(AAF < 1 + V_{\text{reuse}}/C_{\text{build}}) \geq \alpha$。
+
+**Th.7 适配边界定理**：指数衰减模型 $\mathrm{Fit}(a', \mathit{ctx}) = \mathrm{Fit}(a,\mathit{ctx}) \cdot e^{-\lambda \Delta/\mathrm{Size}(a)}$ 是保守估计。若适配操作是局部重构（如仅修改配置），实际衰减可能慢于指数；若是架构迁移，则可能快于指数。因此 $\lambda$ 应通过历史复用数据校准。
+
+**Th.8 可替换性传递性**：可替换关系 $\simeq$ 基于 $\mathrm{Obs}$。边界在于 $\mathrm{Obs}$ 未包含时间、概率、资源消耗等非功能维度。例如两个排序算法在所有输入上输出相同，但一个时间复杂度为 $O(n \log n)$，另一个为 $O(n^2)$；按 S.1 它们等价，按性能约束则不等价。
+
+### 8.3 过程性与交叉定理的应用示例
+
+**Th.14 治理崩溃阈值**：Lambert W 解 $N_{\text{max}} = \frac{G_{\text{org}}}{k \cdot W(G_{\text{org}}/k)}$ 显示治理容量对数瓶颈。应用示例：某平台团队 $G_{\text{org}}=500$ 人月/年，$k=0.5$，则 $N_{\text{max}} \approx 190$。若组织强行复用 300 个资产而无治理结构升级，则 P.3 预言部分资产将退化为克隆。
+
+**Th.16 组合风险叠加定理**：风险传导系数 $\alpha > 1$ 反映“上层无法完全验证下层内部”的认知局限。边界条件：若下层组件经过形式化验证且隔离边界可证明（如 seL4 微内核隔离），则 $\alpha$ 可降至 1，甚至通过独立性假设使总风险低于线性叠加。这与 S.3 的“隔离例外”证伪条件呼应。
+
+**Th.17 认知-治理双重约束**：最优规模 $N^* = \min(N_{\text{cognitive}}, N_{\text{governance}})$。边界在于认知负荷并非均匀分布：若平台团队通过自动化文档、IDE 插件、智能推荐将 $\mathrm{Learn}(a,1)$ 降低 50%，则 $N_{\text{cognitive}}$ 可提升一倍，此时治理约束可能成为新瓶颈。
+
+### 8.4 证明方法说明
+
+本文件中的证明主要依赖三类方法：
+
+1. **经典逻辑推理**（Th.1, Th.5, Th.8）：直接由公理通过逆否、等价变换、归纳得到。
+2. **组合与 Assume-Guarantee 推理**（Th.9, Th.16）：将系统规约分解为组件规约与接口约束，逐层组合。
+3. **不动点与收敛分析**（Th.13, Th.14）：利用 Banach 不动点定理和 Lambert W 函数刻画演化收敛与治理阈值。
+
+这些方法与 [Formal methods](https://en.wikipedia.org/wiki/Formal_methods) 中的演绎验证、模型检验、抽象解释三大范式相互补充。对于工业级复用体系，建议将演绎证明用于不变量保持，将模型检验（如 [TLA+](https://en.wikipedia.org/wiki/TLA%2B)、[Alloy](https://en.wikipedia.org/wiki/Alloy_(specification_language))）用于并发与结构约束，将抽象解释用于数值边界（如 SPARK Ada）。
+
+### 8.5 权威来源与延伸阅读
+
+- Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- AdaCore. *SPARK Pro Introduction*. <https://www.adacore.com/about-spark>
+- Pnueli, A. (1985). *Logics and Models of Concurrent Systems*. <https://doi.org/10.1007/978-3-642-82453-1_4>
+- Abadi & Lamport (1993). *Composing specifications*. <https://doi.org/10.1145/151646.151649>
+- [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
+- [TLA+ - Wikipedia](https://en.wikipedia.org/wiki/TLA%2B)
+- [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
+- [SPARK (programming language) - Wikipedia](https://en.wikipedia.org/wiki/SPARK_(programming_language))
+
+---
+
+## 9. 参考文献
 
 1. Wand, Y., & Weber, R. (1995). On the deep structure of information systems. *Information Systems Journal*, 5(3), 203-223.
 2. Masolo, C., et al. (2003). *WonderWeb Deliverable D18*. ISTC-CNR.
