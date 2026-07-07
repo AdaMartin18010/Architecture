@@ -29,37 +29,38 @@
 16. [第 5 章详细设计：组件架构复用](99-reference/chapters/ch05.md)
 17. [第 6 章详细设计：功能架构复用](99-reference/chapters/ch06.md)
 18. [学习路径：从架构复用新手到专家](99-reference/course/learning-path.md)
-19. [课程大纲：软件架构复用工程](99-reference/course/syllabus.md)
-20. [全量交付物清单](99-reference/deliverables-manifest.md)
-21. [权威外部资源索引](99-reference/external-links/authoritative-sources.md)
-22. [公理-定理推理树](99-reference/glossary/axiom-theorem-tree.md)
-23. [跨主题综合索引](99-reference/glossary/cross-topic-index.md)
-24. [未命名章节](99-reference/glossary/glossary-master.md)
-25. [跨标准术语对照表](99-reference/glossary/terminology-crosswalk.md)
-26. [学术概念谱系索引（Academic Lineage Index）](99-reference/knowledge-index/academic-lineage.md)
-27. [四层复用映射矩阵](99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
-28. [13 个一级主题依赖/互斥/蕴含关系图](99-reference/knowledge-index/cross-theme-dependency-graph.md)
-29. [软件架构复用知识体系问答索引 (QA Index)](99-reference/knowledge-index/qa-index.md)
-30. [Phase C 质量检查报告](99-reference/quality-check-phase-c.md)
-31. [99 参考索引](99-reference/README.md)
-32. [国际标准与权威来源索引 v2.2](99-reference/standards-index/authoritative-sources-v2.md)
-33. [国际标准对齐多维总矩阵](99-reference/standards-index/master-alignment-matrix.md)
-34. [学术/技术白皮书引用模板](99-reference/templates/academic-citation-template.md)
-35. [复用资产质量检查清单模板](99-reference/templates/checklist-template.md)
-36. [标准引用规范：版本 + URL + 核查日期三元组](99-reference/templates/citation-standard.md)
-37. [核心知识文件内容要素检查清单](99-reference/templates/content-checklist.md)
-38. [文档模板](99-reference/templates/document-template.md)
-39. [事实核查清单（Fact-Check Checklist）](99-reference/templates/fact-check-checklist.md)
-40. [快速参考卡](99-reference/templates/quick-reference-card.md)
-41. [形式化验证自动化环境](99-reference/tools/formal-verification-env/README.md)
-42. [可执行工具目录](99-reference/tools/README.md)
-43. [交互式复用决策工具](99-reference/tools/reuse-decision-tool/README.md)
-44. [交互式复用决策工具 v2.0](99-reference/tools/reuse-decision-tool-v2/README.md)
-45. [复用决策报告：{{ asset_name }}](99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
-46. [季度标准跟踪与一致性报告](99-reference/tools/standard-tracker-quarterly-report.md)
-47. [标准跟踪监控报告](99-reference/tools/standard-tracker-report.md)
-48. [FinOps 工具模板聚合入口](99-reference/tools/templates/finops/README.md)
-49. [架构复用知识体系可视化图库](99-reference/visualizations/README.md)
+19. [课程测验：软件架构复用工程](99-reference/course/quiz.md)
+20. [课程大纲：软件架构复用工程](99-reference/course/syllabus.md)
+21. [全量交付物清单](99-reference/deliverables-manifest.md)
+22. [权威外部资源索引](99-reference/external-links/authoritative-sources.md)
+23. [公理-定理推理树](99-reference/glossary/axiom-theorem-tree.md)
+24. [跨主题综合索引](99-reference/glossary/cross-topic-index.md)
+25. [未命名章节](99-reference/glossary/glossary-master.md)
+26. [跨标准术语对照表](99-reference/glossary/terminology-crosswalk.md)
+27. [学术概念谱系索引（Academic Lineage Index）](99-reference/knowledge-index/academic-lineage.md)
+28. [四层复用映射矩阵](99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
+29. [13 个一级主题依赖/互斥/蕴含关系图](99-reference/knowledge-index/cross-theme-dependency-graph.md)
+30. [软件架构复用知识体系问答索引 (QA Index)](99-reference/knowledge-index/qa-index.md)
+31. [Phase C 质量检查报告](99-reference/quality-check-phase-c.md)
+32. [99 参考索引](99-reference/README.md)
+33. [国际标准与权威来源索引 v2.2](99-reference/standards-index/authoritative-sources-v2.md)
+34. [国际标准对齐多维总矩阵](99-reference/standards-index/master-alignment-matrix.md)
+35. [学术/技术白皮书引用模板](99-reference/templates/academic-citation-template.md)
+36. [复用资产质量检查清单模板](99-reference/templates/checklist-template.md)
+37. [标准引用规范：版本 + URL + 核查日期三元组](99-reference/templates/citation-standard.md)
+38. [核心知识文件内容要素检查清单](99-reference/templates/content-checklist.md)
+39. [文档模板](99-reference/templates/document-template.md)
+40. [事实核查清单（Fact-Check Checklist）](99-reference/templates/fact-check-checklist.md)
+41. [快速参考卡](99-reference/templates/quick-reference-card.md)
+42. [形式化验证自动化环境](99-reference/tools/formal-verification-env/README.md)
+43. [可执行工具目录](99-reference/tools/README.md)
+44. [交互式复用决策工具](99-reference/tools/reuse-decision-tool/README.md)
+45. [交互式复用决策工具 v2.0](99-reference/tools/reuse-decision-tool-v2/README.md)
+46. [复用决策报告：{{ asset_name }}](99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
+47. [季度标准跟踪与一致性报告](99-reference/tools/standard-tracker-quarterly-report.md)
+48. [标准跟踪监控报告](99-reference/tools/standard-tracker-report.md)
+49. [FinOps 工具模板聚合入口](99-reference/tools/templates/finops/README.md)
+50. [架构复用知识体系可视化图库](99-reference/visualizations/README.md)
 
 ---
 
@@ -4752,6 +4753,147 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 课程大纲：[syllabus.md](99-reference/course/syllabus.md)
 - 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
 - 形式化验证环境：[../tools/formal-verification-env/README.md](99-reference/tools/formal-verification-env/README.md)
+
+
+---
+
+
+<!-- SOURCE: struct/99-reference/course/quiz.md -->
+
+# 课程测验：软件架构复用工程
+
+> **版本**: 2026-07-08
+> **形式**: 单选 + 多选 + 简答
+> **建议时长**: 60 分钟
+
+---
+
+## 概念定义
+
+**课程测验（Course Quiz）**: 用于评估学习者对软件架构复用知识体系掌握程度的题目集合，通常包含概念辨析、标准识别、案例分析等题型。
+
+---
+
+## 正向示例
+
+### 示例 1：有效测验设计
+某测验要求学员为真实金融系统建立 ISO 42010 / TOGAF / SLSA 对齐矩阵，学员通过查阅 `struct/` 权威来源完成，评分 90+。
+
+### 示例 2：简答型高阶评估
+"为复用而复用"简答题迫使学员区分抽象过度与价值驱动复用，显著提升了架构决策质量。
+
+---
+
+## 反例/反模式
+
+- **反模式 1：只考标准号记忆**。学员能背诵 ISO 42010:2022 但无法解释其视点机制。
+- **反模式 2：题目无权威来源**。答案基于个人经验而非国际标准，导致评分失真。
+
+---
+
+## 一、概念辨析（单选）
+
+### 1. 什么是架构复用中的"单一真源"？
+- A. 所有代码都放在一个仓库里
+- B. 以 `struct/` 为权威来源，`view/` 为其只读聚合视角 ✅
+- C. 只允许一位架构师修改文档
+- D. 所有项目使用同一套技术栈
+
+### 2. ISO/IEC/IEEE 42010:2022 主要解决什么问题？
+- A. 软件测试流程
+- B. 架构描述的语言与视点 ✅
+- C. 项目管理方法论
+- D. 数据库设计规范
+
+---
+
+## 二、标准与框架（多选）
+
+### 3. 下列哪些标准/框架与本知识体系直接对齐？
+- A. TOGAF 10 ✅
+- B. ArchiMate 4.0 ✅
+- C. ISO/IEC 26550:2015 ✅
+- D. SLSA 1.2 ✅
+- E. ISO 9001:2015
+
+### 4. 软件供应链安全应关注哪些要素？
+- A. SBOM ✅
+- B. Provenance ✅
+- C. SLSA 等级 ✅
+- D. OWASP SCVS ✅
+- E. UML 类图
+
+---
+
+## 三、正向示例与反模式（简答）
+
+### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素。
+**参考答案要点**:
+- 选择可复用资产时进行了成本/收益分析；
+- 建立了清晰的接口契约与版本策略；
+- 通过成熟度模型持续度量复用效果。
+
+### 6. "为复用而复用"是一种什么反模式？应如何避免？
+**参考答案要点**:
+- 过度抽象导致不必要的复杂性；
+- 应基于真实业务价值和复用频次进行决策；
+- 使用复用决策树或 ROI 模型量化评估。
+
+---
+
+## 四、形式化与量化（计算/分析）
+
+### 7. 某组件库开发成本为 80 人天，预计在第 3、5、8 个项目中分别节省 20、35、50 人天。假设无贴现，该复用是否值得？
+**参考答案**:
+- 总节省 = 20 + 35 + 50 = 105 人天
+- 开发成本 = 80 人天
+- 净收益 = 25 人天 > 0，值得复用。
+
+### 8. 为什么 TLA+ 适合验证分布式协议（如 MCP/A2A）？
+**参考答案要点**:
+- TLA+ 能精确描述状态机与并发行为；
+- TLC 模型检查器可发现死锁、活锁与不变量违反；
+- 适合验证消息协议、任务生命周期等场景。
+
+---
+
+## 五、权威来源核查
+
+### 9. 以下哪个引用存在潜在问题？
+- A. ISO/IEC 25010:2023
+- B. TOGAF® Standard, 10th Edition
+- C. SLSA 1.2
+- D. MCP 2026-07-28 RC（已废弃） ✅
+
+---
+
+## 评分标准
+
+| 题型 | 分值 |
+|------|------|
+| 单选 | 每题 5 分，共 10 分 |
+| 多选 | 每题 10 分，共 20 分 |
+| 简答 | 每题 15 分，共 45 分 |
+| 计算/分析 | 每题 12.5 分，共 25 分 |
+| **总计** | **100 分 |
+
+---
+
+## 权威来源
+
+- Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
+- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+- The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
+- OpenSSF. *SLSA 1.2*. <https://slsa.dev/spec/v1.2/levels>
+- OWASP. *Software Component Verification Standard*. <https://owasp.org/scvs/>
+
+---
+
+## 交叉引用
+
+- 课程大纲：[syllabus.md](99-reference/course/syllabus.md)
+- 学习路径：[learning-path.md](99-reference/course/learning-path.md)
+- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
 
 
 ---
