@@ -1,7 +1,7 @@
-# Phase 1.5 完成度报告
+# 项目完成度报告（2026-07-08 持续推进版）
 
 > **生成时间**: 2026-07-08
-> **统计口径**: `python scripts/health-check.py`
+> **验证命令**: `python scripts/health-check.py`
 
 ---
 
@@ -9,7 +9,7 @@
 
 | 检查项 | 结果 |
 |--------|------|
-| struct/ 质量门控 V2 | 288/288 通过 |
+| struct/ 质量门控 V2 | 292/292 通过 |
 | view/ 质量门控 V2 | 14/14 通过 |
 | 死链 | 0 |
 | 模板重复 | 0 |
@@ -21,96 +21,83 @@
 
 ---
 
-## 2. 内容规模
+## 2. 项目规模
 
 | 指标 | 数据 |
 |------|------|
-| Markdown 文件 | 330（struct/ 307 + view/ 23） |
-| 形式化规约/代码 | 93 个 |
-| 可视化图库 | 75 Mermaid + 75 SVG |
-| 累计内容 | ~79.1 万中文字 / ~97.7 万总词 |
-| 一级主题 | 13 + 99-reference |
+| struct/ Markdown | 309 |
+| view/ Markdown | 23 |
+| 一级主题 | 14（13 + 99-reference） |
+| Mermaid 源文件 | 75 |
+| SVG 渲染输出 | 75 |
+| 累计字数 | 1,004,537 |
+| Python 脚本 | 12+ |
 
 ---
 
-## 3. 新增/变更交付物
+## 3. Phase 1.5 已完成
 
-### 3.1 脚本与工具
+- 13 个主题核心文件补齐
+- 75 Mermaid + 75 SVG 可视化图库
+- view/ 重构：14 个聚合卷册 + `_HISTORICAL_` 归档
+- 质量门控、交叉索引、同步脚本落地
+- README、.gitignore、报告目录整理
 
-- `scripts/health-check.py` — 综合健康检查（修复 UnicodeDecodeError、Windows/WSL 路径兼容）
-- `scripts/render-visualizations.py` — 批量 Mermaid → SVG 渲染
-- `scripts/sync-view-from-struct.py` — view 同步（mtime "newer" 视为提示而非失败）
-- `scripts/cross-index-check.py` — 交叉索引一致性（报告路径统一至 `reports/`）
+## 4. Phase 6 整合与输出已启动并完成首轮
 
-### 3.2 可视化图库
-
-- 13 个 mindmap
-- 13 个 comparison-matrix
-- 13 个 decision-tree
-- 13 个 reasoning-tree
-- 13 个 cross-layer-mapping（11-13 主题 + 综合四层映射）
-- 综合图：axiom-theorem-full-graph、concept-mapping、standard-family-tree、reuse-granularity-decision-tree、four-layer-reuse-mapping
-
-### 3.3 view/ 重构
-
-- 新增 14 个 `volume-*.md` 聚合卷册
-- 旧快照归档至 `view/_HISTORICAL_/`
-
-### 3.4 元数据
-
-- `README.md` 版本、健康状态、已知限制更新
-- `.gitignore` 统一忽略 `reports/*` 自动生成报告
-- `reports/.gitkeep` 保留报告目录
+| 类别 | 交付物 |
+|------|--------|
+| 全书输出 | `scripts/build-deliverables.py` → `dist/book-full.md` + 14 分卷 |
+| 课程产品 | `struct/99-reference/course/`：学习路径、课程大纲、测验、README |
+| 幻灯片 | `scripts/build-slides.py` → `dist/slides/*.html`（reveal.js） |
+| PDF/ePub | `scripts/build-pdf.py`（pandoc wrapper） |
+| 统一 CLI | `scripts/knowledge-cli.py` |
+| 知识门户 | `struct/99-reference/tools/knowledge-portal/app.py`（Streamlit） |
+| CI | `.github/workflows/health-check.yml` + `formal-verification.yml` |
+| 清单更新 | `struct/99-reference/deliverables-manifest.md` |
 
 ---
 
-## 4. Git 提交状态
+## 5. Git 状态
 
-| 提交 | 说明 |
-|------|------|
-| `469c2bd` | feat(phase-1.5): 完成全面修复、可视化图库与质量门控 100% |
-| `1cfe51f` | fix(sync): 将 mtime 'newer' 视为提示而非同步失败 |
+| Commit | 说明 |
+|--------|------|
+| `1cfe51f` | fix(sync): mtime newer 视为提示 |
+| `91f2b1d` | docs: Phase 1.5 完成度报告 |
+| `026893a` | feat(phase-6): 全书、课程、学习路径 |
+| `520e81c` | feat(phase-6): 统一 CLI 与 Streamlit 门户 |
+| `8a14efa` | ci: health-check GitHub Actions |
+| `2395af8` | feat(phase-6): 测验、幻灯片、PDF 输出 |
+| `4b2f6bb` | feat(phase-6): 课程 README、交付物清单、门户增强 |
 
-**本地仓库**: 已提交 2 个 commit，工作区干净。
-**远程推送**: ❌ 当前环境无法连接 `github.com:443`，且 SSH publickey 未授权。
+**本地仓库**: 已提交 7 个未 push commit，工作区干净。  
+**远程推送**: ❌ 当前环境无法连接 `github.com:443`，SSH publickey 未授权。
 
 ---
 
-## 5. 剩余阻塞项（需外部环境或人工介入）
+## 6. 剩余阻塞项
 
-### 5.1 推送代码到 GitHub
+### 6.1 推送代码到 GitHub（必须手动解决）
 
-**原因**: HTTPS 443 被拦截；SSH 22 可达但 publickey 未授权。
-**解决步骤**:
-
-1. 将下面公钥添加到 GitHub 账户 Settings → SSH and GPG keys → New SSH key：
-
+1. 将公钥添加到 GitHub 账户 Settings → SSH and GPG keys：
    ```text
    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAymukzPSDoLQ4MlS4a65KeB7bTDPcDmMbOzUTNC3Cc1 architecture-kimi-bot@github
    ```
-
 2. 在仓库目录执行：
-
    ```bash
    git remote set-url origin git@github.com-architecture:AdaMartin18010/Architecture.git
    git push
    ```
 
-### 5.2 Docker 形式化验证实际执行
+### 6.2 Docker 形式化验证实际执行
 
-**原因**: `docker-compose.yml` 中部分镜像名称不可用或拉取超时（`lemmy/tla-toolbox`、`cgswords/alloy`、`makarius/isabelle:2025-1`）。
-**当前状态**: Docker Desktop 已启动，daemon 可用。
-**解决步骤**:
-
-1. 替换或构建可用的形式化验证镜像；
-2. 更新 `struct/99-reference/tools/formal-verification-env/docker-compose.yml`；
-3. 在 CI 或本地运行 `docker compose up -d` 与 `verify-all.sh`。
+- Docker Desktop 已启动，daemon 可用。
+- `docker-compose.yml` 中部分镜像名称不存在或拉取超时，需替换为可用镜像后运行。
 
 ---
 
-## 6. 结论
+## 7. 结论
 
-Phase 1.5 在**内容、结构、质量门控、交叉索引、可视化图库、view 同步**等维度已达到 **100% 完成**。
-剩余工作均为**环境/权限类阻塞**（远程推送、Docker 镜像），需在网络可达或 GitHub 账户配置完成后手动执行。
-
-下一步建议：进入 **Phase 6 整合与输出**（全书框架、课程、可发布格式），或先解决上述阻塞项再继续。
+项目在**内容、结构、质量门控、可视化、课程产品、输出工具、CI 配置**等维度已达到当前环境所能实现的 **100% 完成度**。  
+继续扩展会产生更多未 push 的本地 commit，无法进一步提升"完成度"。  
+**建议优先解决 SSH key 授权与 push 问题**，使 CI 能够在 GitHub 上真正运行，再决定后续扩展方向。
