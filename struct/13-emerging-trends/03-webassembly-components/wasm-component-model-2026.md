@@ -170,6 +170,122 @@ Edge
 
 ---
 
+## 9. WASM Component Model 知识体系补强
+
+### 9.1 定义与核心属性
+
+**WebAssembly Component Model** 是 WebAssembly 的模块化和互操作层，它将单个 Wasm 模块提升为**组件（Component）**：一种具有显式、类型化导入（import）与导出（export）接口的可组合单元。组件之间通过 **WebAssembly Interface Types（WIT）** 定义契约，实现跨语言、跨运行时的二进制复用。[[WebAssembly](https://en.wikipedia.org/wiki/WebAssembly)]
+
+| 属性 | 说明 | 复用价值 |
+|:---|:---|:---|
+| **语言无关** | Rust、Go、Python、C#、JS 等均可编译为组件 | 打破语言孤岛 |
+| **接口类型化** | WIT 强类型接口，编译期与运行期均可校验 | 明确契约，降低集成风险 |
+| **沙箱隔离** | 基于 capability-based security，默认最小权限 | 安全复用不可信第三方组件 |
+| **可组合性** | 多个小组件可组合为复杂应用 | 支持平台能力模块化交付 |
+| **可移植性** | 一次编译，可在浏览器、边缘、云原生运行时运行 | 资产跨环境复用 |
+
+### 9.2 WIT：组件的接口契约语言
+
+**WIT（WebAssembly Interface Types）**是 Component Model 的接口定义语言（IDL）。一个 WIT 文件描述包（package）、接口（interface）和世界（world）：
+
+```wit
+package my:domain;
+
+interface image-processor {
+    resize: func(input: list<u8>, width: u32, height: u32) -> result<list<u8>, string>;
+    detect-format: func(input: list<u8>) -> string;
+}
+
+world image-api {
+    export image-processor;
+    import wasi:io/streams@0.2.0;
+}
+```
+
+- **package**：命名空间与版本管理单元。
+- **interface**：一组类型化函数，可被 import 或 export。
+- **world**：组件可见能力集合，定义可使用的标准接口与暴露的自定义接口。
+
+### 9.3 与 WASI 0.3 的关系
+
+WASI（WebAssembly System Interface）是组件访问操作系统能力的标准接口集合。WASI 0.3 基于 Component Model 构建，原生引入 `stream<T,E>` / `future<T,E>` 类型以支持异步 I/O。二者关系如下：
+
+```mermaid
+graph TB
+    subgraph "语言编译器"
+        Rust[Rust<br/>wasm32-wasip2]
+        Go[Go / TinyGo]
+        Python[Python<br/>componentize-py]
+        JS[JS/TS<br/>jco]
+    end
+    CM[WebAssembly Component Model<br/>WIT 接口 + 组合]
+    Rust --> CM
+    Go --> CM
+    Python --> CM
+    JS --> CM
+    WASI03[WASI 0.3 Worlds<br/>wasi:http / wasi:io / wasi:filesystem]
+    CM --> WASI03
+    Runtime[wasmtime / WasmEdge / wasmCloud]
+    WASI03 --> Runtime
+    Runtime --> Host[浏览器 / 边缘 / K8s / Serverless]
+```
+
+- **Component Model** 提供“如何定义和组合接口”的元模型；
+- **WASI 0.3** 是在该元模型上定义的“世界”，提供 HTTP、文件系统、时钟等系统能力；
+- **运行时**实现 WASI 0.3 世界，使组件可在不同宿主环境中复用。
+
+### 9.4 跨语言复用示例
+
+**场景**：用 Rust 实现图像处理组件，被 Node.js、Python 和 Go 复用。
+
+**步骤**：
+
+1. 定义 `my:domain/image-processor` WIT 接口（见 9.2）。
+2. 用 Rust 实现并导出：
+
+```rust
+wit_bindgen::generate!({ world: "image-api", exports: { "my:domain/image-processor": ImageProcessor } });
+
+struct ImageProcessor;
+impl exports::my::domain::image_processor::Guest for ImageProcessor {
+    fn resize(input: Vec<u8>, w: u32, h: u32) -> Result<Vec<u8>, String> { /* ... */ }
+    fn detect_format(input: Vec<u8>) -> String { /* ... */ }
+}
+```
+
+1. 编译为 `image-processor.wasm` 组件。
+2. 消费方绑定：
+   - **Node.js**：使用 `@bytecodealliance/jco` 生成 TypeScript 存根。
+   - **Python**：使用 `componentize-py` 生成 Python 绑定。
+   - **Go**：使用 TinyGo + `wit-bindgen-go` 生成客户端。
+
+结果：同一二进制组件在三种语言运行时中复用，无需手写 FFI。
+
+### 9.5 正例与反例
+
+**正例**：某电商平台将图片压缩、格式转换、水印生成实现为独立的 WASM 组件，通过 WIT 接口暴露给 Node.js 前端、Python 批处理服务以及 Go 边缘网关复用，组件更新时所有消费方自动获得一致行为。
+
+**反例**：某团队将大量阻塞式文件 I/O 逻辑直接迁移到 WASM，未使用 WASI 0.3 的异步 `stream`/`future` 能力，也未通过 WIT 暴露接口，导致运行时阻塞、延迟飙升，且难以跨语言调用，最终回退为原生动态库。
+
+### 9.6 权威来源与交叉引用
+
+| 来源 | URL |
+|:---|:---|
+| Wikipedia - WebAssembly | <https://en.wikipedia.org/wiki/WebAssembly> |
+| Wikipedia - WebAssembly System Interface | <https://en.wikipedia.org/wiki/WebAssembly_System_Interface> |
+| Component Model 官方文档 | <https://component-model.bytecodealliance.org> |
+| WASI Roadmap | <https://github.com/WebAssembly/WASI> |
+| Bytecode Alliance | <https://bytecodealliance.org> |
+| wasmCloud | <https://wasmcloud.com> |
+
+**交叉引用**：
+
+- WASI 0.3 边界分析详见 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
+- WASM 复用决策树详见 [`wasm-reuse-decision-tree.md`](./wasm-reuse-decision-tree.md)
+- Rust/WASM 形式化验证详见 [`../05-rust-ecosystem/rust-wasm-formal-verification.md`](../05-rust-ecosystem/rust-wasm-formal-verification.md)
+
+---
+
 ## 补充说明：WebAssembly 组件模型与 WASI 复用生态
 
 ## 示例

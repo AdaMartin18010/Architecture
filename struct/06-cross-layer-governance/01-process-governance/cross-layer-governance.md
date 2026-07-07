@@ -139,6 +139,181 @@
 
 ---
 
+## 6. 跨层复用治理框架的精确定义
+
+### 6.1 概念定义
+
+**定义**：跨层复用治理（Cross-Layer Reuse Governance）是组织为确保业务层、应用层、组件层、功能层四个层次之间的复用资产在战略、流程、质量、价值与风险维度上保持一致性，而建立的角色、职责、流程、标准、度量和决策机制的总和。它与 Wikipedia 中 [IT governance](https://en.wikipedia.org/wiki/IT_governance) 的定义一致，强调"确保组织的 IT 投资支持业务目标并有效管理 IT 风险"，但进一步聚焦到**复用资产跨层次流动的全生命周期治理**。
+
+### 6.2 跨层治理核心属性
+
+| 属性 | 说明 | 重要性 | 可观察性 |
+|------|------|--------|----------|
+| **层次一致性（Layer Alignment）** | 业务、应用、组件、功能四层定义与变更保持一致 | 高 | 一致性审查通过率 |
+| **职责明确性（Role Clarity）** | 每个资产有明确的所有者、维护者和治理委员会 | 高 | 资产 OWNER 覆盖率 100% |
+| **流程闭环性（Process Closure）** | 从识别、获取、适配、集成到演化、退役的闭环 | 高 | 流程执行合规率 |
+| **质量可控性（Quality Controllability）** | 每层均有对应质量门禁与度量指标 | 高 | 质量门禁通过率 |
+| **价值可度量性（Value Measurability）** | 复用收益与成本可被量化并反馈 | 中 | 复用 ROI、TTMR |
+| **风险可感知性（Risk Perceptibility）** | 供应链、安全、合规风险被识别与缓解 | 中 | 风险事件数、漏洞修复周期 |
+
+### 6.3 与相关概念的关系
+
+```mermaid
+graph LR
+    A[跨层复用治理] --> B[IT governance]
+    A --> C[企业架构治理]
+    A --> D[软件复用成熟度模型]
+    B --> E[COBIT / ITIL]
+    C --> F[TOGAF / ArchiMate]
+    D --> G[RCMM / RiSE / CMMI]
+    H[Capability maturity model] -.-> D
+    I[FinOps] -.-> A
+```
+
+- **上位概念**：[IT governance](https://en.wikipedia.org/wiki/IT_governance)、企业架构治理；
+- **下位概念**：资产管理、生命周期管理、质量管理、价值度量；
+- **等价/映射概念**：ISO/IEC/IEEE 42020（架构治理）、ISO/IEC 12207（软件生命周期过程治理）；
+- **依赖概念**：复用成熟度模型、FinOps 单位经济学、升降级决策矩阵、度量指标体系。
+
+### 6.4 角色职责详细矩阵
+
+| 角色 | 核心职责 | 关键活动 | 治理产出 |
+|------|----------|----------|----------|
+| **企业架构委员会（EAC）** | 制定跨层复用战略、标准与投资决策 | 季度战略 review、预算分配、标准发布 | 复用战略、治理章程、投资决策 |
+| **业务架构师** | 定义业务能力目录与价值流，确保业务层复用语义一致 | 业务能力映射、价值流分析 | 业务能力目录、价值流图 |
+| **应用架构师** | 设计服务边界、API 契约与应用层复用模式 | API 治理、服务拆分/合并评审 | API 规范、服务蓝图 |
+| **组件架构师/平台工程师** | 维护组件库、包管理、依赖治理与 CI/CD 集成 | SemVer 策略、SBOM 管理、依赖冲突解决 | 组件库、构建流水线、依赖基线 |
+| **功能架构师/高级工程师** | 定义代码规范、函数纯度、测试策略 | 代码评审、重构指导、Golden Path 维护 | 编码规范、测试基线、重构计划 |
+| **复用资产所有者（Asset Owner）** | 单个资产的全生命周期管理 | 版本发布、文档维护、缺陷响应、退役计划 | 资产 ROADMAP、SLA、变更日志 |
+| **安全架构师** | 确保复用资产符合安全基线 | 安全评审、漏洞响应、合规映射 | 安全基线、威胁模型、审计报告 |
+| **FinOps 分析师** | 量化复用成本与收益，驱动经济决策 | 成本分摊、单位经济学分析、ROI 计算 | Showback 报告、投资优先级 |
+| **质量保障工程师** | 执行复用资产的质量门禁与测试 | 自动化测试、契约测试、质量审计 | 质量报告、门禁结果 |
+
+### 6.5 跨层治理流程（PDCA 变体）
+
+```mermaid
+flowchart LR
+    P[Plan 计划] --> D[Do 执行]
+    D --> C[Check 检查]
+    C --> A[Act 改进]
+    A --> P
+
+    subgraph Plan [计划]
+        P1[识别复用机会]
+        P2[评估技术/经济可行性]
+        P3[制定复用计划]
+    end
+
+    subgraph Do [执行]
+        D1[资产获取/开发]
+        D2[资产发布与推广]
+        D3[项目消费与适配]
+    end
+
+    subgraph Check [检查]
+        C1[质量门禁]
+        C2[度量指标 review]
+        C3[一致性审查]
+    end
+
+    subgraph Act [改进]
+        A1[缺陷修复]
+        A2[版本演化]
+        A3[升降级/退役]
+    end
+```
+
+### 6.6 正例：某银行跨层治理体系
+
+**背景**：某大型银行拥有 200+ 个业务系统，技术栈涵盖 Java、.NET、Python、Mainframe，复用水平参差不齐。
+
+**治理体系建设**：
+
+1. **组织**：成立企业架构委员会（EAC）下设复用治理工作组；
+2. **目录**：建立企业级业务能力目录，映射到 500+ 应用服务和 3000+ 组件；
+3. **流程**：项目立项阶段强制复用可行性评估，结项阶段报告复用率；
+4. **质量**：定义 Tier-1/Tier-2/Tier-3 资产分级，Tier-1 必须通过 SLSA L2+、SBOM 100%、测试覆盖率 ≥ 80%；
+5. **度量**：每月发布组织复用率（ORR）、跨项目复用率（CPRR）、复用 ROI；
+6. **激励**：将"贡献/采用复用资产"纳入技术职级晋升考核。
+
+**效果**：
+
+- 组织复用率从 18% 提升到 41%；
+- 新项目平均交付周期缩短 23%；
+- 高危漏洞影响面下降 60%（通过统一组件管理）。
+
+### 6.7 反例：治理组织形同虚设
+
+**背景**：某互联网公司成立了"复用治理委员会"，但委员会每季度仅开一次会，无决策权。
+
+**问题**：
+
+1. **权责不对等**：委员会只能"建议"，不能否决重复造轮子；
+2. **缺乏抓手**：没有统一资产目录，无法发现重复资产；
+3. **激励冲突**：团队 KPI 以交付功能为主，复用贡献不被认可；
+4. **工具缺失**：没有质量门禁和度量数据，评审靠主观判断。
+
+**后果**：
+
+- 3 年内同一领域出现 7 个功能相似的内部框架；
+- 新员工入职成本极高，需要学习多套"内部标准"；
+- 复用治理委员会逐渐被边缘化，最终解散。
+
+**避免方法**：
+
+- 赋予治理委员会真正的预算审批和标准发布权；
+- 建立统一资产目录与自动化度量平台；
+- 将复用贡献纳入绩效考核与晋升；
+- 从一个小领域试点，用数据证明价值后再扩展。
+
+### 6.8 反例：跨层一致性检查流于形式
+
+**背景**：某组织制定了详细的跨层一致性检查清单，但项目评审时仅勾选"是/否"，不验证证据。
+
+**问题**：
+
+1. **业务-应用脱节**：业务能力"客户风险评估"已变更，但对应 API 未同步更新；
+2. **应用-组件脱节**：微服务 API 升级后，共享组件版本未更新，导致运行时错误；
+3. **组件-功能脱节**：组件增加了新功能，但函数级单元测试未覆盖，缺陷流入生产。
+
+**后果**：
+
+- 一次业务能力定义变更引发 14 个下游系统缺陷；
+- 生产事故复盘发现，一致性检查清单 80% 的项被随意勾选；
+- 客户投诉增加，业务团队对复用资产失去信任。
+
+**避免方法**：
+
+- 将一致性检查自动化（如 ArchiMate 模型与代码仓库的 diff 检测）；
+- 引入可追溯性矩阵（Requirements Traceability Matrix）；
+- 对关键变更实施影响分析工具（Impact Analysis）与强制评审。
+
+---
+
+## 权威来源与交叉引用
+
+> **权威来源**:
+>
+> | 来源 | URL | 核查日期 |
+> |------|-----|----------|
+> | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-07 |
+> | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-07 |
+> | ISO/IEC/IEEE 42020:2022 — Architecture processes | <https://www.iso.org/standard/74296.html> | 2026-07-07 |
+> | ISO/IEC/IEEE 12207:2017 — Software life cycle processes | <https://www.iso.org/standard/63712.html> | 2026-07-07 |
+> | TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-07 |
+> | COBIT 2019 Framework | <https://www.isaca.org/resources/cobit> | 2026-07-07 |
+> | ITIL 4 — Service Management | <https://www.axelos.com/certifications/itil-service-management> | 2026-07-07 |
+
+> **交叉引用**:
+>
+> - 跨层复用升级/降级决策矩阵：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md`](../06-up-downgrade-matrix/upgrade-downgrade-matrix.md)
+> - FinOps 单位经济学：[`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../04-finops-cost/finops-unit-economics-2026.md)
+> - 复用度量指标体系：[`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../05-metrics-kpi/metrics-framework.md)
+> - 复用成熟度模型：[`struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`](../03-maturity-models/reuse-maturity-models-rcmm-rise.md)
+> - 软件复用过程标准：[`struct/01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md`](../../01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
+
+---
+
 > 最后更新: 2026-06-06
 
 
@@ -162,6 +337,8 @@
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE Standards](https://www.iso.org)
-> - [IEEE Standards](https://standards.ieee.org)
+> - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
+> - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
+> - [ISO/IEC/IEEE 42020:2022](https://www.iso.org/standard/74296.html)
+> - [ISO/IEC/IEEE 12207:2017](https://www.iso.org/standard/63712.html)
 > - 核查日期：2026-07-07

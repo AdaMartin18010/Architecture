@@ -203,8 +203,177 @@ flowchart TD
 
 ---
 
+## 7. 复用资产升降级决策框架的深层定义
+
+### 7.1 概念定义
+
+**定义**：复用资产升降级决策矩阵（Reuse Asset Upgrade/Downgrade Matrix）是一套基于触发条件、风险等级、经济指标与治理能力，判断可复用资产应在四层架构（功能 → 组件 → 应用服务 → 业务服务）中向上升级或向下降级的结构化决策框架。它与 Wikipedia 中 [Capability maturity model](https://en.wikipedia.org/wiki/Capability_Maturity_Model) 所强调的过程成熟度提升逻辑一致：升级意味着资产治理成熟度提升，降级则是在成熟度不匹配时回归可控层级。
+
+### 7.2 升降级核心属性
+
+| 属性 | 说明 | 重要性 | 可观察性 |
+|------|------|--------|----------|
+| **触发条件（Trigger）** | 引发升级或降级评估的量化或质性事件 | 高 | 调用方数量、耦合度、合规要求 |
+| **目标层级（Target Layer）** | 升级或降级后的期望治理层级 | 高 | 功能/组件/应用服务/业务服务 |
+| **治理动作（Governance Action）** | 为完成层级迁移必须执行的过程与工件 | 高 | API 契约、版本策略、SLA、安全边界 |
+| **风险等级（Risk Level）** | 迁移过程对现有系统的影响程度 | 高 | 低/中/高/极高 |
+| **经济指标（Economic Metric）** | 支持决策的成本/收益量化依据 | 中 | Upgrade_Benefit、Downgrade_Benefit |
+| **兼容性约束（Compatibility Constraint）** | 技术栈、安全等级、语义范围的可接受差异 | 中 | 兼容性百分比、认证等级 |
+
+### 7.3 与相关概念的关系
+
+```mermaid
+graph TB
+    A[复用资产升降级矩阵] --> B[跨层复用治理框架]
+    A --> C[FinOps 单位经济学]
+    A --> D[复用成熟度模型 RCMM/RiSE]
+    B --> E[四层架构边界]
+    C --> F[升级/降级收益公式]
+    D --> G[成熟度等级提升]
+    H[Capability maturity model] -.-> D
+    I[IT governance] -.-> B
+```
+
+- **上位概念**：跨层复用治理框架、IT governance；
+- **下位概念**：升级矩阵、降级矩阵、触发条件、兼容性评估；
+- **等价/映射概念**：ISO/IEC 26566:2026 成熟度转换指南、Netflix 服务拆分决策框架；
+- **依赖概念**：复用率、耦合度、SLA、安全等级、FinOps 单位成本。
+
+### 7.4 正例：支付中台从应用服务升级为业务服务
+
+**背景**：某金融科技公司的"支付中台"最初以应用服务形式服务于 3 个内部产品线。
+
+**触发条件**：
+
+- 调用方数量：从 3 个增长到 11 个内部及外部子公司系统；
+- 合规要求：PCI DSS 4.0 要求支付能力作为企业级服务统一治理；
+- 业务语义：支付能力已成为公司对外输出的核心业务能力。
+
+**升级动作**：
+
+1. 将支付中台注册为企业服务总线（ESB）上的业务服务；
+2. 定义跨组织的 SLA（可用性 99.99%，RTO < 5 分钟）；
+3. 建立计费模型：按交易笔数向子公司 chargeback；
+4. 引入独立安全域、零信任网络与审计日志。
+
+**效果**：
+
+- 外部子公司接入周期从 3 个月缩短到 2 周；
+- 支付相关合规审计一次性通过；
+- 支付中台从成本中心转变为收入中心。
+
+### 7.5 反例：过早升级导致组织级耦合灾难
+
+**背景**：某制造企业将仅在 2 个项目中使用的"设备状态监控"组件强制升级为业务服务。
+
+**问题**：
+
+1. **语义不稳定**：不同工厂对"设备状态"的定义差异巨大（温度、振动、能耗、OEE）；
+2. **治理过载**：业务服务要求统一的 SLA 和变更窗口，但 2 个消费方的需求节奏完全不同；
+3. **变更冻结**：一次小的字段调整需要协调所有消费方，导致版本发布周期从 2 周延长到 2 个月。
+
+**后果**：
+
+- 消费方开始绕过业务服务，自建本地实现；
+- 升级后的业务服务沦为"幽灵服务"，维护成本持续存在但采用率下降；
+- 1 年后被迫降级回应用服务层，并拆分为多个领域专用服务。
+
+**避免方法**：
+
+- 严格遵循"3+ 消费方"或"跨部门/跨组织"触发条件；
+- 升级前进行业务语义一致性评估（语义覆盖率 ≥ 80%）；
+- 采用渐进式升级：先在应用服务层稳定运行 2–3 个季度，再评估业务服务化。
+
+### 7.6 反例：忽视降级导致安全合规事件
+
+**背景**：某电商平台将用户身份认证组件作为共享库被 40+ 微服务引用。
+
+**触发条件**：
+
+- 安全团队发现共享库存在高危漏洞（CVSS 9.8）；
+- 修复需要协调 40+ 微服务同时升级，窗口难以排期；
+- 合规审计要求认证逻辑必须隔离部署。
+
+**应做未做**：
+
+- 架构委员会认为"共享库提升效率"，拒绝降级为独立服务；
+- 未建立多版本共存机制；
+- 未准备应急响应降级方案。
+
+**后果**：
+
+- 漏洞暴露窗口长达 6 周；
+- 某外部攻击者利用该漏洞实施账户接管，造成品牌与合规双重损失；
+- 事后紧急降级为独立认证服务，但已付出 10 倍于预防性降级的成本。
+
+**避免方法**：
+
+- 当安全等级要求超过共享组件认证等级时，立即触发降级；
+- 对关键安全组件预设"隔离降级"应急预案；
+- 建立安全事件驱动的快速降级通道（绿色通道审批）。
+
+### 7.7 选型决策矩阵：升级还是维持/降级？
+
+| 评估维度 | 升级倾向 | 降级/维持倾向 |
+|----------|----------|---------------|
+| 消费方数量 | ≥ 3 个内部团队或 ≥ 1 个外部组织 | < 3 个团队，且无增长趋势 |
+| 业务语义一致性 | ≥ 80% 场景语义一致 | 语义漂移严重，差异 > 30% |
+| 技术栈兼容性 | ≥ 80% 消费方技术栈兼容 | 兼容性 < 50%，适配成本过高 |
+| 安全/合规要求 | 需要统一认证、审计、隔离 | 消费方安全等级差异大 |
+| 经济指标 | Upgrade_Benefit > 0 且 ROI ≥ 150% | Downgrade_Benefit > 0 或风险不可控 |
+| 治理能力 | 目标层级治理角色、SLA、预算已就绪 | 目标层级治理能力缺失 |
+
+### 7.8 升级/降级治理流程泳道图
+
+```mermaid
+sequenceDiagram
+    participant Consumer as 消费方/项目
+    participant Arch as 架构治理委员会
+    participant Platform as 平台工程团队
+    participant Security as 安全架构师
+    participant FinOps as FinOps 团队
+    Consumer->>Arch: 提交升级/降级申请（含触发条件与影响面）
+    Arch->>Platform: 评估技术可行性与兼容性
+    Platform-->>Arch: 技术评估报告
+    Arch->>Security: 评估安全/合规影响
+    Security-->>Arch: 安全审查意见
+    Arch->>FinOps: 评估经济影响（Upgrade_Benefit / Downgrade_Benefit）
+    FinOps-->>Arch: 成本收益分析
+    alt 通过
+        Arch->>Consumer: 批准迁移，制定窗口与 SLA
+        Consumer->>Platform: 执行迁移/重构
+        Platform->>Arch: 完成验收，更新资产目录
+    else 不通过
+        Arch->>Consumer: 维持现状或引入适配器/防腐层
+    end
+```
+
+---
+
 > 最后更新: 2026-06-06
 
+
+---
+
+## 权威来源与交叉引用
+
+> **权威来源**:
+>
+> | 来源 | URL | 核查日期 |
+> |------|-----|----------|
+> | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-07 |
+> | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-07 |
+> | ISO/IEC 26566:2026 — Software product lines — Reuse process assessment and maturity framework | <https://www.iso.org/standard/43092.html> | 2026-07-07 |
+> | ISO/IEC 26565:2026 — Software and systems product line engineering — Maturity model | <https://www.iso.org/standard/43091.html> | 2026-07-07 |
+> | CNCF — Service Mesh Interface (SMI) and Microservices Governance | <https://www.cncf.io/projects/> | 2026-07-07 |
+> | Netflix Tech Blog — Mastering Chaos: A Netflix Guide to Microservices | <https://netflixtechblog.com/tagged/microservices> | 2026-07-07 |
+
+> **交叉引用**:
+>
+> - 跨层复用治理框架：[`struct/06-cross-layer-governance/01-process-governance/cross-layer-governance.md`](../01-process-governance/cross-layer-governance.md)
+> - FinOps 单位经济学：[`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../04-finops-cost/finops-unit-economics-2026.md)
+> - 复用度量指标体系：[`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../05-metrics-kpi/metrics-framework.md)
+> - 复用成熟度模型：[`struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`](../03-maturity-models/reuse-maturity-models-rcmm-rise.md)
 
 ---
 
@@ -222,6 +391,7 @@ flowchart TD
 
 > **权威来源**:
 >
-> - [FinOps Foundation](https://www.finops.org)
-> - [ISO/IEC/IEEE Standards](https://www.iso.org)
+> - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
+> - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
+> - [ISO/IEC 26566:2026](https://www.iso.org/standard/43092.html)
 > - 核查日期：2026-07-07

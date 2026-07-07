@@ -150,6 +150,174 @@ Process Template Library
 
 ---
 
+## 9. BPMN/DMN 复用编排模式
+
+### 9.1 概念定义
+
+**定义**：BPMN/DMN 复用编排（BPMN/DMN Reuse Orchestration）是指利用 BPMN 2.0 的流程可执行语义与 DMN 1.5 的决策服务语义，将稳定的过程结构、可变的决策规则与可复用的服务任务解耦，使流程模板、流程片段与决策服务能够在多个业务上下文、多个系统中重复组合与执行。
+
+形式化：
+
+```text
+ReuseOrchestration := ⟨P, D, S, I, V⟩
+
+P: 可复用流程模板集合（Process Templates）
+D: 可复用决策服务集合（Decision Services）
+S: 可复用服务任务集合（Service Tasks）
+I: 流程-决策-服务之间的接口契约集合
+V: 版本与兼容性规则集合
+```
+
+### 9.2 核心属性
+
+| 属性 | 说明 | 重要性 |
+|---|---|---|
+| 结构稳定性 | 流程控制流（顺序、分支、并行）变更频率低 | 高 |
+| 规则可变性 | 决策规则可独立于流程结构演进 | 高 |
+| 服务可替换性 | 服务任务实现可替换，不影响流程定义 | 高 |
+| 接口契约化 | 流程、决策、服务之间通过显式契约交互 | 高 |
+| 版本兼容性 | 支持多版本流程/决策服务共存 | 中 |
+| 执行可观测性 | 流程实例与决策执行可被追踪和审计 | 中 |
+
+### 9.3 复用编排模式
+
+#### 模式 1：流程模板库（Process Template Library）
+
+将同类业务场景抽象为标准 [BPMN](https://en.wikipedia.org/wiki/Business_process_modeling) 模板，通过参数化适配不同上下文。
+
+```mermaid
+flowchart TB
+    subgraph Library [流程模板库]
+        A[审批类模板]
+        B[订单类模板]
+        C[客服类模板]
+        D[AI 增强类模板]
+    end
+    subgraph Instance [上下文实例化]
+        A --> A1[请假审批]
+        A --> A2[费用报销]
+        A --> A3[合同审批]
+        B --> B1[电商订单]
+        B --> B2[B2B 订单]
+    end
+```
+
+#### 模式 2：调用活动跨流程复用（Call Activity Reuse）
+
+独立部署的子流程被多个主流程调用，实现流程片段级复用。
+
+```mermaid
+flowchart LR
+    P1[主流程：贷款申请] --> CA[[调用活动]]
+    P2[主流程：信用卡申请] --> CA
+    P3[主流程：开户申请] --> CA
+    CA --> SP[子流程：信用评估]
+    SP --> DS{DMN 决策服务}
+```
+
+#### 模式 3：决策服务复用（Decision-as-a-Service）
+
+[DMN](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) 决策表封装为独立 REST/gRPC 服务，供多个流程和系统共享。
+
+```mermaid
+flowchart LR
+    subgraph Clients [调用方]
+        C1[BPMN 流程]
+        C2[移动 App]
+        C3[客服系统]
+    end
+    Clients --> DS[DMN 决策服务]
+    DS --> DT1[定价决策表]
+    DS --> DT2[信用评分表]
+    DS --> DT3[合规检查表]
+```
+
+#### 模式 4：事件子流程横切关注点复用
+
+将超时、异常、升级等横切关注点抽象为事件子流程，附加于任意主流程。
+
+### 9.4 流程片段复用
+
+流程片段（Process Fragment）是 BPMN 中可独立识别、命名和版本化的子结构，包括：
+
+- **子流程（Subprocess）**：嵌入式或可调用的流程模块
+- **调用活动（Call Activity）**：调用独立流程定义的复用机制
+- **全局任务（Global Task）**：跨流程共享的人工任务定义
+
+**流程片段复用的最佳实践**：
+
+1. 识别高频出现的流程结构（如"审批"、"通知"、"支付"）
+2. 将高频结构提取为独立子流程或调用活动
+3. 定义清晰的输入/输出契约和数据对象
+4. 通过语义化版本控制管理变更
+
+### 9.5 决策服务复用
+
+**决策服务复用的层次**：
+
+| 层次 | 复用内容 | 典型示例 |
+|---|---|---|
+| 决策表结构 | 输入/输出变量、命中策略、规则骨架 | 信用评分表结构 |
+| 业务知识模型 | 可跨决策复用的计算逻辑 | 客户终身价值计算 |
+| 完整决策服务 | 已部署的 DMN 服务 | 利率定价服务 |
+
+**决策服务复用的反模式警示**：
+
+- 将业务流程条件直接硬编码在 DMN 中，导致决策服务知道过多流程上下文。
+- 将 DMN 决策表作为通用规则引擎，执行非决策类逻辑（如数据转换）。
+
+### 9.6 版本管理反例
+
+**反例：无版本隔离的决策服务复用**
+
+**场景**：某金融机构将"信用评分"DMN 决策服务部署为单一版本，供贷款审批、信用卡审批、保险核保三个业务线共享。当贷款业务要求调整评分规则时，直接修改了共享决策服务。
+
+**问题**：
+
+- 三个业务线共享同一决策服务版本，未建立多版本并存机制。
+- 修改未进行影响分析，信用卡审批和保险核保的规则被意外改变。
+
+**后果**：
+
+- 信用卡审批通过率异常下降 12%，客户投诉增加。
+- 保险核保出现风险漏判，导致后续赔付率上升。
+- 回滚困难，因为无法区分三个业务线各自的规则历史版本。
+
+**避免建议**：
+
+- 对共享决策服务实施**语义化版本控制**（Semantic Versioning）。
+- 采用**蓝绿部署**或**金丝雀发布**进行决策服务版本切换。
+- 在 BPMN 流程中通过版本参数显式指定调用的 DMN 版本。
+- 建立决策服务消费者影响分析（Consumer Impact Analysis）流程。
+
+### 9.7 与其他概念的关系
+
+- **与业务复用层的关系**：BPMN 流程模板是业务复用资产中"How"维度的主要载体。
+- **与应用复用层的关系**：BPMN 服务任务调用应用层服务契约（OpenAPI/gRPC）。
+- **与组件复用层的关系**：DMN 引擎、BPMN 引擎本身是技术组件复用对象。
+- **与价值流的关系**：价值流定义"端到端价值创造"，BPMN 定义"价值流的可执行编排"。
+
+### 9.8 权威来源与交叉引用
+
+> **权威来源**:
+>
+> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 在业务过程建模中的定位
+> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 概述
+> - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN) — OMG 官方 BPMN 规范
+> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN) — OMG 官方 DMN 规范
+> - [ISO/IEC 19510:2013](https://www.iso.org/standard/62652.html) — BPMN 国际标准
+>
+> **核查日期**: 2026-07-07
+
+**交叉引用**：
+
+- [BPMN 2.0 / DMN 1.5 可执行语义案例集](./bpmn-dmn-executable-cases.md) — 具体可执行案例
+- [BIAN 金融服务域复用案例](../case-studies/bian-banking-reuse-case.md) — BPMN/DMN 在金融场景的结合
+- [业务能力复用](../02-business-capability/capability-reuse.md) — 业务复用层定义
+- [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — 端到端价值流与 BPMN 编排的关系
+
+
+
 ## 补充说明：BPMN 2.0 / DMN 业务过程与决策的复用编排
 
 ## 示例

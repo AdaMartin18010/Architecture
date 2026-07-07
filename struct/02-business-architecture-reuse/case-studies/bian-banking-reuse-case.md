@@ -17,6 +17,7 @@
     - [1.1 BIAN 的组织背景与使命](#11-bian-的组织背景与使命)
     - [1.2 服务域（Service Domain）概念](#12-服务域service-domain概念)
     - [1.3 300+ 服务域的精确分类](#13-300-服务域的精确分类)
+    - [1.4 BIAN 服务域的复用定义](#14-bian-服务域的复用定义)
   - [2. BIAN Service Landscape 12.0 的核心结构](#2-bian-service-landscape-120-的核心结构)
     - [2.1 四级层次结构](#21-四级层次结构)
       - [2.1.1 业务场景（Business Scenario）](#211-业务场景business-scenario)
@@ -63,6 +64,26 @@
   - [7. 实施建议与路线图](#7-实施建议与路线图)
     - [7.1 评估现状与差距分析](#71-评估现状与差距分析)
     - [7.2 分阶段实施路线图](#72-分阶段实施路线图)
+  - [8. BIAN 服务景观与复用边界](#8-bian-服务景观与复用边界)
+    - [8.1 BIAN Service Landscape 的形式化定义](#81-bian-service-landscape-的形式化定义)
+    - [8.2 BIAN 服务域核心属性](#82-bian-服务域核心属性)
+    - [8.3 BIAN Service Landscape 12.0 结构图](#83-bian-service-landscape-120-结构图)
+    - [8.4 复用边界](#84-复用边界)
+    - [8.5 复用边界的决策树](#85-复用边界的决策树)
+  - [9. 反例：BIAN 复用的常见失败模式](#9-反例bian-复用的常见失败模式)
+    - [9.1 反例一：机械照搬 BIAN 服务域，忽视遗留系统现实](#91-反例一机械照搬-bian-服务域忽视遗留系统现实)
+    - [9.2 反例二：忽视本地监管变体，强制全球统一接口](#92-反例二忽视本地监管变体强制全球统一接口)
+    - [9.3 反例三：复用接口但语义不一致](#93-反例三复用接口但语义不一致)
+    - [9.4 反例四：只复用规范不复用治理](#94-反例四只复用规范不复用治理)
+  - [10. 与其他概念的关系](#10-与其他概念的关系)
+    - [10.1 与业务能力的关系](#101-与业务能力的关系)
+    - [10.2 与 TOGAF/FEA 的关系](#102-与-togaffea-的关系)
+    - [10.3 与 BPMN/DMN 的关系](#103-与-bpmndmn-的关系)
+    - [10.4 与 ISO 20022 的关系](#104-与-iso-20022-的关系)
+    - [10.5 与 Zachman 的关系](#105-与-zachman-的关系)
+  - [11. 权威来源与交叉引用更新](#11-权威来源与交叉引用更新)
+    - [11.1 新增权威来源](#111-新增权威来源)
+    - [11.2 交叉引用](#112-交叉引用)
   - [附录：权威来源](#附录权威来源)
 
 ---
@@ -88,6 +109,24 @@ BIAN（Banking Industry Architecture Network，银行业架构网络）是一个
 **可组合性（Composability）**：多个服务域可以通过标准化的服务编排机制组合成更复杂的业务流程。这种组合能力使得银行可以根据自身的业务需求灵活地"拼装"服务能力，而无需从零开发。
 
 ### 1.3 300+ 服务域的精确分类
+
+### 1.4 BIAN 服务域的复用定义
+
+**定义**：BIAN 服务域复用（BIAN Service Domain Reuse）是指金融机构基于 BIAN Service Landscape 中标准化的服务域（Service Domain）、业务对象（Business Object）、行为（Behavior）和信息交换规范（Information Exchange），将银行业务能力封装为自治、可组合、可替换的架构资产，并在内部系统、合作伙伴生态和跨银行协作中重复使用的实践。
+
+形式化：
+
+```text
+BIAN_Reuse := ⟨SD, BO, B, IX, Gov, Adapt⟩
+
+SD: BIAN 服务域集合
+BO: 业务对象模型集合
+B: 行为定义集合
+IX: 信息交换规范集合
+Gov: 服务域治理与版本管理规则
+Adapt: 本地化适配规则（监管、税务、渠道等）
+```
+
 
 截至 BIAN Service Landscape 12.0 版本，BIAN 定义了超过 300 个服务域，覆盖了零售银行、公司银行、投资银行、资产管理、保险、支付等全部金融服务领域。这些服务域按照层次化的业务领域（Business Area）和业务能力（Business Capability）进行分类。
 
@@ -590,6 +629,240 @@ DMN（Decision Model and Notation，决策模型与标记法）和 BPMN（Busine
 - 参与 BIAN 社区，贡献行业最佳实践和反馈标准改进建议。
 
 ---
+
+## 8. BIAN 服务景观与复用边界
+
+### 8.1 BIAN Service Landscape 的形式化定义
+
+**定义**：BIAN Service Landscape（银行业服务景观）是 BIAN 组织维护的一套标准化银行业务能力参考模型，通过业务场景（Business Scenario）、业务领域（Business Area）、业务子领域（Sub-domain）、服务域（Service Domain）四级结构，将银行业务分解为 300+ 自治、可组合、可复用的服务域，每个服务域包含业务对象、行为、状态模型和标准化 API 接口。
+
+形式化：
+
+```text
+BIAN_SL := ⟨BA, SD, BO, B, I, CP⟩
+
+BA: 业务领域集合
+SD: 服务域集合
+BO: 业务对象集合
+B: 行为集合
+I: 信息交换规范集合
+CP: 服务域协作模式集合
+```
+
+### 8.2 BIAN 服务域核心属性
+
+| 属性 | 说明 | 可观察指标 | 重要性 |
+|---|---|---|---|
+| 自治性 | 服务域拥有独立业务目标和数据主权 | 外部依赖数量、数据共享范围 | 高 |
+| 标准化接口 | 通过统一 API 规范对外服务 | OpenAPI 覆盖率、接口变更频率 | 高 |
+| 业务聚焦 | 边界按业务能力划分，而非技术系统 | 是否包含非相关业务功能 | 高 |
+| 可组合性 | 可与其他服务域编排成业务场景 | 被引用次数、协作模式数量 | 高 |
+| 语义稳定性 | 业务对象和行为的定义长期稳定 | 版本变更中破坏性变更比例 | 高 |
+| 实现无关性 | 规范独立于具体技术实现 | 是否规定特定数据库/中间件 | 中 |
+
+### 8.3 BIAN Service Landscape 12.0 结构图
+
+```mermaid
+flowchart TB
+    BS[业务场景<br/>Business Scenario] --> BA1[客户管理与支持]
+    BS --> BA2[产品与服务管理]
+    BS --> BA3[销售与分销]
+    BS --> BA4[账户管理与交易处理]
+    BS --> BA5[支付与清算]
+    BS --> BA6[风险管理与合规]
+    BS --> BA7[财务管理与报告]
+
+    BA1 --> SD1[服务域：客户信息管理]
+    BA1 --> SD2[服务域：客户关系管理]
+    BA5 --> SD3[服务域：支付发起]
+    BA5 --> SD4[服务域：支付执行]
+    BA6 --> SD5[服务域：信用风险管理]
+
+    SD1 --> BO1[业务对象：Customer Profile]
+    SD1 --> BO2[业务对象：Customer Consent]
+    SD4 --> BO3[业务对象：Payment Order]
+    SD4 --> BO4[业务对象：Payment Execution]
+
+    SD1 --> B1[行为：Create Customer Profile]
+    SD1 --> B2[行为：Validate Customer Identity]
+    SD4 --> B3[行为：Execute Payment]
+    SD4 --> B4[行为：Track Payment Status]
+```
+
+### 8.4 复用边界
+
+**应该复用的内容**：
+
+| 边界内 | 说明 |
+|---|---|
+| 服务域规范 | 业务定义、边界、行为清单 |
+| 业务对象模型 | 核心实体及其属性、关系 |
+| 信息交换规范 | API 请求/响应结构、数据类型 |
+| 协作模式 | 服务域之间的标准交互模式 |
+| 参考实现 | 经社区验证的开源参考代码 |
+
+**不应该强制复用的内容**：
+
+| 边界外 | 说明 |
+|---|---|
+| 具体技术栈 | 服务域不强制 Java/.NET/特定数据库 |
+| 本地化规则 | 各国监管、税务、合规变体 |
+| 非功能性配置 | 性能参数、部署拓扑、容量规划 |
+| 遗留系统封装细节 | 适配器实现因银行而异 |
+| 用户界面 | 渠道特定的 UI/UX |
+
+### 8.5 复用边界的决策树
+
+```mermaid
+flowchart TD
+    A[评估潜在复用内容] --> B{是否在 BIAN 服务域规范中?}
+    B -- 是 --> C{是否与技术实现无关?}
+    B -- 否 --> D[不建议作为 BIAN 资产复用]
+    C -- 是 --> E[适合跨银行/跨系统复用]
+    C -- 否 --> F{是否可通过参数化适配?}
+    F -- 是 --> G[作为可配置复用资产]
+    F -- 否 --> H[作为本地扩展，不归入核心复用资产]
+```
+
+---
+
+## 9. 反例：BIAN 复用的常见失败模式
+
+### 9.1 反例一：机械照搬 BIAN 服务域，忽视遗留系统现实
+
+**场景**：某中型银行决定全面采用 BIAN，要求所有新系统严格按照 BIAN 服务域拆分，并计划两年内替换核心银行系统。
+
+**问题**：
+
+- 忽视遗留核心系统的复杂性和数据耦合。
+- 服务域拆分过细，导致大量分布式事务和集成点。
+- 团队对 BIAN 理解不足，将"服务域"简单等同于"微服务"。
+
+**后果**：
+
+- 项目延期 18 个月，预算超支 160%。
+- 数据一致性问题和性能问题频发。
+- 部分服务域因过度拆分而难以独立交付价值。
+
+**避免建议**：
+
+- 采用**渐进式对齐**策略，先对新增业务能力采用 BIAN，遗留系统通过 facade 模式渐进暴露 BIAN 接口。
+- 服务域不等于微服务，一个微服务可实现多个服务域，一个服务域也可由多个微服务实现。
+
+### 9.2 反例二：忽视本地监管变体，强制全球统一接口
+
+**场景**：某全球银行集团要求所有区域使用完全一致的"客户信息管理"API，包括数据字段和验证规则。
+
+**问题**：
+
+- 不同国家/地区对 KYC、数据隐私、身份证件类型的要求不同。
+- 强制统一导致各地系统在 API 之上增加大量"变通层"。
+- 原本的标准化接口反而增加了系统复杂度。
+
+**后果**：
+
+- 区域系统交付周期延长。
+- API 变通层造成数据质量和审计追踪问题。
+- 集团无法准确掌握各区域实际数据模型。
+
+**避免建议**：
+
+- 区分**核心标准数据元素**和**本地扩展数据元素**。
+- 在信息交换规范中明确定义扩展点（extension points）和本地化适配机制。
+
+### 9.3 反例三：复用接口但语义不一致
+
+**场景**：两家银行都采用 BIAN "Payment Order" 业务对象，但一家将"收款人"定义为账户持有人，另一家定义为实际受益人。
+
+**问题**：
+
+- 虽然 API 字段名称相同，但业务语义存在细微差异。
+- 在跨银行集成时，资金被错误路由。
+
+**后果**：
+
+- 跨境支付测试阶段发现错误，险些造成资金损失。
+- 两家银行被迫进行昂贵的接口重新映射。
+
+**避免建议**：
+
+- 复用 BIAN 规范时，必须进行**语义对齐验证**。
+- 建立业务术语表（Business Glossary）和数据血统（Data Lineage）治理。
+- 在集成测试中增加语义断言，而非仅验证字段格式。
+
+### 9.4 反例四：只复用规范不复用治理
+
+**场景**：某银行引入 BIAN 服务域目录，但未建立相应的服务域 Owner、版本管理和变更影响分析流程。
+
+**问题**：
+
+- 多个团队随意修改"共享"服务域接口。
+- 版本管理混乱，消费者无法及时了解变更。
+- 服务域之间的协作关系无人维护。
+
+**后果**：
+
+- 接口频繁破坏性变更，下游系统反复返工。
+- 团队开始绕过标准接口直接访问数据库。
+- BIAN 复用计划名存实亡。
+
+**避免建议**：
+
+- 建立**服务域 Owner 制度**，每个服务域有明确的业务和技术负责人。
+- 实施语义化版本控制和消费者影响分析。
+- 将 BIAN 规范纳入架构评审和质量门禁。
+
+---
+
+## 10. 与其他概念的关系
+
+### 10.1 与业务能力的关系
+
+BIAN 服务域是银行业务能力的标准化表达，可映射到通用业务能力模型。参见 [业务能力复用](../02-business-capability/capability-reuse.md)。
+
+### 10.2 与 TOGAF/FEA 的关系
+
+BIAN 提供银行业特定的 ABB（架构构建块），TOGAF 提供 ABB 的管理方法论，FEA BRM 提供跨行业业务能力分类参考。详细映射见 [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md)。
+
+### 10.3 与 BPMN/DMN 的关系
+
+BIAN 定义"做什么"（服务域和能力），[BPMN](https://en.wikipedia.org/wiki/Business_process_modeling) 定义"怎么做"（流程编排），[DMN](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) 定义"怎么决定"（业务规则）。
+
+### 10.4 与 ISO 20022 的关系
+
+BIAN 业务对象与 [ISO 20022](https://en.wikipedia.org/wiki/ISO_20022) 报文元素存在映射，共同支撑金融报文互操作。
+
+### 10.5 与 Zachman 的关系
+
+BIAN 服务域可映射到 Zachman 矩阵的 C2-1（What, Business）、C2-2（How, Business）和 C3-2（How, System）等 cell。参见 [Zachman Framework 与软件架构复用映射](../08-zachman-reuse-mapping/zachman-reusability-matrix.md)。
+
+---
+
+## 11. 权威来源与交叉引用更新
+
+### 11.1 新增权威来源
+
+> **权威来源**:
+>
+> - [Banking Industry Architecture Network - Wikipedia](https://en.wikipedia.org/wiki/Banking_Industry_Architecture_Network) — BIAN 组织概述
+> - [ISO 20022 - Wikipedia](https://en.wikipedia.org/wiki/ISO_20022) — 金融报文标准
+> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 关联
+> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 关联
+> - [BIAN 官方网站](https://bian.org/) — Service Landscape 12.0 与服务域规范
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf) — 架构开发方法
+> - [FEA Framework](https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/) — 联邦企业架构框架
+>
+> **核查日期**: 2026-07-07
+
+### 11.2 交叉引用
+
+- [Zachman Framework 与软件架构复用映射](../08-zachman-reuse-mapping/zachman-reusability-matrix.md) — BIAN 服务域在 Zachman 矩阵中的坐标
+- [BPMN 2.0 / DMN 业务过程与决策的复用编排](../06-bpmn-dmn/bpmn-dmn-reuse-orchestration.md) — BIAN 与 BPMN/DMN 的结合
+- [业务能力复用](../02-business-capability/capability-reuse.md) — 服务域作为银行业务能力单元
+- [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — 金融服务价值流组合
+- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md) — BIAN 与 FEA/TOGAF 的映射基础
+
+
 
 ## 附录：权威来源
 
