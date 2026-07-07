@@ -178,6 +178,8 @@ struct/
 | ISA-95 + OPC UA 工业资产 | [`11-industrial-iot-otit/01-isa-95-model/`](struct/11-industrial-iot-otit/01-isa-95-model/) |
 | TLA+ / Alloy 形式化案例 | [`07-formal-verification/`](struct/07-formal-verification/) |
 | 可视化图库总览 | [`99-reference/visualizations/README.md`](struct/99-reference/visualizations/README.md) |
+| 学习路径与课程 | [`99-reference/course/`](struct/99-reference/course/) |
+| 全书聚合稿 | 运行 `python scripts/build-deliverables.py` 生成 `dist/book-full.md` |
 | 复用成熟度评估问卷 | [`06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md`](struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md) |
 | 国际标准对齐总览 | [`99-reference/standards-index/master-alignment-matrix.md`](struct/99-reference/standards-index/master-alignment-matrix.md) |
 | 术语中英文对照 | [`99-reference/glossary/terminology-crosswalk.md`](struct/99-reference/glossary/terminology-crosswalk.md) |
@@ -238,7 +240,7 @@ struct/
 | 3 | 2027-Q1 | 垂直领域扩展：工业 IoT 深化 | 🔄 预热中 |
 | 4 | 2027-Q2 | 安全与供应链：攻击面建模、合规自动化 | 🔄 预热中 |
 | 5 | 2027-Q3 | AI 原生与前沿：Agent 架构、WASM、量子 | 待启动 |
-| 6 | 2027-Q4 | 整合与输出：全书框架、课程、工具链 | 待启动 |
+| 6 | 2027-Q4 | 整合与输出：全书框架、课程、工具链 | 🔄 进行中 |
 
 ---
 

@@ -8094,6 +8094,7 @@ flowchart LR
 
 ---
 
+[^1]: youngju.dev, "Service Mesh in 2026" (2026-05-16); Open Service Mesh 和 AWS App Mesh 已分别于 2024-01 和 2024-10 停止维护。
 
 
 ---
