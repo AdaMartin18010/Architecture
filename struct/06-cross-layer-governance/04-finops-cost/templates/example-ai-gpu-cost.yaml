@@ -1,0 +1,104 @@
+# AI GPU 成本分摊示例输入
+# 对齐来源：
+#   - FinOps Foundation AI Cost Allocation / Token Economics
+#   - GSF SCI for AI（Software Carbon Intensity for AI）—— 成本分摊是碳强度计算的基础数据层
+#   - 本项目 struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md
+#   - 本项目 struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md
+#
+# 注意：以下价格为示意值，不对应任何真实云厂商挂牌价。
+
+metadata:
+  period: "2026-06"
+  currency: "USD"
+  owner: "AI Platform FinOps CoE"
+  description: "共享 GPU 集群上多团队 AI 工作负载成本分摊示例"
+  region: "example-region-1"
+
+gpu_cluster:
+  gpu_type: "Example-A100-80GB"
+  gpu_count: 8
+  # 示例小时单价，非真实云厂商价格
+  hourly_price_per_gpu: 2.50
+  hours: 720
+  # 调度平台开销比例（K8s / Slurm / Ray 等）
+  scheduler_overhead_ratio: 0.10
+  # 共享 GPU 时的分摊键：gpu_hours | memory_gb_hours | tokens | requests | manual
+  allocation_method: "gpu_hours"
+
+llm_pricing:
+  # 每千 token 示例单价
+  input_token_price_per_1k: 0.005
+  output_token_price_per_1k: 0.015
+
+extra_costs:
+  storage:
+    unit_price: 0.02
+    unit: "GB-month"
+  network:
+    unit_price: 0.05
+    unit: "GB"
+  logs:
+    unit_price: 0.10
+    unit: "GB"
+
+platform_services:
+  # AI Gateway、监控、可观测、模型仓库等共享平台服务月度成本池
+  total_monthly_cost: 5000.00
+  # 平台成本分摊驱动：tokens | requests | gpu_hours
+  allocation_driver: "tokens"
+
+workloads:
+  - id: "wl-001"
+    name: "客服助手推理"
+    team: "team-customer-support"
+    project: "proj-chatbot"
+    model_id: "model-llama3-70b"
+    workload_type: "llm-inference"
+    gpu_hours: 300
+    memory_gb_hours: 3000
+    requests: 500000
+    tokens:
+      input: 60000000
+      output: 15000000
+    extra_usage:
+      storage_gb: 200
+      network_gb: 500
+      logs_gb: 50
+    # 当 allocation_method=manual 时使用
+    allocation_weight: 1.0
+
+  - id: "wl-002"
+    name: "基座模型预训练"
+    team: "team-ml-research"
+    project: "proj-foundation-model"
+    model_id: "model-custom-base"
+    workload_type: "training"
+    gpu_hours: 400
+    memory_gb_hours: 8000
+    requests: 0
+    tokens:
+      input: 0
+      output: 0
+    extra_usage:
+      storage_gb: 1000
+      network_gb: 200
+      logs_gb: 100
+    allocation_weight: 1.0
+
+  - id: "wl-003"
+    name: "代码助手推理"
+    team: "team-developer-productivity"
+    project: "proj-code-assistant"
+    model_id: "model-code-llama-34b"
+    workload_type: "llm-inference"
+    gpu_hours: 200
+    memory_gb_hours: 2000
+    requests: 300000
+    tokens:
+      input: 30000000
+      output: 10000000
+    extra_usage:
+      storage_gb: 150
+      network_gb: 300
+      logs_gb: 40
+    allocation_weight: 1.0

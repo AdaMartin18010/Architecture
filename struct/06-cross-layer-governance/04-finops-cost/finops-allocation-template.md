@@ -33,6 +33,10 @@
   - [5. 配套工具](#5-配套工具)
     - [5.1 Excel 导出脚本](#51-excel-导出脚本)
     - [5.2 示例数据文件](#52-示例数据文件)
+    - [5.3 预算与预测分析脚本](#53-预算与预测分析脚本)
+    - [5.4 承诺折扣优化器](#54-承诺折扣优化器)
+    - [5.5 成本异常检测器](#55-成本异常检测器)
+    - [5.6 AI GPU 成本计算器](#56-ai-gpu-成本计算器)
   - [6. 实施检查清单](#6-实施检查清单)
     - [第 1–14 天：数据准备](#第-114-天数据准备)
     - [第 15–30 天：模型校准](#第-1530-天模型校准)
@@ -405,6 +409,164 @@ python templates/finops-exporter.py --input costs.json --output report.xlsx
 - **3 个项目**: `proj-ecommerce`, `proj-mobile`, `proj-admin`
 - **组织级间接成本**: CoE $50K/月、平台团队 $80K/月、共享基础设施 $30K/月
 - **风险评分**: 供应链风险 7.5/10、安全投入系数 0.15、合规与锁定准备金
+
+### 5.3 预算与预测分析脚本
+
+**路径**: [`templates/finops-budget-forecast.py`](./templates/finops-budget-forecast.py)
+
+功能：
+
+- 读取 YAML / JSON / CSV 格式的历史成本数据（至少 12 个月）
+- 计算月度总成本、月度增长率 MoM、年度总成本
+- 基于简单线性回归与移动平均生成下季度 / 下半年预测
+- 计算预算偏差（Actual vs Budget）与预算执行率 / 运行率（Run Rate）
+- 输出控制台表格、CSV 报告，或 Excel 报告（openpyxl 可用时）
+
+**CLI 用法**:
+
+```bash
+# 控制台输出
+python templates/finops-budget-forecast.py --input templates/example-budget.yaml --format console
+
+# CSV 报告
+python templates/finops-budget-forecast.py --input templates/example-budget.yaml --budget 500000 --format csv
+
+# Excel 报告
+python templates/finops-budget-forecast.py --input templates/example-budget.yaml --budget 500000 --output forecast.xlsx --format xlsx
+```
+
+**输出结构** (Excel 模式):
+
+| 工作表 | 内容 |
+|--------|------|
+| `历史数据` | 月度成本、MoM 增长率 |
+| `预测` | 线性回归下季度预测 + 3 个月移动平均下半年预测 |
+| `预算偏差` | 年度总成本、预算、偏差、执行率、运行率 |
+
+**对齐来源**: FinOps Foundation Forecasting Capability、FOCUS 1.0
+
+**示例数据文件**: [`templates/example-budget.yaml`](./templates/example-budget.yaml)
+
+### 5.4 承诺折扣优化器
+
+**路径**: [`templates/finops-commitment-optimizer.py`](./templates/finops-commitment-optimizer.py)
+
+功能：
+
+- 读取 YAML / JSON 输入：按需成本、RI / Savings Plans / Spot 折扣率、工作负载可中断性
+- 对比三种场景的年度总成本：全按需、RI/SP + Spot 最优组合、全 Spot（不可中断负载保留按需）
+- 输出推荐方案、预计年节省金额、节省百分比、风险等级
+- 支持控制台、CSV、Excel 三种输出（openpyxl / PyYAML 缺失时优雅降级）
+
+**CLI 用法**:
+
+```bash
+# 控制台输出
+python templates/finops-commitment-optimizer.py --input templates/example-commitment.yaml
+
+# CSV 报告
+python templates/finops-commitment-optimizer.py --input templates/example-commitment.yaml --csv commitment.csv
+
+# Excel 报告
+python templates/finops-commitment-optimizer.py --input templates/example-commitment.yaml --excel commitment.xlsx
+
+# 覆盖风险胃口
+python templates/finops-commitment-optimizer.py --input templates/example-commitment.yaml --risk-appetite low
+```
+
+**输出结构** (控制台 / Excel):
+
+| 输出项 | 内容 |
+|--------|------|
+| `场景对比` | 全按需、RI/SP + Spot、全 Spot 的年度成本、节省、节省率、Spot 占比、风险 |
+| `推荐方案` | 推荐类型、年度成本、节省、风险等级、推荐理由 |
+| `工作负载细分` | 每个工作负载的可中断性、分配类型、折扣率、年度成本 |
+
+**对齐来源**: FinOps Foundation Rate Optimization Capability; AWS / Azure / GCP RI、Savings Plans、Spot 文档
+
+**示例数据文件**: [`templates/example-commitment.yaml`](./templates/example-commitment.yaml)
+
+### 5.5 成本异常检测器
+
+**路径**: [`templates/finops-anomaly-detector.py`](./templates/finops-anomaly-detector.py)
+
+功能：
+
+- 读取 YAML / JSON / CSV 格式的历史成本数据（按资源 / 服务 / 团队逐日或逐月）
+- 实现两种异常检测算法：基于均值 + 3σ 的 Z-Score、基于环比增长率阈值（如 >30%）
+- 输出异常列表：资源、服务、团队、日期、实际成本、预期成本、偏差百分比、异常类型
+- 支持控制台、CSV、Excel 三种输出
+
+**CLI 用法**:
+
+```bash
+# 同时使用 Z-Score 与增长率检测
+python templates/finops-anomaly-detector.py --input templates/example-anomaly.yaml
+
+# 仅使用 Z-Score，阈值 2.5
+python templates/finops-anomaly-detector.py --input templates/example-anomaly.yaml --method zscore --threshold 2.5
+
+# 仅使用增长率，阈值 30%
+python templates/finops-anomaly-detector.py --input templates/example-anomaly.yaml --method growth --threshold 0.30
+
+# 指定输出路径
+python templates/finops-anomaly-detector.py --input templates/example-anomaly.yaml --output reports/anomaly.xlsx
+```
+
+**输出结构** (CSV / Excel):
+
+| 字段 | 说明 |
+|------|------|
+| `Resource` | 异常资源 |
+| `Service` | 服务类型 |
+| `Team` | 所属团队 |
+| `Date` | 异常日期 |
+| `Actual` | 实际成本 |
+| `Expected` | 预期成本 |
+| `Deviation%` | 偏差百分比 |
+| `Type` | 异常类型（zscore / growth_rate） |
+
+**对齐来源**: FinOps Foundation Cost Anomaly Detection Capability、FOCUS 1.0
+
+**示例数据文件**: [`templates/example-anomaly.yaml`](./templates/example-anomaly.yaml)
+
+### 5.6 AI GPU 成本计算器
+
+**路径**: [`templates/ai-gpu-cost-calculator.py`](./templates/ai-gpu-cost-calculator.py)
+
+功能：
+
+- 读取 YAML / JSON 输入，描述 AI 工作负载（GPU、Token、存储、网络、日志）
+- 计算 GPU 总成本、Token 输入 / 输出 / 总量成本、附加成本
+- 按团队 / 项目 / 模型分摊共享 GPU 与平台服务成本
+- 输出每千次推理成本、每百万 token 成本、每 GPU 小时成本等单位经济学指标
+- 支持控制台、CSV、Excel 三种输出
+
+**CLI 用法**:
+
+```bash
+# 控制台 + CSV + Excel
+python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost.yaml
+
+# 仅 CSV
+python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost.yaml --format csv
+
+# 指定输出基础路径
+python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost.yaml --output reports/ai-gpu-cost --format all
+```
+
+**输出结构** (控制台 / CSV / Excel):
+
+| 输出项 | 内容 |
+|--------|------|
+| `汇总成本` | GPU 集群总成本、Token 成本、附加成本、平台服务分摊成本、总成本 |
+| `单位经济学指标` | 每千次推理、每百万 token、每 GPU 小时、每千输入 / 输出 / 总 token 成本 |
+| `Workload 明细` | 每个工作负载的 GPU、Token、附加、平台、总成本 |
+| `按团队 / 项目 / 模型分摊` | 各维度成本金额与占比 |
+
+**对齐来源**: FinOps Foundation AI Cost Management / Token Economics / Cost Allocation; GSF SCI for AI; 本项目 `ai-cost-allocation.md`、`unit-economics.md`
+
+**示例数据文件**: [`templates/example-ai-gpu-cost.yaml`](./templates/example-ai-gpu-cost.yaml)
 
 ---
 

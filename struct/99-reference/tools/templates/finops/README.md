@@ -19,6 +19,7 @@
   - [3. 入口目录与主题目录的关系](#3-入口目录与主题目录的关系)
   - [4. 使用建议](#4-使用建议)
   - [5. 可执行脚本](#5-可执行脚本)
+    - [`finops-excel-template.py` 使用说明](#finops-excel-templatepy-使用说明)
   - [6. 版本与更新](#6-版本与更新)
   - [补充说明：FinOps 工具模板聚合入口](#补充说明finops-工具模板聚合入口)
   - [概念定义](#概念定义)
@@ -40,6 +41,10 @@
 | 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](../../../../06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
 | 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
 | 7 | FinOps Excel 公式模板 | `finops-excel-template.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 L1–L4 公式的可编辑 .xlsx 模板 |
+| 8 | FinOps 预算与预测分析脚本 | `finops-budget-forecast.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py) | 历史成本分析、MoM 增长率、线性回归 / 移动平均预测、预算执行率 |
+| 9 | FinOps 承诺折扣优化器 | `finops-commitment-optimizer.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py) | RI / SP / Spot 三种场景年成本对比与推荐方案 |
+| 10 | FinOps 成本异常检测器 | `finops-anomaly-detector.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py) | Z-Score 与环比增长率双算法成本异常检测 |
+| 11 | AI GPU 成本计算器 | `ai-gpu-cost-calculator.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py) | 共享 GPU / Token / 平台服务成本分摊与单位经济学指标 |
 
 ---
 
@@ -60,10 +65,14 @@
 - 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](../../../../06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
 - 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
 - 需要可编辑的 L1–L4 Excel 公式模板 → [FinOps Excel 公式模板](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)
+- 需要分摊共享 GPU / Token / 平台服务成本并输出单位经济学指标 → [AI GPU 成本计算器](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)
 
 ### 自动化工具
 
-- 需要导出四级分摊 Excel/CSV 报告 → [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
+- 需要导出四级分摊 Excel/CSV 报告 → [四级分摊导出脚本](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
+- 需要生成预算、预测与预算偏差报告 → [预算与预测分析脚本](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)
+- 需要优化 RI / SP / Spot 承诺折扣组合 → [承诺折扣优化器](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)
+- 需要检测成本异常（Z-Score / 增长率） → [成本异常检测器](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)
 
 ---
 
@@ -83,7 +92,15 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
     ├── finops-allocation.md
     ├── finops-exporter.py
     ├── finops-excel-template.py
-    └── example-costs.yaml
+    ├── finops-budget-forecast.py
+    ├── finops-commitment-optimizer.py
+    ├── finops-anomaly-detector.py
+    ├── ai-gpu-cost-calculator.py
+    ├── example-costs.yaml
+    ├── example-budget.yaml
+    ├── example-commitment.yaml
+    ├── example-anomaly.yaml
+    └── example-ai-gpu-cost.yaml
 ```
 
 **设计原则**:
@@ -102,7 +119,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 1. **首次使用**: 从本 README 选择对应模板，复制到项目 Wiki/Confluence/飞书文档后填写 `{{占位符}}`。
 2. **保持同步**: 若发现主题目录模板更新，应及时刷新复用副本中的链接与内容。
 3. **自定义占位符**: 各模板使用 `{{VARIABLE}}` 标记可填写字段，建议团队统一一套变量命名规范。
-4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)。
+4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)；预算预测、承诺折扣优化、异常检测、AI GPU 成本分摊分别使用 [`finops-budget-forecast.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)、[`finops-commitment-optimizer.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)、[`finops-anomaly-detector.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)、[`ai-gpu-cost-calculator.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)。
 
 ---
 
@@ -113,6 +130,10 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 | `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
 | `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
 | `finops-excel-template.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 SUMIFS/VLOOKUP 公式的 L1–L4 Excel 模板 |
+| `finops-budget-forecast.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py) | 历史成本分析、MoM 增长率、下季度 / 下半年预测、预算偏差与执行率 |
+| `finops-commitment-optimizer.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py) | 全按需、RI/SP + Spot、全 Spot 三种场景对比与推荐 |
+| `finops-anomaly-detector.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py) | Z-Score 与环比增长率双算法成本异常检测 |
+| `ai-gpu-cost-calculator.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py) | 共享 GPU / Token / 平台服务成本分摊与单位经济学指标 |
 
 ### `finops-excel-template.py` 使用说明
 
@@ -149,14 +170,19 @@ pip install openpyxl
 | 日期 | 更新内容 | 更新人 |
 |------|---------|--------|
 | 2026-06-12 | 新建 FinOps 工具模板聚合入口与 6 个 Markdown 模板索引 | {{UPDATER}} |
+| 2026-07-08 | 新增 4 个 FinOps 可执行脚本索引：预算预测、承诺折扣优化、异常检测、AI GPU 成本计算 | {{UPDATER}} |
 
 > **交叉引用**:
 >
 > - FinOps 主题入口: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 四级成本分摊模型: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
+> - FinOps 预算与预测: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)
+> - FinOps 承诺折扣优化: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)
+> - FinOps 异常检测: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)
+> - AI GPU 成本计算: [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)
 
-> 最后更新: 2026-06-12
+> 最后更新: 2026-07-08
 
 
 ---

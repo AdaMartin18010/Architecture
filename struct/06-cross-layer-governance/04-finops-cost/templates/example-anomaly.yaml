@@ -1,0 +1,229 @@
+metadata:
+  title: "示例历史成本数据（FinOps 异常检测）"
+  description: |
+    模拟按资源/服务/团队逐日汇总的历史成本记录。
+    所有金额均为示例数值，不代表任何真实云资源价格或账单。
+  source:
+    - "FinOps Foundation: Cost Anomaly Detection Capability"
+    - "FOCUS (FinOps Open Cost and Usage Specification) 1.0"
+  granularity: daily
+  unit: USD
+  generated_by: "finops-anomaly-detector.py"
+  note: "用于验证 zscore 与 growth_rate 两种异常检测算法。"
+
+records:
+  # --- 资源组 A：虚拟机 Web 生产环境 ---
+  - date: "2026-06-01"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 120.0
+  - date: "2026-06-02"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 118.5
+  - date: "2026-06-03"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 121.0
+  - date: "2026-06-04"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 119.5
+  - date: "2026-06-05"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 122.0
+  - date: "2026-06-06"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 120.5
+  - date: "2026-06-07"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 121.5
+  - date: "2026-06-08"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 123.0
+  - date: "2026-06-09"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 122.5
+  - date: "2026-06-10"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 500.0
+  - date: "2026-06-11"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 119.0
+  - date: "2026-06-12"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 120.0
+  - date: "2026-06-13"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 121.0
+  - date: "2026-06-14"
+    resource: "vm-web-prod-01"
+    service: "Compute"
+    team: "Platform"
+    cost: 118.0
+
+  # --- 资源组 B：分析型数据库 ---
+  - date: "2026-06-01"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 80.0
+  - date: "2026-06-02"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 82.0
+  - date: "2026-06-03"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 79.0
+  - date: "2026-06-04"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 81.0
+  - date: "2026-06-05"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 78.0
+  - date: "2026-06-06"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 80.0
+  - date: "2026-06-07"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 82.0
+  - date: "2026-06-08"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 79.0
+  - date: "2026-06-09"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 150.0
+  - date: "2026-06-10"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 80.0
+  - date: "2026-06-11"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 81.0
+  - date: "2026-06-12"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 79.0
+  - date: "2026-06-13"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 82.0
+  - date: "2026-06-14"
+    resource: "db-analytics-01"
+    service: "RDS"
+    team: "Data"
+    cost: 80.0
+
+  # --- 资源组 C：对象存储日志桶 ---
+  - date: "2026-06-01"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 45.0
+  - date: "2026-06-02"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 46.0
+  - date: "2026-06-03"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 44.0
+  - date: "2026-06-04"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 45.5
+  - date: "2026-06-05"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 47.0
+  - date: "2026-06-06"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 46.0
+  - date: "2026-06-07"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 45.0
+  - date: "2026-06-08"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 44.5
+  - date: "2026-06-09"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 46.0
+  - date: "2026-06-10"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 45.0
+  - date: "2026-06-11"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 90.0
+  - date: "2026-06-12"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 44.0
+  - date: "2026-06-13"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 45.0
+  - date: "2026-06-14"
+    resource: "blob-storage-logs"
+    service: "Storage"
+    team: "Platform"
+    cost: 46.0

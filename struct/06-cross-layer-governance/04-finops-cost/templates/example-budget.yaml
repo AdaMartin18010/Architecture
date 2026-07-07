@@ -1,0 +1,51 @@
+# FinOps 预算与预测示例数据
+# 对齐: FinOps Foundation Forecasting Capability
+# 用途: 配合 finops-budget-forecast.py 生成预算偏差与成本预测报告
+
+metadata:
+  currency: "USD"
+  organization: "Example Corp"
+  # 年度预算：可通过 CLI --budget 覆盖
+  budget_annual: 500000
+  description: "12 个月以上历史成本数据，用于测试月度 MoM、年度总成本、下季度/下半年预测及预算执行率"
+
+# -----------------------------------------------------------------------------
+# 历史月度成本：至少 12 个月
+# -----------------------------------------------------------------------------
+history:
+  - period: "2025-01"
+    cost: 35000
+  - period: "2025-02"
+    cost: 36200
+  - period: "2025-03"
+    cost: 37800
+  - period: "2025-04"
+    cost: 39100
+  - period: "2025-05"
+    cost: 40500
+  - period: "2025-06"
+    cost: 41200
+  - period: "2025-07"
+    cost: 42800
+  - period: "2025-08"
+    cost: 43500
+  - period: "2025-09"
+    cost: 44900
+  - period: "2025-10"
+    cost: 46200
+  - period: "2025-11"
+    cost: 47800
+  - period: "2025-12"
+    cost: 48500
+  - period: "2026-01"
+    cost: 50100
+  - period: "2026-02"
+    cost: 51800
+  - period: "2026-03"
+    cost: 53200
+  - period: "2026-04"
+    cost: 54500
+  - period: "2026-05"
+    cost: 56100
+  - period: "2026-06"
+    cost: 57800

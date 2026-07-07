@@ -1,0 +1,64 @@
+# FinOps 承诺折扣优化器示例输入
+# 对齐: FinOps Foundation Rate Optimization Capability
+# 来源: AWS Reserved Instances / Savings Plans / Spot, Azure Reserved VM Instances / Savings Plans / Spot, GCP CUD / Spot
+# 用途: 配合 finops-commitment-optimizer.py 生成年节省与风险分析报告
+
+metadata:
+  period: "2026-06"
+  currency: "USD"
+  organization: "Example Corp"
+  description: "4 个典型工作负载的承诺折扣优化示例：生产核心、批处理、分析平台、开发 CI"
+
+assumptions:
+  analysis_period_months: 12
+  risk_appetite: "medium"  # low | medium | high
+
+# -----------------------------------------------------------------------------
+# 折扣参数：所有数值由用户根据云厂商报价、历史账单与谈判结果输入
+# -----------------------------------------------------------------------------
+discounts:
+  ri:
+    discount_rate: 0.35          # 预留实例折扣率（例如 AWS Standard 1-year RI）
+    commitment_years: 1
+    upfront_ratio: 0.0           # 预付比例，0 = 无预付；仅用于现金流参考
+
+  savings_plans:
+    discount_rate: 0.22          # Savings Plans 折扣率（灵活性高于 RI）
+    commitment_years: 1
+    upfront_ratio: 0.0
+
+  spot:
+    discount_rate: 0.70          # Spot/Preemptible 折扣率
+    interruption_risk_score: 6   # 中断风险评分 1-10，10 为最高风险
+
+# -----------------------------------------------------------------------------
+# 工作负载列表：按需年成本、可中断性、推荐承诺类型
+# -----------------------------------------------------------------------------
+workloads:
+  - id: "web-prod"
+    name: "电商核心 Web 服务"
+    annual_on_demand_cost: 120000
+    can_interrupt: false
+    recommended_commitment_type: "ri"
+    notes: "7x24 生产服务，稳定基线，适合 RI"
+
+  - id: "api-batch"
+    name: "API 批处理队列"
+    annual_on_demand_cost: 80000
+    can_interrupt: true
+    recommended_commitment_type: "spot"
+    notes: "异步批处理，任务可重试，适合 Spot"
+
+  - id: "analytics-stable"
+    name: "稳定分析平台"
+    annual_on_demand_cost: 150000
+    can_interrupt: false
+    recommended_commitment_type: "savings_plans"
+    notes: "跨实例族/区域的稳定计算，适合 Savings Plans"
+
+  - id: "dev-ci"
+    name: "开发/测试 CI 流水线"
+    annual_on_demand_cost: 40000
+    can_interrupt: true
+    recommended_commitment_type: "spot"
+    notes: "CI 构建可中断、可重试，适合 Spot"
