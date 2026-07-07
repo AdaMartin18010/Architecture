@@ -352,3 +352,121 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ## 分析
 
 **分析**：ArchiMate 将复用关系可视化，是跨团队协作与架构治理的沟通媒介。
+
+
+---
+
+## 补充：ArchiMate 4.0 六层/核心元素与 ISO 42010 的映射
+
+> 本节按内容要素检查清单，对 ArchiMate 4.0 的六层/域（业务、应用、技术、动机、策略、实现与迁移）及通用域（Common Domain）核心元素与 ISO/IEC/IEEE 42010:2022 的映射进行系统化补全。
+> 相关 Wikipedia 概念结构：
+> [ArchiMate](https://en.wikipedia.org/wiki/ArchiMate)、
+> [TOGAF](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)、
+> [ISO/IEC/IEEE 42010](https://en.wikipedia.org/wiki/ISO/IEC/IEEE_42010)、
+> [Ontology](https://en.wikipedia.org/wiki/Ontology_(information_science))。
+
+### 1. 概念定义
+
+**定义**：ArchiMate 4.0 是 The Open Group 发布的企业架构建模语言规范，通过业务层（Business Layer）、应用层（Application Layer）、技术层（Technology Layer）、动机域（Motivation Domain）、策略域（Strategy Domain）、实现与迁移层（Implementation & Migration Layer）以及跨层通用域（Common Domain）构成完整的架构描述语言（ADL）。在 ISO/IEC/IEEE 42010:2022 的语境下，ArchiMate 本身即是一个符合标准的 Architecture Description Framework（ADF），其层/域对应 Viewpoint，方面（Aspect）对应 Model Kind，元素实例对应 View Component。
+
+### 2. ArchiMate 4.0 六层/域属性
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 分层清晰性 | 每个元素明确归属于某一层或域 | 高 |
+| 方面一致性 | 每个元素属于主动结构、行为或被动结构之一 | 高 |
+| 通用域复用 | 跨层通用元素可通过层标注（layer tag）区分上下文 | 中 |
+| 关系可表达性 | 支持 serving、realization、assignment、aggregation、composition、flow 等 | 高 |
+| ISO 42010 一致性 | Viewpoint/View/Model Kind/View Component 可被直接映射 | 中 |
+| 向后兼容性 | ArchiMate 3.2 模型可在 4.0 工具中打开并迁移 | 高 |
+
+### 3. 六层/域与 ISO 42010 映射
+
+| ArchiMate 4.0 层/域 | ISO 42010:2022 概念 | 核心元素（示例） | 复用说明 |
+|---------------------|---------------------|------------------|----------|
+| **业务层 Business Layer** | Viewpoint / Model Kind / View | Actor、Role、Process、Function、Service、Event、Business Object、Product | 业务能力目录与价值流模板在该层复用 |
+| **应用层 Application Layer** | Viewpoint / Model Kind / View | Application Component、Interface、Application Service、Data Object | 微服务模板、API 契约、数据模型在该层复用 |
+| **技术层 Technology Layer** | Viewpoint / Model Kind / View | Node、Device、System Software、Technology Service、Artifact、Communication Network | 容器镜像、基础设施即代码、网络拓扑在该层复用 |
+| **动机域 Motivation Domain** | Stakeholder / Concern / Rationale | Stakeholder、Driver、Assessment、Goal、Outcome、Principle、Requirement | 将“为什么复用”与“复用目标”显性化 |
+| **策略域 Strategy Domain** | Concern / Aspect | Resource、Capability、Value Stream、Course of Action | 支撑业务战略到可复用能力的映射 |
+| **实现与迁移层 Implementation & Migration Layer** | Architecture Decision / Rationale / View | Work Package、Deliverable、Plateau | 记录复用资产的引入、迁移与退役决策 |
+| **通用域 Common Domain** | Model Kind / View Component | Actor、Role、Collaboration、Process、Function、Interaction、Event、Service、Interface、Path | 跨层抽象，支持模式库在多层复用 |
+
+### 4. 关系说明
+
+- **层间 realization 链**：业务服务 → 应用服务 → 技术服务，形成“业务能力到技术实现”的纵向追溯链。
+- **Common Domain 泛化关系**：通用域元素通过 layer tag 实例化为业务/应用/技术层元素，实现元模型资产复用。
+- **Motivation/Strategy → Core Layers**：动机域的 Goal/Requirement 驱动业务层设计；策略域的 Capability 映射到应用/技术层实现。
+- **Implementation & Migration ↔ Core Layers**：Work Package/Deliverable/Plateau 记录核心层元素的变更状态与决策。
+- **ISO 42010 Correspondence ↔ ArchiMate Relationship**：ArchiMate 的 realization、serving、assignment 等关系可直接作为跨层/跨视图对应关系的具体化。
+
+### 5. 形式化/结构化分析
+
+```mermaid
+graph TB
+    M[Motivation Domain<br/>Stakeholder / Driver / Goal / Requirement]
+    S[Strategy Domain<br/>Resource / Capability / Value Stream]
+    B[Business Layer]
+    A[Application Layer]
+    T[Technology Layer]
+    I[Implementation & Migration Layer]
+    C[Common Domain]
+    M --> S
+    S --> B
+    B --> A
+    A --> T
+    I --> T
+    I --> A
+    I --> B
+    C -.->|generalizes| B
+    C -.->|generalizes| A
+    C -.->|generalizes| T
+```
+
+### 6. 正例
+
+**正例**：某物流企业使用 ArchiMate 4.0 建模“订单履约”复用资产：
+
+- **业务层**：Business Service “订单履约服务” realized by Business Process “订单处理流程”。
+- **应用层**：Application Service “Order Fulfillment API” realizes 业务服务；Application Component “OrderService” 实现该应用服务。
+- **技术层**：Technology Service “Container Orchestration” realizes 应用组件；Node “K8s Cluster” 提供运行环境。
+- **通用域**：通用 Service 元素通过 layer tag 同时用于业务、应用、技术层，避免重复定义。
+- **动机域**：Goal “缩短履约周期”驱动 Requirement “订单状态实时同步”，并追溯至应用服务设计。
+- **实现与迁移层**：Work Package “订单服务容器化” 记录从单体到微服务的迁移决策。
+
+结果：该模型可作为标准化视点模板，在新业务线（冷链、跨境）复用，影响分析时间从数周缩短至数天。
+
+### 7. 反例
+
+**反例**：某团队在 ArchiMate 建模中将“数据库”画为业务层 Business Object：
+
+- 混淆了技术实现与业务语义，导致业务方误以为“数据库”是业务实体。
+- 在生成应用架构视图时，无法通过 realization 关系正确追溯到技术层 Artifact。
+- 复用该模型时，下游团队错误地将业务对象规则套用到数据表设计，造成数据模型冗余。
+
+**另一个反例**：滥用 Aggregation 关系表达所有复用：
+
+- 将“客户组件聚合订单组件”同时表达组合、依赖与复用，掩盖了真正的 serving 与 realization 语义。
+- 自动一致性检查无法识别跨层不一致，模型沦为装饰性图表。
+
+**避免建议**：严格区分层边界；使用正确的关系类型；对通用域元素显式标注 layer tag；定期开展模型合规评审。
+
+### 8. 权威来源
+
+> **权威来源**：
+>
+> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [The Open Group - ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/)
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
+> - [ArchiMate - Wikipedia](https://en.wikipedia.org/wiki/ArchiMate)
+>
+> **核查日期**：2026-07-07
+
+### 9. 交叉引用
+
+- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)
+- TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
+- 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)
+- SWEBOK V4 对齐详见 [`../05-swebok-v4/swebok-alignment.md`](../05-swebok-v4/swebok-alignment.md)

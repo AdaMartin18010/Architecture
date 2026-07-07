@@ -156,3 +156,28 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 - Intertek Blog: "Exploring the IEC 61508 Proven-In-Use Concept" (2026-01-22)
 - Jama Software: "What Is IEC 61508? A Functional Safety Guide" (2026-04-30)
 - Gofore: "Understanding IEC 61508: The foundation of functional safety" (2025-11-12)
+
+
+---
+
+## 补充章节
+## 示例
+
+**示例**：某供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 SEooC 复用到多款车型，通过安全手册明确假设与使用约束。
+
+## 反例
+
+**反例**：团队复用开源运动控制库到医疗机器人，未评估其 SIL 符合性，认证阶段无法证明诊断覆盖率，项目被迫返工。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [ISO 26262](https://www.iso.org/standard/68383.html)
+> - [IEC 62443](https://www.iec.ch/cybersecurity)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：功能安全复用不是简单复制代码，而是复用经过验证的安全证据与假设约束。

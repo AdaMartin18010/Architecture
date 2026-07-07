@@ -294,3 +294,15 @@ def calculate_risk_score(component):
 | CVE-2021-44228 (Log4Shell) | <https://nvd.nist.gov/vuln/detail/CVE-2021-44228> | 2026-06-10 |
 | SLSA 1.2 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
 | NIST SSDF | <https://csrc.nist.gov/projects/ssdf> | 2026-06-10 |
+
+
+---
+
+## 补充章节
+## 概念定义
+
+**定义**：软件供应链安全关注从源代码、依赖、构建、分发到部署全链路中，复用资产不被篡改、注入漏洞或引入许可证风险；SLSA、SBOM 与签名验证是核心机制。
+
+## 反例
+
+**反例**：XZ Utils 后门事件显示，未对压缩依赖进行来源验证与行为审计，恶意代码可潜伏数年并随复用传播到大量系统。

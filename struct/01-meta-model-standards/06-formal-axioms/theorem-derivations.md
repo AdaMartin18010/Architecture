@@ -607,6 +607,27 @@ $$
 
 ---
 
+## 权威来源
+
+> **权威来源**:
+>
+> - [M. J. C. Gordon, Programming Language Theory and its Implementation](https://www.cl.cam.ac.uk/~mjcg/) — 形式化语义与定理证明
+> - [Leslie Lamport, Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers](https://lamport.azurewebsites.net/tla/book.html) — TLA+ 规约语言
+> - [Daniel Jackson, Software Abstractions: Logic, Language, and Analysis](https://mitpress.mit.edu/9780262528900/software-abstractions/) — Alloy 与轻量级形式化方法
+> - [ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description](https://www.iso.org/standard/74296.html) — 架构描述标准
+> - [W. W. B. R. Wand and R. Weber, An Ontological Model of an Information System](https://ieeexplore.ieee.org/document/79346) — BWW 本体论
+>
+> **核查日期**: 2026-07-07
+
+## 交叉引用
+
+- [形式化公理体系](axiom-system.md)
+- [架构-复用二元性公理](axiom-system.md#m1-architecture-reuse-duality)
+- [可变性公理](axiom-system.md#m2-variability-axiom)
+- [层次不可约性公理](axiom-system.md#m3-hierarchy-non-reduction)
+- [同一性保持公理](axiom-system.md#m4-identity-preservation)
+- [定理证明工具对照表](../../07-formal-verification/01-tla-plus/case-library.md)
+
 > 最后更新: 2026-06-06 (Phase 3)
 
 

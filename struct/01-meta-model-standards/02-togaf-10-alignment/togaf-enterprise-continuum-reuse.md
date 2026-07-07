@@ -159,3 +159,152 @@ SBB: Keycloak + 定制扩展
 ## 分析
 
 **分析**：TOGAF 的企业 continuum 提供了从基础架构到组织特定架构的复用梯度，是业务-技术对齐的重要工具。
+
+
+---
+
+## 补充：TOGAF 10 企业连续体、架构仓库与构建块完整定义
+
+> 本节对企业连续体（Enterprise Continuum）、架构仓库（Architecture Repository）、架构构建块（ABB）与解决方案构建块（SBB）进行定义、属性、关系、正例、反例与权威来源补全。
+> 相关 Wikipedia 概念结构：
+> [TOGAF](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)、
+> [Enterprise architecture](https://en.wikipedia.org/wiki/Enterprise_architecture)、
+> [Software component](https://en.wikipedia.org/wiki/Software_component)。
+
+### 1. 概念定义
+
+**定义**：TOGAF 10 企业连续体是一个覆盖企业内外全部架构资产的“虚拟仓库”，通过架构连续体（Architecture Continuum）与解决方案连续体（Solutions Continuum）两条轴线，将抽象的架构构建块（ABB）逐步精化为可落地的解决方案构建块（SBB）。架构仓库（Architecture Repository）则是这些资产的物理/逻辑存储与治理载体。
+
+### 2. 核心概念属性
+
+#### 2.1 Enterprise Continuum（企业连续体）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 虚拟仓库特性 | 不强制单一物理存储，强调逻辑统一视图 | 高 |
+| 双轴结构 | 包含 Architecture Continuum 与 Solutions Continuum | 高 |
+| 四层粒度 | Foundation → Common Systems → Industry → Organization-Specific | 高 |
+| 资产覆盖范围 | 同时覆盖企业内部资产与外部行业资产 | 中 |
+| 治理关联 | 与 Architecture Repository、 governance log 联动 | 中 |
+
+#### 2.2 Architecture Continuum（架构连续体）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 抽象层级 | 逻辑/概念层 | 高 |
+| 核心单元 | Architecture Building Block（ABB） | 高 |
+| 通用性梯度 | 从 Foundation 到 Organization-Specific 递减 | 高 |
+| 稳定性 | 越靠近 Foundation 越稳定 | 中 |
+| 复用方式 | 作为设计约束与参考模式被引用 | 中 |
+
+#### 2.3 Solutions Continuum（解决方案连续体）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 抽象层级 | 物理/实现层 | 高 |
+| 核心单元 | Solution Building Block（SBB） | 高 |
+| 对应关系 | 每个 SBB 实现一个或多个 ABB | 高 |
+| 可替换性 | 同一 ABB 可由多个 SBB 实现 | 中 |
+| 采购/集成导向 | 直接支撑产品选型、配置与定制 | 中 |
+
+#### 2.4 Architecture Repository（架构仓库）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 分区结构 | 包含元模型、能力、景观、SIB、参考库、治理日志 | 高 |
+| 治理支撑 | 记录决策、合规评估与例外审批 | 高 |
+| 版本控制 | 支持架构景观基线、目标与过渡状态 | 中 |
+| 工具集成 | 与 ArchiMate 模型库、CI/CD、SBOM 仓库联动 | 中 |
+| 可审计性 | 所有变更可追溯至决策与责任人 | 高 |
+
+#### 2.5 Architecture Building Block（ABB）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 抽象层级 | 逻辑/概念 | 高 |
+| 职责定义 | 明确的功能、接口、数据与行为 | 高 |
+| 技术无关性 | 不绑定具体产品或技术 | 高 |
+| 复用方式 | 被架构描述引用，指导设计 | 中 |
+| 可变性管理 | 可包含 Variability Point 以支持定制 | 中 |
+
+#### 2.6 Solution Building Block（SBB）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 抽象层级 | 物理/实现 | 高 |
+| 产品绑定 | 对应具体产品、软件、服务或硬件 | 高 |
+| 配置信息 | 包含版本、参数、部署拓扑 | 高 |
+| 复用方式 | 直接集成、配置或定制 | 中 |
+| 来源可追溯 | 可追溯到对应 ABB 与采购/构建记录 | 中 |
+
+### 3. 关系说明
+
+- **Enterprise Continuum ⊇ Architecture Continuum ∪ Solutions Continuum**：企业连续体是总集，两条连续体是其核心子结构。
+- **Architecture Continuum → Solutions Continuum**：架构连续体中的 ABB 通过“实现为”关系映射到解决方案连续体中的 SBB，关系可 1:1 或 1:N。
+- **Architecture Repository ↔ Continuum**：仓库是连续体的物理/逻辑载体；连续体定义仓库中资产的分类与演进路径。
+- **ABB ↔ SBB**：ABB 回答“需要什么能力”，SBB 回答“用什么实现该能力”。
+- **TOGAF ADM → Continuum/Repository**：ADM 各阶段产生、消费并治理连续体中的资产。
+- **ISO 42010 ADF ↔ Enterprise Continuum**：ISO 42010 的 ADF 定义架构描述的元模型，TOGAF 企业连续体则提供资产分类与复用梯度。
+
+### 4. 形式化/结构化分析
+
+```mermaid
+graph TB
+    EC[Enterprise Continuum<br/>企业连续体]
+    EC --> AC[Architecture Continuum<br/>架构连续体<br/>ABB]
+    EC --> SC[Solutions Continuum<br/>解决方案连续体<br/>SBB]
+    AC --> F[Foundation]
+    AC --> CS[Common Systems]
+    AC --> I[Industry]
+    AC --> OS[Organization-Specific]
+    SC --> FS[Foundation Solutions]
+    SC --> CSS[Common System Solutions]
+    SC --> IS[Industry Solutions]
+    SC --> OSS[Organization-Specific Solutions]
+    AR[Architecture Repository] --> EC
+    AR --> SIB[Standards Information Base]
+    AR --> REF[Reference Library]
+    AR --> GL[Governance Log]
+    ABB[Architecture Building Block] -- realized by --> SBB[Solution Building Block]
+```
+
+### 5. 正例
+
+**正例**：某跨国零售企业建立客户身份管理能力：
+
+- **ABB**：Customer Identity Management，定义注册、认证、授权、画像管理、同意记录等功能与接口契约。
+- **SBB 选项**：
+  - 方案 A：Keycloak 22.x + 定制同意管理插件；
+  - 方案 B：Okta Workforce Identity + 现有 CRM 集成；
+  - 方案 C：自研 IAM 微服务套件。
+- **Architecture Repository**：存储 ABB 定义、三种 SBB 评估报告、架构决策记录（ADR）、SIB 中的 IAM 技术标准与治理日志。
+- **复用效果**：欧洲区选择方案 A，亚太区选择方案 B，但两者共享同一 ABB，使得跨区审计、接口契约与能力地图保持一致。
+
+### 6. 反例
+
+**反例**：某团队将“使用 Redis 缓存”直接写进业务架构作为 ABB：
+
+- 业务架构层出现 SBB 级技术决策，导致业务方被迫接受特定技术选型。
+- 当性能要求变化需要替换为 Memcached 时，业务架构文档必须同步修改，破坏了上层稳定性。
+- 架构仓库中 ABB 与 SBB 混放，无法区分“能力需求”与“实现产品”。
+
+**避免建议**：ABB 必须保持技术无关；SBB 必须在独立分区中记录；任何 SBB 变更应先评估其对 ABB 的影响，而非反向修改业务架构。
+
+### 7. 权威来源
+
+> **权威来源**：
+>
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [TOGAF - Wikipedia](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)
+>
+> **核查日期**：2026-07-07
+
+### 8. 交叉引用
+
+- TOGAF 与 ISO 42010 详细映射见本文档第 6 节
+- TOGAF 详细映射文档详见 [`detailed-mapping.md`](./detailed-mapping.md)
+- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)
+- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)

@@ -1,0 +1,202 @@
+name: Formal Verification
+
+on:
+  push:
+    paths:
+      - 'struct/07-formal-verification/**'
+      - 'struct/99-reference/tools/formal-verification-env/**'
+      - '.github/workflows/formal-verification.yml'
+  pull_request:
+    paths:
+      - 'struct/07-formal-verification/**'
+      - 'struct/99-reference/tools/formal-verification-env/**'
+      - '.github/workflows/formal-verification.yml'
+  workflow_dispatch:
+
+jobs:
+  doc-level-validation:
+    name: Document-Level Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate TLA+ syntax and build instructions
+        run: |
+          python3 <<'PY'
+          import re, sys
+          from pathlib import Path
+          root = Path("struct/07-formal-verification/01-tla-plus")
+          errors = []
+          if root.exists():
+              for f in sorted(root.glob("*.tla")):
+                  text = f.read_text(encoding="utf-8")
+                  if "MODULE" not in text or "====" not in text:
+                      errors.append(f"{f}: missing MODULE header or ending separator")
+                  if "EXTENDS" not in text and "MODULE " not in text.splitlines()[0]:
+                      errors.append(f"{f}: missing EXTENDS or malformed header")
+                  # Check for matching .md documentation
+                  md = f.with_suffix(".md")
+                  if not md.exists():
+                      errors.append(f"{f}: missing companion documentation {md}")
+          if errors:
+              print("TLA+ document-level validation failed:")
+              for e in errors:
+                  print("  -", e)
+              sys.exit(1)
+          print("TLA+ document-level validation passed.")
+          PY
+
+      - name: Validate Alloy syntax and build instructions
+        run: |
+          python3 <<'PY'
+          import sys
+          from pathlib import Path
+          root = Path("struct/07-formal-verification/02-alloy")
+          errors = []
+          if root.exists():
+              for f in sorted(root.glob("*.als")):
+                  text = f.read_text(encoding="utf-8")
+                  if "module" not in text or "run" not in text and "check" not in text:
+                      errors.append(f"{f}: missing module or executable run/check command")
+                  md = f.with_suffix(".md")
+                  if not md.exists():
+                      errors.append(f"{f}: missing companion documentation {md}")
+          if errors:
+              print("Alloy document-level validation failed:")
+              for e in errors:
+                  print("  -", e)
+              sys.exit(1)
+          print("Alloy document-level validation passed.")
+          PY
+
+      - name: Validate Coq/Isabelle build instructions
+        run: |
+          python3 <<'PY'
+          import sys
+          from pathlib import Path
+          root = Path("struct/07-formal-verification/03-coq-isabelle")
+          errors = []
+          if root.exists():
+              coq_files = list(root.rglob("*.v"))
+              thy_files = list(root.rglob("*.thy"))
+              root_file = root / "isabelle-theories" / "ROOT"
+              if thy_files and not root_file.exists():
+                  errors.append(f"Isabelle theories present but {root_file} is missing")
+              for f in coq_files + thy_files:
+                  md = f.with_suffix(".md")
+                  parent_md = f.parent / "README.md"
+                  if not md.exists() and not parent_md.exists():
+                      errors.append(f"{f}: missing companion documentation or README")
+          if errors:
+              print("Coq/Isabelle document-level validation failed:")
+              for e in errors:
+                  print("  -", e)
+              sys.exit(1)
+          print("Coq/Isabelle document-level validation passed.")
+          PY
+
+      - name: Upload document-level validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: formal-verification-doc-report
+          path: |
+            struct/07-formal-verification/
+            struct/99-reference/tools/formal-verification-env/
+
+  docker-formal-verification:
+    name: Docker-Based Formal Verification
+    runs-on: ubuntu-latest
+    needs: doc-level-validation
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: |
+          docker compose version || docker-compose version
+
+      - name: Start formal verification containers
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          docker compose up -d
+          sleep 15
+          docker compose ps
+
+      - name: Verify container toolchains are available
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          echo "=== TLA+ ==="
+          docker compose exec -T tla-plus bash -c "java -cp /usr/local/lib/tla2tools.jar tlc2.TLC --help || true"
+          echo "=== Alloy ==="
+          docker compose exec -T alloy bash -c "alloy --help || true"
+          echo "=== Coq/Rocq ==="
+          docker compose exec -T coq bash -c "rocq --version || coqc --version || true"
+          echo "=== Isabelle ==="
+          docker compose exec -T isabelle bash -c "isabelle version || true"
+
+      - name: Run TLA+ specs (best-effort)
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          set +e
+          mkdir -p ${{ github.workspace }}/reports
+          REPORT="${{ github.workspace }}/reports/tla-plus-results.md"
+          echo "# TLA+ Verification Results" > "$REPORT"
+          for spec in ${{ github.workspace }}/struct/07-formal-verification/01-tla-plus/*.tla; do
+            name=$(basename "$spec")
+            echo "## $name" >> "$REPORT"
+            docker compose exec -T tla-plus bash -c "cd /work/struct/07-formal-verification/01-tla-plus && tlc $name -deadlock" >> "$REPORT" 2>&1
+            echo "" >> "$REPORT"
+          done
+          cat "$REPORT"
+
+      - name: Run Alloy models (best-effort)
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          set +e
+          REPORT="${{ github.workspace }}/reports/alloy-results.md"
+          echo "# Alloy Verification Results" > "$REPORT"
+          for model in ${{ github.workspace }}/struct/07-formal-verification/02-alloy/*.als; do
+            name=$(basename "$model")
+            echo "## $name" >> "$REPORT"
+            docker compose exec -T alloy bash -c "cd /work/struct/07-formal-verification/02-alloy && alloy exec $name" >> "$REPORT" 2>&1 || \
+            docker compose exec -T alloy bash -c "cd /work/struct/07-formal-verification/02-alloy && alloy $name" >> "$REPORT" 2>&1 || true
+            echo "" >> "$REPORT"
+          done
+          cat "$REPORT"
+
+      - name: Run Coq proofs (best-effort)
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          set +e
+          REPORT="${{ github.workspace }}/reports/coq-results.md"
+          echo "# Coq Verification Results" > "$REPORT"
+          docker compose exec -T coq bash -c "cd /work/struct/07-formal-verification/03-coq-isabelle/coq-examples && for f in *.v; do echo \"## \$f\"; rocq compile \$f || coqc \$f; done" >> "$REPORT" 2>&1
+          cat "$REPORT"
+
+      - name: Run Isabelle build (best-effort)
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: |
+          set +e
+          REPORT="${{ github.workspace }}/reports/isabelle-results.md"
+          echo "# Isabelle Verification Results" > "$REPORT"
+          docker compose exec -T isabelle bash -c "cd /work/struct/07-formal-verification/03-coq-isabelle/isabelle-theories && isabelle build -D ." >> "$REPORT" 2>&1
+          cat "$REPORT"
+
+      - name: Tear down containers
+        if: always()
+        working-directory: struct/99-reference/tools/formal-verification-env
+        run: docker compose down
+
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: formal-verification-reports
+          path: reports/

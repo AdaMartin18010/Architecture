@@ -193,3 +193,145 @@ TrustScore(A) = α × Completeness(Classification(A))
 ## 分析
 
 **分析**：RAS 提供了一套标准化资产描述契约，是资产目录可检索、可比较、可治理的基础。
+
+
+---
+
+## 补充：OMG RAS v2.2 可复用资产元模型完整定义
+
+> 本节对 OMG RAS（Reusable Asset Specification）v2.2 的核心概念——Asset、Classification、Solution、Usage、RelatedAssets 及 Profile 扩展机制——进行定义、属性、关系、正例、反例、形式化视图、权威来源与交叉引用的补全。
+> 相关 Wikipedia 概念结构：
+> [Code reuse](https://en.wikipedia.org/wiki/Code_reuse)、
+> [Component-based software engineering](https://en.wikipedia.org/wiki/Component-based_software_engineering)、
+> [Software component](https://en.wikipedia.org/wiki/Software_component)。
+
+### 1. 概念定义
+
+**定义**：OMG RAS v2.2 是一个供应商中立的软件可复用资产包装与交换规范。它将每个可复用资产抽象为一个包含元数据（Asset）、分类（Classification）、解决方案（Solution）、使用说明（Usage）与相关资产（RelatedAssets）五大部分的标准化制品，从而降低复用交易中的搜索、评估、适配与集成摩擦。
+
+### 2. 核心概念属性
+
+#### 2.1 Asset（资产）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| id | 全局唯一标识符 | 高 |
+| name | 人类可读名称 | 高 |
+| version | 语义化版本（建议 SemVer） | 高 |
+| date | 发布或更新日期 | 高 |
+| state | 生命周期状态（如 draft / candidate / approved / deprecated） | 高 |
+| owner | 资产责任人或组织单元 | 中 |
+
+#### 2.2 Classification（分类）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| Context | 资产适用上下文 | 高 |
+| DescriptorGroup | 描述符分组 | 高 |
+| NodeDescriptor | 分类树节点 | 中 |
+| FreeFormDescriptor | 自由键值描述 | 中 |
+| ClassificationSchema | 可复用分类词汇表 | 中 |
+| license | 许可证标识（建议 SPDX） | 高 |
+
+#### 2.3 Solution（解决方案）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| Artifact | 实际工作产品 | 高 |
+| ArtifactContext | 制品与上下文的关联 | 中 |
+| ArtifactDependency | 制品间依赖 | 高 |
+| ArtifactType | 制品类型 | 高 |
+| VariabilityPoint | 可变性点 | 中 |
+| checksum / signature | 制品完整性校验 | 高 |
+
+#### 2.4 Usage（使用）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| Activity | 使用指令 | 高 |
+| ArtifactActivity | 绑定到特定制品的活动 | 中 |
+| AssetActivity | 绑定到整个资产的活动 | 中 |
+| VariabilityPointBinding | 可变性点绑定规则 | 中 |
+| ActivityParameter | 活动参数 | 中 |
+| reproducibility | 使用过程是否可被第三方复现 | 高 |
+
+#### 2.5 RelatedAssets（相关资产）
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| aggregation | 聚合/包含关系 | 高 |
+| similar | 相似/替代关系 | 中 |
+| dependency | 编译期或运行期依赖 | 高 |
+| parent | 父级/版本链关系 | 中 |
+| SBOM linkage | 与 SPDX/CycloneDX SBOM 的关联 | 高 |
+
+### 3. 关系说明
+
+- **Asset 组合关系**：Asset 由 Classification、Solution、Usage、RelatedAssets 四部分组成，缺一不可。
+- **Profile 扩展关系**：Default Profile → Default Component Profile → Default Web Service Profile，约束单调递增。
+- **RAS ↔ TOGAF ABB/SBB**：Classification 对应 ABB 的能力分类；Solution 的抽象制品对应 ABB，具体实现制品对应 SBB；VariabilityPoint 对应 ABB/SBB 可变性管理。
+- **RAS ↔ ISO 42010**：ClassificationSchema 可视作 Viewpoint 分类体系的具体化；Solution 中的 Artifact 对应 View Component；RelatedAssets 的 dependency 对应 Correspondence。
+- **RAS ↔ SWEBOK V4**：Usage 中的 Activity 与 VariabilityPointBinding 映射到“基于复用的构造”过程（检索、评估、适配、集成）。
+- **RAS ↔ SBOM/SPDX**：现代实践中，ArtifactDependency 建议由 SPDX/CycloneDX 替代，RAS 作为元模型外壳保留。
+
+### 4. 形式化/结构化分析
+
+```mermaid
+graph TB
+    A[Asset<br/>id/name/version/state]
+    A --> C[Classification<br/>Context/Descriptor/Schema]
+    A --> S[Solution<br/>Artifact/VariabilityPoint]
+    A --> U[Usage<br/>Activity/Binding]
+    A --> R[RelatedAssets<br/>aggregation/similar/dependency/parent]
+    S --> V[VariabilityPoint]
+    U --> VB[VariabilityPointBinding]
+    R --> SBOM[SPDX / CycloneDX SBOM]
+    Profile[Default Profile] --> CP[Default Component Profile]
+    CP --> WP[Default Web Service Profile]
+    Profile -.->|extends| A
+```
+
+### 5. 正例
+
+**正例**：某云原生团队将“订单微服务模板”包装为 RAS Asset：
+
+- **Asset**：`id=order-service-template; version=2.3.1; state=approved`。
+- **Classification**：领域=电商订单；技术栈=Spring Boot 3 + PostgreSQL；成熟度=生产级；许可证=Apache-2.0；合规=SOX-L2。
+- **Solution**：包含 Helm Chart、Dockerfile、OpenAPI 3.0 规格、Terraform 模块、Jenkins 流水线；定义 VariabilityPoint `DB_HOST`、`REPLICA_COUNT`。
+- **Usage**：提供 `helm install` 指令、参数绑定示例、本地调试步骤、升级路径。
+- **RelatedAssets**：聚合监控模板 `order-service-observability`；依赖 Redis 缓存模板；父版本 `order-service-template 2.2.x`。
+
+结果：新团队在 30 分钟内完成环境部署，配置错误率降低 80%。
+
+### 6. 反例
+
+**反例**：某团队将“用户认证模块”以压缩包形式上传到共享网盘：
+
+- 没有 `Asset` 元数据，文件名 `auth-v3-final.zip` 无法区分版本与状态。
+- 没有 `Classification`，其他团队无法通过领域、技术栈或许可证筛选。
+- 没有 `Usage`，使用者不得不阅读源码猜测配置方式。
+- 没有 `RelatedAssets`，依赖的加密库版本、许可证冲突在集成后才暴露。
+
+结果：三个业务单元各自下载了不同版本，导致安全漏洞修复无法同步，合规审计失败。
+
+**避免建议**：任何进入组织资产库的制品必须至少包含 Asset 元数据、Classification 标签、Usage 指南与 RelatedAssets 依赖声明。
+
+### 7. 权威来源
+
+> **权威来源**：
+>
+> - [OMG RAS Portal](https://www.omg.org/spec/RAS/) — OMG
+> - [OMG RAS v2.2 Normative PDF](https://www.omg.org/spec/RAS/2.2/PDF) — OMG
+> - [Code reuse - Wikipedia](https://en.wikipedia.org/wiki/Code_reuse)
+> - [Component-based software engineering - Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+>
+> **核查日期**：2026-07-07
+
+### 8. 交叉引用
+
+- FAIR4RS 与软件复用对照详见 [`../08-fair4rs/fair4rs-alignment.md`](../08-fair4rs/fair4rs-alignment.md)
+- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
+- 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)
+- 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)

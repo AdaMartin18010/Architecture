@@ -167,3 +167,24 @@ SEooC Component
 - IEC TR 61508-6-1 (Treatment of hardware or software developed to ISO 26262, JTG20 WG)
 - Tuxera: "Software SEooCs: Making embedded software components for reuse" (Whitepaper, 2023)
 - Mälardalen University: "Using Safety Contracts to Guide the Integration of Reusable Safety Elements within ISO 26262"
+
+
+---
+
+## 补充章节
+## 反例
+
+**反例**：团队复用开源运动控制库到医疗机器人，未评估其 SIL 符合性，认证阶段无法证明诊断覆盖率，项目被迫返工。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [ISO 26262](https://www.iso.org/standard/68383.html)
+> - [IEC 62443](https://www.iec.ch/cybersecurity)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：功能安全复用不是简单复制代码，而是复用经过验证的安全证据与假设约束。

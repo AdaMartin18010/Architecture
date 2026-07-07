@@ -318,6 +318,166 @@ flowchart LR
 
 
 
+
+## 10. BPMN/DMN 复用编排补充：可执行案例与业务能力映射
+
+### 10.1 与业务能力的映射关系
+
+[BPMN](https://en.wikipedia.org/wiki/Business_process_modeling) 与 [DMN](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) 制品不仅是流程与决策的可视化符号，更是业务能力复用的可执行载体。下表给出 BPMN/DMN 关键制品与业务能力（Business Capability）之间的映射关系。
+
+| BPMN/DMN 制品 | 业务能力维度 | 映射说明 |
+|---|---|---|
+| BPMN 流程模板 | How | 一个或多个业务能力按时间顺序编排，形成端到端价值流 |
+| BPMN 调用活动（Call Activity） | How | 将可复用的子能力封装为独立子流程，被多个主流程共享 |
+| BPMN 服务任务（Service Task） | How | 通过服务契约调用业务能力的 IT 实现 |
+| BPMN 消息流（Message Flow） | Who / Where | 描述跨能力、跨组织、跨系统的协作与边界 |
+| DMN 决策服务 | Why / How | 封装业务规则与决策逻辑，支撑能力执行中的判断分支 |
+| DMN 业务知识模型（BKM） | Why | 提供跨决策复用的计算逻辑，如客户终身价值、风险权重 |
+
+> **关键结论**：业务能力回答“做什么”，BPMN 回答“怎么做（流程编排）”，DMN 回答“怎么决定（规则）”。三者的解耦使能力复用可以在不修改流程结构的情况下，通过替换服务实现或调整决策表来适应不同上下文。
+
+### 10.2 可执行案例：在线信贷审批
+
+以下展示一个可执行的在线信贷审批场景，说明 BPMN 流程、DMN 决策表与业务能力如何协同复用。
+
+**业务能力映射**：
+
+- `C-001 客户信息查询` → BPMN 服务任务：调用客户信息服务
+- `C-002 信用评估` → BPMN 调用活动 + DMN 信用评分决策服务
+- `C-003 风险定价` → DMN 利率定价决策表
+- `C-004 合同生成` → BPMN 服务任务：调用合同管理服务
+
+**BPMN 流程片段（简化 XML）**：
+
+```xml
+<process id="loanApproval" name="在线信贷审批">
+  <startEvent id="start" name="提交申请"/>
+  <sequenceFlow sourceRef="start" targetRef="taskQueryCustomer"/>
+
+  <serviceTask id="taskQueryCustomer" name="查询客户信息"
+               camunda:delegateExpression="${customerInfoDelegate}"/>
+  <sequenceFlow sourceRef="taskQueryCustomer" targetRef="callCreditAssessment"/>
+
+  <callActivity id="callCreditAssessment" name="信用评估子流程"
+                calledElement="creditAssessmentSubProcess"/>
+  <sequenceFlow sourceRef="callCreditAssessment" targetRef="gwApprove"/>
+
+  <exclusiveGateway id="gwApprove" name="审批决策"/>
+  <sequenceFlow sourceRef="gwApprove" targetRef="taskPricing" name="通过"
+                conditionExpression="${approved}"/>
+  <sequenceFlow sourceRef="gwApprove" targetRef="endReject" name="拒绝"/>
+
+  <businessRuleTask id="taskPricing" name="风险定价"
+                    camunda:decisionRef="pricingDecision"/>
+  <sequenceFlow sourceRef="taskPricing" targetRef="taskContract"/>
+
+  <serviceTask id="taskContract" name="生成合同"
+               camunda:delegateExpression="${contractDelegate}"/>
+  <sequenceFlow sourceRef="taskContract" targetRef="endApprove"/>
+
+  <endEvent id="endApprove" name="审批通过"/>
+  <endEvent id="endReject" name="审批拒绝"/>
+</process>
+```
+
+**DMN 信用评分决策表（简化）**：
+
+| 规则 | 年收入（万元） | 信用历史 | 负债比率 | 输出：风险等级 |
+|---|---|---|---|---|
+| R1 | > 50 | 良好 | < 0.3 | 低 |
+| R2 | 20 - 50 | 良好 | < 0.5 | 中 |
+| R3 | < 20 | 一般 | > 0.5 | 高 |
+| R4 | - | 差 | - | 高 |
+
+**复用价值**：
+
+- 信用评估子流程可被消费贷、车贷、小微企业贷等多种产品复用。
+- 利率定价决策表可由业务人员直接调整，无需重新部署 BPMN 流程。
+- 当新的风控数据源接入时，只需扩展 DMN 输入数据，不影响流程控制结构。
+
+### 10.3 BPMN-DMN-业务能力分层映射图
+
+```mermaid
+flowchart TB
+    subgraph 业务能力层
+        C1[客户信息查询]
+        C2[信用评估]
+        C3[风险定价]
+        C4[合同生成]
+    end
+
+    subgraph BPMN 流程编排层
+        P1[提交申请]
+        P2[查询客户信息]
+        P3[调用信用评估]
+        P4[风险定价]
+        P5[生成合同]
+    end
+
+    subgraph DMN 决策服务层
+        D1[信用评分表]
+        D2[利率定价表]
+    end
+
+    P2 --> C1
+    P3 --> C2
+    P3 --> D1
+    P4 --> C3
+    P4 --> D2
+    P5 --> C4
+```
+
+### 10.4 可执行信贷审批流程图
+
+```mermaid
+flowchart LR
+    A[提交申请] --> B[查询客户信息]
+    B --> C[信用评估子流程]
+    C --> D{审批通过?}
+    D -- 否 --> E[拒绝并通知]
+    D -- 是 --> F[DMN 风险定价]
+    F --> G[生成合同]
+    G --> H[审批完成]
+```
+
+### 10.5 反例补充：BPMN 网关硬编码业务规则
+
+**场景**：某团队在信贷审批 BPMN 流程的排他网关条件中直接写入规则，如 `${annualIncome > 500000 && creditScore > 700}`。
+
+**问题**：
+
+- 规则变更需要修改 BPMN XML 并重新部署流程，业务人员无法参与。
+- 同一规则在多个网关中重复硬编码，导致规则不一致。
+- 规则逻辑与流程结构紧耦合，难以复用。
+
+**后果**：
+
+- 市场部门要求调整信贷政策时，IT 部门需要 2-3 周才能完成流程重部署。
+- 某次规则修改遗漏了一个网关，造成高风险客户被自动通过。
+
+**避免建议**：
+
+- 将所有业务判断逻辑下沉到 DMN 决策服务，BPMN 网关仅调用决策结果。
+- 对决策服务实施版本管理，支持规则热更新与 A/B 测试。
+- 建立 BPMN-DMN 契约测试，确保网关条件与决策输出语义一致。
+
+### 10.6 权威来源与交叉引用补充
+
+> **权威来源**:
+>
+> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 在业务过程建模中的定位
+> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 概述
+> - [Camunda BPMN Documentation](https://docs.camunda.org/manual/latest/reference/bpmn20/) — BPMN 可执行语义参考
+> - [Camunda DMN Documentation](https://docs.camunda.org/manual/latest/reference/dmn11/) — DMN 决策表执行参考
+>
+> **核查日期**: 2026-07-07
+
+**交叉引用**：
+
+- [BPMN 2.0 / DMN 1.5 可执行语义案例集](./bpmn-dmn-executable-cases.md) — 更多可执行示例
+- [业务能力复用](../02-business-capability/capability-reuse.md) — 业务能力复用的定义与属性
+- [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — BPMN 流程与价值流的关系
+
 ## 补充说明：BPMN 2.0 / DMN 业务过程与决策的复用编排
 
 ## 示例

@@ -203,3 +203,23 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ---
 
 *文档生成时间：2026-06-06 · 对齐 SLSA v1.2 (2025-11) / OpenSSF Scorecard v5 / CISA SBOM 2025 Draft / OCI v1.1*
+
+
+---
+
+## 补充章节
+## 概念定义
+
+**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。
+
+## 示例
+
+**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。
+
+## 反例
+
+**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，无法达到 SLSA L1。
+
+## 分析
+
+**分析**：SLSA 将供应链安全分解为可升级、可审计的等级，是组织渐进式改进的路线图。

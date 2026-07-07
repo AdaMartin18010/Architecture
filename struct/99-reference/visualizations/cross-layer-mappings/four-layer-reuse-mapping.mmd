@@ -1,0 +1,46 @@
+graph TD
+    subgraph Business["业务架构层"]
+        BC[业务能力]
+        VS[价值流]
+        BS[业务服务]
+    end
+
+    subgraph Application["应用架构层"]
+        AP[架构模式]
+        MS[微服务]
+        SV[Serverless]
+        EDA[事件驱动架构]
+    end
+
+    subgraph Component["组件架构层"]
+        CM[组件模型]
+        DP[设计模式]
+        IC[接口契约]
+        LE[语言生态包]
+    end
+
+    subgraph Function["功能架构层"]
+        API[API]
+        FaaS[FaaS 函数]
+        WF[工作流编排]
+        AI[MCP/A2A Tool]
+    end
+
+    BC -->|实现为| MS
+    VS -->|编排为| WF
+    BS -->|暴露为| API
+    AP -->|实例化为| IC
+    MS -->|由...组成| CM
+    SV -->|调用| FaaS
+    EDA -->|触发| FaaS
+    CM -->|调用| API
+    DP -->|实现| API
+    IC -->|约束| API
+    LE -->|打包| CM
+    WF -->|编排| API
+    AI -->|封装| API
+
+    style Business fill:#e3f2fd
+    style Application fill:#fff3e0
+    style Component fill:#f3e5f5
+    style Function fill:#e8f5e9

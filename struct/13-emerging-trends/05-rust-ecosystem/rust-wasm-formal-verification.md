@@ -246,7 +246,7 @@ impl exports::my::domain::calculator::Guest for Calculator {
 
 - WASM Component Model 详见 [`../03-webassembly-components/wasm-component-model-2026.md`](../03-webassembly-components/wasm-component-model-2026.md)
 - WASI 0.3 边界详见 [`../03-webassembly-components/wasm-wasi-03-boundaries.md`](../03-webassembly-components/wasm-wasi-03-boundaries.md)
-- 形式化验证专题参见 [`../../07-formal-verification/`](../07-formal-verification/)
+- 形式化验证专题参见 [`../../07-formal-verification/README.md`](../../07-formal-verification/README.md)
 
 ---
 

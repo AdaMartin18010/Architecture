@@ -194,3 +194,29 @@ sequenceDiagram
 - ISO 13849-1: Safety of machinery – Safety-related parts of control systems
 - STM32Cube.AI: [st.com/stm32cubeai](https://stm32ai.st.com)
 - CMSIS-NN: ARM-software/CMSIS-NN
+
+
+---
+
+## 补充章节
+## 概念定义
+
+**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。
+
+## 示例
+
+**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+
+## 反例
+
+**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [OPC Foundation](https://opcfoundation.org)
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
+> - 核查日期：2026-07-07

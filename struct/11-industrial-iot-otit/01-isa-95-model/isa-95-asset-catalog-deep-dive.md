@@ -214,3 +214,226 @@ L0 传感器/执行器
 - IEC 61804 — EDDL
 - OPC UA DI — Device Integration Model
 - PA-DIM — Process Automation Device Information Model
+
+
+## 7. ISA-95 L0–L4 层级定义、属性与边界补强
+
+### 7.1 层级定义与核心属性
+
+ISA-95 的五层模型定义了从物理过程到企业业务管理的垂直集成边界。每一层具有独特的**时间尺度、控制范围、数据类型和安全要求**，这些属性决定了资产的可复用边界。
+
+| 层级 | 名称 | 时间尺度 | 控制范围 | 主要数据类型 | 安全/可用性要求 | 复用边界 |
+|-----|------|---------|---------|-------------|----------------|---------|
+| **L0** | 现场设备 (Field) | 毫秒–秒 | 单一物理过程 | 模拟量、数字量、原始传感器数据 | 高可用性、功能安全 (SIL)、防爆 (ATEX) | 设备模板可复用，但具体安装位置必须按工艺定制 |
+| **L1** | 基本控制 (Control) | 秒–分 | 单一设备/单元 | 控制回路、设定点、报警 | 实时性、确定性、安全完整性 | 控制逻辑模板可复用，I/O 映射需按项目配置 |
+| **L2** | 监控层 (Supervisory) | 分–小时 | 产线/区域 | 批次、配方、历史趋势、报警 | 高可用性、数据完整性 | SCADA 模板、配方模板可跨产线复用 |
+| **L3** | 制造运营 (MES) | 小时–天 | 工厂/车间 | 工单、质量、物料、人员 | 业务连续性、合规性 (GMP/FDA) | MES 模块、OEE 模板可在同类型工厂复用 |
+| **L4** | 企业层 (Enterprise) | 天–月 | 企业/供应链 | ERP/PLM/CRM 数据、主数据 | 数据一致性、审计、合规 | 物料主数据、BOM 模板可在企业内复用 |
+
+> **定义 ISA.1** (ISA-95 层级边界): ISA-95 层级边界是物理过程、实时控制、区域监控、工厂运营和企业业务之间的职责分隔。复用资产时，必须确保其在目标层级的实时性、安全性和语义一致性。
+
+### 7.2 层级间数据流与控制流
+
+| 方向 | 数据/控制流 | 典型接口 | 复用关注点 |
+|------|------------|---------|-----------|
+| L0 → L1 | 传感器数据、执行器状态 | 4-20mA, 0-10V, IO-Link, HART | 信号类型、量程、采样周期 |
+| L1 → L2 | 过程值、报警、事件 | OPC UA, OPC Classic, MQTT | 通信协议、数据模型 |
+| L2 → L3 | 批次记录、生产绩效、质量数据 | OPC UA, B2MML, REST | 数据结构、语义映射 |
+| L3 → L4 | 工单完成、库存状态、质量报告 | B2MML, REST/JSON, AAS | 业务语义、主数据一致性 |
+| L4 → L3 | 生产订单、排程、配方 | B2MML, REST/JSON | 版本控制、变更管理 |
+| L3 → L2 | 工单分派、工艺参数 | OPC UA, B2MML | 实时性约束、参数验证 |
+| L2 → L1 | 设定点、配方下载 | OPC UA, Profinet, EtherCAT | 确定性、安全联锁 |
+| L1 → L0 | 控制信号、驱动命令 | 数字量、模拟量、现场总线 | 电气特性、安全等级 |
+
+### 7.3 与 AAS 的映射补强
+
+AAS（Asset Administration Shell，资产管理壳）为 ISA-95 各层资产提供了标准化的数字孪生表示。下表给出更详细的映射关系。
+
+| ISA-95 概念 | AAS 对应 | 子模型模板 | 映射说明 |
+|------------|---------|-----------|---------|
+| Equipment (实例) | Asset (AssetKind = Instance) | Technical Data, Nameplate, Identification | 每台物理设备对应一个 AAS 实例 |
+| EquipmentClass (类型) | Asset (AssetKind = Type) | Technical Data, Nameplate | 设备类别作为 AAS 类型模板 |
+| Personnel | Asset (无形资产) | Contact Information, Qualifications | 人员能力与资质 |
+| MaterialLot | Asset (Instance) | Identification, Carbon Footprint | 批次追踪与碳足迹 |
+| ProcessSegment | Submodel (能力描述) | Custom Submodel | 工序能力定义 |
+| ProductionSchedule | Submodel (计划数据) | Time Series Data | 生产计划与排程 |
+| MaintenanceRecord | Submodel (维护历史) | Handover Documentation | 维护记录与文档 |
+| QualityTestResult | Submodel (质量数据) | Technical Data, Time Series Data | 测试结果与 SPC 数据 |
+
+> **定理 ISA.AAS.1** (AAS 复用单调性): 若 ISA-95 资产 A 被复用于系统 S，则 A 的 AAS 子模型必须在 S 的 AAS 中保持语义等价。任何子模型属性的丢失或语义漂移都会导致复用边界破坏。
+
+### 7.4 与 OPC UA 的映射补强
+
+OPC UA 是 ISA-95 层级间实时数据交换的主流协议。AAS 与 OPC UA 的映射使数字孪生能够同时承载语义描述和实时变量。
+
+| ISA-95 层级 | OPC UA 角色 | 典型 NodeSet | 复用模式 |
+|------------|------------|-------------|---------|
+| L0 | 设备参数与诊断 | OPC UA DI, PA-DIM | 设备描述文件复用 |
+| L1 | 控制器变量与方法 | PLCopen, OPC UA IEC 61131-3 | 控制逻辑变量模型复用 |
+| L2 | 报警与事件、历史数据 | OPC UA A&E, HDA | SCADA 信息模型复用 |
+| L3 | MES 对象模型 | ISA-95 B2MML, OPC UA ISA-95 | MES 数据模型复用 |
+| L4 | 企业主数据 | AAS REST API, OPC UA Client/Server | 主数据同步 |
+
+### 7.5 正例
+
+| 场景 | 层级 | 复用资产 | 效果 |
+|------|------|---------|------|
+| 汽车总装线复制 | L2/L3 | PackML 状态机 + OEE 指标模板 | 新产线快速达到标准化生产模式 |
+| 制药批次管理 | L2/L3 | ISA-88 批处理模板 + AAS 批次子模型 | 满足 GMP 审计要求，批次追溯完整 |
+| 设备供应商交付 | L0/L1 | AAS Digital Nameplate + OPC UA DI NodeSet | 设备即插即用，工程调试时间缩短 50% |
+| 集团 ERP-MES 集成 | L3/L4 | ISA-95 B2MML 工单与物料模型 | 跨工厂主数据一致性提升 |
+
+### 7.6 反例
+
+| 反例 | 风险说明 |
+|------|---------|
+| 将 L4 ERP 排程逻辑直接下放到 L1 PLC | 违反实时性约束，导致控制回路不稳定 |
+| 在 L0/L1 使用通用 IT 网络协议而无确定性保证 | 通信抖动导致生产质量下降或安全事故 |
+| AAS 子模型缺失实时数据映射 | 数字孪生与物理资产不同步，决策失误 |
+| 跨层级复用 EquipmentClass 时忽略工艺差异 | 同一设备类型在不同工艺中的安全/性能要求不同 |
+| 将 L2 SCADA 报警直接用于 L4 业务决策 | 报警泛滥与业务指标混淆，掩盖真实问题 |
+
+### 7.7 ISA-95 × AAS × OPC UA 映射矩阵 Mermaid 图
+
+```mermaid
+graph TB
+    subgraph L4 [L4 企业层]
+        ERP[ERP / PLM / CRM]
+    end
+    subgraph L3 [L3 MES 层]
+        MES[MES / QMS / WMS]
+    end
+    subgraph L2 [L2 监控层]
+        SCADA[SCADA / HMI]
+    end
+    subgraph L1 [L1 控制层]
+        PLC[PLC / DCS]
+    end
+    subgraph L0 [L0 现场层]
+        SENSOR[传感器 / 执行器]
+    end
+    subgraph AAS [AAS 数字孪生]
+        AAS_ROOT[AAS 根对象]
+        SM_TD[Technical Data 子模型]
+        SM_NAME[Nameplate 子模型]
+        SM_TS[Time Series Data 子模型]
+    end
+    ERP -->|B2MML / REST| MES
+    MES -->|OPC UA / B2MML| SCADA
+    SCADA -->|OPC UA| PLC
+    PLC -->|I/O| SENSOR
+    AAS_ROOT --> SM_TD
+    AAS_ROOT --> SM_NAME
+    AAS_ROOT --> SM_TS
+    SM_TD -.->|语义描述| ERP
+    SM_TS -.->|实时数据| SCADA
+    SM_NAME -.->|设备身份| SENSOR
+```
+
+### 7.8 权威来源与交叉引用补强
+
+- ANSI/ISA-95.00.01-2010 / IEC 62264-1:2013 — Enterprise-Control System Integration Part 1: Models and Terminology
+- ANSI/ISA-95.00.02-2018 / IEC 62264-2 — Part 2: Object Model Attributes
+- ANSI/ISA-95.00.03-2013 / IEC 62264-3 — Part 3: Activity Models of Manufacturing Operations Management
+- IEC 62264-4:2015 — Part 4: Object Model Attributes for Manufacturing Operations Management
+- IEC 63278-1:2023 — Asset Administration Shell for industrial applications — Part 1: Administration Shell structure
+- OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>
+- OPC UA for ISA-95 (B2MML): <https://www.mesa.org/en/B2MML.asp>
+- IDTA Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
+- 相关概念: [Industry 4.0](https://en.wikipedia.org/wiki/Fourth_Industrial_Revolution), [OPC Unified Architecture](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
+- **交叉引用**: `struct/11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`；`struct/11-industrial-iot-otit/05-digital-twin-aas/aas-opcua-mapping.md`；`struct/11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md` §3
+
+## 8. ISA-95 L0–L4 形式化定义、属性与 AAS/OPC UA 映射完整视图
+
+> **定义 ISA.2** (ISA-95 层级复用边界): ISA-95 L0–L4 是从物理过程到企业业务的五个抽象层级，每一层在时间尺度、控制范围、数据语义和安全要求上具有明确边界。复用资产时必须保持其源层级的实时性、确定性与语义一致性，禁止跨层级直接映射未经验证的逻辑或协议。
+
+### 8.1 层级属性表
+
+| 层级 | 名称 | 时间尺度 | 控制范围 | 数据粒度 | 实时/确定性要求 | AAS 子模型 | OPC UA NodeSet | 复用边界 |
+|------|------|----------|----------|----------|-----------------|------------|----------------|----------|
+| L0 | 现场设备层 | 毫秒–秒 | 单一物理过程 | 原始模拟/数字信号 | 硬实时、功能安全 | Nameplate / Technical Data | OPC UA DI / PA-DIM | 设备模板可复用 |
+| L1 | 基本控制层 | 秒–分 | 单一设备/单元 | 控制回路、设定点、报警 | 确定性、安全完整性 | Technical Data / Identification | PLCopen / IEC 61131-3 | 控制逻辑模板可复用 |
+| L2 | 监控层 | 分–小时 | 产线/区域 | 批次、配方、报警、趋势 | 高可用、数据完整性 | Maintenance / Quality / Time Series | OPC UA A&E / HDA | SCADA/配方模板可复用 |
+| L3 | 制造运营层 | 小时–天 | 工厂/车间 | 工单、质量、物料、人员 | 业务连续性、合规 | ProductionSchedule / Time Series / Document | ISA-95 B2MML / OPC UA ISA-95 | MES 模块可复用 |
+| L4 | 企业层 | 天–月 | 企业/供应链 | 主数据、业务语义 | 数据一致性、审计 | ProductCarbonFootprint / Document | AAS REST API / OPC UA Client | 主数据/BOM 模板可复用 |
+
+### 8.2 与 AAS/OPC UA 的映射关系
+
+- **AAS** 为 ISA-95 各层资产提供标准化语义描述：L0/L1 设备通过 `Technical Data`、`Nameplate` 子模型描述；L2/L3 过程与质量数据通过 `Time Series Data`、`Maintenance` 等子模型承载；L4 业务主数据通过 `Document`、`ProductCarbonFootprint` 等与企业系统对接。
+- **OPC UA** 为 ISA-95 层级间提供实时数据交换：L0/L1 使用 OPC UA DI / PLCopen；L2 使用 A&E 与 HDA；L3 使用 B2MML / OPC UA ISA-95；L4 通过 AAS REST API 或 OPC UA Client 接入企业应用。
+
+> **定理 ISA.AAS.2** (AAS/OPC UA 复用一致性): 若 ISA-95 资产 A 被复用到系统 S，则 A 的 AAS 子模型与 OPC UA NodeSet 必须在 S 中保持语义等价。任何一层属性的丢失或语义漂移都会破坏复用边界。
+
+### 8.3 正例
+
+| 场景 | 层级 | 复用资产 | 效果 |
+|------|------|----------|------|
+| 汽车总装线复制 | L2/L3 | PackML 状态机 + OEE 指标模板 + AAS 设备子模型 | 新产线快速达到标准化生产模式 |
+| 制药批次管理 | L2/L3 | ISA-88 批处理模板 + AAS 批次子模型 | 满足 GMP 审计要求，批次追溯完整 |
+| 设备供应商交付 | L0/L1 | AAS Digital Nameplate + OPC UA DI NodeSet | 设备即插即用，工程调试时间缩短 50% |
+| 集团 ERP-MES 集成 | L3/L4 | ISA-95 B2MML 工单与物料模型 + AAS 主数据子模型 | 跨工厂主数据一致性提升 |
+
+### 8.4 反例
+
+| 反例 | 风险说明 |
+|------|----------|
+| 将 L4 ERP 排程逻辑直接下放到 L1 PLC | 违反实时性约束，导致控制回路不稳定 |
+| 在 L0/L1 使用通用 IT 网络协议而无确定性保证 | 通信抖动导致生产质量下降或安全事故 |
+| AAS 子模型缺失 OPC UA 实时数据映射 | 数字孪生与物理资产不同步，决策失误 |
+| 跨层级复用 EquipmentClass 时忽略工艺差异 | 同一设备类型在不同工艺中的安全/性能要求不同 |
+| 将 L2 SCADA 报警直接用于 L4 业务决策 | 报警泛滥与业务指标混淆，掩盖真实问题 |
+
+### 8.5 ISA-95 × AAS × OPC UA 垂直集成映射 Mermaid 图
+
+```mermaid
+graph TB
+    L4[ERP/PLM<br/>L4 企业层]
+    L3[MES/QMS/WMS<br/>L3 制造运营层]
+    L2[SCADA/HMI<br/>L2 监控层]
+    L1[PLC/DCS<br/>L1 控制层]
+    L0[传感器/执行器<br/>L0 现场层]
+    AAS2[AAS 数字孪生<br/>语义描述]
+    OPC[OPC UA AddressSpace<br/>实时数据]
+    L4 -->|B2MML/REST/AAS| L3
+    L3 -->|OPC UA/B2MML| L2
+    L2 -->|OPC UA| L1
+    L1 -->|I/O/现场总线| L0
+    AAS2 -.->|语义上下文| L4
+    AAS2 -.->|设备身份| L0
+    OPC -.->|实时变量| L1
+    OPC -.->|报警/事件| L2
+```
+
+### 8.6 权威来源与交叉引用
+
+- ANSI/ISA-95.00.01-2010 / IEC 62264-1:2013 — Enterprise-Control System Integration Part 1: Models and Terminology
+- ANSI/ISA-95.00.02-2018 / IEC 62264-2 — Part 2: Object Model Attributes
+- IEC 63278-1:2023 — Asset Administration Shell for industrial applications — Part 1: Administration Shell structure
+- OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>
+- OPC UA for ISA-95 (B2MML): <https://www.mesa.org/en/B2MML.asp>
+- IDTA Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
+- 相关概念: [Industry 4.0](https://en.wikipedia.org/wiki/Fourth_Industrial_Revolution), [OPC Unified Architecture](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
+- **交叉引用**: `struct/11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`；`struct/11-industrial-iot-otit/05-digital-twin-aas/aas-opcua-mapping.md`；`struct/11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md` §7
+
+
+> 最后更新: 2026-07-07
+
+
+---
+
+## 补充章节
+## 示例
+
+**示例**：制药企业依据 ISA-95 建立标准批次执行模型，新工厂复用相同 MES 接口与配方模板，将上线时间从 12 个月缩短到 6 个月。
+
+## 反例
+
+**反例**：某工厂忽略 ISA-95 层级边界，让 ERP 直接写入 PLC 标签，破坏实时控制闭环并造成批次污染风险。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [IEC 62264](https://webstore.iec.ch/publication/66912)
+> - 核查日期：2026-07-07

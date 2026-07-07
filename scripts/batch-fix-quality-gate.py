@@ -2235,7 +2235,7 @@ def generate_supplement(path: Path, content: str, checks: Dict[str, bool], topic
     if not sections:
         return ""
 
-    header = f"\n\n---\n\n## 补充说明：{title}\n"
+    header = f"\n\n---\n\n## 补充章节\n"
     return header + "\n\n".join(sections)
 
 

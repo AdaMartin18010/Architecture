@@ -397,6 +397,138 @@ graph TD
 
 ---
 
+## 14. 阶段门决策的实物期权执行策略与临界值
+
+### 14.1 形式化定义
+
+**定义**：阶段门决策的实物期权执行策略（Stage-Gate Real Option Execution Strategy）是将大型复用投资拆分为多个阶段，并在每个阶段门控根据新信息决定是否继续、扩大、转换或放弃投资的管理框架。其核心是识别每个门控的“临界值（Threshold）”——当观测到的市场信号、技术成熟度或内部采用率超过临界值时，才执行下一阶段投资。
+
+与一次性投资相比，阶段门策略的价值来源于：
+
+1. **信息价值**：早期阶段揭示真实需求与技术风险。
+2. **损失下限**：失败时避免后续大额投入。
+3. **扩张权利**：成功时可加速追加投资，捕获上行收益。
+
+### 14.2 阶段门属性表
+
+| 阶段门 | 目的 | 观测指标 | 继续临界值 | 放弃阈值 | 典型投资 |
+|--------|------|---------|-----------|---------|---------|
+| Gate 0: 概念验证 | 验证痛点与可行性 | 访谈、原型反馈 | 60% 目标用户认可 | <30% 认可 | 少量原型预算 |
+| Gate 1: MVP 试点 | 验证技术路径与采用率 | 试点团队采用率、TLX | 采用率 >50% | <25% | 1–2 个团队 |
+| Gate 2: 扩展推广 | 验证规模化经济性 | 复用次数、缺陷率、ROI | NPV > 0 | 连续两季度负增长 | 全组织推广 |
+| Gate 3: 生态化 | 验证外部网络效应 | 外部贡献者、生态指标 | 外部贡献 >10% | 生态停滞 | 开放与运营 |
+
+### 14.3 临界值与期权价值的关系
+
+阶段门期权的总价值可分解为：
+
+```text
+V_stage_gate = NPV_immediate + Σ OptionValue(Gate_i)
+OptionValue(Gate_i) = p_i × E[max(V_continue - I_i, 0)]
+```
+
+其中 p_i 为到达 Gate_i 的概率，I_i 为下一阶段投资，V_continue 为继续投资的期望价值。
+
+当临界值设置过低时，信息价值被浪费，后续投资失败率上升；当临界值设置过高时，可能错失先发优势（q 过大）。因此，**临界值设计是实物期权分析中最敏感的参数之一**。
+
+```mermaid
+flowchart TD
+    A[Gate 0 概念验证] -->|通过| B[Gate 1 MVP 试点]
+    A -->|未通过| Z[放弃]
+    B -->|通过| C[Gate 2 扩展推广]
+    B -->|转换| D[切换技术路线]
+    B -->|未通过| Z
+    C -->|通过| E[Gate 3 生态化]
+    C -->|缩减| F[缩小范围]
+    C -->|未通过| Z
+    E -->|成功| G[最大化投资]
+    E -->|维持| H[保守运营]
+```
+
+### 14.4 正例：分阶段平台投资捕获上行收益
+
+某企业建设内部 AI 代码复用平台：
+
+- Gate 0：投入 30 万原型，验证 5 个团队需求，获得 75% 认可。
+- Gate 1：投入 120 万试点，3 个团队使用，采用率 62%，TLX 下降 25%。
+- Gate 2：投入 500 万全组织推广，复用次数季度增长 40%，NPV 转正。
+- Gate 3：开放给合作伙伴，外部贡献者占比达 15%，形成网络效应。
+
+由于阶段门设计，若 Gate 1 失败，总损失仅为 150 万，而非一次性 700 万。成功时则追加投资捕获上行收益，整体期权价值显著高于静态 NPV。
+
+### 14.5 反例：门控虚设导致“伪期权”
+
+某公司名义上采用阶段门，但每个门控只有形式评审，没有真正的放弃/转换权力。Gate 1 已显示采用率仅 18%，管理层仍以“沉没成本”为由追加 600 万。结果项目三年后下线，总损失 800 万。问题根源在于：阶段门需要配套的治理机制与文化授权，否则只是装饰。
+
+> **权威来源**:
+>
+> - [Wikipedia - Real Options Valuation](https://en.wikipedia.org/wiki/Real_options_valuation)
+> - [Wikipedia - Black-Scholes Model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
+> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
+> - [Wikipedia - Stage-Gate Process](https://en.wikipedia.org/wiki/Stage-Gate_process)
+> - [MIT OpenCourseWare - Real Options](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/)
+> - 核查日期：2026-07-07
+
+### 交叉引用
+
+- 与 [架构复用 ROI 框架](./roi-framework.md) 配合：阶段门期权的现金流应输入 ROI/NPV 模型。
+- 与 [COCOMO II 复用模型深度解析](../01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：各阶段投资 I_i 可由 COCOMO II 估算。
+- 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：采用率与 TLX 是 Gate 1 的关键观测指标。
+
+## 15. 延迟期权与先发优势的权衡：q 参数估计
+
+### 15.1 形式化定义
+
+**定义**：在实物期权中，q（便利收益率/股息率）代表等待期间丧失的先发优势或现金流收益。延迟期权的价值随 q 增大而降低，因为等待不再“免费”。在软件复用投资中，q 包括竞争对手抢先建立生态、技术窗口关闭、团队士气下降、监管先发优势丧失等难以量化的成本。
+
+### 15.2 q 参数属性表
+
+| q 来源 | 典型场景 | 估计方法 | 高估/低估风险 |
+|--------|---------|---------|--------------|
+| 竞争先发 | 新框架/平台 | 市场份额变化、竞品发布节奏 | 低估导致过度延迟 |
+| 技术窗口 | 大模型、低代码浪潮 | 技术采用曲线 | 高估导致过早投资 |
+| 组织学习 | 等待期间团队技能折旧 | 培训投入、离职率 | 低估导致能力空心化 |
+| 客户锁定 | 等待导致客户流失 | 客户生命周期价值 | 高估导致激进投入 |
+| 监管先发 | 合规资质/认证 | 政策发布与执行时间表 | 低估导致被动追赶 |
+
+### 15.3 关系说明
+
+q 与波动率 σ 共同决定延迟期权价值：高 σ 增加等待价值，高 q 减少等待价值。管理者应同时估计两者，而非单独强调不确定性。当 q > r + σ²/2 时，延迟期权价值通常小于立即投资，应果断行动。
+
+```mermaid
+graph LR
+    A[评估延迟期权] --> B[估计 σ<br/>技术/市场不确定性]
+    A --> C[估计 q<br/>先发优势损失]
+    B --> D{q > r + σ²/2?}
+    C --> D
+    D -->|是| E[立即投资]
+    D -->|否| F[保留延迟权利]
+    F --> G[设置信息触发器]
+    G --> H[到期前重新评估]
+```
+
+### 15.4 正例：合理估计 q 促成及时投资
+
+某云厂商评估是否立即投资 Serverless 复用平台。通过分析竞品发布节奏与开发者迁移数据，估计 q ≈ 12%，高于无风险利率。尽管 σ 高达 50%，等待期权价值仍低于立即投资，最终提前 6 个月发布，占据 30% 开发者心智份额。
+
+### 15.5 反例：低估 q 错失生态
+
+某公司以“技术不成熟”为由延迟开源治理平台投资 2 年，未估计到监管要求突然收紧（q 激增）。竞争对手提前布局获得合规资质，该公司被迫以 3 倍成本追赶，且失去了标准制定话语权。
+
+> **权威来源**:
+>
+> - [Wikipedia - Real Options Valuation](https://en.wikipedia.org/wiki/Real_options_valuation)
+> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
+> - [Wikipedia - Black-Scholes Model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
+> - [Wikipedia - Dividend Yield](https://en.wikipedia.org/wiki/Dividend_yield)
+> - 核查日期：2026-07-07
+
+### 交叉引用
+
+- 与 [架构复用 ROI 框架](./roi-framework.md) 配合：q 的机会成本应计入 NPV 现金流。
+- 与 [COCOMO II 复用模型深度解析](../01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的周期影响 q 的大小。
+- 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：延迟投资可能导致团队认知图式滞后，增加后续学习成本。
+
 ## 补充说明：软件复用的 ROI、实物期权与战略价值量化
 
 ## 概念定义

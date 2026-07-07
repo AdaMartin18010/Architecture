@@ -36,6 +36,26 @@
     - [7.5 Golden Path](#75-golden-path)
     - [7.6 正例与反例](#76-正例与反例)
     - [7.7 权威来源与交叉引用](#77-权威来源与交叉引用)
+  - [8. 平台工程知识体系再补强](#8-平台工程知识体系再补强)
+    - [8.1 平台工程的精确定义与核心属性](#81-平台工程的精确定义与核心属性)
+    - [8.2 CNCF 五维度成熟度模型详解](#82-cncf-五维度成熟度模型详解)
+    - [8.3 Golden Path 深度解析](#83-golden-path-深度解析)
+    - [8.4 平台工程与架构复用的关系](#84-平台工程与架构复用的关系)
+    - [8.5 正例与反例补强](#85-正例与反例补强)
+      - [正例](#正例)
+      - [反例](#反例)
+    - [8.6 平台工程常见反模式](#86-平台工程常见反模式)
+    - [8.7 平台工程架构 Mermaid 图](#87-平台工程架构-mermaid-图)
+    - [8.8 权威来源与交叉引用再补强](#88-权威来源与交叉引用再补强)
+  - [9. 平台工程知识体系完整补强：定义、属性、关系与 Golden Path](#9-平台工程知识体系完整补强定义属性关系与-golden-path)
+    - [9.1 关键属性表](#91-关键属性表)
+    - [9.2 与相关概念的关系](#92-与相关概念的关系)
+    - [9.3 CNCF 五维度成熟度模型](#93-cncf-五维度成熟度模型)
+    - [9.4 Golden Path 深度解析](#94-golden-path-深度解析)
+    - [9.5 正例](#95-正例)
+    - [9.6 反例与反模式](#96-反例与反模式)
+    - [9.7 平台工程、IDP 与架构复用关系 Mermaid 图](#97-平台工程idp-与架构复用关系-mermaid-图)
+    - [9.8 权威来源与交叉引用](#98-权威来源与交叉引用)
 
 ---
 
@@ -319,4 +339,281 @@ CNCF 平台工程成熟度模型从五个维度评估组织平台工程能力：
 - 平台成熟度模型详见 [`platform-maturity-model.md`](./platform-maturity-model.md)
 - IDP 复用模式详见 [`idp-reuse.md`](./idp-reuse.md)
 - CNCF 毕业项目分析详见 [`platform-engineering-cncf-2026.md`](./platform-engineering-cncf-2026.md)
-- 治理与标准化参见 [`../../06-cross-layer-governance/`](../06-cross-layer-governance/)
+- 治理与标准化参见 [`../../06-cross-layer-governance/README.md`](../../06-cross-layer-governance/README.md)
+
+
+## 8. 平台工程知识体系再补强
+
+### 8.1 平台工程的精确定义与核心属性
+
+根据 Wikipedia，**平台工程（Platform Engineering）**是软件工程中的一个学科，专注于设计和构建工具链、工作流以及自助式内部开发者平台（Internal Developer Platform, IDP），以提升开发效率、降低认知负荷并改善开发者体验。[[Platform engineering](https://en.wikipedia.org/wiki/Platform_engineering)] 它介于底层基础设施与上层应用开发之间，将基础设施、安全、可观测性、交付流程等能力以产品化方式交付给开发团队。
+
+平台工程不是简单的"运维自动化"或"DevOps 改名"，而是把平台视为**产品**，由专职的平台工程师（Platform Engineer）负责其生命周期：需求调研、路线图、治理、运营和度量。
+
+| 属性 | 说明 | 复用含义 |
+|:---|:---|:---|
+| **目标用户** | 内部开发团队、数据工程师、AI 研究员 | 以用户旅程为中心设计复用接口 |
+| **交付物** | 内部开发者平台（IDP）、Golden Path、API、模板 | 复用单元的产品化封装 |
+| **核心能力** | 自助服务、抽象、自动化、治理、可观测性 | 将架构最佳实践固化为可复用能力 |
+| **组织模式** | 平台团队、卓越中心（CoE）、联邦式平台 | 决定复用资产的治理范围与演进速度 |
+| **成功指标** | 开发者满意度、部署频率、恢复时间、平台采用率 | 量化复用带来的工程效能提升 |
+
+### 8.2 CNCF 五维度成熟度模型详解
+
+CNCF 平台工程成熟度模型从五个维度评估组织平台工程能力：
+
+| 维度 | 含义 | Level 1（起步） | Level 3（标准） | Level 5（领先） |
+|:---|:---|:---|:---|:---|
+| **Investment（投资）** | 预算与资源投入 | 无专门预算 | 正式预算与专职团队 | 行业领先投资，平台即战略 |
+| **Adoption（采用）** | 平台在组织内的覆盖度 | 少数团队试点 | 组织标准，广泛采用 | 跨组织生态，行业影响力 |
+| **Interfaces（接口）** | 开发者与平台交互方式 | 文档与工单 | 标准化 API 与自助门户 | 可组合平台与生态系统 |
+| **Operations（运营）** | 平台的运行与治理模式 | 手动运维 | 全自动运营 | 智能/自治运营 |
+| **Measurement（度量）** | 平台价值衡量 | 无度量 | 价值度量与业务影响 | 预测性分析与持续优化 |
+
+这五维度相互依赖：**接口标准化**是复用规模化前提，**度量**驱动持续优化，**投资与采用**共同决定平台生态成熟度。
+
+### 8.3 Golden Path 深度解析
+
+**Golden Path** 是平台工程中经过验证、受支持、可自助使用的技术路径。它不是唯一路径，而是"默认的、安全的、快速的道路"。其属性如下：
+
+| 属性 | 说明 | 示例 |
+|:---|:---|:---|
+| **范围** | 覆盖应用全生命周期 | 从脚手架到生产可观测 |
+| **技术栈** | 已验证的组合 | React + Spring Boot + PostgreSQL + Kubernetes |
+| **安全基线** | 内置合规与控制 | OIDC、TLS 1.3、密钥管理、漏洞扫描 |
+| **运维契约** | 默认 SLA 与可观测性 | 自动伸缩、SLO、日志/指标/链路追踪 |
+| **治理边界** | 允许偏离，但需审批 | 例外流程、技术雷达审查 |
+
+Golden Path 的复用价值在于：将可复用的技术栈、安全基线、运维标准打包为推荐路径，降低开发者的决策负担和认知负荷。
+
+### 8.4 平台工程与架构复用的关系
+
+平台工程是架构复用在组织内的**主要交付机制**。成熟度越高，架构复用的规模化能力越强：
+
+| 成熟度等级 | 复用能力 | 特征 |
+|:---|:---|:---|
+| Level 1-2 | 文档级复用 | 团队间通过文档分享最佳实践 |
+| Level 3 | 模板级复用 | Golden Path、自服务模板、标准化流水线 |
+| Level 4 | API 级复用 | 平台 API、可组合服务、内部市场 |
+| Level 5 | 生态级复用 | 跨组织复用、行业标准贡献、开源平台 |
+
+> **定理 PE.3** (平台工程-架构复用定理): 组织平台工程成熟度每提升一级，架构复用的单位成本下降约 30-50%，而复用资产的可用性和一致性显著提升。
+
+### 8.5 正例与反例补强
+
+#### 正例
+
+**某金融科技公司 IDP 实践**：
+
+该公司基于 Backstage 建立 IDP，提供"AI 微服务 Golden Path"，包含 LangChain 模板、向量数据库自助申请、模型服务注册、成本配额管理。结果：
+
+- 新 AI 服务上线时间从 6 周降至 3 天。
+- 80% 基础设施配置通过复用平台模板完成。
+- 安全基线（OIDC、TLS、密钥管理）默认内置，合规审计通过率 100%。
+- 开发者 NPS 从 15 提升至 38。
+
+#### 反例
+
+**某企业"影子平台"灾难**：
+
+某企业在没有平台治理的情况下，让各业务团队分别采购 CI/CD、Secret Management、可观测性工具，形成"影子平台（Shadow Platforms）"。结果：
+
+- 工具碎片化，团队间无法共享模板和最佳实践。
+- 合规成本激增，每个工具都需要独立审计。
+- 架构资产无法跨团队复用，认知负荷不降反升。
+- 平台团队成立后，花费 18 个月才完成工具整合。
+
+### 8.6 平台工程常见反模式
+
+| 反模式 | 说明 | 后果 |
+|--------|------|------|
+| **平台团队成为瓶颈** | 所有请求必须经平台团队审批 | 开发者绕过平台，形成影子 IT |
+| **Golden Path 过度僵化** | 不允许任何偏离，忽视边缘需求 | 团队为适配业务需求被迫绕过标准 |
+| **平台门户沦为纯目录** | 仅提供服务目录，无操作能力 | 开发者仍需手动配置，价值有限 |
+| **忽视开发者体验** | 平台功能齐全但难用 | 采用率低，投资无法产生回报 |
+| **平台团队脱离一线** | 平台团队不了解实际开发痛点 | 构建的功能与实际需求脱节 |
+| **将平台工程等同于 DevOps 改名** | 仅成立平台团队，无产品化思维 | 团队仍按工单模式运作，无法规模化 |
+
+### 8.7 平台工程架构 Mermaid 图
+
+```mermaid
+graph TB
+    subgraph Dev [开发团队]
+        APP[应用开发者]
+        DATA[数据工程师]
+        AI[AI 研究员]
+    end
+    subgraph IDP [内部开发者平台 IDP]
+        PORTAL[开发者门户]
+        GP[Golden Path]
+        API[平台 API]
+        CAT[服务目录]
+    end
+    subgraph Cap [平台能力]
+        INFRA[基础设施自服务]
+        SEC[安全基线]
+        OBS[可观测性]
+        DEL[交付流水线]
+        COST[成本管理]
+    end
+    subgraph Infra [底层基础设施]
+        K8S[Kubernetes]
+        DB[数据库/缓存]
+        NET[网络]
+        ID[身份认证]
+    end
+    APP --> PORTAL
+    DATA --> PORTAL
+    AI --> PORTAL
+    PORTAL --> GP
+    PORTAL --> API
+    PORTAL --> CAT
+    GP --> INFRA
+    GP --> SEC
+    GP --> OBS
+    API --> DEL
+    API --> COST
+    INFRA --> K8S
+    INFRA --> DB
+    SEC --> ID
+    OBS --> NET
+```
+
+### 8.8 权威来源与交叉引用再补强
+
+| 来源 | URL | 说明 |
+|:---|:---|:---|
+| Wikipedia - Platform engineering | <https://en.wikipedia.org/wiki/Platform_engineering> | 定义与学科背景 |
+| CNCF Platform Engineering Maturity Model | <https://platformengineering.org/> | 五维度成熟度模型 |
+| Gartner Top Strategic Technology Trends | <https://www.gartner.com/> | 平台工程进入战略技术趋势 |
+| Backstage | <https://backstage.io/> | 开源 IDP 框架 |
+| platformengineering.org | <https://platformengineering.org/> | 社区与最佳实践 |
+| DORA 2025 Report | <https://cloud.google.com/blog/products/devops-sre/dora-2025-report> | 工程效能度量 |
+| Team Topologies | <https://teamtopologies.com/> | 平台团队组织模式 |
+
+**交叉引用**：
+
+- 平台成熟度模型详见 [`platform-maturity-model.md`](./platform-maturity-model.md)
+- IDP 复用模式详见 [`idp-reuse.md`](./idp-reuse.md)
+- CNCF 毕业项目分析详见 [`platform-engineering-cncf-2026.md`](./platform-engineering-cncf-2026.md)
+- 治理与标准化参见 [`../../06-cross-layer-governance/README.md`](../../06-cross-layer-governance/README.md)
+- 云原生架构复用矩阵参见 [`../../03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`](../../03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md)
+
+## 9. 平台工程知识体系完整补强：定义、属性、关系与 Golden Path
+
+> **定义 PE.1** (平台工程): 平台工程是软件工程学科，专注于构建内部开发者平台（IDP）、工具链与工作流，通过产品化方式将基础设施、安全、可观测性、交付流程等能力以自助服务形式交付开发团队，从而提升开发效率、降低认知负荷。[[Platform engineering](https://en.wikipedia.org/wiki/Platform_engineering)]
+
+### 9.1 关键属性表
+
+| 属性 | 说明 | 对架构复用的影响 |
+|------|------|------------------|
+| 目标用户 | 内部开发团队、数据工程师、AI 研究员 | 复用接口以用户旅程为中心设计 |
+| 交付物 | IDP、Golden Path、平台 API、模板 | 复用单元的产品化封装 |
+| 核心能力 | 自助服务、抽象、自动化、治理、可观测 | 将架构最佳实践固化为可复用能力 |
+| 组织模式 | 平台团队、卓越中心（CoE）、联邦式平台 | 决定复用资产的治理范围与演进速度 |
+| 成功指标 | DORA、开发者 NPS、平台采用率 | 量化复用带来的工程效能提升 |
+| 治理边界 | 默认路径 + 例外审批 | 平衡标准化与创新 |
+
+### 9.2 与相关概念的关系
+
+| 概念 | 关系说明 |
+|------|----------|
+| DevOps | 平台工程将 DevOps 文化沉淀为自助服务，而非替代 |
+| SRE | SRE 的可靠性能力（SLO、混沌工程、可观测性）内置于 Golden Path |
+| IDP | 平台工程的产物，是架构复用的主要载体 |
+| Golden Path | IDP 中的“paved road”，将可复用技术栈、安全基线、运维标准打包 |
+| 架构复用 | 平台工程是架构复用在组织内的规模化交付机制 |
+
+### 9.3 CNCF 五维度成熟度模型
+
+| 维度 | Level 1（起步） | Level 2（实验） | Level 3（标准） | Level 4（可组合） | Level 5（生态） |
+|------|----------------|-----------------|-----------------|-------------------|-----------------|
+| 投资 | 无专门预算 | 实验性预算 | 正式预算与专职团队 | 战略投资 | 行业领先投资 |
+| 采用 | 少数团队试点 | 多个团队 | 组织标准 | 生态扩展 | 跨组织影响力 |
+| 接口 | 文档与工单 | 自助门户 | 标准化 API | 可组合平台 | 生态系统 |
+| 运营 | 手动 | 半自动 | 全自动 | 智能运营 | 自治 |
+| 度量 | 无 | 基础度量 | 价值度量 | 业务影响 | 预测性分析 |
+
+> **定理 PE.3** (平台工程-架构复用定理): 组织平台工程成熟度每提升一级，架构复用的单位成本下降约 30%–50%，而复用资产的可用性和一致性显著提升。
+
+### 9.4 Golden Path 深度解析
+
+| 属性 | 说明 | 示例 |
+|------|------|------|
+| 范围 | 覆盖应用全生命周期 | 从脚手架到生产可观测 |
+| 技术栈 | 已验证的组合 | React + Spring Boot + PostgreSQL + Kubernetes |
+| 安全基线 | 内置合规与控制 | OIDC、TLS 1.3、密钥管理、漏洞扫描 |
+| 运维契约 | 默认 SLA 与可观测性 | 自动伸缩、SLO、日志/指标/链路追踪 |
+| 治理边界 | 允许偏离，但需审批 | 例外流程、技术雷达审查 |
+
+### 9.5 正例
+
+**某金融科技公司 IDP 实践**：基于 Backstage 提供“AI 微服务 Golden Path”，包含 LangChain 模板、向量数据库自助申请、模型服务注册、成本配额管理。结果新 AI 服务上线时间从 6 周降至 3 天，80% 基础设施配置通过复用平台模板完成，合规审计通过率 100%。
+
+### 9.6 反例与反模式
+
+| 反模式 | 说明 | 后果 |
+|--------|------|------|
+| 平台团队成为瓶颈 | 所有请求必须经平台团队审批 | 开发者绕过平台，形成影子 IT |
+| Golden Path 过度僵化 | 不允许任何偏离 | 团队被迫绕过标准，创新受限 |
+| 平台门户沦为纯目录 | 仅提供服务目录，无操作能力 | 开发者仍需手动配置 |
+| 将平台工程等同于 DevOps 改名 | 仅成立平台团队，无产品化思维 | 团队仍按工单模式运作，无法规模化 |
+
+### 9.7 平台工程、IDP 与架构复用关系 Mermaid 图
+
+```mermaid
+graph TB
+    subgraph Dev [开发团队]
+        APP[应用开发者]
+        DATA[数据工程师]
+        AI2[AI 研究员]
+    end
+    subgraph IDP2 [内部开发者平台 IDP]
+        PORTAL[开发者门户]
+        GP2[Golden Path]
+        API2[平台 API]
+        CAT[服务目录]
+    end
+    subgraph Cap2 [平台能力]
+        INFRA[基础设施自服务]
+        SEC[安全基线]
+        OBS[可观测性]
+        DEL[交付流水线]
+        COST[成本管理]
+    end
+    APP --> PORTAL
+    DATA --> PORTAL
+    AI2 --> PORTAL
+    PORTAL --> GP2
+    PORTAL --> API2
+    PORTAL --> CAT
+    GP2 --> INFRA
+    GP2 --> SEC
+    GP2 --> OBS
+    API2 --> DEL
+    API2 --> COST
+    GP2 -.->|推荐路径| AR[架构复用]
+    API2 -.->|可组合能力| AR
+```
+
+### 9.8 权威来源与交叉引用
+
+| 来源 | URL | 说明 |
+|------|-----|------|
+| Wikipedia - Platform engineering | <https://en.wikipedia.org/wiki/Platform_engineering> | 定义与学科背景 |
+| CNCF Platform Engineering Maturity Model | <https://platformengineering.org/> | 五维度成熟度模型 |
+| Gartner Top Strategic Technology Trends | <https://www.gartner.com/> | 平台工程进入战略技术趋势 |
+| Backstage | <https://backstage.io/> | 开源 IDP 框架 |
+| platformengineering.org | <https://platformengineering.org/> | 社区与最佳实践 |
+| DORA 2025 Report | <https://cloud.google.com/blog/products/devops-sre/dora-2025-report> | 工程效能度量 |
+| Team Topologies | <https://teamtopologies.com/> | 平台团队组织模式 |
+
+**交叉引用**：
+
+- 平台成熟度模型详见 [`platform-maturity-model.md`](./platform-maturity-model.md)
+- IDP 复用模式详见 [`idp-reuse.md`](./idp-reuse.md)
+- CNCF 毕业项目分析详见 [`platform-engineering-cncf-2026.md`](./platform-engineering-cncf-2026.md)
+- 治理与标准化参见 [`../../06-cross-layer-governance/README.md`](../../06-cross-layer-governance/README.md)
+
+
+> 最后更新: 2026-07-07

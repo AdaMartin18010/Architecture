@@ -1,0 +1,45 @@
+graph TD
+    M1[M.1 Architecture-Reuse Duality<br/>架构-复用二元性]
+    M2[M.2 Variability Axiom<br/>可变性公理]
+    M3[M.3 Hierarchy Non-Reduction<br/>层次不可约性]
+    M4[M.4 Identity Preservation<br/>同一性保持]
+    E1[E.1 Reuse Asset Existence<br/>复用资产存在性]
+    E2[E.2 Cost-Benefit Threshold<br/>成本-收益阈值]
+    E3[E.3 Context-Dependency<br/>上下文依赖性]
+    S1[S.1 Composition Preservation<br/>组合保持]
+    S2[S.2 Interface Substitution<br/>接口替换]
+    S3[S.3 Non-Functional Propagation<br/>非功能属性传播]
+    S4[S.4 Trust Boundary Conservation<br/>信任边界保持]
+    P1[P.1 Governance Invariance<br/>治理不变性]
+    P2[P.2 Measurement Validity<br/>度量有效性]
+    Th1[Th.1 Reuse implies Constraint Satisfaction<br/>复用蕴含约束满足]
+    Th5[Th.5 Economically Viable Reuse Decision<br/>经济可行的复用决策]
+    Th9[Th.9 Hierarchical Reuse Independence<br/>层次复用独立性]
+    Th13[Th.13 Identity Preservation under Composition<br/>组合下的同一性保持]
+    Th17[Th.17 Trust-Value Equilibrium<br/>信任-价值均衡]
+
+    M1 --> E1
+    M1 --> Th1
+    E1 --> S1
+    S1 --> Th1
+    E2 --> Th5
+    M2 --> E2
+    M3 --> Th9
+    M4 --> Th13
+    S4 --> P1
+    P1 --> Th17
+    P2 --> Th17
+    S3 --> P2
+    M1 --> S4
+
+    style M1 fill:#e3f2fd
+    style M2 fill:#e3f2fd
+    style M3 fill:#e3f2fd
+    style M4 fill:#e3f2fd
+    style E1 fill:#fff3e0
+    style E2 fill:#fff3e0
+    style Th1 fill:#e8f5e9
+    style Th5 fill:#e8f5e9
+    style Th9 fill:#e8f5e9
+    style Th13 fill:#e8f5e9
+    style Th17 fill:#e8f5e9

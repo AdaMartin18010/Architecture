@@ -24,10 +24,10 @@
 > 新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。
 > A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
 > 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
-> [[1]][https://modelcontextprotocol.io/specification/2025-11-25]
-> ([2)][https://a2aprotocol.org]
-> ([3)][https://webassembly.org]
-> ([4)](<https://opcfoundation.org>)
+> [1](https://modelcontextprotocol.io/specification/2025-11-25)
+> [2](https://a2aprotocol.org)
+> [3](https://webassembly.org)
+> [4](https://opcfoundation.org)
 
 ---
 

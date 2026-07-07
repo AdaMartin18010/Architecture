@@ -39,6 +39,17 @@
     - [7.2 四层 × 复用策略](#72-四层--复用策略)
   - [8. 概念谱系与权威来源](#8-概念谱系与权威来源)
   - [9. 权威来源](#9-权威来源)
+  - [补充：四层本体的形式化公理、反模式与交叉引用](#补充四层本体的形式化公理反模式与交叉引用)
+    - [1. 概念定义](#1-概念定义)
+    - [2. 本体属性](#2-本体属性)
+    - [3. 关系说明](#3-关系说明)
+    - [4. 形式化/结构化分析](#4-形式化结构化分析)
+      - [4.1 本体层次图](#41-本体层次图)
+      - [4.2 一阶逻辑风格公理](#42-一阶逻辑风格公理)
+    - [5. 正例](#5-正例)
+    - [6. 反例](#6-反例)
+    - [7. 权威来源](#7-权威来源)
+    - [8. 交叉引用](#8-交叉引用)
 
 ---
 
@@ -329,3 +340,125 @@ flowchart LR
 > - Zachman, J. A. (1987). *A Framework for Information Systems Architecture*. IBM Systems Journal.
 >
 > **核查日期**: 2026-07-07
+
+
+---
+
+## 补充：四层本体的形式化公理、反模式与交叉引用
+
+> 本节对四层架构复用概念本体（CARC）进行形式化公理、属性、关系、正例、反例、Wikipedia 概念结构与交叉引用的补全，使其与本体系其他核心文件形成闭环。
+> 相关 Wikipedia 概念结构：
+> [Ontology (information science)](https://en.wikipedia.org/wiki/Ontology_(information_science))、
+> [Enterprise architecture](https://en.wikipedia.org/wiki/Enterprise_architecture)、
+> [TOGAF](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)、
+> [ArchiMate](https://en.wikipedia.org/wiki/ArchiMate)、
+> [Software component](https://en.wikipedia.org/wiki/Software_component)。
+
+### 1. 概念定义
+
+**定义**：四层架构复用概念本体（Concept Architecture Reuse Ontology, CARC）是一个半形式化本体，它将软件系统的复用问题组织为业务架构层、应用架构层、组件架构层与功能架构层四个抽象层次，并定义层间的 realizes、maps-to、decomposes-to、supports、implements、exposes、enables 等关系。CARC 既是本知识体系的顶层概念骨架，也是连接 ISO 42010、TOGAF、ArchiMate 与 ISO 26550 的语义桥梁。
+
+### 2. 本体属性
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 层数 | 4 层（业务 / 应用 / 组件 / 功能） | 高 |
+| 顶层概念 | 架构复用视角 / CARC | 高 |
+| 层间关系集合 | realizes、maps-to、decomposes-to、supports、implements、exposes、enables | 高 |
+| 形式化程度 | 半形式化（自然语言 + 一阶逻辑风格公理） | 中 |
+| 与标准对齐 | ISO 42010 / TOGAF / ArchiMate / ISO 26550 | 高 |
+| 可验证性 | 可通过模型检查或架构评审验证层间一致性 | 中 |
+
+### 3. 关系说明
+
+- **业务架构层 ↔ 应用架构层**：maps-to（业务到应用）与 realizes（应用到业务）。
+- **应用架构层 ↔ 组件架构层**：decomposes-to（应用到组件）与 supports（组件到应用）。
+- **组件架构层 ↔ 功能架构层**：implements（组件到功能）与 exposes（功能到组件）。
+- **功能架构层 ↔ 业务架构层**：enables（功能使能业务）。
+- **上层 → 下层**：上层变更可能传播至下层；下层变更应尽量通过抽象与接口隔离，减少向上传播。
+- **CARC ↔ ISO 42010**：每层可视为一个 Viewpoint；每层核心概念可视为 Model Kind；层间关系可视为 Correspondence。
+- **CARC ↔ TOGAF**：业务架构层对应 TOGAF Phase B；应用/技术层对应 Phase C/D；组件与功能层对应 SBB 实现；架构仓库保存各层制品。
+
+### 4. 形式化/结构化分析
+
+#### 4.1 本体层次图
+
+```mermaid
+graph TB
+    O[四层架构复用本体 CARC]
+    O --> BA[业务架构层 Business Architecture]
+    O --> AA[应用架构层 Application Architecture]
+    O --> CA[组件架构层 Component Architecture]
+    O --> FA[功能架构层 Functional Architecture]
+    BA -- maps-to --> AA
+    AA -- decomposes-to --> CA
+    CA -- implements --> FA
+    FA -- enables --> BA
+    AA -- realizes --> BA
+    CA -- supports --> AA
+    FA -- exposes --> CA
+```
+
+#### 4.2 一阶逻辑风格公理
+
+```text
+A1: ∀x (BusinessArchitecture(x) → ∃y (ApplicationArchitecture(y) ∧ realizes(y, x)))
+A2: ∀x (ApplicationArchitecture(x) → ∃y (ComponentArchitecture(y) ∧ decomposes-to(x, y)))
+A3: ∀x (ComponentArchitecture(x) → ∃y (FunctionalArchitecture(y) ∧ implements(x, y)))
+A4: ∀x (FunctionalArchitecture(x) → ∃y (BusinessArchitecture(y) ∧ enables(x, y)))
+A5: ∀x,y (changes(BusinessArchitecture(x)) ∧ realizes(y, x) → evaluate(ComponentArchitecture(y)))
+A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-impact(ComponentArchitecture(y), ApplicationArchitecture))
+```
+
+**解释**：
+
+- A1–A4 表达层间存在性约束：每一层都必须有相邻层的对应关系，避免悬空抽象。
+- A5 表达上层变更必须评估下层影响。
+- A6 表达下层变更应通过接口与抽象最小化向上传播。
+
+### 5. 正例
+
+**正例**：某 AI 原生客服系统按 CARC 四层本体进行设计：
+
+- **业务架构层**：业务能力“智能客服”映射到价值流“接收咨询 → 意图识别 → 知识检索 → 生成回复 → 满意度回访”。
+- **应用架构层**：应用系统“Chatbot Service”采用事件驱动微服务架构，集成知识库与 LLM 网关。
+- **组件架构层**：组件包括 `RAG Retriever`、`LLM Client`、`Prompt Manager`、`Session Store`，通过 MCP 协议暴露能力。
+- **功能架构层**：功能包括 `retrieve(query)`、`generate(context, prompt)`、`evaluate(response)`，通过 OpenAPI 与 MCP Tool 端点暴露。
+
+结果：当业务需求从“文本客服”扩展到“语音客服”时，仅在业务层新增能力映射，应用层增加语音适配服务，组件层复用 `LLM Client`，功能层复用 `generate()`，变更范围可控。
+
+### 6. 反例
+
+**反例**：某团队将“功能架构层直接等同于业务架构层”：
+
+- 业务方提出“加一个退款按钮”，开发者直接在 UI 层编写退款逻辑，未识别出“退款处理能力”这一业务架构概念。
+- 没有应用架构层抽象，退款逻辑与支付网关、订单服务、财务系统直接耦合。
+- 没有组件层复用，退款代码散落在多个前端页面与后端脚本中。
+- 没有功能层契约，退款函数的输入输出、异常处理、幂等性均未标准化。
+
+结果：当监管要求变更退款流程时，团队需要在 7 个不同系统中修改代码，耗时 3 个月，且多次出现数据不一致。
+
+**避免建议**：任何功能需求都应先定位到业务架构层的能力，再逐层推导至应用、组件与功能层，禁止跨层跳跃。
+
+### 7. 权威来源
+
+> **权威来源**：
+>
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO/IEC
+> - [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
+> - [Enterprise architecture - Wikipedia](https://en.wikipedia.org/wiki/Enterprise_architecture)
+>
+> **核查日期**：2026-07-07
+
+### 8. 交叉引用
+
+- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)
+- TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
+- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- SWEBOK V4 对齐详见 [`../05-swebok-v4/swebok-alignment.md`](../05-swebok-v4/swebok-alignment.md)
+- OMG RAS 对齐详见 [`../07-omg-ras/ras-alignment.md`](../07-omg-ras/ras-alignment.md)
+- FAIR4RS 对齐详见 [`../08-fair4rs/fair4rs-alignment.md`](../08-fair4rs/fair4rs-alignment.md)

@@ -1,0 +1,35 @@
+graph LR
+    subgraph Architecture["架构描述标准"]
+        ISO42010["ISO/IEC/IEEE 42010:2022<br/>EoI / ADF / Viewpoint / View"]
+        TOGAF["TOGAF 10<br/>ADM / Continuum / Repository"]
+        ArchiMate["ArchiMate 4.0<br/>六层 / 主动-行为-被动"]
+    end
+
+    subgraph Reuse["复用与产品线"]
+        ISO26550["ISO/IEC 26550:2015<br/>PLE 参考模型"]
+        IEEE1517["IEEE 1517-2010<br/>生命周期复用过程"]
+        OMGRAS["OMG RAS v2.2<br/>可复用资产规范"]
+    end
+
+    subgraph Security["供应链安全"]
+        SLSA["SLSA 1.2<br/>Build/Source Track"]
+        SSDF["NIST SSDF 1.2<br/>Prepare/Protect/Produce/Respond"]
+        SBOM["SPDX 2.3 / CycloneDX 1.6"]
+    end
+
+    subgraph Industrial["工业 IoT"]
+        ISA95["ISA-95 / IEC 62264<br/>L0-L4"]
+        OPCUA["OPC UA FX 1.0"]
+        AAS["IEC 63278 AAS"]
+    end
+
+    ISO42010 -->|映射| TOGAF
+    ISO42010 -->|实例化| ArchiMate
+    TOGAF -->|内容框架| ArchiMate
+    ISO26550 -->|指导| IEEE1517
+    OMGRAS -->|资产描述| ISO26550
+    SLSA -->|互补| SSDF
+    SBOM -->|输入| SLSA
+    ISA95 -->|映射| AAS
+    AAS -->|传输| OPCUA
+    ISA95 -->|传输| OPCUA

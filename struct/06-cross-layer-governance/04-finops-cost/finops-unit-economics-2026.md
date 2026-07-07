@@ -276,6 +276,196 @@ flowchart TD
 | 升级共享组件 | 平台投资增量、消费方数量 | 每消费方成本 |
 | 退役低采用资产 | 维护成本、潜在替代成本 | 资产净现值 |
 
+## 补充：FinOps 单位经济学计算示例与成本分摊反模式
+
+### 4.1 FinOps 单位经济学深度计算示例
+
+某 SaaS 公司月云支出 $120K，活跃客户 50,000，当月 API 调用 120M 次。
+
+**每活跃用户成本（Cost Per Active User, CPAU）**：
+
+```text
+CPAU = $120,000 / 50,000 = $2.40 / 用户 / 月
+```
+
+**每千次 API 调用成本（Cost Per 1K API Calls）**：
+
+```text
+CP1K = $120,000 / (120,000,000 / 1,000) = $1.00 / 千次调用
+```
+
+**毛利率推导**：
+
+- 月 ARPU = $8.50
+- CPAU = $2.40
+- 其他运营成本 = $1.10 / 用户
+- **毛利润** = $8.50 - $2.40 - $1.10 = $5.00
+- **毛利率** = $5.00 / $8.50 = 58.8%
+
+### 4.2 跨层复用成本分摊计算示例
+
+共享 Kubernetes 平台月成本 $48K，服务 4 个产品线和 12 个微服务。
+
+**Layer-Based 分摊**：
+
+| 层级 | 受益比例 | 分摊成本 |
+|---|---|---|
+| 业务层（Product A/B/C/D） | 按收入占比 | $38.4K |
+| 应用层（12 个微服务） | 按 CPU/内存请求 | $7.2K |
+| 组件层（共享中间件） | 按调用量 | $1.8K |
+| 功能层（日志/监控） | 按日志量/指标数 | $0.6K |
+
+**分摊验证**：
+
+```text
+$38.4K + $7.2K + $1.8K + $0.6K = $48K
+```
+
+### 4.3 成本分摊反例：按收入分摊的"马太效应"
+
+某企业将共享数据仓库成本按各产品线收入比例分摊：
+
+- **问题**：
+  1. 高收入产品线承担大部分成本，但使用频率低；
+  2. 低收入高使用频率产品线成本被低估，过度使用资源；
+  3. 产品团队无法通过优化使用行为降低成本；
+  4. 数据仓库团队被指责"为高收入产品线服务"，资源分配政治化。
+- **后果**：
+  - 数据仓库利用率不均，部分时段排队严重；
+  - 团队间信任破裂，多个产品线自建数据副本；
+  - 6 个月内数据相关成本上升 38%。
+- **避免方法**：
+  - 优先使用 Usage-Based 分摊（查询数、扫描数据量、存储量）；
+  - 收入分摊仅作为平台开销（Overhead）的补充；
+  - 建立成本 showback 机制，让消费方看到真实使用成本。
+
+### 4.4 成本分摊反例：遗漏隐性成本
+
+某平台团队按"每调用"将共享搜索服务成本分摊给消费方，但：
+
+- **遗漏成本**：
+  1. 索引重建的批处理成本；
+  2. 多可用区冗余的存储成本；
+  3. 安全扫描与合规审计成本；
+  4. 平台工程师维护人力成本。
+- **后果**：
+  - 消费方看到的单位成本仅为真实成本的 60%；
+  - 低估成本的产品线扩大使用，导致平台容量紧张；
+  - 平台团队预算不足，影响服务质量。
+- **避免方法**：
+  - 建立全成本分摊模型（Full-Cost Allocation）；
+  - 定期进行成本完整性审计；
+  - 将人力成本按比例折算为平台开销。
+
+### 4.5 FinOps 单位经济学实施流程
+
+```mermaid
+flowchart TD
+    Start([启动单位经济学]) --> Tag[标签治理]
+    Tag --> Allocate[成本分配建模]
+    Allocate --> Unit[定义业务单位]
+    Unit --> Calculate[计算单位成本]
+    Calculate --> Analyze[分层毛利率分析]
+    Analyze --> Optimize[优化行动]
+    Optimize --> Monitor[持续监控]
+    Monitor --> Tag
+```
+
+### 4.6 与相关概念的关系
+
+- **上位概念**：[FinOps](https://en.wikipedia.org/wiki/FinOps)、[IT governance](https://en.wikipedia.org/wiki/IT_governance)、[Cloud computing](https://en.wikipedia.org/wiki/Cloud_computing)；
+- **下位概念**：Cloud COGS、每客户成本、每请求成本、每 Token 成本、Showback、Chargeback；
+- **等价/映射概念**：Unit Economics（SaaS）、Cloud Unit Cost（云厂商）、TCO；
+- **依赖概念**：标签治理、成本分配、用量计量、架构复用价值量化。
+
+> **权威来源（补充）**:
+>
+> - [FinOps — Wikipedia](https://en.wikipedia.org/wiki/FinOps)
+> - [IT governance — Wikipedia](https://en.wikipedia.org/wiki/IT_governance)
+> - [Cloud computing — Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing)
+> - [Unit economics — Wikipedia](https://en.wikipedia.org/wiki/Unit_economics)
+>
+### 4.7 计算示例：共享 GPU 集群的每千 Token 成本
+
+某 AI 平台月 GPU 集群成本 $86K，当月消耗 2.15B token，服务 3 个产品线。
+
+**每千 Token 成本（Cost Per 1K Tokens）**：
+
+```text
+CP1KT = $86,000 / (2,150,000,000 / 1,000) = $0.04 / 千 Token
+```
+
+**按产品线分摊（按 token 使用量）**：
+
+| 产品线 | 使用量（B token） | 占比 | 分摊成本 |
+|--------|------------------|------|----------|
+| 企业助手 | 1.20 | 55.8% | $48.0K |
+| 搜索增强 | 0.65 | 30.2% | $26.0K |
+| 内容生成 | 0.30 | 14.0% | $12.0K |
+
+**毛利率影响**：
+
+- 企业助手月收入 $180K，GPU 成本 $48K，GPU 毛利率 = 73.3%；
+- 内容生成月收入 $15K，GPU 成本 $12K，GPU 毛利率 = 20.0%，接近盈亏平衡。
+
+### 4.8 反例：未分摊预留实例折扣导致产品线成本扭曲
+
+某企业购买 1 年期 AWS Reserved Instances，享受 35% 折扣：
+
+- **问题**：
+  1. 财务部门将折扣全部计入中央 IT 成本，未按实际使用分摊给产品线；
+  2. 产品团队看到的按需成本高于真实成本，低估云资源使用效率；
+  3. 高使用产品线未获得折扣激励，低使用产品线反而"搭便车"；
+  4. 第二年预算编制时，各部门按虚高成本申请预算，导致整体云支出增长 18%。
+- **后果**：
+  - 产品线决策失真，本应扩展的服务被误判为不经济；
+  - 中央 IT 与实际使用方产生利益冲突；
+  - FinOps 团队公信力下降。
+- **避免方法**：
+  - 按实际使用量比例分摊预留实例折扣；
+  - 建立 showback 机制，让消费方看到摊销后的真实单位成本；
+  - 在预算编制中使用"有效单位成本"而非账面成本。
+
+### 4.9 FinOps 单位经济学闭环流程图
+
+```mermaid
+flowchart TB
+    subgraph Measure [计量]
+        M1[资源标签]
+        M2[用量采集]
+        M3[成本归集]
+    end
+    subgraph Allocate [分摊]
+        A1[直接归属]
+        A2[比例分摊]
+        A3[平台开销]
+    end
+    subgraph Analyze [分析]
+        AN1[单位成本]
+        AN2[分层毛利率]
+        AN3[异常检测]
+    end
+    subgraph Optimize [优化]
+        O1[Right-sizing]
+        O2[预留/Spot]
+        O3[架构复用]
+    end
+    Measure --> Allocate
+    Allocate --> Analyze
+    Analyze --> Optimize
+    Optimize --> Measure
+```
+
+### 4.10 补充权威来源
+
+> **权威来源（补充）**:
+>
+> - [FinOps — Wikipedia](https://en.wikipedia.org/wiki/FinOps)
+> - [Unit economics — Wikipedia](https://en.wikipedia.org/wiki/Unit_economics)
+> - [FinOps Foundation — Unit Economics](https://www.finops.org/framework/capabilities/quantify/unit-economics/)
+>
+> **核查日期**: 2026-07-07
+
 ## 8. 参考索引与权威来源
 
 > **权威来源**:

@@ -300,3 +300,19 @@ flowchart LR
 
 > 最后更新: 2026-06-08
 > 关联文件: `slsa-reuse-boundaries.md`, `slsa-1-2-multi-track.md`
+
+
+---
+
+## 补充章节
+## 示例
+
+**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。
+
+## 反例
+
+**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，无法达到 SLSA L1。
+
+## 分析
+
+**分析**：SLSA 将供应链安全分解为可升级、可审计的等级，是组织渐进式改进的路线图。

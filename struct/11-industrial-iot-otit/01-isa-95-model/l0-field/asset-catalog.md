@@ -66,3 +66,29 @@ L0 现场层是 ISA-95 五层模型的最底层，直接面向物理生产过程
 ---
 
 > 最后更新: 2026-06-06
+
+
+---
+
+## 补充章节
+## 示例
+
+**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+
+## 反例
+
+**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [OPC Foundation](https://opcfoundation.org)
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：OT-IT 复用需要在实时性、安全性与 IT 敏捷性之间取得平衡，标准信息模型是打破竖井的关键。

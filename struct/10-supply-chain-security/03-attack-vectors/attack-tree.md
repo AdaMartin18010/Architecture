@@ -41,6 +41,23 @@
     - [8.2 分层缓解措施](#82-分层缓解措施)
     - [8.3 供应链攻击生命周期 Mermaid 图](#83-供应链攻击生命周期-mermaid-图)
     - [8.4 权威来源与交叉引用](#84-权威来源与交叉引用)
+  - [9. 供应链攻击树 MITRE ATT\&CK 深度映射与缓解措施补强](#9-供应链攻击树-mitre-attck-深度映射与缓解措施补强)
+    - [9.1 攻击路径与 MITRE 技术映射总表](#91-攻击路径与-mitre-技术映射总表)
+    - [9.2 典型攻击案例深度解析](#92-典型攻击案例深度解析)
+      - [案例 1：SolarWinds Orion (2020)](#案例-1solarwinds-orion-2020)
+      - [案例 2：Codecov Bash Uploader (2021)](#案例-2codecov-bash-uploader-2021)
+      - [案例 3：3CX Desktop App (2023)](#案例-33cx-desktop-app-2023)
+      - [案例 4：Dependency Confusion by Alex Birsan (2021)](#案例-4dependency-confusion-by-alex-birsan-2021)
+    - [9.3 分层缓解措施与验证指标](#93-分层缓解措施与验证指标)
+    - [9.4 供应链攻击树 Mermaid 可视化](#94-供应链攻击树-mermaid-可视化)
+    - [9.5 权威来源与交叉引用](#95-权威来源与交叉引用)
+  - [10. 供应链攻击树：形式化定义、属性与 MITRE 映射](#10-供应链攻击树形式化定义属性与-mitre-映射)
+    - [10.1 攻击路径属性表](#101-攻击路径属性表)
+    - [10.2 攻击树与防御控制的关系](#102-攻击树与防御控制的关系)
+    - [10.3 正例](#103-正例)
+    - [10.4 反例（错误假设）](#104-反例错误假设)
+    - [10.5 供应链攻击树 MITRE 防御映射 Mermaid 图](#105-供应链攻击树-mitre-防御映射-mermaid-图)
+    - [10.6 权威来源与交叉引用](#106-权威来源与交叉引用)
 
 ---
 
@@ -451,4 +468,214 @@ flowchart TD
 > - MITRE ATT&CK 映射对照 <https://attack.mitre.org> 验证
 > - 案例对照 OpenSSF、NIST、CISA 官方公告验证
 >
+> 最后更新: 2026-07-07
+
+
+## 9. 供应链攻击树 MITRE ATT&CK 深度映射与缓解措施补强
+
+### 9.1 攻击路径与 MITRE 技术映射总表
+
+为了将攻击树与 MITRE ATT&CK Enterprise v16 对齐，下表将 7 条主要攻击路径细化为 28 项子技术，并给出对应的缓解措施（Mitigation）和检测信号。
+
+| 攻击路径 | 子攻击手段 | MITRE Technique | 主要 Mitigation | 检测信号 |
+|---------|-----------|----------------|----------------|---------|
+| 3.1 开发环境渗透 | 网络钓鱼窃取开发者凭据 | [T1566](https://attack.mitre.org/techniques/T1566/) Phishing | M1017 User Training, M1030 Network Segmentation | 异常登录地/时间、MFA 绕过尝试 |
+| 3.1 开发环境渗透 | 恶意 IDE/编辑器扩展 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1013 Application Developer Guidance, M1042 Disable or Remove Feature | 扩展权限申请、扩展市场新包名相似度 |
+| 3.1 开发环境渗透 | 被篡改的编译器/工具链 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1013, M1047 Audit | 编译输出哈希突变、工具链来源异常 |
+| 3.2 构建系统篡改 | 攻陷 CI/CD 流水线 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1030 Network Segmentation, M1045 Code Signing | CI 配置变更、构建日志异常 |
+| 3.2 构建系统篡改 | 恶意构建脚本执行 | [T1059](https://attack.mitre.org/techniques/T1059/) Command and Scripting Interpreter | M1013, M1047 Audit | 构建步骤中出现 `curl | bash`、未声明网络调用 |
+| 3.2 构建系统篡改 | 伪造/重放 provenance | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts + [T1552](https://attack.mitre.org/techniques/T1552/) Unsecured Credentials | M1045 Code Signing, M1026 Privileged Account Management | provenance 签名者身份异常、Rekor 日志不一致 |
+| 3.2 构建系统篡改 | 构建后替换二进制 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1045 Code Signing, M1047 Audit | 相同源码不同 digest、Registry 引用异常 |
+| 3.3 包管理器投毒 | Typosquatting 包名 | [T1583](https://attack.mitre.org/techniques/T1583/) Acquire Infrastructure | M1013, M1016 Vulnerability Scanning | 新包名与内部包高度相似 |
+| 3.3 包管理器投毒 | 窃取维护者凭据发布恶意版本 | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts | M1026, M1027 Password Policies | 维护者账户异地登录、版本号异常跳升 |
+| 3.3 包管理器投毒 | 社会工程学接管项目 | [T1199](https://attack.mitre.org/techniques/T1199/) Trusted Relationship | M1017, M1047 Audit | 新维护者权限快速升级、提交行为异常 |
+| 3.4 依赖混淆 | 扫描公开仓库识别内部包名 | [T1593](https://attack.mitre.org/techniques/T1593/) Search Open Websites/Domains | M1013, M1021 Restrict Web-Based Content | 仓库泄露内部依赖名 |
+| 3.4 依赖混淆 | 发布更高版本到公共注册表 | [T1583](https://attack.mitre.org/techniques/T1583/) Acquire Infrastructure | M1016, M1021 | 公共注册表出现内部作用域包 |
+| 3.5 上游代码植入 | 伪装良性 PR 隐藏后门 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1045 Code Signing, M1047 Audit | PR 中隐藏二进制/混淆代码 |
+| 3.5 上游代码植入 | 强制推送重写历史 | [T1071](https://attack.mitre.org/techniques/T1071/) Application Layer Protocol / [T1491](https://attack.mitre.org/techniques/T1491/) Defacement | M1045, M1047 Audit | 已发布 tag 的 commit SHA 变化 |
+| 3.5 上游代码植入 | 控制审查者账户绕过双人复核 | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts | M1026, M1027 | 同一审批者短时间内批量合并 |
+| 3.6 分发渠道劫持 | DNS 劫持 / BGP 劫持 | [T1584](https://attack.mitre.org/techniques/T1584/) Compromise Infrastructure | M1037 Filter Network Traffic, M1041 Encrypt Sensitive Information | 下载域名解析异常、TLS 证书异常 |
+| 3.6 分发渠道劫持 | 下载过程 MITM | [T1557](https://attack.mitre.org/techniques/T1557/) Man-in-the-Middle | M1037, M1041 | CDN 边缘节点异常、哈希不一致 |
+| 3.6 分发渠道劫持 | 攻陷证书颁发机构 | [T1553](https://attack.mitre.org/techniques/T1553/) Subvert Trust Controls | M1037, M1041 | 证书链异常、CT 日志不一致 |
+| 3.7 运行时加载 | 运行时无验证下载模块 | [T1105](https://attack.mitre.org/techniques/T1105/) Ingress Tool Transfer | M1038 Execution Prevention, M1042 | 生产环境异常网络下载 |
+| 3.7 运行时加载 | 无沙箱插件系统 | [T1059](https://attack.mitre.org/techniques/T1059/) Command and Scripting Interpreter | M1038, M1052 User Account Control | 插件进程异常行为 |
+| 3.7 运行时加载 | 被攻陷的运行时解释器 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1045, M1051 Update Software | 运行时二进制哈希异常 |
+
+> **映射关系说明**：MITRE ATT&CK 将供应链攻击主要归类于 **Initial Access (TA0001)** 与 **Defense Evasion (TA0005)**。攻击树中的 7 条路径均可在 Enterprise Matrix 中找到对应技术，便于将防御控制导入 SIEM/SOAR 和威胁情报平台。
+
+### 9.2 典型攻击案例深度解析
+
+#### 案例 1：SolarWinds Orion (2020)
+
+| 维度 | 内容 |
+|------|------|
+| **攻击路径** | 3.2 构建系统篡改 |
+| **MITRE Technique** | T1195.001 Software Supply Chain Compromise |
+| **攻击链** | 攻陷 CI/CD → 在构建过程中注入 SUNBURST 后门 → 通过合法签名分发 |
+| **影响范围** | 18,000+ 组织，包括美国政府机构 |
+| **驻留时间** | 9+ 个月 |
+| **关键教训** | 仅依赖签名不足够，必须验证 provenance 和构建环境隔离 |
+
+#### 案例 2：Codecov Bash Uploader (2021)
+
+| 维度 | 内容 |
+|------|------|
+| **攻击路径** | 3.6 分发渠道劫持 |
+| **MITRE Technique** | T1557 Man-in-the-Middle / T1584 Compromise Infrastructure |
+| **攻击链** | 篡改 Bash Uploader 脚本分发服务器 → 脚本窃取 CI 环境变量 |
+| **影响范围** | 29,000+ 组织 |
+| **发现方式** | 客户报告凭证泄露 |
+| **关键教训** | 分发脚本必须提供哈希/签名验证；CI 环境变量应最小化 |
+
+#### 案例 3：3CX Desktop App (2023)
+
+| 维度 | 内容 |
+|------|------|
+| **攻击路径** | 3.5 上游代码植入 + 3.6 分发渠道劫持 |
+| **MITRE Technique** | T1195.001 / T1078 Valid Accounts |
+| **攻击链** | 上游库被植入恶意代码 → 3CX 构建并分发带毒安装包 |
+| **影响范围** | 600,000+ 企业用户 |
+| **发现方式** | 客户发现异常网络流量 |
+| **关键教训** | 上游库 Source Track 控制不足会导致下游构建被污染 |
+
+#### 案例 4：Dependency Confusion by Alex Birsan (2021)
+
+| 维度 | 内容 |
+|------|------|
+| **攻击路径** | 3.4 依赖混淆 |
+| **MITRE Technique** | T1583 Acquire Infrastructure / T1071 Application Layer Protocol |
+| **攻击链** | 发现内部包名 → 在公共 npm/PyPI 发布更高版本 → 自动被 CI/CD 拉取 |
+| **影响范围** | 35+ 科技公司 |
+| **赏金收入** | $130,000+ |
+| **关键教训** | 必须显式指定注册源并禁止回退到公共注册表 |
+
+### 9.3 分层缓解措施与验证指标
+
+| 攻击树路径 | 缓解控制 | 验证指标 | 对应 SLSA 等级 |
+|-----------|---------|---------|---------------|
+| 3.1 开发环境渗透 | MFA + 硬件密钥 + 开发者沙箱 + IDE 扩展白名单 | 100% 开发者启用 MFA；扩展审批率 100% | Source L2+ |
+| 3.2 构建系统篡改 | SLSA Build L3 + 隔离构建 + 分离签名权限 | 所有产物附带 provenance；slsa-verifier 100% 通过 | Build L3 |
+| 3.3 包管理器投毒 | 私有代理 + 命名空间隔离 + 维护者 MFA | 无公共注册表直接依赖；包发布 MFA 率 100% | Build L2+ |
+| 3.4 依赖混淆 | lockfile 哈希 + 显式注册源 + 作用域包 | CI 构建失败时无未命中依赖；内部包作用域化率 100% | Build L2 |
+| 3.5 上游代码植入 | Source Track L3 + 代码差异异常检测 + signed commits | 主分支 100% PR；≥2 审批；signed commits 率 100% | Source L3 |
+| 3.6 分发渠道劫持 | HTTPS + 签名 + CDN 完整性 + DNSSEC | 下载哈希与发布页一致；DNSSEC 启用率 100% | Build L3+ |
+| 3.7 运行时加载 | 运行时完整性校验 + 沙箱 + 禁止运行时下载 | 未签名运行时下载拦截率 100% | Build L3 |
+
+### 9.4 供应链攻击树 Mermaid 可视化
+
+```mermaid
+graph TD
+    Root[攻陷软件供应链] --> A[注入恶意代码到最终产品]
+    Root --> B[通过依赖窃取敏感数据]
+    Root --> C[通过供应链拒绝服务]
+    A --> A1[开发环境渗透]
+    A --> A2[构建系统篡改]
+    A --> A3[包管理器投毒]
+    A --> A4[上游代码植入]
+    A --> A5[分发渠道劫持]
+    A --> A6[运行时加载恶意组件]
+    B --> B1[安装数据收集包]
+    B --> B2[利用漏洞依赖]
+    C --> C1[破坏性更新]
+    C --> C2[级联故障]
+    A1 --> M1[M1017 培训 / MFA]
+    A2 --> M2[SLSA Build L3 / 隔离构建]
+    A3 --> M3[私有代理 / 命名空间隔离]
+    A4 --> M4[Source Track L3 / 双人审查]
+    A5 --> M5[签名 / DNSSEC / CDN 完整性]
+    A6 --> M6[沙箱 / 运行时完整性校验]
+```
+
+### 9.5 权威来源与交叉引用
+
+- MITRE ATT&CK for Supply Chain: <https://attack.mitre.org/techniques/T1195/>
+- MITRE ATT&CK Enterprise Matrix: <https://attack.mitre.org/matrices/enterprise/>
+- CISA Alert AA24-102A (XZ Utils): <https://www.cisa.gov/news-events/alerts/2024/03/29/reported-supply-chain-compromise-affecting-xz-utils-data-compression-library-cve-2024-3094>
+- CISA Alert (SolarWinds): <https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a>
+- NIST SP 800-204D: <https://csrc.nist.gov/publications/detail/sp/800-204d/final>
+- OpenSSF Supply Chain Security: <https://openssf.org/supply-chain/>
+- SLSA Specification: <https://slsa.dev/spec/v1.2/>
+- 相关概念: [Supply chain attack](https://en.wikipedia.org/wiki/Supply_chain_attack)
+- **交叉引用**: `struct/10-supply-chain-security/03-attack-vectors/attack-tree-mitre-mapping.md`；`struct/10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md` §3.1；`struct/10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-principles.md`
+
+## 10. 供应链攻击树：形式化定义、属性与 MITRE 映射
+
+> **定义 AT.1** (供应链攻击树): 以“攻陷下游消费者所依赖的软件、硬件或服务”为根目标，将攻击路径按 OR/AND 节点逐层分解为原子技术的树形威胁模型。叶节点对应 MITRE ATT&CK 技术，内部节点对应战术阶段，边表示技术之间的依赖或替代关系。
+
+### 10.1 攻击路径属性表
+
+| 攻击路径 | 入口点 | MITRE 技术 | 攻击面 | 对应 SLSA 控制 | 典型检测信号 | 典型案例 |
+|----------|--------|------------|--------|----------------|--------------|----------|
+| 3.1 开发环境渗透 | 开发者凭据 / IDE 扩展 / 工具链 | T1566 / T1195.001 | 终端与身份 | Source L2+、Build L2+ | 异常登录、扩展权限 | 钓鱼窃取代码签名密钥 |
+| 3.2 构建系统篡改 | CI/CD / 构建脚本 / 产物仓库 | T1195.001 / T1059 | 构建平台 | Build L3、Env L2+ | 产物哈希突变、CI 配置变更 | SolarWinds Orion |
+| 3.3 包管理器投毒 | 公共注册表 / 维护者账户 | T1583 / T1078 / T1199 | 包生态 | Build L2+ | 包名相似、版本号跳升 | PyTorch 恶意依赖 |
+| 3.4 依赖混淆 | 内部包名泄露 / 公共注册表 | T1583 / T1593 | 依赖解析 | Build L2 | 公共注册表出现内部作用域包 | Alex Birsan 研究 |
+| 3.5 上游代码植入 | 仓库提交 / 审查绕过 | T1195.001 / T1078 | 源码仓库 | Source L3 | PR 中隐藏二进制、历史重写 | XZ Utils 后门 |
+| 3.6 分发渠道劫持 | DNS / CDN / 证书 | T1584 / T1557 / T1553 | 网络分发 | Build L3+ | 域名解析异常、证书链异常 | Codecov Bash Uploader |
+| 3.7 运行时加载恶意组件 | 运行时下载 / 插件系统 | T1105 / T1059 | 运行环境 | Build L3 | 生产环境异常网络下载 | 被篡改的运行时解释器 |
+
+### 10.2 攻击树与防御控制的关系
+
+供应链攻击树的价值在于将抽象威胁转化为可分配的防御控制：
+
+- **开发环境渗透** 主要依赖身份安全、MFA、开发者沙箱与 Source Track 认证。
+- **构建系统篡改** 的终极缓解是 SLSA Build L3 + BuildEnv L2/L3，确保只有可信平台能生成签名产物。
+- **包管理器投毒 / 依赖混淆** 需要私有代理、命名空间隔离与 lockfile 完整性校验。
+- **上游代码植入** 需要 Source Track L3 的双人审查、签名提交与代码差异异常检测。
+- **分发渠道劫持** 需要 HTTPS、DNSSEC、CDN 完整性校验与不可伪造 provenance。
+- **运行时加载** 需要运行时完整性校验、沙箱与禁止未签名下载。
+
+> **定理 AT.2** (攻击树防御覆盖定理): 若某条攻击路径在攻击树中至少被一个 SLSA/Source/Env 控制覆盖，则该路径的利用成本随控制等级指数级上升；若未被覆盖，则默认处于可利用状态。
+
+### 10.3 正例
+
+| 案例 | 正例说明 |
+|------|----------|
+| XZ Utils 后门发现 | Andres Freund 通过 SSH 登录性能异常定位到 liblzma，展示了持续监控与基线对比的价值 |
+| SolarWinds 事件响应 | FireEye 通过内部安全调查逆向出 SUNBURST 后门，推动行业加强构建隔离与 provenance 验证 |
+| Dependency Confusion 研究 | Alex Birsan 主动披露并退还赏金，证明命名空间隔离与显式注册源可有效阻止此类攻击 |
+
+### 10.4 反例（错误假设）
+
+| 反例 | 风险说明 |
+|------|----------|
+| “我们只从官方源下载，所以安全” | XZ Utils 与 SolarWinds 均来自官方分发渠道 |
+| “有数字签名就够了” | 签名无法证明构建过程未被篡改 |
+| “依赖扫描每天一次足够” | 主动利用漏洞需在 24 小时内响应（EU CRA） |
+| “开源组件责任由社区承担” | 商业集成商仍需承担 CRA 与产品安全责任 |
+
+### 10.5 供应链攻击树 MITRE 防御映射 Mermaid 图
+
+```mermaid
+flowchart TD
+    Root[攻陷软件供应链]
+    Root --> P1[开发环境渗透]
+    Root --> P2[构建系统篡改]
+    Root --> P3[包管理器投毒]
+    Root --> P4[依赖混淆]
+    Root --> P5[上游代码植入]
+    Root --> P6[分发渠道劫持]
+    Root --> P7[运行时加载恶意组件]
+    P1 --> M1[M1017 培训 / MFA / 开发者沙箱]
+    P2 --> M2[SLSA Build L3 / 隔离构建 / Env 证明]
+    P3 --> M3[私有代理 / 命名空间隔离 / 维护者 MFA]
+    P4 --> M4[Lockfile 哈希 / 显式注册源 / 作用域包]
+    P5 --> M5[Source Track L3 / 双人审查 / 签名提交]
+    P6 --> M6[签名 / DNSSEC / CDN 完整性]
+    P7 --> M7[运行时完整性校验 / 沙箱 / 禁止运行时下载]
+```
+
+### 10.6 权威来源与交叉引用
+
+- MITRE ATT&CK for Supply Chain: <https://attack.mitre.org/techniques/T1195/>
+- MITRE ATT&CK Enterprise Matrix: <https://attack.mitre.org/matrices/enterprise/>
+- CISA Alert AA24-102A (XZ Utils): <https://www.cisa.gov/news-events/alerts/2024/03/29/reported-supply-chain-compromise-affecting-xz-utils-data-compression-library-cve-2024-3094>
+- CISA Alert AA20-352A (SolarWinds): <https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a>
+- NIST SP 800-204D: <https://csrc.nist.gov/publications/detail/sp/800-204d/final>
+- OWASP SCVS: <https://owasp.org/www-project-software-component-verification-standard/>
+- SLSA Specification: <https://slsa.dev/spec/v1.2/>
+- 相关概念: [Supply chain attack](https://en.wikipedia.org/wiki/Supply_chain_attack)
+- **交叉引用**: `struct/10-supply-chain-security/03-attack-vectors/attack-tree-mitre-mapping.md`；`struct/10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md` §3.1；`struct/10-supply-chain-security/06-case-studies/eu-cra-compliance.md` §9
+
+
 > 最后更新: 2026-07-07

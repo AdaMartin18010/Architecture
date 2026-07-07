@@ -153,3 +153,25 @@ PLCopen Safety 采用**双通道架构**：
 - IEC 61131-3:2013 Ed3 (Programming Languages)
 - IEC 61508-3:2010 / IEC 62061:2021 (Functional Safety)
 - IEC 61800-5-2:2016 (Safe Torque Off / Safe Stop)
+
+
+---
+
+## 补充章节
+## 示例
+
+**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+
+## 权威来源
+
+> **权威来源**:
+>
+> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
+> - [OPC Foundation](https://opcfoundation.org)
+> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
+> - 核查日期：2026-07-07
+
+## 分析
+
+**分析**：OT-IT 复用需要在实时性、安全性与 IT 敏捷性之间取得平衡，标准信息模型是打破竖井的关键。

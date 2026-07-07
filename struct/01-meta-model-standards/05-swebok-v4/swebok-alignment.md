@@ -337,3 +337,102 @@ SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 ## 分析
 
 **分析**：SWEBOK 提供了软件工程知识的全景，帮助组织定位复用实践在知识体系中的坐标。
+
+
+---
+
+## 补充：SWEBOK V4 知识领域的结构化映射与复用视图
+
+> 本节对 SWEBOK V4 知识领域与本体系 13 个主题的映射进行定义、属性、关系、正例、反例、形式化视图、权威来源与交叉引用的补全。
+> 相关 Wikipedia 概念结构：
+> [SWEBOK](https://en.wikipedia.org/wiki/Software_Engineering_Body_of_Knowledge)、
+> [Software engineering](https://en.wikipedia.org/wiki/Software_engineering)、
+> [Ontology](https://en.wikipedia.org/wiki/Ontology_(information_science))。
+
+### 1. 概念定义
+
+**定义**：SWEBOK V4（Software Engineering Body of Knowledge Version 4）是 IEEE Computer Society 发布的软件工程知识体系指南，定义了 18 个知识领域（Knowledge Areas, KAs），其中 15 个为核心软件工程 KA，3 个为基础 KA。本知识体系将其作为“知识底座”，把每个 KA 映射到 13 个一级主题，从而定位复用实践在软件工程学科中的坐标。
+
+### 2. 属性
+
+| 属性 | 说明 | 可观察性 |
+|------|------|----------|
+| 知识领域数量 | V4 共 18 个 KA（15 核心 + 3 基础） | 高 |
+| 生命周期覆盖 | 覆盖需求→设计→构造→测试→运维→退役 | 高 |
+| 本体系映射密度 | 每个核心 KA 至少映射到一个主题 | 高 |
+| 版本时效性 | 基于 2024 V4 / 2025 V4.0a | 高 |
+| 扩展标注 | 明确标注本体系对 SWEBOK 的扩展领域 | 中 |
+| 可教学性 | 可作为培训路线图与能力评估基准 | 中 |
+
+### 3. 关系说明
+
+- **上位概念**：软件工程学科（Software Engineering）是 SWEBOK 的上位领域。
+- **下位概念**：每个 KA 可细分为知识单元、主题与技能点；例如 KA2 Software Architecture 可细分为架构风格、参考架构、架构决策等。
+- **等价/映射概念**：SWEBOK KA2（Software Architecture）与本体系的 03-应用架构复用、01-元模型与标准形成主/次映射。
+- **依赖概念**：
+  - KA1 Software Requirements → 02-业务架构复用
+  - KA3 Software Design + KA4 Software Construction → 04/05-组件与功能架构复用
+  - KA13 Software Security → 10-供应链安全
+  - KA15 Software Engineering Economics → 09-价值量化
+
+### 4. 形式化/结构化分析
+
+```mermaid
+graph LR
+    SWEBOK[SWEBOK V4<br/>18 KAs]
+    SWEBOK --> KA1[KA1 Software Requirements]
+    SWEBOK --> KA2[KA2 Software Architecture]
+    SWEBOK --> KA4[KA4 Software Construction]
+    SWEBOK --> KA5[KA5 Software Testing]
+    SWEBOK --> KA6[KA6 Software Engineering Operations]
+    SWEBOK --> KA13[KA13 Software Security]
+    SWEBOK --> KA15[KA15 Software Engineering Economics]
+    KA1 --> T02[02 业务架构复用]
+    KA2 --> T03[03 应用架构复用]
+    KA4 --> T04[04 组件架构复用]
+    KA5 --> T07[07 形式化验证]
+    KA6 --> T06[06 跨层治理]
+    KA13 --> T10[10 供应链安全]
+    KA15 --> T09[09 价值量化]
+    SWEBOK --> T01[01 元模型与标准]
+    SWEBOK --> T13[13 新兴趋势]
+```
+
+### 5. 正例
+
+**正例**：某大型企业在建立架构师培训体系时，以 SWEBOK V4 为知识骨架：
+
+- 将 KA2 Software Architecture 映射到本体系 03-应用架构复用，培训内容涵盖架构风格、参考架构与 ADR。
+- 将 KA4 Software Construction 与 KA5 Software Testing 映射到 04/05/07 主题，建立“可复用组件必须附带回归测试与形式化契约”的质量门禁。
+- 将 KA13 Software Security 映射到 10-供应链安全，培训中要求所有组件提交 SBOM 与 SLSA provenance。
+
+结果：培训后的团队在 6 个月内将组件复用率从 23% 提升至 51%，安全漏洞响应时间缩短 40%。
+
+### 6. 反例
+
+**反例**：某公司将架构师培训简化为“微服务框架速成班”：
+
+- 仅覆盖 KA4 的编码技能，忽视 KA1 需求工程、KA3 软件设计、KA5 测试与 KA12 质量。
+- 团队能够写出可运行的微服务，但无法识别可复用的业务能力、抽象稳定的接口或编写回归测试。
+- 结果：大量“可复用”组件因接口不稳定、缺乏文档和测试而无人敢用，复用库沦为代码墓地。
+
+**避免建议**：复用培训应覆盖 SWEBOK 全生命周期 KA，并明确每个 KA 与本体系主题的映射，避免技能单一化。
+
+### 7. 权威来源
+
+> **权威来源**：
+>
+> - [SWEBOK Guide V4.0](https://www.computer.org/education/bodies-of-knowledge/software-engineering) — IEEE Computer Society
+> - [SWEBOK - Wikipedia](https://en.wikipedia.org/wiki/Software_Engineering_Body_of_Knowledge)
+> - [ISO/IEC TR 19759:2015](https://www.iso.org/standard/67604.html) — ISO/IEC
+> - [SEBoK - SWEBOK Overview](https://sebokwiki.org/wiki/An_Overview_of_the_SWEBOK_Guide)
+>
+> **核查日期**：2026-07-07
+
+### 8. 交叉引用
+
+- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)
+- TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
+- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)

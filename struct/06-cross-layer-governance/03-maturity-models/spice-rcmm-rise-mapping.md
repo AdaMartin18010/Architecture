@@ -91,6 +91,18 @@
       - [步骤 4：协同改进计划](#步骤-4协同改进计划)
     - [6.4 协同治理架构](#64-协同治理架构)
     - [6.5 标准演进协同展望](#65-标准演进协同展望)
+  - [补充：SPICE、RCMM、RiSE、NASA RRL 对比实例与失败案例](#补充spicercmmrisenasa-rrl-对比实例与失败案例)
+    - [6.6 四类成熟度模型对比实例](#66-四类成熟度模型对比实例)
+    - [失败案例](#失败案例)
+      - [某汽车供应商的 SPICE 评估形式主义](#某汽车供应商的-spice-评估形式主义)
+      - [NASA RRL 评级虚高导致任务失败](#nasa-rrl-评级虚高导致任务失败)
+    - [6.9 成熟度模型选择决策树](#69-成熟度模型选择决策树)
+    - [6.10 与相关概念的关系](#610-与相关概念的关系)
+    - [6.11 四类成熟度模型核心属性对比](#611-四类成熟度模型核心属性对比)
+    - [6.12 正例：NASA RRL 成功支持 Landsat 数据产品复用](#612-正例nasa-rrl-成功支持-landsat-数据产品复用)
+    - [6.13 反例：RCMM 评估被 KPI 化导致"复用泡沫"](#613-反例rcmm-评估被-kpi-化导致复用泡沫)
+    - [6.14 成熟度模型映射关系图](#614-成熟度模型映射关系图)
+    - [6.15 补充权威来源](#615-补充权威来源)
   - [权威来源](#权威来源)
 
 ---
@@ -908,6 +920,164 @@ SPICE 与 26565 的协同基于以下互补关系：
 4. **行业基准共享**：建立跨组织的 SPICE-26565 联合评估基准数据库。
 
 ---
+
+## 补充：SPICE、RCMM、RiSE、NASA RRL 对比实例与失败案例
+
+### 6.6 四类成熟度模型对比实例
+
+| 维度 | SPICE (ISO/IEC 330xx) | RCMM | RiSE | NASA RRL |
+|---|---|---|---|---|
+| **起源** | 1993 年 SPICE 项目，国际化标准 | 学术研究（Frakes & Terry 之后） | 欧洲 IST 研究项目 | NASA Earth Science Data Systems |
+| **评估对象** | 软件/系统过程能力 | 组织复用能力 | 软件工程复用过程 | 软件资产复用就绪度 |
+| **等级数量** | 6 级（0–5） | 5 级（1–5） | 5 级（1–5） | 9 级（1–9） |
+| **核心维度** | 过程维度 × 能力维度 | 复用策略、资产、管理、文化 | 业务、过程、资产、技术 | 文档、扩展性、知识产权、模块化、封装、可移植性、标准化、支持、验证 |
+| **适用场景** | 跨国组织合规评估、供应商评估 | 企业内部复用成熟度诊断 | 软件产品线复用改进 | 科学计算软件资产入库评估 |
+| **典型使用者** | 汽车、航空、国防、医疗 | 大型 IT 企业、银行 | 电信、嵌入式系统厂商 | 科研机构、航天工程 |
+
+### 失败案例
+
+#### 某汽车供应商的 SPICE 评估形式主义
+
+某 Tier-1 汽车供应商为通过 OEM 审核，强行将复用活动包装为 SPICE Level 3：
+
+- **问题**：
+  1. 文档齐全但执行走形式，评估时临时补记录；
+  2. 复用资产库中 60% 组件无人使用，仅为满足"资产数量"指标；
+  3. 项目团队不理解标准意图，将 SPICE 视为合规负担；
+  4. 评估后无持续改进，能力等级迅速回退。
+- **后果**：
+  - OEM 现场审核发现大量证据与实际执行不符，评级降级；
+  - 组织投入大量人力准备文档，却未获得真实复用收益；
+  - 开发者抵触情绪严重，复用文化受损。
+- **避免方法**：
+  - 将 SPICE 评估与真实工程改进结合，而非"为评估而评估"；
+  - 建立过程能力持续提升机制，而非一次性冲刺；
+  - 让一线工程师参与标准解读与流程设计。
+
+#### NASA RRL 评级虚高导致任务失败
+
+某 NASA 下属项目将核心数据处理组件标记为 RRL 7（可跨任务复用），但实际：
+
+- **问题**：
+  1. 文档不完整，仅有 API 参考缺少使用场景说明；
+  2. 组件依赖特定硬件架构，未在不同环境验证；
+  3. 许可证与出口管制信息缺失；
+  4. 未进行跨任务集成测试。
+- **后果**：
+  - 新任务复用时发现兼容性问题，导致集成测试延期 4 个月；
+  - 出口管制审查不通过，险些取消任务合作；
+  - 被迫投入额外人力进行组件改造。
+- **避免方法**：
+  - RRL 评估必须逐项验证，避免主观打分；
+  - 跨环境测试是 RRL 7+ 的硬性门槛；
+  - 许可证、出口管制、SBOM 信息必须完整。
+
+### 6.9 成熟度模型选择决策树
+
+```mermaid
+flowchart TD
+    Start([选择成熟度模型]) --> Q1{是否需要国际标准认证?}
+    Q1 -->|是| SPICE[SPICE / ISO 330xx]
+    Q1 -->|否| Q2{评估对象是组织整体还是具体资产?}
+    Q2 -->|组织整体| Q3{是否聚焦复用?}
+    Q3 -->|是| RCMM[RCMM / RiSE]
+    Q3 -->|否| CMMI[CMMI 2.0]
+    Q2 -->|具体资产| NASA[NASA RRL]
+    SPICE --> Combine[可组合使用]
+    RCMM --> Combine
+    NASA --> Combine
+```
+
+### 6.10 与相关概念的关系
+
+- **上位概念**：[Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)、过程改进、质量管理；
+- **下位概念**：SPICE、RCMM、RiSE、NASA RRL、CMMI、ISO/IEC 26565；
+- **等价/映射概念**：SPICE 与 CMMI 在等级 2–5 上语义对应；NASA RRL 与 ISO/IEC 26564 资产质量度量互补；
+- **依赖概念**：过程评估、软件复用、质量模型、度量指标。
+
+### 6.11 四类成熟度模型核心属性对比
+
+| 属性 | SPICE | RCMM | RiSE | NASA RRL |
+|------|-------|------|------|----------|
+| **评估视角** | 过程能力 × 能力等级 | 组织复用能力等级 | 业务-过程-资产-技术四维 | 资产复用就绪度 |
+| **等级粒度** | 6 级（0–5） | 5 级（1–5） | 5 级（1–5） | 9 级（1–9） |
+| **适用对象** | 组织/项目/过程 | 组织 | 组织与产品线 | 单个软件资产 |
+| **核心产出** | 过程能力轮廓 | 复用成熟度等级 | 复用改进路线图 | RRL 评分卡 |
+| **可观察性** | 高（标准化评定标度） | 中 | 中 | 高（逐项检查表） |
+
+### 6.12 正例：NASA RRL 成功支持 Landsat 数据产品复用
+
+NASA Earth Science Data Systems 在 Landsat 任务中使用 RRL 评估并入库核心数据处理组件：
+
+- **评估过程**：
+  1. 文档（RRL-1）：提供算法说明、用户手册、API 参考；
+  2. 扩展性（RRL-2）：组件支持多分辨率输入与插件化输出格式；
+  3. 知识产权（RRL-3）：明确 NASA 开放数据许可与引用要求；
+  4. 模块化（RRL-4）：将大气校正、几何校正、产品生成拆分为独立模块；
+  5. 验证（RRL-9）：通过跨任务基准数据集验证输出一致性。
+- **复用效果**：
+  - Landsat 8 与 Landsat 9 的处理流水线共享 80% 以上组件；
+  - 新科学任务（如 ECOSTRESS）可在 3 个月内复用并适配现有组件；
+  - 跨任务数据一致性误差降低 60%。
+
+### 6.13 反例：RCMM 评估被 KPI 化导致"复用泡沫"
+
+某大型 IT 企业引入 RCMM 作为年度考核指标，要求三年内达到 Level 4：
+
+- **问题**：
+  1. 各事业部为达标，大量上传低质量"组件"充数；
+  2. 复用率 KPI 仅统计"被引用次数"，团队通过内部互刷引用提升指标；
+  3. 缺少适配成本与质量度量，"复用"导致项目延期；
+  4. 评估由外部顾问主导，未与真实工程实践结合。
+- **后果**：
+  - RCMM 评级达到 Level 4，但实际跨项目复用率不足 15%；
+  - 资产库中 70% 组件零采用，成为"复用泡沫"；
+  - 第二年评估因证据造假被审计发现，组织复用信任崩塌。
+- **避免方法**：
+  - 将 RCMM 与业务价值（成本节约、上市时间）绑定；
+  - 引入第三方数据验证，禁止内部互刷；
+  - 让工程团队参与指标设计与证据收集。
+
+### 6.14 成熟度模型映射关系图
+
+```mermaid
+flowchart TB
+    CMM[Capability Maturity Model] --> SPICE[SPICE / ISO 330xx]
+    CMM --> CMMI[CMMI 2.0]
+    CMM --> RCMM[RCMM]
+    CMM --> RiSE[RiSE]
+    SPICE --> PRM[过程参考模型]
+    RCMM --> Org[组织复用能力]
+    RiSE --> Eco[资产生态]
+    NASA[NASA RRL] --> Asset[单个资产就绪度]
+    Asset --> Org
+    Eco --> Org
+```
+
+### 6.15 补充权威来源
+
+> **权威来源（补充）**:
+>
+> - [Capability Maturity Model — Wikipedia](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
+> - [ISO/IEC 33001 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_33001)
+> - [NASA Reuse Readiness Levels](https://www.earthdata.nasa.gov/technology/reuse-readiness-levels)
+>
+> **核查日期**: 2026-07-07
+
+> **交叉引用**:
+>
+> - 复用度量指标体系：[struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md](../05-metrics-kpi/metrics-framework.md)
+> - FinOps 单位经济学：[struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md](../04-finops-cost/finops-unit-economics-2026.md)
+> - 价值量化 COCOMO II 校准：[struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
+> - ISO 420xx 标准族对齐：[struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
+
+> **权威来源（补充）":
+>
+> - [Capability Maturity Model — Wikipedia](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
+> - [ISO/IEC 33001 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_33001)
+> - [Software process improvement — Wikipedia](https://en.wikipedia.org/wiki/Software_process_improvement)
+>
+> **核查日期**: 2026-07-07
 
 ## 权威来源
 

@@ -397,6 +397,97 @@ AAM = [10 + 35.5 × (1 + 0.02 × 50 × 1.5)] / 100
 - 与 [软件复用的 ROI、实物期权与战略价值量化](../02-roi-npv-models/roi-real-options-strategic-value.md) 配合，可将 COCOMO II 估算结果输入 NPV/实物期权分析。
 - 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU 与 UNFM 本质上是开发者认知负荷的量化 proxy。
 
+## 17. COCOMO II 复用模型的敏感性分析
+
+### 17.1 形式化定义
+
+**定义**：敏感性分析（Sensitivity Analysis）用于衡量 COCOMO II 复用模型输出（ESLOC、PM、AAM）对各输入参数变化的响应程度。在复用决策中，它帮助识别“关键杠杆参数”——即少量改善即可显著改变复用经济性的因子，从而指导投资优先级。
+
+常用方法包括：
+
+- **单因素敏感性分析**：固定其他参数，只改变一个参数，观察 ESLOC 变化。
+- **龙卷风图（Tornado Diagram）**：按影响幅度从大到小排列参数，直观展示关键驱动因子。
+- **情景分析**：组合多个参数的最优/最差情景，评估区间风险。
+
+### 17.2 参数敏感性属性表
+
+| 参数 | 基准值 | 变化 ±20% | AAM 变化方向 | 敏感性等级 | 管理含义 |
+|------|--------|----------|-------------|-----------|---------|
+| DM（设计修改）| 20% | ±4% | 同向 | 高 | 松耦合接口投资回报高 |
+| CM（代码修改）| 15% | ±3% | 同向 | 高 | 配置化与参数化设计 |
+| IM（集成修改）| 25% | ±5% | 同向 | 高 | 契约测试、CI 稳定性 |
+| SU（软件理解增量）| 20% | ±10–20% | 同向 | 极高 | 文档与结构清晰度 |
+| UNFM（不熟悉度）| 1.2 | ±0.24 | 同向 | 高 | 培训、领域对齐 |
+| AT（自动转换）| 30% | ±6% | 反向 | 中 | 工具链自动化 |
+| AA（评估改编自动化）| 30% | ±6% | 反向 | 中 | 静态分析、AI 辅助 |
+
+> 注：SU 的敏感性等级为“极高”，因为它在 AAM 公式中以乘数形式与 UNFM 共同作用，且在 AAF ≤ 50 分支中被 0.02 系数放大的是 SU×UNFM 项。
+
+### 17.3 关系说明
+
+AAM 对 DM/CM/IM 的敏感性来自线性组合（AAF = 0.4DM + 0.3CM + 0.3IM），而对 SU/UNFM 的敏感性来自非线性交互。当 AAF 接近 50 时，AAM 出现明显的“分支切换”效应：从压缩理解成本切换到线性惩罚，导致 ESLOC 对参数变化极为敏感。因此，**将 AAF 控制在 50 以下不仅是经济性要求，也是稳健性要求**。
+
+```mermaid
+graph LR
+    A[AAM 输出] --> B[AAF 分支<br/>≤50 / >50]
+    A --> C[SU × UNFM 乘数]
+    B --> D[DM/CM/IM 线性影响]
+    C --> E[认知成本非线性放大]
+    D --> F[ESLOC]
+    E --> F
+    G[工具链投资<br/>AT/AA] --> H[降低 AAM]
+    I[培训与文档<br/>SU/UNFM] --> H
+    H --> F
+```
+
+### 17.4 正例：敏感性分析指导接口重构
+
+某团队计划复用 80 KSLOC 的订单中心组件。初始估算 AAF=48，接近 50 分支阈值，ESLOC 为 42 KSLOC。敏感性分析显示 DM 对 AAM 影响最大（弹性系数 0.42）。团队投资 2 人月将订单接口从同步 RPC 改为事件驱动，DM 降至 25%，AAF=37，ESLOC 降至 31 KSLOC，净节省 11 KSLOC 当量，ROI 提升 28%。
+
+### 17.5 反例：忽视分支效应导致估算崩盘
+
+某项目 AAF 初始评估为 45，团队认为“安全”。实际开发中需求变更使 DM 从 20% 升至 35%，AAF 超过 50 触发第二分支，SU×UNFM 项从压缩状态转为线性惩罚，AAM 从 0.55 飙升至 0.92，ESLOC 反超新开发规模，项目延期 6 个月。根本原因是对 AAF 临界值的敏感性缺乏监控。
+
+## 18. 成本驱动因子对复用经济性的边际影响
+
+### 18.1 定义
+
+**定义**：边际影响分析衡量当某个成本驱动因子（如 RUSE、PERS、PREX）改善一个评级时，复用项目工作量乘数 M 的变化量。它补充了 AAM 的组件级分析，从项目级成本驱动器视角评估复用投资的可行性。
+
+### 18.2 边际影响表
+
+| 驱动因子 | Nominal→High 对 M 的影响 | 复用场景含义 |
+|---------|-------------------------|-------------|
+| RUSE | +7% | 跨项目复用要求增加设计通用性成本 |
+| PERS | -12% ~ -15% | 人员能力强显著降低理解与适配成本 |
+| PREX | -10% ~ -13% | 有相关经验可减少 UNFM 影响 |
+| FCIL | -8% ~ -10% | 工具链完善降低 AA/AT 成本 |
+| TEAM | -5% ~ -8% | 团队凝聚力高降低沟通与集成成本 |
+
+### 18.3 关系说明
+
+成本驱动因子通过 M 影响 PM，而 AAM 影响 Size（ESLOC）。两者共同决定：
+
+```text
+PM = A × (ASLOC × (1 - AT/100) × AAM)^B × M
+```
+
+因此，**复用经济性 = f(AAM, M, B)**。当 AAM 已较低时，投资 PERS/PREX 的边际收益递减；当 AAM 较高时，改善 PERS/PREX 的边际收益反而更高，因为高理解成本需要高素质人员消化。
+
+> **权威来源**:
+>
+> - [Wikipedia - COCOMO](https://en.wikipedia.org/wiki/COCOMO)
+> - [USC COCOMO II](https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/)
+> - [NASA Cost Estimation Handbook](https://www.nasa.gov/offices/oce/appel/cad/index.html)
+> - [Sensitivity Analysis - Wikipedia](https://en.wikipedia.org/wiki/Sensitivity_analysis)
+> - 核查日期：2026-07-07
+
+### 交叉引用
+
+- 与 [架构复用 ROI 框架](../02-roi-npv-models/roi-framework.md) 配合：敏感性分析结果是 ROI 情景分析的关键输入。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../02-roi-npv-models/roi-real-options-strategic-value.md) 配合：关键参数的波动率 σ 可来自敏感性分析的历史数据。
+- 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU/UNFM 是认知负荷在成本模型中的量化 proxy。
+
 ## 补充说明：COCOMO II 复用模型深度解析
 
 ## 概念定义

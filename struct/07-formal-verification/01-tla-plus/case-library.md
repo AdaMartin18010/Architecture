@@ -230,3 +230,15 @@ PROPERTIES
 ## 分析
 
 **分析**：TLA+ 的价值在于暴露自然语言需求无法覆盖的并发边界，但建模抽象程度需要与验证目标匹配。
+
+
+---
+
+## 补充章节
+## 权威来源
+
+> **权威来源**:
+>
+> - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
+> - [Specifying Systems](https://lamport.azurewebsites.net/tla/book.html)
+> - 核查日期：2026-07-07

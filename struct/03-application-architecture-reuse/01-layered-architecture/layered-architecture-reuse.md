@@ -790,11 +790,11 @@ Spotify 在 2010 年代初期经历了从单体到模块化单体的演化，其
 
 ## 14. 交叉引用
 
-- [02 业务架构复用](../02-business-architecture-reuse/)：业务能力如何映射为领域层与限界上下文
+- [02 业务架构复用](../../02-business-architecture-reuse/README.md)：业务能力如何映射为领域层与限界上下文
 - [04 Serverless 架构复用模式](../04-serverless/serverless-reuse-patterns.md)：分层思想在 FaaS 函数内部的应用
 - [06 事件驱动架构复用模式](../06-event-driven/reuse-patterns.md)：事件驱动与分层架构的互补关系
 - [模块化单体复用策略](./reuse-patterns.md)：模块化单体内部的分层复用策略
-- [07 云原生模式](../07-cloud-native-patterns/)：服务网格、网关与分层边界的协同
+- [07 云原生模式](../07-cloud-native-patterns/README.md)：服务网格、网关与分层边界的协同
 
 ---
 
