@@ -6,13 +6,6 @@
 
 ---
 
-## 概念定义
-
-**学习路径（Learning Path）**: 按能力进阶顺序组织的主题序列，包含学习目标、推荐资源、实践任务与产出物检查点。
-**专家（Expert）**: 能在真实约束下，综合运用元模型、标准、治理与量化方法，设计并演进可复用架构的从业者。
-
----
-
 ## 路径总览
 
 | 路径 | 适合人群 | 预计学时 | 关键产出 |
@@ -24,119 +17,130 @@
 
 ---
 
-## 正向示例
-
-### 示例 1：架构师路径成功学习
-
-某企业架构师按「元模型 → 业务复用 → 应用复用 → 治理」顺序学习，8 周后输出一份基于 TOGAF 10 与 ArchiMate 4.0 的复用架构设计，被采纳为部门标准。
-
-### 示例 2：工程师路径成功学习
-
-后端工程师重点学习 `04-component-architecture-reuse` 的接口契约与版本策略，3 周内将团队公共库的重构频率降低 40%。
-
----
-
-## 反例/反模式
-
-- **反模式 1：跳跃式学习**。未理解元模型与标准，直接复制微服务或 MCP 代码示例，导致架构决策缺乏一致性。
-- **反模式 2：只读不练**。阅读全部文档但不完成实践作业，无法将知识转化为可复用资产。
-- **反模式 3：忽视权威来源**。将博客文章或旧版标准当作依据，造成标准引用错误。
-
----
-
 ## 按主题学习索引
 
 ### 01 元模型与标准对齐
 
-- [ISO/IEC/IEEE 42010:2022 更新](../../01-meta-model-standards/01-iso-420xx-family/iso-42010-2022.md)
-- [TOGAF 10 企业连续体复用](../../01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
-- [形式化公理体系](../../01-meta-model-standards/06-formal-axioms/axiom-system.md)
+- [核心标准对齐矩阵](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
+- [ISO/IEC/IEEE AWI 42030 修订跟踪](../../01-meta-model-standards/01-iso-420xx-family/awi-42030-tracking.md)
+- [IEEE 1517-2010 软件生命周期复用过程](../../01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
+- [ISO/IEC/IEEE 12207:2026 与软件复用过程对齐](../../01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
+- [ISO/IEC 25010:2023 AI/ML 质量特性与复用评估](../../01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md)
+- … 共 25 个文件
 
 ### 02 业务架构复用
 
+- [01 业务域复用（Business Domain Reuse）](../../02-business-architecture-reuse/01-business-domain-reuse/README.md)
 - [业务能力复用](../../02-business-architecture-reuse/02-business-capability/capability-reuse.md)
-- [价值流组合](../../02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
+- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../../02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
+- [价值流复用的形式化组合](../../02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
+- [04 业务流程复用（Business Process Reuse）](../../02-business-architecture-reuse/04-business-process-reuse/README.md)
+- … 共 15 个文件
 
 ### 03 应用架构复用
 
-- [微服务复用模式](../../03-application-architecture-reuse/02-microservices/microservices-reuse-patterns.md)
-- [云原生复用性矩阵](../../03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md)
+- [分层架构复用模式](../../03-application-architecture-reuse/01-layered-architecture/layered-architecture-reuse.md)
+- [01 分层架构复用](../../03-application-architecture-reuse/01-layered-architecture/README.md)
+- [分层架构复用模式](../../03-application-architecture-reuse/01-layered-architecture/reuse-patterns.md)
+- [微服务架构复用模式](../../03-application-architecture-reuse/02-microservices/microservices-reuse-patterns.md)
+- [02 微服务架构复用](../../03-application-architecture-reuse/02-microservices/README.md)
+- … 共 25 个文件
 
 ### 04 组件架构复用
 
-- [组件模型理论](../../04-component-architecture-reuse/01-component-models/component-models-reuse.md)
-- [接口契约设计](../../04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
-- [6 大语言生态深度对比](../../04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md)
+- [组件模型与架构复用](../../04-component-architecture-reuse/01-component-models/component-models-reuse.md)
+- [接口契约与架构复用](../../04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
+- [依赖管理与架构复用](../../04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
+- [组件接口契约设计模式](../../04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md)
+- [组件设计模式选择指南](../../04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md)
+- … 共 11 个文件
 
 ### 05 功能架构复用
 
-- [API 设计复用模式](../../05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
-- [MCP + A2A 协议分析](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/)
+- [API 设计模式与功能复用](../../05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
+- [函数即服务（FaaS）与功能复用模式](../../05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
+- [事件驱动函数复用模式](../../05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
+- [Temporal 工作流复用模式](../../05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+- [LLM 函数复用与智能体功能架构](../../05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
+- … 共 9 个文件
 
-### 06 跨层治理与量化
+### 06 跨层复用治理与成熟度模型
 
-- [成熟度模型评估问卷](../../06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
-- [度量指标框架](../../06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+- [跨层复用治理框架](../../06-cross-layer-governance/01-process-governance/cross-layer-governance.md)
+- [02 复用过程治理（Reuse Process Governance）](../../06-cross-layer-governance/02-reuse-process/README.md)
+- [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../../06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
+- [ISO/IEC 26565:2026 & 26566:2026 正式版与复用成熟度对齐](../../06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
+- [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../../06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
+- … 共 23 个文件
 
-### 07 形式化验证
+### 07 形式化验证与复用正确性
 
-- [TLA+ 案例库](../../07-formal-verification/01-tla-plus/)
-- [Alloy 案例库](../../07-formal-verification/02-alloy/)
+- [T08: A2A Task 状态机的 TLA+ 规约说明](../../07-formal-verification/01-tla-plus/a2a-task-lifecycle.md)
+- [TLA+ 案例库总览](../../07-formal-verification/01-tla-plus/case-library.md)
+- [T07: MCP Server 能力协商协议的 TLA+ 规约说明](../../07-formal-verification/01-tla-plus/mcp-capability-negotiation.md)
+- [T06: 分布式支付服务组件的 TLA+ 规约说明](../../07-formal-verification/01-tla-plus/payment-service.md)
+- [T11: 组件依赖无环性验证 (Alloy)](../../07-formal-verification/02-alloy/component-dependency.md)
+- … 共 26 个文件
 
-### 08 认知架构
+### 08 认知架构与复用决策
 
-- [ACT-R 认知复用](../../08-cognitive-architecture/01-act-r-model/act-r-cognitive-reuse.md)
-- [AI 认知增强架构](../../08-cognitive-architecture/05-ai-cognitive-augmentation/augmentation-architecture.md)
+- [ACT-R 认知架构与知识复用](../../08-cognitive-architecture/01-act-r-model/act-r-cognitive-reuse.md)
+- [BDI 智能体架构与复用模式](../../08-cognitive-architecture/02-bdi-model/bdi-agent-reuse.md)
+- [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md)
+- [DORA 2025 认知负荷与复用采纳率](../../08-cognitive-architecture/03-cognitive-load-theory/dora-2025-cognitive-load.md)
+- [开发者复用决策的认知负荷量化模型](../../08-cognitive-architecture/03-cognitive-load-theory/quantitative-model.md)
+- … 共 9 个文件
 
-### 09 价值量化
+### 09 价值量化与 ROI 模型
 
-- [COCOMO II 复用模型深入](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
-- [ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md)
+- [COCOMO II 复用模型 2026 校准版](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
+- [COCOMO II 复用模型深度解析](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
+- [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md)
+- [软件复用的 ROI、实物期权与战略价值量化](../../09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md)
+- [价值量化碳维度扩展：SCI 复用碳模型](../../09-value-quantification/03-carbon-dimension/sci-reuse-value-extension.md)
+- … 共 6 个文件
 
-### 10 供应链安全
+### 10 供应链安全工程
 
-- [SLSA 1.2 多轨道](../../10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md)
-- [攻击树分析](../../10-supply-chain-security/03-attack-vectors/attack-tree.md)
+- [OpenSSF Scorecard + Security Baseline 与复用决策](../../10-supply-chain-security/01-slsa-framework/openssf-scorecard-reuse.md)
+- [SLSA 1.2 Multi-Track 深度解析](../../10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md)
+- [SLSA L4 分布式构建验证实践](../../10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md)
+- [SLSA v1.2 多轨道复用安全边界详解](../../10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md)
+- [SBOM 格式对比：SPDX vs CycloneDX vs SWID](../../10-supply-chain-security/02-sbom-standards/sbom-comparison.md)
+- … 共 23 个文件
 
-### 11 工业 IoT / OT-IT 融合
+### 11 工业 IoT / OT-IT 融合复用
 
-- [ISA-95 资产目录深入](../../11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
-- [OPC UA FX 复用层次](../../11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md)
+- [ISA-95 五层跨层数据流映射](../../11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md)
+- [ISA-95 资产目录深度清单](../../11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+- [ISO/IEC 30141:2024 IoT 参考架构对齐](../../11-industrial-iot-otit/01-isa-95-model/iso-30141-iot-ra-alignment.md)
+- [L0 现场层复用资产目录](../../11-industrial-iot-otit/01-isa-95-model/l0-field/asset-catalog.md)
+- [L1 控制层复用资产目录](../../11-industrial-iot-otit/01-isa-95-model/l1-control/asset-catalog.md)
+- … 共 35 个文件
 
 ### 12 AI 原生复用
 
-- [MCP 2025-11-25 权威更新](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md)
-- [A2A v1 权威更新](../../12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md)
+- [MCP 2025-11-25 权威规范解读](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md)
+- [MCP 2025-11-25 综合更新与复用影响评估](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
+- [MCP 2025-11-25 规范深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
+- [MCP 2026-07-28 RC 深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
+- [A2A v1.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+- … 共 20 个文件
 
-### 13 前沿趋势
+### 13 新兴趋势
 
-- [平台工程成熟度模型](../../13-emerging-trends/01-platform-engineering/platform-maturity-model.md)
-- [WASM 组件模型 2026](../../13-emerging-trends/03-webassembly-components/wasm-component-model-2026.md)
+- [内部开发者平台 (IDP) 与架构复用](../../13-emerging-trends/01-platform-engineering/idp-reuse.md)
+- [平台工程与内部开发者平台（IDP）复用](../../13-emerging-trends/01-platform-engineering/platform-engineering-cncf-2026.md)
+- [平台工程深化：CNCF 毕业项目与 IDP AI 集成](../../13-emerging-trends/01-platform-engineering/platform-engineering-deep-dive.md)
+- [平台工程成熟度模型（Platform Engineering Maturity Model）](../../13-emerging-trends/01-platform-engineering/platform-maturity-model.md)
+- [模块化单体：复用的务实选择](../../13-emerging-trends/02-modular-monolith/modular-monolith-reuse.md)
+- … 共 18 个文件
 
----
+### 99 参考索引
 
-## 思维模型
-
-```text
-新手 → 标准对齐者 → 复用设计者 → 治理者 → 专家
-   │        │            │           │        │
-   └────────┴────────────┴───────────┴────────┘
-              每条路径都经过：概念 → 示例 → 反例 → 实践
-```
-
----
-
-## 权威来源
-
-- Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
-- Merrill, M. D. (2002). *First Principles of Instruction*. <https://www.mdpi.com/2227-7102/9/3/202>
-- The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
-
----
-
-## 交叉引用
-
-- 课程大纲：[syllabus.md](syllabus.md)
-- 主术语表：[../glossary/glossary-master.md](../glossary/glossary-master.md)
-- 形式化验证环境：[../tools/formal-verification-env/README.md](../tools/formal-verification-env/README.md)
+- [Phase C 对齐矩阵与 A+B+C 累计汇总](../../99-reference/alignment-matrix-phase-c.md)
+- [2026-06-06 本轮完成统计报告](../../99-reference/audit/2026-06-06-completion-stats.md)
+- [《软件工程架构复用视角》全面差距分析报告](../../99-reference/audit/comprehensive-gap-analysis-2026-06-08.md)
+- [内容事实勘误与权威来源对齐报告（2026-07-07）](../../99-reference/audit/content-fact-fix-2026-07.md)
+- [交叉引用有效性检查报告](../../99-reference/audit/cross-reference-audit.md)
+- … 共 51 个文件

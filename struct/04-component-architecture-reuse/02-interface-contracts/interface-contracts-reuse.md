@@ -418,4 +418,4 @@ describe('Inventory API contract', () => {
 - [组件模型与架构复用](../01-component-models/component-models-reuse.md) — 组件封装、生命周期与可替换性判定
 - [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 通过模式降低接口契约的复杂度
 - [6大语言生态组件复用成熟度深度对比 2026](../07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对接口契约工具链的支持差异
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 本知识体系的全局视图
+- [软件架构复用框架总览](../../README.md) — 本知识体系的全局视图

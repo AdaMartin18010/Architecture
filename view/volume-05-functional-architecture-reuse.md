@@ -11,15 +11,15 @@
 ## 目录
 
 
-1. [API 设计模式与功能复用](05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
-2. [函数即服务（FaaS）与功能复用模式](05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
-3. [事件驱动函数复用模式](05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-4. [Temporal 工作流复用模式](05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
-5. [LLM 函数复用与智能体功能架构](05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
-6. [MCP Tool 的可复用设计](05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md)
-7. [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
-8. [功能复用的粒度-成本-收益决策树](05-functional-architecture-reuse/decision-tree-granularity-cost-roi.md)
-9. [05 功能架构复用](05-functional-architecture-reuse/README.md)
+1. [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
+2. [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
+3. [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
+4. [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+5. [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
+6. [MCP Tool 的可复用设计](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md)
+7. [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
+8. [功能复用的粒度-成本-收益决策树](../struct/05-functional-architecture-reuse/decision-tree-granularity-cost-roi.md)
+9. [05 功能架构复用](../struct/05-functional-architecture-reuse/README.md)
 
 ---
 
@@ -382,9 +382,9 @@ flowchart TD
 
 > **交叉引用**:
 >
-> - 组件层复用模式：[struct/04-component-architecture-reuse](04-component-architecture-reuse/README.md)
-> - 功能层工作流复用：[struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md](05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
-> - 跨层治理度量：[struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md](06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+> - 组件层复用模式：[struct/04-component-architecture-reuse](../struct/04-component-architecture-reuse/README.md)
+> - 功能层工作流复用：[struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+> - 跨层治理度量：[struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md](../struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
 
 > **权威来源（补充）**:
 >
@@ -908,9 +908,9 @@ flowchart TD
 
 > **交叉引用**:
 >
-> - 功能层 API 设计复用：[struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md](05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
-> - 功能层工作流复用：[struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md](05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
-> - 跨层 FinOps 成本治理：[struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md](06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
+> - 功能层 API 设计复用：[struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
+> - 功能层工作流复用：[struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+> - 跨层 FinOps 成本治理：[struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md](../struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
 
 > **权威来源（补充）**:
 >
@@ -1695,10 +1695,10 @@ flowchart TD
 
 > **交叉引用**:
 >
-> - 业务架构层价值流：[struct/02-business-architecture-reuse](02-business-architecture-reuse/README.md)
-> - 功能层 FaaS 复用：[struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md](05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
-> - 组件层事件驱动模式：[struct/04-component-architecture-reuse](04-component-architecture-reuse/README.md)
-> - 跨层治理成熟度：[struct/06-cross-layer-governance/03-maturity-models/spice-rcmm-rise-mapping.md](06-cross-layer-governance/03-maturity-models/spice-rcmm-rise-mapping.md)
+> - 业务架构层价值流：[struct/02-business-architecture-reuse](../struct/02-business-architecture-reuse/README.md)
+> - 功能层 FaaS 复用：[struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
+> - 组件层事件驱动模式：[struct/04-component-architecture-reuse](../struct/04-component-architecture-reuse/README.md)
+> - 跨层治理成熟度：[struct/06-cross-layer-governance/03-maturity-models/spice-rcmm-rise-mapping.md](../struct/06-cross-layer-governance/03-maturity-models/spice-rcmm-rise-mapping.md)
 
 > **权威来源（补充）**:
 >
@@ -2113,8 +2113,8 @@ MCP Tool 分类
 >
 > - [Model Context Protocol Specification](https://modelcontextprotocol.io) (Anthropic / Linux Foundation Agentic AI Foundation, 2025-11-25)
 > - [A2A Protocol Specification](https://a2aprotocol.org) (Google / Linux Foundation, v1.0.0)
-> - [MCP 2026 Deep Dive](12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-> - [A2A Reuse Analysis](12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+> - [MCP 2026 Deep Dive](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
+> - [A2A Reuse Analysis](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
 
 ---
 

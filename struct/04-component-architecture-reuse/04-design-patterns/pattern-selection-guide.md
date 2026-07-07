@@ -299,4 +299,4 @@ flowchart TD
 - [组件模型与架构复用](../01-component-models/component-models-reuse.md) — 组件边界与可替换性
 - [接口契约与架构复用](../02-interface-contracts/interface-contracts-reuse.md) — 模式实现需遵循的接口契约
 - [6大语言生态组件复用成熟度深度对比 2026](../07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对设计模式实现机制的支持
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系总览
+- [软件架构复用框架总览](../../README.md) — 知识体系总览

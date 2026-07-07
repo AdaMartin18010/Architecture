@@ -277,8 +277,8 @@ graph LR
 ### 交叉引用
 
 - 与 [开发者复用决策的认知负荷量化模型](./quantitative-model.md) 配合：将三维模型转化为可测量的公式与量表。
-- 与 [COCOMO II 复用模型深度解析](../../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 关联：SU（软件理解增量）与 UNFM（不熟悉度）是认知负荷在成本估算中的 proxy。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：培训与理解成本是 ROI 中常被低估的隐性成本，其根源即认知负荷。
+- 与 [COCOMO II 复用模型深度解析](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 关联：SU（软件理解增量）与 UNFM（不熟悉度）是认知负荷在成本估算中的 proxy。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：培训与理解成本是 ROI 中常被低估的隐性成本，其根源即认知负荷。
 
 ---
 
@@ -372,7 +372,7 @@ OCLB 与 DORA 2025、ROI 框架形成三层治理闭环：基线 → 预算 → 
 
 - 与 [开发者复用决策的认知负荷量化模型](./quantitative-model.md) 配合：TDAM 的 λ_i 参数可通过该模型的阶段数据估计。
 - 与 [AI 辅助复用决策的认知增强架构设计](../05-ai-cognitive-augmentation/augmentation-architecture.md) 关联：AI 助手可用于降低瞬时峰值与日累积外在负荷。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：基线治理的培训与工具投资应纳入 ROI 现金流。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：基线治理的培训与工具投资应纳入 ROI 现金流。
 
 > 最后更新: 2026-06-06
 

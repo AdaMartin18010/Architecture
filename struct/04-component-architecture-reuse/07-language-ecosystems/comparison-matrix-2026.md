@@ -717,4 +717,4 @@ flowchart TD
 - [组件模型与架构复用](../01-component-models/component-models-reuse.md) — 语言内组件模型对比
 - [接口契约与架构复用](../02-interface-contracts/interface-contracts-reuse.md) — 跨语言复用的接口契约
 - [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系总览
+- [软件架构复用框架总览](../../README.md) — 知识体系总览

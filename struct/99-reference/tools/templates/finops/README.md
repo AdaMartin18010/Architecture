@@ -120,7 +120,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 
 > **交叉引用**:
 >
-> - FinOps 主题目录: [`struct/06-cross-layer-governance/04-finops-cost/`](../../../../06-cross-layer-governance/04-finops-cost/)
+> - FinOps 主题入口: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 四级成本分摊模型: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../../../../06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
 

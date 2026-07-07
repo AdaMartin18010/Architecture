@@ -14,7 +14,7 @@
 ## 正向示例
 
 - 学习者按 [学习路径](learning-path.md) 的架构师路径学习，8 周后完成一份可复用架构设计文档。
-- 讲师使用 [课程大纲](syllabus.md) 和 [幻灯片](../../../dist/slides) 在 16 周内完成教学。
+- 讲师使用 [课程大纲](syllabus.md) 和 [幻灯片生成脚本](../../../scripts/build-slides.py) 在 16 周内完成教学。
 
 ---
 
@@ -32,7 +32,7 @@
 | [learning-path.md](learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
 | [syllabus.md](syllabus.md) | 16 周课程大纲、考核方式 |
 | [quiz.md](quiz.md) | 课程测验与参考答案 |
-| [../../../dist/slides](../../../dist/slides) | 14 个主题 reveal.js 幻灯片 |
+| [../../../scripts/build-slides.py](../../../scripts/build-slides.py) | 14 个主题 reveal.js 幻灯片生成脚本 |
 
 ---
 

@@ -36,7 +36,7 @@
 
 ---
 
-### M.1 Architecture-Reuse Duality (架构-复用二元性)
+### M.1 Architecture-Reuse Duality (架构-复用二元性) {#m1-architecture-reuse-duality}
 
 **自然语言表述**
 
@@ -66,7 +66,7 @@ $$
 
 ---
 
-### M.2 Variability Axiom (可变性公理)
+### M.2 Variability Axiom (可变性公理) {#m2-variability-axiom}
 
 **自然语言表述**
 
@@ -94,7 +94,7 @@ $$
 
 ---
 
-### M.3 Hierarchy Non-Reduction (层次不可约性)
+### M.3 Hierarchy Non-Reduction (层次不可约性) {#m3-hierarchy-non-reduction}
 
 **自然语言表述**
 
@@ -118,7 +118,7 @@ $$
 
 ---
 
-### M.4 Identity Preservation (同一性保持)
+### M.4 Identity Preservation (同一性保持) {#m4-identity-preservation}
 
 **自然语言表述**
 

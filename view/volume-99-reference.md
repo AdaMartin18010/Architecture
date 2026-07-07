@@ -11,57 +11,57 @@
 ## 目录
 
 
-1. [Phase C 对齐矩阵与 A+B+C 累计汇总](99-reference/alignment-matrix-phase-c.md)
-2. [2026-06-06 本轮完成统计报告](99-reference/audit/2026-06-06-completion-stats.md)
-3. [《软件工程架构复用视角》全面差距分析报告](99-reference/audit/comprehensive-gap-analysis-2026-06-08.md)
-4. [内容事实勘误与权威来源对齐报告（2026-07-07）](99-reference/audit/content-fact-fix-2026-07.md)
-5. [交叉引用有效性检查报告](99-reference/audit/cross-reference-audit.md)
-6. [《软件工程架构复用视角》网络权威内容全面对齐报告](99-reference/audit/network-authority-alignment-report-2026-06-10.md)
-7. [README 一致性审查报告](99-reference/audit/readme-consistency-audit.md)
-8. [Roadmap 进度一致性审查报告](99-reference/audit/roadmap-consistency-audit.md)
-9. [《软件工程架构复用视角》全书格式规范](99-reference/book-format-guide.md)
-10. [《软件工程架构复用视角》全书框架大纲 v2.0](99-reference/book-outline-v2.md)
-11. [《软件工程架构复用视角》全书框架大纲](99-reference/book-outline.md)
-12. [第 1 章详细设计：导论 — 复用的本质与演进](99-reference/chapters/ch01.md)
-13. [第 2 章详细设计：元模型与标准对齐](99-reference/chapters/ch02.md)
-14. [第 3 章详细设计：业务架构复用](99-reference/chapters/ch03.md)
-15. [第 4 章详细设计：应用架构复用](99-reference/chapters/ch04.md)
-16. [第 5 章详细设计：组件架构复用](99-reference/chapters/ch05.md)
-17. [第 6 章详细设计：功能架构复用](99-reference/chapters/ch06.md)
-18. [学习路径：从架构复用新手到专家](99-reference/course/learning-path.md)
-19. [课程测验：软件架构复用工程](99-reference/course/quiz.md)
-20. [课程与学习路径](99-reference/course/README.md)
-21. [课程大纲：软件架构复用工程](99-reference/course/syllabus.md)
-22. [全量交付物清单](99-reference/deliverables-manifest.md)
-23. [权威外部资源索引](99-reference/external-links/authoritative-sources.md)
-24. [公理-定理推理树](99-reference/glossary/axiom-theorem-tree.md)
-25. [跨主题综合索引](99-reference/glossary/cross-topic-index.md)
-26. [未命名章节](99-reference/glossary/glossary-master.md)
-27. [跨标准术语对照表](99-reference/glossary/terminology-crosswalk.md)
-28. [学术概念谱系索引（Academic Lineage Index）](99-reference/knowledge-index/academic-lineage.md)
-29. [四层复用映射矩阵](99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
-30. [13 个一级主题依赖/互斥/蕴含关系图](99-reference/knowledge-index/cross-theme-dependency-graph.md)
-31. [软件架构复用知识体系问答索引 (QA Index)](99-reference/knowledge-index/qa-index.md)
-32. [Phase C 质量检查报告](99-reference/quality-check-phase-c.md)
-33. [99 参考索引](99-reference/README.md)
-34. [国际标准与权威来源索引 v2.2](99-reference/standards-index/authoritative-sources-v2.md)
-35. [国际标准对齐多维总矩阵](99-reference/standards-index/master-alignment-matrix.md)
-36. [学术/技术白皮书引用模板](99-reference/templates/academic-citation-template.md)
-37. [复用资产质量检查清单模板](99-reference/templates/checklist-template.md)
-38. [标准引用规范：版本 + URL + 核查日期三元组](99-reference/templates/citation-standard.md)
-39. [核心知识文件内容要素检查清单](99-reference/templates/content-checklist.md)
-40. [文档模板](99-reference/templates/document-template.md)
-41. [事实核查清单（Fact-Check Checklist）](99-reference/templates/fact-check-checklist.md)
-42. [快速参考卡](99-reference/templates/quick-reference-card.md)
-43. [形式化验证自动化环境](99-reference/tools/formal-verification-env/README.md)
-44. [可执行工具目录](99-reference/tools/README.md)
-45. [交互式复用决策工具](99-reference/tools/reuse-decision-tool/README.md)
-46. [交互式复用决策工具 v2.0](99-reference/tools/reuse-decision-tool-v2/README.md)
-47. [复用决策报告：{{ asset_name }}](99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
-48. [季度标准跟踪与一致性报告](99-reference/tools/standard-tracker-quarterly-report.md)
-49. [标准跟踪监控报告](99-reference/tools/standard-tracker-report.md)
-50. [FinOps 工具模板聚合入口](99-reference/tools/templates/finops/README.md)
-51. [架构复用知识体系可视化图库](99-reference/visualizations/README.md)
+1. [Phase C 对齐矩阵与 A+B+C 累计汇总](../struct/99-reference/alignment-matrix-phase-c.md)
+2. [2026-06-06 本轮完成统计报告](../struct/99-reference/audit/2026-06-06-completion-stats.md)
+3. [《软件工程架构复用视角》全面差距分析报告](../struct/99-reference/audit/comprehensive-gap-analysis-2026-06-08.md)
+4. [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
+5. [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
+6. [《软件工程架构复用视角》网络权威内容全面对齐报告](../struct/99-reference/audit/network-authority-alignment-report-2026-06-10.md)
+7. [README 一致性审查报告](../struct/99-reference/audit/readme-consistency-audit.md)
+8. [Roadmap 进度一致性审查报告](../struct/99-reference/audit/roadmap-consistency-audit.md)
+9. [《软件工程架构复用视角》全书格式规范](../struct/99-reference/book-format-guide.md)
+10. [《软件工程架构复用视角》全书框架大纲 v2.0](../struct/99-reference/book-outline-v2.md)
+11. [《软件工程架构复用视角》全书框架大纲](../struct/99-reference/book-outline.md)
+12. [第 1 章详细设计：导论 — 复用的本质与演进](../struct/99-reference/chapters/ch01.md)
+13. [第 2 章详细设计：元模型与标准对齐](../struct/99-reference/chapters/ch02.md)
+14. [第 3 章详细设计：业务架构复用](../struct/99-reference/chapters/ch03.md)
+15. [第 4 章详细设计：应用架构复用](../struct/99-reference/chapters/ch04.md)
+16. [第 5 章详细设计：组件架构复用](../struct/99-reference/chapters/ch05.md)
+17. [第 6 章详细设计：功能架构复用](../struct/99-reference/chapters/ch06.md)
+18. [学习路径：从架构复用新手到专家](../struct/99-reference/course/learning-path.md)
+19. [课程测验：软件架构复用工程](../struct/99-reference/course/quiz.md)
+20. [课程与学习路径](../struct/99-reference/course/README.md)
+21. [课程大纲：软件架构复用工程](../struct/99-reference/course/syllabus.md)
+22. [全量交付物清单](../struct/99-reference/deliverables-manifest.md)
+23. [权威外部资源索引](../struct/99-reference/external-links/authoritative-sources.md)
+24. [公理-定理推理树](../struct/99-reference/glossary/axiom-theorem-tree.md)
+25. [跨主题综合索引](../struct/99-reference/glossary/cross-topic-index.md)
+26. [未命名章节](../struct/99-reference/glossary/glossary-master.md)
+27. [跨标准术语对照表](../struct/99-reference/glossary/terminology-crosswalk.md)
+28. [学术概念谱系索引（Academic Lineage Index）](../struct/99-reference/knowledge-index/academic-lineage.md)
+29. [四层复用映射矩阵](../struct/99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
+30. [13 个一级主题依赖/互斥/蕴含关系图](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md)
+31. [软件架构复用知识体系问答索引 (QA Index)](../struct/99-reference/knowledge-index/qa-index.md)
+32. [Phase C 质量检查报告](../struct/99-reference/quality-check-phase-c.md)
+33. [99 参考索引](../struct/99-reference/README.md)
+34. [国际标准与权威来源索引 v2.2](../struct/99-reference/standards-index/authoritative-sources-v2.md)
+35. [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
+36. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
+37. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
+38. [标准引用规范：版本 + URL + 核查日期三元组](../struct/99-reference/templates/citation-standard.md)
+39. [核心知识文件内容要素检查清单](../struct/99-reference/templates/content-checklist.md)
+40. [文档模板](../struct/99-reference/templates/document-template.md)
+41. [事实核查清单（Fact-Check Checklist）](../struct/99-reference/templates/fact-check-checklist.md)
+42. [快速参考卡](../struct/99-reference/templates/quick-reference-card.md)
+43. [形式化验证自动化环境](../struct/99-reference/tools/formal-verification-env/README.md)
+44. [可执行工具目录](../struct/99-reference/tools/README.md)
+45. [交互式复用决策工具](../struct/99-reference/tools/reuse-decision-tool/README.md)
+46. [交互式复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
+47. [复用决策报告：{{ asset_name }}](../struct/99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
+48. [季度标准跟踪与一致性报告](../struct/99-reference/tools/standard-tracker-quarterly-report.md)
+49. [标准跟踪监控报告](../struct/99-reference/tools/standard-tracker-report.md)
+50. [FinOps 工具模板聚合入口](../struct/99-reference/tools/templates/finops/README.md)
+51. [架构复用知识体系可视化图库](../struct/99-reference/visualizations/README.md)
 
 ---
 
@@ -1988,7 +1988,7 @@ $$ESLOC = ASLOC \times \frac{AAF}{100} \tag{9-2}$$
 - 每个图表必须有标题和说明文字
 
 ```markdown
-![图 4-2：八种云原生架构模式的复用性雷达图](99-reference/path/to/image.png)
+![图 4-2：八种云原生架构模式的复用性雷达图](path/to/image.png)
 
 > **图 4-2** 八种云原生架构模式在耦合度、内聚度、部署独立性、团队自治性、技术异构性、可观测性、安全性、演化弹性八个维度的评估。数据来源：`struct/03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md`。
 ```
@@ -4620,13 +4620,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ---
 
-## 概念定义
-
-**学习路径（Learning Path）**: 按能力进阶顺序组织的主题序列，包含学习目标、推荐资源、实践任务与产出物检查点。
-**专家（Expert）**: 能在真实约束下，综合运用元模型、标准、治理与量化方法，设计并演进可复用架构的从业者。
-
----
-
 ## 路径总览
 
 | 路径 | 适合人群 | 预计学时 | 关键产出 |
@@ -4638,122 +4631,133 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ---
 
-## 正向示例
-
-### 示例 1：架构师路径成功学习
-
-某企业架构师按「元模型 → 业务复用 → 应用复用 → 治理」顺序学习，8 周后输出一份基于 TOGAF 10 与 ArchiMate 4.0 的复用架构设计，被采纳为部门标准。
-
-### 示例 2：工程师路径成功学习
-
-后端工程师重点学习 `04-component-architecture-reuse` 的接口契约与版本策略，3 周内将团队公共库的重构频率降低 40%。
-
----
-
-## 反例/反模式
-
-- **反模式 1：跳跃式学习**。未理解元模型与标准，直接复制微服务或 MCP 代码示例，导致架构决策缺乏一致性。
-- **反模式 2：只读不练**。阅读全部文档但不完成实践作业，无法将知识转化为可复用资产。
-- **反模式 3：忽视权威来源**。将博客文章或旧版标准当作依据，造成标准引用错误。
-
----
-
 ## 按主题学习索引
 
 ### 01 元模型与标准对齐
 
-- [ISO/IEC/IEEE 42010:2022 更新](01-meta-model-standards/01-iso-420xx-family/iso-42010-2022.md)
-- [TOGAF 10 企业连续体复用](01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
-- [形式化公理体系](01-meta-model-standards/06-formal-axioms/axiom-system.md)
+- [核心标准对齐矩阵](../struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
+- [ISO/IEC/IEEE AWI 42030 修订跟踪](../struct/01-meta-model-standards/01-iso-420xx-family/awi-42030-tracking.md)
+- [IEEE 1517-2010 软件生命周期复用过程](../struct/01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
+- [ISO/IEC/IEEE 12207:2026 与软件复用过程对齐](../struct/01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
+- [ISO/IEC 25010:2023 AI/ML 质量特性与复用评估](../struct/01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md)
+- … 共 25 个文件
 
 ### 02 业务架构复用
 
-- [业务能力复用](02-business-architecture-reuse/02-business-capability/capability-reuse.md)
-- [价值流组合](02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
+- [01 业务域复用（Business Domain Reuse）](../struct/02-business-architecture-reuse/01-business-domain-reuse/README.md)
+- [业务能力复用](../struct/02-business-architecture-reuse/02-business-capability/capability-reuse.md)
+- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../struct/02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
+- [价值流复用的形式化组合](../struct/02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
+- [04 业务流程复用（Business Process Reuse）](../struct/02-business-architecture-reuse/04-business-process-reuse/README.md)
+- … 共 15 个文件
 
 ### 03 应用架构复用
 
-- [微服务复用模式](03-application-architecture-reuse/02-microservices/microservices-reuse-patterns.md)
-- [云原生复用性矩阵](03-application-architecture-reuse/07-cloud-native-patterns/reusability-matrix-2026.md)
+- [分层架构复用模式](../struct/03-application-architecture-reuse/01-layered-architecture/layered-architecture-reuse.md)
+- [01 分层架构复用](../struct/03-application-architecture-reuse/01-layered-architecture/README.md)
+- [分层架构复用模式](../struct/03-application-architecture-reuse/01-layered-architecture/reuse-patterns.md)
+- [微服务架构复用模式](../struct/03-application-architecture-reuse/02-microservices/microservices-reuse-patterns.md)
+- [02 微服务架构复用](../struct/03-application-architecture-reuse/02-microservices/README.md)
+- … 共 25 个文件
 
 ### 04 组件架构复用
 
-- [组件模型理论](04-component-architecture-reuse/01-component-models/component-models-reuse.md)
-- [接口契约设计](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
-- [6 大语言生态深度对比](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md)
+- [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md)
+- [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
+- [依赖管理与架构复用](../struct/04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
+- [组件接口契约设计模式](../struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md)
+- [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md)
+- … 共 11 个文件
 
 ### 05 功能架构复用
 
-- [API 设计复用模式](05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
-- [MCP + A2A 协议分析](05-functional-architecture-reuse/06-mcp-a2a-protocols)
+- [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
+- [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
+- [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
+- [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+- [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
+- … 共 9 个文件
 
-### 06 跨层治理与量化
+### 06 跨层复用治理与成熟度模型
 
-- [成熟度模型评估问卷](06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
-- [度量指标框架](06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+- [跨层复用治理框架](../struct/06-cross-layer-governance/01-process-governance/cross-layer-governance.md)
+- [02 复用过程治理（Reuse Process Governance）](../struct/06-cross-layer-governance/02-reuse-process/README.md)
+- [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
+- [ISO/IEC 26565:2026 & 26566:2026 正式版与复用成熟度对齐](../struct/06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
+- [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
+- … 共 23 个文件
 
-### 07 形式化验证
+### 07 形式化验证与复用正确性
 
-- [TLA+ 案例库](07-formal-verification/01-tla-plus)
-- [Alloy 案例库](07-formal-verification/02-alloy)
+- [T08: A2A Task 状态机的 TLA+ 规约说明](../struct/07-formal-verification/01-tla-plus/a2a-task-lifecycle.md)
+- [TLA+ 案例库总览](../struct/07-formal-verification/01-tla-plus/case-library.md)
+- [T07: MCP Server 能力协商协议的 TLA+ 规约说明](../struct/07-formal-verification/01-tla-plus/mcp-capability-negotiation.md)
+- [T06: 分布式支付服务组件的 TLA+ 规约说明](../struct/07-formal-verification/01-tla-plus/payment-service.md)
+- [T11: 组件依赖无环性验证 (Alloy)](../struct/07-formal-verification/02-alloy/component-dependency.md)
+- … 共 26 个文件
 
-### 08 认知架构
+### 08 认知架构与复用决策
 
-- [ACT-R 认知复用](08-cognitive-architecture/01-act-r-model/act-r-cognitive-reuse.md)
-- [AI 认知增强架构](08-cognitive-architecture/05-ai-cognitive-augmentation/augmentation-architecture.md)
+- [ACT-R 认知架构与知识复用](../struct/08-cognitive-architecture/01-act-r-model/act-r-cognitive-reuse.md)
+- [BDI 智能体架构与复用模式](../struct/08-cognitive-architecture/02-bdi-model/bdi-agent-reuse.md)
+- [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md)
+- [DORA 2025 认知负荷与复用采纳率](../struct/08-cognitive-architecture/03-cognitive-load-theory/dora-2025-cognitive-load.md)
+- [开发者复用决策的认知负荷量化模型](../struct/08-cognitive-architecture/03-cognitive-load-theory/quantitative-model.md)
+- … 共 9 个文件
 
-### 09 价值量化
+### 09 价值量化与 ROI 模型
 
-- [COCOMO II 复用模型深入](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
-- [ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md)
+- [COCOMO II 复用模型 2026 校准版](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
+- [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
+- [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md)
+- [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md)
+- [价值量化碳维度扩展：SCI 复用碳模型](../struct/09-value-quantification/03-carbon-dimension/sci-reuse-value-extension.md)
+- … 共 6 个文件
 
-### 10 供应链安全
+### 10 供应链安全工程
 
-- [SLSA 1.2 多轨道](10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md)
-- [攻击树分析](10-supply-chain-security/03-attack-vectors/attack-tree.md)
+- [OpenSSF Scorecard + Security Baseline 与复用决策](../struct/10-supply-chain-security/01-slsa-framework/openssf-scorecard-reuse.md)
+- [SLSA 1.2 Multi-Track 深度解析](../struct/10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md)
+- [SLSA L4 分布式构建验证实践](../struct/10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md)
+- [SLSA v1.2 多轨道复用安全边界详解](../struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md)
+- [SBOM 格式对比：SPDX vs CycloneDX vs SWID](../struct/10-supply-chain-security/02-sbom-standards/sbom-comparison.md)
+- … 共 23 个文件
 
-### 11 工业 IoT / OT-IT 融合
+### 11 工业 IoT / OT-IT 融合复用
 
-- [ISA-95 资产目录深入](11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
-- [OPC UA FX 复用层次](11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md)
+- [ISA-95 五层跨层数据流映射](../struct/11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md)
+- [ISA-95 资产目录深度清单](../struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+- [ISO/IEC 30141:2024 IoT 参考架构对齐](../struct/11-industrial-iot-otit/01-isa-95-model/iso-30141-iot-ra-alignment.md)
+- [L0 现场层复用资产目录](../struct/11-industrial-iot-otit/01-isa-95-model/l0-field/asset-catalog.md)
+- [L1 控制层复用资产目录](../struct/11-industrial-iot-otit/01-isa-95-model/l1-control/asset-catalog.md)
+- … 共 35 个文件
 
 ### 12 AI 原生复用
 
-- [MCP 2025-11-25 权威更新](12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md)
-- [A2A v1 权威更新](12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md)
+- [MCP 2025-11-25 权威规范解读](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md)
+- [MCP 2025-11-25 综合更新与复用影响评估](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
+- [MCP 2025-11-25 规范深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
+- [MCP 2026-07-28 RC 深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
+- [A2A v1.0.0 协议复用分析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+- … 共 20 个文件
 
-### 13 前沿趋势
+### 13 新兴趋势
 
-- [平台工程成熟度模型](13-emerging-trends/01-platform-engineering/platform-maturity-model.md)
-- [WASM 组件模型 2026](13-emerging-trends/03-webassembly-components/wasm-component-model-2026.md)
+- [内部开发者平台 (IDP) 与架构复用](../struct/13-emerging-trends/01-platform-engineering/idp-reuse.md)
+- [平台工程与内部开发者平台（IDP）复用](../struct/13-emerging-trends/01-platform-engineering/platform-engineering-cncf-2026.md)
+- [平台工程深化：CNCF 毕业项目与 IDP AI 集成](../struct/13-emerging-trends/01-platform-engineering/platform-engineering-deep-dive.md)
+- [平台工程成熟度模型（Platform Engineering Maturity Model）](../struct/13-emerging-trends/01-platform-engineering/platform-maturity-model.md)
+- [模块化单体：复用的务实选择](../struct/13-emerging-trends/02-modular-monolith/modular-monolith-reuse.md)
+- … 共 18 个文件
 
----
+### 99 参考索引
 
-## 思维模型
-
-```text
-新手 → 标准对齐者 → 复用设计者 → 治理者 → 专家
-   │        │            │           │        │
-   └────────┴────────────┴───────────┴────────┘
-              每条路径都经过：概念 → 示例 → 反例 → 实践
-```
-
----
-
-## 权威来源
-
-- Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
-- Merrill, M. D. (2002). *First Principles of Instruction*. <https://www.mdpi.com/2227-7102/9/3/202>
-- The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
-
----
-
-## 交叉引用
-
-- 课程大纲：[syllabus.md](99-reference/course/syllabus.md)
-- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
-- 形式化验证环境：[../tools/formal-verification-env/README.md](99-reference/tools/formal-verification-env/README.md)
+- [Phase C 对齐矩阵与 A+B+C 累计汇总](../struct/99-reference/alignment-matrix-phase-c.md)
+- [2026-06-06 本轮完成统计报告](../struct/99-reference/audit/2026-06-06-completion-stats.md)
+- [《软件工程架构复用视角》全面差距分析报告](../struct/99-reference/audit/comprehensive-gap-analysis-2026-06-08.md)
+- [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
+- [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
+- … 共 51 个文件
 
 
 ---
@@ -4778,9 +4782,11 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 正向示例
 
 ### 示例 1：有效测验设计
+
 某测验要求学员为真实金融系统建立 ISO 42010 / TOGAF / SLSA 对齐矩阵，学员通过查阅 `struct/` 权威来源完成，评分 90+。
 
 ### 示例 2：简答型高阶评估
+
 "为复用而复用"简答题迫使学员区分抽象过度与价值驱动复用，显著提升了架构决策质量。
 
 ---
@@ -4795,12 +4801,14 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 一、概念辨析（单选）
 
 ### 1. 什么是架构复用中的"单一真源"？
+
 - A. 所有代码都放在一个仓库里
 - B. 以 `struct/` 为权威来源，`view/` 为其只读聚合视角 ✅
 - C. 只允许一位架构师修改文档
 - D. 所有项目使用同一套技术栈
 
 ### 2. ISO/IEC/IEEE 42010:2022 主要解决什么问题？
+
 - A. 软件测试流程
 - B. 架构描述的语言与视点 ✅
 - C. 项目管理方法论
@@ -4811,6 +4819,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 二、标准与框架（多选）
 
 ### 3. 下列哪些标准/框架与本知识体系直接对齐？
+
 - A. TOGAF 10 ✅
 - B. ArchiMate 4.0 ✅
 - C. ISO/IEC 26550:2015 ✅
@@ -4818,6 +4827,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - E. ISO 9001:2015
 
 ### 4. 软件供应链安全应关注哪些要素？
+
 - A. SBOM ✅
 - B. Provenance ✅
 - C. SLSA 等级 ✅
@@ -4828,14 +4838,18 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 三、正向示例与反模式（简答）
 
-### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素。
+### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素
+
 **参考答案要点**:
+
 - 选择可复用资产时进行了成本/收益分析；
 - 建立了清晰的接口契约与版本策略；
 - 通过成熟度模型持续度量复用效果。
 
 ### 6. "为复用而复用"是一种什么反模式？应如何避免？
+
 **参考答案要点**:
+
 - 过度抽象导致不必要的复杂性；
 - 应基于真实业务价值和复用频次进行决策；
 - 使用复用决策树或 ROI 模型量化评估。
@@ -4845,13 +4859,17 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 四、形式化与量化（计算/分析）
 
 ### 7. 某组件库开发成本为 80 人天，预计在第 3、5、8 个项目中分别节省 20、35、50 人天。假设无贴现，该复用是否值得？
+
 **参考答案**:
+
 - 总节省 = 20 + 35 + 50 = 105 人天
 - 开发成本 = 80 人天
 - 净收益 = 25 人天 > 0，值得复用。
 
 ### 8. 为什么 TLA+ 适合验证分布式协议（如 MCP/A2A）？
+
 **参考答案要点**:
+
 - TLA+ 能精确描述状态机与并发行为；
 - TLC 模型检查器可发现死锁、活锁与不变量违反；
 - 适合验证消息协议、任务生命周期等场景。
@@ -4861,6 +4879,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 五、权威来源核查
 
 ### 9. 以下哪个引用存在潜在问题？
+
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
@@ -4892,9 +4911,9 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 交叉引用
 
-- 课程大纲：[syllabus.md](99-reference/course/syllabus.md)
-- 学习路径：[learning-path.md](99-reference/course/learning-path.md)
-- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
+- 课程大纲：[syllabus.md](../struct/99-reference/course/syllabus.md)
+- 学习路径：[learning-path.md](../struct/99-reference/course/learning-path.md)
+- 主术语表：[../glossary/glossary-master.md](../struct/99-reference/glossary/glossary-master.md)
 
 
 ---
@@ -4917,8 +4936,8 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 正向示例
 
-- 学习者按 [学习路径](99-reference/course/learning-path.md) 的架构师路径学习，8 周后完成一份可复用架构设计文档。
-- 讲师使用 [课程大纲](99-reference/course/syllabus.md) 和 [幻灯片](../../../dist/slides) 在 16 周内完成教学。
+- 学习者按 [学习路径](../struct/99-reference/course/learning-path.md) 的架构师路径学习，8 周后完成一份可复用架构设计文档。
+- 讲师使用 [课程大纲](../struct/99-reference/course/syllabus.md) 和 [幻灯片生成脚本](../scripts/build-slides.py) 在 16 周内完成教学。
 
 ---
 
@@ -4933,10 +4952,10 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 | 文件 | 说明 |
 |------|------|
-| [learning-path.md](99-reference/course/learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
-| [syllabus.md](99-reference/course/syllabus.md) | 16 周课程大纲、考核方式 |
-| [quiz.md](99-reference/course/quiz.md) | 课程测验与参考答案 |
-| [../../../dist/slides](../../../dist/slides) | 14 个主题 reveal.js 幻灯片 |
+| [learning-path.md](../struct/99-reference/course/learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
+| [syllabus.md](../struct/99-reference/course/syllabus.md) | 16 周课程大纲、考核方式 |
+| [quiz.md](../struct/99-reference/course/quiz.md) | 课程测验与参考答案 |
+| [../../../scripts/build-slides.py](../scripts/build-slides.py) | 14 个主题 reveal.js 幻灯片生成脚本 |
 
 ---
 
@@ -4949,9 +4968,9 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 交叉引用
 
-- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
-- 工具入口：[../tools/README.md](99-reference/tools/README.md)
-- 全书构建：[../../../scripts/build-deliverables.py](../../../scripts/build-deliverables.py)
+- 主术语表：[../glossary/glossary-master.md](../struct/99-reference/glossary/glossary-master.md)
+- 工具入口：[../tools/README.md](../struct/99-reference/tools/README.md)
+- 全书构建：[../../../scripts/build-deliverables.py](../scripts/build-deliverables.py)
 
 
 ---
@@ -4967,41 +4986,12 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ---
 
-## 概念定义
-
-**软件架构复用工程（Software Architecture Reuse Engineering）**: 系统性地识别、设计、实现、治理和量化软件架构资产复用的工程学科。
-**课程大纲（Syllabus）**: 规定课程目标、周历、作业、考核方式与推荐资源的教学文件。
-
----
-
 ## 课程目标
 
 1. 理解架构复用的元模型、标准与公理体系。
 2. 掌握业务/应用/组件/功能四层复用设计方法。
 3. 能够运用成熟度模型、度量指标与治理流程评估复用能力。
 4. 具备工业 IoT、AI 原生、供应链安全等垂直领域的复用分析能力。
-
----
-
-## 正向示例
-
-### 示例 1：标准对齐作业
-
-学生为某金融系统建立 ISO 42010:2022、TOGAF 10、SLSA 1.2 的对齐矩阵，识别出 12 个复用决策点，获得优秀。
-
-### 示例 2：复用 ROI 计算
-
-学生使用 COCOMO II 2026 校准模型，量化某组件库复用在 3 年内的 NPV，证明复用在第 14 个月回本。
-
----
-
-## 反例/反模式
-
-- **反模式 1：课程只讲理论不讲工具**。学生能背诵标准号，但不会运行 `health-check.py` 或复用决策工具。
-- **反模式 2：作业脱离真实约束**。设计的复用方案不考虑组织成熟度、安全合规或成本分摊，无法落地。
-- **反模式 3：忽视版本与来源**。引用过时标准或无法核查的博客，导致架构决策失准。
-
----
 
 ## 教学周历
 
@@ -5020,15 +5010,11 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 | 15 | AI 原生复用 | MCP/A2A、Agentic Infrastructure、概率契约 | Agent 复用方案 |
 | 16 | 整合输出 | 全书框架、个人项目答辩 | 可发布知识产品 |
 
----
-
 ## 考核方式
 
 - 平时作业 40%（标准对齐、复用设计、治理流程）
 - 期中项目 30%（选择一个垂直领域完成复用方案）
 - 期末答辩 30%（基于 `struct/` 知识库输出可发布作品）
-
----
 
 ## 推荐工具
 
@@ -5036,25 +5022,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
-
----
-
-## 权威来源
-
-- Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
-- IEEE/ACM. *Software Engineering Body of Knowledge (SWEBOK) V4*. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
-- The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
-
----
-
-## 交叉引用
-
-- 学习路径：[learning-path.md](99-reference/course/learning-path.md)
-- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
-- COCOMO 工具：[../tools/cocomo-calculator.py](99-reference/tools/cocomo-calculator.py)
-- 复用决策工具：[../tools/reuse-decision-tool-v2/](99-reference/tools/reuse-decision-tool-v2)
-
 
 ---
 
@@ -7721,7 +7688,7 @@ flowchart LR
 
 > **版本**: 2026-07-07
 > **定位**: 建立"业务架构 → 应用架构 → 组件架构 → 功能架构"四层复用资产之间的映射关系、失败传递模式与治理要点。
-> **关联**: [`cross-theme-dependency-graph.md`](99-reference/knowledge-index/cross-theme-dependency-graph.md)、[`glossary-master.md`](99-reference/glossary/glossary-master.md)、[`axiom-theorem-tree.md`](99-reference/glossary/axiom-theorem-tree.md)
+> **关联**: [`cross-theme-dependency-graph.md`](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md)、[`glossary-master.md`](../struct/99-reference/glossary/glossary-master.md)、[`axiom-theorem-tree.md`](../struct/99-reference/glossary/axiom-theorem-tree.md)
 
 ---
 
@@ -7897,13 +7864,13 @@ $$
 
 ## 9. 交叉引用
 
-- [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](01-meta-model-standards/06-formal-axioms/axiom-system.md) — 层次不可约性公理 M.3
-- [`02-business-architecture-reuse`](02-business-architecture-reuse) — 业务层复用实践
-- [`03-application-architecture-reuse`](03-application-architecture-reuse) — 应用层复用模式
-- [`04-component-architecture-reuse`](04-component-architecture-reuse) — 组件层复用
-- [`05-functional-architecture-reuse`](05-functional-architecture-reuse) — 功能层复用
-- [`06-cross-layer-governance`](06-cross-layer-governance) — 跨层治理与度量
-- [`cross-theme-dependency-graph.md`](99-reference/knowledge-index/cross-theme-dependency-graph.md) — 13 主题依赖关系
+- [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](../struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) — 层次不可约性公理 M.3
+- [`02-business-architecture-reuse`](../struct/02-business-architecture-reuse) — 业务层复用实践
+- [`03-application-architecture-reuse`](../struct/03-application-architecture-reuse) — 应用层复用模式
+- [`04-component-architecture-reuse`](../struct/04-component-architecture-reuse) — 组件层复用
+- [`05-functional-architecture-reuse`](../struct/05-functional-architecture-reuse) — 功能层复用
+- [`06-cross-layer-governance`](../struct/06-cross-layer-governance) — 跨层治理与度量
+- [`cross-theme-dependency-graph.md`](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md) — 13 主题依赖关系
 
 ---
 
@@ -7923,6 +7890,7 @@ $$
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
@@ -9144,7 +9112,7 @@ graph TD
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
 > **上次复核**: 2026-07-07
 > **下次复核**: 2026-09-30
-> **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](99-reference/audit/content-fact-fix-2026-07.md)
+> **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 
 ---
 
@@ -10822,8 +10790,8 @@ python scripts/quality-gate-v2.py struct/ --report report.md
 > **定位**: [在一级主题中的定位，一句话]
 > **对齐标准**: [相关的 ISO/IEC/IEEE/OMG 标准]
 > **权威来源**:
-> - [来源名称](99-reference/templates/URL) (机构, 年份)
-> - [来源名称](99-reference/templates/URL) (机构, 年份)
+> - [来源名称](URL) (机构, 年份)
+> - [来源名称](URL) (机构, 年份)
 ```
 
 ---
@@ -10902,7 +10870,7 @@ def example():
 
 ```markdown
 > **对齐验证**:
-> - [标准/来源名称](99-reference/templates/URL) 的 [章节/条款] 验证
+> - [标准/来源名称](URL) 的 [章节/条款] 验证
 > - [学术论文/书籍] 的 [页码/章节] 验证
 >
 > 最后更新: YYYY-MM-DD
@@ -10923,13 +10891,13 @@ def example():
 引用其他主题的文件时，使用相对路径：
 
 ```markdown
-参见 [`07-formal-verification/04-rust-type-system/formal-semantics.md`](07-formal-verification/04-rust-type-system/formal-semantics.md)
+参见 [`07-formal-verification/04-rust-type-system/formal-semantics.md`](../struct/07-formal-verification/04-rust-type-system/formal-semantics.md)
 ```
 
 引用术语表：
 
 ```markdown
-完整术语定义参见 [`glossary/terminology-crosswalk.md`](99-reference/glossary/terminology-crosswalk.md)
+完整术语定义参见 [`glossary/terminology-crosswalk.md`](../struct/99-reference/glossary/terminology-crosswalk.md)
 ```
 
 ---
@@ -12414,12 +12382,12 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 | 序号 | 模板名称 | 文件名 | 主题目录路径 | 说明 |
 |------|---------|--------|-------------|------|
-| 1 | 标签治理策略模板 | `tagging-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md`](06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md) | Mandatory/Recommended/Optional 标签、命名规范、自动 enforcement、缺失处理流程 |
-| 2 | FinOps 审查会议模板 | `finops-review.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-review.md`](06-cross-layer-governance/04-finops-cost/templates/finops-review.md) | 月度/季度 FinOps Review 议程、检查项、AAI/RCSR 等指标、行动项 |
-| 3 | FinOps 仪表盘指标与视图定义模板 | `finops-dashboard.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md`](06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md) | Showback/Chargeback、单位成本、异常检测、数据源与视图定义 |
-| 4 | 单位经济学计算模板 | `unit-economics.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md`](06-cross-layer-governance/04-finops-cost/templates/unit-economics.md) | Cloud COGS、每用户/每交易/每 token 成本、分层毛利率计算表 |
-| 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
-| 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
+| 1 | 标签治理策略模板 | `tagging-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md) | Mandatory/Recommended/Optional 标签、命名规范、自动 enforcement、缺失处理流程 |
+| 2 | FinOps 审查会议模板 | `finops-review.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-review.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-review.md) | 月度/季度 FinOps Review 议程、检查项、AAI/RCSR 等指标、行动项 |
+| 3 | FinOps 仪表盘指标与视图定义模板 | `finops-dashboard.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md) | Showback/Chargeback、单位成本、异常检测、数据源与视图定义 |
+| 4 | 单位经济学计算模板 | `unit-economics.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md) | Cloud COGS、每用户/每交易/每 token 成本、分层毛利率计算表 |
+| 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
+| 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
 
 ---
 
@@ -12427,22 +12395,22 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 ### 治理策略类
 
-- 需要规范云资源标签 → [标签治理策略模板](06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md)
-- 需要制定 RI/SP/Spot 购买规则 → [承诺折扣策略模板](06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md)
+- 需要规范云资源标签 → [标签治理策略模板](../struct/06-cross-layer-governance/04-finops-cost/templates/tagging-policy.md)
+- 需要制定 RI/SP/Spot 购买规则 → [承诺折扣策略模板](../struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md)
 
 ### 运营与审查类
 
-- 需要召开 FinOps Review → [FinOps 审查会议模板](06-cross-layer-governance/04-finops-cost/templates/finops-review.md)
-- 需要设计 FinOps 仪表盘 → [FinOps 仪表盘指标与视图定义模板](06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md)
+- 需要召开 FinOps Review → [FinOps 审查会议模板](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-review.md)
+- 需要设计 FinOps 仪表盘 → [FinOps 仪表盘指标与视图定义模板](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-dashboard.md)
 
 ### 成本分摊与量化类
 
-- 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
-- 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
+- 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](../struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
+- 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
 
 ### 自动化工具
 
-- 需要导出四级分摊 Excel/CSV 报告 → [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
+- 需要导出四级分摊 Excel/CSV 报告 → [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
 
 ---
 
@@ -12480,7 +12448,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 1. **首次使用**: 从本 README 选择对应模板，复制到项目 Wiki/Confluence/飞书文档后填写 `{{占位符}}`。
 2. **保持同步**: 若发现主题目录模板更新，应及时刷新复用副本中的链接与内容。
 3. **自定义占位符**: 各模板使用 `{{VARIABLE}}` 标记可填写字段，建议团队统一一套变量命名规范。
-4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告。
+4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告。
 
 ---
 
@@ -12488,8 +12456,8 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 
 | 脚本 | 路径 | 功能 |
 |------|------|------|
-| `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
-| `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
+| `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
+| `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
 
 ---
 
@@ -12501,9 +12469,9 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 
 > **交叉引用**:
 >
-> - FinOps 主题目录: [`struct/06-cross-layer-governance/04-finops-cost/`](06-cross-layer-governance/04-finops-cost)
-> - FinOps 四级成本分摊模型: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
-> - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
+> - FinOps 主题入口: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
+> - FinOps 四级成本分摊模型: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
+> - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
 
 > 最后更新: 2026-06-12
 
@@ -12599,9 +12567,9 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 ### 嵌入 Markdown 文档
 
 ```markdown
-![业务架构复用](99-reference/visualizations/mindmaps/02-business-architecture-reuse.svg)
-![知识体系总览](99-reference/visualizations/mindmaps/knowledge-system-mindmap.svg)
-![公理-定理全图](99-reference/visualizations/axiom-theorem-full-graph.svg)
+![业务架构复用](../struct/99-reference/visualizations/mindmaps/02-business-architecture-reuse.svg)
+![知识体系总览](../struct/99-reference/visualizations/mindmaps/knowledge-system-mindmap.svg)
+![公理-定理全图](../struct/99-reference/visualizations/axiom-theorem-full-graph.svg)
 ```
 
 ### 修改与重渲染
@@ -12657,9 +12625,9 @@ done
 
 ## 交叉引用
 
-- [内容清单](99-reference/templates/content-checklist.md)
-- [主术语表](99-reference/glossary/glossary-master.md)
-- [权威来源索引](99-reference/standards-index/authoritative-sources-v2.md)
+- [内容清单](../struct/99-reference/templates/content-checklist.md)
+- [主术语表](../struct/99-reference/glossary/glossary-master.md)
+- [权威来源索引](../struct/99-reference/standards-index/authoritative-sources-v2.md)
 
 
 ---

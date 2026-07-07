@@ -11,17 +11,17 @@
 ## 目录
 
 
-1. [组件模型与架构复用](04-component-architecture-reuse/01-component-models/component-models-reuse.md)
-2. [接口契约与架构复用](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
-3. [依赖管理与架构复用](04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
-4. [组件接口契约设计模式](04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md)
-5. [组件设计模式选择指南](04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md)
-6. [版本策略与架构复用](04-component-architecture-reuse/05-version-strategy/version-strategy-reuse.md)
-7. [Gateway API + Istio Ambient 可复用部署模板](04-component-architecture-reuse/06-cloud-native-networking/examples/README.md)
-8. [Gateway API v1.5 + GAMMA + Service Mesh 权威对齐（2025‑2026）](04-component-architecture-reuse/06-cloud-native-networking/gateway-api-v15-gamma-alignment.md)
-9. [6大语言生态组件复用成熟度深度对比 2026](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md)
-10. [开源语言生态与供应链复用治理](04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md)
-11. [04 组件架构复用](04-component-architecture-reuse/README.md)
+1. [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md)
+2. [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)
+3. [依赖管理与架构复用](../struct/04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
+4. [组件接口契约设计模式](../struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md)
+5. [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md)
+6. [版本策略与架构复用](../struct/04-component-architecture-reuse/05-version-strategy/version-strategy-reuse.md)
+7. [Gateway API + Istio Ambient 可复用部署模板](../struct/04-component-architecture-reuse/06-cloud-native-networking/examples/README.md)
+8. [Gateway API v1.5 + GAMMA + Service Mesh 权威对齐（2025‑2026）](../struct/04-component-architecture-reuse/06-cloud-native-networking/gateway-api-v15-gamma-alignment.md)
+9. [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md)
+10. [开源语言生态与供应链复用治理](../struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md)
+11. [04 组件架构复用](../struct/04-component-architecture-reuse/README.md)
 
 ---
 
@@ -299,8 +299,8 @@ $$M = (I,\ Impl,\ D,\ L,\ Meta)$$
 
 - **上位概念**：[Component-based software engineering](https://en.wikipedia.org/wiki/Component-based_software_engineering)（基于组件的软件工程）；
 - **下位概念**：具体技术模型，如 CORBA CCM、EJB、OSGi、.NET Assembly、WASM Component Model；
-- **依赖概念**：[接口契约](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 定义组件间交互规则；[设计模式](04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) 解决组件内部结构问题；
-- **映射概念**：组件模型与 [6大语言生态组件复用成熟度深度对比 2026](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) 中的语言级模块系统存在实现映射。
+- **依赖概念**：[接口契约](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 定义组件间交互规则；[设计模式](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) 解决组件内部结构问题；
+- **映射概念**：组件模型与 [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) 中的语言级模块系统存在实现映射。
 
 ### 解释：为什么组件模型决定复用边界
 
@@ -348,7 +348,7 @@ $$M = (I,\ Impl,\ D,\ L,\ Meta)$$
 
 - 组件只依赖 props/events 接口，不依赖框架状态管理；
 - 将框架特定逻辑抽到适配层或 Container 组件中；
-- 使用 [接口契约](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 明确 props 类型、事件契约与生命周期。
+- 使用 [接口契约](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 明确 props 类型、事件契约与生命周期。
 
 ### 反例 2：忽视组件生命周期管理
 
@@ -410,10 +410,10 @@ flowchart LR
 
 ### 交叉引用
 
-- [接口契约与架构复用](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 组件间交互的显式约定
-- [组件设计模式选择指南](04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用
-- [6大语言生态组件复用成熟度深度对比 2026](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 语言级组件模型能力对比
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系全局视图
+- [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 组件间交互的显式约定
+- [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用
+- [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 语言级组件模型能力对比
+- [软件架构复用框架总览](../struct/README.md) — 知识体系全局视图
 
 
 ---
@@ -521,7 +521,7 @@ $$C(o) = (Pre(o),\ Post(o),\ Inv(o))$$
 
 ### 1.5 接口契约与组件模型的关系
 
-接口契约位于 [组件模型](04-component-architecture-reuse/01-component-models/component-models-reuse.md) 与外部世界之间，是组件“可替换性”的判据。组件模型回答“如何封装与组合”，接口契约回答“如何安全地交互”。
+接口契约位于 [组件模型](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) 与外部世界之间，是组件“可替换性”的判据。组件模型回答“如何封装与组合”，接口契约回答“如何安全地交互”。
 
 ```mermaid
 flowchart LR
@@ -838,10 +838,10 @@ describe('Inventory API contract', () => {
 
 ## 7. 交叉引用
 
-- [组件模型与架构复用](04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 组件封装、生命周期与可替换性判定
-- [组件设计模式选择指南](04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 通过模式降低接口契约的复杂度
-- [6大语言生态组件复用成熟度深度对比 2026](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对接口契约工具链的支持差异
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 本知识体系的全局视图
+- [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 组件封装、生命周期与可替换性判定
+- [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 通过模式降低接口契约的复杂度
+- [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对接口契约工具链的支持差异
+- [软件架构复用框架总览](../struct/README.md) — 本知识体系的全局视图
 
 
 ---
@@ -1639,7 +1639,7 @@ class Authenticated:
 
 ### 概念定义
 
-**定义**：设计模式（Design Pattern）是在特定上下文下，针对反复出现的设计问题所总结出的可复用解决方案模板。它描述了一组相互协作的类、对象或组件之间的关系与职责划分，并给出适用场景、优缺点与实现要点。在软件架构复用知识体系中，设计模式是连接[组件模型](04-component-architecture-reuse/01-component-models/component-models-reuse.md)与[接口契约](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)的“中层语言”，用于在保持实现可变的前提下固化结构复用。
+**定义**：设计模式（Design Pattern）是在特定上下文下，针对反复出现的设计问题所总结出的可复用解决方案模板。它描述了一组相互协作的类、对象或组件之间的关系与职责划分，并给出适用场景、优缺点与实现要点。在软件架构复用知识体系中，设计模式是连接[组件模型](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md)与[接口契约](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md)的“中层语言”，用于在保持实现可变的前提下固化结构复用。
 
 Wikipedia 对[Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern)的定义强调：模式不是可以直接转化的最终设计或实现，而是对“在某种情境下反复出现的问题”的通用描述。
 
@@ -1858,10 +1858,10 @@ flowchart TD
 
 ### 交叉引用
 
-- [组件模型与架构复用](04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 组件边界与可替换性
-- [接口契约与架构复用](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 模式实现需遵循的接口契约
-- [6大语言生态组件复用成熟度深度对比 2026](04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对设计模式实现机制的支持
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系总览
+- [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 组件边界与可替换性
+- [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 模式实现需遵循的接口契约
+- [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对设计模式实现机制的支持
+- [软件架构复用框架总览](../struct/README.md) — 知识体系总览
 
 
 ---
@@ -3132,7 +3132,7 @@ quadrantChart
 
 - **上位概念**：[Component-based software engineering](https://en.wikipedia.org/wiki/Component-based_software_engineering) 提供基于组件复用的通用方法论；
 - **下位概念**：具体语言生态（JVM、Node.js、Rust、Go、Python、.NET）的复用实践；
-- **依赖概念**：[组件模型](04-component-architecture-reuse/01-component-models/component-models-reuse.md) 决定语言内组件的封装与组合方式；[接口契约](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 支撑跨语言/跨服务复用；
+- **依赖概念**：[组件模型](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) 决定语言内组件的封装与组合方式；[接口契约](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) 支撑跨语言/跨服务复用；
 - **映射概念**：各生态的组件模型、包管理器特性与本文件六维评分矩阵形成量化映射。
 
 ### 解释：为什么需要跨语言生态复用
@@ -3205,10 +3205,10 @@ flowchart TD
 
 ### 交叉引用
 
-- [组件模型与架构复用](04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 语言内组件模型对比
-- [接口契约与架构复用](04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 跨语言复用的接口契约
-- [组件设计模式选择指南](04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系总览
+- [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 语言内组件模型对比
+- [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 跨语言复用的接口契约
+- [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
+- [软件架构复用框架总览](../struct/README.md) — 知识体系总览
 
 
 ---

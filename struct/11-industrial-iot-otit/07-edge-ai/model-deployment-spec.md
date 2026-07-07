@@ -57,7 +57,7 @@ graph LR
 
 ### 1.4 功能安全与 SIL 等级
 
-参考 [`06-functional-safety`](../06-functional-safety/) 的 IEC 61508 Ed.3 分析：
+参考 [`06-functional-safety`](../06-functional-safety/iec-61508-iso-26262-sotif-alignment.md) 的 IEC 61508 Ed.3 分析：
 
 | SIL 等级 | 允许失效率 (PFH) | AI 部署隐含要求 |
 |---------|-----------------|----------------|
@@ -173,10 +173,10 @@ sequenceDiagram
 
 | 本规范内容 | 关联文档 | 说明 |
 |-----------|---------|------|
-| ISA-95 L0–L2 边缘 AI 映射 | [`01-isa-95-model`](../01-isa-95-model/) | L0 振动检测、L1 视觉质检、L2 预测性维护的部署位置 |
-| OPC UA FX 实时数据供给 | [`02-opc-ua-fx`](../02-opc-ua-fx/) | 推理输入的确定性采集与结果 Pub/Sub 发布 |
-| TSN 网络切片保障 | [`03-tsn-deterministic`](../03-tsn-deterministic/) | 为 AI 推理流量预留 802.1Qbv 门控时隙 |
-| 功能安全与 SIL | [`06-functional-safety`](../06-functional-safety/) | IEC 61508 Ed.3 对 AI 组件的诊断覆盖率要求 |
+| ISA-95 L0–L2 边缘 AI 映射 | [`01-isa-95-model`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md) | L0 振动检测、L1 视觉质检、L2 预测性维护的部署位置 |
+| OPC UA FX 实时数据供给 | [`02-opc-ua-fx`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md) | 推理输入的确定性采集与结果 Pub/Sub 发布 |
+| TSN 网络切片保障 | [`03-tsn-deterministic`](../03-tsn-deterministic/iec-ieee-60802-profile.md) | 为 AI 推理流量预留 802.1Qbv 门控时隙 |
+| 功能安全与 SIL | [`06-functional-safety`](../06-functional-safety/iec-61508-iso-26262-sotif-alignment.md) | IEC 61508 Ed.3 对 AI 组件的诊断覆盖率要求 |
 | TinyML / ONNX 技术栈 | [`tinyml-onnx-edge-ai.md`](./tinyml-onnx-edge-ai.md) | 模型优化技术细节与运行时对比 |
 | 形式化验证 | [`07-formal-verification`](../../07-formal-verification/) | 控制-AI 协同状态机 TLA+ 规约 |
 
@@ -199,6 +199,7 @@ sequenceDiagram
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。

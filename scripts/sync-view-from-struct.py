@@ -87,27 +87,63 @@ def _extract_first_heading(text: str) -> str:
     return "未命名章节"
 
 
-def _rewrite_links(text: str, source_file: Path, struct_root: Path) -> str:
-    """将文本中的相对 Markdown 链接重写为 struct/ 根目录相对路径，便于 view/ 卷册解析。"""
-    link_re = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+def _rewrite_links(text: str, source_file: Path, struct_root: Path, output_root: Path) -> str:
+    """将文本中的相对 Markdown 链接重写为 view/ 卷册可解析的路径。"""
+    link_re = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
+    project_root = struct_root.parent
+
+    def _rel_to_output(target: Path) -> str:
+        """计算从 output_root 到 target 的相对路径。"""
+        try:
+            return target.relative_to(output_root).as_posix()
+        except ValueError:
+            # target 不在 output_root 下，向上回溯到项目根
+            up = "../" * len(output_root.relative_to(project_root).parts)
+            rel_from_project = target.relative_to(project_root).as_posix()
+            return up + rel_from_project
 
     def repl(m: re.Match) -> str:
         link_text = m.group(1)
         target = m.group(2).strip()
-        # 保留锚点
         fragment = ""
-        if "#" in target:
-            target, fragment = target.split("#", 1)
+        bare = target
+        if "#" in bare:
+            bare, fragment = bare.split("#", 1)
             fragment = "#" + fragment
-        # 跳过外部 URL、mailto、空链接
-        if not target or re.match(r"^[a-z][a-z0-9+.-]*://", target, re.IGNORECASE) or target.startswith("mailto:"):
+        if not bare or re.match(r"^[a-z][a-z0-9+.-]*://", bare, re.IGNORECASE) or bare.startswith("mailto:"):
             return m.group(0)
+
+        source_dir = source_file.parent
+
+        # 目录链接：尝试指向 README.md
+        if bare.endswith("/"):
+            try:
+                resolved_dir = (source_dir / bare).resolve()
+                if struct_root in resolved_dir.parents or resolved_dir == struct_root:
+                    rel_dir = resolved_dir.relative_to(struct_root).as_posix()
+                    for readme in ("README.md", "index.md", "readme.md"):
+                        if (resolved_dir / readme).exists():
+                            new_target = (struct_root / rel_dir / readme).resolve()
+                            return f"[{link_text}]({_rel_to_output(new_target)}{fragment})"
+            except Exception:
+                pass
+            return m.group(0)
+
         try:
-            resolved = (source_file.parent / target).resolve()
-            # 确保解析后的目标在 struct_root 内
+            resolved = (source_dir / bare).resolve()
             if struct_root in resolved.parents or resolved == struct_root:
-                new_target = resolved.relative_to(struct_root).as_posix()
-                return f"[{link_text}]({new_target}{fragment})"
+                rel = resolved.relative_to(struct_root).as_posix()
+                suffixes = (".md", ".py", ".yaml", ".yml", ".json", ".sh", ".html")
+                has_known_ext = any(str(bare).lower().endswith(ext) for ext in suffixes)
+                if resolved.exists() or any(resolved.with_suffix(ext).exists() for ext in suffixes):
+                    if not has_known_ext and (struct_root / rel).with_suffix(".md").exists():
+                        rel += ".md"
+                    new_target = (struct_root / rel).resolve()
+                    return f"[{link_text}]({_rel_to_output(new_target)}{fragment})"
+            # 项目根目录下的其他资源（scripts/、dist/ 等）
+            if project_root in resolved.parents or resolved == project_root:
+                if resolved.exists():
+                    return f"[{link_text}]({_rel_to_output(resolved)}{fragment})"
         except Exception:
             pass
         return m.group(0)
@@ -131,12 +167,12 @@ def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -
     for idx, md in enumerate(files, start=1):
         heading = _extract_first_heading(md.read_text(encoding="utf-8"))
         rel = md.relative_to(struct_root).as_posix()
-        parts.append(f"{idx}. [{heading}]({rel})")
+        parts.append(f"{idx}. [{heading}](../struct/{rel})")
     parts.append("\n---\n")
 
     for md in files:
         text = md.read_text(encoding="utf-8")
-        text = _rewrite_links(text, md, struct_root)
+        text = _rewrite_links(text, md, struct_root, view_file.parent)
         rel = md.relative_to(struct_root).as_posix()
         parts.append(f"\n<!-- SOURCE: struct/{rel} -->\n")
         parts.append(text)

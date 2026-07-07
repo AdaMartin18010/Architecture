@@ -200,12 +200,12 @@ MCP Tool 调用安全增强
 
 | 本草案内容 | 关联文档 | 说明 |
 |-----------|---------|------|
-| ISA-95 层级数据访问 | [`01-isa-95-model`](../01-isa-95-model/) | L1-L3 传感器、执行器、Historian 的 Resource URI 命名空间 |
-| OPC UA FX 确定性传输 | [`02-opc-ua-fx`](../02-opc-ua-fx/) | UADP 帧结构、Connection Manager、Pub/Sub 配置 |
-| TSN 网络保障 | [`03-tsn-deterministic`](../03-tsn-deterministic/) | 802.1Qbv 门控列表为 MCP 实时消息提供确定性时隙 |
-| PLCopen 运动控制 | [`04-plcopen-motion`](../04-plcopen-motion/) | `write_actuator` Tool 对 MC 功能块的调用映射 |
-| 数字孪生与 AAS | [`05-digital-twin-aas`](../05-digital-twin-aas/) | `asset://` URI 与 AAS 子模型、OPC UA NodeSet 联合解析 |
-| 功能安全与 SIL | [`06-functional-safety`](../06-functional-safety/) | 安全相关 Tool 的 SIL 认证要求与 IEC 61508 Ed.3 对齐 |
+| ISA-95 层级数据访问 | [`01-isa-95-model`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md) | L1-L3 传感器、执行器、Historian 的 Resource URI 命名空间 |
+| OPC UA FX 确定性传输 | [`02-opc-ua-fx`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md) | UADP 帧结构、Connection Manager、Pub/Sub 配置 |
+| TSN 网络保障 | [`03-tsn-deterministic`](../03-tsn-deterministic/iec-ieee-60802-profile.md) | 802.1Qbv 门控列表为 MCP 实时消息提供确定性时隙 |
+| PLCopen 运动控制 | [`04-plcopen-motion`](../04-plcopen-motion/plcopen-motion-control.md) | `write_actuator` Tool 对 MC 功能块的调用映射 |
+| 数字孪生与 AAS | [`05-digital-twin-aas`](../05-digital-twin-aas/aas-opcua-mapping.md) | `asset://` URI 与 AAS 子模型、OPC UA NodeSet 联合解析 |
+| 功能安全与 SIL | [`06-functional-safety`](../06-functional-safety/iec-61508-iso-26262-sotif-alignment.md) | 安全相关 Tool 的 SIL 认证要求与 IEC 61508 Ed.3 对齐 |
 | 边缘 AI 模型部署 | [`model-deployment-spec.md`](./model-deployment-spec.md) | `model://` Resource 的管理、版本控制与运行时兼容性 |
 
 ---
@@ -226,6 +226,7 @@ MCP Tool 调用安全增强
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。

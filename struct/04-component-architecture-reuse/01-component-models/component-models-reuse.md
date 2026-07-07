@@ -383,4 +383,4 @@ flowchart LR
 - [接口契约与架构复用](../02-interface-contracts/interface-contracts-reuse.md) — 组件间交互的显式约定
 - [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用
 - [6大语言生态组件复用成熟度深度对比 2026](../07-language-ecosystems/comparison-matrix-2026.md) — 语言级组件模型能力对比
-- [软件架构复用框架总览](../../../view/software_architecture_reuse_framework_2026.md) — 知识体系全局视图
+- [软件架构复用框架总览](../../README.md) — 知识体系全局视图

@@ -11,12 +11,12 @@
 ## 目录
 
 
-1. [COCOMO II 复用模型 2026 校准版](09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
-2. [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
-3. [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md)
-4. [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md)
-5. [价值量化碳维度扩展：SCI 复用碳模型](09-value-quantification/03-carbon-dimension/sci-reuse-value-extension.md)
-6. [09 价值量化与 ROI 模型](09-value-quantification/README.md)
+1. [COCOMO II 复用模型 2026 校准版](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md)
+2. [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
+3. [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md)
+4. [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md)
+5. [价值量化碳维度扩展：SCI 复用碳模型](../struct/09-value-quantification/03-carbon-dimension/sci-reuse-value-extension.md)
+6. [09 价值量化与 ROI 模型](../struct/09-value-quantification/README.md)
 
 ---
 
@@ -428,9 +428,9 @@ PM_2026 = A_2026 × (Size_2026)^E × ∏(EMᵢ_2026)
 
 > **交叉引用**:
 >
-> - COCOMO II 深度解析: [`cocomo-ii-reuse-model-deep-dive.md`](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
-> - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
-> - 复用度量指标: [`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+> - COCOMO II 深度解析: [`cocomo-ii-reuse-model-deep-dive.md`](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md)
+> - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
+> - 复用度量指标: [`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
 
 
 ---
@@ -858,9 +858,9 @@ AAM = [10 + 35.5 × (1 + 0.02 × 50 × 1.5)] / 100
 
 ### 交叉引用
 
-- 与 [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md) 共同构成“成本估算 → 经济决策”闭环。
-- 与 [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合，可将 COCOMO II 估算结果输入 NPV/实物期权分析。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU 与 UNFM 本质上是开发者认知负荷的量化 proxy。
+- 与 [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md) 共同构成“成本估算 → 经济决策”闭环。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合，可将 COCOMO II 估算结果输入 NPV/实物期权分析。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU 与 UNFM 本质上是开发者认知负荷的量化 proxy。
 
 ## 17. COCOMO II 复用模型的敏感性分析
 
@@ -949,9 +949,9 @@ PM = A × (ASLOC × (1 - AT/100) × AAM)^B × M
 
 ### 交叉引用
 
-- 与 [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：敏感性分析结果是 ROI 情景分析的关键输入。
-- 与 [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：关键参数的波动率 σ 可来自敏感性分析的历史数据。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU/UNFM 是认知负荷在成本模型中的量化 proxy。
+- 与 [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：敏感性分析结果是 ROI 情景分析的关键输入。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：关键参数的波动率 σ 可来自敏感性分析的历史数据。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：SU/UNFM 是认知负荷在成本模型中的量化 proxy。
 
 ## 补充说明：COCOMO II 复用模型深度解析
 
@@ -1264,9 +1264,9 @@ flowchart TD
 
 ### 交叉引用
 
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：将 COCOMO II 估算的工作量与成本输入 ROI 框架。
-- 与 [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：当项目具有高度不确定性时，用实物期权补充 NPV/IRR。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：培训与理解成本是 ROI 中常被低估的隐性成本。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：将 COCOMO II 估算的工作量与成本输入 ROI 框架。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：当项目具有高度不确定性时，用实物期权补充 NPV/IRR。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：培训与理解成本是 ROI 中常被低估的隐性成本。
 
 ---
 
@@ -1346,9 +1346,9 @@ graph TD
 
 ### 交叉引用
 
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的成本与成功率是决策树概率输入。
-- 与 [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：决策树是实物期权分析的离散化实现形式。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：决策树也可用于评估不同文档/培训策略对认知负荷的影响。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的成本与成功率是决策树概率输入。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：决策树是实物期权分析的离散化实现形式。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：决策树也可用于评估不同文档/培训策略对认知负荷的影响。
 
 ## 13. 多项目复用投资组合的 NPV 边界与机会成本
 
@@ -1402,9 +1402,9 @@ graph LR
 
 ### 交叉引用
 
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：各项目成本与工期输入组合优化模型。
-- 与 [软件复用的 ROI、实物期权与战略价值量化](09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：战略项目的价值可用实物期权补充。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：核心架构师的时间稀缺性是高认知负荷工作的机会成本来源。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：各项目成本与工期输入组合优化模型。
+- 与 [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md) 配合：战略项目的价值可用实物期权补充。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：核心架构师的时间稀缺性是高认知负荷工作的机会成本来源。
 
 > 最后更新: 2026-06-06
 
@@ -1832,9 +1832,9 @@ graph TD
 
 ### 交叉引用
 
-- 与 [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：实物期权是 ROI/NPV 框架在高度不确定性场景下的扩展。
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的成本可作为实物期权的执行价格 X。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：分阶段学习与平台采用本身是一种“学习期权”。
+- 与 [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：实物期权是 ROI/NPV 框架在高度不确定性场景下的扩展。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的成本可作为实物期权的执行价格 X。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：分阶段学习与平台采用本身是一种“学习期权”。
 
 ---
 
@@ -1912,9 +1912,9 @@ flowchart TD
 
 ### 交叉引用
 
-- 与 [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：阶段门期权的现金流应输入 ROI/NPV 模型。
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：各阶段投资 I_i 可由 COCOMO II 估算。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：采用率与 TLX 是 Gate 1 的关键观测指标。
+- 与 [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：阶段门期权的现金流应输入 ROI/NPV 模型。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：各阶段投资 I_i 可由 COCOMO II 估算。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：采用率与 TLX 是 Gate 1 的关键观测指标。
 
 ## 15. 延迟期权与先发优势的权衡：q 参数估计
 
@@ -1966,9 +1966,9 @@ graph LR
 
 ### 交叉引用
 
-- 与 [架构复用 ROI 框架](09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：q 的机会成本应计入 NPV 现金流。
-- 与 [COCOMO II 复用模型深度解析](09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的周期影响 q 的大小。
-- 与 [认知负荷理论与架构复用](08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：延迟投资可能导致团队认知图式滞后，增加后续学习成本。
+- 与 [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：q 的机会成本应计入 NPV 现金流。
+- 与 [COCOMO II 复用模型深度解析](../struct/09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的周期影响 q 的大小。
+- 与 [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：延迟投资可能导致团队认知图式滞后，增加后续学习成本。
 
 ## 补充说明：软件复用的 ROI、实物期权与战略价值量化
 

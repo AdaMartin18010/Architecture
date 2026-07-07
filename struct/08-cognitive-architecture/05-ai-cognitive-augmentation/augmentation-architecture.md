@@ -362,7 +362,7 @@ flowchart LR
 
 - 与 [认知负荷理论与架构复用](../03-cognitive-load-theory/cognitive-load-theory.md) 关联：人机协作模式的选择直接影响相关负荷与外在负荷的分配。
 - 与 [开发者复用决策的认知负荷量化模型](../03-cognitive-load-theory/quantitative-model.md) 配合：可用该模型评估引入 AI 助手前后的 CL_reuse 变化。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：AI 增强系统的投资成本与风险节省应纳入 ROI。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：AI 增强系统的投资成本与风险节省应纳入 ROI。
 
 ## 8. RAG 知识库的持续演化与遗忘机制
 
@@ -424,7 +424,7 @@ flowchart TD
 
 - 与 [认知负荷理论与架构复用](../03-cognitive-load-theory/cognitive-load-theory.md) 关联：过时示例会陡增外在负荷与集成错误率。
 - 与 [开发者复用决策的认知负荷量化模型](../03-cognitive-load-theory/quantitative-model.md) 配合：遗忘机制可降低文档清晰度维度的噪声。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：知识库运维成本应计入 AI 增强系统的 ROI。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：知识库运维成本应计入 AI 增强系统的 ROI。
 
 > 最后更新: 2026-06-06
 

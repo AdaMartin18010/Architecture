@@ -537,8 +537,8 @@ flowchart TD
 ### 交叉引用
 
 - 与 [认知负荷理论与架构复用](./cognitive-load-theory.md) 配合：本模型是三维认知负荷理论的量化实现。
-- 与 [COCOMO II 复用模型深度解析](../../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：CL_reuse 可转化为理解成本，输入 COCOMO II 的 SU/UNFM 校准。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：认知负荷是 ROI 中隐性成本的人因学基础。
+- 与 [COCOMO II 复用模型深度解析](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：CL_reuse 可转化为理解成本，输入 COCOMO II 的 SU/UNFM 校准。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 配合：认知负荷是 ROI 中隐性成本的人因学基础。
 
 ---
 
@@ -613,8 +613,8 @@ flowchart TD
 ### 交叉引用
 
 - 与 [认知负荷理论与架构复用](./cognitive-load-theory.md) 配合：BCLM 的 λ 参数来自时序动态模型。
-- 与 [COCOMO II 复用模型深度解析](../../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：校准后的 CL_reuse 可转化为 SU/UNFM 调整。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：校准投入与优化收益应计入 ROI 现金流。
+- 与 [COCOMO II 复用模型深度解析](../../09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：校准后的 CL_reuse 可转化为 SU/UNFM 调整。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：校准投入与优化收益应计入 ROI 现金流。
 
 ## 15. 认知负荷量表的测量不变性与跨团队比较
 
@@ -666,7 +666,7 @@ flowchart TD
 
 - 与 [认知负荷理论与架构复用](./cognitive-load-theory.md) 配合：跨团队基线是 OCLB 的输入。
 - 与 [AI 辅助复用决策的认知增强架构设计](../05-ai-cognitive-augmentation/augmentation-architecture.md) 关联：AI 收集的行为数据可用于校正社会期望偏差。
-- 与 [架构复用 ROI 框架](../../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：校正后的基线是培训投资决策的依据。
+- 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：校正后的基线是培训投资决策的依据。
 
 > 最后更新: 2026-06-06
 

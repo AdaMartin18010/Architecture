@@ -54,26 +54,68 @@ def _extract_first_heading(text: str) -> str:
     return m.group(1).strip() if m else "未命名"
 
 
-def _rewrite_links(text: str, source_file: Path, struct_root: Path) -> str:
-    """将相对链接重写为基于 struct/ 根的路径"""
+def _rewrite_links(text: str, source_file: Path, struct_root: Path, output_root: Path) -> str:
+    """将相对链接重写为输出文件可解析的路径。"""
 
     def replace_link(m: re.Match) -> str:
-        prefix = m.group(1)
+        md_prefix = m.group(1)
         link = m.group(2)
         suffix = m.group(3)
         if link.startswith(("http://", "https://", "mailto:", "#")):
             return m.group(0)
-        if ".md" not in link:
-            return m.group(0)
         source_dir = source_file.parent
-        target = (source_dir / link).resolve()
+        project_root = struct_root.parent
+        fragment = ""
+        bare = link
+        if "#" in bare:
+            bare, fragment = bare.split("#", 1)
+            fragment = "#" + fragment
+        if not bare:
+            return m.group(0)
+
+        def _rel_to_output(target: Path) -> str:
+            try:
+                return target.relative_to(output_root).as_posix()
+            except ValueError:
+                up = "../" * len(output_root.relative_to(project_root).parts)
+                return up + target.relative_to(project_root).as_posix()
+
+        # 目录链接：尝试指向 README.md
+        if bare.endswith("/"):
+            target_dir = (source_dir / bare).resolve()
+            try:
+                rel_dir = target_dir.relative_to(struct_root).as_posix()
+                for readme in ("README.md", "index.md", "readme.md"):
+                    if (target_dir / readme).exists():
+                        new_target = (struct_root / rel_dir / readme).resolve()
+                        return f"{md_prefix}{_rel_to_output(new_target)}{fragment}{suffix}"
+            except ValueError:
+                pass
+            return m.group(0)
+
+        target = (source_dir / bare).resolve()
         try:
             rel = target.relative_to(struct_root).as_posix()
+            suffixes = (".md", ".py", ".yaml", ".yml", ".json", ".sh", ".html")
+            has_known_ext = any(str(bare).lower().endswith(ext) for ext in suffixes)
+            if target.exists() or any(target.with_suffix(ext).exists() for ext in suffixes):
+                if not has_known_ext and (struct_root / rel).with_suffix(".md").exists():
+                    rel += ".md"
+                new_target = (struct_root / rel).resolve()
+                return f"{md_prefix}{_rel_to_output(new_target)}{fragment}{suffix}"
         except ValueError:
-            return m.group(0)
-        return f"{prefix}../struct/{rel}{suffix}"
+            pass
 
-    return re.sub(r"(\]\()(?!\s*)([^)\s]+?)(\))", replace_link, text)
+        # 项目根目录下的其他资源（scripts/、dist/ 等）
+        try:
+            if project_root in target.parents or target == project_root:
+                if target.exists():
+                    return f"{md_prefix}{_rel_to_output(target)}{fragment}{suffix}"
+        except Exception:
+            pass
+        return m.group(0)
+
+    return re.sub(r"(\]\()([^)\s]+?)(\))", replace_link, text)
 
 
 def _build_volume(topic_dir: Path, output_file: Path) -> Tuple[str, int]:
@@ -102,13 +144,13 @@ def _build_volume(topic_dir: Path, output_file: Path) -> Tuple[str, int]:
         text = md.read_text(encoding="utf-8")
         heading = _extract_first_heading(text)
         rel = md.relative_to(STRUCT_DIR).as_posix()
-        lines.append(f"{idx}. [{heading}](../struct/{rel})")
+        lines.append(f"{idx}. [{heading}](../../struct/{rel})")
 
     lines.extend(["", "---", ""])
 
     for md in files:
         text = md.read_text(encoding="utf-8")
-        text = _rewrite_links(text, md, STRUCT_DIR)
+        text = _rewrite_links(text, md, STRUCT_DIR, output_file.parent)
         rel = md.relative_to(STRUCT_DIR).as_posix()
         lines.append(f"\n<!-- SOURCE: struct/{rel} -->\n")
         lines.append(text)
@@ -154,6 +196,9 @@ def build_book() -> None:
         if not volume_file.exists():
             continue
         text = volume_file.read_text(encoding="utf-8")
+        # book-volumes 中的链接使用 ../../ 前缀（相对 book-volumes/），
+        # 在 book-full.md（相对 dist/）中应统一为 ../ 前缀
+        text = text.replace("](../../", "](../")
         full_lines.append(text)
         full_lines.append("\n---\n")
 
