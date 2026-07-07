@@ -315,9 +315,14 @@ def main():
     write_diff_report(Path(args.report), diffs, struct_dir, view_dir)
     print(f"差异报告已保存: {args.report}")
 
-    out_of_sync = [d for d in diffs if d.status not in ("same", "orphan")]
+    # 仅将 missing / content_diff 视为未同步；newer 仅为 mtime 差异，source 集合一致
+    out_of_sync = [d for d in diffs if d.status in ("missing", "content_diff")]
+    newer_only = [d for d in diffs if d.status == "newer"]
     if out_of_sync:
         print(f"警告: {len(out_of_sync)} 个主题未同步")
+    elif newer_only:
+        print(f"提示: {len(newer_only)} 个主题 struct 文件 mtime 较新，但 source 集合一致")
+        print("所有主题已同步")
     else:
         print("所有主题已同步")
 
