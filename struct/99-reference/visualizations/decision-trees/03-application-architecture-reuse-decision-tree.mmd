@@ -1,0 +1,43 @@
+%% version: 2026-07-07
+%% title: 03 应用架构复用 — 架构模式决策树
+flowchart TD
+    Start([开始：选择应用架构模式]) --> Q1{团队规模？}
+    Q1 -->|≤ 20 人| Q2{部署频率？}
+    Q1 -->|20–100 人| Q3{数据一致性要求？}
+    Q1 -->|≥ 100 人| Q4{多语言需求？}
+
+    Q2 -->|每周 ≤ 2 次| A1[模块化单体 Modulith<br/>Spring Modulith / .NET Aspire]
+    Q2 -->|每日多次| A2[模块化单体 + 独立模块提取路径]
+
+    Q3 -->|强事务一致性| A3[模块化宏服务<br/>域内 ACID]
+    Q3 -->|最终一致可接受| Q5{合规要求？}
+
+    Q5 -->|高合规| A4[微服务 + 服务网格<br/>mTLS + 审计]
+    Q5 -->|标准合规| A5[EDA + 微服务<br/>事件源 + Saga]
+
+    Q4 -->|单语言主导| Q6{流量模式？}
+    Q4 -->|多语言必须| A6[服务网格 + 微服务<br/>Ambient / Cilium]
+
+    Q6 -->|突发/不可预测| A7[Serverless / FaaS<br/>+ WASM 组件]
+    Q6 -->|稳定高吞吐| A8[微服务 + EDA<br/>Kafka + 服务网格]
+
+    A1 --> Q7{未来是否需要独立扩缩容？}
+    Q7 -->|是| A9[保留模块到服务的提取路径]
+    Q7 -->|否| A10[保持模块化单体]
+
+    A4 --> Q8{已有遗留系统？}
+    Q8 -->|是| A11[绞杀者模式 Strangler Fig<br/>渐进迁移]
+    Q8 -->|否| A12[直接微服务化]
+
+    A7 --> Q9{是否为 AI 推理场景？}
+    Q9 -->|是| A13[Serverless + WASM<br/>跨语言组件复用]
+    Q9 -->|否| A14[标准 FaaS + 事件驱动]
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e8f5e9,stroke:#333
+    style A3 fill:#fff3e0,stroke:#333
+    style A4 fill:#f3e5f5,stroke:#333
+    style A5 fill:#e1f5fe,stroke:#333
+    style A6 fill:#ffebee,stroke:#333
+    style A9 fill:#c8e6c9,stroke:#333
+    style A11 fill:#fff9c4,stroke:#333

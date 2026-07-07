@@ -1,0 +1,47 @@
+%% version: 2026-07-07
+%% title: 02 业务架构复用 — 复用层次决策树
+flowchart TD
+    Start([开始：识别业务复用机会]) --> Q1{是否跨多个业务线/产品？}
+    Q1 -->|是| Q2{是否存在稳定业务成果？}
+    Q1 -->|否| Q3{是否跨多个流程共享？}
+
+    Q2 -->|是| A1[复用业务能力 Capability<br/>建立能力目录与 Owner]
+    Q2 -->|否| A2[暂时不复用<br/>或外包非核心能力]
+
+    Q3 -->|是| Q4{是否端到端价值交付？}
+    Q3 -->|否| Q5{是否为高频原子任务？}
+
+    Q4 -->|是| A3[复用价值流 Value Stream<br/>标准化阶段与接口契约]
+    Q4 -->|否| Q6{流程是否结构化？}
+
+    Q6 -->|是| A4[复用 BPMN 流程模板<br/>Call Activity / 流程片段]
+    Q6 -->|否| A5[复用 CMMN 案例模板<br/>知识工作者驱动]
+
+    Q5 -->|是| Q7{是否涉及复杂业务规则？}
+    Q5 -->|否| A6[自研或项目内复用]
+
+    Q7 -->|是| A7[复用 DMN 决策服务<br/>规则外部化]
+    Q7 -->|否| A8[复用业务服务 / API<br/>服务目录暴露]
+
+    A1 --> Q8{成本-收益是否可行？}
+    A3 --> Q8
+    A4 --> Q8
+    A5 --> Q8
+    A7 --> Q8
+    A8 --> Q8
+
+    Q8 -->|是| A9[纳入治理：版本 / SLA / KPI]
+    Q8 -->|否| A10[暂缓复用或缩小范围]
+
+    A9 --> Q9{是否持续满足需求？}
+    Q9 -->|是| A11[持续演进并监控复用率]
+    Q9 -->|否| A12[退役或重构]
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A3 fill:#e8f5e9,stroke:#333
+    style A4 fill:#fff3e0,stroke:#333
+    style A5 fill:#f3e5f5,stroke:#333
+    style A7 fill:#e1f5fe,stroke:#333
+    style A9 fill:#c8e6c9,stroke:#333
+    style A10 fill:#ffebee,stroke:#333
+    style A12 fill:#ffebee,stroke:#333

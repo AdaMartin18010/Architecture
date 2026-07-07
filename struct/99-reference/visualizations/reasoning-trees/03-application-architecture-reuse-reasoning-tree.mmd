@@ -1,0 +1,53 @@
+%% version: 2026-07-07
+%% title: 03 应用架构复用 — 定理推理树
+flowchart TD
+    Th32["定理 3.2 Data-Application Coupling<br/>数据-应用复用独立条件"]
+    M3["M.3 Hierarchy Non-Reduction<br/>层次不可约"]
+    S4["S.4 Abstraction Layering<br/>抽象分层"]
+    E3["E.3 Contextual Fitness<br/>上下文适配性"]
+    E2["E.2 Cost-Benefit Threshold<br/>成本-收益阈值"]
+
+    P1["结论 P1<br/>数据访问应通过抽象数据服务而非直接存储耦合"]
+    P1_reason["直接存储耦合使数据复用依赖具体应用实现"]
+
+    P2["结论 P2<br/>微服务的价值依赖独立部署与数据隔离"]
+    P2_reason["共享数据库导致分布式单体，失去独立演进能力"]
+
+    P3["结论 P3<br/>服务网格实现通信模式复用而业务零侵入"]
+    P3_reason["mTLS/熔断/重试下沉为平台能力"]
+
+    P4["结论 P4<br/>模块化单体是多数团队的 2026 务实默认"]
+    P4_reason["80% 微服务收益，20% 成本；保留提取路径"]
+
+    P5["结论 P5<br/>Serverless 适用于突发/稀疏工作负载"]
+    P5_reason["按调用计费 + 自动扩缩容匹配不确定流量"]
+
+    P6["结论 P6<br/>架构模式选择必须匹配团队沟通边界"]
+    P6_reason["康威定律：架构边界与组织沟通边界对齐"]
+
+    Th32 --> P1
+    P1 --> P1_reason
+    S4 --> P2
+    P2 --> P2_reason
+    S4 --> P3
+    P3 --> P3_reason
+    E2 --> P4
+    M3 --> P4
+    P4 --> P4_reason
+    E2 --> P5
+    E3 --> P5
+    P5 --> P5_reason
+    M3 --> P6
+    P6 --> P6_reason
+
+    style Th32 fill:#e3f2fd,stroke:#333
+    style M3 fill:#e1f5fe,stroke:#333
+    style S4 fill:#fff3e0,stroke:#333
+    style E3 fill:#f3e5f5,stroke:#333
+    style E2 fill:#f3e5f5,stroke:#333
+    style P1 fill:#e8f5e9,stroke:#333
+    style P2 fill:#e8f5e9,stroke:#333
+    style P3 fill:#e8f5e9,stroke:#333
+    style P4 fill:#e8f5e9,stroke:#333
+    style P5 fill:#e8f5e9,stroke:#333
+    style P6 fill:#e8f5e9,stroke:#333

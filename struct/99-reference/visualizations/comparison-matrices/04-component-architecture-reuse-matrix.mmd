@@ -1,0 +1,72 @@
+%% version: 2026-07-07
+%% title: 04 组件架构复用 — 语言生态对比矩阵
+flowchart LR
+    subgraph Dimensions["评估维度"]
+        D1["包管理器特性"]
+        D2["组件模型强度"]
+        D3["变性机制"]
+        D4["供应链安全"]
+        D5["生态规模"]
+    end
+
+    subgraph JVM["JVM"]
+        JVM_D1["4"]
+        JVM_D2["4 JPMS"]
+        JVM_D3["4 类型擦除"]
+        JVM_D4["4 GPG+SBOM"]
+        JVM_D5["5 1000万+"]
+    end
+
+    subgraph Node["Node.js"]
+        Node_D1["4 pnpm 严格隔离"]
+        Node_D2["3 文件边界"]
+        Node_D3["3 TS 擦除"]
+        Node_D4["3 攻击面最大"]
+        Node_D5["5 400万+"]
+    end
+
+    subgraph Rust["Rust"]
+        Rust_D1["5 PubGrub"]
+        Rust_D2["5 Trait+所有权"]
+        Rust_D3["5 单态化"]
+        Rust_D4["4 Trusted Publishing"]
+        Rust_D5["3 ~17万"]
+    end
+
+    subgraph Go["Go"]
+        Go_D1["4 MVS 线性"]
+        Go_D2["4 隐式接口"]
+        Go_D3["3 泛型保守"]
+        Go_D4["4 sumdb+govulncheck"]
+        Go_D5["3 ~70万"]
+    end
+
+    subgraph Python["Python"]
+        Py_D1["4 uv 飞跃"]
+        Py_D2["3 Protocol"]
+        Py_D3["3 运行时动态"]
+        Py_D4["4 Sigstore+冷却期"]
+        Py_D5["5 50万+"]
+    end
+
+    subgraph DotNet[".NET"]
+        Net_D1["4 NuGetSolver"]
+        Net_D2["4 Assembly"]
+        Net_D3["4 Source Generators"]
+        Net_D4["4 X.509 强制"]
+        Net_D5["4 40万+"]
+    end
+
+    D1 --> JVM_D1
+    D1 --> Node_D1
+    D1 --> Rust_D1
+    D1 --> Go_D1
+    D1 --> Py_D1
+    D1 --> Net_D1
+
+    style JVM_D1 fill:#e3f2fd,stroke:#333
+    style Node_D1 fill:#e8f5e9,stroke:#333
+    style Rust_D1 fill:#fff3e0,stroke:#333
+    style Go_D1 fill:#f3e5f5,stroke:#333
+    style Py_D1 fill:#e1f5fe,stroke:#333
+    style Net_D1 fill:#ffebee,stroke:#333

@@ -1,0 +1,40 @@
+%% version: 2026-07-07
+%% title: 07 形式化验证公理→定理推理树
+graph TD
+    F1["公理 F.1 形式化验证信任传递<br/>C 证明 P，系统继承 P"]
+    R1["公理 R.1 Rust 所有权信任传递<br/>rustc 检查保证内存安全 / 无竞争"]
+    R2["公理 R.2 Trait 契约完备性<br/>语法满足 ≠ 语义满足"]
+    R3["公理 R.3 Unsafe 边界<br/>unsafe 代码安全保证降级"]
+    C1["公理 C.1 Cargo 统一版本安全性<br/>单一版本不变性"]
+    S2["公理 S.2 组合保持<br/>已验证组件组合保持性质"]
+
+    L1["引理 1：编译期保证可被消费方继承"]
+    L2["引理 2：unsafe / FFI 边界需人工/形式化审查"]
+    L3["引理 3：依赖图统一版本消除多版本冲突"]
+
+    T1["定理 7.1：满足前置条件的复用组件可传递已证明性质"]
+    T2["定理 7.2：Rust safe 组件在 safe 边界内保证内存安全与数据竞争自由"]
+    T3["定理 7.3：Cargo 统一版本策略避免静默多版本冲突"]
+
+    F1 --> L1
+    S2 --> L1
+    R1 --> L1
+    L1 --> T1
+
+    R2 --> L2
+    R3 --> L2
+    L2 --> T2
+    R1 --> T2
+
+    C1 --> L3
+    L3 --> T3
+
+    style F1 fill:#e3f2fd
+    style R1 fill:#e3f2fd
+    style R2 fill:#e3f2fd
+    style R3 fill:#e3f2fd
+    style C1 fill:#e3f2fd
+    style S2 fill:#e3f2fd
+    style T1 fill:#e8f5e9
+    style T2 fill:#e8f5e9
+    style T3 fill:#e8f5e9

@@ -121,6 +121,7 @@ def extract_axioms(root: Path) -> Tuple[Dict[str, AxiomIssue], Set[str]]:
 
 HISTORICAL_CONTEXT_RE = re.compile(
     r"反例|历史|旧版|旧标准|前一版本|前版|前身|升级|演进|对照|对比|timeline|roadmap|frontier|tracking|status|update|alignment|mapping|"
+    r"发布|采纳|系列|版本线|version line|lifecycle|生命周期|"
     r"deprecated|obsolete|取代|替代|previously|former|superseded|withdrawn|legacy|replaced by|first edition|prior|previous|edition|"
     r"evolution|history of|不存在.*官方版本|非官方|预期更新|草案|draft|新版本动态|后续版本规划",
     re.IGNORECASE,
@@ -150,8 +151,8 @@ def extract_standard_version_conflicts(root: Path) -> List[StandardVersionConfli
                 # 统一 ISO/IEEE 与 ISO/IEC/IEEE 的写法差异（仅用于冲突检测）
                 std = re.sub(r"^ISO/IEC/IEEE\s+", "ISO/IEC/IEEE ", std)
                 year = m.group(2)
-                # 取前后最多 5 行作为上下文，判断是否为历史/反例/演进语境
-                ctx_lines = lines[max(0, lineno - 6):lineno + 5]
+                # 取前后最多 10 行作为上下文，判断是否为历史/反例/演进语境
+                ctx_lines = lines[max(0, lineno - 11):lineno + 10]
                 context = "\n".join(ctx_lines)
                 is_historical = bool(HISTORICAL_CONTEXT_RE.search(context))
                 refs[std][year].append((rel, lineno, is_historical))
@@ -160,13 +161,19 @@ def extract_standard_version_conflicts(root: Path) -> List[StandardVersionConfli
     for std, versions in refs.items():
         if len(versions) <= 1:
             continue
-        # 按文件聚合版本，忽略纯历史语境中的版本
-        per_file_versions: Dict[str, Set[str]] = defaultdict(set)
+        # 按文件聚合：分别记录历史语境版本与非历史语境版本
+        per_file_non_historical: Dict[str, Set[str]] = defaultdict(set)
+        per_file_all: Dict[str, Set[str]] = defaultdict(set)
         for version, locs in versions.items():
             for file, line, is_historical in locs:
+                per_file_all[file].add(version)
                 if not is_historical:
-                    per_file_versions[file].add(version)
-        intra_file_conflicts = any(len(vs) > 1 for vs in per_file_versions.values())
+                    per_file_non_historical[file].add(version)
+        # 冲突定义：同一文件内存在多个版本，且至少两个版本在非历史语境中出现过
+        intra_file_conflicts = any(
+            len(per_file_non_historical.get(file, set())) > 1
+            for file in per_file_all
+        )
         if intra_file_conflicts:
             # 报告中仅保留非历史语境的位置，便于定位
             filtered_versions: Dict[str, List[Tuple[str, int]]] = defaultdict(list)
@@ -216,6 +223,9 @@ def extract_term_conflicts(root: Path, glossary_path: Path) -> List[TermConflict
     for md in files:
         rel = md.relative_to(root).as_posix()
         if "glossary" in rel:
+            continue
+        # 跳过变更日志与外部链接索引，避免与正文标题的正常重复被误报
+        if "CHANGELOG" in rel or "external-links/authoritative-sources" in rel:
             continue
         text = md.read_text(encoding="utf-8")
         for term in glossary_terms:
@@ -330,8 +340,8 @@ def main():
     parser.add_argument(
         "--report",
         metavar="PATH",
-        default="cross-index-report.md",
-        help="输出 Markdown 报告路径（默认 cross-index-report.md）",
+        default="reports/cross-index-report.md",
+        help="输出 Markdown 报告路径（默认 reports/cross-index-report.md）",
     )
     args = parser.parse_args()
 

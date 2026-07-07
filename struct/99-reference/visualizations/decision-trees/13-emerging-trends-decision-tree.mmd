@@ -1,0 +1,52 @@
+%% version: 2026-07-07
+%% title: 13 新兴趋势 — 场景决策树
+%% **定义**：决策树判断何时采用平台工程、模块化单体、WASM 组件、绿色软件、RegTech AI 与 Rust 生态等新兴趋势。
+%% **示例**：多团队规模化组织重复需求多，采用平台工程 IDP 提供 Golden Path。
+%% **反例**：平台团队强制所有团队使用不灵活模板，开发者绕过平台自行部署，形成影子基础设施。
+%% **权威来源**：CNCF Platforms White Paper, Spring Modulith, WebAssembly Component Model, Green Software Foundation SCI, 核查日期：2026-07-07
+flowchart TD
+    Start([开始：评估新兴趋势]) --> Q1{组织是否多团队且重复需求多？}
+    Q1 -->|否| Adopt1[采用轻量模板或库复用<br/>暂缓平台工程]
+    Q1 -->|是| Q2{平台团队是否有产品化运营能力？}
+
+    Q2 -->|否| Reject1[拒绝：平台团队闭门造车将导致影子基础设施]
+    Q2 -->|是| Adopt2[采用平台工程 / IDP<br/>Golden Path 与开发者体验]
+
+    Adopt2 --> Q3{架构是否处于演进期且团队规模中小？}
+    Q3 -->|是| Adopt3[采用模块化单体<br/>保持模块边界与单体部署]
+    Q3 -->|否| Q4{是否需要跨语言二进制复用？}
+
+    Q4 -->|是| Q5{是否为 I/O 密集型或强 OS 依赖？}
+    Q4 -->|否| Q6{是否有 ESG / SBTi 碳排目标？}
+
+    Q5 -->|是| Reject2[拒绝：WASM 组件不适合 I/O 密集型场景]
+    Q5 -->|否| Adopt4[采用 WASM 组件模型<br/>跨语言二进制复用]
+
+    Q6 -->|是| Adopt5[采用绿色软件工程<br/>SCI 度量与碳感知架构]
+    Q6 -->|否| Q7{监管规则是否频繁变化且需自动审计？}
+
+    Q7 -->|是| Adopt6[采用 RegTech AI<br/>可解释合规自动化]
+    Q7 -->|否| Q8{系统是否内存安全关键？}
+
+    Q8 -->|是| Adopt7[采用 Rust 生态<br/>所有权系统保障安全]
+    Q8 -->|否| Adopt8[保持现有成熟技术栈<br/>持续评估趋势]
+
+    style Start fill:#e3f2fd,stroke:#333
+    style Q1 fill:#fff3e0,stroke:#333
+    style Q2 fill:#fff3e0,stroke:#333
+    style Q3 fill:#fff3e0,stroke:#333
+    style Q4 fill:#fff3e0,stroke:#333
+    style Q5 fill:#fff3e0,stroke:#333
+    style Q6 fill:#fff3e0,stroke:#333
+    style Q7 fill:#fff3e0,stroke:#333
+    style Q8 fill:#fff3e0,stroke:#333
+    style Reject1 fill:#ffebee,stroke:#333
+    style Reject2 fill:#ffebee,stroke:#333
+    style Adopt1 fill:#e8f5e9,stroke:#333
+    style Adopt2 fill:#e8f5e9,stroke:#333
+    style Adopt3 fill:#e8f5e9,stroke:#333
+    style Adopt4 fill:#e8f5e9,stroke:#333
+    style Adopt5 fill:#e8f5e9,stroke:#333
+    style Adopt6 fill:#e8f5e9,stroke:#333
+    style Adopt7 fill:#e8f5e9,stroke:#333
+    style Adopt8 fill:#e8f5e9,stroke:#333

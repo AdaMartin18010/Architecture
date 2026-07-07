@@ -1,0 +1,38 @@
+%% version: 2026-07-07
+%% title: 09 复用价值量化公理→定理推理树
+graph TD
+    A1["公理 V.1 复用收益取决于适配度<br/>ESLOC = ASLOC × AAM"]
+    A2["定理 V.T1 ROI 阈值<br/>AAF < 0.7 是 ROI 为正必要条件"]
+    A3["定理 V.T2 盈亏平衡<br/>N* = C_initial / (S_build - S_reuse)"]
+    A4["NPV 决策规则<br/>NPV > 0 创造价值"]
+    A5["实物期权<br/>管理灵活性有价值"]
+    A6["碳预算约束<br/>Green ROI = (收益 + 碳减排 - 碳增) / 投资"]
+
+    L1["引理 1：高 AAF 使复用成本逼近或超过新开发"]
+    L2["引理 2：使用次数不足无法摊薄初始投资"]
+    L3["引理 3：忽视维护成本会低估总成本"]
+
+    T1["定理 V.3：经济可行复用需同时满足 AAF < 0.7 且 N > N*"]
+    T2["定理 V.4：综合 NPV / 期权 / 碳维度才是最优复用决策"]
+
+    A1 --> L1
+    A2 --> L1
+    L1 --> T1
+
+    A3 --> L2
+    L2 --> T1
+
+    A4 --> T2
+    A5 --> T2
+    A6 --> T2
+    L3 --> T2
+    T1 --> T2
+
+    style A1 fill:#e3f2fd
+    style A2 fill:#e3f2fd
+    style A3 fill:#e3f2fd
+    style A4 fill:#e3f2fd
+    style A5 fill:#e3f2fd
+    style A6 fill:#e3f2fd
+    style T1 fill:#e8f5e9
+    style T2 fill:#e8f5e9

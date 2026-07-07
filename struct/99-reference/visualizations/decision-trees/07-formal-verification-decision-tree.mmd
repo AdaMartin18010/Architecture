@@ -1,0 +1,32 @@
+%% version: 2026-07-07
+%% title: 07 形式化验证方法采纳决策树
+flowchart TD
+    A[开始：评估复用组件正确性保证] --> B{是否为安全/业务关键资产？}
+    B -->|否| C[采用测试 + 静态分析]
+    B -->|是| D{失效后果是否不可逆？}
+
+    D -->|否| E{状态空间是否有限？}
+    D -->|是| F{是否需要最高数学置信度？}
+
+    E -->|是| G[采用 TLA+ / Alloy 模型检验]
+    E -->|否| H[采用 Rust 类型系统 / 契约测试]
+
+    F -->|是| I[采用 Coq / Isabelle 定理证明]
+    F -->|否| J{是否需要 DO-178C 等认证？}
+
+    J -->|是| K[采用 SPARK/Ada 或 Event-B]
+    J -->|否| L[采用 Rust + Kani/Miri 增强]
+
+    G --> M{模型与代码是否可追踪？}
+    H --> M
+    I --> M
+    K --> M
+    L --> M
+
+    M -->|是| N[纳入形式化证据元数据并复用]
+    M -->|否| O[补充追踪审查或降级为测试]
+
+    style A fill:#e3f2fd
+    style C fill:#fff3e0
+    style N fill:#e8f5e9
+    style O fill:#ffebee

@@ -1,0 +1,45 @@
+%% version: 2026-07-07
+%% title: 12 AI 原生复用 — 场景决策树
+%% **定义**：决策树判断何时采用 MCP、A2A、概率契约、RAG、人工复核与监控校准等 AI 原生复用模式。
+%% **示例**：当多个 Agent 需要共享数据库查询能力时，采用 MCP Tool Server 并统一 Schema。
+%% **反例**：Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制，工具变更后调用方失效。
+%% **权威来源**：MCP Specification, A2A Protocol, NIST AI RMF, OWASP LLM Top 10, 核查日期：2026-07-07
+flowchart TD
+    Start([开始：引入 AI 原生能力]) --> Q1{多个 Agent 是否需要共享同一工具？}
+    Q1 -->|否| Reject1[拒绝：保留原生 API，但需自行维护集成]
+    Q1 -->|是| Adopt1[采用 MCP Tool Server<br/>统一 Schema、权限与版本]
+
+    Adopt1 --> Q2{Agent 是否需要跨域协作？}
+    Q2 -->|否| Q3{AI 输出是否影响关键业务决策？}
+    Q2 -->|是| Adopt2[采用 A2A 协议<br/>能力发现与任务委托]
+
+    Adopt2 --> Q3
+    Q3 -->|是| Q4{能否定义可接受的质量边界？}
+    Q3 -->|否| Adopt3[采用标准 RAG / Prompt 模板<br/>常规监控即可]
+
+    Q4 -->|否| Reject2[拒绝：在无法量化风险前不接入关键决策]
+    Q4 -->|是| Adopt4[采用概率契约<br/>准确率/延迟/成本边界]
+
+    Adopt4 --> Q5{是否用于高影响/合规场景？}
+    Q5 -->|是| Adopt5[采用 Guardrails + 人工复核<br/>保留人在回路]
+    Q5 -->|否| Q6{模型是否存在漂移风险？}
+
+    Q6 -->|是| Adopt6[采用持续校准与漂移监控<br/>触发再训练/重校准]
+    Q6 -->|否| Adopt7[采用自动化 AI 服务<br/>按契约执行]
+
+    style Start fill:#e3f2fd,stroke:#333
+    style Q1 fill:#fff3e0,stroke:#333
+    style Q2 fill:#fff3e0,stroke:#333
+    style Q3 fill:#fff3e0,stroke:#333
+    style Q4 fill:#fff3e0,stroke:#333
+    style Q5 fill:#fff3e0,stroke:#333
+    style Q6 fill:#fff3e0,stroke:#333
+    style Reject1 fill:#ffebee,stroke:#333
+    style Reject2 fill:#ffebee,stroke:#333
+    style Adopt1 fill:#e8f5e9,stroke:#333
+    style Adopt2 fill:#e8f5e9,stroke:#333
+    style Adopt3 fill:#e8f5e9,stroke:#333
+    style Adopt4 fill:#e8f5e9,stroke:#333
+    style Adopt5 fill:#e8f5e9,stroke:#333
+    style Adopt6 fill:#e8f5e9,stroke:#333
+    style Adopt7 fill:#e8f5e9,stroke:#333

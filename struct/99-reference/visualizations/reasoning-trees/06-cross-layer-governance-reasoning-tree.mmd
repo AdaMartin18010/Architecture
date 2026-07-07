@@ -1,0 +1,36 @@
+%% version: 2026-07-07
+%% title: 06 跨层复用治理公理→定理推理树
+graph TD
+    A1["公理 6.1 治理必要性<br/>无治理的复用退化为克隆"]
+    A2["层次一致性原则<br/>四层变更须对齐"]
+    A3["职责明确性原则<br/>每个资产须明确 Owner"]
+    A4["流程闭环性原则<br/>识别 → 获取 → 适配 → 集成 → 演化 → 退役"]
+    A5["质量可控性原则<br/>每层均有质量门禁"]
+    A6["价值可度量性原则<br/>ROI / TTMR / RCSR 可量化"]
+
+    L1["引理 1：局部优化导致全局次优化"]
+    L2["引理 2：无 Owner 资产无法演进"]
+    L3["引理 3：无质量门导致缺陷传播"]
+
+    T1["定理 6.1：跨层治理使复用从自发行为上升为组织能力"]
+    T2["定理 6.2：度量驱动的治理闭环可持续优化复用组合"]
+
+    A1 --> L1
+    A2 --> L1
+    A3 --> L2
+    A5 --> L3
+    A4 --> T1
+    L1 --> T1
+    L2 --> T1
+    A6 --> L3
+    L3 --> T2
+    T1 --> T2
+
+    style A1 fill:#e3f2fd
+    style A2 fill:#e3f2fd
+    style A3 fill:#e3f2fd
+    style A4 fill:#e3f2fd
+    style A5 fill:#e3f2fd
+    style A6 fill:#e3f2fd
+    style T1 fill:#e8f5e9
+    style T2 fill:#e8f5e9

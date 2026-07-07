@@ -1,0 +1,53 @@
+%% version: 2026-07-07
+%% title: 05 功能架构复用 — 知识体系思维导图
+mindmap
+  root((05 功能架构复用<br/>Functional Architecture Reuse))
+    五层复用粒度
+      Level 1 算法/数据结构
+        STL / Rust std
+        NumPy / SciPy
+      Level 2 函数/方法
+        纯函数
+        工具函数库
+        API 端点
+      Level 3 业务规则/策略
+        Drools
+        OPA
+        DMN 决策表
+      Level 4 工作流/编排
+        Temporal
+        Camunda
+        Airflow
+        Saga
+      Level 5 AI/LLM 功能
+        Prompt 模板
+        RAG 管道
+        Agent 技能
+        MCP Tool
+    协议与接口
+      MCP 2025-11-25
+        Tool / Resource / Prompt
+        Sampling
+        Streamable HTTP
+      A2A v1.0
+        Agent Card
+        Task / Artifact
+        Agent 协作
+      REST / OpenAPI
+      gRPC / Protobuf
+      Event / Message
+    质量保障
+      概率契约
+        Conformal Prediction
+        确定性边界
+      单元测试
+      契约测试
+      性能基准
+    运行时
+      LLM 推理引擎
+      编排引擎
+      函数运行时
+        WebAssembly / V8
+    关键定理
+      定理 5.2 AI Function Non-Determinism
+        AI 复用受温度/模型漂移制约

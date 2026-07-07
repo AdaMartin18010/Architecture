@@ -1,0 +1,52 @@
+%% version: 2026-07-07
+%% title: 05 功能架构复用 — 定理推理树
+flowchart TD
+    Th52["定理 5.2 AI Function Non-Determinism<br/>AI 功能复用受概率性制约"]
+    M1["M.1 Architecture-Reuse Duality<br/>复用即约束传递"]
+    S2["S.2 Compositionality<br/>组合性"]
+    E2["E.2 Cost-Benefit Threshold<br/>成本-收益阈值"]
+    E3["E.3 Contextual Fitness<br/>上下文适配性"]
+
+    P1["结论 P1<br/>AI 功能契约必须包含确定性边界"]
+    P1_reason["例如 P(正确性) ≥ 0.95 或置信区间"]
+
+    P2["结论 P2<br/>温度参数与模型版本是复用约束"]
+    P2_reason["相同 Prompt 在不同温度下输出分布不同"]
+
+    P3["结论 P3<br/>确定性计算不应委托给 LLM"]
+    P3_reason["概率性输出不适合需要精确结果的场景"]
+
+    P4["结论 P4<br/>MCP Tool 是跨 Agent 复用功能的标准单元"]
+    P4_reason["Schema + Capability Negotiation 显式传递约束"]
+
+    P5["结论 P5<br/>工作流复用需保证组合语义正确"]
+    P5_reason["S.2：局部满足规约 + 兼容接口 → 组合满足弱化规约"]
+
+    P6["结论 P6<br/>功能复用 ROI 要求 AAF < 0.7"]
+    P6_reason["COCOMO II 改编调整因子阈值"]
+
+    Th52 --> P1
+    P1 --> P1_reason
+    Th52 --> P2
+    P2 --> P2_reason
+    P1 --> P3
+    P3 --> P3_reason
+    M1 --> P4
+    P4 --> P4_reason
+    S2 --> P5
+    P5 --> P5_reason
+    E2 --> P6
+    E3 --> P6
+    P6 --> P6_reason
+
+    style Th52 fill:#e3f2fd,stroke:#333
+    style M1 fill:#e1f5fe,stroke:#333
+    style S2 fill:#fff3e0,stroke:#333
+    style E2 fill:#f3e5f5,stroke:#333
+    style E3 fill:#f3e5f5,stroke:#333
+    style P1 fill:#e8f5e9,stroke:#333
+    style P2 fill:#e8f5e9,stroke:#333
+    style P3 fill:#e8f5e9,stroke:#333
+    style P4 fill:#e8f5e9,stroke:#333
+    style P5 fill:#e8f5e9,stroke:#333
+    style P6 fill:#e8f5e9,stroke:#333

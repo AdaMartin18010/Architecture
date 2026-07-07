@@ -1,0 +1,44 @@
+%% version: 2026-07-07
+%% title: 01 元模型与标准对齐 — 标准选用决策树
+flowchart TD
+    Start([开始：选择架构/复用标准]) --> Q1{需要描述系统架构？}
+    Q1 -->|是| Q2{关注抽象元模型还是开发方法？}
+    Q1 -->|否| Q3{关注复用资产/过程？}
+
+    Q2 -->|元模型| A1[采用 ISO/IEC/IEEE 42010:2022<br/>定义视点/视图/对应规则]
+    Q2 -->|开发方法| A2[采用 TOGAF 10 ADM<br/>Phase A-H 与企业连续体]
+
+    Q3 -->|是| Q4{复用粒度？}
+    Q3 -->|否| A3[参考 SWEBOK V4<br/>知识领域对齐]
+
+    Q4 -->|企业级产品线| A4[采用 ISO/IEC 26550:2015<br/>领域工程+应用工程]
+    Q4 -->|可复用资产包| A5[采用 OMG RAS v2.2<br/>Classification/Solution/Usage]
+    Q4 -->|生命周期过程| A6[采用 IEEE 1517-2010<br/>复用过程与复用库]
+
+    A1 --> Q5{需要可视化建模语言？}
+    A2 --> Q6{需要跨层一致性视图？}
+
+    Q5 -->|是| A7[采用 ArchiMate<br/>六层元模型与视点]
+    Q5 -->|否| A8[仅用 ISO 42010 文本元模型]
+
+    Q6 -->|是| A7
+    Q6 -->|否| A9[TOGAF 内容框架足矣]
+
+    A4 --> Q7{需要质量属性评估？}
+    Q7 -->|是| A10[结合 ISO/IEC 25010:2023]
+    Q7 -->|否| A11[聚焦 26550 PLE 过程]
+
+    A5 --> Q8{需要软件资产长期可持续？}
+    Q8 -->|是| A12[结合 FAIR4RS 原则]
+    Q8 -->|否| A13[RAS 资产描述即可]
+
+    A1 --> Q9{需要形式化约束？}
+    Q9 -->|是| A14[引入形式化公理体系<br/>M/E/S 公理]
+    Q9 -->|否| A1
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e8f5e9,stroke:#333
+    style A4 fill:#fff3e0,stroke:#333
+    style A5 fill:#f3e5f5,stroke:#333
+    style A7 fill:#e1f5fe,stroke:#333
+    style A14 fill:#ffebee,stroke:#333

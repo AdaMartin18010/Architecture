@@ -1,0 +1,44 @@
+%% version: 2026-07-07
+%% title: 03 应用架构复用 — 知识体系思维导图
+mindmap
+  root((03 应用架构复用<br/>Application Architecture Reuse))
+    四层复用本体
+      Level 1 应用系统复用
+        COTS / GOTS / SaaS
+        多租户架构
+      Level 2 应用组件复用
+        内部开源
+        组件库
+        共享服务
+      Level 3 应用服务复用
+        API 网关
+        服务网格
+        事件总线
+      Level 4 数据架构复用
+        MDM 主数据
+        数据网格
+        数据产品
+    云原生架构模式
+      单体 Monolith
+      模块化单体 Modulith
+      SOA / ESB
+      微服务 Microservices
+      微前端 Micro-frontend
+      Serverless / FaaS
+      服务网格 Service Mesh
+      事件驱动架构 EDA
+      模块化宏服务
+    技术支撑
+      Kubernetes
+      Istio / Envoy / Cilium
+      Gateway API
+      Dapr
+      Temporal / Cadence
+      Spring Modulith
+    关键定理
+      定理 3.2 Data-Application Coupling
+        数据复用独立需抽象数据服务
+    反模式
+      分布式单体
+      过早微服务化
+      共享数据库

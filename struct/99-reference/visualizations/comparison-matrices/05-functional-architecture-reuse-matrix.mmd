@@ -1,0 +1,72 @@
+%% version: 2026-07-07
+%% title: 05 功能架构复用 — 复用机制对比矩阵
+flowchart LR
+    subgraph Dimensions["评估维度"]
+        D1["复用粒度"]
+        D2["确定性"]
+        D3["变更频率"]
+        D4["跨语言"]
+        D5["治理复杂度"]
+    end
+
+    subgraph Algorithm["算法/数据结构"]
+        Alg_D1["L1"]
+        Alg_D2["高"]
+        Alg_D3["极低"]
+        Alg_D4["依赖绑定"]
+        Alg_D5["低"]
+    end
+
+    subgraph Function["函数/方法"]
+        Func_D1["L2"]
+        Func_D2["高"]
+        Func_D3["低"]
+        Func_D4["通过接口"]
+        Func_D5["低"]
+    end
+
+    subgraph Rule["业务规则/策略"]
+        Rule_D1["L3"]
+        Rule_D2["高"]
+        Rule_D3["中"]
+        Rule_D4["规则引擎"]
+        Rule_D5["中"]
+    end
+
+    subgraph Workflow["工作流/编排"]
+        WF_D1["L4"]
+        WF_D2["高"]
+        WF_D3["中-高"]
+        WF_D4["引擎绑定"]
+        WF_D5["高"]
+    end
+
+    subgraph AI["AI/LLM 功能"]
+        AI_D1["L5"]
+        AI_D2["概率性"]
+        AI_D3["高"]
+        AI_D4["MCP/A2A"]
+        AI_D5["高"]
+    end
+
+    subgraph MCP["MCP Tool"]
+        MCP_D1["函数级"]
+        MCP_D2["可声明边界"]
+        MCP_D3["中"]
+        MCP_D4["是"]
+        MCP_D5["中"]
+    end
+
+    D1 --> Alg_D1
+    D1 --> Func_D1
+    D1 --> Rule_D1
+    D1 --> WF_D1
+    D1 --> AI_D1
+    D1 --> MCP_D1
+
+    style Alg_D1 fill:#e3f2fd,stroke:#333
+    style Func_D1 fill:#e8f5e9,stroke:#333
+    style Rule_D1 fill:#fff3e0,stroke:#333
+    style WF_D1 fill:#f3e5f5,stroke:#333
+    style AI_D1 fill:#ffebee,stroke:#333
+    style MCP_D1 fill:#e1f5fe,stroke:#333

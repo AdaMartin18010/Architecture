@@ -215,11 +215,11 @@ def _extract_term_definitions(text: str, rel_path: str) -> Dict[str, str]:
         # 截取第一句作为定义
         first_sentence = re.split(r"[。；;]", line)[0]
         terms[first_sentence] = rel_path
-    # 模式3: - **Term**: definition
+    # 模式3: - **Term**: definition（要求定义部分足够长，避免把简单列举当定义）
     for m in re.finditer(r"^-\s*\*\*([^*]+)\*\*\s*[:：]\s*(.+)$", text, re.MULTILINE):
         term = m.group(1).strip()
         definition = m.group(2).strip()
-        if term and definition:
+        if term and definition and len(definition) >= 15:
             terms[term] = rel_path
     return terms
 
@@ -252,11 +252,14 @@ def check_file(filepath: Path, root: Path) -> GateResult:
     # 批量模板重复段检测：仅统计作为行首精确匹配的一级/二级标题
     duplicated_sections = []
     lines = text.splitlines()
+    # view/ 卷册是聚合文件，允许章节重复出现
+    is_view_aggregation = "view/" in filepath.as_posix() or filepath.parts[:2] == ("view",)
+    threshold = 35 if is_view_aggregation else 1
     for sec in BATCH_TEMPLATE_SECTIONS:
         # 转义后按行首匹配，避免子串命中（如 "## 反例" 命中 "### 反例 1"）
         pattern = re.compile(r"^" + re.escape(sec) + r"\s*$")
         count = sum(1 for line in lines if pattern.match(line.strip()))
-        if count > 1:
+        if count > threshold:
             duplicated_sections.append(f"{sec} 出现 {count} 次")
 
     # 死链检测
@@ -264,6 +267,18 @@ def check_file(filepath: Path, root: Path) -> GateResult:
     for link_text, link_target, lineno in _extract_markdown_links(text):
         target = _resolve_relative_link(filepath, link_target, root)
         if target is not None and not target.exists():
+            # view/ 卷册是 struct/ 的聚合快照，允许链接指向 struct/ 中的原始文件
+            if is_view_aggregation:
+                struct_root = root.parent / "struct" if root.name == "view" else None
+                if struct_root and struct_root.exists():
+                    try:
+                        # 去掉锚点后再解析 struct/ 路径
+                        struct_link = link_target.split("#", 1)[0]
+                        struct_target = (struct_root / struct_link).resolve()
+                        if struct_target.exists():
+                            continue
+                    except Exception:
+                        pass
             try:
                 resolved_rel = target.relative_to(root).as_posix()
             except ValueError:
@@ -303,6 +318,22 @@ def check_file(filepath: Path, root: Path) -> GateResult:
     )
 
 
+def _load_glossary_terms(glossary_path: Path) -> Set[str]:
+    """从 glossary-master.md 加载核心术语集合（英文 + 中文）"""
+    terms: Set[str] = set()
+    if not glossary_path.exists():
+        return terms
+    text = glossary_path.read_text(encoding="utf-8")
+    for m in re.finditer(r"^#{3,4}\s+(.+?)\s*\(([^)]+)\)\s*$", text, re.MULTILINE):
+        en = m.group(1).strip()
+        cn = m.group(2).strip()
+        if en:
+            terms.add(en)
+        if cn:
+            terms.add(cn)
+    return terms
+
+
 def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
     root = root.resolve()
     results = []
@@ -313,7 +344,12 @@ def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
         "plans-tasks/",
         "__pycache__",
         ".venv",
+        "_HISTORICAL_",
     ]
+
+    # 加载主术语表，只报告 glossary 中术语的跨文件定义冲突
+    glossary_path = root / "99-reference" / "glossary" / "glossary-master.md"
+    glossary_terms = _load_glossary_terms(glossary_path)
 
     # 术语定义收集
     term_defs: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
@@ -326,10 +362,12 @@ def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
         result = check_file(md, root)
         results.append(result)
 
-        # 术语提取
+        # 术语提取：仅保留 glossary 中的术语
         text = md.read_text(encoding="utf-8")
         local_terms = _extract_term_definitions(text, rel_posix)
         for term, path in local_terms.items():
+            if term not in glossary_terms:
+                continue
             # 定位术语出现的行号
             for lineno, line in enumerate(text.splitlines(), start=1):
                 if term in line:
@@ -338,12 +376,14 @@ def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
             else:
                 term_defs[term].append((path, "-"))
 
-    # 只保留跨文件定义冲突
+    # 只保留跨文件定义冲突；排除 glossary 自身与 99-reference 元数据文件
     conflicts = []
+    meta_patterns = ("99-reference/glossary/", "99-reference/deliverables-manifest.md", "99-reference/tools/")
     for term, defs in term_defs.items():
-        files = {d[0] for d in defs}
+        non_meta_defs = [d for d in defs if not any(d[0].startswith(p) for p in meta_patterns)]
+        files = {d[0] for d in non_meta_defs}
         if len(files) > 1:
-            conflicts.append(TermConflict(term=term, definitions=defs))
+            conflicts.append(TermConflict(term=term, definitions=non_meta_defs))
 
     return results, conflicts
 

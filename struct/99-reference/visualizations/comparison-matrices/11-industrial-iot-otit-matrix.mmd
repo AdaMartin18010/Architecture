@@ -1,0 +1,57 @@
+%% version: 2026-07-07
+%% title: 11 工业 IoT/OT-IT 融合 — 多维对比矩阵
+%% **定义**：OT-IT 融合复用技术对比矩阵从确定性、互操作性、安全认证、生态成熟度四个维度比较关键标准与技术。
+%% **示例**：OPC UA FX 在跨厂商互操作性维度得“高”，TSN 在确定性维度得“高”。
+%% **反例**：忽视 TSN 的门控配置而直接复用标准以太网，无法满足 1ms 控制周期。
+%% **权威来源**：ISA-95 / IEC 62264, OPC UA FX, IEEE 802.1 TSN, IEC 63278 AAS, IEC 61508, PLCopen, 核查日期：2026-07-07
+flowchart LR
+    subgraph "评估维度"
+        D1[确定性 / 实时性]
+        D2[跨厂商互操作性]
+        D3[安全 / 认证完备度]
+        D4[生态成熟度]
+    end
+
+    subgraph "工业标准与技术"
+        ISA95["ISA-95 / IEC 62264"]
+        OPCUA["OPC UA FX"]
+        TSN["TSN / IEC 60802"]
+        AAS["AAS / IEC 63278"]
+        IEC61508["IEC 61508"]
+        PLCOPEN["PLCopen Motion"]
+    end
+
+    ISA95 -->|高| D1
+    ISA95 -->|中| D2
+    ISA95 -->|中| D3
+    ISA95 -->|高| D4
+
+    OPCUA -->|高| D1
+    OPCUA -->|高| D2
+    OPCUA -->|中| D3
+    OPCUA -->|中| D4
+
+    TSN -->|高| D1
+    TSN -->|中| D2
+    TSN -->|低| D3
+    TSN -->|中| D4
+
+    AAS -->|中| D1
+    AAS -->|高| D2
+    AAS -->|中| D3
+    AAS -->|中| D4
+
+    IEC61508 -->|中| D1
+    IEC61508 -->|低| D2
+    IEC61508 -->|高| D3
+    IEC61508 -->|高| D4
+
+    PLCOPEN -->|高| D1
+    PLCOPEN -->|高| D2
+    PLCOPEN -->|中| D3
+    PLCOPEN -->|高| D4
+
+    style D1 fill:#e3f2fd,stroke:#333
+    style D2 fill:#e3f2fd,stroke:#333
+    style D3 fill:#fff3e0,stroke:#333
+    style D4 fill:#e8f5e9,stroke:#333

@@ -1,0 +1,45 @@
+%% version: 2026-07-07
+%% title: 12 AI 原生复用 — 主题思维导图
+%% **定义**：AI 原生复用是在大模型与 Agent 系统中，通过 MCP、A2A 与概率契约将提示模板、RAG 管道、工具、模型推理服务与 Agent 技能封装为可组合、可治理资产。
+%% **示例**：企业构建 MCP 工具目录，客服、运维、开发 Agent 按统一 Schema 调用数据库查询与文档解析工具，避免重复封装。
+%% **反例**：各团队在不同 Agent 中硬编码相同 Prompt 与 API 调用，无版本管理与输出契约，导致行为不一致。
+%% **权威来源**：MCP Specification 2025-11-25, A2A Protocol, Conformal Prediction Book, NIST AI RMF, OWASP LLM Top 10, 核查日期：2026-07-07
+mindmap
+  root((AI 原生复用))
+    MCP 工具层
+      MCP 2025-11-25 规范
+      Tool Server
+      JSON-RPC 传输
+      OAuth 2.1 / mTLS 认证
+      工具 Schema 与版本
+    A2A Agent 协作
+      Agent Card 能力清单
+      任务委托
+      能力发现
+      信任凭证
+    概率契约
+      期望输出分布 γ(x)
+      准确率边界
+      延迟与成本边界
+      Conformal Prediction 置信集
+      在线校准
+    Agent 架构模式
+      ReAct 推理-行动循环
+      Plan-and-Execute 任务编排
+      Multi-Agent 主管-工作者
+      人机协同
+    模型资产复用
+      RAG 管道
+      Prompt 模板库
+      LoRA / QLoRA 微调
+      Adapter 推理切换
+    运行时治理
+      Guardrails 输出过滤
+      模型漂移检测
+      Token 预算与成本配额
+      审计日志
+    合规与可信
+      NIST AI RMF
+      OWASP LLM Top 10
+      Agent 注册表
+      人工复核点

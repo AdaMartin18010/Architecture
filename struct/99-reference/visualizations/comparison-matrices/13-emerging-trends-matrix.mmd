@@ -1,0 +1,57 @@
+%% version: 2026-07-07
+%% title: 13 新兴趋势 — 多维对比矩阵
+%% **定义**：新兴趋势对比矩阵从组织成熟度要求、跨语言可移植性、治理复杂度、可持续性影响四个维度比较关键技术趋势。
+%% **示例**：WASM 组件在跨语言可移植性维度得“高”，平台工程在组织成熟度要求维度得“高”。
+%% **反例**：为追求“弹性”将单体拆分为 200 个微服务，能耗与运维复杂度翻倍。
+%% **权威来源**：CNCF Platforms White Paper, WebAssembly Component Model, Green Software Foundation SCI, Spring Modulith, 核查日期：2026-07-07
+flowchart LR
+    subgraph "评估维度"
+        D1[组织成熟度要求]
+        D2[跨语言可移植性]
+        D3[治理复杂度]
+        D4[可持续性影响]
+    end
+
+    subgraph "新兴趋势"
+        PE["平台工程"]
+        MM["模块化单体"]
+        WASM["WASM 组件"]
+        GREEN["绿色软件"]
+        REG["RegTech AI"]
+        RUST["Rust 生态"]
+    end
+
+    PE -->|高| D1
+    PE -->|低| D2
+    PE -->|高| D3
+    PE -->|中| D4
+
+    MM -->|低| D1
+    MM -->|低| D2
+    MM -->|低| D3
+    MM -->|中| D4
+
+    WASM -->|中| D1
+    WASM -->|高| D2
+    WASM -->|中| D3
+    WASM -->|中| D4
+
+    GREEN -->|中| D1
+    GREEN -->|低| D2
+    GREEN -->|中| D3
+    GREEN -->|高| D4
+
+    REG -->|高| D1
+    REG -->|低| D2
+    REG -->|高| D3
+    REG -->|中| D4
+
+    RUST -->|中| D1
+    RUST -->|高| D2
+    RUST -->|中| D3
+    RUST -->|中| D4
+
+    style D1 fill:#e3f2fd,stroke:#333
+    style D2 fill:#e3f2fd,stroke:#333
+    style D3 fill:#fff3e0,stroke:#333
+    style D4 fill:#e8f5e9,stroke:#333

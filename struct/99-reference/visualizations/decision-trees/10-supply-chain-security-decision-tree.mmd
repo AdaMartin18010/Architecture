@@ -1,0 +1,36 @@
+%% version: 2026-07-07
+%% title: 10 供应链安全控制采纳决策树
+flowchart TD
+    A[开始：引入外部/内部复用组件] --> B{是否进入生产关键路径？}
+    B -->|否| C[采用运行时补偿控制]
+    B -->|是| D{是否为外部开源组件？}
+
+    D -->|是| E{是否有可用的 SLSA Provenance？}
+    D -->|否| F[直接要求企业 CI 达到 SLSA Build L3]
+
+    E -->|是| G{SBOM 是否覆盖直接 + 传递依赖？}
+    E -->|否| H[要求上游提供 provenance 或切换组件]
+
+    G -->|是| I{是否通过漏洞扫描与许可证审查？}
+    G -->|否| J[补充 SBOM 或拒绝该版本]
+
+    I -->|是| K{构建环境是否隔离且签名？}
+    I -->|否| L[修复漏洞 / 许可证冲突后复评]
+
+    K -->|是| M[批准复用并纳入持续监控]
+    K -->|否| N[升级构建流水线至隔离 + 签名]
+
+    C --> O{是否持续更新 SBOM？}
+    F --> K
+    H --> D
+    J --> D
+    L --> I
+    N --> K
+    O -->|是| M
+    O -->|否| P[建立 SBOM 持续生成流程]
+
+    style A fill:#e3f2fd
+    style M fill:#e8f5e9
+    style H fill:#ffebee
+    style J fill:#ffebee
+    style P fill:#fff3e0

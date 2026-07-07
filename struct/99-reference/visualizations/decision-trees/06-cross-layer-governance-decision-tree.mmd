@@ -1,0 +1,31 @@
+%% version: 2026-07-07
+%% title: 06 跨层复用治理模式采纳决策树
+flowchart TD
+    A[开始：识别到潜在复用机会] --> B{是否跨业务/项目边界？}
+    B -->|是| C{是否存在统一资产目录？}
+    B -->|否| D[项目内复用 / 自研]
+
+    C -->|是| E{是否有专职资产 Owner 与 SLA？}
+    C -->|否| F[先建立目录与元数据，再复用]
+
+    E -->|是| G{是否通过质量门禁？<br/>测试 / SLSA / SBOM / 文档}
+    E -->|否| H[指定 Owner 并补齐 SLA]
+
+    G -->|是| I{是否有可量化的价值指标？<br/>ROI / TTMR / RCSR}
+    G -->|否| J[启动质量改造 Sprint]
+
+    I -->|是| K{成本-收益是否可行？<br/>AAF < 0.7 且 NPV > 0}
+    I -->|否| L[建立度量仪表盘]
+
+    K -->|是| M[采用跨层治理复用<br/>纳入生命周期管理]
+    K -->|否| N[降级为临时引用或新开发]
+
+    F --> E
+    H --> E
+    J --> G
+    L --> K
+
+    style A fill:#e3f2fd
+    style D fill:#ffebee
+    style M fill:#e8f5e9
+    style N fill:#ffebee

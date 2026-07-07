@@ -1,0 +1,56 @@
+%% version: 2026-07-07
+%% title: 05 功能架构复用 — 粒度-成本-收益决策树
+flowchart TD
+    Start([开始：功能复用需求]) --> Q1{纯计算/数据处理？}
+    Q1 -->|是| Q1_1{是否有成熟标准库？}
+    Q1 -->|否| Q2{是否需要外部状态/副作用？}
+
+    Q1_1 -->|是| A1[Level 1: 算法/数据结构<br/>STL / NumPy / Rust std]
+    Q1_1 -->|否| A2[Level 1: 创建领域特定算法库]
+
+    Q2 -->|否| Q2_1{是否在多个服务/模块使用？}
+    Q2 -->|是| Q3{是否复杂业务策略？}
+
+    Q2_1 -->|是| A3[Level 2: 共享函数/API<br/>工具函数库]
+    Q2_1 -->|否| A4[项目内工具函数]
+
+    Q3 -->|是| Q3_1{规则变更频率 > 1次/周？}
+    Q3 -->|否| Q4{是否跨多步骤协调？}
+
+    Q3_1 -->|是| A5[Level 3: DMN/OPA 外部化<br/>业务规则服务]
+    Q3_1 -->|否| A6[Level 3: 代码内策略模式 + 配置]
+
+    Q4 -->|是| Q4_1{执行时长 > 1分钟 或需人工审批？}
+    Q4 -->|否| Q5{是否依赖 LLM/AI 输出？}
+
+    Q4_1 -->|是| A7[Level 4: Temporal / Camunda<br/>持久化工作流]
+    Q4_1 -->|否| A8[Level 4: 代码内 Saga / 事务脚本]
+
+    Q5 -->|是| Q5_1{输出是否需要确定性保证？}
+    Q5 -->|否| A9[重新评估：可能属于更高层次]
+
+    Q5_1 -->|是| A10[Level 5: MCP Tool + 确定性边界声明]
+    Q5_1 -->|否| A11[Level 5: Prompt 模板 + 温度参数控制]
+
+    A1 --> Q6{盈亏平衡次数 N_use ≥ 2？}
+    A3 --> Q6
+    A5 --> Q6
+    A7 --> Q6
+    A10 --> Q6
+    A11 --> Q6
+
+    Q6 -->|是| A12[纳入功能资产目录]
+    Q6 -->|否| A13[暂缓复用或保持内联]
+
+    A12 --> Q7{AAF < 0.7？}
+    Q7 -->|是| A14[授权复用]
+    Q7 -->|否| A15[仅保留战略价值，经济价值不足]
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e8f5e9,stroke:#333
+    style A3 fill:#fff3e0,stroke:#333
+    style A5 fill:#f3e5f5,stroke:#333
+    style A7 fill:#e1f5fe,stroke:#333
+    style A10 fill:#ffebee,stroke:#333
+    style A14 fill:#c8e6c9,stroke:#333
+    style A15 fill:#ffebee,stroke:#333

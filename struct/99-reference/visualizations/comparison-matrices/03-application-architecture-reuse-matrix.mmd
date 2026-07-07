@@ -1,0 +1,72 @@
+%% version: 2026-07-07
+%% title: 03 应用架构复用 — 架构模式对比矩阵
+flowchart LR
+    subgraph Dimensions["评估维度"]
+        D1["复用粒度"]
+        D2["部署独立性"]
+        D3["团队自治度"]
+        D4["数据一致性"]
+        D5["运维复杂度"]
+    end
+
+    subgraph Monolith["传统单体"]
+        Mono_D1["应用级"]
+        Mono_D2["无"]
+        Mono_D3["低"]
+        Mono_D4["ACID"]
+        Mono_D5["低"]
+    end
+
+    subgraph Modulith["模块化单体"]
+        Mod_D1["模块级"]
+        Mod_D2["无"]
+        Mod_D3["中"]
+        Mod_D4["模块内 ACID"]
+        Mod_D5["低-中"]
+    end
+
+    subgraph SOA["SOA / ESB"]
+        SOA_D1["服务级"]
+        SOA_D2["中"]
+        SOA_D3["中"]
+        SOA_D4["分布式事务"]
+        SOA_D5["高"]
+    end
+
+    subgraph Microservices["微服务"]
+        MS_D1["服务级"]
+        MS_D2["高"]
+        MS_D3["高"]
+        MS_D4["Saga / TCC"]
+        MS_D5["高"]
+    end
+
+    subgraph Serverless["Serverless"]
+        SLS_D1["函数级"]
+        SLS_D2["极高"]
+        SLS_D3["高"]
+        SLS_D4["事件源"]
+        SLS_D5["低"]
+    end
+
+    subgraph ServiceMesh["服务网格"]
+        SM_D1["通信模式级"]
+        SM_D2["基础设施独立"]
+        SM_D3["高"]
+        SM_D4["透传"]
+        SM_D5["高"]
+    end
+
+    D1 --> Mono_D1
+    D1 --> Mod_D1
+    D1 --> SOA_D1
+    D1 --> MS_D1
+    D1 --> SLS_D1
+    D1 --> SM_D1
+
+    style Mono_D1 fill:#e3f2fd,stroke:#333
+    style Mod_D1 fill:#e8f5e9,stroke:#333
+    style SOA_D1 fill:#fff3e0,stroke:#333
+    style MS_D1 fill:#f3e5f5,stroke:#333
+    style SLS_D1 fill:#e1f5fe,stroke:#333
+    style SM_D1 fill:#ffebee,stroke:#333

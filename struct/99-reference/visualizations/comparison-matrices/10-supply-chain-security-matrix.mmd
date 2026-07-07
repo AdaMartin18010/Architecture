@@ -1,0 +1,27 @@
+%% version: 2026-07-07
+%% title: 10 供应链安全机制对比矩阵
+flowchart TB
+    H1["机制"] --> H2["验证目标"] --> H3["数据载体"] --> H4["覆盖环节"] --> H5["自动化"] --> H6["生态成熟度"] --> H7["与复用关系"]
+
+    A1["SLSA Build Track"] --> B1["构建过程可信"] --> C1["Provenance attestation"] --> D1["构建"] --> E1["高"] --> F1["成熟"] --> G1["保证制品来源"]
+    A2["SLSA Source Track"] --> B2["源码历史可信"] --> C2["Source attestation"] --> D2["源码提交"] --> E2["中"] --> F2["v1.2 正式"] --> G2["确保审查强度"]
+    A3["SPDX"] --> B3["许可证合规"] --> C3["RDF / JSON / Tag-Value"] --> D3["组件 / 依赖"] --> E3["高"] --> F3["ISO 5962"] --> G3["复用契约元数据"]
+    A4["CycloneDX"] --> B4["漏洞管理"] --> C4["JSON / XML"] --> D4["组件 / 依赖"] --> E4["高"] --> F4["OWASP 活跃"] --> G4["DevSecOps 门控"]
+    A5["Sigstore / cosign"] --> B5["制品真实性"] --> C5["签名 + 透明日志"] --> D5["构建 → 部署"] --> E5["高"] --> F5["Linux 基金会"] --> G5["验证未被篡改"]
+    A6["GUAC"] --> B6["依赖关系洞察"] --> C6["知识图谱"] --> D6["全链路"] --> E6["中"] --> F6["Google / OpenSSF"] --> G6["秒级影响分析"]
+
+    H1 ~~~ A1
+    H2 ~~~ B1
+    H3 ~~~ C1
+    H4 ~~~ D1
+    H5 ~~~ E1
+    H6 ~~~ F1
+    H7 ~~~ G1
+
+    style H1 fill:#e3f2fd,stroke:#333
+    style H2 fill:#e3f2fd,stroke:#333
+    style H3 fill:#e3f2fd,stroke:#333
+    style H4 fill:#e3f2fd,stroke:#333
+    style H5 fill:#e3f2fd,stroke:#333
+    style H6 fill:#e3f2fd,stroke:#333
+    style H7 fill:#e3f2fd,stroke:#333

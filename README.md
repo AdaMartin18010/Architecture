@@ -1,8 +1,9 @@
 # 软件工程架构复用视角 · 结构化知识体系
 
-> **版本**: 2026-07-07 Phase 1.5 修复中
-> **定位**: 将 ~31 万字源文档转化为结构化、可验证、可输出的知识产品；当前正在进行内容深度补齐、模板污染清理与权威来源对齐
+> **版本**: 2026-07-08 Phase 1.5 修复完成 · 质量门控 100%
+> **定位**: 将 ~31 万字源文档转化为结构化、可验证、可输出的知识产品；已完成内容深度补齐、模板污染清理、权威来源对齐、可视化图库填充、全局质量验证与 struct/view 同步
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF 10, SLSA 1.2, IEC 61508, MCP 2025-11-25, A2A v1.0 等 25+ 国际标准
+> **健康状态**: `python scripts/health-check.py` 全部通过（struct/ 288/288 · view/ 14/14 · 死链 0 · 交叉索引 0 冲突）
 
 ---
 
@@ -12,12 +13,14 @@
 
 | 指标 | 数据 |
 |------|------|
-| **Markdown 文件** | **309** 个（`struct/` 301 + `view/` 8） |
-| **形式化规约/代码** | **62** 个（TLA+ × 5, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 16, Python × 33） |
-| **累计内容** | **~75.5 万中文字** / **~93.1 万总词** / **~464 万字符** |
+| **Markdown 文件** | **330** 个（`struct/` 307 + `view/` 23，含 14 个聚合卷册与 9 个历史快照） |
+| **形式化规约/代码** | **93** 个（TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 75 + SVG × 75, Python × 7） |
+| **累计内容** | **~79.1 万中文字** / **~97.7 万总词** / **~294 万字符**（`struct/` 主知识库） |
 | **一级主题** | **13** 个（01-13）+ **99-reference** 参考层 |
-| **形式化规约** | TLA+ × 5, Alloy × 4, Coq × 2, Isabelle × 2, 公理-定理体系 × 71 |
-| **权威来源对齐** | 25+ 国际标准与行业框架 |
+| **形式化规约** | TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, 公理-定理体系 × 20+ |
+| **权威来源对齐** | 30+ 国际标准与行业框架 |
+| **质量门控** | `struct/` 288/288 通过，`view/` 14/14 通过，死链 0，模板重复 0 |
+| **交叉索引** | 公理 0 未定义 / 0 重复；标准版本冲突 0；术语定义冲突 0 |
 
 ---
 
@@ -174,7 +177,8 @@ struct/
 | 软件供应链攻击与防御 | [`10-supply-chain-security/03-attack-vectors/attack-tree.md`](struct/10-supply-chain-security/03-attack-vectors/attack-tree.md) |
 | ISA-95 + OPC UA 工业资产 | [`11-industrial-iot-otit/01-isa-95-model/`](struct/11-industrial-iot-otit/01-isa-95-model/) |
 | TLA+ / Alloy 形式化案例 | [`07-formal-verification/`](struct/07-formal-verification/) |
-| 复用成熟度评估问卷 | [`06-cross-layer-governance/05-metrics-kpi/maturity-assessment-questionnaire.md`](struct/06-cross-layer-governance/05-metrics-kpi/maturity-assessment-questionnaire.md) |
+| 可视化图库总览 | [`99-reference/visualizations/README.md`](struct/99-reference/visualizations/README.md) |
+| 复用成熟度评估问卷 | [`06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md`](struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md) |
 | 国际标准对齐总览 | [`99-reference/standards-index/master-alignment-matrix.md`](struct/99-reference/standards-index/master-alignment-matrix.md) |
 | 术语中英文对照 | [`99-reference/glossary/terminology-crosswalk.md`](struct/99-reference/glossary/terminology-crosswalk.md) |
 | 主术语表 | [`99-reference/glossary/glossary-master.md`](struct/99-reference/glossary/glossary-master.md) |
@@ -250,9 +254,7 @@ struct/
 
 ## ⚠️ 已知限制
 
-- TLA+ 规约未经 SANY/TLC 自动化验证（Docker 环境待补齐 Java/TLC）
-- Alloy 模型未经 Alloy Analyzer 自动执行（Docker 环境待补齐 Alloy 6 CLI）
-- Coq/Isabelle 案例已补充，但尚未在 Docker 环境中自动跑通构建
+- Docker 形式化验证环境已配置（`struct/99-reference/tools/formal-verification-env/docker-compose.yml`），但当前运行环境的 Docker daemon 未启动，无法在本地实际执行 TLC / Alloy / Rocq / Isabelle 验证；CI 工作流 `.github/workflows/formal-verification.yml` 已就绪，将在 GitHub Actions 中 best-effort 执行
 - MCP 官方当前稳定版为 **2025-11-25**；项目中仍存在个别历史文档引用 "2026-07-28 RC"，已逐步清理
 
 ---
@@ -263,8 +265,8 @@ struct/
 
 ---
 
-> **最后更新**: 2026-07-07（Phase A 止血：统计口径与模板污染修复启动）
-> **本轮目标**: 恢复统计真实性、停止模板污染、建立单一真源与清晰导航
+> **最后更新**: 2026-07-08（Phase 1.5 收尾：health-check 100% 通过、报告路径统一、view 同步刷新）
+> **本轮目标**: 全面修复质量门控、完成可视化图库、统一报告输出、确保 struct/view 一致性
 > **维护者**: 软件工程架构复用知识体系项目组
 >
 ## 反例：知识体系项目常见的失败模式

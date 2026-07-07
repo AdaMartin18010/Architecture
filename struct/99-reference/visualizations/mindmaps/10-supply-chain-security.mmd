@@ -1,0 +1,49 @@
+%% version: 2026-07-07
+%% title: 10 供应链安全工程主题思维导图
+mindmap
+  root((供应链安全工程<br/>Supply Chain Security))
+    核心机制
+      SLSA Source / Build / BuildEnv Track
+      SBOM SPDX / CycloneDX / SWID
+      Provenance 来源证明
+      Sigstore / cosign 签名与透明日志
+      GUAC 制品关系图谱
+    攻击向量
+      Typosquatting 拼写混淆
+      依赖混淆
+      上游代码植入
+      构建系统篡改
+      分发渠道劫持
+      运行时加载恶意组件
+    纵深防御
+      源码签名 + 分支保护
+      依赖扫描 + 私有仓库
+      隔离构建 + SLSA Provenance
+      制品签名 + SBOM
+      部署准入 + 运行时监控
+    零信任原则
+      永不信任 始终验证
+      假设 breach
+      最小权限
+      持续验证
+    标准与合规
+      NIST SSDF 1.2
+      OWASP SCVS
+      EU CRA
+      MITRE ATT&CK T1195
+    工具链
+      SLSA GitHub Generator
+      Syft / Trivy
+      cosign / slsa-verifier
+      GUAC
+      OPA / Kyverno / Falco
+    响应流程
+      SBOM 影响分析
+      漏洞情报联动
+      凭证轮换
+      红队演练
+    常见误区
+      只关注自有代码
+      SBOM 一次生成
+      签名只是可选
+      认为 SLSA L4 才值得做

@@ -77,6 +77,9 @@ desktop.ini
 report-*.xlsx
 report-*.csv
 *.log
+# 质量门控、交叉索引、同步等自动生成的报告
+reports/*
+!reports/.gitkeep
 
 # ---------------------------------------------------------------------------
 # Streamlit / Web UI 运行时

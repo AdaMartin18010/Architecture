@@ -1,0 +1,51 @@
+%% version: 2026-07-07
+%% title: 04 组件架构复用 — 公理推理树
+flowchart TD
+    A41["公理 4.1 Interface Contract Completeness<br/>可复用性取决于接口契约完备性"]
+    S1["S.1 Interface Substitution<br/>外部可观察行为等价则可替换"]
+    S3["S.3 Dependency Transitivity of Trust<br/>信任边界传递"]
+    M2["M.2 Variability Axiom<br/>共性/变性分离"]
+    M4["M.4 Identity Preservation<br/>同一性保持"]
+
+    P1["结论 P1<br/>前置/后置/不变量是接口契约的核心"]
+    P1_reason["缺少契约的复用依赖实现观察，易破坏"]
+
+    P2["结论 P2<br/>组件可替换性不依赖实现细节"]
+    P2_reason["Liskov 替换原则：B 前置不更严，后置不更弱"]
+
+    P3["结论 P3<br/>间接依赖必须纳入信任评估"]
+    P3_reason["A→B→C 则 Trust(A) 包含 C"]
+
+    P4["结论 P4<br/>Semver 主版本号承载变性点语义"]
+    P4_reason["Major 变更表示契约不变量破坏"]
+
+    P5["结论 P5<br/>SBOM 是维护组件同一性的基础"]
+    P5_reason["同一组件版本在不同构建中应具相同身份"]
+
+    P6["结论 P6<br/>语言生态选型应匹配领域特征"]
+    P6_reason["Rust 高性能安全、Python AI/数据、Go 云原生"]
+
+    A41 --> P1
+    P1 --> P1_reason
+    S1 --> P2
+    P2 --> P2_reason
+    S3 --> P3
+    P3 --> P3_reason
+    M2 --> P4
+    P4 --> P4_reason
+    M4 --> P5
+    P5 --> P5_reason
+    A41 --> P6
+    P6 --> P6_reason
+
+    style A41 fill:#e3f2fd,stroke:#333
+    style S1 fill:#fff3e0,stroke:#333
+    style S3 fill:#ffebee,stroke:#333
+    style M2 fill:#e1f5fe,stroke:#333
+    style M4 fill:#f3e5f5,stroke:#333
+    style P1 fill:#e8f5e9,stroke:#333
+    style P2 fill:#e8f5e9,stroke:#333
+    style P3 fill:#e8f5e9,stroke:#333
+    style P4 fill:#e8f5e9,stroke:#333
+    style P5 fill:#e8f5e9,stroke:#333
+    style P6 fill:#e8f5e9,stroke:#333

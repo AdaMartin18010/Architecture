@@ -1,0 +1,47 @@
+%% version: 2026-07-07
+%% title: 11 工业 IoT/OT-IT 融合 — 主题思维导图
+%% **定义**：工业 IoT/OT-IT 融合复用是在制造、能源等 OT 与 IT 融合场景中复用 ISA-95 层级模型、OPC UA 信息模型、PLCopen 功能块、资产管理壳 AAS 与功能安全组件的实践。
+%% **示例**：汽车工厂基于 ISA-95 建立 AAS 子模型模板，通过 OPC UA FX 替换私有现场总线，新产线部署周期缩短 40%。
+%% **反例**：将 IT 系统的“随时打补丁”策略直接套用到 PLC 产线，未考虑实时性与功能安全认证，导致控制器时序异常。
+%% **权威来源**：ISA-95 / IEC 62264, OPC Foundation, IEC 63278 AAS, IEC 61508, ISO 26262, IEC 62443, 核查日期：2026-07-07
+mindmap
+  root((工业 IoT / OT-IT 融合复用))
+    ISA-95 五层模型
+      L4 企业层 ERP/MES
+      L3 制造运营 MES
+      L2 监控层 SCADA/HMI
+      L1 控制层 PLC/DCS
+      L0 现场层 传感器/执行器
+    OPC UA FX 通信
+      PubSub 发布订阅
+      C2C/C2D/D2D 模式
+      UADP 二进制帧
+      TSN 确定性网络
+      MQTT-IA 工业配置文件
+      Modbus TCP 兼容
+    数字孪生 AAS
+      IEC 63278 资产管理壳
+      子模型模板
+      OPC UA NodeSet
+      数字孪生运行时
+    功能安全
+      IEC 61508 通用安全
+      ISO 26262 汽车安全
+      IEC 62443 工业网络安全
+      Proven-in-Use 运行历史
+      SEooC 独立安全单元
+    PLCopen 运动控制
+      IEC 61131-3 功能块
+      MC_Power
+      MC_MoveAbsolute
+      跨厂商运动控制接口
+    边缘智能
+      边缘计算网关
+      TinyML MCU 推理
+      ONNX Runtime 跨平台部署
+      MCP Industrial 工业 Agent 接口
+    OT-IT 治理
+      IEC 62443 安全区与管道
+      变更与补丁策略
+      确定性约束
+      棕地设备兼容

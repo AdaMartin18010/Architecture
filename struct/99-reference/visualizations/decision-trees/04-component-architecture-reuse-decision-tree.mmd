@@ -1,0 +1,49 @@
+%% version: 2026-07-07
+%% title: 04 组件架构复用 — 组件/依赖策略决策树
+flowchart TD
+    Start([开始：组件级复用决策]) --> Q1{是否跨服务/跨语言共享？}
+    Q1 -->|是| Q2{是否需要跨语言运行时隔离？}
+    Q1 -->|否| Q3{是否在单一进程内复用？}
+
+    Q2 -->|是| A1[采用 WASM Component<br/>WIT 接口 + 跨语言]
+    Q2 -->|否| A2[采用标准库/包复用<br/>OpenAPI / gRPC 契约]
+
+    Q3 -->|是| Q4{是否需要编译期强封装？}
+    Q3 -->|否| Q5{是否为 UI 组件？}
+
+    Q4 -->|是| A3[采用 JPMS / Rust Crate<br/>显式可见性控制]
+    Q4 -->|否| A4[采用普通库/包<br/>npm / Maven / pip]
+
+    Q5 -->|是| A5[采用组件库<br/>React/Vue + Storybook]
+    Q5 -->|否| A6[采用内部 SDK / 共享模块]
+
+    A1 --> Q6{是否来自不可信来源？}
+    A2 --> Q6
+    A3 --> Q6
+    A4 --> Q6
+    A5 --> Q6
+    A6 --> Q6
+
+    Q6 -->|是| Q7{是否需要源码审计？}
+    Q6 -->|否| A7[常规依赖管理 + Semver]
+
+    Q7 -->|是| A8[Vendor 化依赖<br/>源码内嵌 + 审计]
+    Q7 -->|否| A9[SBOM + 漏洞扫描<br/>SLSA 来源证明]
+
+    A8 --> Q8{扫描发现高危漏洞？}
+    A9 --> Q8
+    Q8 -->|是| A10[隔离/替换/打补丁]
+    Q8 -->|否| A11[纳入依赖白名单]
+
+    A11 --> Q9{许可证是否兼容？}
+    Q9 -->|是| A12[批准引入]
+    Q9 -->|否| A13[寻找替代方案]
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e8f5e9,stroke:#333
+    style A3 fill:#fff3e0,stroke:#333
+    style A5 fill:#f3e5f5,stroke:#333
+    style A8 fill:#ffebee,stroke:#333
+    style A9 fill:#fff3e0,stroke:#333
+    style A12 fill:#c8e6c9,stroke:#333
+    style A13 fill:#ffebee,stroke:#333

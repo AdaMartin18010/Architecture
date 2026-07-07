@@ -1,0 +1,58 @@
+%% version: 2026-07-07
+%% title: 13 新兴趋势 — 跨层映射图
+%% **定义**：跨层映射图展示新兴趋势场景中业务、应用、组件、功能四层的交互。
+%% **示例**：业务层的 ESG 目标驱动应用层绿色仪表盘，调用组件层 SCI 计算器，功能层采集能耗数据。
+%% **反例**：平台团队脱离业务需求强制推行 IDP，开发者绕过平台形成影子基础设施。
+%% **权威来源**：CNCF Platforms White Paper, Green Software Foundation SCI, Spring Modulith, 核查日期：2026-07-07
+flowchart TD
+    subgraph Business["业务架构层"]
+        B1[规模化开发与交付目标]
+        B2[ESG / SBTi 承诺]
+        B3[合规与审计要求]
+        B4[开发者体验目标]
+    end
+
+    subgraph Application["应用架构层"]
+        A1[内部开发者平台 IDP]
+        A2[Golden Path 门户]
+        A3[RegTech AI 合规应用]
+        A4[绿色软件仪表盘]
+    end
+
+    subgraph Component["组件架构层"]
+        C1[Backstage 插件与服务目录]
+        C2[模块化单体模块]
+        C3[WASM 组件]
+        C4[Rust crates]
+        C5[SCI 碳排计算器]
+    end
+
+    subgraph Function["功能架构层"]
+        F1[服务脚手架]
+        F2[CI/CD 流水线]
+        F3[WASM 运行时调用]
+        F4[能耗与碳排遥测]
+        F5[合规检查函数]
+    end
+
+    B1 -->|驱动| A1
+    B2 -->|驱动| A4
+    B3 -->|驱动| A3
+    B4 -->|约束| A2
+    A1 -->|托管| C1
+    A2 -->|生成| C2
+    A3 -->|调用| C5
+    A4 -->|聚合| C5
+    C2 -->|编译为| C3
+    C3 -->|执行| F3
+    C4 -->|打包| C3
+    C5 -->|触发| F4
+    F4 -->|反馈| A4
+    F5 -->|记录审计| A3
+    F1 -->|加速| A2
+    F2 -->|交付| A1
+
+    style Business fill:#e3f2fd,stroke:#333
+    style Application fill:#fff3e0,stroke:#333
+    style Component fill:#f3e5f5,stroke:#333
+    style Function fill:#e8f5e9,stroke:#333

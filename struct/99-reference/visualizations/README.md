@@ -9,32 +9,33 @@
 
 本目录包含 13 个一级主题的全部架构可视化图，以及跨主题综合图、决策树、推理树与跨层映射图。
 
+| 分类 | 数量 | 子目录 | 说明 |
+|---|---|---|---|
+| 主题思维导图 | 13 | `mindmaps/` | 每个一级主题 1 张知识体系思维导图 |
+| 多维对比矩阵 | 13 | `comparison-matrices/` | 每个一级主题 1 张标准/技术/模式对比矩阵 |
+| 场景决策树 | 13 | `decision-trees/` | 每个一级主题 1 张“何时采用/不采用”决策树 |
+| 公理化推理树 | 13 | `reasoning-trees/` | 每个一级主题 1 张公理→定理/原则推理树 |
+| 跨层映射图 | 4 | `cross-layer-mappings/` | 四层复用映射 + 11–13 主题专属跨层映射 |
+| 跨主题综合图 | 3 | 根目录 | 公理-定理全图、概念映射图、标准族谱树 |
+| **合计** | **69** | — | — |
+
 ### 13 个一级主题思维导图
 
-| # | 主题 | Mermaid 源文件 | SVG 渲染图 |
-|---|------|---------------|-----------|
-| 02 | 业务架构复用 | `02-business-architecture-reuse.mmd` | `02-business-architecture-reuse.svg` |
-| 03 | 应用架构复用 | `03-application-architecture-reuse.mmd` | `03-application-architecture-reuse.svg` |
-| 04 | 组件架构复用 | `04-component-architecture-reuse.mmd` | `04-component-architecture-reuse.svg` |
-| 05 | 功能架构复用 | `05-functional-architecture-reuse.mmd` | `05-functional-architecture-reuse.svg` |
-| 06 | 跨层复用治理 | `06-cross-layer-governance.mmd` | `06-cross-layer-governance.svg` |
-| 07 | 形式化验证 | `07-formal-verification.mmd` | `07-formal-verification.svg` |
-| 08 | 认知架构 | `08-cognitive-architecture.mmd` | `08-cognitive-architecture.svg` |
-| 09 | 价值量化 | `09-value-quantification.mmd` | `09-value-quantification.svg` |
-| 10 | 供应链安全 | `10-supply-chain-security.mmd` | `10-supply-chain-security.svg` |
-| 11 | 工业 IoT/OT-IT | `11-industrial-iot-otit.mmd` | `11-industrial-iot-otit.svg` |
-| 12 | AI 原生复用 | `12-ai-native-reuse.mmd` | `12-ai-native-reuse.svg` |
-| 13 | 前沿趋势 | `13-emerging-trends.mmd` | `13-emerging-trends.svg` |
-
-### 多元思维表征子目录
-
-| 子目录 | 内容类型 | 代表文件 |
-|---|---|---|
-| `mindmaps/` | 主题思维导图与知识体系总览 | `knowledge-system-mindmap.mmd` |
-| `comparison-matrices/` | 标准/技术/模式多维对比矩阵 | `standards-comparison-matrix.mmd` |
-| `decision-trees/` | 场景决策树（何时采用/不采用） | `reuse-granularity-decision-tree.mmd` |
-| `reasoning-trees/` | 公理→定理推理判定树 | `axiom-to-theorem-reasoning-tree.mmd` |
-| `cross-layer-mappings/` | 业务→应用→组件→功能映射 | `four-layer-reuse-mapping.mmd` |
+| # | 主题 | Mermaid 源文件 |
+|---|------|---------------|
+| 01 | 元模型与标准对齐 | `mindmaps/01-meta-model-standards.mmd` |
+| 02 | 业务架构复用 | `mindmaps/02-business-architecture-reuse.mmd` |
+| 03 | 应用架构复用 | `mindmaps/03-application-architecture-reuse.mmd` |
+| 04 | 组件架构复用 | `mindmaps/04-component-architecture-reuse.mmd` |
+| 05 | 功能架构复用 | `mindmaps/05-functional-architecture-reuse.mmd` |
+| 06 | 跨层复用治理 | `mindmaps/06-cross-layer-governance.mmd` |
+| 07 | 形式化验证 | `mindmaps/07-formal-verification.mmd` |
+| 08 | 认知架构 | `mindmaps/08-cognitive-architecture.mmd` |
+| 09 | 价值量化 | `mindmaps/09-value-quantification.mmd` |
+| 10 | 供应链安全 | `mindmaps/10-supply-chain-security.mmd` |
+| 11 | 工业 IoT/OT-IT | `mindmaps/11-industrial-iot-otit.mmd` |
+| 12 | AI 原生复用 | `mindmaps/12-ai-native-reuse.mmd` |
+| 13 | 前沿趋势 | `mindmaps/13-emerging-trends.mmd` |
 
 ### 跨主题综合图
 
@@ -43,6 +44,7 @@
 | 公理-定理全图 | 公理、定理、猜想的完整推导网络 | `axiom-theorem-full-graph.mmd` |
 | 概念映射图 | 核心概念间的语义关联 | `concept-mapping.mmd` |
 | 标准族谱树 | 标准的层次与依赖关系 | `standard-family-tree.mmd` |
+| 知识体系总览 | 全 13 主题知识域总览 | `mindmaps/knowledge-system-mindmap.mmd` |
 
 ---
 
@@ -51,26 +53,22 @@
 ### 嵌入 Markdown 文档
 
 ```markdown
-![业务架构复用](02-business-architecture-reuse.svg)
+![业务架构复用](mindmaps/02-business-architecture-reuse.svg)
+![知识体系总览](mindmaps/knowledge-system-mindmap.svg)
+![公理-定理全图](axiom-theorem-full-graph.svg)
 ```
 
 ### 修改与重渲染
 
 ```bash
 cd struct/99-reference/visualizations
+
 # 单个文件
-mmdc -i mindmaps/knowledge-system-mindmap.mmd -o mindmaps/knowledge-system-mindmap.svg -b transparent
+mmdc -i mindmaps/01-meta-model-standards.mmd -o mindmaps/01-meta-model-standards.svg -b transparent
 
 # 批量重渲染全部主题图
-for f in *.mmd; do
+for f in mindmaps/*.mmd comparison-matrices/*.mmd decision-trees/*.mmd reasoning-trees/*.mmd cross-layer-mappings/*.mmd; do
   mmdc -i "$f" -o "${f%.mmd}.svg" -b transparent
-done
-
-# 批量重渲染子目录
-for dir in mindmaps comparison-matrices decision-trees reasoning-trees cross-layer-mappings; do
-  for f in "$dir"/*.mmd; do
-    mmdc -i "$f" -o "${f%.mmd}.svg" -b transparent
-  done
 done
 ```
 
@@ -90,6 +88,18 @@ done
 
 ---
 
+## 概念定义
+
+**定义**：架构复用知识体系可视化图库是以 Mermaid 为源格式、按主题与类型组织的图形集合，用于将抽象概念、关系、决策逻辑与跨层映射以可视化方式表达，辅助理解、教学与决策。
+
+## 示例
+
+**示例**：`mindmaps/02-business-architecture-reuse.mmd` 以思维导图形式展示业务域、业务能力、价值流、业务流程、业务服务等核心概念及其复用关系。
+
+## 反例
+
+**反例**：可视化图仅罗列术语而无关系连接，或节点标签过长无法阅读，导致图示失去辅助理解的作用。
+
 ## 权威来源
 
 > **权威来源**:
@@ -99,18 +109,8 @@ done
 >
 > **核查日期**: 2026-07-07
 
+## 交叉引用
 
----
-
-## 补充章节
-## 概念定义
-
-**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
-
-## 示例
-
-**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
-
-## 反例
-
-**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+- [内容清单](../templates/content-checklist.md)
+- [主术语表](../glossary/glossary-master.md)
+- [权威来源索引](../standards-index/authoritative-sources-v2.md)

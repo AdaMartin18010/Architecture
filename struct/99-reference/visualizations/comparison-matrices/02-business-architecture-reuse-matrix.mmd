@@ -1,0 +1,72 @@
+%% version: 2026-07-07
+%% title: 02 业务架构复用 — 核心制品对比矩阵
+flowchart LR
+    subgraph Dimensions["评估维度"]
+        D1["复用粒度"]
+        D2["稳定性"]
+        D3["业务可读性"]
+        D4["可执行性"]
+        D5["跨组织共享"]
+    end
+
+    subgraph Capability["业务能力 Capability"]
+        Cap_D1["能力级"]
+        Cap_D2["高"]
+        Cap_D3["高"]
+        Cap_D4["低"]
+        Cap_D5["高"]
+    end
+
+    subgraph ValueStream["价值流 Value Stream"]
+        VS_D1["端到端流程级"]
+        VS_D2["中-高"]
+        VS_D3["高"]
+        VS_D4["中"]
+        VS_D5["中"]
+    end
+
+    subgraph BPMN["BPMN 流程"]
+        BPMN_D1["流程级"]
+        BPMN_D2["中"]
+        BPMN_D3["高"]
+        BPMN_D4["高"]
+        BPMN_D5["中"]
+    end
+
+    subgraph DMN["DMN 决策"]
+        DMN_D1["规则级"]
+        DMN_D2["中"]
+        DMN_D3["高"]
+        DMN_D4["高"]
+        DMN_D5["高"]
+    end
+
+    subgraph CMMN["CMMN 案例"]
+        CMMN_D1["案例级"]
+        CMMN_D2["中"]
+        CMMN_D3["中"]
+        CMMN_D4["中"]
+        CMMN_D5["低"]
+    end
+
+    subgraph BusinessService["业务服务"]
+        BS_D1["服务级"]
+        BS_D2["高"]
+        BS_D3["高"]
+        BS_D4["中"]
+        BS_D5["高"]
+    end
+
+    D1 --> Cap_D1
+    D1 --> VS_D1
+    D1 --> BPMN_D1
+    D1 --> DMN_D1
+    D1 --> CMMN_D1
+    D1 --> BS_D1
+
+    style Cap_D1 fill:#e3f2fd,stroke:#333
+    style VS_D1 fill:#e8f5e9,stroke:#333
+    style BPMN_D1 fill:#fff3e0,stroke:#333
+    style DMN_D1 fill:#f3e5f5,stroke:#333
+    style CMMN_D1 fill:#e1f5fe,stroke:#333
+    style BS_D1 fill:#ffebee,stroke:#333

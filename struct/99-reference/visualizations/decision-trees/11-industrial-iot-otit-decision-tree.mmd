@@ -1,0 +1,45 @@
+%% version: 2026-07-07
+%% title: 11 工业 IoT/OT-IT 融合 — 场景决策树
+%% **定义**：决策树用于在 OT-IT 融合场景中判断何时采用 ISA-95、OPC UA FX、TSN、AAS、功能安全 SEooC 与边缘 AI 等关键模式。
+%% **示例**：当控制周期小于 1ms 且需跨厂商互操作时，选择 OPC UA FX + TSN。
+%% **反例**：ERP 直接写入 PLC 标签绕过 L2/L3，破坏控制闭环并造成批次错误。
+%% **权威来源**：ISA-95 / IEC 62264, OPC UA FX, IEEE 802.1 TSN, IEC 63278 AAS, IEC 61508, 核查日期：2026-07-07
+flowchart TD
+    Start([开始：规划 OT-IT 融合复用]) --> Q1{是否存在清晰的 OT-IT 层级边界？}
+    Q1 -->|否| Reject1[拒绝：先梳理 L0-L4 资产与信息流]
+    Q1 -->|是| Q2{是否需要跨厂商设备互操作？}
+
+    Q2 -->|否| Reject2[拒绝：允许私有总线，但锁定风险高]
+    Q2 -->|是| Q3{控制周期是否要求 < 1ms？}
+
+    Q3 -->|否| Q4{是否需要数字孪生统一资产入口？}
+    Q3 -->|是| Adopt1[采用 OPC UA FX + TSN<br/>确定性 PubSub 通信]
+
+    Q4 -->|否| Q5{功能安全是否要求 SIL/ASIL？}
+    Q4 -->|是| Adopt2[采用 AAS + OPC UA NodeSet<br/>统一信息模型]
+
+    Q5 -->|是| Q6{安全组件是否有 SEooC/PIU 证据包？}
+    Q5 -->|否| Q7{是否需在边缘运行 AI 推理？}
+
+    Q6 -->|是| Adopt3[采用 SEooC / Proven-in-Use 复用<br/>验证集成假设]
+    Q6 -->|否| Reject3[拒绝：无法证明安全完整性]
+
+    Q7 -->|是| Adopt4[采用 TinyML / ONNX Runtime<br/>边缘智能推理]
+    Q7 -->|否| Adopt5[采用通用工业软件组件<br/>遵循 IEC 62443 安全区]
+
+    style Start fill:#e3f2fd,stroke:#333
+    style Q1 fill:#fff3e0,stroke:#333
+    style Q2 fill:#fff3e0,stroke:#333
+    style Q3 fill:#fff3e0,stroke:#333
+    style Q4 fill:#fff3e0,stroke:#333
+    style Q5 fill:#fff3e0,stroke:#333
+    style Q6 fill:#fff3e0,stroke:#333
+    style Q7 fill:#fff3e0,stroke:#333
+    style Reject1 fill:#ffebee,stroke:#333
+    style Reject2 fill:#ffebee,stroke:#333
+    style Reject3 fill:#ffebee,stroke:#333
+    style Adopt1 fill:#e8f5e9,stroke:#333
+    style Adopt2 fill:#e8f5e9,stroke:#333
+    style Adopt3 fill:#e8f5e9,stroke:#333
+    style Adopt4 fill:#e8f5e9,stroke:#333
+    style Adopt5 fill:#e8f5e9,stroke:#333

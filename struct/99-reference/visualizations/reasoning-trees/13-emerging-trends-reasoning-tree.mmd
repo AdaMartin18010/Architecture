@@ -1,0 +1,57 @@
+%% version: 2026-07-07
+%% title: 13 新兴趋势 — 公理化推理树
+%% **定义**：推理树展示新兴趋势采纳中的成熟度匹配、可移植性、可持续性与安全原则如何导出结论。
+%% **示例**：平台工程只在团队数量与重复需求超过阈值时才产生正 ROI，否则平台 overhead 超过收益。
+%% **反例**：选择旧版本低能效组件冠以“复用减少开发”之名，未评估新硬件与算法能效，碳排不降反升。
+%% **权威来源**：CNCF Platforms White Paper, Spring Modulith, WebAssembly Component Model, Green Software Foundation SCI, CISA Memory Safety, 核查日期：2026-07-07
+flowchart TD
+    A1[原则：技术采纳必须匹配组织成熟度]
+    P1[前提：平台工程产生正 ROI 需要足够的团队规模与重复需求]
+    C1[结论 1<br/>仅在多团队、重复需求高的组织中采用平台工程 / IDP]
+
+    A2[公理：模块化边界可在不引入分布式成本的前提下支持演进]
+    P2[原则：编译期模块隔离 + 显式接口]
+    C2[结论 2<br/>模块化单体是中小团队演进式架构的理性选择]
+
+    A3[公理：WASM 提供沙箱化跨语言二进制可移植性]
+    P3[前提：WASI 能力覆盖目标场景且非强 OS 依赖]
+    C3[结论 3<br/>WASM 组件适合多语言栈、边缘与插件场景]
+
+    A4[原则：可持续性应纳入资产全生命周期决策]
+    P4[前提：SCI 等度量能够量化复用与退役的碳排影响]
+    C4[结论 4<br/>绿色复用需要同时评估能效、硬件与算法]
+
+    A5[公理：高安全关键系统需要内存安全保证]
+    P5[原则：Rust 所有权系统消除数据竞争与 UAF]
+    C5[结论 5<br/>安全关键组件可优先复用经审计的 Rust 生态组件]
+
+    A1 --> P1
+    P1 --> C1
+
+    A2 --> P2
+    P2 --> C2
+
+    A3 --> P3
+    P3 --> C3
+
+    A4 --> P4
+    P4 --> C4
+
+    A5 --> P5
+    P5 --> C5
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e3f2fd,stroke:#333
+    style A3 fill:#e3f2fd,stroke:#333
+    style A4 fill:#e3f2fd,stroke:#333
+    style A5 fill:#e3f2fd,stroke:#333
+    style P1 fill:#fff3e0,stroke:#333
+    style P2 fill:#fff3e0,stroke:#333
+    style P3 fill:#fff3e0,stroke:#333
+    style P4 fill:#fff3e0,stroke:#333
+    style P5 fill:#fff3e0,stroke:#333
+    style C1 fill:#e8f5e9,stroke:#333
+    style C2 fill:#e8f5e9,stroke:#333
+    style C3 fill:#e8f5e9,stroke:#333
+    style C4 fill:#e8f5e9,stroke:#333
+    style C5 fill:#e8f5e9,stroke:#333

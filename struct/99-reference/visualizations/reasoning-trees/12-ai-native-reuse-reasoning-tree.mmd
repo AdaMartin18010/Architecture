@@ -1,0 +1,47 @@
+%% version: 2026-07-07
+%% title: 12 AI 原生复用 — 公理化推理树
+%% **定义**：推理树展示 AI 原生复用中概率性、校准上限、契约与协议如何推导出可复用结论。
+%% **示例**：由 Calibration Ceiling 定理可知，当 KL 散度超过阈值，校准误差存在下限，因此必须依赖概率契约约束业务风险。
+%% **反例**：假设 LLM 输出可通过充分测试完全消除不确定性，导致关键业务未设置置信边界。
+%% **权威来源**：Conformal Prediction Book, MCP Specification, A2A Protocol, NIST AI RMF, 核查日期：2026-07-07
+flowchart TD
+    Th1[定理 AI.1<br/>Calibration Ceiling]
+    P1[前提：LLM 输出分布随时间与上下文漂移]
+    L1[引理：校准误差存在不可突破的下限]
+    A1[公理：AI 不确定性必须约束在业务可接受范围内]
+
+    P2[原则：概率契约定义准确率/延迟/成本边界]
+    C1[结论 1<br/>AI 服务可复用当且仅当契约被监控与再校准]
+
+    A2[公理：可组合性依赖开放 Schema 与身份]
+    P3[原则：MCP 提供标准化 Tool 接口<br/>A2A 提供标准化 Agent 接口]
+    C2[结论 2<br/>可复用 AI 能力需要协议级互操作]
+
+    A3[公理：高影响决策必须可审计与可撤销]
+    P4[原则：Agentic Governance 基础设施<br/>注册表 / RBAC / 审计日志]
+    C3[结论 3<br/>Agent 能力复用必须配套治理与护栏]
+
+    Th1 --> P1
+    P1 --> L1
+    L1 --> A1
+    A1 --> P2
+    P2 --> C1
+
+    A2 --> P3
+    P3 --> C2
+
+    A3 --> P4
+    P4 --> C3
+
+    style Th1 fill:#e3f2fd,stroke:#333
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e3f2fd,stroke:#333
+    style A3 fill:#e3f2fd,stroke:#333
+    style P1 fill:#fff3e0,stroke:#333
+    style L1 fill:#fff3e0,stroke:#333
+    style P2 fill:#fff3e0,stroke:#333
+    style P3 fill:#fff3e0,stroke:#333
+    style P4 fill:#fff3e0,stroke:#333
+    style C1 fill:#e8f5e9,stroke:#333
+    style C2 fill:#e8f5e9,stroke:#333
+    style C3 fill:#e8f5e9,stroke:#333

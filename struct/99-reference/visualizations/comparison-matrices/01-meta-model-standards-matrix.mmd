@@ -1,0 +1,72 @@
+%% version: 2026-07-07
+%% title: 01 元模型与标准对齐 — 核心标准对比矩阵
+flowchart LR
+    subgraph Dimensions["评估维度"]
+        D1["关注点覆盖"]
+        D2["抽象粒度"]
+        D3["生命周期阶段"]
+        D4["形式化程度"]
+        D5["行业采用度"]
+    end
+
+    subgraph ISO42010["ISO/IEC/IEEE 42010:2022"]
+        ISO42010_D1["架构描述元模型"]
+        ISO42010_D2["视图/视点级"]
+        ISO42010_D3["描述与设计"]
+        ISO42010_D4["半形式化"]
+        ISO42010_D5["国际标准"]
+    end
+
+    subgraph TOGAF["TOGAF 10"]
+        TOGAF_D1["企业架构全周期"]
+        TOGAF_D2["组织/系统级"]
+        TOGAF_D3["规划到实施"]
+        TOGAF_D4["方法论"]
+        TOGAF_D5["企业级广泛"]
+    end
+
+    subgraph ArchiMate["ArchiMate"]
+        ArchiMate_D1["EA 建模语言"]
+        ArchiMate_D2["元素/关系级"]
+        ArchiMate_D3["描述与沟通"]
+        ArchiMate_D4["图形形式化"]
+        ArchiMate_D5["EA 工具主流"]
+    end
+
+    subgraph ISO26550["ISO/IEC 26550:2015"]
+        ISO26550_D1["产品线工程"]
+        ISO26550_D2["资产族级"]
+        ISO26550_D3["领域+应用工程"]
+        ISO26550_D4["参考模型"]
+        ISO26550_D5["制造业/嵌入式"]
+    end
+
+    subgraph OMG_RAS["OMG RAS v2.2"]
+        OMG_RAS_D1["可复用资产描述"]
+        OMG_RAS_D2["资产包级"]
+        OMG_RAS_D3["资产发现与使用"]
+        OMG_RAS_D4["XML Schema"]
+        OMG_RAS_D5["工具集成"]
+    end
+
+    subgraph IEEE1517["IEEE 1517-2010"]
+        IEEE1517_D1["生命周期复用过程"]
+        IEEE1517_D2["过程级"]
+        IEEE1517_D3["组织过程资产"]
+        IEEE1517_D4["过程框架"]
+        IEEE1517_D5["军工/政府"]
+    end
+
+    D1 --> ISO42010_D1
+    D1 --> TOGAF_D1
+    D1 --> ArchiMate_D1
+    D1 --> ISO26550_D1
+    D1 --> OMG_RAS_D1
+    D1 --> IEEE1517_D1
+
+    style ISO42010_D1 fill:#e3f2fd,stroke:#333
+    style TOGAF_D1 fill:#e8f5e9,stroke:#333
+    style ArchiMate_D1 fill:#fff3e0,stroke:#333
+    style ISO26550_D1 fill:#f3e5f5,stroke:#333
+    style OMG_RAS_D1 fill:#e1f5fe,stroke:#333
+    style IEEE1517_D1 fill:#ffebee,stroke:#333

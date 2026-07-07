@@ -1,0 +1,52 @@
+%% version: 2026-07-07
+%% title: 02 业务架构复用 — 公理推理树
+flowchart TD
+    A21["公理 2.1 Capability Atomicity<br/>业务能力边界由价值创造定义"]
+    A22["公理 2.2 Value Stream Conservation<br/>价值流价值总量守恒"]
+    Th23["定理 2.3 Business-Application Bridging<br/>业务服务是业务-应用桥接点"]
+    M2["M.2 Variability Axiom<br/>共性/变性分离"]
+    M3["M.3 Hierarchy Non-Reduction<br/>层次不可约"]
+
+    P1["结论 P1<br/>业务能力是可复用的最小业务语义单元"]
+    P1_reason["价值创造边界稳定，可跨组织/技术实现复用"]
+
+    P2["结论 P2<br/>价值流复用 = 能力有序组合 + 阶段间契约"]
+    P2_reason["缺少接口契约的组合退化为堆砌"]
+
+    P3["结论 P3<br/>业务服务契约稳定性决定业务-应用解耦度"]
+    P3_reason["契约稳定则两层线性依赖；契约频繁变更则耦合指数上升"]
+
+    P4["结论 P4<br/>变性管理是业务复用工程化的核心"]
+    P4_reason["没有变性点的复用是克隆，不是工程复用"]
+
+    P5["结论 P5<br/>业务层复用失败不能由应用/组件层优化完全弥补"]
+    P5_reason["价值定义错误时，技术优化无法补偿"]
+
+    P6["结论 P6<br/>BPMN/DMN 分离使流程结构稳定、规则灵活"]
+    P6_reason["DMN 外部化规则，BPMN 网关仅调用决策结果"]
+
+    A21 --> P1
+    P1 --> P1_reason
+    A22 --> P2
+    M2 --> P2
+    P2 --> P2_reason
+    Th23 --> P3
+    P3 --> P3_reason
+    M2 --> P4
+    P4 --> P4_reason
+    M3 --> P5
+    P5 --> P5_reason
+    P3 --> P6
+    P6 --> P6_reason
+
+    style A21 fill:#e3f2fd,stroke:#333
+    style A22 fill:#e3f2fd,stroke:#333
+    style Th23 fill:#fff3e0,stroke:#333
+    style M2 fill:#e1f5fe,stroke:#333
+    style M3 fill:#e1f5fe,stroke:#333
+    style P1 fill:#e8f5e9,stroke:#333
+    style P2 fill:#e8f5e9,stroke:#333
+    style P3 fill:#e8f5e9,stroke:#333
+    style P4 fill:#e8f5e9,stroke:#333
+    style P5 fill:#e8f5e9,stroke:#333
+    style P6 fill:#e8f5e9,stroke:#333

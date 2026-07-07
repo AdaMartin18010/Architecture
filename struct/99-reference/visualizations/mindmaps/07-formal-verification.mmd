@@ -1,0 +1,50 @@
+%% version: 2026-07-07
+%% title: 07 形式化验证与复用正确性主题思维导图
+mindmap
+  root((形式化验证与复用正确性<br/>Formal Verification for Reuse))
+    形式化方法谱系
+      模型检验 TLA+ / Alloy
+      定理证明 Coq / Isabelle/HOL
+      类型系统证明 Rust / 线性类型
+      契约式验证 SPARK / Ada
+      精化验证 Event-B / B Method
+    验证对象与场景
+      分布式共识与事务
+      授权与依赖结构
+      密码学与编译器
+      内存安全与数据竞争
+      航空/轨交高安全系统
+    核心工具链
+      TLC / Apalache
+      Alloy Analyzer
+      Coq / Isabelle/HOL
+      rustc + Miri + Kani
+      GNATprove
+      Rodin / Atelier B
+    形式化复用资产
+      前置条件 / 后置条件
+      循环不变式 / 状态不变式
+      精化关系 / 模拟关系
+      模型到代码的可追踪性
+    信任传递
+      公理 F.1：形式化验证信任传递
+      组件 C 证明性质 P
+      消费方不违反前置条件
+      系统继承已证明性质
+    工业案例
+      AWS DynamoDB / Cosmos DB
+      Airbus A380 飞控
+      巴黎地铁 14 号线联锁
+      seL4 操作系统内核
+      CompCert 编译器
+    成本与收益
+      学习曲线与专家依赖
+      状态空间爆炸风险
+      认证路径与工具资格
+      高置信度 / 低缺陷逃逸
+    常见误区
+      形式化验证万能
+      模型与实现脱节
+      滥用 unsafe 未验证
+      一次性全面推广
+      忽视消费方前置条件

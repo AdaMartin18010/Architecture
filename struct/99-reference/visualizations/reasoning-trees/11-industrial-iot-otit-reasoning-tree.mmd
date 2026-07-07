@@ -1,0 +1,40 @@
+%% version: 2026-07-07
+%% title: 11 工业 IoT/OT-IT 融合 — 公理化推理树
+%% **定义**：推理树展示 OT-IT 融合复用中公理、引理、原则如何推导出可复用结论。
+%% **示例**：由“OT 确定性不可妥协”公理，经 TSN 有界时延原则，得出控制层必须采用确定性网络。
+%% **反例**：若忽视安全证据在复用中的保持，直接复用开源运动控制库，会导致 SIL 认证失败。
+%% **权威来源**：IEC 61508, ISO 26262, IEC 62443, OPC UA FX, IEEE 802.1 TSN, 核查日期：2026-07-07
+flowchart TD
+    A1[公理 I.1<br/>OT 确定性不可妥协]
+    A2[引理<br/>确定性通信要求有界时延]
+    P1[原则<br/>TSN / IEEE 802.1Qbv 门控调度提供有界时延]
+    C1[结论 1<br/>OT-IT 控制层必须采用 TSN 或等效确定性网络]
+
+    A3[公理 I.2<br/>功能安全证据必须在复用中保持]
+    P2[原则<br/>SEooC / Proven-in-Use 封装假设与证据]
+    C2[结论 2<br/>安全组件可复用当且仅当集成上下文满足假设]
+
+    A4[公理 I.3<br/>开放信息模型抑制厂商锁定]
+    P3[原则<br/>AAS / OPC UA NodeSet 标准化资产语义]
+    C3[结论 3<br/>跨厂商数字孪生资产可复用]
+
+    A1 --> A2
+    A2 --> P1
+    P1 --> C1
+
+    A3 --> P2
+    P2 --> C2
+
+    A4 --> P3
+    P3 --> C3
+
+    style A1 fill:#e3f2fd,stroke:#333
+    style A2 fill:#e3f2fd,stroke:#333
+    style A3 fill:#e3f2fd,stroke:#333
+    style A4 fill:#e3f2fd,stroke:#333
+    style P1 fill:#fff3e0,stroke:#333
+    style P2 fill:#fff3e0,stroke:#333
+    style P3 fill:#fff3e0,stroke:#333
+    style C1 fill:#e8f5e9,stroke:#333
+    style C2 fill:#e8f5e9,stroke:#333
+    style C3 fill:#e8f5e9,stroke:#333

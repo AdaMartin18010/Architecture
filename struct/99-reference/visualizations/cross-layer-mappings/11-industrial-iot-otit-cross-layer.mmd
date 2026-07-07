@@ -1,0 +1,52 @@
+%% version: 2026-07-07
+%% title: 11 工业 IoT/OT-IT 融合 — 跨层映射图
+%% **定义**：跨层映射图展示业务、应用、组件、功能四层在 OT-IT 融合场景中的具体交互。
+%% **示例**：业务层的生产计划通过 MES 应用层工作流，调用组件层的 AAS 子模型，最终由功能层的 MQTT-IA 采集现场数据。
+%% **反例**：业务层 ERP 直接控制现场功能层，绕过应用与组件层，破坏安全隔离与实时闭环。
+%% **权威来源**：ISA-95 / IEC 62264, IEC 63278 AAS, OPC UA FX, IEC 62443, 核查日期：2026-07-07
+flowchart TD
+    subgraph Business["业务架构层"]
+        B1[L4 生产计划 / ERP]
+        B2[L3 制造运营 / MES]
+        B3[工厂 KPI 与合规目标]
+    end
+
+    subgraph Application["应用架构层"]
+        A1[MES 工作流与批次管理]
+        A2[SCADA 监控与告警]
+        A3[ERP 集成服务]
+        A4[AAS 数字孪生入口]
+    end
+
+    subgraph Component["组件架构层"]
+        C1[ISA-95 资产目录]
+        C2[OPC UA NodeSet 信息模型]
+        C3[AAS 子模型模板]
+        C4[PLCopen Motion 功能块]
+    end
+
+    subgraph Function["功能架构层"]
+        F1[TSN 时间同步与门控调度]
+        F2[UADP 二进制 PubSub]
+        F3[MQTT-IA 数据采集]
+        F4[TinyML / ONNX 边缘推理]
+    end
+
+    B1 -->|驱动| A3
+    B2 -->|触发| A1
+    B3 -->|约束| A2
+    A3 -->|下发订单| A1
+    A1 -->|调用| C1
+    A1 -->|实例化| C3
+    A2 -->|订阅| C2
+    C4 -->|输出控制指令| F1
+    C3 -->|拉取/推送遥测| F3
+    C2 -->|编码事件| F2
+    F1 -->|驱动| F4
+    F4 -->|反馈至| A4
+    F3 -->|写入历史数据库| A2
+
+    style Business fill:#e3f2fd,stroke:#333
+    style Application fill:#fff3e0,stroke:#333
+    style Component fill:#f3e5f5,stroke:#333
+    style Function fill:#e8f5e9,stroke:#333

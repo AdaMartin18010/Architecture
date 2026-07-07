@@ -13,7 +13,7 @@ struct/ → view/ 同步与差异报告脚本
     python scripts/sync-view-from-struct.py
     python scripts/sync-view-from-struct.py --generate
     python scripts/sync-view-from-struct.py --topic 01-meta-model-standards --generate
-    python scripts/sync-view-from-struct.py --report view-diff-report.md
+    python scripts/sync-view-from-struct.py --report reports/view-diff-report.md
 """
 
 import re
@@ -87,6 +87,34 @@ def _extract_first_heading(text: str) -> str:
     return "未命名章节"
 
 
+def _rewrite_links(text: str, source_file: Path, struct_root: Path) -> str:
+    """将文本中的相对 Markdown 链接重写为 struct/ 根目录相对路径，便于 view/ 卷册解析。"""
+    link_re = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+
+    def repl(m: re.Match) -> str:
+        link_text = m.group(1)
+        target = m.group(2).strip()
+        # 保留锚点
+        fragment = ""
+        if "#" in target:
+            target, fragment = target.split("#", 1)
+            fragment = "#" + fragment
+        # 跳过外部 URL、mailto、空链接
+        if not target or re.match(r"^[a-z][a-z0-9+.-]*://", target, re.IGNORECASE) or target.startswith("mailto:"):
+            return m.group(0)
+        try:
+            resolved = (source_file.parent / target).resolve()
+            # 确保解析后的目标在 struct_root 内
+            if struct_root in resolved.parents or resolved == struct_root:
+                new_target = resolved.relative_to(struct_root).as_posix()
+                return f"[{link_text}]({new_target}{fragment})"
+        except Exception:
+            pass
+        return m.group(0)
+
+    return link_re.sub(repl, text)
+
+
 def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -> None:
     """将主题目录下的文件聚合并写入 view 卷册"""
     files = _collect_topic_files(topic_dir)
@@ -96,18 +124,20 @@ def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -
     view_file.parent.mkdir(parents=True, exist_ok=True)
     title = _extract_first_heading(files[0].read_text(encoding="utf-8")) if files else topic_dir.name
     date = datetime.now().strftime("%Y-%m-%d")
+    struct_root = project_root / "struct"
 
     parts = [VIEW_HEADER_TEMPLATE.format(title=title, date=date, topic=topic_dir.name)]
     parts.append(f"## 目录\n\n")
     for idx, md in enumerate(files, start=1):
         heading = _extract_first_heading(md.read_text(encoding="utf-8"))
-        rel = md.relative_to(project_root / "struct").as_posix()
+        rel = md.relative_to(struct_root).as_posix()
         parts.append(f"{idx}. [{heading}]({rel})")
     parts.append("\n---\n")
 
     for md in files:
         text = md.read_text(encoding="utf-8")
-        rel = md.relative_to(project_root / "struct").as_posix()
+        text = _rewrite_links(text, md, struct_root)
+        rel = md.relative_to(struct_root).as_posix()
         parts.append(f"\n<!-- SOURCE: struct/{rel} -->\n")
         parts.append(text)
         parts.append("\n---\n")
@@ -240,8 +270,8 @@ def main():
     parser.add_argument(
         "--report",
         metavar="PATH",
-        default="view-diff-report.md",
-        help="差异报告输出路径（默认 view-diff-report.md）",
+        default="reports/view-diff-report.md",
+        help="差异报告输出路径（默认 reports/view-diff-report.md）",
     )
     parser.add_argument(
         "--struct-dir",

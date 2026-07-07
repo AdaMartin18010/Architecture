@@ -1,0 +1,57 @@
+%% version: 2026-07-07
+%% title: 12 AI 原生复用 — 多维对比矩阵
+%% **定义**：AI 原生复用资产对比矩阵从输出确定性、跨 Agent/工具互操作、治理复杂度、复用粒度四个维度比较关键资产类型。
+%% **示例**：MCP Tool 在跨工具互操作性维度得“高”，Model Service 在治理复杂度维度得“高”。
+%% **反例**：将 LLM 输出直接接入信贷审批规则，未定义准确率与置信度边界，导致合规罚款。
+%% **权威来源**：MCP Specification, A2A Protocol, Conformal Prediction Book, NIST AI RMF, 核查日期：2026-07-07
+flowchart LR
+    subgraph "评估维度"
+        D1[输出确定性]
+        D2[跨 Agent/工具互操作]
+        D3[治理复杂度]
+        D4[复用粒度]
+    end
+
+    subgraph "AI 复用资产"
+        MCP["MCP Tool"]
+        A2A["A2A Agent 能力"]
+        RAG["RAG 管道"]
+        PROMPT["Prompt 模板"]
+        MODEL["Model Service"]
+        CONTRACT["概率契约"]
+    end
+
+    MCP -->|中| D1
+    MCP -->|高| D2
+    MCP -->|中| D3
+    MCP -->|细| D4
+
+    A2A -->|低| D1
+    A2A -->|高| D2
+    A2A -->|高| D3
+    A2A -->|粗| D4
+
+    RAG -->|中| D1
+    RAG -->|中| D2
+    RAG -->|中| D3
+    RAG -->|管道| D4
+
+    PROMPT -->|低| D1
+    PROMPT -->|中| D2
+    PROMPT -->|低| D3
+    PROMPT -->|细| D4
+
+    MODEL -->|低| D1
+    MODEL -->|中| D2
+    MODEL -->|高| D3
+    MODEL -->|服务| D4
+
+    CONTRACT -->|中| D1
+    CONTRACT -->|高| D2
+    CONTRACT -->|高| D3
+    CONTRACT -->|契约| D4
+
+    style D1 fill:#e3f2fd,stroke:#333
+    style D2 fill:#e3f2fd,stroke:#333
+    style D3 fill:#fff3e0,stroke:#333
+    style D4 fill:#e8f5e9,stroke:#333

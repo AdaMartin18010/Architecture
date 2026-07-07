@@ -1,0 +1,27 @@
+%% version: 2026-07-07
+%% title: 07 形式化验证方法对比矩阵
+flowchart TB
+    H1["方法"] --> H2["保证强度"] --> H3["自动化"] --> H4["学习曲线"] --> H5["工业认证"] --> H6["典型场景"] --> H7["代表工具"]
+
+    A1["TLA+"] --> B1["有限状态完备"] --> C1["中"] --> D1["中"] --> E1["云厂商实践"] --> F1["分布式协议"] --> G1["TLC / Apalache"]
+    A2["Alloy"] --> B2["有界反例"] --> C2["高"] --> D2["低"] --> E2["学术 / 初创"] --> F2["结构约束"] --> G2["Alloy Analyzer"]
+    A3["Coq / Isabelle"] --> B3["数学绝对"] --> C3["低"] --> D3["高"] --> E3["DO-333 / seL4"] --> F3["密码 / 编译器 / OS"] --> G3["Coq / Isabelle/HOL"]
+    A4["Rust 类型系统"] --> B4["内存安全 + 无竞争"] --> C4["高"] --> D4["中"] --> E4["无航空资格"] --> F4["系统组件 / 内核"] --> G4["rustc / Kani / Miri"]
+    A5["SPARK/Ada"] --> B5["无 RTE + 合同证明"] --> C5["高"] --> D5["中"] --> E5["DO-178C DAL A/B"] --> F5["飞控 / 轨交"] --> G5["GNATprove"]
+    A6["Event-B / B Method"] --> B6["精化链正确"] --> C6["中"] --> D6["中"] --> E6["铁路信号认证"] --> F6["铁路联锁"] --> G6["Rodin / Atelier B"]
+
+    H1 ~~~ A1
+    H2 ~~~ B1
+    H3 ~~~ C1
+    H4 ~~~ D1
+    H5 ~~~ E1
+    H6 ~~~ F1
+    H7 ~~~ G1
+
+    style H1 fill:#e3f2fd,stroke:#333
+    style H2 fill:#e3f2fd,stroke:#333
+    style H3 fill:#e3f2fd,stroke:#333
+    style H4 fill:#e3f2fd,stroke:#333
+    style H5 fill:#e3f2fd,stroke:#333
+    style H6 fill:#e3f2fd,stroke:#333
+    style H7 fill:#e3f2fd,stroke:#333
