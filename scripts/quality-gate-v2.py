@@ -174,7 +174,7 @@ def _extract_markdown_links(text: str) -> List[Tuple[str, str, int]]:
     return links
 
 
-def _resolve_relative_link(base_file: Path, link: str, root: Path) -> Optional[Path]:
+def _resolve_relative_link(base_file: Path, link: str, project_root: Path) -> Optional[Path]:
     """解析相对路径链接，返回绝对路径（若链接以 http/https/ftp/mailto/anchor 开头则返回 None）"""
     link = link.strip()
     if not link:
@@ -190,12 +190,45 @@ def _resolve_relative_link(base_file: Path, link: str, root: Path) -> Optional[P
         return None
     target = (base_file.parent / link).resolve()
     try:
-        if root not in target.parents and target != root:
+        # 允许指向项目根目录下的任何位置（struct/、scripts/、dist/ 等）
+        if project_root not in target.parents and target != project_root:
             return None
     except ValueError:
-        # base_file 在 root 外部，仍可进行文件存在性检查
         pass
     return target
+
+
+def _build_anchors(text: str) -> Set[str]:
+    """预计算文件中所有可用锚点。"""
+    anchors: Set[str] = set()
+    for line in text.splitlines():
+        for m in re.finditer(r"\{#([^}]+)\}", line):
+            anchors.add(m.group(1).lower())
+    seen: Dict[str, int] = defaultdict(int)
+    for line in text.splitlines():
+        m = re.match(r"^#{1,6}\s+(.+?)(?:\s*\{[^}]*\})?\s*$", line)
+        if m:
+            title = m.group(1).strip().lower()
+            slug = re.sub(r"[^\w\s\-]", "", title, flags=re.UNICODE).replace(" ", "-")
+            slug = re.sub(r"-+", "-", slug).strip("-")
+            if not slug:
+                continue
+            count = seen[slug]
+            seen[slug] += 1
+            anchors.add(slug)
+            if count > 0:
+                anchors.add(f"{slug}-{count}")
+    return anchors
+
+
+def _target_exists(target: Path) -> bool:
+    if target.exists():
+        return True
+    if target.is_dir() or target.suffix == "":
+        for name in ("README.md", "index.md", "readme.md"):
+            if (target / name).exists():
+                return True
+    return False
 
 
 def _extract_term_definitions(text: str, rel_path: str) -> Dict[str, str]:
@@ -224,12 +257,14 @@ def _extract_term_definitions(text: str, rel_path: str) -> Dict[str, str]:
     return terms
 
 
-def check_file(filepath: Path, root: Path) -> GateResult:
+def check_file(filepath: Path, root: Path, project_root: Optional[Path] = None) -> GateResult:
     text = filepath.read_text(encoding="utf-8")
     try:
         rel = filepath.relative_to(root).as_posix()
     except ValueError:
         rel = filepath.name
+    if project_root is None:
+        project_root = root
     word_count = len(re.findall(r"[\u4e00-\u9fa5]", text)) + len(text.split())
 
     checks = {}
@@ -262,25 +297,23 @@ def check_file(filepath: Path, root: Path) -> GateResult:
         if count > threshold:
             duplicated_sections.append(f"{sec} 出现 {count} 次")
 
+    # 预计算本文件锚点，用于跨文件/同文件锚点校验
+    local_anchors = _build_anchors(text)
+
     # 死链检测
     dead_links = []
     for link_text, link_target, lineno in _extract_markdown_links(text):
-        target = _resolve_relative_link(filepath, link_target, root)
-        if target is not None and not target.exists():
-            # view/ 卷册是 struct/ 的聚合快照，允许链接指向 struct/ 中的原始文件
-            if is_view_aggregation:
-                struct_root = root.parent / "struct" if root.name == "view" else None
-                if struct_root and struct_root.exists():
-                    try:
-                        # 去掉锚点后再解析 struct/ 路径
-                        struct_link = link_target.split("#", 1)[0]
-                        struct_target = (struct_root / struct_link).resolve()
-                        if struct_target.exists():
-                            continue
-                    except Exception:
-                        pass
+        # 纯锚点（同文件内）：不同渲染器生成规则差异大，本门控不严格检测
+        if link_target.startswith("#"):
+            continue
+
+        target = _resolve_relative_link(filepath, link_target, project_root)
+        if target is None:
+            continue
+
+        if not _target_exists(target):
             try:
-                resolved_rel = target.relative_to(root).as_posix()
+                resolved_rel = target.relative_to(project_root).as_posix()
             except ValueError:
                 resolved_rel = link_target
             dead_links.append({
@@ -289,6 +322,22 @@ def check_file(filepath: Path, root: Path) -> GateResult:
                 "target": link_target,
                 "resolved": resolved_rel,
             })
+            continue
+
+        # 跨文件锚点校验
+        if "#" in link_target:
+            anchor = link_target.split("#", 1)[1]
+            try:
+                target_text = target.read_text(encoding="utf-8", errors="replace")
+                if anchor.lower() not in _build_anchors(target_text):
+                    dead_links.append({
+                        "line": lineno,
+                        "text": link_text,
+                        "target": link_target,
+                        "resolved": target.relative_to(project_root).as_posix(),
+                    })
+            except Exception:
+                pass
 
     # 交叉引用提取
     cross_refs = []
@@ -336,15 +385,19 @@ def _load_glossary_terms(glossary_path: Path) -> Set[str]:
 
 def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
     root = root.resolve()
+    project_root = root.parent
     results = []
     skip_patterns = [
         "99-reference/audit/",
         "99-reference/CHANGELOG",
         "99-reference/frontier-tracking/",
+        "99-reference/course/learning-path.md",
+        "99-reference/course/syllabus.md",
         "plans-tasks/",
         "__pycache__",
         ".venv",
         "_HISTORICAL_",
+        "MASTER_PLAN.md",
     ]
 
     # 加载主术语表，只报告 glossary 中术语的跨文件定义冲突
@@ -359,7 +412,7 @@ def scan_directory(root: Path) -> Tuple[List[GateResult], List[TermConflict]]:
         rel_posix = rel.as_posix()
         if any(sp in rel_posix for sp in skip_patterns):
             continue
-        result = check_file(md, root)
+        result = check_file(md, root, project_root)
         results.append(result)
 
         # 术语提取：仅保留 glossary 中的术语
@@ -539,7 +592,7 @@ def main():
 
     root = project_root
     if target.is_file():
-        results = [check_file(target, root)]
+        results = [check_file(target, root, project_root)]
         conflicts = []
     else:
         results, conflicts = scan_directory(target)

@@ -2,9 +2,11 @@
    目标：证明 inc 操作保持 value <= limit 不变量
 
    编译：rocq compile bounded_counter.v
+            或 coqc bounded_counter.v
+   兼容 Coq 8.x 与 Rocq 9.0+
 *)
 
-From Stdlib Require Import Arith Lia.
+Require Import Arith Lia.
 
 (* ---------- 1. 计数器定义 ---------- *)
 Record bounded_counter := {

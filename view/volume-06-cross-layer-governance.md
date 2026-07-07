@@ -340,7 +340,7 @@ flowchart LR
 > |------|-----|----------|
 > | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-07 |
 > | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-07 |
-> | ISO/IEC/IEEE 42020:2022 — Architecture processes | <https://www.iso.org/standard/74296.html> | 2026-07-07 |
+> | ISO/IEC/IEEE 42020:2019 — Architecture processes | <https://www.iso.org/standard/68982.html> | 2026-07-07 |
 > | ISO/IEC/IEEE 12207:2026 — Software life cycle processes | <https://www.iso.org/standard/90219.html> | 2026-07-07 |
 > | TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-07 |
 > | COBIT 2019 Framework | <https://www.isaca.org/resources/cobit> | 2026-07-07 |
@@ -381,7 +381,7 @@ flowchart LR
 >
 > - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
 > - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
-> - [ISO/IEC/IEEE 42020:2022](https://www.iso.org/standard/74296.html)
+> - [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)
 > - [ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)
 > - 核查日期：2026-07-07
 

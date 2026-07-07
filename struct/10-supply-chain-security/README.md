@@ -117,6 +117,7 @@ graph LR
 - [x] SBOM 标准对比 (`02-sbom-standards/`)
 - [x] 供应链攻击树与 MITRE 映射 (`03-attack-vectors/`)
 - [x] 零信任供应链模板 (`05-zero-trust-supply-chain/`)
+- [x] SLSA Build Level 4 PoC (`05-slsa-l4-poc/`)
 - [x] EU CRA 合规检查清单 (`06-case-studies/`)
 
 关联主题：

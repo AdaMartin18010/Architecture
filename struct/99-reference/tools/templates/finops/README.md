@@ -39,6 +39,7 @@
 | 4 | 单位经济学计算模板 | `unit-economics.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md`](../../../../06-cross-layer-governance/04-finops-cost/templates/unit-economics.md) | Cloud COGS、每用户/每交易/每 token 成本、分层毛利率计算表 |
 | 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](../../../../06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
 | 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
+| 7 | FinOps Excel 公式模板 | `finops-excel-template.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 L1–L4 公式的可编辑 .xlsx 模板 |
 
 ---
 
@@ -58,6 +59,7 @@
 
 - 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](../../../../06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
 - 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](../../../../06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
+- 需要可编辑的 L1–L4 Excel 公式模板 → [FinOps Excel 公式模板](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)
 
 ### 自动化工具
 
@@ -80,6 +82,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
     ├── ai-cost-allocation.md
     ├── finops-allocation.md
     ├── finops-exporter.py
+    ├── finops-excel-template.py
     └── example-costs.yaml
 ```
 
@@ -99,7 +102,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 1. **首次使用**: 从本 README 选择对应模板，复制到项目 Wiki/Confluence/飞书文档后填写 `{{占位符}}`。
 2. **保持同步**: 若发现主题目录模板更新，应及时刷新复用副本中的链接与内容。
 3. **自定义占位符**: 各模板使用 `{{VARIABLE}}` 标记可填写字段，建议团队统一一套变量命名规范。
-4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告。
+4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)。
 
 ---
 
@@ -109,6 +112,35 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 |------|------|------|
 | `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
 | `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
+| `finops-excel-template.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 SUMIFS/VLOOKUP 公式的 L1–L4 Excel 模板 |
+
+### `finops-excel-template.py` 使用说明
+
+生成一个包含 L1–L4 工作表的 `.xlsx` 文件，所有计算均使用 Excel 公式，便于在 Excel / WPS 中二次编辑：
+
+```bash
+# 默认输出到 dist/finops-cost-allocation-template.xlsx
+python struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py
+
+# 指定输出路径
+python struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py --output ./my-finops-template.xlsx
+```
+
+工作表结构：
+
+| 工作表 | 说明 |
+|--------|------|
+| `L1-原始成本` | 云服务原始账单样例（ResourceID、ServiceName、Cost、Tag:Team/Env/Project） |
+| `L2-分摊规则` | Team 的分摊键 `AllocationKey%` 与规则说明，合计需为 100% |
+| `L3-分摊结果` | 使用 `SUMIFS` 汇总直接成本，按 L2 键拆分共享成本，并用 `VLOOKUP` 引用规则 |
+| `L4-单位经济学` | 每用户/每交易/每 Token 成本计算，TotalCost 可引用 L3 合计 |
+| `使用说明` | 模板使用提示与对齐来源 |
+
+依赖：
+
+```bash
+pip install openpyxl
+```
 
 ---
 

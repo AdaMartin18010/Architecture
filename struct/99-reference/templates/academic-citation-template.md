@@ -277,7 +277,7 @@
 | 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
 | 06-2 | **五级成熟度模型**：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26566:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
 | 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
-| 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO 42020:2023 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
+| 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO/IEC/IEEE 42020:2019 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
 
 ### 3.7 形式化验证（07）
 

@@ -5023,6 +5023,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
 
+
 ---
 
 
@@ -9155,7 +9156,6 @@ graph TD
 | **ISO/IEC/IEEE DIS 42024** | — | 草案；enquiry 2026-01-12 结束 | <https://www.iso.org/standard/87510.html> | 架构基础（Architecture Fundamentals） |
 | **ISO/IEC/IEEE DIS 42042** | — | 草案；stage 40.60，enquiry 2026-01-30 结束 | <https://www.iso.org/standard/87310.html> | 参考架构（Reference Architectures） |
 | **ISO/IEC/IEEE 12207** | **2026** | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
-| **ISO/IEC/IEEE 12207** | 2026 | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
 | **ISO/IEC/IEEE 15288** | 2023 | 现行 | <https://www.iso.org/standard/81702.html> | 系统生命周期过程 |
 | **ISO/IEC/IEEE 24765** | 2017 | 现行；计划修订 | <https://www.iso.org/standard/71952.html> | 系统与软件工程词汇 |
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
@@ -9220,7 +9220,7 @@ graph TD
 |-----------|------|------|----------|------|
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
-| **IEC 61508** | **Ed.3 (2026)** | **CDV 投票完成；IEC 61508-3:2026 已被 TÜV Rheinland 等主要认证机构于 2026-06 起作为 SIL 2+ 认证基准强制采用** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
+| **IEC 61508** | **Ed.3 (认证基准 2026；IEC 正式发布预计 ~2027)** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起可采用 Ed.3 作为 SIL 2+ 认证基准** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
 | **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
@@ -9341,7 +9341,7 @@ graph TD
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
 | **治理** | ISO 26566:2026 | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
-| **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (2026 末), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
+| **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
 > **更新说明**:
 > 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。
@@ -9377,7 +9377,7 @@ graph TD
 | **WASM Component Model** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ |
 | **OMG RAS v2.2** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ |
 | **FAIR4RS** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ |
-| **ISO 42020:2023** | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
+| **ISO/IEC/IEEE 42020:2019** | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **ISO 42030:2019** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **ISO 25040:2024** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **ISO/IEC/IEEE 12207:2026** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ |
@@ -9523,7 +9523,7 @@ graph TD
 | **WASI 1.0** | **预期 2026 底–2027 初** | **WASI 0.3 已发布 (2026-02)** | **WASM 跨平台组件复用：原生 async I/O、stream/future 类型** | TBD |
 | PLCopen Motion Part 4 | 2025 发布 | Coordinated Motion 完善 | 机器人-PLC 统一控制 | TBD |
 | **ISO 26262 Ed.3** | **新工作项注册 (2026 初)** | **SDV 区域架构、OTA 安全案例、AI/ML 资质；目标发布 ~2029** | 汽车软件 SEooC 复用 | TBD |
-| **IEC 61508 Ed.3** | **CDV 投票完成 (2026-01-28)；预计 2026 末发布** | **TIL 0–4 工具资质、OO 软件 TR 61508-3-3、与 ISO 26262 对齐** | 功能安全跨域复用 | TBD |
+| **IEC 61508 Ed.3** | **CDV 投票完成 (2026-01-28)；TÜV 等认证机构 2026 起可采用；IEC 官方正式发布预计 ~2027** | **TIL 0–4 工具资质、OO 软件 TR 61508-3-3、与 ISO 26262 对齐** | 功能安全跨域复用 | TBD |
 | OASIS TOSCA v2.0 | 2025-09 OASIS 标准 | IoT/边缘/过程自动化扩展 | 应用拓扑跨域编排 | TBD |
 | Gateway API / GAMMA | 稳定 / SIG Network | 替代 Ingress 与服务网格 API | K8s 原生流量管理复用 | TBD |
 | DMN 1.5 | 2024 OMG 发布 | 与 BPMN 深度集成 | 业务决策服务化复用 | TBD |
@@ -9851,7 +9851,7 @@ graph TD
 | 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
 | 06-2 | **五级成熟度模型**：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26566:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
 | 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
-| 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO 42020:2023 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
+| 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO/IEC/IEEE 42020:2019 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
 
 ### 3.7 形式化验证（07）
 

@@ -40,6 +40,7 @@ def main():
     checks = [
         ("struct/ 质量门控 V2", [sys.executable, "scripts/quality-gate-v2.py", "struct/"]),
         ("view/ 质量门控 V2", [sys.executable, "scripts/quality-gate-v2.py", "view/"]),
+        ("Markdown 链接检查", [sys.executable, "scripts/link-checker.py", "--report", "reports/link-checker.md"]),
         ("交叉索引一致性", [sys.executable, "scripts/cross-index-check.py"]),
         ("struct/view 同步", [sys.executable, "scripts/sync-view-from-struct.py"]),
     ]

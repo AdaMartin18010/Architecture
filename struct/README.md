@@ -111,7 +111,7 @@
 | ISA-95 / IEC 62264 | 企业-控制系统集成 | 生效 | `11-industrial-iot-otit/01-isa-95-model` |
 | OPC UA FX 1.0 (2026) | 现场级确定性通信 | **新兴** | `11-industrial-iot-otit/02-opc-ua-fx` |
 | IEC/IEEE 60802 TSN | 时间敏感网络 | 草案 | `11-industrial-iot-otit/03-tsn-deterministic` |
-| IEC 61508 Ed.3 | 功能安全（含软件复用） | **2026 强制实施** | `11-industrial-iot-otit/06-functional-safety` |
+| IEC 61508 Ed.3 | 功能安全（含软件复用） | CDV 已完成；TÜV 等认证机构 2026 起可采用；IEC 官方正式发布预计 ~2027 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 21448 Ed.2 | 预期功能安全 (SOTIF) | 制定中/预计 2026 发布 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 26262 | 汽车功能安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
 | IEC 63278 (AAS) | 资产管理壳 | 生效 | `11-industrial-iot-otit/05-digital-twin-aas` |
@@ -350,6 +350,6 @@ struct/
 
 ---
 
-> **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/standards-index/authoritative-sources-v3.md` 中登记与复核。
+> **注意**: 本结构是"活文档"，随标准演进、技术发展和实践反馈持续更新。每篇新增或更新文档必须列出 1-3 个国际权威来源 URL，并在 `99-reference/standards-index/authoritative-sources-v2.md` 中登记与复核。
 >
 > 最后更新: 2026-07-07

@@ -25,7 +25,8 @@ __pycache__/
 *.so
 *.egg
 *.egg-info/
-dist/
+dist/*
+dist/*/
 build/
 *.whl
 
@@ -77,6 +78,9 @@ desktop.ini
 report-*.xlsx
 report-*.csv
 *.log
+
+# 例外：允许提交 FinOps 成本分摊 Excel 公式模板产物
+!dist/finops-cost-allocation-template.xlsx
 # 质量门控、交叉索引、同步等自动生成的报告
 reports/*
 !reports/.gitkeep

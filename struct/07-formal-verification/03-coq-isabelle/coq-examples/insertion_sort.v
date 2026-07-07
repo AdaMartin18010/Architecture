@@ -4,10 +4,11 @@
    2. insertion_sort_count — 输出保持元素计数不变（排列）
 
    编译：rocq compile insertion_sort.v
-   兼容 Rocq 9.0+（使用 Stdlib 前缀）
+         或 coqc insertion_sort.v
+   兼容 Coq 8.x 与 Rocq 9.0+
 *)
 
-From Stdlib Require Import Arith List Lia.
+Require Import Arith List Lia.
 Import ListNotations.
 
 (* ---------- 1. 排序谓词 ---------- *)
@@ -41,10 +42,14 @@ Proof.
     + constructor; [apply Nat.leb_le; exact E | constructor].
     + constructor; [apply Nat.leb_gt in E; lia | constructor].
   - simpl. destruct (x <=? x0) eqn:E.
-    + constructor; [apply Nat.leb_le; exact E | constructor; assumption].
-    + simpl. destruct (x <=? y) eqn:E2.
-      * constructor; [apply Nat.leb_gt in E; lia | constructor; assumption].
-      * constructor; [assumption | apply IHsorted].
+    + constructor; [apply Nat.leb_le; exact E | constructor; [exact H | assumption]].
+    + destruct (x <=? y) eqn:E2.
+      * constructor; [apply Nat.leb_gt in E; lia |
+                       constructor; [apply Nat.leb_le; exact E2 | assumption]].
+      * assert (Hins: insert x (y :: l) = y :: insert x l).
+        { simpl. rewrite E2. reflexivity. }
+        rewrite Hins in IHsorted.
+        constructor; [assumption | apply IHsorted].
 Qed.
 
 (* ---------- 4. 插入排序输出有序 ---------- *)
@@ -69,8 +74,9 @@ Lemma count_insert :
 Proof.
   intros x v l; induction l as [|y ys IH]; simpl.
   - destruct (v =? x); reflexivity.
-  - destruct (x <=? y); simpl; rewrite IH;
-      destruct (v =? y); destruct (v =? x); reflexivity.
+  - destruct (x <=? y) eqn:E.
+    + simpl. destruct (v =? x); reflexivity.
+    + simpl. rewrite IH. destruct (v =? y); destruct (v =? x); reflexivity.
 Qed.
 
 (* ---------- 6. 插入排序保持计数 ---------- *)

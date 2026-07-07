@@ -48,7 +48,6 @@
 | **ISO/IEC/IEEE DIS 42024** | — | 草案；enquiry 2026-01-12 结束 | <https://www.iso.org/standard/87510.html> | 架构基础（Architecture Fundamentals） |
 | **ISO/IEC/IEEE DIS 42042** | — | 草案；stage 40.60，enquiry 2026-01-30 结束 | <https://www.iso.org/standard/87310.html> | 参考架构（Reference Architectures） |
 | **ISO/IEC/IEEE 12207** | **2026** | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
-| **ISO/IEC/IEEE 12207** | 2026 | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
 | **ISO/IEC/IEEE 15288** | 2023 | 现行 | <https://www.iso.org/standard/81702.html> | 系统生命周期过程 |
 | **ISO/IEC/IEEE 24765** | 2017 | 现行；计划修订 | <https://www.iso.org/standard/71952.html> | 系统与软件工程词汇 |
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
@@ -113,7 +112,7 @@
 |-----------|------|------|----------|------|
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
-| **IEC 61508** | **Ed.3 (2026)** | **CDV 投票完成；IEC 61508-3:2026 已被 TÜV Rheinland 等主要认证机构于 2026-06 起作为 SIL 2+ 认证基准强制采用** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
+| **IEC 61508** | **Ed.3 (认证基准 2026；IEC 正式发布预计 ~2027)** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起可采用 Ed.3 作为 SIL 2+ 认证基准** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
 | **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |

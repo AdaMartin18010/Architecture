@@ -17,7 +17,7 @@
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
 | **治理** | ISO 26566:2026 | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
-| **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (2026 末), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
+| **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
 > **更新说明**:
 > 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。
@@ -53,7 +53,7 @@
 | **WASM Component Model** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ |
 | **OMG RAS v2.2** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ |
 | **FAIR4RS** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ |
-| **ISO 42020:2023** | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
+| **ISO/IEC/IEEE 42020:2019** | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **ISO 42030:2019** | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **ISO 25040:2024** | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★★ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **ISO/IEC/IEEE 12207:2026** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ |
@@ -199,7 +199,7 @@
 | **WASI 1.0** | **预期 2026 底–2027 初** | **WASI 0.3 已发布 (2026-02)** | **WASM 跨平台组件复用：原生 async I/O、stream/future 类型** | TBD |
 | PLCopen Motion Part 4 | 2025 发布 | Coordinated Motion 完善 | 机器人-PLC 统一控制 | TBD |
 | **ISO 26262 Ed.3** | **新工作项注册 (2026 初)** | **SDV 区域架构、OTA 安全案例、AI/ML 资质；目标发布 ~2029** | 汽车软件 SEooC 复用 | TBD |
-| **IEC 61508 Ed.3** | **CDV 投票完成 (2026-01-28)；预计 2026 末发布** | **TIL 0–4 工具资质、OO 软件 TR 61508-3-3、与 ISO 26262 对齐** | 功能安全跨域复用 | TBD |
+| **IEC 61508 Ed.3** | **CDV 投票完成 (2026-01-28)；TÜV 等认证机构 2026 起可采用；IEC 官方正式发布预计 ~2027** | **TIL 0–4 工具资质、OO 软件 TR 61508-3-3、与 ISO 26262 对齐** | 功能安全跨域复用 | TBD |
 | OASIS TOSCA v2.0 | 2025-09 OASIS 标准 | IoT/边缘/过程自动化扩展 | 应用拓扑跨域编排 | TBD |
 | Gateway API / GAMMA | 稳定 / SIG Network | 替代 Ingress 与服务网格 API | K8s 原生流量管理复用 | TBD |
 | DMN 1.5 | 2024 OMG 发布 | 与 BPMN 深度集成 | 业务决策服务化复用 | TBD |

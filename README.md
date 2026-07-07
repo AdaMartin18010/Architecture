@@ -292,4 +292,4 @@ struct/
 
 ---
 
-> **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v3.md`。
+> **2026-06-12 重要勘误**: 经与国际权威来源复核，修正以下标准状态：ISO/IEC 25010 正式版为 **:2023**（非 :2024）；ArchiMate 4.0 已于 **2026-04-27 正式发布**；ISO/IEC/IEEE 12207:2026 已于 **2026-04-29 发布**；ISO/IEC 30141:2024 已确认存在；NIST SSDF 1.2 仍为 **Initial Public Draft**（非正式版）。详见 `struct/99-reference/standards-index/authoritative-sources-v2.md`。

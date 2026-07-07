@@ -1,0 +1,54 @@
+name: SLSA L4 PoC Build
+
+on:
+  push:
+    paths:
+      - 'struct/10-supply-chain-security/05-slsa-l4-poc/**'
+      - '.github/workflows/slsa-l4-poc.yml'
+  pull_request:
+    paths:
+      - 'struct/10-supply-chain-security/05-slsa-l4-poc/**'
+      - '.github/workflows/slsa-l4-poc.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Verify Provenance
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # 如果需要后续使用 Sigstore/cosign 签名 provenance，可添加 id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run SLSA L4 PoC build
+        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        run: |
+          python build.py
+
+      - name: Verify provenance
+        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        run: |
+          python verify-provenance.py
+
+      - name: Test built artifact
+        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        run: |
+          python dist/app
+
+      - name: Upload artifact and provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: slsa-l4-poc-artifact
+          path: |
+            struct/10-supply-chain-security/05-slsa-l4-poc/dist/app
+            struct/10-supply-chain-security/05-slsa-l4-poc/dist/provenance.json

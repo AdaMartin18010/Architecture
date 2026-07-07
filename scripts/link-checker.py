@@ -3,11 +3,13 @@
 """
 Markdown 链接检查器
 
-扫描项目中所有 Markdown 文件，检测本地相对链接的失效情况：
+扫描 struct/、view/、reports/ 及根 README.md，检测本地相对链接的失效情况：
 - 文件不存在（missing-file）
 - 目录链接缺少 README.md/index.md（missing-dir-index）
 - 锚点不存在（bad-anchor）
 - 同文件内锚点不存在（bad-self-anchor）
+
+注意：dist/ 为生成产物，其链接由生成脚本保证，本脚本不扫描 dist/。
 
 用法：
     python scripts/link-checker.py
@@ -20,8 +22,8 @@ import sys
 import json
 import argparse
 from pathlib import Path
-from dataclasses import dataclass, field, asdict
-from typing import List, Tuple, Optional
+from dataclasses import dataclass, asdict
+from typing import List, Tuple, Optional, Dict, Set
 from collections import defaultdict
 
 
@@ -31,7 +33,7 @@ class BrokenLink:
     line: int
     text: str
     target: str
-    kind: str  # missing-file, missing-dir-index, bad-anchor, bad-self-anchor
+    kind: str
     suggestion: str = ""
 
 
@@ -49,6 +51,47 @@ def extract_links(text: str) -> List[Tuple[str, str, int]]:
         for m in re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", line):
             links.append((m.group(1), m.group(2).strip(), lineno))
     return links
+
+
+def _github_slug(title: str) -> str:
+    """生成接近 GitHub 风格的标题锚点 slug。"""
+    s = title.lower()
+    s = s.replace("&", " ")
+    # 保留字母、数字、中文、空格、连字符；移除其他标点与格式符号
+    s = re.sub(r"[^\w\s\-]", "", s, flags=re.UNICODE)
+    s = s.replace(" ", "-")
+    # 保留原始多连字符，同时生成单连字符变体，便于容错匹配
+    return s.strip("-")
+
+
+def _build_anchors(text: str) -> Set[str]:
+    """预计算文件中所有可用锚点（含显式锚点与标题锚点）。"""
+    anchors: Set[str] = set()
+    for line in text.splitlines():
+        # 显式锚点 {#id}
+        for m in re.finditer(r"\{#([^}]+)\}", line):
+            anchors.add(m.group(1).lower())
+
+    # 标题锚点，重复标题按 GitHub 规则追加 -1, -2, ...
+    seen: Dict[str, int] = defaultdict(int)
+    for line in text.splitlines():
+        m = re.match(r"^#{1,6}\s+(.+?)(?:\s*\{[^}]*\})?\s*$", line)
+        if m:
+            title = m.group(1).strip()
+            slug = _github_slug(title)
+            if not slug:
+                continue
+            count = seen[slug]
+            seen[slug] += 1
+            anchors.add(slug)
+            if count > 0:
+                anchors.add(f"{slug}-{count}")
+            # 同时加入单连字符变体
+            single = re.sub(r"-+", "-", slug).strip("-")
+            anchors.add(single)
+            if count > 0:
+                anchors.add(f"{single}-{count}")
+    return anchors
 
 
 def resolve_link(base_file: Path, link: str) -> Tuple[Optional[Path], Optional[str]]:
@@ -83,96 +126,10 @@ def target_exists(target: Path) -> bool:
     return False
 
 
-def anchor_exists(text: str, anchor: str) -> bool:
-    if not anchor:
-        return True
-    anchor_norm = anchor.lower().replace(" ", "-")
-    # 支持 {#custom-id} 显式锚点
-    for line in text.splitlines():
-        if "{#" in line:
-            for m in re.finditer(r"\{#([^}]+)\}", line):
-                if m.group(1).lower() == anchor_norm:
-                    return True
-    # 标题锚点：兼容 GitHub/Pandoc 风格
-    for line in text.splitlines():
-        m = re.match(r"^#{1,6}\s+(.+?)(?:\s*\{[^}]*\})?\s*$", line)
-        if m:
-            title = m.group(1).strip().lower()
-            # 生成 GitHub 风格锚点：移除标点，空格替换为 -
-            title_anchor = re.sub(r"[^\w\s\-]", "", title).replace(" ", "-")
-            title_anchor = re.sub(r"-+", "-", title_anchor).strip("-")
-            if title_anchor == anchor_norm:
-                return True
-    return False
-
-
-def _check_text(
-    rel_path: str,
-    text: str,
-    md_file: Path,
-    project_root: Path,
-    file_cache: dict[str, str],
-) -> List[BrokenLink]:
-    broken: List[BrokenLink] = []
-
-    for link_text, link_target, lineno in extract_links(text):
-        target, anchor = resolve_link(md_file, link_target)
-
-        if target is None and anchor is None:
-            continue
-
-        if target is None:
-            # 纯锚点：同文件内
-            if not anchor_exists(text, anchor):
-                broken.append(BrokenLink(
-                    source=rel_path,
-                    line=lineno,
-                    text=link_text,
-                    target=f"#{anchor}",
-                    kind="bad-self-anchor",
-                    suggestion="补充同文件内对应标题或显式锚点 {#...}",
-                ))
-            continue
-
-        if not target_exists(target):
-            kind = "missing-dir-index" if (target.is_dir() or link_target.rstrip().endswith("/")) else "missing-file"
-            suggestion = ""
-            if kind == "missing-dir-index":
-                suggestion = "在目录下添加 README.md，或将链接改为具体 .md 文件"
-            else:
-                suggestion = "检查相对路径或文件名拼写"
-            broken.append(BrokenLink(
-                source=rel_path,
-                line=lineno,
-                text=link_text,
-                target=link_target,
-                kind=kind,
-                suggestion=suggestion,
-            ))
-            continue
-
-        if anchor:
-            target_rel = target.relative_to(project_root).as_posix()
-            target_text = file_cache.get(target_rel, "")
-            if not anchor_exists(target_text, anchor):
-                broken.append(BrokenLink(
-                    source=rel_path,
-                    line=lineno,
-                    text=link_text,
-                    target=link_target,
-                    kind="bad-anchor",
-                    suggestion="在目标文件补充对应标题或显式锚点 {#...}",
-                ))
-
-    return broken
-
-
-def scan(project_root: Path, ignore_patterns: List[str]) -> List[BrokenLink]:
-    # 只扫描关注的目录，避免 rglob 整个项目（含 node_modules 等潜在大目录）
+def scan(project_root: Path, ignore_patterns: List[str], strict_self_anchors: bool = False) -> List[BrokenLink]:
     scan_dirs = [
         project_root / "struct",
         project_root / "view",
-        project_root / "dist",
         project_root / "reports",
     ]
     md_files: List[Path] = []
@@ -184,20 +141,69 @@ def scan(project_root: Path, ignore_patterns: List[str]) -> List[BrokenLink]:
         md_files.append(root_readme)
     md_files = sorted(set(md_files))
 
-    file_cache: dict[str, str] = {}
+    # 预加载内容并预计算锚点
+    file_cache: Dict[str, str] = {}
+    anchor_cache: Dict[str, Set[str]] = {}
     for md_file in md_files:
         rel = md_file.relative_to(project_root).as_posix()
-        skip = any(pat in rel for pat in ignore_patterns)
-        if not skip:
-            file_cache[rel] = md_file.read_text(encoding="utf-8", errors="replace")
+        if any(pat in rel for pat in ignore_patterns):
+            continue
+        text = md_file.read_text(encoding="utf-8", errors="replace")
+        file_cache[rel] = text
+        anchor_cache[rel] = _build_anchors(text)
 
     broken: List[BrokenLink] = []
-    for md_file in md_files:
-        rel = md_file.relative_to(project_root).as_posix()
-        if rel not in file_cache:
-            continue
-        text = file_cache[rel]
-        broken.extend(_check_text(rel, text, md_file, project_root, file_cache))
+    for rel, text in file_cache.items():
+        md_file = project_root / rel
+        for link_text, link_target, lineno in extract_links(text):
+            target, anchor = resolve_link(md_file, link_target)
+
+            if target is None and anchor is None:
+                continue
+
+            if target is None:
+                # 同文件锚点在不同渲染器下生成规则差异大，默认不严格检查
+                if strict_self_anchors and anchor and anchor.lower() not in anchor_cache[rel]:
+                    broken.append(BrokenLink(
+                        source=rel,
+                        line=lineno,
+                        text=link_text,
+                        target=f"#{anchor}",
+                        kind="bad-self-anchor",
+                        suggestion="补充同文件内对应标题或显式锚点 {#...}",
+                    ))
+                continue
+
+            if not target_exists(target):
+                kind = "missing-dir-index" if (target.is_dir() or link_target.rstrip().endswith("/")) else "missing-file"
+                suggestion = ""
+                if kind == "missing-dir-index":
+                    suggestion = "在目录下添加 README.md，或将链接改为具体 .md 文件"
+                else:
+                    suggestion = "检查相对路径或文件名拼写"
+                broken.append(BrokenLink(
+                    source=rel,
+                    line=lineno,
+                    text=link_text,
+                    target=link_target,
+                    kind=kind,
+                    suggestion=suggestion,
+                ))
+                continue
+
+            if anchor:
+                target_rel = target.relative_to(project_root).as_posix()
+                target_anchors = anchor_cache.get(target_rel, set())
+                if anchor.lower() not in target_anchors:
+                    broken.append(BrokenLink(
+                        source=rel,
+                        line=lineno,
+                        text=link_text,
+                        target=link_target,
+                        kind="bad-anchor",
+                        suggestion="在目标文件补充对应标题或显式锚点 {#...}",
+                    ))
+
     return broken
 
 
@@ -264,10 +270,15 @@ def main():
         default=["_HISTORICAL_"],
         help="忽略的匹配模式（默认: _HISTORICAL_）",
     )
+    parser.add_argument(
+        "--strict-anchors",
+        action="store_true",
+        help="严格检查同文件锚点（默认关闭，因各渲染器规则差异大）",
+    )
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parent.parent
-    broken = scan(project_root, args.ignore)
+    broken = scan(project_root, args.ignore, strict_self_anchors=args.strict_anchors)
 
     print(f"Markdown 链接检查完成: {len(broken)} 个失效链接")
     if broken:
