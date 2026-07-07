@@ -1,0 +1,33 @@
+name: Health Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run health-check.py
+        run: python scripts/health-check.py
+
+      - name: Run build-deliverables.py
+        run: python scripts/build-deliverables.py
+
+      - name: Upload deliverables
+        uses: actions/upload-artifact@v4
+        with:
+          name: deliverables
+          path: dist/
+          if-no-files-found: ignore
