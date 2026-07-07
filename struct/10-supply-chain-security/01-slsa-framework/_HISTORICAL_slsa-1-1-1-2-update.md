@@ -209,6 +209,7 @@ SLSA 推荐使用以下证明格式：
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。

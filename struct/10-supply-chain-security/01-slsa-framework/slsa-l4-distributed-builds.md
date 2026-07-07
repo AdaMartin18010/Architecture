@@ -305,6 +305,7 @@ flowchart LR
 ---
 
 ## 补充章节
+
 ## 示例
 
 **示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。

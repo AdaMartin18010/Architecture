@@ -34,7 +34,7 @@
 
 ### 3.1 核心资源模型
 
-```
+```text
 GatewayClass
 └── Gateway (外部入口)
     ├── HTTPRoute
