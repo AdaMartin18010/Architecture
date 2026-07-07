@@ -1,26 +1,36 @@
 # SLSA Build Level 4 概念验证（PoC）
 
 > 位置：`struct/10-supply-chain-security/05-slsa-l4-poc/`
+> 版本：2026-07-08
+> 对齐来源：SLSA Specification v1.0, Sigstore/cosign, GitHub Actions
 
-## 1. PoC 目标
+---
 
-本 PoC 用最小可运行代码演示 **SLSA Build Level 4** 的核心控制点：
+## 1. 概念定义
 
-- **Two-Person Review（双人审查）**：关键源码变更需至少两名审批者，模拟通过 `REVIEWERS` 文件或环境变量校验。
-- **Hermetic Builds（密封构建）**：构建脚本声明并固定输入，禁止外部网络/未声明依赖。
-- **Reproducible Builds（可复现构建）**：相同输入（源码、构建脚本、环境）应产生相同的输出哈希。
-- **可验证的来源证明（Provenance）**：`provenance.json` 记录构建者身份、源码 Git commit、构建脚本哈希、输出哈希等关键字段。
+**SLSA**（Supply-chain Levels for Software Artifacts，软件制品供应链等级）是由 OpenSSF 提出的框架，用于评估软件供应链安全成熟度。**SLSA Build Level 4** 是构建可信度的最高等级，要求：
 
-> 注：本 PoC 为教学和本地验证用途，未集成真实的 Sigstore/cosign 签名或 GitHub OIDC，但已通过脚本字段和校验逻辑体现 L4 关键要素。
+- **Two-Person Review（双人审查）**：关键源码变更需至少两名独立审批者，降低单点篡改风险。
+- **Hermetic Builds（密封构建）**：构建过程声明并固定所有输入，禁止未声明的外部网络或依赖。
+- **Reproducible Builds（可复现构建）**：相同输入（源码、构建脚本、环境）应产生位对位相同的输出。
+- **可验证的来源证明（Provenance）**：以不可伪造的方式记录构建者身份、源码版本、构建脚本哈希、输出哈希等元数据。
 
-## 2. SLSA Build L4 要求映射
+> **本 PoC 定位**：用最小可运行代码演示上述四个控制点，便于本地验证与教学；未集成真实 Sigstore/cosign 签名或 GitHub OIDC，但字段与校验逻辑已覆盖 L4 关键要素。
 
-| SLSA L4 要求 | PoC 中的体现 |
-|--------------|--------------|
-| **Two-person review** | `verify-provenance.py` 检查 `REVIEWERS` 记录或 `SLSA_REVIEWERS` 环境变量中至少包含两名审批者。 |
-| **Hermetic build** | `build.py` 显式声明输入文件（`src/main.py`），不访问外部网络，构建脚本自身哈希也被记录。 |
-| **Reproducible build** | 多次运行 `build.py`（同 commit、同脚本）产生的 `dist/app` 字节相同，`verify-provenance.py` 校验 SHA-256。 |
-| **Provenance 可验证** | `provenance.json` 包含 `git_commit`、`builder_id`、`build_script_hash`、`source_hash`、`output_hash`。 |
+---
+
+## 2. PoC 目标
+
+本 PoC 演示 SLSA Build Level 4 核心控制点：
+
+| 控制点 | PoC 中的体现 |
+|--------|-------------|
+| **双人审查** | `verify-provenance.py` 检查 `REVIEWERS` 记录或 `SLSA_REVIEWERS` 环境变量中至少包含两名审批者。 |
+| **密封构建** | `build.py` 显式声明输入文件（`src/main.py`），不访问外部网络，构建脚本自身哈希也被记录。 |
+| **可复现构建** | 多次运行 `build.py`（同 commit、同脚本）产生的 `dist/app` 字节相同，`verify-provenance.py` 校验 SHA-256。 |
+| **来源证明** | `provenance.json` 包含 `git_commit`、`builder_id`、`build_script_hash`、`source_hash`、`output_hash`。 |
+
+---
 
 ## 3. 文件结构
 
@@ -33,8 +43,11 @@
 ├── src/
 │   └── main.py               # 待构建的示例源码
 └── dist/
-    └── app                   # 构建产物（由 build.py 生成）
+    ├── app                   # 构建产物（由 build.py 生成）
+    └── provenance.json       # 来源证明（由 build.py 生成）
 ```
+
+---
 
 ## 4. 运行步骤
 
@@ -53,10 +66,11 @@ python build.py
 输出示例：
 
 ```text
-[build] Source hash:  1a2b3c...
-[build] Script hash:  4d5e6f...
-[build] Output hash:  7a8b9c...
-[build] Provenance written to dist/provenance.json
+[build] Source hash:  e770709c...
+[build] Script hash:  65d931be...
+[build] Output hash:  e770709c...
+[build] Git commit:   e65ffb8...
+[build] Provenance:   dist/provenance.json
 [build] Build complete: dist/app
 ```
 
@@ -69,7 +83,7 @@ python verify-provenance.py
 成功时：
 
 ```text
-[verify] ✔ git commit matches HEAD: <hash>
+[verify] ✔ git commit matches HEAD: e65ffb8...
 [verify] ✔ build script hash matches
 [verify] ✔ output hash matches provenance
 [verify] ✔ two-person review confirmed (reviewers: alice, bob)
@@ -78,7 +92,34 @@ python verify-provenance.py
 
 失败时（例如源码或构建脚本被篡改）：脚本会明确指出哪一项校验失败。
 
-## 5. 在 CI 中使用
+---
+
+## 5. 正向示例
+
+**场景**：团队发布一个供下游消费的命令行工具。通过本 PoC：
+
+1. 每次构建由 CI 触发，`build.py` 固定读取 `src/main.py`，不访问外部 PyPI。
+2. `REVIEWERS` 中登记了 `alice` 和 `bob`，`verify-provenance.py` 确认至少两名审批者。
+3. 同一 commit 在本地与 CI runner 上分别运行 `build.py`，输出 `dist/app` 的 SHA-256 一致。
+4. `provenance.json` 被上传到制品仓库，下游团队可用 `verify-provenance.py` 校验构建来源。
+
+该流程满足 SLSA Build L4 的最低可运行演示，并可在真实场景中替换为 Sigstore/cosign 签名。
+
+---
+
+## 6. 反例 / 反模式
+
+| 反模式 | 风险 | 本 PoC 中的检测方式 |
+|--------|------|---------------------|
+| **无来源证明** | 无法追溯构建来源，遭受供应链攻击后无法定位 | `verify-provenance.py` 检查 `provenance.json` 存在且字段完整 |
+| **单人审查/无审查** | 内部人员可单点注入恶意代码 | `verify-provenance.py` 要求至少两名审批者 |
+| **非密封构建** | 构建时拉取未声明依赖，导致输出不可预测 | `build.py` 不访问网络，输入文件显式声明 |
+| **不可复现构建** | 同一源码在不同环境产出不同产物，难以审计 | `verify-provenance.py` 比较 `output_hash` 与当前产物哈希 |
+| **静态 provenance** | 手动维护的 provenance 易被篡改 | `build.py` 在构建时动态计算并写入哈希 |
+
+---
+
+## 7. 在 CI 中使用
 
 仓库 `.github/workflows/slsa-l4-poc.yml` 提供了一个 GitHub Actions 示例：
 
@@ -89,9 +130,42 @@ python verify-provenance.py
 
 在真实生产场景中，应进一步使用 [SLSA GitHub Generator](https://github.com/slsa-framework/slsa-github-generator) 或 Sigstore/cosign 对 provenance 进行签名。
 
-## 6. 扩展建议
+---
+
+## 8. 扩展建议
 
 1. **签名 provenance**：使用 `cosign sign-blob` 或 Sigstore Python SDK 对 `provenance.json` 签名。
 2. **真实双人审查**：通过 GitHub "Require approvals" 分支保护规则实现，而非本地文件。
 3. **可复现构建矩阵**：在多个 runner / 容器环境中运行 `build.py`，比较输出哈希是否一致。
 4. **SBOM 联动**：在构建后调用 `syft` 或 `cyclonedx-py` 生成 SBOM，并与 provenance 一起发布。
+
+---
+
+## 9. 权威来源
+
+> **权威来源**:
+>
+> - OpenSSF. *SLSA Specification v1.0*. <https://slsa.dev/spec/v1.0/>
+> - OpenSSF. *SLSA Build Track*. <https://slsa.dev/spec/v1.0/levels#build-track>
+> - Sigstore. *cosign documentation*. <https://docs.sigstore.dev/cosign/overview/>
+> - OpenSSF. *SLSA GitHub Generator*. <https://github.com/slsa-framework/slsa-github-generator>
+> - GitHub. *About branch protection rules*. <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
+> - 核查日期：2026-07-08
+
+---
+
+## 10. 交叉引用
+
+- 供应链安全主题入口：[`struct/10-supply-chain-security/README.md`](../README.md)
+- SLSA 框架与复用边界：[`struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`](../01-slsa-framework/slsa-reuse-boundaries.md)
+- SBOM 标准与复用安全：[`struct/10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`](../02-sbom-standards/sbom-reuse-security.md)
+- 供应链攻击向量：[`struct/10-supply-chain-security/03-attack-vectors/README.md`](../03-attack-vectors/README.md)
+- 来源证明示例：[`struct/10-supply-chain-security/04-provenance-examples/README.md`](../04-provenance-examples/README.md)
+- 零信任供应链原则：[`struct/10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-principles.md`](../05-zero-trust-supply-chain/zero-trust-principles.md)
+- 形式化验证环境：[`struct/99-reference/tools/formal-verification-env/`](../../99-reference/tools/formal-verification-env/)
+
+---
+
+## 11. 分析
+
+SLSA Build L4 的核心价值不在于单一技术，而在于通过**过程控制 + 密码学证明**将构建可信度从“相信构建者”提升为“验证构建证据”。本 PoC 以最小代码量展示了四个控制点的可运行形态：双人审查降低人为篡改风险、密封构建消除未声明依赖、可复现构建保证审计一致性、来源证明提供跨团队验证基础。在真实落地时，应将其嵌入 CI/CD 流水线，并结合 Sigstore/cosign 实现 provenance 的不可伪造签名。

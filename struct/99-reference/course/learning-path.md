@@ -107,7 +107,7 @@
 - [SLSA L4 分布式构建验证实践](../../10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md)
 - [SLSA v1.2 多轨道复用安全边界详解](../../10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md)
 - [SBOM 格式对比：SPDX vs CycloneDX vs SWID](../../10-supply-chain-security/02-sbom-standards/sbom-comparison.md)
-- … 共 23 个文件
+- … 共 24 个文件
 
 ### 11 工业 IoT / OT-IT 融合复用
 

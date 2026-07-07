@@ -4721,7 +4721,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [SLSA L4 分布式构建验证实践](../struct/10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md)
 - [SLSA v1.2 多轨道复用安全边界详解](../struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md)
 - [SBOM 格式对比：SPDX vs CycloneDX vs SWID](../struct/10-supply-chain-security/02-sbom-standards/sbom-comparison.md)
-- … 共 23 个文件
+- … 共 24 个文件
 
 ### 11 工业 IoT / OT-IT 融合复用
 
@@ -4782,11 +4782,9 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 正向示例
 
 ### 示例 1：有效测验设计
-
 某测验要求学员为真实金融系统建立 ISO 42010 / TOGAF / SLSA 对齐矩阵，学员通过查阅 `struct/` 权威来源完成，评分 90+。
 
 ### 示例 2：简答型高阶评估
-
 "为复用而复用"简答题迫使学员区分抽象过度与价值驱动复用，显著提升了架构决策质量。
 
 ---
@@ -4801,14 +4799,12 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 一、概念辨析（单选）
 
 ### 1. 什么是架构复用中的"单一真源"？
-
 - A. 所有代码都放在一个仓库里
 - B. 以 `struct/` 为权威来源，`view/` 为其只读聚合视角 ✅
 - C. 只允许一位架构师修改文档
 - D. 所有项目使用同一套技术栈
 
 ### 2. ISO/IEC/IEEE 42010:2022 主要解决什么问题？
-
 - A. 软件测试流程
 - B. 架构描述的语言与视点 ✅
 - C. 项目管理方法论
@@ -4819,7 +4815,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 二、标准与框架（多选）
 
 ### 3. 下列哪些标准/框架与本知识体系直接对齐？
-
 - A. TOGAF 10 ✅
 - B. ArchiMate 4.0 ✅
 - C. ISO/IEC 26550:2015 ✅
@@ -4827,7 +4822,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - E. ISO 9001:2015
 
 ### 4. 软件供应链安全应关注哪些要素？
-
 - A. SBOM ✅
 - B. Provenance ✅
 - C. SLSA 等级 ✅
@@ -4838,18 +4832,14 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 三、正向示例与反模式（简答）
 
-### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素
-
+### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素。
 **参考答案要点**:
-
 - 选择可复用资产时进行了成本/收益分析；
 - 建立了清晰的接口契约与版本策略；
 - 通过成熟度模型持续度量复用效果。
 
 ### 6. "为复用而复用"是一种什么反模式？应如何避免？
-
 **参考答案要点**:
-
 - 过度抽象导致不必要的复杂性；
 - 应基于真实业务价值和复用频次进行决策；
 - 使用复用决策树或 ROI 模型量化评估。
@@ -4859,17 +4849,13 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 四、形式化与量化（计算/分析）
 
 ### 7. 某组件库开发成本为 80 人天，预计在第 3、5、8 个项目中分别节省 20、35、50 人天。假设无贴现，该复用是否值得？
-
 **参考答案**:
-
 - 总节省 = 20 + 35 + 50 = 105 人天
 - 开发成本 = 80 人天
 - 净收益 = 25 人天 > 0，值得复用。
 
 ### 8. 为什么 TLA+ 适合验证分布式协议（如 MCP/A2A）？
-
 **参考答案要点**:
-
 - TLA+ 能精确描述状态机与并发行为；
 - TLC 模型检查器可发现死锁、活锁与不变量违反；
 - 适合验证消息协议、任务生命周期等场景。
@@ -4879,7 +4865,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 五、权威来源核查
 
 ### 9. 以下哪个引用存在潜在问题？
-
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
@@ -5022,7 +5007,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
-
 
 ---
 
@@ -7891,7 +7875,6 @@ $$
 ---
 
 ## 补充章节
-
 ## 概念定义
 
 **定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
@@ -12388,6 +12371,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 | 4 | 单位经济学计算模板 | `unit-economics.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md) | Cloud COGS、每用户/每交易/每 token 成本、分层毛利率计算表 |
 | 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
 | 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
+| 7 | FinOps Excel 公式模板 | `finops-excel-template.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 L1–L4 公式的可编辑 .xlsx 模板 |
 
 ---
 
@@ -12407,6 +12391,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 - 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](../struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
 - 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
+- 需要可编辑的 L1–L4 Excel 公式模板 → [FinOps Excel 公式模板](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)
 
 ### 自动化工具
 
@@ -12429,6 +12414,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
     ├── ai-cost-allocation.md
     ├── finops-allocation.md
     ├── finops-exporter.py
+    ├── finops-excel-template.py
     └── example-costs.yaml
 ```
 
@@ -12448,7 +12434,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 1. **首次使用**: 从本 README 选择对应模板，复制到项目 Wiki/Confluence/飞书文档后填写 `{{占位符}}`。
 2. **保持同步**: 若发现主题目录模板更新，应及时刷新复用副本中的链接与内容。
 3. **自定义占位符**: 各模板使用 `{{VARIABLE}}` 标记可填写字段，建议团队统一一套变量命名规范。
-4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告。
+4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)。
 
 ---
 
@@ -12458,6 +12444,35 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 |------|------|------|
 | `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
 | `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
+| `finops-excel-template.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 SUMIFS/VLOOKUP 公式的 L1–L4 Excel 模板 |
+
+### `finops-excel-template.py` 使用说明
+
+生成一个包含 L1–L4 工作表的 `.xlsx` 文件，所有计算均使用 Excel 公式，便于在 Excel / WPS 中二次编辑：
+
+```bash
+# 默认输出到 dist/finops-cost-allocation-template.xlsx
+python struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py
+
+# 指定输出路径
+python struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py --output ./my-finops-template.xlsx
+```
+
+工作表结构：
+
+| 工作表 | 说明 |
+|--------|------|
+| `L1-原始成本` | 云服务原始账单样例（ResourceID、ServiceName、Cost、Tag:Team/Env/Project） |
+| `L2-分摊规则` | Team 的分摊键 `AllocationKey%` 与规则说明，合计需为 100% |
+| `L3-分摊结果` | 使用 `SUMIFS` 汇总直接成本，按 L2 键拆分共享成本，并用 `VLOOKUP` 引用规则 |
+| `L4-单位经济学` | 每用户/每交易/每 Token 成本计算，TotalCost 可引用 L3 合计 |
+| `使用说明` | 模板使用提示与对齐来源 |
+
+依赖：
+
+```bash
+pip install openpyxl
+```
 
 ---
 

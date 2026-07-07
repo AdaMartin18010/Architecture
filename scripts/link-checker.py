@@ -278,6 +278,15 @@ def main():
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parent.parent
+
+    # 若报告文件位于扫描目录内，先清空它，避免历史死链记录被误报
+    if args.report:
+        report_path = Path(args.report)
+        try:
+            report_path.write_text("# Markdown 链接检查报告\n\n检查中...\n", encoding="utf-8")
+        except Exception:
+            pass
+
     broken = scan(project_root, args.ignore, strict_self_anchors=args.strict_anchors)
 
     print(f"Markdown 链接检查完成: {len(broken)} 个失效链接")
