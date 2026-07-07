@@ -32,7 +32,7 @@ def list_topics():
     return topics
 
 
-tab_search, tab_viz, tab_health, tab_course = st.tabs(["🔍 全文搜索", "📊 可视化", "🩺 健康检查", "🎓 课程"])
+tab_search, tab_viz, tab_health, tab_course, tab_quiz = st.tabs(["🔍 全文搜索", "📊 可视化", "🩺 健康检查", "🎓 课程", "📝 测验"])
 
 with tab_search:
     keyword = st.text_input("输入关键词，搜索 struct/ 全部 Markdown", "")
@@ -82,3 +82,13 @@ with tab_course:
     st.markdown("---")
     st.markdown("📖 [完整学习路径](../../../struct/99-reference/course/learning-path.md)")
     st.markdown("📋 [课程大纲](../../../struct/99-reference/course/syllabus.md)")
+
+
+with tab_quiz:
+    st.subheader("课程测验")
+    quiz_file = STRUCT_DIR / "99-reference" / "course" / "quiz.md"
+    if quiz_file.exists():
+        quiz_text = quiz_file.read_text(encoding="utf-8")
+        st.markdown(quiz_text)
+    else:
+        st.warning("未找到测验文件")

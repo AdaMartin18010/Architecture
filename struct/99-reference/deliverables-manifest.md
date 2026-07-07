@@ -1,6 +1,6 @@
 # 全量交付物清单
 
-> **版本**: 2026-06-10 | **统计范围**: `struct/` 目录（含 `99-reference/`）
+> **版本**: 2026-07-08 | **统计范围**: `struct/` 目录（含 `99-reference/`）
 
 ---
 
@@ -8,14 +8,15 @@
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| Markdown 文档 | 211 | 知识体系核心载体 |
-| Python 工具 | 17 | CLI / Streamlit / 分析脚本 |
-| TLA+ 规约 | 5 | 时序逻辑形式化规约 |
+| Markdown 文档 | 332 | 知识体系核心载体（struct/ 309 + view/ 23） |
+| Python 工具 | 12+ | CLI / Streamlit / 分析脚本 |
+| TLA+ 规约 | 3 | 时序逻辑形式化规约 |
 | Alloy 模型 | 4 | 约束求解与结构验证 |
 | Coq/Isabelle 证明 | 2+ | 定理证明纲要 |
-| Mermaid 架构图 | 15 | 13 主题 + 2 综合图 |
-| SVG 渲染图 | 12 | 矢量图（透明背景） |
-| **总计** | **~270** | 跨 13 个一级主题 + 参考索引 |
+| Mermaid 架构图 | 75 | 13 主题 × 5 类图 + 综合图 |
+| SVG 渲染图 | 75 | 矢量图（透明背景） |
+| 课程/测验/幻灯片 | 4+ | Phase 6 整合输出 |
+| **总计** | **~500** | 跨 13 个一级主题 + 参考索引 |
 
 ---
 
@@ -189,3 +190,24 @@
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
+---
+
+## Phase 6 整合输出物
+
+| 交付物 | 路径 | 说明 |
+|--------|------|------|
+| 全书聚合稿 | `dist/book-full.md` | 由 `scripts/build-deliverables.py` 生成 |
+| 主题分卷 | `dist/book-volumes/volume-*.md` | 14 个主题卷册 |
+| HTML 幻灯片 | `dist/slides/*.html` | 由 `scripts/build-slides.py` 生成（reveal.js） |
+| PDF/ePub | `dist/book-full.pdf` / `.epub` | 由 `scripts/build-pdf.py` 生成（需 pandoc） |
+| 学习路径 | `99-reference/course/learning-path.md` | 4 条递进式学习路径 |
+| 课程大纲 | `99-reference/course/syllabus.md` | 16 周课程安排 |
+| 课程测验 | `99-reference/course/quiz.md` | 单选/多选/简答/计算题 |
+| 统一 CLI | `scripts/knowledge-cli.py` | health / build / render / search / stats |
+| 知识门户 | `99-reference/tools/knowledge-portal/app.py` | Streamlit 交互式门户 |
+| CI 工作流 | `.github/workflows/health-check.yml` | 自动 health-check + 构建产物上传 |
+
+---
+
+> **生成命令**: `python scripts/knowledge-cli.py build`

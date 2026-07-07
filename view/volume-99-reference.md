@@ -30,37 +30,38 @@
 17. [第 6 章详细设计：功能架构复用](99-reference/chapters/ch06.md)
 18. [学习路径：从架构复用新手到专家](99-reference/course/learning-path.md)
 19. [课程测验：软件架构复用工程](99-reference/course/quiz.md)
-20. [课程大纲：软件架构复用工程](99-reference/course/syllabus.md)
-21. [全量交付物清单](99-reference/deliverables-manifest.md)
-22. [权威外部资源索引](99-reference/external-links/authoritative-sources.md)
-23. [公理-定理推理树](99-reference/glossary/axiom-theorem-tree.md)
-24. [跨主题综合索引](99-reference/glossary/cross-topic-index.md)
-25. [未命名章节](99-reference/glossary/glossary-master.md)
-26. [跨标准术语对照表](99-reference/glossary/terminology-crosswalk.md)
-27. [学术概念谱系索引（Academic Lineage Index）](99-reference/knowledge-index/academic-lineage.md)
-28. [四层复用映射矩阵](99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
-29. [13 个一级主题依赖/互斥/蕴含关系图](99-reference/knowledge-index/cross-theme-dependency-graph.md)
-30. [软件架构复用知识体系问答索引 (QA Index)](99-reference/knowledge-index/qa-index.md)
-31. [Phase C 质量检查报告](99-reference/quality-check-phase-c.md)
-32. [99 参考索引](99-reference/README.md)
-33. [国际标准与权威来源索引 v2.2](99-reference/standards-index/authoritative-sources-v2.md)
-34. [国际标准对齐多维总矩阵](99-reference/standards-index/master-alignment-matrix.md)
-35. [学术/技术白皮书引用模板](99-reference/templates/academic-citation-template.md)
-36. [复用资产质量检查清单模板](99-reference/templates/checklist-template.md)
-37. [标准引用规范：版本 + URL + 核查日期三元组](99-reference/templates/citation-standard.md)
-38. [核心知识文件内容要素检查清单](99-reference/templates/content-checklist.md)
-39. [文档模板](99-reference/templates/document-template.md)
-40. [事实核查清单（Fact-Check Checklist）](99-reference/templates/fact-check-checklist.md)
-41. [快速参考卡](99-reference/templates/quick-reference-card.md)
-42. [形式化验证自动化环境](99-reference/tools/formal-verification-env/README.md)
-43. [可执行工具目录](99-reference/tools/README.md)
-44. [交互式复用决策工具](99-reference/tools/reuse-decision-tool/README.md)
-45. [交互式复用决策工具 v2.0](99-reference/tools/reuse-decision-tool-v2/README.md)
-46. [复用决策报告：{{ asset_name }}](99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
-47. [季度标准跟踪与一致性报告](99-reference/tools/standard-tracker-quarterly-report.md)
-48. [标准跟踪监控报告](99-reference/tools/standard-tracker-report.md)
-49. [FinOps 工具模板聚合入口](99-reference/tools/templates/finops/README.md)
-50. [架构复用知识体系可视化图库](99-reference/visualizations/README.md)
+20. [课程与学习路径](99-reference/course/README.md)
+21. [课程大纲：软件架构复用工程](99-reference/course/syllabus.md)
+22. [全量交付物清单](99-reference/deliverables-manifest.md)
+23. [权威外部资源索引](99-reference/external-links/authoritative-sources.md)
+24. [公理-定理推理树](99-reference/glossary/axiom-theorem-tree.md)
+25. [跨主题综合索引](99-reference/glossary/cross-topic-index.md)
+26. [未命名章节](99-reference/glossary/glossary-master.md)
+27. [跨标准术语对照表](99-reference/glossary/terminology-crosswalk.md)
+28. [学术概念谱系索引（Academic Lineage Index）](99-reference/knowledge-index/academic-lineage.md)
+29. [四层复用映射矩阵](99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
+30. [13 个一级主题依赖/互斥/蕴含关系图](99-reference/knowledge-index/cross-theme-dependency-graph.md)
+31. [软件架构复用知识体系问答索引 (QA Index)](99-reference/knowledge-index/qa-index.md)
+32. [Phase C 质量检查报告](99-reference/quality-check-phase-c.md)
+33. [99 参考索引](99-reference/README.md)
+34. [国际标准与权威来源索引 v2.2](99-reference/standards-index/authoritative-sources-v2.md)
+35. [国际标准对齐多维总矩阵](99-reference/standards-index/master-alignment-matrix.md)
+36. [学术/技术白皮书引用模板](99-reference/templates/academic-citation-template.md)
+37. [复用资产质量检查清单模板](99-reference/templates/checklist-template.md)
+38. [标准引用规范：版本 + URL + 核查日期三元组](99-reference/templates/citation-standard.md)
+39. [核心知识文件内容要素检查清单](99-reference/templates/content-checklist.md)
+40. [文档模板](99-reference/templates/document-template.md)
+41. [事实核查清单（Fact-Check Checklist）](99-reference/templates/fact-check-checklist.md)
+42. [快速参考卡](99-reference/templates/quick-reference-card.md)
+43. [形式化验证自动化环境](99-reference/tools/formal-verification-env/README.md)
+44. [可执行工具目录](99-reference/tools/README.md)
+45. [交互式复用决策工具](99-reference/tools/reuse-decision-tool/README.md)
+46. [交互式复用决策工具 v2.0](99-reference/tools/reuse-decision-tool-v2/README.md)
+47. [复用决策报告：{{ asset_name }}](99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
+48. [季度标准跟踪与一致性报告](99-reference/tools/standard-tracker-quarterly-report.md)
+49. [标准跟踪监控报告](99-reference/tools/standard-tracker-report.md)
+50. [FinOps 工具模板聚合入口](99-reference/tools/templates/finops/README.md)
+51. [架构复用知识体系可视化图库](99-reference/visualizations/README.md)
 
 ---
 
@@ -4899,6 +4900,63 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ---
 
 
+<!-- SOURCE: struct/99-reference/course/README.md -->
+
+# 课程与学习路径
+
+> **版本**: 2026-07-08
+> **定位**: Phase 6 整合输出——将知识体系转化为可教学、可学习、可评估的课程产品
+
+---
+
+## 概念定义
+
+**课程产品（Course Product）**: 基于 `struct/` 知识体系，面向学习者设计的教学材料集合，包括学习路径、课程大纲、测验与幻灯片。
+
+---
+
+## 正向示例
+
+- 学习者按 [学习路径](99-reference/course/learning-path.md) 的架构师路径学习，8 周后完成一份可复用架构设计文档。
+- 讲师使用 [课程大纲](99-reference/course/syllabus.md) 和 [幻灯片](../../../dist/slides) 在 16 周内完成教学。
+
+---
+
+## 反例/反模式
+
+- 只阅读文档不做测验，无法检验理解程度。
+- 跳过元模型与标准，直接学习 MCP/A2A 等技术细节，导致缺乏体系化视角。
+
+---
+
+## 交付物清单
+
+| 文件 | 说明 |
+|------|------|
+| [learning-path.md](99-reference/course/learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
+| [syllabus.md](99-reference/course/syllabus.md) | 16 周课程大纲、考核方式 |
+| [quiz.md](99-reference/course/quiz.md) | 课程测验与参考答案 |
+| [../../../dist/slides](../../../dist/slides) | 14 个主题 reveal.js 幻灯片 |
+
+---
+
+## 权威来源
+
+- Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
+- IEEE/ACM. *Software Engineering Body of Knowledge (SWEBOK) V4*. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
+
+---
+
+## 交叉引用
+
+- 主术语表：[../glossary/glossary-master.md](99-reference/glossary/glossary-master.md)
+- 工具入口：[../tools/README.md](99-reference/tools/README.md)
+- 全书构建：[../../../scripts/build-deliverables.py](../../../scripts/build-deliverables.py)
+
+
+---
+
+
 <!-- SOURCE: struct/99-reference/course/syllabus.md -->
 
 # 课程大纲：软件架构复用工程
@@ -5005,7 +5063,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 # 全量交付物清单
 
-> **版本**: 2026-06-10 | **统计范围**: `struct/` 目录（含 `99-reference/`）
+> **版本**: 2026-07-08 | **统计范围**: `struct/` 目录（含 `99-reference/`）
 
 ---
 
@@ -5013,14 +5071,15 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| Markdown 文档 | 211 | 知识体系核心载体 |
-| Python 工具 | 17 | CLI / Streamlit / 分析脚本 |
-| TLA+ 规约 | 5 | 时序逻辑形式化规约 |
+| Markdown 文档 | 332 | 知识体系核心载体（struct/ 309 + view/ 23） |
+| Python 工具 | 12+ | CLI / Streamlit / 分析脚本 |
+| TLA+ 规约 | 3 | 时序逻辑形式化规约 |
 | Alloy 模型 | 4 | 约束求解与结构验证 |
 | Coq/Isabelle 证明 | 2+ | 定理证明纲要 |
-| Mermaid 架构图 | 15 | 13 主题 + 2 综合图 |
-| SVG 渲染图 | 12 | 矢量图（透明背景） |
-| **总计** | **~270** | 跨 13 个一级主题 + 参考索引 |
+| Mermaid 架构图 | 75 | 13 主题 × 5 类图 + 综合图 |
+| SVG 渲染图 | 75 | 矢量图（透明背景） |
+| 课程/测验/幻灯片 | 4+ | Phase 6 整合输出 |
+| **总计** | **~500** | 跨 13 个一级主题 + 参考索引 |
 
 ---
 
@@ -5194,6 +5253,27 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
+---
+
+## Phase 6 整合输出物
+
+| 交付物 | 路径 | 说明 |
+|--------|------|------|
+| 全书聚合稿 | `dist/book-full.md` | 由 `scripts/build-deliverables.py` 生成 |
+| 主题分卷 | `dist/book-volumes/volume-*.md` | 14 个主题卷册 |
+| HTML 幻灯片 | `dist/slides/*.html` | 由 `scripts/build-slides.py` 生成（reveal.js） |
+| PDF/ePub | `dist/book-full.pdf` / `.epub` | 由 `scripts/build-pdf.py` 生成（需 pandoc） |
+| 学习路径 | `99-reference/course/learning-path.md` | 4 条递进式学习路径 |
+| 课程大纲 | `99-reference/course/syllabus.md` | 16 周课程安排 |
+| 课程测验 | `99-reference/course/quiz.md` | 单选/多选/简答/计算题 |
+| 统一 CLI | `scripts/knowledge-cli.py` | health / build / render / search / stats |
+| 知识门户 | `99-reference/tools/knowledge-portal/app.py` | Streamlit 交互式门户 |
+| CI 工作流 | `.github/workflows/health-check.yml` | 自动 health-check + 构建产物上传 |
+
+---
+
+> **生成命令**: `python scripts/knowledge-cli.py build`
 
 
 ---
