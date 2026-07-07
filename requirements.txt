@@ -1,0 +1,4 @@
+# 软件工程架构复用知识体系 — Python 工具依赖
+# 安装：pip install -r requirements.txt
+
+streamlit>=1.35.0
