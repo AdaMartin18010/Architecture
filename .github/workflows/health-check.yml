@@ -19,11 +19,35 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run link-checker.py
+        run: python scripts/link-checker.py --report reports/link-checker.md
+        continue-on-error: true
+
+      - name: Run cross-index-check.py
+        run: python scripts/cross-index-check.py
+        continue-on-error: true
+
+      - name: Run template-padding-check.py
+        run: python scripts/template-padding-check.py
+
       - name: Run health-check.py
         run: python scripts/health-check.py
 
       - name: Run build-deliverables.py
         run: python scripts/build-deliverables.py
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: reports/
+          if-no-files-found: ignore
 
       - name: Upload deliverables
         uses: actions/upload-artifact@v4
