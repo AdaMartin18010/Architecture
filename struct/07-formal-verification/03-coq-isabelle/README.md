@@ -5,7 +5,15 @@
 
 ---
 
-## 1. 目录结构
+## 1. 概念定义
+
+**Coq/Rocq** 与 **Isabelle/HOL** 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。
+
+**可复用形式化组件** 是指附带机器检查证明的函数、数据结构或状态机；消费方在满足前置条件的前提下，可直接继承其已证明的正确性性质，无需重新证明。
+
+---
+
+## 2. 目录结构
 
 ```text
 03-coq-isabelle/
@@ -21,9 +29,9 @@
 
 ---
 
-## 2. Coq/Rocq 示例
+## 3. Coq/Rocq 示例
 
-### 2.1 快速验证
+### 3.1 快速验证
 
 ```bash
 # 使用 Docker
@@ -31,7 +39,7 @@ docker run --rm -v "$PWD/coq-examples":/src -w /src rocq/rocq-prover:9.0 \
        rocq compile insertion_sort.v
 ```
 
-### 2.2 插入排序正确性
+### 3.2 插入排序正确性
 
 文件：`coq-examples/insertion_sort.v`
 
@@ -40,7 +48,7 @@ docker run --rm -v "$PWD/coq-examples":/src -w /src rocq/rocq-prover:9.0 \
 - `insertion_sort_sorted`：输出列表是有序的。
 - `insertion_sort_count`：输出列表是输入列表的排列（通过元素计数不变证明）。
 
-### 2.3 有界计数器不变量
+### 3.3 有界计数器不变量
 
 文件：`coq-examples/bounded_counter.v`
 
@@ -52,9 +60,9 @@ docker run --rm -v "$PWD/coq-examples":/src -w /src rocq/rocq-prover:9.0 \
 
 ---
 
-## 3. Isabelle/HOL 示例
+## 4. Isabelle/HOL 示例
 
-### 3.1 快速验证
+### 4.1 快速验证
 
 ```bash
 docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
@@ -62,7 +70,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
        isabelle build -D .
 ```
 
-### 3.2 插入排序正确性
+### 4.2 插入排序正确性
 
 文件：`isabelle-theories/InsertionSort.thy`
 
@@ -71,7 +79,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - `isort_sorted`：`isort xs` 输出有序列表。
 - `isort_permutation`：`isort xs` 保持元素多重集不变。
 
-### 3.3 旋转门状态机
+### 4.3 旋转门状态机
 
 文件：`isabelle-theories/Turnstile.thy`
 
@@ -81,7 +89,32 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 
 ---
 
-## 4. 与 AI 的集成趋势
+## 5. 正向示例：验证可复用排序组件
+
+以 Coq/Rocq 的 `insertion_sort.v` 为例，该组件附带两个定理：
+
+1. `insertion_sort_sorted`：对任意输入列表，输出为有序列表；
+2. `insertion_sort_count`：输出列表与输入列表包含相同元素（多重集相等）。
+
+消费方在复用该排序函数时，无需再次证明排序正确性，只需确保调用参数满足 `list T` 类型前置条件。该证明可被纳入资产目录，作为组件可信度证据。
+
+类似地，Isabelle/HOL 的 `InsertionSort.thy` 提供等价的机器检查证明，展示同一算法在不同证明助理中的可移植表达。
+
+---
+
+## 6. 反例 / 反模式：密码库实现与证明模型脱节
+
+某团队复用一个开源密码库时，仅依赖其论文中的形式化安全证明，未验证具体实现是否与证明模型一致。后来发现实现中引入了论文模型未涵盖的侧信道（时序泄漏），导致攻击者可恢复密钥。
+
+该案例说明：
+
+- **形式化证明不能自动覆盖实现层面**；必须建立从规约到代码的追踪关系。
+- 复用高安全组件时，应索取并审计 **证明假设（proof assumptions）** 与 **可信计算基（TCB）**。
+- 对 Coq/Rocq 提取到 OCaml/Haskell 的代码，需验证提取过程保持语义；对 Isabelle 的 code generation 亦同。
+
+---
+
+## 7. 与 AI 的集成趋势
 
 | 工具 | 用途 |
 |------|------|
@@ -94,7 +127,18 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 
 ---
 
-## 5. 延伸阅读
+## 8. 标准条款与工具映射
+
+| 标准 / 条款 | 本目录对应内容 | 工具 | 证据 |
+|:---|:---|:---|:---|
+| IEEE 1012-2024 §9.5（软件实现 V&V） | 函数级正确性证明 | Coq/Rocq, Isabelle/HOL | `.v` / `.thy` 证明脚本 |
+| IEEE 1012-2024 SIL 4 | 高完整性组件验证 | 定理证明器 | 形式化证明证书 |
+| DO-178C / DO-333（DAL A） | 航电级软件验证 | SPARK/Ada + Isabelle 辅助 | DO-333 证据包 |
+| ISO/IEC 25010:2023（功能正确性） | 排序/计数器等功能正确 | 证明器 + CI | 回归验证报告 |
+
+---
+
+## 9. 延伸阅读
 
 - Software Foundations: <https://softwarefoundations.cis.upenn.edu/>
 - Isabelle Archive of Formal Proofs: <https://www.isa-afp.org/>
@@ -102,27 +146,20 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - CoqPilot: <https://github.com/JetBrains-Research/coqpilot>
 - Verina: <https://arxiv.org/abs/2505.23135>
 
+## 10. 权威来源
 
----
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Rocq Prover (原 Coq) | <https://rocq-prover.org/> | 2026-07-08 |
+| Coq/Rocq 文档 | <https://coq.github.io/doc/> | 2026-07-08 |
+| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-08 |
+| Archive of Formal Proofs | <https://www.isa-afp.org/> | 2026-07-08 |
+| Software Foundations | <https://softwarefoundations.cis.upenn.edu/> | 2026-07-08 |
 
-## 补充说明：Coq/Rocq & Isabelle/HOL 可复用组件验证案例
+## 11. 交叉引用
 
-## 概念定义
+- 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
+- SPARK/Ada 工业案例：[`struct/07-formal-verification/05-spark-ada/spark-ada-do333-industrial.md`](../05-spark-ada/spark-ada-do333-industrial.md)
+- 定理证明指南：[`struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md`](./theorem-proving-guidelines.md)
 
-**定义**：Coq 与 Isabelle/HOL 是基于高阶逻辑的交互式定理证明器，支持从公理出发构造机器可检查的证明，常用于密码学、编译器与安全关键软件的验证。
-
-## 反例
-
-**反例**：密码库复用某开源实现时未验证其形式化安全规约，后来发现其实现与论文证明的抽象模型存在偏差，导致侧信道攻击。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Coq Proof Assistant](https://coq.inria.fr)
-> - [Isabelle/HOL](https://isabelle.in.tum.de)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：定理证明提供最高置信度，但门槛高、周期长，适合小规模、高价值核心组件。
+> 最后更新：2026-07-08

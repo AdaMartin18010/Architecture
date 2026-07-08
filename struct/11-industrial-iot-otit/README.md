@@ -61,6 +61,12 @@ graph TD
 
 某汽车焊装车间采用 IEEE 802.1AS 时间同步与 802.1Qbv 门控列表，将视觉检测、机器人控制与 PLC 通信整合到同一网络；复用 TSN 配置模板后，新产线网络部署时间缩短 60%。
 
+### 示例 6：AAS + OPC UA FX 规模化复用
+
+- **Volkswagen Zwickau 电动车工厂**：将 ISA-95 L0–L4 资产映射到 IEC 63278 AAS，通过 OPC UA FX 实现焊装/总装设备跨厂商即插即用，工程调试周期显著缩短。
+- **BMW / Siemens 线束项目**：基于 AAS 子模型标准化汽车线束数据，实现设计-制造-维护全链路信息复用（VWS4LS 研究项目）。
+- **IDTA 行业用例汇总**：多家企业报告采用 AAS 后，设备集成与变更工程的时间和成本平均降低约 67%（IDTA, 2025）。
+
 ---
 
 ## 4. 反例 / 失败案例
@@ -83,7 +89,7 @@ graph TD
 
 ### 反例 5：忽视 OT 网络安全边界
 
-某制造企业将工业交换机直接暴露于企业办公网，未部署 IEC 62443 安全区与管道；勒索软件横向移动导致产线停产一周。
+某制造企业将工业交换机直接暴露于企业办公网，未部署 IEC 62443 安全区与管道；勒索软件横向移动导致产线停产一周。更典型的教训是 2021 年 Colonial Pipeline 事件：攻击者通过入侵 IT 网络横向移动风险迫使 OT  precautionary shutdown，造成美国东海岸燃油供应中断数天（CISA, 2021）。根因之一是 IT/OT 边界缺乏基于 IEC 62443 的安全区、管道与多因素认证。
 
 ---
 
@@ -109,15 +115,17 @@ graph TD
 
 > **权威来源**：
 >
-> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
-> - [OPC Foundation](https://opcfoundation.org)
-> - [OPC UA FX](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/)
-> - [PLCopen](https://plcopen.org)
-> - [IDTA - Asset Administration Shell](https://industrialdigitaltwin.org)
-> - [IEC 61508 Functional Safety](https://webstore.iec.ch/publication/66912)
-> - [ISO 26262 Road Vehicles](https://www.iso.org/standard/68383.html)
-> - [IEC Cybersecurity](https://www.iec.ch/cybersecurity)
-> - 核查日期：2026-07-07
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>
+> - OPC UA FX Parts 80–84：<https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>
+> - IEC/IEEE 60802 TSN Profile for Industrial Automation：<https://1.ieee802.org/tsn/iec-ieee-60802/>
+> - IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/en/publication/65628>
+> - IDTA Submodel Templates / Industry Use Cases：<https://industrialdigitaltwin.org/en/content-hub/submodels>、<https://industrialdigitaltwin.org/en/news-dates/use-cases-from-the-industry-with-the-asset-administration-shell-6226>
+> - IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>
+> - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
+> - CISA, *Attack on Colonial Pipeline: What We’ve Learned* (2023)：<https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years>
+> - ISO/IEC 30141:2024 *IoT Reference Architecture*：<https://www.iso.org/standard/88800.html>
+> - DIN SPEC 91345 / RAMI 4.0 参考架构指南：<https://www.digitale-technologien.de/DT/Redaktion/DE/Downloads/Publikation/PAiCE_Leitfaden_Reference_Architecture.pdf>
+> - 核查日期：2026-07-08
 
 ---
 

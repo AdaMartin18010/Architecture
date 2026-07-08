@@ -236,6 +236,30 @@ flowchart TB
 | Ambient (Istio) | ztunnel (L4) + waypoint (L7) | GA（v1.24, 2024-11），推荐新集群 |
 | eBPF (Cilium) | 内核级 L4，无代理 | Cisco 收购 Isovalent 后加速 |
 
+### 6.4 CNCF 项目成熟度与毕业状态（2026-07）
+
+本矩阵涉及的云原生项目及其在 CNCF 中的成熟度如下，成熟度依据 <https://www.cncf.io/projects/> 与 <https://landscape.cncf.io/>：
+
+| 项目/标准 | CNCF 成熟度 | 关键里程碑 | 对复用的意义 |
+|----------|------------|-----------|-------------|
+| **Kubernetes** | Graduated (2018-03) | 容器编排事实标准 | 所有云原生模式的运行基座 |
+| **Prometheus** | Graduated (2018-08) | 监控指标 | 可观测性复用 |
+| **Envoy** | Graduated (2021-04) | 服务网格数据平面 | Sidecar / Gateway 底层代理 |
+| **Istio** | CNCF Graduated (2023-07) | 服务网格控制平面 | Ambient Mesh、流量治理复用 |
+| **Linkerd** | Graduated (2021-07) | 轻量服务网格 | 中小规模服务网格首选 |
+| **Cilium** | Graduated (2023-10) | eBPF 网络、CNI、服务网格 | Sidecar-less 服务网格 |
+| **Knative** | Graduated (2025-03) | Kubernetes 原生 Serverless | Serverless 容器与事件复用 |
+| **Backstage** | Incubating | 内部开发者门户 | 服务目录与 Golden Path 复用 |
+| **Crossplane** | Graduated (2025-11) | 基础设施即 Kubernetes API | 云资源复用与多云抽象 |
+| **Dapr** | Graduated | Sidecar 分布式能力 | 语言无关的状态、消息、服务调用复用 |
+| **KEDA** | Graduated | 事件驱动自动伸缩 | Serverless/EDA 弹性复用 |
+| **Argo** | Graduated | GitOps、工作流 | 部署与工作流模板复用 |
+| **OpenTelemetry** | Graduated (2024-09) | 可观测性框架 | 跨模式统一 traces/metrics/logs |
+| **Gateway API** | Kubernetes SIG Network | v1.5 Standard（2026-02-27） | Kubernetes 统一路由标准 |
+| **WebAssembly Component Model** | W3C / Bytecode Alliance | 3.0（2025-12） | 跨语言组件复用 |
+
+> **成熟度启示**: Graduated 项目最适合作为组织级复用基座；Incubating 项目可在非关键路径试点；Sandbox 项目建议仅用于技术雷达跟踪。
+
 ---
 
 ## 7. 正向示例
@@ -455,18 +479,23 @@ flowchart LR
 ## 13. 权威来源
 
 - ISO/IEC/IEEE 42010:2022 — Systems and software engineering — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC 25010:2023 — Systems and software engineering — SQuaRE — Product quality model: <https://www.iso.org/standard/78176.html>
 - CNCF — Cloud Native Computing Foundation: <https://www.cncf.io/>
 - CNCF Cloud Native Landscape: <https://landscape.cncf.io/>
+- CNCF Graduated and Incubating Projects: <https://www.cncf.io/projects/>
 - NIST SP 800-204 — Security Strategies for Microservices-based Application Systems: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
 - NIST SP 800-204A — Building Secure Microservices-Based Applications Using Service Mesh Architecture: <https://csrc.nist.gov/publications/detail/sp/800-204a/final>
+- NIST SP 800-204B — Attribute-based Access Control for Microservices-based Applications Using a Service Mesh: <https://csrc.nist.gov/publications/detail/sp/800-204b/final>
+- NIST SP 800-204C — Implementation of DevSecOps for a Microservices-based Application with Service Mesh: <https://csrc.nist.gov/publications/detail/sp/800-204c/final>
+- NIST SP 800-204D — Strategies for the Integration of Software Supply Chain Security in DevSecOps CI/CD Pipelines: <https://csrc.nist.gov/publications/detail/sp/800-204d/final>
 - Spring Modulith: <https://spring.io/projects/spring-modulith>
 - Istio — Service Mesh Architecture: <https://istio.io/latest/docs/ops/deployment/architecture/>
 - Cilium Service Mesh: <https://cilium.io/use-cases/service-mesh/>
-- Kubernetes Gateway API: <https://gateway-api.sigs.k8s.io/>
+- Kubernetes Gateway API v1.5 Release: <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/>
 - WebAssembly Component Model: <https://component-model.bytecodealliance.org/>
 - Amazon Prime Video — Scaling up the Prime Video audio/video monitoring service and reducing costs by 90% (2023-03): <https://www.primevideotech.com/video-streaming/scaling-up-the-prime-video-audio-video-monitoring-service-and-reducing-costs-by-90>
 
-**核查日期**: 2026-07-07
+**核查日期**: 2026-07-08
 
 ---
 

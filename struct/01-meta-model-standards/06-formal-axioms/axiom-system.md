@@ -505,6 +505,16 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 | P.3 (工程启发式) | 06, 09 | 治理复杂度、组织理论 |
 | P.4 (工程启发式) | 08 (认知架构) | 学习曲线、认知负荷 |
 
+### 5.1 标准条款映射
+
+| 公理/定理 | 对应国际标准条款 | 说明 |
+|---|---|---|
+| M.1 Architecture-Reuse Duality | ISO/IEC/IEEE 42010:2022, Clause 5.2.7 | 架构描述的 Viewpoint 本质是约束集合，复用即约束传递 |
+| M.2 Variability Axiom | ISO/IEC 26550:2015, Clause 4.2 / 6.4.2 | 产品线工程要求显式 Variability Model 与 Variation Point 管理 |
+| M.3 Hierarchy Non-Reduction | ISO/IEC 21838-3:2023 (DOLCE) | 顶层本体论与领域本体论不可相互还原，支持层次不可约性 |
+| S.1 Interface Substitution | Liskov Substitution Principle / ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 的可替换性基于外部可观察行为等价 |
+| P.1 Evolution Independence | ISO/IEC/IEEE 42020:2019, Clause 8/10/11 | 领域工程与应用工程分离对应 Conceptualization/Elaboration 与 Enablement |
+
 ---
 
 ## 7. 公理补全：证明草图、反模型与体系关联
@@ -630,6 +640,16 @@ graph TD
 - ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/74307.html>
 - Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
 
+> **权威来源核查**：
+>
+> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/74307.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)（核查日期：2026-07-08）
+> - [NASA Software Reuse Library (RRL) cost model](https://ntrs.nasa.gov/)（核查日期：2026-07-08）
+>
+> **核查日期**：2026-07-08
+
 ---
 
 ## 10. 参考文献
@@ -655,26 +675,4 @@ graph TD
 > 最后更新: 2026-06-06 (Phase 3)
 
 
----
 
-## 补充说明：形式化公理体系
-
-## 概念定义
-
-**定义**：形式化公理体系是通过公理、定理与推导规则对复用概念进行严格数学刻画的知识基础，用于消除自然语言的歧义性。
-
-## 示例
-
-**示例**：定义“复用关系”为偏序关系（自反、传递、反对称），并据此证明资产组合的一致性与可替换性定理。
-
-## 反例
-
-**反例**：团队用日常语言描述复用规则，出现“复用等于复制”“复用必然降低成本”等不严谨论断，导致决策失误。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Carnegie Mellon SEI](https://www.sei.cmu.edu)
-> - [ETH Zurich Systems Group](https://inf.ethz.ch)
-> - 核查日期：2026-07-07

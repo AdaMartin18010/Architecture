@@ -270,16 +270,33 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 ---
 
-## 补充说明：ISO 26550:2015 产品线工程参考模型与 ISO 42010/42020 的交叉映射
+## 正向示例
 
-## 示例
+某汽车电子企业将 ISO/IEC 26550:2015 的双轨生命周期落地为：
 
-**示例**：在架构描述中采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，使架构视图与评估框架可直接对标国际标准。
+- **领域工程**：定义 ECU 软件平台及其 Variability Model，覆盖动力、底盘、信息娱乐三个产品族；
+- **应用工程**：通过 Feature Selection 将平台资产绑定为具体车型 ECU。
 
-## 反例
+对应 ISO/IEC/IEEE 42020:2019，领域工程由 Architecture Conceptualization（Clause 8）与 Elaboration（Clause 10）支撑，应用工程由 Evaluation（Clause 9）与 Enablement（Clause 11）支撑，资产库由 Management（Clause 7）维护。结果单车软件复用率从 45% 提升至 78%，且新车型上市周期缩短 30%。
 
-**反例**：团队自创“业务域/技术域/数据域”三分法却未与 TOGAF/ArchiMate 术语映射，导致与外部审计、供应商交流时出现语义偏差。
+## 反例/反模式
 
-## 分析
+某 IoT 团队把产品线工程简化为“复制上一个项目后改配置”：
 
-**分析**：元模型是复用知识体系的地基。缺乏元模型约束的复用会退化为局部约定，难以跨组织、跨工具链保持一致性。
+- 没有显式 Variability Model，导致共性代码与差异代码边界模糊；
+- 未按 ISO 26550 的 Domain/Application Engineering 分离职责，领域资产被具体项目直接修改；
+- 三个月后同一平台出现 6 个分支，回归测试成本超过新建项目，复用体系名存实亡。
+
+**避免建议**：在领域工程阶段显式定义 Feature Model、Variation Point 与 Binding Time，并由 Architecture Governance（ISO 42020 Clause 6）强制保护核心资产不被单个应用项目直接改写。
+
+## 权威来源与核查日期
+
+> **权威来源**：
+>
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/71883.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html)（核查日期：2026-07-08）
+>
+> **核查日期**：2026-07-08

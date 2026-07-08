@@ -12,7 +12,7 @@
 |------|----------|----------|
 | **TLA+** | 时序逻辑动作（TLA）描述状态与状态迁移，模型检验穷举状态空间 | TLC, Apalache |
 | **Alloy** | 关系一阶逻辑 + SAT 求解，在小范围内寻找反例 | Alloy Analyzer |
-| **Coq/Isabelle** | 交互式定理证明，从公理出发构造机器可检查证明 | Coq, Isabelle/HOL |
+| **Coq/Isabelle** | 交互式定理证明，从公理出发构造机器可检查证明 | Coq/Rocq, Isabelle/HOL |
 | **Rust 类型系统** | 所有权、借用、生命周期在编译期排除数据竞态与悬垂指针 | rustc, Miri, Kani |
 | **SPARK/Ada** | 契约式编程 + 形式化验证，可达 DO-178C A 级 | SPARK Pro, GNATprove |
 | **B Method/Event-B** | 基于集合论与精化演算，从抽象规约逐步精化到实现 | Atelier B, Rodin |
@@ -108,21 +108,38 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 
 ## 7. 权威来源
 
-> **权威来源**：
->
-> - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html) — Leslie Lamport, Microsoft
-> - [Alloy Tools](https://alloytools.org) — MIT
-> - [Coq Proof Assistant](https://coq.inria.fr) — Inria
-> - [Isabelle/HOL](https://isabelle.in.tum.de) — TU Munich
-> - [RustBelt](https://iris-project.org/rustbelt.html) — MPI-SWS / Iris Project
-> - [SPARK Pro](https://www.adacore.com/sparkpro) — AdaCore
-> - [Event-B](https://www.event-b.org) — Event-B Consortium
-> - [Atelier B](https://www.atelierb.eu/en/) — Clearsy
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
+| *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
+| Alloy Tools / Alloy Analyzer 6 | <https://alloytools.org> | 2026-07-08 |
+| Coq/Rocq Proof Assistant | <https://rocq-prover.org/> | 2026-07-08 |
+| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-08 |
+| RustBelt (Iris Project) | <https://iris-project.org/rustbelt.html> | 2026-07-08 |
+| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-08 |
+| SPARK Pro (AdaCore) | <https://www.adacore.com/languages/spark> | 2026-07-08 |
+| Event-B & Rodin | <https://www.event-b.org> | 2026-07-08 |
+| B Method / Atelier B (CLEARSY) | <https://www.clearsy.com/en/thematics/b-method/> | 2026-07-08 |
+| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-08 |
+| DO-178C / DO-333 (RTCA) | <https://www.rtca.org/training/do-178c-training/> | 2026-07-08 |
 
 ---
 
-## 8. 当前状态与关联主题
+## 8. 标准条款与工具映射
+
+| 标准 / 条款 | 本项目对应活动 | 形式化工具/方法 | 产出证据 |
+|:---|:---|:---|:---|
+| IEEE 1012-2024 §7 / §9（软件 V&V 管理、需求分析 V&V） | 复用资产目录与 SIL 判定 | 风险分析 + 完整性等级表 | V&V 计划、SIL 评估记录 |
+| IEEE 1012-2024 §9.3（软件设计 V&V） | 架构约束建模 | Alloy / TLA+ | 模型文件、反例报告 |
+| IEEE 1012-2024 §9.5（软件实现 V&V） | 组件契约证明 | Coq/Rocq、Isabelle/HOL、SPARK Pro | 证明脚本、GNATprove 报告 |
+| IEEE 1012-2024 §9.6（集成测试 V&V） | 组合安全性验证 | TLA+ / Event-B 精化 | 精化义务证明 |
+| DO-178C / DO-333（航电软件形式化方法补充） | 高安全组件复用 | SPARK/Ada、模型检测 | DO-333 符合性证据包 |
+| DO-178C Table A-4（低层需求符合高层需求） | 规约到代码追踪 | TLA+/Alloy + 代码审查 | 需求追踪矩阵 |
+| IEC 61508 SIL 4 | 铁路/工业高安全复用 | Event-B / B Method | 证明义务、安全案例 |
+
+---
+
+## 9. 当前状态与关联主题
 
 - [x] 形式化方法谱系梳理
 - [x] TLA+/Alloy/Rust/SPARK/Event-B 案例与工具链
@@ -136,7 +153,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 - `11-industrial-iot-otit`（功能安全与 IEC 61508 形式化验证）
 - `12-ai-native-reuse`（概率边界与形式化契约）
 
-## 9. 形式化验证落地检查单
+## 10. 形式化验证落地检查单
 
 在将形式化验证作为复用资产质量门控之前，团队应完成以下检查：
 
@@ -149,19 +166,19 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 - [ ] 将形式化证据纳入资产目录元数据，供消费方评估信任假设。
 - [ ] 定期审计前置条件与使用约束，防止消费方违反契约导致信任传递失效。
 
-## 10. 工具链与资源矩阵
+## 11. 工具链与资源矩阵
 
 | 工具 | 适用方法 | 学习曲线 | 工业案例 |
 |------|----------|----------|----------|
 | TLC / Apalache | TLA+ 模型检验 | 中等 | AWS DynamoDB, Azure Cosmos DB |
 | Alloy Analyzer | Alloy 结构分析 | 低 | 多个学术与初创项目 |
-| Coq | 定理证明 | 高 | CompCert 编译器, Fiat Crypto |
+| Coq/Rocq | 定理证明 | 高 | CompCert 编译器, Fiat Crypto |
 | Isabelle/HOL | 定理证明 | 高 | seL4 操作系统验证 |
 | GNATprove | SPARK/Ada 契约验证 | 中等 | Airbus A380, Eurofighter |
 | Rodin / Atelier B | Event-B 精化 | 中等 | 巴黎地铁 14 号线, 铁路信号 |
 | rustc + Miri + Kani | Rust 类型与内存安全 | 中等 | AWS, 微软基础设施 |
 
-## 11. 常见误区
+## 12. 常见误区
 
 - **误区 1：形式化验证万能**。形式化验证只能保证模型满足规约，无法验证模型是否完整刻画现实需求。
 - **误区 2：忽视抽象层次**。将过多实现细节纳入模型会导致状态空间爆炸，使验证不可行。
@@ -172,17 +189,17 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 - **误区 7：一次性全面推广**。应从高价值试点开始，逐步制度化与平台化。
 - **误区 8：混淆测试与证明**。测试只能抽样，证明才能在模型范围内给出完备保证。
 
-## 12. 延伸阅读
+## 13. 延伸阅读
 
 1. **入门级**：Leslie Lamport. *Specifying Systems*，掌握 TLA+ 与 PlusCal。
 2. **结构建模**：Daniel Jackson. *Software Abstractions*，学习 Alloy 关系建模。
-3. **定理证明**：《Software Foundations》系列，Coq 交互式证明训练。
+3. **定理证明**：《Software Foundations》系列，Coq/Rocq 交互式证明训练。
 4. **类型系统安全**：Jung et al. *RustBelt*，理解 Rust 所有权的形式化基础。
 5. **工业案例**：Airbus SPARK 飞控、巴黎地铁 14 号线 Event-B、AWS TLA+ 验证。
 
 持续将形式化方法融入复用实践，是构建高可信软件资产的根本路径。
 
-## 13. 深度案例：巴黎地铁 14 号线 Event-B 联锁验证
+## 14. 深度案例：巴黎地铁 14 号线 Event-B 联锁验证
 
 巴黎地铁 14 号线无人驾驶系统的联锁软件采用 Event-B 进行形式化精化。项目从“列车不会碰撞”的高层安全不变式出发，逐步精化到道岔、信号与区段控制逻辑。每一层精化都生成并证明精化义务，确保抽象层的性质在实现层得到保持。
 
@@ -195,7 +212,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 
 这一案例表明，形式化验证不仅可以发现缺陷，更能在高安全复用资产中建立跨项目的信任传递。
 
-## 14. 关键行动项
+## 15. 关键行动项
 
 - 识别组织中 3-5 个高价值复用资产，评估其形式化验证成熟度。
 - 选择 1 个资产开展 TLA+ 或 Alloy 试点，产出第一份可验证规约。
@@ -203,9 +220,10 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 - 在 CI 中集成至少一种形式化回归验证工具。
 - 制定形式化方法培训计划，覆盖架构师、开发工程师与测试工程师。
 
-## 15. 版本记录
+## 16. 版本记录
 
-- 2026-07-07：补充概念定义、示例、反例、关系图、权威来源与核查日期，对齐网络权威内容。
+- 2026-07-08：增补权威来源 URL 与核查日期，增加 IEEE 1012-2024 / DO-178C / DO-333 / IEC 61508 标准条款与工具映射，对齐网络权威内容。
+- 2026-07-07：补充概念定义、示例、反例、关系图、权威来源与核查日期。
 - 2026-06-08：初始版本，梳理形式化方法谱系与核心文件导航。
 
 > **注意**：形式化验证工具链版本与标准 URL 会随社区演进更新，引用前请核查权威来源页面。

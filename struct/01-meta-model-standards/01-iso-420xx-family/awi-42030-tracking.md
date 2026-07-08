@@ -150,29 +150,42 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 
 > **权威来源**:
 >
-> - ISO/IEC/IEEE AWI 42030. Stage 20.00 — Under development. <https://www.iso.org/standard/93814.html> (核查日期: 2026-06-10)
-> - ISO/IEC/IEEE 42030:2019. Software, systems and enterprise — Architecture evaluation framework. <https://webstore.iec.ch/en/publication/65577>
-> - arc42 Quality Blog: ISO/IEC/IEEE 42030:2019 Overview. <https://quality.arc42.org/standards/iso-iec-ieee-42030> (核查日期: 2026-06-10)
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE AWI 42030 项目页](https://www.iso.org/standard/93814.html) — ISO Stage 20.00（核查日期：2026-07-08）
+> - [IEEE 42030-2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
+> - [arc42 Quality Blog: ISO/IEC/IEEE 42030:2019 Overview](https://quality.arc42.org/standards/iso-iec-ieee-42030)（核查日期：2026-07-08）
 >
-> **核查日期**: 2026-06-10
+> **核查日期**: 2026-07-08
 
 
 ---
 
-## 补充说明：ISO/IEC/IEEE AWI 42030 修订跟踪
+## 正向示例
 
-## 概念定义
+某电信运营商在引入共享计费服务前，依据 ISO/IEC/IEEE 42030:2019 的三层框架（Objectives-Factors-Methods）组织 ATAM 评审：目标层明确“支持 1 亿并发用户”，因素层识别性能、安全、可维护性，方法层采用场景法与度量法。评估发现缓存层存在单点故障风险，提前引入 Redis Cluster 与熔断机制，避免了上线后事故。
 
-**定义**：ISO/IEC/IEEE 42030:2019 规定了架构评估（Architecture Evaluation）的原则、过程与方法，用于判断架构满足利益相关者关注点的程度。
+## 反例/反模式
 
-## 示例
+某项目为赶进度跳过架构评估，直接复用开源消息队列。上线后流量峰值触发消息积压与消费延迟，运维团队才发现该组件未满足可靠性要求。因缺乏 42030 评估记录，无法追溯当初是否将可靠性列为评估因素，修复成本是评估成本的 8 倍。
 
-**示例**：在引入共享服务前，组织使用 42030 的评估框架对候选架构进行 ATAM 式评审，识别性能、安全与可维护性风险并给出缓解措施。
+**避免建议**：任何进入组织资产库的共享组件，必须在复用前完成 42030 评估，并将 Objectives、Factors、Methods 与评估结论作为资产元数据归档。
 
-## 反例
+## 标准条款映射
 
-**反例**：项目上线后才由运维团队发现共享组件存在单点故障，因缺乏前期架构评估导致生产事故。
+| 标准条款 | 核心内容 | 本文件对应 |
+|---|---|---|
+| ISO/IEC/IEEE 42030:2019, Clause 4.3 | Architecture evaluation tiers（目标/因素/方法） | 第 3.1 节三层框架 |
+| ISO/IEC/IEEE 42030:2019, Clause 6.1 | Evaluation synthesis general requirements | 第 5 节跟踪机制 |
+| ISO/IEC/IEEE 42030:2019, Clause 6.2 | Value assessment | 第 4 节预期修订方向 |
+| ISO/IEC/IEEE 42020:2019, Clause 9 | Architecture Evaluation process | 第 3.2 节与 42020 的协同 |
 
-## 分析
+## 权威来源与核查日期
 
-**分析**：架构评估是复用决策的质量门控，缺乏评估的复用容易引入隐性耦合与演进债务。
+> **权威来源**：
+>
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE AWI 42030 项目页](https://www.iso.org/standard/93814.html) — ISO Stage 20.00（核查日期：2026-07-08）
+> - [IEEE 42030-2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
+> - [arc42 Quality Blog: ISO/IEC/IEEE 42030:2019 Overview](https://quality.arc42.org/standards/iso-iec-ieee-42030)（核查日期：2026-07-08）
+>
+> **核查日期**：2026-07-08

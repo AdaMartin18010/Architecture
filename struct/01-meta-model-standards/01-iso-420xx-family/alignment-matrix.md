@@ -61,6 +61,17 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 | 12 AI 原生复用 | MCP 2025-11-25, A2A v1.0 | OWASP LLM/MCP/Agentic AI | ✅ 已对齐 |
 | 13 新兴趋势 | Platform Engineering, WebAssembly | RegTech AI, Rust Ecosystem | ✅ 已对齐 |
 
+### 2.1 ISO 42020 条款映射示例
+
+| ISO/IEC/IEEE 42020:2019 条款 | 过程名称 | 本框架对应过程/制品 |
+|---|---|---|
+| Clause 6 | Architecture Governance（架构治理） | `06-cross-layer-governance` 的治理策略与原则目录 |
+| Clause 7 | Architecture Management（架构管理） | 本主题 `alignment-matrix.md` 的版本维护与状态跟踪 |
+| Clause 8 | Architecture Conceptualization（概念化） | `02-business-architecture-reuse` 业务能力地图定义 |
+| Clause 9 | Architecture Evaluation（评估） | `07-formal-verification` 质量门控与评估检查清单 |
+| Clause 10 | Architecture Elaboration（细化） | `03-application-architecture-reuse` ABB→SBB 细化 |
+| Clause 11 | Architecture Enablement（使能） | `04-component-architecture-reuse` 资产库与接口契约 |
+
 ---
 
 ## 3. ISO 42010:2022 术语更新
@@ -124,32 +135,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 
 ---
 
-## 补充说明：核心标准对齐矩阵
-
-## 示例
-
-**示例**：在架构描述中采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，使架构视图与评估框架可直接对标国际标准。
-
-## 反例
-
-**反例**：团队自创“业务域/技术域/数据域”三分法却未与 TOGAF/ArchiMate 术语映射，导致与外部审计、供应商交流时出现语义偏差。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [ISO/IEC/IEEE Standards](https://www.iso.org)
-> - [IEEE Standards](https://standards.ieee.org)
-> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
-> - [IEC TC65 WG24 AAS 项目页面](https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)（IEC 63278-2 状态官方来源）
-> - 核查日期：2026-07-08
-
-## 分析
-
-**分析**：元模型是复用知识体系的地基。缺乏元模型约束的复用会退化为局部约定，难以跨组织、跨工具链保持一致性。
-
-
----
+> 本节以上内容为矩阵主干；以下两个补充块分别对矩阵本身进行元模型级补全（定义、属性、关系、正例、反例、形式化矩阵、权威来源与交叉引用）以及使用方法与维护流程说明。
 
 ## 补充：核心标准对齐矩阵的元模型说明与示例
 
@@ -203,17 +189,17 @@ graph TB
     MCP[MCP 2025-11-25 / A2A v1.0] --> T12[12 AI 原生复用]
 ```
 
-### 5. 正例
+### 示例
 
-**正例**：某金融企业在建立企业架构资产库时，以本矩阵为索引：
+**正向示例**：某金融企业在建立企业架构资产库时，以本矩阵为索引：
 
 - 主题 10“供应链安全”的主标准定位为 SLSA 1.2 与 NIST SSDF 1.2，辅助标准为 SPDX、CycloneDX、SWID、in-toto。
 - 在引入开源组件时，团队直接依据矩阵要求生成 SBOM 并验证 SLSA Build Track 等级，使外部审计能够在 2 小时内确认合规性。
 - 主题 02“业务架构复用”映射到 TOGAF ADM Phase B 与 ArchiMate 业务层，确保业务架构师与解决方案架构师使用同一套术语。
 
-### 6. 反例
+### 反例
 
-**反例**：某团队为“简化沟通”，自创“业务域 / 技术域 / 数据域”三分法，但未在矩阵中映射到 TOGAF/ArchiMate/FEA 的正式术语：
+**反模式**：某团队为“简化沟通”，自创“业务域 / 技术域 / 数据域”三分法，但未在矩阵中映射到 TOGAF/ArchiMate/FEA 的正式术语：
 
 - 与外部审计交流时，“业务域”被误解为 TOGAF 的 Business Domain 或 FEA 的 Business Reference Model，产生语义偏差。
 - 供应商提交的方案因术语不一致被多次退回，项目延期 6 周。
@@ -225,14 +211,16 @@ graph TB
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260，白皮书 W262）
 > - [SWEBOK Guide V4.0](https://www.computer.org/education/bodies-of-knowledge/software-engineering) — IEEE Computer Society
 > - [SLSA 1.2 Specification](https://slsa.dev/spec/v1.2/) — OpenSSF
 > - [MCP Specification](https://modelcontextprotocol.io/) — Anthropic / Linux Foundation
 >
-> **核查日期**：2026-07-07
+> **核查日期**：2026-07-08
 
 ### 8. 交叉引用
 

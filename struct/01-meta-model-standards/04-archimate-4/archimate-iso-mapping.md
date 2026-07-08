@@ -335,27 +335,6 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 
 ---
 
-## 补充说明：ArchiMate 3.2 元素与 ISO 42010:2022 的对照表（含 4.0 预览标注）
-
-## 概念定义
-
-**定义**：ArchiMate 是 The Open Group 发布的架构建模语言，提供业务、应用、技术三层视图及元素、关系与视点规范。
-
-## 示例
-
-**示例**：使用 ArchiMate 的业务服务、应用组件与技术服务元素，将可复用资产在三层次架构中显式建模，便于影响分析。
-
-## 反例
-
-**反例**：建模时滥用“聚合”关系表达复用，导致模型无法准确反映资产依赖与所有权。
-
-## 分析
-
-**分析**：ArchiMate 将复用关系可视化，是跨团队协作与架构治理的沟通媒介。
-
-
----
-
 ## 补充：ArchiMate 4.0 六层/核心元素与 ISO 42010 的映射
 
 > 本节按内容要素检查清单，对 ArchiMate 4.0 的六层/域（业务、应用、技术、动机、策略、实现与迁移）及通用域（Common Domain）核心元素与 ISO/IEC/IEEE 42010:2022 的映射进行系统化补全。
@@ -455,14 +434,16 @@ graph TB
 
 > **权威来源**：
 >
-> - [The Open Group - ArchiMate 4 Specification 官方下载](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
-> - [The Open Group - ArchiMate 4 发布公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group
-> - [The Open Group - ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/)
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate - Wikipedia](https://en.wikipedia.org/wiki/ArchiMate)
+> - [The Open Group - ArchiMate 4 Specification (Document C260, April 2026)](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（白皮书 W262 同步发布）（核查日期：2026-07-08）
+> - [The Open Group - ArchiMate 4 发布公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-08）
+> - [The Open Group - ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-08）
+> - [ArchiMate - Wikipedia](https://en.wikipedia.org/wiki/ArchiMate)（核查日期：2026-07-08）
 >
-> **核查日期**：2026-07-07
+> **核查日期**：2026-07-08
 
 ### 9. 交叉引用
 

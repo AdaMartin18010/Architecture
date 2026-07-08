@@ -16,16 +16,33 @@
 - SWEBOK V4 的知识领域对齐
 - 复用视角的形式化公理体系（元公理、存在性公理、结构性公理、过程性公理）
 
+## 标准-主题速查表
+
+| 主题 | 核心国际标准 | 说明 |
+|---|---|---|
+| 架构描述 | ISO/IEC/IEEE 42010:2022 | 定义 Entity of Interest、ADF、Viewpoint、View Component |
+| 架构过程 | ISO/IEC/IEEE 42020:2019 | Governance / Management / Conceptualization / Evaluation / Elaboration / Enablement |
+| 架构评估 | ISO/IEC/IEEE 42030:2019 | Objectives-Factors-Methods 三层评估框架 |
+| 产品线工程 | ISO/IEC 26550:2015 | 双轨生命周期 + 显式 Variability Model |
+| 企业架构建模 | TOGAF 10 / ArchiMate 4.0 (C260/W262) | ADM 方法 + 通用域建模语言 |
+| 可复用资产 | OMG RAS v2.2 / FAIR4RS | 资产规范与可持续复用原则 |
+| 系统建模 | OMG SysML v2 | 下一代基于模型的系统工程语言 |
+
 ## 权威对齐
 
-- [ISO 42010:2022 官方标准](https://www.iso.org/obp/ui)
-- [The Open Group TOGAF 10](https://www.opengroup.org/togaf)
-- [ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/) (仍有效，与 4.0 向后兼容)
-- [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) (已正式发布，2026-04-27，Document C260)
-- [OMG RAS v2.2](https://www.omg.org/spec/RAS/)
+- [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)
+- [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)
+- [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html)
+- [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)
+- [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)
+- [ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/)（仍有效，与 4.0 向后兼容）
+- [ArchiMate 4 Specification (Document C260 / White Paper W262)](https://www.opengroup.org/archimate-licensed-downloads)（已正式发布，2026-04-27）
+- [OMG RAS v2.2 — Reusable Asset Specification](https://www.omg.org/spec/RAS/2.2/)
 - [FAIR4RS Principles](https://ardc.edu.au/resource/fair-principles-for-research-software-fair4rs/)
 - [IEEE 1517-2010](https://standards.ieee.org/standard/1517-2010.html)
-- IREB CPRE Glossary 2.2 (ISO 26550, 29148 引用)
+- [OMG SysML v2 Specification](https://www.omg.org/spec/SysML/20250201/SysML.json)
+
+**核查日期**：2026-07-08
 
 ## 当前状态
 
@@ -41,34 +58,36 @@
 - [x] ISO/IEC 25010:2023 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2023-update.md`)
 - [x] ArchiMate 4.0 映射更新（2026-04-27 已正式发布，映射已完成）
 
-## 关联主题
+## 交叉引用
 
-- `02-business-architecture-reuse`（业务视点定义）
-- `06-cross-layer-governance`（治理过程标准 42020/42030）
-- `07-formal-verification`（形式化公理体系）
-
+- [02-business-architecture-reuse](../02-business-architecture-reuse/README.md)（业务视点定义）
+- [06-cross-layer-governance](../06-cross-layer-governance/README.md)（治理过程标准 42020/42030）
+- [07-formal-verification](../07-formal-verification/README.md)（形式化公理体系）
 
 ---
 
-## 补充说明：01 元模型与标准对齐
-
 ## 概念定义
 
-**定义**：元模型（Meta-model）是对架构描述元素、关系与规则的抽象规约；标准对齐则指将本知识体系的术语、过程与视图与国际/行业权威标准建立可追溯的映射。
+**元模型（Meta-model）** 是对架构描述元素、关系与规则的抽象规约；**标准对齐** 则指将本知识体系的术语、过程与视图与国际/行业权威标准建立可追溯的映射。
 
 ## 示例
 
-**示例**：在架构描述中采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，使架构视图与评估框架可直接对标国际标准。
+某跨国银行采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，结合 TOGAF ADM Phase B/C 和 ArchiMate 4.0 通用域，统一了全球 12 个业务单元的架构描述语言。外部审计时，团队可在 2 小时内展示业务服务到应用组件的追溯链符合 ISO 42010 Clause 5.2 与 Clause 6.8 的要求。
 
 ## 反例
 
-**反例**：团队自创“业务域/技术域/数据域”三分法却未与 TOGAF/ArchiMate 术语映射，导致与外部审计、供应商交流时出现语义偏差。
+团队自创“业务域/技术域/数据域”三分法，却未在矩阵中映射到 TOGAF/ArchiMate/FEA 的正式术语。结果与外部审计交流时，“业务域”被误解为 TOGAF 的 Business Domain 或 FEA 的 Business Reference Model，供应商方案因术语不一致被多次退回，项目延期 6 周。
 
-## 权威来源
+## 国际权威来源核查
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE Standards](https://www.iso.org)
-> - [IEEE Standards](https://standards.ieee.org)
-> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
-> - 核查日期：2026-07-07
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-08）
+> - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-08）
+> - [The Open Group ArchiMate 4 Specification (C260/W262)](https://www.opengroup.org/archimate-licensed-downloads)（核查日期：2026-07-08）
+> - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/)（核查日期：2026-07-08）
+> - [FAIR4RS Principles](https://ardc.edu.au/resource/fair-principles-for-research-software-fair4rs/)（核查日期：2026-07-08）
+> - [OMG SysML v2 Specification](https://www.omg.org/spec/SysML/20250201/SysML.json)（核查日期：2026-07-08）

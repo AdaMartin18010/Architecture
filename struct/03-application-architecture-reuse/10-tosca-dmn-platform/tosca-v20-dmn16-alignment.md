@@ -7,14 +7,17 @@
 
 ## 1. 关键结论（TL;DR）
 
-| 标准/项目 | 最新状态 | 对复用的核心意义 |
-|-----------|----------|------------------|
-| **TOSCA v2.0** | OASIS Standard (2025‑07‑22) | 图原生的可移植服务蓝图，多云部署描述符复用 |
-| **DMN 1.6** | OMG Beta1 (2024‑06 批准) | **`ONNX` 加入 `functionKind`** — 业务规则 + ML 模型统一可复用决策资产 |
-| **Backstage** | CNCF Incubation，贡献量 2025 翻倍 | 内部开发者门户 = 组件目录 + Golden Path 模板 = 复用基座 |
-| **Crossplane** | CNCF Graduated (2025‑11) | 基础设施即可复用 Kubernetes API (XRD) |
-| **Dapr** | CNCF Graduated | Sidecar  building blocks = 语言无关的可复用分布式能力 |
-| **OpenTofu** | >23k stars，>2,000 providers | Terraform 模块复用的开源继承者 |
+| 标准/项目 | 最新状态 | 对复用的核心意义 | 权威 URL |
+|-----------|----------|------------------|----------|
+| **TOSCA v2.0** | OASIS Standard (2025‑07‑22) | 图原生的可移植服务蓝图，多云部署描述符复用 | <https://docs.oasis-open.org/tosca/TOSCA/v2.0/os/TOSCA-v2.0-os.html> |
+| **DMN 1.5** | OMG 正式版（2024‑08 采纳） | 决策模型可交换、可审计、可移植 | <https://www.omg.org/spec/DMN/1.5/About-DMN> |
+| **DMN 1.6** | OMG Beta1 (2024‑06 批准) | **`ONNX` 加入 `functionKind`** — 业务规则 + ML 模型统一可复用决策资产 | <https://www.omg.org/spec/DMN/1.6/Beta1> |
+| **Backstage** | CNCF Incubation，贡献量 2025 翻倍 | 内部开发者门户 = 组件目录 + Golden Path 模板 = 复用基座 | <https://github.com/backstage/backstage> |
+| **Crossplane** | CNCF Graduated (2025‑11) | 基础设施即可复用 Kubernetes API (XRD) | <https://www.crossplane.io/> |
+| **Dapr** | CNCF Graduated | Sidecar  building blocks = 语言无关的可复用分布式能力 | <https://docs.dapr.io/> |
+| **OpenTofu** | >23k stars，>2,000 providers | Terraform 模块复用的开源继承者 | <https://opentofu.org/> |
+
+**核查日期**: 2026-07-08
 
 ---
 
@@ -212,18 +215,42 @@ spec:
 
 ## 8. 权威来源
 
-| 标准/项目 | URL |
-|-----------|-----|
-| TOSCA v2.0 OASIS | <https://docs.oasis-open.org/tosca/TOSCA/v2.0/os/TOSCA-v2.0-os.html> |
-| DMN 1.6 Beta1 | <https://www.omg.org/spec/DMN/1.6/Beta1> |
-| Backstage | <https://github.com/backstage/backstage> |
-| CNOE | <https://github.com/cnoe-io> |
-| Crossplane | <https://www.crossplane.io/> |
-| KubeVela | <https://kubevela.io/> |
-| Dapr | <https://docs.dapr.io/> |
-| OpenTofu | <https://opentofu.org/> |
-| Camunda Agentic | <https://camunda.com/de/solutions/agentic-orchestration/> |
-| BPMN Agentic Extension | <https://modeling-languages.com/modeling-human-agent-collaborative-workflows-extending-bpmn/> |
+| 标准/项目 | URL | 核查日期 |
+|-----------|-----|----------|
+| TOSCA v2.0 OASIS Standard | <https://docs.oasis-open.org/tosca/TOSCA/v2.0/os/TOSCA-v2.0-os.html> | 2026-07-08 |
+| DMN 1.5 OMG Formal | <https://www.omg.org/spec/DMN/1.5/About-DMN> | 2026-07-08 |
+| DMN 1.6 Beta1 | <https://www.omg.org/spec/DMN/1.6/Beta1> | 2026-07-08 |
+| Backstage | <https://github.com/backstage/backstage> | 2026-07-08 |
+| CNOE | <https://github.com/cnoe-io> | 2026-07-08 |
+| Crossplane | <https://www.crossplane.io/> | 2026-07-08 |
+| KubeVela | <https://kubevela.io/> | 2026-07-08 |
+| Dapr | <https://docs.dapr.io/> | 2026-07-08 |
+| OpenTofu | <https://opentofu.org/> | 2026-07-08 |
+| Camunda Agentic | <https://camunda.com/de/solutions/agentic-orchestration/> | 2026-07-08 |
+| BPMN Agentic Extension | <https://modeling-languages.com/modeling-human-agent-collaborative-workflows-extending-bpmn/> | 2026-07-08 |
+| CNCF Graduated and Incubating Projects | <https://www.cncf.io/projects/> | 2026-07-08 |
+| CNCF Cloud Native Landscape | <https://landscape.cncf.io/> | 2026-07-08 |
+
+---
+
+## 12. 正向示例：某电信运营商的 TOSCA 多云 NFV 编排
+
+某电信运营商采用 TOSCA v2.0 描述虚拟网络功能（VNF）与底层云资源的拓扑，实现跨私有云与公有云部署描述符复用。
+
+**复用策略**:
+
+1. **抽象 VNF 类型库**: 定义 `reuse.nodes.VNF`、`reuse.relationships.HostedOn` 等域无关类型，避免直接引用 OpenStack、AWS 或 Azure 的厂商类型
+2. **可插拔部署实现**: 通过 TOSCA `implementation` 与 `artifacts` 将厂商特定驱动（如 Heat、CloudFormation、ARM）与拓扑描述解耦
+3. **DMN 决策服务**: 使用 DMN 1.5/1.6 建模弹性伸缩、故障自愈等业务规则，并将 ONNX 模型（流量预测）作为决策节点嵌入，实现规则与 ML 的统一决策资产
+4. **Backstage 目录集成**: 将 TOSCA 服务模板与 DMN 决策服务注册为 Backstage Software Catalog 条目，开发团队可通过 Golden Path 一键实例化
+
+**复用成果**:
+
+- 同一 VNF 蓝图在私有云与 AWS/Azure 间复用，部署描述符复用率超过 70%
+- DMN 决策模型在 OSS/BSS 多个系统中复用，业务规则变更无需修改应用代码
+- 平台团队通过 Crossplane XRD 将基础设施能力封装为 Kubernetes API，开发者以声明式方式复用标准化资源
+
+**关键经验**: TOSCA 的价值在于"域无关的图原生抽象"；一旦模板与厂商强耦合，其可移植性优势立即丧失。
 
 ---
 
@@ -238,11 +265,55 @@ spec:
 
 ---
 
-## 10. 反例/反模式
+## 10. 反例/反模式：TOSCA/DMN 平台工程陷阱
 
-- **反模式 1：将 TOSCA 模板与特定云厂商强耦合**。若 `node_types` 直接使用 `aws.ec2.Instance`，则模板的可移植性被摧毁，TOSCA 的核心价值丧失。
-- **反模式 2：把 DMN 决策表当作万能规则引擎**。在需要复杂流程编排、长时间运行的场景强行使用 DMN，会导致模型膨胀、性能下降。
-- **反模式 3：平台工程做成“中央集权”**。平台团队过度控制技术选型、禁止开发者自定义，会扼杀创新并导致 Shadow IT 泛滥。
+### 10.1 反模式：将 TOSCA 模板与特定云厂商强耦合
+
+**症状**: `node_types` 直接使用 `aws.ec2.Instance`、`azure.vm.VirtualMachine` 等厂商特定类型，而非抽象的 `tosca.nodes.Compute` 或自定义领域类型。
+
+**后果**:
+
+- 模板的可移植性被摧毁，TOSCA "域无关、多云蓝图" 的核心价值丧失
+- 从 AWS 迁移到 Azure 时，相当于重写 30%-50% 的部署描述符
+- 组织陷入"伪 TOSCA"困境：使用了 TOSCA 语法，却未获得标准化收益
+
+**修复策略**:
+
+- 定义组织级的抽象 `node_types`（如 `reuse.nodes.WebApplication`、`reuse.nodes.PostgreSQL`）
+- 厂商特定实现仅出现在可插拔的 `implementation` 或 `artifacts` 中
+- 在 CI 中运行 TOSCA 解析器检查，禁止直接引用厂商类型
+
+### 10.2 反模式：把 DMN 决策表当作万能规则引擎
+
+**症状**: 在需要复杂流程编排、长时间运行、多角色协同的场景强行使用 DMN 决策表。
+
+**后果**:
+
+- 决策模型膨胀，DRD（Decision Requirements Diagram）包含数百个节点，难以维护
+- 长事务与补偿逻辑无法通过决策表表达，导致业务规则与流程逻辑混为一谈
+- 性能下降：DMN 引擎每次调用需加载庞大决策模型
+
+**修复策略**:
+
+- DMN 聚焦"可独立做出的业务决策"；长流程使用 BPMN 或 Saga 编排
+- 对于 ML 推理场景，使用 DMN 1.6 的 ONNX functionKind 将模型作为决策节点调用，而非在 DMN 中硬编码预测逻辑
+- 定期评审 DRD 复杂度，超过 20 个节点时考虑拆分为多个决策服务
+
+### 10.3 反模式：平台工程做成“中央集权”
+
+**症状**: 平台团队过度控制技术选型、禁止开发者自定义，所有服务必须使用统一模板且不允许偏差。
+
+**后果**:
+
+- 扼杀创新，业务团队为绕过限制而发展 Shadow IT
+- 模板过度泛化，不适合特殊场景（如 AI 推理、实时流处理）
+- 平台团队成为瓶颈，交付周期延长
+
+**修复策略**:
+
+- Golden Path 是"默认推荐"而非"强制唯一"；允许有经验团队申请例外
+- 平台提供可组合的基础模块（Crossplane XRD、Backstage Template、TOSCA 类型库），团队按需组合
+- 建立平台产品反馈闭环，模板每季度根据实际使用数据迭代
 
 ---
 

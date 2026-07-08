@@ -772,6 +772,25 @@ Spotify 在 2010 年代初期经历了从单体到模块化单体的演化，其
 - **贫血领域模型 + 事务脚本 = 伪分层**。虽然代码目录结构看起来是分层，但业务规则的分散使得领域层名存实亡
 - **层间接口的稳定性需要主动设计**，而非自然涌现。该系统从未定义过层间 DTO，导致表示层与数据层形成了隐式契约
 
+### 12.3 成功案例：某头部电商平台的分层内核复用
+
+某头部电商平台在支撑 618、双 11 等大促时，将订单、支付、库存等核心域的实体与领域服务提取为独立的**领域内核库（Domain Kernel Library）**，以 Java 多模块形式在多个业务线间复用。
+
+**分层策略**:
+
+1. **领域内核独立发布**: `order-domain`、`payment-domain`、`inventory-domain` 等模块零外部依赖，仅包含实体、值对象、领域事件与领域服务，通过 SemVer 管理版本
+2. **应用层隔离变化**: 各业务线（主站、APP、小程序、商家后台）在应用层编写各自的用例编排，通过统一 DTO 与领域内核交互
+3. **基础设施层适配异构存储**: 订单读写采用关系型数据库，库存高并发访问采用 Redis + 最终一致投影，均通过适配器实现领域层定义的 Repository 端口
+4. **层间契约测试**: 每个领域内核发布前运行 ArchUnit 检查非法依赖，并附带单元测试套件作为复用资产的"质量证明书"
+
+**复用成果**:
+
+- 订单、支付、库存的核心业务规则在 6 个业务线中复用，避免了重复实现导致的语义漂移
+- 大促期间仅需对基础设施层进行容量扩容，领域层无需随流量波动修改
+- 当某业务线需要从单体迁移为独立微服务时，直接复用领域内核库，仅重写应用层与基础设施适配器
+
+**关键经验**: 将变化最慢、价值最高的领域层以库形式固化，是分层架构复用的最大杠杆点。
+
 ---
 
 ## 13. 总结与决策指南
@@ -788,19 +807,35 @@ Spotify 在 2010 年代初期经历了从单体到模块化单体的演化，其
 
 ---
 
-## 14. 交叉引用
+## 14. 与 ISO/IEC 25010:2023 的质量特征映射
+
+ISO/IEC 25010:2023 将产品质量模型划分为九大可维护、可度量的特征，其中多项与分层架构复用直接相关：
+
+| ISO/IEC 25010:2023 特征 | 分层架构复用映射 | 本项目模式对应 |
+|------------------------|-----------------|---------------|
+| **可维护性 (Maintainability)** → 模块化、可复用性、可分析性 | 层边界将变更影响范围限制在单层或单模块 | 2.1 层内模块复用 / 2.3 领域核心复用 |
+| **灵活性 (Flexibility)** → 适应性、可扩展性、可替换性 | 外层技术实现可替换而不触及领域层 | 9.3 基础设施层契约 / 端口-适配器模式 |
+| **可靠性 (Reliability)** → 容错性、可用性 | 层间接口契约支持单元测试与故障隔离 | 10. 测试策略与复用 |
+| **安全性 (Security)** | 认证/授权横切关注点集中在边界层 | 6.2 开发视图映射中的边界包 |
+| **性能效率 (Performance Efficiency)** | 层间调用开销需量化权衡 | 11. 分层架构的性能权衡 |
+
+> **映射启示**: ISO/IEC 25010:2023 将 *reusability* 明确列为可维护性的子特征（sub-characteristic），为“分层架构提升复用”提供了国际标准层面的理论支撑。
+
+## 15. 交叉引用
 
 - [02 业务架构复用](../../02-business-architecture-reuse/README.md)：业务能力如何映射为领域层与限界上下文
 - [04 Serverless 架构复用模式](../04-serverless/serverless-reuse-patterns.md)：分层思想在 FaaS 函数内部的应用
 - [06 事件驱动架构复用模式](../06-event-driven/reuse-patterns.md)：事件驱动与分层架构的互补关系
 - [模块化单体复用策略](./reuse-patterns.md)：模块化单体内部的分层复用策略
 - [07 云原生模式](../07-cloud-native-patterns/README.md)：服务网格、网关与分层边界的协同
+- [02 微服务架构复用模式](../02-microservices/microservices-reuse-patterns.md)：微服务内部仍可保留 Clean / Onion 分层
+- [10 TOSCA/DMN 平台](../10-tosca-dmn-platform/tosca-v20-dmn16-alignment.md)：TOSCA v2.0 服务模板与分层部署描述的映射
 
 ---
 
-## 15. 分层架构复用决策与演化 Mermaid 图
+## 16. 分层架构复用决策与演化 Mermaid 图
 
-### 15.1 模式选型决策树
+### 16.1 模式选型决策树
 
 ```mermaid
 flowchart TD
@@ -816,7 +851,7 @@ flowchart TD
     Q4 -->|否| A1
 ```
 
-### 15.2 经典分层与 Clean Architecture 的复用边界对比
+### 16.2 经典分层与 Clean Architecture 的复用边界对比
 
 ```mermaid
 graph TB
@@ -838,18 +873,19 @@ graph TB
 
 ---
 
-> 最后更新: 2026-07-07
+> 最后更新: 2026-07-08
 > 权威来源:
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO (核查日期: 2026-07-07)
-> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group (核查日期: 2026-07-07)
-> - [Software architecture - Wikipedia](https://en.wikipedia.org/wiki/Software_architecture) (核查日期: 2026-07-07)
-> - [Multilayered architecture - Wikipedia](https://en.wikipedia.org/wiki/Multilayered_architecture) (核查日期: 2026-07-07)
-> - Clean Architecture: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html> (核查日期: 2026-07-07)
-> - Onion Architecture: <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/> (核查日期: 2026-07-07)
-> - DCI Architecture: <https://fulloo.info/Documents/ArtimaDCI/> (核查日期: 2026-07-07)
-> - Vertical Slice Architecture: <https://www.jimmybogard.com/vertical-slice-architecture/> (核查日期: 2026-07-07)
-> - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-07)
-> - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-07)
-> - SWEBOK v4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-07)
-> - ISO/IEC 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-07)
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO (核查日期: 2026-07-08)
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — *Systems and software engineering — SQuaRE — Product quality model* (核查日期: 2026-07-08)
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group (核查日期: 2026-07-08)
+> - [Software architecture - Wikipedia](https://en.wikipedia.org/wiki/Software_architecture) (核查日期: 2026-07-08)
+> - [Multilayered architecture - Wikipedia](https://en.wikipedia.org/wiki/Multilayered_architecture) (核查日期: 2026-07-08)
+> - Clean Architecture: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html> (核查日期: 2026-07-08)
+> - Onion Architecture: <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/> (核查日期: 2026-07-08)
+> - DCI Architecture: <https://fulloo.info/Documents/ArtimaDCI/> (核查日期: 2026-07-08)
+> - Vertical Slice Architecture: <https://www.jimmybogard.com/vertical-slice-architecture/> (核查日期: 2026-07-08)
+> - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-08)
+> - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-08)
+> - SWEBOK v4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-08)
+> - ISO/IEC 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-08)

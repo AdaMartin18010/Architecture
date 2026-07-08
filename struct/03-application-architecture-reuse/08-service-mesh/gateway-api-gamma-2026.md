@@ -1,7 +1,9 @@
-# Gateway API、GAMMA 与服务网格演进 2026
+# Gateway API v1.5、GAMMA 与服务网格演进 2026
 >
-> 版本: 2026-06-06
-> 对齐来源: CNCF、Kubernetes SIG Network、Istio 2026-03 公告、SMI 归档声明
+> 版本: 2026-07-08
+> 对齐来源: CNCF、Kubernetes SIG Network、Gateway API v1.5（2026-02-27）、Istio 2026-03 公告、SMI 归档声明
+> 权威 URL: <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/>
+> 核查日期: 2026-07-08
 
 ## 1. 服务网格标准化演进时间线
 
@@ -30,21 +32,35 @@
 - **接口标准应嵌入主流平台**：Gateway API 作为 Kubernetes 原生扩展，比独立规范更有生命力
 - **避免过早抽象**：在生态未稳定时制定通用抽象，往往落后于实际发展
 
-## 3. Gateway API：Kubernetes 路由新标准
+## 3. Gateway API v1.5：Kubernetes 路由新标准
+
+Gateway API v1.5 于 **2026-02-27** 发布，是 SIG Network 迄今为止规模最大的版本，将 6 个长期实验特性晋升为 **Standard/Stable** 通道：ListenerSet、TLSRoute、HTTPRoute CORS Filter、客户端证书校验、Gateway TLS Origination 证书选择、ReferenceGrant（v1）。详见官方发布说明：<https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/>。
 
 ### 3.1 核心资源模型
 
 ```text
 GatewayClass
-└── Gateway (外部入口)
+└── Gateway (外部入口 / 共享网关)
     ├── HTTPRoute
     ├── TCPRoute
-    ├── TLSRoute
+    ├── TLSRoute        ← v1.5 Standard：SNI 路由
     ├── GRPCRoute
-    └── UDPRoute
+    ├── UDPRoute
+    └── ListenerSet     ← v1.5 Standard：独立 Listener 定义，可合并到 Gateway
 ```
 
-### 3.2 与 Ingress 的对比
+### 3.2 v1.5 关键特性与复用映射
+
+| v1.5 特性 | 说明 | 本项目复用模式映射 |
+|----------|------|------------------|
+| **ListenerSet** | 将 Listener 定义为独立资源，可附加到目标 Gateway；平台团队维护统一 Gateway，应用团队独立扩展监听配置 | 多团队共享网关的复用边界；降低多租户协作冲突 |
+| **TLSRoute (v1)** | 基于 SNI 的 TLS 流量路由，支持 terminate / passthrough 模式 | 非 HTTP TLS 流量（数据库、消息队列、自定义协议）的网关复用 |
+| **HTTPRoute CORS Filter** | 在 HTTPRoute 中直接配置跨域头 | BFF / 边缘网关的横切逻辑复用，减少后端重复实现 |
+| **客户端证书校验** | 在 Gateway 层校验客户端证书，实现入口 mTLS | 零信任安全模式复用 |
+| **Gateway TLS Origination 证书选择** | 为后端 TLS 发起连接选择不同证书 | 多后端、多证书环境的出口安全复用 |
+| **ReferenceGrant (v1)** | 跨 Namespace 引用 Gateway/Secret 等资源的显式授权 | 多租户共享网关时的安全复用契约 |
+
+### 3.3 与 Ingress 的对比
 
 | 能力 | Ingress | Gateway API |
 |-----|---------|-------------|
@@ -134,40 +150,56 @@ GAMMA 是 Kubernetes SIG Network  initiative，将 Gateway API 扩展至**服务
 | 公有云原生 | 厂商方案（ASM / App Mesh）| 托管减少运维负担 |
 | 高性能 gRPC | Proxyless（xDS SDK）| 零代理开销 |
 
-## 8. 参考索引
+## 8. 正向示例与反例
 
-- Kubernetes Gateway API: [gateway-api.sigs.k8s.io](https://gateway-api.sigs.k8s.io)
-- GAMMA Initiative: Kubernetes SIG Network
-- Istio: [istio.io](https://istio.io) (Ambient Mesh, 2026-03 Multicluster Beta)
-- CNCF: "CNCF Archives the Service Mesh Interface (SMI) Project" (2023-10-03)
-- CNCF: "Istio Brings Future Ready Service Mesh to the AI Era" (2026-03-25)
-- CKA Curriculum Changes 2025-2026
+### 8.1 正向示例：某电商平台以 Gateway API v1.5 + Istio Ambient 支撑大促
+
+某头部电商平台在 618、双 11 期间流量波动剧烈，采用 Gateway API v1.5 作为统一入口层，Istio Ambient 作为服务网格层。
+
+**复用策略**:
+
+1. **统一 Gateway + ListenerSet**: 平台团队维护一个共享 `Gateway`，各业务线通过 `ListenerSet` 独立配置自己的 HTTPS 监听与证书，避免多人直接修改同一 Gateway 对象
+2. **多协议路由复用**: 外部流量通过 `HTTPRoute` 进入电商 API，数据库代理流量通过 `TLSRoute`（SNI 路由）进入内部中间件层
+3. **横切关注点下沉**: CORS、客户端证书校验、速率限制在 Gateway API 层统一配置；mTLS、熔断、重试通过 Istio Ambient 的 ztunnel / waypoint 统一提供
+4. **金丝雀发布**: 通过 HTTPRoute 权重将新版本流量逐步从 5% 提升到 100%，配合可观测性平台验证延迟与错误率
+
+**复用成果**:
+
+- 入口层配置从各业务线独立维护的 Ingress  annotations 收敛为统一的 Gateway API 资源模板
+- 新业务上线时仅需提交 `HTTPRoute` 与 `ListenerSet`，无需关心底层负载均衡与证书管理
+- 大促期间入口层可独立横向扩展，服务网格层按节点自动扩展 ztunnel，避免了 Sidecar 模式下的 Pod 级资源开销
+
+### 8.2 反例：过早引入服务网格导致观测盲区
+
+某年交易额百亿级的电商在团队尚未建立可观测性体系时，全面上线 Istio Sidecar。
+
+**后果**:
+
+- Sidecar 资源消耗占节点内存 25%，成本激增
+- Envoy 配置错误导致部分流量被静默丢弃，故障定位耗时 6 小时
+- 开发团队不理解网格行为，将本应由业务层处理的超时逻辑下沉到网格，出现重复重试
+
+**判定**: 服务网格是**运行期基础设施复用**，必须在可观测性、SRE 能力、团队培训到位后引入；否则会将局部问题放大为系统性风险。
+
+## 9. 参考索引
+
+| 来源 | URL | 核查日期 |
+|------|-----|----------|
+| Kubernetes Gateway API v1.5 Release | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> | 2026-07-08 |
+| Kubernetes Gateway API Docs | <https://gateway-api.sigs.k8s.io> | 2026-07-08 |
+| GAMMA Initiative | Kubernetes SIG Network | 2026-07-08 |
+| Istio Ambient Mesh | <https://istio.io/latest/docs/ambient/overview/> | 2026-07-08 |
+| Istio 2026-03 Multicluster Beta | <https://istio.io/latest/blog/2026/ambient-multi-cluster/> | 2026-07-08 |
+| CNCF: SMI Archived | <https://www.cncf.io/archived-projects/> (SMI, 2023-10-03) | 2026-07-08 |
+| CNCF: Istio AI Era | <https://www.cncf.io/announcements/2026/03/25/istio-brings-future-ready-service-mesh-to-the-ai-era/> | 2026-07-08 |
+| NIST SP 800-204A | <https://csrc.nist.gov/publications/detail/sp/800-204a/final> | 2026-07-08 |
+| CKA Curriculum Changes | Kubernetes Training Partner (KTP) 2025-2026 updates | 2026-07-08 |
 
 
 ---
 
-## 补充说明：Gateway API、GAMMA 与服务网格演进 2026
+## 10. 概念定义
 
-## 概念定义
+**定义**：服务网格（Service Mesh）将服务间通信能力（流量管理、安全、可观测性）从应用代码中剥离，作为基础设施层统一复用。Gateway API 是 Kubernetes 原生的统一路由与控制平面标准；GAMMA（Gateway API for Mesh Management and Administration）将 Gateway API 扩展至服务网格内部流量管理，使东西向流量也能复用同一套 API 与策略模型。
 
-**定义**：服务网格（Service Mesh）将服务间通信能力（流量管理、安全、可观测性）从应用代码中剥离，作为基础设施层统一复用。
-
-## 示例
-
-**示例**：企业采用 Istio 作为服务网格，所有微服务自动获得 mTLS、金丝雀发布、重试与分布式追踪能力，无需修改业务代码。
-
-## 反例
-
-**反例**：每个微服务自行实现重试、熔断与认证逻辑，导致代码冗余、行为不一致且难以统一升级。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io)
-> - [Istio](https://istio.io)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：服务网格将横切关注点下沉到基础设施，是应用层复用的重要补充，但需权衡性能与运维复杂度。
+**分析**：服务网格与 Gateway API 共同将横切关注点下沉到基础设施，是应用层复用的重要补充。但需在可观测性、SRE 能力与团队认知到位后引入，否则会将局部配置错误放大为系统性风险。

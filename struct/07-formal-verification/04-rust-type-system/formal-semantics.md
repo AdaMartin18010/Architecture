@@ -1,6 +1,6 @@
 # Rust 类型系统：编译期复用安全的形式化语义
 
-> **版本**: 2026-06-06
+> **版本**: 2026-07-08
 > **对齐标准**: Rust 1.85+ (2026), RustBelt (Iris), Aeneas (Inria), Prusti (ETH Zurich), Kani (AWS)
 > **定位**: 为 Rust 生态复用提供数学级别的安全保证
 
@@ -9,20 +9,18 @@
 ## 目录
 
 - [Rust 类型系统：编译期复用安全的形式化语义](#rust-类型系统编译期复用安全的形式化语义)
-  - [目录](#目录)
   - [1. 所有权的形式化定义](#1-所有权的形式化定义)
   - [2. 借用的形式化定义](#2-借用的形式化定义)
   - [3. 生命周期的形式化定义](#3-生命周期的形式化定义)
   - [4. Trait 系统的复用机制](#4-trait-系统的复用机制)
-    - [Trait 复用的五种模式](#trait-复用的五种模式)
   - [5. Cargo 依赖解析的 SAT 基础](#5-cargo-依赖解析的-sat-基础)
   - [6. 形式化验证项目与复用价值](#6-形式化验证项目与复用价值)
   - [7. 关键公理与定理](#7-关键公理与定理)
+  - [8. 标准条款与工具映射](#8-标准条款与工具映射)
+  - [9. 权威来源](#9-权威来源)
+  - [10. 正向示例](#10-正向示例)
+  - [11. 反例 / 反模式](#11-反例--反模式)
   - [附录：所有权-借用-生命周期决策矩阵](#附录所有权-借用-生命周期决策矩阵)
-  - [补充说明：Rust 类型系统：编译期复用安全的形式化语义](#补充说明rust-类型系统编译期复用安全的形式化语义)
-  - [示例](#示例)
-  - [反例](#反例)
-  - [权威来源](#权威来源)
 
 ---
 
@@ -214,6 +212,51 @@ Rust 形式化验证项目与复用
 
 ---
 
+## 8. 标准条款与工具映射
+
+| 标准 / 条款 | 本文件对应内容 | 工具 | 证据 |
+|:---|:---|:---|:---|
+| IEEE 1012-2024 §9.5（软件实现 V&V） | Rust 类型系统保证内存安全 | rustc | 编译通过 |
+| IEEE 1012-2024 §9.5 | unsafe 边界人工/形式化验证 | Miri / Kani / Aeneas | UB 检测报告 / 证明 |
+| DO-178C / DO-333（DAL A） | 高安全 Rust 组件验证 | Kani / Prusti | 模型检查 / 契约证明报告 |
+| ISO/IEC 25010:2023（可靠性/安全性） | 数据竞态与悬垂指针排除 | RustBelt (Iris) | 形式化证明论文 |
+| IEC 61508 SIL 4 | 工业安全 Rust 组件 | rustc + Miri + Kani | 安全分析报告 |
+
+---
+
+## 9. 权威来源
+
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-08 |
+| The Rust RFC Book | <https://rust-lang.github.io/rfcs/> | 2026-07-08 |
+| RustBelt (Iris Project) | <https://iris-project.org/rustbelt.html> | 2026-07-08 |
+| Miri (Undefined Behavior detector) | <https://github.com/rust-lang/miri> | 2026-07-08 |
+| Kani Rust Model Checker | <https://github.com/model-checking/kani> | 2026-07-08 |
+| Aeneas (Inria Rust verifier) | <https://github.com/AeneasVerif/aeneas> | 2026-07-08 |
+| Prusti (ETH Zurich) | <https://github.com/viperproject/prusti> | 2026-07-08 |
+
+---
+
+## 10. 正向示例
+
+某跨平台网络库用 Rust 实现核心协议解析器，所有权系统保证并发访问安全，被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。该库通过 Miri 检测 unsafe 边界，并通过 Kani 验证关键路径无 panic 与越界访问，复用方继承了编译期内存安全保证。
+
+---
+
+## 11. 反例 / 反模式
+
+在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。例如，某 `unsafe` 封装手动管理原始指针生命周期，编译器无法验证其正确性；下游多个 crate 复用后，在特定调用顺序下触发 use-after-free，最终造成安全漏洞（CVE）。
+
+修复路径：
+
+1. 将 unsafe 边界最小化，并用 `// SAFETY:` 注释说明不变量；
+2. 使用 Miri 在 CI 中运行测试，检测未定义行为；
+3. 对关键 unsafe 函数使用 Kani 验证安全属性；
+4. 优先通过安全抽象封装 unsafe，避免消费方直接接触。
+
+---
+
 ## 附录：所有权-借用-生命周期决策矩阵
 
 | 场景 | 所有权转移 | 不可变借用 `&T` | 可变借用 `&mut T` | 复制 `Copy` | 克隆 `Clone` | 选择依据 |
@@ -229,26 +272,4 @@ Rust 形式化验证项目与复用
 
 ---
 
-> 最后更新: 2026-06-06
-
-
----
-
-## 补充说明：Rust 类型系统：编译期复用安全的形式化语义
-
-## 示例
-
-**示例**：某跨平台网络库用 Rust 编写核心协议解析器，所有权系统保证并发访问安全，被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。
-
-## 反例
-
-**反例**：在 Rust 中滥用 unsafe 块实现“性能优化”但未用 Miri 或形式化方法验证，导致复用该 unsafe 包装的多个项目出现未定义行为。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [The Rust Programming Language](https://www.rust-lang.org)
-> - [RustBelt](https://iris-project.org/rustbelt.html)
-> - [Aeneas](https://github.com/AeneasVerif/aeneas)
-> - 核查日期：2026-07-07
+> 最后更新: 2026-07-08

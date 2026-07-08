@@ -19,10 +19,15 @@
 
 ## 权威对齐
 
-- [CNCF Cloud Native Trail Map](https://landscape.cncf.io)
-- [Spring Modulith](https://spring.io/projects/spring-modulith) (模块化单体)
-- [Istio Architecture](https://istio.io/latest/docs/ops/deployment/architecture/)
-- [Data Mesh by Zhamak Dehghani](https://martinfowler.com/articles/data-mesh-intro.html)
+| 标准/框架 | 作用 | 权威 URL | 核查日期 |
+|-----------|------|----------|----------|
+| ISO/IEC 25010:2023 | 软件产品质量模型（含可维护性、可复用性子特征） | <https://www.iso.org/standard/78176.html> | 2026-07-08 |
+| NIST SP 800-204 系列 | 微服务安全策略、服务网格与 DevSecOps 指引 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 2026-07-08 |
+| CNCF Cloud Native Landscape | 云原生项目成熟度与毕业状态 | <https://landscape.cncf.io/> 与 <https://www.cncf.io/projects/> | 2026-07-08 |
+| Spring Modulith | 模块化单体参考实现 | <https://spring.io/projects/spring-modulith> | 2026-07-08 |
+| Istio Architecture | 服务网格通信与流量管理 | <https://istio.io/latest/docs/ops/deployment/architecture/> | 2026-07-08 |
+| Kubernetes Gateway API v1.5 | Kubernetes 统一路由标准（ListenerSet / TLSRoute 进入 Standard 通道） | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> | 2026-07-08 |
+| Data Mesh by Zhamak Dehghani | 数据架构复用思想 | <https://martinfowler.com/articles/data-mesh-intro.html> | 2026-07-08 |
 
 ## 关键定理
 >
@@ -73,18 +78,34 @@
 
 **定义**：应用架构复用是在系统层面复用应用、服务、模式与基础设施配置，包括分层架构、微服务、Serverless、事件驱动、服务网格等形态。
 
-## 示例
+## 正向示例
 
-**示例**：某 SaaS 企业建立内部平台团队，提供可复用的 CI/CD 流水线、可观测性套件与多租户数据隔离模板，新产品团队可在数天内搭建生产级服务。
+**示例 1：Spotify 的模块化单体与分层复用**
 
-## 反例
+Spotify 早期将 Java 单体拆分为约 100 个内部模块，每个模块保持 API / Service / Domain / Persistence 的清晰分层，并提取 `spotify-common` 共享内核与 Protocol Buffer 契约。该实践使 100+ 模块复用同一领域语义类型，服务端与多客户端（iOS、Android、桌面、Web）通过同一契约保持类型安全；当部分模块需要独立演进时，可沿既有分层边界低摩擦地拆分为微服务。
 
-**反例**：各产品团队独立选型技术栈与部署模式，导致安全补丁、监控与容量管理无法统一治理。
+**示例 2：某 SaaS 企业的内部平台团队**
+
+某 SaaS 企业建立内部平台团队，提供可复用的 CI/CD 流水线、可观测性套件与多租户数据隔离模板，新产品团队可在数天内搭建生产级服务。
+
+## 反例/反模式
+
+**反例 1：过度拆分导致的微服务复用成本高于收益**
+
+某 15 人初创公司在产品未验证前将系统拆分为 12 个微服务，完成一次用户注册需调用 5 个服务，本地开发需启动 8 个进程，且服务间共享数据库、schema 变更需同步修改多个服务。结果团队承担了微服务的运维复杂度，却未获得独立部署与自治收益，形成典型的**分布式单体**。
+
+**反例 2：各产品团队独立选型技术栈**
+
+各产品团队独立选型技术栈与部署模式，导致安全补丁、监控与容量管理无法统一治理，重复建设同类中间件，跨团队复用无从谈起。
 
 ## 权威来源
 
 > **权威来源**:
 >
-> - [CNCF](https://www.cncf.io)
-> - [NIST](https://www.nist.gov)
-> - 核查日期：2026-07-07
+> - ISO/IEC 25010:2023. *Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model*. <https://www.iso.org/standard/78176.html> (核查日期：2026-07-08)
+> - NIST SP 800-204. *Security Strategies for Microservices-based Application Systems*. <https://csrc.nist.gov/publications/detail/sp/800-204/final> (核查日期：2026-07-08)
+> - NIST SP 800-204A. *Building Secure Microservices-Based Applications Using Service Mesh Architecture*. <https://csrc.nist.gov/publications/detail/sp/800-204a/final> (核查日期：2026-07-08)
+> - CNCF Cloud Native Landscape. <https://landscape.cncf.io/> (核查日期：2026-07-08)
+> - CNCF Graduated and Incubating Projects. <https://www.cncf.io/projects/> (核查日期：2026-07-08)
+> - Kubernetes Gateway API v1.5 Release Notes. <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> (核查日期：2026-07-08)
+> - Spring Modulith. <https://spring.io/projects/spring-modulith> (核查日期：2026-07-08)
