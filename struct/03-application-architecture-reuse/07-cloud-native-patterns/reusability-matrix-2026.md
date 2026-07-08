@@ -34,6 +34,7 @@
     - [6.1 模块化单体回归（The Modulith Renaissance）](#61-模块化单体回归the-modulith-renaissance)
     - [6.2 WebAssembly 组件化（WASM Component Model 3.0）](#62-webassembly-组件化wasm-component-model-30)
     - [6.3 Sidecar-less 服务网格](#63-sidecar-less-服务网格)
+    - [6.4 CNCF 项目成熟度与毕业状态（2026-07）](#64-cncf-项目成熟度与毕业状态2026-07)
   - [7. 正向示例](#7-正向示例)
     - [示例 1：SaaS 企业采用 Spring Modulith 构建模块化单体](#示例-1saas-企业采用-spring-modulith-构建模块化单体)
     - [示例 2：电商平台以微服务 + 服务网格支撑大促](#示例-2电商平台以微服务--服务网格支撑大促)

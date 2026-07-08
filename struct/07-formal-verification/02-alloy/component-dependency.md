@@ -10,16 +10,29 @@
 ## 目录
 
 - [T11: 组件依赖无环性验证 (Alloy)](#t11-组件依赖无环性验证-alloy)
+  - [目录](#目录)
   - [1. 概念定义](#1-概念定义)
   - [2. 建模直觉](#2-建模直觉)
   - [3. 核心签名设计](#3-核心签名设计)
+    - [3.1 Component（组件）](#31-component组件)
+    - [3.2 Module（模块）](#32-module模块)
   - [4. 关键事实约束](#4-关键事实约束)
+    - [F3: AcyclicDependency（无环依赖）](#f3-acyclicdependency无环依赖)
+    - [F5: DependencyInversion（依赖倒置）](#f5-dependencyinversion依赖倒置)
   - [5. 断言与验证策略](#5-断言与验证策略)
+    - [论证](#论证)
   - [6. 正向示例：验证组件依赖图无环](#6-正向示例验证组件依赖图无环)
+    - [示例](#示例)
   - [7. 反例 / 反模式：循环依赖的危害](#7-反例--反模式循环依赖的危害)
+    - [反例教学：观察 Alloy 生成的最小反例](#反例教学观察-alloy-生成的最小反例)
   - [8. Alloy 命令详解与预期输出](#8-alloy-命令详解与预期输出)
+    - [8.1 检查命令（check）](#81-检查命令check)
+    - [8.2 模拟命令（run）](#82-模拟命令run)
+    - [8.3 预期输出](#83-预期输出)
+    - [8.4 边界条件与扩展](#84-边界条件与扩展)
   - [9. 标准条款与工具映射](#9-标准条款与工具映射)
   - [10. 权威来源](#10-权威来源)
+  - [11. 交叉引用](#11-交叉引用)
 
 ---
 
@@ -86,6 +99,10 @@ fact DependencyInversion {
 
 ## 5. 断言与验证策略
 
+### 论证
+
+无环依赖与依赖倒置是组件架构可复用性的结构前提。本节通过三个 Alloy 断言，分别论证组件级、模块级和跨模块局部性约束的可满足性，并说明 SAT 求解器如何在有限 scope 内给出可审计的验证证据。
+
 本规约定义了三个断言，覆盖组件级、模块级和架构局部性三个维度：
 
 | 断言 | 目的 | Scope |
@@ -99,6 +116,8 @@ fact DependencyInversion {
 ---
 
 ## 6. 正向示例：验证组件依赖图无环
+
+### 示例
 
 某微服务系统包含 4 个组件：`API-Gateway`、`User-Service`、`Order-Service`、`Payment-Adapter`。架构师在 Alloy 中声明 `AcyclicDependency` 事实后，执行：
 
@@ -224,7 +243,7 @@ run ShowValidSystem for 5 but 3 Module
 
 ## 11. 交叉引用
 
-- 组件架构复用依赖管理：[`struct/04-component-architecture-reuse/03-dependency-management/`](../04-component-architecture-reuse/03-dependency-management/)
+- 组件架构复用依赖管理：[`dependency-management-reuse.md`](../../04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 
 > 最后更新：2026-07-08

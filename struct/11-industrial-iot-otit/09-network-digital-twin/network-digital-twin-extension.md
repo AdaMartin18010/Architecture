@@ -26,6 +26,12 @@
     - [4.1 跨域复用挑战](#41-跨域复用挑战)
     - [4.2 SDF (Semantic Definition Format) for Digital Twin](#42-sdf-semantic-definition-format-for-digital-twin)
   - [5. 权威来源](#5-权威来源)
+  - [6. 正向示例](#6-正向示例)
+    - [示例 1：5G 工厂网络数字孪生规划](#示例-15g-工厂网络数字孪生规划)
+    - [示例 2：GB/T 45616 产线级数字孪生](#示例-2gbt-45616-产线级数字孪生)
+  - [7. 反例 / 失败案例](#7-反例--失败案例)
+    - [反例 1：过度精确而缺乏数据支撑的孪生模型](#反例-1过度精确而缺乏数据支撑的孪生模型)
+    - [反例 2：忽视跨域语义差异直接拼接模型](#反例-2忽视跨域语义差异直接拼接模型)
 
 ---
 
@@ -166,29 +172,37 @@ SDF for Digital Twin
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| IETF NMRG Network Digital Twin draft-12 | <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12> | 2026-06-10 |
-| IETF ASDF SDF for Digital Twin | <https://datatracker.ietf.org/doc/draft-ietf-asdf-digital-twin/> | 2026-06-10 |
-| GB/T 45616-2025 | <https://www.chinesestandard.net/PDF/English.aspx/GBT45616.2-2025> | 2026-06-10 |
-| ISO 23247 | <https://www.iso.org/standard/78743.html> | 2026-06-10 |
-| ISO/IEC 30173 | <https://www.iso.org/standard/79819.html> | 2026-06-10 |
-| ITU-T Y.4600 | <https://www.itu.int/rec/T-REC-Y.4600> | 2026-06-10 |
+| IETF NMRG Network Digital Twin draft-12 | <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12> | 2026-07-08 |
+| IETF ASDF SDF for Digital Twin | <https://datatracker.ietf.org/doc/draft-ietf-asdf-digital-twin/> | 2026-07-08 |
+| GB/T 45616-2025 | <https://www.chinesestandard.net/PDF/English.aspx/GBT45616.2-2025> | 2026-07-08 |
+| ISO 23247 Digital twin framework for manufacturing | <https://www.iso.org/standard/78743.html> | 2026-07-08 |
+| ISO/IEC 30141:2024 IoT Reference Architecture | <https://www.iso.org/standard/88800.html> | 2026-07-08 |
+| ISO/IEC 30173 Digital Twin conceptual framework | <https://www.iso.org/standard/79819.html> | 2026-07-08 |
+| ITU-T Y.4600 Digital Twin network requirements | <https://www.itu.int/rec/T-REC-Y.4600> | 2026-07-08 |
 
 
 ---
 
-## 补充章节
-## 概念定义
+## 6. 正向示例
 
-**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。
+### 示例 1：5G 工厂网络数字孪生规划
 
-## 示例
+某通信设备制造商利用 IETF Network Digital Twin 构建 5G 专网孪生体，在部署前对 TSN 门控配置、流预留和故障切换进行仿真。通过复用 YANG/NETCONF 配置模板与流量模型，现场割接时间从 3 天缩短到 4 小时，且未发现影响生产的配置错误。
 
-**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+### 示例 2：GB/T 45616 产线级数字孪生
 
-## 反例
+一家跨国企业在华工厂依据 GB/T 45616-2025（等同采用 ISO 23247）建立产线数字孪生，复用 IEC 63278 AAS 子模型作为设备语义层，实现与总部 PLM/ERP 的跨地域数据一致性，满足本土合规与全球主数据治理的双重要求。
 
-**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+## 7. 反例 / 失败案例
 
-## 分析
+### 反例 1：过度精确而缺乏数据支撑的孪生模型
 
-**分析**：OT-IT 复用需要在实时性、安全性与 IT 敏捷性之间取得平衡，标准信息模型是打破竖井的关键。
+某城市级数字孪生项目投入大量资源构建高保真 3D 模型，却未建立稳定的数据采集与增量更新机制。物理网络变化后，孪生体状态迅速失真，最终沦为可视化大屏，无法支撑实际网络规划决策。
+
+### 反例 2：忽视跨域语义差异直接拼接模型
+
+某团队将制造 DT 的“设备”概念直接映射到网络 DT 的“节点”，未对齐状态属性、生命周期与动态性差异，导致故障定位与影响分析算法输出错误，丧失了数字孪生的可信性。
+
+---
+
+> 最后更新: 2026-07-08

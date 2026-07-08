@@ -146,38 +146,53 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 | IEC 61508 | ISO 26262 | 通用组件进入汽车供应链 | 增加 S/E/C 分析、ASIL 分解 |
 | DO-178C | IEC 61508 | 航空软件复用于工业 | 重新论证工具资格、调整生命周期 |
 
-## 7. 参考索引
+## 7. 权威来源与参考索引
 
-- IEC 61508-1:202x Ed3 (General Requirements, expected)
-- IEC 61508-2:2010 / 202x Ed3 (Hardware Requirements)
-- IEC 61508-3:2010 / 202x Ed3 (Software Requirements)
-- IEC 61508-6 Annex D (Statistical confidence intervals)
-- IEC TR 61508-6-1 (Treatment of hardware/software developed to ISO 26262, JTG20 WG, expected 2025)
+- IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>
+- IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*：<https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010>
+- IEC 61508 Ed.3 CDV 状态（2026-01-28 投票完成，预计 2026 末发布）：<https://webstore.iec.ch/publication/66912>
+- ISO 26262:2018 *Road vehicles — Functional safety*：<https://www.iso.org/standard/68383.html>
+- ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
 - Intertek Blog: "Exploring the IEC 61508 Proven-In-Use Concept" (2026-01-22)
 - Jama Software: "What Is IEC 61508? A Functional Safety Guide" (2026-04-30)
 - Gofore: "Understanding IEC 61508: The foundation of functional safety" (2025-11-12)
 
+---
+
+## 8. IEC 61508-3 7.4.4 工具资格条款映射
+
+IEC 61508-3:2010 条款 7.4.4 将开发工具分为 **T1 / T2 / T3** 三类；IEC 61508 Ed.3（CDV）进一步将其映射到 **TIL 0–4（Tool Integrity Level）**。这与本项目形式化验证 / 工具链治理策略的映射关系如下：
+
+| 工具类别 | Ed.2 定义 | Ed.3 TIL | 典型工具 | 项目治理要求 |
+|:---|:---|:---:|:---|:---|
+| **T1** | 仅生成无法引入错误的输出（如文本编辑器） | TIL 0 | 文档编辑器、版本控制 GUI | 配置管理即可 |
+| **T2** | 支持验证/确认，错误可被后续检查发现 | TIL 1–2 | 静态分析、单元测试框架 | 记录工具版本与配置；定期校准 |
+| **T3** | 用于开发/转换安全相关软件，错误可能直接引入缺陷 | TIL 3–4 | 编译器、模型转换器、形式化验证器（TLC/ProB） | 必须执行工具资格；建立工具置信度文件（TCF） |
+
+> **映射原则**：本项目中用于生成安全相关代码的模型转换器、SMT 求解器及 TLA+ / Event-B 验证器按 T3 / TIL 3–4 管理；仅用于文档或人工复核的工具按 T1 / TIL 0 管理。工具链变更必须重新评估 TIL 并更新安全证据。
 
 ---
 
-## 补充章节
-## 示例
+## 9. 正向示例
 
-**示例**：某供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 SEooC 复用到多款车型，通过安全手册明确假设与使用约束。
+### 示例 1：SEooC 制动控制软件复用
 
-## 反例
+某 Tier-1 供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 Safety Element out of Context（SEooC）复用到多款车型。安全手册明确列出环境假设、集成约束与诊断覆盖要求；OEM 仅需验证这些假设在目标车型中的覆盖性，避免重复进行完整的 ASIL 开发。
 
-**反例**：团队复用开源运动控制库到医疗机器人，未评估其 SIL 符合性，认证阶段无法证明诊断覆盖率，项目被迫返工。
+### 示例 2：Proven-In-Use 阀门执行器
 
-## 权威来源
+某过程工业最终元件供应商收集同型号 SIL 2 阀门执行器在现场累计 10⁸ 设备小时的运行数据，按 IEC 61508-2 7.4.10 与 IEC 61508-6 附录 D 的 χ² 置信区间方法推导危险未检测故障率，成功通过 Route 2H 论证，减少了 FMEDA 预测的不确定性。
 
-> **权威来源**:
->
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
-> - [ISO 26262](https://www.iso.org/standard/68383.html)
-> - [IEC 62443](https://www.iec.ch/cybersecurity)
-> - 核查日期：2026-07-07
+## 10. 反例 / 失败案例
 
-## 分析
+### 反例 1：复用未经 SIL 评估的开源库
 
-**分析**：功能安全复用不是简单复制代码，而是复用经过验证的安全证据与假设约束。
+某医疗机器人团队将开源运动控制库直接复用到 SIL 2 安全功能，未评估其系统性能力、诊断覆盖率与工具资格。认证阶段无法证明需求追溯与测试完整性，项目被迫返工并推迟上市 9 个月。
+
+### 反例 2：PIU 证据在固件更新后失效
+
+某传感器厂商基于历史运行数据申请 Proven-In-Use 认可，但在审计期间发布了未纳入证据集的固件补丁，导致原有运行小时数据与新版本软件不可比，PIU 论证被评估员否决。
+
+---
+
+> 最后更新: 2026-07-08

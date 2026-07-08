@@ -402,9 +402,9 @@ graph TB
     C -.->|generalizes| T
 ```
 
-### 6. 正例
+### 示例
 
-**正例**：某物流企业使用 ArchiMate 4.0 建模“订单履约”复用资产：
+**正向示例**：某物流企业使用 ArchiMate 4.0 建模“订单履约”复用资产：
 
 - **业务层**：Business Service “订单履约服务” realized by Business Process “订单处理流程”。
 - **应用层**：Application Service “Order Fulfillment API” realizes 业务服务；Application Component “OrderService” 实现该应用服务。
@@ -415,9 +415,9 @@ graph TB
 
 结果：该模型可作为标准化视点模板，在新业务线（冷链、跨境）复用，影响分析时间从数周缩短至数天。
 
-### 7. 反例
+### 反例
 
-**反例**：某团队在 ArchiMate 建模中将“数据库”画为业务层 Business Object：
+**反模式**：某团队在 ArchiMate 建模中将“数据库”画为业务层 Business Object：
 
 - 混淆了技术实现与业务语义，导致业务方误以为“数据库”是业务实体。
 - 在生成应用架构视图时，无法通过 realization 关系正确追溯到技术层 Artifact。

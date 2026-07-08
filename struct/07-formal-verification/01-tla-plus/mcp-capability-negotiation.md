@@ -122,6 +122,8 @@ agreedCaps ⊆ clientCaps ∧ agreedCaps ⊆ serverCaps
 
 ## 6. 正向示例：TLA+ 验证 MCP 能力协商不变式
 
+### 示例
+
 使用 TLC 对 `mcp-capability-negotiation.tla` 进行模型检查时，我们声明 `ActiveImpliesCommonCaps` 为不变量。TLC 穷举 `AllCapabilities = {"tools", "resources", "prompts"}` 下 Client 与 Server 的所有能力子集组合（各 7 种非空子集），验证：
 
 - 当 `clientCaps ∩ serverCaps = {}` 时，规约阻止进入 `active`；
@@ -131,6 +133,8 @@ agreedCaps ⊆ clientCaps ∧ agreedCaps ⊆ serverCaps
 该验证可直接作为 MCP Server 实现的参考：任何真实实现若允许无共同能力时进入 active，则必然违反协议安全性质。
 
 ## 7. 反例 / 反模式：移除守卫导致错误进入 Active
+
+### 反例
 
 假设实现者为了"简化逻辑"，在 `ClientActivate` 中删除了 `agreedCaps ≠ {}` 的守卫条件。TLC 在数秒内生成如下反例轨迹：
 

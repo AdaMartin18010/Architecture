@@ -152,7 +152,7 @@ GAMMA 是 Kubernetes SIG Network  initiative，将 Gateway API 扩展至**服务
 
 ## 8. 正向示例与反例
 
-### 8.1 正向示例：某电商平台以 Gateway API v1.5 + Istio Ambient 支撑大促
+### 示例：某电商平台以 Gateway API v1.5 + Istio Ambient 支撑大促
 
 某头部电商平台在 618、双 11 期间流量波动剧烈，采用 Gateway API v1.5 作为统一入口层，Istio Ambient 作为服务网格层。
 
@@ -169,7 +169,7 @@ GAMMA 是 Kubernetes SIG Network  initiative，将 Gateway API 扩展至**服务
 - 新业务上线时仅需提交 `HTTPRoute` 与 `ListenerSet`，无需关心底层负载均衡与证书管理
 - 大促期间入口层可独立横向扩展，服务网格层按节点自动扩展 ztunnel，避免了 Sidecar 模式下的 Pod 级资源开销
 
-### 8.2 反例：过早引入服务网格导致观测盲区
+### 反例：过早引入服务网格导致观测盲区
 
 某年交易额百亿级的电商在团队尚未建立可观测性体系时，全面上线 Istio Sidecar。
 
@@ -203,3 +203,12 @@ GAMMA 是 Kubernetes SIG Network  initiative，将 Gateway API 扩展至**服务
 **定义**：服务网格（Service Mesh）将服务间通信能力（流量管理、安全、可观测性）从应用代码中剥离，作为基础设施层统一复用。Gateway API 是 Kubernetes 原生的统一路由与控制平面标准；GAMMA（Gateway API for Mesh Management and Administration）将 Gateway API 扩展至服务网格内部流量管理，使东西向流量也能复用同一套 API 与策略模型。
 
 **分析**：服务网格与 Gateway API 共同将横切关注点下沉到基础设施，是应用层复用的重要补充。但需在可观测性、SRE 能力与团队认知到位后引入，否则会将局部配置错误放大为系统性风险。
+
+## 11. 分析
+
+Gateway API v1.5 将 ListenerSet、TLSRoute 等关键特性晋升至 Standard 通道，标志着 Kubernetes 网络控制平面的进一步统一。对于架构复用而言，这意味着：
+
+1. **入口层复用边界更清晰**：平台团队可维护共享 Gateway，应用团队通过 ListenerSet 独立扩展，实现"基础设施归平台、路由规则归应用"的职责分离
+2. **多协议流量可统一治理**：TLSRoute 使非 HTTP 流量（数据库、消息队列）也能纳入同一网关基础设施，减少专用入口控制器的重复建设
+3. **服务网格与入口标准融合**：GAMMA 将 Gateway API 扩展至东西向流量，使同一套 API 既能管理入口流量，也能管理服务间流量，降低学习与运维成本
+4. **风险**: 标准能力越强大，对团队的可观测性、SRE 与安全意识要求越高；过早或过度使用会引入不必要的复杂度

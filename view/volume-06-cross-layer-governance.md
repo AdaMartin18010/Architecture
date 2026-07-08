@@ -3000,7 +3000,7 @@ if __name__ == "__main__":
     - [第 15–30 天：模型校准](#第-1530-天模型校准)
     - [第 31–60 天：试运行与 Showback](#第-3160-天试运行与-showback)
     - [第 61–90 天：正式运营与持续改进](#第-6190-天正式运营与持续改进)
-  - [7. 参考索引](#7-参考索引)
+  - [7. 权威来源](#7-权威来源)
 
 ---
 
@@ -3611,7 +3611,7 @@ python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost
 
 ---
 
-## 7. 参考索引
+## 7. 权威来源
 
 - **FinOps Foundation**: [FinOps Framework 2026](https://www.finops.org/insights/2026-finops-framework/) — 2026 框架更新、Executive Strategy Alignment 与跨技术类别治理能力
 - **FinOps Foundation**: [FinOps Framework Capabilities](https://www.finops.org/framework/) — 成本分摊核心定义与共享成本治理
@@ -8897,6 +8897,7 @@ sequenceDiagram
     - [3.1 从"静态组件复用"到"动态行为复用"](#31-从静态组件复用到动态行为复用)
     - [3.2 Agent 行为合约（Agent Behavioral Contracts）](#32-agent-行为合约agent-behavioral-contracts)
     - [3.3 跨组织 Agent 复用的信任基础](#33-跨组织-agent-复用的信任基础)
+    - [3.4 NIST AI RMF 与 Microsoft Agent Governance Toolkit 条款映射](#34-nist-ai-rmf-与-microsoft-agent-governance-toolkit-条款映射)
   - [4. 六阶段复用决策模型的 Agentic 扩展](#4-六阶段复用决策模型的-agentic-扩展)
     - [4.1 新增"自治合规判定"阶段](#41-新增自治合规判定阶段)
     - [4.2 判定规则](#42-判定规则)
@@ -8904,7 +8905,9 @@ sequenceDiagram
     - [5.1 案例背景](#51-案例背景)
     - [5.2 复用治理评估](#52-复用治理评估)
     - [5.3 运行时治理架构](#53-运行时治理架构)
+    - [反模式：未验证身份卡即复用开源 Agent](#反模式未验证身份卡即复用开源-agent)
   - [6. 权威来源](#6-权威来源)
+  - [7. 论证与分析：为何 Agentic 治理是复用信任基础](#7-论证与分析为何-agentic-治理是复用信任基础)
 
 ---
 

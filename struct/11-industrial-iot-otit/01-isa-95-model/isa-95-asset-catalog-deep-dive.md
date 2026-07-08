@@ -202,20 +202,6 @@ L0 传感器/执行器
 └── 数字量 (24V DC)
 ```
 
-## 7. 参考索引
-
-- ANSI/ISA-95.00.01-2010 / IEC 62264-1:2013 — Enterprise-Control System Integration Part 1: Models and Terminology
-- ANSI/ISA-95.00.02-2018 / IEC 62264-2 — Part 2: Object Model Attributes
-- ANSI/ISA-95.00.03-2013 / IEC 62264-3 — Part 3: Activity Models of Manufacturing Operations Management
-- IEC 62264-4:2015 — Part 4: Object Model Attributes for Manufacturing Operations Management
-- ISA-88 / IEC 61512 — Batch Control
-- ISA-18.2 / IEC 62682 — Management of Alarm Systems
-- OMAC PackML — State Model and Tag Naming
-- IEC 61804 — EDDL
-- OPC UA DI — Device Integration Model
-- PA-DIM — Process Automation Device Information Model
-
-
 ## 7. ISA-95 L0–L4 层级定义、属性与边界补强
 
 ### 7.1 层级定义与核心属性
@@ -332,108 +318,17 @@ graph TB
 
 ### 7.8 权威来源与交叉引用补强
 
-- ANSI/ISA-95.00.01-2010 / IEC 62264-1:2013 — Enterprise-Control System Integration Part 1: Models and Terminology
-- ANSI/ISA-95.00.02-2018 / IEC 62264-2 — Part 2: Object Model Attributes
-- ANSI/ISA-95.00.03-2013 / IEC 62264-3 — Part 3: Activity Models of Manufacturing Operations Management
-- IEC 62264-4:2015 — Part 4: Object Model Attributes for Manufacturing Operations Management
-- IEC 63278-1:2023 — Asset Administration Shell for industrial applications — Part 1: Administration Shell structure
+- IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>
+- IEC 62264-3:2013 *Activity models of manufacturing operations management*：<https://webstore.iec.ch/publication/66912>
+- IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/en/publication/65628>
+- ISO/IEC 30141:2024 *Internet of Things reference architecture*：<https://www.iso.org/standard/88800.html>
 - OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>
 - OPC UA for ISA-95 (B2MML): <https://www.mesa.org/en/B2MML.asp>
 - IDTA Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
-- 相关概念: [Industry 4.0](https://en.wikipedia.org/wiki/Fourth_Industrial_Revolution), [OPC Unified Architecture](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
-- **交叉引用**: `struct/11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`；`struct/11-industrial-iot-otit/05-digital-twin-aas/aas-opcua-mapping.md`；`struct/11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md` §3
-
-## 8. ISA-95 L0–L4 形式化定义、属性与 AAS/OPC UA 映射完整视图
-
-> **定义 ISA.2** (ISA-95 层级复用边界): ISA-95 L0–L4 是从物理过程到企业业务的五个抽象层级，每一层在时间尺度、控制范围、数据语义和安全要求上具有明确边界。复用资产时必须保持其源层级的实时性、确定性与语义一致性，禁止跨层级直接映射未经验证的逻辑或协议。
-
-### 8.1 层级属性表
-
-| 层级 | 名称 | 时间尺度 | 控制范围 | 数据粒度 | 实时/确定性要求 | AAS 子模型 | OPC UA NodeSet | 复用边界 |
-|------|------|----------|----------|----------|-----------------|------------|----------------|----------|
-| L0 | 现场设备层 | 毫秒–秒 | 单一物理过程 | 原始模拟/数字信号 | 硬实时、功能安全 | Nameplate / Technical Data | OPC UA DI / PA-DIM | 设备模板可复用 |
-| L1 | 基本控制层 | 秒–分 | 单一设备/单元 | 控制回路、设定点、报警 | 确定性、安全完整性 | Technical Data / Identification | PLCopen / IEC 61131-3 | 控制逻辑模板可复用 |
-| L2 | 监控层 | 分–小时 | 产线/区域 | 批次、配方、报警、趋势 | 高可用、数据完整性 | Maintenance / Quality / Time Series | OPC UA A&E / HDA | SCADA/配方模板可复用 |
-| L3 | 制造运营层 | 小时–天 | 工厂/车间 | 工单、质量、物料、人员 | 业务连续性、合规 | ProductionSchedule / Time Series / Document | ISA-95 B2MML / OPC UA ISA-95 | MES 模块可复用 |
-| L4 | 企业层 | 天–月 | 企业/供应链 | 主数据、业务语义 | 数据一致性、审计 | ProductCarbonFootprint / Document | AAS REST API / OPC UA Client | 主数据/BOM 模板可复用 |
-
-### 8.2 与 AAS/OPC UA 的映射关系
-
-- **AAS** 为 ISA-95 各层资产提供标准化语义描述：L0/L1 设备通过 `Technical Data`、`Nameplate` 子模型描述；L2/L3 过程与质量数据通过 `Time Series Data`、`Maintenance` 等子模型承载；L4 业务主数据通过 `Document`、`ProductCarbonFootprint` 等与企业系统对接。
-- **OPC UA** 为 ISA-95 层级间提供实时数据交换：L0/L1 使用 OPC UA DI / PLCopen；L2 使用 A&E 与 HDA；L3 使用 B2MML / OPC UA ISA-95；L4 通过 AAS REST API 或 OPC UA Client 接入企业应用。
-
-> **定理 ISA.AAS.2** (AAS/OPC UA 复用一致性): 若 ISA-95 资产 A 被复用到系统 S，则 A 的 AAS 子模型与 OPC UA NodeSet 必须在 S 中保持语义等价。任何一层属性的丢失或语义漂移都会破坏复用边界。
-
-### 8.3 正例
-
-| 场景 | 层级 | 复用资产 | 效果 |
-|------|------|----------|------|
-| 汽车总装线复制 | L2/L3 | PackML 状态机 + OEE 指标模板 + AAS 设备子模型 | 新产线快速达到标准化生产模式 |
-| 制药批次管理 | L2/L3 | ISA-88 批处理模板 + AAS 批次子模型 | 满足 GMP 审计要求，批次追溯完整 |
-| 设备供应商交付 | L0/L1 | AAS Digital Nameplate + OPC UA DI NodeSet | 设备即插即用，工程调试时间缩短 50% |
-| 集团 ERP-MES 集成 | L3/L4 | ISA-95 B2MML 工单与物料模型 + AAS 主数据子模型 | 跨工厂主数据一致性提升 |
-
-### 8.4 反例
-
-| 反例 | 风险说明 |
-|------|----------|
-| 将 L4 ERP 排程逻辑直接下放到 L1 PLC | 违反实时性约束，导致控制回路不稳定 |
-| 在 L0/L1 使用通用 IT 网络协议而无确定性保证 | 通信抖动导致生产质量下降或安全事故 |
-| AAS 子模型缺失 OPC UA 实时数据映射 | 数字孪生与物理资产不同步，决策失误 |
-| 跨层级复用 EquipmentClass 时忽略工艺差异 | 同一设备类型在不同工艺中的安全/性能要求不同 |
-| 将 L2 SCADA 报警直接用于 L4 业务决策 | 报警泛滥与业务指标混淆，掩盖真实问题 |
-
-### 8.5 ISA-95 × AAS × OPC UA 垂直集成映射 Mermaid 图
-
-```mermaid
-graph TB
-    L4[ERP/PLM<br/>L4 企业层]
-    L3[MES/QMS/WMS<br/>L3 制造运营层]
-    L2[SCADA/HMI<br/>L2 监控层]
-    L1[PLC/DCS<br/>L1 控制层]
-    L0[传感器/执行器<br/>L0 现场层]
-    AAS2[AAS 数字孪生<br/>语义描述]
-    OPC[OPC UA AddressSpace<br/>实时数据]
-    L4 -->|B2MML/REST/AAS| L3
-    L3 -->|OPC UA/B2MML| L2
-    L2 -->|OPC UA| L1
-    L1 -->|I/O/现场总线| L0
-    AAS2 -.->|语义上下文| L4
-    AAS2 -.->|设备身份| L0
-    OPC -.->|实时变量| L1
-    OPC -.->|报警/事件| L2
-```
-
-### 8.6 权威来源与交叉引用
-
-- ANSI/ISA-95.00.01-2010 / IEC 62264-1:2013 — Enterprise-Control System Integration Part 1: Models and Terminology
-- ANSI/ISA-95.00.02-2018 / IEC 62264-2 — Part 2: Object Model Attributes
-- IEC 63278-1:2023 — Asset Administration Shell for industrial applications — Part 1: Administration Shell structure
-- OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>
-- OPC UA for ISA-95 (B2MML): <https://www.mesa.org/en/B2MML.asp>
-- IDTA Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
-- 相关概念: [Industry 4.0](https://en.wikipedia.org/wiki/Fourth_Industrial_Revolution), [OPC Unified Architecture](https://en.wikipedia.org/wiki/OPC_Unified_Architecture)
-- **交叉引用**: `struct/11-industrial-iot-otit/01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`；`struct/11-industrial-iot-otit/05-digital-twin-aas/aas-opcua-mapping.md`；`struct/11-industrial-iot-otit/02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md` §7
-
-
-> 最后更新: 2026-07-07
-
+- IDTA AAS Industry Use Cases: <https://industrialdigitaltwin.org/en/news-dates/use-cases-from-the-industry-with-the-asset-administration-shell-6226>
+- DIN SPEC 91345 / RAMI 4.0 参考架构指南：<https://www.digitale-technologien.de/DT/Redaktion/DE/Downloads/Publikation/PAiCE_Leitfaden_Reference_Architecture.pdf>
+- **交叉引用**: [`01-isa-95-model/cross-layer-matrix/data-flow-mapping.md`](./cross-layer-matrix/data-flow-mapping.md)；[`05-digital-twin-aas/aas-opcua-mapping.md`](../05-digital-twin-aas/aas-opcua-mapping.md)；[`02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md)
 
 ---
 
-## 补充章节
-## 示例
-
-**示例**：制药企业依据 ISA-95 建立标准批次执行模型，新工厂复用相同 MES 接口与配方模板，将上线时间从 12 个月缩短到 6 个月。
-
-## 反例
-
-**反例**：某工厂忽略 ISA-95 层级边界，让 ERP 直接写入 PLC 标签，破坏实时控制闭环并造成批次污染风险。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [ISA-95](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
-> - [IEC 62264](https://webstore.iec.ch/publication/66912)
-> - 核查日期：2026-07-07
+> 最后更新: 2026-07-08

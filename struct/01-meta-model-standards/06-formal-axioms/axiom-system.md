@@ -6,6 +6,10 @@
 
 ---
 
+## 概念定义
+
+**定义**：形式化公理体系是通过公理、定理与推导规则对“复用”概念进行严格数学刻画的知识基础，旨在消除自然语言歧义，为跨层复用提供逻辑一致性保证。
+
 ## 符号约定
 
 | 符号 | 含义 |
@@ -515,6 +519,14 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 | S.1 Interface Substitution | Liskov Substitution Principle / ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 的可替换性基于外部可观察行为等价 |
 | P.1 Evolution Independence | ISO/IEC/IEEE 42020:2019, Clause 8/10/11 | 领域工程与应用工程分离对应 Conceptualization/Elaboration 与 Enablement |
 
+### 示例
+
+**正向示例**：基于 M.2 可变性公理，某汽车电子企业将 ECU 平台抽象为 Feature Model + Variation Point，通过 ISO/IEC 26550:2015 的双轨生命周期实现 78% 复用率。
+
+### 反例
+
+**反模式**：某团队将“复用”等同于“复制代码”，未定义任何约束与接口契约，也未记录 Architecture Rationale；三个月后同一平台出现 6 个分支，回归测试成本超过新建项目，复用名存实亡。
+
 ---
 
 ## 7. 公理补全：证明草图、反模型与体系关联
@@ -673,6 +685,3 @@ graph TD
 ---
 
 > 最后更新: 2026-06-06 (Phase 3)
-
-
-

@@ -78,7 +78,8 @@
     - [10.3 硬编码配置与环境漂移](#103-硬编码配置与环境漂移)
     - [10.4 忽视冷启动的架构设计](#104-忽视冷启动的架构设计)
     - [10.5 函数间紧耦合](#105-函数间紧耦合)
-    - [10.6 供应商锁定（Vendor Lock-in）](#106-供应商锁定vendor-lock-in)
+    - [10.6 过度拆分函数（Function Nano-services）](#106-过度拆分函数function-nano-services)
+    - [10.7 供应商锁定（Vendor Lock-in）](#107-供应商锁定vendor-lock-in)
   - [11. 多云 Serverless 复用策略](#11-多云-serverless-复用策略)
     - [11.1 Serverless Framework：声明式复用](#111-serverless-framework声明式复用)
     - [11.2 Terraform CDK：类型安全的多云编排](#112-terraform-cdk类型安全的多云编排)
@@ -95,11 +96,12 @@
       - [12.2.2 复用模式](#1222-复用模式)
       - [12.2.3 性能与成本权衡](#1223-性能与成本权衡)
       - [12.2.4 关键启示](#1224-关键启示)
-  - [13. 结论与行动建议](#13-结论与行动建议)
-  - [14. 交叉引用](#14-交叉引用)
-  - [15. Serverless 复用架构与决策 Mermaid 图](#15-serverless-复用架构与决策-mermaid-图)
-    - [15.1 事件驱动的 Serverless 复用管道](#151-事件驱动的-serverless-复用管道)
-    - [15.2 Serverless vs 容器 vs VM 复用决策树](#152-serverless-vs-容器-vs-vm-复用决策树)
+  - [13. 与 ISO/IEC 25010:2023 及 CNCF Serverless Whitepaper 的标准/技术映射](#13-与-isoiec-250102023-及-cncf-serverless-whitepaper-的标准技术映射)
+  - [14. 结论与行动建议](#14-结论与行动建议)
+  - [15. 交叉引用](#15-交叉引用)
+  - [16. Serverless 复用架构与决策 Mermaid 图](#16-serverless-复用架构与决策-mermaid-图)
+    - [16.1 事件驱动的 Serverless 复用管道](#161-事件驱动的-serverless-复用管道)
+    - [16.2 Serverless vs 容器 vs VM 复用决策树](#162-serverless-vs-容器-vs-vm-复用决策树)
 
 ## 0. 概念定义
 

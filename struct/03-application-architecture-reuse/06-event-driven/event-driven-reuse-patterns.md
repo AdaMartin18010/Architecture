@@ -59,20 +59,22 @@
       - [10.2.1 本地状态（Local State）](#1021-本地状态local-state)
       - [10.2.2 状态容错机制](#1022-状态容错机制)
       - [10.2.3 状态复用模式](#1023-状态复用模式)
-  - [11. EDA 反模式](#11-eda-反模式)
+  - [11. 反例/反模式：EDA 反模式详解](#11-反例反模式eda-反模式详解)
     - [11.1 分布式大单体事件链（Distributed Monolith via Events）](#111-分布式大单体事件链distributed-monolith-via-events)
     - [11.2 事件丢失（Event Loss）](#112-事件丢失event-loss)
     - [11.3 循环事件依赖（Circular Event Dependency）](#113-循环事件依赖circular-event-dependency)
     - [11.4 缺乏事件治理（Lack of Event Governance）](#114-缺乏事件治理lack-of-event-governance)
     - [11.5 事件 Payload 膨胀（Event Payload Bloat）](#115-事件-payload-膨胀event-payload-bloat)
-  - [12. 事件治理与发现](#12-事件治理与发现)
+  - [12. 与 ISO/IEC 25010:2023 及 CloudEvents 的标准/技术映射](#12-与-isoiec-250102023-及-cloudevents-的标准技术映射)
+  - [13. 事件治理与发现](#13-事件治理与发现)
     - [12.1 事件目录（Event Catalog）](#121-事件目录event-catalog)
     - [12.2 事件 API 管理](#122-事件-api-管理)
     - [12.3 AsyncAPI 规范](#123-asyncapi-规范)
-  - [13. 案例研究](#13-案例研究)
-    - [13.1 Netflix 的 Kafka 事件管道](#131-netflix-的-kafka-事件管道)
-    - [13.2 Uber 的实时事件平台](#132-uber-的实时事件平台)
-    - [13.3 金融交易的 CQRS 实践](#133-金融交易的-cqrs-实践)
+  - [14. 案例研究](#14-案例研究)
+    - [14.1 Netflix 的 Kafka 事件管道](#141-netflix-的-kafka-事件管道)
+    - [14.2 Uber 的实时事件平台](#142-uber-的实时事件平台)
+    - [14.3 金融交易的 CQRS 实践](#143-金融交易的-cqrs-实践)
+    - [14.4 正向案例：某电商平台的订单履约事件链](#144-正向案例某电商平台的订单履约事件链)
 
 ## 1. 核心概念
 
@@ -483,7 +485,7 @@ CQRS 和 Event Sourcing 经常被同时使用，但二者并非绑定关系：
 
 ## 11. 反例/反模式：EDA 反模式详解
 
-事件驱动架构在带来解耦优势的同时，也引入了独特的复杂性和陷阱。识别并避免以下反模式是 EDA 成功的关键。
+**反例**：事件驱动架构在带来解耦优势的同时，也引入了独特的复杂性和陷阱。识别并避免以下反模式是 EDA 成功的关键。
 
 ### 11.1 分布式大单体事件链（Distributed Monolith via Events）
 

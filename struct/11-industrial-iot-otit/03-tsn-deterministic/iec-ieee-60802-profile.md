@@ -162,21 +162,40 @@ Star/Ring Topology
 
 ---
 
-> 最后更新: 2026-06-06
-> 权威来源: <https://1.ieee802.org/tsn/iec-ieee-60802/>
+## 10. 正向示例
 
+### 示例 1：汽车焊装车间融合网络
+
+某德系整车厂焊装车间采用 IEC/IEEE 60802 配置文件，将机器人运动控制（硬实时，250 μs 周期）、PLC I/O（软实时，2 ms 周期）与视觉质检（Best Effort）流量复用到同一套 TSN 骨干网。通过复用 802.1AS 时钟域和 802.1Qbv 门控列表模板，新产线网络规划时间从 6 周缩短到 2 周，网关数量减少 40%。
+
+### 示例 2：过程自动化远程 I/O
+
+石化装置将远程 I/O 与 DCS 控制器通过 60802 兼容 TSN 交换机连接，利用 802.1CB 帧复制实现关键控制回路冗余，单链路故障时切换时间 < 1 ms，满足 SIL 2 对应 FTTI 要求。
+
+## 11. 反例 / 失败案例
+
+### 反例 1：直接复制 GCL 模板忽略拓扑差异
+
+某项目将 A 厂房的 802.1Qbv 门控配置原样复制到 B 厂房，未重新计算交换机转发延迟和电缆传播时延，导致时间槽重叠，控制报文周期性丢失，产线抖动超标。
+
+### 反例 2：非 TSN 交换机承载时间触发流量
+
+为节省成本，团队在非 TSN 商用交换机上运行 OPC UA FX C2D 循环数据，结果最佳努力流量挤占时隙，通信延迟从 500 μs 恶化到 10 ms，触发安全联锁误动作。
+
+## 12. 参考索引
+
+| 来源 | URL |
+|:---|:---|
+| IEC/IEEE 60802 TSN Profile for Industrial Automation | <https://1.ieee802.org/tsn/iec-ieee-60802/> |
+| IEEE 802.1 TSN Task Group | <https://1.ieee802.org/tsn/> |
+| IEEE 802.1AS-Rev (gPTP) | <https://1.ieee802.org/tsn/802-1as/> |
+| IEEE 802.1Qbv (Time-Aware Shaper) | <https://1.ieee802.org/tsn/802-1qbv/> |
+| OPC UA FX Part 80 | <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/> |
+| IEC 62541 OPC Unified Architecture | <https://webstore.iec.ch/publication/66912> |
+| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| TSN Industrial Automation Conformance Collaboration (TIACC) | <https://www.tiacc.net/> |
 
 ---
 
-## 补充章节
-## 概念定义
-
-**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。
-
-## 示例
-
-**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
-
-## 反例
-
-**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+> 最后更新: 2026-07-08
+> 权威来源: <https://1.ieee802.org/tsn/iec-ieee-60802/>

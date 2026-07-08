@@ -267,6 +267,8 @@ spec:
 
 ## 10. 反例/反模式：TOSCA/DMN 平台工程陷阱
 
+**反例**：以下反模式在 TOSCA、DMN 与平台工程实践中反复出现，会显著削弱复用价值。
+
 ### 10.1 反模式：将 TOSCA 模板与特定云厂商强耦合
 
 **症状**: `node_types` 直接使用 `aws.ec2.Instance`、`azure.vm.VirtualMachine` 等厂商特定类型，而非抽象的 `tosca.nodes.Compute` 或自定义领域类型。

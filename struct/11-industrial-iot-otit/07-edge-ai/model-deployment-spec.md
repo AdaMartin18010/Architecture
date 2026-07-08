@@ -182,42 +182,43 @@ sequenceDiagram
 
 ---
 
-## 6. 参考索引
+## 6. 参考索引与权威来源
 
-- ONNX Runtime: [onnxruntime.ai](https://onnxruntime.ai/)
-- TinyML 基金会: [tinyml.org](https://tinyml.org/)
-- TensorRT: [docs.nvidia.com/tensorrt](https://docs.nvidia.com/deeplearning/tensorrt/)
-- TensorFlow Lite: [tensorflow.org/lite](https://www.tensorflow.org/lite)
-- IEC 62443-3-3: Industrial communication networks – Network and system security
-- IEC 61508 Ed.3 (CDV): Functional safety of E/E/PE safety-related systems
-- IEC 61784-3: Functional safety fieldbuses
-- ISO 13849-1: Safety of machinery – Safety-related parts of control systems
-- STM32Cube.AI: [st.com/stm32cubeai](https://stm32ai.st.com)
-- CMSIS-NN: ARM-software/CMSIS-NN
-
+| 来源 | URL |
+|:---|:---|
+| ONNX Runtime | <https://onnxruntime.ai/> |
+| TinyML 基金会 | <https://tinyml.org/> |
+| TensorRT | <https://docs.nvidia.com/deeplearning/tensorrt/> |
+| TensorFlow Lite | <https://www.tensorflow.org/lite> |
+| STM32Cube.AI | <https://stm32ai.st.com> |
+| CMSIS-NN | <https://github.com/ARM-software/CMSIS-NN> |
+| IEC 61508-3:2010 Software safety requirements | <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> |
+| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| ISA/IEC 62443 series | <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards> |
+| ISO 13849-1 Safety of machinery | <https://www.iso.org/standard/69883.html> |
 
 ---
 
-## 补充章节
+## 7. 正向示例
 
-## 概念定义
+### 示例 1：CMSIS-NN 电机振动异常检测
 
-**定义**：工业 IoT/OT-IT 复用是在制造、能源、交通等运营技术（OT）与信息技术（IT）融合场景中，复用 ISA-95 层级模型、OPC UA 信息模型、功能安全组件与数字孪生资产。
+某电机制造商在 STM32H7 上部署 CMSIS-NN 运行的 1D-CNN 振动异常检测模型（INT8 量化，< 200 KB）。推理 WCET 稳定在 1.2 ms 以内，低于 4 ms 控制周期窗口的 30%；配合传统频域阈值算法进行 SIL 1 级监控，实现预测性维护与功能安全的解耦。
 
-## 示例
+### 示例 2：ONNX Runtime 视觉质检
 
-**示例**：汽车工厂将 ISA-95 L0-L4 资产目录映射到 IEC 63278 资产管理壳（AAS），通过 OPC UA FX 实现现场设备与 MES/ERP 的即插即用复用。
+电子装配线在工业 PC 上通过 ONNX Runtime 运行 EfficientNet-B0 焊点缺陷检测模型，利用 ImageNet 预训练权重经 200 张现场样本微调后 AUROC > 0.98。模型版本通过签名 + CRC 的 OTA 流程管理，异常回滚时间 < 30 s。
 
-## 反例
+## 8. 反例 / 失败案例
 
-**反例**：将 IT 系统直接补丁策略套用到 PLC 产线，未考虑实时性约束与功能安全认证，导致停机与安全事故。
+### 反例 1：在硬实时回路使用 GPU 推理
 
-## 权威来源
+某团队将 TensorRT 视觉模型直接部署到 NVIDIA Jetson 并接入 L1 安全联锁回路。由于 GPU 调度非确定性，推理延迟在温度升高时从 5 ms 跳变到 40 ms，超出 FTTI，导致安全功能误触发。后改为 Jetson 仅用于 L2 监控层，L1 由确定性 CPU/MCU 算法裁决。
 
-> **权威来源**:
->
-> - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
-> - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
-> - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
-> - 核查日期：2026-07-07
+### 反例 2：缺少量化一致性验证的 OTA 更新
+
+某边缘网关推送新量化模型后未做 shadow 模式对比，模型在目标产线的光照条件下输出漂移，导致质检系统连续误判 2 小时。后续引入校准数据集指纹（SHA-256）与在线偏差监控才恢复可信更新。
+
+---
+
+> 最后更新: 2026-07-08
