@@ -2,7 +2,7 @@
 
 > 位置：`struct/10-supply-chain-security/05-slsa-l4-poc/`
 > 版本：2026-07-08
-> 对齐来源：SLSA Specification v1.0, Sigstore/cosign, GitHub Actions
+> 对齐来源：SLSA Specification v1.2, Sigstore/cosign, GitHub Actions
 
 ---
 
@@ -105,6 +105,10 @@ python verify-provenance.py
 
 该流程满足 SLSA Build L4 的最低可运行演示，并可在真实场景中替换为 Sigstore/cosign 签名。
 
+### 行业正向案例：Chainguard Images / Wolfi
+
+Chainguard 基于 Wolfi 发行版构建的容器镜像追求可复现构建与最小依赖面。其构建流水线使用 Melange、APK 包锁定和确定性构建脚本，使同一源码输入能在不同时间、不同机器上产生位对位相同的包。结合 Sigstore 签名后，消费者可验证镜像来源与完整性，代表了 SLSA Build L4 的工业实践方向。
+
 ---
 
 ## 6. 反例 / 反模式
@@ -117,9 +121,31 @@ python verify-provenance.py
 | **不可复现构建** | 同一源码在不同环境产出不同产物，难以审计 | `verify-provenance.py` 比较 `output_hash` 与当前产物哈希 |
 | **静态 provenance** | 手动维护的 provenance 易被篡改 | `build.py` 在构建时动态计算并写入哈希 |
 
+### 深度反例：SolarWinds SUNBURST
+
+SolarWinds Orion 的构建环境被入侵后，攻击者在官方构建代理中将 SUNBURST 后门注入 Orion 核心 DLL。由于构建产物仍使用 SolarWinds 合法证书签名，约 18,000 家客户无法通过传统签名发现异常。该事件说明：
+
+1. **构建环境是核心攻击面**：源码未被篡改，但构建代理被污染。
+2. **签名不能替代 provenance**：合法签名只证明发布者身份，不证明构建过程可信。
+3. **可复现构建的价值**：若构建可复现，第三方审计者可独立重建产物并对比哈希，发现差异。
+
 ---
 
-## 7. 在 CI 中使用
+## 7. 控制点映射：SLSA Build Track L4 → PoC 实现
+
+| SLSA 要求 | PoC 文件/逻辑 | 关键字段/校验 |
+|----------|--------------|--------------|
+| 双人审查（Two-person review） | `REVIEWERS` + `verify-provenance.py` | 审批者数量 ≥ 2，且与 `SLSA_REVIEWERS`  env 可覆盖 |
+| 密封构建（Hermetic build） | `build.py` | 显式读取 `src/main.py`；不访问网络；构建脚本哈希写入 provenance |
+| 可复现构建（Reproducible build） | `build.py` + `verify-provenance.py` | 同 commit、同脚本下多次构建输出 `output_hash` 一致 |
+| 非伪造 provenance | `provenance.json` | 包含 `git_commit`、`builder_id`、`build_script_hash`、`source_hash`、`output_hash` |
+| 源码来自版本控制 | `build.py` 调用 `git rev-parse HEAD` | `git_commit` 字段绑定源码版本 |
+
+> **说明**：本 PoC 为教学用途，使用本地文件和 env 变量模拟 CI 控制。生产环境应替换为 GitHub branch protection、GitHub Artifact Attestations 或 Sigstore/cosign 签名，以满足真正的 L4 非伪造性。
+
+---
+
+## 8. 在 CI 中使用
 
 仓库 `.github/workflows/slsa-l4-poc.yml` 提供了一个 GitHub Actions 示例：
 
@@ -132,7 +158,7 @@ python verify-provenance.py
 
 ---
 
-## 8. 扩展建议
+## 9. 扩展建议
 
 1. **签名 provenance**：使用 `cosign sign-blob` 或 Sigstore Python SDK 对 `provenance.json` 签名。
 2. **真实双人审查**：通过 GitHub "Require approvals" 分支保护规则实现，而非本地文件。
@@ -141,20 +167,22 @@ python verify-provenance.py
 
 ---
 
-## 9. 权威来源
+## 10. 权威来源
 
-> **权威来源**:
->
-> - OpenSSF. *SLSA Specification v1.0*. <https://slsa.dev/spec/v1.0/>
-> - OpenSSF. *SLSA Build Track*. <https://slsa.dev/spec/v1.0/levels#build-track>
-> - Sigstore. *cosign documentation*. <https://docs.sigstore.dev/cosign/overview/>
-> - OpenSSF. *SLSA GitHub Generator*. <https://github.com/slsa-framework/slsa-github-generator>
-> - GitHub. *About branch protection rules*. <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
-> - 核查日期：2026-07-08
+| 来源 | URL | 说明 | 核查日期 |
+|------|-----|------|----------|
+| SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构与 Build Track L1-L3 | 2026-07-08 |
+| SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L4 草案要求（双人审查、可复现、密封） | 2026-07-08 |
+| Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名 | 2026-07-08 |
+| SLSA GitHub Generator | <https://github.com/slsa-framework/slsa-github-generator> | 自动生成 SLSA provenance | 2026-07-08 |
+| slsa-verifier | <https://github.com/slsa-framework/slsa-verifier> | Provenance 验证 CLI | 2026-07-08 |
+| GitHub Branch Protection | <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches> | 双人审查与状态检查配置 | 2026-07-08 |
+| Chainguard / Wolfi | <https://www.chainguard.dev/solutions/reproducible-builds> | 可复现构建工业实践 | 2026-07-08 |
+| CISA AA20-352A | <https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a> | SolarWinds 供应链攻击技术分析 | 2026-07-08 |
 
 ---
 
-## 10. 交叉引用
+## 11. 交叉引用
 
 - 供应链安全主题入口：[`struct/10-supply-chain-security/README.md`](../README.md)
 - SLSA 框架与复用边界：[`struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`](../01-slsa-framework/slsa-reuse-boundaries.md)
@@ -166,6 +194,6 @@ python verify-provenance.py
 
 ---
 
-## 11. 分析
+## 12. 分析
 
 SLSA Build L4 的核心价值不在于单一技术，而在于通过**过程控制 + 密码学证明**将构建可信度从“相信构建者”提升为“验证构建证据”。本 PoC 以最小代码量展示了四个控制点的可运行形态：双人审查降低人为篡改风险、密封构建消除未声明依赖、可复现构建保证审计一致性、来源证明提供跨团队验证基础。在真实落地时，应将其嵌入 CI/CD 流水线，并结合 Sigstore/cosign 实现 provenance 的不可伪造签名。

@@ -8,6 +8,12 @@
 
 ---
 
+## 概念定义
+
+**定义**：SLSA（Supply-chain Levels for Software Artifacts）是由 OpenSSF 提出的供应链安全框架，通过 Source、Build、Build Environment 等独立轨道及 L1–L4 等级，对软件制品的可验证来源、构建过程与环境完整性进行分级认证。
+
+---
+
 ## 1. SLSA 演进概述
 
 ### 1.1 v1.0 → v1.1 → v1.2 的关键变化

@@ -188,6 +188,19 @@ Agent Behavioral Contract (ABC)
 │   └── 保险/担保
 ```
 
+### 3.4 NIST AI RMF 与 Microsoft Agent Governance Toolkit 条款映射
+
+| 标准/框架 | 条款/能力 | 本框架映射 | 实践要点 |
+|:---|:---|:---|:---|
+| **NIST AI RMF 1.0** | GOVERN — 建立治理政策与文化 | Agent Identity Card、运营者-部署者-用户责任框架 | 明确问责、资源分配与政策审批 |
+| **NIST AI RMF 1.0** | MAP — 识别上下文与风险 | 自主等级模型、行为合约前置条件、跨组织信任链 | 识别利益相关者、系统边界与潜在危害 |
+| **NIST AI RMF 1.0** | MEASURE — 评估风险与控制 | TRACE 维度、运行时监控、审计日志 | 持续度量 Agent 行为偏差与策略违规 |
+| **NIST AI RMF 1.0** | MANAGE — 响应与缓解风险 | 熔断、人工接管、行为冻结、能力降级 | 事件响应、残余风险跟踪与持续改进 |
+| **Microsoft Agent Governance Toolkit** | Agent OS（策略引擎） | Behavioral Contract 执行与运行时治理 | 拦截并判定每个 Agent 动作，确定性策略执行 |
+| **Microsoft Agent Governance Toolkit** | Agent Mesh（身份与信任） | Agent Identity Card、DID、密码学签名 | 密码学身份与动态信任评分 |
+| **Microsoft Agent Governance Toolkit** | Agent Runtime（执行沙箱） | 四级权限环、执行计划验证 | 限制 Agent 行为边界，防止越权 |
+| **Microsoft Agent Governance Toolkit** | Agent SRE / Compliance | 审计、 kill switch、OWASP 验证 | 可靠性工程与合规自动化 |
+
 ---
 
 ## 4. 六阶段复用决策模型的 Agentic 扩展
@@ -268,16 +281,56 @@ Agent Behavioral Contract (ABC)
 └─────────────────────────────────────────────┘
 ```
 
+### 5.4 反例/反模式：未验证身份卡即复用开源 Agent
+
+**背景**：某 SaaS 公司为了快速上线智能客服，直接复用了一个 GitHub 上热门的开源“工单创建 Agent”。
+
+**反模式表现**：
+
+1. 未检查 Agent Identity Card，实际自主等级为 L2，但公司按 L0 工具复用；
+2. 没有行为合约，Agent 在超出设计范围时仍尝试调用生产数据库；
+3. 审计日志不完整，无法追溯一次误删客户数据的操作；
+4. 未确认运营者责任与合规声明，事后发现该 Agent 训练数据包含 GPL 代码片段。
+
+**后果**：
+
+- 生产数据被意外修改，影响 1,200+ 客户；
+- 法务团队介入，产品上线延期 3 个月；
+- 公司被迫建立 Agentic 治理 Runtime，重新评估所有已复用 Agent。
+
+**避免方法**：
+
+- 复用任何 Agent 前必须验证 Identity Card、自主等级、行为合约与审计能力；
+- L2+ Agent 必须部署运行时策略引擎与人工接管机制；
+- 建立“开源 Agent 白名单”与合规预审流程。
+
 ---
 
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| 新加坡 IMDA Agentic AI Governance | <https://www.imda.gov.sg/> | 2026-06-10 |
-| NIST AI Agent Standards Initiative | <https://www.nist.gov/itl/ai-risk-management-framework> | 2026-06-10 |
-| Berkeley CLTC Agentic AI Risk Profile | <https://cltc.berkeley.edu/publication/agentic-ai-risk-profile/> | 2026-06-10 |
-| EU AI Act | <https://eur-lex.europa.eu/eli/reg/2024/1689> | 2026-06-10 |
-| A2A Protocol (Agent Cards) | <https://a2aproject.github.io/A2A/latest/> | 2026-06-10 |
-| TRACE Framework (arXiv) | <https://arxiv.org/html/2605.06933v2> | 2026-06-10 |
-| MAGIQ (arXiv) | <https://arxiv.org/html/2603.24775v1> | 2026-06-10 |
+| 新加坡 IMDA Agentic AI Governance | <https://www.imda.gov.sg/> | 2026-07-08 |
+| NIST AI Risk Management Framework (AI RMF) | <https://www.nist.gov/itl/ai-risk-management-framework> | 2026-07-08 |
+| NIST AI RMF Resource Center | <https://airc.nist.gov/airmf-resources/airmf/> | 2026-07-08 |
+| Berkeley CLTC Agentic AI Risk Profile | <https://cltc.berkeley.edu/publication/agentic-ai-risk-profile/> | 2026-07-08 |
+| EU AI Act | <https://eur-lex.europa.eu/eli/reg/2024/1689> | 2026-07-08 |
+| A2A Protocol (Agent Cards) | <https://a2aproject.github.io/A2A/latest/> | 2026-07-08 |
+| TRACE Framework (arXiv) | <https://arxiv.org/html/2605.06933v2> | 2026-07-08 |
+| Microsoft Agent Governance Toolkit (GitHub) | <https://github.com/microsoft/agent-governance-toolkit> | 2026-07-08 |
+| Microsoft Agent Governance Toolkit 发布博客 | <https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/> | 2026-07-08 |
+
+---
+
+## 7. 论证与分析：为何 Agentic 治理是复用信任基础
+
+传统软件组件的复用依赖接口契约与静态测试，而 Agent 的行为具有概率性、目标导向性与环境适应性。因此，复用 Agent 时必须同时复用其**身份**、**行为边界**、**审计证据**与**治理运行时**。新加坡 IMDA、NIST AI RMF、EU AI Act 与 Microsoft Agent Governance Toolkit 的共同点在于：把治理从“事后审计”前移到“设计时与运行时”。
+
+**核心结论**：
+
+- 自主等级决定治理强度：L0–L1 可按组件治理，L2+ 必须引入运行时策略；
+- 身份卡与行为合约是跨组织复用的最小信任单元；
+- 审计与人工接管是降低残余风险的最后防线；
+- 将 NIST AI RMF 的 Govern-Map-Measure-Manage 与 Microsoft AGT 的 OS/Mesh/Runtime 结合，可形成可落地的 Agentic 复用治理体系。
+
+> 最后更新：2026-07-08

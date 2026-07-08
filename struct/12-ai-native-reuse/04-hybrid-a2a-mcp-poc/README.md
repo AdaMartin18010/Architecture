@@ -1,7 +1,16 @@
 # A2A + MCP 混合 Agent 服务 PoC
 
 > **定位**：演示 "A2A 用于 Agent 协作，MCP 用于工具调用" 的生产最佳实践。
-> **对齐**：A2A v1.2、MCP 2025-11-25
+> **对齐**：A2A v1.0.0, MCP 2025-11-25
+> **权威来源**（已核查 2026-07-08）：
+>
+> | 来源 | URL |
+> |------|-----|
+> | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
+> | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
+> | MCP Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |
+> | MCP Introduction | <https://modelcontextprotocol.io/introduction> |
+> | Agentic AI Foundation | <https://aaif.io/> |
 
 ---
 
@@ -26,6 +35,16 @@
 │  └── search_docs(query)                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+**协议映射**：
+
+| 功能 | 协议 | 关键方法/机制 |
+|------|------|--------------|
+| Agent 能力发现 | A2A | `/.well-known/agent-card.json` |
+| 任务委托 | A2A | `tasks/send`、`tasks/sendSubscribe` |
+| 工具发现 | MCP | `tools/list` |
+| 工具调用 | MCP | `tools/call` |
+| 认证 | A2A + MCP | OAuth 2.1 + PKCE |
 
 ---
 
@@ -64,7 +83,7 @@ curl -X POST http://localhost:8000/jsonrpc \
     "params": {
       "message": {
         "role": "user",
-        "parts": [{"text": "What's the weather in Shanghai?"}]
+        "parts": [{"text": "What'"'"'s the weather in Shanghai?"}]
       }
     }
   }'
@@ -114,11 +133,49 @@ curl -X POST http://localhost:8000/jsonrpc \
 | 文件 | 说明 |
 |------|------|
 | `hybrid_agent_server.py` | FastAPI A2A Server + Mock MCP 工具层 |
+| `test_e2e.py` | 端到端测试 |
+| `test_mcp_server.py` | MCP 工具单元测试 |
 | `README.md` | 本文档 |
 
 ---
 
-## 4. 生产演进路径
+## 4. 正向示例：企业内部 AI 助手
+
+某中型 SaaS 公司基于本 PoC 构建内部 AI 助手：
+
+- **A2A 编排层**：统一入口 Agent 接收自然语言请求，根据 Agent Card 将任务路由给代码助手、销售助手或运维助手。
+- **MCP 工具层**：代码助手调用 Git 检索、单元测试执行与文档搜索 MCP Server；销售助手调用 CRM 查询与邮件起草 MCP Server。
+- **治理层**：所有工具调用通过 Agent OS 策略引擎判定权限，敏感操作触发人工复核。
+
+**收益**：
+
+- 新增业务助手平均只需 1 周，工具能力可跨 Agent 复用。
+- 通过统一 A2A 接口，前端客户端无需关心各业务 Agent 的内部实现。
+
+---
+
+## 5. 反例：绕过 A2A 直接调用 MCP 工具
+
+**场景**：某团队为图方便，让前端应用直接调用 MCP Server 的工具端点，跳过 A2A 编排 Agent。
+
+**问题**：
+
+1. 前端需要理解每个 MCP Server 的 Schema 与认证方式，集成复杂度上升。
+2. 跨工具任务编排（如“先查询订单，再发送邮件”）由前端硬编码，难以复用。
+3. 缺乏统一的审计入口，无法追踪完整任务链路。
+4. 权限控制散落在各 MCP Server，难以实施最小权限。
+
+**后果**：每个前端团队重复建设编排逻辑，Agent 能力无法沉淀为企业资产。
+
+**避免建议**：
+
+1. 所有 Agent 间协作统一走 A2A，前端只与编排 Agent 交互。
+2. MCP 工具仅作为 Agent 内部能力，不直接暴露给最终客户端。
+3. 在 A2A Server 层统一记录 Task 生命周期、工具调用链与审计日志。
+
+---
+
+## 6. 生产演进路径
 
 | 阶段 | 改进 |
 |------|------|
@@ -129,7 +186,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-## 5. 与项目结构的映射
+## 7. 与项目结构的映射
 
 | 项目目录 | 本 PoC 角色 |
 |----------|-------------|
@@ -140,33 +197,18 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-*文档生成时间：2026-06-06 · 对齐 A2A v1.2 / MCP 2025-11-25*
+## 8. 权威来源
 
+> **权威来源**（已核查 2026-07-08）：
+>
+> | 来源 | URL |
+> |------|-----|
+> | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
+> | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
+> | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |
+> | MCP Introduction | <https://modelcontextprotocol.io/introduction> |
+> | Agentic AI Foundation | <https://aaif.io/> |
 
 ---
 
-## 补充说明：A2A + MCP 混合 Agent 服务 PoC
-
-## 概念定义
-
-**定义**：MCP 是由 Anthropic 主导的开放协议，规范 AI 模型如何发现、调用工具并交换上下文，使工具成为可复用资产。
-
-## 示例
-
-**示例**：代码助手通过 MCP 调用统一代码搜索工具，返回结构化上下文；不同 IDE 插件复用同一工具，无需各自实现代码索引。
-
-## 反例
-
-**反例**：Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制，工具变更导致所有调用方失效。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
-> - [MCP Introduction](https://modelcontextprotocol.io/introduction)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：MCP 将工具从“代码片段”提升为“可发现服务”，是 Agent 生态互操作的关键。
+*文档生成时间：2026-07-08 · 对齐 A2A v1.0.0 / MCP 2025-11-25*

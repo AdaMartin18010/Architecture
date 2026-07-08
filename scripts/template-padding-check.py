@@ -147,7 +147,7 @@ def generate_report(records: List[PaddingRecord], top_n: int = 20) -> str:
             "1. 「模板块」指机械重复的「补充说明 / 概念定义 / 示例 / 反例 / 权威来源 / 分析 / 参考文献 / 延伸阅读 / 附录」等小节。",
             "2. 占比 = 模板块行数 / 文件总行数 × 100%。",
             "3. 占比超过 30% 时建议审视：是否已在正文完整阐述后仍机械重复？是否可用交叉引用替代？",
-            "4. 治理规则详见 [`99-reference/templates/content-block-guideline.md`](../99-reference/templates/content-block-guideline.md)。",
+            "4. 治理规则详见 [`struct/99-reference/templates/content-block-guideline.md`](../struct/99-reference/templates/content-block-guideline.md)。",
         ]
     )
     return "\n".join(lines)

@@ -1,8 +1,8 @@
 # C-05 GUAC 供应链图谱与复用风险评估
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 供应链安全分析层 — 基于知识图谱的架构复用风险量化与动态评估
-> **对齐标准**: GUAC v0.x、SLSA 1.2、OpenSSF Scorecard、SPDX 2.3、CycloneDX 1.6、OSV
+> **对齐标准**: GUAC v0.x、SLSA 1.2、OpenSSF Scorecard、SPDX 2.3、CycloneDX 1.6、OSV、NIST SP 800-161 Rev. 1
 > **状态**: ✅ 已完成
 
 ---
@@ -514,6 +514,33 @@ query ReuseRiskAssessment($packageName: String!) {
 - 类似的关键路径组件还有哪些？（通过中心性分析生成清单）
 - 如何改进准入流程以避免类似盲区？（更新准入检查清单，增加操作系统依赖扫描）
 
+### 5.4 正向示例：XZ Utils 事件中的 GUAC 价值
+
+某云原生平台在 2024 年 XZ Utils 后门披露后，利用 GUAC 图谱在 15 分钟内完成以下工作：
+
+1. **统一入口查询**：将 OSV 披露的 `CVE-2024-3094` 与图谱中 `xz/liblzma` 包节点关联。
+2. **全路径影响分析**：反向遍历找到 12 个直接依赖产品、38 个通过容器基础镜像间接包含的服务、5 个通过 Python/Go 绑定库引入的组件。
+3. **优先级排序**：结合服务暴露面和数据敏感度，将面向互联网的 8 个服务列为 P0 修复。
+4. **修复验证**：升级后重新摄入 SBOM，确认受影响路径已消除。
+
+该企业平均漏洞响应时间从数小时缩短到分钟级，核心原因是 SBOM + SLSA + 漏洞数据已被统一建模为知识图谱。
+
+### 5.5 反例 / 反模式
+
+#### 反例 A：SolarWinds 响应中的可见性缺失
+
+SolarWinds Orion 被植入 SUNBURST 后，许多客户无法快速回答"我们哪些系统运行了受影响版本"。原因包括：
+
+- 缺乏集中式软件资产管理与 SBOM。
+- 网络监控工具自身就是攻击入口，导致可见性盲区。
+- 依赖关系未图谱化，无法自动推导影响范围。
+
+若这些组织预先部署 GUAC 并持续摄入 SBOM/SLSA/Scorecard 数据，理论上可在数小时内生成精确的影响清单，而非依赖人工台账。
+
+#### 反例 B：SBOM 散落导致 GUAC 无法构建完整图谱
+
+某组织虽然生成了 SBOM，但将它们按团队存放在不同的 S3 bucket、Confluence 页面和邮件附件中，格式也不统一（部分 SPDX XML，部分 CycloneDX JSON，部分手工 Excel）。GUAC 摄入器无法自动发现这些文件，导致图谱缺失大量节点，风险评分失真。该案例说明：GUAC 的价值依赖**持续、标准化、集中化**的数据摄入流程。
+
 ---
 
 ## 6. 部署架构：复用资产库的安全增强层
@@ -662,24 +689,45 @@ GUAC 不替代组织的复用资产库（如内部 Nexus、Artifactory、Backsta
 
 ---
 
-## 7. 权威来源
+## 7. 控制点映射：GUAC 数据摄入 → 复用安全控制
 
-| 来源 | URL | 核查日期 |
-|------|-----|----------|
-| GUAC 官方文档 | <https://guac.sh/> | 2026-06-10 |
-| GUAC GitHub 仓库 | <https://github.com/guacsec/guac> | 2026-06-10 |
-| OpenSSF GUAC 介绍 | <https://openssf.org/projects/guac/> | 2026-06-10 |
-| SLSA 1.2 规范 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
-| OpenSSF Scorecard | <https://scorecard.dev/> | 2026-06-10 |
-| OSV.dev | <https://osv.dev/> | 2026-06-10 |
-| Sigstore / Rekor | <https://docs.sigstore.dev/logging/overview/> | 2026-06-10 |
-| SPDX 规范 | <https://spdx.dev/specifications/> | 2026-06-10 |
-| CycloneDX 规范 | <https://cyclonedx.org/specification/overview/> | 2026-06-10 |
-| DEPS.dev API | <https://deps.dev/> | 2026-06-10 |
-| Google Cloud GUAC 博客 | <https://cloud.google.com/blog/products/open-source/introducing-guac> | 2026-06-10 |
-| OWASP SCVS | <https://scvs.owasp.org/> | 2026-06-10 |
-| NIST SSDF | <https://csrc.nist.gov/projects/ssdf> | 2026-06-10 |
-| CISA SBOM 指南 | <https://www.cisa.gov/sbom> | 2026-06-10 |
+| 安全控制目标 | GUAC 节点/边 | 数据源 | 复用决策应用 |
+|-------------|-------------|--------|-------------|
+| 漏洞影响分析 | Vulnerability → Package/Artifact（`affected_by`） | OSV.dev、NVD、厂商公告 | 新 CVE 披露后秒级生成影响清单 |
+| 来源可信度验证 | Artifact → SLSA Provenance（`has_provenance`） | SLSA attestations、Sigstore Rekor | 过滤 Build Track < L2 的组件 |
+| 开源健康度评估 | Source → Scorecard（`has_scorecard`） | OpenSSF Scorecard API | 设定 Scorecard 最低分准入门槛 |
+| 许可证合规 | Package → License（`licensed_under`） | SBOM 许可证字段 | 阻断 GPL 传染风险进入闭源产品 |
+| 关键路径识别 | Package → Package（`depends_on`） + 中心性算法 | SBOM dependency 图 | 对高中心性组件加强审查与监控 |
+| 构建环境可信 | Artifact → Build Environment（`built_in`） | SLSA BuildEnv Track、vTPM/TEE 证明 | 对关键基础设施组件要求 Env L2+ |
+
+对应项目文件与模板：
+
+- `struct/10-supply-chain-security/02-sbom-standards/sbom-reuse-security.md`：标准化 SBOM 生成，确保 GUAC 可解析。
+- `struct/10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md`：为 provenance 提供等级定义。
+- `struct/10-supply-chain-security/11-osps-baseline/osps-reuse-assessment.md`：GUAC 可消费 OSPS 评估结果作为节点属性。
+
+---
+
+## 8. 权威来源
+
+| 来源 | URL | 说明 | 核查日期 |
+|------|-----|------|----------|
+| GUAC 官方文档 | <https://guac.sh/> | GUAC 项目主页与文档 | 2026-07-08 |
+| GUAC GitHub 仓库 | <https://github.com/guacsec/guac> | 源码与发布 | 2026-07-08 |
+| OpenSSF GUAC 介绍 | <https://openssf.org/projects/guac/> | OpenSSF 项目页面 | 2026-07-08 |
+| SLSA 1.2 规范 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构 | 2026-07-08 |
+| OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全评分 | 2026-07-08 |
+| OSV.dev | <https://osv.dev/> | 开源漏洞数据库 | 2026-07-08 |
+| Sigstore / Rekor | <https://docs.sigstore.dev/logging/overview/> | 透明日志 | 2026-07-08 |
+| SPDX 2.3 规范 | <https://spdx.github.io/spdx-spec/v2.3/> | ISO/IEC 5962 SBOM | 2026-07-08 |
+| CycloneDX 1.6 规范 | <https://cyclonedx.org/specification/overview/> | OWASP/ECMA-424 SBOM | 2026-07-08 |
+| DEPS.dev API | <https://deps.dev/> | Google 依赖关系与评分 API | 2026-07-08 |
+| Google Cloud GUAC 博客 | <https://cloud.google.com/blog/products/open-source/introducing-guac> | GUAC 发布背景 | 2026-07-08 |
+| OWASP SCVS | <https://scvs.owasp.org/> | 软件组件验证标准 | 2026-07-08 |
+| NIST SSDF (SP 800-218) | <https://csrc.nist.gov/pubs/sp/800/218/final> | 安全软件开发框架 | 2026-07-08 |
+| NIST SP 800-161 Rev. 1 | <https://csrc.nist.gov/pubs/sp/800/161/r1/final> | 供应链风险管理 | 2026-07-08 |
+| CISA SBOM 指南 | <https://www.cisa.gov/sbom> | 美国政府 SBOM 资源 | 2026-07-08 |
+| CISA AA20-352A | <https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a> | SolarWinds 技术分析 | 2026-07-08 |
 
 ---
 

@@ -1,8 +1,8 @@
 # OpenSSF OSPS Baseline 开源项目安全基线与复用评估
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 供应链安全层（Level 3）—— 开源项目安全基线对可复用组件的安全门槛定义
-> **对齐标准**: OpenSSF OSPS Baseline (2025-10-10), SLSA 1.2, OpenSSF Scorecard, NIST SSDF, EU CRA
+> **对齐标准**: OpenSSF OSPS Baseline v2026.02.19, SLSA 1.2, OpenSSF Scorecard, NIST SSDF, EU CRA
 > **状态**: ✅ 已完成
 
 ---
@@ -43,13 +43,14 @@
 
 ### 1.1 发布背景
 
-Open Source Project Security Baseline (OSPS) 是由 **OpenSSF** 于 **2025 年 2 月 25 日**首次发布、**2025 年 10 月 10 日**活跃更新的开源项目安全基线标准。它定义了开源项目应满足的最小安全控制集，旨在为开源软件消费者提供可评估的安全门槛。
+Open Source Project Security Baseline (OSPS) 是由 **OpenSSF** 于 **2025 年 2 月 25 日**首次发布、**2026 年 2 月 19 日**更新的开源项目安全基线标准（当前版本 v2026.02.19）。它定义了开源项目应满足的最小安全控制集，旨在为开源软件消费者提供可评估的安全门槛，并与 EU CRA、NIST SSDF 等国际框架对齐。
 
 OSPS 已被多个重要项目采纳：
 
 - **GUAC**（供应链知识图谱）
 - **OpenTelemetry**（可观测性框架）
 - **bomctl**（SBOM 工具）
+- **OpenVEX**（漏洞可利用性交换）
 - **数十个参与 Security Slam 2026 的项目**
 
 ### 1.2 OSPS 的设计哲学
@@ -303,7 +304,33 @@ Level 3 (高级)
 | Lodash | JS 工具库 | ~6.0 | L1-L2 | ⚠️ 低风险场景 |
 | left-pad | 微包 | ~3.0 | <L1 | ❌ 不建议复用 |
 
-### 6.2 案例：OSPS 等级变化触发复用退出
+### 6.2 正向示例：OSPS 落地标杆项目
+
+#### OpenTelemetry：从可观测性框架到供应链安全示范
+
+OpenTelemetry 作为 OpenSSF 早期采纳 OSPS Baseline 的项目之一，通过以下实践达到 L2-L3：
+
+- **访问控制**：所有仓库启用分支保护、MFA、代码审查。
+- **构建与发布**：使用 GitHub Actions 自动化发布，发布产物附带 Sigstore 签名。
+- **漏洞管理**：建立 SECURITY.md 漏洞披露流程，集成 Dependabot 和 OSV 扫描。
+- **文档与合规**：提供清晰的安全策略与许可证声明。
+
+复用 OpenTelemetry SDK 的团队可直接引用其 OSPS 自评结果，减少重复审计成本。
+
+### 6.3 反例 / 反模式
+
+#### 反例 A：缺乏 SECURITY.md 与分支保护的项目
+
+某内部团队计划复用一个 GitHub 上 star 数较高的开源工具。Scorecard 扫描显示：
+
+- `Security-Policy`: 0（无 SECURITY.md）
+- `Branch-Protection`: 3（主分支可直接推送）
+- `Code-Review`: 3（无强制审查）
+- `Signed-Releases`: 0（发布包无签名）
+
+对应 OSPS 评估结果仅为 L1。若将其用于生产数据处理，一旦维护者账号被入侵，恶意代码可直接进入主分支并发布。该团队最终选择寻找替代方案或要求上游改进。
+
+#### 反例 B：OSPS 等级变化触发复用退出
 
 **场景**: 某项目长期复用开源库 `X`（OSPS L2）。某天该库维护者账号被攻破，恶意代码被推送，项目 OSPS 等级骤降至 L1 以下。
 
@@ -316,15 +343,36 @@ Level 3 (高级)
 5. 寻找替代方案或等待维护者恢复控制
 6. 更新复用决策记录和供应商风险评估
 
+#### 反例 C：仅看 star 数不看安全实践
+
+某团队因一个库的 star 数超过 10k 而直接复用，未进行 OSPS/Scorecard 评估。后续发现该库已两年未维护、存在未修复高危 CVE、且发布包未签名。该案例说明：流行度不等于安全性，OSPS Baseline 提供了可量化的最低门槛。
+
 ---
 
-## 7. 权威来源
+## 7. 控制点映射：OSPS Baseline → 复用评估流程
 
-| 来源 | URL | 核查日期 |
-|:---|:---|:---|
-| OpenSSF OSPS Baseline | <https://baseline.openssf.org> | 2026-06-10 |
-| OpenSSF Scorecard | <https://scorecard.dev/> | 2026-06-10 |
-| SLSA 1.2 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
-| OWASP SCVS | <https://scvs.owasp.org/> | 2026-06-10 |
-| NIST SSDF | <https://csrc.nist.gov/projects/ssdf> | 2026-06-10 |
-| EU CRA 2024/2847 | <https://eur-lex.europa.eu/eli/reg/2024/2847> | 2026-06-10 |
+| OSPS 控制类别 | OSPS 要求示例 | 复用评估方法 | 项目对应控制 |
+|--------------|--------------|-------------|-------------|
+| 访问控制 (AC) | 多因素认证、分支保护、代码审查 | Scorecard API + GitHub/GitLab 分支保护检查 | 复用准入检查清单 |
+| 构建与发布 (BR) | 自动化构建、SLSA provenance、发布签名 | 检查 release artifacts 是否有 `.sigstore` 或 provenance | `04-provenance-examples/` 工作流模板 |
+| 文档 (DO) | SECURITY.md、LICENSE、安全使用指南 | 检查仓库根目录文件 | 复用组件目录元数据 |
+| 质量 (QA) | 自动化测试、SAST、依赖更新工具 | Scorecard `SAST`、`Dependency-Update-Tool`、`CI-Tests` | CI 质量门控 |
+| 漏洞管理 (VM) | 依赖漏洞监控、安全公告、响应 SLA | OSV.dev + GitHub Security Advisories | GUAC 漏洞告警规则 |
+| 法律与合规 (LE) | 明确许可证、兼容性声明 | SPDX 许可证字段 / FOSSA 扫描 | SBOM 许可证审查 |
+| 依赖管理 (DY) | 依赖清单、依赖审计 | lockfile + SBOM 生成 | `02-sbom-standards/` |
+| 监控 (MO) | 安全指标跟踪、异常检测 | Scorecard 定期重评 + GUAC 变更告警 | 复用组件持续监控 |
+
+---
+
+## 8. 权威来源
+
+| 来源 | URL | 说明 | 核查日期 |
+|:---|:---|:---|:---|
+| OpenSSF OSPS Baseline v2026.02.19 | <https://baseline.openssf.org/versions/2026-02-19.html> | 当前正式版本 | 2026-07-08 |
+| OpenSSF OSPS Baseline 首页 | <https://baseline.openssf.org/> | 项目入口与版本列表 | 2026-07-08 |
+| OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全评分 | 2026-07-08 |
+| SLSA 1.2 | <https://slsa.dev/spec/v1.2/> | 构建来源证明 | 2026-07-08 |
+| OWASP SCVS | <https://scvs.owasp.org/> | 软件组件验证标准 | 2026-07-08 |
+| NIST SSDF (SP 800-218) | <https://csrc.nist.gov/pubs/sp/800/218/final> | 安全软件开发框架 | 2026-07-08 |
+| EU CRA 2024/2847 | <https://eur-lex.europa.eu/eli/reg/2024/2847/oj> | 欧盟网络弹性法案 | 2026-07-08 |
+| OpenSSF Security Slam 2026 | <https://openssf.org/newsletter/2026/02/26/openssf-newsletter-february-2026/> | OSPS 落地活动 | 2026-07-08 |
