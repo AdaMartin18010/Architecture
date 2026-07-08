@@ -1,6 +1,6 @@
 # 前沿跟踪索引（Frontier Tracking Index）
 
-> **版本**: 2026-06-12
+> **版本**: 2026-07-08
 > **定位**: `99-reference/frontier-tracking/` —— 全项目新兴标准、技术动态与权威来源变更的季度跟踪入口
 > **主要交付物**:
 >
@@ -20,11 +20,11 @@
 
 ---
 
-## 当前活跃跟踪项（2026-Q2）
+## 当前活跃跟踪项（2026-Q3）
 
 | 标准/技术 | 当前状态 | 权威来源 | 影响评估 | 跟踪负责人 |
 |:---|:---|:---|:---|:---|
-| **MCP** | 稳定版 **2025-11-25**；RC **2026-07-28** 预期 | modelcontextprotocol.io | 功能层 AI 协议基线 | TBD |
+| **MCP** | 稳定版 **2025-11-25**；**RC 2026-07-28 已发布（2026-05-29）** | modelcontextprotocol.io / GitHub Releases | 功能层 AI 协议基线 | TBD |
 | **A2A** | **v1.0.0** 已发布（2026-03-12） | a2aprotocol.io | Agent 互操作基线 | TBD |
 | **ArchiMate 4.0** | ✅ **已正式发布（2026-04-27）** | The Open Group Document C260 / [官方发布公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 元模型层更新 | TBD |
 | **ISO/IEC/IEEE 12207:2026** | ✅ **已发布（2026-04-29）** | ISO 90219 | 生命周期过程基准迁移 | TBD |
@@ -58,11 +58,11 @@ struct/99-reference/frontier-tracking/
 
 ## 相关文档
 
-- `struct/13-emerging-trends/09-frontier-tracking/frontier-status-2026-06.md` —— 详细前沿状态跟踪
+- `struct/99-reference/frontier-tracking/2026-q3-frontier-report.md` —— 2026 年第三季度前沿跟踪报告
 - `struct/99-reference/CHANGELOG.md` —— 历史勘误与重大更新
 - `struct/99-reference/standards-index/authoritative-sources-v2.md` —— 全项目权威来源基准
 
 ---
 
-> **最后更新**: 2026-06-12
+> **最后更新**: 2026-07-08
 > **维护者**: 软件工程架构复用知识体系项目组

@@ -127,7 +127,7 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **MCP** | 2025-11-25 | **现行稳定版** | <https://modelcontextprotocol.io/specification/2025-11-25> | Model Context Protocol；已捐给 Linux Foundation Agentic AI Foundation |
-| **MCP** | 2026-07-28 | **Release Candidate（RC），最终版预计 2026-07-28 发布** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
+| **MCP** | 2026-07-28 | **Release Candidate（RC）已发布（2026-05-29）；最终版预计 2026-07-28** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
 | **A2A** | **v1.0.0** | **已发布** | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google Cloud Next 2026-04 GA；Signed Agent Cards / AP2 |
 | **NIST AI RMF** | 1.0 | 已发布 | <https://www.nist.gov/itl/ai-risk-management-framework> | AI 风险管理框架 |
 | **NIST AI 600-1** | — | 已发布 | <https://www.nist.gov/artificial-intelligence/ai-600-1> | AI 红队测试 |

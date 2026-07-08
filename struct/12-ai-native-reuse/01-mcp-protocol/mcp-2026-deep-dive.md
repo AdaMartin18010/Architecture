@@ -1,16 +1,15 @@
 # MCP 2026-07-28 RC 深度解析
 
-> ⚠️ **版本声明**：本文档分析的是 MCP 2026-07-28 Release Candidate（RC），该版本尚未正式发布。当前最新稳定规范为 2025-11-25。
+> ✅ **版本声明**：MCP 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
 >
-> 请参考最新权威文档：
+> 请参考关联文档：
 >
 > - [`mcp-2025-11-25-deep-dive.md`](./mcp-2025-11-25-deep-dive.md)
 > - [`mcp-2025-11-25-authoritative.md`](./mcp-2025-11-25-authoritative.md)
-> - 官方规范：<https://modelcontextprotocol.io/specification/2025-11-25>
 >
-> **版本**: 2026-06-06
-> **对齐标准**: MCP 2026-07-28 RC (假设的未来修订)
-> **定位**: 历史存档，保留以展示项目认知迭代过程
+> **版本**: 2026-07-08
+> **对齐标准**: MCP 2026-07-28 RC（已发布）
+> **定位**: 活跃分析文档，RC 状态变更时需同步更新
 
 ---
 

@@ -2838,6 +2838,22 @@ Memory64 提案将 WASM 的线性内存寻址从 32 位扩展至 64 位，突破
 7. WasmGC Proposal, <https://github.com/WebAssembly/gc>
 8. Memory64 Proposal, <https://github.com/WebAssembly/memory64>
 
+---
+
+## 5. WASI 1.0 迁移预对齐 Checklist
+
+> WASI 1.0 目标发布时间为 **2026 末–2027 初**。以下清单用于在 1.0 发布后快速对齐项目知识体系与实施基线。
+
+| 检查项 | WASI 0.3 现状 | WASI 1.0 预期 | 建议动作 | 优先级 |
+|---|---|---|---|:---:|
+| 异步 I/O 接口 | `stream<T>` / `future<T>`（原生 async） | 1.0 将稳定 async 世界与接口 | 评估现有 0.2 模块是否需要升级到 1.0 async 接口 | P0 |
+| 运行时版本 | Wasmtime v45 常规支持；LTS v36 | 1.0 发布后需选择支持 1.0 的 LTS 版本 | 制定 Wasmtime 版本升级窗口，避免生产运行时碎片化 | P0 |
+| WIT 版本 | `wasi:http@0.3.x` 等 | 1.0 WIT 将冻结并长期支持 | 提前将领域 WIT 接口与 1.0 预览版对齐，减少最终发布后的迁移成本 | P1 |
+| 工具链 | wit-bindgen 0.40+ | 1.0 稳定版工具链 | 升级 CI/CD 中的 wit-bindgen、wasm-tools、wasm-pkg-tools | P1 |
+| 组件注册表 | 早期 registry 生态 | 1.0 生态成熟后 registry 协议可能标准化 | 跟踪 WARG/Wasm Package Tools 进展，避免被锁定在私有 registry | P1 |
+| 与 WASI 0.2 兼容 | 0.3 运行时兼容 0.2 | 1.0 可能继续提供兼容性适配层 | 验证关键 0.2 组件在 1.0 运行时上的行为一致性 | P1 |
+
+> **跟踪来源**: <https://wasi.dev/>、<https://bytecodealliance.org/articles>、Wasmtime releases。
 
 ---
 
@@ -4423,6 +4439,7 @@ SCI for AI 要求提供方和使用方分别度量各自可控的排放：
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：新兴趋势包括平台工程、模块化单体、WebAssembly 组件、绿色软件与 RegTech AI，它们通过新抽象层或新约束推动复用资产的可移植性、可持续性与治理自动化。

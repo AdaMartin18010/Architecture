@@ -891,9 +891,7 @@ Reuse(V) = Reuse({C₁, C₂, ..., Cₙ}) ∪ Reuse({I₁₂, I₂₃, ..., Iₙ
 ## 6. 关键公理
 
 > **公理 2.2** (Value Stream Conservation): 价值流中的价值总量守恒。若阶段 Sᵢ 被替换为 S'ᵢ，则必须保证 V(S'ᵢ) ≥ V(Sᵢ)，否则价值流整体退化。
-
 > **定理 2.2** (Process-Service Duality): 业务流程是**时序化**的业务服务编排；业务服务是**接口化**的业务流程封装。二者在复用视角下构成对偶关系：Process = ∫Service dt; Service = dProcess/dt。
-
 > **定理 2.3** (Business-Application Bridging): 业务服务是业务架构与应用架构的**桥接点**。当业务服务的技术实现契约稳定时，业务层与应用层解耦；当业务服务频繁变更时，两层耦合度指数上升。
 
 ---

@@ -1,0 +1,29 @@
+{
+  "server_name": "example-mcp-server",
+  "transport": {
+    "type": "http",
+    "url": "http://localhost:3000/mcp"
+  },
+  "authorization": {
+    "enabled": false
+  },
+  "capabilities": {
+    "tools": {}
+  },
+  "tools": [
+    {
+      "name": "send_email",
+      "description": "Send an email to the specified recipient.",
+      "annotations": {}
+    },
+    {
+      "name": "read_document",
+      "description": "Read a document by URL.",
+      "annotations": {}
+    }
+  ],
+  "logging": {
+    "level": "info",
+    "audit": false
+  }
+}

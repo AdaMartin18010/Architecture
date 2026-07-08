@@ -4,32 +4,40 @@
 standard-status-checker.py
 ==========================
 
-标准状态自动复核脚本。
+标准状态自动复核脚本 v2.0。
 
 功能：
 - 读取 struct/99-reference/standards-index/authoritative-sources-v2.md
 - 提取所有带官方 URL 的标准条目
 - 对每个 URL 发起 HEAD 请求（best-effort）检测可访问性
+- **新增**: 缓存上次结果，支持趋势告警（新增失效、状态变化、重定向目标变化）
+- **新增**: 可配置已知受限/无需告警的域名白名单
+- **新增**: 输出 JSON 状态快照，供 standard-tracker.py 与 CI 使用
 - 输出 Markdown 报告到 reports/standard-status-report.md
 - 控制台打印汇总统计
 - 退出码固定为 0，仅作信息报告，不导致 CI 失败
 
 用法：
     python scripts/standard-status-checker.py
+    python scripts/standard-status-checker.py --json
+    python scripts/standard-status-checker.py --follow-redirects
+    python scripts/standard-status-checker.py --no-cache
 
 环境：
     仅使用 Python 标准库（urllib），无需安装第三方依赖。
 """
 
+import argparse
+import json
 import re
 import ssl
 import sys
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-
 
 # ---------------------------------------------------------------------
 # 配置
@@ -38,6 +46,8 @@ from urllib.parse import urlparse
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SOURCE_FILE = PROJECT_ROOT / "struct" / "99-reference" / "standards-index" / "authoritative-sources-v2.md"
 REPORT_FILE = PROJECT_ROOT / "reports" / "standard-status-report.md"
+CACHE_FILE = PROJECT_ROOT / "reports" / "standard-status-cache.json"
+SNAPSHOT_FILE = PROJECT_ROOT / "reports" / "standard-status-snapshot.json"
 
 TIMEOUT_SECONDS = 10
 USER_AGENT = (
@@ -54,8 +64,30 @@ RESTRICTED_HOSTS = {
     "raw.githubusercontent.com",
     "github.io",
     "gist.github.com",
+    "gitlab.com",
+    "www.gitlab.com",
 }
 
+# 已知会返回 3xx 重定向但仍为有效官方来源的域名
+# 用于抑制“不必要的重定向告警”，但仍会在报告中列出
+REDIRECT_WHITELIST_HOSTS = {
+    "www.iso.org",
+    "iso.org",
+    "www.opengroup.org",
+    "opengroup.org",
+    "www.iec.ch",
+    "iec.ch",
+    "csrc.nist.gov",
+    "www.nist.gov",
+    "slsa.dev",
+    "www.slsa.dev",
+    "modelcontextprotocol.io",
+    "www.modelcontextprotocol.io",
+    "a2aprotocol.io",
+    "www.a2aprotocol.io",
+    "a2a-protocol.org",
+    "www.a2a-protocol.org",
+}
 
 # ---------------------------------------------------------------------
 # 类型与常量
@@ -183,7 +215,17 @@ def is_restricted_host(url: str) -> bool:
         return False
 
 
-def check_url(url: str) -> dict[str, str | int | None]:
+def is_redirect_whitelisted(url: str, final_url: str | None) -> bool:
+    """判断重定向是否发生在白名单域名内部（通常可忽略）。"""
+    try:
+        host = urlparse(url).hostname or ""
+        final_host = urlparse(final_url or url).hostname or ""
+        return host.lower() in REDIRECT_WHITELIST_HOSTS or final_host.lower() in REDIRECT_WHITELIST_HOSTS
+    except Exception:
+        return False
+
+
+def check_url(url: str, follow_redirects: bool = False) -> dict[str, Any]:
     """
     对指定 URL 发起 HEAD 请求并返回结果字典。
 
@@ -191,12 +233,14 @@ def check_url(url: str) -> dict[str, str | int | None]:
     - status: 可读状态（正常/重定向/失效或受限/无法访问/网络受限）
     - http_status: HTTP 状态码，若无法获得则为 None
     - final_url: 重定向目标，若存在
+    - redirect_count: 重定向次数（follow_redirects=True 时）
     - error: 错误信息，若存在
     """
-    result: dict[str, str | int | None] = {
+    result: dict[str, Any] = {
         "status": None,
         "http_status": None,
         "final_url": None,
+        "redirect_count": 0,
         "error": None,
     }
 
@@ -218,9 +262,14 @@ def check_url(url: str) -> dict[str, str | int | None]:
     context.verify_mode = ssl.CERT_NONE
 
     try:
-        with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS, context=context) as response:
+        with urllib.request.urlopen(
+            request,
+            timeout=TIMEOUT_SECONDS,
+            context=context,
+        ) as response:
             code = response.getcode()
             result["http_status"] = code
+            result["final_url"] = response.geturl()
 
             if 200 <= code < 300:
                 result["status"] = STATUS_OK
@@ -258,14 +307,148 @@ def check_url(url: str) -> dict[str, str | int | None]:
     if result["status"] == STATUS_UNREACHABLE and is_restricted_host(url):
         result["status"] = STATUS_RESTRICTED
 
+    # 可选：跟随重定向（最多 3 层），获得最终状态
+    if follow_redirects and result["status"] == STATUS_REDIRECT and result["final_url"]:
+        if result.get("redirect_count", 0) < 3:
+            result["redirect_count"] = result.get("redirect_count", 0) + 1
+            next_result = check_url(result["final_url"], follow_redirects=True)
+            # 合并结果：保留原始 final_url 作为最终 landing URL
+            result["status"] = next_result["status"]
+            result["http_status"] = next_result["http_status"]
+            result["final_url"] = next_result.get("final_url") or result["final_url"]
+            result["error"] = next_result.get("error")
+
     return result
+
+
+# ---------------------------------------------------------------------
+# 缓存与趋势告警
+# ---------------------------------------------------------------------
+
+def load_cache() -> dict[str, Any]:
+    """加载上次缓存的状态。"""
+    if CACHE_FILE.exists():
+        try:
+            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
+def save_cache(data: dict[str, Any]) -> None:
+    """保存本次状态到缓存。"""
+    CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CACHE_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def compute_trend_alerts(
+    entries: list[dict[str, str]],
+    results: list[dict[str, Any]],
+    previous: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """
+    比较当前结果与上次缓存，生成趋势告警。
+
+    告警类型：
+    - NEW_BROKEN: 上次正常/重定向，本次失效或无法访问
+    - NEW_REDIRECT: 上次正常，本次出现重定向
+    - REDIRECT_CHANGED: 重定向目标发生变化
+    - FIXED: 上次失效，本次恢复
+    """
+    alerts: list[dict[str, Any]] = []
+    prev_by_url = {item.get("url", ""): item for item in previous.get("items", [])}
+
+    for entry, result in zip(entries, results):
+        url = entry["url"]
+        prev = prev_by_url.get(url)
+        if not prev:
+            continue
+
+        prev_status = prev.get("status")
+        curr_status = result["status"]
+        prev_final = prev.get("final_url")
+        curr_final = result.get("final_url")
+
+        # 恢复
+        if prev_status in {STATUS_BROKEN, STATUS_UNREACHABLE, STATUS_RESTRICTED} and curr_status == STATUS_OK:
+            alerts.append({
+                "type": "FIXED",
+                "severity": "info",
+                "name": entry["name"],
+                "url": url,
+                "message": f"链接已恢复可达（上次: {prev_status}）",
+            })
+            continue
+
+        # 新增失效
+        if prev_status in {STATUS_OK, STATUS_REDIRECT} and curr_status in {STATUS_BROKEN, STATUS_UNREACHABLE}:
+            alerts.append({
+                "type": "NEW_BROKEN",
+                "severity": "warning",
+                "name": entry["name"],
+                "url": url,
+                "message": f"链接由 {prev_status} 变为 {curr_status}",
+            })
+            continue
+
+        # 新增重定向（白名单域名内部通常可忽略）
+        if prev_status == STATUS_OK and curr_status == STATUS_REDIRECT:
+            if not is_redirect_whitelisted(url, curr_final):
+                alerts.append({
+                    "type": "NEW_REDIRECT",
+                    "severity": "info",
+                    "name": entry["name"],
+                    "url": url,
+                    "message": f"出现新的重定向到 {curr_final}",
+                })
+            continue
+
+        # 重定向目标变化
+        if prev_status == STATUS_REDIRECT and curr_status == STATUS_REDIRECT:
+            if prev_final and curr_final and prev_final != curr_final:
+                alerts.append({
+                    "type": "REDIRECT_CHANGED",
+                    "severity": "info",
+                    "name": entry["name"],
+                    "url": url,
+                    "message": f"重定向目标由 {prev_final} 变为 {curr_final}",
+                })
+
+    return alerts
+
+
+def generate_snapshot(entries: list[dict[str, str]], results: list[dict[str, Any]]) -> dict[str, Any]:
+    """生成 JSON 状态快照。"""
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "checker_version": "2.0",
+        "total": len(entries),
+        "items": [
+            {
+                "name": entry["name"],
+                "version": entry["version"],
+                "status": entry["status"],
+                "url": entry["url"],
+                "check_status": result["status"],
+                "http_status": result["http_status"],
+                "final_url": result.get("final_url"),
+                "error": result.get("error"),
+            }
+            for entry, result in zip(entries, results)
+        ],
+    }
 
 
 # ---------------------------------------------------------------------
 # 报告生成
 # ---------------------------------------------------------------------
 
-def generate_report(entries: list[dict], results: list[dict]) -> str:
+def generate_report(
+    entries: list[dict],
+    results: list[dict],
+    alerts: list[dict],
+    follow_redirects: bool = False,
+) -> str:
     """生成 Markdown 报告。"""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -286,6 +469,7 @@ def generate_report(entries: list[dict], results: list[dict]) -> str:
         f"> **生成时间**: {now}",
         f"> **源文件**: `struct/99-reference/standards-index/authoritative-sources-v2.md`",
         f"> **复核方式**: HEAD 请求 best-effort 检测（超时 {TIMEOUT_SECONDS} 秒）",
+        f"> **跟随重定向**: {'是' if follow_redirects else '否'}",
         "> **说明**: 本报告仅供参考，不导致 CI 失败。",
         "",
         "## 摘要",
@@ -297,11 +481,27 @@ def generate_report(entries: list[dict], results: list[dict]) -> str:
         f"- {STATUS_UNREACHABLE}: {counts[STATUS_UNREACHABLE]}",
         f"- {STATUS_RESTRICTED}: {counts[STATUS_RESTRICTED]}",
         "",
+    ]
+
+    if alerts:
+        lines.extend([
+            "## 趋势告警",
+            "",
+            "| 类型 | 级别 | 标准/框架 | 说明 |",
+            "|------|------|-----------|------|",
+        ])
+        for alert in alerts:
+            lines.append(
+                f"| {alert['type']} | {alert['severity']} | {alert['name']} | {alert['message']} |"
+            )
+        lines.append("")
+
+    lines.extend([
         "## 详细结果",
         "",
         "| 标准/框架 | 版本 | 状态 | 检测结果 | HTTP 状态 | 新位置/错误信息 | 备注 |",
         "|-----------|------|------|----------|-----------|-----------------|------|",
-    ]
+    ])
 
     for entry, result in zip(entries, results):
         http_status = result.get("http_status")
@@ -329,6 +529,13 @@ def generate_report(entries: list[dict], results: list[dict]) -> str:
             f"- **{STATUS_BROKEN}**: HEAD 请求返回 HTTP 4xx/5xx，链接可能失效或需要授权。",
             f"- **{STATUS_UNREACHABLE}**: 请求超时或连接失败，可能是临时网络问题。",
             f"- **{STATUS_RESTRICTED}**: 属于当前环境已知受限域名（如 GitHub），需人工复核。",
+            "",
+            "## 配置说明",
+            "",
+            "- 缓存文件：`reports/standard-status-cache.json`",
+            "- 快照文件：`reports/standard-status-snapshot.json`",
+            "- 使用 `--follow-redirects` 可跟随 3xx 重定向最多 3 层。",
+            "- 使用 `--no-cache` 可跳过缓存读取与写入。",
         ]
     )
 
@@ -341,6 +548,12 @@ def generate_report(entries: list[dict], results: list[dict]) -> str:
 
 def main() -> int:
     """脚本入口。"""
+    parser = argparse.ArgumentParser(description="标准状态自动复核脚本 v2.0")
+    parser.add_argument("--json", action="store_true", help="输出 JSON 快照到控制台")
+    parser.add_argument("--follow-redirects", action="store_true", help="跟随 3xx 重定向（最多 3 层）")
+    parser.add_argument("--no-cache", action="store_true", help="不使用缓存，也不保存缓存")
+    args = parser.parse_args()
+
     if not SOURCE_FILE.exists():
         print(f"错误：源文件不存在: {SOURCE_FILE}", file=sys.stderr)
         return 0  # 不导致 CI 失败
@@ -358,12 +571,24 @@ def main() -> int:
     for idx, entry in enumerate(entries, start=1):
         url = entry["url"]
         print(f"  [{idx}/{len(entries)}] {entry['name']} -> {url}")
-        result = check_url(url)
+        result = check_url(url, follow_redirects=args.follow_redirects)
         results.append(result)
+
+    # 加载/保存缓存与告警
+    previous = {} if args.no_cache else load_cache()
+    alerts = compute_trend_alerts(entries, results, previous)
+    snapshot = generate_snapshot(entries, results)
+
+    if not args.no_cache:
+        save_cache(snapshot)
+
+    # 写入快照
+    SNAPSHOT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    SNAPSHOT_FILE.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 写入报告
     REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    report = generate_report(entries, results)
+    report = generate_report(entries, results, alerts, follow_redirects=args.follow_redirects)
     REPORT_FILE.write_text(report, encoding="utf-8")
 
     # 控制台摘要
@@ -378,7 +603,18 @@ def main() -> int:
     print(f"{STATUS_BROKEN}: {counts.get(STATUS_BROKEN, 0)}")
     print(f"{STATUS_UNREACHABLE}: {counts.get(STATUS_UNREACHABLE, 0)}")
     print(f"{STATUS_RESTRICTED}: {counts.get(STATUS_RESTRICTED, 0)}")
+    if alerts:
+        print(f"\n趋势告警: {len(alerts)} 条")
+        for alert in alerts:
+            print(f"  [{alert['severity'].upper()}] {alert['type']}: {alert['name']} — {alert['message']}")
     print(f"\n报告已保存: {REPORT_FILE}")
+    print(f"快照已保存: {SNAPSHOT_FILE}")
+    if not args.no_cache:
+        print(f"缓存已保存: {CACHE_FILE}")
+
+    if args.json:
+        print("\n===== JSON 快照 =====")
+        print(json.dumps(snapshot, ensure_ascii=False, indent=2))
 
     return 0
 

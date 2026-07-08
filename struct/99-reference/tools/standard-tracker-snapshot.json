@@ -1,0 +1,244 @@
+{
+  "generated_at": "2026-07-08T18:30:42.396271+00:00",
+  "tracker_version": "2.0",
+  "total_standards": 14,
+  "summary": {
+    "reachable": 6,
+    "unreachable": 8
+  },
+  "standards": [
+    {
+      "key": "iso-42042",
+      "name": "ISO/IEC/IEEE DIS 42042 — Reference Architectures",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "DIS (Stage 40.60) — enquiry 已于 2026-01-30 结束",
+      "last_checked": "2026-07-08T18:30:24.161719+00:00",
+      "expected_release": "2026–2027",
+      "action_on_release": "更新 01-meta-model-standards/01-iso-420xx-family/iso-42024-42042-dis-alignment.md",
+      "mailing_list": null
+    },
+    {
+      "key": "iso-42024",
+      "name": "ISO/IEC/IEEE DIS 42024 — Architecture Fundamentals",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "DIS (Stage 40.60) — enquiry 已于 2026-01-12 结束",
+      "last_checked": "2026-07-08T18:30:24.287899+00:00",
+      "expected_release": "2026–2027",
+      "action_on_release": "更新 01-meta-model-standards/01-iso-420xx-family/iso-42024-42042-dis-alignment.md",
+      "mailing_list": null
+    },
+    {
+      "key": "slsa",
+      "name": "SLSA (Supply-chain Levels for Software Artifacts)",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://slsa.dev/spec/v1.2/",
+        "content_type": "text/html; charset=UTF-8"
+      },
+      "current_status": "v1.2 已发布 (Multi-Track: Build/Source/Build Environment)",
+      "last_checked": "2026-07-08T18:30:25.699123+00:00",
+      "expected_release": "v1.3 / Build L4 正式发布",
+      "action_on_release": "更新 10-supply-chain-security/01-slsa-framework/slsa-1-2-multi-track.md",
+      "mailing_list": "slsa-discussion@googlegroups.com",
+      "rss_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      }
+    },
+    {
+      "key": "mcp",
+      "name": "Model Context Protocol (MCP)",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://modelcontextprotocol.io/specification/2025-11-25",
+        "content_type": "text/html; charset=utf-8"
+      },
+      "current_status": "2025-11-25 稳定版 (Linux Foundation Agentic AI Foundation)；2026-07-28 新版 RC 预期",
+      "last_checked": "2026-07-08T18:30:28.880890+00:00",
+      "expected_release": "2026-07-28 RC / 2026 下半年正式版",
+      "action_on_release": "更新 12-ai-native-reuse/01-mcp-protocol/",
+      "mailing_list": "https://github.com/modelcontextprotocol/specification/discussions",
+      "rss_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases.atom",
+        "content_type": "application/atom+xml; charset=utf-8"
+      }
+    },
+    {
+      "key": "a2a",
+      "name": "Agent-to-Agent Protocol (A2A)",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": null,
+        "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>"
+      },
+      "current_status": "v1.0.0 已发布（2026-03-12）",
+      "last_checked": "2026-07-08T18:30:33.496977+00:00",
+      "expected_release": "v1.1/v2.0 规划待官方公布",
+      "action_on_release": "更新 12-ai-native-reuse/02-a2a-protocol/",
+      "mailing_list": "https://github.com/a2a-protocol/documentation/discussions",
+      "rss_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      }
+    },
+    {
+      "key": "wasi",
+      "name": "WASI (WebAssembly System Interface)",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://wasi.dev/",
+        "content_type": "text/html; charset=utf-8"
+      },
+      "current_status": "WASI 0.3 preview（Wasmtime 37+），WASI 1.0 目标 2026 末/2027 初",
+      "last_checked": "2026-07-08T18:30:34.346076+00:00",
+      "expected_release": "WASI 1.0 稳定版",
+      "action_on_release": "更新 13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md",
+      "mailing_list": "https://groups.google.com/g/web-assembly",
+      "rss_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      }
+    },
+    {
+      "key": "iso-25010",
+      "name": "ISO/IEC 25010:2023 — SQuaRE Quality Models",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "2023-11-15 已发布（取代 2011 版，新增 AI/ML 质量考量）；不存在 2024 版",
+      "last_checked": "2026-07-08T18:30:34.858355+00:00",
+      "expected_release": "已稳定",
+      "action_on_release": "N/A — 已是最新版",
+      "mailing_list": null
+    },
+    {
+      "key": "iso-26566",
+      "name": "ISO/IEC 26566:2026 — Methods and tools for product line texture",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "2026-05 正式发布",
+      "last_checked": "2026-07-08T18:30:35.061339+00:00",
+      "expected_release": "已稳定",
+      "action_on_release": "N/A — 已是最新版",
+      "mailing_list": null
+    },
+    {
+      "key": "archimate",
+      "name": "ArchiMate Specification",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://www.opengroup.org/archimate-licensed-downloads",
+        "content_type": "text/html; charset=UTF-8"
+      },
+      "current_status": "ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 3.2 向后兼容",
+      "last_checked": "2026-07-08T18:30:36.052478+00:00",
+      "expected_release": "已稳定",
+      "action_on_release": "N/A — 已更新为正式发布状态",
+      "mailing_list": "https://www.opengroup.org/archimate-forum",
+      "rss_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      }
+    },
+    {
+      "key": "cncf-platform",
+      "name": "CNCF Platform Engineering Maturity Model",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/",
+        "content_type": "text/html; charset=UTF-8"
+      },
+      "current_status": "五维度模型 (Investment/Adoption/Interfaces/Operations/Measurement)",
+      "last_checked": "2026-07-08T18:30:39.365306+00:00",
+      "expected_release": "持续演进",
+      "action_on_release": "更新 13-emerging-trends/01-platform-engineering/platform-maturity-model.md",
+      "mailing_list": "https://github.com/cncf/tag-app-delivery/discussions"
+    },
+    {
+      "key": "iso-12207",
+      "name": "ISO/IEC/IEEE 12207:2026 — Software Life Cycle Processes",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "2026-04-29 已发布，取代 2017 版",
+      "last_checked": "2026-07-08T18:30:39.481063+00:00",
+      "expected_release": "已稳定",
+      "action_on_release": "N/A — 已更新为 2026 版",
+      "mailing_list": null
+    },
+    {
+      "key": "nist-ssdf-1-2",
+      "name": "NIST SP 800-218 Rev.1 / SSDF v1.2",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      },
+      "current_status": "Initial Public Draft（征求意见稿，2025-12-17 发布），非最终版；最终版预计 2026-Q3",
+      "last_checked": "2026-07-08T18:30:40.645370+00:00",
+      "expected_release": "2026-Q3 最终版",
+      "action_on_release": "更新 10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md",
+      "mailing_list": "https://csrc.nist.gov/Contact-Us",
+      "rss_url_check": {
+        "reachable": false,
+        "status_code": 404,
+        "error": "Not Found"
+      }
+    },
+    {
+      "key": "iec-61508-ed3",
+      "name": "IEC 61508 Ed.3 — Functional Safety of E/E/PE Systems",
+      "status_url_check": {
+        "reachable": true,
+        "status_code": 200,
+        "final_url": "https://webstore.iec.ch/en/products/",
+        "content_type": "text/html; charset=UTF-8"
+      },
+      "current_status": "CDV 已完成，预计 2026 末–2027 初发布",
+      "last_checked": "2026-07-08T18:30:42.287973+00:00",
+      "expected_release": "2026 末–2027 初",
+      "action_on_release": "创建 11-industrial-iot-otit/06-functional-safety/iec-61508-ed3-transition-guide.md",
+      "mailing_list": null
+    },
+    {
+      "key": "iso-26262-ed3",
+      "name": "ISO 26262 Ed.3 — Road Vehicles Functional Safety",
+      "status_url_check": {
+        "reachable": false,
+        "status_code": 403,
+        "error": "Forbidden"
+      },
+      "current_status": "新工作项已注册（2026 初），目标 ~2029",
+      "last_checked": "2026-07-08T18:30:42.396271+00:00",
+      "expected_release": "~2029",
+      "action_on_release": "跟踪并在 11-industrial-iot-otit/06-functional-safety/ 更新路线图",
+      "mailing_list": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+name: Quarterly Frontier Check
+
+on:
+  # 每月 1 日 02:00 UTC 运行一次轻量复核
+  # 每季度首月（1/4/7/10 月）5 日 02:00 UTC 运行深度复核
+  schedule:
+    - cron: "0 2 1 * *"
+    - cron: "0 2 5 1,4,7,10 *"
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: "复核类型"
+        required: true
+        default: "lightweight"
+        type: choice
+        options:
+          - lightweight
+          - quarterly
+
+jobs:
+  frontier-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run standard status checker
+        run: python scripts/standard-status-checker.py
+        continue-on-error: true
+
+      - name: Run standard tracker snapshot
+        run: python struct/99-reference/tools/standard-tracker.py --snapshot
+        continue-on-error: true
+
+      - name: Run quarterly report (quarterly only)
+        if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
+        run: python struct/99-reference/tools/standard-tracker.py --quarterly-report
+        continue-on-error: true
+
+      - name: Run standards version audit
+        if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
+        run: python struct/99-reference/tools/standards-version-audit.py .
+        continue-on-error: true
+
+      - name: Upload frontier reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontier-reports
+          path: |
+            reports/standard-status-report.md
+            reports/standard-status-snapshot.json
+            struct/99-reference/tools/standard-tracker-report.md
+            struct/99-reference/tools/standard-tracker-quarterly-report.md
+            struct/99-reference/tools/standard-tracker-snapshot.json
+          if-no-files-found: ignore
+
+      - name: Create issue for significant changes
+        if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'reports/standard-status-report.md';
+            if (!fs.existsSync(reportPath)) return;
+            const report = fs.readFileSync(reportPath, 'utf8');
+            // 仅当报告包含“趋势告警”章节且有实际告警时创建 issue
+            const alertMatch = report.match(/## 趋势告警\n\n((?!\| 类型 \|)[\s\S]*?)(?=\n## |$)/);
+            if (!alertMatch) return;
+            const alertBody = alertMatch[1].trim();
+            if (!alertBody || alertBody.includes('暂无告警') || alertBody.split('\n').filter(l => l.startsWith('|')).length <= 2) return;
+            const title = `[Bot] 季度标准状态复核发现 ${new Date().toISOString().slice(0, 10)} 新增告警`;
+            const body = `\n${report.split('## 趋势告警')[1].split('## ')[0]}\n\n> 本 issue 由 quarterly-frontier-check.yml 自动创建。`;
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['frontier-tracking', 'automated']
+            });

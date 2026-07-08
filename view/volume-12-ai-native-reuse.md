@@ -15,22 +15,24 @@
 2. [MCP 2025-11-25 综合更新与复用影响评估](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
 3. [MCP 2025-11-25 规范深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 4. [MCP 2026-07-28 RC 深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-5. [A2A v1.0.0 协议复用分析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
-6. [A2A v1.0 权威规范解读](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md)
-7. [A2A v1.0.0 权威深度解析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md)
-8. [P5-T2：Agentic Governance 组织设计模板](../struct/12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md)
-9. [LLM Agent 的复用与组合](../struct/12-ai-native-reuse/03-agentic-infrastructure/llm-agent-composition.md)
-10. [A2A + MCP 混合 Agent 服务 PoC](../struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/README.md)
-11. [概率契约运行时监控指标](../struct/12-ai-native-reuse/05-probabilistic-contracts/monitoring-metrics.md)
-12. [OWASP LLM / MCP 安全对齐](../struct/12-ai-native-reuse/05-probabilistic-contracts/owasp-llm-mcp-security.md)
-13. [AI 概率契约（Probabilistic Contract）框架](../struct/12-ai-native-reuse/05-probabilistic-contracts/probabilistic-contract-framework.md)
-14. [概率契约校准工具 (Probabilistic Contract Calibration)](../struct/12-ai-native-reuse/05-probabilistic-contracts/README.md)
-15. [AI 功能服务等级协议（SLA）模板](../struct/12-ai-native-reuse/05-probabilistic-contracts/templates/ai-sla-template.md)
-16. [概率契约校准报告模板](../struct/12-ai-native-reuse/05-probabilistic-contracts/templates/calibration-report-template.md)
-17. [NIST AI 风险管理框架与架构复用映射](../struct/12-ai-native-reuse/06-ai-governance/nist-ai-rmf-reuse-mapping.md)
-18. [Conformal Prediction 在代码生成中的统计保证应用](../struct/12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md)
-19. [CP + 形式化验证融合框架（研究探索方向）](../struct/12-ai-native-reuse/07-conformal-prediction/cp-formal-verification.md)
-20. [12 AI 原生复用](../struct/12-ai-native-reuse/README.md)
+5. [MCP 2026-07-28 RC → 正式版迁移指南](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-transition-guide.md)
+6. [A2A v1.0.0 协议复用分析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+7. [A2A v1.0 权威规范解读](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md)
+8. [A2A v1.0.0 权威深度解析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md)
+9. [P5-T2：Agentic Governance 组织设计模板](../struct/12-ai-native-reuse/03-agentic-infrastructure/agentic-governance-template.md)
+10. [LLM Agent 的复用与组合](../struct/12-ai-native-reuse/03-agentic-infrastructure/llm-agent-composition.md)
+11. [A2A + MCP 混合 Agent 服务 PoC](../struct/12-ai-native-reuse/04-hybrid-a2a-mcp-poc/README.md)
+12. [概率契约运行时监控指标](../struct/12-ai-native-reuse/05-probabilistic-contracts/monitoring-metrics.md)
+13. [OWASP LLM / MCP 安全对齐](../struct/12-ai-native-reuse/05-probabilistic-contracts/owasp-llm-mcp-security.md)
+14. [AI 概率契约（Probabilistic Contract）框架](../struct/12-ai-native-reuse/05-probabilistic-contracts/probabilistic-contract-framework.md)
+15. [概率契约校准工具 (Probabilistic Contract Calibration)](../struct/12-ai-native-reuse/05-probabilistic-contracts/README.md)
+16. [AI 功能服务等级协议（SLA）模板](../struct/12-ai-native-reuse/05-probabilistic-contracts/templates/ai-sla-template.md)
+17. [概率契约校准报告模板](../struct/12-ai-native-reuse/05-probabilistic-contracts/templates/calibration-report-template.md)
+18. [NIST AI 风险管理框架与架构复用映射](../struct/12-ai-native-reuse/06-ai-governance/nist-ai-rmf-reuse-mapping.md)
+19. [Conformal Prediction 在代码生成中的统计保证应用](../struct/12-ai-native-reuse/07-conformal-prediction/cp-code-generation.md)
+20. [CP + 形式化验证融合框架（研究探索方向）](../struct/12-ai-native-reuse/07-conformal-prediction/cp-formal-verification.md)
+21. [AI 原生复用 — 国际化案例集](../struct/12-ai-native-reuse/case-studies/international-cases.md)
+22. [12 AI 原生复用](../struct/12-ai-native-reuse/README.md)
 
 ---
 
@@ -1224,17 +1226,16 @@ MCP 和 A2A **互补而非竞争**:
 
 # MCP 2026-07-28 RC 深度解析
 
-> ⚠️ **版本声明**：本文档分析的是 MCP 2026-07-28 Release Candidate（RC），该版本尚未正式发布。当前最新稳定规范为 2025-11-25。
+> ✅ **版本声明**：MCP 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
 >
-> 请参考最新权威文档：
+> 请参考关联文档：
 >
 > - [`mcp-2025-11-25-deep-dive.md`](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 > - [`mcp-2025-11-25-authoritative.md`](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md)
-> - 官方规范：<https://modelcontextprotocol.io/specification/2025-11-25>
 >
-> **版本**: 2026-06-06
-> **对齐标准**: MCP 2026-07-28 RC (假设的未来修订)
-> **定位**: 历史存档，保留以展示项目认知迭代过程
+> **版本**: 2026-07-08
+> **对齐标准**: MCP 2026-07-28 RC（已发布）
+> **定位**: 活跃分析文档，RC 状态变更时需同步更新
 
 ---
 
@@ -1578,6 +1579,134 @@ Extensions 注册机制
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
 > - [MCP Introduction](https://modelcontextprotocol.io/introduction)
 > - 核查日期：2026-07-07
+
+
+---
+
+
+<!-- SOURCE: struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-transition-guide.md -->
+
+# MCP 2026-07-28 RC → 正式版迁移指南
+
+> **版本**: 2026-07-08
+> **状态**: 基于已发布的 **Release Candidate（2026-05-29）** 编制，最终正式版预计 2026-07-28
+> **定位**: `12-ai-native-reuse/01-mcp-protocol/` 的预对齐迁移 checklist
+
+---
+
+## 1. 概念定义
+
+**MCP 迁移** 是指将 MCP Server/Client/Gateway 从既有协议版本（通常为 2025-11-25）升级到新版（2026-07-28）的过程，涉及传输模型、生命周期、路由、缓存、扩展框架与授权机制的调整。
+
+---
+
+## 2. 版本状态
+
+| 版本 | 状态 | 发布日期 | 生产建议 |
+|---|---|---|---|
+| **2025-11-25** | 现行稳定版 | 2025-11-25 | 生产环境继续使用 |
+| **2026-07-28** | **Release Candidate 已发布** | 2026-05-29 | 可评估/试点；正式版发布后逐步迁移 |
+
+官方来源：
+
+- 稳定规范: <https://modelcontextprotocol.io/specification/2025-11-25>
+- RC releases: <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>
+
+---
+
+## 3. 2026-07-28 核心变化对复用的影响
+
+| 变化项 | 对复用的影响 | 迁移动作 |
+|---|---|---|
+| **Stateless 核心** | Server 成为无状态函数，支持任意负载均衡与自动扩缩容 | 网关与基础设施移除粘性会话依赖 |
+| **移除 initialize/initialized 握手** | 每请求自包含，降低连接开销 | 客户端/服务端重构生命周期管理 |
+| **Mcp-Method 头部路由** | 网关无需解析 JSON-RPC body，可缓存、低延迟 | 更新网关与缓存策略 |
+| **ttlMs 缓存语义** | `tools/list` 等可缓存，减少重复发现 | 在工具目录实现中加入 TTL 控制 |
+| **Extensions 框架正式化** | 扩展演进标准化 | 评估现有自定义扩展是否需迁移到官方 Extensions |
+| **Tasks Extension 毕业** | 长时任务复用有官方支持 | 将异步任务实现迁移到 Tasks Extension |
+| **MCP Apps（服务器渲染 UI）** | 交互式工具可复用 | 评估在客服、DevOps 等场景中引入 MCP Apps |
+| **OAuth 2.1 + 防 issuer 混淆** | 企业级授权与审计 | 更新认证流程，增加 issuer 校验 |
+
+---
+
+## 4. 迁移 Checklist
+
+### 4.1 基础设施层
+
+- [ ] 移除 MCP 网关对 `Mcp-Session-Id` 的粘性会话依赖
+- [ ] 支持基于 `Mcp-Method` 头部的路由与缓存
+- [ ] 为无状态 Server 配置负载均衡/自动扩缩容
+- [ ] 评估 Serverless/FaaS 部署可行性
+
+### 4.2 服务端实现
+
+- [ ] 移除 `initialize/initialized` 握手逻辑
+- [ ] 确保每个请求自包含 capabilities 与上下文
+- [ ] 为 `tools/list`、`resources/list` 等响应添加 `ttlMs`
+- [ ] 若存在长时任务，迁移到 Tasks Extension
+
+### 4.3 客户端实现
+
+- [ ] 更新版本协商逻辑以支持 2026-07-28
+- [ ] 实现 OAuth 2.1 授权流程与 issuer 混淆防护
+- [ ] 处理无状态 Server 的每请求独立上下文
+
+### 4.4 安全与治理
+
+- [ ] 更新工具权限模型，支持 Extensions 的独立能力声明
+- [ ] 对 MCP Apps 的 UI 输出进行安全审查
+- [ ] 在审计日志中记录协议版本、method、issuer
+
+### 4.5 文档与培训
+
+- [ ] 更新内部 MCP Server 开发规范
+- [ ] 更新工具目录注册模板
+- [ ] 对开发团队进行 stateless 架构与 Extensions 培训
+
+---
+
+## 5. 版本共存策略
+
+| 场景 | 建议 |
+|---|---|
+| 新 Server | 直接基于 2026-07-28 实现 |
+| 现有生产 Server | 保持 2025-11-25，在维护窗口中升级 |
+| 网关/中间件 | 同时支持 2025-11-25 与 2026-07-28，通过版本协商路由 |
+| 客户端 | 优先使用 2026-07-28，失败时回退到 2025-11-25 |
+
+---
+
+## 6. 正向示例
+
+某 DevOps 智能助手团队将其 MCP 网关升级为 2026-07-28 无状态模式：
+
+- 网关通过 `Mcp-Method` 头部直接路由，无需解析 JSON-RPC body
+- `tools/list` 响应加入 `ttlMs=300000`，下游缓存命中提升 40%
+- 长时 CI/CD 任务迁移到 Tasks Extension，用户体验从"等待超时"变为"异步通知"
+
+---
+
+## 7. 反例
+
+某团队在未更新授权逻辑的情况下直接升级 MCP Server 到 2026-07-28，未启用 issuer 校验。攻击者通过伪造 issuer 获取了本不应授权的工具调用权限，造成数据泄露。
+
+**教训**: 协议升级必须与安全机制同步升级，不能仅关注功能兼容性。
+
+---
+
+## 8. 分析
+
+MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用单元从"会话参与者"变为"无状态函数执行器"。这要求基础设施、安全模型与运维监控同时演进；只升级协议而不升级治理会导致新的风险。
+
+---
+
+## 9. 权威来源
+
+| 来源 | URL | 核查日期 |
+|---|---|---|
+| MCP 2025-11-25 规范 | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
+| MCP 2026-07-28 RC | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28-RC> | 2026-07-08 |
+| MCP Specification repo | <https://github.com/modelcontextprotocol/specification> | 2026-07-08 |
 
 
 ---
@@ -4741,7 +4870,7 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 
 | 维度 | SLO 指标 | 测量方法 | SLA 违约条件 |
 |------|---------|---------|-------------|
-| 正确性 | ` correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
+| 正确性 | `correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
 | 可用性 | `availability ≥ 99.9%` | 健康检查 | 月度停机 > 43 分钟 |
 | 延迟 | `p99_latency ≤ T` | OpenTelemetry | 连续 5 分钟 p99 > T |
 | 成本 | `cost_per_call ≤ C` | 计费监控 | 月度单均成本 > C × 1.2 |
@@ -6762,6 +6891,115 @@ CP 的核心保证是：在交换性假设下，预测集合以概率 1−α 包
 > - [Conformal Prediction](https://en.wikipedia.org/wiki/Conformal_prediction)
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
 > - 核查日期：2026-07-07
+
+
+---
+
+
+<!-- SOURCE: struct/12-ai-native-reuse/case-studies/international-cases.md -->
+
+# AI 原生复用 — 国际化案例集
+
+> **语言**: 英文案例 + 中文分析
+> **范围**: 国际组织中 MCP/A2A 采用、概率契约与 AI 治理的真实案例
+> **版本**: 2026-07-08
+
+---
+
+## 概念定义
+
+**AI 原生复用（AI-native reuse）** 是通过 MCP、A2A 等协议，将提示词、RAG 管道、工具、模型推理服务与 Agent 技能封装为可组合、可治理资产，并通过契约与校准约束其概率性行为的实践。
+
+---
+
+## 正向示例
+
+### 案例 1：Anthropic — Model Context Protocol 生态
+
+**来源**: <https://modelcontextprotocol.io/>, Anthropic 工程沟通
+
+**决策**: Anthropic 推出 MCP 作为开放协议，将 LLM 宿主与工具/数据源集成解耦，从而形成可复用工具市场。
+
+**结果**: 日益增长的 MCP 服务器生态（数据库、文件系统、API）可在任何 MCP 兼容宿主中复用，减少了一次性集成。
+
+**经验**:
+
+- 协议级标准化是跨 LLM 应用复用工具的前提。
+- 能力协商让宿主与服务器可独立演进。
+- 安全边界（用户同意、工具授权）必须自协议设计之初纳入。
+
+### 案例 2：Google Cloud — A2A 协议与 Agent 互操作
+
+**来源**: <https://a2a-protocol.org/>, Google Cloud Next 2026 公告
+
+**决策**: Google 提出 A2A 作为开放协议，让 Agent 发现彼此能力、协商任务并通过签名 Agent Card 交付结果。
+
+**结果**: 企业可跨不同厂商与内部团队组合多 Agent 工作流，无需硬编码成对集成。
+
+**经验**:
+
+- Agent Card 是信任与能力 advertisement 的可复用单元。
+- 跨厂商互操作需要开放模式与认证标准。
+- 多 Agent 治理（审计、升级）必须与协议采用同步设计。
+
+### 案例 3：Microsoft — Agent Governance Toolkit
+
+**来源**: <https://github.com/microsoft/agent-governance-toolkit>
+
+**决策**: 微软开源 Agent Governance Toolkit，为自主 Agent 提供运行时治理、审计与策略执行，覆盖 OWASP Agentic AI 风险。
+
+**结果**: 组织可在不同 Agent 实现中应用一致的治理策略，提升可审计性并减少过度授权。
+
+**经验**:
+
+- 可复用的治理策略与可复用的工具同等重要。
+- 运行时 enforcement 是对设计时风险评估的补充。
+- 与现有身份与可观测性栈集成可降低采用门槛。
+
+---
+
+## 反例 / 失败案例
+
+### 反例 1：硬编码 Prompt 与 API
+
+各团队在不同 Agent 中直接嵌入相同 Prompt 与厂商 API 调用，没有版本管理与输出契约；导致行为不一致、成本失控且难以审计。
+
+**教训**: 应将 Prompt 与工具调用视为带定义契约的版本化、可复用资产。
+
+### 反例 2：过度放权且无边界
+
+某 Agent 被赋予广泛系统访问权限且缺乏审计日志。它自主修改了生产配置；事后既无法追溯决策过程，也无法确定责任归属。
+
+**教训**: Agent 能力必须受策略约束，高影响动作必须强制人在回路，并保留不可变审计日志。
+
+---
+
+## 分析
+
+AI 原生复用引入了两个传统软件复用中不存在的新挑战：
+
+1. **概率性行为**: 输出非确定性，需要契约、校准与监控。
+2. **自主行动**: Agent 可代表用户执行动作，需要治理设计。
+
+成功案例结合了**开放协议**（MCP、A2A）、**信任工件**（Agent Card、签名能力）与**运行时治理**（策略执行、审计）。失败则发生在团队将 AI 集成视为传统确定性 API 时。
+
+---
+
+## 权威来源
+
+- Model Context Protocol, <https://modelcontextprotocol.io/>
+- Agent-to-Agent Protocol, <https://a2a-protocol.org/>
+- Microsoft Agent Governance Toolkit, <https://github.com/microsoft/agent-governance-toolkit>
+- OWASP Agentic AI Top 10, <https://owasp.org/www-project-agentic-ai/>
+- 核查日期：2026-07-08
+
+---
+
+## 相关文档
+
+- [`../01-mcp-protocol/mcp-2026-transition-guide.md`](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-transition-guide.md)
+- [`../02-a2a-protocol/a2a-v1-authoritative.md`](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md)
+- [`../05-probabilistic-contracts/probabilistic-contract-framework.md`](../struct/12-ai-native-reuse/05-probabilistic-contracts/probabilistic-contract-framework.md)
 
 
 ---

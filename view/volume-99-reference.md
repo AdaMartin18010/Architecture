@@ -36,33 +36,35 @@
 23. [权威外部资源索引](../struct/99-reference/external-links/authoritative-sources.md)
 24. [公理-定理推理树](../struct/99-reference/glossary/axiom-theorem-tree.md)
 25. [跨主题综合索引](../struct/99-reference/glossary/cross-topic-index.md)
-26. [未命名章节](../struct/99-reference/glossary/glossary-master.md)
-27. [跨标准术语对照表](../struct/99-reference/glossary/terminology-crosswalk.md)
-28. [学术概念谱系索引（Academic Lineage Index）](../struct/99-reference/knowledge-index/academic-lineage.md)
-29. [四层复用映射矩阵](../struct/99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
-30. [13 个一级主题依赖/互斥/蕴含关系图](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md)
-31. [软件架构复用知识体系问答索引 (QA Index)](../struct/99-reference/knowledge-index/qa-index.md)
-32. [Phase C 质量检查报告](../struct/99-reference/quality-check-phase-c.md)
-33. [99 参考索引](../struct/99-reference/README.md)
-34. [国际标准与权威来源索引 v2.3](../struct/99-reference/standards-index/authoritative-sources-v2.md)
-35. [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
-36. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
-37. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
-38. [标准引用规范：版本 + URL + 核查日期三元组](../struct/99-reference/templates/citation-standard.md)
-39. [内容块复用规则](../struct/99-reference/templates/content-block-guideline.md)
-40. [核心知识文件内容要素检查清单](../struct/99-reference/templates/content-checklist.md)
-41. [文档模板](../struct/99-reference/templates/document-template.md)
-42. [事实核查清单（Fact-Check Checklist）](../struct/99-reference/templates/fact-check-checklist.md)
-43. [快速参考卡](../struct/99-reference/templates/quick-reference-card.md)
-44. [形式化验证自动化环境](../struct/99-reference/tools/formal-verification-env/README.md)
-45. [可执行工具目录](../struct/99-reference/tools/README.md)
-46. [交互式复用决策工具](../struct/99-reference/tools/reuse-decision-tool/README.md)
-47. [交互式复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
-48. [复用决策报告：{{ asset_name }}](../struct/99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
-49. [季度标准跟踪与一致性报告](../struct/99-reference/tools/standard-tracker-quarterly-report.md)
-50. [标准跟踪监控报告](../struct/99-reference/tools/standard-tracker-report.md)
-51. [FinOps 工具模板聚合入口](../struct/99-reference/tools/templates/finops/README.md)
-52. [架构复用知识体系可视化图库](../struct/99-reference/visualizations/README.md)
+26. [核心术语英中对照表（Bilingual Glossary）](../struct/99-reference/glossary/glossary-bilingual.md)
+27. [未命名章节](../struct/99-reference/glossary/glossary-master.md)
+28. [跨标准术语对照表](../struct/99-reference/glossary/terminology-crosswalk.md)
+29. [架构复用知识图谱](../struct/99-reference/knowledge-graph/README.md)
+30. [学术概念谱系索引（Academic Lineage Index）](../struct/99-reference/knowledge-index/academic-lineage.md)
+31. [四层复用映射矩阵](../struct/99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
+32. [13 个一级主题依赖/互斥/蕴含关系图](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md)
+33. [软件架构复用知识体系问答索引 (QA Index)](../struct/99-reference/knowledge-index/qa-index.md)
+34. [Phase C 质量检查报告](../struct/99-reference/quality-check-phase-c.md)
+35. [99 参考索引](../struct/99-reference/README.md)
+36. [国际标准与权威来源索引 v2.3](../struct/99-reference/standards-index/authoritative-sources-v2.md)
+37. [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
+38. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
+39. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
+40. [标准引用规范：版本 + URL + 核查日期三元组](../struct/99-reference/templates/citation-standard.md)
+41. [内容块复用规则](../struct/99-reference/templates/content-block-guideline.md)
+42. [核心知识文件内容要素检查清单](../struct/99-reference/templates/content-checklist.md)
+43. [文档模板](../struct/99-reference/templates/document-template.md)
+44. [事实核查清单（Fact-Check Checklist）](../struct/99-reference/templates/fact-check-checklist.md)
+45. [快速参考卡](../struct/99-reference/templates/quick-reference-card.md)
+46. [形式化验证自动化环境](../struct/99-reference/tools/formal-verification-env/README.md)
+47. [可执行工具目录](../struct/99-reference/tools/README.md)
+48. [交互式复用决策工具](../struct/99-reference/tools/reuse-decision-tool/README.md)
+49. [交互式复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
+50. [复用决策报告：{{ asset_name }}](../struct/99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
+51. [季度标准跟踪与一致性报告](../struct/99-reference/tools/standard-tracker-quarterly-report.md)
+52. [标准跟踪监控报告](../struct/99-reference/tools/standard-tracker-report.md)
+53. [FinOps 工具模板聚合入口](../struct/99-reference/tools/templates/finops/README.md)
+54. [架构复用知识体系可视化图库](../struct/99-reference/visualizations/README.md)
 
 ---
 
@@ -4811,6 +4813,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
 - … 共 51 个文件
+
 ---
 
 ## 定义
@@ -4854,9 +4857,11 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 正向示例
 
 ### 示例 1：有效测验设计
+
 某测验要求学员为真实金融系统建立 ISO 42010 / TOGAF / SLSA 对齐矩阵，学员通过查阅 `struct/` 权威来源完成，评分 90+。
 
 ### 示例 2：简答型高阶评估
+
 "为复用而复用"简答题迫使学员区分抽象过度与价值驱动复用，显著提升了架构决策质量。
 
 ---
@@ -4871,12 +4876,14 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 一、概念辨析（单选）
 
 ### 1. 什么是架构复用中的"单一真源"？
+
 - A. 所有代码都放在一个仓库里
 - B. 以 `struct/` 为权威来源，`view/` 为其只读聚合视角 ✅
 - C. 只允许一位架构师修改文档
 - D. 所有项目使用同一套技术栈
 
 ### 2. ISO/IEC/IEEE 42010:2022 主要解决什么问题？
+
 - A. 软件测试流程
 - B. 架构描述的语言与视点 ✅
 - C. 项目管理方法论
@@ -4887,6 +4894,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 二、标准与框架（多选）
 
 ### 3. 下列哪些标准/框架与本知识体系直接对齐？
+
 - A. TOGAF 10 ✅
 - B. ArchiMate 4.0 ✅
 - C. ISO/IEC 26550:2015 ✅
@@ -4894,6 +4902,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - E. ISO 9001:2015
 
 ### 4. 软件供应链安全应关注哪些要素？
+
 - A. SBOM ✅
 - B. Provenance ✅
 - C. SLSA 等级 ✅
@@ -4904,14 +4913,18 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 三、正向示例与反模式（简答）
 
-### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素。
+### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素
+
 **参考答案要点**:
+
 - 选择可复用资产时进行了成本/收益分析；
 - 建立了清晰的接口契约与版本策略；
 - 通过成熟度模型持续度量复用效果。
 
 ### 6. "为复用而复用"是一种什么反模式？应如何避免？
+
 **参考答案要点**:
+
 - 过度抽象导致不必要的复杂性；
 - 应基于真实业务价值和复用频次进行决策；
 - 使用复用决策树或 ROI 模型量化评估。
@@ -4921,13 +4934,17 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 四、形式化与量化（计算/分析）
 
 ### 7. 某组件库开发成本为 80 人天，预计在第 3、5、8 个项目中分别节省 20、35、50 人天。假设无贴现，该复用是否值得？
+
 **参考答案**:
+
 - 总节省 = 20 + 35 + 50 = 105 人天
 - 开发成本 = 80 人天
 - 净收益 = 25 人天 > 0，值得复用。
 
 ### 8. 为什么 TLA+ 适合验证分布式协议（如 MCP/A2A）？
+
 **参考答案要点**:
+
 - TLA+ 能精确描述状态机与并发行为；
 - TLC 模型检查器可发现死锁、活锁与不变量违反；
 - 适合验证消息协议、任务生命周期等场景。
@@ -4937,6 +4954,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 五、权威来源核查
 
 ### 9. 以下哪个引用存在潜在问题？
+
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
@@ -5079,6 +5097,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
+
 ---
 
 ## 定义
@@ -6317,6 +6336,207 @@ M.3 (层次不可约性)
 ---
 
 
+<!-- SOURCE: struct/99-reference/glossary/glossary-bilingual.md -->
+
+# 核心术语英中对照表（Bilingual Glossary）
+
+> **版本**: 2026-07-08
+> **范围**: 软件工程架构复用知识体系中的 50+ 核心术语
+> **来源**: `glossary-master.md` + 国际标准英文原文
+
+---
+
+## 1. 概念定义
+
+**双语术语表（Bilingual Glossary）** 是知识体系中核心术语的中英文对照参考，用于支撑国际化输出、跨语言协作与学术引用。
+
+---
+
+## 2. 术语对照
+
+### A
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Agent-to-Agent Protocol | Agent 间协议 | A2A | 用于 Agent 之间发现能力、协商任务与交付结果的开放协议。 |
+| Architecture Description | 架构描述 | AD | 对系统及其环境进行架构化表达的工作产物集合（ISO/IEC/IEEE 42010）。 |
+| Architecture Evaluation | 架构评估 | — | 系统性地判断架构满足利益相关者关注点的程度。 |
+| Asset Administration Shell | 资产管理壳 | AAS | 工业数字孪生的标准化数字化表示（IEC 63278）。 |
+| Authoritative Source | 权威来源 | — | 官方机构（ISO、IEC、IEEE、The Open Group、NIST 等）发布的正式信息来源。 |
+
+### B
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Business Capability | 业务能力 | — | 企业为达成特定结果而具备的稳定能力，独立于组织与实现。 |
+| Business Process | 业务流程 | BP | 为达成业务目标而执行的一组结构化活动。 |
+| Black Channel | 黑通道 | — | 在标准通信网络上实现安全相关数据传输的方法。 |
+
+### C
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Component | 组件 | — | 具有明确接口、可独立部署与替换的软件单元。 |
+| Component Model | 组件模型 | — | 对组件本质特征及组件间关系的抽象描述。 |
+| Conformal Prediction | 共形预测 | CP | 构造具有边际覆盖保证的预测集的方法。 |
+| Cyber Resilience Act | 网络弹性法案 | CRA (EU) | 欧盟关于产品网络安全的法规 (EU) 2024/2847。 |
+
+### D
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Decision Model and Notation | 决策模型与符号 | DMN | 用于建模业务决策逻辑与规则的 OMG 标准。 |
+| Digital Twin | 数字孪生 | DT | 物理实体或系统的实时数字化映射。 |
+
+### E
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Enterprise Architecture | 企业架构 | EA | 描述企业整体结构、流程、信息系统与技术基线的蓝图。 |
+| Event-Driven Architecture | 事件驱动架构 | EDA | 以事件产生、检测与消费为核心模式的架构风格。 |
+
+### F
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Formal Verification | 形式化验证 | FV | 使用数学方法证明系统满足规约的技术。 |
+| Functional Safety | 功能安全 | — | 避免由 E/E/PE 系统故障导致的不合理风险（IEC 61508）。 |
+
+### G
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Governance | 治理 | — | 对决策权、责任与流程进行结构化管理的机制。 |
+
+### I
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Industrial Automation and Control Systems | 工业自动化与控制系统 | IACS | 过程控制、制造自动化等工业控制系统的统称。 |
+| Initial Public Draft | 初始公开草案 | IPD | 标准机构发布的早期公开征求意见稿。 |
+
+### M
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Maturity Model | 成熟度模型 | — | 评估组织能力演进阶段的分级框架。 |
+| Meta-Model | 元模型 | — | 对模型元素、关系与规则的抽象规约。 |
+| Microservices Architecture | 微服务架构 | — | 将应用构建为一组小型、独立部署服务的架构风格。 |
+| Model Context Protocol | 模型上下文协议 | MCP | 连接 LLM 应用与外部数据源/工具的开放协议。 |
+
+### O
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Open Platform Communications Unified Architecture | OPC 统一架构 | OPC UA | 工业互操作性信息交换框架。 |
+| Open Source Security Foundation | 开源安全基金会 | OpenSSF | 致力于提升开源软件安全性的 Linux Foundation 项目。 |
+
+### P
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Platform Engineering | 平台工程 | — | 通过内部开发者平台提升软件交付效率与标准化的实践。 |
+| Probabilistic Contract | 概率契约 | — | 对 AI 服务输出质量边界的概率承诺。 |
+| Provenance | 来源 | — | 记录软件工件产生过程与依赖链的信息。 |
+
+### Q
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Quality Model | 质量模型 | — | 系统刻画软件产品质量特性的模型（如 ISO/IEC 25010）。 |
+
+### R
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Reference Architecture | 参考架构 | RA | 针对特定领域或问题的标准化架构模板。 |
+| Reusable Asset Specification | 可复用资产规范 | RAS | OMG 定义的软件资产封装与交换标准。 |
+| Return on Investment | 投资回报率 | ROI | 衡量复用投资经济效益的指标。 |
+
+### S
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Safety Element out of Context | 上下文外安全元素 | SEooC | 在未知具体应用环境下开发、需集成时验证假设的安全元素。 |
+| Safety Integrity Level | 安全完整性等级 | SIL | IEC 61508 中定义的离散等级，用于规定安全功能所需风险降低程度。 |
+| Serverless | 无服务器 | — | 由云提供商管理基础设施、按事件计费的计算模式。 |
+| Software Bill of Materials | 软件物料清单 | SBOM | 软件组件及其依赖的清单。 |
+| Supply-chain Levels for Software Artifacts | 软件工件供应链等级 | SLSA | 用于评估软件供应链安全性的框架。 |
+| Secure Software Development Framework | 安全软件开发框架 | SSDF | NIST SP 800-218 定义的软件开发安全实践框架。 |
+| System of Systems | 系统之系统 | SoS | 独立运作系统通过协作形成更大能力的复杂系统。 |
+
+### T
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Time-Sensitive Networking | 时间敏感网络 | TSN | IEEE 802.1 工作组定义的确定性以太网技术。 |
+| The Open Group Architecture Framework | 开放组织架构框架 | TOGAF | The Open Group 的企业架构框架。 |
+
+### V
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| Value Stream | 价值流 | — | 为客户创造价值的一系列端到端活动。 |
+| Verification and Validation | 验证与确认 | V&V | 确认产品满足规约并满足用户需求的系列活动。 |
+
+### W
+
+| English Term | 中文术语 | Abbreviation | 一句话定义 |
+|---|---|---|---|
+| WebAssembly | WebAssembly | WASM | 可移植、高性能的二进制指令格式。 |
+| WebAssembly System Interface | WebAssembly 系统接口 | WASI | 为 WASM 提供标准化系统接口的模块化 API。 |
+| Web Interface Type | Web 接口类型 | WIT | WebAssembly Component Model 的接口定义语言。 |
+
+---
+
+## 3. 使用说明
+
+1. 本表为**核心术语快速参考**，详细定义、属性、关系与示例请见 `glossary-master.md`。
+2. 英文术语优先采用国际标准或权威组织的官方英文名称。
+3. 新增术语时应同时补充英文名称、缩写与一句话定义。
+
+---
+
+## 4. 权威来源
+
+- ISO/IEC/IEEE 42010:2022
+- TOGAF Standard, 10th Edition
+- ISO/IEC 25010:2023
+- IEC 61508, IEC 63278
+- Model Context Protocol Specification
+- WebAssembly Component Model Specification
+- 核查日期：2026-07-08
+
+---
+
+## 5. 反例
+
+**反例 1**：术语翻译不统一。某团队将 "Reference Architecture" 时而译为"参考架构"，时而译为"引用架构"，导致文档与工具配置不一致。
+
+**反例 2**：缩写未解释。文档中直接使用 "SEooC" 但未给出中文全称与定义，新成员难以理解。
+
+---
+
+## 6. 分析
+
+统一的双语术语表是知识国际化与团队协作的基础。缺乏术语治理的国际化内容会引入新的歧义，反而降低知识可信度。
+
+---
+
+## 相关文档
+
+- [`glossary-master.md`](../struct/99-reference/glossary/glossary-master.md) — 主术语表，含详细定义、属性、关系与示例
+- [`terminology-crosswalk.md`](../struct/99-reference/glossary/terminology-crosswalk.md) — 跨主题术语对照
+- [`cross-topic-index.md`](../struct/99-reference/glossary/cross-topic-index.md) — 跨主题索引
+
+---
+
+> **最后更新**: 2026-07-08
+
+
+---
+
+
 <!-- SOURCE: struct/99-reference/glossary/glossary-master.md -->
 
 
@@ -7308,6 +7528,185 @@ M.3 (层次不可约性)
 ## 分析
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
+
+
+---
+
+
+<!-- SOURCE: struct/99-reference/knowledge-graph/README.md -->
+
+# 架构复用知识图谱
+
+> **定位**：`struct/99-reference/knowledge-graph/` 是《软件工程架构复用视角》的**语义知识图谱产物目录**，将 300+ 篇 Markdown 结构化内容转化为可查询、可验证、可推理的 RDF/OWL 图数据。
+> **维护**：所有 `.jsonl` 与 `.ttl` 文件由 `tools/knowledge-extractor.py` 与 `tools/kg-builder.py` 自动生成，请勿手动修改；请在源 Markdown 中修正内容后重新生成。
+
+---
+
+## 1. 核心概念定义
+
+| 概念 | 定义 | 对应 RDF 元素 |
+|------|------|---------------|
+| **知识图谱（Knowledge Graph）** | 以图形式组织的语义知识集合，节点为实体，边为关系，支持机器可读与推理。 | `kg.ttl` 中的三元组集合 |
+| **本体（Ontology）** | 对领域概念及其关系的显式形式化规范，用于统一实体类型与属性。 | `arch-reuse-ontology.ttl` 中的 `owl:Class` / `owl:ObjectProperty` |
+| **实体（Entity）** | 知识图谱中的节点，如术语、标准、文件、主题、案例、组织等。 | `ar:entity/*` 资源 |
+| **关系（Relation）** | 实体之间的语义边，如“定义”“引用”“属于”“提供正例/反例”。 | `aro:defines`、`aro:references` 等对象属性 |
+| **SHACL 验证** | W3C 形状约束语言，用于检查图谱数据是否满足最小标签、类型一致性等规则。 | `kg-shacl-report.md` |
+
+本目录采用 [W3C RDF 1.1](https://www.w3.org/TR/rdf11-concepts/)、[Turtle](https://www.w3.org/TR/turtle/)、[OWL 2](https://www.w3.org/TR/owl2-overview/) 与 [SHACL](https://www.w3.org/TR/shacl/) 作为图谱与约束标准。
+
+---
+
+## 示例：当前图谱规模
+
+```text
+kg.ttl            # 101,190+ 三元组
+kg-entities.jsonl # 19,041 实体
+kg-relations.jsonl# 7,715 关系
+覆盖文件          # 325 篇 struct/ 下 Markdown
+通过 SHACL 验证   # ✅ Conforms: True
+```
+
+### 2.1 实体类型分布
+
+| 类型 | 数量 | 说明 |
+|------|------|------|
+| `Term` | 17,997 | 从标题、加粗术语、表格中抽取的核心概念 |
+| `File` | 641 | Markdown 源文件节点 |
+| `Standard` | 345 | ISO、TOGAF、ArchiMate 等标准/框架 |
+| `Organization` | 32 | 标准组织或厂商 |
+| `Topic` | 14 | 13 个一级主题 + 99-reference |
+| `Protocol` | 12 | 协议规范（如 MCP、A2A、OPC UA FX） |
+
+### 2.2 关系类型分布
+
+| 关系 | 数量 | 含义 |
+|------|------|------|
+| `defines` | 2,312 | 文件定义了某术语 |
+| `providesNegativeExample` | 1,944 | 文件提供反例/反模式 |
+| `providesPositiveExample` | 1,482 | 文件提供正向案例 |
+| `references` | 572 | 文件引用某标准 |
+| `belongsTo` | 323 | 文件属于某主题 |
+
+完整统计参见：[知识抽取质量报告](../reports/kg-extraction-report.md)。
+
+---
+
+## 反例与边界：抽取范围与已知限制
+
+### 3.1 不抽取的内容
+
+- **代码片段与命令行**：例如 `docker build`、`tla+` 代码块仅作为上下文，不生成独立实体。
+- **纯叙事段落**：无显式加粗、标题或表格标记的段落，通常不会抽取术语，避免噪音。
+- **跨文件同义术语**：同一概念在不同文件中的不同写法（如“微服务” vs. “Microservices”）目前作为独立实体，需后续本体对齐。
+
+### 3.2 典型反例：错误抽取的后果
+
+> 若不加约束地把所有加粗词都视为术语，会把“**注意**”“**结论**”等通用词也纳入图谱，导致实体膨胀、查询噪声高。
+
+当前实现通过以下规则抑制此类反例：
+
+1. 跳过长度小于 2 或仅含标点的片段。
+2. 跳过出现在模板提示语中的高频填充词。
+3. 对表格术语优先结合表头语义，避免孤立抽取。
+
+---
+
+## 权威来源
+
+- **图谱标准**：W3C RDF 1.1、Turtle、OWL 2、SHACL。
+- **领域标准来源**：本图谱中的 `Standard` 实体均链接到 `struct/99-reference/standards-index/` 下的权威来源矩阵，详见：
+  - [国际标准与权威来源索引 v2.3](../struct/99-reference/standards-index/authoritative-sources-v2.md)
+  - [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
+- **术语来源**：核心术语定义参考：
+  - [核心术语英中对照表](../struct/99-reference/glossary/glossary-bilingual.md)
+  - [跨标准术语对照表](../struct/99-reference/glossary/terminology-crosswalk.md)
+  - [术语总表](../struct/99-reference/glossary/glossary-master.md)
+
+---
+
+## 交叉引用
+
+- **抽取脚本**：[../tools/knowledge-extractor.py](../struct/99-reference/tools/knowledge-extractor.py)
+- **图谱构建脚本**：[../tools/kg-builder.py](../struct/99-reference/tools/kg-builder.py)
+- **查询接口**：[../tools/kg-query.py](../struct/99-reference/tools/kg-query.py)
+- **形式化本体**：[arch-reuse-ontology.ttl](../struct/99-reference/knowledge-graph/arch-reuse-ontology.ttl)
+- **实例图谱**：[kg.ttl](../struct/99-reference/knowledge-graph/kg.ttl)
+- **SHACL 验证报告**：[../../../reports/kg-shacl-report.md](../reports/kg-shacl-report.md)
+- **抽取质量报告**：[../../../reports/kg-extraction-report.md](../reports/kg-extraction-report.md)
+
+---
+
+## 思维表征：本体类图
+
+```mermaid
+classDiagram
+    class Entity
+    class Term
+    class Standard
+    class Protocol
+    class CaseStudy
+    class Tool
+    class Topic
+    class File
+    class Organization
+    class Axiom
+    class Theorem
+
+    Term --|> Entity
+    Standard --|> Entity
+    Protocol --|> Entity
+    CaseStudy --|> Entity
+    Tool --|> Entity
+    Topic --|> Entity
+    File --|> Entity
+    Organization --|> Entity
+    Axiom --|> Entity
+    Theorem --|> Entity
+
+    File --> Term : defines
+    File --> Standard : references
+    File --> Topic : belongsTo
+    File --> CaseStudy : providesPositiveExample
+    File --> CaseStudy : providesNegativeExample
+    Standard --> Tool : implementedBy
+    Term --> Term : relatedTo
+```
+
+---
+
+## 快速查询示例
+
+```bash
+# 图谱统计
+python struct/99-reference/tools/kg-query.py stats
+
+# 列出所有标准
+python struct/99-reference/tools/kg-query.py list-standards
+
+# 搜索术语
+python struct/99-reference/tools/kg-query.py search-term "TOGAF"
+
+# 自定义 SPARQL
+python struct/99-reference/tools/kg-query.py sparql "SELECT ?s ?label WHERE { ?s a aro:Standard ; rdfs:label ?label } LIMIT 10"
+```
+
+---
+
+## 设计论证：为何采用 RDF/OWL + SHACL
+
+| 方案 | 优点 | 缺点 | 本项目选择 |
+|------|------|------|-----------|
+| 纯 JSON 关系表 | 简单、易读 | 缺乏语义标准，难以跨工具复用与推理 | ❌ |
+| 关系型数据库 | 事务与查询成熟 | 模式 rigid，难以表达任意实体关系 | ❌ |
+| RDF/OWL + SHACL | 语义标准、可扩展、支持 SPARQL 与推理、可验证 | 学习曲线略高 | ✅ |
+
+采用 RDF/OWL 后，知识图谱可直接被 Protégé、GraphDB、Apache Jena 等工具加载；SHACL 约束则保证每次生成的图谱都满足最低数据质量，避免空标签、缺失类型等问题进入下游 RAG 与问答系统。
+
+---
+
+> **生成时间**: 2026-07-08
+> **生成工具**: `knowledge-extractor.py` / `kg-builder.py`
+> **许可证**: 与本仓库一致
 
 
 ---
@@ -9359,7 +9758,7 @@ graph TD
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **MCP** | 2025-11-25 | **现行稳定版** | <https://modelcontextprotocol.io/specification/2025-11-25> | Model Context Protocol；已捐给 Linux Foundation Agentic AI Foundation |
-| **MCP** | 2026-07-28 | **Release Candidate（RC），最终版预计 2026-07-28 发布** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
+| **MCP** | 2026-07-28 | **Release Candidate（RC）已发布（2026-05-29）；最终版预计 2026-07-28** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
 | **A2A** | **v1.0.0** | **已发布** | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google Cloud Next 2026-04 GA；Signed Agent Cards / AP2 |
 | **NIST AI RMF** | 1.0 | 已发布 | <https://www.nist.gov/itl/ai-risk-management-framework> | AI 风险管理框架 |
 | **NIST AI 600-1** | — | 已发布 | <https://www.nist.gov/artificial-intelligence/ai-600-1> | AI 红队测试 |
