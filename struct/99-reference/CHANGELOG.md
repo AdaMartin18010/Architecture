@@ -281,6 +281,9 @@
 
 ---
 
+
+> **2026-07-08 后续说明**：经 The Open Group 官方发布页面确认，[ArchiMate 4 Specification 已于 2026-04-27 正式发布](https://www.opengroup.org/archimate-licensed-downloads)（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。本 2026-06-08 条目中的“发布声明撤回”结论已被纠正；项目已统一采用正式发布表述。
+>
 ## 2026-06-06 Phase 1.5 修复（用户确认 1A/2A/3A/4A/5A 后执行）
 
 ### 修复内容
@@ -331,7 +334,7 @@
 - `99-reference/tools/terminology-query.py` — 跨标准术语查询 CLI（ISO 42010 / ISO 25010 / TOGAF / SLSA / MCP / A2A）
 - `99-reference/tools/cocomo-calculator.py` — COCOMO II 复用模型 2026 版计算器
 - `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` — 基于 **Conformal Prediction** 的 AI 功能概率契约校准工具，输出 P(correctness) ≥ 1-α 的统计保证
-- `06-cross-layer-governance/03-maturity-models/assessment-tool.py` — 基于 **ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL** 的复用成熟度评估问卷 CLI，生成分维度雷达图和总体成熟度报告
+- `06-cross-layer-governance/03-maturity-models/assessment-tool.py` — 基于 **ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL** 的复用成熟度评估问卷 CLI，生成分维度雷达图和总体成熟度报告（26566 提供产品线纹理方法/工具能力支撑）
 
 ### 更新的 README/状态
 

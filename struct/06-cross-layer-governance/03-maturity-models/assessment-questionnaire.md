@@ -3,7 +3,7 @@
 > **文档编号**: SAR-MAQ-2026-0606
 > **版本**: 2026-06-06
 > **定位**: Track C — 06 跨层复用治理 / 成熟度评估工具
-> **对齐框架**: ISO/IEC 26566:2026 · RCMM · RiSE-RM · NASA RRL
+> **对齐框架**: ISO/IEC 26565:2026（产品线成熟度框架） · RCMM · RiSE-RM · NASA RRL；ISO/IEC 26566:2026（产品线纹理方法/工具能力）提供纹理管理支撑
 > **适用对象**: 软件工程组织、架构治理团队、平台工程部门、质量保障团队
 
 ---
@@ -14,7 +14,7 @@
 
 | 来源 | 全称/说明 | 在本问卷中的体现 |
 |------|----------|----------------|
-| **ISO/IEC 26566:2026** | 软件产品线 — 复用过程评估与成熟度框架 | 组织治理维度、过程域定义、等级划分逻辑 |
+| **ISO/IEC 26565:2026** | 软件和系统工程 — 产品线成熟度框架的方法与工具能力 | 组织治理维度、过程域定义、等级划分逻辑 |
 | **RCMM** | Reuse Capability Maturity Model (Jasmine & Vasantla) | 五级复用成熟度定义、关键实践映射、资产质量管理 |
 | **RiSE-RM** | RiSE Reference Model (Garcia, 2010) | 过程域结构（领域工程、应用工程、变型管理）、社区与培训维度 |
 | **NASA RRL** | Reuse Readiness Levels (NASA ESDS, 2010) | 资产质量维度（文档、模块化、可移植性、验证与测试）、IP 合规、SBOM 要求 |
@@ -139,7 +139,7 @@
 | Q4.4 | 团队成员能够熟练使用资产搜索和发现工具（如 Backstage、Nexus、内部搜索引擎）在 5 分钟内定位所需组件。 | | |
 | Q4.5 | 组织每年至少举办一次黑客松（Hackathon）或创新活动，专门设立复用创新赛道，推动资产共创。 | | |
 | Q4.6 | 复用最佳实践和 Golden Path 被文档化，并作为新员工入职培训和技术晋升（如 L3→L4）的必修内容。 | | |
-| Q4.7 | 核心架构师/领域工程师具备资产设计、领域建模或相关框架（如 RCMM、RiSE-RM、ISO 26566）的系统化知识。 | | |
+| Q4.7 | 核心架构师/领域工程师具备资产设计、领域建模或相关框架（如 RCMM、RiSE-RM、ISO 26565/26566）的系统化知识。 | | |
 | Q4.8 | 员工在绩效考核（Performance Review）中被明确评估其对复用资产的贡献（提交、维护、推广）和采用率。 | | |
 | Q4.9 | 组织设有明确的复用贡献激励机制（如 InnerSource 贡献积分、晋升加分、物质奖励、内部表彰）。 | | |
 | Q4.10 | 跨团队轮岗或交流机制（如轮岗 3–6 个月）促进复用知识、最佳实践和架构共识在组织内传播。 | | |
@@ -242,7 +242,7 @@
 
 ## 6. 改进建议矩阵
 
-> 本矩阵将 RCMM、RiSE-RM 和 ISO/IEC 26566:2026 的关键实践映射为「当前级别 → 下一级别」的具体行动项，供治理委员会直接引用。
+> 本矩阵将 RCMM、RiSE-RM 和 ISO/IEC 26565:2026 的关键实践映射为「当前级别 → 下一级别」的具体行动项，供治理委员会直接引用。
 
 ### Level 1 (初始) → Level 2 (管理)
 
@@ -315,7 +315,7 @@
 
 ### 附录 C：参考文献
 
-1. ISO/IEC 26566:2026, *Software and systems engineering — Software reuse processes, assessment and maturity model*, ISO, 2026.
+1. ISO/IEC 26565:2026, *Software and systems engineering — Methods and tools for product line maturity framework*, ISO, 2026.
 2. Jasmine, K. S. & Vasantla, V. *Reuse Capability Maturity Model (RCMM)*. 基于 CMMI 的复用特定成熟度框架。
 3. Garcia, V. C. et al. (2010). *RiSE Reference Model (RiSE-RM)*. RiSE Labs, Brazil. 系统化复用采用的过程域与成熟度模型。
 4. NASA Earth Science Data Systems (ESDS) Software Reuse Working Group (2010). *Reuse Readiness Levels (RRLs) as a Measure of Software Reusability*. NASA/TM—2010-216581. 包含 9 级通用定义与 9 个主题领域（Documentation, Extensibility, IP, Modularity, Packaging, Portability, Standards Compliance, Support, Verification and Testing）。
@@ -344,5 +344,5 @@
 > **权威来源**:
 >
 > - [NASA RRL](https://www.nasa.gov)
-> - [ISO/IEC 26566:2026](https://www.iso.org)
+> - [ISO/IEC 26565:2026](https://www.iso.org/standard/81436.html) 产品线成熟度框架
 > - 核查日期：2026-07-07

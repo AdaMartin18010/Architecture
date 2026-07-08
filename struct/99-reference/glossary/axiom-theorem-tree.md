@@ -329,12 +329,12 @@
 >
 > 形式化: Governance(Reuse) ≠ ∅ ∧ Metrics(Governance) ≠ ∅ ⟹ Sustainable(Reuse)
 >
-> 依据: ISO/IEC 26566:2026, NASA RRL
+> 依据: ISO/IEC 26565:2026（产品线成熟度框架）, NASA RRL
 
 **定理 6.2** (Maturity-Scale Correspondence)
 > 复用成熟度的提升与组织规模的扩大呈正相关，但存在**最优规模点**：超过该点后，治理成本的增长速度超过复用收益。
 >
-> 依据: RiSE/RCMM 实证研究, ISO 26566 案例数据
+> 依据: RiSE/RCMM 实证研究, ISO 26565 案例数据
 
 ### 4.2 价值量化 (09)
 

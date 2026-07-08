@@ -70,7 +70,7 @@
 1. **元模型层**：以 ISO/IEC/IEEE 42010:2022 为概念地基，整合 TOGAF 10、ArchiMate 3.2、ISO 26550:2015 产品线工程模型，建立统一的复用术语体系与 20 条形式化公理；
 2. **层次层**：逐层分析业务能力（FEA BRM）、云原生应用（CNCF/NIST SP 800-204）、组件接口契约（Design by Contract）、AI 功能协议（MCP 2025-11-25 / A2A v1.0.0）的复用机制与反模式；
 3. **验证层**：运用 TLA+、Alloy、Coq/Isabelle、Rust 类型系统、SPARK/Ada 等形式化方法，构建从分布式协议到内存安全的多层次正确性保证框架；
-4. **治理与量化层**：建立基于 ISO/IEC 26566:2026 的五级成熟度模型、COCOMO II 2026 校准版的 ROI 计算模型，以及 NASA-TLX 适配版的认知负荷评估方法。
+4. **治理与量化层**：建立基于 ISO/IEC 26565:2026 的五级成熟度模型（26566 提供产品线纹理方法/工具能力支撑）、COCOMO II 2026 校准版的 ROI 计算模型，以及 NASA-TLX 适配版的认知负荷评估方法。
 
 **【主要贡献】**
 
@@ -96,7 +96,7 @@
 1. **Meta-model layer**: Uses ISO/IEC/IEEE 42010:2022 as the conceptual foundation, integrating TOGAF 10, ArchiMate 3.2, and ISO 26550:2015 product-line engineering to establish a unified terminology system and 20 formal axioms;
 2. **Layer-wise analysis**: Examines reuse mechanisms and anti-patterns for business capabilities (FEA BRM), cloud-native applications (CNCF / NIST SP 800-204), component interface contracts (Design by Contract), and AI function protocols (MCP 2025-11-25 / A2A v1.0.0);
 3. **Formal verification**: Employs TLA+, Alloy, Coq/Isabelle, Rust type systems, and SPARK/Ada to construct a multi-level correctness assurance framework spanning distributed protocols to memory safety;
-4. **Governance & quantification**: Proposes a five-level maturity model aligned with ISO/IEC 26566:2026, a COCOMO II 2026-calibrated ROI model, and a NASA-TLX-adapted cognitive load assessment method.
+4. **Governance & quantification**: Proposes a five-level maturity model aligned with ISO/IEC 26565:2026 (26566 provides product line texture methods/tool capabilities), a COCOMO II 2026-calibrated ROI model, and a NASA-TLX-adapted cognitive load assessment method.
 
 **Contributions.**
 
@@ -274,9 +274,9 @@
 
 | # | 核心论点 | 权威来源 | SAR-KB 支撑文件 |
 |---|---------|---------|----------------|
-| 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
-| 06-2 | **五级成熟度模型**：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26566:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
-| 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
+| 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26565:2026（产品线成熟度框架）; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
+| 06-2 | **五级成熟度模型**：整合 ISO/IEC 26565:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26565:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
+| 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26565:2026（产品线成熟度框架）; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
 | 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO/IEC/IEEE 42020:2019 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
 
 ### 3.7 形式化验证（07）
@@ -454,10 +454,10 @@
 
 | 英文术语 | 中文术语 | 来源标准 / 文献 |
 |---------|---------|----------------|
-| Cross-Layer Governance | 跨层复用治理 | ISO/IEC 26566:2026 |
-| Reuse Maturity Model | 复用成熟度模型 | ISO/IEC 26566:2026; RiSE; RCMM |
+| Cross-Layer Governance | 跨层复用治理 | ISO/IEC 26565:2026（产品线成熟度框架） |
+| Reuse Maturity Model | 复用成熟度模型 | ISO/IEC 26565:2026; RiSE; RCMM |
 | Reusability Requirement Level (RRL) | 复用需求等级 | NASA RRL |
-| Reuse Rate / Reuse Ratio | 复用率 | NASA RRL; ISO 26566 |
+| Reuse Rate / Reuse Ratio | 复用率 | NASA RRL; ISO 26565 |
 | Adaptation Adjustment Factor (AAF) | 改编调整因子 | COCOMO II (Boehm et al.) |
 | Equivalent Source Lines of Code (ESLOC) | 等价源代码行数 | COCOMO II |
 | Return on Investment (ROI) of Reuse | 复用投资回报率 | COCOMO II; FinOps |

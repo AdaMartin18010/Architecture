@@ -146,7 +146,7 @@ flowchart TD
 
 > **对齐验证**:
 >
-> - 升级矩阵对照 ISO/IEC 26566:2026 成熟度转换指南验证
+> - 升级矩阵对照 ISO/IEC 26565:2026 产品线成熟度框架转换指南验证
 > - 降级矩阵对照 Netflix/CNCF 服务拆分最佳实践验证
 > - 经济分析对照 COCOMO II (USC) 和 NASA RRL 成本模型验证
 >
@@ -236,7 +236,7 @@ graph TB
 
 - **上位概念**：跨层复用治理框架、IT governance；
 - **下位概念**：升级矩阵、降级矩阵、触发条件、兼容性评估；
-- **等价/映射概念**：ISO/IEC 26566:2026 成熟度转换指南、Netflix 服务拆分决策框架；
+- **等价/映射概念**：ISO/IEC 26565:2026 产品线成熟度框架转换指南、Netflix 服务拆分决策框架；
 - **依赖概念**：复用率、耦合度、SLA、安全等级、FinOps 单位成本。
 
 ### 7.4 正例：支付中台从应用服务升级为业务服务
@@ -363,8 +363,8 @@ sequenceDiagram
 > |------|-----|----------|
 > | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-07 |
 > | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-07 |
-> | ISO/IEC 26566:2026 — Software product lines — Reuse process assessment and maturity framework | <https://www.iso.org/standard/43092.html> | 2026-07-07 |
-> | ISO/IEC 26565:2026 — Software and systems product line engineering — Maturity model | <https://www.iso.org/standard/43091.html> | 2026-07-07 |
+> | ISO/IEC 26566:2026 — Software and systems engineering — Methods and tools for product line texture | <https://www.iso.org/standard/81437.html> | 2026-07-08 |
+> | ISO/IEC 26565:2026 — Software and systems engineering — Methods and tools for product line maturity framework | <https://www.iso.org/standard/81436.html> | 2026-07-08 |
 > | CNCF — Service Mesh Interface (SMI) and Microservices Governance | <https://www.cncf.io/projects/> | 2026-07-07 |
 > | Netflix Tech Blog — Mastering Chaos: A Netflix Guide to Microservices | <https://netflixtechblog.com/tagged/microservices> | 2026-07-07 |
 
@@ -393,5 +393,5 @@ sequenceDiagram
 >
 > - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
 > - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
-> - [ISO/IEC 26566:2026](https://www.iso.org/standard/43092.html)
+> - [ISO/IEC 26566:2026](https://www.iso.org/standard/81437.html) 产品线纹理方法/工具能力
 > - 核查日期：2026-07-07

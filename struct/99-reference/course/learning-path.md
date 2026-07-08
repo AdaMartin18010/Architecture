@@ -69,7 +69,7 @@
 - [跨层复用治理框架](../../06-cross-layer-governance/01-process-governance/cross-layer-governance.md)
 - [02 复用过程治理（Reuse Process Governance）](../../06-cross-layer-governance/02-reuse-process/README.md)
 - [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../../06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
-- [ISO/IEC 26565:2026 & 26566:2026 正式版与复用成熟度对齐](../../06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
+- [ISO/IEC 26565:2026 & 26566:2026 正式版与产品线成熟度/纹理管理对齐](../../06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
 - [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../../06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
 - … 共 23 个文件
 
@@ -144,3 +144,22 @@
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../../99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../../99-reference/audit/cross-reference-audit.md)
 - … 共 51 个文件
+---
+
+## 定义
+
+**定义**：学习路径是面向不同角色读者的递进式学习顺序，帮助读者从基础概念逐步深入到特定垂直领域的复用工程实践。
+
+## 示例
+
+**示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
+
+## 反例
+
+**反例**：跳过元模型与标准对齐直接学习 MCP/A2A 协议，会导致复用设计缺乏统一术语、视点与治理基线，最终形成难以集成的局部约定。
+
+## 权威来源
+
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - 核查日期：2026-07-08

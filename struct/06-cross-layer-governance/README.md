@@ -6,17 +6,17 @@
 
 ## 核心内容
 
-- 复用治理的国际标准框架（42020/42030/25010/26566）
-- 复用成熟度五级模型（整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL）
+- 复用治理与产品线纹理的国际标准框架（42020/42030/25010/26565 产品线成熟度框架 / 26566 产品线纹理）
+- 复用成熟度五级模型（以 ISO/IEC 26565:2026 产品线成熟度框架为基准，整合 RiSE / RCMM / NASA RRL；26566 提供产品线纹理方法/工具能力支撑）
   - Level 1: 初始 (Initial) → Level 5: 优化 (Optimizing)
 - 跨层复用的升级/降级决策矩阵
 - 复用度量指标体系（资产级/项目级/组织级/生态级）
 - FinOps 跨层复用成本模型
-- 复用成熟度评估问卷（基于 ISO/IEC 26566:2026）
+- 复用成熟度评估问卷（基于 ISO/IEC 26565:2026 产品线成熟度框架）
 
 ## 权威对齐
 
-- [ISO/IEC 26566:2026](https://www.iso.org) 成熟度框架
+- [ISO/IEC 26565:2026](https://www.iso.org/standard/81436.html) 产品线成熟度框架 | [ISO/IEC 26566:2026](https://www.iso.org/standard/81437.html) 产品线纹理方法/工具能力
 - [NASA RRL (Reuse Readiness Levels)](https://www.nasa.gov)
 - [FinOps Foundation](https://www.finops.org)
 - [Backstage IDP](https://backstage.io) (内部开发者平台)
@@ -31,7 +31,7 @@
 - [x] 度量指标体系框架
 - [x] 复用度量指标体系四级框架 (`05-metrics-kpi/metrics-framework.md`)
 - [x] FinOps 跨层成本分摊模板 (Markdown + Python/Excel导出) (`04-finops-cost/cost-allocation-template.md` + `04-finops-cost/templates/finops-exporter.py`)
-- [x] 复用成熟度可执行评估问卷 (Python CLI) (`03-maturity-models/reuse-maturity-assessment-cli.py`，基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL)
+- [x] 复用成熟度可执行评估问卷 (Python CLI) (`03-maturity-models/reuse-maturity-assessment-cli.py`，基于 ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL（26566 提供产品线纹理方法/工具能力支撑）)
 - [ ] FinOps 成本分摊工具模板 Python/Excel 实现 (P1, 2026-Q4)
 
 ## 子目录导航

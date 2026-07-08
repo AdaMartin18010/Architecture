@@ -26,7 +26,7 @@
     - [2.2 技术生态差距](#22-技术生态差距)
     - [2.3 学术/会议前沿差距](#23-学术会议前沿差距)
   - [第三部分：事实准确性审计（严重问题）](#第三部分事实准确性审计严重问题)
-    - [3.1 ArchiMate 4.0 发布声明不实](#31-archimate-40-发布声明不实)
+    - [3.1 ArchiMate 4.0 发布状态（已正式发布）](#31-archimate-40-发布状态已正式发布)
     - [3.2 MCP 版本号引用混乱](#32-mcp-版本号引用混乱)
     - [3.3 不实学者引用（CP + 形式化验证方向，HOTFIX-3）](#33-不实学者引用cp--形式化验证方向hotfix-3)
     - [3.4 Warg Registry 状态过时](#34-warg-registry-状态过时)
@@ -154,7 +154,7 @@
 |:---|:---|:---|:---|
 | **ISO/IEC 25010** | ~~2023 版~~ → **2024 版** | **2024 版已发布**（取代 2011 版） | 版本号已更新；2024 版新增 AI/ML 质量考量 |
 | **IEEE 1517** | 声称已映射 | 2010 版生效，但 12207:2017 已覆盖复用过程 | 需明确对照 12207:2017 的复用过程 |
-| **ArchiMate** | 声称 4.0 于 2026-04-27 发布 | **The Open Group 官方仍为 3.2** | ⚠️ **事实错误**（见第三部分） |
+| **ArchiMate** | 声称 4.0 于 2026-04-27 发布 | **The Open Group 官方已确认发布（Document C260）** | ✅ 已纠正（见第三部分更新） |
 
 #### B. 项目未覆盖或覆盖不足的标准
 
@@ -199,9 +199,9 @@
 
 ## 第三部分：事实准确性审计（严重问题）
 
-### 3.1 ArchiMate 4.0 发布声明不实
+### 3.1 ArchiMate 4.0 发布状态（已正式发布）
 
-**问题描述**：项目在至少 8 个文件中声称 "ArchiMate 4.0 已于 2026-04-27 正式发布"，包括：
+**状态说明**：经 The Open Group 官方发布页面确认，ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。此前 2026-06-08 审计报告因官网信息滞后，误判为“虚假发布声明”；该结论已在 2026-06-12 及后续复核中纠正。涉及文件包括：
 
 - `view/software_architecture_reuse_full_2026.md`
 - `view/software_architecture_reuse_extension_2026.md`
@@ -212,21 +212,21 @@
 - `struct/99-reference/book-outline.md`
 - `struct/07-formal-verification/02-alloy/cross-layer-mapping.md`
 
-**事实核查**：
+**权威来源**：
 
-- The Open Group 官方网站 (`opengroup.org/archimate-forum/archimate-overview`) 明确声明最新版本为 **3.1**
-- 所有官方下载/许可仅针对 **ArchiMate 3.2**
-- Cybermedian (2026-02-27) 报道："the current standard remaining ArchiMate 3.2 (2022)"
-- Visual Paradigm 等工具厂商标注为 **Pre-Release**，非正式发布
+- The Open Group 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
+- The Open Group 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+- 白皮书 W262：*The Motivation for Changes in the ArchiMate 4 Specification*
+- 与 ArchiMate 3.2（Document C226, October 2022）向后兼容
 
-**影响**：⚠️ **高** — 传播不存在的标准版本，严重损害知识产品的权威性。读者若按此引用进行企业架构规划，将基于虚假标准信息做决策。
+**说明**：⚠️ 早期审计因官网信息滞后产生误判；项目已按官方发布页面纠正表述，并在所有 ArchiMate 4.0 引用处补充官方来源链接。
 
 **修正建议**：
 
-1. 立即在所有文件中回退 "ArchiMate 4.0 已正式发布" 声明
-2. 改为："ArchiMate 4.0 处于已正式发布/预览阶段，The Open Group 官方当前稳定版仍为 3.2"
-3. 在 `01-meta-model-standards/04-archimate-4/` 中增加 `ARCHIMATE-4-ERRATUM.md` 勘误文件
-4. 更新 `99-reference/CHANGELOG.md` 记录此勘误
+1. 统一使用“ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”
+2. 在 ArchiMate 4.0 引用处补充官方来源：<https://www.opengroup.org/archimate-licensed-downloads>、<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+3. 保留历史勘误记录于 `99-reference/CHANGELOG.md` 与 `view/` 历史文档
+4. 持续跟踪 The Open Group 官方页面与工具厂商的过渡状态
 
 ### 3.2 MCP 版本号引用混乱
 

@@ -13,9 +13,9 @@
 | **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
 | **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
 | **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
-| **组件** | ISO 26566:2026 | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
+| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
-| **治理** | ISO 26566:2026 | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
+| **治理** | ISO 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
@@ -39,7 +39,7 @@
 | **TOGAF 10** | ★★★★☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ |
 | **ArchiMate 3.2+** | ★★★☆☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
 | **ISO 26550:2015** | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
-| **ISO 26566:2026** | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
+| **ISO 26566:2026**（产品线纹理） | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **IEEE 1517** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **FEA 2.0** | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **BPMN 2.0** | ★★☆☆☆ | ★★★★★ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
@@ -191,7 +191,7 @@
 |------|---------|---------|-------------|-----------|
 | ISO/IEC/IEEE DIS 42024 | 草案 | 预计 2026–2027 发布 | 元模型层定义需更新 | TBD |
 | ISO/IEC/IEEE DIS 42042 | 草案 | 预计 2026–2027 发布 | 参考架构规范补充 | TBD |
-| **ArchiMate 4.0** | **已正式发布（2026-04-27，Document C260）** | **正式发布内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation；与 3.2 向后兼容** | 已更新对应映射文档 | TBD |
+| **ArchiMate 4.0** | **[已正式发布（2026-04-27，Document C260）](https://www.opengroup.org/archimate-licensed-downloads)** | **正式发布内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation；与 3.2 向后兼容** | 已更新对应映射文档 | TBD |
 | **MCP 2025-11-25** | **已发布** | **后续修订由 Linux Foundation Agentic AI Foundation 治理；跟踪 12 个月废弃窗口** | **功能层 AI 协议基线：Tasks、Icons、Sampling with Tools、Elicitation URL、OAuth 增强** | TBD |
 | **A2A v1.0.0** | **已发布 (Cloud Next 2026-04)** | **v1.1 预计 2026 H2** | **Agent 安全签名增强、多租户、gRPC 绑定** | TBD |
 | **OPC UA FX 1.0** | **Parts 80–84 发布** | **C2D/D2D 完善中** | **工业现场层复用：UADP 极简头、GCL 时隙对齐** | TBD |
@@ -230,7 +230,7 @@
 3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
 4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。
-6. **[ISO 26566:2026]** ISO/IEC, *Software and systems engineering — Software reuse — Reuse governance*, 2026 — 验证治理层核心标准状态。
+6. **[ISO 26566:2026]** ISO/IEC, *Software and systems engineering — Methods and tools for product line texture*, 2026 — 验证产品线纹理方法/工具能力状态。
 7. **[TLA+ / TLA+ Hyperbook]** Leslie Lamport, *The TLA+ Hyperbook*, Microsoft Research. <https://lamport.azurewebsites.net/tla/tla.html> — 验证 TLA+ 在分布式协议与并发安全验证中的定位。
 8. **[SPARK Pro / AdaCore]** AdaCore, *SPARK Pro*, <https://www.adacore.com/about-spark> — 验证 SPARK/Ada 在安全关键软件（DO-178C / SIL 4）中的工具成熟度。
 9. **[B Method / Atelier B]** Clearsy, *Atelier B*, <https://www.atelierb.eu> — 验证 B Method 在铁路信号系统形式化精化链中的应用。

@@ -1,9 +1,9 @@
-# 国际标准与权威来源索引 v2.2
+# 国际标准与权威来源索引 v2.3
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-08 v2.3
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-07
+> **上次复核**: 2026-07-08
 > **下次复核**: 2026-09-30
 > **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../audit/content-fact-fix-2026-07.md)
 
@@ -11,7 +11,7 @@
 
 ## 目录
 
-- [国际标准与权威来源索引 v2.2](#国际标准与权威来源索引-v22)
+- [国际标准与权威来源索引 v2.3](#国际标准与权威来源索引-v23)
   - [目录](#目录)
   - [使用说明](#使用说明)
   - [架构与软件工程标准](#架构与软件工程标准)
@@ -53,7 +53,7 @@
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
 | **ISO/IEC 25040** | 2024 | 已发布 | <https://www.iso.org/standard/83467.html> | 质量评估框架 |
 | **ISO/IEC 26550** | 2015 | 现行 | <https://www.iso.org/standard/69529.html> | 产品线工程参考模型；**注意：不存在 2025 版** |
-| **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件复用 — 复用治理 |
+| **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
 | **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
 | **IEEE 1517** | 2010 | 现行 | <https://standards.ieee.org/standard/1517-2010.html> | 软件生命周期复用过程 |
@@ -70,7 +70,7 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **TOGAF Standard** | 10th Edition | 现行 | <https://www.opengroup.org/togaf> | The Open Group 企业架构框架 |
-| **ArchiMate** | 4.0 | **已发布（存在官方页面更新滞后争议）** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 发布（Document C260，白皮书 W262）**；部分官方页面/工具厂商仍在过渡，引用时请复核 |
+| **ArchiMate** | 4.0 | **已正式发布（2026-04-27，Document C260，白皮书 W262）** | <https://www.opengroup.org/archimate-licensed-downloads> | The Open Group EA 建模语言；与 ArchiMate 3.2 向后兼容；官方发布公告见 <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | **ArchiMate** | 3.2 | 仍有效 | <https://pubs.opengroup.org/architecture/archimate32-doc/> | 与 4.0 向后兼容 |
 | **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://www.whitehouse.gov/omb/management/egov/> | 美国联邦企业架构参考模型 |
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |

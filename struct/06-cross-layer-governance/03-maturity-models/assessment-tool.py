@@ -3,7 +3,7 @@
 复用成熟度评估问卷 CLI 工具
 
 用途：
-    基于 ISO/IEC 26566:2026、RCMM、RiSE、NASA RRL 五级成熟度模型，
+    基于 ISO/IEC 26565:2026、RCMM、RiSE、NASA RRL 五级成熟度模型，
     通过交互式问卷评估组织的软件复用成熟度，并生成雷达图和报告。
 
 按 SUBSEQUENT_PLAN_2026.md 决策 3A 开发：Python CLI 快速原型
@@ -14,8 +14,8 @@
     python assessment-tool.py --demo
 
 权威来源:
-    - ISO/IEC 26566:2026 (2026-05 正式发布)
-      https://www.iso.org/standard/81437.html
+    - ISO/IEC 26565:2026 (2026-05 正式发布)
+      https://www.iso.org/standard/81436.html
     - NASA RRL (Reuse Readiness Levels)
       https://www.nasa.gov
     - RiSE Reuse Maturity Model
@@ -196,7 +196,7 @@ def ask_questions_interactive() -> Dict[str, List[int]]:
     """交互式提问并收集答案。"""
     print("=" * 70)
     print("软件复用成熟度评估问卷")
-    print("基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL")
+    print("基于 ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL")
     print("=" * 70)
     print("请为每道题选择 1-5 分（1=最低，5=最高），直接按回车默认 3 分。\n")
 
@@ -328,12 +328,12 @@ def print_report(dimension_results: Dict[str, dict], overall_avg: float, overall
     print(f"  1. 优先改进维度: {weakest[1]['name']} (当前 {weakest[1]['average_score']:.2f} 分)")
     if second_weak:
         print(f"  2. 次要改进维度: {second_weak[1]['name']} (当前 {second_weak[1]['average_score']:.2f} 分)")
-    print(f"  3. 参考标准: ISO/IEC 26566:2026, RCMM, RiSE-RM, NASA RRL")
+    print(f"  3. 参考标准: ISO/IEC 26565:2026, RCMM, RiSE-RM, NASA RRL")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="软件复用成熟度评估问卷 CLI（基于 ISO/IEC 26566:2026）"
+        description="软件复用成熟度评估问卷 CLI（基于 ISO/IEC 26565:2026）"
     )
     parser.add_argument(
         "--json-input",
@@ -368,7 +368,7 @@ def main():
 
     # 构建完整报告
     report = {
-        "framework": "ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL",
+        "framework": "ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL",
         "overall_score": round(overall_avg, 2),
         "overall_level": overall_level,
         "overall_level_name": LEVELS[overall_level],

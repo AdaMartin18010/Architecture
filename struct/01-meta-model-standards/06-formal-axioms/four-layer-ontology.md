@@ -7,7 +7,8 @@
 >
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
 > - TOGAF 10: <https://www.opengroup.org/togaf>
-> - ArchiMate: <https://www.opengroup.org/archimate>
+> - ArchiMate 4 Specification (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
+> - ArchiMate 4 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
 > - ISO 26550: <https://www.iso.org/standard/69529.html>
 > **核查日期**: 2026-07-07
 
@@ -335,7 +336,7 @@ flowchart LR
 >
 > - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-> - The Open Group. *ArchiMate® 4 Specification, Document C260*. <https://www.opengroup.org/archimate>
+> - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
 > - Zachman, J. A. (1987). *A Framework for Information Systems Architecture*. IBM Systems Journal.
 >
@@ -446,7 +447,7 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO/IEC
 > - [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
 > - [Enterprise architecture - Wikipedia](https://en.wikipedia.org/wiki/Enterprise_architecture)

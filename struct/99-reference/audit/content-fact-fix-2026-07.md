@@ -25,10 +25,12 @@
 
 ### 复核结论
 
-- **存在独立来源支持 ArchiMate 4 已于 2026-04 发布**（4m4.it 明确引用 Document C260 和白皮书 W262）。
-- 但 The Open Group 官网与部分工具厂商页面更新滞后，导致“是否正式发布”存在争议。
-- **推荐表述**：保留“ArchiMate 4 Specification 已于 2026-04-27 发布（Document C260）”，但增加脚注说明“部分官方页面与工具厂商仍在过渡，实际采用前请核对 The Open Group 最新公告”。
-- **行动**：不强制全项目回退为“未发布”；在所有 ArchiMate 4 引用处统一为上述谨慎表述，并补充来源链接。
+- **复核结论**：经 The Open Group 官方新闻稿与发布页面确认，**ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260, April 2026；白皮书 W262）**，与 ArchiMate 3.2 向后兼容。官方来源：
+  - 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
+  - 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+- 部分工具厂商页面可能存在过渡延迟，但实际采用前应以 The Open Group 官方公告为准。
+- **推荐表述**：统一使用“ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”，并附上述官方来源链接。
+- **行动**：在所有 ArchiMate 4 引用处更新为上述权威表述，补充官方链接。
 
 ---
 

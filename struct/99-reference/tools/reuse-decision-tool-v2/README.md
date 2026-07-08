@@ -159,7 +159,8 @@ reuse-decision-tool-v2/
 - ISO/IEC/IEEE 42010:2022
 - ISO/IEC/IEEE DIS 42042
 - ISO/IEC 25010:2023
-- ISO/IEC 26566:2026
+- ISO/IEC 26565:2026（产品线成熟度框架）
+- ISO/IEC 26566:2026（产品线纹理方法/工具能力）
 - TOGAF Standard 10
 - ArchiMate 3.2
 - SLSA v1.2
@@ -167,7 +168,7 @@ reuse-decision-tool-v2/
 
 ### `maturity_matrix.json`
 
-基于 ISO/IEC 26566:2026 / RCMM / NASA RRL 的 6 维度 × 5 级成熟度问卷：
+基于 ISO/IEC 26565:2026 / RCMM / NASA RRL 的 6 维度 × 5 级成熟度问卷（26566 提供产品线纹理方法/工具能力支撑）：
 
 - D1 复用战略与投资
 - D2 复用过程与管理
@@ -302,7 +303,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 ---
 
 > **最后更新**: 2026-06-10
-> **对齐标准**: ISO/IEC 26566:2026 · ISO 25010:2023 · ISO 42010:2022 · NASA RRL
+> **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO 25010:2023 · ISO 42010:2022 · NASA RRL
 
 
 ---

@@ -1217,7 +1217,7 @@ TOPIC_TEMPLATES: Dict[str, Dict] = {
         "maturity-models": {
             "title": "复用成熟度模型",
             "definition": (
-                "**定义**：复用成熟度模型（如 RCMM、RiSE、NASA RRL、ISO/IEC 26566）"
+                "**定义**：复用成熟度模型（如 RCMM、RiSE、NASA RRL、ISO/IEC 26565）"
                 "用于评估组织在复用战略、过程、资产与度量方面的成熟程度。"
             ),
             "example": (
@@ -1230,7 +1230,7 @@ TOPIC_TEMPLATES: Dict[str, Dict] = {
             ),
             "authority_pairs": [
                 ("NASA RRL", "https://www.nasa.gov"),
-                ("ISO/IEC 26566:2026", "https://www.iso.org"),
+                ("ISO/IEC 26565:2026", "https://www.iso.org/standard/81436.html"),
             ],
             "analysis": (
                 "**分析**：成熟度模型将复用能力量化，为投资优先级与改进路径提供依据。"

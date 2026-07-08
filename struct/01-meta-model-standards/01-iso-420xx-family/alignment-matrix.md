@@ -1,6 +1,6 @@
 # 核心标准对齐矩阵
 
-> **版本**: 2026-06-06
+> **版本**: 2026-07-08
 > **定位**: 将本知识体系的 13 个主题与权威国际标准对齐
 
 ---
@@ -28,7 +28,7 @@ SLSA 1.2 (供应链安全)
 IEC 63278 (AAS) 系列
         │
         ├── IEC 63278-1:2023 (AAS 结构)
-        ├── IEC 63278-2 (元模型，开发中)
+        ├── IEC 63278-2 (信息元模型，DIS ballot / 开发中；预计 2026 下半年 PRVC，2026 末–2027 初正式发布)
         ├── IEC 63278-3 (安全，开发中)
         ├── IEC 63278-4 (用例，开发中)
         ├── IEC 63278-5 (接口，规划中)
@@ -118,7 +118,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 
 ---
 
-> 最后更新: 2026-06-06
+> 最后更新: 2026-07-08
 > 注意: 本矩阵将随标准更新持续维护。
 
 
@@ -141,7 +141,8 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 > - [ISO/IEC/IEEE Standards](https://www.iso.org)
 > - [IEEE Standards](https://standards.ieee.org)
 > - [The Open Group TOGAF](https://www.opengroup.org/togaf)
-> - 核查日期：2026-07-07
+> - [IEC TC65 WG24 AAS 项目页面](https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)（IEC 63278-2 状态官方来源）
+> - 核查日期：2026-07-08
 
 ## 分析
 
@@ -226,7 +227,7 @@ graph TB
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [SWEBOK Guide V4.0](https://www.computer.org/education/bodies-of-knowledge/software-engineering) — IEEE Computer Society
 > - [SLSA 1.2 Specification](https://slsa.dev/spec/v1.2/) — OpenSSF
 > - [MCP Specification](https://modelcontextprotocol.io/) — Anthropic / Linux Foundation

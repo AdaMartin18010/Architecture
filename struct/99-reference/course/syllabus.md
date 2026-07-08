@@ -42,3 +42,22 @@
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
+---
+
+## 定义
+
+**定义**：本课程大纲是软件架构复用工程知识的系统化教学安排，覆盖元模型、四层架构、治理、安全与前沿趋势。
+
+## 示例
+
+**示例**：第 2-3 周通过 ISO 42010/42020/42030、TOGAF 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
+
+## 反例
+
+**反例**：课程若缺少权威标准来源与可验证的案例实践，学员容易将厂商特定概念误当作通用架构复用知识。
+
+## 权威来源
+
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - 核查日期：2026-07-08

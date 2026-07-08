@@ -44,7 +44,7 @@
 31. [软件架构复用知识体系问答索引 (QA Index)](../struct/99-reference/knowledge-index/qa-index.md)
 32. [Phase C 质量检查报告](../struct/99-reference/quality-check-phase-c.md)
 33. [99 参考索引](../struct/99-reference/README.md)
-34. [国际标准与权威来源索引 v2.2](../struct/99-reference/standards-index/authoritative-sources-v2.md)
+34. [国际标准与权威来源索引 v2.3](../struct/99-reference/standards-index/authoritative-sources-v2.md)
 35. [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
 36. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
 37. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
@@ -87,7 +87,7 @@
 | **C-05 GUAC 供应链图谱** | GUAC v0.x, SLSA 1.2, OpenSSF Scorecard, SPDX 2.3, CycloneDX 1.6, OSV | 供应链安全 / 风险量化与知识图谱 | 与 C-04 SCVS 互补：C-04 提供验证标准，C-05 提供动态风险分析能力；与 10/03 攻击向量形成"防御-检测"闭环 | GUAC: <https://guac.sh/> (2026)<br>OpenSSF Scorecard: <https://securityscorecards.dev/> (2026)<br>OSV: <https://osv.dev/> (2026) |
 | **C-06 TMForum 电信架构复用** | TMForum ODF, eTOM, SID, ODA, CAMARA | 业务架构 / 电信垂直行业 | 与 02/02 FEA BRM、B-04 BIAN 形成"政府-金融-电信"三行业业务能力映射互补；与 03 应用架构微服务形成行业-技术映射 | TMForum: <https://www.tmforum.org/> (2026)<br>CAMARA: <https://camara.project.org/> (2026) |
 | **C-07 NAF/MODAF 北约架构复用** | NAF 4.0, MODAF, DoDAF 2.02, UAF 1.3 | 业务架构 / 国防使命工程 | 与 B-01 DoDAF/UAF 互补：B-01 覆盖美国/国际视角，C-07 覆盖北约/英国视角；与 02/07 国防使命工程形成纵深 | NATO NAF: <https://nafdocs.org/> (2018)<br>MODAF: <https://www.mod.uk/> (2012)<br>DoDAF: <https://dodcio.defense.gov/dodaf/> (2010) |
-| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26566:2026, NASA RRL) | 工具链 / 复用决策支持 | 与 99-reference/tools/reuse-decision-tool/ (v1.0) 互补：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26566: <https://www.iso.org/standard/82557.html> (2026) |
+| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26565:2026 产品线成熟度框架 / 26566 产品线纹理, NASA RRL) | 工具链 / 复用决策支持 | 与 99-reference/tools/reuse-decision-tool/ (v1.0) 互补：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26565: <https://www.iso.org/standard/81436.html> (2026)<br>ISO 26566: <https://www.iso.org/standard/81437.html> (2026) |
 
 ---
 
@@ -473,7 +473,7 @@ Phase C（纵深扩展）
 |:---|:---|:---|:---|
 | **ISO/IEC 25010** | ~~2023 版~~ → **2024 版** | **2024 版已发布**（取代 2011 版） | 版本号已更新；2024 版新增 AI/ML 质量考量 |
 | **IEEE 1517** | 声称已映射 | 2010 版生效，但 12207:2017 已覆盖复用过程 | 需明确对照 12207:2017 的复用过程 |
-| **ArchiMate** | 声称 4.0 于 2026-04-27 发布 | **The Open Group 官方仍为 3.2** | ⚠️ **事实错误**（见第三部分） |
+| **ArchiMate** | 声称 4.0 于 2026-04-27 发布 | **The Open Group 官方已确认发布（Document C260）** | ✅ 已纠正（见第三部分更新） |
 
 #### B. 项目未覆盖或覆盖不足的标准
 
@@ -518,9 +518,9 @@ Phase C（纵深扩展）
 
 ## 第三部分：事实准确性审计（严重问题）
 
-### 3.1 ArchiMate 4.0 发布声明不实
+### 3.1 ArchiMate 4.0 发布状态（已正式发布）
 
-**问题描述**：项目在至少 8 个文件中声称 "ArchiMate 4.0 已于 2026-04-27 正式发布"，包括：
+**状态说明**：经 The Open Group 官方发布页面确认，ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。此前 2026-06-08 审计报告因官网信息滞后，误判为“虚假发布声明”；该结论已在 2026-06-12 及后续复核中纠正。涉及文件包括：
 
 - `view/software_architecture_reuse_full_2026.md`
 - `view/software_architecture_reuse_extension_2026.md`
@@ -531,21 +531,21 @@ Phase C（纵深扩展）
 - `struct/99-reference/book-outline.md`
 - `struct/07-formal-verification/02-alloy/cross-layer-mapping.md`
 
-**事实核查**：
+**权威来源**：
 
-- The Open Group 官方网站 (`opengroup.org/archimate-forum/archimate-overview`) 明确声明最新版本为 **3.1**
-- 所有官方下载/许可仅针对 **ArchiMate 3.2**
-- Cybermedian (2026-02-27) 报道："the current standard remaining ArchiMate 3.2 (2022)"
-- Visual Paradigm 等工具厂商标注为 **Pre-Release**，非正式发布
+- The Open Group 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
+- The Open Group 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+- 白皮书 W262：*The Motivation for Changes in the ArchiMate 4 Specification*
+- 与 ArchiMate 3.2（Document C226, October 2022）向后兼容
 
-**影响**：⚠️ **高** — 传播不存在的标准版本，严重损害知识产品的权威性。读者若按此引用进行企业架构规划，将基于虚假标准信息做决策。
+**说明**：⚠️ 早期审计因官网信息滞后产生误判；项目已按官方发布页面纠正表述，并在所有 ArchiMate 4.0 引用处补充官方来源链接。
 
 **修正建议**：
 
-1. 立即在所有文件中回退 "ArchiMate 4.0 已正式发布" 声明
-2. 改为："ArchiMate 4.0 处于已正式发布/预览阶段，The Open Group 官方当前稳定版仍为 3.2"
-3. 在 `01-meta-model-standards/04-archimate-4/` 中增加 `ARCHIMATE-4-ERRATUM.md` 勘误文件
-4. 更新 `99-reference/CHANGELOG.md` 记录此勘误
+1. 统一使用“ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”
+2. 在 ArchiMate 4.0 引用处补充官方来源：<https://www.opengroup.org/archimate-licensed-downloads>、<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+3. 保留历史勘误记录于 `99-reference/CHANGELOG.md` 与 `view/` 历史文档
+4. 持续跟踪 The Open Group 官方页面与工具厂商的过渡状态
 
 ### 3.2 MCP 版本号引用混乱
 
@@ -812,10 +812,12 @@ Phase C（纵深扩展）
 
 ### 复核结论
 
-- **存在独立来源支持 ArchiMate 4 已于 2026-04 发布**（4m4.it 明确引用 Document C260 和白皮书 W262）。
-- 但 The Open Group 官网与部分工具厂商页面更新滞后，导致“是否正式发布”存在争议。
-- **推荐表述**：保留“ArchiMate 4 Specification 已于 2026-04-27 发布（Document C260）”，但增加脚注说明“部分官方页面与工具厂商仍在过渡，实际采用前请核对 The Open Group 最新公告”。
-- **行动**：不强制全项目回退为“未发布”；在所有 ArchiMate 4 引用处统一为上述谨慎表述，并补充来源链接。
+- **复核结论**：经 The Open Group 官方新闻稿与发布页面确认，**ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260, April 2026；白皮书 W262）**，与 ArchiMate 3.2 向后兼容。官方来源：
+  - 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
+  - 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+- 部分工具厂商页面可能存在过渡延迟，但实际采用前应以 The Open Group 官方公告为准。
+- **推荐表述**：统一使用“ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”，并附上述官方来源链接。
+- **行动**：在所有 ArchiMate 4 引用处更新为上述权威表述，补充官方链接。
 
 ---
 
@@ -1276,7 +1278,7 @@ Phase C（纵深扩展）
 | ISO/IEC 25040:2024 | ⚠️ 未深入映射 | 生效（评估过程） | **缺失：复用评估流程映射** |
 | ISO/IEC 26550:2015 | ✅ 已映射 | 生效 | 无差距 |
 | ISO/IEC 26565:2026 | ✅ 已引用 | **2026-05 正式发布**（成熟度框架） | 需更新正式版内容 |
-| ISO/IEC 26566:2026 | ✅ 已引用 | **2026-05 正式发布**（方法与工具能力） | 需更新正式版内容 |
+| ISO/IEC 26566:2026 | ✅ 已引用 | **2026-05 正式发布**（产品线纹理 product line texture 的方法与工具能力） | 需更新正式版内容 |
 | ISO/IEC 12207:2026 | ❌ 未更新 | **2026-04-29 刚发布**（第三版） | **缺失：新版生命周期过程映射** |
 | ISO/IEC 33000 系列 (SPICE) | ❌ 未系统引用 | 生效，过程能力六级模型 | **缺失：与 RCMM/RiSE 的映射** |
 | IEEE 1517-2010 | ✅ 已映射 | 生效，但 12207:2017/2026 已覆盖复用过程 | 需明确对照 12207:2026 |
@@ -1295,7 +1297,7 @@ Phase C（纵深扩展）
 |:---|:---|:---|:---|
 | TOGAF 10 | ✅ 深度映射 | 最广泛使用的 EA 框架 | 无 |
 | ArchiMate 3.2 | ✅ 深度映射 | 官方稳定版 | 无 |
-| ArchiMate 4.0 | ⚠️ 勘误中 | **已正式发布，The Open Group 官方仍为 3.2** | 已回退声明 |
+| ArchiMate 4.0 | ✅ 已正式发布 | **已正式发布（2026-04-27，Document C260）** | 与 3.2 向后兼容 |
 | FEA 2.0 (BRM/ARM/SRM/DRM) | ✅ 已映射 | 美国联邦政府基准 | 无 |
 | Zachman Framework | ❌ 未覆盖 | 1987 创立，EA 本体论基石 | **缺失：六维分类与复用映射** |
 | DoDAF / UAF 1.3 | ❌ 未覆盖 | 美国防部/北约在用，UAF 1.3 2025-11 发布 | **缺失：国防架构复用视角** |
@@ -2188,7 +2190,7 @@ v2.0 在 v1.0 基础上，引入 Phase B 新增的 5 个外部架构视角（DoD
 | 4 | 应用架构复用 | 云原生、微服务、Data Mesh | `03-application-architecture-reuse` | 28,000 | CNCF, NIST SP 800-204 |
 | 5 | 组件架构复用 | 语言生态、依赖治理、接口设计 | `04-component-architecture-reuse` | 25,000 | SPDX, Semver, SLSA L1-L2 |
 | 6 | 功能架构复用 | MCP/A2A、Temporal、AI 功能 | `05-functional-architecture-reuse` | 28,000 | MCP 2025-11-25（当前稳定版）, A2A v1.0.0 |
-| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps、SPICE | `06-cross-layer-governance` + B-03/B-04 | 25,000 | ISO/IEC 26566:2026, NASA RRL, ISO 33000 (SPICE), ISO 25040:2024 |
+| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps、SPICE | `06-cross-layer-governance` + B-03/B-04 | 25,000 | ISO/IEC 26565:2026, ISO/IEC 26566:2026, NASA RRL, ISO 33000 (SPICE), ISO 25040:2024 |
 | 8 | 形式化验证与复用正确性 | TLA+/Alloy/Rust/SPARK 验证 | `07-formal-verification` | 30,000 | TLA+, Coq, RustBelt |
 | 9 | 认知架构与价值量化 | 认知负荷、ROI、COCOMO II、DORA | `08` + `09` + B-07 | 24,000 | COCOMO II, NASA-TLX, DORA 2025 |
 | 10 | 供应链安全工程 | SBOM、SLSA、攻击案例、零信任 | `10-supply-chain-security` + B-05 | 27,000 | SLSA 1.0, NIST SSDF 1.2, OpenSSF Scorecard |
@@ -2347,8 +2349,8 @@ v2.0 在 v1.0 基础上，引入 Phase B 新增的 5 个外部架构视角（DoD
 **核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC 42020（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。v2.0 引入 ISO 33000（SPICE）与 ISO 25040:2024，将复用治理从"能力成熟度"推进到"过程评估"与"质量度量"的双轨验证框架。
 
 **关键节**：
-7.1 复用治理的国际标准框架：42020/42030/25010/26566 的协同
-7.2 五级复用成熟度模型：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL
+7.1 复用治理的国际标准框架：42020/42030/25010/26565（产品线成熟度框架）/26566（产品线纹理）的协同
+7.2 五级复用成熟度模型：整合 ISO/IEC 26565:2026 / RiSE / RCMM / NASA RRL（26566 提供产品线纹理方法/工具能力支撑）
 7.3 四级度量指标体系：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）
 7.4 跨层升级/降级决策矩阵：何时将组件提升为应用服务？何时将业务服务降维为组件？
 7.5 FinOps 跨层复用成本模型：直接成本 / 间接成本 / 风险成本的分摊
@@ -2634,7 +2636,7 @@ flowchart TB
 
 本书框架设计至少引用以下四类权威来源：
 
-1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26566:2026（复用成熟度）、IEC 61508（功能安全）、**ISO 33000 (SPICE)**、**ISO 25040:2024**、**ISO 30141**（IoT 参考架构）、**IEC 62443**（工业网络安全）
+1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26565:2026（产品线成熟度框架）; ISO/IEC 26566:2026（产品线纹理方法/工具能力）、IEC 61508（功能安全）、**ISO 33000 (SPICE)**、**ISO 25040:2024**、**ISO 30141**（IoT 参考架构）、**IEC 62443**（工业网络安全）
 2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 3.2、**DoDAF 2.02 / UAF 1.2 / NAF v4**、**Zachman Framework**、**GERAM / ISO 15704**、**BIAN 7.0**、OpenSSF SLSA 1.2、**OpenSSF Scorecard**、MCP 2025-11-25、Google A2A v1.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义、**DORA 2025 State of DevOps Report**、**Green Software Foundation SCI 规范**
 4. **政府与合规来源**：EU CRA、NIST SSDF 1.2、NIST SP 800-204、**DORA (Digital Operational Resilience Act) 2025**
@@ -2757,7 +2759,7 @@ flowchart TB
 | 4 | 应用架构复用 | 云原生、微服务、Data Mesh | `03-application-architecture-reuse` | 28,000 | CNCF, NIST SP 800-204 |
 | 5 | 组件架构复用 | 语言生态、依赖治理、接口设计 | `04-component-architecture-reuse` | 25,000 | SPDX, Semver, SLSA L1-L2 |
 | 6 | 功能架构复用 | MCP/A2A、Temporal、AI 功能 | `05-functional-architecture-reuse` | 28,000 | MCP 2025-11-25（当前稳定版）, A2A v1.0.0 |
-| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps | `06-cross-layer-governance` | 20,000 | ISO/IEC 26566:2026, NASA RRL |
+| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps | `06-cross-layer-governance` | 20,000 | ISO/IEC 26565:2026, ISO/IEC 26566:2026, NASA RRL |
 | 8 | 形式化验证与复用正确性 | TLA+/Alloy/Rust/SPARK 验证 | `07-formal-verification` | 30,000 | TLA+, Coq, RustBelt |
 | 9 | 认知架构与价值量化 | 认知负荷、ROI、COCOMO II | `08` + `09` | 22,000 | COCOMO II, NASA-TLX |
 | 10 | 供应链安全工程 | SBOM、SLSA、攻击案例、零信任 | `10-supply-chain-security` | 25,000 | SLSA 1.0, NIST SSDF 1.2 |
@@ -2906,8 +2908,8 @@ flowchart TB
 **核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC 42020（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。
 
 **关键节**：
-7.1 复用治理的国际标准框架：42020/42030/25010/26566 的协同
-7.2 五级复用成熟度模型：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL
+7.1 复用治理的国际标准框架：42020/42030/25010/26565（产品线成熟度框架）/26566（产品线纹理）的协同
+7.2 五级复用成熟度模型：整合 ISO/IEC 26565:2026 / RiSE / RCMM / NASA RRL（26566 提供产品线纹理方法/工具能力支撑）
 7.3 四级度量指标体系：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）
 7.4 跨层升级/降级决策矩阵：何时将组件提升为应用服务？何时将业务服务降维为组件？
 7.5 FinOps 跨层复用成本模型：直接成本 / 间接成本 / 风险成本的分摊
@@ -3167,7 +3169,7 @@ flowchart TB
 
 本书框架设计至少引用以下三类权威来源：
 
-1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26566:2026（复用成熟度）、IEC 61508（功能安全）
+1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26565:2026（产品线成熟度框架）; ISO/IEC 26566:2026（产品线纹理方法/工具能力）、IEC 61508（功能安全）
 2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义
 
@@ -3518,7 +3520,7 @@ graph LR
 - **领域工程 (Domain Engineering)**：分析共性与变性，设计可复用架构，实现领域资产库（核心资产）。
 - **应用工程 (Application Engineering)**：基于变性绑定，从资产库中选择并配置资产，组装成具体产品。
 
-ISO/IEC 26566:2026 是该系列的最新成员，定义了产品线工程的成熟度框架，包含五个等级：Initial → Managed → Defined → Quantified → Optimizing。该成熟度模型将在第 6 章（跨层治理）中详细展开。
+ISO/IEC 26565:2026 定义了产品线工程的成熟度框架，包含五个等级：Initial → Managed → Defined → Quantified → Optimizing（该成熟度模型将在第 6 章详细展开）。ISO/IEC 26566:2026 同属该标准族，定义产品线纹理（product line texture）的方法与工具能力。
 
 ### 2.6 形式化公理体系：从元公理到工程翻译
 
@@ -4683,7 +4685,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [跨层复用治理框架](../struct/06-cross-layer-governance/01-process-governance/cross-layer-governance.md)
 - [02 复用过程治理（Reuse Process Governance）](../struct/06-cross-layer-governance/02-reuse-process/README.md)
 - [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
-- [ISO/IEC 26565:2026 & 26566:2026 正式版与复用成熟度对齐](../struct/06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
+- [ISO/IEC 26565:2026 & 26566:2026 正式版与产品线成熟度/纹理管理对齐](../struct/06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
 - [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
 - … 共 23 个文件
 
@@ -4758,6 +4760,26 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
 - … 共 51 个文件
+
+---
+
+## 概念定义
+
+**定义**：学习路径是面向不同角色读者的递进式学习顺序，帮助读者从基础概念逐步深入到特定垂直领域的复用工程实践。
+
+## 正向示例
+
+**示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
+
+## 反例
+
+**反例**：跳过元模型与标准对齐直接学习 MCP/A2A 协议，会导致复用设计缺乏统一术语、视点与治理基线，最终形成难以集成的局部约定。
+
+## 权威来源
+
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - 核查日期：2026-07-08
 
 
 ---
@@ -5007,6 +5029,26 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
+---
+
+## 概念定义
+
+**定义**：本课程大纲是软件架构复用工程知识的系统化教学安排，覆盖元模型、四层架构、治理、安全与前沿趋势。
+
+## 正向示例
+
+**示例**：第 2-3 周通过 ISO 42010/42020/42030、TOGAF 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
+
+## 反例
+
+**反例**：课程若缺少权威标准来源与可验证的案例实践，学员容易将厂商特定概念误当作通用架构复用知识。
+
+## 权威来源
+
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - 核查日期：2026-07-08
+
 
 ---
 
@@ -5071,7 +5113,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ### 06 跨层复用治理
 
-- **治理框架**: ISO 42020/42030/26566 三层治理体系
+- **治理框架**: ISO 42020/42030/26565 产品线成熟度框架 / 26566 产品线纹理方法 三层治理与纹理体系
 - **成熟度模型**: RCMM 5 级、资产/项目/组织/生态四级度量
 - **决策支持**: ADR、RACI、FinOps、升级/降级矩阵
 - **自动化**: 架构 Lint、Scorecard、策略即代码（OPA）
@@ -5748,12 +5790,12 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 >
 > 形式化: Governance(Reuse) ≠ ∅ ∧ Metrics(Governance) ≠ ∅ ⟹ Sustainable(Reuse)
 >
-> 依据: ISO/IEC 26566:2026, NASA RRL
+> 依据: ISO/IEC 26565:2026（产品线成熟度框架）, NASA RRL
 
 **定理 6.2** (Maturity-Scale Correspondence)
 > 复用成熟度的提升与组织规模的扩大呈正相关，但存在**最优规模点**：超过该点后，治理成本的增长速度超过复用收益。
 >
-> 依据: RiSE/RCMM 实证研究, ISO 26566 案例数据
+> 依据: RiSE/RCMM 实证研究, ISO 26565 案例数据
 
 ### 4.2 价值量化 (09)
 
@@ -6628,7 +6670,7 @@ M.3 (层次不可约性)
   - 核心资产库
   - 绑定时间与变性点
 - **关系**:
-  - 标准：ISO/IEC 26550、ISO/IEC 26566
+  - 标准：ISO/IEC 26550、ISO/IEC 26565（产品线成熟度框架）、ISO/IEC 26566（产品线纹理）
   - 方法：FODA、FeatureIDE、Pure::Variants
   - 应用：汽车、航空、工业自动化、移动设备
 - **解释**: PLE 是系统化复用的高级形式；通过特征模型可在产品族内高效派生多个变体。
@@ -6636,7 +6678,8 @@ M.3 (层次不可约性)
 - **反例**: 未明确定义变性点与绑定时间，导致各产品分支独立维护，复用收益被抵消。
 - **权威来源**:
   - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO
-  - [ISO/IEC 26566:2026](https://www.iso.org/standard/?????.html) — ISO
+  - [ISO/IEC 26565:2026](https://www.iso.org/standard/81436.html) — ISO 产品线成熟度框架
+  - [ISO/IEC 26566:2026](https://www.iso.org/standard/81437.html) — ISO 产品线纹理
   - 核查日期：2026-07-07
 
 ### Probabilistic Contract (概率契约)
@@ -7865,7 +7908,7 @@ $$
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [Software architecture](https://en.wikipedia.org/wiki/Software_architecture) — Wikipedia
 > - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
 >
@@ -8330,7 +8373,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 > - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-> - The Open Group. *ArchiMate® 4 Specification, Document C260*. <https://www.opengroup.org/archimate>
+> - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - SLSA. *Supply-chain Levels for Software Artifacts v1.2*. <https://slsa.dev/spec/v1.2/>
 > - IEC 61508 Ed.3. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://webstore.iec.ch/publication/66912>
 > - ISA-95 / IEC 62264. *Enterprise-control system integration*. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
@@ -8449,7 +8492,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ### 06 跨层治理
 
 - **Q: 复用成熟度五级模型的最高级是什么？**
-  - A: Level 5: 优化 (Optimizing)。模型整合 ISO/IEC 26566:2026、RiSE、RCMM、NASA RRL。详见 `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`。
+  - A: Level 5: 优化 (Optimizing)。模型整合 ISO/IEC 26565:2026（产品线成熟度框架）/ 26566:2026（产品线纹理方法）、RiSE、RCMM、NASA RRL。详见 `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`。
 
 - **Q: FinOps 跨层复用成本模型包含哪三类成本？**
   - A: 直接成本、间接成本、风险成本；按使用量/团队/项目/层级进行分摊。详见 `06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`。
@@ -9089,12 +9132,12 @@ graph TD
 
 <!-- SOURCE: struct/99-reference/standards-index/authoritative-sources-v2.md -->
 
-# 国际标准与权威来源索引 v2.2
+# 国际标准与权威来源索引 v2.3
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-08 v2.3
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-07
+> **上次复核**: 2026-07-08
 > **下次复核**: 2026-09-30
 > **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 
@@ -9144,7 +9187,7 @@ graph TD
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
 | **ISO/IEC 25040** | 2024 | 已发布 | <https://www.iso.org/standard/83467.html> | 质量评估框架 |
 | **ISO/IEC 26550** | 2015 | 现行 | <https://www.iso.org/standard/69529.html> | 产品线工程参考模型；**注意：不存在 2025 版** |
-| **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件复用 — 复用治理 |
+| **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
 | **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
 | **IEEE 1517** | 2010 | 现行 | <https://standards.ieee.org/standard/1517-2010.html> | 软件生命周期复用过程 |
@@ -9161,7 +9204,7 @@ graph TD
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **TOGAF Standard** | 10th Edition | 现行 | <https://www.opengroup.org/togaf> | The Open Group 企业架构框架 |
-| **ArchiMate** | 4.0 | **已发布（存在官方页面更新滞后争议）** | <https://www.opengroup.org/archimate> | The Open Group EA 建模语言；**2026-04-27 发布（Document C260，白皮书 W262）**；部分官方页面/工具厂商仍在过渡，引用时请复核 |
+| **ArchiMate** | 4.0 | **已正式发布（2026-04-27，Document C260，白皮书 W262）** | <https://www.opengroup.org/archimate-licensed-downloads> | The Open Group EA 建模语言；与 ArchiMate 3.2 向后兼容；官方发布公告见 <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | **ArchiMate** | 3.2 | 仍有效 | <https://pubs.opengroup.org/architecture/archimate32-doc/> | 与 4.0 向后兼容 |
 | **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://www.whitehouse.gov/omb/management/egov/> | 美国联邦企业架构参考模型 |
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
@@ -9320,9 +9363,9 @@ graph TD
 | **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
 | **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
 | **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
-| **组件** | ISO 26566:2026 | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
+| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
-| **治理** | ISO 26566:2026 | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
+| **治理** | ISO 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
@@ -9346,7 +9389,7 @@ graph TD
 | **TOGAF 10** | ★★★★☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ |
 | **ArchiMate 3.2+** | ★★★☆☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
 | **ISO 26550:2015** | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
-| **ISO 26566:2026** | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
+| **ISO 26566:2026**（产品线纹理） | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **IEEE 1517** | ★★☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **FEA 2.0** | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **BPMN 2.0** | ★★☆☆☆ | ★★★★★ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
@@ -9498,7 +9541,7 @@ graph TD
 |------|---------|---------|-------------|-----------|
 | ISO/IEC/IEEE DIS 42024 | 草案 | 预计 2026–2027 发布 | 元模型层定义需更新 | TBD |
 | ISO/IEC/IEEE DIS 42042 | 草案 | 预计 2026–2027 发布 | 参考架构规范补充 | TBD |
-| **ArchiMate 4.0** | **已正式发布（2026-04-27，Document C260）** | **正式发布内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation；与 3.2 向后兼容** | 已更新对应映射文档 | TBD |
+| **ArchiMate 4.0** | **[已正式发布（2026-04-27，Document C260）](https://www.opengroup.org/archimate-licensed-downloads)** | **正式发布内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation；与 3.2 向后兼容** | 已更新对应映射文档 | TBD |
 | **MCP 2025-11-25** | **已发布** | **后续修订由 Linux Foundation Agentic AI Foundation 治理；跟踪 12 个月废弃窗口** | **功能层 AI 协议基线：Tasks、Icons、Sampling with Tools、Elicitation URL、OAuth 增强** | TBD |
 | **A2A v1.0.0** | **已发布 (Cloud Next 2026-04)** | **v1.1 预计 2026 H2** | **Agent 安全签名增强、多租户、gRPC 绑定** | TBD |
 | **OPC UA FX 1.0** | **Parts 80–84 发布** | **C2D/D2D 完善中** | **工业现场层复用：UADP 极简头、GCL 时隙对齐** | TBD |
@@ -9537,7 +9580,7 @@ graph TD
 3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
 4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。
-6. **[ISO 26566:2026]** ISO/IEC, *Software and systems engineering — Software reuse — Reuse governance*, 2026 — 验证治理层核心标准状态。
+6. **[ISO 26566:2026]** ISO/IEC, *Software and systems engineering — Methods and tools for product line texture*, 2026 — 验证产品线纹理方法/工具能力状态。
 7. **[TLA+ / TLA+ Hyperbook]** Leslie Lamport, *The TLA+ Hyperbook*, Microsoft Research. <https://lamport.azurewebsites.net/tla/tla.html> — 验证 TLA+ 在分布式协议与并发安全验证中的定位。
 8. **[SPARK Pro / AdaCore]** AdaCore, *SPARK Pro*, <https://www.adacore.com/about-spark> — 验证 SPARK/Ada 在安全关键软件（DO-178C / SIL 4）中的工具成熟度。
 9. **[B Method / Atelier B]** Clearsy, *Atelier B*, <https://www.atelierb.eu> — 验证 B Method 在铁路信号系统形式化精化链中的应用。
@@ -9627,7 +9670,7 @@ graph TD
 1. **元模型层**：以 ISO/IEC/IEEE 42010:2022 为概念地基，整合 TOGAF 10、ArchiMate 3.2、ISO 26550:2015 产品线工程模型，建立统一的复用术语体系与 20 条形式化公理；
 2. **层次层**：逐层分析业务能力（FEA BRM）、云原生应用（CNCF/NIST SP 800-204）、组件接口契约（Design by Contract）、AI 功能协议（MCP 2025-11-25 / A2A v1.0.0）的复用机制与反模式；
 3. **验证层**：运用 TLA+、Alloy、Coq/Isabelle、Rust 类型系统、SPARK/Ada 等形式化方法，构建从分布式协议到内存安全的多层次正确性保证框架；
-4. **治理与量化层**：建立基于 ISO/IEC 26566:2026 的五级成熟度模型、COCOMO II 2026 校准版的 ROI 计算模型，以及 NASA-TLX 适配版的认知负荷评估方法。
+4. **治理与量化层**：建立基于 ISO/IEC 26565:2026 的五级成熟度模型（26566 提供产品线纹理方法/工具能力支撑）、COCOMO II 2026 校准版的 ROI 计算模型，以及 NASA-TLX 适配版的认知负荷评估方法。
 
 **【主要贡献】**
 
@@ -9653,7 +9696,7 @@ graph TD
 1. **Meta-model layer**: Uses ISO/IEC/IEEE 42010:2022 as the conceptual foundation, integrating TOGAF 10, ArchiMate 3.2, and ISO 26550:2015 product-line engineering to establish a unified terminology system and 20 formal axioms;
 2. **Layer-wise analysis**: Examines reuse mechanisms and anti-patterns for business capabilities (FEA BRM), cloud-native applications (CNCF / NIST SP 800-204), component interface contracts (Design by Contract), and AI function protocols (MCP 2025-11-25 / A2A v1.0.0);
 3. **Formal verification**: Employs TLA+, Alloy, Coq/Isabelle, Rust type systems, and SPARK/Ada to construct a multi-level correctness assurance framework spanning distributed protocols to memory safety;
-4. **Governance & quantification**: Proposes a five-level maturity model aligned with ISO/IEC 26566:2026, a COCOMO II 2026-calibrated ROI model, and a NASA-TLX-adapted cognitive load assessment method.
+4. **Governance & quantification**: Proposes a five-level maturity model aligned with ISO/IEC 26565:2026 (26566 provides product line texture methods/tool capabilities), a COCOMO II 2026-calibrated ROI model, and a NASA-TLX-adapted cognitive load assessment method.
 
 **Contributions.**
 
@@ -9831,9 +9874,9 @@ graph TD
 
 | # | 核心论点 | 权威来源 | SAR-KB 支撑文件 |
 |---|---------|---------|----------------|
-| 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
-| 06-2 | **五级成熟度模型**：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26566:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
-| 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26566:2026; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
+| 06-1 | **治理必要性公理**：无治理的复用退化为克隆；无度量的治理退化为形式。 | ISO/IEC 26565:2026（产品线成熟度框架）; NASA RRL | `06-cross-layer-governance/01-process-governance/cross-layer-governance.md` |
+| 06-2 | **五级成熟度模型**：整合 ISO/IEC 26565:2026 / RiSE / RCMM / NASA RRL 的五级复用成熟度评估框架。 | ISO/IEC 26565:2026; RiSE/RCMM 实证研究 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md` |
+| 06-3 | **四级度量体系**：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）。 | ISO/IEC 26565:2026（产品线成熟度框架）; NASA RRL | `06-cross-layer-governance/05-metrics-kpi/metrics-framework.md` |
 | 06-4 | **跨层升级/降级决策矩阵**：何时将组件提升为应用服务？何时将业务服务降维为组件？需综合耦合度、发布频率与团队拓扑。 | Conway's Law; ISO/IEC/IEEE 42020:2019 | `06-cross-layer-governance/06-up-downgrade-matrix/` |
 
 ### 3.7 形式化验证（07）
@@ -10011,10 +10054,10 @@ graph TD
 
 | 英文术语 | 中文术语 | 来源标准 / 文献 |
 |---------|---------|----------------|
-| Cross-Layer Governance | 跨层复用治理 | ISO/IEC 26566:2026 |
-| Reuse Maturity Model | 复用成熟度模型 | ISO/IEC 26566:2026; RiSE; RCMM |
+| Cross-Layer Governance | 跨层复用治理 | ISO/IEC 26565:2026（产品线成熟度框架） |
+| Reuse Maturity Model | 复用成熟度模型 | ISO/IEC 26565:2026; RiSE; RCMM |
 | Reusability Requirement Level (RRL) | 复用需求等级 | NASA RRL |
-| Reuse Rate / Reuse Ratio | 复用率 | NASA RRL; ISO 26566 |
+| Reuse Rate / Reuse Ratio | 复用率 | NASA RRL; ISO 26565 |
 | Adaptation Adjustment Factor (AAF) | 改编调整因子 | COCOMO II (Boehm et al.) |
 | Equivalent Source Lines of Code (ESLOC) | 等价源代码行数 | COCOMO II |
 | Return on Investment (ROI) of Reuse | 复用投资回报率 | COCOMO II; FinOps |
@@ -11155,7 +11198,7 @@ AAF ≥ 0.9          → 重新实现
 | 标准 | 主题 | 状态 |
 |------|------|------|
 | ISO 42010:2022 | 01 元模型 | 生效 |
-| ISO 26566:2026 | 06 治理 | 最新 |
+| ISO 26565:2026 / 26566:2026 | 06 治理 / 产品线纹理 | 最新 |
 | SLSA 1.0 | 10 安全 | 生效 |
 | MCP 2025-11-25 | 12 AI原生 | 当前稳定版 |
 | A2A v1.0.0 | 12 AI原生 | 生效 |
@@ -11458,7 +11501,7 @@ pip install -r struct/99-reference/tools/requirements.txt
 |------|------|------|------|
 | 术语查询 | `terminology-query.py` | 跨标准术语搜索、对比、版本提示、导出、同步 | ✅ 可用 |
 | COCOMO II 计算器 | `cocomo-calculator.py` | 复用模型工作量估算 | ✅ 可用 |
-| 成熟度评估 CLI | `../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | ISO/IEC 26566 / RCMM / RiSE 复用成熟度评估 | ✅ 可用 |
+| 成熟度评估 CLI | `../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | ISO/IEC 26565 / RCMM / RiSE 复用成熟度评估（26566 提供产品线纹理支撑） | ✅ 可用 |
 | FinOps 成本分摊 | `../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | L1–L4 成本分摊 Excel/CSV 导出 | ✅ 可用 |
 | 概率契约校准 | `../../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction 校准、漂移检测 | ✅ 可用 |
 | PIU 贝叶斯验证 | `../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | IEC 61508 Proven-in-Use 统计验证 | ✅ 依赖就绪 |
@@ -11826,7 +11869,8 @@ reuse-decision-tool-v2/
 - ISO/IEC/IEEE 42010:2022
 - ISO/IEC/IEEE DIS 42042
 - ISO/IEC 25010:2023
-- ISO/IEC 26566:2026
+- ISO/IEC 26565:2026（产品线成熟度框架）
+- ISO/IEC 26566:2026（产品线纹理方法/工具能力）
 - TOGAF Standard 10
 - ArchiMate 3.2
 - SLSA v1.2
@@ -11834,7 +11878,7 @@ reuse-decision-tool-v2/
 
 ### `maturity_matrix.json`
 
-基于 ISO/IEC 26566:2026 / RCMM / NASA RRL 的 6 维度 × 5 级成熟度问卷：
+基于 ISO/IEC 26565:2026 / RCMM / NASA RRL 的 6 维度 × 5 级成熟度问卷（26566 提供产品线纹理方法/工具能力支撑）：
 
 - D1 复用战略与投资
 - D2 复用过程与管理
@@ -11969,7 +12013,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 ---
 
 > **最后更新**: 2026-06-10
-> **对齐标准**: ISO/IEC 26566:2026 · ISO 25010:2023 · ISO 42010:2022 · NASA RRL
+> **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO 25010:2023 · ISO 42010:2022 · NASA RRL
 
 
 ---
@@ -12143,7 +12187,8 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 - ISO/IEC/IEEE 42010:2022 — Architecture description
 - ISO/IEC 25010:2023 — SQuaRE Quality Models
-- ISO/IEC 26566:2026 — Reuse Maturity Assessment
+- ISO/IEC 26565:2026 — Product Line Maturity Framework
+- ISO/IEC 26566:2026 — Methods and tools for product line texture（产品线纹理）
 - NASA Reuse Readiness Levels (RRL)
 
 ### C. 报告元数据
@@ -12206,7 +12251,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 | Model Context Protocol (MCP) | ✅ 可达 | 2025-11-25 稳定版 (Linux Foundation Agentic AI Foundation) | 更新 12-ai-native-reuse/01-mcp-protocol/ |
 | WASI (WebAssembly System Interface) | ✅ 可达 | WASI 0.3 preview (Wasmtime 37+)，WASI 1.0 目标 2026末/2027初 | 更新 13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md |
 | ISO/IEC 25010:2023 — SQuaRE Quality Models | ✅ 可达 | 2023-11-15 已发布（取代 2011 版，新增 AI/ML 质量考量）；不存在 2024 版 | N/A — 已是最新版 |
-| ISO/IEC 26566:2026 — Reuse Maturity | ✅ 可达 | 2026-05 正式发布 | N/A — 已是最新版 |
+| ISO/IEC 26566:2026 — Methods and tools for product line texture（产品线纹理） | ✅ 可达 | 2026-05 正式发布 | N/A — 已是最新版 |
 | ArchiMate Specification | ✅ 可达 | ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 3.2 向后兼容 | N/A — 已更新为正式发布状态 |
 | CNCF Platform Engineering Maturity Model | ✅ 可达 | 五维度模型 (Investment/Adoption/Interfaces/Operations/Measurement) | 更新 13-emerging-trends/01-platform-engineering/platform-maturity-model.md |
 | ISO/IEC/IEEE 12207:2026 — Software Life Cycle Processes | ✅ 可达 | 2026-04-29 已发布，取代 2017 版 | N/A — 已更新为 2026 版 |
@@ -12279,7 +12324,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 | Model Context Protocol (MCP) | ✅ 可达 | 2025-11-25 稳定版 (Linux Foundation Agentic AI Foundation) | 更新 12-ai-native-reuse/01-mcp-protocol/ |
 | WASI (WebAssembly System Interface) | ✅ 可达 | WASI 0.3 preview (Wasmtime 37+)，WASI 1.0 目标 2026末/2027初 | 更新 13-emerging-trends/03-webassembly-components/wasm-wasi-03-boundaries.md |
 | ISO/IEC 25010:2023 — SQuaRE Quality Models | ✅ 可达 | 2024 已发布 | N/A — 已是最新版 |
-| ISO/IEC 26566:2026 — Reuse Maturity | ✅ 可达 | 2026-05 正式发布 | N/A — 已是最新版 |
+| ISO/IEC 26566:2026 — Methods and tools for product line texture（产品线纹理） | ✅ 可达 | 2026-05 正式发布 | N/A — 已是最新版 |
 | ArchiMate Specification | ✅ 可达 | 3.2 稳定版；4.0 已正式发布（The Open Group 官方确认） | 更新 01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md |
 | CNCF Platform Engineering Maturity Model | ✅ 可达 | 五维度模型 (Investment/Adoption/Interfaces/Operations/Measurement) | 更新 13-emerging-trends/01-platform-engineering/platform-maturity-model.md |
 
@@ -12351,6 +12396,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
   - [3. 入口目录与主题目录的关系](#3-入口目录与主题目录的关系)
   - [4. 使用建议](#4-使用建议)
   - [5. 可执行脚本](#5-可执行脚本)
+    - [`finops-excel-template.py` 使用说明](#finops-excel-templatepy-使用说明)
   - [6. 版本与更新](#6-版本与更新)
   - [补充说明：FinOps 工具模板聚合入口](#补充说明finops-工具模板聚合入口)
   - [概念定义](#概念定义)
@@ -12372,6 +12418,10 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 | 5 | 承诺折扣策略模板 | `commitment-discount-policy.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/commitment-discount-policy.md) | RI/Savings Plans/Spot/按需决策流程、风险分析、覆盖率目标、回购策略 |
 | 6 | AI 场景成本分摊模板 | `ai-cost-allocation.md` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md) | LLM token、GPU 共享、RAG 检索、模型微调成本分摊方法与示例 |
 | 7 | FinOps Excel 公式模板 | `finops-excel-template.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 L1–L4 公式的可编辑 .xlsx 模板 |
+| 8 | FinOps 预算与预测分析脚本 | `finops-budget-forecast.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py) | 历史成本分析、MoM 增长率、线性回归 / 移动平均预测、预算执行率 |
+| 9 | FinOps 承诺折扣优化器 | `finops-commitment-optimizer.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py) | RI / SP / Spot 三种场景年成本对比与推荐方案 |
+| 10 | FinOps 成本异常检测器 | `finops-anomaly-detector.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py) | Z-Score 与环比增长率双算法成本异常检测 |
+| 11 | AI GPU 成本计算器 | `ai-gpu-cost-calculator.py` | [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py) | 共享 GPU / Token / 平台服务成本分摊与单位经济学指标 |
 
 ---
 
@@ -12392,10 +12442,14 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 - 需要计算 Cloud COGS 与单位成本 → [单位经济学计算模板](../struct/06-cross-layer-governance/04-finops-cost/templates/unit-economics.md)
 - 需要分摊 AI/GPU/LLM/RAG/微调成本 → [AI 场景成本分摊模板](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-cost-allocation.md)
 - 需要可编辑的 L1–L4 Excel 公式模板 → [FinOps Excel 公式模板](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)
+- 需要分摊共享 GPU / Token / 平台服务成本并输出单位经济学指标 → [AI GPU 成本计算器](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)
 
 ### 自动化工具
 
-- 需要导出四级分摊 Excel/CSV 报告 → [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
+- 需要导出四级分摊 Excel/CSV 报告 → [四级分摊导出脚本](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py)
+- 需要生成预算、预测与预算偏差报告 → [预算与预测分析脚本](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)
+- 需要优化 RI / SP / Spot 承诺折扣组合 → [承诺折扣优化器](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)
+- 需要检测成本异常（Z-Score / 增长率） → [成本异常检测器](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)
 
 ---
 
@@ -12415,7 +12469,15 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
     ├── finops-allocation.md
     ├── finops-exporter.py
     ├── finops-excel-template.py
-    └── example-costs.yaml
+    ├── finops-budget-forecast.py
+    ├── finops-commitment-optimizer.py
+    ├── finops-anomaly-detector.py
+    ├── ai-gpu-cost-calculator.py
+    ├── example-costs.yaml
+    ├── example-budget.yaml
+    ├── example-commitment.yaml
+    ├── example-anomaly.yaml
+    └── example-ai-gpu-cost.yaml
 ```
 
 **设计原则**:
@@ -12434,7 +12496,7 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 1. **首次使用**: 从本 README 选择对应模板，复制到项目 Wiki/Confluence/飞书文档后填写 `{{占位符}}`。
 2. **保持同步**: 若发现主题目录模板更新，应及时刷新复用副本中的链接与内容。
 3. **自定义占位符**: 各模板使用 `{{VARIABLE}}` 标记可填写字段，建议团队统一一套变量命名规范。
-4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)。
+4. **与工具结合**: 分摊计算可配合 [`finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) 自动生成 Excel/CSV 报告；如需含公式的可编辑模板，使用 [`finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py)；预算预测、承诺折扣优化、异常检测、AI GPU 成本分摊分别使用 [`finops-budget-forecast.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)、[`finops-commitment-optimizer.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)、[`finops-anomaly-detector.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)、[`ai-gpu-cost-calculator.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)。
 
 ---
 
@@ -12445,6 +12507,10 @@ struct/06-cross-layer-governance/04-finops-cost/templates/   ← 主题目录（
 | `finops-exporter.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py) | L1–L4 四级成本分摊计算与 Excel/CSV 导出 |
 | `finops-allocation.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-allocation.py) | 跨层成本分摊计算（按 CSV 输入） |
 | `finops-excel-template.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-excel-template.py) | 生成含 SUMIFS/VLOOKUP 公式的 L1–L4 Excel 模板 |
+| `finops-budget-forecast.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py) | 历史成本分析、MoM 增长率、下季度 / 下半年预测、预算偏差与执行率 |
+| `finops-commitment-optimizer.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py) | 全按需、RI/SP + Spot、全 Spot 三种场景对比与推荐 |
+| `finops-anomaly-detector.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py) | Z-Score 与环比增长率双算法成本异常检测 |
+| `ai-gpu-cost-calculator.py` | [`../../../../06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py) | 共享 GPU / Token / 平台服务成本分摊与单位经济学指标 |
 
 ### `finops-excel-template.py` 使用说明
 
@@ -12481,14 +12547,19 @@ pip install openpyxl
 | 日期 | 更新内容 | 更新人 |
 |------|---------|--------|
 | 2026-06-12 | 新建 FinOps 工具模板聚合入口与 6 个 Markdown 模板索引 | {{UPDATER}} |
+| 2026-07-08 | 新增 4 个 FinOps 可执行脚本索引：预算预测、承诺折扣优化、异常检测、AI GPU 成本计算 | {{UPDATER}} |
 
 > **交叉引用**:
 >
 > - FinOps 主题入口: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 四级成本分摊模型: [`struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-allocation-template.md)
 > - FinOps 单位经济学: [`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
+> - FinOps 预算与预测: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-budget-forecast.py)
+> - FinOps 承诺折扣优化: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-commitment-optimizer.py)
+> - FinOps 异常检测: [`struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/finops-anomaly-detector.py)
+> - AI GPU 成本计算: [`struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py`](../struct/06-cross-layer-governance/04-finops-cost/templates/ai-gpu-cost-calculator.py)
 
-> 最后更新: 2026-06-12
+> 最后更新: 2026-07-08
 
 
 ---

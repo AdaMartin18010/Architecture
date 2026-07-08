@@ -68,7 +68,7 @@ STANDARDS: Dict[str, Dict] = {
         "action_on_release": "N/A — 已是最新版",
     },
     "iso-26566": {
-        "name": "ISO/IEC 26566:2026 — Reuse Maturity",
+        "name": "ISO/IEC 26566:2026 — Methods and tools for product line texture（产品线纹理）",
         "status_url": "https://www.iso.org/standard/81437.html",
         "rss_url": None,
         "current_status": "2026-05 正式发布",

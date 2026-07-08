@@ -2,7 +2,7 @@
 """
 复用成熟度可执行评估问卷 CLI
 
-基于 ISO/IEC 26566:2026、RCMM、RiSE、NASA RRL 五级成熟度模型。
+基于 ISO/IEC 26565:2026、RCMM、RiSE、NASA RRL 五级成熟度模型。
 
 用法:
     python reuse-maturity-assessment-cli.py --interactive
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-# 五级成熟度（映射 RCMM / RiSE / ISO 26566 / NASA RRL）
+# 五级成熟度（映射 RCMM / RiSE / ISO 26565 / NASA RRL）
 LEVELS = {
     1: ("Initial", "初始级", "Ad-hoc 复用，无正式流程"),
     2: ("Managed", "已管理", "项目级复用，有基本管理"),
@@ -74,7 +74,7 @@ IMPROVEMENTS = {
 
 
 def score_to_level(avg: float) -> int:
-    """将平均分映射到五级成熟度（RCMM / RiSE / ISO 26566 兼容）。"""
+    """将平均分映射到五级成熟度（RCMM / RiSE / ISO 26565 兼容）。"""
     if avg < 1.5:
         return 1
     elif avg < 2.5:
@@ -100,7 +100,7 @@ def ask_interactive() -> Dict[str, List[int]]:
     """交互式提问并收集答案。"""
     print("=" * 72)
     print("  软件复用成熟度可执行评估问卷")
-    print("  基于 ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL")
+    print("  基于 ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL")
     print("=" * 72)
     print("请为每道题选择 1-5 分（1=最低，5=最高），直接回车默认 3 分。\n")
     answers: Dict[str, List[int]] = {dim: [] for dim in DIMENSIONS}
@@ -292,7 +292,7 @@ def print_comparison(comparison: Dict):
 def build_report(answers, dim_results, overall_avg, overall_level, comparison=None) -> Dict:
     """构建结构化报告字典。"""
     report = {
-        "framework": "ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL",
+        "framework": "ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL",
         "overall_score": round(overall_avg, 2),
         "overall_level": overall_level,
         "overall_level_name": LEVELS[overall_level][0],
@@ -308,7 +308,7 @@ def build_report(answers, dim_results, overall_avg, overall_level, comparison=No
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="复用成熟度可执行评估问卷 CLI（ISO/IEC 26566:2026 / RCMM / RiSE / NASA RRL）")
+    parser = argparse.ArgumentParser(description="复用成熟度可执行评估问卷 CLI（ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL）")
     parser.add_argument("--interactive", action="store_true", help="交互式问答模式")
     parser.add_argument("--input", dest="input_file", type=str, help="从 JSON 文件读取答案")
     parser.add_argument("--output", type=str, help="输出结构化报告 JSON 文件路径")

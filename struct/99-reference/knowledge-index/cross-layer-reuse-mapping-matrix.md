@@ -194,7 +194,7 @@ $$
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate) — The Open Group
+> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [Software architecture](https://en.wikipedia.org/wiki/Software_architecture) — Wikipedia
 > - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
 >
@@ -204,6 +204,7 @@ $$
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。

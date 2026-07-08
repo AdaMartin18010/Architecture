@@ -69,7 +69,7 @@ def run_cli(cmd: List[str], cwd: Path | None = None) -> tuple[str, str, int]:
 # 1. 复用成熟度评估
 # ---------------------------------------------------------------------------
 if tool == "📊 复用成熟度评估":
-    st.header("📊 复用成熟度评估（ISO/IEC 26566:2026）")
+    st.header("📊 复用成熟度评估（ISO/IEC 26565:2026）")
     st.markdown("基于 RCMM / RiSE / NASA RRL 的 6 维度 × 5 题问卷，输出成熟度等级与雷达图。")
 
     demo_mode = st.checkbox("使用演示数据（随机生成）", value=False)

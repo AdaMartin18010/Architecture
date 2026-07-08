@@ -133,7 +133,8 @@
 
 - ISO/IEC/IEEE 42010:2022 — Architecture description
 - ISO/IEC 25010:2023 — SQuaRE Quality Models
-- ISO/IEC 26566:2026 — Reuse Maturity Assessment
+- ISO/IEC 26565:2026 — Product Line Maturity Framework
+- ISO/IEC 26566:2026 — Methods and tools for product line texture（产品线纹理）
 - NASA Reuse Readiness Levels (RRL)
 
 ### C. 报告元数据

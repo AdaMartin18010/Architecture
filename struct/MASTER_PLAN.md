@@ -87,7 +87,7 @@
 
 | 优先级 | 主题 | 核心任务 | 交付物 | 验收标准 | 状态 |
 |--------|------|----------|--------|----------|------|
-| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 3.2 状态（"ArchiMate 4.0" 厂商预告已标注勘误） | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
+| P0 | 01 元模型与标准对齐 | 完成 ISO 420xx 族谱与 TOGAF 10 的对照表；更新 ArchiMate 3.2/4.0 状态（ArchiMate 4.0 已于 2026-04-27 正式发布，与 3.2 向后兼容） | `01/01-iso-420xx-family/alignment-matrix.md` | 覆盖 10+ 标准的概念映射 | ✅ 完成 |
 | P0 | 02 业务架构复用 | 完成 FEA BRM 与 TOGAF Capability Map 的交叉映射；补充 BPMN 2.0 / DMN 1.5 复用元素详解 | `02/02-business-capability/capability-map-template.md` | 含 5 级层次结构 + 决策矩阵 | ✅ 完成 |
 | P0 | 03 应用架构复用 | 完成云原生架构模式（单体→微服务→Serverless→模块化单体）的复用性矩阵 2026 版 | `03/07-cloud-native-patterns/reusability-matrix-2026.md` | 含 8+ 架构模式对比 | ✅ 完成 |
 | P0 | 04 组件架构复用 | 完成 6 大语言生态（JVM/Node.js/Rust/Go/Python/.NET）的复用成熟度深度对比 | `04/07-language-ecosystems/comparison-matrix-2026.md` | 含包管理、组件模型、变性机制 | ✅ 完成 |
@@ -233,7 +233,7 @@
 | P0 | 制作国际标准对齐多维矩阵（总表） | `99-reference/standards-index/master-alignment-matrix.md` | 覆盖 42+ 标准 × 5 复用层次 | ✅ 已完成 v2.0（42+ 标准，新增 ISO 42020/42030/25040/SysML/SCVS/GUAC 等 18 项） |
 | P0 | 制作公理-定理推理树（完整版） | `99-reference/glossary/axiom-theorem-tree.md` | 含 20+ 公理、35+ 定理 | ✅ 已完成 v2026-06-10（20 公理 + 35 定理 + 5 猜想） |
 | P1 | 开发交互式决策工具（Web/CLI） | `99-reference/tools/reuse-decision-tool/` | 支持 6 阶段复用决策流程 | ✅ 已完成（CLI + Streamlit Web 仪表盘 + 标准追踪器 v2.0） |
-| P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26566:2026 | ✅ 已完成（含 CLI 与雷达图报告） |
+| P1 | 编写面向企业的复用成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md` | 基于 ISO/IEC 26565:2026 产品线成熟度框架 | ✅ 已完成（含 CLI 与雷达图报告） |
 | P2 | 制作 Mermaid 思维导图库 | `99-reference/visualizations/` | 覆盖全部 13 个主题的 Mermaid 源文件 | ✅ 已完成 v2026-06-10（13 主题 × 4-6 子图，平均 1900 bytes） |
 
 ---

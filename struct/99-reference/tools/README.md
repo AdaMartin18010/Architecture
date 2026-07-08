@@ -28,7 +28,7 @@ pip install -r struct/99-reference/tools/requirements.txt
 |------|------|------|------|
 | 术语查询 | `terminology-query.py` | 跨标准术语搜索、对比、版本提示、导出、同步 | ✅ 可用 |
 | COCOMO II 计算器 | `cocomo-calculator.py` | 复用模型工作量估算 | ✅ 可用 |
-| 成熟度评估 CLI | `../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | ISO/IEC 26566 / RCMM / RiSE 复用成熟度评估 | ✅ 可用 |
+| 成熟度评估 CLI | `../../06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | ISO/IEC 26565 / RCMM / RiSE 复用成熟度评估（26566 提供产品线纹理支撑） | ✅ 可用 |
 | FinOps 成本分摊 | `../../06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | L1–L4 成本分摊 Excel/CSV 导出 | ✅ 可用 |
 | 概率契约校准 | `../../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | Conformal Prediction 校准、漂移检测 | ✅ 可用 |
 | PIU 贝叶斯验证 | `../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | IEC 61508 Proven-in-Use 统计验证 | ✅ 依赖就绪 |

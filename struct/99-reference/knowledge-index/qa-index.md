@@ -97,7 +97,7 @@
 ### 06 跨层治理
 
 - **Q: 复用成熟度五级模型的最高级是什么？**
-  - A: Level 5: 优化 (Optimizing)。模型整合 ISO/IEC 26566:2026、RiSE、RCMM、NASA RRL。详见 `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`。
+  - A: Level 5: 优化 (Optimizing)。模型整合 ISO/IEC 26565:2026（产品线成熟度框架）/ 26566:2026（产品线纹理方法）、RiSE、RCMM、NASA RRL。详见 `06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`。
 
 - **Q: FinOps 跨层复用成本模型包含哪三类成本？**
   - A: 直接成本、间接成本、风险成本；按使用量/团队/项目/层级进行分摊。详见 `06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`。

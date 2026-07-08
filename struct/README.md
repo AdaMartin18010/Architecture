@@ -74,7 +74,7 @@
 | 03 应用架构复用 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | 云原生模式、服务网格、EDA、数据网格 |
 | 04 组件架构复用 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | 设计模式、语言生态、供应链安全 |
 | 05 功能架构复用 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | MCP、A2A、Temporal、AI 功能 |
-| 06 跨层复用治理 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | RiSE/RCMM、FinOps、ISO/IEC 26566:2026 |
+| 06 跨层复用治理 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | RiSE/RCMM、FinOps、ISO/IEC 26565:2026（产品线成熟度框架）/ 26566:2026（产品线纹理） |
 | 07 形式化验证 | `software_architecture_reuse_deep_extension_2026.md`, `software_architecture_reuse_vol469_deep_2026.md` | TLA+、Alloy、Rust、SPARK/Ada、B Method、Coq/Isabelle |
 | 08 认知架构 | `software_architecture_reuse_deep_extension_2026.md` | ACT-R、BDI、认知负荷、AI 辅助决策 |
 | 09 价值量化 | `software_architecture_reuse_deep_extension_2026.md` | COCOMO II、ROI、NPV、FinOps |
@@ -100,7 +100,7 @@
 | ISO/IEC 25040:2024 | 软件质量评估过程 | 生效 | `06-cross-layer-governance/05-metrics-kpi` |
 | ISO/IEC 26550:2015 | 产品线工程参考模型 | 生效 | `01-meta-model-standards/03-iso-26550-ple` |
 | ISO/IEC/IEEE 12207:2026 | 软件生命周期过程 | **2026-04-29 发布** | `01-meta-model-standards/01-iso-420xx-family` |
-| ISO/IEC 26566:2026 | 产品线工程方法与工具能力 | **2026-05 正式发布** | `06-cross-layer-governance/03-maturity-models` |
+| ISO/IEC 26566:2026 | 产品线纹理（product line texture）的方法与工具能力 | **2026-05 正式发布** | `06-cross-layer-governance/03-maturity-models` |
 | IEEE 1517-2010 | 软件生命周期复用过程 | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
 | OMG RAS v2.2 | 可复用资产规范 | 生效 | `01-meta-model-standards/07-omg-ras` |
 
@@ -114,7 +114,8 @@
 | IEC 61508 Ed.3 | 功能安全（含软件复用） | CDV 已完成；TÜV 等认证机构 2026 起可采用；IEC 官方正式发布预计 ~2027 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 21448 Ed.2 | 预期功能安全 (SOTIF) | 制定中/预计 2026 发布 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 26262 | 汽车功能安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
-| IEC 63278 (AAS) | 资产管理壳 | 生效 | `11-industrial-iot-otit/05-digital-twin-aas` |
+| IEC 63278-1 (AAS) | 资产管理壳结构 | ✅ 已发布 (2023) | `11-industrial-iot-otit/05-digital-twin-aas` |
+| IEC 63278-2 (AAS) | 信息元模型 | 🔄 DIS ballot / 开发中（预计 2026 末–2027 初发布） | `11-industrial-iot-otit/05-digital-twin-aas` |
 | IEC 62443 | 工业网络安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
 
 ### 3.3 供应链与软件安全标准
@@ -343,7 +344,7 @@ struct/
 >
 > - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - The Open Group. *ArchiMate® 4 Specification* (2026-04-27 正式发布，Document C260). <https://www.opengroup.org/archimate-licensed-downloads>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
 >
 > **核查日期**: 2026-07-07

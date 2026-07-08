@@ -15,7 +15,7 @@
 - [x] 06-formal-axioms 目录结构
 - [x] 核心对齐矩阵文档（alignment-matrix.md）
 - [x] TOGAF 10 详细映射 → `02-togaf-10-alignment/detailed-mapping.md`
-- [ ] ArchiMate 4.0 映射更新（已冻结 — The Open Group 官方尚未发布 4.0，当前稳定版仍为 3.2）
+- [x] ArchiMate 4.0 映射更新（2026-04-27 已正式发布，映射已完成）
 - [x] SWEBOK V4 对齐 → `05-swebok-v4/swebok-alignment.md`
 - [x] 形式化公理体系完整版 → `06-formal-axioms/axiom-system.md` + `theorem-derivations.md`
 - [x] OMG RAS v2.2 与四层复用架构对齐 → `07-omg-ras/ras-alignment.md`

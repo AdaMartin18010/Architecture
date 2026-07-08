@@ -2463,7 +2463,7 @@ flowchart TB
 > **来源 URL**:
 >
 > - OASIS SOA Reference Architecture: <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=soa-ra>
-> - ArchiMate 4.0: <https://www.opengroup.org/archimate>
+> - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
 > **核查日期**: 2026-07-07

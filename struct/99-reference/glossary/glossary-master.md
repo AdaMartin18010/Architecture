@@ -399,7 +399,7 @@
   - 核心资产库
   - 绑定时间与变性点
 - **关系**:
-  - 标准：ISO/IEC 26550、ISO/IEC 26566
+  - 标准：ISO/IEC 26550、ISO/IEC 26565（产品线成熟度框架）、ISO/IEC 26566（产品线纹理）
   - 方法：FODA、FeatureIDE、Pure::Variants
   - 应用：汽车、航空、工业自动化、移动设备
 - **解释**: PLE 是系统化复用的高级形式；通过特征模型可在产品族内高效派生多个变体。
@@ -407,7 +407,8 @@
 - **反例**: 未明确定义变性点与绑定时间，导致各产品分支独立维护，复用收益被抵消。
 - **权威来源**:
   - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO
-  - [ISO/IEC 26566:2026](https://www.iso.org/standard/?????.html) — ISO
+  - [ISO/IEC 26565:2026](https://www.iso.org/standard/81436.html) — ISO 产品线成熟度框架
+  - [ISO/IEC 26566:2026](https://www.iso.org/standard/81437.html) — ISO 产品线纹理
   - 核查日期：2026-07-07
 
 ### Probabilistic Contract (概率契约)

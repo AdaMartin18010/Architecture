@@ -285,7 +285,7 @@ struct/
 >
 > - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
-> - The Open Group. *ArchiMate® 4 Specification*. <https://www.opengroup.org/archimate>
+> - The Open Group. *ArchiMate® 4 Specification* (2026-04-27 正式发布，Document C260). <https://www.opengroup.org/archimate-licensed-downloads>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
 >
 > **核查日期**: 2026-07-07

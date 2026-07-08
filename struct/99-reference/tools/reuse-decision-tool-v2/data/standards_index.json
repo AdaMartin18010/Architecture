@@ -66,11 +66,31 @@
     "iso26566": {
       "key": "iso26566",
       "name": "ISO/IEC 26566:2026",
-      "full_name": "Software and systems engineering — Methods and tools for reuse maturity assessment",
+      "full_name": "Software and systems engineering — Methods and tools for product line texture",
       "current_version": "2026",
       "status": "已发布",
       "url": "https://www.iso.org/standard/81437.html",
-      "relevance_to_reuse": "复用成熟度评估标准，提供组织级复用能力评估框架",
+      "relevance_to_reuse": "产品线纹理（product line texture）方法/工具标准，定义纹理管理、操作化与支持的过程、方法能力和工具能力",
+      "alignment_checklist": [
+        "是否建立产品线纹理模型（共性/变性/依赖/演化）",
+        "是否将纹理模型转化为可执行配置",
+        "是否维护纹理随产品演化的更新",
+        "是否使用特征建模与配置工具支撑纹理操作"
+      ],
+      "compliance_levels": {
+        "L1": "纹理识别：识别并记录产品线的共性、变性、依赖与演化模式",
+        "L2": "纹理制度化：建立纹理模型并纳入领域工程与应用工程过程",
+        "L3": "纹理驱动：纹理模型支撑产品生成、影响分析与持续演化"
+      }
+    },
+    "iso26565": {
+      "key": "iso26565",
+      "name": "ISO/IEC 26565:2026",
+      "full_name": "Software and systems engineering — Methods and tools for product line maturity framework",
+      "current_version": "2026",
+      "status": "已发布",
+      "url": "https://www.iso.org/standard/81436.html",
+      "relevance_to_reuse": "产品线成熟度框架标准，为组织级复用能力评估与过程改进提供基准",
       "alignment_checklist": [
         "是否建立复用成熟度评估流程",
         "是否覆盖战略、过程、资产、基础设施、人员、度量 6 维度",

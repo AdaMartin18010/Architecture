@@ -69,7 +69,7 @@
 | 4 | 应用架构复用 | 云原生、微服务、Data Mesh | `03-application-architecture-reuse` | 28,000 | CNCF, NIST SP 800-204 |
 | 5 | 组件架构复用 | 语言生态、依赖治理、接口设计 | `04-component-architecture-reuse` | 25,000 | SPDX, Semver, SLSA L1-L2 |
 | 6 | 功能架构复用 | MCP/A2A、Temporal、AI 功能 | `05-functional-architecture-reuse` | 28,000 | MCP 2025-11-25（当前稳定版）, A2A v1.0.0 |
-| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps | `06-cross-layer-governance` | 20,000 | ISO/IEC 26566:2026, NASA RRL |
+| 7 | 跨层复用治理与成熟度 | 治理框架、度量指标、FinOps | `06-cross-layer-governance` | 20,000 | ISO/IEC 26565:2026, ISO/IEC 26566:2026, NASA RRL |
 | 8 | 形式化验证与复用正确性 | TLA+/Alloy/Rust/SPARK 验证 | `07-formal-verification` | 30,000 | TLA+, Coq, RustBelt |
 | 9 | 认知架构与价值量化 | 认知负荷、ROI、COCOMO II | `08` + `09` | 22,000 | COCOMO II, NASA-TLX |
 | 10 | 供应链安全工程 | SBOM、SLSA、攻击案例、零信任 | `10-supply-chain-security` | 25,000 | SLSA 1.0, NIST SSDF 1.2 |
@@ -218,8 +218,8 @@
 **核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC 42020（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。
 
 **关键节**：
-7.1 复用治理的国际标准框架：42020/42030/25010/26566 的协同
-7.2 五级复用成熟度模型：整合 ISO/IEC 26566:2026 / RiSE / RCMM / NASA RRL
+7.1 复用治理的国际标准框架：42020/42030/25010/26565（产品线成熟度框架）/26566（产品线纹理）的协同
+7.2 五级复用成熟度模型：整合 ISO/IEC 26565:2026 / RiSE / RCMM / NASA RRL（26566 提供产品线纹理方法/工具能力支撑）
 7.3 四级度量指标体系：资产级（RRL）、项目级（复用率）、组织级（成熟度）、生态级（供应链健康度）
 7.4 跨层升级/降级决策矩阵：何时将组件提升为应用服务？何时将业务服务降维为组件？
 7.5 FinOps 跨层复用成本模型：直接成本 / 间接成本 / 风险成本的分摊
@@ -479,7 +479,7 @@ flowchart TB
 
 本书框架设计至少引用以下三类权威来源：
 
-1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26566:2026（复用成熟度）、IEC 61508（功能安全）
+1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26565:2026（产品线成熟度框架）; ISO/IEC 26566:2026（产品线纹理方法/工具能力）、IEC 61508（功能安全）
 2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义
 
