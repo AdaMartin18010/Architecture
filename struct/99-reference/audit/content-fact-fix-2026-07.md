@@ -179,9 +179,28 @@
 > 本报告复核所依据的权威来源：
 >
 > - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [The Open Group — TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42030:2019](https://www.iso.org/standard/73436.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 30141:2024](https://www.iso.org/standard/88800.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 25040:2024](https://www.iso.org/standard/83467.html)（核查日期：2026-07-09）
+> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/publication/67463)（核查日期：2026-07-09）
+> - [NIST — AI Risk Management Framework 1.0](https://www.nist.gov/itl/ai-risk-management-framework)（核查日期：2026-07-09）
+> - [OpenSSF — SLSA Specification v1.2](https://slsa.dev/spec/v1.2/)（核查日期：2026-07-09）
+
+### 9.1 关键事实与权威来源对照表
+
+| 事实声明 | 权威来源 | 官方 URL | 核查日期 |
+|---|---|---|---|
+| ArchiMate 4.0 已于 2026-04-27 正式发布 | The Open Group | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 2026-07-09 |
+| MCP 2025-11-25 为稳定版；2026-07-28 为 RC | modelcontextprotocol GitHub releases | <https://github.com/modelcontextprotocol/specification/releases> | 2026-07-09 |
+| IEC 61508-3:2026 已被 TÜV Rheinland 强制采用（认证机构层面） | TÜV Rheinland / IEC 认可体系 | 需结合 IEC 官方 webstore 进一步确认国际标准状态 | 2026-07-09 |
+| ISO/IEC 25010 现行正式版为 2023 | ISO | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
+| ISO/IEC 30141 现行版为 2024 | ISO | <https://www.iso.org/standard/88800.html> | 2026-07-09 |
+| ISO/IEC/IEEE 12207 现行版为 2026 | ISO | <https://www.iso.org/standard/90219.html> | 2026-07-09 |
 
 因为权威来源对齐消除了事实争议，所以项目能够在正确的标准基准上继续演进，并降低未来因标准状态变化带来的回滚成本。
 

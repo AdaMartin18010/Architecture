@@ -5,67 +5,78 @@
 
 ## 1. 技术里程碑（2025–2026）
 
-### 1.1 标准化完成（Phase 5）
+### 1.1 WebAssembly 3.0 标准化完成
+
+2025 年 9 月 17 日，W3C WebAssembly 社区组与工作组的 **WebAssembly 3.0** 成为正式 live standard。该版本被规范作者称为自 Wasm 诞生以来最大的一次更新，整合了多项开发周期达 6–8 年的提案：
 
 | 特性 | 状态 | 意义 |
 |-----|------|------|
-| Exception Handling (exnref) | 已完成 | 所有主流浏览器支持 |
-| JavaScript String Builtins | 已完成 | 跨语言字符串互操作 |
-| Memory64 | 已完成 | 突破 4GB 内存限制（浏览器上限 16GB）|
+| Memory64 | 已完成 | 地址类型扩展为 `i64`，理论地址空间从 4 GB 提升到 16 EB，浏览器上限约 16 GB |
+| WasmGC | 已完成 | 宿主引擎原生垃圾回收，Java/Kotlin/Dart 等语言无需打包完整 GC 运行时 |
+| Exception Handling (exnref) | 已完成 | 结构化异常传播，所有主流浏览器已支持 |
+| Tail Calls | 已完成 | 递归语言实现可进行尾调用优化 |
+| 128-bit SIMD | 已完成 | 计算密集型负载标准化向量运算 |
 
-### 1.2 进展中的关键提案
+浏览器采用率持续增长：Chrome Platform Status 显示约 **5.5%** 的网站使用 Wasm；全球前 25 种编程语言中几乎全部支持 Wasm 编译目标。
 
-| 提案 | 阶段 | 说明 |
-|-----|------|------|
-| **Stack Switching** | Phase 3 | 允许多执行栈并发管理，支持 async/await、协程、生成器 |
-| **Wide Arithmetic** | Phase 3 | 128-bit 整数运算加速（当前慢 2–7 倍）|
-| **WebAssembly CSP** | 推进中 | `wasm-unsafe-eval` 关键词标准化，浏览器 CSP 支持 |
+## 2. 核心概念与定义
 
-### 1.3 WebAssembly 3.0
+### 2.1 组件模型（Component Model）
 
-- 2025 年宣布，将多项新特性纳入主规范
-- 浏览器采用率：Chrome Platform Status 显示 5.5% 网站使用 Wasm（持续增长）
-- 前 25 种编程语言中几乎全部支持 Wasm 编译目标
+**WebAssembly Component Model** 是 Wasm 的模块化与互操作层，将单个 Wasm 模块提升为**组件（Component）**：一种具有显式、类型化导入（import）与导出（export）接口的可组合单元。组件之间通过 **WebAssembly Interface Types（WIT）** 定义契约，实现跨语言、跨运行时的二进制复用。
 
-## 2. WASI 演进路线图
+| 属性 | 说明 | 复用价值 |
+|:---|:---|:---|
+| **语言无关** | Rust、Go/TinyGo、Python、C#、JS/TS、C/C++ 等均可编译为组件 | 打破语言孤岛 |
+| **接口类型化** | WIT 强类型接口，编译期与运行期均可校验 | 明确契约，降低集成风险 |
+| **沙箱隔离** | 基于 capability-based security，默认最小权限 | 安全复用不可信第三方组件 |
+| **可组合性** | 多个小组件可静态或动态组合为复杂应用 | 支持平台能力模块化交付 |
+| **可移植性** | 一次编译，可在浏览器、边缘、K8s、Serverless 运行时运行 | 资产跨环境复用 |
 
-### 2.1 WASI 0.2（2024 早期）
+### 2.2 WASI（WebAssembly System Interface）
 
-- 引入 **Component Model** 支持多模块链接
-- 定义 **Worlds** 概念：模块可访问的标准接口集合
-- 支持 `wasi-http` 等高级世界
+WASI 是组件访问操作系统能力的标准接口集合。WASI 0.3 基于 Component Model 构建，在 ABI 层引入 `stream<T,E>` / `future<T,E>` 类型，使语言绑定可生成惯用的 `await`。
 
-### 2.2 WASI 0.3（原生异步 I/O，RC/Preview）
+| 版本 | 发布时间 | 关键特性 |
+|-----|---------|---------|
+| WASI 0.1 (Preview 1) | 2019 | 基本文件/环境访问，类 POSIX ABI |
+| WASI 0.2 (Preview 2) | 2024-01-25 | 稳定 Component Model、`wasi:http` / `wasi:sockets`、WIT 接口 |
+| **WASI 0.3 (Preview 3)** | **2025-11 RC / 2026-02 preview** | **原生 async/await、`stream<T>`/`future<T>`、接口资源类型精简** |
+| WASI 1.0 | 预计 2026 末–2027 初 | 长期稳定版，无破坏性变更 |
 
-> **最新实践详见**：[`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
+WASI 0.3 的关键改进：
 
-- **原生异步支持**：Component Model ABI 层引入 `stream<T>` / `future<T>`，语言绑定可生成惯用 `await`，Host 可直接向 Guest 传递未完成的 future，无需显式轮询循环。
-- **状态**：WASI 0.3 于 2025 年底进入 Release Candidate，Wasmtime 37+ 提供默认/实验性支持；完整 WASI 1.0 预计 2026 末–2027 初发布。
-- **兼容性**：同一组件可同时导出 WASI 0.2 与 0.3 接口；0.3 运行时可通过适配层执行 0.2 模块，支持渐进迁移。
-- **效果**：HTTP、文件系统、时钟等世界全面异步化，`wasi:http@0.3.0` 资源类型从 0.2.4 的 11 个精简到 5 个。
-- **目标场景**：
-  - 边缘设备与 IoT
-  - 异步与事件驱动架构
-  - Serverless 函数与插件系统
-  - MCP / A2A Agent 工具沙箱
+- `wasi:http@0.3.0` 资源类型从 0.2.4 的 11 个精简到 5 个，降低约 55% 的 API 表面。
+- 同一组件可同时导出 WASI 0.2 与 0.3 接口；0.3 运行时可通过适配层执行 0.2 模块，支持渐进迁移。
+- Wasmtime 37+ 已提供实验性支持，Fermyon Spin v3.5（2025-11）已发布首个 RC 支持。
 
-### 2.3 WASI 1.0（目标 2026 末发布）
+> **实践提示**：截至 2026 年中，生产部署仍建议以 WASI 0.2（`wasm32-wasip2`）为主，WASI 0.3 作为架构演进目标跟踪。详见 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)。
 
-- WASI 的完整稳定版
-- WASI 0.2 将进入维护模式，0.3 成为推荐主线
-- Component Model 规范有望在 1.0 后进入下一阶段
+## 3. WIT：组件的接口契约语言
 
-## 3. 组件模型（Component Model）
+**WIT（WebAssembly Interface Types）** 是 Component Model 的接口定义语言（IDL）。一个 WIT 文件描述包（package）、接口（interface）和世界（world）：
 
-### 3.1 核心概念
+```wit
+package my:domain@0.1.0;
 
-组件模型是 WebAssembly 的**模块化与互操作层**：
+interface image-processor {
+    resize: func(input: list<u8>, width: u32, height: u32) -> result<list<u8>, string>;
+    detect-format: func(input: list<u8>) -> string;
+}
 
-- **语言无关**：不同语言编译的模块可通过标准接口互操作
-- **接口类型（Interface Types, WIT）**：定义组件间契约
-- **组合（Composition）**：将多个小组件组合为复杂应用
+world image-api {
+    export image-processor;
+    import wasi:io/streams@0.2.0;
+}
+```
 
-### 3.2 复用架构
+- **package**：命名空间与版本管理单元，建议显式声明语义版本。
+- **interface**：一组类型化函数，可被 import 或 export，是组织内复用的推荐粒度。
+- **world**：组件可见能力集合，定义可使用的标准接口与暴露的自定义接口。
+
+## 4. 复用架构与组合示例
+
+### 3.1 跨语言库复用
 
 ```text
 Application Component
@@ -79,58 +90,31 @@ Payment Service Component
 └── export "my:domain/payment-service"
 ```
 
-### 3.3 引用类型（Reference Types）
+**场景**：用 Rust 实现图像处理组件，被 Node.js、Python 和 Go 复用。
 
-- 组件可暴露有意义的 API，开发者无需理解 Wasm 内部机制
-- 大幅降低使用门槛，推动跨语言库复用
+```rust
+// Rust 实现（wasm32-wasip2 目标）
+wit_bindgen::generate!({
+    world: "image-api",
+    exports: { "my:domain/image-processor": ImageProcessor }
+});
 
-## 4. wasmCloud（CNCF 项目）
+struct ImageProcessor;
+impl exports::my::domain::image_processor::Guest for ImageProcessor {
+    fn resize(input: Vec<u8>, w: u32, h: u32) -> Result<Vec<u8>, String> { /* ... */ }
+    fn detect_format(input: Vec<u8>) -> String { /* ... */ }
+}
+```
 
-### 4.1 定位
+消费方绑定：
 
-> "wasmCloud is an open source CNCF project that enables teams to build, manage, and scale polyglot Wasm apps across any cloud, K8s, or edge."
+- **Node.js/TypeScript**：`@bytecodealliance/jco` 生成 ESM / TypeScript 存根。
+- **Python**：`componentize-py` 生成 Python 绑定。
+- **Go**：TinyGo + `wit-bindgen-go` 生成客户端。
 
-### 4.2 关键版本
+结果：同一二进制组件在三种语言运行时中复用，无需手写 FFI。
 
-| 版本 | 时间 | 特性 |
-|-----|------|------|
-| 1.0 | 2024-05 | 稳定运行时、组件支持 |
-| 2.0 | 2026-03-23 | 下一代运行时、性能提升 |
-| WASI P3 | 2026-04 | 异步组件支持 |
-
-### 4.3 核心能力
-
-- **多语言应用**：Go、Rust、Python、C 等编译为 Wasm 组件，统一部署
-- **分布式 ML/AI 工作负载**：模型推理组件在边缘/云端弹性调度
-- **SPIFFE 工作负载身份**：2025-03 采用 SPIFFE 实现 WebAssembly 负载身份安全
-- **平台工程集成**：Platform Harness 模式，将 Wasm 作为平台能力交付
-
-### 4.4 企业采用
-
-- Adobe：将 C 代码编译为 WebAssembly 组件运行于 wasmCloud
-- 各类云原生/边缘场景的渐进采用
-
-## 5. 语言与框架支持（2026）
-
-| 语言 | Wasm 支持状态 | 组件模型支持 |
-|-----|-------------|-------------|
-| Rust | 原生一级支持 | `wasm32-wasip2` 目标 |
-| Go | TinyGo + 官方支持 | wasmCloud Go SDK |
-| Python | Componentize-py | 实验性 |
-| C/C++ | Emscripten / WASI SDK | 成熟 |
-| .NET | .NET 10 | 与 Uno Platform 协作多线程 |
-| Kotlin | Beta Wasm 编译器 | Compose Multiplatform |
-| JavaScript/TypeScript | JCO 工具链 | 组件封装与调用 |
-
-## 6. 复用模式
-
-### 6.1 跨语言库复用
-
-- **场景**：Rust 编写的加密库被 Go、Python、JS 应用调用
-- **机制**：WIT 接口定义 + 组件组合
-- **优势**：无需 FFI 绑定，沙箱隔离保证安全
-
-### 6.2 边缘-云协同复用
+### 3.2 边缘-云协同复用
 
 ```text
 Cloud
@@ -143,132 +127,58 @@ Edge
 └── 本地决策逻辑
 ```
 
-### 6.3 平台能力复用
+### 3.3 平台能力复用
 
 | 能力 | Wasm 组件形式 | 运行时 |
 |-----|-------------|--------|
-| HTTP 网关 | `wasi:http` 处理器 | wasmCloud / WasmEdge |
+| HTTP 网关 | `wasi:http` 处理器 | wasmCloud / WasmEdge / Wasmtime |
 | 密钥管理 | `wasi:keyvalue` | 任何 WASI 运行时 |
 | 消息处理 | `wasi:messaging` | NATS + wasmCloud |
 | AI 推理 | ONNX Runtime Wasm | wasmCloud ML 组件 |
 
-## 7. 调试与工具链成熟
+## 5. 运行时与平台生态
 
-- **DWARF 支持**：LLDB 调试器支持独立运行时调试
-- **VS Code 集成**：部分 IDE 集成浏览器调试，无需 DevTools
-- **.NET 性能分析**：Wasm 性能剖析与诊断数据提取
+### 4.1 Wasmtime（Bytecode Alliance 参考运行时）
 
-## 8. 参考索引
+- 2022-09-20 发布 1.0 并宣布生产就绪。
+- 2024-01-25 完整支持 WASI 0.2 / Component Model。
+- 2026 年 Wasmtime 43+ 支持 WASI 0.3 运行时特性（实验性）。
+- CLI 支持 `wasmtime run`、`wasmtime serve` 以及多语言嵌入绑定（Rust、C、Python、.NET、Go）。
 
-- W3C WebAssembly Community Group: [webassembly.org](https://webassembly.org)
-- Bytecode Alliance: [bytecodealliance.org](https://bytecodealliance.org)
-- wasmCloud: [wasmcloud.com](https://wasmcloud.com)
-- WasmEdge: [wasmedge.org](https://wasmedge.org)
-- WASI Roadmap: [github.com/WebAssembly/WASI](https://github.com/WebAssembly/WASI)
-- Platform.Uno: "The State of WebAssembly – 2025 and 2026" (2026-01-27)
-- InfoQ / The New Stack: "WASI 1.0: WebAssembly 可能在 2026 悄然普及" (2026-01)
+### 4.2 wasmCloud（CNCF 项目）
 
+> "wasmCloud is an open source CNCF project that enables teams to build, manage, and scale polyglot Wasm apps across any cloud, K8s, or edge."
 
----
+| 版本 | 时间 | 特性 |
+|-----|------|------|
+| 1.0 | 2024-05 | 稳定运行时、组件支持 |
+| 2.0 | 2026-03-23 | 下一代运行时、性能提升 |
+| WASI P3 | 2026-04 | 异步组件支持 |
 
-## 9. WASM Component Model 知识体系补强
+核心能力：
 
-### 9.1 定义与核心属性
+- 多语言应用统一通过 `wasm32-wasip2` 目标构建组件并部署。
+- 2025-03 采用 SPIFFE 实现 WebAssembly 负载身份安全。
+- Platform Harness 模式将 Wasm 作为平台能力交付。
 
-**WebAssembly Component Model** 是 WebAssembly 的模块化和互操作层，它将单个 Wasm 模块提升为**组件（Component）**：一种具有显式、类型化导入（import）与导出（export）接口的可组合单元。组件之间通过 **WebAssembly Interface Types（WIT）** 定义契约，实现跨语言、跨运行时的二进制复用。[[WebAssembly](https://en.wikipedia.org/wiki/WebAssembly)]
+企业采用案例：Adobe 将 C 代码编译为 WebAssembly 组件运行于 wasmCloud。
 
-| 属性 | 说明 | 复用价值 |
-|:---|:---|:---|
-| **语言无关** | Rust、Go、Python、C#、JS 等均可编译为组件 | 打破语言孤岛 |
-| **接口类型化** | WIT 强类型接口，编译期与运行期均可校验 | 明确契约，降低集成风险 |
-| **沙箱隔离** | 基于 capability-based security，默认最小权限 | 安全复用不可信第三方组件 |
-| **可组合性** | 多个小组件可组合为复杂应用 | 支持平台能力模块化交付 |
-| **可移植性** | 一次编译，可在浏览器、边缘、云原生运行时运行 | 资产跨环境复用 |
+## 6. 语言与框架支持（2026）
 
-### 9.2 WIT：组件的接口契约语言
+| 语言 | Wasm 支持状态 | 组件模型支持 |
+|-----|-------------|-------------|
+| Rust | 原生一级支持 | `wasm32-wasip2`（Tier 2） |
+| Go | TinyGo 官方支持 | `wit-bindgen-go` + wasmCloud Go SDK |
+| Python | `componentize-py` | 稳定 |
+| C/C++ | WASI SDK / Emscripten | 成熟 |
+| C# / .NET | `componentize-dotnet` | 稳定 |
+| JavaScript/TypeScript | `jco` + `componentize-js` | 稳定 |
+| Kotlin | Kotlin/Wasm Beta | 与 Compose Multiplatform 协作 |
+| Java | GraalWasm / Endive（2026-05 发布） | 路线图中 |
 
-**WIT（WebAssembly Interface Types）**是 Component Model 的接口定义语言（IDL）。一个 WIT 文件描述包（package）、接口（interface）和世界（world）：
+Rust 目标更新：自 Rust 1.84（2025-01）起，旧的 `wasm32-wasi` 目标被移除，取而代之的是 `wasm32-wasip1`（Tier 2）与 `wasm32-wasip2`（Tier 3，组件模型）。
 
-```wit
-package my:domain;
-
-interface image-processor {
-    resize: func(input: list<u8>, width: u32, height: u32) -> result<list<u8>, string>;
-    detect-format: func(input: list<u8>) -> string;
-}
-
-world image-api {
-    export image-processor;
-    import wasi:io/streams@0.2.0;
-}
-```
-
-- **package**：命名空间与版本管理单元。
-- **interface**：一组类型化函数，可被 import 或 export。
-- **world**：组件可见能力集合，定义可使用的标准接口与暴露的自定义接口。
-
-### 9.3 与 WASI 0.3 的关系
-
-WASI（WebAssembly System Interface）是组件访问操作系统能力的标准接口集合。WASI 0.3 基于 Component Model 构建，原生引入 `stream<T,E>` / `future<T,E>` 类型以支持异步 I/O。二者关系如下：
-
-```mermaid
-graph TB
-    subgraph "语言编译器"
-        Rust[Rust<br/>wasm32-wasip2]
-        Go[Go / TinyGo]
-        Python[Python<br/>componentize-py]
-        JS[JS/TS<br/>jco]
-    end
-    CM[WebAssembly Component Model<br/>WIT 接口 + 组合]
-    Rust --> CM
-    Go --> CM
-    Python --> CM
-    JS --> CM
-    WASI03[WASI 0.3 Worlds<br/>wasi:http / wasi:io / wasi:filesystem]
-    CM --> WASI03
-    Runtime[wasmtime / WasmEdge / wasmCloud]
-    WASI03 --> Runtime
-    Runtime --> Host[浏览器 / 边缘 / K8s / Serverless]
-```
-
-- **Component Model** 提供“如何定义和组合接口”的元模型；
-- **WASI 0.3** 是在该元模型上定义的“世界”，提供 HTTP、文件系统、时钟等系统能力；
-- **运行时**实现 WASI 0.3 世界，使组件可在不同宿主环境中复用。
-
-### 9.4 跨语言复用示例
-
-**场景**：用 Rust 实现图像处理组件，被 Node.js、Python 和 Go 复用。
-
-**步骤**：
-
-1. 定义 `my:domain/image-processor` WIT 接口（见 9.2）。
-2. 用 Rust 实现并导出：
-
-```rust
-wit_bindgen::generate!({ world: "image-api", exports: { "my:domain/image-processor": ImageProcessor } });
-
-struct ImageProcessor;
-impl exports::my::domain::image_processor::Guest for ImageProcessor {
-    fn resize(input: Vec<u8>, w: u32, h: u32) -> Result<Vec<u8>, String> { /* ... */ }
-    fn detect_format(input: Vec<u8>) -> String { /* ... */ }
-}
-```
-
-1. 编译为 `image-processor.wasm` 组件。
-2. 消费方绑定：
-   - **Node.js**：使用 `@bytecodealliance/jco` 生成 TypeScript 存根。
-   - **Python**：使用 `componentize-py` 生成 Python 绑定。
-   - **Go**：使用 TinyGo + `wit-bindgen-go` 生成客户端。
-
-结果：同一二进制组件在三种语言运行时中复用，无需手写 FFI。
-
-### 9.5 正例与反例
-
-**正例**：某电商平台将图片压缩、格式转换、水印生成实现为独立的 WASM 组件，通过 WIT 接口暴露给 Node.js 前端、Python 批处理服务以及 Go 边缘网关复用，组件更新时所有消费方自动获得一致行为。
-
-**反例**：某团队将大量阻塞式文件 I/O 逻辑直接迁移到 WASM，未使用 WASI 0.3 的异步 `stream`/`future` 能力，也未通过 WIT 暴露接口，导致运行时阻塞、延迟飙升，且难以跨语言调用，最终回退为原生动态库。
-
-### 9.6 WASM 组件复用边界
+## 7. WASM 组件复用边界与架构分析
 
 组件复用并非"一切 WASM 化"。基于 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md) 的边界分析，建议按以下规则决策：
 
@@ -279,18 +189,69 @@ impl exports::my::domain::image_processor::Guest for ImageProcessor {
 | 多租户场景下的不可信第三方代码沙箱 | 对峰值吞吐延迟极度敏感、无法容忍任何虚拟化开销的核心路径 |
 | 已通过 WIT 明确契约的模块级能力 | 未定义接口、频繁变更的内部实现细节 |
 
-**推荐粒度**：以 **WIT `interface`** 作为组织内复用的标准粒度；完整 `world` 组件适合对外交付或跨团队部署；函数级粒度过细，契约维护成本高。
+**推荐粒度**：
 
-### 9.7 权威来源与交叉引用
+- 以 **WIT `interface`** 作为组织内复用的标准粒度；
+- 完整 `world` 组件适合对外交付或跨团队部署；
+- 函数级粒度过细，契约维护成本高；应用级粒度过粗，丧失组件组合优势。
+
+## 8. 工具链与生态系统分析
+
+- **DWARF 支持**：LLDB 调试器支持独立运行时调试。
+- **VS Code 集成**：部分 IDE 集成浏览器调试，无需 DevTools。
+- **组件注册表**：Bytecode Alliance 的 `warg` 协议与 OCI artifact 支持，使组件可通过标准基础设施分发。
+- **工具链**：`wasm-tools`（链接、检查、验证）、`cargo-component`（Rust）、`jco`（JS/TS）、`componentize-py`（Python）、`wit-bindgen`（多语言绑定）。
+
+## 9. 正向示例
+
+### 示例：跨语言图像处理组件复用
+
+某电商平台将图片压缩、格式转换、水印生成实现为独立的 Rust WASM 组件，通过 WIT 接口 `my:domain/image-processor` 暴露给：
+
+- **Node.js 前端服务**：处理用户上传图片；
+- **Python 批处理服务**：处理历史图片资产；
+- **Go 边缘网关**：在边缘节点完成实时缩略图生成。
+
+结果：
+
+- 同一核心算法只需维护一份 Rust 代码；
+- 组件更新时所有消费方自动获得一致行为；
+- 新语言栈团队可在 1 天内接入，无需重写核心逻辑。
+
+## 10. 反例 / 反模式
+
+### 反例：阻塞式 I/O 直接迁移 WASM
+
+某团队将大量阻塞式文件 I/O 逻辑直接迁移到 WASM，未使用 WASI 0.3 的异步 `stream`/`future` 能力，也未通过 WIT 暴露接口，而是依赖宿主与 Guest 之间的共享内存约定。结果：
+
+- 运行时阻塞导致延迟飙升，CPU 利用率低下；
+- 不同语言消费方需要各自实现内存编解码，重复了 FFI 的痛苦；
+- 调试困难，组件边界模糊，最终回退为原生动态库。
+
+### 反模式：过度拆分函数级组件
+
+某团队将每个业务函数都编译为独立 Wasm 组件，导致：
+
+- WIT 文件数量爆炸，版本管理困难；
+- 组件组合和启动开销超过性能收益；
+- 团队将大量时间花在接口契约维护而非业务逻辑上。
+
+正确做法：以 **interface 粒度**组织复用单元，将紧密相关的函数放在同一接口中。
+
+## 11. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org> | 2026-07-09 |
 | WASI — WebAssembly System Interface | <https://wasi.dev> | 2026-07-09 |
 | WASI Roadmap (GitHub) | <https://github.com/WebAssembly/WASI> | 2026-07-09 |
-| Wasmtime | <https://github.com/bytecodealliance/wasmtime> | 2026-07-09 |
+| Wasmtime Runtime | <https://github.com/bytecodealliance/wasmtime> | 2026-07-09 |
+| wasmCloud | <https://wasmcloud.com> | 2026-07-09 |
+| The State of WebAssembly 2025–2026 | <https://platform.uno/blog/the-state-of-webassembly-2025-2026/> | 2026-07-09 |
 
-**交叉引用**：
+> **关键引用**：根据 Bytecode Alliance 与 Platform.Uno 2026-01-27 的状态报告，WebAssembly 3.0 于 2025-09-17 成为 live standard；WASI 0.3 在 2026-02 通过 Wasmtime 37+ 提供预览支持，预计 2026 末–2027 初发布 WASI 1.0。
+
+## 12. 交叉引用
 
 - WASI 0.3 边界分析详见 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
 - WASM 复用决策树详见 [`wasm-reuse-decision-tree.md`](./wasm-reuse-decision-tree.md)

@@ -59,7 +59,7 @@ CNCF TAG App Delivery 发布的 [Platform Engineering Maturity Model](https://ta
 | **Level 3<br/>Scalable** | 产品化投入；UX/PM 角色 | 内在牵引；用户主动选择 | 自助服务；one-click 供给 | 集中编排；标准流程；持续交付 | 洞察驱动；明确成功指标 |
 | **Level 4<br/>Optimizing** | 生态化投资；内外贡献回流 | 参与式生态；用户贡献能力 | 集成式服务；嵌入现有工具流 | 托管服务；共享责任模型 | 定量+定性；数据民主化 |
 
-### 3.1 成熟度跃迁关键阈值
+### 3.1 成熟度跃迁关键阈值分析
 
 - **Level 1 → Level 2**：从"救火"到"有预算、有团队、有目录"。
 - **Level 2 → Level 3**：从"外部强制"到"内在牵引"；引入产品经理与用户体验设计，开始度量认知负荷。
@@ -188,9 +188,13 @@ Golden Path Library
 
 ## 10. 权威来源
 
-> **权威来源**：
->
-> - [CNCF Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) — CNCF TAG App Delivery（核查日期：2026-07-09）
-> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) — CNCF TAG App Delivery（核查日期：2026-07-09）
-> - [Team Topologies](https://teamtopologies.com/) — Matthew Skelton & Manuel Pais（核查日期：2026-07-09）
-> - [Platform Engineering Community](https://platformengineering.org/) — platformengineering.org（核查日期：2026-07-09）
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| CNCF Platform Engineering Maturity Model | <https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/> | 2026-07-09 |
+| CNCF Platforms White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platforms/> | 2026-07-09 |
+| Team Topologies (2nd ed., 2025) | <https://teamtopologies.com/book> | 2026-07-09 |
+| Platform Engineering Community | <https://platformengineering.org/> | 2026-07-09 |
+| DORA State of DevOps Report 2024 | <https://dora.dev/research/2024/dora-report/> | 2026-07-09 |
+| Microsoft Learn: Platform Engineering Problem Space | <https://learn.microsoft.com/en-us/platform-engineering/problem-space> | 2026-07-09 |
+
+> **关键引用**：CNCF 成熟度模型采用 4 级 × 5 维度框架（Investment、Adoption、Interface、Operation、Feedback），Level 3 的标志是"产品化投入与内在牵引"，Level 4 的标志是"参与式生态与共享责任模型"。Team Topologies 第二版（2025）将平台团队重新定义为"平台组合（platform grouping）"，并强调认知负荷是组织设计的一等约束。

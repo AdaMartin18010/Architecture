@@ -26,6 +26,21 @@
 | **ISO/IEC 5338** | 制定中 | ✅ **2023 版已发布** | <https://www.iso.org/standard/81118.html> | 2026-06-12 |
 | **ISO/IEC 25040** | URL 指向 /standard/64768.html | ✅ **正确 URL 为 /standard/83467.html** | <https://www.iso.org/standard/83467.html> | 2026-06-12 |
 
+### 1.1 权威来源核验摘要
+
+| 标准/技术 | 官方来源 | 最新确认 URL | 状态 | 核查日期 |
+|---|---|---|---|---|
+| ArchiMate 4.0 | The Open Group | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 已正式发布（2026-04-27） | 2026-07-09 |
+| ISO/IEC/IEEE 12207:2026 | ISO | <https://www.iso.org/standard/90219.html> | 已发布（2026-04-29） | 2026-07-09 |
+| ISO/IEC 30141:2024 | ISO | <https://www.iso.org/standard/88800.html> | 已发布（2024-08） | 2026-07-09 |
+| ISO/IEC 25010:2023 | ISO | <https://www.iso.org/standard/78176.html> | 现行正式版 | 2026-07-09 |
+| NIST SSDF 1.2 | NIST CSRC | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> | Initial Public Draft | 2026-07-09 |
+| IEC 62443-4-2 | IEC Webstore | <https://webstore.iec.ch/publication/67463> | 现行版 2019 | 2026-07-09 |
+| ISO/IEC 5338:2023 | ISO | <https://www.iso.org/standard/81118.html> | 已发布 | 2026-07-09 |
+| ISO/IEC 25040:2024 | ISO | <https://www.iso.org/standard/83467.html> | 已发布 | 2026-07-09 |
+
+> **核验原则**：每项标准状态必须来自 ISO/IEC、The Open Group、NIST、IEC 等官方发布渠道，避免依赖厂商博客或第三方百科的时效性信息。
+
 ---
 
 ## 2. 本季度确认保持不变的预期
@@ -95,9 +110,16 @@
 > 本报告中的标准状态以下列权威来源为准：
 >
 > - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [The Open Group — TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 30141:2024](https://www.iso.org/standard/88800.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 25040:2024](https://www.iso.org/standard/83467.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 5338:2023](https://www.iso.org/standard/81118.html)（核查日期：2026-07-09）
+> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/publication/67463)（核查日期：2026-07-09）
 > - [NIST — SSDF 1.2 Initial Public Draft](https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2)（核查日期：2026-07-09）
+> - [NIST — AI Risk Management Framework 1.0](https://www.nist.gov/itl/ai-risk-management-framework)（核查日期：2026-07-09）
 
 ---
 

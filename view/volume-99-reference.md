@@ -967,9 +967,28 @@ Phase C（纵深扩展）
 > 本报告复核所依据的权威来源：
 >
 > - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [The Open Group — TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42030:2019](https://www.iso.org/standard/73436.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 30141:2024](https://www.iso.org/standard/88800.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 25040:2024](https://www.iso.org/standard/83467.html)（核查日期：2026-07-09）
+> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/publication/67463)（核查日期：2026-07-09）
+> - [NIST — AI Risk Management Framework 1.0](https://www.nist.gov/itl/ai-risk-management-framework)（核查日期：2026-07-09）
+> - [OpenSSF — SLSA Specification v1.2](https://slsa.dev/spec/v1.2/)（核查日期：2026-07-09）
+
+### 9.1 关键事实与权威来源对照表
+
+| 事实声明 | 权威来源 | 官方 URL | 核查日期 |
+|---|---|---|---|
+| ArchiMate 4.0 已于 2026-04-27 正式发布 | The Open Group | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 2026-07-09 |
+| MCP 2025-11-25 为稳定版；2026-07-28 为 RC | modelcontextprotocol GitHub releases | <https://github.com/modelcontextprotocol/specification/releases> | 2026-07-09 |
+| IEC 61508-3:2026 已被 TÜV Rheinland 强制采用（认证机构层面） | TÜV Rheinland / IEC 认可体系 | 需结合 IEC 官方 webstore 进一步确认国际标准状态 | 2026-07-09 |
+| ISO/IEC 25010 现行正式版为 2023 | ISO | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
+| ISO/IEC 30141 现行版为 2024 | ISO | <https://www.iso.org/standard/88800.html> | 2026-07-09 |
+| ISO/IEC/IEEE 12207 现行版为 2026 | ISO | <https://www.iso.org/standard/90219.html> | 2026-07-09 |
 
 因为权威来源对齐消除了事实争议，所以项目能够在正确的标准基准上继续演进，并降低未来因标准状态变化带来的回滚成本。
 
@@ -9056,20 +9075,29 @@ graph TD
 
 ## 5. 标准索引总览
 
-| 标准 | 主题 | 状态 | 链接 |
-|------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) |
-| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78176.html) |
-| ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) |
-| ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/63712.html) |
-| TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) |
-| SLSA 1.2 | 10-供应链安全 | 生效 | [SLSA](https://slsa.dev) |
-| SPDX 2.3 / CycloneDX 1.6 | 10-供应链安全 | 生效 | [SPDX](https://spdx.dev), [CycloneDX](https://cyclonedx.org) |
-| ISA-95 / IEC 62264 | 11-工业 IoT | 生效 | [ISA](https://www.isa.org/standards-and-publications/isa-standards/isa-95) |
-| OPC UA FX 1.0 | 11-工业 IoT | 新兴 | [OPC Foundation](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/) |
-| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制 | [IEC](https://webstore.iec.ch/publication/66912) |
-| MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) |
-| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) |
+| 标准 | 主题 | 状态 | 链接 | 核查日期 |
+|------|------|------|------|------|
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) | 2026-07-09 |
+| ISO/IEC/IEEE 42020:2019 | 01-元模型/复用 | 生效 | [ISO](https://www.iso.org/standard/68982.html) | 2026-07-09 |
+| ISO/IEC/IEEE 42030:2019 | 01-元模型/评估 | 生效 | [ISO](https://www.iso.org/standard/73436.html) | 2026-07-09 |
+| ISO/IEC 26550:2015 | 跨层复用 | 生效 | [ISO](https://www.iso.org/standard/69529.html) | 2026-07-09 |
+| ISO/IEC 26565:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81436.html) | 2026-07-09 |
+| ISO/IEC 26566:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81437.html) | 2026-07-09 |
+| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78176.html) | 2026-07-09 |
+| ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 2026-07-09 |
+| ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/90219.html) | 2026-07-09 |
+| TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) | 2026-07-09 |
+| SLSA 1.2 | 10-供应链安全 | 生效 | [SLSA](https://slsa.dev/spec/v1.2/) | 2026-07-09 |
+| SPDX 2.3 / CycloneDX 1.6 | 10-供应链安全 | 生效 | [SPDX](https://spdx.dev), [CycloneDX](https://cyclonedx.org) | 2026-07-09 |
+| ISA-95 / IEC 62264 | 11-工业 IoT | 生效 | [ISA](https://www.isa.org/standards-and-publications/isa-standards/isa-95) | 2026-07-09 |
+| OPC UA FX 1.0 | 11-工业 IoT | 新兴 | [OPC Foundation](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/) | 2026-07-09 |
+| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制（认证机构采用） | [IEC](https://webstore.iec.ch/publication/66912) | 2026-07-09 |
+| NIST AI RMF 1.0 | 12-AI 原生/治理 | 生效 | [NIST](https://www.nist.gov/itl/ai-risk-management-framework) | 2026-07-09 |
+| FinOps Foundation | 09-价值量化 | 生效 | [FinOps](https://www.finops.org/) | 2026-07-09 |
+| MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) | 2026-07-09 |
+| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) | 2026-07-09 |
+
+> **索引说明**：本表所列链接均指向 ISO、IEC、The Open Group、NIST 等官方发布页面；`核查日期` 为最近一次人工或自动化复核的日期。标准状态变更时应同步更新本表与 [`frontier-tracking/2026-q2-frontier-report.md`](../struct/99-reference/frontier-tracking/2026-q2-frontier-report.md)。
 
 ### 5.1 术语一致性治理
 
@@ -9082,11 +9110,19 @@ graph TD
 
 ### 5.2 跨层映射权威性
 
-`knowledge-index/cross-layer-reuse-mapping-matrix.md` 是四层复用资产映射的权威表达。其权威性来自：
+[`knowledge-index/cross-layer-reuse-mapping-matrix.md`](../struct/99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md) 是四层复用资产映射的权威表达。其权威性来自：
 
 - **标准对齐**：映射关系基于 ISO/IEC/IEEE 42010:2022（架构描述、视点与对应关系）、TOGAF 10（业务/应用/技术架构分层）与 ISO/IEC 25010:2023（质量模型）。
 - **失败传递模式**：矩阵中记录的跨层失败传递模式（如业务定义漂移 → 应用服务冗余 → 组件接口耦合）应随审计报告持续验证。
 - **版本控制**：矩阵的每次更新必须在 `CHANGELOG.md` 与 `audit/` 中记录变更理由与权威来源。
+
+### 5.3 术语与知识索引交叉引用
+
+- **术语单一事实源**：[`glossary/glossary-master.md`](../struct/99-reference/glossary/glossary-master.md)
+- **跨标准术语映射**：[`glossary/terminology-crosswalk.md`](../struct/99-reference/glossary/terminology-crosswalk.md)
+- **跨层复用映射矩阵**：[`knowledge-index/cross-layer-reuse-mapping-matrix.md`](../struct/99-reference/knowledge-index/cross-layer-reuse-mapping-matrix.md)
+- **事实勘误与权威对齐报告**：[`audit/content-fact-fix-2026-07.md`](../struct/99-reference/audit/content-fact-fix-2026-07.md)
+- **前沿标准跟踪**：[`frontier-tracking/2026-q2-frontier-report.md`](../struct/99-reference/frontier-tracking/2026-q2-frontier-report.md)
 
 ---
 
@@ -9110,6 +9146,8 @@ graph TD
 > - [CNCF](https://www.cncf.io) — Cloud Native Computing Foundation（核查日期：2026-07-09）
 > - [The Open Group](https://www.opengroup.org) — 企业架构与 ArchiMate 标准（核查日期：2026-07-09）
 > - [Linux Foundation](https://www.linuxfoundation.org) — 开源与开放标准治理（核查日期：2026-07-09）
+> - [OpenSSF](https://openssf.org) — 软件供应链安全与 SLSA（核查日期：2026-07-09）
+> - [FinOps Foundation](https://www.finops.org/) — 云成本治理框架（核查日期：2026-07-09）
 > - [Green Software Foundation](https://greensoftware.foundation) — SCI / SCI for AI（核查日期：2026-07-09）
 > - [W3C WebAssembly Community Group](https://www.w3.org/groups/cg/webassembly/) — WebAssembly 与 WASI（核查日期：2026-07-09）
 

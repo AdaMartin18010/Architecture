@@ -92,7 +92,7 @@ graph LR
 
 ---
 
-## 5. 趋势适用性矩阵
+## 5. 趋势适用性矩阵与采纳分析
 
 | 趋势 | 适用组织 | 不适用场景 | 关键成功因素 |
 |------|----------|------------|--------------|
@@ -106,16 +106,38 @@ graph LR
 
 ## 6. 权威来源
 
-> **权威来源**：
+> **权威来源**（按主题分组，核查日期：2026-07-09）：
 >
-> - [CNCF Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) — CNCF TAG App Delivery（核查日期：2026-07-09）
-> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) — CNCF TAG App Delivery（核查日期：2026-07-09）
-> - [WebAssembly Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance（核查日期：2026-07-09）
-> - [WASI — WebAssembly System Interface](https://wasi.dev/) — W3C WebAssembly CG（核查日期：2026-07-09）
-> - [SCI Specification](https://sci.greensoftware.foundation/) — Green Software Foundation（核查日期：2026-07-09）
-> - [SCI for AI](https://greensoftware.foundation/standards/sci-ai/) — Green Software Foundation（核查日期：2026-07-09）
-> - [Rust Programming Language](https://www.rust-lang.org/) — Rust Project（核查日期：2026-07-09）
-> - [Spring Modulith](https://spring.io/projects/spring-modulith) — VMware / Spring（核查日期：2026-07-09）
+> **平台工程**
+>
+> - [CNCF Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) — CNCF TAG App Delivery
+> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) — CNCF TAG App Delivery
+> - [Team Topologies](https://teamtopologies.com/) — Matthew Skelton & Manuel Pais
+> - [DORA State of DevOps Report 2024](https://dora.dev/research/2024/dora-report/) — Google Cloud / DORA
+>
+> **WebAssembly 与组件模型**
+>
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance
+> - [WASI — WebAssembly System Interface](https://wasi.dev/) — W3C WebAssembly CG / Bytecode Alliance
+> - [Wasmtime Runtime](https://github.com/bytecodealliance/wasmtime) — Bytecode Alliance
+>
+> **Rust 与形式化验证**
+>
+> - [The Rust Programming Language](https://www.rust-lang.org/) — Rust Project
+> - [Kani Rust Verifier](https://github.com/model-checking/kani) — AWS / Model Checking Research
+> - [Miri (Rust MIR Interpreter)](https://github.com/rust-lang/miri) — Rust Project
+>
+> **绿色软件与 SCI**
+>
+> - [SCI Specification v1.1 / ISO/IEC 21031:2024](https://sci.greensoftware.foundation/) — Green Software Foundation
+> - [ISO/IEC 21031:2024](https://www.iso.org/standard/86612.html) — ISO/IEC JTC 1/SC 42
+> - [SCI for AI Specification](https://greensoftware.foundation/standards/sci-ai/) — Green Software Foundation
+> - [SCI for AI Ratified](https://greensoftware.foundation/articles/sci-ai-specification-ratified-standard-for-measuring-ai-emissions-across-the/) — Green Software Foundation
+> - [Green Software Patterns](https://patterns.greensoftware.foundation/) — Green Software Foundation
+>
+> **模块化单体**
+>
+> - [Spring Modulith](https://spring.io/projects/spring-modulith) — VMware / Spring
 
 ---
 
@@ -155,12 +177,7 @@ graph LR
 
 > 新兴技术扩展了复用的边界，但技术采纳必须匹配组织成熟度与真实业务痛点；平台工程、模块化、WASM 与绿色软件共同构成 2026 年复用演进的主线。
 
-## 11. 版本记录
-
-- 2026-07-07：补充平台工程、模块化单体、WASM、绿色软件与 RegTech AI 的概念定义、示例、反例、关系图与权威来源。
-- 2026-06-08：初始版本，梳理新兴趋势核心文件与状态。
-
-## 12. 深度案例：从单体到模块化单体再到微服务的渐进复用
+## 11. 深度案例：从单体到模块化单体再到微服务的渐进复用
 
 某 SaaS 公司在创业初期采用单体架构快速验证市场。随着团队扩大到 80 人，部署冲突与代码耦合开始影响交付效率。
 
@@ -200,7 +217,7 @@ graph LR
 
 新兴趋势不是对现有复用框架的替代，而是对其边界与形式的扩展。理性采纳、持续度量与渐进演进，是将趋势转化为可持续复用能力的关键。
 
-## 17. 版本记录
+## 12. 版本记录
 
 - 2026-07-09：对齐 CNCF Platform Engineering Maturity Model、WASI 0.3 / Wasm 组件复用边界、Rust/WASM 形式化验证、SCI for AI 等权威来源；删除重复版本记录；更新权威来源 URL 与核查日期。
 - 2026-07-07：补充平台工程、模块化单体、WASM、绿色软件与 RegTech AI 的概念定义、示例、反例、关系图与权威来源。

@@ -21,12 +21,10 @@
 
 ### 1.1 Green Software Foundation 的使命与架构
 
-Green Software Foundation（GSF）成立于 2021 年，是由 Linux 基金会托管的全球性非营利组织，其使命是构建一个由绿色软件原则、模式和工具支持的可持续软件生态系统。GSF 的创始成员包括微软、GitHub、埃森哲、Thoughtworks 等科技和咨询行业的领先企业。截至 2026 年，GSF 已发展成为软件可持续性领域最具影响力的标准化组织之一，其发布的规范和模式被全球数千家企业和开源项目采纳。
+Green Software Foundation（GSF）是由 Linux 基金会托管的独立、厂商中立的非营利组织，专注于推进绿色软件实践。其工作围绕三大支柱展开：
 
-GSF 的工作围绕三大支柱展开：
-
-- **标准（Standards）**：定义软件碳强度（SCI）等可度量的标准，使软件的碳排放能够被量化、比较和优化；
-- **模式（Patterns）**：收集和编目经过验证的绿色软件设计模式，供架构师和开发者在设计决策时参考；
+- **标准（Standards）**：定义软件碳强度（SCI）等可度量的国际标准；
+- **模式（Patterns）**：收集和编目经过验证的绿色软件设计模式；
 - **工具（Tools）**：开发开源工具和 SDK，帮助开发者在软件开发生命周期中测量和减少碳排放。
 
 在架构复用的语境下，GSF 的核心理念可以概括为一句话：**"复用即减碳"** —— 每一个被成功复用的软件组件，都意味着避免了重复开发所带来的隐含碳排放（embodied carbon）和运行碳排放（operational carbon）。
@@ -37,7 +35,7 @@ GSF 的工作围绕三大支柱展开：
 
 SCI 规范的独特之处在于它将软件的碳排放与软件提供的**功能价值**挂钩，而非仅仅计算绝对的碳排放总量。这种"强度"指标的设计使得不同规模、不同功能的软件系统之间可以进行公平的碳效率比较。例如，一个处理百万级请求的大型云服务和一个小型内部工具，其绝对碳排放差异巨大，但通过 SCI 可以比较它们每单位功能所产生的碳强度。
 
-SCI 规范遵循 ISO 标准的方法论，并已被纳入 ISO/IEC 标准轨道。2024 年，GSF 与 ISO 合作启动了 SCI 的国际标准化进程，预计将在 2027 年前发布为正式的 ISO/IEC 国际标准。
+SCI 规范遵循 ISO 标准的方法论，并已于 **2024 年 3 月正式成为 ISO/IEC 21031:2024**（Information technology — Software Carbon Intensity specification），是首个专门针对软件碳强度测量的国际标准。该标准由 ISO/IEC JTC 1/SC 42 与 GSF 标准工作组共同制定，采用开放、免费、厂商中立的治理模式。
 
 ### 1.3 软件碳排放的两大来源
 
@@ -481,17 +479,17 @@ SCI for AI 要求提供方和使用方分别度量各自可控的排放：
 
 ## 11. 权威来源
 
-1. Green Software Foundation, *SCI Specification v1.1* (ISO/IEC 21031:2024). <https://sci.greensoftware.foundation/> （核查日期：2026-07-09）
+| 序号 | 来源 | URL | 核查日期 |
+|:---|:---|:---|:---|
+| 1 | Green Software Foundation, *SCI Specification v1.1* | <https://sci.greensoftware.foundation/> | 2026-07-09 |
+| 2 | ISO/IEC 21031:2024 — Software Carbon Intensity specification | <https://www.iso.org/standard/86612.html> | 2026-07-09 |
+| 3 | Green Software Foundation, *SCI for AI Specification* | <https://greensoftware.foundation/standards/sci-ai/> | 2026-07-09 |
+| 4 | Green Software Foundation, *SCI for AI Specification Ratified* | <https://greensoftware.foundation/articles/sci-ai-specification-ratified-standard-for-measuring-ai-emissions-across-the/> | 2026-07-09 |
+| 5 | Green Software Foundation, *Green Software Patterns Catalog* | <https://patterns.greensoftware.foundation/> | 2026-07-09 |
+| 6 | Green Software Foundation, *The State of Green Software 2024/2025* | <https://stateof.greensoftware.foundation/> | 2026-07-09 |
+| 7 | FinOps Foundation, *Green FinOps: Integrating Carbon and Cost* | <https://www.finops.org/framework/capabilities/sustainability/> | 2026-07-09 |
 
-2. Green Software Foundation, *SCI for AI Specification*. <https://greensoftware.foundation/standards/sci-ai/> （核查日期：2026-07-09）
-
-3. Green Software Foundation, *SCI for AI Specification Ratified*. <https://greensoftware.foundation/articles/sci-ai-specification-ratified-standard-for-measuring-ai-emissions-across-the/> （核查日期：2026-07-09）
-
-4. Green Software Foundation, *Green Software Patterns Catalog*. <https://patterns.greensoftware.foundation/> （核查日期：2026-07-09）
-
-5. Green Software Foundation, *The State of Green Software 2024/2025*. <https://stateof.greensoftware.foundation/> （核查日期：2026-07-09）
-
-6. FinOps Foundation, *Green FinOps: Integrating Carbon and Cost*. <https://www.finops.org/framework/capabilities/sustainability/> （核查日期：2026-07-09）
+> **关键引用**：根据 GSF 2025-12-17 公告，SCI for AI 规范已正式批准（ratified），由 20 余家成员组织的 AI 专家共同制定。该规范将 ISO/IEC 21031:2024 方法论扩展到 AI 系统全生命周期，并定义 provider score 与 consumer score 的双边界责任模型。
 
 ---
 
