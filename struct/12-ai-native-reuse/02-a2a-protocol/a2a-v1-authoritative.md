@@ -1,7 +1,7 @@
 # A2A v1.0 权威规范解读
 
-> **版本**: 2026-06-06
-> **权威来源**: Google A2A Protocol, Linux Foundation, Cloud Next 2026
+> **版本**: 2026-07-08
+> **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
 > **定位**: 对齐 A2A v1.0 正式发布版本的核心概念与架构模式
 
 ---
@@ -11,11 +11,11 @@
 | 里程碑 | 时间 | 事件 |
 |--------|------|------|
 | 首次发布 | 2025-04 | Google 发布 A2A 协议，50+ 合作伙伴 |
-| 捐赠 LF | 2025-06 | 捐赠给 Linux Foundation |
+| 捐赠 LF | 2025-12 | Anthropic 将 MCP 捐赠给 AAIF；A2A 生态同步纳入 Linux Foundation Agentic AI Foundation 治理 |
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
-| **v1.0** | **2026-04** | **Google Cloud Next 2026 正式发布** |
+| **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0 于 2026 年 4 月在 Google Cloud Next '26 大会上正式发布。此前文档中关于 2026-03-12 的日期需要修正。
+> **关键确认**: A2A v1.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0 的发布以官方规范页面为准。
 
 ---
 
@@ -50,7 +50,7 @@ A2A Protocol
 
 ### 2.1 A2A 核心概念定义
 
-**定义 2.1**（A2A Protocol）：Agent-to-Agent Protocol（A2A）是由 Google 提出并捐赠给 Linux Foundation 的开放协议，旨在让不同框架、不同厂商、不同部署环境中的智能体（Agent）能够相互发现能力、协商任务并协作完成复杂工作流。
+**定义 2.1**（A2A Protocol）：Agent-to-Agent Protocol（A2A）是由 Google 提出并纳入 Agentic AI Foundation 治理的开放协议，旨在让不同框架、不同厂商、不同部署环境中的智能体（Agent）能够相互发现能力、协商任务并协作完成复杂工作流。
 
 **定义 2.2**（Agent Card）：Agent Card 是描述 Agent 能力、端点、认证方案、制造商信息及技能的机器可读声明，通过 `/.well-known/agent.json` 发布。它是 A2A 生态中的“服务目录条目”，也是跨 Agent 信任协商的起点。
 
@@ -281,7 +281,7 @@ Task Lifecycle
 | 会话 | 有状态连接 | 基于 Task 的异步 |
 | 流式 | 支持 | SSE 原生支持 |
 | 认证 | OAuth 2.1 | OAuth 2.1 with PKCE |
-| 创建者 | Anthropic → Linux Foundation | Google → Linux Foundation |
+| 创建者 | Anthropic → AAIF | Google → AAIF |
 
 ### 5.1 A2A 与 MCP 互补架构（Mermaid 架构图）
 
@@ -384,10 +384,70 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 
 ---
 
-## 7. 生态系统状态（2026-04）
+## 7. 正向示例：A2A + MCP 混合智能客服
+
+某跨境电商构建多语言智能客服系统，采用 A2A 编排 + MCP 工具调用架构：
+
+| 组件 | 协议/机制 | 职责 |
+|------|----------|------|
+| 客服编排 Agent | A2A Client | 接收用户问题，判断意图，委托子任务 |
+| 订单查询 Agent | A2A Server + Agent Card | 通过订单号查询物流与退款状态 |
+| 退换货 Agent | A2A Server + Agent Card | 处理退货政策解释与退货单创建 |
+| 知识库工具 | MCP Server | 检索帮助文档与常见问题 |
+| 订单 API 工具 | MCP Server | 调用内部订单系统 |
+| 邮件工具 | MCP Server | 发送确认邮件 |
+
+**关键收益**：
+
+- 各业务域 Agent 可独立演进，只要 Agent Card 兼容，编排 Agent 无需修改。
+- 订单查询 Agent 内部通过 MCP 连接多个后端系统，工具替换不影响 A2A 接口。
+- 使用 OAuth 2.1 + PKCE 与 Signed Agent Cards，满足跨境数据合规要求。
+
+---
+
+## 8. 反例：私有消息格式导致 N² 集成灾难
+
+**场景**：某大型企业内部 6 个业务线各自开发 Agent，分别使用私有 HTTP/gRPC 消息格式、自定义认证与硬编码端点。
+
+**问题**：
+
+- 每新增一个 Agent，需要为它与现有 Agent 之间写双边适配器。
+- 6 个 Agent 产生 15 对集成，20 个 Agent 将产生 190 对集成，维护成本指数级增长。
+- 能力变更后，所有调用方需同步更新适配器，导致版本碎片与故障。
+
+**后果**：项目延期 6 个月，集成 Bug 占所有生产事故的 40%。
+
+**避免建议**：
+
+1. **统一 Agent Card 目录**：所有 Agent 必须发布 `/.well-known/agent.json`，声明技能、端点与认证方式。
+2. **A2A 作为默认互操作协议**：跨业务线/跨组织的 Agent 协作必须通过 A2A，内部专有框架仅用于团队内部。
+3. **契约版本管理**：Agent Card 与 Task Schema 采用语义化版本，旧版本客户端获得向后兼容窗口。
+4. **治理门禁**：未发布 Agent Card 的 Agent 不允许接入编排层。
+
+---
+
+## 9. 具体协议条款映射
+
+| 业务需求 | A2A v1.0 机制 | 规范位置 |
+|---------|--------------|---------|
+| Agent 能力发现 | `/.well-known/agent.json`、Agent Card | Discovery |
+| 任务委托 | `tasks/send`、`tasks/sendSubscribe` | Tasks |
+| 任务状态查询 | `tasks/get` | Tasks |
+| 任务取消 | `tasks/cancel` | Tasks |
+| 流式更新 | SSE / gRPC streaming | Tasks / Transports |
+| 结果交付 | `Artifact`（text/file/data） | Artifacts |
+| 身份认证 | OAuth 2.1 with PKCE、mTLS、API Keys | Security |
+| Agent Card 完整性 | Ed25519 / JWS 签名 | Agent Card |
+| 多租户隔离 | `multiTenant` + 租户上下文传递 | Agent Card / Tasks |
+| 支付/商业化 | Agent Payments Protocol (AP2) | Ecosystem |
+
+---
+
+## 10. 生态系统状态（2026-07）
 
 | 指标 | 数值 |
 |------|------|
+| 正式发布版本 | v1.0.0（2026-03-12） |
 | 支持组织 | 150+ |
 | GitHub Stars | 22,000+ |
 | SDK 语言 | Python, JS, Java, Go, .NET |
@@ -405,7 +465,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 
 ---
 
-## 8. 生产部署建议
+## 11. 生产部署建议
 
 ### 网络架构
 
@@ -429,14 +489,14 @@ Kubernetes Deployment
 
 ---
 
-## 9. 对架构复用的影响
+## 12. 对架构复用的影响
 
 > **定理 A2A.2** (Agent Card Network Effect): A2A Agent 的复用价值与 A2A 生态中其他 Agent 的数量成正比。生态越大，单个 Agent 的价值越高。
 > **定理 A2A.3** (Cross-Vendor Interoperability): A2A 的核心价值在于跨厂商 Agent 的互操作。单一厂商内部的 Agent 协调可以使用专有协议，但跨厂商必须使用开放标准。
 
 ---
 
-## 10. 与 MCP 的集成模式
+## 13. 与 MCP 的集成模式
 
 ### 模式 1: A2A Agent 内部使用 MCP
 
@@ -458,7 +518,7 @@ User Request → A2A Gateway
     └── A2A Task Delegation → Specialist Agents
 ```
 
-### 10.1 集成决策树
+### 13.1 集成决策树
 
 ```mermaid
 flowchart TD
@@ -478,21 +538,22 @@ flowchart TD
 
 ---
 
-## 11. 权威来源与交叉引用
+## 14. 权威来源与交叉引用
 
-### 11.1 权威来源
+### 14.1 权威来源
 
-> **权威来源**:
+> **权威来源**（已核查 2026-07-08）：
 >
-> - [A2A Protocol](https://a2aproject.github.io/) — 官方网站
-> - [A2A Protocol - GitHub](https://github.com/a2aproject/a2a) — 规范与 SDK
-> - [Google Cloud Next '26](https://cloud.google.com/next) — A2A v1.0 发布
-> - [Linux Foundation Agentic AI Foundation](https://www.linuxfoundation.org/agentic-ai) — 治理机构
-> - [OAuth 2.1 with PKCE](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-11) — 认证机制
->
-> **核查日期**: 2026-07-07
+> | 来源 | URL |
+> |------|-----|
+> | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
+> | A2A Protocol 官方网站 | <https://a2a-protocol.org/latest/> |
+> | A2A Project GitHub | <https://github.com/a2aproject/a2a> |
+> | Agentic AI Foundation (AAIF) | <https://aaif.io/> |
+> | OWASP Top 10 for Agentic Applications 2026 | <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/> |
+> | OAuth 2.1 with PKCE | <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-11> |
 
-### 11.2 交叉引用
+### 14.2 交叉引用
 
 - MCP 协议规范见 [`../01-mcp-protocol/mcp-2025-11-25-authoritative.md`](../01-mcp-protocol/mcp-2025-11-25-authoritative.md)
 - Agent 组合模式见 [`../03-agentic-infrastructure/llm-agent-composition.md`](../03-agentic-infrastructure/llm-agent-composition.md)
@@ -502,33 +563,4 @@ flowchart TD
 
 ---
 
-> 最后更新: 2026-07-07
-> 权威来源:
->
-> - <https://a2aproject.github.io/>
-> - Google Cloud Next 2026 发布资料
-> - Linux Foundation Agentic AI Foundation
-> 勘误: A2A v1.0 正式发布时间为 2026-04，此前文档中的 2026-03-12 日期已修正。
-
----
-
-## 补充说明：A2A v1.0 权威规范解读
-
-## 概念定义
-
-**定义**：A2A（Agent-to-Agent Protocol）由 Google 提出，旨在让不同框架、不同厂商的 Agent 能够相互发现能力、协商任务并协作完成复杂工作流。
-
-## 示例
-
-**正例**：旅行规划 Agent 通过 A2A 调用酒店预订 Agent 与航班查询 Agent，基于能力清单与信任凭证自动协商，无需硬编码集成。
-
-## 反例
-
-**反例**：各 Agent 使用私有消息格式与认证机制，跨团队协作时需要为每对 Agent 写适配器，形成 N² 集成问题。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [A2A Protocol](https://a2aproject.github.io/)
-> - 核查日期：2026-07-07
+> 最后更新: 2026-07-08

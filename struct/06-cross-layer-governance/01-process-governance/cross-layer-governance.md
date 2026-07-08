@@ -290,19 +290,35 @@ flowchart LR
 
 ---
 
+## 7. 国际标准条款映射
+
+跨层复用治理框架与国际权威标准的对应关系如下：
+
+| 标准 | 条款/能力 | 本框架映射 | 实践要点 |
+|:---|:---|:---|:---|
+| **ISO/IEC/IEEE 42020:2019** | Clause 6 Architecture Governance process | 企业架构委员会（EAC）、治理决策、合规监控 | 明确治理角色、决策权限与评审节点 |
+| **ISO/IEC/IEEE 42020:2019** | Clause 7 Architecture Management process | 资产管理、生命周期管理、度量与持续改进 | 建立资产目录、Owner 制度与质量门禁 |
+| **ISO/IEC/IEEE 42020:2019** | Clause 9 Architecture Evaluation process | 价值度量、一致性检查、治理成熟度评估 | 定义评估目标、准则与改进建议 |
+| **ISO/IEC/IEEE 42030:2019** | Clause 5–7 Evaluation synthesis & value assessment | 复用资产评估、跨层一致性审查 | 评估利益相关者关切与架构价值 |
+| **COBIT 2019** | EDM01 / APO12 / MEA01 | IT 治理框架、风险管理、绩效监控 | 将复用治理纳入企业 IT 治理体系 |
+| **ITIL 4** | Service Value System；Architecture management；Continual improvement | 服务化治理、持续改进、SLA 管理 | 把复用资产作为服务进行生命周期管理 |
+
+---
+
 ## 权威来源与交叉引用
 
 > **权威来源**:
 >
 > | 来源 | URL | 核查日期 |
 > |------|-----|----------|
-> | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-07 |
-> | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-07 |
-> | ISO/IEC/IEEE 42020:2019 — Architecture processes | <https://www.iso.org/standard/68982.html> | 2026-07-07 |
-> | ISO/IEC/IEEE 12207:2026 — Software life cycle processes | <https://www.iso.org/standard/90219.html> | 2026-07-07 |
-> | TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-07 |
-> | COBIT 2019 Framework | <https://www.isaca.org/resources/cobit> | 2026-07-07 |
-> | ITIL 4 — Service Management | <https://www.axelos.com/certifications/itil-service-management> | 2026-07-07 |
+> | Wikipedia — IT governance | <https://en.wikipedia.org/wiki/IT_governance> | 2026-07-08 |
+> | Wikipedia — Capability Maturity Model | <https://en.wikipedia.org/wiki/Capability_Maturity_Model> | 2026-07-08 |
+> | ISO/IEC/IEEE 42020:2019 — Architecture processes | <https://www.iso.org/standard/68982.html> | 2026-07-08 |
+> | ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework | <https://www.iso.org/standard/73436.html> | 2026-07-08 |
+> | ISO/IEC/IEEE 12207:2026 — Software life cycle processes | <https://www.iso.org/standard/90219.html> | 2026-07-08 |
+> | TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-08 |
+> | COBIT 2019 Framework | <https://www.isaca.org/resources/cobit> | 2026-07-08 |
+> | ITIL 4 — Service Management | <https://www.axelos.com/certifications/itil-service-management> | 2026-07-08 |
 
 > **交叉引用**:
 >
@@ -314,31 +330,4 @@ flowchart LR
 
 ---
 
-> 最后更新: 2026-06-06
-
-
----
-
-## 补充说明：跨层复用治理框架
-
-## 概念定义
-
-**定义**：复用过程治理是将复用活动（识别、获取、适配、集成、演化、退役）纳入组织标准软件过程，并通过角色、活动与工件进行规范。
-
-## 示例
-
-**示例**：依据 ISO/IEC/IEEE 42020 与 12207，组织定义复用管理过程，明确资产Owner、消费方与治理委员会的职责与评审节点。
-
-## 反例
-
-**反例**：复用活动完全依赖个人自觉，没有统一入口与审批流程，导致重复资产与劣质资产并存。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
-> - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
-> - [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)
-> - [ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)
-> - 核查日期：2026-07-07
+> 最后更新：2026-07-08

@@ -36,6 +36,7 @@ class GateResult:
     duplicated_sections: List[str] = field(default_factory=list)
     dead_links: List[Dict[str, str]] = field(default_factory=list)
     cross_refs: List[str] = field(default_factory=list)
+    padding_ratio: float = 0.0
 
 
 @dataclass
@@ -149,6 +150,48 @@ RULES = {
 MIN_SCORE = 60
 MIN_WEIGHTED = 3
 BATCH_TEMPLATE_SECTIONS = ["## 补充说明", "## 概念定义", "## 正向示例", "## 反例"]
+
+# 模板 Padding 检测：机械重复的二级/三级/四级标题
+PADDING_HEADING_PATTERNS = [
+    re.compile(r"^(#{2,4})\s+补充说明"),
+    re.compile(r"^(#{2,4})\s+概念定义\s*$"),
+    re.compile(r"^(#{2,4})\s+示例\s*$"),
+    re.compile(r"^(#{2,4})\s+反例\s*$"),
+    re.compile(r"^(#{2,4})\s+权威来源\s*$"),
+    re.compile(r"^(#{2,4})\s+分析\s*$"),
+    re.compile(r"^(#{2,4})\s+参考文献\s*$"),
+    re.compile(r"^(#{2,4})\s+延伸阅读\s*$"),
+    re.compile(r"^(#{2,4})\s+附录\s*$"),
+]
+
+
+def calculate_padding_ratio(text: str) -> float:
+    """计算模板 Padding 行数占总行数的百分比。"""
+    lines = text.splitlines()
+    total = len(lines)
+    if total == 0:
+        return 0.0
+    is_padding = [False] * total
+    i = 0
+    while i < total:
+        matched = False
+        for p in PADDING_HEADING_PATTERNS:
+            m = p.match(lines[i])
+            if m:
+                level = len(m.group(1))
+                is_padding[i] = True
+                i += 1
+                while i < total:
+                    m2 = re.match(r"^(#{1,6})\s", lines[i])
+                    if m2 and len(m2.group(1)) <= level:
+                        break
+                    is_padding[i] = True
+                    i += 1
+                matched = True
+                break
+        if not matched:
+            i += 1
+    return sum(is_padding) / total * 100.0
 
 
 def _extract_markdown_links(text: str) -> List[Tuple[str, str, int]]:
@@ -284,6 +327,11 @@ def check_file(filepath: Path, root: Path, project_root: Optional[Path] = None) 
         warnings.append(f"文档过短（约 {word_count} 字/词），建议 ≥ 300")
         score -= 10
 
+    # 模板 Padding 占比计算（不导致失败）
+    padding_ratio = calculate_padding_ratio(text)
+    if padding_ratio > 30:
+        warnings.append(f"模板 padding 占比 {padding_ratio:.1f}%，建议按内容块复用规则精简")
+
     # 批量模板重复段检测：仅统计作为行首精确匹配的一级/二级标题
     duplicated_sections = []
     lines = text.splitlines()
@@ -364,6 +412,7 @@ def check_file(filepath: Path, root: Path, project_root: Optional[Path] = None) 
         duplicated_sections=duplicated_sections,
         dead_links=dead_links,
         cross_refs=cross_refs,
+        padding_ratio=padding_ratio,
     )
 
 
@@ -453,6 +502,8 @@ def format_result(r: GateResult) -> str:
         extra.append("模板重复: " + "; ".join(r.duplicated_sections))
     if r.dead_links:
         extra.append(f"死链 {len(r.dead_links)} 个")
+    if r.padding_ratio > 30:
+        extra.append(f"padding {r.padding_ratio:.1f}%")
     extra_str = " | ".join(extra) if extra else ""
     base = f"{status} [{r.score:>3}] {r.path} | {detail} | 警告: {warn}"
     if extra_str:
@@ -470,6 +521,7 @@ def _result_to_dict(r: GateResult) -> dict:
         "duplicated_sections": r.duplicated_sections,
         "dead_links": r.dead_links,
         "cross_refs": r.cross_refs,
+        "padding_ratio": round(r.padding_ratio, 2),
     }
 
 
@@ -501,6 +553,7 @@ def write_md_report(path: Path, results: List[GateResult], conflicts: List[TermC
         f"- 未通过: {summary['failed']}",
         f"- 死链总数: {summary['dead_link_count']}",
         f"- 模板重复段文件数: {summary['duplicated_count']}",
+        f"- Padding 占比超过 30% 的文件数: {summary.get('high_padding_count', 0)}",
         f"- 术语冲突数: {len(conflicts)}",
         "",
         "## 未通过文件详情",
@@ -528,6 +581,8 @@ def write_md_report(path: Path, results: List[GateResult], conflicts: List[TermC
                 lines.append("- 死链:")
                 for dl in r.dead_links:
                     lines.append(f"  - 第 {dl['line']} 行: [{dl['text']}]({dl['target']}) -> {dl['resolved']}")
+            if r.padding_ratio > 30:
+                lines.append(f"- 模板 Padding 占比: {r.padding_ratio:.1f}%")
             lines.append("")
 
     if conflicts:
@@ -602,6 +657,7 @@ def main():
     failed = total - passed
     dead_link_count = sum(len(r.dead_links) for r in results)
     duplicated_count = sum(1 for r in results if r.duplicated_sections)
+    high_padding_count = sum(1 for r in results if r.padding_ratio > 30)
     summary = {
         "total": total,
         "passed": passed,
@@ -609,6 +665,7 @@ def main():
         "pass_rate": passed / total * 100 if total else 0.0,
         "dead_link_count": dead_link_count,
         "duplicated_count": duplicated_count,
+        "high_padding_count": high_padding_count,
         "min_score": args.min_score,
     }
 
@@ -624,7 +681,11 @@ def main():
             break
 
     print("-" * 110)
-    print(f"统计: {passed}/{total} 通过，通过率 {summary['pass_rate']:.1f}%，死链 {dead_link_count} 个，模板重复 {duplicated_count} 个，术语冲突 {len(conflicts)} 个")
+    print(
+        f"统计: {passed}/{total} 通过，通过率 {summary['pass_rate']:.1f}%，"
+        f"死链 {dead_link_count} 个，模板重复 {duplicated_count} 个，"
+        f"padding 超 30% {high_padding_count} 个，术语冲突 {len(conflicts)} 个"
+    )
 
     if args.json:
         write_json_report(Path(args.json), results, conflicts, summary)

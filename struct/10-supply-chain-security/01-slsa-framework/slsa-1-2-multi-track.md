@@ -1,6 +1,6 @@
 # SLSA 1.2 Multi-Track 深度解析
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-08
 > **权威来源**: SLSA Specification v1.2 (slsa.dev), OpenSSF Active Workstreams
 > **定位**: Phase 4（2027-Q2）供应链安全核心交付物，建立三轨道 × L1-L3 的复用信任矩阵
 > **交叉引用**: `struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md`
@@ -244,36 +244,75 @@ flowchart LR
 
 ---
 
-## 5. 权威来源
+## 5. 正向示例：规模化 SLSA 落地
 
-| 标准/规范 | URL | 说明 |
-|-----------|-----|------|
-| SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构、Build/Source/BuildEnv Track 正式定义 |
-| SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L1–L3 构建要求详细规范 |
-| SLSA Source Track | <https://slsa.dev/spec/v1.2/levels#source-track> | v1.2 正式化的源码轨道要求 |
-| SLSA BuildEnv Track (Draft) | <https://github.com/slsa-framework/slsa/issues> | OpenSSF Active Workstream，草案讨论 |
-| OpenSSF SLSA GitHub | <https://github.com/slsa-framework/slsa> | 规范源码、社区讨论、路线图 |
-| Sigstore | <https://sigstore.dev> | cosign keyless signing, Fulcio, Rekor |
-| SLSA GitHub Generator | <https://github.com/slsa-framework/slsa-github-generator> | 自动生成 SLSA provenance 的 GitHub Actions |
+### 示例 A：GitHub Artifact Attestations 原生集成
+
+GitHub Actions 自 2024 年起提供 `actions/attest-build-provenance`，为容器镜像、二进制文件、包等任意产物生成签名 provenance：
+
+```yaml
+- uses: actions/attest-build-provenance@v1
+  with:
+    subject-name: ghcr.io/${{ github.repository }}
+    subject-digest: ${{ steps.build.outputs.digest }}
+    push-to-registry: true
+```
+
+该 provenance 符合 SLSA v1.0 Build L2；若配合可复用工作流（reusable workflow）并限制工作流权限，可达到 Build L3。下游消费者使用 `gh attestation verify` 即可验证。
+
+### 示例 B：npm Trusted Publishing 自动 provenance
+
+npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动为包发布生成 Sigstore 签名的 provenance。截至 2025 年底，超过 50,000 个项目采用 Trusted Publishing，17% 的上传包含 attestations。消费者运行 `npm audit signatures` 或查看 registry 中的 `.sigstore` 元数据即可确认包来源。
 
 ---
 
-> 最后更新: 2026-06-08
+## 6. 反例 / 反模式：信任边界的误判
+
+### 反例 A：Mini Shai-Hulud / TanStack npm 蠕虫（2026-05）
+
+攻击者通过 `pull_request_target` 漏洞、GitHub Actions 缓存污染和 OIDC token 内存提取，劫持 TanStack 官方发布流水线，发布了 84 个携带有效 SLSA Build L3 provenance 的恶意 npm 包版本。
+
+**关键教训**：SLSA provenance 回答“**这个制品是否由声称的构建流水线生成**”，但不回答“**构建流水线当时是否被入侵**”或“**源码是否恶意**”。证明只是信任基础设施的一环，不能替代源码审查、运行时监控与最小权限。
+
+### 反例 B：项目手动下载预编译二进制
+
+某团队从个人网盘下载无签名的二进制依赖，既无 SHA-256 校验也无 provenance。该二进制实际被替换为植入后门的版本，导致生产环境泄露数据库凭证。该做法甚至不满足 SLSA L1。
+
+---
+
+## 7. 控制点映射：SLSA Build Track → 项目实现
+
+| SLSA 要求 | 项目控制点 | 实现/验证方式 |
+|----------|-----------|--------------|
+| BT-L1-R1 自动化构建 | 所有关键仓库配置 `.github/workflows/build.yml` | quality-gate 扫描工作流存在性 |
+| BT-L2-R3 Provenance 签名 | 使用 `actions/attest-build-provenance` 或 `slsa-github-generator` | `slsa-verifier` / `gh attestation verify` |
+| BT-L3-R2 临时环境 | GitHub-hosted runner 每次新建 VM；自托管 runner 采用 Kubernetes 临时 Pod | 审计 runner 生命周期日志 |
+| BT-L3-R3 隔离网络 | 构建容器配置 `--network=none`，仅允许声明的代理缓存 | 网络策略审计 |
+| ST-L3-R2 双人审查 | 主分支启用 `Require approvals: 2` + `Dismiss stale reviews` | GitHub API 检查分支保护规则 |
+| ST-L3-R4 状态检查 | CI 测试、SAST、SBOM 生成、许可证扫描作为 required status checks | 合并门控配置审计 |
+
+对应项目 PoC 与模板：
+
+- `struct/10-supply-chain-security/05-slsa-l4-poc/`：演示双人审查、密封构建、可复现构建、来源证明的最小可运行实现。
+- `struct/10-supply-chain-security/04-provenance-examples/`：提供 GitHub Actions + cosign + OCI referrers 的完整工作流模板。
+
+---
+
+## 8. 权威来源
+
+| 标准/规范 | URL | 说明 | 核查日期 |
+|-----------|-----|------|----------|
+| SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构、Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
+| SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L1–L3 构建要求详细规范 | 2026-07-08 |
+| SLSA Source Track | <https://slsa.dev/spec/v1.2/levels#source-track> | v1.2 正式化的源码轨道要求 | 2026-07-08 |
+| SLSA BuildEnv Track (Active Workstream) | <https://github.com/slsa-framework/slsa/issues> | OpenSSF 活跃工作流，草案讨论 | 2026-07-08 |
+| OpenSSF SLSA GitHub | <https://github.com/slsa-framework/slsa> | 规范源码、社区讨论、路线图 | 2026-07-08 |
+| Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名、Fulcio、Rekor | 2026-07-08 |
+| SLSA GitHub Generator | <https://github.com/slsa-framework/slsa-github-generator> | 自动生成 SLSA provenance 的 GitHub Actions | 2026-07-08 |
+| GitHub Artifact Attestations | <https://docs.github.com/en/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds> | 原生 provenance 生成与验证 | 2026-07-08 |
+| npm Provenance | <https://docs.npmjs.com/generating-provenance-statements> | npm registry provenance 说明 | 2026-07-08 |
+
+---
+
+> 最后更新: 2026-07-08
 > 关联文件: `slsa-reuse-boundaries.md`, `slsa-1-1-1-2-update.md`, `slsa-1-2-multi-track-update.md`
-
-
----
-
-## 补充章节
-
-## 概念定义
-
-**定义**：SLSA（Supply-chain Levels for Software Artifacts）是 OpenSSF 提出的框架，通过 Source、Build、Provenance、Common 等 Track 定义软件制品的可验证安全等级。
-
-## 示例
-
-**示例**：使用 Sigstore/cosign 对容器镜像进行签名，配合 GitHub Actions 隔离构建与可复现构建证明，达到 SLSA Build L3。
-
-## 反例
-
-**反例**：项目手动从个人仓库下载二进制依赖且无哈希校验，构建环境未隔离，无法达到 SLSA L1。

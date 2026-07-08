@@ -127,6 +127,38 @@ L1 资产级 (Asset)
 
 **分摊逻辑**: 风险成本首先通过评分与系数计算为总体准备金，再按各项目的（直接+间接）成本比例分摊——成本规模越大的项目，风险暴露面越大。
 
+### 1.5 FOCUS 1.0 与 Cloud Unit Economics 融入
+
+**FOCUS 1.0**（FinOps Open Cost and Usage Specification）是 FinOps Foundation 主导的云成本数据开放标准，目标是把多云账单归一化为统一 Schema。将 FOCUS 1.0 融入本模型可实现：
+
+| FOCUS 1.0 核心字段 | 本模型用法 | 收益 |
+|:---|:---|:---|
+| `BilledCost` / `EffectiveCost` | L1 资产直接成本、L2 项目分摊金额 | 消除云厂商账单格式差异 |
+| `ResourceId` / `ResourceType` | 资产级成本归属与标签治理 | 精确追踪复用资产实例 |
+| `Tags` / `Labels` | 项目归属、环境、成本中心 | 驱动 L2 使用量分摊与 Showback |
+| `UsageQuantity` / `UsageUnit` | L2 计量单位（请求数、事务数、GB） | 支持按比例分摊 |
+| `ChargePeriodStart` / `ChargePeriodEnd` | 月度摊销与预测校准 | 对齐财务结账周期 |
+
+**Cloud Unit Economics** 将成本转化为业务可理解的单位指标。本模型推荐的单位经济学指标包括：
+
+- **每次认证请求成本** = 资产月度总成本 ÷ 月度请求数
+- **每事务成本** = 支付/交易组件月度总成本 ÷ 月度事务数
+- **每 Token 成本** = AI 服务月度总成本 ÷ 输入/输出 Token 总数
+- **每用户成本** = 共享平台月度总成本 ÷ 活跃用户数
+
+这些指标可与 FinOps Foundation 的 **Unit Economics Capability** 对齐，用于跨项目、跨云厂商的 TCO 比较与投资决策。
+
+### 1.6 FinOps Framework 2026 能力映射
+
+| FinOps Framework 2026 能力 | 本模型对应层级 | 说明 |
+|:---|:---|:---|
+| **Allocation**（Understand Usage & Cost） | L2 项目级 + L1 资产级 | 将共享复用成本分配到责任方 |
+| **Managing Shared Cost** | L3 组织级 + L4 生态级 | 平台、CoE、供应链风险成本分摊 |
+| **Unit Economics**（Quantify Business Value） | 单位成本指标 | 把技术成本转化为业务单位成本 |
+| **KPI & Benchmarking** | 复用率、成本透明度、摊销回收 | 持续度量成熟度与效率 |
+| **Governance, Policy & Risk** | L4 风险成本 + 决策矩阵 | 建立分摊策略、合规与风险准备金 |
+| **Executive Strategy Alignment** | Showback/Chargeback 报告 | 向高管呈现技术投资价值 |
+
 ---
 
 ## 2. 分摊公式
@@ -359,6 +391,26 @@ $$
 3. **风险成本不可忽视**: 风险成本占总成本 14.3%，在供应链安全事件频发的背景下，该比例可能进一步上升。建议将风险准备金与实际 CVE 修复支出进行年度对账。
 
 4. **单位经济学视角**: 每次认证请求的分摊成本 = $64,892.08 ÷ 850,000 = **$0.076/次**。该指标可用于与商业化身份认证服务（如 Auth0、AWS Cognito）进行 TCO 比对。
+
+### 4.8 反例/反模式：成本分摊沦为“政治博弈”
+
+**背景**：某金融企业在实施 FinOps 分摊时，各业务线对“平台团队成本应由谁承担”争执不下。
+
+**反模式表现**：
+
+1. **分摊驱动因子不透明**：采用按项目数均摊，导致小微项目承担了与核心业务系统相同的平台成本；
+2. **Showback 变 Chargeback 过早**：在未建立信任机制前直接扣费，引发业务线抵制；
+3. **风险成本被忽视**：开源依赖许可证与 CVE 修复费用未纳入 L4，安全事件后被迫追加预算；
+4. **缺乏 FOCUS 标准化**：多云账单字段不一致，财务团队无法复用分摊数据。
+
+**后果**：分摊项目上线 6 个月后被业务线联合申诉，最终回退为“统一平台预算”，复用成本再次变得不可见。
+
+**避免方法**：
+
+- 先 Showback 透明化，再逐步过渡到 Chargeback；
+- 使用基于使用量/受益程度的代理指标，而不是简单均摊；
+- 将供应链风险、许可证合规纳入 L4 风险成本；
+- 采用 FOCUS 1.0 统一多云成本数据 Schema。
 
 ---
 
@@ -605,9 +657,12 @@ python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost
 
 ## 7. 参考索引
 
-- **FinOps Foundation**: [FinOps Framework 2026 Capabilities](https://www.finops.org/framework/) — 成本分摊核心定义与共享成本治理
-- **FinOps Foundation**: [FOCUS 1.0 Specification](https://focus.finops.org/) — 云成本数据标准化规范
-- **FinOps Foundation**: [Cost Allocation Best Practices](https://www.finops.org/framework/capabilities/allocate/) — 分摊模型设计指南
+- **FinOps Foundation**: [FinOps Framework 2026](https://www.finops.org/insights/2026-finops-framework/) — 2026 框架更新、Executive Strategy Alignment 与跨技术类别治理能力
+- **FinOps Foundation**: [FinOps Framework Capabilities](https://www.finops.org/framework/) — 成本分摊核心定义与共享成本治理
+- **FinOps Foundation**: [Allocation Capability](https://www.finops.org/framework/capabilities/allocation/) — 分摊策略、标签与共享成本治理
+- **FinOps Foundation**: [Unit Economics Capability](https://www.finops.org/framework/capabilities/unit-economics/) — 单位经济学指标定义
+- **FinOps Foundation**: [FOCUS 1.0](https://focus.finops.org/) — 云成本数据标准化规范
+- **FinOps Foundation**: [FOCUS Specification GitHub](https://github.com/FinOps-Open-Cost-And-Usage-Spec/FOCUS_Spec) — FOCUS 规范仓库
 - **NASA SWE-148**: *Software Reuse Metrics* — 复用成本度量基准
 - **ISO/IEC 26564:2022**: *Software Reuse — Measurement and Metrics* — AAF 与复用度量标准
 - **COCOMO II**: *Model Definition Manual* — 原始开发成本估算方法
@@ -620,17 +675,4 @@ python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost
 > - 成熟度评估: [`struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md`](../03-maturity-models/assessment-questionnaire.md)
 > - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 
-> 最后更新: 2026-06-08
-
-
----
-
-## 补充说明：FinOps 四级成本分摊模型模板 (L1–L4 Allocation Model)
-
-## 权威来源
-
-> **权威来源**:
->
-> - [FinOps Foundation](https://www.finops.org)
-> - [CNCF](https://www.cncf.io)
-> - 核查日期：2026-07-07
+> 最后更新：2026-07-08

@@ -55,6 +55,10 @@ graph LR
 
 组织将 SBOM、SLSA 证明与漏洞公告导入 GUAC，形成 artifact 关系图；当某开源库披露高危漏洞时，可秒级查询所有直接和间接依赖该库的服务。
 
+### 示例 5：GitHub Artifact Attestations 规模化落地
+
+2024 年起 GitHub Actions 原生支持 `actions/attest-build-provenance`，为任意构建产物生成符合 SLSA v1.0 Build L2 的证明；结合可复用工作流可达 Build L3。npm Trusted Publishing 与 PyPI attestations（PEP 740）已使主流生态默认携带 provenance，显著降低开源消费者验证成本。
+
 ---
 
 ## 4. 反例 / 失败案例
@@ -74,6 +78,14 @@ graph LR
 ### 反例 4：CI/CD 凭证泄露
 
 安全团队仅扫描自有代码漏洞，忽视 CI/CD 凭证与第三方构建代理安全；攻击者通过被入侵的构建代理向后端服务注入后门。
+
+### 反例 5：Codecov Bash Uploader 供应链攻击（2021）
+
+2021 年 1 月 31 日至 4 月 1 日，攻击者通过 Codecov Docker 镜像构建过程中的凭证泄露，修改其 Bash Uploader 脚本，在客户 CI 环境中窃取环境变量、源码仓库地址及大量密钥。约 29,000 个组织受影响，包括 HashiCorp、Twilio、Monday.com 等。该事件暴露出“curl | bash”执行未签名脚本、缺乏脚本完整性校验的严重风险（CVE-2021-32638）。
+
+### 反例 6：SolarWinds Orion SUNBURST 攻击（2020）
+
+攻击者入侵 SolarWinds 构建环境，在 Orion 更新包中植入 SUNBURST 后门。由于更新经过合法数字签名，约 18,000 家客户默认信任并安装。CISA 紧急指令 21-01 要求联邦机构立即断开受影响系统。该事件证明：仅验证发布者签名不足以保证构建过程未被污染，必须结合来源证明与构建环境隔离。
 
 ---
 
@@ -97,17 +109,20 @@ graph LR
 
 ## 7. 权威来源
 
-> **权威来源**：
->
-> - [SLSA Framework](https://slsa.dev) — OpenSSF
-> - [OpenSSF](https://openssf.org)
-> - [Sigstore](https://www.sigstore.dev) — Linux Foundation
-> - [SPDX Specification](https://spdx.dev/use/specifications/)
-> - [CycloneDX Specification](https://cyclonedx.org/specification/overview/)
-> - [NIST SSDF](https://csrc.nist.gov/projects/ssdf)
-> - [OWASP SCVS](https://owasp.org/www-project-software-component-verification-standard/)
-> - [MITRE ATT&CK - Supply Chain Compromise](https://attack.mitre.org/techniques/T1195/)
-> - 核查日期：2026-07-07
+| 标准/规范 | URL | 说明 | 核查日期 |
+|-----------|-----|------|----------|
+| SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构，Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
+| OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全健康度自动化评分 | 2026-07-08 |
+| Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名、Fulcio、Rekor 透明日志 | 2026-07-08 |
+| SPDX Specification v2.3 / v3.0.1 | <https://spdx.github.io/spdx-spec/v2.3/> | ISO/IEC 5962 SBOM 标准 | 2026-07-08 |
+| CycloneDX Specification v1.6 | <https://cyclonedx.org/specification/overview/> | OWASP/ECMA-424 供应链安全 SBOM 标准 | 2026-07-08 |
+| NIST SP 800-161 Rev. 1 | <https://csrc.nist.gov/pubs/sp/800/161/r1/final> | 网络安全供应链风险管理实践 | 2026-07-08 |
+| NIST SP 800-218 (SSDF) | <https://csrc.nist.gov/pubs/sp/800/218/final> | 安全软件开发框架 | 2026-07-08 |
+| OWASP SCVS | <https://owasp.org/www-project-software-component-verification-standard/> | 软件组件验证标准 | 2026-07-08 |
+| OpenSSF OSPS Baseline v2026.02.19 | <https://baseline.openssf.org/versions/2026-02-19.html> | 开源项目安全基线 | 2026-07-08 |
+| EU CRA 2024/2847 | <https://eur-lex.europa.eu/eli/reg/2024/2847/oj> | 欧盟网络弹性法案 | 2026-07-08 |
+| CISA SBOM 资源 | <https://www.cisa.gov/sbom> | 美国政府 SBOM 指南与 NTIA 最小要素 | 2026-07-08 |
+| MITRE ATT&CK - Supply Chain Compromise | <https://attack.mitre.org/techniques/T1195/> | 供应链攻击战术技术映射 | 2026-07-08 |
 
 ---
 
@@ -126,7 +141,7 @@ graph LR
 - `07-formal-verification`（Rust 安全形式化）
 - `12-ai-native-reuse`（LLM / MCP 安全）
 
-## 8. 供应链安全落地检查单
+## 9. 供应链安全落地检查单
 
 在将复用资产投入生产前，团队应完成以下安全检查：
 
@@ -139,7 +154,7 @@ graph LR
 - [ ] CI/CD 凭证是否最小权限化并定期轮换？
 - [ ] 是否对构建代理与第三方 Action 进行审计与准入控制？
 
-## 9. 供应链安全能力矩阵
+## 10. 供应链安全能力矩阵
 
 | 能力 | L1 起步 | L2 基础 | L3 成熟 | L4 领先 |
 |------|---------|---------|---------|---------|
@@ -149,7 +164,7 @@ graph LR
 | 签名验证 | 无 | 部分签名 | 全制品签名 | 透明日志与密钥托管 |
 | 合规治理 | 被动应对 | 检查清单 | 策略即代码 | 持续审计与量化 |
 
-## 10. 常见误区
+## 11. 常见误区
 
 - **误区 1：只关注自有代码**。大部分现代漏洞来自第三方依赖。
 - **误区 2：SBOM 一次性生成即可**。依赖版本持续变化，SBOM 需持续更新。
@@ -160,17 +175,18 @@ graph LR
 - **误区 7：许可证与安全问题分离**。二者都应纳入 SBOM 治理。
 - **误区 8：过度依赖单一工具**。纵深防御需要多工具、多层次协同。
 
-## 11. 延伸阅读
+## 12. 延伸阅读
 
 1. OpenSSF. *SLSA Specification* — 供应链安全等级框架。
 2. Linux Foundation. *Sigstore* — 软件签名与透明日志。
 3. NTIA. *The Minimum Elements For a Software Bill of Materials*。
 4. NIST. *Secure Software Development Framework (SSDF) SP 800-218*。
-5. Subramanian, L. & Méndez, F. *Software Supply Chain Security* — 综合案例研究。
+5. NIST. *Cybersecurity Supply Chain Risk Management Practices (SP 800-161 Rev. 1)*。
+6. Subramanian, L. & Méndez, F. *Software Supply Chain Security* — 综合案例研究。
 
 供应链安全是复用的信任底座；没有可追溯性与持续验证，复用将放大而非降低风险。
 
-## 12. 深度案例：SolarWinds Orion 供应链攻击
+## 13. 深度案例：SolarWinds Orion 供应链攻击
 
 2020 年披露的 SolarWinds Orion 攻击是供应链安全的标志性事件。攻击者入侵 SolarWinds 构建环境，在 Orion 软件更新中植入 SUNBURST 后门。由于 Orion 被大量政府与企业客户复用，后门随合法更新传播到约 18,000 个组织。
 
@@ -183,7 +199,7 @@ graph LR
 
 该事件直接推动了 SLSA、Sigstore 与 SBOM 在产业界的快速采纳。
 
-## 13. 关键行动项
+## 14. 关键行动项
 
 - 对关键构建流程进行 SLSA 成熟度评估，并制定升级路线图。
 - 在 CI 中强制生成并签名 SBOM，纳入制品仓库元数据。
@@ -191,14 +207,14 @@ graph LR
 - 实施构建环境隔离与最小权限，定期轮换 CI/CD 凭证。
 - 开展红队演练，模拟构建污染与仓库劫持场景。
 
-## 14. 版本记录
+## 15. 控制点映射：SLSA Build Track → 项目实现
 
-- 2026-07-07：补充 SLSA、SBOM、来源证明、攻击向量的概念定义、示例、反例与权威来源。
-- 2026-06-08：初始版本，梳理供应链安全框架与案例文件导航。
-
-## 15. 一句话总结
-
-> 软件供应链中的信任是传递的，但传递链越长、单段信任度越低，整体信任度越趋近于零。可追溯、可验证、可持续监控是复用信任的基石。
+| SLSA Build Track 要求 | 项目控制点 | 验证方式 |
+|----------------------|-----------|---------|
+| L1：自动化生成 Provenance | CI/CD 流水线统一配置，禁止本地手动构建 | 检查 `.github/workflows/` 存在构建工作流 |
+| L2：托管构建 + 签名 Provenance | 使用 GitHub Actions + `actions/attest-build-provenance` 或 cosign keyless | `slsa-verifier` 验证 builder.id 与签名链 |
+| L3：隔离/密封/临时构建 | 构建容器 `--network=none`，每次构建新 runner，签名密钥由 OIDC 联邦签发 | 审计 runner 网络策略与 provenance 中 `internalParameters` |
+| L4（草案）：双人审查 + 可复现构建 | 主分支强制 ≥2 人审批，构建脚本与输入锁定 | 本主题 `05-slsa-l4-poc/` 提供最小可运行演示 |
 
 ## 16. 持续改进方向
 
@@ -207,9 +223,6 @@ graph LR
 - 与漏洞情报源联动，实现依赖漏洞的自动通知与影响分析。
 - 定期演练供应链攻击响应流程，并更新纵深防御矩阵。
 
-## 17. 持续改进方向
+## 17. 一句话总结
 
-- 将 SLSA Provenance 与 SBOM 生成集成到所有关键仓库的 CI。
-- 建立内部依赖评分卡，量化依赖的健康度与安全风险。
-- 与漏洞情报源联动，实现依赖漏洞的自动通知与影响分析。
-- 定期演练供应链攻击响应流程，并更新纵深防御矩阵。
+> 软件供应链中的信任是传递的，但传递链越长、单段信任度越低，整体信任度越趋近于零。可追溯、可验证、可持续监控是复用信任的基石。
