@@ -49,19 +49,20 @@
 36. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
 37. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
 38. [标准引用规范：版本 + URL + 核查日期三元组](../struct/99-reference/templates/citation-standard.md)
-39. [核心知识文件内容要素检查清单](../struct/99-reference/templates/content-checklist.md)
-40. [文档模板](../struct/99-reference/templates/document-template.md)
-41. [事实核查清单（Fact-Check Checklist）](../struct/99-reference/templates/fact-check-checklist.md)
-42. [快速参考卡](../struct/99-reference/templates/quick-reference-card.md)
-43. [形式化验证自动化环境](../struct/99-reference/tools/formal-verification-env/README.md)
-44. [可执行工具目录](../struct/99-reference/tools/README.md)
-45. [交互式复用决策工具](../struct/99-reference/tools/reuse-decision-tool/README.md)
-46. [交互式复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
-47. [复用决策报告：{{ asset_name }}](../struct/99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
-48. [季度标准跟踪与一致性报告](../struct/99-reference/tools/standard-tracker-quarterly-report.md)
-49. [标准跟踪监控报告](../struct/99-reference/tools/standard-tracker-report.md)
-50. [FinOps 工具模板聚合入口](../struct/99-reference/tools/templates/finops/README.md)
-51. [架构复用知识体系可视化图库](../struct/99-reference/visualizations/README.md)
+39. [内容块复用规则](../struct/99-reference/templates/content-block-guideline.md)
+40. [核心知识文件内容要素检查清单](../struct/99-reference/templates/content-checklist.md)
+41. [文档模板](../struct/99-reference/templates/document-template.md)
+42. [事实核查清单（Fact-Check Checklist）](../struct/99-reference/templates/fact-check-checklist.md)
+43. [快速参考卡](../struct/99-reference/templates/quick-reference-card.md)
+44. [形式化验证自动化环境](../struct/99-reference/tools/formal-verification-env/README.md)
+45. [可执行工具目录](../struct/99-reference/tools/README.md)
+46. [交互式复用决策工具](../struct/99-reference/tools/reuse-decision-tool/README.md)
+47. [交互式复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
+48. [复用决策报告：{{ asset_name }}](../struct/99-reference/tools/reuse-decision-tool-v2/templates/report_template.md)
+49. [季度标准跟踪与一致性报告](../struct/99-reference/tools/standard-tracker-quarterly-report.md)
+50. [标准跟踪监控报告](../struct/99-reference/tools/standard-tracker-report.md)
+51. [FinOps 工具模板聚合入口](../struct/99-reference/tools/templates/finops/README.md)
+52. [架构复用知识体系可视化图库](../struct/99-reference/visualizations/README.md)
 
 ---
 
@@ -345,7 +346,7 @@ Phase C（纵深扩展）
     - [2.2 技术生态差距](#22-技术生态差距)
     - [2.3 学术/会议前沿差距](#23-学术会议前沿差距)
   - [第三部分：事实准确性审计（严重问题）](#第三部分事实准确性审计严重问题)
-    - [3.1 ArchiMate 4.0 发布声明不实](#31-archimate-40-发布声明不实)
+    - [3.1 ArchiMate 4.0 发布状态（已正式发布）](#31-archimate-40-发布状态已正式发布)
     - [3.2 MCP 版本号引用混乱](#32-mcp-版本号引用混乱)
     - [3.3 不实学者引用（CP + 形式化验证方向，HOTFIX-3）](#33-不实学者引用cp--形式化验证方向hotfix-3)
     - [3.4 Warg Registry 状态过时](#34-warg-registry-状态过时)
@@ -4760,14 +4761,13 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
 - … 共 51 个文件
-
 ---
 
-## 概念定义
+## 定义
 
 **定义**：学习路径是面向不同角色读者的递进式学习顺序，帮助读者从基础概念逐步深入到特定垂直领域的复用工程实践。
 
-## 正向示例
+## 示例
 
 **示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
 
@@ -5031,11 +5031,11 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 全书构建：`python scripts/build-deliverables.py`
 ---
 
-## 概念定义
+## 定义
 
 **定义**：本课程大纲是软件架构复用工程知识的系统化教学安排，覆盖元模型、四层架构、治理、安全与前沿趋势。
 
-## 正向示例
+## 示例
 
 **示例**：第 2-3 周通过 ISO 42010/42020/42030、TOGAF 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
 
@@ -7918,6 +7918,7 @@ $$
 ---
 
 ## 补充章节
+
 ## 概念定义
 
 **定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
@@ -7929,6 +7930,7 @@ $$
 ## 反例
 
 **反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+
 
 ---
 
@@ -9145,7 +9147,7 @@ graph TD
 
 ## 目录
 
-- [国际标准与权威来源索引 v2.2](#国际标准与权威来源索引-v22)
+- [国际标准与权威来源索引 v2.3](#国际标准与权威来源索引-v23)
   - [目录](#目录)
   - [使用说明](#使用说明)
   - [架构与软件工程标准](#架构与软件工程标准)
@@ -10554,6 +10556,143 @@ def check_standard_version(standard_name, cited_version):
 ## 分析
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
+
+
+---
+
+
+<!-- SOURCE: struct/99-reference/templates/content-block-guideline.md -->
+
+# 内容块复用规则
+
+> **版本**: 2026-07-08
+> **定位**: 治理 `struct/` 下 Markdown 知识文件中机械重复内容块的规则
+> **适用范围**: 所有 `struct/01-13/` 主题下的知识性 Markdown 文件
+
+---
+
+## 目录
+
+- [内容块复用规则](#内容块复用规则)
+  - [目录](#目录)
+  - [为什么需要规则](#为什么需要规则)
+  - [规则正文](#规则正文)
+    - [1. 一组即足够](#1-一组即足够)
+    - [2. 禁止机械重复](#2-禁止机械重复)
+    - [3. 交叉引用替代重复](#3-交叉引用替代重复)
+    - [4. 例外情况](#4-例外情况)
+  - [规则速查表](#规则速查表)
+  - [正向示例](#正向示例)
+  - [反例](#反例)
+  - [权威来源](#权威来源)
+  - [交叉引用](#交叉引用)
+
+---
+
+## 为什么需要规则
+
+在规模化写作过程中，为了让每篇文档都包含「概念定义、示例、反例、权威来源」等核心要素，团队容易在文件末尾或正文中机械地追加固定模板。这种做法短期能保证要素齐全，长期却会带来两类成本：
+
+1. **信息稀释**：读者在多处读到几乎相同的定义与示例，真正差异化的核心论点被淹没。
+2. **维护成本**：当概念演进或来源更新时，需要同步修改数十处重复块，极易出现不一致。
+
+因此，本规则要求：每篇 Markdown 仅保留一组完整且精炼的内容块，其余场景使用交叉引用替代重复。
+
+## 规则正文
+
+### 1. 一组即足够
+
+每篇 Markdown 知识文件应仅保留一组「概念定义 + 示例 + 反例 + 权威来源 + 分析」的组合。该组合应：
+
+- 与正文主题紧密相关，而非通用套话；
+- 直接支撑本文件的核心论点；
+- 避免在不同小节中重复出现同一组块。
+
+### 2. 禁止机械重复
+
+当正文已经对某概念进行了完整阐述后，禁止在文末再以「补充说明」等形式机械重复：
+
+- 禁止逐字复制正文已有的定义；
+- 禁止为凑要素而添加与主题无关的示例或反例；
+- 禁止堆砌根域名来源（如仅写 `[ISO](https://www.iso.org)` 而不指向具体标准页面）。
+
+### 3. 交叉引用替代重复
+
+如果某概念在另一篇文件中已有更精确的定义或示例，应使用相对路径链接引用，而不是复制粘贴：
+
+> 完整定义与示例参见 [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](../struct/01-meta-model-standards/06-formal-axioms/axiom-system.md)。
+
+### 4. 例外情况
+
+以下文件类型不受本规则约束：
+
+- `README.md` 导航文件；
+- `99-reference/templates/`、`99-reference/audit/`、`99-reference/tools/` 下的元数据文件；
+- 历史归档文件（`_HISTORICAL_*.md`）。
+
+## 规则速查表
+
+| 检查项 | 正确做法 | 错误做法 |
+|---|---|---|
+| 概念定义 | 与正文主题直接相关，1–3 句话精确定义 | 复制通用定义或正文已有内容 |
+| 示例 | 具体场景、可复现、说明复用价值 | 空洞陈述，如「组件可以被复用」 |
+| 反例 | 真实失败模式、后果、避免建议 | 与示例简单对立，缺乏场景 |
+| 权威来源 | 指向具体标准页面或论文，带核查日期 | 仅堆砌根域名或维基百科首页 |
+| 重复内容 | 使用交叉引用链接到已有定义 | 在文末以「补充说明」机械重复 |
+
+## 正向示例
+
+> **主题**：接口契约完备性
+>
+> **核心论点**：组件可复用性与其接口契约完备性正相关，而非实现细节。
+>
+> **形式化表达**：设组件 \(C\) 的接口契约为 \(Contract(C)\)，则 \(\mathit{Reusability}(C) \propto |Contract(C)|\)。
+>
+> **示例**：支付网关组件暴露 `processPayment(amount, currency)`，附带前置条件（金额 > 0）、后置条件（返回交易 ID）与不变量（幂等性），被多个业务系统直接复用。
+>
+> **反例**：团队 A 把订单校验逻辑深埋在内部实现中，团队 B 复用时不得不复制并修改源码，导致版本分裂。
+>
+> **权威来源**：[Design by Contract](https://en.wikipedia.org/wiki/Design_by_contract) — Meyer (1988)
+>
+> **交叉引用**：组件接口模式详见 [`04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md`](../struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md)
+
+## 反例
+
+> **主题**：接口契约完备性
+>
+> **核心论点**：组件可复用性与其接口契约完备性正相关。
+>
+> ---
+>
+> **补充说明：接口契约完备性**
+>
+> **定义**：组件是可复用的软件单元。
+>
+> **示例**：组件可以被复用。
+>
+> **反例**：组件不能被复用。
+>
+> **权威来源**：[ISO](https://www.iso.org)、[IEEE](https://standards.ieee.org)
+
+上述反例的问题在于：
+
+1. 「补充说明」与正文核心论点完全重复；
+2. 示例与反例空洞，没有具体场景；
+3. 权威来源仅指向根域名，无法验证。
+
+## 权威来源
+
+- [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准
+- [The Chicago Manual of Style, 17th ed.](https://www.chicagomanualofstyle.org/) — 学术写作避免冗余的规范
+- [Google Technical Writing Course](https://developers.google.com/tech-writing) — 技术文档简洁性最佳实践
+
+**核查日期**: 2026-07-08
+
+## 交叉引用
+
+- 内容块检查清单：[`content-checklist.md`](../struct/99-reference/templates/content-checklist.md)
+- 质量门控实现：[`../../../scripts/quality-gate-v2.py`](../scripts/quality-gate-v2.py)
+- Padding 扫描脚本：[`../../../scripts/template-padding-check.py`](../scripts/template-padding-check.py)
 
 
 ---

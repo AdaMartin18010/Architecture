@@ -7,10 +7,24 @@
 
 ---
 
+## 概念定义
+
+**定义**：SBOM（Software Bill of Materials）是以机器可读格式枚举软件组件、版本、供应商、许可证、依赖关系与完整性校验值的正式记录，是软件供应链透明化与复用安全决策的基础设施。
+
+---
+
 ## 1. 引言：SBOM 作为复用安全的"身份护照"
 
 Software Bill of Materials（SBOM）在架构复用中的角色已从"合规附件"演进为"安全决策基础设施"。
 当组织复用一个开源组件或采购一个商业软件时，SBOM 回答了三个根本问题：**这是什么？从哪来？有什么风险？**
+
+### 1.1 核心术语
+
+- **SBOM（Software Bill of Materials）**：以机器可读格式（如 SPDX、CycloneDX、SWID）枚举软件组件、版本、供应商、许可证、依赖关系与完整性校验值的正式记录，是软件供应链透明化的基础。
+- **SPDX（Software Package Data Exchange）**：由 Linux Foundation 维护、ISO/IEC 5962 标准化的 SBOM 格式，以许可证合规和通用语义模型见长。
+- **CycloneDX**：由 OWASP 维护、ECMA-424 标准化的 BOM 格式，原生支持漏洞、证明、依赖图等供应链安全场景。
+- **SWID（Software Identification Tags）**：ISO/IEC 19770-2 标准，面向软件资产管理（ITAM），在 SBOM 安全场景中表达能力有限。
+- **VEX（Vulnerability Exploitability eXchange）**：用于声明组件受特定漏洞影响状态（如 `not_affected`、`affected`、`fixed`）的机器可读文档，常与 SBOM 配合使用。
 
 然而，并非所有 SBOM 格式在所有场景下都等效。SPDX、CycloneDX 和 SWID 的设计哲学、信息模型和生态工具链存在显著差异，直接影响其在复用安全生命周期中的效用。
 本文件基于 2026 年最新规范（SPDX 2.3 / 3.0.1、CycloneDX 1.6、SWID ISO/IEC 19770-2），建立 **3 标准 x 4 应用场景** 的决策矩阵，并提供可执行的生成示例。

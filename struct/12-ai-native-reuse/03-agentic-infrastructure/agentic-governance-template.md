@@ -6,6 +6,12 @@
 
 ---
 
+## 概念定义
+
+**Agentic Governance**：针对自主 AI Agent 全生命周期（设计、开发、部署、运行、退役）的治理体系，通过策略引擎、身份与信任网格、运行时沙箱、SRE 可观测性与合规审计，确保 Agent 行为可预测、可控制、可追责。
+
+**Agent 卓越中心（Agent CoE）**：组织内负责制定 Agent 架构标准、安全策略、交付流程与度量体系的中央职能团队，连接业务、安全、平台与交付团队。
+
 ## 1. Agentic Governance 框架综述
 
 ### 1.1 Microsoft AGT 7包体系映射
@@ -256,7 +262,7 @@ allow if {
 
 ---
 
-## 5. 正向示例：金融 Agent CoE 落地
+## 示例：金融 Agent CoE 落地
 
 某跨国银行建立 Agent CoE，统一治理内部 30+ 个业务 Agent：
 
@@ -273,7 +279,7 @@ allow if {
 
 ---
 
-## 6. 反例：过度放权 Agent 修改生产配置
+## 反例：过度放权 Agent 修改生产配置
 
 **场景**：某运维团队为快速响应告警，赋予一个自愈 Agent 对 Kubernetes 集群的广泛写权限，包括删除 Pod、修改 ConfigMap 与滚动更新 Deployment。Agent 基于 LLM 决策，未设置人类审批与策略引擎。
 
@@ -294,6 +300,16 @@ allow if {
 4. 完整记录 Agent Trace，包含输入、推理摘要、工具调用与返回结果。
 
 ---
+
+## 分析与讨论
+
+Agentic Governance 不是一次性项目，而是随 Agent 数量、自治程度与监管要求持续演进的体系。核心矛盾在于**自主性与可控性的张力**：Agent 越自主，业务价值越高，但潜在风险也越大。因此，治理必须分层实施：
+
+- **强制层**：策略引擎、身份认证、审计日志、Kill Switch 必须成为所有 Agent 的默认基础设施。
+- **推荐层**：SRE 监控、混沌工程、合规映射应与现有 DevOps 平台集成。
+- **生态层**：Marketplace 与 Golden Path 鼓励共享，但需通过信任评分与准入门禁控制风险。
+
+OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT 提供了参考实现；NIST AI RMF 与 EU AI Act 提供了治理框架与合规边界。三者结合，可形成从风险识别到技术控制的闭环。
 
 ## 7. 实施路线图建议
 

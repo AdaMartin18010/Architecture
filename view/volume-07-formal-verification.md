@@ -462,6 +462,7 @@ PROPERTIES
 ---
 
 ## 补充章节
+
 ## 权威来源
 
 > **权威来源**:
@@ -469,6 +470,7 @@ PROPERTIES
 > - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
 > - [Specifying Systems](https://lamport.azurewebsites.net/tla/book.html)
 > - 核查日期：2026-07-07
+
 
 ---
 
@@ -927,9 +929,12 @@ Model Checking Results:
 
 ## 1. 建模直觉
 
-在软件架构复用中，组件依赖图（Component Dependency Graph, CDG）是最核心的静态结构之一。Daniel Jackson 在《Software Abstractions》中指出："大多数软件设计的深层错误并非算法错误，而是结构错误——对象之间的关系违背了设计者未曾言明的假设。"循环依赖正是这类结构错误中最典型的一种。
+在软件架构复用中，组件依赖图（Component Dependency Graph, CDG）是最核心的静态结构之一。
+Daniel Jackson 在《Software Abstractions》中指出："大多数软件设计的深层错误并非算法错误，而是结构错误——对象之间的关系违背了设计者未曾言明的假设。
+"循环依赖正是这类结构错误中最典型的一种。
 
-本 Alloy 规约将组件、模块、依赖关系建模为集合与关系，通过 SAT 求解器在有限 scope 内自动搜索反例，验证"系统中不存在循环依赖"这一架构约束。与单元测试不同，Alloy 的验证是穷举性的：只要在给定 scope 内存在任何违反断言的实例，Alloy Analyzer 都会生成最小的可视化反例。
+本 Alloy 规约将组件、模块、依赖关系建模为集合与关系，通过 SAT 求解器在有限 scope 内自动搜索反例，验证"系统中不存在循环依赖"这一架构约束。
+与单元测试不同，Alloy 的验证是穷举性的：只要在给定 scope 内存在任何违反断言的实例，Alloy Analyzer 都会生成最小的可视化反例。
 
 ---
 
@@ -937,7 +942,9 @@ Model Checking Results:
 
 ### 2.1 Component（组件）
 
-`Component` 被定义为抽象签名（`abstract sig`），下分为 `Interface` 和 `Implementation` 两个子签名。这种设计对应于面向组件架构中的"接口-实现分离"原则。`dependsOn` 是一个自反关系（`Component -> Component`），表示编译期或运行期的依赖方向。
+`Component` 被定义为抽象签名（`abstract sig`），下分为 `Interface` 和 `Implementation` 两个子签名。
+这种设计对应于面向组件架构中的"接口-实现分离"原则。
+`dependsOn` 是一个自反关系（`Component -> Component`），表示编译期或运行期的依赖方向。
 
 ```alloy
 abstract sig Component {
@@ -951,7 +958,8 @@ abstract sig Component {
 
 ### 2.2 Module（模块）
 
-`Module` 是组件的逻辑聚合单元，对应于 Maven 的 module、npm 的 package、Rust 的 crate。`members` 关系定义模块的成员，`imports` 定义模块间的导入关系。将依赖约束提升到模块级别，可以检测更高层次的循环导入（circular module imports），这在微服务架构和单体模块化中同样致命。
+`Module` 是组件的逻辑聚合单元，对应于 Maven 的 module、npm 的 package、Rust 的 crate。
+`members` 关系定义模块的成员，`imports` 定义模块间的导入关系。将依赖约束提升到模块级别，可以检测更高层次的循环导入（circular module imports），这在微服务架构和单体模块化中同样致命。
 
 ---
 
@@ -965,7 +973,9 @@ fact AcyclicDependency {
 }
 ```
 
-这是本规约的核心约束。`^dependsOn` 表示 `dependsOn` 关系的传递闭包（transitive closure）。`c not in c.^dependsOn` 禁止任何组件通过一条或多步依赖到达自身。在 Alloy 的基于 SAT 的语义中，这一约束排除了所有包含有向环的模型实例。
+这是本规约的核心约束。`^dependsOn` 表示 `dependsOn` 关系的传递闭包（transitive closure）。
+`c not in c.^dependsOn` 禁止任何组件通过一条或多步依赖到达自身。
+在 Alloy 的基于 SAT 的语义中，这一约束排除了所有包含有向环的模型实例。
 
 ### F5: DependencyInversion（依赖倒置）
 
@@ -976,7 +986,8 @@ fact DependencyInversion {
 }
 ```
 
-这一事实将 Robert C. Martin 的依赖倒置原则（DIP）形式化：实现类只能依赖于接口，不能直接依赖于其他实现类。在 Alloy 中，这种约束的表达是声明式的、紧凑的，无需遍历代码或 AST。
+这一事实将 Robert C. Martin 的依赖倒置原则（DIP）形式化：实现类只能依赖于接口，不能直接依赖于其他实现类。
+在 Alloy 中，这种约束的表达是声明式的、紧凑的，无需遍历代码或 AST。
 
 ---
 
@@ -990,7 +1001,9 @@ fact DependencyInversion {
 | `NoCircularModuleImports` | 验证模块导入图 DAG | 4 Module |
 | `DependencyLocality` | 验证跨模块依赖必须通过导入声明 | 5 Component, 3 Module |
 
-`check` 命令指示 Alloy Analyzer 在指定 scope 内搜索反例。若断言在 scope 内无反例，Alloy 返回 "no counterexample found"。虽然这并非数学上的绝对证明（受限于有限 scope），但正如 Jackson 所言："在大多数设计场景中，如果错误在 scope 为 5 时未出现，它在 scope 为 500 时也不会出现——因为错误通常是结构性的，而非规模性的。"
+`check` 命令指示 Alloy Analyzer 在指定 scope 内搜索反例。
+若断言在 scope 内无反例，Alloy 返回 "no counterexample found"。
+虽然这并非数学上的绝对证明（受限于有限 scope），但正如 Jackson 所言："在大多数设计场景中，如果错误在 scope 为 5 时未出现，它在 scope 为 500 时也不会出现——因为错误通常是结构性的，而非规模性的。"
 
 ---
 

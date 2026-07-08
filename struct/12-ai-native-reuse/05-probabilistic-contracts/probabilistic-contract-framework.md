@@ -1,8 +1,17 @@
 # AI 概率契约（Probabilistic Contract）框架
 
 > **定位**：为 AI 原生复用提供可验证的统计信任边界，将 LLM/模型输出的不确定性纳入架构治理与 SLA。
-> **版本**：2026-07-07
+> **版本**：2026-07-08
 > **适用范围**：`struct/12-ai-native-reuse/05-probabilistic-contracts/`
+> **权威来源**（已核查 2026-07-08）：
+>
+> | 来源 | URL |
+> |------|-----|
+> | Angelopoulos & Bates, *A Gentle Introduction to Conformal Prediction* | <https://arxiv.org/abs/2107.07511> |
+> | Vovk et al., *Algorithmic Learning in a Random World* | Springer, 2005 |
+> | NIST AI 600-1 Generative AI Profile | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> |
+> | NIST AI RMF 1.0 | <https://www.nist.gov/itl/ai-risk-management-framework> |
+> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> |
 
 ---
 
@@ -45,13 +54,9 @@
     - [反例 1：将概率契约当作布尔契约使用](#反例-1将概率契约当作布尔契约使用)
     - [反例 2：忽略可交换性假设导致覆盖保证失效](#反例-2忽略可交换性假设导致覆盖保证失效)
     - [反例 3：样本量不足导致置信区间过宽](#反例-3样本量不足导致置信区间过宽)
-  - [9. 参考文献与权威来源](#9-参考文献与权威来源)
-  - [10. 交叉引用](#10-交叉引用)
-  - [补充说明：AI 概率契约（Probabilistic Contract）框架](#补充说明ai-概率契约probabilistic-contract框架)
-  - [概念定义](#概念定义)
-  - [示例](#示例)
-  - [反例](#反例)
-  - [权威来源](#权威来源)
+  - [9. 校准方法](#9-校准方法)
+  - [10. 参考文献与权威来源](#10-参考文献与权威来源)
+  - [11. 交叉引用](#11-交叉引用)
 
 ---
 
@@ -235,6 +240,40 @@ confidence_interval = [p̂ − ε, p̂ + ε]   （使用 Hoeffding 或 Bernstein
 | `empirical_coverage ≥ 0.95` 且 CI 下限 ≥ 0.93 | 继续服务 |
 | `0.93 ≤ empirical_coverage < 0.95` | 软违约：增加人在回路比例 |
 | `empirical_coverage < 0.93` | 硬违约：熔断并重新校准 |
+
+### 1.6 形式化约束（新增）
+
+概率契约不仅是统计目标，更是一组可在运行时检查的**形式化约束**。建议将以下约束显式写入契约声明：
+
+| 约束类别 | 形式化表达 | 运行时检查 |
+|---------|-----------|-----------|
+| **覆盖约束** | `∀x ∈ X: P(I(x) ∈ Correct(y) | x) ≥ γ(x)` | 滚动窗口经验覆盖率 |
+| **单调性约束** | `x₁ 更简单 ⇒ γ(x₁) ≥ γ(x₂)` | 输入复杂度评分 |
+| **漂移约束** | `D(P_deploy \|\| P_cal) ≤ δ_max` | PSI / KS 检验 |
+| **校准约束** | `|ECE| ≤ ε_max` | 期望校准误差 |
+| **样本约束** | `n ≥ ln(2/δ) / (2ε²)`（Hoeffding） | 校准集大小 |
+| **组合约束** | `γ₁₂ ≥ max(γ₁, γ₂)`（不确定性不降级） | 多模型串联评估 |
+
+**契约声明 YAML 片段示例**：
+
+```yaml
+contract:
+  function: generate_sql
+  input_space: X_sql
+  output_space: Y_sql
+  confidence:
+    base: 0.95
+    complexity_discount: "max(0.5, 1.0 - complexity_score * 0.1)"
+    history_decay: "exp(-lambda * t)"
+  formal_constraints:
+    coverage: "P(correct | x) >= gamma(x)"
+    drift_limit: "PSI(cal, deploy) <= 0.2"
+    calibration_error: "ECE <= 0.05"
+    min_calibration_samples: 6625
+  sampling:
+    temperature: "<= 0.1"
+    top_p: "0.90-0.95"
+```
 
 ---
 
@@ -449,6 +488,28 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 转换为 SLA：
   - 月度错误率 ≤ 5%，超出部分按调用量 10% 折算服务积分
   - 版本升级后需在 7 天内重新校准并更新 SLO 基线
+  - 硬违约触发自动回退到上一稳定模型版本
+  - 错误预算耗尽前 20% 触发黄色告警，耗尽触发红色告警
+```
+
+### 5.3 SLA/SLO 设计模板（新增）
+
+| 维度 | SLO 指标 | 测量方法 | SLA 违约条件 |
+|------|---------|---------|-------------|
+| 正确性 | ` correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
+| 可用性 | `availability ≥ 99.9%` | 健康检查 | 月度停机 > 43 分钟 |
+| 延迟 | `p99_latency ≤ T` | OpenTelemetry | 连续 5 分钟 p99 > T |
+| 成本 | `cost_per_call ≤ C` | 计费监控 | 月度单均成本 > C × 1.2 |
+| 校准 | `|ECE| ≤ 0.05` | 校准报告 | 连续 2 周 ECE > 0.05 |
+| 人在回路 | `hitl_rate ≤ H` | 审批日志 | 因置信度过低导致 HitL 率 > H × 1.5 |
+
+**错误预算分配示例**：
+
+```text
+月度 SLO_correctness = 0.95  ⇒  错误预算 = 5%
+  - 前 60%（3%）消耗：黄色告警，增加采样频率
+  - 前 80%（4%）消耗：橙色告警，禁止新版本上线
+  - 100%（5%）消耗：红色告警，自动熔断并启动根因分析
 ```
 
 **示例 2：代码审查功能**
@@ -553,30 +614,103 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 - 在监控仪表板中同时展示点估计、置信区间、样本量与可交换性假设状态。
 - 当置信区间宽度超过业务容忍度时，增加样本量或降低声明的 `γ`。
 
+### 反例 4：概率契约与过度授权 Agent 结合导致放大损失（新增）
+
+**场景**：某运维 Agent 被授权根据 LLM 输出自动重启服务。该输出由概率契约 `γ=0.85` 的分类器生成，但团队未将概率契约与操作审批策略关联。
+
+**问题**：
+
+1. 分类器以 15% 的概率将正常服务误判为异常，Agent 在没有人类确认的情况下执行重启。
+2. 概率契约的置信度低于关键操作阈值（应 `γ ≥ 0.99` 且预测集合大小为 1），但未触发 HitL。
+3. 缺乏模型漂移监控，输入分布变化后误判率升至 30%。
+
+**后果**：生产服务被频繁误重启，导致可用性下降与客户投诉。
+
+**避免建议**：
+
+- 关键自动化操作（重启、删除、转账）仅允许在 `γ(x) ≥ 0.99`、预测集合大小为 1 且近期校准误差合格时执行。
+- 将概率契约状态接入 Agent OS 策略引擎，低置信度输出强制进入 L1 人类审批。
+- 对关键分类服务实施在线校准（Adaptive Conformal Inference），降低分布漂移影响。
+
 ---
 
-## 9. 参考文献与权威来源
+## 9. 校准方法
+
+### 9.1 离线校准流程
+
+```text
+1. 收集标注数据集 D = {(xᵢ, yᵢ)}ₙ
+2. 划分训练集 D_train / 校准集 D_cal（建议 80/20）
+3. 在 D_train 上训练或固定基础模型
+4. 在 D_cal 上计算非一致性分数 s(x, y)
+5. 选择目标错误率 α
+6. 计算分位数阈值 q = quantile(1−α, {s(x, y)})
+7. 部署模型与阈值 q
+8. 持续监控经验覆盖率与 ECE
+```
+
+### 9.2 在线校准：Adaptive Conformal Inference (ACI)
+
+当部署分布随时间漂移时，静态阈值 `q` 无法保持覆盖保证。ACI 通过在线更新阈值 `q_t` 适应分布变化：
+
+```text
+q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
+```
+
+其中 `η` 为学习率，`α` 为目标错误率。ACI 在分布漂移场景下仍能保持渐近覆盖保证。
+
+### 9.3 校准评估指标
+
+| 指标 | 定义 | 目标 |
+|------|------|------|
+| **ECE (Expected Calibration Error)** | 分箱后平均 `|准确率 − 置信度|` | ≤ 0.05 |
+| **MCE (Maximum Calibration Error)** | 分箱后最大 `|准确率 − 置信度|` | ≤ 0.10 |
+| **Empirical Coverage** | `(# 正确调用) / (# 总调用)` | ≥ γ(x) − ε |
+| **Prediction Set Size** | 平均预测集合大小 | 尽量小，避免无效空集合 |
+| **PSI / KS** | 分布漂移度量 | PSI ≤ 0.2；KS p-value ≥ 0.05 |
+
+### 9.4 重新校准触发条件
+
+| 条件 | 动作 |
+|------|------|
+| 经验覆盖率连续 7 天低于 γ(x) − ε | 触发软违约，增加 HitL 比例 |
+| ECE 连续 2 周 > 0.05 | 触发重新校准 |
+| PSI > 0.2 或 KS 检验显著 | 使用 ACI 或收集新校准集 |
+| 模型版本升级 | 必须在 7 天内重新校准 |
+| 错误预算耗尽 | 硬违约，熔断并启动根因分析 |
+
+---
+
+## 10. 参考文献与权威来源
 
 1. Vovk, V., Gammerman, A., & Shafer, G. (2005). *Algorithmic Learning in a Random World*. Springer.
-2. Angelopoulos, A. N., & Bates, S. (2021). A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification. *arXiv:2107.07511*.
-3. Meyer, B. (1988). Object-Oriented Software Construction. Prentice Hall. (Design-by-Contract)
-4. MCP Specification 2025-11-25.
-5. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*.
+2. Angelopoulos, A. N., & Bates, S. (2021). A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification. *arXiv:2107.07511*. <https://arxiv.org/abs/2107.07511>
+3. Angelopoulos, A. N., et al. (2021). Learn then Test: Calibrating Predictive Algorithms to Achieve Risk Control. *arXiv:2110.01052*.
+4. Barber, R. F., et al. (2023). Conformal Prediction Beyond Exchangeability. *Annals of Statistics*. <https://arxiv.org/abs/2202.13415>
+5. Meyer, B. (1988). Object-Oriented Software Construction. Prentice Hall. (Design-by-Contract)
+6. MCP Specification 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25/>
+7. NIST AI 600-1, *Generative Artificial Intelligence Profile*. <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf>
+8. NIST AI RMF 1.0. <https://www.nist.gov/itl/ai-risk-management-framework>
+9. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
 
-> **权威来源**:
+> **权威来源**（已核查 2026-07-08）：
 >
-> - [Conformal Prediction - Wikipedia](https://en.wikipedia.org/wiki/Conformal_prediction) — 百科定义与方法概述
-> - [Conformal Prediction: A Gentle Introduction](https://arxiv.org/abs/2107.07511) — Angelopoulos & Bates (2021)
-> - [Hoeffding's Inequality - Wikipedia](https://en.wikipedia.org/wiki/Hoeffding%27s_inequality) — 浓度不等式
-> - [Bernstein Inequalities - Wikipedia](https://en.wikipedia.org/wiki/Bernstein_inequalities) — Bernstein 边界
-> - [Model Context Protocol Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/) — MCP 官方规范
-> - [Design by Contract - Wikipedia](https://en.wikipedia.org/wiki/Design_by_contract) — DbC 基础
+> | 来源 | URL |
+> |------|-----|
+> | Conformal Prediction: A Gentle Introduction | <https://arxiv.org/abs/2107.07511> |
+> | Conformal Prediction Beyond Exchangeability | <https://arxiv.org/abs/2202.13415> |
+> | Hoeffding's Inequality | <https://en.wikipedia.org/wiki/Hoeffding%27s_inequality> |
+> | Bernstein Inequalities | <https://en.wikipedia.org/wiki/Bernstein_inequalities> |
+> | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25/> |
+> | NIST AI 600-1 Generative AI Profile | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> |
+> | NIST AI RMF 1.0 | <https://www.nist.gov/itl/ai-risk-management-framework> |
+> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> |
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
 ---
 
-## 10. 交叉引用
+## 11. 交叉引用
 
 - Conformal Prediction 与形式化验证的交叉见 [`../07-conformal-prediction/cp-formal-verification.md`](../07-conformal-prediction/cp-formal-verification.md)
 - MCP 协议规范见 [`../01-mcp-protocol/mcp-2025-11-25-authoritative.md`](../01-mcp-protocol/mcp-2025-11-25-authoritative.md)
@@ -589,24 +723,4 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 
 ---
 
-## 补充说明：AI 概率契约（Probabilistic Contract）框架
-
-## 概念定义
-
-**定义**：概率契约（Probabilistic Contract）为 AI 服务定义输出质量边界（如准确率、延迟、成本）的概率承诺，并通过监测与校准保证契约可信度。
-
-## 示例
-
-**正例**：某 LLM 分类服务承诺 P(准确率>0.92)≥0.95，使用 conformal prediction 计算预测集，并在运行时监控漂移触发重新校准。
-
-## 反例
-
-**反例**：将 LLM 输出直接接入关键业务规则而无置信度边界，错误分类导致合规罚款。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Conformal Prediction](https://en.wikipedia.org/wiki/Conformal_prediction)
-> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
-> - 核查日期：2026-07-07
+> 最后更新：2026-07-08

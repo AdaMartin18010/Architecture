@@ -14,6 +14,10 @@
 
 ---
 
+## 概念定义
+
+**A2A + MCP 混合 Agent**：采用 A2A（Agent-to-Agent Protocol）实现 Agent 之间的能力发现、任务委托与结果交付；采用 MCP（Model Context Protocol）实现 Agent 与外部工具/上下文源之间的标准化调用。两者分层互补，A2A 负责 Agent 协作边界，MCP 负责 Agent-工具能力边界。
+
 ## 1. 架构设计
 
 ```text
@@ -139,7 +143,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-## 4. 正向示例：企业内部 AI 助手
+## 示例：企业内部 AI 助手
 
 某中型 SaaS 公司基于本 PoC 构建内部 AI 助手：
 
@@ -154,7 +158,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-## 5. 反例：绕过 A2A 直接调用 MCP 工具
+## 反例：绕过 A2A 直接调用 MCP 工具
 
 **场景**：某团队为图方便，让前端应用直接调用 MCP Server 的工具端点，跳过 A2A 编排 Agent。
 
@@ -174,6 +178,16 @@ curl -X POST http://localhost:8000/jsonrpc \
 3. 在 A2A Server 层统一记录 Task 生命周期、工具调用链与审计日志。
 
 ---
+
+## 分析与讨论
+
+本 PoC 的核心假设是：A2A 与 MCP 应在架构中分层使用，而非相互替代。A2A 提供 Agent 级别的抽象（Who can do what），MCP 提供工具级别的抽象（How to do it）。将两者混为一谈会导致：
+
+- 前端需要理解底层工具 Schema，集成成本上升。
+- 跨工具的业务流程编排碎片化，难以复用。
+- 安全与审计边界模糊，责任难以追溯。
+
+因此，生产演进应优先加固 A2A 编排层与 MCP 工具网关，而非让客户端直接穿透到工具层。
 
 ## 6. 生产演进路径
 

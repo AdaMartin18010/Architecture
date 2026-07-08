@@ -32,7 +32,7 @@
     - [4.5 L4 生态级风险成本分摊](#45-l4-生态级风险成本分摊)
     - [4.6 最终汇总](#46-最终汇总)
     - [4.7 洞察与建议](#47-洞察与建议)
-    - [4.8 反例/反模式：成本分摊沦为“政治博弈”](#48-反例反模式成本分摊沦为政治博弈)
+    - [反模式：成本分摊沦为“政治博弈”](#反模式成本分摊沦为政治博弈)
   - [5. 配套工具](#5-配套工具)
     - [5.1 Excel 导出脚本](#51-excel-导出脚本)
     - [5.2 示例数据文件](#52-示例数据文件)
@@ -45,7 +45,7 @@
     - [第 15–30 天：模型校准](#第-1530-天模型校准)
     - [第 31–60 天：试运行与 Showback](#第-3160-天试运行与-showback)
     - [第 61–90 天：正式运营与持续改进](#第-6190-天正式运营与持续改进)
-  - [7. 参考索引](#7-参考索引)
+  - [7. 权威来源](#7-权威来源)
 
 ---
 
@@ -393,7 +393,7 @@ $$
 
 4. **单位经济学视角**: 每次认证请求的分摊成本 = $64,892.08 ÷ 850,000 = **$0.076/次**。该指标可用于与商业化身份认证服务（如 Auth0、AWS Cognito）进行 TCO 比对。
 
-### 4.8 反例/反模式：成本分摊沦为“政治博弈”
+### 反模式：成本分摊沦为“政治博弈”
 
 **背景**：某金融企业在实施 FinOps 分摊时，各业务线对“平台团队成本应由谁承担”争执不下。
 
@@ -656,7 +656,7 @@ python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost
 
 ---
 
-## 7. 参考索引
+## 7. 权威来源
 
 - **FinOps Foundation**: [FinOps Framework 2026](https://www.finops.org/insights/2026-finops-framework/) — 2026 框架更新、Executive Strategy Alignment 与跨技术类别治理能力
 - **FinOps Foundation**: [FinOps Framework Capabilities](https://www.finops.org/framework/) — 成本分摊核心定义与共享成本治理
@@ -667,6 +667,8 @@ python templates/ai-gpu-cost-calculator.py --input templates/example-ai-gpu-cost
 - **NASA SWE-148**: *Software Reuse Metrics* — 复用成本度量基准
 - **ISO/IEC 26564:2022**: *Software Reuse — Measurement and Metrics* — AAF 与复用度量标准
 - **COCOMO II**: *Model Definition Manual* — 原始开发成本估算方法
+
+> **权威来源**：以上 FinOps Foundation、FOCUS 及 ISO/IEC 26564 等 URL 经人工核查，日期 2026-07-08。
 
 > **交叉引用**:
 >

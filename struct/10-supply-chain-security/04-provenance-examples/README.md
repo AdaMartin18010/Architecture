@@ -4,7 +4,15 @@
 
 ---
 
-## 1. 示例清单
+## 1. 概念定义
+
+**Provenance（来源证明）**：以密码学方式记录软件制品如何被构建、由谁构建、基于哪些输入的元数据。在 SLSA 框架中，provenance 是 Build Track 的核心交付物，用于回答"这个制品从哪来、是否被篡改"的问题。
+
+**Attestation（证明）**：对某一声明（如"此镜像由某 CI 工作流构建"）的密码学签名文档。SLSA provenance 是一种特定类型的 attestation，遵循 in-toto 证明格式。
+
+**OCI Reference Types**：OCI v1.1 引入的机制，允许将 SBOM、provenance、签名等元数据作为 artifact 的 referrers 附加到注册表，无需修改原镜像内容即可实现信任元数据的统一检索。
+
+## 2. 示例清单
 
 | 文件 | 说明 |
 |------|------|
@@ -12,7 +20,7 @@
 
 ---
 
-## 2. 工作流阶段
+## 3. 工作流阶段
 
 ```text
 Push/Tag
@@ -32,7 +40,7 @@ Push/Tag
 
 ---
 
-## 3. 关键特性
+## 4. 关键特性
 
 - **SLSA Build L3**：使用 GitHub Actions SLSA generator，非伪造 provenance
 - **Sigstore Keyless**：无需管理长期私钥；Fulcio 短期证书 + Rekor 透明日志
@@ -42,7 +50,7 @@ Push/Tag
 
 ---
 
-## 4. 使用方式
+## 5. 使用方式
 
 ```bash
 # 1. 复制到仓库
@@ -65,7 +73,7 @@ gh attestation verify <artifact> --owner 你的组织
 
 ---
 
-## 5. 与项目复用体系的映射
+## 6. 与项目复用体系的映射
 
 | 项目目录 | 供应链安全角色 |
 |----------|----------------|
@@ -75,7 +83,7 @@ gh attestation verify <artifact> --owner 你的组织
 
 ---
 
-## 6. 正向示例：容器镜像端到端来源证明
+## 7. 正向示例：容器镜像端到端来源证明
 
 ### 示例 A：使用 GitHub Artifact Attestations 验证容器镜像
 
@@ -125,7 +133,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 
 ---
 
-## 7. 反例 / 反模式
+## 8. 反例 / 反模式
 
 ### 反例 A：curl | bash 执行未签名脚本
 
@@ -137,7 +145,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 
 ---
 
-## 8. 控制点映射：SLSA Build Track L2/L3 → 工作流实现
+## 9. 控制点映射：SLSA Build Track L2/L3 → 工作流实现
 
 | SLSA 要求 | 工作流实现 | 验证命令 |
 |----------|-----------|---------|
@@ -150,7 +158,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 
 ---
 
-## 9. 权威来源
+## 10. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
 |------|-----|------|----------|

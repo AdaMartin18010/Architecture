@@ -23,7 +23,7 @@
 10. [TOGAF 10 ABB/SBB 与 ISO 42010:2022 的详细映射](../struct/01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md)
 11. [TOGAF 10 企业连续体与构建块复用](../struct/01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
 12. [ISO 26550:2015 产品线工程参考模型与 ISO 42010/42020 的交叉映射](../struct/01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md)
-13. [ArchiMate 3.2 元素与 ISO 42010:2022 的对照表（含 4.0 预览标注）](../struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md)
+13. [ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表（ArchiMate 4 已正式发布）](../struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md)
 14. [SWEBOK V4 知识领域与软件工程架构复用知识体系对应关系](../struct/01-meta-model-standards/05-swebok-v4/swebok-alignment.md)
 15. [公理-定理体系严格性审计报告](../struct/01-meta-model-standards/06-formal-axioms/axiom-rigor-audit.md)
 16. [形式化公理体系](../struct/01-meta-model-standards/06-formal-axioms/axiom-system.md)
@@ -3414,7 +3414,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ### 10.1 与 ArchiMate 官方规范的对齐
 
 - **The Open Group: ArchiMate 3.2 Specification (2023)** — 定义了业务/应用/技术/物理/实现五层核心语言及动机扩展。[[来源](https://pubs.opengroup.org/architecture/archimate32-doc/)]
-- **The Open Group: ArchiMate 4 Specification (2026-04-27)** — 引入 Common Domain、Strategy Domain、Path 概念，合并层特定行为/结构元素为通用元素。向后兼容 ArchiMate 3.2。[[来源](https://www.opengroup.org/press-releases)]
+- **The Open Group: ArchiMate 4 Specification (2026-04-27)** — 引入 Common Domain、Strategy Domain、Path 概念，合并层特定行为/结构元素为通用元素。向后兼容 ArchiMate 3.2。[官方下载](https://www.opengroup.org/archimate-licensed-downloads) / [官方公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)
 - **ArchiMate Forum, The Open Group (2025-2026)** — ArchiMate 4 的 Motivation White Paper 解释了 Path、Realization 模式与跨层治理的设计意图。
 
 ### 10.2 与 ISO 42010:2022 的对齐
@@ -3436,7 +3436,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO 42010 映射方式：
 ## 11. 参考索引
 
 1. The Open Group. *ArchiMate 3.2 Specification*. 2023. <https://pubs.opengroup.org/architecture/archimate32-doc/>
-2. The Open Group. *ArchiMate 4 Specification*（正式发布，2026-04-27）. <https://www.opengroup.org/archimate-forum>
+2. The Open Group. *ArchiMate 4 Specification*（正式发布，2026-04-27，Document C260，白皮书 W262）. <https://www.opengroup.org/archimate-licensed-downloads>
 3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
 4. 4m4.it. "ArchiMate 4 and the Cartography of Complexity". 2026. <https://4m4.it/longforms/archimate_4_and_the_cartography_of_complexity/>
 5. LeanIX. "What is ArchiMate? Key Components & Comparisons". <https://www.leanix.net/en/wiki/ea/what-is-archimate>
