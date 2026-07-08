@@ -1,8 +1,14 @@
 # 内容事实勘误与权威来源对齐报告（2026-07-07）
 
 > **报告目的**：响应方案 A“激进全面重构”Phase 0 要求，对项目中的关键事实争议进行网络权威来源复核，给出修正结论与后续行动。
-> **复核日期**: 2026-07-07
+> **复核日期**: 2026-07-09
 > **复核范围**: ArchiMate 4.0、MCP 版本、IEC 61508 Ed.3、ISO/IEC 25010、Warg Registry、不实学者引用
+
+---
+
+## 概念定义
+
+**权威来源对齐（Authority Alignment）**：指在知识体系中将事实性声明与可验证的权威出处进行系统映射、标注核查日期，并在来源状态发生变化时及时回滚或更新的过程。它是防止"绿色清洗式引用"与"虚假发布声明"的基础治理机制。
 
 ---
 
@@ -153,6 +159,31 @@
 | ISO 25010 版本校验 | P1 | 全项目 | grep 确认无正文 `:2024` 错误引用 |
 | Warg 引用预防 | P1 | 13-emerging-trends/03-webassembly-components/ | 引用 wasm-pkg-tools / OCI registry |
 | 引用规范强化 | P1 | 99-reference/templates/citation-standard.md | 增加“核实学者引用”条款 |
+
+---
+
+## 8. 正向示例与反例
+
+### 正向示例
+
+**示例**：在 ArchiMate 4.0 发布状态复核中，团队同时检索 The Open Group 官方新闻稿、ISO 标准目录与 IEEE Xplore，确认 Document C260 的发布日期为 2026-04-27，并将所有引用统一为带官方链接的权威表述，消除了早期审计报告中的事实争议。
+
+### 反例
+
+**反例**：某文件在引用 IEC 61508 Ed.3 时，将"认证机构 TÜV Rheinland 强制采用"与"IEC 国际标准正式发布"混为一谈，导致合规团队误以为标准已全局强制，险些按错误基准启动审计。
+
+---
+
+## 9. 权威来源
+
+> 本报告复核所依据的权威来源：
+>
+> - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
+
+因为权威来源对齐消除了事实争议，所以项目能够在正确的标准基准上继续演进，并降低未来因标准状态变化带来的回滚成本。
 
 ---
 

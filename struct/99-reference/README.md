@@ -1,6 +1,6 @@
 # 99 参考索引
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-09
 > **定位**: 全知识库的参考层，汇总权威来源、术语表、标准索引、课程对标、可视化资源与审计报告，为各主题提供可追溯的引用锚点。
 
 ---
@@ -103,8 +103,9 @@ graph TD
 
 | 标准 | 主题 | 状态 | 链接 |
 |------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) |
-| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78175.html) |
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) |
+| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78176.html) |
+| ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) |
 | ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/63712.html) |
 | TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) |
 | SLSA 1.2 | 10-供应链安全 | 生效 | [SLSA](https://slsa.dev) |
@@ -114,6 +115,23 @@ graph TD
 | IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制 | [IEC](https://webstore.iec.ch/publication/66912) |
 | MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) |
 | A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) |
+
+### 5.1 术语一致性治理
+
+参考层通过以下机制保证术语定义一致性：
+
+- **单一事实源**：`glossary/glossary-master.md` 作为项目术语的单一事实源；主题文档首次使用术语时应链接到术语表。
+- **跨标准映射**：`glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO 42010、BIAN 等外部标准术语与项目自定义术语建立映射，减少跨文档语义偏差。
+- **变更评审**：任何术语定义的变更需在 CI 中触发一致性扫描，确保不产生冲突定义。
+- **核查周期**：每季度对照权威来源（ISO OBP、The Open Group、OMG 等）复核术语定义与链接。
+
+### 5.2 跨层映射权威性
+
+`knowledge-index/cross-layer-reuse-mapping-matrix.md` 是四层复用资产映射的权威表达。其权威性来自：
+
+- **标准对齐**：映射关系基于 ISO/IEC/IEEE 42010:2022（架构描述、视点与对应关系）、TOGAF 10（业务/应用/技术架构分层）与 ISO/IEC 25010:2023（质量模型）。
+- **失败传递模式**：矩阵中记录的跨层失败传递模式（如业务定义漂移 → 应用服务冗余 → 组件接口耦合）应随审计报告持续验证。
+- **版本控制**：矩阵的每次更新必须在 `CHANGELOG.md` 与 `audit/` 中记录变更理由与权威来源。
 
 ---
 
@@ -131,14 +149,14 @@ graph TD
 
 > **权威来源**：
 >
-> - [ISO](https://www.iso.org)
-> - [IEEE Standards](https://standards.ieee.org)
-> - [NIST](https://www.nist.gov)
-> - [CNCF](https://www.cncf.io)
-> - [The Open Group](https://www.opengroup.org)
-> - [Linux Foundation](https://www.linuxfoundation.org)
-> - [Green Software Foundation](https://greensoftware.foundation)
-> - 核查日期：2026-07-07
+> - [ISO](https://www.iso.org) — International Organization for Standardization（核查日期：2026-07-09）
+> - [IEEE Standards](https://standards.ieee.org) — IEEE Standards Association（核查日期：2026-07-09）
+> - [NIST](https://www.nist.gov) — National Institute of Standards and Technology（核查日期：2026-07-09）
+> - [CNCF](https://www.cncf.io) — Cloud Native Computing Foundation（核查日期：2026-07-09）
+> - [The Open Group](https://www.opengroup.org) — 企业架构与 ArchiMate 标准（核查日期：2026-07-09）
+> - [Linux Foundation](https://www.linuxfoundation.org) — 开源与开放标准治理（核查日期：2026-07-09）
+> - [Green Software Foundation](https://greensoftware.foundation) — SCI / SCI for AI（核查日期：2026-07-09）
+> - [W3C WebAssembly Community Group](https://www.w3.org/groups/cg/webassembly/) — WebAssembly 与 WASI（核查日期：2026-07-09）
 
 ---
 

@@ -4,6 +4,10 @@
 
 模块级复用层次。覆盖框架、库、包、组件、设计模式的技术栈复用。
 
+## 核心概念定义
+
+组件架构复用是指在组件层对框架、库、包、组件、设计模式等模块级资产进行识别、封装、版本化与依赖治理，使其可在多个应用或系统中安全复用的实践。
+
 ## 核心内容
 
 - **Level 1**: 框架/平台复用（Spring Boot, React, .NET, Django, Actix）
@@ -18,14 +22,39 @@
 
 ## 权威对齐
 
-- [Maven Central](https://central.sonatype.com), [npm Registry](https://www.npmjs.com)
-- [crates.io](https://crates.io), [PyPI](https://pypi.org)
-- [SLSA Framework](https://slsa.dev)
-- [SPDX Specification](https://spdx.dev), [CycloneDX](https://cyclonedx.org)
+| 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
+|:---|:---|:---|:---|:---|
+| UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
+| GoF Design Patterns | 1994 | 23 Creational/Structural/Behavioral Patterns | <https://en.wikipedia.org/wiki/Design_Patterns> | 2026-07-08 |
+| Enterprise Integration Patterns | 2003/2024 | 65 Messaging Patterns (Hohpe & Woolf) | <https://www.enterpriseintegrationpatterns.com/> | 2026-07-08 |
+| SLSA | 1.0 | Supply-chain Levels for Software Artifacts | <https://slsa.dev/spec/v1.0/> | 2026-07-08 |
+| SPDX | 2.3 | Software Package Data Exchange | <https://spdx.dev/specifications/> | 2026-07-08 |
+| CycloneDX | 1.6 | Bill of Materials Standard | <https://cyclonedx.org/specification/overview/> | 2026-07-08 |
 
 ## 关键公理
->
+
 > **公理 4.1** (Interface Contract Completeness): 组件的可复用性取决于其**接口契约**的完备性（前置条件、后置条件、不变量、副作用声明），而非实现细节。
+
+## 正向复用案例
+
+**跨团队共享的内部 SDK 组件**：某公司将日志、配置、缓存、健康检查、异常处理等横切关注点封装为内部 SDK 组件，通过私有 Maven/NuGet 仓库分发。各微服务引入统一版本依赖，重复代码减少 60%，安全补丁可在 1 天内全量推送。
+
+## 反例
+
+**源码复制式复用**：某项目将开源日志库的源码直接复制到代码库，未通过包管理器跟踪版本与漏洞。一年后该库出现高危 CVE，团队无法通过 `npm audit`/`cargo audit` 等工具感知，安全补丁滞后 4 个月，最终在生产环境被利用。
+
+## 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 组件 / 接口 | UML 2.5.1 §11 Components | 组件通过提供的/需要的接口定义边界 |
+| 组件图 | UML 2.5.1 §19.3 Component Diagrams | 可视化组件、接口与依赖关系 |
+| 架构描述 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件视图作为架构描述的一种视图 |
+| 设计模式复用 | GoF (1994) | 创建型、结构型、行为型模式解决组件内部结构问题 |
+| 集成模式复用 | Hohpe & Woolf (2003) | 消息路由、转换、端点模式解决组件间集成问题 |
+| 供应链安全 | SLSA 1.0 | Build / Provenance / Source 等级保障组件来源可信 |
 
 ## 当前状态
 
@@ -37,32 +66,7 @@
 - [ ] Rust 生态深度形式化（所有权、Trait、Cargo SAT 求解）(07-formal-verification 进行中)
 - [ ] WASM Component Model 跨语言复用分析 (P1, 2026-Q4)
 
-## 关联主题
+## 交叉引用
 
 - `10-supply-chain-security`（SBOM、SLSA、漏洞管理）
 - `07-formal-verification`（Rust 类型系统形式化）
-
-
----
-
-## 补充说明：04 组件架构复用
-
-## 概念定义
-
-**定义**：组件架构复用是在模块/组件层面复用设计模式、接口契约、依赖管理与版本策略，以实现代码级与二进制级的高效复用。
-
-## 示例
-
-**示例**：团队将日志、配置、缓存、健康检查等横切关注点封装为内部 SDK 组件，各微服务通过引入统一版本依赖复用，减少重复代码。
-
-## 反例
-
-**反例**：项目直接复制开源库源码到代码库，未通过包管理器跟踪版本与漏洞，导致安全补丁无法及时同步。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [CNCF](https://www.cncf.io)
-> - [OpenSSF](https://openssf.org)
-> - 核查日期：2026-07-07

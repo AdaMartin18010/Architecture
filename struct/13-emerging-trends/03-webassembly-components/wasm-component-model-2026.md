@@ -1,7 +1,7 @@
 # WebAssembly 组件模型与 WASI 复用生态
 >
-> 版本: 2026-06-06
-> 对齐来源: Bytecode Alliance、W3C WebAssembly CG、wasmCloud CNCF、WASI 路线图、Platform.Uno 2026 状态报告
+> 版本: 2026-07-09
+> 对齐来源: Bytecode Alliance Component Model、WASI 0.3 Roadmap、Wasmtime、W3C WebAssembly 3.0、wasmCloud CNCF
 
 ## 1. 技术里程碑（2025–2026）
 
@@ -35,17 +35,18 @@
 - 定义 **Worlds** 概念：模块可访问的标准接口集合
 - 支持 `wasi-http` 等高级世界
 
-### 2.2 WASI 0.3（Preview 已发布，Wasmtime 37+ 默认支持）
+### 2.2 WASI 0.3（原生异步 I/O，RC/Preview）
 
 > **最新实践详见**：[`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
 
-- **原生异步支持**：`stream<T,E>` / `future<T,E>` 类型，Component Model 内置 async/await
-- **状态**：WASI 0.3 Preview 已于 2025 年发布，Wasmtime 37+ 默认启用
-- **效果**：HTTP、文件系统、时钟等世界全面异步化
+- **原生异步支持**：Component Model ABI 层引入 `stream<T>` / `future<T>`，语言绑定可生成惯用 `await`，Host 可直接向 Guest 传递未完成的 future，无需显式轮询循环。
+- **状态**：WASI 0.3 于 2025 年底进入 Release Candidate，Wasmtime 37+ 提供默认/实验性支持；完整 WASI 1.0 预计 2026 末–2027 初发布。
+- **兼容性**：同一组件可同时导出 WASI 0.2 与 0.3 接口；0.3 运行时可通过适配层执行 0.2 模块，支持渐进迁移。
+- **效果**：HTTP、文件系统、时钟等世界全面异步化，`wasi:http@0.3.0` 资源类型从 0.2.4 的 11 个精简到 5 个。
 - **目标场景**：
-  - 边缘设备
+  - 边缘设备与 IoT
   - 异步与事件驱动架构
-  - Serverless 环境
+  - Serverless 函数与插件系统
   - MCP / A2A Agent 工具沙箱
 
 ### 2.3 WASI 1.0（目标 2026 末发布）
@@ -267,43 +268,30 @@ impl exports::my::domain::image_processor::Guest for ImageProcessor {
 
 **反例**：某团队将大量阻塞式文件 I/O 逻辑直接迁移到 WASM，未使用 WASI 0.3 的异步 `stream`/`future` 能力，也未通过 WIT 暴露接口，导致运行时阻塞、延迟飙升，且难以跨语言调用，最终回退为原生动态库。
 
-### 9.6 权威来源与交叉引用
+### 9.6 WASM 组件复用边界
 
-| 来源 | URL |
+组件复用并非"一切 WASM 化"。基于 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md) 的边界分析，建议按以下规则决策：
+
+| 适合 WASM Component | 不适合 WASM Component |
 |:---|:---|
-| Wikipedia - WebAssembly | <https://en.wikipedia.org/wiki/WebAssembly> |
-| Wikipedia - WebAssembly System Interface | <https://en.wikipedia.org/wiki/WebAssembly_System_Interface> |
-| Component Model 官方文档 | <https://component-model.bytecodealliance.org> |
-| WASI Roadmap | <https://github.com/WebAssembly/WASI> |
-| Bytecode Alliance | <https://bytecodealliance.org> |
-| wasmCloud | <https://wasmcloud.com> |
+| 跨语言共享的算法/工具库（加密、图像处理、协议解析） | 强 OS 依赖、大量原生系统调用 |
+| 需要亚秒级冷启动的边缘函数/插件 | 长时间运行、有状态且需要复杂线程模型的服务 |
+| 多租户场景下的不可信第三方代码沙箱 | 对峰值吞吐延迟极度敏感、无法容忍任何虚拟化开销的核心路径 |
+| 已通过 WIT 明确契约的模块级能力 | 未定义接口、频繁变更的内部实现细节 |
+
+**推荐粒度**：以 **WIT `interface`** 作为组织内复用的标准粒度；完整 `world` 组件适合对外交付或跨团队部署；函数级粒度过细，契约维护成本高。
+
+### 9.7 权威来源与交叉引用
+
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| WebAssembly Component Model | <https://component-model.bytecodealliance.org> | 2026-07-09 |
+| WASI — WebAssembly System Interface | <https://wasi.dev> | 2026-07-09 |
+| WASI Roadmap (GitHub) | <https://github.com/WebAssembly/WASI> | 2026-07-09 |
+| Wasmtime | <https://github.com/bytecodealliance/wasmtime> | 2026-07-09 |
 
 **交叉引用**：
 
 - WASI 0.3 边界分析详见 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md)
 - WASM 复用决策树详见 [`wasm-reuse-decision-tree.md`](./wasm-reuse-decision-tree.md)
 - Rust/WASM 形式化验证详见 [`../05-rust-ecosystem/rust-wasm-formal-verification.md`](../05-rust-ecosystem/rust-wasm-formal-verification.md)
-
----
-
-## 补充说明：WebAssembly 组件模型与 WASI 复用生态
-
-## 示例
-
-**示例**：使用 Rust 实现图像处理组件，编译为 WIT 接口的 WASM 组件，在 Node.js、Python 与边缘运行时中复用同一二进制。
-
-## 反例
-
-**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，性能与可维护性反而下降。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
-> - [WASI Preview 2](https://wasi.dev)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。

@@ -1,6 +1,6 @@
 # API 设计模式与功能复用
 
-> **版本**: 2026-07-08
+> **版本**: 2026-07-09
 > **定位**: 由 `struct/05-functional-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 05-functional-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -14,12 +14,13 @@
 1. [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 2. [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 3. [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-4. [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
-5. [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
-6. [MCP Tool 的可复用设计](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md)
-7. [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
-8. [功能复用的粒度-成本-收益决策树](../struct/05-functional-architecture-reuse/decision-tree-granularity-cost-roi.md)
-9. [05 功能架构复用](../struct/05-functional-architecture-reuse/README.md)
+4. [领域函数目录](../struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md)
+5. [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+6. [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
+7. [MCP Tool 的可复用设计](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md)
+8. [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
+9. [功能复用的粒度-成本-收益决策树](../struct/05-functional-architecture-reuse/decision-tree-granularity-cost-roi.md)
+10. [05 功能架构复用](../struct/05-functional-architecture-reuse/README.md)
 
 ---
 
@@ -940,9 +941,9 @@ flowchart TD
 
 # 事件驱动函数复用模式
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 功能架构层 —— 事件驱动架构中的函数复用：schema、路由与模式
-> **对齐标准**: CloudEvents, AsyncAPI, Apache Kafka, Knative Eventing, AWS EventBridge, Azure Event Grid
+> **对齐标准**: CloudEvents 1.0, AsyncAPI 3.x, Apache Kafka, Knative Eventing, AWS EventBridge, Azure Event Grid, Enterprise Integration Patterns
 > **状态**: ✅ 已完成
 
 ---
@@ -971,11 +972,14 @@ flowchart TD
     - [6.1 架构](#61-架构)
     - [6.2 可复用组件](#62-可复用组件)
   - [7. 权威来源](#7-权威来源)
-  - [补充说明：事件驱动函数复用模式](#补充说明事件驱动函数复用模式)
-  - [概念定义](#概念定义)
-  - [分析](#分析)
+  - [8. 标准条款映射](#8-标准条款映射)
+  - [9. 权威来源](#9-权威来源)
 
 ---
+
+## 核心概念定义
+
+事件驱动函数复用是指在事件驱动架构（EDA）与函数即服务（FaaS）上下文中，将事件 Schema、事件路由、过滤、转换、 Saga 补偿、投影等逻辑封装为可复用函数资产，并通过标准化契约在多个事件流与消费者之间共享的实践。
 
 ## 1. 事件驱动函数概述
 
@@ -1221,32 +1225,324 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 
 ---
 
+## 收益与风险分析
+
+事件驱动函数复用的核心价值在于解耦生产者与消费者、缩短变更传播路径，并通过 Schema 注册中心与 CloudEvents 等标准降低跨平台集成成本。因此，在采用该模式时，应优先复用经过兼容性验证的 Schema 与路由函数，避免在事件链路中引入隐式契约或不可补偿的长事务。
+
+---
+
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| CloudEvents | <https://cloudevents.io/> | 2026-06-10 |
-| AsyncAPI | <https://www.asyncapi.com/> | 2026-06-10 |
-| Apache Kafka | <https://kafka.apache.org/> | 2026-06-10 |
-| Knative Eventing | <https://knative.dev/docs/eventing/> | 2026-06-10 |
-| AWS EventBridge | <https://aws.amazon.com/eventbridge/> | 2026-06-10 |
-| Azure Event Grid | <https://azure.microsoft.com/services/event-grid/> | 2026-06-10 |
-| Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-06-10 |
-| Saga Pattern (Microservices.io) | <https://microservices.io/patterns/data/saga.html> | 2026-06-10 |
-| Event Sourcing (Martin Fowler) | <https://martinfowler.com/eaaDev/EventSourcing.html> | 2026-06-10 |
+| CloudEvents | <https://cloudevents.io/> | 2026-07-08 |
+| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
+| Apache Kafka | <https://kafka.apache.org/> | 2026-07-08 |
+| Knative Eventing | <https://knative.dev/docs/eventing/> | 2026-07-08 |
+| AWS EventBridge | <https://aws.amazon.com/eventbridge/> | 2026-07-08 |
+| Azure Event Grid | <https://azure.microsoft.com/services/event-grid/> | 2026-07-08 |
+| Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-07-08 |
+| Saga Pattern (Microservices.io) | <https://microservices.io/patterns/data/saga.html> | 2026-07-08 |
+| Event Sourcing (Martin Fowler) | <https://martinfowler.com/eaaDev/EventSourcing.html> | 2026-07-08 |
 
 
 ---
 
-## 补充说明：事件驱动函数复用模式
+## 8. 标准条款映射
 
-## 概念定义
+| 本主题概念 | 对应标准/文献 | 映射说明 |
+|:---|:---|:---|
+| 事件封装格式 | CloudEvents 1.0 Specification | 跨平台事件元数据标准（specversion, type, source, id, data） |
+| 异步 API 契约 | AsyncAPI 3.x | 事件驱动 API 的通道、消息、Schema 定义标准 |
+| 消息路由模式 | Enterprise Integration Patterns (Hohpe & Woolf) | Content-Based Router, Message Filter, Recipient List, Aggregator |
+| 分布式事务 | Saga Pattern | 长事务拆分与补偿操作模式 |
+| 事件溯源 | Event Sourcing (Fowler, 2005) | 状态变化记录为不可变事件序列 |
+| 流处理 | Apache Kafka / Kafka Streams | 分区、窗口、聚合、连接等流处理语义 |
+| Serverless 事件 | AWS EventBridge / Azure Event Grid / Knative Eventing | 云原生事件路由与函数触发 |
 
-**定义**：事件函数复用是将事件处理逻辑封装为可复用函数，并通过事件 Schema、路由规则与错误处理策略实现跨系统的事件驱动集成。
+## 9. 权威来源
 
-## 分析
+> **权威来源**:
+>
+> - [CloudEvents 1.0 Specification](https://cloudevents.io/) — CNCF 事件标准；核查日期：2026-07-08
+> - [AsyncAPI Specification](https://www.asyncapi.com/) — 异步 API 契约标准；核查日期：2026-07-08
+> - [Apache Kafka Documentation](https://kafka.apache.org/documentation/) — 流处理平台；核查日期：2026-07-08
+> - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/) — Hohpe & Woolf 消息模式；核查日期：2026-07-08
+> - [Saga Pattern (Microservices.io)](https://microservices.io/patterns/data/saga.html) — 分布式事务模式；核查日期：2026-07-08
+> - [Event Sourcing (Martin Fowler)](https://martinfowler.com/eaaDev/EventSourcing.html) — 事件溯源模式；核查日期：2026-07-08
+> - [Knative Eventing](https://knative.dev/docs/eventing/) — Kubernetes 事件编排；核查日期：2026-07-08
+> - [AWS EventBridge](https://aws.amazon.com/eventbridge/) — 无服务器事件总线；核查日期：2026-07-08
+> - [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) — Azure 事件路由服务；核查日期：2026-07-08
+>
+> **核查日期**: 2026-07-08
 
-**分析**：事件函数复用的关键在于统一事件契约与处理语义，避免隐式依赖。
+
+---
+
+
+<!-- SOURCE: struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md -->
+
+# 领域函数目录
+
+> **版本**: 2026-07-08
+> **定位**: 功能架构层 —— 基于领域驱动设计（DDD）的细粒度可复用函数目录
+> **对齐标准**: Domain-Driven Design (Evans 2003), Functional Programming, DMN 1.5, Serverless Functions
+> **状态**: ✅ 已完成
+
+---
+
+## 目录
+
+- [领域函数目录](#领域函数目录)
+  - [目录](#目录)
+  - [1. 领域函数的定义](#1-领域函数的定义)
+  - [2. 领域函数 vs. 应用服务 vs. 基础设施函数](#2-领域函数-vs-应用服务-vs-基础设施函数)
+  - [3. 领域函数目录模板](#3-领域函数目录模板)
+  - [4. 可复用领域函数分类](#4-可复用领域函数分类)
+    - [4.1 实体工厂函数](#41-实体工厂函数)
+    - [4.2 值对象计算函数](#42-值对象计算函数)
+    - [4.3 领域规则判断函数](#43-领域规则判断函数)
+    - [4.4 状态转换函数](#44-状态转换函数)
+    - [4.5 聚合校验函数](#45-聚合校验函数)
+  - [5. 与权威框架/标准的条款映射](#5-与权威框架标准的条款映射)
+  - [6. 正例](#6-正例)
+    - [正例 1：统一税率计算函数库](#正例-1统一税率计算函数库)
+    - [正例 2：医疗领域的剂量校验函数](#正例-2医疗领域的剂量校验函数)
+  - [7. 反例](#7-反例)
+    - [反例 1：隐藏在应用服务中的领域规则](#反例-1隐藏在应用服务中的领域规则)
+    - [反例 2：领域函数依赖外部状态](#反例-2领域函数依赖外部状态)
+  - [8. 权威来源](#8-权威来源)
+  - [9. 交叉引用](#9-交叉引用)
+
+---
+
+## 1. 领域函数的定义
+
+**定义** (Domain Function): 领域函数是封装单一领域规则、计算或状态转换逻辑的**纯函数**或**无副作用函数**。它直接表达领域专家使用的语言（Ubiquitous Language），是 DDD 战术设计在函数粒度上的复用单元。
+
+形式化：
+
+```text
+DomainFunction := ⟨Name, Input, Output, Invariant, SideEffect⟩
+
+Name: 动词+名词，来自统一语言（如 calculateTax）
+Input: 领域对象或值对象集合
+Output: 新的领域对象、值对象或判断结果
+Invariant: 执行前后必须保持的领域不变量
+SideEffect: 无；或仅允许显式声明的副作用（如审计日志）
+```
+
+> **原则**：领域函数应优先为纯函数（Pure Function），即相同输入必然产生相同输出，且不依赖或修改外部状态。这一特性使其天然适合复用、测试和并行执行。
+
+---
+
+## 2. 领域函数 vs. 应用服务 vs. 基础设施函数
+
+| 维度 | 领域函数 | 应用服务 | 基础设施函数 |
+|---|---|---|---|
+| 关注点 | 领域规则、计算、不变量 | 用例编排、事务边界 | 技术实现（存储、消息、HTTP） |
+| 副作用 | 无（或显式声明） | 可协调多个领域操作 | 通常有 I/O 副作用 |
+| 复用范围 | 跨用例、跨应用、跨服务 | 限定于特定用例 | 限定于特定技术栈 |
+| 测试方式 | 单元测试（输入→输出） | 集成测试 | 集成测试 / Mock |
+| 示例 | `calculateVAT`, `isEligibleForDiscount` | `placeOrder`, `processRefund` | `saveOrderToDB`, `sendEmail` |
+
+> **分层规则**：领域函数只依赖领域层内的实体、值对象和领域服务；不直接调用应用层或基础设施层。
+
+---
+
+## 3. 领域函数目录模板
+
+| 字段 | 说明 | 示例 |
+|---|---|---|
+| 函数 ID | 唯一标识 | DF-ORDER-001 |
+| 函数名称 | 动词+名词，来自统一语言 | calculateOrderTotal |
+| 所属领域 | 限界上下文 | 订单域 / Order Context |
+| 输入 | 参数类型与含义 | Order, List<OrderLine> |
+| 输出 | 返回值类型与含义 | Money (含税总价) |
+| 不变量 | 执行前后必须保持的规则 | 总价 ≥ 0；税额 = 税基 × 税率 |
+| 复用等级 | 上下文内 / 跨上下文 / 企业级 | 企业级 |
+| 实现语言 | 可存在多语言实现 | Python / TypeScript / Java |
+| 对应 DMN | 若适用，关联决策表 | DT-PRICING-001 |
+
+---
+
+## 4. 可复用领域函数分类
+
+### 4.1 实体工厂函数
+
+将领域对象的创建逻辑集中封装，避免在多处重复复杂的构造规则。
+
+```python
+def create_order(customer_id: CustomerId, lines: List[OrderLine]) -> Order:
+    """创建订单，确保至少包含一个订单行且客户 ID 有效。"""
+    if not lines:
+        raise ValueError("订单必须包含至少一个订单行")
+    return Order(id=OrderId.new(), customer_id=customer_id, lines=lines, status=OrderStatus.PENDING)
+```
+
+### 4.2 值对象计算函数
+
+对金额、数量、比率、坐标等值对象进行计算，保证数学语义正确。
+
+```python
+def calculate_vat(amount: Money, rate: Decimal) -> Money:
+    """计算增值税，结果按货币精度截断。"""
+    return Money((amount.value * rate).quantize(amount.currency.precision), amount.currency)
+```
+
+### 4.3 领域规则判断函数
+
+将业务规则封装为可复用的布尔判断函数，供流程、UI、AI Agent 共同使用。
+
+```python
+def is_eligible_for_bulk_discount(order: Order) -> bool:
+    """当订单总行数 ≥ 100 或总金额 ≥ 10,000 时适用批量折扣。"""
+    return len(order.lines) >= 100 or order.total.amount >= Decimal("10000")
+```
+
+### 4.4 状态转换函数
+
+明确定义聚合根或实体状态机的合法转换，避免非法状态迁移。
+
+```python
+def pay_order(order: Order, payment: Payment) -> Order:
+    """将订单从 PENDING 转移到 PAID，前提为支付金额等于订单金额。"""
+    if order.status != OrderStatus.PENDING:
+        raise DomainError("只有待支付订单可被支付")
+    if payment.amount != order.total:
+        raise DomainError("支付金额与订单金额不一致")
+    return order.with_status(OrderStatus.PAID)
+```
+
+### 4.5 聚合校验函数
+
+在持久化或发布事件前，验证聚合内部一致性。
+
+```python
+def validate_inventory_reservation(reservation: InventoryReservation) -> ValidationResult:
+    """校验库存预留是否满足可用库存约束。"""
+    if reservation.quantity > reservation.product.available_quantity:
+        return ValidationResult.fail("预留数量超过可用库存")
+    return ValidationResult.ok()
+```
+
+---
+
+## 5. 与权威框架/标准的条款映射
+
+| 本主题概念 | 对应标准/文献 | 映射说明 |
+|:---|:---|:---|
+| 领域函数 | DDD (Evans, 2003) | 战术设计中的领域逻辑单元，对应 Entity / Value Object / Domain Service 中的行为 |
+| 统一语言 | DDD Strategic Design | 函数命名必须来自领域专家与开发者共享的语言 |
+| 限界上下文 | DDD Strategic Design | 函数复用边界由 Bounded Context 决定 |
+| 聚合不变量 | DDD Tactical Design | 函数执行前后需保持聚合内部一致性 |
+| 纯函数 | Functional Programming | 无副作用、引用透明，便于并发与复用 |
+| 类型状态 | Typestate Pattern | 通过类型系统强制合法状态转换 |
+| 业务规则复用 | DMN 1.5 §6 Decision Service | 复杂判断逻辑可映射为 DMN 决策服务，供函数调用 |
+| 函数部署 | Serverless Functions (FaaS) | 领域函数可作为无服务器函数部署，事件触发 |
+
+---
+
+## 6. 正例
+
+### 正例 1：统一税率计算函数库
+
+**背景**：某跨国 SaaS 公司的订单、发票、报销、财务报告四个系统分别实现了税率计算逻辑。
+
+**复用实践**：
+
+1. 识别"计算税费"为跨上下文的领域函数，定义统一输入（金额、税种、地区、时间）。
+2. 用纯函数实现核心计算，覆盖增值税、消费税、地方附加税。
+3. 在各系统中以库形式引入，版本通过 SemVer 管理。
+4. 税务政策变更时，仅修改函数库并发布新版本。
+
+**效果**：
+
+- 税率调整上线时间从 2 周缩短至 2 天。
+- 四个系统计算结果一致性从 92% 提升至 99.9%。
+- 审计时可直接展示函数版本与计算规则对应关系。
+
+### 正例 2：医疗领域的剂量校验函数
+
+**背景**：某医院信息系统需要在挂号、药房、护理、计费多个模块中校验药品剂量是否超量。
+
+**复用实践**：
+
+1. 将"校验药品剂量"抽象为领域函数 `validate_dosage(patient, medication, dose)`。
+2. 函数内部封装年龄、体重、肝肾功能、药物相互作用等规则。
+3. 通过 DMN 决策表管理可变的剂量阈值规则。
+
+**效果**：
+
+- 新模块接入剂量校验只需调用函数，无需重写规则。
+- 剂量相关医疗差错下降 45%。
+
+---
+
+## 7. 反例
+
+### 反例 1：隐藏在应用服务中的领域规则
+
+**场景**：某电商系统将"满减规则"直接写在订单应用服务的 `place_order` 方法中，与库存扣减、支付调用、消息发送等逻辑混合。
+
+**问题**：
+
+- 促销团队无法独立调整满减规则，必须提交 IT 需求。
+- 同一满减规则在 App、小程序、B2B 平台中重复实现，规则不一致。
+- 单元测试需要模拟整个下单流程，测试成本高昂。
+
+**后果**：
+
+- 一次双 11 促销因各平台规则实现不一致，导致客诉 3000+ 起。
+- 后续重构时，无法安全提取规则，形成"大泥球"。
+
+**避免建议**：
+
+- 将"计算促销优惠"提取为独立领域函数 `calculate_promotion_discount`。
+- 使用 DMN 决策表管理多变的促销规则。
+- 应用服务只负责编排，不实现领域规则。
+
+### 反例 2：领域函数依赖外部状态
+
+**场景**：某团队将"汇率转换"实现为领域函数，但函数内部直接调用外部汇率 API 并缓存到全局变量。
+
+**问题**：
+
+- 函数不是纯函数，相同输入在不同时刻输出不同。
+- 单元测试不稳定，需要 Mock 全局缓存和外部 API。
+- 在高并发场景下出现汇率不一致，导致财务报表差异。
+
+**避免建议**：
+
+- 领域函数只接收汇率作为输入参数，不直接调用外部服务。
+- 汇率获取由应用服务或防腐层（Anti-Corruption Layer）负责。
+- 如需缓存，在调用方注入缓存后的汇率值。
+
+---
+
+## 8. 权威来源
+
+> **权威来源**:
+>
+> - [Domain-Driven Design (Eric Evans)](https://www.domainlanguage.com/) — DDD 战术设计与统一语言；核查日期：2026-07-08
+> - [Domain-Driven Design (Martin Fowler)](https://martinfowler.com/bliki/DomainDrivenDesign.html) — DDD 概述与战略设计；核查日期：2026-07-08
+> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN/1.5/) — 决策服务与业务规则复用；核查日期：2026-07-08
+> - [AWS Lambda Documentation](https://aws.amazon.com/lambda/) — Serverless Functions/FaaS；核查日期：2026-07-08
+> - [Azure Functions Documentation](https://azure.microsoft.com/services/functions/) — Serverless Functions/FaaS；核查日期：2026-07-08
+> - [Google Cloud Functions Documentation](https://cloud.google.com/functions) — Serverless Functions/FaaS；核查日期：2026-07-08
+> - [Semantic Versioning 2.0.0](https://semver.org/) — 函数库版本管理；核查日期：2026-07-08
+>
+> **核查日期**: 2026-07-08
+
+---
+
+## 9. 交叉引用
+
+- [功能架构复用概览](../struct/05-functional-architecture-reuse/README.md) — 功能复用五层层次结构
+- [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md) — 事件触发下的函数复用
+- [工作流编排复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md) — 长事务与 Saga 中的领域函数编排
+- [AI/LLM 功能复用模式](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md) — AI 功能作为领域函数的扩展
+- [组件接口契约设计模式](../struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md) — 函数级复用的接口契约原则
 
 
 ---
@@ -2731,6 +3027,10 @@ flowchart TD
 
 最细粒度的复用层次。覆盖算法、函数、业务规则、工作流、AI/LLM 功能的复用。
 
+## 核心概念定义
+
+功能架构复用是指在功能层对算法、函数、业务规则、工作流、AI/LLM 能力等细粒度资产进行封装、编目与组合复用的实践，强调确定性边界、版本契约与可观测性。
+
 ## 核心内容
 
 - **Level 1**: 算法/数据结构复用（STL, Rust std, NumPy）
@@ -2746,14 +3046,37 @@ flowchart TD
 
 ## 权威对齐
 
-- [MCP Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25) (Linux Foundation Agentic AI Foundation)
-- [A2A Protocol](https://a2aprotocol.org) (Google / Linux Foundation, v1.0.0)
-- [Temporal Documentation](https://docs.temporal.io)
-- [DMN 1.5 Specification](https://www.omg.org/spec/DMN)
+| 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
+|:---|:---|:---|:---|:---|
+| MCP Specification | 2025-11-25 | Tools, Resources, Prompts, Sampling, Transports | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
+| A2A Protocol | v1.0.0 | Agent-to-Agent Protocol (Google / Linux Foundation) | <https://a2aprotocol.org/> | 2026-07-08 |
+| DMN | 1.5 | §6 Decision Requirements, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
+| Temporal | 2026 | Workflows, Activities, Workers, Schedules | <https://docs.temporal.io/> | 2026-07-08 |
+| DDD | Evans 2003 | Entities, Value Objects, Aggregates, Bounded Contexts | <https://martinfowler.com/bliki/DomainDrivenDesign.html> | 2026-07-08 |
+| Serverless Functions | — | AWS Lambda, Azure Functions, Google Cloud Functions | <https://aws.amazon.com/lambda/> | 2026-07-08 |
 
 ## 关键定理
->
+
 > **定理 5.2** (AI Function Non-Determinism): AI 功能（LLM 调用、模型推理）的可复用性受**温度参数 (temperature)** 和**模型版本漂移**制约。其复用契约必须包含**确定性边界**（如 "P(正确性) ≥ 0.95"）。
+
+## 正向复用案例
+
+**财税规则纯函数库**：团队将发票金额校验、税率计算与格式转换封装为纯函数库，在订单、报销与财务系统中统一调用。当增值税率调整时，只需修改函数库并升级版本，所有消费系统在 1 周内完成同步，避免重复实现导致的税率错误。
+
+## 反例
+
+**分布式规则泥潭**：同一业务规则以不同语言、不同逻辑在 ERP、CRM、电商中台三个系统中实现。当国家调整跨境电子服务税率时，三个团队分别修改，遗漏了 CRM 中的一处旧逻辑，导致季度税务申报差异 120 万元，补税并缴纳滞纳金。
+
+## 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 纯函数 / 无副作用 | DDD Tactical Design | 领域逻辑的可复用单元应保持无副作用，便于测试与组合 |
+| 业务规则复用 | DMN 1.5 §6 Decision Service | 规则封装为决策服务，可被流程、应用、AI Agent 调用 |
+| 工作流复用 | BPMN 2.0 §8 Process / Temporal Workflows | 长事务、 Saga、定时任务等由工作流引擎编排 |
+| 事件函数复用 | CloudEvents 1.0 / AsyncAPI | 事件 Schema 标准化使函数可在多传输层复用 |
+| AI 工具复用 | MCP 2025-11-25 | Model Context Protocol 定义 LLM 工具、资源、提示词的标准契约 |
+| Agent 协作 | A2A v1.0.0 | Agent-to-Agent Protocol 定义多 Agent 之间的任务与能力发现 |
 
 ## 当前状态
 
@@ -2765,35 +3088,10 @@ flowchart TD
 - [x] MCP 2025-11-25 权威深度解析（替换旧 2026-07-28 RC 引用） (`../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md`)
 - [x] AI 功能概率契约校准工具原型 (`../12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py`，基于 Conformal Prediction)
 
-## 关联主题
+## 交叉引用
 
 - `12-ai-native-reuse`（AI 原生复用的协议层）
 - `07-formal-verification`（AI 概率边界形式化）
-
-
----
-
-## 补充说明：05 功能架构复用
-
-## 概念定义
-
-**定义**：功能架构复用是在函数、算法、业务规则、工作流与 AI 能力等最细粒度层次上进行复用，强调单一职责、确定性边界与可组合性。
-
-## 示例
-
-**示例**：团队将发票金额校验、税率计算与格式转换封装为纯函数库，在订单、报销与财务系统中统一调用，避免重复实现财税规则。
-
-## 反例
-
-**反例**：同一业务规则以不同语言、不同逻辑在多个系统中实现，导致税率调整时需要修改所有系统。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
-> - [Temporal Documentation](https://docs.temporal.io)
-> - 核查日期：2026-07-07
 
 
 ---

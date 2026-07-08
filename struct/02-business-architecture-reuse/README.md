@@ -4,6 +4,10 @@
 
 最粗粒度的复用层次。从业务领域到业务服务，建立"业务语义可复用"的框架。
 
+## 核心概念定义
+
+业务架构复用是指在业务架构层对业务能力、价值流、业务流程与业务服务等资产进行识别、编目与跨场景复用的实践，其边界由价值创造而非组织结构定义。
+
 ## 核心内容
 
 - **Level 1**: 业务领域复用（跨行业/跨组织宏观领域）
@@ -17,14 +21,25 @@
 
 ## 权威对齐
 
-- [OMG BPMN 2.0 Specification](https://www.omg.org/spec/BPMN)
-- [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN)
-- FEA BRM 2.0 (美国联邦跨机构复用基准)
-- TOGAF 10 Phase B (Business Architecture)
+| 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
+|:---|:---|:---|:---|:---|
+| OMG BPMN | 2.0.2 (2014) | §8.3 Process, §10.4 Collaboration, 可执行语义 | <https://www.omg.org/spec/BPMN/2.0.2/> | 2026-07-08 |
+| OMG DMN | 1.5 (2024) | §6 Decision Requirements, §7 FEEL, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
+| TOGAF | 10 (2022) | Phase B Business Architecture, Capability Mapping | <https://www.opengroup.org/togaf> | 2026-07-08 |
+| FEA BRM | 2.0 | 五层业务线（Mission, Business, Customer, Data Management, Mission Support） | <https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/> | 2026-07-08 |
+| ArchiMate | 4.2 | Business Layer: Capability, Value Stream, Business Process | <https://pubs.opengroup.org/architecture/archimate4-doc/> | 2026-07-08 |
 
 ## 关键公理
->
+
 > **公理 2.1** (Capability Atomicity): 业务能力是可复用的最小业务语义单元，其边界由**价值创造**而非**组织结构**定义。
+
+## 正向复用案例
+
+**跨国银行的 KYC 能力复用**：某全球银行将"客户身份识别 (KYC)"抽象为企业级业务能力，统一客户尽调规则、风险评级标准与监管报告格式。零售银行、投资银行、财富管理三个业务线共享同一 KYC 服务目录，新市场开户合规审查周期从 6 周缩短至 1.5 周，监管审计问题减少 40%。
+
+## 反例
+
+**按组织架构切分的能力孤岛**：某制造企业将"市场部审批""财务部复核""法务部审核"直接建模为业务能力。半年后组织重组，市场部分拆为品牌市场与数字市场，原能力全部失效，能力地图被迫重构，基于能力的 IT 规划无法执行。根因在于能力边界被组织结构绑定，违背了"能力边界由价值创造定义"的公理。
 
 ## 当前状态
 
@@ -48,32 +63,17 @@
 | `08-zachman-reuse-mapping/` | Zachman 框架复用映射 | ✅ |
 | `case-studies/` | 行业垂直场景案例库 | ✅ |
 
-## 关联主题
+## 交叉引用
 
 - `03-application-architecture-reuse`（业务服务是业务层与应用层的桥接点）
 - `06-cross-layer-governance`（业务能力目录治理）
 
+## 标准条款映射
 
----
-
-## 补充说明：02 业务架构复用
-
-## 概念定义
-
-**定义**：业务架构复用是在业务层面识别、封装和共享稳定的业务能力、价值流、流程与服务，以支持跨组织、跨项目的业务一致性。
-
-## 示例
-
-**示例**：跨国银行将“客户身份识别 (KYC)”抽象为共享业务能力，供零售银行、投资银行与财富管理业务线复用，统一合规标准并降低重复建设。
-
-## 反例
-
-**反例**：各业务线独立开发相似的订单处理流程，仅在术语与规则上略有差异，导致数据孤岛与集成成本激增。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [The Open Group TOGAF](https://www.opengroup.org/togaf)
-> - [OMG BPMN](https://www.omg.org/spec/BPMN)
-> - 核查日期：2026-07-07
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 业务能力 | TOGAF 10 §B.3.3 Business Capability | 能力为业务架构的内容元模型核心元素 |
+| 价值流 | ArchiMate 4.2 §7.3 Value Stream | 端到端价值创造活动的结构化表达 |
+| 业务流程 | BPMN 2.0 §8 Process | 可执行流程模型与人工可读图形的双重语义 |
+| 业务决策 | DMN 1.5 §6 Decision Requirements Diagram | 决策逻辑与流程结构的解耦复用 |
+| 业务线分类 | FEA BRM 2.0 Line of Business / Sub-function | 联邦政府跨机构业务能力复用基准 |

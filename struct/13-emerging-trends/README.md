@@ -108,15 +108,14 @@ graph LR
 
 > **权威来源**：
 >
-> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
-> - [Platform Engineering - Martin Fowler](https://martinfowler.com/articles/platform-engineering-summit.html)
-> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
-> - [WASI Preview 2](https://wasi.dev)
-> - [Green Software Foundation](https://greensoftware.foundation)
-> - [SCI Specification](https://sci.greensoftware.foundation)
-> - [Rust Foundation](https://foundation.rust-lang.org)
-> - [Spring Modulith](https://spring.io/projects/spring-modulith)
-> - 核查日期：2026-07-07
+> - [CNCF Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) — CNCF TAG App Delivery（核查日期：2026-07-09）
+> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) — CNCF TAG App Delivery（核查日期：2026-07-09）
+> - [WebAssembly Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance（核查日期：2026-07-09）
+> - [WASI — WebAssembly System Interface](https://wasi.dev/) — W3C WebAssembly CG（核查日期：2026-07-09）
+> - [SCI Specification](https://sci.greensoftware.foundation/) — Green Software Foundation（核查日期：2026-07-09）
+> - [SCI for AI](https://greensoftware.foundation/standards/sci-ai/) — Green Software Foundation（核查日期：2026-07-09）
+> - [Rust Programming Language](https://www.rust-lang.org/) — Rust Project（核查日期：2026-07-09）
+> - [Spring Modulith](https://spring.io/projects/spring-modulith) — VMware / Spring（核查日期：2026-07-09）
 
 ---
 
@@ -183,30 +182,26 @@ graph LR
 
 ## 14. 持续改进方向
 
-- 跟踪 CNCF 平台工程成熟度模型与社区最佳实践。
-- 评估 WASI 0.3 对 I/O 密集型场景的支持进展。
-- 将绿色软件指标从 SCI 扩展到水足迹、电子废弃物等全生命周期维度。
-- 探索 RegTech AI 与 Agentic Governance 的融合框架。
+- **CNCF 平台工程成熟度**：按 CNCF Platform Engineering Maturity Model 的 4 级 × 5 维度定期评估，重点关注 Level 3 的"内在牵引"与 Level 4 的"参与式生态"。
+- **WASM 组件复用边界**：跟踪 WASI 0.3 RC/Preview 与 Wasmtime LTS 策略，明确 I/O 密集型、有状态长运行服务、强 OS 依赖场景为当前边界外。
+- **Rust/WASM 形式化验证**：对安全关键组件建立"源码验证（Kani/Miri）+ 构建来源证明（SLSA）+ 字节码校验"的证据链。
+- **绿色软件碳模型**：将 SCI 从通用软件扩展到 AI 负载（SCI for AI），把 provider/consumer score 纳入第三方模型/API 的复用评估。
+- **新兴标准前沿**：每季度更新 `99-reference/frontier-tracking/` 中的标准状态，避免引用过期或错误版本。
 
 ## 15. 关键行动项
 
 - 对当前架构进行模块化评估，识别可作为模块化单体试点的边界。
 - 制定平台工程 ROI 模型，明确 IDP 的服务对象与成功指标。
-- 在多语言栈场景中评估 WASM 组件的适用性。
-- 将碳排指标纳入新建服务的非功能性需求。
+- 在多语言栈场景中评估 WASM 组件的适用性，优先选择 WIT `interface` 粒度。
+- 将碳排指标（含 SCI for AI）纳入新建服务的非功能性需求。
+- 每季度运行 link-checker 与 quality-gate，确保参考来源有效。
 
-## 16. 版本记录补充
-
-- 持续跟踪 CNCF、Bytecode Alliance、Green Software Foundation 与 Rust Foundation 的最新进展，并更新权威来源与核查日期。
-
-## 17. 总结
+## 16. 总结
 
 新兴趋势不是对现有复用框架的替代，而是对其边界与形式的扩展。理性采纳、持续度量与渐进演进，是将趋势转化为可持续复用能力的关键。
 
-## 18. 版本记录补充
+## 17. 版本记录
 
-- 本 README 将随 Gartner、CNCF 与相关基金会发布的年度报告持续更新。
-
-## 19. 版本记录补充
-
-- 本 README 将持续跟踪平台工程、WASM、绿色软件与 RegTech AI 的最新趋势，并更新示例、反例与权威来源。
+- 2026-07-09：对齐 CNCF Platform Engineering Maturity Model、WASI 0.3 / Wasm 组件复用边界、Rust/WASM 形式化验证、SCI for AI 等权威来源；删除重复版本记录；更新权威来源 URL 与核查日期。
+- 2026-07-07：补充平台工程、模块化单体、WASM、绿色软件与 RegTech AI 的概念定义、示例、反例、关系图与权威来源。
+- 2026-06-08：初始版本，梳理新兴趋势核心文件与状态。

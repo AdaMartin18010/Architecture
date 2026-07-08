@@ -1,6 +1,6 @@
 # 跨层复用治理框架
 
-> **版本**: 2026-07-08
+> **版本**: 2026-07-09
 > **定位**: 由 `struct/06-cross-layer-governance` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 06-cross-layer-governance --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。

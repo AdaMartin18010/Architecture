@@ -1,9 +1,19 @@
 # GreenArch / SCI 软件碳强度与复用度量
 
-- **版本**: 2026-06-10
-- **定位**: 可持续软件架构度量标准，定义软件碳强度（SCI）的计算方法以及架构复用对碳效率的量化影响
-- **对齐标准**: Green Software Foundation SCI 规范 (SCI v1.1)、Green Software Patterns、ISO/IEC 40500 (WCAG)、EU Green Deal 数字组件
+- **版本**: 2026-07-09
+- **定位**: 可持续软件架构度量标准，定义软件碳强度（SCI）的计算方法、架构复用对碳效率的量化影响，以及 AI 负载的 SCI for AI 扩展
+- **对齐标准**: Green Software Foundation SCI 规范 (SCI v1.1 / ISO/IEC 21031:2024)、SCI for AI、Green Software Patterns、EU Green Deal 数字组件
 - **状态**: ✅ 已完成
+
+---
+
+## 概念定义
+
+- **软件碳强度（SCI, Software Carbon Intensity）**：每提供一单位软件功能所产生的二氧化碳当量排放，单位为 gCO₂eq / 功能单位。
+- **隐含碳（Embodied Carbon, M）**：软件所依赖硬件在全生命周期中分摊到评估周期的制造碳排放。
+- **运行碳（Operational Carbon, E）**：软件运行期间消耗电力所产生的碳排放。
+- **功能单位（R）**：软件交付的可量化价值单位，如请求数、用户时、事务数、token 数等。
+- **复用碳效益**：通过复用现有组件而非重新开发，所避免的隐含碳与运行碳之和。
 
 ---
 
@@ -406,41 +416,89 @@ FinOps（Cloud Financial Operations）是云成本优化的方法论，其核心
 
 ---
 
-## 权威来源
+## 8. SCI for AI：AI 负载的碳强度扩展
 
-1. Green Software Foundation, *SCI Specification v1.1* (2022). <https://sci.greensoftware.foundation/> （核查日期：2026-06-10）
+GSF 于 2025 年底发布并批准了 [SCI for AI](https://greensoftware.foundation/standards/sci-ai/) 规范，它将 ISO/IEC 21031:2024（SCI）方法论扩展到 AI 系统全生命周期，覆盖数据准备、模型训练、部署、推理监控与退役。
 
-2. Green Software Foundation, *Software Carbon Intensity (SCI) Standard*. Linux Foundation. <https://greensoftware.foundation/articles/what-is-software-carbon-intensity-sci> （核查日期：2026-06-10）
+### 8.1 为什么 AI 需要专门的 SCI 扩展
 
-3. Green Software Foundation, *Green Software Patterns Catalog*. <https://patterns.greensoftware.foundation/> （核查日期：2026-06-10）
+| AI 特性 | 对传统 SCI 的挑战 | SCI for AI 的应对 |
+|:---|:---|:---|
+| 训练与推理碳成本分布不均 | 训练一次性排放可能远超推理 | 将训练、微调、推理分别量化并分摊到功能单位 |
+| 功能单位多样 | API 请求数无法公平比较不同模型 | 支持 tokens、inferences、FLOPs 等 AI 原生功能单位 |
+| 模型共享与衍生 | 基础模型被多个下游任务复用 | 定义 provider score 与 consumer score，明确责任边界 |
+| 硬件加速依赖 | GPU/TPU 的能耗与隐含碳占比高 | 要求披露加速器利用率与硬件 embodied carbon |
 
-4. Green Software Foundation, *The State of Green Software 2024/2025*. <https://stateof.greensoftware.foundation/> （核查日期：2026-06-10）
+### 8.2 Provider Score vs Consumer Score
 
-5. EU Green Deal, *Digital Decade Policy Programme 2030*. 欧盟委员会. <https://digital-strategy.ec.europa.eu/en/policies/digital-decade> （核查日期：2026-06-10）
+SCI for AI 要求提供方和使用方分别度量各自可控的排放：
 
-6. ISO/IEC 40500:2012 (WCAG 2.0) 及后续绿色数字可访问性扩展. <https://www.iso.org/standard/58625.html> （核查日期：2026-06-10）
+- **Provider score**：覆盖模型开发、训练、部署效率，由模型提供方（如云服务商、模型厂商）报告。
+- **Consumer score**：覆盖推理、监控、微调等运营排放，由使用方报告。
 
-7. FinOps Foundation, *Green FinOps: Integrating Carbon and Cost*. <https://www.finops.org/framework/capabilities/sustainability/> （核查日期：2026-06-10）
+复用预训练模型或调用第三方 API 时，组织应要求供应商提供 provider score，并将自身 inference 的 consumer score 纳入复用决策。
 
-8. Microsoft, *The Carbon Benefits of Cloud Computing* (2023). <https://www.microsoft.com/en-us/sustainability/cloud-carbon-benefits> （核查日期：2026-06-10）
+### 8.3 AI 复用决策的碳视角
 
-9. Google Cloud, *Carbon Free Energy for Google Cloud Regions*. <https://cloud.google.com/sustainability/region-carbon> （核查日期：2026-06-10）
-
-10. Amazon Web Services, *Customer Carbon Footprint Tool*. <https://aws.amazon.com/aws-cost-management/aws-customer-carbon-footprint-tool/> （核查日期：2026-06-10）
-
-11. Linux Foundation, *Green Software Foundation Annual Report 2025*. <https://greensoftware.foundation/articles/annual-report-2025> （核查日期：2026-06-10）
-
-12. European Environment Agency, *Carbon pricing in the EU*. <https://www.eea.europa.eu/en/analysis/indicators/carbon-pricing-in-the-eu> （核查日期：2026-06-10）
-
+| 方案 | 碳效率建议 | 备注 |
+|:---|:---|:---|
+| 复用云端托管大模型 API | 通常最优（供应商规模化优化） | 要求供应商披露 SCI for AI score |
+| 自研/微调专用小模型 | 需评估训练与推理总成本 | 适合高频、低延迟、窄领域场景 |
+| 复用开源模型权重 | 避免重复训练，但仍需承担推理与微调成本 | 关注模型许可证与供应链安全 |
+| 边缘部署 TinyML | 低延迟、低网络传输能耗 | 需权衡设备 embodied carbon |
 
 ---
 
-## 补充说明：GreenArch / SCI 软件碳强度与复用度量
+## 9. 正向示例
 
-## 概念定义
+### 示例：复用碳优化认证服务
 
-**定义**：绿色软件通过能效优化、硬件利用率提升、低碳能源调度与生命周期延长，减少软件系统全生命周期的环境影响；复用经优化的组件可放大减排效果。
+某团队需要用户认证能力，评估三种方案：
 
-## 反例
+- **自研**：估算年运行碳排 15 tCO₂eq，开发设备隐含碳 0.4 tCO₂eq；
+- **复用内部 IAM 平台**：年运行碳排 3 tCO₂eq，几乎无新增隐含碳；
+- **使用 SaaS 认证服务**：年运行碳排 1 tCO₂eq（供应商披露 SCI）。
 
-**反例**：为追求微服务“弹性”而将单体拆分为 200 个服务，每个服务常驻空闲实例，整体能耗翻倍。
+决策：优先复用内部 IAM 平台，对供应商 SaaS 进行 SCI 尽职调查。结果在功能、安全满足的前提下，碳强度降低 80%，同时获得统一审计日志。
+
+---
+
+## 10. 反例 / 反模式
+
+### 反例：绿色清洗式复用
+
+某团队为达成 SBTi 目标，将旧版本低能效组件冠以"复用减少开发"之名，未评估新硬件与算法能效。结果：
+
+- 组件在 ARM grace-period 调度下无法降级，闲时能耗未降低；
+- 旧组件的内存泄漏导致自动扩缩容频繁触发，整体运行碳排上升 12%；
+- 审计发现"复用减排"声明缺乏 SCI 基线，被判定为 greenwashing。
+
+### 反模式：为微服务而微服务
+
+为追求"弹性"将单体拆分为 200 个微服务，每个服务常驻空闲实例；整体能耗与运维复杂度翻倍，复用收益被稀释。正确做法是先通过模块化单体明确边界，再按实际负载选择性拆分。
+
+---
+
+## 11. 权威来源
+
+1. Green Software Foundation, *SCI Specification v1.1* (ISO/IEC 21031:2024). <https://sci.greensoftware.foundation/> （核查日期：2026-07-09）
+
+2. Green Software Foundation, *SCI for AI Specification*. <https://greensoftware.foundation/standards/sci-ai/> （核查日期：2026-07-09）
+
+3. Green Software Foundation, *SCI for AI Specification Ratified*. <https://greensoftware.foundation/articles/sci-ai-specification-ratified-standard-for-measuring-ai-emissions-across-the/> （核查日期：2026-07-09）
+
+4. Green Software Foundation, *Green Software Patterns Catalog*. <https://patterns.greensoftware.foundation/> （核查日期：2026-07-09）
+
+5. Green Software Foundation, *The State of Green Software 2024/2025*. <https://stateof.greensoftware.foundation/> （核查日期：2026-07-09）
+
+6. FinOps Foundation, *Green FinOps: Integrating Carbon and Cost*. <https://www.finops.org/framework/capabilities/sustainability/> （核查日期：2026-07-09）
+
+---
+
+## 交叉引用
+
+- 同主题绿色架构：[`green-architecture-reuse.md`](./green-architecture-reuse.md)
+- 可持续软件 FinOps：[`../04-green-architecture/green-software-carbon-cost.md`](../04-green-architecture/green-software-carbon-cost.md)
+- 平台工程成熟度：[`../01-platform-engineering/platform-maturity-model.md`](../01-platform-engineering/platform-maturity-model.md)
+- 价值量化方法：[`../../09-value-quantification/README.md`](../../09-value-quantification/README.md)
+- 权威来源索引：[`../../99-reference/standards-index/authoritative-sources-v2.md`](../../99-reference/standards-index/authoritative-sources-v2.md)

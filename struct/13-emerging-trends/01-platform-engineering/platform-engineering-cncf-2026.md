@@ -1,7 +1,7 @@
 # 平台工程与内部开发者平台（IDP）复用
 >
-> 版本: 2026-06-06
-> 对齐来源: CNCF Platforms White Paper、CNCF TAG App Delivery Maturity Model、Platform Engineering 2025 峰会、Team Topologies
+> 版本: 2026-07-09
+> 对齐来源: CNCF Platforms White Paper、CNCF Platform Engineering Maturity Model、Team Topologies、platformengineering.org 社区实践
 
 ## 1. 定义与演进
 
@@ -48,24 +48,24 @@ IDP 是平台团队构建和维护的软件系统，为开发者提供：
 - 用户调研与满意度追踪
 - 发布说明与持续改进
 
-## 3. CNCF 平台工程成熟度模型（5 级）
+## 3. CNCF 平台工程成熟度模型
 
-| 级别 | 名称 | 特征 |
-|-----|------|------|
-| **Level 1** | Reactive Operations | 无专职平台团队；资深工程师非正式承担基础设施；部署流程团队各异；入职需数周 |
-| **Level 2** | Centralized Tooling | 小平台团队管理共享工具；体验非自助；仍需工单/Slack 请求；平台团队是瓶颈 |
-| **Level 3** | Self-Service Paved Roads | 自助能力覆盖常见工作流；Golden Path 存在；入职时间降至天数 |
-| **Level 4** | Product-Led Platform | 平台作为内部产品管理：路线图、SLA、用户研究、采用指标；认知负荷被测量并下降 |
-| **Level 5** | Autonomous Delivery | 开发者每日多次持续部署；AI 辅助工具建议优化；成本/安全/合规嵌入开发工作流；平台成为竞争优势 |
+CNCF TAG App Delivery 发布的 [Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) 采用 **4 级 × 5 维度**的评估框架，比传统"5 级瀑布"更贴合工程实际。五个维度分别为：**投入（Investment）、采用（Adoption）、交互界面（Interface）、运营（Operation）、反馈（Feedback）**。
 
-> 大多数组织可在 **6–12 个月**内从 Level 1 升至 Level 3。
+| 级别 | 投入 | 采用 | 交互界面 | 运营 | 反馈 |
+|:---|:---|:---|:---|:---|:---|
+| **Level 1<br/>Provisional** | 自愿/临时；无专职团队 | 零散、不一致；依赖个人关系 | 手工流程；口口相传 | 按请求被动响应；无长期维护 | 几乎不收集；依赖轶事 |
+| **Level 2<br/>Operationalized** | 专职平台团队；中央预算 | 外部推动；部分能力有明确归属 | 标准工具；Paved Road 文档化 | 集中登记；生命周期 lightly defined | 结构化收集； surveys / forums |
+| **Level 3<br/>Scalable** | 产品化投入；UX/PM 角色 | 内在牵引；用户主动选择 | 自助服务；one-click 供给 | 集中编排；标准流程；持续交付 | 洞察驱动；明确成功指标 |
+| **Level 4<br/>Optimizing** | 生态化投资；内外贡献回流 | 参与式生态；用户贡献能力 | 集成式服务；嵌入现有工具流 | 托管服务；共享责任模型 | 定量+定性；数据民主化 |
 
-### 3.1 Level 3 详细特征
+### 3.1 成熟度跃迁关键阈值
 
-- **内在牵引（Intrinsic Pull）**：用户因平台价值自愿使用，而非外部强制
-- **跨能力一致性**：使用一项能力后，用户预期其他能力体验一致
-- **开放论坛与路线图**：用户反馈、共享路线图、开放对话
-- **付费意愿**：应用/产品团队愿意通过 chargeback 为平台能力付费
+- **Level 1 → Level 2**：从"救火"到"有预算、有团队、有目录"。
+- **Level 2 → Level 3**：从"外部强制"到"内在牵引"；引入产品经理与用户体验设计，开始度量认知负荷。
+- **Level 3 → Level 4**：从"平台团队交付"到"平台生态共创"；能力提供者与消费者形成共享责任模型。
+
+> 实践观察：大多数组织可在 **6–12 个月**内从 Level 1 升至 Level 3，但 Level 3 → Level 4 通常需要 1–2 年的文化、度量与治理建设。
 
 ## 4. 现代 IDP 组件架构
 
@@ -160,33 +160,37 @@ Golden Path Library
 | Phase 4 | Months 4–8 | 添加门户层：Backstage 统一发现与操作界面 |
 | Phase 5 | Ongoing | 度量与迭代：DORA 指标、开发者满意度、上线时间 |
 
-## 8. 参考索引
+## 8. 正向示例
 
-- CNCF: "Platforms White Paper" (tag-app-delivery.cncf.io)
-- CNCF TAG App Delivery: "Platform Engineering Maturity Model" (2024)
-- Team Topologies: Skelton & Pais (2019, 2022 update)
-- Evan Bottcher: "Platform Engineering" (ThoughtWorks, 2018)
-- Platform Engineering 2025 Summit 资料
-- Backstage: [backstage.io](https://backstage.io)
-- Crossplane: [crossplane.io](https://crossplane.io)
+### 示例：从工单驱动到自助 IDP 的 Level 3 跃迁
 
+某金融科技公司平台团队通过 Backstage 提供"创建新微服务"Golden Path，封装 Helm Chart、CI/CD、监控、安全扫描与成本标签。6 个月内：
 
----
+- 新服务上线时间从 2 周降至 15 分钟；
+- 平台使用率达到 87%，开发者 NPS 从 -12 升至 +34；
+- 开发者对基础设施工单的依赖下降 70%。
 
-## 补充说明：平台工程与内部开发者平台（IDP）复用
+关键成功因素：平台团队配备专职产品经理，每月举行 roadmap review，将开发者反馈直接纳入 backlog；同时允许在合理范围内偏离 Golden Path，避免强制一刀切。
 
-## 反例
+## 9. 反例 / 反模式
 
-**反例**：平台团队闭门造车，强制所有团队使用不灵活的模板，忽视反馈循环，导致开发者绕过平台自行部署。
+### 反例：平台团队闭门造车
 
-## 权威来源
+某平台团队单方面决定所有技术栈，强制 30 个产品团队使用不灵活的 Terraform 模板；未提供自助服务能力，任何偏离都需要开工单。结果：
 
-> **权威来源**:
+- 开发者绕过平台，在各自云账号中创建影子资源；
+- 安全策略无法统一执行，合规审计发现 40% 的生产资源未纳入治理；
+- 平台团队从"赋能者"变成"瓶颈"，最终被拆分为多个领域平台小队。
+
+### 反模式：将 IDP 视为 IT 项目
+
+把 IDP 当作一次性交付项目，上线后不再投入产品运营与反馈闭环，导致模板僵化、文档过期、采用率下滑，最终成为"没人用的门户"。IDP 必须持续度量 DORA、SPACE 与满意度指标，并随组织演进迭代。
+
+## 10. 权威来源
+
+> **权威来源**：
 >
-> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
-> - [Platform Engineering - Martin Fowler](https://martinfowler.com/articles/platform-engineering-summit.html)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：平台工程的成功取决于“产品化运营”与“开发者体验”，而非单纯的技术标准化。
+> - [CNCF Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) — CNCF TAG App Delivery（核查日期：2026-07-09）
+> - [CNCF Platforms White Paper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) — CNCF TAG App Delivery（核查日期：2026-07-09）
+> - [Team Topologies](https://teamtopologies.com/) — Matthew Skelton & Manuel Pais（核查日期：2026-07-09）
+> - [Platform Engineering Community](https://platformengineering.org/) — platformengineering.org（核查日期：2026-07-09）

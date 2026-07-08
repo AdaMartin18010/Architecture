@@ -1,8 +1,8 @@
 # 接口契约与架构复用
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 接口契约驱动的复用：从 IDL 到 OpenAPI 到 WIT 的演进
-> **对齐标准**: OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
+> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/IEEE 42010, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
 > **状态**: ✅ 已完成
 
 ---
@@ -37,8 +37,9 @@
     - [5.2 契约定义](#52-契约定义)
     - [5.3 Pact 契约测试](#53-pact-契约测试)
     - [5.4 复用价值](#54-复用价值)
-  - [6. 权威来源](#6-权威来源)
-  - [7. 交叉引用](#7-交叉引用)
+  - [6. 标准条款映射](#6-标准条款映射)
+  - [7. 权威来源](#7-权威来源)
+  - [8. 交叉引用](#8-交叉引用)
 
 ---
 
@@ -399,21 +400,39 @@ describe('Inventory API contract', () => {
 
 ---
 
-## 6. 权威来源
+## 6. 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 接口 / 接口实现 | UML 2.5.1 §10.4 Interfaces | 接口定义操作集合，组件通过 Interface Realization 实现接口 |
+| 组件图接口 | UML 2.5.1 §19.3 Component Diagrams | Provided/Required Interface 描述组件间供需关系 |
+| 架构视图 | ISO/IEC/IEEE 42010:2022 §5.4, §6.4 | 接口契约视图作为架构描述的模型种类之一 |
+| 架构描述实践 | IEEE 1471:2000 | 架构描述中 Viewpoint 与 View 的区分影响接口契约的稳定性 |
+| 契约设计 | Design by Contract (Meyer, 1988) | 前置条件、后置条件、不变量是接口契约的语义基础 |
+| REST API 契约 | OpenAPI 3.1.0 | HTTP 接口的语法契约标准 |
+| RPC 接口契约 | gRPC + Protobuf | 高性能服务间接口契约标准 |
+| 异步事件契约 | AsyncAPI 3.x | 事件驱动架构的通道与消息契约标准 |
+| 跨语言组件契约 | WIT (WASM Interface Types) | WASM Component Model 的接口定义语言 |
+| 消费者驱动契约 | Pact Specification | 消费者与提供者之间的双向契约验证 |
+
+## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-07 |
-| gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-07 |
-| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-07 |
-| Pact (Consumer-Driven Contracts) | <https://pact.io/> | 2026-07-07 |
-| Spring Cloud Contract | <https://spring.io/projects/spring-cloud-contract> | 2026-07-07 |
-| WIT (WASM Interface Types) | <https://component-model.bytecodealliance.org/design/wit.html> | 2026-07-07 |
-| Design by Contract — Wikipedia | <https://en.wikipedia.org/wiki/Design_by_contract> | 2026-07-07 |
-| Component-based Software Engineering — Wikipedia | <https://en.wikipedia.org/wiki/Component-based_software_engineering> | 2026-07-07 |
-| Liskov Substitution Principle — Wikipedia | <https://en.wikipedia.org/wiki/Liskov_substitution_principle> | 2026-07-07 |
+| OMG UML 2.5.1 | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| IEEE 1471:2000 | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
+| OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-08 |
+| gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-08 |
+| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
+| Pact (Consumer-Driven Contracts) | <https://pact.io/> | 2026-07-08 |
+| Spring Cloud Contract | <https://spring.io/projects/spring-cloud-contract> | 2026-07-08 |
+| WIT (WASM Interface Types) | <https://component-model.bytecodealliance.org/design/wit.html> | 2026-07-08 |
+| Design by Contract — Wikipedia | <https://en.wikipedia.org/wiki/Design_by_contract> | 2026-07-08 |
+| Component-based Software Engineering — Wikipedia | <https://en.wikipedia.org/wiki/Component-based_software_engineering> | 2026-07-08 |
+| Liskov Substitution Principle — Wikipedia | <https://en.wikipedia.org/wiki/Liskov_substitution_principle> | 2026-07-08 |
 
-## 7. 交叉引用
+## 8. 交叉引用
 
 - [组件模型与架构复用](../01-component-models/component-models-reuse.md) — 组件封装、生命周期与可替换性判定
 - [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 通过模式降低接口契约的复杂度

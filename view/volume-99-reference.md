@@ -1,6 +1,6 @@
 # Phase C 对齐矩阵与 A+B+C 累计汇总
 
-> **版本**: 2026-07-08
+> **版本**: 2026-07-09
 > **定位**: 由 `struct/99-reference` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 99-reference --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -789,8 +789,14 @@ Phase C（纵深扩展）
 # 内容事实勘误与权威来源对齐报告（2026-07-07）
 
 > **报告目的**：响应方案 A“激进全面重构”Phase 0 要求，对项目中的关键事实争议进行网络权威来源复核，给出修正结论与后续行动。
-> **复核日期**: 2026-07-07
+> **复核日期**: 2026-07-09
 > **复核范围**: ArchiMate 4.0、MCP 版本、IEC 61508 Ed.3、ISO/IEC 25010、Warg Registry、不实学者引用
+
+---
+
+## 概念定义
+
+**权威来源对齐（Authority Alignment）**：指在知识体系中将事实性声明与可验证的权威出处进行系统映射、标注核查日期，并在来源状态发生变化时及时回滚或更新的过程。它是防止"绿色清洗式引用"与"虚假发布声明"的基础治理机制。
 
 ---
 
@@ -941,6 +947,31 @@ Phase C（纵深扩展）
 | ISO 25010 版本校验 | P1 | 全项目 | grep 确认无正文 `:2024` 错误引用 |
 | Warg 引用预防 | P1 | 13-emerging-trends/03-webassembly-components/ | 引用 wasm-pkg-tools / OCI registry |
 | 引用规范强化 | P1 | 99-reference/templates/citation-standard.md | 增加“核实学者引用”条款 |
+
+---
+
+## 8. 正向示例与反例
+
+### 正向示例
+
+**示例**：在 ArchiMate 4.0 发布状态复核中，团队同时检索 The Open Group 官方新闻稿、ISO 标准目录与 IEEE Xplore，确认 Document C260 的发布日期为 2026-04-27，并将所有引用统一为带官方链接的权威表述，消除了早期审计报告中的事实争议。
+
+### 反例
+
+**反例**：某文件在引用 IEC 61508 Ed.3 时，将"认证机构 TÜV Rheinland 强制采用"与"IEC 国际标准正式发布"混为一谈，导致合规团队误以为标准已全局强制，险些按错误基准启动审计。
+
+---
+
+## 9. 权威来源
+
+> 本报告复核所依据的权威来源：
+>
+> - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）
+> - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
+
+因为权威来源对齐消除了事实争议，所以项目能够在正确的标准基准上继续演进，并降低未来因标准状态变化带来的回滚成本。
 
 ---
 
@@ -4761,7 +4792,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
 - … 共 51 个文件
-
 ---
 
 ## 定义
@@ -4805,11 +4835,9 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 正向示例
 
 ### 示例 1：有效测验设计
-
 某测验要求学员为真实金融系统建立 ISO 42010 / TOGAF / SLSA 对齐矩阵，学员通过查阅 `struct/` 权威来源完成，评分 90+。
 
 ### 示例 2：简答型高阶评估
-
 "为复用而复用"简答题迫使学员区分抽象过度与价值驱动复用，显著提升了架构决策质量。
 
 ---
@@ -4824,14 +4852,12 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 一、概念辨析（单选）
 
 ### 1. 什么是架构复用中的"单一真源"？
-
 - A. 所有代码都放在一个仓库里
 - B. 以 `struct/` 为权威来源，`view/` 为其只读聚合视角 ✅
 - C. 只允许一位架构师修改文档
 - D. 所有项目使用同一套技术栈
 
 ### 2. ISO/IEC/IEEE 42010:2022 主要解决什么问题？
-
 - A. 软件测试流程
 - B. 架构描述的语言与视点 ✅
 - C. 项目管理方法论
@@ -4842,7 +4868,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 二、标准与框架（多选）
 
 ### 3. 下列哪些标准/框架与本知识体系直接对齐？
-
 - A. TOGAF 10 ✅
 - B. ArchiMate 4.0 ✅
 - C. ISO/IEC 26550:2015 ✅
@@ -4850,7 +4875,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - E. ISO 9001:2015
 
 ### 4. 软件供应链安全应关注哪些要素？
-
 - A. SBOM ✅
 - B. Provenance ✅
 - C. SLSA 等级 ✅
@@ -4861,18 +4885,14 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 ## 三、正向示例与反模式（简答）
 
-### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素
-
+### 5. 请举一个成功的架构复用正向示例，并说明其关键成功因素。
 **参考答案要点**:
-
 - 选择可复用资产时进行了成本/收益分析；
 - 建立了清晰的接口契约与版本策略；
 - 通过成熟度模型持续度量复用效果。
 
 ### 6. "为复用而复用"是一种什么反模式？应如何避免？
-
 **参考答案要点**:
-
 - 过度抽象导致不必要的复杂性；
 - 应基于真实业务价值和复用频次进行决策；
 - 使用复用决策树或 ROI 模型量化评估。
@@ -4882,17 +4902,13 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 四、形式化与量化（计算/分析）
 
 ### 7. 某组件库开发成本为 80 人天，预计在第 3、5、8 个项目中分别节省 20、35、50 人天。假设无贴现，该复用是否值得？
-
 **参考答案**:
-
 - 总节省 = 20 + 35 + 50 = 105 人天
 - 开发成本 = 80 人天
 - 净收益 = 25 人天 > 0，值得复用。
 
 ### 8. 为什么 TLA+ 适合验证分布式协议（如 MCP/A2A）？
-
 **参考答案要点**:
-
 - TLA+ 能精确描述状态机与并发行为；
 - TLC 模型检查器可发现死锁、活锁与不变量违反；
 - 适合验证消息协议、任务生命周期等场景。
@@ -4902,7 +4918,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 五、权威来源核查
 
 ### 9. 以下哪个引用存在潜在问题？
-
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
@@ -5045,7 +5060,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
-
 ---
 
 ## 定义
@@ -6407,7 +6421,7 @@ M.3 (层次不可约性)
 - **示例**: 在安全视图中标识的"认证服务"对应到应用视图中的"AuthService"组件，两者通过对应关系绑定。
 - **反例**: 多个视图中使用同名但不同义的"服务"概念，未建立对应关系，导致架构评审时无法发现冲突。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -6627,7 +6641,7 @@ M.3 (层次不可约性)
 - **示例**: "安全性视图"使用威胁模型（STRIDE）与攻击树两种 Model Kind 来表达不同安全关注点。
 - **反例**: 将 UML 部署图与网络拓扑图混用而不说明 Model Kind，导致同一符号在不同图中含义不同。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -6885,7 +6899,7 @@ M.3 (层次不可约性)
 - **示例**: 安全团队关注数据隔离，财务团队关注成本分摊，开发团队关注易用性；三者需要不同视图表达。
 - **反例**: 架构描述未识别安全审计人员为利益相关者，导致复用方案未考虑合规要求。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -6991,7 +7005,7 @@ M.3 (层次不可约性)
 - **示例**: "性能视点"关注响应时间、吞吐量、资源使用，使用性能模型与瓶颈分析技术。
 - **反例**: 一个视图混合了安全、性能与业务逻辑三种关注点，未采用不同视点，导致沟通效率低下。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -7017,6 +7031,29 @@ M.3 (层次不可约性)
   - [WebAssembly Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance
   - [WASI Preview 2](https://wasi.dev/) — WASI
   - 核查日期：2026-07-07
+
+---
+
+## 附录：术语一致性示例与反例
+
+### 正向示例
+
+**示例**：在 `glossary-master.md` 中统一采用 TOGAF 与 BIZBOK 的"业务能力"定义，并在所有主题 README 中引用该定义。当 `02-business-architecture-reuse` 新增"业务能力"用法时，通过 `tools/terminology-query.py` 自动校验其描述与术语表一致，避免了跨文档语义偏差。
+
+### 反例
+
+**反例**：术语表将"业务能力"定义为"组织结构单元"，而正文中将其定义为"独立于组织的稳定能力"。审计时发现同一术语存在两种定义，导致业务架构师与解决方案架构师在复用评估会议上产生分歧，培训材料被迫返工。
+
+---
+
+## 附录：权威来源与核查日期
+
+> 本术语表的定义优先对齐以下权威来源：
+>
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-09）
+> - [OMG BPMN 2.0](https://www.omg.org/spec/BPMN/) — Object Management Group（核查日期：2026-07-09）
 
 ---
 
@@ -7731,13 +7768,13 @@ flowchart LR
 
 # 四层复用映射矩阵
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-09
 > **定位**: 建立"业务架构 → 应用架构 → 组件架构 → 功能架构"四层复用资产之间的映射关系、失败传递模式与治理要点。
 > **关联**: [`cross-theme-dependency-graph.md`](../struct/99-reference/knowledge-index/cross-theme-dependency-graph.md)、[`glossary-master.md`](../struct/99-reference/glossary/glossary-master.md)、[`axiom-theorem-tree.md`](../struct/99-reference/glossary/axiom-theorem-tree.md)
 
 ---
 
-## 1. 四层复用视角总览
+## 1. 概念定义：四层复用视角总览
 
 ```mermaid
 graph TD
@@ -7883,6 +7920,8 @@ $$
 
 ## 7. 正例
 
+### 示例
+
 **跨层复用成功：电商平台客户认证**
 
 - 业务层：定义"客户身份认证"业务能力
@@ -7895,6 +7934,8 @@ $$
 ---
 
 ## 8. 反例
+
+### 反例
 
 **跨层失败：物流系统价值流断裂**
 
@@ -7919,34 +7960,16 @@ $$
 
 ---
 
-## 权威来源
+## 10. 权威来源
 
-> **权威来源**:
+> **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
-> - [Software architecture](https://en.wikipedia.org/wiki/Software_architecture) — Wikipedia
-> - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
->
-> **核查日期**: 2026-07-07
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（2026-04-27 正式发布，Document C260；核查日期：2026-07-09）
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — ISO（核查日期：2026-07-09）
 
-
----
-
-## 补充章节
-
-## 概念定义
-
-**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
-
-## 示例
-
-**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
-
-## 反例
-
-**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+**跨层映射权威性说明**：本矩阵的层次划分与对应关系（correspondence）直接引用 ISO/IEC/IEEE 42010:2022 的架构描述概念；业务/应用/组件/功能四层映射与 TOGAF 10 的分层企业架构方法一致；质量属性（性能、安全、可靠性、碳效率）映射引用 ISO/IEC 25010:2023 的产品质量模型。矩阵的每次结构性变更应同步更新 `glossary/terminology-crosswalk.md` 与 `99-reference/CHANGELOG.md`。
 
 
 ---
@@ -8932,7 +8955,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 
 # 99 参考索引
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-09
 > **定位**: 全知识库的参考层，汇总权威来源、术语表、标准索引、课程对标、可视化资源与审计报告，为各主题提供可追溯的引用锚点。
 
 ---
@@ -9035,8 +9058,9 @@ graph TD
 
 | 标准 | 主题 | 状态 | 链接 |
 |------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) |
-| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78175.html) |
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) |
+| ISO/IEC 25010:2023 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/78176.html) |
+| ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) |
 | ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/63712.html) |
 | TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) |
 | SLSA 1.2 | 10-供应链安全 | 生效 | [SLSA](https://slsa.dev) |
@@ -9046,6 +9070,23 @@ graph TD
 | IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制 | [IEC](https://webstore.iec.ch/publication/66912) |
 | MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) |
 | A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) |
+
+### 5.1 术语一致性治理
+
+参考层通过以下机制保证术语定义一致性：
+
+- **单一事实源**：`glossary/glossary-master.md` 作为项目术语的单一事实源；主题文档首次使用术语时应链接到术语表。
+- **跨标准映射**：`glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO 42010、BIAN 等外部标准术语与项目自定义术语建立映射，减少跨文档语义偏差。
+- **变更评审**：任何术语定义的变更需在 CI 中触发一致性扫描，确保不产生冲突定义。
+- **核查周期**：每季度对照权威来源（ISO OBP、The Open Group、OMG 等）复核术语定义与链接。
+
+### 5.2 跨层映射权威性
+
+`knowledge-index/cross-layer-reuse-mapping-matrix.md` 是四层复用资产映射的权威表达。其权威性来自：
+
+- **标准对齐**：映射关系基于 ISO/IEC/IEEE 42010:2022（架构描述、视点与对应关系）、TOGAF 10（业务/应用/技术架构分层）与 ISO/IEC 25010:2023（质量模型）。
+- **失败传递模式**：矩阵中记录的跨层失败传递模式（如业务定义漂移 → 应用服务冗余 → 组件接口耦合）应随审计报告持续验证。
+- **版本控制**：矩阵的每次更新必须在 `CHANGELOG.md` 与 `audit/` 中记录变更理由与权威来源。
 
 ---
 
@@ -9063,14 +9104,14 @@ graph TD
 
 > **权威来源**：
 >
-> - [ISO](https://www.iso.org)
-> - [IEEE Standards](https://standards.ieee.org)
-> - [NIST](https://www.nist.gov)
-> - [CNCF](https://www.cncf.io)
-> - [The Open Group](https://www.opengroup.org)
-> - [Linux Foundation](https://www.linuxfoundation.org)
-> - [Green Software Foundation](https://greensoftware.foundation)
-> - 核查日期：2026-07-07
+> - [ISO](https://www.iso.org) — International Organization for Standardization（核查日期：2026-07-09）
+> - [IEEE Standards](https://standards.ieee.org) — IEEE Standards Association（核查日期：2026-07-09）
+> - [NIST](https://www.nist.gov) — National Institute of Standards and Technology（核查日期：2026-07-09）
+> - [CNCF](https://www.cncf.io) — Cloud Native Computing Foundation（核查日期：2026-07-09）
+> - [The Open Group](https://www.opengroup.org) — 企业架构与 ArchiMate 标准（核查日期：2026-07-09）
+> - [Linux Foundation](https://www.linuxfoundation.org) — 开源与开放标准治理（核查日期：2026-07-09）
+> - [Green Software Foundation](https://greensoftware.foundation) — SCI / SCI for AI（核查日期：2026-07-09）
+> - [W3C WebAssembly Community Group](https://www.w3.org/groups/cg/webassembly/) — WebAssembly 与 WASI（核查日期：2026-07-09）
 
 ---
 

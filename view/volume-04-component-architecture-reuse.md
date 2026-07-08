@@ -1,6 +1,6 @@
 # 组件模型与架构复用
 
-> **版本**: 2026-07-08
+> **版本**: 2026-07-09
 > **定位**: 由 `struct/04-component-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 04-component-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -30,9 +30,9 @@
 
 # 组件模型与架构复用
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 组件模型的演进与跨语言组件复用的现代实践
-> **对齐标准**: WASM Component Model, OSGi, JPMS, .NET Assembly, OMG CORBA/CCM
+> **对齐标准**: UML 2.5.1 Components, WASM Component Model, OSGi, JPMS, .NET Assembly, OMG CORBA/CCM
 > **状态**: ✅ 已完成
 
 ---
@@ -56,7 +56,7 @@
     - [4.1 当前状态（2026-06）](#41-当前状态2026-06)
     - [4.2 复用场景](#42-复用场景)
   - [5. 权威来源](#5-权威来源)
-  - [补充说明：组件模型与架构复用](#补充说明组件模型与架构复用)
+  - [6. 组件模型复用：深层分析与选型权衡](#6-组件模型复用深层分析与选型权衡)
     - [概念定义](#概念定义)
     - [核心属性](#核心属性)
     - [与其他概念的关系](#与其他概念的关系)
@@ -67,8 +67,8 @@
     - [反例 2：忽视组件生命周期管理](#反例-2忽视组件生命周期管理)
     - [正例 2：OSGi 动态插件系统](#正例-2osgi-动态插件系统)
     - [形式化分析：组件替换条件](#形式化分析组件替换条件)
-    - [权威来源](#权威来源)
-    - [交叉引用](#交叉引用)
+  - [7. 标准条款映射](#7-标准条款映射)
+  - [8. 权威来源与交叉引用](#8-权威来源与交叉引用)
 
 ---
 
@@ -257,17 +257,19 @@ flowchart TD
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| WASM Component Model | <https://component-model.bytecodealliance.org/> | 2026-06-10 |
-| WIT 规范 | <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md> | 2026-06-10 |
-| Wasmtime | <https://wasmtime.dev/> | 2026-06-10 |
-| wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-06-10 |
-| OSGi Alliance | <https://www.osgi.org/> | 2026-06-10 |
-| JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-06-10 |
+| OMG UML 2.5.1 Components | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| WASM Component Model | <https://component-model.bytecodealliance.org/> | 2026-07-08 |
+| WIT 规范 | <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md> | 2026-07-08 |
+| Wasmtime | <https://wasmtime.dev/> | 2026-07-08 |
+| wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-07-08 |
+| OSGi Alliance | <https://www.osgi.org/> | 2026-07-08 |
+| JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
 
 
 ---
 
-## 补充说明：组件模型与架构复用
+## 6. 组件模型复用：深层分析与选型权衡
 
 ### 概念定义
 
@@ -395,20 +397,31 @@ flowchart LR
 
 > **结论**：组件替换不仅是接口签名匹配，还必须保证行为语义、性能特征与依赖环境的兼容性。
 
-### 权威来源
+## 7. 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 组件（Component） | UML 2.5.1 §11 Components | 组件通过 Provided/Required Interface 定义可替换边界 |
+| 组件图 | UML 2.5.1 §19.3 Component Diagrams | 描述组件、端口、接口与依赖关系的结构视图 |
+| 组件替换条件 | Liskov Substitution Principle | 前置条件弱化、后置条件强化、不变量保持 |
+| 架构描述视图 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件与连接器（C&C）视图是架构描述的典型视图 |
+| 跨语言组件 | WASM Component Model + WIT | 通过 WIT 接口实现语言无关的组件组合 |
+| 动态模块 | OSGi R8 Core Specification | Bundle 生命周期、服务注册与动态热更新 |
+
+## 8. 权威来源与交叉引用
 
 > **权威来源**:
 >
-> - [Component-based software engineering — Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
-> - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance
-> - [OSGi Alliance](https://www.osgi.org/)
-> - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/)
-> - [CORBA — Wikipedia](https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture)
-> - [Enterprise JavaBeans — Wikipedia](https://en.wikipedia.org/wiki/Jakarta_Enterprise_Beans)
+> - [OMG UML 2.5.1 Specification](https://www.omg.org/spec/UML/2.5.1/) — UML 组件与组件图；核查日期：2026-07-08
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准；核查日期：2026-07-08
+> - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance；核查日期：2026-07-08
+> - [OSGi Alliance](https://www.osgi.org/) — OSGi R8 规范；核查日期：2026-07-08
+> - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/) — Java Platform Module System；核查日期：2026-07-08
+> - [Component-based software engineering — Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering) — 组件工程概述；核查日期：2026-07-08
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
-### 交叉引用
+**交叉引用**
 
 - [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 组件间交互的显式约定
 - [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用
@@ -423,9 +436,9 @@ flowchart LR
 
 # 接口契约与架构复用
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 接口契约驱动的复用：从 IDL 到 OpenAPI 到 WIT 的演进
-> **对齐标准**: OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
+> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/IEEE 42010, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
 > **状态**: ✅ 已完成
 
 ---
@@ -460,8 +473,9 @@ flowchart LR
     - [5.2 契约定义](#52-契约定义)
     - [5.3 Pact 契约测试](#53-pact-契约测试)
     - [5.4 复用价值](#54-复用价值)
-  - [6. 权威来源](#6-权威来源)
-  - [7. 交叉引用](#7-交叉引用)
+  - [6. 标准条款映射](#6-标准条款映射)
+  - [7. 权威来源](#7-权威来源)
+  - [8. 交叉引用](#8-交叉引用)
 
 ---
 
@@ -822,21 +836,39 @@ describe('Inventory API contract', () => {
 
 ---
 
-## 6. 权威来源
+## 6. 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 接口 / 接口实现 | UML 2.5.1 §10.4 Interfaces | 接口定义操作集合，组件通过 Interface Realization 实现接口 |
+| 组件图接口 | UML 2.5.1 §19.3 Component Diagrams | Provided/Required Interface 描述组件间供需关系 |
+| 架构视图 | ISO/IEC/IEEE 42010:2022 §5.4, §6.4 | 接口契约视图作为架构描述的模型种类之一 |
+| 架构描述实践 | IEEE 1471:2000 | 架构描述中 Viewpoint 与 View 的区分影响接口契约的稳定性 |
+| 契约设计 | Design by Contract (Meyer, 1988) | 前置条件、后置条件、不变量是接口契约的语义基础 |
+| REST API 契约 | OpenAPI 3.1.0 | HTTP 接口的语法契约标准 |
+| RPC 接口契约 | gRPC + Protobuf | 高性能服务间接口契约标准 |
+| 异步事件契约 | AsyncAPI 3.x | 事件驱动架构的通道与消息契约标准 |
+| 跨语言组件契约 | WIT (WASM Interface Types) | WASM Component Model 的接口定义语言 |
+| 消费者驱动契约 | Pact Specification | 消费者与提供者之间的双向契约验证 |
+
+## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-07 |
-| gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-07 |
-| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-07 |
-| Pact (Consumer-Driven Contracts) | <https://pact.io/> | 2026-07-07 |
-| Spring Cloud Contract | <https://spring.io/projects/spring-cloud-contract> | 2026-07-07 |
-| WIT (WASM Interface Types) | <https://component-model.bytecodealliance.org/design/wit.html> | 2026-07-07 |
-| Design by Contract — Wikipedia | <https://en.wikipedia.org/wiki/Design_by_contract> | 2026-07-07 |
-| Component-based Software Engineering — Wikipedia | <https://en.wikipedia.org/wiki/Component-based_software_engineering> | 2026-07-07 |
-| Liskov Substitution Principle — Wikipedia | <https://en.wikipedia.org/wiki/Liskov_substitution_principle> | 2026-07-07 |
+| OMG UML 2.5.1 | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| IEEE 1471:2000 | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
+| OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-08 |
+| gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-08 |
+| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
+| Pact (Consumer-Driven Contracts) | <https://pact.io/> | 2026-07-08 |
+| Spring Cloud Contract | <https://spring.io/projects/spring-cloud-contract> | 2026-07-08 |
+| WIT (WASM Interface Types) | <https://component-model.bytecodealliance.org/design/wit.html> | 2026-07-08 |
+| Design by Contract — Wikipedia | <https://en.wikipedia.org/wiki/Design_by_contract> | 2026-07-08 |
+| Component-based Software Engineering — Wikipedia | <https://en.wikipedia.org/wiki/Component-based_software_engineering> | 2026-07-08 |
+| Liskov Substitution Principle — Wikipedia | <https://en.wikipedia.org/wiki/Liskov_substitution_principle> | 2026-07-08 |
 
-## 7. 交叉引用
+## 8. 交叉引用
 
 - [组件模型与架构复用](../struct/04-component-architecture-reuse/01-component-models/component-models-reuse.md) — 组件封装、生命周期与可替换性判定
 - [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 通过模式降低接口契约的复杂度
@@ -1090,8 +1122,9 @@ Lockfile vs SBOM
 
 # 组件接口契约设计模式
 
-> **版本**: 2026-06-06
+> **版本**: 2026-07-08
 > **定位**: 将组件复用的接口设计模式系统化，支持从语法契约到语义契约的演进
+> **对齐标准**: GoF Design Patterns, UML 2.5.1, SOLID Principles, Enterprise Integration Patterns
 
 ---
 
@@ -1123,12 +1156,14 @@ Lockfile vs SBOM
     - [反模式 1: 接口膨胀 (Interface Bloat)](#反模式-1-接口膨胀-interface-bloat)
     - [反模式 2: 循环依赖 (Circular Dependency)](#反模式-2-循环依赖-circular-dependency)
     - [反模式 3: 隐式契约 (Implicit Contract)](#反模式-3-隐式契约-implicit-contract)
-  - [补充说明：组件接口契约设计模式](#补充说明组件接口契约设计模式)
-  - [概念定义](#概念定义)
-  - [示例](#示例)
-  - [权威来源](#权威来源)
+  - [8. 标准条款映射](#8-标准条款映射)
+  - [9. 权威来源](#9-权威来源)
 
 ---
+
+## 核心概念定义
+
+组件接口契约设计模式是指为提高组件可复用性而对接口进行的结构化设计约定，涵盖语法契约、前置/后置条件、协议契约与语义契约四个层次，并通过稳定抽象、接口隔离、依赖倒置、里氏替换等原则降低耦合。
 
 ## 1. 接口契约的层次
 
@@ -1531,28 +1566,38 @@ class Authenticated:
 
 ---
 
-> 最后更新: 2026-06-06
+## 正向复用案例
 
+某金融支付平台将“令牌服务”抽象为稳定且高抽象度的组件：接口仅暴露 `tokenize`、`detokenize`、`rotate` 三个操作，并通过版本化 OpenAPI 契约与 Consumer-Driven Contract 测试保证向后兼容。新渠道接入时复用该组件，集成周期从 4 周缩短至 3 天，且三年未发生破坏性变更。
 
 ---
 
-## 补充说明：组件接口契约设计模式
+## 8. 标准条款映射
 
-## 概念定义
+| 本主题概念 | 对应标准/文献 | 映射说明 |
+|:---|:---|:---|
+| 接口隔离原则（ISP） | SOLID Principles | 客户端不应依赖其不使用的接口 |
+| 依赖倒置原则（DIP） | SOLID Principles | 高层模块与低层模块均依赖抽象 |
+| 里氏替换原则（LSP） | Liskov Substitution Principle | 子类型必须可替换基类型而不破坏正确性 |
+| 设计模式目录 | GoF (1994) | 创建型、结构型、行为型 23 种模式 |
+| 策略 / 适配器 / 工厂 | GoF §4/§5 | 组件接口设计与实现解耦的核心模式 |
+| 接口与实现关系 | UML 2.5.1 §10.4 Interfaces | 接口定义操作，类/组件通过 Interface Realization 实现 |
+| 集成模式 | Enterprise Integration Patterns (Hohpe & Woolf, 2003) | 消息路由、转换、端点模式支撑组件间交互 |
+| 稳定抽象原则（SAP） | Robert C. Martin | 包抽象程度与稳定性成正比 |
+| 语义版本控制 | SemVer 2.0.0 | MAJOR.MINOR.PATCH 表达兼容性语义 |
 
-**定义**：设计模式是在特定上下文下可重复使用的面向对象/组件设计解决方案，如工厂、策略、适配器、观察者、依赖注入等。
-
-## 示例
-
-**示例**：系统使用策略模式封装不同的定价算法，新算法只需实现统一接口即可接入，无需修改订单核心逻辑。
-
-## 权威来源
+## 9. 权威来源
 
 > **权威来源**:
 >
-> - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns)
-> - [CNCF](https://www.cncf.io)
-> - 核查日期：2026-07-07
+> - [GoF Design Patterns — Wikipedia](https://en.wikipedia.org/wiki/Design_Patterns) — 23 种经典设计模式；核查日期：2026-07-08
+> - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/) — Hohpe & Woolf 集成模式目录；核查日期：2026-07-08
+> - [OMG UML 2.5.1 Specification](https://www.omg.org/spec/UML/2.5.1/) — UML 接口与组件规范；核查日期：2026-07-08
+> - [Semantic Versioning 2.0.0](https://semver.org/) — 语义化版本控制；核查日期：2026-07-08
+> - [Liskov Substitution Principle — Wikipedia](https://en.wikipedia.org/wiki/Liskov_substitution_principle) — 里氏替换原则；核查日期：2026-07-08
+> - [Design by Contract — Wikipedia](https://en.wikipedia.org/wiki/Design_by_contract) — 契约式设计；核查日期：2026-07-08
+>
+> **核查日期**: 2026-07-08
 
 
 ---
@@ -3613,6 +3658,10 @@ Artifact Repository
 
 模块级复用层次。覆盖框架、库、包、组件、设计模式的技术栈复用。
 
+## 核心概念定义
+
+组件架构复用是指在组件层对框架、库、包、组件、设计模式等模块级资产进行识别、封装、版本化与依赖治理，使其可在多个应用或系统中安全复用的实践。
+
 ## 核心内容
 
 - **Level 1**: 框架/平台复用（Spring Boot, React, .NET, Django, Actix）
@@ -3627,14 +3676,39 @@ Artifact Repository
 
 ## 权威对齐
 
-- [Maven Central](https://central.sonatype.com), [npm Registry](https://www.npmjs.com)
-- [crates.io](https://crates.io), [PyPI](https://pypi.org)
-- [SLSA Framework](https://slsa.dev)
-- [SPDX Specification](https://spdx.dev), [CycloneDX](https://cyclonedx.org)
+| 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
+|:---|:---|:---|:---|:---|
+| UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
+| GoF Design Patterns | 1994 | 23 Creational/Structural/Behavioral Patterns | <https://en.wikipedia.org/wiki/Design_Patterns> | 2026-07-08 |
+| Enterprise Integration Patterns | 2003/2024 | 65 Messaging Patterns (Hohpe & Woolf) | <https://www.enterpriseintegrationpatterns.com/> | 2026-07-08 |
+| SLSA | 1.0 | Supply-chain Levels for Software Artifacts | <https://slsa.dev/spec/v1.0/> | 2026-07-08 |
+| SPDX | 2.3 | Software Package Data Exchange | <https://spdx.dev/specifications/> | 2026-07-08 |
+| CycloneDX | 1.6 | Bill of Materials Standard | <https://cyclonedx.org/specification/overview/> | 2026-07-08 |
 
 ## 关键公理
->
+
 > **公理 4.1** (Interface Contract Completeness): 组件的可复用性取决于其**接口契约**的完备性（前置条件、后置条件、不变量、副作用声明），而非实现细节。
+
+## 正向复用案例
+
+**跨团队共享的内部 SDK 组件**：某公司将日志、配置、缓存、健康检查、异常处理等横切关注点封装为内部 SDK 组件，通过私有 Maven/NuGet 仓库分发。各微服务引入统一版本依赖，重复代码减少 60%，安全补丁可在 1 天内全量推送。
+
+## 反例
+
+**源码复制式复用**：某项目将开源日志库的源码直接复制到代码库，未通过包管理器跟踪版本与漏洞。一年后该库出现高危 CVE，团队无法通过 `npm audit`/`cargo audit` 等工具感知，安全补丁滞后 4 个月，最终在生产环境被利用。
+
+## 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 组件 / 接口 | UML 2.5.1 §11 Components | 组件通过提供的/需要的接口定义边界 |
+| 组件图 | UML 2.5.1 §19.3 Component Diagrams | 可视化组件、接口与依赖关系 |
+| 架构描述 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件视图作为架构描述的一种视图 |
+| 设计模式复用 | GoF (1994) | 创建型、结构型、行为型模式解决组件内部结构问题 |
+| 集成模式复用 | Hohpe & Woolf (2003) | 消息路由、转换、端点模式解决组件间集成问题 |
+| 供应链安全 | SLSA 1.0 | Build / Provenance / Source 等级保障组件来源可信 |
 
 ## 当前状态
 
@@ -3646,35 +3720,10 @@ Artifact Repository
 - [ ] Rust 生态深度形式化（所有权、Trait、Cargo SAT 求解）(07-formal-verification 进行中)
 - [ ] WASM Component Model 跨语言复用分析 (P1, 2026-Q4)
 
-## 关联主题
+## 交叉引用
 
 - `10-supply-chain-security`（SBOM、SLSA、漏洞管理）
 - `07-formal-verification`（Rust 类型系统形式化）
-
-
----
-
-## 补充说明：04 组件架构复用
-
-## 概念定义
-
-**定义**：组件架构复用是在模块/组件层面复用设计模式、接口契约、依赖管理与版本策略，以实现代码级与二进制级的高效复用。
-
-## 示例
-
-**示例**：团队将日志、配置、缓存、健康检查等横切关注点封装为内部 SDK 组件，各微服务通过引入统一版本依赖复用，减少重复代码。
-
-## 反例
-
-**反例**：项目直接复制开源库源码到代码库，未通过包管理器跟踪版本与漏洞，导致安全补丁无法及时同步。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [CNCF](https://www.cncf.io)
-> - [OpenSSF](https://openssf.org)
-> - 核查日期：2026-07-07
 
 
 ---

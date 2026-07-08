@@ -296,9 +296,9 @@ C = [p × Cu + (1 - p) × Cd] / e^(rT)
 
 **结论**：该投资机会的期权价值为 ¥162.6 万，高于立即投资的净收益 ¥100 万（800 - 700），说明在不确定性下保留灵活性具有显著价值。
 
-## 10. 战略价值示例：平台工程的分阶段投资
+## 10. 正向示例
 
-### 10.1 场景
+### 示例 1：平台工程的分阶段投资
 
 某企业计划 3 年内建设内部开发者平台（IDP）：
 
@@ -306,7 +306,7 @@ C = [p × Cu + (1 - p) × Cd] / e^(rT)
 - **阶段 2（第 1 年）**：若阶段 1 成功，追加 ¥500 万扩展至全组织；若失败，放弃项目，损失 ¥200 万。
 - **阶段 3（第 2–3 年）**：成功后每年产生 ¥300 万净收益。
 
-### 10.2 实物期权分析
+### 实物期权分析
 
 若立即全额投资 ¥700 万，NPV 可能为：
 
@@ -359,35 +359,51 @@ graph TD
     P --> Q
 ```
 
-## 12. 反例与常见陷阱
+## 12. 反例
 
-### 12.1 反例一：滥用实物期权为拖延找借口
+### 反例 1：滥用实物期权为拖延找借口
+
+**反例**：某团队以“等待新技术成熟”为由延迟平台投资 3 年。
 
 某团队以“等待新技术成熟”为由延迟平台投资 3 年，期间竞争对手已建立生态壁垒。虽然单笔投资的风险降低，但**先发优势的丧失**使 q 被严重低估，最终市场份额损失远超等待的收益。
 
-### 12.2 反例二：波动率估计失真
+### 反例 2：波动率估计失真
+
+**反例**：某项目假设 σ = 60% 以美化期权价值。
 
 某项目假设 σ = 60% 以美化期权价值，但实际需求稳定、技术成熟，真实 σ 仅 15%。过度乐观的波动率导致错误投资低价值复用基础设施。
 
-### 12.3 反例三：忽视执行价格的可变性
+### 反例 3：忽视执行价格的可变性
+
+**反例**：开源替代方案的出现使某自研中间件的“转换期权”执行价格骤降。
 
 开源替代方案的出现使某自研中间件的“转换期权”执行价格从 ¥200 万骤降至 ¥20 万，但团队未更新模型，仍按原计划维护高成本自研组件，造成资源错配。
 
-### 12.4 反例四：将战略价值无限放大
+### 反例 4：将战略价值无限放大
+
+**反例**：某平台团队以“生态网络效应”为由持续投入。
 
 某平台团队以“生态网络效应”为由持续投入，但缺乏可量化的 S、X、T、σ 参数，实物期权分析沦为定性说辞，最终项目成为“白象”。
 
 ## 13. 权威来源与交叉引用
 
-> **权威来源**:
->
-> - [Wikipedia - Real Options Valuation](https://en.wikipedia.org/wiki/Real_options_valuation)
-> - [Wikipedia - Black-Scholes Model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
-> - [Wikipedia - Binomial Options Pricing Model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model)
-> - [MIT OpenCourseWare - Real Options](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/)
-> - [ICSR - International Conference on Software Reuse](https://icser.org)
-> - [ClearlyAcquired SaaS Valuation Report](https://clearlyacquired.com)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Wikipedia — Real Options Valuation | <https://en.wikipedia.org/wiki/Real_options_valuation> | 2026-07-09 |
+| Wikipedia — Black-Scholes Model | <https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model> | 2026-07-09 |
+| Wikipedia — Binomial Options Pricing Model | <https://en.wikipedia.org/wiki/Binomial_options_pricing_model> | 2026-07-09 |
+| MIT OpenCourseWare — Real Options | <https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/> | 2026-07-09 |
+| ICSR — International Conference on Software Reuse | <https://icser.org> | 2026-07-09 |
+| Investopedia — NPV | <https://www.investopedia.com/terms/n/npv.asp> | 2026-07-09 |
+| Investopedia — IRR | <https://www.investopedia.com/terms/i/irr.asp> | 2026-07-09 |
+| FinOps Foundation — Unit Economics | <https://www.finops.org/framework/capabilities/unit-economics/> | 2026-07-09 |
+
+### 交叉引用
+
+- 与 [架构复用 ROI 框架](./roi-framework.md) 配合：实物期权是 ROI/NPV 框架在高度不确定性场景下的扩展。
+- 与 [COCOMO II 复用模型深度解析](../01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的成本可作为实物期权的执行价格 X。
+- 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：分阶段学习与平台采用本身是一种“学习期权”。
+- 可运行工具：本文件中的 Black-Scholes / 二叉树示例可用 Python 脚本复现，参考 [`../tools/cocomo-calculator.py`](../tools/cocomo-calculator.py) 的成本估算输出作为 S/X 输入。
 
 ### 交叉引用
 
@@ -460,14 +476,13 @@ flowchart TD
 
 某公司名义上采用阶段门，但每个门控只有形式评审，没有真正的放弃/转换权力。Gate 1 已显示采用率仅 18%，管理层仍以“沉没成本”为由追加 600 万。结果项目三年后下线，总损失 800 万。问题根源在于：阶段门需要配套的治理机制与文化授权，否则只是装饰。
 
-> **权威来源**:
->
-> - [Wikipedia - Real Options Valuation](https://en.wikipedia.org/wiki/Real_options_valuation)
-> - [Wikipedia - Black-Scholes Model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
-> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
-> - [Wikipedia - Stage-Gate Process](https://en.wikipedia.org/wiki/Stage-Gate_process)
-> - [MIT OpenCourseWare - Real Options](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Wikipedia — Real Options Valuation | <https://en.wikipedia.org/wiki/Real_options_valuation> | 2026-07-09 |
+| Wikipedia — Black-Scholes Model | <https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model> | 2026-07-09 |
+| Wikipedia — Return on Investment | <https://en.wikipedia.org/wiki/Return_on_investment> | 2026-07-09 |
+| Wikipedia — Stage-Gate Process | <https://en.wikipedia.org/wiki/Stage-Gate_process> | 2026-07-09 |
+| MIT OpenCourseWare — Real Options | <https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/> | 2026-07-09 |
 
 ### 交叉引用
 
@@ -515,13 +530,12 @@ graph LR
 
 某公司以“技术不成熟”为由延迟开源治理平台投资 2 年，未估计到监管要求突然收紧（q 激增）。竞争对手提前布局获得合规资质，该公司被迫以 3 倍成本追赶，且失去了标准制定话语权。
 
-> **权威来源**:
->
-> - [Wikipedia - Real Options Valuation](https://en.wikipedia.org/wiki/Real_options_valuation)
-> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
-> - [Wikipedia - Black-Scholes Model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
-> - [Wikipedia - Dividend Yield](https://en.wikipedia.org/wiki/Dividend_yield)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Wikipedia — Real Options Valuation | <https://en.wikipedia.org/wiki/Real_options_valuation> | 2026-07-09 |
+| Wikipedia — Return on Investment | <https://en.wikipedia.org/wiki/Return_on_investment> | 2026-07-09 |
+| Wikipedia — Black-Scholes Model | <https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model> | 2026-07-09 |
+| Wikipedia — Dividend Yield | <https://en.wikipedia.org/wiki/Dividend_yield> | 2026-07-09 |
 
 ### 交叉引用
 
@@ -529,28 +543,4 @@ graph LR
 - 与 [COCOMO II 复用模型深度解析](../01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：COCOMO II 估算的周期影响 q 的大小。
 - 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：延迟投资可能导致团队认知图式滞后，增加后续学习成本。
 
-## 补充说明：软件复用的 ROI、实物期权与战略价值量化
-
-## 概念定义
-
-**定义**：ROI（投资回报率）与 NPV（净现值）将复用资产的现金流（节省、收入、维护成本、机会成本）贴现到当前，用于比较不同复用投资策略。
-
-## 示例
-
-**示例**：平台工程投资 200 万元，预计每年节省各团队 120 万元运维与重复开发成本，按 8% 折现率 NPV 为正，ROI 三年达 95%。
-
-## 反例
-
-**反例**：仅计算一次性采购成本，忽视后续版本升级、培训与耦合导致的迁移成本，项目三年后实际 ROI 为负。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Investopedia NPV](https://www.investopedia.com/terms/n/npv.asp)
-> - [FinOps Foundation](https://www.finops.org)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：ROI/NPV 帮助比较不同复用路径的全生命周期价值，但折现率与收益估算具有主观性。
+> **版本记录**：2026-07-09 对齐国际化权威来源（Investopedia、MIT OCW、FinOps Unit Economics、ICSR），补充可运行工具引用；删除机械重复段落。

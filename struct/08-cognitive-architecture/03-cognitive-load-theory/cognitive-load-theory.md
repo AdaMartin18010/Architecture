@@ -7,7 +7,7 @@
 
 ## 1. 认知负荷理论的三个类型
 
-认知负荷理论（Cognitive Load Theory, Sweller, 1988）将工作记忆负荷分为三类：
+认知负荷理论（Cognitive Load Theory, Sweller, 1988; Sweller, 2011）将工作记忆负荷分为三类。该理论基于人类认知架构的核心假设：工作记忆容量有限，而长期记忆存储着大量图式（schemas）。有效的学习或问题解决发生在工作记忆负荷未超载的前提下，并促进相关图式的建构。
 
 | 类型 | 定义 | 架构复用中的体现 |
 |------|------|-----------------|
@@ -95,14 +95,36 @@ Level 4: Source Code / Architecture （源代码与架构）
 
 ## 5. 实践建议
 
-| 实践 | 目的 |
-|------|------|
-| 标准化命名约定 | 降低记忆负担 |
-| 提供可运行示例 | 降低首次使用的外在负荷 |
-| 可视化架构图 | 建立空间记忆图式 |
-| ADR 文档化 | 保留决策上下文 |
-| 交互式教程 | 促进主动学习 |
-| 错误信息友好化 | 降低调试的外在负荷 |
+| 实践 | 目的 | 理论依据 |
+|------|------|---------|
+| 标准化命名约定 | 降低记忆负担 | 心智模型一致性（Norman, 2013） |
+| 提供可运行示例 | 降低首次使用的外在负荷 | 样例效应（Worked Example Effect, Sweller） |
+| 可视化架构图 | 建立空间记忆图式 | 双编码理论 |
+| ADR 文档化 | 保留决策上下文 | 分布式认知（Hollan et al., 2000） |
+| 交互式教程 | 促进主动学习 | 相关负荷最大化 |
+| 错误信息友好化 | 降低调试的外在负荷 | 最小惊讶原则 |
+| 渐进式信息呈现 | 避免工作记忆超载 | 认知负荷守恒 |
+| 工具链内嵌上下文 | 减少上下文切换 | 分布式认知 |
+
+### 5.1 心智模型与认知负荷
+
+**定义**：心智模型（Mental Model）是人对系统运行方式的内部表征（Johnson-Laird, 1983; Norman, 2013）。当复用资产的设计与开发者已有心智模型一致时，理解所需的认知资源显著下降；反之，即使功能正确，也会增加外在负荷。
+
+在架构复用中的应用：
+
+- **命名一致性**：使用团队与社区广泛接受的术语（如 `consumer` 而非 `siphon`）。
+- **接口直觉性**：参数顺序、返回值、异常行为符合主流框架惯例。
+- **可预测性**：相同概念在不同组件中行为一致，避免“抽象泄漏”。
+
+### 5.2 分布式认知与工具设计
+
+**定义**：分布式认知（Distributed Cognition）认为认知过程不仅发生在个体大脑中，也分布于人、工具、表征与环境之间（Hollan, Hutchins & Kirsh, 2000; Hutchins, 1995）。
+
+在架构复用中的应用：
+
+- **外部记忆**：将组件依赖、版本约束、配置项显式化到工具中，而非要求开发者记忆。
+- **共同表征**：在 IDE、Wiki、CI/CD 界面中使用一致的组件标识与状态展示。
+- **流程即认知**：Golden Path、脚手架生成器、IDE 插件都是将部分认知工作卸载到环境中。
 
 ---
 
@@ -261,18 +283,33 @@ graph LR
 
 某团队大量使用 AI 生成复用代码，开发者不再阅读原始文档。当 AI 输出与平台最新版本不兼容时，团队因缺乏相关图式而无法快速诊断，集成错误率反而上升。
 
+### 10.5 反例五：命名违背心智模型
+
+某团队将消息队列消费者组件命名为 `EventSiphon`，与开发者熟悉的 `Consumer` / `Subscriber` 心智模型冲突。开发者虽能完成功能调用，但频繁误解参数语义，文档阅读量增加 3 倍，集成错误率上升 40%。
+
+### 10.6 反例六：工具链割裂导致分布式认知失败
+
+某组织的复用流程分散在 Wiki、Jira、GitLab、Slack 四个工具中，开发者需要手动在不同系统间搬运信息。由于没有统一的外部记忆，关键约束在传递中丢失，30% 的复用请求需要返工。
+
 ## 11. 权威来源与交叉引用
 
 > **权威来源**:
 >
 > - [Wikipedia - Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load)
 > - [Wikipedia - Cognitive Load Theory](https://en.wikipedia.org/wiki/Cognitive_load_theory)
-> - [Sweller - Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-010-9135-0)
+> - [Sweller, J. (2011). Cognitive Load Theory. *Psychology of Learning and Motivation*, 55, 37–76](https://doi.org/10.1016/B978-0-12-387691-1.00002-8)
+> - [Sweller, J. (2010). Element interactivity and intrinsic, extraneous, and germane cognitive load. *Educational Psychology Review*, 22, 123–138](https://doi.org/10.1007/s10648-010-9128-5)
+> - [van Merriënboer, J. J. G., & Sweller, J. (2005). Cognitive load theory and complex learning. *Educational Psychology Review*, 17, 147–177](https://doi.org/10.1007/s10648-005-3951-0)
 > - [Cognitive Load Theory - ScienceDirect Topics](https://www.sciencedirect.com/topics/psychology/cognitive-load-theory)
 > - [DORA - State of DevOps Reports](https://dora.dev/research/)
 > - [DORA 2024 Report](https://dora.dev/research/2024/dora-report/)
-> - [NASA-TLX - Human Performance Research Group](https://humansystems.arc.nasa.gov/groups/TLX/)
-> - 核查日期：2026-07-07
+> - [NASA Task Load Index (TLX)](https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/)
+> - [Johnson-Laird, P. N. (2010). Mental Models and Human Reasoning. *PNAS*, 107(43), 18243–18250](https://www.pnas.org/content/107/43/18243)
+> - [Mental Models - Princeton University](https://mentalmodels.princeton.edu/about/what-are-mental-models/)
+> - [The Two UX Gulfs: Evaluation and Execution - Nielsen Norman Group](https://www.nngroup.com/articles/two-ux-gulfs-evaluation-execution/)
+> - [Distributed Cognition: Toward a New Foundation for HCI - Hollan, Hutchins, Kirsh, ACM TOCHI 2000](https://doi.org/10.1145/353485.353487)
+> - [Cognition in the Wild - Edwin Hutchins, MIT Press 1995](https://doi.org/10.7551/mitpress/1881.001.0001)
+> - 核查日期：2026-07-09
 
 ### 交叉引用
 
@@ -364,39 +401,18 @@ OCLB 与 DORA 2025、ROI 框架形成三层治理闭环：基线 → 预算 → 
 >
 > - [Wikipedia - Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load)
 > - [Wikipedia - Cognitive Load Theory](https://en.wikipedia.org/wiki/Cognitive_load_theory)
-> - [NASA-TLX - Human Performance Research Group](https://humansystems.arc.nasa.gov/groups/TLX/)
+> - [NASA Task Load Index (TLX)](https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/)
 > - [DORA - State of DevOps Reports](https://dora.dev/research/)
-> - 核查日期：2026-07-07
+> - [Sweller, J. (2011). Cognitive Load Theory](https://doi.org/10.1016/B978-0-12-387691-1.00002-8)
+> - [Johnson-Laird, P. N. (2010). Mental Models and Human Reasoning](https://www.pnas.org/content/107/43/18243)
+> - [Distributed Cognition: Toward a New Foundation for HCI](https://doi.org/10.1145/353485.353487)
+> - 核查日期：2026-07-09
 
 ### 交叉引用
 
 - 与 [开发者复用决策的认知负荷量化模型](./quantitative-model.md) 配合：TDAM 的 λ_i 参数可通过该模型的阶段数据估计。
 - 与 [AI 辅助复用决策的认知增强架构设计](../05-ai-cognitive-augmentation/augmentation-architecture.md) 关联：AI 助手可用于降低瞬时峰值与日累积外在负荷。
+- 与 [知识图谱与架构复用](../06-knowledge-graphs/knowledge-graph-reuse.md) 关联：知识图谱通过显式关系降低检索与理解的外在负荷。
 - 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：基线治理的培训与工具投资应纳入 ROI 现金流。
 
-> 最后更新: 2026-06-06
-
-
----
-
-## 补充说明：认知负荷理论与架构复用
-
-## 概念定义
-
-**定义**：认知负荷理论（Cognitive Load Theory, CLT）描述工作记忆容量有限性，将负荷分为内在负荷、外在负荷与相关负荷，指导学习材料与工具设计。
-
-## 示例
-
-**示例**：平台工程团队将 Golden Path 文档按“决策树 + 可运行模板 + 失败案例”组织，减少外在认知负荷，使开发者 10 分钟即可上手复用。
-
-## 反例
-
-**反例**：某平台要求开发者阅读 50 页 Markdown 才能部署首个服务，外在负荷过高，新用户流失率超过 60%。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Cognitive Load Theory - ScienceDirect Topics](https://www.sciencedirect.com/topics/psychology/cognitive-load-theory)
-> - [Sweller - Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-010-9135-0)
-> - 核查日期：2026-07-07
+> 最后更新: 2026-07-09

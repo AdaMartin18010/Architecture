@@ -1,9 +1,9 @@
 <!--
   文档标识: B-06
   任务: BIAN 金融服务域复用案例
-  版本: 2026-06-10
+  版本: 2026-07-08
   定位: 业务架构复用领域的金融行业标准化实践指南
-  对齐标准: BIAN Service Landscape 12.0, TOGAF 10, FEA 6.0, ISO 20022, DMN 1.5, BPMN 2.0
+  对齐标准: BIAN Service Landscape 12.0/14.0, TOGAF 10, FEA 6.0, ISO 20022, DMN 1.5, BPMN 2.0
   状态: ✅ 已完成
 -->
 
@@ -90,6 +90,13 @@
     - [12.3 反例补充/教训：忽视 BIAN 与现有能力映射导致目录悬置](#123-反例补充教训忽视-bian-与现有能力映射导致目录悬置)
     - [12.4 BIAN-业务能力-价值流映射图](#124-bian-业务能力-价值流映射图)
     - [12.5 权威来源与交叉引用补充](#125-权威来源与交叉引用补充)
+  - [13. 仿真案例：亚太银行联盟基于 BIAN 的开放银行能力建设](#13-仿真案例亚太银行联盟基于-bian-的开放银行能力建设)
+    - [13.1 场景](#131-场景)
+    - [13.2 关键决策](#132-关键决策)
+    - [13.3 实施路径](#133-实施路径)
+    - [13.4 量化结果](#134-量化结果)
+    - [13.5 教训总结](#135-教训总结)
+  - [14. 标准条款映射](#14-标准条款映射)
   - [附录：权威来源](#附录权威来源)
 
 ---
@@ -963,13 +970,13 @@ flowchart TB
 
 > **权威来源**:
 >
-> - [Banking Industry Architecture Network - Wikipedia](https://en.wikipedia.org/wiki/Banking_Industry_Architecture_Network) — BIAN 组织概述
-> - [ISO 20022 - Wikipedia](https://en.wikipedia.org/wiki/ISO_20022) — 金融报文标准
-> - [Value stream - Wikipedia](https://en.wikipedia.org/wiki/Value_stream) — 价值流概念
-> - [BIAN 官方网站](https://bian.org/) — Service Landscape 12.0 与服务域规范
-> - [The Open Group TOGAF](https://www.opengroup.org/togaf) — 架构开发方法
+> - [BIAN 官方网站](https://bian.org/) — Service Landscape 12.0/14.0 与服务域规范；核查日期：2026-07-08
+> - [BIAN Service Landscape 14.0 发布新闻](https://bian.org/news-room/bian-unveils-new-service-landscape-14-0-to-accelerate-ai-ready-banking-architecture/) — 2026-05 BIAN 14.0 更新；核查日期：2026-07-08
+> - [ISO 20022 官方站点](https://www.iso20022.org/) — 金融报文标准；核查日期：2026-07-08
+> - [The Open Group TOGAF](https://www.opengroup.org/togaf) — 架构开发方法；核查日期：2026-07-08
+> - [Banking Industry Architecture Network - Wikipedia](https://en.wikipedia.org/wiki/Banking_Industry_Architecture_Network) — BIAN 组织概述；核查日期：2026-07-08
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
 **交叉引用**：
 
@@ -978,52 +985,86 @@ flowchart TB
 - [BPMN 2.0 / DMN 业务过程与决策的复用编排](../06-bpmn-dmn/bpmn-dmn-reuse-orchestration.md) — BIAN 与 BPMN/DMN 的结合
 - [Zachman Framework 与软件架构复用映射](../08-zachman-reuse-mapping/zachman-reusability-matrix.md)
 
+## 13. 仿真案例：亚太银行联盟基于 BIAN 的开放银行能力建设
+
+> 说明：本案例为基于 BIAN 公开文档、ISO 20022 迁移实践与 PSD2/开放银行监管要求的**仿真场景**，用于演示 BIAN 复用中的关键决策、实施路径与教训。
+
+### 13.1 场景
+
+"亚太银行联盟"由 5 家中小型银行组成，计划在 18 个月内建成统一的开放银行平台，向第三方金融科技公司（TPP）提供账户信息、支付发起与信贷预审批服务。各成员银行的核心系统异构：2 家使用某国际核心银行系统，2 家使用国产核心系统，1 家为自研核心。
+
+### 13.2 关键决策
+
+| 决策点 | 选项 | 最终决策 | 决策依据 |
+|---|---|---|---|
+| 业务能力基线 | 自建术语体系 vs. 采用 BIAN | 采用 BIAN Service Landscape 12.0 作为基线，关注 14.0 新增 AI/支付服务域 | 降低跨银行语义协商成本；BIAN 14.0 强化了 ISO 20022 对齐与 AI 服务域 |
+| 服务域粒度 | 机械照搬 300+ 服务域 vs. 聚焦高价值域 | 首批聚焦 18 个服务域：客户信息管理、账户管理、支付发起、支付执行、信用风险评估、KYC | 优先覆盖开放银行 MVP 价值链；避免一次性重构全部遗留系统 |
+| 遗留系统适配 | 全面替换 vs. Facade 适配 | Facade 适配：核心系统保留，开放 API 层按 BIAN 语义暴露 | 控制风险和预算；符合 BIAN"规范可复用、实现可本地化"边界 |
+| 报文标准 | 专有 JSON vs. ISO 20022 | 开放 API 采用 ISO 20022 JSON/API 格式，内部保留 BIAN 语义映射层 | 确保与区域支付生态、SWIFT gpi 互操作 |
+| 决策规则 | 硬编码在流程中 vs. DMN 决策服务 | 信用预审批、反欺诈评分采用 DMN 1.5 决策服务 | 业务人员可直接调整规则；支持 A/B 测试与监管解释 |
+
+### 13.3 实施路径
+
+**第一阶段（0-6 个月）：基线建立**
+
+- 建立 BIAN-业务能力-价值流-IT 系统四层映射库。
+- 选定 3 个试点服务域：客户信息管理、支付发起、账户管理。
+- 与遗留核心系统团队共同设计 Facade 接口。
+
+**第二阶段（6-12 个月）：平台构建**
+
+- 部署 BIAN 语义 API 网关，统一对外开放接口。
+- 集成 DMN 决策引擎，实现信用预审批与反欺诈规则。
+- 引入 Pact 契约测试，确保跨银行接口语义一致。
+
+**第三阶段（12-18 个月）：生态运营**
+
+- 向 TPP 发布开发者门户与沙箱环境。
+- 建立服务域 Owner 制度与语义化版本控制。
+- 基于使用数据持续优化服务域边界。
+
+### 13.4 量化结果
+
+| 指标 | 复用前（估算） | 复用后 | 说明 |
+|---|---|---|---|
+| 与 TPP 集成周期 | 4-6 个月/家 | 2-3 周/家 | BIAN 标准化接口减少定制开发 |
+| 新市场支付产品上线 | 9-12 个月 | 3-4 个月 | 复用支付发起/执行服务域 |
+| 监管报告生成时间 | 2-3 周 | 2-3 天 | KYC/账户信息数据语义统一 |
+| 跨银行数据一致性错误 | 月均 15 起 | 月均 3 起 | 统一 Customer Profile / Payment Order 语义 |
+| 三年总拥有成本 | 基准 100% | 约 65% | 避免 5 家银行分别建设开放银行平台 |
+
+### 13.5 教训总结
+
+1. **不要在没有映射的情况下引入 BIAN**：若仅将 BIAN 目录导入架构库而不与现有系统、项目、能力地图建立映射，目录会迅速沦为"标准陈列馆"。
+2. **服务域不等于微服务**：一个 BIAN 服务域可由多个微服务实现，一个微服务也可实现多个服务域。初期过度拆分会导致分布式事务和运维复杂度激增。
+3. **语义一致比接口格式一致更重要**：两家银行即使都使用 REST/JSON，若对"收款人""受益人"等概念理解不同，仍会导致资金路由错误。
+4. **治理必须同步建设**：只复用规范不复用治理（Owner、版本、影响分析）会导致接口频繁破坏性变更，复用计划名存实亡。
+
+## 14. 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| BIAN 服务域 | BIAN Service Landscape 12.0/14.0 Service Domain | 银行业务能力的标准化原子单元，包含业务对象、行为、信息交换规范 |
+| 架构构建块（ABB） | TOGAF 10 Phase B/C | BIAN 服务域作为银行业的 ABB，TOGAF ADM 提供管理方法论 |
+| 金融报文语义 | ISO 20022 pain.001 / pacs.008 / camt.053 | BIAN Payment Order / Payment Execution 与 ISO 20022 报文元素映射 |
+| 可执行决策 | DMN 1.5 §6 Decision Service | 信贷审批、反欺诈评分等决策逻辑封装为可复用决策服务 |
+| 可执行流程 | BPMN 2.0 §8 Process, §10 Collaboration | 客户开户、支付执行等价值流由 BPMN 流程编排 |
+| 企业架构分类 | Zachman Framework C2-1/C2-2/C3-2 | BIAN 服务域映射到业务视角 What/How 与系统视角 How |
+
 ## 附录：权威来源
 
-1. BIAN (Banking Industry Architecture Network) 官方网站
-   - URL: <https://bian.org/>
-   - 核查日期: 2026-06-10
-
-2. BIAN Service Landscape 12.0 官方文档
-   - URL: <https://bian.org/bian-library/>
-   - 核查日期: 2026-06-10
-
-3. BIAN 服务域详细规范与 API 定义
-   - URL: <https://bian.org/servicelandscape/>
-   - 核查日期: 2026-06-10
-
-4. TOGAF 10 标准文档（The Open Group）
-   - URL: <https://www.opengroup.org/togaf>
-   - 核查日期: 2026-06-10
-
-5. FEA Framework 6.0（美国联邦企业架构框架）
-   - URL: <https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/>
-   - 核查日期: 2026-06-10
-
-6. ISO 20022 金融报文标准官方站点
-   - URL: <https://www.iso20022.org/>
-   - 核查日期: 2026-06-10
-
-7. DMN 1.5 规范（Object Management Group）
-   - URL: <https://www.omg.org/spec/DMN/>
-   - 核查日期: 2026-06-10
-
-8. BPMN 2.0 规范（Object Management Group）
-   - URL: <https://www.omg.org/spec/BPMN/>
-   - 核查日期: 2026-06-10
-
-9. BIAN 与 ISO 20022 映射指南
-   - URL: <https://bian.org/iso-20022/>
-   - 核查日期: 2026-06-10
-
-10. SWIFT 官方：ISO 20022 迁移资源中心
-    - URL: <https://www.swift.com/standards/iso-20022>
-    - 核查日期: 2026-06-10
-
-11. Camunda DMN/BPMN 引擎文档（开源参考实现）
-    - URL: <https://docs.camunda.org/>
-    - 核查日期: 2026-06-10
-
-12. 欧洲银行管理局（EBA）PSD2 技术要求指南
-    - URL: <https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money/regulation-payment-services-psd-2>
-    - 核查日期: 2026-06-10
+| 序号 | 来源 | URL | 核查日期 |
+|:---|:---|:---|:---|
+| 1 | BIAN (Banking Industry Architecture Network) 官方网站 | <https://bian.org/> | 2026-07-08 |
+| 2 | BIAN Service Landscape 12.0/14.0 官方文档 | <https://bian.org/bian-library/> | 2026-07-08 |
+| 3 | BIAN 服务域详细规范与 API 定义 | <https://bian.org/servicelandscape/> | 2026-07-08 |
+| 4 | BIAN Service Landscape 14.0 发布新闻（2026-05） | <https://bian.org/news-room/bian-unveils-new-service-landscape-14-0-to-accelerate-ai-ready-banking-architecture/> | 2026-07-08 |
+| 5 | TOGAF 10 标准文档（The Open Group） | <https://www.opengroup.org/togaf> | 2026-07-08 |
+| 6 | FEA Framework 6.0（美国联邦企业架构框架） | <https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/> | 2026-07-08 |
+| 7 | ISO 20022 金融报文标准官方站点 | <https://www.iso20022.org/> | 2026-07-08 |
+| 8 | DMN 1.5 规范（Object Management Group） | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
+| 9 | BPMN 2.0.2 规范（Object Management Group） | <https://www.omg.org/spec/BPMN/2.0.2/> | 2026-07-08 |
+| 10 | BIAN 与 ISO 20022 映射指南 | <https://bian.org/iso-20022/> | 2026-07-08 |
+| 11 | SWIFT 官方：ISO 20022 迁移资源中心 | <https://www.swift.com/standards/iso-20022> | 2026-07-08 |
+| 12 | Camunda DMN/BPMN 引擎文档（开源参考实现） | <https://docs.camunda.org/> | 2026-07-08 |
+| 13 | 欧洲银行管理局（EBA）PSD2 技术要求指南 | <https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money/regulation-payment-services-psd-2> | 2026-07-08 |

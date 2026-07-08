@@ -1,7 +1,7 @@
 # Rust 生态：类型安全、WASM 目标与形式化验证
 >
-> 版本: 2026-06-06
-> 对齐来源: Rust Project、Rust Formal Methods 社区、Kani/Miri/Prusti 项目、Rust WASM 工作组
+> 版本: 2026-07-09
+> 对齐来源: Rust Project、Kani/Miri/Creusot 形式化验证工具链、Bytecode Alliance Wasmtime、Rust WASM 工作组
 
 ## 1. Rust 类型系统的形式化基础
 
@@ -225,49 +225,37 @@ impl exports::my::domain::calculator::Guest for Calculator {
 
 通过 Kani 验证 `add` 不会溢出，再编译为 WASM 组件，消费方即可在假设“返回值为两数之和”的前提下安全复用。
 
-### 8.5 正例与反例
+### 8.5 Rust/WASM 形式化验证边界
+
+形式化验证并非万能。Rust/WASM 组件的信任边界应明确以下限制：
+
+| 验证对象 | 可证明属性 | 不可覆盖的假设 |
+|:---|:---|:---|
+| Rust 源码 + Kani | 内存安全、无溢出、无 panic、函数契约 | 编译器正确性、Kani/CBMC 本身可信计算基（TCB） |
+| Miri | `unsafe` 块无未定义行为 | 仅覆盖实际执行路径；不会自动覆盖所有输入 |
+| 编译后的 WASM 字节码 | 字节码合法性、WIT 接口一致性 | 源码到字节码的编译过程未被篡改 |
+| 运行时（Wasmtime） | 沙箱隔离、能力模型正确执行 | Host 函数实现、操作系统内核 |
+
+**实践建议**：对安全关键的 Rust/WASM 组件，采用"源码验证（Kani/Miri）+ 构建证明（SLSA provenance）+ 字节码校验（`wasm-validate` / WASI 合规测试）"三层证据链，避免"编译通过即安全"的错觉。
+
+### 8.6 正例与反例
 
 **正例**：AWS 使用 Kani 验证 Firecracker microVM 和 Bottlerocket 中的关键不安全代码块；在将 Rust 代码编译为 WASM 组件供多租户边缘平台复用时，形式化验证报告成为安全审计的核心证据。
 
 **反例**：某团队认为“Rust 编译通过就安全”，未对 `unsafe` 块进行 Miri 检测或 Kani 证明，结果在 WASM 运行时中因未对齐内存访问触发未定义行为；另一团队仅验证 Rust 源码，未检查编译后的 WASM 字节码是否被篡改，导致供应链攻击面未被覆盖。
 
-### 8.6 权威来源与交叉引用
+### 8.7 权威来源与交叉引用
 
-| 来源 | URL |
-|:---|:---|
-| Wikipedia - Rust | <https://en.wikipedia.org/wiki/Rust_(programming_language)> |
-| Kani Verifier | <https://github.com/model-checking/kani> |
-| Miri | <https://github.com/rust-lang/miri> |
-| Prusti | <https://github.com/viperproject/prusti> |
-| Creusot | <https://github.com/creusot-rs/creusot> |
-| wasmtime | <https://github.com/bytecodealliance/wasmtime> |
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Rust Programming Language | <https://www.rust-lang.org> | 2026-07-09 |
+| Kani Rust Verifier | <https://github.com/model-checking/kani> | 2026-07-09 |
+| Miri (Rust MIR interpreter) | <https://github.com/rust-lang/miri> | 2026-07-09 |
+| Creusot (Rust verification) | <https://github.com/creusot-rs/creusot> | 2026-07-09 |
+| Wasmtime | <https://github.com/bytecodealliance/wasmtime> | 2026-07-09 |
 
 **交叉引用**：
 
 - WASM Component Model 详见 [`../03-webassembly-components/wasm-component-model-2026.md`](../03-webassembly-components/wasm-component-model-2026.md)
 - WASI 0.3 边界详见 [`../03-webassembly-components/wasm-wasi-03-boundaries.md`](../03-webassembly-components/wasm-wasi-03-boundaries.md)
 - 形式化验证专题参见 [`../../07-formal-verification/README.md`](../../07-formal-verification/README.md)
-
----
-
-## 补充说明：Rust 生态：类型安全、WASM 目标与形式化验证
-
-## 概念定义
-
-**定义**：WebAssembly Component Model 将 WASM 模块升级为具有显式接口、类型化导入导出的可组合组件，支持跨语言、跨运行时复用。
-
-## 反例
-
-**反例**：将 I/O 密集型服务盲目迁移到 WASM，WASI 能力不支持所需系统调用，性能与可维护性反而下降。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [WebAssembly Component Model](https://component-model.bytecodealliance.org)
-> - [WASI Preview 2](https://wasi.dev)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：WASM 组件模型提供了真正的语言无关二进制复用，但生态与工具链仍在快速演进。

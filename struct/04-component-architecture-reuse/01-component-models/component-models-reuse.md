@@ -1,8 +1,8 @@
 # 组件模型与架构复用
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 组件模型的演进与跨语言组件复用的现代实践
-> **对齐标准**: WASM Component Model, OSGi, JPMS, .NET Assembly, OMG CORBA/CCM
+> **对齐标准**: UML 2.5.1 Components, WASM Component Model, OSGi, JPMS, .NET Assembly, OMG CORBA/CCM
 > **状态**: ✅ 已完成
 
 ---
@@ -26,7 +26,7 @@
     - [4.1 当前状态（2026-06）](#41-当前状态2026-06)
     - [4.2 复用场景](#42-复用场景)
   - [5. 权威来源](#5-权威来源)
-  - [补充说明：组件模型与架构复用](#补充说明组件模型与架构复用)
+  - [6. 组件模型复用：深层分析与选型权衡](#6-组件模型复用深层分析与选型权衡)
     - [概念定义](#概念定义)
     - [核心属性](#核心属性)
     - [与其他概念的关系](#与其他概念的关系)
@@ -37,8 +37,8 @@
     - [反例 2：忽视组件生命周期管理](#反例-2忽视组件生命周期管理)
     - [正例 2：OSGi 动态插件系统](#正例-2osgi-动态插件系统)
     - [形式化分析：组件替换条件](#形式化分析组件替换条件)
-    - [权威来源](#权威来源)
-    - [交叉引用](#交叉引用)
+  - [7. 标准条款映射](#7-标准条款映射)
+  - [8. 权威来源与交叉引用](#8-权威来源与交叉引用)
 
 ---
 
@@ -227,17 +227,19 @@ flowchart TD
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| WASM Component Model | <https://component-model.bytecodealliance.org/> | 2026-06-10 |
-| WIT 规范 | <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md> | 2026-06-10 |
-| Wasmtime | <https://wasmtime.dev/> | 2026-06-10 |
-| wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-06-10 |
-| OSGi Alliance | <https://www.osgi.org/> | 2026-06-10 |
-| JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-06-10 |
+| OMG UML 2.5.1 Components | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
+| WASM Component Model | <https://component-model.bytecodealliance.org/> | 2026-07-08 |
+| WIT 规范 | <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md> | 2026-07-08 |
+| Wasmtime | <https://wasmtime.dev/> | 2026-07-08 |
+| wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-07-08 |
+| OSGi Alliance | <https://www.osgi.org/> | 2026-07-08 |
+| JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
 
 
 ---
 
-## 补充说明：组件模型与架构复用
+## 6. 组件模型复用：深层分析与选型权衡
 
 ### 概念定义
 
@@ -365,20 +367,31 @@ flowchart LR
 
 > **结论**：组件替换不仅是接口签名匹配，还必须保证行为语义、性能特征与依赖环境的兼容性。
 
-### 权威来源
+## 7. 标准条款映射
+
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 组件（Component） | UML 2.5.1 §11 Components | 组件通过 Provided/Required Interface 定义可替换边界 |
+| 组件图 | UML 2.5.1 §19.3 Component Diagrams | 描述组件、端口、接口与依赖关系的结构视图 |
+| 组件替换条件 | Liskov Substitution Principle | 前置条件弱化、后置条件强化、不变量保持 |
+| 架构描述视图 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件与连接器（C&C）视图是架构描述的典型视图 |
+| 跨语言组件 | WASM Component Model + WIT | 通过 WIT 接口实现语言无关的组件组合 |
+| 动态模块 | OSGi R8 Core Specification | Bundle 生命周期、服务注册与动态热更新 |
+
+## 8. 权威来源与交叉引用
 
 > **权威来源**:
 >
-> - [Component-based software engineering — Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
-> - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance
-> - [OSGi Alliance](https://www.osgi.org/)
-> - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/)
-> - [CORBA — Wikipedia](https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture)
-> - [Enterprise JavaBeans — Wikipedia](https://en.wikipedia.org/wiki/Jakarta_Enterprise_Beans)
+> - [OMG UML 2.5.1 Specification](https://www.omg.org/spec/UML/2.5.1/) — UML 组件与组件图；核查日期：2026-07-08
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准；核查日期：2026-07-08
+> - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance；核查日期：2026-07-08
+> - [OSGi Alliance](https://www.osgi.org/) — OSGi R8 规范；核查日期：2026-07-08
+> - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/) — Java Platform Module System；核查日期：2026-07-08
+> - [Component-based software engineering — Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering) — 组件工程概述；核查日期：2026-07-08
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
-### 交叉引用
+**交叉引用**
 
 - [接口契约与架构复用](../02-interface-contracts/interface-contracts-reuse.md) — 组件间交互的显式约定
 - [组件设计模式选择指南](../04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用

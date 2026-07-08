@@ -68,11 +68,6 @@
     - [15.4 正例：统一量表锚定](#154-正例统一量表锚定)
     - [15.5 反例：跨团队直接比较导致误判](#155-反例跨团队直接比较导致误判)
     - [交叉引用](#交叉引用-2)
-  - [补充说明：开发者复用决策的认知负荷量化模型](#补充说明开发者复用决策的认知负荷量化模型)
-  - [概念定义](#概念定义)
-  - [示例](#示例)
-  - [反例](#反例)
-  - [分析](#分析)
 
 ---
 
@@ -161,6 +156,8 @@ CL_total = CL_intrinsic + CL_extraneous + CL_germane
   CL_germane → max        (设计目标：最大化相关负荷)
 ```
 
+**解释**：该公式直接来自 Sweller (1988, 2011) 的三维认知负荷模型。总负荷是三类负荷之和，但工作记忆容量 `CL_capacity` 存在上限（Cowan, 2001 估计为 4±1 个组块）。当 `CL_total` 超过容量上限时，理解失败、决策延迟或错误率上升。设计目标不是降低总负荷到零，而是在容量约束内将外在负荷最小化、相关负荷最大化。
+
 ### 3.2 复用决策专用公式
 
 ```text
@@ -176,6 +173,20 @@ CL_reuse(Decision) = α × I_complexity + β × E_design + γ × G_learning
   β = 0.35 (外在负荷权重，设计可控)
   γ = 0.25 (相关负荷权重，学习收益)
 ```
+
+**解释**：
+
+- `I_complexity`（内在复杂度）反映任务本身难度，由领域、接口、依赖和语义跨度决定。它**不可通过设计消除**，但可通过培训、DSL 或分层抽象来降低。
+- `E_design`（外在设计负荷）反映信息呈现与工具设计带来的摩擦，是**最应优化的杠杆**。改进文档、搜索、命名、版本策略可直接降低此项。
+- `G_learning`（相关学习负荷）反映促进长期图式建构的投入，**不应被过度削减**。零配置工具虽短期降低负荷，但可能损害此项。
+- 系数 α/β/γ 基于 Sweller (2011) 与 Paas & van Merriënboer (1993) 的实验证据设置，组织应通过本地数据校准（见第 14 章贝叶斯校准）。
+
+**可操作性**：
+
+1. 为每个维度定义 0–100 的评分量表（见第 8.2 节参数属性表）。
+2. 在复用评审会上，由领域专家、工具团队和真实开发者分别打分。
+3. 计算 `CL_reuse` 并与组织基线（第 13.2 节）比较。
+4. 若总负荷超标，优先优化 `E_design`（高可控、快见效），再考虑 `I_complexity`（需重构或培训）。
 
 ### 3.3 各阶段负荷分解
 
@@ -234,6 +245,15 @@ CL_NASA_TLX_Adapted = Σ(w_i × r_i) / Σ(w_i)
   体力需求: 0.01
   挫败感: 0.01
 ```
+
+**解释**：NASA-TLX 原始量表通过 15 次两两比较确定六个维度的权重（Hart & Staveland, 1988）。本适配版保留了原始六维，并增加了四个复用专用维度。权重参考值基于对复用场景的诊断重要性设定：心智需求、文档清晰度、接口直观性和搜索效率是复用决策中最常见的外在负荷来源。
+
+**可操作性**：
+
+1. **轻量使用**：日常每次复用决策后，开发者用 1–2 分钟对 10 个维度做 0–100 的直观评分，使用固定权重即可得到 `CL_NASA_TLX_Adapted`。
+2. **深度使用**：季度调研时使用完整两两比较法重新估计权重，捕捉组织当前的主要瓶颈。
+3. **阈值建议**：`CL_NASA_TLX_Adapted ≥ 60` 视为高负荷，应触发设计审查；`≥ 75` 视为不可接受，必须优化。
+4. **与 CL_reuse 衔接**：NASA-TLX 评分可作为 `E_design` 中 Doc、Se、N、V、C 等参数的校准输入（第 8.3 节）。
 
 ---
 
@@ -528,11 +548,14 @@ flowchart TD
 >
 > - [Wikipedia - Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load)
 > - [Wikipedia - Cognitive Load Theory](https://en.wikipedia.org/wiki/Cognitive_load_theory)
-> - [NASA-TLX - Human Performance Research Group](https://humansystems.arc.nasa.gov/groups/TLX/)
-> - [Sweller - Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-010-9135-0)
-> - [Paas & van Merriënboer - Learning and Instruction](https://www.sciencedirect.com/science/article/pii/0959475893900106)
+> - [NASA Task Load Index (TLX)](https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/)
+> - [Sweller, J. (2011). Cognitive Load Theory. *Psychology of Learning and Motivation*, 55, 37–76](https://doi.org/10.1016/B978-0-12-387691-1.00002-8)
+> - [Sweller, J. (2010). Element interactivity and intrinsic, extraneous, and germane cognitive load. *Educational Psychology Review*, 22, 123–138](https://doi.org/10.1007/s10648-010-9128-5)
+> - [Paas, F. G. W. C., & van Merriënboer, J. J. G. (1993). Variability of worked examples and transfer of geometrical problem-solving skills. *Learning and Instruction*, 3, 105–114](https://doi.org/10.1016/0959-4752(93)90010-6)
+> - [Cowan, N. (2001). The magical number 4 in short-term memory. *Behavioral and Brain Sciences*, 24(1), 87–114](https://doi.org/10.1017/S0140525X01003922)
+> - [Hart, S. G., & Staveland, L. E. (1988). Development of NASA-TLX. *Advances in Psychology*, 52, 139–183](https://ntrs.nasa.gov/api/citations/20000021487/downloads/20000021487.pdf)
 > - [DORA - State of DevOps](https://dora.dev/research/)
-> - 核查日期：2026-07-07
+> - 核查日期：2026-07-09
 
 ### 交叉引用
 
@@ -606,9 +629,10 @@ flowchart TD
 >
 > - [Wikipedia - Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load)
 > - [Wikipedia - Cognitive Load Theory](https://en.wikipedia.org/wiki/Cognitive_load_theory)
-> - [NASA-TLX - Human Performance Research Group](https://humansystems.arc.nasa.gov/groups/TLX/)
+> - [NASA Task Load Index (TLX)](https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/)
 > - [Bayesian inference - Wikipedia](https://en.wikipedia.org/wiki/Bayesian_inference)
-> - 核查日期：2026-07-07
+> - [Sweller, J. (2011). Cognitive Load Theory](https://doi.org/10.1016/B978-0-12-387691-1.00002-8)
+> - 核查日期：2026-07-09
 
 ### 交叉引用
 
@@ -658,9 +682,10 @@ flowchart TD
 >
 > - [Wikipedia - Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load)
 > - [Wikipedia - Cognitive Load Theory](https://en.wikipedia.org/wiki/Cognitive_load_theory)
-> - [NASA-TLX - Human Performance Research Group](https://humansystems.arc.nasa.gov/groups/TLX/)
+> - [NASA Task Load Index (TLX)](https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/)
 > - [Measurement invariance - Wikipedia](https://en.wikipedia.org/wiki/Measurement_invariance)
-> - 核查日期：2026-07-07
+> - [Putnick, D. L., & Bornstein, M. H. (2016). Measurement invariance conventions and reporting. *Psychological Methods*, 21(1), 69–90](https://doi.org/10.1037/met0000063)
+> - 核查日期：2026-07-09
 
 ### 交叉引用
 
@@ -668,25 +693,4 @@ flowchart TD
 - 与 [AI 辅助复用决策的认知增强架构设计](../05-ai-cognitive-augmentation/augmentation-architecture.md) 关联：AI 收集的行为数据可用于校正社会期望偏差。
 - 与 [架构复用 ROI 框架](../../09-value-quantification/02-roi-npv-models/roi-framework.md) 关联：校正后的基线是培训投资决策的依据。
 
-> 最后更新: 2026-06-06
-
-
----
-
-## 补充说明：开发者复用决策的认知负荷量化模型
-
-## 概念定义
-
-**定义**：认知负荷理论（Cognitive Load Theory, CLT）描述工作记忆容量有限性，将负荷分为内在负荷、外在负荷与相关负荷，指导学习材料与工具设计。
-
-## 示例
-
-**示例**：平台工程团队将 Golden Path 文档按“决策树 + 可运行模板 + 失败案例”组织，减少外在认知负荷，使开发者 10 分钟即可上手复用。
-
-## 反例
-
-**反例**：某平台要求开发者阅读 50 页 Markdown 才能部署首个服务，外在负荷过高，新用户流失率超过 60%。
-
-## 分析
-
-**分析**：认知负荷理论是复用采纳的关键人因指标，文档与工具应以降低外在负荷为设计目标。
+> 最后更新: 2026-07-09

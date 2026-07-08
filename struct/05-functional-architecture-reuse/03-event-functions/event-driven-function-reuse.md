@@ -1,8 +1,8 @@
 # 事件驱动函数复用模式
 
-> **版本**: 2026-06-10
+> **版本**: 2026-07-08
 > **定位**: 功能架构层 —— 事件驱动架构中的函数复用：schema、路由与模式
-> **对齐标准**: CloudEvents, AsyncAPI, Apache Kafka, Knative Eventing, AWS EventBridge, Azure Event Grid
+> **对齐标准**: CloudEvents 1.0, AsyncAPI 3.x, Apache Kafka, Knative Eventing, AWS EventBridge, Azure Event Grid, Enterprise Integration Patterns
 > **状态**: ✅ 已完成
 
 ---
@@ -31,11 +31,14 @@
     - [6.1 架构](#61-架构)
     - [6.2 可复用组件](#62-可复用组件)
   - [7. 权威来源](#7-权威来源)
-  - [补充说明：事件驱动函数复用模式](#补充说明事件驱动函数复用模式)
-  - [概念定义](#概念定义)
-  - [分析](#分析)
+  - [8. 标准条款映射](#8-标准条款映射)
+  - [9. 权威来源](#9-权威来源)
 
 ---
+
+## 核心概念定义
+
+事件驱动函数复用是指在事件驱动架构（EDA）与函数即服务（FaaS）上下文中，将事件 Schema、事件路由、过滤、转换、 Saga 补偿、投影等逻辑封装为可复用函数资产，并通过标准化契约在多个事件流与消费者之间共享的实践。
 
 ## 1. 事件驱动函数概述
 
@@ -281,29 +284,53 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 
 ---
 
+## 收益与风险分析
+
+事件驱动函数复用的核心价值在于解耦生产者与消费者、缩短变更传播路径，并通过 Schema 注册中心与 CloudEvents 等标准降低跨平台集成成本。因此，在采用该模式时，应优先复用经过兼容性验证的 Schema 与路由函数，避免在事件链路中引入隐式契约或不可补偿的长事务。
+
+---
+
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| CloudEvents | <https://cloudevents.io/> | 2026-06-10 |
-| AsyncAPI | <https://www.asyncapi.com/> | 2026-06-10 |
-| Apache Kafka | <https://kafka.apache.org/> | 2026-06-10 |
-| Knative Eventing | <https://knative.dev/docs/eventing/> | 2026-06-10 |
-| AWS EventBridge | <https://aws.amazon.com/eventbridge/> | 2026-06-10 |
-| Azure Event Grid | <https://azure.microsoft.com/services/event-grid/> | 2026-06-10 |
-| Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-06-10 |
-| Saga Pattern (Microservices.io) | <https://microservices.io/patterns/data/saga.html> | 2026-06-10 |
-| Event Sourcing (Martin Fowler) | <https://martinfowler.com/eaaDev/EventSourcing.html> | 2026-06-10 |
+| CloudEvents | <https://cloudevents.io/> | 2026-07-08 |
+| AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
+| Apache Kafka | <https://kafka.apache.org/> | 2026-07-08 |
+| Knative Eventing | <https://knative.dev/docs/eventing/> | 2026-07-08 |
+| AWS EventBridge | <https://aws.amazon.com/eventbridge/> | 2026-07-08 |
+| Azure Event Grid | <https://azure.microsoft.com/services/event-grid/> | 2026-07-08 |
+| Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-07-08 |
+| Saga Pattern (Microservices.io) | <https://microservices.io/patterns/data/saga.html> | 2026-07-08 |
+| Event Sourcing (Martin Fowler) | <https://martinfowler.com/eaaDev/EventSourcing.html> | 2026-07-08 |
 
 
 ---
 
-## 补充说明：事件驱动函数复用模式
+## 8. 标准条款映射
 
-## 概念定义
+| 本主题概念 | 对应标准/文献 | 映射说明 |
+|:---|:---|:---|
+| 事件封装格式 | CloudEvents 1.0 Specification | 跨平台事件元数据标准（specversion, type, source, id, data） |
+| 异步 API 契约 | AsyncAPI 3.x | 事件驱动 API 的通道、消息、Schema 定义标准 |
+| 消息路由模式 | Enterprise Integration Patterns (Hohpe & Woolf) | Content-Based Router, Message Filter, Recipient List, Aggregator |
+| 分布式事务 | Saga Pattern | 长事务拆分与补偿操作模式 |
+| 事件溯源 | Event Sourcing (Fowler, 2005) | 状态变化记录为不可变事件序列 |
+| 流处理 | Apache Kafka / Kafka Streams | 分区、窗口、聚合、连接等流处理语义 |
+| Serverless 事件 | AWS EventBridge / Azure Event Grid / Knative Eventing | 云原生事件路由与函数触发 |
 
-**定义**：事件函数复用是将事件处理逻辑封装为可复用函数，并通过事件 Schema、路由规则与错误处理策略实现跨系统的事件驱动集成。
+## 9. 权威来源
 
-## 分析
-
-**分析**：事件函数复用的关键在于统一事件契约与处理语义，避免隐式依赖。
+> **权威来源**:
+>
+> - [CloudEvents 1.0 Specification](https://cloudevents.io/) — CNCF 事件标准；核查日期：2026-07-08
+> - [AsyncAPI Specification](https://www.asyncapi.com/) — 异步 API 契约标准；核查日期：2026-07-08
+> - [Apache Kafka Documentation](https://kafka.apache.org/documentation/) — 流处理平台；核查日期：2026-07-08
+> - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/) — Hohpe & Woolf 消息模式；核查日期：2026-07-08
+> - [Saga Pattern (Microservices.io)](https://microservices.io/patterns/data/saga.html) — 分布式事务模式；核查日期：2026-07-08
+> - [Event Sourcing (Martin Fowler)](https://martinfowler.com/eaaDev/EventSourcing.html) — 事件溯源模式；核查日期：2026-07-08
+> - [Knative Eventing](https://knative.dev/docs/eventing/) — Kubernetes 事件编排；核查日期：2026-07-08
+> - [AWS EventBridge](https://aws.amazon.com/eventbridge/) — 无服务器事件总线；核查日期：2026-07-08
+> - [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) — Azure 事件路由服务；核查日期：2026-07-08
+>
+> **核查日期**: 2026-07-08

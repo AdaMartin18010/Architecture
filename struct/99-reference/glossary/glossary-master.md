@@ -119,7 +119,7 @@
 - **示例**: 在安全视图中标识的"认证服务"对应到应用视图中的"AuthService"组件，两者通过对应关系绑定。
 - **反例**: 多个视图中使用同名但不同义的"服务"概念，未建立对应关系，导致架构评审时无法发现冲突。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -339,7 +339,7 @@
 - **示例**: "安全性视图"使用威胁模型（STRIDE）与攻击树两种 Model Kind 来表达不同安全关注点。
 - **反例**: 将 UML 部署图与网络拓扑图混用而不说明 Model Kind，导致同一符号在不同图中含义不同。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -597,7 +597,7 @@
 - **示例**: 安全团队关注数据隔离，财务团队关注成本分摊，开发团队关注易用性；三者需要不同视图表达。
 - **反例**: 架构描述未识别安全审计人员为利益相关者，导致复用方案未考虑合规要求。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -703,7 +703,7 @@
 - **示例**: "性能视点"关注响应时间、吞吐量、资源使用，使用性能模型与瓶颈分析技术。
 - **反例**: 一个视图混合了安全、性能与业务逻辑三种关注点，未采用不同视点，导致沟通效率低下。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
 ---
@@ -729,6 +729,29 @@
   - [WebAssembly Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance
   - [WASI Preview 2](https://wasi.dev/) — WASI
   - 核查日期：2026-07-07
+
+---
+
+## 附录：术语一致性示例与反例
+
+### 正向示例
+
+**示例**：在 `glossary-master.md` 中统一采用 TOGAF 与 BIZBOK 的"业务能力"定义，并在所有主题 README 中引用该定义。当 `02-business-architecture-reuse` 新增"业务能力"用法时，通过 `tools/terminology-query.py` 自动校验其描述与术语表一致，避免了跨文档语义偏差。
+
+### 反例
+
+**反例**：术语表将"业务能力"定义为"组织结构单元"，而正文中将其定义为"独立于组织的稳定能力"。审计时发现同一术语存在两种定义，导致业务架构师与解决方案架构师在复用评估会议上产生分歧，培训材料被迫返工。
+
+---
+
+## 附录：权威来源与核查日期
+
+> 本术语表的定义优先对齐以下权威来源：
+>
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-09）
+> - [OMG BPMN 2.0](https://www.omg.org/spec/BPMN/) — Object Management Group（核查日期：2026-07-09）
 
 ---
 

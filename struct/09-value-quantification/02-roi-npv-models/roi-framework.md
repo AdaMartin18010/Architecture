@@ -5,7 +5,16 @@
 
 ---
 
-## 1. ROI 计算模型
+## 1. 核心概念定义
+
+- **投资回报率（ROI）**：项目总收益与总成本之间的比率，衡量投资的相对盈利能力。
+- **净现值（NPV）**：将未来现金流按折现率折算到当前时点的价值总和，用于判断项目是否创造价值。
+- **内部收益率（IRR）**：使 NPV = 0 的折现率，用于比较不同规模项目的收益率。
+- **总拥有成本（TCO）**：资产全生命周期内的所有直接和间接成本总和。
+- **实物期权（Real Options）**：在高度不确定环境中，管理者拥有的延迟、扩展、缩减或转换投资的灵活性价值。
+- **复用经济性**：将复用资产视为投资，评估其直接收益、间接收益、战略收益与全生命周期成本。
+
+## 2. ROI 计算模型
 
 ```text
 ROI = (Benefit_total - Cost_total) / Cost_total × 100%
@@ -36,7 +45,7 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 
 ---
 
-## 2. 成本构成
+## 3. 成本构成
 
 ```text
 复用总成本
@@ -55,9 +64,40 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
     └── 机会成本
 ```
 
+### 2.1 TCO 与 FinOps Unit Economics 映射
+
+将复用投资与云财务运营（FinOps）对齐，可引入 Total Cost of Ownership（TCO）与 Unit Economics 两个视角：
+
+| 视角 | 公式 | 作用 |
+|:---|:---|:---|
+| **TCO（3 年）** | `TCO = 初始投资 + Σ(年度运营成本_t) + 退役/迁移成本` | 比较自研、复用、COTS 的全生命周期总成本 |
+| **单位经济** | `Unit Cost = 归因技术成本 / 业务产出单位` | 将云/平台成本映射到每次 API 调用、每用户、每交易 |
+| **边际单位成本** | `MCU = Δ成本 / Δ产出单位` | 判断复用带来的规模经济是否改善 |
+
+FinOps Foundation 将 Unit Economics 定义为“将技术支出与其创造的价值关联的度量体系”。在复用场景中，典型单位包括：
+
+- **成本 per API call**：复用中间件每次调用的摊薄成本。
+- **成本 per active user**：平台工程（IDP）每活跃用户的成本。
+- **成本 per token**：AI 复用模型每次推理的 token 成本。
+
+**计算示例（FinOps Unit Economics）**：
+
+某内部消息中间件月运行云成本 ¥80,000，月处理 API 调用 2 亿次：
+
+```text
+Cost per API call = 80,000 / 200,000,000 = ¥0.0004/次
+```
+
+若通过复用优化使月成本降至 ¥60,000 且调用量升至 3 亿次：
+
+```text
+新 Cost per API call = 60,000 / 300,000,000 = ¥0.0002/次
+单位成本下降 50%
+```
+
 ---
 
-## 3. 关键定理
+## 4. 关键定理
 
 > **定理 V.T1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
 > **定理 V.T2** (Break-Even Point):
@@ -70,7 +110,7 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 
 ---
 
-## 4. 实用评估模板
+## 5. 实用评估模板
 
 | 项目 | 自研方案 | 复用方案 | 差异 |
 |------|---------|---------|------|
@@ -83,13 +123,13 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 
 ---
 
-## 5. 形式化定义与框架边界
+## 6. 形式化定义与框架边界
 
-### 5.1 ROI 框架定义
+### 6.1 ROI 框架定义
 
 **定义**：架构复用 ROI 框架是一套将复用资产的全生命周期现金流（成本与收益）系统化识别、量化、贴现并比较的方法论。其目标不是追求单一指标的最大化，而是在给定风险偏好、时间 horizon 与战略约束下，选择使组织长期价值最大化的复用投资组合。
 
-### 5.2 收益属性表
+### 6.2 收益属性表
 
 | 收益类型 | 属性 | 可量化性 | 典型折现处理 | 风险特征 |
 |---------|------|---------|-------------|---------|
@@ -97,7 +137,7 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 | 间接收益 | 上市时间、一致性、技能杠杆 | 中 | 概率加权 | 中 |
 | 战略收益 | 生态、能力、合规、估值溢价 | 低 | 实物期权或情景分析 | 高 |
 
-### 5.3 成本属性表
+### 6.3 成本属性表
 
 | 成本类型 | 属性 | 发生时间 | 可预测性 | 常见低估原因 |
 |---------|------|---------|---------|-------------|
@@ -105,9 +145,9 @@ Cost_total = Cost_initial + Cost_maintain + Cost_adaptation
 | 维护成本 | 版本升级、兼容性、文档 | 持续 | 中 | 供应商变更、技术栈演进 |
 | 隐性成本 | 锁定、债务、机会成本 | 未来 | 低 | 短期视角、缺乏治理 |
 
-## 6. 核心计算公式体系
+## 7. 核心计算公式体系
 
-### 6.1 净现值（NPV）
+### 7.1 净现值（NPV）
 
 ```text
 NPV = Σ(t=0..n) [CF_t / (1 + r)^t]
@@ -120,7 +160,7 @@ NPV = Σ(t=0..n) [CF_t / (1 + r)^t]
 
 **决策规则**：NPV > 0 时项目创造价值；多个互斥方案选 NPV 最大者。
 
-### 6.2 内部收益率（IRR）
+### 7.2 内部收益率（IRR）
 
 ```text
 NPV = 0 = Σ(t=0..n) [CF_t / (1 + IRR)^t]
@@ -128,7 +168,7 @@ NPV = 0 = Σ(t=0..n) [CF_t / (1 + IRR)^t]
 
 **决策规则**：IRR > 要求回报率时接受项目。IRR 对非常规现金流（符号多次变化）可能失效，需结合 NPV。
 
-### 6.3 投资回收期（Payback Period）
+### 7.3 投资回收期（Payback Period）
 
 ```text
 PP = min{T | Σ(t=0..T) CF_t ≥ 0}
@@ -136,7 +176,7 @@ PP = min{T | Σ(t=0..T) CF_t ≥ 0}
 
 **决策规则**：常用于风险较高的早期项目，但忽略回收期后的现金流。
 
-### 6.4 收益成本比（BCR）
+### 7.4 收益成本比（BCR）
 
 ```text
 BCR = PV(Benefits) / PV(Costs)
@@ -144,7 +184,7 @@ BCR = PV(Benefits) / PV(Costs)
 
 **决策规则**：BCR > 1 表示每投入 1 元可获得超过 1 元现值收益。
 
-### 6.5 动态盈亏平衡使用次数
+### 7.5 动态盈亏平衡使用次数
 
 结合定理 V.T2，考虑时间价值后：
 
@@ -154,7 +194,7 @@ N* = C_initial / [Σ(t=1..n) (S_build - S_reuse)_t / (1 + r)^t]
 
 当预计复用次数的现值累计超过 N* 时，投资复用基础设施才经济。
 
-## 7. NPV / IRR / 实物期权对比矩阵
+## 8. NPV / IRR / 实物期权对比矩阵
 
 | 维度 | NPV | IRR | 实物期权（Real Options） |
 |------|-----|-----|------------------------|
@@ -167,9 +207,9 @@ N* = C_initial / [Σ(t=1..n) (S_build - S_reuse)_t / (1 + r)^t]
 | **软件复用示例** | 平台工程 3 年现金流 | 平台工程收益率 | 是否等待新框架成熟再投资 |
 | **主要局限** | 折现率主观 | 多解/无解风险 | 参数估计困难 |
 
-## 8. 计算示例：平台工程 ROI 分析
+## 9. 计算示例
 
-### 8.1 场景设定
+### 示例 1：平台工程 ROI 分析
 
 某企业投资平台工程团队，构建内部开发者平台（IDP），预计：
 
@@ -183,7 +223,7 @@ N* = C_initial / [Σ(t=1..n) (S_build - S_reuse)_t / (1 + r)^t]
   - Year 4: ¥1,100,000
   - Year 5: ¥1,000,000
 
-### 8.2 NPV 计算
+### NPV 计算
 
 ```text
 NPV = -2,000,000 + 600,000/(1.1)^1 + 900,000/(1.1)^2 + 1,200,000/(1.1)^3 + 1,100,000/(1.1)^4 + 1,000,000/(1.1)^5
@@ -193,7 +233,7 @@ NPV = -2,000,000 + 600,000/(1.1)^1 + 900,000/(1.1)^2 + 1,200,000/(1.1)^3 + 1,100
 
 **NPV ≈ ¥156.3 万 > 0，项目创造价值。**
 
-### 8.3 ROI 计算
+### ROI 计算
 
 ```text
 总收益现值 = 545,455 + 743,802 + 901,578 + 751,315 + 620,921 = 3,563,071
@@ -201,11 +241,11 @@ NPV = -2,000,000 + 600,000/(1.1)^1 + 900,000/(1.1)^2 + 1,200,000/(1.1)^3 + 1,100
 ROI = (3,563,071 - 2,000,000) / 2,000,000 × 100% = 78.15%
 ```
 
-### 8.4 IRR 估算
+### IRR 估算
 
 通过迭代求解 NPV=0，可得 IRR ≈ 32.4%，远高于 10% 的要求回报率，项目吸引力强。
 
-### 8.5 盈亏平衡分析
+### 盈亏平衡分析
 
 假设每年节省相同 S = ¥800,000：
 
@@ -215,7 +255,7 @@ N* = C_initial / S = 2,000,000 / 800,000 = 2.5 年
 
 若平台在第 2.5 年内累计节省超过初始投资，则回收期可接受。
 
-## 9. Mermaid 流程图：复用投资决策流程
+## 10. Mermaid 流程图：复用投资决策流程
 
 ```mermaid
 flowchart TD
@@ -237,9 +277,11 @@ flowchart TD
     L --> O[记录决策理由与风险]
 ```
 
-## 10. 反例与常见陷阱
+## 11. 反例
 
-### 10.1 反例一：只算一次性采购成本
+### 反例 1：只算一次性采购成本
+
+**反例**：某团队引入商业消息队列，只计算许可证费用 ¥50 万，宣称 ROI 为正。
 
 某团队引入商业消息队列，只计算许可证费用 ¥50 万，宣称 ROI 为正。三年后实际：
 
@@ -250,42 +292,51 @@ flowchart TD
 
 总成本 ¥220 万，远超自研或开源替代方案，实际 ROI 为 -45%。
 
-### 10.2 反例二：收益过度乐观
+### 反例 2：收益过度乐观
+
+**反例**：某平台工程团队假设“所有开发团队 100% 采用 Golden Path”。
 
 某平台工程团队假设“所有开发团队 100% 采用 Golden Path”，按此计算 3 年 ROI 为 150%。实际采用率仅 55%，且部分团队因定制化需求绕过平台，真实 ROI 为 -10%。
 
-### 10.3 反例三：忽视机会成本
+### 反例 3：忽视机会成本
+
+**反例**：某企业将核心架构团队长期投入低价值组件库维护。
 
 某企业将核心架构团队长期投入低价值组件库维护，错失了 AI 辅助开发工具的投资窗口。虽然该组件库 ROI 为正，但**战略机会成本**使组织整体竞争力下降。
 
-### 10.4 反例四：IRR 误导
+### 反例 4：IRR 误导
+
+**反例**：某小型复用项目 IRR 高达 80%，但 NPV 仅 ¥5 万。
 
 某小型复用项目 IRR 高达 80%，但 NPV 仅 ¥5 万；另一大型平台项目 IRR 25%，NPV ¥500 万。若仅按 IRR 排序，会错误选择小项目，忽视绝对价值创造。
 
-## 11. 权威来源与交叉引用
+## 12. 权威来源与交叉引用
 
-> **权威来源**:
->
-> - [Investopedia - NPV](https://www.investopedia.com/terms/n/npv.asp)
-> - [Investopedia - IRR](https://www.investopedia.com/terms/i/irr.asp)
-> - [Investopedia - ROI](https://www.investopedia.com/terms/r/returnoninvestment.asp)
-> - [Wikipedia - Net Present Value](https://en.wikipedia.org/wiki/Net_present_value)
-> - [Wikipedia - Internal Rate of Return](https://en.wikipedia.org/wiki/Internal_rate_of_return)
-> - [FinOps Foundation](https://www.finops.org)
-> - [Gartner - Total Cost of Ownership](https://www.gartner.com/en/information-technology/glossary/total-cost-of-ownership-tco)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Investopedia — NPV | <https://www.investopedia.com/terms/n/npv.asp> | 2026-07-09 |
+| Investopedia — IRR | <https://www.investopedia.com/terms/i/irr.asp> | 2026-07-09 |
+| Investopedia — ROI | <https://www.investopedia.com/terms/r/returnoninvestment.asp> | 2026-07-09 |
+| Wikipedia — Net Present Value | <https://en.wikipedia.org/wiki/Net_present_value> | 2026-07-09 |
+| Wikipedia — Internal Rate of Return | <https://en.wikipedia.org/wiki/Internal_rate_of_return> | 2026-07-09 |
+| FinOps Foundation — Framework | <https://www.finops.org/framework/> | 2026-07-09 |
+| FinOps Foundation — Unit Economics | <https://www.finops.org/framework/capabilities/unit-economics/> | 2026-07-09 |
+| FinOps Foundation — Cloud Unit Economics Intro | <https://www.finops.org/wg/introduction-cloud-unit-economics/> | 2026-07-09 |
+| Gartner — Total Cost of Ownership | <https://www.gartner.com/en/information-technology/glossary/total-cost-of-ownership-tco> | 2026-07-09 |
+| GSF — SCI for AI | <https://sci-for-ai.greensoftware.foundation/> | 2026-07-09 |
 
 ### 交叉引用
 
 - 与 [COCOMO II 复用模型深度解析](../01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md) 配合：将 COCOMO II 估算的工作量与成本输入 ROI 框架。
 - 与 [软件复用的 ROI、实物期权与战略价值量化](./roi-real-options-strategic-value.md) 配合：当项目具有高度不确定性时，用实物期权补充 NPV/IRR。
 - 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：培训与理解成本是 ROI 中常被低估的隐性成本。
+- 可运行工具：[`../tools/cocomo-calculator.py`](../tools/cocomo-calculator.py) 提供 PM/成本估算输入，可结合本文件 NPV/IRR 计算使用。
 
 ---
 
-## 12. 决策树在复用投资决策中的应用
+## 13. 决策树在复用投资决策中的应用
 
-### 12.1 形式化定义
+### 14.1 形式化定义
 
 **定义**：决策树（Decision Tree）是一种将复用投资决策中的决策节点（方框）、机会节点（圆圈）与结果节点（三角）按时间顺序展开的可视化分析工具。通过为每个机会分支赋予概率与现金流，可计算各策略的期望 NPV（ENPV），从而比较“新开发 / 白盒复用 / 黑盒复用 / 购买 COTS”等多路径方案。
 
@@ -295,7 +346,7 @@ flowchart TD
 - 决策树回答“在哪些条件下选择哪条路径”；
 - 两者结合形成“动态 NPV”分析，即在不同信息状态下选择最优行动。
 
-### 12.2 决策树节点属性表
+### 13.2 决策树节点属性表
 
 | 节点类型 | 符号 | 含义 | 计算方式 |
 |---------|------|------|---------|
@@ -304,7 +355,7 @@ flowchart TD
 | 结果节点 | △ | 最终现金流与收益 | 收益 - 成本（已折现） |
 | 终止节点 | — | 不再继续 | 0 或残值 |
 
-### 12.3 与新开发/复用/购买的对比关系
+### 13.3 与新开发/复用/购买的对比关系
 
 决策树将第 8 章的 ROI 计算扩展为多阶段动态结构：
 
@@ -332,7 +383,7 @@ graph TD
     B --> O[max ENPV]
 ```
 
-### 12.4 计算示例：消息中间件获取决策
+### 13.4 计算示例：消息中间件获取决策
 
 某企业需要消息中间件，面临四种选择：
 
@@ -345,17 +396,17 @@ graph TD
 
 按 ENPV 排序：黑盒复用（84 万）> 购买 COTS（72.5 万）> 新开发（51 万）> 白盒复用（36 万）。因此，在接口兼容概率可信的前提下，优先选择黑盒复用。
 
-### 12.5 反例：静态概率导致错误选择
+### 13.5 反例：静态概率导致错误选择
 
 某团队评估开源组件时，将“接口兼容概率”固定为 90%，未考虑该组件版本更新频繁、社区活跃度下降的风险。一年后兼容性失败，实际 ENPV 从估算的 +90 万变为 -40 万。问题根源在于决策树概率未随外部信息更新，也未设置阶段门控。
 
-> **权威来源**:
->
-> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
-> - [Wikipedia - Net Present Value](https://en.wikipedia.org/wiki/Net_present_value)
-> - [Wikipedia - Decision Tree](https://en.wikipedia.org/wiki/Decision_tree)
-> - [Investopedia - Decision Tree Analysis](https://www.investopedia.com/terms/d/decision-tree.asp)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Wikipedia — Return on Investment | <https://en.wikipedia.org/wiki/Return_on_investment> | 2026-07-09 |
+| Wikipedia — Net Present Value | <https://en.wikipedia.org/wiki/Net_present_value> | 2026-07-09 |
+| Wikipedia — Decision Tree | <https://en.wikipedia.org/wiki/Decision_tree> | 2026-07-09 |
+| Investopedia — Decision Tree Analysis | <https://www.investopedia.com/terms/d/decision-tree.asp> | 2026-07-09 |
+| FinOps Foundation — Unit Economics | <https://www.finops.org/framework/capabilities/unit-economics/> | 2026-07-09 |
 
 ### 交叉引用
 
@@ -363,13 +414,13 @@ graph TD
 - 与 [软件复用的 ROI、实物期权与战略价值量化](./roi-real-options-strategic-value.md) 配合：决策树是实物期权分析的离散化实现形式。
 - 与 [认知负荷理论与架构复用](../../08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md) 关联：决策树也可用于评估不同文档/培训策略对认知负荷的影响。
 
-## 13. 多项目复用投资组合的 NPV 边界与机会成本
+## 14. 多项目复用投资组合的 NPV 边界与机会成本
 
 ### 13.1 形式化定义
 
 **定义**：复用投资组合 NPV 边界（Portfolio NPV Frontier）是在有限预算与战略约束下，由多个复用项目组成的有效前沿。它强调单个项目 NPV 为正并不足以保证组合价值最大，因为项目间可能存在资源竞争、依赖关系与机会成本。
 
-### 13.2 组合属性表
+### 14.2 组合属性表
 
 | 组合维度 | 关注点 | 量化方法 | 管理启示 |
 |---------|------|---------|---------|
@@ -379,7 +430,7 @@ graph TD
 | 战略协同 | 平台生态、能力积累 | 实物期权、战略评分 | 允许战略项目短期 NPV 为负 |
 | 机会成本 | 被放弃项目的最高 NPV | 影子价格 | 揭示真实稀缺资源 |
 
-### 13.3 关系说明
+### 14.3 关系说明
 
 组合边界由单个项目 NPV 与协方差共同决定。当两个复用项目高度相关时，合并投资的风险调整价值可能低于各自独立；当项目互补时，合并价值超过简单加总。机会成本通过线性规划的影子价格显式化：若某资源的影子价格为正，说明该资源是瓶颈，应优先配置给 NPV 边际贡献最高的项目。
 
@@ -397,21 +448,21 @@ graph LR
     G -->|否| I[纯财务最优组合]
 ```
 
-### 13.4 正例：组合优化释放预算
+### 14.4 正例：组合优化释放预算
 
 某企业将 10 个候选复用项目输入组合优化模型，在 500 万预算约束下，选择 6 个项目，组合 NPV 从单独选优的 620 万提升至 780 万，原因是剔除了资源冲突且互补性低的项目。
 
-### 13.5 反例：忽视机会成本导致资源错配
+### 14.5 反例：忽视机会成本导致资源错配
 
 某团队坚持维护一个 NPV 为正但占用核心架构师 40% 时间的组件库，导致无法投入一个 NPV 更高的平台项目。三年后前者 ROI 仅 12%，后者被竞争对手抢先，市场损失远超前者收益。
 
-> **权威来源**:
->
-> - [Wikipedia - Return on Investment](https://en.wikipedia.org/wiki/Return_on_investment)
-> - [Wikipedia - Net Present Value](https://en.wikipedia.org/wiki/Net_present_value)
-> - [Wikipedia - Modern Portfolio Theory](https://en.wikipedia.org/wiki/Modern_portfolio_theory)
-> - [Investopedia - Opportunity Cost](https://www.investopedia.com/terms/o/opportunitycost.asp)
-> - 核查日期：2026-07-07
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| Wikipedia — Return on Investment | <https://en.wikipedia.org/wiki/Return_on_investment> | 2026-07-09 |
+| Wikipedia — Net Present Value | <https://en.wikipedia.org/wiki/Net_present_value> | 2026-07-09 |
+| Wikipedia — Modern Portfolio Theory | <https://en.wikipedia.org/wiki/Modern_portfolio_theory> | 2026-07-09 |
+| Investopedia — Opportunity Cost | <https://www.investopedia.com/terms/o/opportunitycost.asp> | 2026-07-09 |
+| FinOps Foundation — Cloud Unit Economics Intro | <https://www.finops.org/wg/introduction-cloud-unit-economics/> | 2026-07-09 |
 
 ### 交叉引用
 
@@ -424,24 +475,4 @@ graph LR
 
 ---
 
-## 补充说明：架构复用 ROI 框架
-
-## 概念定义
-
-**定义**：ROI（投资回报率）与 NPV（净现值）将复用资产的现金流（节省、收入、维护成本、机会成本）贴现到当前，用于比较不同复用投资策略。
-
-## 示例
-
-**示例**：平台工程投资 200 万元，预计每年节省各团队 120 万元运维与重复开发成本，按 8% 折现率 NPV 为正，ROI 三年达 95%。
-
-## 反例
-
-**反例**：仅计算一次性采购成本，忽视后续版本升级、培训与耦合导致的迁移成本，项目三年后实际 ROI 为负。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Investopedia NPV](https://www.investopedia.com/terms/n/npv.asp)
-> - [FinOps Foundation](https://www.finops.org)
-> - 核查日期：2026-07-07
+> **版本记录**：2026-07-09 新增 TCO 与 FinOps Unit Economics 映射、权威来源表格与可运行工具引用；删除机械重复段落。

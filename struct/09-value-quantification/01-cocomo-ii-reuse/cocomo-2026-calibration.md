@@ -25,7 +25,7 @@
     - [6.1 不同架构范式的 COCOMO II 2026 参数对比](#61-不同架构范式的-cocomo-ii-2026-参数对比)
     - [6.2 AI 辅助开发的权衡矩阵](#62-ai-辅助开发的权衡矩阵)
   - [7. 局限性声明](#7-局限性声明)
-  - [参考索引](#参考索引)
+  - [参考索引与权威来源](#参考索引与权威来源)
   - [补充说明：COCOMO II 复用模型 2026 校准版](#补充说明cocomo-ii-复用模型-2026-校准版)
   - [概念定义](#概念定义)
   - [示例](#示例)
@@ -388,7 +388,18 @@ PM_2026 = A_2026 × (Size_2026)^E × ∏(EMᵢ_2026)
 
 ---
 
-## 参考索引
+## 参考索引与权威来源
+
+| 来源 | URL | 核查日期 |
+|:---|:---|:---|
+| USC COCOMO II | <https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/> | 2026-07-09 |
+| COCOMO II Model Definition Manual (PDF) | <https://athena.ecs.csus.edu/~buckley/CSc231_files/Cocomo_II_Manual.pdf> | 2026-07-09 |
+| NASA Reuse Readiness Levels (RRL) | <https://ntrs.nasa.gov/api/citations/20120010312/downloads/20120010312.pdf> | 2026-07-09 |
+| NASA SWEHB — Software Reuse Catalog | <https://swehb.nasa.gov/display/SWEHBVD/SWE-148+-+Contribute+to+Agency+Software+Catalog> | 2026-07-09 |
+| FinOps Foundation — Unit Economics | <https://www.finops.org/framework/capabilities/unit-economics/> | 2026-07-09 |
+| CMMI Institute | <https://cmmiinstitute.com/> | 2026-07-09 |
+
+文献：
 
 - Boehm, B. et al.: *Software Cost Estimation with COCOMO II* (Prentice Hall, 2000)
 - USC CSSE: *COCOMO II Model Definition Manual* (2000)
@@ -406,6 +417,7 @@ PM_2026 = A_2026 × (Size_2026)^E × ∏(EMᵢ_2026)
 > - COCOMO II 深度解析: [`cocomo-ii-reuse-model-deep-dive.md`](./cocomo-ii-reuse-model-deep-dive.md)
 > - 标准对齐矩阵: [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 > - 复用度量指标: [`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../../06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
+> - 可运行工具: [`../tools/cocomo-calculator.py`](../tools/cocomo-calculator.py)、[`../tools/cocomo-streamlit.py`](../tools/cocomo-streamlit.py)
 
 
 ---

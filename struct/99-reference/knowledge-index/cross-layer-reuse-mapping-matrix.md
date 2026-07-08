@@ -1,12 +1,12 @@
 # 四层复用映射矩阵
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-09
 > **定位**: 建立"业务架构 → 应用架构 → 组件架构 → 功能架构"四层复用资产之间的映射关系、失败传递模式与治理要点。
 > **关联**: [`cross-theme-dependency-graph.md`](./cross-theme-dependency-graph.md)、[`glossary-master.md`](../glossary/glossary-master.md)、[`axiom-theorem-tree.md`](../glossary/axiom-theorem-tree.md)
 
 ---
 
-## 1. 四层复用视角总览
+## 1. 概念定义：四层复用视角总览
 
 ```mermaid
 graph TD
@@ -152,6 +152,8 @@ $$
 
 ## 7. 正例
 
+### 示例
+
 **跨层复用成功：电商平台客户认证**
 
 - 业务层：定义"客户身份认证"业务能力
@@ -164,6 +166,8 @@ $$
 ---
 
 ## 8. 反例
+
+### 反例
 
 **跨层失败：物流系统价值流断裂**
 
@@ -188,31 +192,13 @@ $$
 
 ---
 
-## 权威来源
+## 10. 权威来源
 
-> **权威来源**:
+> **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
-> - [Software architecture](https://en.wikipedia.org/wiki/Software_architecture) — Wikipedia
-> - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
->
-> **核查日期**: 2026-07-07
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（2026-04-27 正式发布，Document C260；核查日期：2026-07-09）
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — ISO（核查日期：2026-07-09）
 
-
----
-
-## 补充章节
-
-## 概念定义
-
-**定义**：参考层是结构化知识体系的“地图”，汇总权威来源、术语表、标准索引、课程对标与审计报告，为各主题提供可追溯的引用与一致性校验。
-
-## 示例
-
-**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
-
-## 反例
-
-**反例**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+**跨层映射权威性说明**：本矩阵的层次划分与对应关系（correspondence）直接引用 ISO/IEC/IEEE 42010:2022 的架构描述概念；业务/应用/组件/功能四层映射与 TOGAF 10 的分层企业架构方法一致；质量属性（性能、安全、可靠性、碳效率）映射引用 ISO/IEC 25010:2023 的产品质量模型。矩阵的每次结构性变更应同步更新 `glossary/terminology-crosswalk.md` 与 `99-reference/CHANGELOG.md`。

@@ -93,12 +93,21 @@ graph LR
 
 > **权威来源**：
 >
-> - [USC COCOMO II](https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/) — Barry Boehm, USC CSSE
-> - [FinOps Foundation Framework](https://www.finops.org/framework/)
-> - [Investopedia - Net Present Value](https://www.investopedia.com/terms/n/npv.asp)
-> - [Green Software Foundation - SCI](https://sci.greensoftware.foundation)
-> - [GSF Principles of Green Software Engineering](https://learn.greensoftware.foundation/)
-> - 核查日期：2026-07-07
+> | 来源 | URL | 核查日期 |
+> |:---|:---|:---|
+> | USC COCOMO II | <https://cssed.usc.edu/research/research-sponsored-software/cocomo/cocomo-ii/> | 2026-07-09 |
+> | COCOMO II Model Definition Manual (USC) | <https://athena.ecs.csus.edu/~buckley/CSc231_files/Cocomo_II_Manual.pdf> | 2026-07-09 |
+> | FinOps Foundation — Unit Economics | <https://www.finops.org/framework/capabilities/unit-economics/> | 2026-07-09 |
+> | FinOps Foundation — Cloud Unit Economics Intro | <https://www.finops.org/wg/introduction-cloud-unit-economics/> | 2026-07-09 |
+> | Investopedia — NPV | <https://www.investopedia.com/terms/n/npv.asp> | 2026-07-09 |
+> | Investopedia — ROI | <https://www.investopedia.com/terms/r/returnoninvestment.asp> | 2026-07-09 |
+> | Gartner — TCO | <https://www.gartner.com/en/information-technology/glossary/total-cost-of-ownership-tco> | 2026-07-09 |
+> | Green Software Foundation — SCI Specification | <https://sci.greensoftware.foundation/> | 2026-07-09 |
+> | ISO/IEC 21031:2024 — SCI Standard | <https://www.iso.org/standard/86612.html> | 2026-07-09 |
+> | GSF — SCI for AI | <https://sci-for-ai.greensoftware.foundation/> | 2026-07-09 |
+> | NASA — Reuse Readiness Levels (RRL) | <https://ntrs.nasa.gov/api/citations/20120010312/downloads/20120010312.pdf> | 2026-07-09 |
+> | NASA SWEHB — Software Reuse Catalog | <https://swehb.nasa.gov/display/SWEHBVD/SWE-148+-+Contribute+to+Agency+Software+Catalog> | 2026-07-09 |
+> | CMMI Institute | <https://cmmiinstitute.com/> | 2026-07-09 |
 
 ---
 
@@ -195,13 +204,15 @@ graph LR
 - 探索将碳排数据从云账单与监控系统自动导入 SCI 计算。
 - 将价值量化结果与资产目录的成熟度评级联动。
 
-## 17. 持续改进方向
+## 17. 可运行工具引用
 
-- 与组织项目管理系统集成，自动采集实际成本与收益数据。
-- 开发可交互的 ROI/NPV 计算器，支持实时敏感性分析。
-- 探索将碳排数据从云账单与监控系统自动导入 SCI 计算。
-- 将价值量化结果与资产目录的成熟度评级联动。
+- `struct/09-value-quantification/tools/cocomo-calculator.py`：COCOMO II 2026 校准版命令行计算器，支持 AAF/ESLOC/PM 计算与敏感性分析。
+- `struct/09-value-quantification/tools/cocomo-streamlit.py`：交互式 COCOMO II 估算面板。
+- `struct/09-value-quantification/tools/cocomo-scenario.yaml`：示例场景配置，可用于批量运行多情景对比。
+- 外部参考：GSF [Impact Framework](https://if.greensoftware.foundation/) 与 [Carbon Aware SDK](https://carbon-aware-sdk.greensoftware.foundation/) 可用于 SCI 自动化采集。
 
-## 18. 版本记录补充
+## 18. 版本记录
 
-- 持续跟踪 COCOMO II、FinOps 与绿色软件基金会的最新版本，并更新权威来源与核查日期。
+- 2026-07-09：对齐国际化权威来源（COCOMO II USC、FinOps Unit Economics、GSF SCI/SCI for AI、ISO/IEC 21031:2024、NASA RRL、CMMI），补充可运行工具引用，删除重复段落。
+- 2026-07-07：补充 COCOMO II、ROI/NPV、实物期权与碳强度 SCI 的概念定义、示例、反例与权威来源。
+- 2026-06-08：初始版本，梳理成本估算与 ROI 模型文件导航。

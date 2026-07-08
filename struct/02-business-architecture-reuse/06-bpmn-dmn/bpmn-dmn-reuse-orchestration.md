@@ -1,6 +1,6 @@
 # BPMN 2.0 / DMN 业务过程与决策的复用编排
 >
-> 版本: 2026-06-06
+> 版本: 2026-07-08
 > 对齐来源: OMG BPMN 2.0.2 / DMN 1.5, ISO/IEC 19510:2013, Camunda 2024, Signavio/SAP, 澳大利亚 NSW 交通标准
 
 ## 1. 标准体系
@@ -301,13 +301,13 @@ flowchart LR
 
 > **权威来源**:
 >
-> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 在业务过程建模中的定位
-> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 概述
-> - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN) — OMG 官方 BPMN 规范
-> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN) — OMG 官方 DMN 规范
-> - [ISO/IEC 19510:2013](https://www.iso.org/standard/62652.html) — BPMN 国际标准
+> - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN/2.0.2/) — OMG 官方 BPMN 规范；核查日期：2026-07-08
+> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN/1.5/) — OMG 官方 DMN 规范；核查日期：2026-07-08
+> - [ISO/IEC 19510:2013](https://www.iso.org/standard/62652.html) — BPMN 国际标准；核查日期：2026-07-08
+> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 概述；核查日期：2026-07-08
+> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 在业务过程建模中的定位；核查日期：2026-07-08
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
 **交叉引用**：
 
@@ -465,12 +465,12 @@ flowchart LR
 
 > **权威来源**:
 >
-> - [Business process modeling - Wikipedia](https://en.wikipedia.org/wiki/Business_process_modeling) — BPMN 在业务过程建模中的定位
-> - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 概述
-> - [Camunda BPMN Documentation](https://docs.camunda.org/manual/latest/reference/bpmn20/) — BPMN 可执行语义参考
-> - [Camunda DMN Documentation](https://docs.camunda.org/manual/latest/reference/dmn11/) — DMN 决策表执行参考
+> - [Camunda BPMN Documentation](https://docs.camunda.org/manual/latest/reference/bpmn20/) — BPMN 可执行语义参考；核查日期：2026-07-08
+> - [Camunda DMN Documentation](https://docs.camunda.org/manual/latest/reference/dmn11/) — DMN 决策表执行参考；核查日期：2026-07-08
+> - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN/2.0.2/) — OMG 官方 BPMN 规范；核查日期：2026-07-08
+> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN/1.5/) — OMG 官方 DMN 规范；核查日期：2026-07-08
 >
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-08
 
 **交叉引用**：
 
@@ -478,24 +478,26 @@ flowchart LR
 - [业务能力复用](../02-business-capability/capability-reuse.md) — 业务能力复用的定义与属性
 - [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — BPMN 流程与价值流的关系
 
-## 补充说明：BPMN 2.0 / DMN 业务过程与决策的复用编排
+## 11. 标准条款映射与权威来源
 
-## 示例
+### 11.1 标准条款映射
 
-**示例**：信贷审批流程使用 BPMN 定义审批步骤，使用 DMN 决策表管理利率、额度规则，业务人员可直接调整规则而无需修改流程代码。
+| 本主题概念 | 对应标准条款 | 映射说明 |
+|:---|:---|:---|
+| 流程模板复用 | BPMN 2.0 §8 Process, §10.4 Call Activity | BPMN Process 定义可执行流程；Call Activity 支持跨流程复用子流程 |
+| 决策服务复用 | DMN 1.5 §6 Decision Requirements, §8 Decision Table | DMN Decision Service 封装决策逻辑，可被 BPMN Business Rule Task 调用 |
+| 流程-决策集成 | DMN 1.5 §11.2 Invocation | DMN 决策服务可通过标准化接口被 BPMN 流程调用 |
+| 可执行语义国际标准 | ISO/IEC 19510:2013 | BPMN 2.0 被 ISO 采纳为国际标准，确保跨工具互操作 |
+| 案例管理补充 | OMG CMMN 1.1 | 对于非结构化知识工作者流程，CMMN 与 BPMN 互补 |
 
-## 反例
-
-**反例**：将业务规则硬编码在 BPMN 网关条件中，导致规则变更需要重新部署流程，业务人员无法参与。
-
-## 权威来源
+### 11.2 权威来源
 
 > **权威来源**:
 >
-> - [OMG BPMN](https://www.omg.org/spec/BPMN)
-> - [OMG DMN](https://www.omg.org/spec/DMN)
-> - 核查日期：2026-07-07
-
-## 分析
-
-**分析**：BPMN/DMN 的分离使流程结构稳定、规则灵活，是业务-IT 对齐的关键实践。
+> - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN/2.0.2/) — BPMN 官方规范；核查日期：2026-07-08
+> - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN/1.5/) — DMN 官方规范；核查日期：2026-07-08
+> - [ISO/IEC 19510:2013](https://www.iso.org/standard/62652.html) — BPMN 国际标准；核查日期：2026-07-08
+> - [Camunda BPMN Documentation](https://docs.camunda.org/manual/latest/reference/bpmn20/) — BPMN 可执行语义参考；核查日期：2026-07-08
+> - [Camunda DMN Documentation](https://docs.camunda.org/manual/latest/reference/dmn11/) — DMN 决策表执行参考；核查日期：2026-07-08
+>
+> **核查日期**: 2026-07-08
