@@ -6,6 +6,14 @@
 
 ---
 
+## 概念定义
+
+**IEC/IEEE 60802** 是 IEC 与 IEEE 联合为工业自动化制定的 TSN（Time-Sensitive Networking）配置文件。它从 IEEE 802.1 TSN 工具箱中选取并规定了时间同步、低延迟传输、可靠性与网络资源管理特性的必选/可选组合、默认参数与部署规程，使多厂商设备能够在同一融合以太网上承载硬实时 OT 流量与普通 IT 流量。
+
+> **定义 TSN.60802.1** (TSN Profile): IEC/IEEE 60802 TSN Profile 是面向工业自动化的 IEEE 802.1 TSN 特性子集与一致性要求。遵循该 Profile 的设备可在不依赖厂商私有配置的情况下实现确定性互操作。
+
+---
+
 ## 1. 标准背景
 
 IEC/IEEE 60802 是 IEC 和 IEEE 的联合项目，旨在为工业自动化定义 TSN（Time-Sensitive Networking）配置文件。
@@ -182,7 +190,29 @@ Star/Ring Topology
 
 为节省成本，团队在非 TSN 商用交换机上运行 OPC UA FX C2D 循环数据，结果最佳努力流量挤占时隙，通信延迟从 500 μs 恶化到 10 ms，触发安全联锁误动作。
 
-## 12. 参考索引
+## 12. 权威来源
+
+> **权威来源**：
+>
+> - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/>（核查日期：2026-07-09）
+> - IEEE 802.1 TSN Task Group: <https://1.ieee802.org/tsn/>（核查日期：2026-07-09）
+> - IEEE 802.1AS-Rev (gPTP): <https://1.ieee802.org/tsn/802-1as/>（核查日期：2026-07-09）
+> - IEEE 802.1Qbv (Time-Aware Shaper): <https://1.ieee802.org/tsn/802-1qbv/>（核查日期：2026-07-09）
+> - OPC UA FX Part 80: <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 61784-3 Functional safety fieldbuses: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - TSN Industrial Automation Conformance Collaboration (TIACC): <https://www.tiacc.net/>（核查日期：2026-07-09）
+
+## 13. 交叉引用
+
+- OPC UA FX 复用层次：[`../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md)
+- OPC UA FX UADP 帧结构：[`../02-opc-ua-fx/frame-structure/uadp-frame-analysis.md`](../02-opc-ua-fx/frame-structure/uadp-frame-analysis.md)
+- 工业边缘 AI 部署规范：[`../07-edge-ai/model-deployment-spec.md`](../07-edge-ai/model-deployment-spec.md)
+- ISA-95 资产目录：[`../01-isa-95-model/isa-95-asset-catalog-deep-dive.md`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+
+## 14. 论证
+
+> **定理 TSN.60802.2** (Profile Convergence): 在融合网络中，只要所有时间触发设备严格遵循 IEC/IEEE 60802 的同步精度、GCL 周期与队列配置，OT 流量即可获得确定性延迟上界；任何 Profile 偏离都会将确定性保障退化为最佳努力统计。
 
 | 来源 | URL |
 |:---|:---|

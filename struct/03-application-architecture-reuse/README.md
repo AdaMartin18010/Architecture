@@ -21,13 +21,31 @@
 
 | 标准/框架 | 作用 | 权威 URL | 核查日期 |
 |-----------|------|----------|----------|
-| ISO/IEC 25010:2023 | 软件产品质量模型（含可维护性、可复用性子特征） | <https://www.iso.org/standard/78176.html> | 2026-07-08 |
-| NIST SP 800-204 系列 | 微服务安全策略、服务网格与 DevSecOps 指引 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 2026-07-08 |
-| CNCF Cloud Native Landscape | 云原生项目成熟度与毕业状态 | <https://landscape.cncf.io/> 与 <https://www.cncf.io/projects/> | 2026-07-08 |
-| Spring Modulith | 模块化单体参考实现 | <https://spring.io/projects/spring-modulith> | 2026-07-08 |
-| Istio Architecture | 服务网格通信与流量管理 | <https://istio.io/latest/docs/ops/deployment/architecture/> | 2026-07-08 |
-| Kubernetes Gateway API v1.5 | Kubernetes 统一路由标准（ListenerSet / TLSRoute 进入 Standard 通道） | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> | 2026-07-08 |
-| Data Mesh by Zhamak Dehghani | 数据架构复用思想 | <https://martinfowler.com/articles/data-mesh-intro.html> | 2026-07-08 |
+| ISO/IEC 25010:2023 | 软件产品质量模型（含可维护性、可复用性子特征） | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
+| NIST SP 800-204 系列 | 微服务安全策略、服务网格与 DevSecOps 指引 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 2026-07-09 |
+| NIST SP 800-204A | 基于服务网格架构构建安全微服务应用 | <https://csrc.nist.gov/pubs/sp/800/204/a/final> | 2026-07-09 |
+| CNCF Cloud Native Landscape | 云原生项目成熟度与毕业状态 | <https://landscape.cncf.io/> 与 <https://www.cncf.io/projects/> | 2026-07-09 |
+| CNCF Serverless Whitepaper v2 | Serverless/FaaS 架构参考 | <https://github.com/cncf/wg-serverless/tree/main/whitepapers/serverless-overview> | 2026-07-09 |
+| CloudEvents 1.0.2 | CNCF 跨平台事件数据格式标准 | <https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md> | 2026-07-09 |
+| Spring Modulith | 模块化单体参考实现 | <https://spring.io/projects/spring-modulith> | 2026-07-09 |
+| Istio Architecture | 服务网格通信与流量管理 | <https://istio.io/latest/docs/ops/deployment/architecture/> | 2026-07-09 |
+| Kubernetes Gateway API v1.5 | Kubernetes 统一路由标准（ListenerSet / TLSRoute 进入 Standard 通道） | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> | 2026-07-09 |
+| Gateway API 官方文档 | ListenerSet、TLSRoute、GAMMA 规范 | <https://gateway-api.sigs.k8s.io> | 2026-07-09 |
+| OWASP API Security Top 10 2023 | API 安全威胁清单 | <https://owasp.org/www-project-api-security/> | 2026-07-09 |
+| 12-Factor App | 云原生应用方法论 | <https://12factor.net/> | 2026-07-09 |
+| Backstage (CNCF Incubating) | 内部开发者门户框架 | <https://www.cncf.io/projects/backstage/> | 2026-07-09 |
+| Data Mesh by Zhamak Dehghani | 数据架构复用思想 | <https://martinfowler.com/articles/data-mesh-intro.html> | 2026-07-09 |
+
+## 标准/框架映射
+
+| 复用场景 | 适用标准/框架 | 关键映射点 |
+|---------|--------------|-----------|
+| 微服务安全复用 | NIST SP 800-204/204A/204B | 认证(MS-SS-1)、安全通信(MS-SS-4)、ABAC 授权(MS-SS-2) |
+| API 网关与路由复用 | Kubernetes Gateway API v1.5 | ListenerSet 多租户边界、TLSRoute SNI 路由、ReferenceGrant 跨命名空间授权 |
+| 事件驱动复用 | CNCF CloudEvents 1.0.2 | 事件元数据标准化、跨传输层可移植 |
+| Serverless/FaaS 复用 | CNCF Serverless Whitepaper v2 + 12-Factor App | 无状态进程、配置外置、按使用付费 |
+| API 安全治理 | OWASP API Security Top 10 2023 | BOLA/API1、BFLA/API5、不安全 API 消费/API10 |
+| 内部平台工程 | Backstage + CNCF Platform Engineering Maturity Model | Software Catalog、Golden Path、Scorecards |
 
 ## 关键定理
 >

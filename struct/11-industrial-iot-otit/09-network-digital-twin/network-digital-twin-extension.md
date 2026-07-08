@@ -11,6 +11,7 @@
 
 - [数字孪生网络级扩展：IETF Network DT 与 GB/T 45616](#数字孪生网络级扩展ietf-network-dt-与-gbt-45616)
   - [目录](#目录)
+  - [概念定义](#概念定义)
   - [1. 数字孪生标准扩展概述](#1-数字孪生标准扩展概述)
     - [1.1 从制造到网络到城市](#11-从制造到网络到城市)
     - [1.2 数字孪生参考架构的复用层次](#12-数字孪生参考架构的复用层次)
@@ -26,12 +27,22 @@
     - [4.1 跨域复用挑战](#41-跨域复用挑战)
     - [4.2 SDF (Semantic Definition Format) for Digital Twin](#42-sdf-semantic-definition-format-for-digital-twin)
   - [5. 权威来源](#5-权威来源)
-  - [6. 正向示例](#6-正向示例)
+  - [6. 交叉引用](#6-交叉引用)
+  - [7. 论证](#7-论证)
+  - [8. 正向示例](#8-正向示例)
     - [示例 1：5G 工厂网络数字孪生规划](#示例-15g-工厂网络数字孪生规划)
     - [示例 2：GB/T 45616 产线级数字孪生](#示例-2gbt-45616-产线级数字孪生)
-  - [7. 反例 / 失败案例](#7-反例--失败案例)
+  - [9. 反例 / 失败案例](#9-反例--失败案例)
     - [反例 1：过度精确而缺乏数据支撑的孪生模型](#反例-1过度精确而缺乏数据支撑的孪生模型)
     - [反例 2：忽视跨域语义差异直接拼接模型](#反例-2忽视跨域语义差异直接拼接模型)
+
+---
+
+## 概念定义
+
+**网络级数字孪生（Network Digital Twin）** 是物理网络及其行为在数字空间中的实时映射，通过对网络拓扑、配置、状态与流量的建模与仿真，支撑网络规划、配置验证、故障诊断与安全演练。它从制造领域的设备/产线数字孪生扩展到网络域，是工业 IoT/OT-IT 融合中网络基础设施复用的新兴使能技术。
+
+> **定义 NDT.1** (网络数字孪生复用): 网络数字孪生复用是将物理网络的模型、仿真规则、配置模板与流量数据集跨项目/跨域迁移的过程，要求源网络与目标网络在拓扑语义、协议行为与时间尺度上具有可验证的等价性或可适配性。
 
 ---
 
@@ -170,6 +181,29 @@ SDF for Digital Twin
 
 ## 5. 权威来源
 
+> **权威来源**：
+>
+> - IETF NMRG Network Digital Twin draft-12: <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12>（核查日期：2026-07-09）
+> - IETF ASDF SDF for Digital Twin: <https://datatracker.ietf.org/doc/draft-ietf-asdf-digital-twin/>（核查日期：2026-07-09）
+> - GB/T 45616-2025: <https://www.chinesestandard.net/PDF/English.aspx/GBT45616.2-2025>（核查日期：2026-07-09）
+> - ISO 23247 Digital twin framework for manufacturing: <https://www.iso.org/standard/78743.html>（核查日期：2026-07-09）
+> - ISO/IEC 30141:2024 IoT Reference Architecture: <https://www.iso.org/standard/88800.html>（核查日期：2026-07-09）
+> - ISO/IEC 30173 Digital Twin conceptual framework: <https://www.iso.org/standard/79819.html>（核查日期：2026-07-09）
+> - ITU-T Y.4600 Digital Twin network requirements: <https://www.itu.int/rec/T-REC-Y.4600>（核查日期：2026-07-09）
+
+## 6. 交叉引用
+
+- 制造领域数字孪生与 AAS：[`../05-digital-twin-aas/iec-63278-roadmap.md`](../05-digital-twin-aas/iec-63278-roadmap.md)
+- ISA-95 资产目录：[`../01-isa-95-model/isa-95-asset-catalog-deep-dive.md`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+- OPC UA FX 确定性通信：[`../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md)
+- TSN 工业自动化配置文件：[`../03-tsn-deterministic/iec-ieee-60802-profile.md`](../03-tsn-deterministic/iec-ieee-60802-profile.md)
+
+## 7. 论证
+
+> **定理 NDT.2** (跨域语义等价性): 网络数字孪生与制造数字孪生复用同一物理基础设施时，必须建立从“设备/节点”到“网络状态/流量”的语义映射。任何语义差异未被显式建模都会导致故障定位、影响分析与配置生成结果不可信。
+>
+> **定理 NDT.3** (孪生保真度边界): 数字孪生的价值取决于其与物理实体同步的及时性与准确性。缺乏稳定数据采集与增量更新机制的高保真模型会迅速退化为可视化装饰，丧失决策支持能力。
+
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
 | IETF NMRG Network Digital Twin draft-12 | <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12> | 2026-07-08 |
@@ -183,7 +217,7 @@ SDF for Digital Twin
 
 ---
 
-## 6. 正向示例
+## 8. 正向示例
 
 ### 示例 1：5G 工厂网络数字孪生规划
 
@@ -193,7 +227,7 @@ SDF for Digital Twin
 
 一家跨国企业在华工厂依据 GB/T 45616-2025（等同采用 ISO 23247）建立产线数字孪生，复用 IEC 63278 AAS 子模型作为设备语义层，实现与总部 PLM/ERP 的跨地域数据一致性，满足本土合规与全球主数据治理的双重要求。
 
-## 7. 反例 / 失败案例
+## 9. 反例 / 失败案例
 
 ### 反例 1：过度精确而缺乏数据支撑的孪生模型
 

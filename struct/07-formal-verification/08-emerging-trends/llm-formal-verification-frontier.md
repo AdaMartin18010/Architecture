@@ -314,6 +314,6 @@ mod safe_queue {
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 - Coq/Rocq & Isabelle 案例：[`struct/07-formal-verification/03-coq-isabelle/README.md`](../03-coq-isabelle/README.md)
 - Rust 形式化语义：[`struct/07-formal-verification/04-rust-type-system/formal-semantics.md`](../04-rust-type-system/formal-semantics.md)
-- AI 原生复用：[`struct/12-ai-native-reuse/README.md`](../../../12-ai-native-reuse/README.md)
+- AI 原生复用：[`struct/12-ai-native-reuse/README.md`](../../12-ai-native-reuse/README.md)
 
 > 最后更新：2026-07-08

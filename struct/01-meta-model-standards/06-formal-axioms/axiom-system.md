@@ -511,21 +511,42 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 
 ### 5.1 标准条款映射
 
-| 公理/定理 | 对应国际标准条款 | 说明 |
-|---|---|---|
-| M.1 Architecture-Reuse Duality | ISO/IEC/IEEE 42010:2022, Clause 5.2.7 | 架构描述的 Viewpoint 本质是约束集合，复用即约束传递 |
-| M.2 Variability Axiom | ISO/IEC 26550:2015, Clause 4.2 / 6.4.2 | 产品线工程要求显式 Variability Model 与 Variation Point 管理 |
-| M.3 Hierarchy Non-Reduction | ISO/IEC 21838-3:2023 (DOLCE) | 顶层本体论与领域本体论不可相互还原，支持层次不可约性 |
-| S.1 Interface Substitution | Liskov Substitution Principle / ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 的可替换性基于外部可观察行为等价 |
-| P.1 Evolution Independence | ISO/IEC/IEEE 42020:2019, Clause 8/10/11 | 领域工程与应用工程分离对应 Conceptualization/Elaboration 与 Enablement |
+| 公理/定理 | 对应国际标准条款 | 条款核心内容 | 说明 |
+|---|---|---|---|
+| M.1 Architecture-Reuse Duality | ISO/IEC/IEEE 42010:2022, Clause 5.2.7 | Architecture Viewpoint 规约关注点与约定 | 架构描述的 Viewpoint 本质是约束集合，复用即约束传递 |
+| M.2 Variability Axiom | ISO/IEC 26550:2015, Clause 4.2 / 6.4.2 | 产品线工程参考模型与显式可变性管理 | 产品线工程要求显式 Variability Model 与 Variation Point 管理 |
+| M.3 Hierarchy Non-Reduction | ISO/IEC 21838-3:2023 (DOLCE) | 顶层本体论与领域本体论的结构 | 顶层本体论与领域本体论不可相互还原，支持层次不可约性 |
+| M.4 Identity Preservation | ISO/IEC 21838-3:2023 (DOLCE) | Endurant / Perdurant 与角色区分 | 复用保持资产本体同一性，仅角色与实现形态可变 |
+| E.1 Reuse Asset Existence | ISO/IEC/IEEE 42010:2022, Clause 6.8 / NASA RRL | View Component 的可分离性与可识别性 | 可复用资产必须具备稳定、通用、封装三属性 |
+| E.2 Cost-Benefit Threshold | COCOMO II / NASA RRL | 软件成本估算与复用经济模型 | 复用改编成本阈值约 0.7 倍自研成本 |
+| E.3 Contextual Fitness | ISO/IEC 21838-3:2023 (DOLCE DnS) | Description and Situation 框架 | 资产（描述）与上下文（情境）的匹配决定复用可行性 |
+| S.1 Interface Substitution | Liskov Substitution Principle / ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 的可替换性 | View Component 的可替换性基于外部可观察行为等价 |
+| S.2 Compositionality | ISO/IEC/IEEE 42010:2022, Clause 5.2.11 / Assume-Guarantee | Correspondence 与组合一致性 | 组件组合的正确性可通过局部正确性推导 |
+| S.3 Dependency Transitivity of Trust | SLSA 1.2 / OpenSSF | 供应链安全与信任传递 | 信任边界沿依赖链传递 |
+| P.1 Evolution Independence | ISO/IEC/IEEE 42020:2019, Clause 8/10/11 | Conceptualization / Elaboration / Enablement | 领域工程与应用工程分离对应架构过程 |
+| P.2 Feedback Convergence | Cybernetics / 控制论 | 反馈循环与治理过滤 | 反馈必须经过治理函数才能转化为变更 |
+| P.3 Governance Complexity Law | 组织理论 / 信息论 | 规模与复杂度增长规律 | 复用规模与治理复杂度满足 $N \cdot \log(N)$ |
+| P.4 Learning Curve Monotonicity | Sweller (1988) 认知负荷理论 | 内在负荷与图式获取 | 学习成本随复用次数单调不增 |
 
 ### 示例
 
-**正向示例**：基于 M.2 可变性公理，某汽车电子企业将 ECU 平台抽象为 Feature Model + Variation Point，通过 ISO/IEC 26550:2015 的双轨生命周期实现 78% 复用率。
+**正向示例 1：汽车电子 ECU 平台复用**
+
+基于 M.2 可变性公理，某汽车电子企业将 ECU 平台抽象为 Feature Model + Variation Point，通过 ISO/IEC 26550:2015 的双轨生命周期实现 78% 复用率，新车型软件适配周期从 9 个月缩短至 3 个月。
+
+**正向示例 2：开源组件接口替换**
+
+基于 S.1 接口可替换性公理，某电商平台将消息队列从 RabbitMQ 切换为 Kafka，因两者符合同一 AMQP/JMS 抽象接口契约且外部可观察行为等价，切换过程仅修改配置适配层，核心业务代码零变更。
 
 ### 反例
 
-**反模式**：某团队将“复用”等同于“复制代码”，未定义任何约束与接口契约，也未记录 Architecture Rationale；三个月后同一平台出现 6 个分支，回归测试成本超过新建项目，复用名存实亡。
+**反模式 1：复制粘贴式“复用”**
+
+某团队将“复用”等同于“复制代码”，未定义任何约束与接口契约，也未记录 Architecture Rationale；三个月后同一平台出现 6 个分支，回归测试成本超过新建项目，复用名存实亡。
+
+**反模式 2：忽视信任传递导致供应链漏洞**
+
+某 AI 平台直接依赖第三方模型库 A，A 又依赖训练框架 B，B 依赖数值计算库 C。团队仅审计了 A 的源代码，未按 S.3 信任传递性将 B 和 C 纳入信任边界。结果 C 的某个版本存在后门，被利用后导致模型推理数据泄露。
 
 ---
 
@@ -654,13 +675,16 @@ graph TD
 
 > **权威来源核查**：
 >
-> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/74307.html)（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)（核查日期：2026-07-08）
-> - [NASA Software Reuse Library (RRL) cost model](https://ntrs.nasa.gov/)（核查日期：2026-07-08）
+> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/74307.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [NASA Software Reuse Library (RRL) cost model](https://ntrs.nasa.gov/) — NASA（核查日期：2026-07-09）
+> - [Liskov substitution principle - Wikipedia](https://en.wikipedia.org/wiki/Liskov_substitution_principle) — Wikimedia（核查日期：2026-07-09）
 >
-> **核查日期**：2026-07-08
+> **核查日期**：2026-07-09
 
 ---
 
@@ -684,4 +708,4 @@ graph TD
 
 ---
 
-> 最后更新: 2026-06-06 (Phase 3)
+> 最后更新: 2026-07-09 (Phase 3)

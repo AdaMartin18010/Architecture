@@ -188,5 +188,5 @@ Low_Level_Service (Ada)
 > **权威来源**:
 >
 > - [SPARK Pro](https://www.adacore.com/sparkpro)
-> - [DO-178C](https://rtca.org/product/do-178c-2/)
+> - [DO-178C](https://www.rtca.org/product/do-178c/)
 > - 核查日期：2026-07-07

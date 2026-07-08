@@ -403,7 +403,7 @@
 #### 应用架构复用
 
 - `nist-sp-800-204-microservices-security.md` — 对齐 NIST SP 800-204 系列微服务安全策略（五种代码类型、MS-SS 策略、DevSecOps）
-- `gateway-api-gamma-2026.md` — 对齐 CNCF Gateway API / GAMMA、Istio Ambient Multicluster Beta、AI 推理扩展
+- `gateway-api-v15-gamma-alignment.md` — 对齐 CNCF Gateway API v1.5 / GAMMA、Istio Ambient Multicluster Beta、AI 推理扩展
 - `eda-cqrs-event-sourcing-patterns.md` — 对齐 EDA/CQRS/Event Sourcing/Saga 模式与云原生实现栈
 - `data-mesh-data-product-reuse.md` — 对齐 Data Mesh 四原则、数据产品、2026 IDP-for-data 合成模式
 

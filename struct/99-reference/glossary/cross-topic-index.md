@@ -38,7 +38,7 @@
 ### 微服务与服务网格
 
 - `03-application-architecture-reuse/07-cloud-native-patterns/nist-sp-800-204-microservices-security.md`
-- `03-application-architecture-reuse/08-service-mesh/gateway-api-gamma-2026.md`
+- `03-application-architecture-reuse/08-service-mesh/gateway-api-v15-gamma-alignment.md`
 - `03-application-architecture-reuse/09-eda-cqrs/eda-cqrs-event-sourcing-patterns.md`
 - `13-emerging-trends/01-platform-engineering/platform-engineering-cncf-2026.md`
 
@@ -110,7 +110,7 @@
 | "WASM Component Model 进展？" | `wasm-component-model-2026.md` |
 | "COCOMO II 复用模型方程？" | `cocomo-ii-reuse-model-deep-dive.md` |
 | "NIST 微服务安全策略？" | `nist-sp-800-204-microservices-security.md` |
-| "Gateway API 替代 Ingress？" | `gateway-api-gamma-2026.md` |
+| "Gateway API 替代 Ingress？" | `gateway-api-v15-gamma-alignment.md` |
 | "Data Mesh 2026 实践模式？" | `data-mesh-data-product-reuse.md` |
 | "BPMN 如何编排 AI Agent？" | `bpmn-dmn-reuse-orchestration.md` |
 | "开源供应链怎么治理？" | `open-source-supply-chain-reuse.md` |

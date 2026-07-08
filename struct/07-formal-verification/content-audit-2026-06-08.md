@@ -166,9 +166,9 @@
 > **权威来源**:
 >
 > - [TLA+ Home Page](https://lamport.azurewebsites.net/tla/tla.html)
-> - [Alloy Analyzer](http://alloy.mit.edu)
+> - [Alloy Analyzer](https://alloytools.org)
 > - [Coq Proof Assistant](https://coq.inria.fr)
 > - [The Rust Programming Language](https://www.rust-lang.org)
 > - [SPARK Pro](https://www.adacore.com/sparkpro)
-> - [Event-B](https://www.event-b.org)
+> - [Event-B](https://wiki.event-b.org/index.php/Main_Page)
 > - 核查日期：2026-07-07

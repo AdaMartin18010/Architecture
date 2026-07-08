@@ -146,7 +146,7 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 | IEC 61508 | ISO 26262 | 通用组件进入汽车供应链 | 增加 S/E/C 分析、ASIL 分解 |
 | DO-178C | IEC 61508 | 航空软件复用于工业 | 重新论证工具资格、调整生命周期 |
 
-## 7. 权威来源与参考索引
+## 7. 权威来源
 
 - IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>
 - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*：<https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010>
@@ -157,9 +157,21 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 - Jama Software: "What Is IEC 61508? A Functional Safety Guide" (2026-04-30)
 - Gofore: "Understanding IEC 61508: The foundation of functional safety" (2025-11-12)
 
----
+> **权威来源**（带核查日期）：
+>
+> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010>（核查日期：2026-07-09）
+> - IEC 61508 Ed.3 CDV/RVC 状态（IEC SC 65A 仪表板）：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>（核查日期：2026-07-09）
+> - ISO 26262:2018 *Road vehicles — Functional safety*: <https://www.iso.org/standard/68383.html>（核查日期：2026-07-09）
+> - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>（核查日期：2026-07-09）
 
-## 8. IEC 61508-3 7.4.4 工具资格条款映射
+## 8. 论证
+
+> **定理 IEC61508.Reuse.1** (PIU 证据脆弱性): Proven-In-Use 证据对设计、固件、工艺与运行环境的稳定性高度敏感。任一未纳入证据集的变更都会破坏统计基础，使 Route 2H 论证失效。
+>
+> **定理 IEC61508.Reuse.2** (Ed.3 工具资质迁移): IEC 61508 Ed.3 将工具资质从静态 T1/T2/T3 改为基于 TI/TD 的 TIL 0–4，与 ISO 26262 TCL 趋同。跨版本复用资质证据时，必须补充风险分析矩阵与工具置信度文件（TCF）。
+
+## 9. IEC 61508-3 7.4.4 工具资格条款映射
 
 IEC 61508-3:2010 条款 7.4.4 将开发工具分为 **T1 / T2 / T3** 三类；IEC 61508 Ed.3（CDV）进一步将其映射到 **TIL 0–4（Tool Integrity Level）**。这与本项目形式化验证 / 工具链治理策略的映射关系如下：
 
@@ -173,7 +185,7 @@ IEC 61508-3:2010 条款 7.4.4 将开发工具分为 **T1 / T2 / T3** 三类；IE
 
 ---
 
-## 9. 正向示例
+## 10. 正向示例
 
 ### 示例 1：SEooC 制动控制软件复用
 
@@ -183,7 +195,7 @@ IEC 61508-3:2010 条款 7.4.4 将开发工具分为 **T1 / T2 / T3** 三类；IE
 
 某过程工业最终元件供应商收集同型号 SIL 2 阀门执行器在现场累计 10⁸ 设备小时的运行数据，按 IEC 61508-2 7.4.10 与 IEC 61508-6 附录 D 的 χ² 置信区间方法推导危险未检测故障率，成功通过 Route 2H 论证，减少了 FMEDA 预测的不确定性。
 
-## 10. 反例 / 失败案例
+## 11. 反例 / 失败案例
 
 ### 反例 1：复用未经 SIL 评估的开源库
 

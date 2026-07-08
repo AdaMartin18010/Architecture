@@ -473,6 +473,6 @@ Layer 4: 源码审查 + Vendoring
 > **权威来源**:
 >
 > - [The Rust Programming Language](https://www.rust-lang.org)
-> - [RustBelt](https://iris-project.org/rustbelt.html)
+> - [RustBelt](https://plv.mpi-sws.org/rustbelt/)
 > - [Aeneas](https://github.com/AeneasVerif/aeneas)
 > - 核查日期：2026-07-07

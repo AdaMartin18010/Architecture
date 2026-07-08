@@ -72,6 +72,15 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 | Clause 10 | Architecture Elaboration（细化） | `03-application-architecture-reuse` ABB→SBB 细化 |
 | Clause 11 | Architecture Enablement（使能） | `04-component-architecture-reuse` 资产库与接口契约 |
 
+### 2.2 ISO/IEC/IEEE 42010:2022 核心条款映射
+
+| 条款 | 核心内容 | 架构描述元素 | 复用映射 |
+|---|---|---|---|
+| Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Decision/Rationale | 元模型资产复用的术语基础 |
+| Clause 6.1–6.10 | AD 规约要求 | 识别 EoI、利益相关者、视角、关注点、视点、视图、视图组件、对应关系、决策与依据 | 组织级 AD 模板与检查清单 |
+| Clause 7.1–7.2 | ADF / ADL 规约 | Architecture Description Framework、Architecture Description Language 的 conformance 要求 | TOGAF/ArchiMate/SysML 对齐基准 |
+| Clause 8.1–8.3 | Viewpoint、Model Kind、View Method 规约 | 视点的关注点覆盖、模型种类的约定、视图方法 | 可复用视点库与模型种类目录 |
+
 ---
 
 ## 3. ISO 42010:2022 术语更新
@@ -129,8 +138,8 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 
 ---
 
-> 最后更新: 2026-07-08
-> 注意: 本矩阵将随标准更新持续维护。
+> 最后更新: 2026-07-09
+> 注意: 本矩阵将随标准更新持续维护；ISO 42010:2022 条款映射详见第 2.2 节。
 
 
 ---
@@ -211,16 +220,20 @@ graph TB
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO
-> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO
-> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO
-> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
-> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260，白皮书 W262）
-> - [SWEBOK Guide V4.0](https://www.computer.org/education/bodies-of-knowledge/software-engineering) — IEEE Computer Society
-> - [SLSA 1.2 Specification](https://slsa.dev/spec/v1.2/) — OpenSSF
-> - [MCP Specification](https://modelcontextprotocol.io/) — Anthropic / Linux Foundation
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
+> - [TOGAF Architecture Content](https://publications.opengroup.org/togaf-library) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260，白皮书 W262）（核查日期：2026-07-09）
+> - [ArchiMate 4 Changes White Paper W262](https://publications.opengroup.org/w262) — The Open Group（核查日期：2026-07-09）
+> - [SWEBOK Guide V4.0](https://www.computer.org/education/bodies-of-knowledge/software-engineering) — IEEE Computer Society（核查日期：2026-07-09）
+> - [SLSA 1.2 Specification](https://slsa.dev/spec/v1.2/) — OpenSSF（核查日期：2026-07-09）
+> - [MCP Specification](https://modelcontextprotocol.io/) — Anthropic / Linux Foundation（核查日期：2026-07-09）
 >
-> **核查日期**：2026-07-08
+> **核查日期**：2026-07-09
 
 ### 8. 交叉引用
 

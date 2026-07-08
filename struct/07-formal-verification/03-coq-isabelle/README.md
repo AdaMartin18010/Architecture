@@ -100,6 +100,13 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 
 类似地，Isabelle/HOL 的 `InsertionSort.thy` 提供等价的机器检查证明，展示同一算法在不同证明助理中的可移植表达。
 
+### 5.1 正向示例：CompCert 与 seL4 等高可信复用资产
+
+- **CompCert**（INRIA）使用 Coq/Rocq 证明了 C 语言子集优化编译器的前端到后端正确性，其生成的机器码保留了源程序语义。航空、汽车等高安全领域复用 CompCert 时，可显著降低编译器引入错误的信任假设。
+- **seL4**（UNSW/TS）使用 Isabelle/HOL 证明了操作系统微内核的功能正确性与安全性质，成为全球首个通用操作系统内核完整形式化验证案例。seL4 的 proofs 以 AFP/开源形式维护，下游系统复用 seL4 时可将内核安全性质作为可信基。
+
+这些案例说明：定理证明不仅服务于单函数正确性，更可以构建**跨项目继承的复用资产**。
+
 ---
 
 ## 6. 反例 / 反模式：密码库实现与证明模型脱节
@@ -113,6 +120,16 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - **形式化证明不能自动覆盖实现层面**；必须建立从规约到代码的追踪关系。
 - 复用高安全组件时，应索取并审计 **证明假设（proof assumptions）** 与 **可信计算基（TCB）**。
 - 对 Coq/Rocq 提取到 OCaml/Haskell 的代码，需验证提取过程保持语义；对 Isabelle 的 code generation 亦同。
+
+### 6.1 反模式：证明依赖未声明的公理或提取语义不一致
+
+某团队使用 Coq/Rocq 证明了一个关键访问控制策略，但在最终提取为 OCaml 服务时：
+
+1. 规约中使用了 `functional_extensionality` 等公理，未在证据包中声明；
+2. 提取后的代码依赖 `ExtrOcamlNatInt` 等外部插件，其语义与证明模型中的归纳类型存在细微差异；
+3. 评审方无法复现证明环境（Rocq 8.17 vs 9.0 的 `Stdlib` 重命名导致 `Require Import` 失败）。
+
+结果，形式化证据未能通过独立安全评估。教训：**所有公理、TCB、工具版本和提取配置必须作为证据包的一部分被审计**；复用高安全组件时，消费方应索取 `rocqchk`/proof checksum 及环境锁定文件。
 
 ---
 
@@ -138,13 +155,24 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 | DO-178C / DO-333（DAL A） | 航电级软件验证 | SPARK/Ada + Isabelle 辅助 | DO-333 证据包 |
 | ISO/IEC 25010:2023（功能正确性） | 排序/计数器等功能正确 | 证明器 + CI | 回归验证报告 |
 
+### 8.1 工具链版本与标准映射
+
+| 工具/组件 | 推荐版本 | 适用标准/场景 | 典型证据 |
+|:---|:---|:---|:---|
+| Rocq Prover | 9.0+ / Coq 8.20 兼容 | IEEE 1012-2024 §9.5 | `.v` 证明脚本、`rocqchk` 校验 |
+| Isabelle/HOL | Isabelle2025 | IEEE 1012-2024 §9.5 | `.thy` 证明脚本、会话记录 |
+| SMT 后端 | cvc5 / Z3 / Alt-Ergo | DO-178C / DO-333 | 自动证明步骤日志 |
+| Code Extraction | Rocq `Extraction` / Isabelle `code generation` | IEC 61508 SIL 4 | 提取配置与语义一致性审查 |
+
+> **版本提示**：Rocq 9.0 将标准库拆分为 `Corelib` 与 `Stdlib`，并引入单一 `rocq` 二进制；迁移旧 Coq 证明时需更新 `Require` 路径。
+
 ---
 
 ## 9. 延伸阅读
 
 - Software Foundations: <https://softwarefoundations.cis.upenn.edu/>
 - Isabelle Archive of Formal Proofs: <https://www.isa-afp.org/>
-- Functional Algorithms Verified: <https://functional-algorithms-verified.org/>
+- Functional Algorithms Verified: <https://softwarefoundations.cis.upenn.edu/vfa-current/index.html>
 - CoqPilot: <https://github.com/JetBrains-Research/coqpilot>
 - Verina: <https://arxiv.org/abs/2505.23135>
 
@@ -152,11 +180,14 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| Rocq Prover (原 Coq) | <https://rocq-prover.org/> | 2026-07-08 |
-| Coq/Rocq 文档 | <https://coq.github.io/doc/> | 2026-07-08 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-08 |
-| Archive of Formal Proofs | <https://www.isa-afp.org/> | 2026-07-08 |
-| Software Foundations | <https://softwarefoundations.cis.upenn.edu/> | 2026-07-08 |
+| The Rocq Prover 9.0 (原 Coq) | <https://rocq-prover.org/> | 2026-07-09 |
+| Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
+| ANSSI Requirements on the Use of Rocq (CC evaluations) | <https://inria.hal.science/hal-04452421v1/document> | 2026-07-09 |
+| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
+| Isabelle2025 Download | <https://isabelle.in.tum.de/index.html> | 2026-07-09 |
+| Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
+| Software Foundations | <https://softwarefoundations.cis.upenn.edu/> | 2026-07-09 |
+| Sledgehammer (Isabelle) | <https://isabelle.in.tum.de/dist/Isabelle2025/doc/sledgehammer.pdf> | 2026-07-09 |
 
 ## 11. 交叉引用
 
@@ -164,4 +195,4 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - SPARK/Ada 工业案例：[`struct/07-formal-verification/05-spark-ada/spark-ada-do333-industrial.md`](../05-spark-ada/spark-ada-do333-industrial.md)
 - 定理证明指南：[`struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md`](./theorem-proving-guidelines.md)
 
-> 最后更新：2026-07-08
+> 最后更新：2026-07-09

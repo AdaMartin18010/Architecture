@@ -75,6 +75,8 @@
     - [14.2 Uber 的实时事件平台](#142-uber-的实时事件平台)
     - [14.3 金融交易的 CQRS 实践](#143-金融交易的-cqrs-实践)
     - [14.4 正向案例：某电商平台的订单履约事件链](#144-正向案例某电商平台的订单履约事件链)
+  - [15. 标准/框架映射](#15-标准框架映射)
+  - [16. 权威来源](#16-权威来源)
 
 ## 1. 核心概念
 
@@ -671,21 +673,37 @@ Uber 的业务高度依赖实时数据——从司机位置更新到动态定价
 
 ---
 
-> 最后更新: 2026-07-08
-> 权威来源（核查日期: 2026-07-08）:
->
-> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — *Systems and software engineering — SQuaRE — Product quality model* (核查日期: 2026-07-08)
-> - <https://cloudevents.io/> (CloudEvents Specification, CNCF, 核查日期: 2026-07-08)
-> - <https://martinfowler.com/articles/201701-event-driven.html> (What do you mean by "Event-Driven"?, Martin Fowler, 核查日期: 2026-07-08)
-> - <https://kafka.apache.org/documentation/> (Apache Kafka Documentation, 核查日期: 2026-07-08)
-> - <https://pulsar.apache.org/docs/> (Apache Pulsar Documentation, 核查日期: 2026-07-08)
-> - <https://nightlies.apache.org/flink/flink-docs-stable/> (Apache Flink Documentation, 核查日期: 2026-07-08)
-> - <https://www.asyncapi.com/> (AsyncAPI Specification, 核查日期: 2026-07-08)
-> - <https://www.confluent.io/blog/> (Confluent Blog: Schema Evolution and Compatibility, 核查日期: 2026-07-08)
-> - <https://netflixtechblog.com/> (Netflix Tech Blog: Kafka and Event-Driven Architecture, 核查日期: 2026-07-08)
-> - <https://www.uber.com/blog/> (Uber Engineering Blog: Real-time Event Platform, 核查日期: 2026-07-08)
-> - <https://docs.axoniq.io/reference-guide/> (Axon Framework Reference Guide, 核查日期: 2026-07-08)
-> - <https://microservices.io/patterns/data/saga.html> (Saga Pattern, Chris Richardson, 核查日期: 2026-07-08)
-> - <https://docs.temporal.io/> (Temporal Documentation: Orchestration Platform, 核查日期: 2026-07-08)
-> - CNCF Cloud Native Landscape: <https://landscape.cncf.io/> (核查日期: 2026-07-08)
-> - CNCF Graduated and Incubating Projects: <https://www.cncf.io/projects/> (核查日期: 2026-07-08)
+## 15. 标准/框架映射
+
+| 复用场景 | 标准/框架 | 关键映射点 |
+|---------|----------|-----------|
+| 跨平台事件格式 | CNCF CloudEvents 1.0.2 | `specversion`、`type`、`source`、`id`、`datacontenttype` 元数据标准化 |
+| 异步 API 契约 | AsyncAPI 2.6+ | 事件驱动 API 的 OpenAPI 等价物，支持代码生成与契约测试 |
+| Schema 演进治理 | Confluent Schema Registry / AWS Glue Schema Registry | BACKWARD/FORWARD/FULL 兼容性检查 |
+| 事件流基础设施 | Apache Kafka / Apache Pulsar / Apache Flink | Topic/Partition/Subscription 复用边界 |
+| 事件溯源与 CQRS | Axon Framework / EventStoreDB | 聚合边界 = 事件溯源强一致性边界 |
+|  Saga 编排 | Temporal / Camunda / Netflix Conductor | 跨服务长事务的协调与补偿 |
+| 质量模型 | ISO/IEC 25010:2023 — Reusability / Interoperability / Fault Tolerance | EDA 四种模式对应可复用、互操作、容错 |
+
+## 16. 权威来源
+
+| 来源 | 权威 URL | 核查日期 |
+|------|----------|----------|
+| ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
+| CloudEvents Specification | <https://cloudevents.io/> | 2026-07-09 |
+| CloudEvents 1.0.2 Spec | <https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md> | 2026-07-09 |
+| AsyncAPI Specification | <https://www.asyncapi.com/> | 2026-07-09 |
+| Martin Fowler - Event-Driven | <https://martinfowler.com/articles/201701-event-driven.html> | 2026-07-09 |
+| Apache Kafka Documentation | <https://kafka.apache.org/documentation/> | 2026-07-09 |
+| Apache Pulsar Documentation | <https://pulsar.apache.org/docs/> | 2026-07-09 |
+| Apache Flink Documentation | <https://nightlies.apache.org/flink/flink-docs-stable/> | 2026-07-09 |
+| Confluent Schema Registry | <https://docs.confluent.io/platform/current/schema-registry/index.html> | 2026-07-09 |
+| Netflix Tech Blog | <https://netflixtechblog.com/> | 2026-07-09 |
+| Uber Engineering Blog | <https://www.uber.com/blog/> | 2026-07-09 |
+| Axon Framework | <https://docs.axoniq.io/reference-guide/> | 2026-07-09 |
+| Saga Pattern (Chris Richardson) | <https://microservices.io/patterns/data/saga.html> | 2026-07-09 |
+| Temporal | <https://docs.temporal.io/> | 2026-07-09 |
+| CNCF Cloud Native Landscape | <https://landscape.cncf.io/> | 2026-07-09 |
+| CNCF Projects | <https://www.cncf.io/projects/> | 2026-07-09 |
+
+> **最后更新**: 2026-07-09

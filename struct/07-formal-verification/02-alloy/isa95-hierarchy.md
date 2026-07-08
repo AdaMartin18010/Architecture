@@ -235,8 +235,8 @@ EnterpriseResource$0 (L4)
 
 - [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
-- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
-- ANSI/ISA-95.00.01-2010 / IEC 62264-1. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book.html>
+- ANSI/ISA-95.00.01-2010 / IEC 62264-1. <https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard>
 - IEC 62443. <https://webstore.iec.ch/publication/66912>
 
 ---
@@ -269,6 +269,6 @@ EnterpriseResource$0 (L4)
 
 > **权威来源**:
 >
-> - [Alloy Analyzer](http://alloy.mit.edu)
+> - [Alloy Analyzer](https://alloytools.org)
 > - [Alloy Tools](https://alloytools.org)
 > - 核查日期：2026-07-07

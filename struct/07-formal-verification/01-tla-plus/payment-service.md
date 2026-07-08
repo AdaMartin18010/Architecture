@@ -185,7 +185,7 @@ Model Checking Results:
 - [TLA+ - Wikipedia](https://en.wikipedia.org/wiki/TLA%2B)
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
 - Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
-- Wayne, H. *Practical TLA+*. <https://www.apress.com/gp/book/9781484238294>
+- Wayne, H. *Practical TLA+*. <https://link.springer.com/book/10.1007/978-1-4842-3829-5>
 - Newcombe et al. (2015). *How Amazon Web Services Uses Formal Methods*. <https://doi.org/10.1145/2699415>
 - TLA+ Examples Repository. <https://github.com/tlaplus/Examples>
 

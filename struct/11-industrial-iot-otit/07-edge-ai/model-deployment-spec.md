@@ -6,6 +6,14 @@
 
 ---
 
+## 概念定义
+
+**工业边缘 AI（Industrial Edge AI）** 是指在靠近物理资产的工业现场节点上部署机器学习模型，用于实时感知、预测、决策或控制辅助。与消费级边缘推理不同，工业边缘 AI 必须在确定性延迟、功能安全、网络安全、资源受限与环境应力等多重 OT 约束下运行。
+
+> **定义 EAI.0** (工业边缘 AI 复用): 工业边缘 AI 复用是将经过验证的模型、运行时配置、部署流水线与监控规则迁移到新的工业边缘节点或场景的过程，要求保留原始确定性、安全性与合规性假设。
+
+---
+
 ## 1. 工业边缘 AI 的特殊约束
 
 工业边缘 AI 区别于消费级边缘推理的核心在于 OT 环境的不可妥协约束。
@@ -67,6 +75,18 @@ graph LR
 | SIL 4 | 10⁻⁸ ~ 10⁻⁹ /h | AI 仅允许作为非安全相关增强 |
 
 > **定理 EAI.2** (AI Safety Degradation): 对于 SIL ≥ 2 的场景，AI 输出必须经过功能安全认证的**传统确定性算法**最终裁决。
+
+### 1.5 SOTIF 与 ISO/PAS 8800 约束
+
+工业边缘 AI 还可能引入非故障类风险：模型在训练分布内表现正确，但在真实世界触发条件（光照变化、振动噪声、未知工件姿态）下产生危险输出。
+
+| 约束来源 | 适用场景 | 对 AI 复用的要求 |
+|---------|---------|----------------|
+| **ISO 21448:2022 (SOTIF)** | ADAS/ADS、协作机器人、视觉质检 | 识别触发条件与性能局限；复用感知模型时必须限定 ODD 并在目标场景验证触发条件覆盖 |
+| **ISO/PAS 8800** | 道路车辆 AI 安全（预期 2024–2025 发布） | 对 ML 组件提出数据质量、模型可解释性、运行监控与退化管理要求 |
+| **IEC 61508 Ed.3** | 通用工业安全相关 AI | 非确定性算法需补充系统性能力与诊断覆盖率论证；工具链按 TIL 0–4 管理 |
+
+> **定理 EAI.4** (AI 非确定性边界): 在缺乏完整 SOTIF 触发条件分析与 ISO/PAS 8800 / IEC 61508 Ed.3 合规证据的情况下，不得将 AI 输出直接用于安全相关最终控制。
 
 ---
 
@@ -182,7 +202,7 @@ sequenceDiagram
 
 ---
 
-## 6. 参考索引与权威来源
+## 6. 权威来源
 
 | 来源 | URL |
 |:---|:---|
@@ -193,9 +213,21 @@ sequenceDiagram
 | STM32Cube.AI | <https://stm32ai.st.com> |
 | CMSIS-NN | <https://github.com/ARM-software/CMSIS-NN> |
 | IEC 61508-3:2010 Software safety requirements | <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> |
+| IEC 61508 Ed.3 CDV/RVC 状态 | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> |
+| IEC TR 61508-3-3:2025 Guidance on object-oriented software | <https://webstore.iec.ch/en/publication/99554> |
+| ISO 21448:2022 SOTIF | <https://www.iso.org/standard/77490.html> |
+| ISO/PAS 8800 Road vehicles — Safety and artificial intelligence | <https://www.iso.org/standard/84387.html> |
 | IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
 | ISA/IEC 62443 series | <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards> |
 | ISO 13849-1 Safety of machinery | <https://www.iso.org/standard/69883.html> |
+
+> **权威来源**（带核查日期）：
+>
+> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*: <https://webstore.iec.ch/en/publication/99554>（核查日期：2026-07-09）
+> - ISO 21448:2022 *Road vehicles — Safety of the intended functionality (SOTIF)*: <https://www.iso.org/standard/77490.html>（核查日期：2026-07-09）
+> - ISO/PAS 8800 *Road vehicles — Safety and artificial intelligence*: <https://www.iso.org/standard/84387.html>（核查日期：2026-07-09）
+> - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>（核查日期：2026-07-09）
 
 ---
 

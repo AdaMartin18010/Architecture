@@ -712,7 +712,7 @@ medium: postcondition might fail, cannot prove Compute_Next_Mode'Result /= Appro
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
 - [DO-178C - Wikipedia](https://en.wikipedia.org/wiki/DO-178C)
 - AdaCore. *SPARK Pro*. <https://www.adacore.com/sparkpro>
-- RTCA DO-178C / ED-12C. <https://rtca.org/product/do-178c-2/>
+- RTCA DO-178C / ED-12C. <https://www.rtca.org/product/do-178c/>
 - RTCA DO-333 / ED-216. <https://rtca.org/product/do-333/>
 - Moy et al. (2013). *Testing or Formal Verification: DO-178C Alternatives and Industrial Experience*. <https://doi.org/10.1109/MS.2013.59>
 
@@ -747,5 +747,5 @@ medium: postcondition might fail, cannot prove Compute_Next_Mode'Result /= Appro
 > **权威来源**:
 >
 > - [SPARK Pro](https://www.adacore.com/sparkpro)
-> - [DO-178C](https://rtca.org/product/do-178c-2/)
+> - [DO-178C](https://www.rtca.org/product/do-178c/)
 > - 核查日期：2026-07-07

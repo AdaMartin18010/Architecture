@@ -10,6 +10,7 @@
 
 - [OPC UA FX 复用层次分析](#opc-ua-fx-复用层次分析)
   - [目录](#目录)
+  - [概念定义](#概念定义)
   - [1. OPC UA FX 的技术栈](#1-opc-ua-fx-的技术栈)
   - [2. 四层复用模型](#2-四层复用模型)
     - [Level 1: 物理硬件复用](#level-1-物理硬件复用)
@@ -26,10 +27,20 @@
     - [7.3 Offline Engineering（离线工程）](#73-offline-engineering离线工程)
     - [7.4 与 ISA-95 的映射](#74-与-isa-95-的映射)
     - [7.5 与 AAS 的映射](#75-与-aas-的映射)
-    - [7.6 正例](#76-正例)
-    - [7.7 反例](#77-反例)
+    - [7.6 正向示例](#76-正向示例)
+    - [7.7 反例 / 失败案例](#77-反例--失败案例)
     - [7.8 OPC UA FX 复用层次与映射 Mermaid 图](#78-opc-ua-fx-复用层次与映射-mermaid-图)
-    - [7.9 权威来源与交叉引用补强](#79-权威来源与交叉引用补强)
+    - [7.9 权威来源](#79-权威来源)
+    - [7.10 交叉引用](#710-交叉引用)
+    - [7.11 论证](#711-论证)
+
+---
+
+## 概念定义
+
+**OPC UA FX（Field eXchange）** 是 OPC Foundation 为工业现场级通信定义的扩展套件，基于 OPC UA PubSub over UDP（UADP）与 IEEE 802.1 TSN，实现跨厂商控制器与设备之间的确定性数据交换。其复用价值在于：用标准化信息模型替代私有现场总线，将工程集成资产从物理层到应用逻辑分层抽象，降低 vendor lock-in 与生命周期成本。
+
+> **定义 FX.Reuse.0** (OPC UA FX 复用): OPC UA FX 复用是在保持端到端确定性、语义兼容性和安全约束的前提下，将 FX 相关的硬件、协议、信息模型与应用逻辑资产复制到不同设备或产线的过程。
 
 ---
 
@@ -258,7 +269,7 @@ AAS 为 OPC UA FX 中的设备和系统提供语义上下文。FX 的 Automation
 | Profile / Capability | Submodel (能力描述) | 组件能力声明 |
 | Offline Engineering 配置 | File / Submodel | 工程文件与模板 |
 
-### 7.6 正例
+### 7.6 正向示例
 
 | 场景 | 复用资产 | 效果 |
 |------|---------|------|
@@ -267,7 +278,9 @@ AAS 为 OPC UA FX 中的设备和系统提供语义上下文。FX 的 Automation
 | 设备供应商交付 | AAS Digital Nameplate + OPC UA FX C2D 描述 | 客户可自动识别设备并集成到现有网络 |
 | 集团工厂复制 | ISA-95 L2/L3 映射 + FX C2C 模板 | 标准化产线快速复制到新工厂 |
 
-### 7.7 反例
+### 7.7 反例 / 失败案例
+
+> **反例**：以下场景展示了 OPC UA FX 复用中因忽视实时性、拓扑差异或棕地现实而导致的典型失败。
 
 | 反例 | 风险说明 |
 |------|---------|
@@ -312,19 +325,32 @@ graph TB
     TSN -.->|确定性传输| D2D
 ```
 
-### 7.9 权威来源与交叉引用补强
+### 7.9 权威来源
 
-- OPC UA FX Part 80 (Base concepts): <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>
-- OPC UA FX Part 81 (OPC UA FX Information Model): <https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>
-- OPC UA FX Part 82 (Controller-to-Controller): <https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>
-- OPC UA FX Part 83 (Controller-to-Device): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>
-- OPC UA FX Part 84 (Device-to-Device): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>
-- IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/>
-- IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>
-- IEC 62264-1:2013 *Enterprise-control system integration*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>
-- IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/en/publication/65628>
-- IDTA AAS Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
-- **交叉引用**: [`deployment-scenarios/brownfield-greenfield-decision.md`](./deployment-scenarios/brownfield-greenfield-decision.md)；[`connection-manager/tla-specification.md`](./connection-manager/tla-specification.md)；[`05-digital-twin-aas/aas-opcua-mapping.md`](../05-digital-twin-aas/aas-opcua-mapping.md)；[`01-isa-95-model/isa-95-asset-catalog-deep-dive.md`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+> **权威来源**：
+>
+> - OPC UA FX Part 80 (Base concepts): <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 81 (OPC UA FX Information Model): <https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 82 (Controller-to-Controller): <https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 83 (Controller-to-Device): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 84 (Device-to-Device): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>（核查日期：2026-07-09）
+> - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
+> - IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/en/publication/65628>（核查日期：2026-07-09）
+> - IDTA AAS Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>（核查日期：2026-07-09）
+
+### 7.10 交叉引用
+
+- 棕地/绿地决策：[`deployment-scenarios/brownfield-greenfield-decision.md`](./deployment-scenarios/brownfield-greenfield-decision.md)
+- Connection Manager TLA 规约：[`connection-manager/tla-specification.md`](./connection-manager/tla-specification.md)
+- AAS-OPC UA 映射：[`../05-digital-twin-aas/aas-opcua-mapping.md`](../05-digital-twin-aas/aas-opcua-mapping.md)
+- ISA-95 资产目录：[`../01-isa-95-model/isa-95-asset-catalog-deep-dive.md`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md)
+- OPC UA FX 复用总览：[`./README.md`](./README.md)
+
+### 7.11 论证
+
+> **定理 FX.Reuse.3** (FX 复用层次单调性): 若 OPC UA FX 资产在层级 L 被复用，则其在所有低于 L 的层级（物理、协议、信息模型）必须保持兼容。任何仅在上层应用逻辑复制而忽视底层确定性约束的复用都会导致互操作失败或安全事件。
 
 ---
 

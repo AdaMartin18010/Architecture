@@ -1,6 +1,6 @@
 # Backstage / Port / Cortex IDP 复用实践
 
-> **版本**: 2026-07-07
+> **版本**: 2026-07-09
 > **定位**: 03 应用架构复用层核心子主题 —— 内部开发者平台（IDP）作为平台工程与架构复用的核心载体
 > **对齐标准**: CNCF Platform Engineering Maturity Model, ISO/IEC/IEEE 42010:2022, NASA RRL / RCMM
 > **来源 URL**:
@@ -11,7 +11,7 @@
 > - Cortex Documentation: <https://docs.cortex.io/>
 > - CNCF Platform Engineering Maturity Model: <https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity/>
 > - NASA RRL: <https://www.nasa.gov/reference/reuse-readiness-levels/>
-> **核查日期**: 2026-07-07
+> **核查日期**: 2026-07-09
 
 ---
 
@@ -53,7 +53,8 @@
     - [11.3 选型决策分析](#113-选型决策分析)
   - [12. 实施路线图建议](#12-实施路线图建议)
   - [13. 与四层架构的关系](#13-与四层架构的关系)
-  - [14. 权威来源](#14-权威来源)
+  - [14. 标准/框架映射](#14-标准框架映射)
+  - [15. 权威来源](#15-权威来源)
 
 ---
 
@@ -462,18 +463,35 @@ flowchart LR
 
 ---
 
-## 14. 权威来源
+## 14. 标准/框架映射
 
-- Backstage Documentation: <https://backstage.io/docs>
-- Backstage Plugins Marketplace: <https://backstage.io/plugins>
-- Backstage GitHub Repository: <https://github.com/backstage/backstage>
-- Port Documentation: <https://docs.getport.io/>
-- Cortex Documentation: <https://docs.cortex.io/>
-- CNCF — Cloud Native Computing Foundation: <https://www.cncf.io/>
-- CNCF Platform Engineering Maturity Model: <https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity/>
-- CNCF Platform Engineering White Paper: <https://tag-app-delivery.cncf.io/whitepapers/platform-engineering/>
-- NASA Reuse Readiness Levels (RRL): <https://www.nasa.gov/reference/reuse-readiness-levels/>
-- NASA Reuse Capability Maturity Model (RCMM): <https://www.nasa.gov/reference/reuse-capability-maturity-model/>
-- DORA — DevOps Research and Assessment: <https://dora.dev/>
+| IDP 复用场景 | 标准/框架 | 关键映射点 |
+|-------------|----------|-----------|
+| 内部平台成熟度评估 | CNCF Platform Engineering Maturity Model | Investment、Adoption、Interfaces、Operations、Measurement 五维度 |
+| 软件资产目录 | Backstage Software Catalog + NASA RRL | 将 Catalog 实体生命周期映射为 RRL 1-9 等级 |
+| 项目模板与最佳实践固化 | Golden Path / Scaffolder | 将隐性知识显性化、标准化、自动化 |
+| 服务成熟度治理 | Cortex Scorecards / Backstage Soundcheck | 量化 SLO、文档、安全扫描、可观测性合规 |
+| 开发者体验度量 | DORA Core Model | Deployment Frequency、Lead Time for Changes、Change Failure Rate、Time to Restore |
+| 文档即代码 | Backstage TechDocs (MKDocs) | 文档与代码同版本管理，支持统一搜索与健康度评分 |
+| 复用就绪度 | NASA RCMM | Initial → Repeatable → Defined → Managed → Optimized |
 
-**核查日期**: 2026-07-07
+## 15. 权威来源
+
+| 来源 | 权威 URL | 核查日期 |
+|------|----------|----------|
+| Backstage Documentation | <https://backstage.io/docs> | 2026-07-09 |
+| Backstage Plugins Marketplace | <https://backstage.io/plugins> | 2026-07-09 |
+| Backstage GitHub Repository | <https://github.com/backstage/backstage> | 2026-07-09 |
+| Backstage (CNCF Project) | <https://www.cncf.io/projects/backstage/> | 2026-07-09 |
+| Port Documentation | <https://docs.getport.io/> | 2026-07-09 |
+| Cortex Documentation | <https://docs.cortex.io/> | 2026-07-09 |
+| CNCF — Cloud Native Computing Foundation | <https://www.cncf.io/> | 2026-07-09 |
+| CNCF Platform Engineering Maturity Model | <https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity/> | 2026-07-09 |
+| CNCF Platform Engineering White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platform-engineering/> | 2026-07-09 |
+| CNCF Backstage joins Incubator | <https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/> | 2026-07-09 |
+| NASA Reuse Readiness Levels (RRL) | <https://www.nasa.gov/reference/reuse-readiness-levels/> | 2026-07-09 |
+| NASA Reuse Capability Maturity Model (RCMM) | <https://www.nasa.gov/reference/reuse-capability-maturity-model/> | 2026-07-09 |
+| DORA — DevOps Research and Assessment | <https://dora.dev/> | 2026-07-09 |
+
+> **版本**: 2026-07-09
+> **最后更新**: 2026-07-09

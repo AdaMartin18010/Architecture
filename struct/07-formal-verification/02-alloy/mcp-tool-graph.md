@@ -214,9 +214,9 @@ MCPServer$1 (capabilities: {executeSQL})
 
 - [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
-- Jackson, D. *Software Abstractions*. <https://alloytools.org/book/>
+- Jackson, D. *Software Abstractions*. <https://alloytools.org/book.html>
 - Model Context Protocol Specification. <https://modelcontextprotocol.io/specification/2025-11-25>
-- CIS MCP Companion Guide (April 2026). <https://www.cisecurity.org/insights/blog/cis-mcp-companion-guide>
+- CIS MCP Companion Guide (April 2026). <https://www.cisecurity.org/insights/white-papers/controls-v8-1-model-context-protocol-companion-guide>
 
 ---
 
@@ -252,6 +252,6 @@ MCPServer$1 (capabilities: {executeSQL})
 
 > **权威来源**:
 >
-> - [Alloy Analyzer](http://alloy.mit.edu)
+> - [Alloy Analyzer](https://alloytools.org)
 > - [Alloy Tools](https://alloytools.org)
 > - 核查日期：2026-07-07

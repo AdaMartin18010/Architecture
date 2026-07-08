@@ -144,7 +144,7 @@ EN 50128（铁路领域软件安全标准）推荐使用形式化方法，尤其
 - Abrial, J.-R.: "Modeling in Event-B: System and Software Engineering" (2010)
 - Abrial, J.-R.: "The B-Book: Assigning Programs to Meanings" (1996)
 - CENELEC EN 50128:2011 "Railway applications — Communication, signalling and processing systems"
-- Rodin Platform: [event-b.org](https://www.event-b.org)
+- Rodin Platform: [event-b.org](https://wiki.event-b.org/index.php/Main_Page)
 - Atelier B: [atelierb.eu](https://www.atelierb.eu)
 - CLEARSY Safety Platform 资料
 - Butler, M.: "Modelling and verification with Event-B" (SETSS 2016 讲义)
@@ -167,6 +167,6 @@ EN 50128（铁路领域软件安全标准）推荐使用形式化方法，尤其
 
 > **权威来源**:
 >
-> - [Event-B](https://www.event-b.org)
+> - [Event-B](https://wiki.event-b.org/index.php/Main_Page)
 > - [Atelier B](https://www.atelierb.eu/en/)
 > - 核查日期：2026-07-07

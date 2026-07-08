@@ -46,7 +46,7 @@
 - `struct\03-application-architecture-reuse\04-serverless\README.md` — 324 字符
 - `struct\03-application-architecture-reuse\06-event-driven\README.md` — 317 字符
 - `struct\03-application-architecture-reuse\07-cloud-native-patterns\nist-sp-800-204-microservices-security.md` — 479 字符
-- `struct\03-application-architecture-reuse\08-service-mesh\gateway-api-gamma-2026.md` — 451 字符
+- `struct\03-application-architecture-reuse\08-service-mesh\gateway-api-v15-gamma-alignment.md` — 已移除机械重复模板段落
 - `struct\03-application-architecture-reuse\09-eda-cqrs\eda-cqrs-event-sourcing-patterns.md` — 394 字符
 - `struct\04-component-architecture-reuse\README.md` — 343 字符
 - `struct\04-component-architecture-reuse\01-component-models\component-models-reuse.md` — 220 字符

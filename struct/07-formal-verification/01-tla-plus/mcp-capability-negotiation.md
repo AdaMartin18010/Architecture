@@ -132,6 +132,10 @@ agreedCaps ⊆ clientCaps ∧ agreedCaps ⊆ serverCaps
 
 该验证可直接作为 MCP Server 实现的参考：任何真实实现若允许无共同能力时进入 active，则必然违反协议安全性质。
 
+### 6.1 正向示例：用 TLC 穷举生成测试向量
+
+在持续集成中，可将 TLC 模型检查作为 MCP Server 的**协议合规性回归测试**：每次实现变更后，自动运行 `mcp-capability-negotiation.tla`，检查 `ActiveImpliesCommonCaps`、`ConsistentProtocolVersion` 与 `NegotiationSubset` 三个不变式。若某次代码提交错误放宽了能力守卫，TLC 会立即输出反例轨迹，阻止合并。这种“规约即测试”的方式，使复用 MCP Server 的消费方能够继承协议层的形式化保证。
+
 ## 7. 反例 / 反模式：移除守卫导致错误进入 Active
 
 ### 反例
@@ -144,6 +148,10 @@ clientState = "active", serverState = "active", agreedCaps = {}
 ```
 
 这一反例表明：即便双方声明的能力完全不相交，系统仍错误地进入可操作状态。真实 MCP 实现若出现此类缺陷，将导致 Client 调用 Server 不支持的接口（如 `tools/list` 返回空或异常），进而破坏上层 Agent 的任务规划。该反例也揭示了自然语言需求中常见的"显然正确"陷阱：开发者倾向于认为初始化流程会自然达成一致，但并发与消息丢失场景下必须显式不变量保护。
+
+### 7.1 反模式：忽略网络分区导致活性保证失效
+
+若规约未显式建模 `NetworkFailure`，`EventuallyActive` 活性性质将被“偷渡”通过：TLC 会假设所有消息必然送达，从而掩盖了真实网络分区下协商可能无限挂起的问题。某 MCP 代理实现曾因未处理 `initialize` 响应超时，在 Server 重启后遗留半开连接；形式上“已验证”的活性无法覆盖该场景，因为模型抽象过度简化。修复策略是：**将故障模型作为一等公民纳入规约**，并对活性结论的使用范围作出明确限制。
 
 ## 8. 与 MCP 规范的对应关系
 
@@ -176,6 +184,17 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 | DO-333 §6.3.2（形式化分析替代测试） | 协议安全性质穷举 | TLC 模型检验 | 模型检查报告 |
 | MCP 2025-03-26 §Lifecycle/Initialization | 协议语义形式化 | TLA+ Toolbox | 可执行参考文档 |
 
+### 10.1 工具链版本与标准映射
+
+| 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
+|:---|:---|:---|:---|
+| TLA+ Language / TLC | TLA+ v2.18 (Toolbox 1.7.x) | IEEE 1012-2024 §9.3/§9.6 | 状态空间有限，需评估 scope |
+| TLAPS | TLAPS 1.5.x | DO-333 §6.3.2 | 用于不变式归纳证明 |
+| Apalache | 0.44.x | IEEE 1012-2024 §9.3 | 基于 SMT 的符号模型检查 |
+| MCP 规范 | 2025-03-26 / 2025-11-25 | 协议实现参考 | 能力协商语义来源 |
+
+> **版本提示**：TLA+ 工具链版本会随基金会发布更新，建议在 CI 中锁定 Toolbox/TLC 版本并在规约头中记录。
+
 ## 11. 参考文献
 
 [^2]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley. <https://lamport.azurewebsites.net/tla/book.html>
@@ -190,16 +209,19 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
-| *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
-| TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-08 |
-| AWS and TLA+ | <https://lamport.azurewebsites.net/tla/amazon.html> | 2026-07-08 |
-| MCP Specification | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
+| TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-09 |
+| TLA+ Foundation | <https://foundation.tlapl.us/> | 2026-07-09 |
+| *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-09 |
+| TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-09 |
+| AWS and TLA+ | <https://lamport.azurewebsites.net/tla/amazon.html> | 2026-07-09 |
+| Learn TLA+ (Hillel Wayne) | <https://learntla.com/> | 2026-07-09 |
+| MCP Specification (2025-11-25) | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-09 |
+| MCP Lifecycle (2025-03-26) | <https://modelcontextprotocol.io/specification/2025-03-26/basic/lifecycle> | 2026-07-09 |
 
 ## 13. 交叉引用
 
-- 相关协议分析：[`struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/`](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/)
+- 相关协议分析：[`protocol-analysis.md`](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
 - A2A Task 生命周期 TLA+ 规约：[`a2a-task-lifecycle.md`](./a2a-task-lifecycle.md)
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 
-> 最后更新：2026-07-08
+> 最后更新：2026-07-09

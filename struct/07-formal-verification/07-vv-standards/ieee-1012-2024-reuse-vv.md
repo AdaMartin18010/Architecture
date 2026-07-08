@@ -23,14 +23,17 @@
     - [4.2 最小 V\&V 任务集（按 SIL）](#42-最小-vv-任务集按-sil)
     - [4.3 AI/ML 组件特殊 V\&V 要求](#43-aiml-组件特殊-vv-要求)
   - [5. 标准条款与工具映射](#5-标准条款与工具映射)
+    - [5.1 工具链版本、独立性等级与形式化方法映射](#51-工具链版本独立性等级与形式化方法映射)
   - [6. 与其他标准的协同](#6-与其他标准的协同)
     - [6.1 与 ISO 25040:2024 的协同](#61-与-iso-250402024-的协同)
     - [6.2 与 DO-178C / IEC 61508 的对应](#62-与-do-178c--iec-61508-的对应)
   - [7. 实施路径](#7-实施路径)
   - [8. 正向示例](#8-正向示例)
     - [示例](#示例)
+    - [8.1 正向示例：DO-333 形式化补充替代航电 DAL A 测试](#81-正向示例do-333-形式化补充替代航电-dal-a-测试)
   - [9. 反例 / 反模式](#9-反例--反模式)
     - [反例](#反例)
+    - [9.1 反模式：将高 SIL 组件按低 SIL 流程复用](#91-反模式将高-sil-组件按低-sil-流程复用)
   - [10. 权威来源](#10-权威来源)
   - [11. 交叉引用](#11-交叉引用)
 
@@ -140,6 +143,23 @@
 | §9.7 软件验收测试 V&V | 复用准入测试、回归验证 | CI 流水线、测试框架 | 验收测试报告 |
 | §10 硬件 V&V（FPGA/微码） | 可编程逻辑复用验证 | 形式化等价检查、仿真 | 等价检查报告 |
 
+### 5.1 工具链版本、独立性等级与形式化方法映射
+
+IEEE 1012-2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活动的**独立性**应随完整性等级提升。下表将 SIL、DO-178C DAL、推荐工具链与证据类型进行映射，便于复用工程快速选型。
+
+| 完整性等级 | DO-178C DAL | IEC 61508 独立性要求 | 推荐形式化工具链 | 典型证据 |
+|:---|:---:|:---|:---|:---|
+| SIL 1 | DAL D | 同行评审 | Alloy 草模、静态分析、代码评审 | 评审记录、检查单 |
+| SIL 2 | DAL C | 独立部门/角色 | TLA+ / TLC、Miri、单元测试框架 | 模型检查报告、UB 检测报告 |
+| SIL 3 | DAL B | 独立团队/第三方 | Coq/Rocq 9.0+、Isabelle/HOL、Kani Contracts | 证明脚本、契约验证报告 |
+| SIL 4 | DAL A | 独立组织/认证机构 | SPARK Pro、Event-B/Rodin、TLAPS | DO-333 证据包、安全案例、精化义务证明 |
+
+> **关键提示**：
+>
+> - 形式化方法可依据 DO-333 替代部分 DO-178C 目标，但需同时满足 **DO-330** 对形式化工具的鉴定要求。
+> - IEC 61508 Edition 3 预计将增加 AI/ML、面向对象软件及网络安全相关条款，复用 COTS/NDI 时需关注版本适用性。
+> - 独立性等级并非仅指“人”的独立，也包括工具、环境与数据集的独立（IEEE 1012-2024 §7）。
+
 ---
 
 ## 6. 与其他标准的协同
@@ -206,6 +226,10 @@
 
 该组件被 10+ 业务系统复用，每次复用只需验证使用场景是否满足组件前置条件，无需重复证明核心协议性质。
 
+### 8.1 正向示例：DO-333 形式化补充替代航电 DAL A 测试
+
+在航电软件开发中，某 DAL A 级飞控函数使用 SPARK Pro 证明“无运行时错误”与“输出满足高层需求”。依据 DO-333，这些形式化证明被接受为部分测试目标的替代证据，减少了大量冗余的动态测试；同时，工具鉴定（DO-330）确保 GNATprove 的可信度。该函数被后续机型复用时，只需重新验证配置参数范围，核心性质保持不变。
+
 ---
 
 ## 9. 反例 / 反模式
@@ -222,27 +246,35 @@
 
 教训：复用组件的 V&V 强度必须与其失效影响相匹配；低强度审查无法替代针对高完整性组件的形式化分析。
 
+### 9.1 反模式：将高 SIL 组件按低 SIL 流程复用
+
+某工业安全系统将 SIL 3 的电机控制组件直接复用到 SIL 4 的紧急停机回路，却未追加形式化证明或独立安全评估。审核发现：原组件的 V&V 证据仅包含单元测试与代码评审，缺少 IEC 61508-1:2025 要求的系统能力确认、系统故障分析以及独立验证证据。结果该项目被迫重新执行 SIL 4 形式化验证，延期 6 个月。该案例说明：**复用不能简单“继承”来源组件的 SIL 声明**，必须在新上下文中重新判定目标 SIL，并补充对应的 V&V 任务与独立性等级。
+
 ---
 
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-08 |
-| IEEE Xplore 1012-2024 | <https://ieeexplore.ieee.org/document/11134780/> | 2026-07-08 |
-| ISO/IEC 25040:2024 | <https://www.iso.org/standard/85413.html> | 2026-07-08 |
-| DO-178C (RTCA) | <https://www.rtca.org/training/do-178c-training/> | 2026-07-08 |
-| DO-333 Formal Methods Supplement | <https://loonwerks.com/projects/do333.html> | 2026-07-08 |
-| IEC 61508 | <https://webstore.iec.ch/publication/66912> | 2026-07-08 |
-| NASA-STD-8719.13B | <https://standards.nasa.gov/> | 2026-07-08 |
+| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-09 |
+| IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
+| IEEE 1012-2024 Overview (All-Standards) | <https://www.en-standard.eu/ieee-1012-2024-ieee-standard-for-system-software-and-hardware-verification-and-validation/> | 2026-07-09 |
+| ISO/IEC 25040:2024 | <https://www.iso.org/standard/85413.html> | 2026-07-09 |
+| DO-178C / DO-333 Training (RTCA) | <https://www.rtca.org/training/do-178c-training/> | 2026-07-09 |
+| DO-333 Formal Methods Supplement (Loonwerks/NASA) | <https://loonwerks.com/projects/do333.html> | 2026-07-09 |
+| RTCA DO-333 Supplements Training | <https://www.rtca.org/training/supplements-to-do-178c-training/> | 2026-07-09 |
+| IEC 61508 Edition 2 | <https://webstore.iec.ch/publication/66912> | 2026-07-09 |
+| IEC 61508 Edition 3 Development | <https://61508.org/knowledge/standards-development/> | 2026-07-09 |
+| IEC 61508-1:2025 CDV | <https://standards.iteh.ai/catalog/standards/clc/5551098d-3386-4248-903c-55ac84c3a837/pren-iec-61508-1-2025> | 2026-07-09 |
+| NASA-STD-8719.13B | <https://standards.nasa.gov/> | 2026-07-09 |
 
 ---
 
 ## 11. 交叉引用
 
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
-- TLA+ 案例：[`struct/07-formal-verification/01-tla-plus/`](../01-tla-plus/)
+- TLA+ 案例：[`mcp-capability-negotiation.md`](../01-tla-plus/mcp-capability-negotiation.md)
 - SPARK/Ada DO-333 工业案例：[`struct/07-formal-verification/05-spark-ada/spark-ada-do333-industrial.md`](../05-spark-ada/spark-ada-do333-industrial.md)
 - Rust 形式化语义：[`struct/07-formal-verification/04-rust-type-system/formal-semantics.md`](../04-rust-type-system/formal-semantics.md)
 
-> 最后更新: 2026-07-08
+> 最后更新: 2026-07-09

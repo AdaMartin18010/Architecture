@@ -23,14 +23,17 @@
     - [论证](#论证)
   - [6. 正向示例：验证组件依赖图无环](#6-正向示例验证组件依赖图无环)
     - [示例](#示例)
+    - [6.1 正向示例：验证 SaaS 多租户模块的可见性隔离](#61-正向示例验证-saas-多租户模块的可见性隔离)
   - [7. 反例 / 反模式：循环依赖的危害](#7-反例--反模式循环依赖的危害)
     - [反例教学：观察 Alloy 生成的最小反例](#反例教学观察-alloy-生成的最小反例)
+    - [7.1 反模式：未评估 scope 导致 Alloy “无反例”结论被误读](#71-反模式未评估-scope-导致-alloy-无反例结论被误读)
   - [8. Alloy 命令详解与预期输出](#8-alloy-命令详解与预期输出)
     - [8.1 检查命令（check）](#81-检查命令check)
     - [8.2 模拟命令（run）](#82-模拟命令run)
     - [8.3 预期输出](#83-预期输出)
     - [8.4 边界条件与扩展](#84-边界条件与扩展)
   - [9. 标准条款与工具映射](#9-标准条款与工具映射)
+    - [9.1 工具链版本与标准映射](#91-工具链版本与标准映射)
   - [10. 权威来源](#10-权威来源)
   - [11. 交叉引用](#11-交叉引用)
 
@@ -133,6 +136,10 @@ No counterexample found. Assertion is valid for the given scope.
 
 这意味着在 5 个组件的搜索空间内，不存在任何违反无环依赖约束的实例。该结果可直接作为架构评审证据：服务间依赖图满足 DAG，支持独立构建、按拓扑排序部署以及可替换模块的复用。
 
+### 6.1 正向示例：验证 SaaS 多租户模块的可见性隔离
+
+某 SaaS 平台使用 Alloy 对“租户-模块-数据实体”访问结构建模，声明事实：数据实体仅能被其所属租户或显式授权的模块访问。执行 `check DataIsolation for 5` 后，Alloy 在 scope 内未发现反例，表明在给定抽象层级下不存在跨租户数据泄漏路径。该模型被纳入架构资产目录后，下游产品线复用同一平台时可直接继承该隔离结论，只需针对新增模块重新检查局部约束。
+
 ---
 
 ## 7. 反例 / 反模式：循环依赖的危害
@@ -175,6 +182,10 @@ Component$2 dependsOn: {Component$0}
 - 引入接口隔离层，打破直接依赖；
 - 使用依赖注入或事件总线解耦；
 - 将循环中的共享逻辑抽取到独立组件。
+
+### 7.1 反模式：未评估 scope 导致 Alloy “无反例”结论被误读
+
+Alloy 的“no counterexample found”本质是**bounded guarantee**。某架构师在 `check NoCircularDependencies for 3` 通过后即宣告系统无环，但生产代码的最大依赖链深度为 6，scope 3 远未覆盖。后续在 scope 5 下重新检查时，Alloy 立即返回 5 组件循环。教训：必须结合架构规模选择 scope，并在模型注释中明确“该结论适用于最多 N 个 Component 实例”；对关键安全性质，应通过递增 scope 或定理证明进行敏感性分析。
 
 ---
 
@@ -229,21 +240,33 @@ run ShowValidSystem for 5 but 3 Module
 | DO-333 §6.3.2（形式化分析替代测试） | 无环性等结构性质 | Alloy 模型查找 | 检查命令输出 |
 | ISO/IEC/IEEE 42010:2022（架构描述） | 架构视图一致性 | Alloy 可视化 | 实例图 |
 
+### 9.1 工具链版本与标准映射
+
+| 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
+|:---|:---|:---|:---|
+| Alloy Analyzer | 6.2.0 (2025-01-09) | IEEE 1012-2024 §9.3 | 内置 SAT4J / MiniSat |
+| Kodkod / Pardinus | 随 Alloy 6 分发 | 结构约束求解 | 底层模型查找引擎 |
+| nuXmv | 2.x | Alloy 6 时态性质 | 支持无界模型检查 |
+| SAT4J / MiniSat | 最新稳定版 | DO-333 §6.3.2 | Alloy 默认 SAT 后端 |
+
+> **版本提示**：Alloy 6 引入时态逻辑与 traces，与 Alloy 4/5 存在语法差异，复用旧模型前需确认版本兼容性。
+
 ---
 
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| Alloy Tools / Alloy Analyzer 6 | <https://alloytools.org> | 2026-07-08 |
-| Alloy 6 GitHub Releases | <https://github.com/AlloyTools/org.alloytools.alloy/releases> | 2026-07-08 |
-| *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book/> | 2026-07-08 |
-| Alloy: A Language and Tool for Exploring Software Designs (CACM) | <https://dl.acm.org/doi/10.1145/3338843> | 2026-07-08 |
-| MIT CSAIL Alloy Project | <https://www.csail.mit.edu/research/alloy> | 2026-07-08 |
+| Alloy Tools / Alloy Analyzer 6.2.0 | <https://alloytools.org> | 2026-07-09 |
+| Alloy 6 GitHub Releases | <https://github.com/AlloyTools/org.alloytools.alloy/releases> | 2026-07-09 |
+| *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |
+| Formal Software Design with Alloy 6 (HasLab) | <https://haslab.github.io/formal-software-design/> | 2026-07-09 |
+| Alloy: A Language and Tool for Exploring Software Designs (CACM) | <https://dl.acm.org/doi/10.1145/3338843> | 2026-07-09 |
+| MIT CSAIL Alloy Project | <https://www.csail.mit.edu/research/alloy> | 2026-07-09 |
 
 ## 11. 交叉引用
 
 - 组件架构复用依赖管理：[`dependency-management-reuse.md`](../../04-component-architecture-reuse/03-dependency-management/dependency-management-reuse.md)
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 
-> 最后更新：2026-07-08
+> 最后更新：2026-07-09

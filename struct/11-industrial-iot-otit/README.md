@@ -105,37 +105,72 @@ graph TD
 
 ---
 
-## 6. 关键公理
+## 6. 标准条款映射
+
+### 6.1 ISA-95 层级与 AAS 子模型对应
+
+| ISA-95 层级 | IEC 62264 核心对象 | IEC 63278 AAS 子模型 | OPC UA 信息模型 |
+|------------|-------------------|---------------------|----------------|
+| L4 企业 | Enterprise / Site | —（业务系统主导） | ERP Connector / B2MML |
+| L3 MES | Work Order / Schedule | Time Series Data / Identification | OPC UA ISA-95 CS |
+| L2 监控 | Batch / Recipe / Alarm | Handover Documentation / Time Series | OPC UA A&C / HDA |
+| L1 控制 | Equipment / Control Module | Technical Data / Nameplate | OPC UA DI / PLCopen |
+| L0 现场 | Sensor / Actuator | Digital Nameplate / Technical Data | OPC UA DI / PA-DIM |
+
+### 6.2 IEC 61508 生命周期与软件复用映射
+
+| IEC 61508 阶段 | 关键条款 | 复用资产 | 验证要求 |
+|---------------|---------|---------|---------|
+| 概念阶段 | Part 1, 7.2 | 危险与风险分析 | 目标系统重新评估 |
+| 系统安全需求 | Part 1, 7.3 | 安全需求规格书模板 | 假设追溯 |
+| 软件安全需求 | Part 3, 7.2 | SEooC 假设清单 / Safety Manual | AoU/AoE 覆盖性验证 |
+| 软件设计开发 | Part 3, 7.4 | 设计模式 / 编码规范 | 工具资质 TIL |
+| 集成与验证 | Part 3, 7.5–7.7 | 测试用例库 / GSN 论证模式 | 集成环境匹配 |
+| 运行修改 | Part 3, 7.8 | 变更影响分析模板 | 任何修改触发再评估 |
+
+> **定理 I.2** (Standard Clause Traceability): OT-IT 复用资产必须能追溯到其来源标准的具体条款。无法追溯的复用会导致审计失败与认证风险。
+
+---
+
+## 7. 关键公理
 
 > **公理 I.1**（OT Determinism Non-Negotiable）：工业 OT 组件的复用必须以**确定性**为首要约束。任何牺牲确定性以换取灵活性或成本的复用策略在 OT 场景中不可接受。
 
 ---
 
-## 7. 权威来源
+## 8. 权威来源
 
 > **权威来源**：
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>
-> - OPC UA FX Parts 80–84：<https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>、<https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>
-> - IEC/IEEE 60802 TSN Profile for Industrial Automation：<https://1.ieee802.org/tsn/iec-ieee-60802/>
-> - IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/en/publication/65628>
-> - IDTA Submodel Templates / Industry Use Cases：<https://industrialdigitaltwin.org/en/content-hub/submodels>、<https://industrialdigitaltwin.org/en/news-dates/use-cases-from-the-industry-with-the-asset-administration-shell-6226>
-> - IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>
-> - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
-> - CISA, *Attack on Colonial Pipeline: What We’ve Learned* (2023)：<https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years>
-> - ISO/IEC 30141:2024 *IoT Reference Architecture*：<https://www.iso.org/standard/88800.html>
-> - DIN SPEC 91345 / RAMI 4.0 参考架构指南：<https://www.digitale-technologien.de/DT/Redaktion/DE/Downloads/Publikation/PAiCE_Leitfaden_Reference_Architecture.pdf>
-> - 核查日期：2026-07-08
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
+> - OPC UA FX Part 80 (UAFX Overview and Concepts)：<https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 81 (Connecting Devices and Information Model)：<https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 82 (Networking)：<https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 83 (Offline Engineering)：<https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>（核查日期：2026-07-09）
+> - OPC UA FX Part 84 (Profiles)：<https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>（核查日期：2026-07-09）
+> - IEC/IEEE 60802 TSN Profile for Industrial Automation：<https://1.ieee802.org/tsn/iec-ieee-60802/>（核查日期：2026-07-09）
+> - IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/publication/65628>（核查日期：2026-07-09）
+> - IEC 63278-2 ED1 *Information meta model* (DIS/CDV)：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1363>（核查日期：2026-07-09）
+> - IDTA AAS Specifications：<https://industrialdigitaltwin.org/en/content-hub/specifications>（核查日期：2026-07-09）
+> - IDTA Submodel Templates：<https://industrialdigitaltwin.org/en/content-hub/submodels>（核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*：<https://webstore.iec.ch/en/publication/99554>（核查日期：2026-07-09）
+> - ISO 21448:2022 *Safety of the intended functionality (SOTIF)*：<https://www.iso.org/standard/77490.html>（核查日期：2026-07-09）
+> - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>（核查日期：2026-07-09）
+> - ISO/IEC 30141:2024 *IoT Reference Architecture*：<https://www.iso.org/standard/88800.html>（核查日期：2026-07-09）
+> - DIN SPEC 91345 / RAMI 4.0 参考架构指南：<https://www.digitale-technologien.de/DT/Redaktion/DE/Downloads/Publikation/PAiCE_Leitfaden_Reference_Architecture.pdf>（核查日期：2026-07-09）
 
 ---
 
-## 8. 当前状态与关联主题
+## 9. 当前状态与关联主题
 
-- [x] ISA-95 五层复用资产目录 (`01-isa-95-model/`)
-- [x] OPC UA FX 协议层次分析 (`02-opc-ua-fx/`)
-- [x] PLCopen 功能块接口 (`04-plcopen-motion/`)
-- [x] AAS-OPC UA 映射 (`05-digital-twin-aas/`)
-- [x] IEC 61508 / ISO 26262 复用模板 (`06-functional-safety/`)
+- [x] ISA-95 五层复用资产目录 ([`01-isa-95-model/`](./01-isa-95-model/README.md))
+- [x] OPC UA FX 协议层次分析 ([`02-opc-ua-fx/`](./02-opc-ua-fx/README.md))
+- [x] TSN 确定性网络配置 ([`03-tsn-deterministic/`](./03-tsn-deterministic/iec-ieee-60802-profile.md))
+- [x] PLCopen 功能块接口 ([`04-plcopen-motion/`](./04-plcopen-motion/plcopen-motion-control.md))
+- [x] AAS-OPC UA 映射 ([`05-digital-twin-aas/`](./05-digital-twin-aas/README.md))
+- [x] IEC 61508 / ISO 26262 复用模板 ([`06-functional-safety/`](./06-functional-safety/README.md))
+- [x] 工业边缘 AI 模型部署 ([`07-edge-ai/`](./07-edge-ai/model-deployment-spec.md))
 
 关联主题：
 
@@ -143,7 +178,7 @@ graph TD
 - `10-supply-chain-security`（工业软件供应链安全）
 - `12-ai-native-reuse`（工业边缘 AI 模型复用）
 
-## 9. 实施检查单
+## 10. 实施检查单
 
 - [ ] 明确产线的确定性周期、安全完整性等级与网络边界。
 - [ ] 建立 ISA-95 L0-L4 资产目录与 AAS 子模型映射。
@@ -152,14 +187,9 @@ graph TD
 - [ ] 将 IEC 62443 安全区与管道纳入网络设计模板。
 - [ ] 定期审计 OT-IT 接口的访问控制与补丁策略。
 
-## 10. 一句话总结
+## 11. 一句话总结
 
 > OT-IT 融合复用不是简单地将 IT 敏捷性搬到工厂，而是在确定性、功能安全与互操作性约束下，用标准化信息模型打通企业到现场的纵向价值链。
-
-## 11. 版本记录
-
-- 2026-07-07：补充 ISA-95、OPC UA FX、功能安全的概念定义、示例、反例、关系图与权威来源。
-- 2026-06-08：初始版本，梳理工业 IoT/OT-IT 核心文件与状态。
 
 ## 12. 深度案例：汽车工厂 AAS 与 OPC UA FX 融合复用
 
@@ -205,9 +235,13 @@ graph TD
 - 将 IEC 62443 安全区设计纳入网络架构评审清单。
 - 培养既懂 OT 工艺又懂软件工程的跨学科架构师团队。
 
-## 17. 版本记录补充
+## 17. 版本记录
 
-- 持续跟踪 OPC UA FX 1.0、IEC 61508 Ed.3 与 IEC 63278 的最新进展，并更新权威来源与核查日期。
+- 2026-07-09：新增 ISA-95 × AAS × IEC 61508 标准条款映射；为每条权威来源补充独立核查日期；合并重复版本记录；增加子目录 README 交叉引用。
+- 2026-07-07：补充 ISA-95、OPC UA FX、功能安全的概念定义、示例、反例、关系图与权威来源。
+- 2026-06-08：初始版本，梳理工业 IoT/OT-IT 核心文件与状态。
+
+---
 
 ## 18. 总结
 

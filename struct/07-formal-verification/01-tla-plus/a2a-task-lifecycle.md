@@ -192,7 +192,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 
 [^7]: PickAxe. (2026). *MCP vs A2A Protocol: What AI Agent Builders Actually Need to Know in 2026*. <https://pickaxe.co/post/mcp-vs-a2a-protocol>
 
-[^8]: Google A2A Protocol. *Agent-to-Agent Protocol*. <https://google.github.io/A2A/>
+[^8]: Google A2A Protocol. *Agent-to-Agent Protocol*. <https://a2a-protocol.org/latest/>
 
 ## 12. 权威来源
 
@@ -201,13 +201,13 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
 | TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-08 |
-| Google A2A Protocol | <https://google.github.io/A2A/> | 2026-07-08 |
-| A2A v1.0 Task Lifecycle | <https://google.github.io/A2A/#/documentation?id=task-lifecycle> | 2026-07-08 |
+| Google A2A Protocol | <https://a2a-protocol.org/latest/> | 2026-07-08 |
+| A2A v1.0 Task Lifecycle | <https://a2a-protocol.org/latest/topics/life-of-a-task> | 2026-07-08 |
 
 ## 13. 交叉引用
 
 - MCP 能力协商 TLA+ 规约：[`mcp-capability-negotiation.md`](./mcp-capability-negotiation.md)
-- A2A / MCP 协议对比分析：[`struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/`](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/)
+- A2A / MCP 协议对比分析：[`protocol-analysis.md`](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 
 > 最后更新：2026-07-08

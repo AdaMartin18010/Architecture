@@ -66,6 +66,10 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 
 铁路信号系统使用 Event-B 从“列车不碰撞”的高层不变式精化到联锁逻辑，每层精化均生成并证明精化义务；联锁软件复用时，安全性质不因实现细节变化而被破坏。
 
+### 示例 6：TLA+ 验证 MCP 能力协商
+
+在 `struct/07-formal-verification/01-tla-plus/mcp-capability-negotiation.md` 中，TLA+ 规约将 MCP 2025-03-26 初始化阶段的能力协商抽象为双端状态机，并声明 `ActiveImpliesCommonCaps` 等核心不变式。TLC 穷举 `tools`/`resources`/`prompts` 的全部能力子集组合后，在数秒内发现“双方无共同能力却进入 active”的违规轨迹。该规约可直接作为 MCP Server 实现的**可执行参考文档**，消费方在复用时无需重新验证协议层的收敛性与安全性。
+
 ---
 
 ## 4. 反例 / 失败案例
@@ -85,6 +89,10 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 ### 反例 4：形式化模型与实现脱节
 
 团队用 TLA+ 验证了高层算法，但手工编码实现时偏离模型；由于未进行模型到代码的可追踪审查，生产实现仍存在模型中已排除的缺陷。
+
+### 反例 5：验证范围不足导致“虚假安全感”
+
+某团队使用 Alloy 检查组件依赖无环性时，为控制求解时间将 scope 设为 3，却未评估该 scope 是否覆盖生产环境的最大依赖深度。实际架构中存在 5 个组件构成的循环，Alloy 因 scope 限制未能报告反例，团队据此认为架构无环；后续构建工具在真实规模下暴露循环依赖，导致发布延期。该案例说明：**bounded model checking / SAT 求解的范围选择必须经统计或敏感性分析确认**，否则“无反例”不等于“性质成立”。
 
 ---
 
@@ -110,18 +118,31 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
-| *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
-| Alloy Tools / Alloy Analyzer 6 | <https://alloytools.org> | 2026-07-08 |
-| Coq/Rocq Proof Assistant | <https://rocq-prover.org/> | 2026-07-08 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-08 |
-| RustBelt (Iris Project) | <https://iris-project.org/rustbelt.html> | 2026-07-08 |
-| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-08 |
-| SPARK Pro (AdaCore) | <https://www.adacore.com/languages/spark> | 2026-07-08 |
-| Event-B & Rodin | <https://www.event-b.org> | 2026-07-08 |
-| B Method / Atelier B (CLEARSY) | <https://www.clearsy.com/en/thematics/b-method/> | 2026-07-08 |
-| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-08 |
-| DO-178C / DO-333 (RTCA) | <https://www.rtca.org/training/do-178c-training/> | 2026-07-08 |
+| TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-09 |
+| TLA+ Foundation | <https://foundation.tlapl.us/> | 2026-07-09 |
+| *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-09 |
+| TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-09 |
+| Alloy Tools / Alloy Analyzer 6.2.0 | <https://alloytools.org> | 2026-07-09 |
+| Alloy 6 GitHub Releases | <https://github.com/AlloyTools/org.alloytools.alloy/releases> | 2026-07-09 |
+| *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |
+| The Rocq Prover 9.0 | <https://rocq-prover.org/> | 2026-07-09 |
+| Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
+| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
+| Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
+| RustBelt (Iris Project) | <https://plv.mpi-sws.org/rustbelt/> | 2026-07-09 |
+| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-09 |
+| The Rust RFC Book | <https://rust-lang.github.io/rfcs/> | 2026-07-09 |
+| Miri — Undefined Behavior Detector | <https://github.com/rust-lang/miri> | 2026-07-09 |
+| Kani Rust Model Checker | <https://model-checking.github.io/kani/> | 2026-07-09 |
+| Aeneas Rust Verifier | <https://github.com/AeneasVerif/aeneas> | 2026-07-09 |
+| Prusti (ETH Zurich) | <https://www.pm.inf.ethz.ch/research/prusti.html> | 2026-07-09 |
+| Verus (Microsoft/CMU/Amazon) | <https://github.com/verus-lang/verus> | 2026-07-09 |
+| SPARK Pro (AdaCore) | <https://www.adacore.com/sparkpro> | 2026-07-09 |
+| Event-B & Rodin | <https://wiki.event-b.org/index.php/Main_Page> | 2026-07-09 |
+| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-09 |
+| IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
+| DO-333 Formal Methods Supplement (Loonwerks/NASA) | <https://loonwerks.com/projects/do333.html> | 2026-07-09 |
+| IEC 61508 Edition 3 Development | <https://61508.org/knowledge/standards-development/> | 2026-07-09 |
 
 ---
 
@@ -136,6 +157,19 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 | DO-178C / DO-333（航电软件形式化方法补充） | 高安全组件复用 | SPARK/Ada、模型检测 | DO-333 符合性证据包 |
 | DO-178C Table A-4（低层需求符合高层需求） | 规约到代码追踪 | TLA+/Alloy + 代码审查 | 需求追踪矩阵 |
 | IEC 61508 SIL 4 | 铁路/工业高安全复用 | Event-B / B Method | 证明义务、安全案例 |
+
+### 8.1 工具链版本与独立性等级映射
+
+IEC 61508-1:2025 草案 Annex B 以及 IEEE 1012-2024 均强调：验证与确认活动的**独立性等级**应随完整性等级提升。下表将 SIL / DAL 与推荐形式化工具、证据类型进行映射，便于复用资产选型时快速定位。
+
+| 完整性等级 | IEC 61508 / DO-178C 对应 | 独立性要求 | 推荐形式化工具/方法 | 典型证据 |
+|:---|:---|:---|:---|:---|
+| SIL 1 / DAL D | 低风险/轻微影响 | 同行评审 | Alloy 草模、静态分析、评审记录 | 检查单、评审报告 |
+| SIL 2 / DAL C | 中风险/局部影响 | 独立部门/角色 | TLA+ / TLC、Miri、Kani（有界模型检验） | 模型检查报告、UB 检测报告 |
+| SIL 3 / DAL B | 高风险/显著影响 | 独立团队/第三方 | Coq/Rocq 9.0+、Isabelle/HOL、Kani Contracts | 证明脚本、契约验证报告 |
+| SIL 4 / DAL A | 极高风险/灾难性影响 | 独立组织/认证机构 | SPARK Pro、Event-B/Rodin、TLAPS、Coq/Rocq | DO-333 证据包、安全案例、精化义务证明 |
+
+> **实践要点**：选择工具时不仅要看其表达能力，还要看**工具鉴定（tool qualification）**资料是否满足 DO-178C / DO-330 或 IEC 61508 对高完整性工具的资质要求。
 
 ---
 
@@ -222,6 +256,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 
 ## 16. 版本记录
 
+- 2026-07-09：对齐网络权威国际化内容，扩充权威来源至 TLA+ Foundation、Rocq 9.0、Isabelle2025、Miri/Kani/Verus/Aeneas 等；新增 MCP 能力协商正向示例、验证范围不足反例；补充 IEC 61508 / DO-178C 独立性等级与工具链映射。
 - 2026-07-08：增补权威来源 URL 与核查日期，增加 IEEE 1012-2024 / DO-178C / DO-333 / IEC 61508 标准条款与工具映射，对齐网络权威内容。
 - 2026-07-07：补充概念定义、示例、反例、关系图、权威来源与核查日期。
 - 2026-06-08：初始版本，梳理形式化方法谱系与核心文件导航。

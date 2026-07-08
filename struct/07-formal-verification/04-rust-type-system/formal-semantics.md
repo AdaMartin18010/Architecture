@@ -17,12 +17,20 @@
     - [Trait 复用的五种模式](#trait-复用的五种模式)
   - [5. Cargo 依赖解析的 SAT 基础](#5-cargo-依赖解析的-sat-基础)
   - [6. 形式化验证项目与复用价值](#6-形式化验证项目与复用价值)
+  - [6.1 内存安全保证与 unsafe 验证的最新进展](#61-内存安全保证与-unsafe-验证的最新进展)
+    - [6.1.1 Miri：动态未定义行为检测](#611-miri动态未定义行为检测)
+    - [6.1.2 Kani：从边界模型检查到契约化验证](#612-kani从边界模型检查到契约化验证)
+    - [6.1.3 Verus：基于线性幽灵类型的系统级验证](#613-verus基于线性幽灵类型的系统级验证)
+    - [6.1.4 Aeneas 与 RefinedRust：从函数式翻译到精化类型](#614-aeneas-与-refinedrust从函数式翻译到精化类型)
   - [7. 关键公理与定理](#7-关键公理与定理)
   - [8. 标准条款与工具映射](#8-标准条款与工具映射)
+    - [8.1 工具链版本与标准映射](#81-工具链版本与标准映射)
   - [9. 权威来源](#9-权威来源)
   - [10. 正向示例](#10-正向示例)
+    - [10.1 正向示例：Kani 在 s2n-quic 中发现编码边界缺陷](#101-正向示例kani-在-s2n-quic-中发现编码边界缺陷)
   - [11. 反例 / 反模式](#11-反例--反模式)
     - [反例](#反例)
+    - [11.1 反模式：自引用结构与 Pin 的不变量被误用](#111-反模式自引用结构与-pin-的不变量被误用)
   - [附录：所有权-借用-生命周期决策矩阵](#附录所有权-借用-生命周期决策矩阵)
 
 ---
@@ -192,6 +200,45 @@ Rust 形式化验证项目与复用
     └── 复用价值: 通过 #[requires]、#[ensures] 宏定义组件契约
 ```
 
+## 6.1 内存安全保证与 unsafe 验证的最新进展
+
+Rust 类型系统已在大规模工业部署中得到验证，但 **unsafe Rust** 的正确性无法由编译器保证。近年来，社区与学术界围绕 unsafe 边界形成了多层次验证栈：
+
+### 6.1.1 Miri：动态未定义行为检测
+
+Miri 是 Rust MIR 的解释器，可在测试执行中动态检测未定义行为（UB）。Ralf Jung 等人发表于 POPL 2026 的论文《Miri: Practical Undefined Behavior Detection for Rust》系统阐述了其设计与实现[^11]：
+
+- **Stacked Borrows / Tree Borrows**：Miri 支持两种别名模型，用于精确定位引用与原始指针之间的违规别名；Tree Borrows 对常见 unsafe 惯用法更宽容。
+- **并发语义**：Miri 已更新至 C++20 内存模型语义，并实验性集成 GenMC 进行并发执行空间探索。
+- **系统调用与 FFI**：扩展了 Windows/Linux/macOS/Android API shim，实验性支持 FFI 调用原生代码，增强对底层 unsafe 代码的覆盖。
+
+Miri 适用于**回归测试**：将 unsafe 边界测试放入 CI，可在代码变更时快速发现 UB 回归。
+
+### 6.1.2 Kani：从边界模型检查到契约化验证
+
+Kani 是基于 CBMC 的 Rust 模型检查器，最近版本（0.6x 系列）持续向**无界正确性证明**演进[^9]：
+
+- **函数契约**：通过 `#[kani::requires]` / `#[kani::ensures]` 表达前置/后置条件，Kani 可在有界/无界假设下证明安全属性。
+- **循环契约与量词**：支持循环不变式、修改子句及 `forall!`/`exists!`，减少手动展开负担。
+- **工业部署**：AWS 在 Firecracker、s2n-quic 及 Rust 标准库验证战役中使用 Kani，每次代码变更运行超过 16,000 个 harness。
+
+Kani 对 **unsafe 边界**特别有用：即使代码包含原始指针操作，只要状态空间可控，Kani 即可给出确定的性质结论或反例。
+
+### 6.1.3 Verus：基于线性幽灵类型的系统级验证
+
+Verus 使用 SMT 后端与 Rust 语法内联的规约，已在 Microsoft、Amazon 等项目中验证系统软件[^13]：
+
+- 支持 `unsafe` 中的原始指针、`UnsafeCell` 等模式，但不支持 `transmute`。
+- 使用**线性幽灵类型（linear ghost types）**在编译期擦除的证明状态，兼顾表达能力与运行时零开销。
+- 代表性项目包括：经过 Verus 验证的内存分配器、IronKV 键值存储、以及并发节点复制库。
+
+### 6.1.4 Aeneas 与 RefinedRust：从函数式翻译到精化类型
+
+- **Aeneas** 将安全 Rust 程序翻译为纯函数式模型（Lean/Coq/F*/HOL4），消除内存推理；Microsoft 正使用 Aeneas/Lean 验证 SymCrypt 加密库从 C 到 Rust 的迁移[^10]。
+- **RefinedRust**（PLDI 2024）为 Rust 提供精化类型系统，可在分离逻辑中验证包含 unsafe 的代码，并生成 Rocq/Iris 证明义务。
+
+这些进展共同说明：**Rust 的内存安全保证可由编译器、动态检测、模型检查与定理证明形成互补证据链**，复用包含 unsafe 的 crate 时应根据风险等级选择合适层级。
+
 ---
 
 ## 7. 关键公理与定理
@@ -225,25 +272,49 @@ Rust 形式化验证项目与复用
 | ISO/IEC 25010:2023（可靠性/安全性） | 数据竞态与悬垂指针排除 | RustBelt (Iris) | 形式化证明论文 |
 | IEC 61508 SIL 4 | 工业安全 Rust 组件 | rustc + Miri + Kani | 安全分析报告 |
 
+### 8.1 工具链版本与标准映射
+
+| 工具/组件 | 推荐版本 | 适用标准/场景 | 典型证据 |
+|:---|:---|:---|:---|
+| rustc | 1.85+ (2025) | IEEE 1012-2024 §9.5 | 编译通过、测试覆盖率 |
+| Miri | nightly (POPL 2026) | unsafe 边界 UB 检测 | Miri 运行日志、CI 报告 |
+| Kani | 0.64.x+ | DO-178C / DO-333 形式化分析 | 模型检查/契约证明报告 |
+| Verus | 最新 main | 系统级功能正确性 | 验证脚本、SMT 日志 |
+| Aeneas | 配合 Lean/Coq 后端 | IEC 61508 SIL 4 高安全组件 | 函数式模型与证明脚本 |
+| Prusti | 开发版 | IEEE 1012-2024 §9.5 | `#[requires]`/`#[ensures]` 验证报告 |
+
+> **实践要点**：对于消费方，复用包含 unsafe 的 crate 时应索取其 Miri/Kani/Verus 证据；仅“通过 `cargo test`”不足以继承内存安全保证。
+
 ---
 
 ## 9. 权威来源
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-08 |
-| The Rust RFC Book | <https://rust-lang.github.io/rfcs/> | 2026-07-08 |
-| RustBelt (Iris Project) | <https://iris-project.org/rustbelt.html> | 2026-07-08 |
-| Miri (Undefined Behavior detector) | <https://github.com/rust-lang/miri> | 2026-07-08 |
-| Kani Rust Model Checker | <https://github.com/model-checking/kani> | 2026-07-08 |
-| Aeneas (Inria Rust verifier) | <https://github.com/AeneasVerif/aeneas> | 2026-07-08 |
-| Prusti (ETH Zurich) | <https://github.com/viperproject/prusti> | 2026-07-08 |
+| The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-09 |
+| The Rust RFC Book | <https://rust-lang.github.io/rfcs/> | 2026-07-09 |
+| Rust Compiler Development Guide (MIR) | <https://rustc-dev-guide.rust-lang.org/mir/index.html> | 2026-07-09 |
+| RustBelt (Iris Project) | <https://plv.mpi-sws.org/rustbelt/> | 2026-07-09 |
+| RefinedRust (PLDI 2024) | <https://iris-project.org/pdfs/2024-pldi-refinedrust.pdf> | 2026-07-09 |
+| Miri — Undefined Behavior Detector | <https://github.com/rust-lang/miri> | 2026-07-09 |
+| Miri: Practical UB Detection for Rust (POPL 2026) | <https://plf.inf.ethz.ch/research/popl26-miri.html> | 2026-07-09 |
+| Kani Rust Model Checker | <https://model-checking.github.io/kani/> | 2026-07-09 |
+| Kani Releases | <https://github.com/model-checking/kani/releases> | 2026-07-09 |
+| Aeneas (Inria Rust Verifier) | <https://github.com/AeneasVerif/aeneas> | 2026-07-09 |
+| Aeneas Tutorial (Lean Backend) | <https://lean-lang.org/use-cases/aeneas/> | 2026-07-09 |
+| Prusti (ETH Zurich) | <https://www.pm.inf.ethz.ch/research/prusti.html> | 2026-07-09 |
+| Verus (Verified Rust) | <https://github.com/verus-lang/verus> | 2026-07-09 |
+| Verus SOSP 2024 Tutorial | <https://verus-lang.github.io/event-sites/2024-sosp/> | 2026-07-09 |
 
 ---
 
 ## 10. 正向示例
 
 某跨平台网络库用 Rust 实现核心协议解析器，所有权系统保证并发访问安全，被 C/Go/Python 项目通过 FFI 复用而无需运行时 GC。该库通过 Miri 检测 unsafe 边界，并通过 Kani 验证关键路径无 panic 与越界访问，复用方继承了编译期内存安全保证。
+
+### 10.1 正向示例：Kani 在 s2n-quic 中发现编码边界缺陷
+
+Amazon 的 s2n-quic 使用 Kani 与 Bolero 联合验证。`try_fit` 函数根据包剩余容量计算可放入 QUIC Stream 帧的字节数，其长度采用变长整数编码，在 1 字节与 2 字节边界处容易出错。Bolero 的 libfuzzer 引擎运行超过 1,600 万次未发现问题，而 Kani 在 **20 秒**内给出违反断言的反例， pinpoint 了容量边界处的计算错误。该案例展示了模型检查在稀疏错误区域的优势，也证明：将 Kani harness 作为复用资产的回归门控，可在消费方继承前捕获深层缺陷。
 
 ---
 
@@ -259,6 +330,10 @@ Rust 形式化验证项目与复用
 2. 使用 Miri 在 CI 中运行测试，检测未定义行为；
 3. 对关键 unsafe 函数使用 Kani 验证安全属性；
 4. 优先通过安全抽象封装 unsafe，避免消费方直接接触。
+
+### 11.1 反模式：自引用结构与 Pin 的不变量被误用
+
+某 crate 使用 `Pin<Box<T>>` 实现自引用结构，但内部 unsafe 代码在 `Drop` 实现中未维持 `Pin` 的“不可移动”保证，导致析构时引用的生命周期与堆分配不同步。Miri 在测试该 crate 时报告了 use-after-free，但常规单元测试因未触发特定内存布局而未发现。该案例说明：**`Pin`、`MaybeUninit`、`ManuallyDrop` 等高级抽象的不变量仍需在 unsafe 边界内被显式证明**；复用封装这些抽象的组件时，必须审查其 Miri/Kani 证据，而不能仅依赖“通过了 `rustc`”。
 
 ---
 
@@ -277,4 +352,4 @@ Rust 形式化验证项目与复用
 
 ---
 
-> 最后更新: 2026-07-08
+> 最后更新: 2026-07-09
