@@ -183,11 +183,11 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 | The Rocq Prover 9.0 (原 Coq) | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
 | ANSSI Requirements on the Use of Rocq (CC evaluations) | <https://inria.hal.science/hal-04452421v1/document> | 2026-07-09 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
-| Isabelle2025 Download | <https://isabelle.in.tum.de/index.html> | 2026-07-09 |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle> | 2026-07-09 |
+| Isabelle2025 Download | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/index.html> | 2026-07-09 |
 | Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
 | Software Foundations | <https://softwarefoundations.cis.upenn.edu/> | 2026-07-09 |
-| Sledgehammer (Isabelle) | <https://isabelle.in.tum.de/dist/Isabelle2025/doc/sledgehammer.pdf> | 2026-07-09 |
+| Sledgehammer (Isabelle) | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle2025-2/doc/sledgehammer.pdf> | 2026-07-09 |
 
 ## 11. 交叉引用
 

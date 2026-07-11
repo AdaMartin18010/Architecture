@@ -127,7 +127,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 | *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |
 | The Rocq Prover 9.0 | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle> | 2026-07-09 |
 | Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
 | RustBelt (Iris Project) | <https://plv.mpi-sws.org/rustbelt/> | 2026-07-09 |
 | The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-09 |
@@ -139,7 +139,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 | Verus (Microsoft/CMU/Amazon) | <https://github.com/verus-lang/verus> | 2026-07-09 |
 | SPARK Pro (AdaCore) | <https://www.adacore.com/sparkpro> | 2026-07-09 |
 | Event-B & Rodin | <https://wiki.event-b.org/index.php/Main_Page> | 2026-07-09 |
-| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-09 |
+| IEEE 1012-2024 | <https://standards.ieee.org/ieee/1012/7324/> | 2026-07-09 |
 | IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
 | DO-333 Formal Methods Supplement (Loonwerks/NASA) | <https://loonwerks.com/projects/do333.html> | 2026-07-09 |
 | IEC 61508 Edition 3 Development | <https://61508.org/knowledge/standards-development/> | 2026-07-09 |

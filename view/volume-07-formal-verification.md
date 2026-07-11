@@ -476,7 +476,6 @@ PROPERTIES
 
 [^1]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 
-[^2]: Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., & Deardeuff, M. (2015). How Amazon Web Services Uses Formal Methods. *Communications of the ACM*, 58(4), 66-73.
 
 
 ---
@@ -712,7 +711,6 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 
 ## 11. 参考文献
 
-[^2]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley. <https://lamport.azurewebsites.net/tla/book.html>
 
 [^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
@@ -941,13 +939,9 @@ Model Checking Results:
 
 ## 10. 参考文献
 
-[^1]: Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., & Deardeuff, M. (2015). How Amazon Web Services Uses Formal Methods. *Communications of the ACM*, 58(4), 66-73.
 
-[^2]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 
-[^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
-[^4]: TLA+ Examples Repository. Two-Phase Commit Specification. <https://github.com/tlaplus/Examples>
 
 
 ---
@@ -2394,11 +2388,11 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 | The Rocq Prover 9.0 (原 Coq) | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
 | ANSSI Requirements on the Use of Rocq (CC evaluations) | <https://inria.hal.science/hal-04452421v1/document> | 2026-07-09 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
-| Isabelle2025 Download | <https://isabelle.in.tum.de/index.html> | 2026-07-09 |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle> | 2026-07-09 |
+| Isabelle2025 Download | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/index.html> | 2026-07-09 |
 | Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
 | Software Foundations | <https://softwarefoundations.cis.upenn.edu/> | 2026-07-09 |
-| Sledgehammer (Isabelle) | <https://isabelle.in.tum.de/dist/Isabelle2025/doc/sledgehammer.pdf> | 2026-07-09 |
+| Sledgehammer (Isabelle) | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle2025-2/doc/sledgehammer.pdf> | 2026-07-09 |
 
 ## 11. 交叉引用
 
@@ -2407,6 +2401,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 - 定理证明指南：[`struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md`](../struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md)
 
 > 最后更新：2026-07-09
+
 
 ---
 
@@ -2834,7 +2829,7 @@ Layer 3 — Concrete Implementation / Binary
 |--------|------|------------------|
 | **seL4 proofs** | Complete Isabelle/HOL proof stack for an OS kernel | `https://github.com/seL4/l4v` |
 | **CompCert** | Verified C compiler in Coq | `https://compcert.org/` |
-| **Isabelle/HOL** | System and documentation | `https://isabelle.in.tum.de/` |
+| **Isabelle/HOL** | System and documentation | `https://www.cl.cam.ac.uk/research/hvg/Isabelle/` |
 | **Coq** | System and documentation | `https://coq.inria.fr/` |
 | **Coq'Art** | Textbook: interactive theorem proving in Coq | Bertot & Casteran, *Interactive Theorem Proving and Program Development* |
 | **Isabelle/HOL Book** | Definitive reference for Isabelle/HOL | Nipkow, Klein, *Concrete Semantics* (free PDF) |
@@ -2885,12 +2880,13 @@ Layer 3 — Concrete Implementation / Binary
 > **权威来源**:
 >
 > - [Coq Proof Assistant](https://coq.inria.fr)
-> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle)
 > - 核查日期：2026-07-07
 
 ## 分析
 
 **分析**：定理证明提供最高置信度，但门槛高、周期长，适合小规模、高价值核心组件。
+
 
 ---
 
@@ -3269,8 +3265,9 @@ Step 5: 跨工具信任链（CompCert + Coq / Isabelle 代码生成）
 > **权威来源**:
 >
 > - [Coq Proof Assistant](https://coq.inria.fr)
-> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle)
 > - 核查日期：2026-07-07
+
 
 ---
 
@@ -6118,13 +6115,9 @@ medium: postcondition might fail, cannot prove Compute_Next_Mode'Result /= Appro
 
 ## 11. 权威来源
 
-[^1]: AdaCore. *SPARK Pro — Introduction to Formal Verification with SPARK*. [https://www.adacore.com/about-spark](https://www.adacore.com/about-spark). 官方文档涵盖契约语法、证明工具链、工业案例。
 
-[^2]: RTCA DO-178C / EUROCAE ED-12C. *Software Considerations in Airborne Systems and Equipment Certification*. RTCA Inc., 2012. 民用航空软件适航审定核心标准。
 
-[^3]: RTCA DO-333 / EUROCAE ED-216. *Formal Methods Supplement to DO-178C and DO-278A*. RTCA Inc., 2012. 定义形式化方法替代测试的合规路径与额外目标。
 
-[^4]: Moy, Y., Ledinot, E., Delseny, H., Wiels, V., & Monate, B. (2013). Testing or Formal Verification: DO-178C Alternatives and Industrial Experience. *IEEE Software*, 30(3), 50-57. 记录了 Airbus 和 Dassault Aviation 使用 SPARK 替代测试的工业经验。
 
 
 ---
@@ -6363,11 +6356,8 @@ SPARK 组件的 MC/DC 形式化证据（GNATprove 证明日志 + GNATcoverage �
 
 ## 4. 权威来源
 
-[^1]: RTCA DO-178C / EUROCAE ED-12C. *Software Considerations in Airborne Systems and Equipment Certification*. RTCA Inc., 2012. Table A-7 定义 A 级软件的结构覆盖率目标，包括 MC/DC。
 
-[^2]: RTCA DO-333 / EUROCAE ED-216. *Formal Methods Supplement to DO-178C and DO-278A*. RTCA Inc., 2012. 第 FM.A-7 节定义形式化方法替代结构覆盖率测试的条件与额外验证目标。
 
-[^3]: AdaCore. *GNATcoverage User's Guide — DO-178C / ED-12C Qualifiable Coverage Analysis*. [https://github.com/AdaCore/gnatcoverage](https://github.com/AdaCore/gnatcoverage). 详细说明 GNATcoverage 的 MC/DC 提取、分析和报告机制。
 
 
 
@@ -7417,13 +7407,9 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 
 ## 7. 参考索引
 
-[^1]: Abrial, J.-R. (1996). *The B-Book: Assigning Programs to Meanings*. Cambridge University Press. ISBN 978-0-521-49619-3. —— B Method 的奠基性著作，定义了广义替代（Generalised Substitution）、抽象机语法和精化的数学基础。
 
-[^2]: Abrial, J.-R. (2010). *Modeling in Event-B: System and Software Engineering*. Cambridge University Press. ISBN 978-0-521-89556-9. —— Event-B 的权威教材，系统阐述了 Context/Machine 分离、逐步精化、证明义务生成和模型分解技术。
 
-[^3]: CENELEC (2011). *EN 50128:2011 — Railway applications — Communication, signalling and processing systems — Software for railway control and protection systems*. European Committee for Electrotechnical Standardization. —— 铁路控制软件 SIL 等级划分的核心标准，表 A.1 将形式化方法列为 SIL 3–4 的强烈推荐技术。
 
-[^4]: CLEARSY / Atelier B. *Atelier B — Formal Method for Software Engineering*. <https://www.atelierb.eu>. —— 工业级 B Method 工具链，拥有 SIL 4 认证（Certifer 9594/0262），广泛应用于阿尔斯通、泰雷兹、西门子等铁路信号项目。
 
 
 
@@ -7712,7 +7698,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
-| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-09 |
+| IEEE 1012-2024 | <https://standards.ieee.org/ieee/1012/7324/> | 2026-07-09 |
 | IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
 | IEEE 1012-2024 Overview (All-Standards) | <https://www.en-standard.eu/ieee-1012-2024-ieee-standard-for-system-software-and-hardware-verification-and-validation/> | 2026-07-09 |
 | ISO/IEC 25040:2024 | <https://www.iso.org/standard/85413.html> | 2026-07-09 |
@@ -7734,6 +7720,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 - Rust 形式化语义：[`struct/07-formal-verification/04-rust-type-system/formal-semantics.md`](../struct/07-formal-verification/04-rust-type-system/formal-semantics.md)
 
 > 最后更新: 2026-07-09
+
 
 ---
 
@@ -8593,7 +8580,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 | *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |
 | The Rocq Prover 9.0 | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
-| Isabelle/HOL | <https://isabelle.in.tum.de> | 2026-07-09 |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle> | 2026-07-09 |
 | Archive of Formal Proofs (AFP) | <https://www.isa-afp.org/> | 2026-07-09 |
 | RustBelt (Iris Project) | <https://plv.mpi-sws.org/rustbelt/> | 2026-07-09 |
 | The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-09 |
@@ -8605,7 +8592,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 | Verus (Microsoft/CMU/Amazon) | <https://github.com/verus-lang/verus> | 2026-07-09 |
 | SPARK Pro (AdaCore) | <https://www.adacore.com/sparkpro> | 2026-07-09 |
 | Event-B & Rodin | <https://wiki.event-b.org/index.php/Main_Page> | 2026-07-09 |
-| IEEE 1012-2024 | <https://standards.ieee.org/standard/1012-2024.html> | 2026-07-09 |
+| IEEE 1012-2024 | <https://standards.ieee.org/ieee/1012/7324/> | 2026-07-09 |
 | IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
 | DO-333 Formal Methods Supplement (Loonwerks/NASA) | <https://loonwerks.com/projects/do333.html> | 2026-07-09 |
 | IEC 61508 Edition 3 Development | <https://61508.org/knowledge/standards-development/> | 2026-07-09 |
@@ -8728,5 +8715,6 @@ IEC 61508-1:2025 草案 Annex B 以及 ISO/IEC/IEEE 1012:2024 均强调：验证
 - 2026-06-08：初始版本，梳理形式化方法谱系与核心文件导航。
 
 > **注意**：形式化验证工具链版本与标准 URL 会随社区演进更新，引用前请核查权威来源页面。
+
 
 ---

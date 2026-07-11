@@ -370,5 +370,5 @@ Step 5: 跨工具信任链（CompCert + Coq / Isabelle 代码生成）
 > **权威来源**:
 >
 > - [Coq Proof Assistant](https://coq.inria.fr)
-> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle)
 > - 核查日期：2026-07-07

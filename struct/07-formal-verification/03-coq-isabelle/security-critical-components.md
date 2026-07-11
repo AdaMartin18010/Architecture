@@ -419,7 +419,7 @@ Layer 3 — Concrete Implementation / Binary
 |--------|------|------------------|
 | **seL4 proofs** | Complete Isabelle/HOL proof stack for an OS kernel | `https://github.com/seL4/l4v` |
 | **CompCert** | Verified C compiler in Coq | `https://compcert.org/` |
-| **Isabelle/HOL** | System and documentation | `https://isabelle.in.tum.de/` |
+| **Isabelle/HOL** | System and documentation | `https://www.cl.cam.ac.uk/research/hvg/Isabelle/` |
 | **Coq** | System and documentation | `https://coq.inria.fr/` |
 | **Coq'Art** | Textbook: interactive theorem proving in Coq | Bertot & Casteran, *Interactive Theorem Proving and Program Development* |
 | **Isabelle/HOL Book** | Definitive reference for Isabelle/HOL | Nipkow, Klein, *Concrete Semantics* (free PDF) |
@@ -470,7 +470,7 @@ Layer 3 — Concrete Implementation / Binary
 > **权威来源**:
 >
 > - [Coq Proof Assistant](https://coq.inria.fr)
-> - [Isabelle/HOL](https://isabelle.in.tum.de)
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle)
 > - 核查日期：2026-07-07
 
 ## 分析

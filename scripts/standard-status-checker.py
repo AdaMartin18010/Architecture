@@ -49,7 +49,7 @@ REPORT_FILE = PROJECT_ROOT / "reports" / "standard-status-report.md"
 CACHE_FILE = PROJECT_ROOT / "reports" / "standard-status-cache.json"
 SNAPSHOT_FILE = PROJECT_ROOT / "reports" / "standard-status-snapshot.json"
 
-TIMEOUT_SECONDS = 10
+TIMEOUT_SECONDS = 15
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.0 (KHTML, like Gecko) "
@@ -585,6 +585,13 @@ def main() -> int:
         url = entry["url"]
         print(f"  [{idx}/{len(entries)}] {entry['name']} -> {url}")
         result = check_url(url, follow_redirects=args.follow_redirects)
+        # 对任何“无法访问/超时”结果做最多 2 次重试，避免网络抖动误报为失效
+        if result["status"] in (STATUS_UNREACHABLE, STATUS_RESTRICTED):
+            for _retry in range(2):
+                retry_result = check_url(url, follow_redirects=args.follow_redirects)
+                if retry_result["status"] in (STATUS_OK, STATUS_REDIRECT, STATUS_BROKEN):
+                    result = retry_result
+                    break
         results.append(result)
 
     # 加载/保存缓存与告警

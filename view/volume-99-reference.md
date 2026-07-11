@@ -5383,7 +5383,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 | TLA+ | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy | <https://alloytools.org/> |
 | Coq | <https://coq.inria.fr/> |
-| Isabelle | <https://isabelle.in.tum.de/> |
+| Isabelle | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/> |
 | RustBelt | <https://plv.mpi-sws.org/rustbelt/> |
 | Kani Rust Verifier | <https://model-checking.github.io/kani/> |
 
@@ -5401,7 +5401,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 | 资源 | 链接 |
 |------|------|
-| COCOMO II | <https://csse.usc.edu/tools/cocomoii.php> |
+| COCOMO II | <https://boehmcsse.org/tools/cocomo-models/> |
 | WebAssembly | <https://webassembly.org/> |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org/> |
 | wasmCloud | <https://wasmcloud.com/> |
@@ -5414,7 +5414,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 | TLA+ Home Page | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy Tools | <https://alloytools.org/> |
 | Coq Proof Assistant | <https://coq.inria.fr/> |
-| Isabelle/HOL | <https://isabelle.in.tum.de/> |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/> |
 | RustBelt | <https://plv.mpi-sws.org/rustbelt/> |
 | Prusti (ETH Zurich) | <https://www.pm.inf.ethz.ch/research/prusti.html> |
 | Kani (AWS) | <https://model-checking.github.io/kani/> |
@@ -5499,6 +5499,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 分析
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
+
 
 ---
 
@@ -6961,7 +6962,7 @@ M.3 (层次不可约性)
 - **反例**: 将高度耦合的代码片段复制到多个项目，未剥离业务专属逻辑，导致后续变更需要在多处同步修改。
 - **权威来源**:
   - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
-  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/standard/1517-2010.html) — IEEE
+  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
   - 核查日期：2026-07-07
 
 ### Reusable Asset (可复用资产)
@@ -7308,6 +7309,7 @@ M.3 (层次不可约性)
 | Variation Point | V | 01-元模型/04-组件 | Feature Model |
 | Viewpoint | V | 01-元模型 | View、Stakeholder |
 | WASM Component Model | W | 13-新兴趋势 | WIT、WASI |
+
 
 ---
 
@@ -9653,9 +9655,9 @@ graph TD
 | **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
 | **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
-| **IEEE 1517** | 2010 | 现行 | <https://standards.ieee.org/standard/1517-2010.html> | 软件生命周期复用过程 |
+| **IEEE 1517** | 2010 | 现行 | <https://standards.ieee.org/ieee/1517/4603/> | 软件生命周期复用过程 |
 | **OMG RAS** | v2.2 | 已发布 | <https://www.omg.org/spec/RAS/2.2/PDF> | 可复用资产规范（Reusable Asset Specification） |
-| **FAIR4RS** | v1.0 | 已发布 | <https://doi.org/10.15497/RDA00068> | 研究软件可复用的 FAIR 原则 |
+| **FAIR4RS** | v1.0 | 已发布 | <https://archive.rd-alliance.org/sites/default/files/FAIR%20Principles%20for%20Research%20Software%20%28FAIR4RS%20Principles%29.pdf> | 研究软件可复用的 FAIR 原则 |
 | **SWEBOK** | V4 | 已发布 | <https://www.computer.org/education/bodies-of-knowledge/software-engineering> | 软件工程知识体系 |
 | **ISO/IEC 5338** | 2023 | 已发布 | <https://www.iso.org/standard/81118.html> | AI 系统生命周期过程 |
 | **ISO/IEC 42001** | 2023 | 已发布 | <https://www.iso.org/standard/81230.html> | AI 管理体系 |
@@ -9686,11 +9688,11 @@ graph TD
 | **OWASP MCP Top 10** | 2025/2026 | 已发布（Beta / v0.1） | <https://owasp.org/www-project-mcp-top-10/> | Model Context Protocol 专用安全风险 |
 | **Microsoft Agent Governance Toolkit** | 1.0 | **2026-04-02 开源** | <https://github.com/microsoft/agent-governance-toolkit> | Agent 运行时治理、审计、策略执行；覆盖 OWASP Agentic Top 10 |
 | **NIST SP 800-218** | v1.1 | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-218/final> | SSDF v1.1 正式版 |
-| **NIST SP 800-218A** | — | 已发布（2024-07 final） | <https://csrc.nist.gov/pubs/sp/800/218/a/final> | 生成式 AI 安全开发实践社区配置文件 |
+| **NIST SP 800-218A** | — | 已发布（2024-07；NIST 当前仅提供 IPD 页面） | <https://csrc.nist.gov/pubs/sp/800/218/a/ipd> | 生成式 AI 安全开发实践社区配置文件 |
 | **OWASP Top 10** | 2025 | 已发布 | <https://owasp.org/www-project-top-ten/> | — |
 | **OWASP ASVS** | 5.0.0 | 已发布 | <https://owasp.org/www-project-application-security-verification-standard/> | — |
 | **OWASP SCVS** | 1.0 | 已发布 | <https://owasp.org/www-project-software-component-verification-standard/> | 软件组件验证标准 |
-| **OpenSSF OSPS** | Baseline | 现行 | <https://openssf.org/projects/openssf-osps-baseline/> | 开源项目安全基线 |
+| **OpenSSF OSPS** | Baseline | 现行 | <https://baseline.openssf.org/> | 开源项目安全基线（OSPS Baseline）；源仓库 github.com/ossf/security-baseline |
 | **OpenSSF Scorecard** | — | 现行 | <https://github.com/ossf/scorecard> | 开源安全健康度检查 |
 | **SPDX** | 2.3 | 现行 | <https://spdx.dev/specifications/> | 软件物料清单标准 |
 | **CycloneDX** | 1.6 | 现行 | <https://cyclonedx.org/specification/overview/> | 软件物料清单标准 |
@@ -9743,13 +9745,13 @@ graph TD
 | **TLA+** | — | 现行 | <https://lamport.azurewebsites.net/tla/tla.html> | Leslie Lamport 时序逻辑规约 |
 | **Alloy** | 6 | 现行 | <https://alloytools.org/> | MIT 约束求解建模 |
 | **Coq** | — | 现行 | <https://coq.inria.fr> | 定理证明助手 |
-| **Isabelle/HOL** | — | 现行 | <https://isabelle.in.tum.de> | 定理证明器 |
+| **Isabelle/HOL** | — | 现行 | <https://www.cl.cam.ac.uk/research/hvg/Isabelle> | 定理证明器 |
 | **SPARK/Ada** | — | 现行 | <https://www.adacore.com/about-spark> | AdaCore 形式化验证工具 |
 | **B Method** | — | 现行 | <https://www.atelierb.eu> | Clearsy 形式化方法 |
 | **Rust** | — | 现行 | <https://www.rust-lang.org> | 类型系统内存安全 |
 | **Kani** | — | 现行 | <https://github.com/model-checking/kani> | AWS Rust 模型检查器 |
 | **Miri** | — | 现行 | <https://github.com/rust-lang/miri> | Rust UB 行为检测 |
-| **IEEE 1012** | 2024 | 已发布 | <https://standards.ieee.org/standard/1012-2024.html> | 软件验证与确认 |
+| **IEEE 1012** | 2024 | 已发布 | <https://standards.ieee.org/ieee/1012/7324/> | 软件验证与确认 |
 
 ---
 
@@ -9757,7 +9759,7 @@ graph TD
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
-| **COCOMO II** | 2000.1 / 后续校准 | 现行 | <https://csse.usc.edu/tools/cocomoii.php> | 软件成本估算模型 |
+| **COCOMO II** | 2000.1 / 后续校准 | 现行 | <https://boehmcsse.org/tools/cocomo-models/> | 软件成本估算模型；原 USC csse.usc.edu 域名已无法解析，现改用 Boehm CSSE 官方页面 |
 | **FinOps Foundation** | — | 现行 | <https://www.finops.org/> | 云成本管理框架 |
 | **GSF SCI** | — | 现行；已 ISO/IEC 21031:2024 | <https://sci.greensoftware.foundation/> | 软件碳强度规范 |
 | **GSF SCI for AI** | — | **2026-Q1 ratified** | <https://greensoftware.foundation/standards/sci-ai/> | AI 系统全生命周期碳强度度量 |
@@ -9805,6 +9807,7 @@ graph TD
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
 
 ---
 
@@ -11880,7 +11883,7 @@ COCOMO II 复用调整:
 | TLA+ Toolbox | 1.7.x | TLC 模型检测、PlusCal 语法检查 | [TLA+ Home](https://lamport.azurewebsites.net/tla/tla.html) |
 | Alloy Analyzer | 6.x | 关系逻辑约束求解 | [Alloy Tools](https://alloytools.org) |
 | Coq | 8.19+ | 构造性定理证明 | [Coq](https://coq.inria.fr) |
-| Isabelle/HOL | 2024 | 高阶逻辑定理证明 | [Isabelle](https://isabelle.in.tum.de) |
+| Isabelle/HOL | 2024 | 高阶逻辑定理证明 | [Isabelle](https://www.cl.cam.ac.uk/research/hvg/Isabelle) |
 
 ---
 
@@ -12029,7 +12032,7 @@ volumes:
 - Leslie Lamport. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
 - Daniel Jackson. *Software Abstractions*. <https://softwareabstractions.org/>
 - Coq Documentation. <https://coq.inria.fr/documentation>
-- Isabelle Documentation. <https://isabelle.in.tum.de/documentation.html>
+- Isabelle Documentation. <https://www.cl.cam.ac.uk/research/hvg/Isabelle/documentation.html>
 
 ---
 
@@ -12057,6 +12060,7 @@ volumes:
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
 
 ---
 

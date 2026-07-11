@@ -13,7 +13,7 @@
 | TLA+ Toolbox | 1.7.x | TLC 模型检测、PlusCal 语法检查 | [TLA+ Home](https://lamport.azurewebsites.net/tla/tla.html) |
 | Alloy Analyzer | 6.x | 关系逻辑约束求解 | [Alloy Tools](https://alloytools.org) |
 | Coq | 8.19+ | 构造性定理证明 | [Coq](https://coq.inria.fr) |
-| Isabelle/HOL | 2024 | 高阶逻辑定理证明 | [Isabelle](https://isabelle.in.tum.de) |
+| Isabelle/HOL | 2024 | 高阶逻辑定理证明 | [Isabelle](https://www.cl.cam.ac.uk/research/hvg/Isabelle) |
 
 ---
 
@@ -162,7 +162,7 @@ volumes:
 - Leslie Lamport. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
 - Daniel Jackson. *Software Abstractions*. <https://softwareabstractions.org/>
 - Coq Documentation. <https://coq.inria.fr/documentation>
-- Isabelle Documentation. <https://isabelle.in.tum.de/documentation.html>
+- Isabelle Documentation. <https://www.cl.cam.ac.uk/research/hvg/Isabelle/documentation.html>
 
 ---
 

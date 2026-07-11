@@ -452,7 +452,7 @@
 - **反例**: 将高度耦合的代码片段复制到多个项目，未剥离业务专属逻辑，导致后续变更需要在多处同步修改。
 - **权威来源**:
   - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
-  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/standard/1517-2010.html) — IEEE
+  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
   - 核查日期：2026-07-07
 
 ### Reusable Asset (可复用资产)

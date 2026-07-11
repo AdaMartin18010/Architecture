@@ -59,7 +59,7 @@
 | TLA+ | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy | <https://alloytools.org/> |
 | Coq | <https://coq.inria.fr/> |
-| Isabelle | <https://isabelle.in.tum.de/> |
+| Isabelle | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/> |
 | RustBelt | <https://plv.mpi-sws.org/rustbelt/> |
 | Kani Rust Verifier | <https://model-checking.github.io/kani/> |
 
@@ -77,7 +77,7 @@
 
 | 资源 | 链接 |
 |------|------|
-| COCOMO II | <https://csse.usc.edu/tools/cocomoii.php> |
+| COCOMO II | <https://boehmcsse.org/tools/cocomo-models/> |
 | WebAssembly | <https://webassembly.org/> |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org/> |
 | wasmCloud | <https://wasmcloud.com/> |
@@ -90,7 +90,7 @@
 | TLA+ Home Page | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy Tools | <https://alloytools.org/> |
 | Coq Proof Assistant | <https://coq.inria.fr/> |
-| Isabelle/HOL | <https://isabelle.in.tum.de/> |
+| Isabelle/HOL | <https://www.cl.cam.ac.uk/research/hvg/Isabelle/> |
 | RustBelt | <https://plv.mpi-sws.org/rustbelt/> |
 | Prusti (ETH Zurich) | <https://www.pm.inf.ethz.ch/research/prusti.html> |
 | Kani (AWS) | <https://model-checking.github.io/kani/> |

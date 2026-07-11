@@ -224,46 +224,68 @@ reason := sprintf("消费方 %d、语义覆盖率 %.2f、技术兼容性 %.2f，
     decision == "UPGRADE"
 }
 
-reason := sprintf("耦合影响 %.2f > 0.3，建议从 %s 降级至 %s",
-    [input.coupling_impact_ratio, input.current_layer, prev_layer(input.current_layer)]) if {
-    decision == "DOWNGRADE"
-    input.coupling_impact_ratio > 0.3
-}
-
-reason := sprintf("技术栈兼容性 %.2f < 0.5，建议从 %s 降级至 %s",
-    [input.tech_compatibility_ratio, input.current_layer, prev_layer(input.current_layer)]) if {
-    decision == "DOWNGRADE"
-    input.tech_compatibility_ratio < 0.5
-}
-
-reason := sprintf("AI 功能置信度 %.2f < 0.8，建议从 %s 降级至 %s 并引入规则引擎",
-    [input.confidence_gamma, input.current_layer, prev_layer(input.current_layer)]) if {
-    decision == "DOWNGRADE"
-    input.confidence_gamma < 0.8
-}
-
-reason := sprintf("配置冲突数 %d >= 5，建议从 %s 降级至 %s 并简化配置空间",
-    [input.config_conflicts, input.current_layer, prev_layer(input.current_layer)]) if {
-    decision == "DOWNGRADE"
-    input.config_conflicts >= 5
-}
-
+# 降级原因按优先级互斥排列：安全 > 耦合 > 技术栈 > 延迟 > AI 置信度 > 配置冲突 > 语义漂移
 reason := sprintf("安全等级不匹配 (要求 %s > 认证 %s)，建议从 %s 降级隔离",
     [input.security_level_required, input.component_cert_level, input.current_layer]) if {
     decision == "DOWNGRADE"
     security_mismatch
 }
 
+reason := sprintf("耦合影响 %.2f > 0.3，建议从 %s 降级至 %s",
+    [input.coupling_impact_ratio, input.current_layer, prev_layer(input.current_layer)]) if {
+    decision == "DOWNGRADE"
+    input.coupling_impact_ratio > 0.3
+    not security_mismatch
+}
+
+reason := sprintf("技术栈兼容性 %.2f < 0.5，建议从 %s 降级至 %s",
+    [input.tech_compatibility_ratio, input.current_layer, prev_layer(input.current_layer)]) if {
+    decision == "DOWNGRADE"
+    input.tech_compatibility_ratio < 0.5
+    not security_mismatch
+    not input.coupling_impact_ratio > 0.3
+}
+
 reason := sprintf("延迟要求 %d ms < 共享服务 P99 %d ms，建议从 %s 降级至本地实现",
     [input.latency_requirement_ms, input.shared_service_p99_ms, input.current_layer]) if {
     decision == "DOWNGRADE"
     input.latency_requirement_ms < input.shared_service_p99_ms
+    not security_mismatch
+    not input.coupling_impact_ratio > 0.3
+    not input.tech_compatibility_ratio < 0.5
+}
+
+reason := sprintf("AI 功能置信度 %.2f < 0.8，建议从 %s 降级至 %s 并引入规则引擎",
+    [input.confidence_gamma, input.current_layer, prev_layer(input.current_layer)]) if {
+    decision == "DOWNGRADE"
+    input.confidence_gamma < 0.8
+    not security_mismatch
+    not input.coupling_impact_ratio > 0.3
+    not input.tech_compatibility_ratio < 0.5
+    not input.latency_requirement_ms < input.shared_service_p99_ms
+}
+
+reason := sprintf("配置冲突数 %d >= 5，建议从 %s 降级至 %s 并简化配置空间",
+    [input.config_conflicts, input.current_layer, prev_layer(input.current_layer)]) if {
+    decision == "DOWNGRADE"
+    input.config_conflicts >= 5
+    not security_mismatch
+    not input.coupling_impact_ratio > 0.3
+    not input.tech_compatibility_ratio < 0.5
+    not input.latency_requirement_ms < input.shared_service_p99_ms
+    not input.confidence_gamma < 0.8
 }
 
 reason := sprintf("语义覆盖率 %.2f < 0.8 且降级收益为正，建议从 %s 降级",
     [input.semantic_coverage_ratio, input.current_layer]) if {
     decision == "DOWNGRADE"
     input.semantic_coverage_ratio < 0.8
+    not security_mismatch
+    not input.coupling_impact_ratio > 0.3
+    not input.tech_compatibility_ratio < 0.5
+    not input.latency_requirement_ms < input.shared_service_p99_ms
+    not input.confidence_gamma < 0.8
+    not input.config_conflicts >= 5
 }
 
 reason := sprintf("当前层级 %s 维持现状，未触发升级/降级条件", [input.current_layer]) if {

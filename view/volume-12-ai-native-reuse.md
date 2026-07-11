@@ -4857,7 +4857,7 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 
 | 维度 | SLO 指标 | 测量方法 | SLA 违约条件 |
 |------|---------|---------|-------------|
-| 正确性 | ` correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
+| 正确性 | `correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
 | 可用性 | `availability ≥ 99.9%` | 健康检查 | 月度停机 > 43 分钟 |
 | 延迟 | `p99_latency ≤ T` | OpenTelemetry | 连续 5 分钟 p99 > T |
 | 成本 | `cost_per_call ≤ C` | 计费监控 | 月度单均成本 > C × 1.2 |
@@ -6830,7 +6830,7 @@ CP 的核心保证是：在交换性假设下，预测集合以概率 1−α 包
 > - [Weighted Conformal Prediction under Distribution Shift](https://arxiv.org/abs/1903.04661) — Tibshirani et al. (2019)
 > - [Lean Theorem Prover](https://lean-lang.org/) — 形式化验证工具
 > - [Coq Proof Assistant](https://coq.inria.fr/) — 形式化验证工具
-> - [Isabelle/HOL](https://isabelle.in.tum.de/) — 形式化验证工具
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle/) — 形式化验证工具
 >
 > **核查日期**: 2026-07-07
 
@@ -6872,6 +6872,7 @@ CP 的核心保证是：在交换性假设下，预测集合以概率 1−α 包
 > - [Conformal Prediction](https://en.wikipedia.org/wiki/Conformal_prediction)
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
 > - 核查日期：2026-07-07
+
 
 ---
 

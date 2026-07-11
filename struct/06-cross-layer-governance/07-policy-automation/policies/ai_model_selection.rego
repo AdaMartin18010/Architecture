@@ -87,38 +87,49 @@ tier_available(tier) if {
     input.available_tiers[_] == tier
 }
 
+# 拒绝原因按优先级互斥排列：准确率 > 延迟 > 安全等级 > 数据隐私
 reason := sprintf("准确率要求 %.2f 超出可保障上限 0.98，建议调整业务预期", [input.min_accuracy]) if {
     input.min_accuracy > 0.98
 }
 
 reason := sprintf("延迟要求 %d ms 低于最低可行阈值 20 ms", [input.max_latency_p99_ms]) if {
     input.max_latency_p99_ms < 20
+    not input.min_accuracy > 0.98
 }
 
 reason := "高安全等级场景必须使用 PREMIUM 层级模型" if {
     input.safety_level_required == "high"
     not tier_available("premium")
+    not input.min_accuracy > 0.98
+    not input.max_latency_p99_ms < 20
 }
 
 reason := "数据隐私要求场景至少需 BALANCED 层级私有化部署" if {
     input.data_privacy_required == true
     not tier_available("premium")
     not tier_available("balanced")
+    not input.min_accuracy > 0.98
+    not input.max_latency_p99_ms < 20
+    not (input.safety_level_required == "high"; not tier_available("premium"))
 }
 
+# 通过原因按优先级互斥排列：安全 > 准确率 > 延迟 > 中等约束 > 成本 > 默认
 reason := sprintf("高安全等级要求，选择 PREMIUM 层级 (可用层级: %v)", [input.available_tiers]) if {
     decision == "PREMIUM"
     input.safety_level_required == "high"
 }
 
-reason := sprintf("高准确率要求 %.2f 或低延迟 %d ms，选择 PREMIUM 层级", [input.min_accuracy, input.max_latency_p99_ms]) if {
+reason := sprintf("高准确率要求 %.2f，选择 PREMIUM 层级", [input.min_accuracy]) if {
     decision == "PREMIUM"
     input.min_accuracy >= 0.92
+    input.safety_level_required != "high"
 }
 
 reason := sprintf("P99 延迟要求 %d ms 严格，选择 PREMIUM 层级", [input.max_latency_p99_ms]) if {
     decision == "PREMIUM"
     input.max_latency_p99_ms <= 100
+    input.safety_level_required != "high"
+    not input.min_accuracy >= 0.92
 }
 
 reason := sprintf("中等准确率 %.2f / 中等延迟 %d ms，选择 BALANCED 层级", [input.min_accuracy, input.max_latency_p99_ms]) if {

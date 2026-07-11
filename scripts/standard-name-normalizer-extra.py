@@ -107,8 +107,8 @@ def apply_extra_fixes(file_path: Path) -> int:
                 for a, b in intervals:
                     if s >= a and e <= b:
                         return m.group(0)
-                # 若替换文本末尾含年份且命中后紧跟冒号，避免制造重复年份
-                if new_line[e:e + 1] == ":" and re.search(r":\d{4}$", repl):
+                # 若原文紧接着已有“:年份”，避免制造重复年份（如 ISO 42010:2022）
+                if re.match(r":\d", new_line[e:e + 2]):
                     return m.group(0)
                 return repl
             new_line, count = re.subn(pattern, replacer, new_line)

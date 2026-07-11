@@ -43,7 +43,7 @@
 | ArchiMate 4 变更动机白皮书 W262 | <https://publications.opengroup.org/w262> | 2026-07-09 |
 | OMG RAS v2.2 | <https://www.omg.org/spec/RAS/2.2/> | 2026-07-09 |
 | FAIR4RS Principles | <https://ardc.edu.au/resource/fair-principles-for-research-software-fair4rs/> | 2026-07-09 |
-| IEEE 1517-2010 | <https://standards.ieee.org/standard/1517-2010.html> | 2026-07-09 |
+| IEEE 1517-2010 | <https://standards.ieee.org/ieee/1517/4603/> | 2026-07-09 |
 | OMG SysML v2 Specification | <https://www.omg.org/spec/SysML/20250201/SysML.json> | 2026-07-09 |
 
 ## ISO/IEC/IEEE 42010:2022 核心条款映射

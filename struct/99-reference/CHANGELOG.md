@@ -346,8 +346,8 @@
 ### 对齐的权威来源
 
 - OMG RAS v2.2 formal/05-11-02: <https://www.omg.org/spec/RAS/2.2/PDF>
-- FAIR4RS v1.0 (RDA, 2022): <https://doi.org/10.15497/RDA00068>
-- ISO/IEC/IEEE 1517:2010-2010: <https://standards.ieee.org/standard/1517-2010.html>
+- FAIR4RS v1.0 (RDA, 2022): <https://archive.rd-alliance.org/sites/default/files/FAIR%20Principles%20for%20Research%20Software%20%28FAIR4RS%20Principles%29.pdf>
+- ISO/IEC/IEEE 1517:2010-2010: <https://standards.ieee.org/ieee/1517/4603/>
 - MCP 2025-11-25 Spec: <https://modelcontextprotocol.io/specification/2025-11-25>
 - MCP Linux Foundation Governance: <https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation>
 - Angelopoulos & Bates, "A Gentle Introduction to Conformal Prediction" (2021): <https://arxiv.org/abs/2107.07511>

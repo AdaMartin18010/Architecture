@@ -345,7 +345,7 @@ CP 的核心保证是：在交换性假设下，预测集合以概率 1−α 包
 > - [Weighted Conformal Prediction under Distribution Shift](https://arxiv.org/abs/1903.04661) — Tibshirani et al. (2019)
 > - [Lean Theorem Prover](https://lean-lang.org/) — 形式化验证工具
 > - [Coq Proof Assistant](https://coq.inria.fr/) — 形式化验证工具
-> - [Isabelle/HOL](https://isabelle.in.tum.de/) — 形式化验证工具
+> - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle/) — 形式化验证工具
 >
 > **核查日期**: 2026-07-07
 

@@ -6,7 +6,7 @@
 > **状态**: Phase 2（2026-Q4）
 > **权威链接**:
 >
-> - <https://standards.ieee.org/standard/1517-2010.html>
+> - <https://standards.ieee.org/ieee/1517/4603/>
 > - <https://www.iso.org/standard/90219.html> (ISO/IEC/IEEE 12207:2026，现行版)
 > - <https://www.iso.org/standard/63712.html> (ISO/IEC/IEEE 12207:2017，历史对照版)
 > - <https://www.iso.org/standard/69529.html> (ISO/IEC 26550:2015)
@@ -242,7 +242,7 @@ flowchart LR
 
 ## 9. 权威来源
 
-1. IEEE. *ISO/IEC/IEEE 1517:2010 — Standard for Information Technology — System and Software Life Cycle Processes — Reuse Processes*. 2010. <https://standards.ieee.org/standard/1517-2010.html>
+1. IEEE. *ISO/IEC/IEEE 1517:2010 — Standard for Information Technology — System and Software Life Cycle Processes — Reuse Processes*. 2010. <https://standards.ieee.org/ieee/1517/4603/>
 2. ISO/IEC/IEEE. *ISO/IEC/IEEE 12207:2026 — Systems and software engineering — Software life cycle processes*. 2026. <https://www.iso.org/standard/90219.html>
    ISO/IEC/IEEE. *ISO/IEC/IEEE 12207:2017 — Systems and software engineering — Software life cycle processes*. 2017. <https://www.iso.org/standard/63712.html>（历史对照版）
 3. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/43089.html>
@@ -274,6 +274,6 @@ flowchart LR
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/standard/1517-2010.html)
+> - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/)
 > - [IEEE Standards](https://standards.ieee.org)
 > - 核查日期：2026-07-07
