@@ -1,7 +1,7 @@
 # AAS 子模型模板清单
 
 > **版本**: 2026-06-06
-> **对齐来源**: IDTA (Industrial Digital Twin Association) Submodel Registry, IEC 63278-1:2023, IEC 63365:2024
+> **对齐来源**: IDTA (Industrial Digital Twin Association) Submodel Registry, IEC 63278-1:2023, IEC 63365:2022
 > **定位**: 覆盖 IDTA 已发布子模型模板的精简目录，突出复用价值与工程选型指南
 
 ---
@@ -282,7 +282,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 - IDTA-01001-3-0: *Details of the Asset Administration Shell Part 1 — Metamodel*
 - IDTA-01002-3-0: *Details of the Asset Administration Shell Part 2 — APIs*
 - IEC 63278-1:2023: *Asset Administration Shell structure*
-- IEC 63365:2024: *Generic Submodels and Specifications*
+- IEC 63365:2022: *Generic Submodels and Specifications*
 - IEC 61360: *IEC Common Data Dictionary (CDD)*
 - ECLASS: <https://www.eclass.eu>
 - EU Digital Product Passport: ESPR Regulation (EU) 2024/1781

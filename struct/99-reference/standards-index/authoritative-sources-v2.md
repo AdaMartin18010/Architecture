@@ -1,9 +1,9 @@
-# 国际标准与权威来源索引 v2.3
+# 国际标准与权威来源索引 v2.9
 
-> **版本**: 2026-07-08 v2.3
+> **版本**: 2026-07-11 v2.9
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-08
+> **上次复核**: 2026-07-11
 > **下次复核**: 2026-09-30
 > **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../audit/content-fact-fix-2026-07.md)
 
@@ -122,6 +122,22 @@
 | **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://reference.opcfoundation.org/specs/OPC-10000-80> | 现场级通信；OPC Foundation 主站对自动化访问限制较严，规范参考页（Parts 80–84）可正常访问 |
 | **IEC/IEEE 60802** | — | 草案/完善中 | <https://www.iec.ch/dyn/www/f?p=103:38:0::::::> | TSN 工业自动化配置文件 |
 | **PLCopen Motion Control** | Part 1–4 + Safety | 现行 | <https://www.plcopen.org/standards/motion-control/> | 运动控制功能块 |
+| **IEC 61511-1** | 2016 | 已发布（+AMD1:2017 合并版 CSV=61289；:2026 SER 系列合订=5527） | <https://webstore.iec.ch/en/publication/24241> | 过程工业安全仪表系统（SIS）功能安全 |
+| **IEC 61511-2** | 2016 | 已发布 | <https://webstore.iec.ch/en/publication/25510> | IEC 61511-1 应用指南 |
+| **IEC 61513** | 2011 | 已发布 | <https://webstore.iec.ch/en/publication/5532> | 核电厂安全重要仪表与控制 |
+| **IEC 61131-3** | **2025** | **已发布（Ed.4，2025-05 发布，取代 2013 版）** | <https://webstore.iec.ch/en/publication/68533> | PLC 编程语言；Ed.4 纳入 UTF-8 字符串、移除 IL（指令表） |
+| **IEC 62061** | 2021 | 已发布（Ed.2；另有 2021+AMD1:2024 CSV Ed.2.1） | <https://webstore.iec.ch/en/publication/59927> | 机械安全相关电气/电子/可编程控制系统功能安全 |
+| **IEC 62304** | 2006 | 已发布（AMD1:2015=22790） | <https://webstore.iec.ch/en/publication/6792> | 医疗器械软件生命周期过程 |
+| **IEC 61000-4-2** | 2008 | 已发布 | <https://webstore.iec.ch/en/publication/4189> | EMC 静电放电（ESD）抗扰度试验 |
+| **IEC 61784-1** | 2019 | 已发布 | <https://webstore.iec.ch/en/publication/59887> | 工业通信网络配置文件 CPF 1（现场总线） |
+| **IEC 61784-2** | 2019 | 已发布 | <https://webstore.iec.ch/en/publication/59888> | 工业通信网络配置文件 CPF 2（实时以太网） |
+| **IEC 61499-1 / -2** | 2012 | 已发布 | <https://webstore.iec.ch/en/publication/5506> | 分布式工业过程测量与控制系统功能块（-2=5507） |
+| **IEC 61360-1** | 2017 | 已发布（-7:2024=72956） | <https://webstore.iec.ch/en/publication/28560> | 部件数据元素类型规范（公共数据字典 CDD 基础） |
+| **IEC 62682** | 2022 | 已发布（Ed.2） | <https://webstore.iec.ch/en/publication/65543> | 过程工业报警系统管理 |
+| **IEC 63339** | 2024 | 已发布（2024-10，TC65） | <https://www.iso.org/standard/82374.html> | 智能制造统一参考模型（URMSM）；IEC 与 ISO 双标 |
+| **IEC 63365** | **2022** | 已发布 | <https://webstore.iec.ch/en/publication/67436> | 数字铭牌（Digital Nameplate）；**年份订正 2024→2022** |
+| **IEC 60870-5-104** | 2006 | 已发布（+AMD1:2016 CSV Ed.2.1，含 COR1:2023） | <https://webstore.iec.ch/en/publication/25035> | 电力远动传输 104 规约（TCP/IP 网络访问） |
+| **IEC 60068-1** | 2013 | 已发布（Ed.7） | <https://webstore.iec.ch/en/publication/501> | 环境试验 第 1 部分：总则与指南 |
 
 ---
 
@@ -184,6 +200,7 @@
 | 2026-07-11 | 更新为 v2.6（联网核对）：ISO 21448 Ed.2 订正为“ISO/AWI 21448（AWI 阶段），现行 2022 版，发布时点未官宣”（iso.org/standard/93071），取代“预计 2026 发布”；WASI 0.3.0 订正为“已发布（2026-06-11，Preview 3）”，取代“2026-02 preview”；复核 IEC/IEEE 60802:2026（2026-06 发布）、IEC 63278-2 CDV（65/1193，投票截止 2026-08-07）、ISO/IEC 26566:2026（81437，2026-05 发布）、SysML v2.0/KerML 1.0（OMG formal/2026-03，已提交 ISO）、EU CRA 2024/2847（2026-09-11 漏洞报告义务生效、2027-12-11 全面适用）、OWASP Top 10 for Agentic Applications 2026（2025-12-09 发布）与 OWASP MCP Top 10（MCP01:2025–MCP10:2025，Phase 3 Beta）均与表内一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.7（联网核对）：GSF SCI for AI 订正为 2025-12 ratified（GSF 公告 2025-12-17，基于 ISO/IEC 21031:2024）；ISO/IEC 21838 系列补全为 -1:2021/-2:2021(BFO)/-3:2023(DOLCE)/-4:2023(TUpper)，-5(UFO) 2025-12 进入 DIS；复核 OMG RAS v2.2（2005-11）、FAIR4RS v1.0（2022-06 RDA 批准）、CNCF Platform Engineering Maturity Model（2023-11 首版，无 v1.0 编号）、Microsoft Agent Governance Toolkit（2026-04-02 开源）、OSPS Baseline v2026.02.19、OPC UA FX Part 80-84 v1.00.03（2026-05-23）、ISO/IEC/IEEE 12207:2026（2026-04-29 发布）、ISO/IEC 25010:2023（现行）均一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.8（iso.org 全表链接实测复核，Mozilla UA 直连成功，23 条中 4 条纠错）：ISO/IEC 21838 链接 74307（实为 ISO 17889-2 瓷砖）→ 71954（-1:2021）；ISO/IEC/IEEE 42010 链接 74296（实为 ISO/IEC 22989:2022）→ 74393；ISO/IEC 25010 链接 78175（实为 ISO/IEC 25002:2024）→ 78176；ISO/IEC 26580 链接 71883（实为 ISO 10204 铁矿石）→ 43139；ISO/IEC 26564 链接 81622（实为 ISO/TS 24560-1 医疗）→ 43123；ISO/IEC 26565/26566（81436/81437）、26550（69529）复核确认 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.9（IEC webstore 直连实测，16 条工业自动化标准补全 publication 号，全部经 `<title>` 实测确认）：IEC 61511-1:2016=24241（+AMD1:2017 CSV=61289、-2:2016=25510、:2026 SER 系列合订=5527）、IEC 61513:2011=5532、IEC 61131-3:2025 Ed.4=68533（2025-05 发布，UTF-8 字符串纳入、IL 移除，取代 2013 版）、IEC 62061:2021=59927、IEC 62304:2006=6792（AMD1:2015=22790）、IEC 61000-4-2:2008=4189、IEC 61784-1/-2:2019=59887/59888、IEC 61499-1/-2:2012=5506/5507、IEC 61360-1:2017=28560（-7:2024=72956）、IEC 62682:2022=65543、IEC 63339:2024=iso.org/standard/82374、IEC 63365 年份订正 2024→2022（=67436）、IEC 60870-5-104:2006+AMD1:2016 CSV=25035、IEC 60068-1:2013=501 | 自动对齐代理 |
 
 ---
 
