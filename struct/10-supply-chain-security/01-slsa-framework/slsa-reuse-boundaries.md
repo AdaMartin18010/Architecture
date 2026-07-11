@@ -163,7 +163,7 @@ L2 → L3
 
 ### 3.4 Build L4 的过时标量视角（v1.2 已转向多轨道）
 
-SLSA v1.0 曾将 L4 描述为"最高可信复用"的标量等级，要求双人审查、可复现构建与密闭构建。SLSA v1.2 已将这些要求拆分到 **Source Track** 与 **Build Environment Track**，并以独立等级呈现。因此，**不再使用单一 L4 标量**指导复用决策。最高可信场景应使用向量 `(Build L3, Source L3, Env L3)` 表示。详细矩阵与反例见第 7 节。
+SLSA 1.0 曾将 L4 描述为"最高可信复用"的标量等级，要求双人审查、可复现构建与密闭构建。SLSA v1.2 已将这些要求拆分到 **Source Track** 与 **Build Environment Track**，并以独立等级呈现。因此，**不再使用单一 L4 标量**指导复用决策。最高可信场景应使用向量 `(Build L3, Source L3, Env L3)` 表示。详细矩阵与反例见第 7 节。
 
 ---
 
@@ -341,7 +341,7 @@ Build Environment Track 解决的核心问题是：**执行构建的环境本身
 
 ### 8.4 L4 状态澄清：所有轨道的 L4 均为"规划中/草案"
 
-SLSA v1.0 曾将 L4 描述为 Build Track 的最高等级，要求"双人审查 + 可复现构建"。SLSA v1.2 已明确：
+SLSA 1.0 曾将 L4 描述为 Build Track 的最高等级，要求"双人审查 + 可复现构建"。SLSA v1.2 已明确：
 
 - **Build Track L4**：仍处于 OpenSSF 工作流讨论阶段，尚未发布正式要求。预计包含更严格的可复现性（bit-for-bit reproducible）和多方审计。
 - **Source Track L4**：同样处于规划中，可能要求更高级别的身份认证、审查者独立性、或去中心化源码镜像。

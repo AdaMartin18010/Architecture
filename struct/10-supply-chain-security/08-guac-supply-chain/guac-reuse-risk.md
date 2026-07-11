@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **定位**: 供应链安全分析层 — 基于知识图谱的架构复用风险量化与动态评估
-> **对齐标准**: GUAC v0.x、SLSA 1.2、OpenSSF Scorecard、SPDX 2.3、CycloneDX 1.6、OSV、NIST SP 800-161 Rev. 1
+> **对齐标准**: GUAC v0.x、SLSA 1.2、OpenSSF Scorecard、SPDX 2.3、CycloneDX 1.6、OSV、NIST SP 800-161
 > **状态**: ✅ 已完成
 
 ---

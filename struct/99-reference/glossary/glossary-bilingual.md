@@ -160,7 +160,7 @@
 ## 4. 权威来源
 
 - ISO/IEC/IEEE 42010:2022
-- TOGAF Standard, 10th Edition
+- TOGAF Standard 10
 - ISO/IEC 25010:2023
 - IEC 61508, IEC 63278
 - Model Context Protocol Specification

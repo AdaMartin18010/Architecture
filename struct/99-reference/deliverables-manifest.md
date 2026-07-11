@@ -24,7 +24,7 @@
 
 ### 01 元模型与标准对齐
 
-- **核心文档**: ISO/IEC/IEEE 42010:2022/42020/42030 族谱、TOGAF Standard 10 ADM 对齐、ArchiMate 4.0 映射、SWEBOK v4 覆盖分析
+- **核心文档**: ISO/IEC/IEEE 42010:2022/42020/42030 族谱、TOGAF Standard 10 ADM 对齐、ArchiMate 4.0 映射、SWEBOK V4 覆盖分析
 - **形式化基础**: 4 元公理、存在性公理、结构性公理、过程性公理（20 条公理体系）
 - **标准追踪**: `99-reference/tools/standard-tracker.py`（8 项标准自动监控）
 
@@ -107,7 +107,7 @@
 
 ### 12 AI 原生架构复用
 
-- **协议**: MCP 2025-11-25、A2A v1.0.0.0.0.0、ANP（实验性）
+- **协议**: MCP 2025-11-25、A2A v1.0.0.0.0.0.0、ANP（实验性）
 - **Agent 架构**: ReAct、Plan-and-Execute、Multi-Agent、主管-工作者
 - **模型资产**: RAG、LoRA/QLoRA/DoRA、Adapter、Prompt 模板库
 - **运行时治理**: 温度控制、漂移检测、Guardrails、Token 预算

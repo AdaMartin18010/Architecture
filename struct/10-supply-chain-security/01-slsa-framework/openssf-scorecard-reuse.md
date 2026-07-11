@@ -3,7 +3,7 @@
   任务: OpenSSF Scorecard + Security Baseline 与复用决策
   版本: 2026-06-10
   定位: 供应链安全与架构复用交叉领域的技术决策指南
-  对齐标准: OpenSSF Scorecard v4.x, OpenSSF Security Baseline 2024-2025, SLSA 1.2, NIST SSDF, ISO/IEC 5230 (SPDX)
+  对齐标准: OpenSSF Scorecard v4.x, OpenSSF Security Baseline 2024-2025, SLSA 1.2, NIST SSDF, ISO/IEC 5230:2024 (SPDX)
   状态: ✅ 已完成
 -->
 

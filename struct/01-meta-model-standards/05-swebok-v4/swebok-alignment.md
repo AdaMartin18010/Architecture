@@ -1,7 +1,7 @@
 # SWEBOK V4 知识领域与软件工程架构复用知识体系对应关系
 
 > **版本**: 2026-06-06
-> **对齐来源**: IEEE Computer Society, *Guide to the Software Engineering Body of Knowledge (SWEBOK Guide), Version 4.0*, 2024; SWEBOK v4.0a Update, 2025; ISO/IEC TR 19759:2015
+> **对齐来源**: IEEE Computer Society, *Guide to the Software Engineering Body of Knowledge (SWEBOK Guide), Version 4.0*, 2024; SWEBOK V4.0a Update, 2025; ISO/IEC TR 19759:2015
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
 
 ---
@@ -308,8 +308,8 @@ SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 3. ISO/IEC. *ISO/IEC TR 19759:2015 — Software Engineering — Guide to the Software Engineering Body of Knowledge (SWEBOK)*. 2015.
 4. SEBoK. "An Overview of the SWEBOK Guide." *Systems Engineering Body of Knowledge*, 2026. <https://sebokwiki.org/wiki/An_Overview_of_the_SWEBOK_Guide>
 5. HandWiki. "Software Engineering Body of Knowledge." 2025. <https://handwiki.org/wiki/Software:Software_Engineering_Body_of_Knowledge>
-6. Basic Input/Output. "Guide to the SWEBOK v4.0 Has Been Released." October 2024. <https://www.basicinputoutput.com/2024/10/guide-to-swebok-v40-has-been-released.html>
-7. Henrik Samuelsson. "Notes on SWEBOK v4.0." GitHub, 2024. <https://github.com/HenrikSamuelsson/reading-swebok-v4>
+6. Basic Input/Output. "Guide to the SWEBOK V4.0 Has Been Released." October 2024. <https://www.basicinputoutput.com/2024/10/guide-to-swebok-v40-has-been-released.html>
+7. Henrik Samuelsson. "Notes on SWEBOK V4.0." GitHub, 2024. <https://github.com/HenrikSamuelsson/reading-swebok-v4>
 
 ---
 

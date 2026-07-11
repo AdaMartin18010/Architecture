@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **定位**: AI 原生复用层 —— NIST AI RMF 及扩展 Profile 对 AI 组件复用的风险管理指导
-> **对齐标准**: NIST AI RMF 1.0, NIST AI 600-1 (2024-07), NIST AI RMF Critical Infrastructure Profile (2026-04), ISO/IEC 42001
+> **对齐标准**: NIST AI RMF 1.0, NIST AI 600-1 (2024-07), NIST AI RMF Critical Infrastructure Profile (2026-04), ISO/IEC 42001:2023
 > **状态**: ✅ 已完成
 
 ---
@@ -313,7 +313,7 @@ AI 组件复用信任评分 =
 | **Measure** | 对工具进行功能测试、SBOM 扫描、CVE 检查；高风险工具需红队测试 |
 | **Manage** | 实施最小权限 scope、版本锁定、运行时监控与熔断机制；发现风险后启动下架或整改 |
 
-**效果**：工具复用率提升 60%，重复开发减少；高危安全事件归零；审计证据满足 SOC 2 与 ISO 42001 要求。
+**效果**：工具复用率提升 60%，重复开发减少；高危安全事件归零；审计证据满足 SOC 2 与 ISO/IEC 42001:2023 要求。
 
 ---
 

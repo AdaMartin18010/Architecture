@@ -2,7 +2,7 @@
 
 > **报告日期**: 2026-06-08
 > **分析范围**: 项目全部 13 个一级主题 + 99-reference 参考层
-> **对齐基准**: ISO/IEC/IEEE 42010:2022、TOGAF Standard 10、SWEBOK v4、SLSA 1.2、MCP 2025-11-25、WASI 0.3、ICSA/ECSA 2025-2026、Conformal Prediction 前沿研究等
+> **对齐基准**: ISO/IEC/IEEE 42010:2022、TOGAF Standard 10、SWEBOK V4、SLSA 1.2、MCP 2025-11-25、WASI 0.3、ICSA/ECSA 2025-2026、Conformal Prediction 前沿研究等
 > **分析维度**: 内部完成度、网络权威内容对称差、事实准确性、批判性评价、后续修正计划
 
 ---
@@ -201,7 +201,7 @@
 
 ### 3.1 ArchiMate 4.0 发布状态（已正式发布）
 
-**状态说明**：经 The Open Group 官方发布页面确认，ArchiMate 4.0 Specification 已于 2026-04-27 正式发布（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。此前 2026-06-08 审计报告因官网信息滞后，误判为“虚假发布声明”；该结论已在 2026-06-12 及后续复核中纠正。涉及文件包括：
+**状态说明**：经 The Open Group 官方发布页面确认，ArchiMate 4.0 已于 2026-04-27 正式发布（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。此前 2026-06-08 审计报告因官网信息滞后，误判为“虚假发布声明”；该结论已在 2026-06-12 及后续复核中纠正。涉及文件包括：
 
 - `view/software_architecture_reuse_full_2026.md`
 - `view/software_architecture_reuse_extension_2026.md`
@@ -216,14 +216,14 @@
 
 - The Open Group 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
 - The Open Group 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
-- 白皮书 W262：*The Motivation for Changes in the ArchiMate 4.0 Specification*
+- 白皮书 W262：*The Motivation for Changes in the ArchiMate 4.0*
 - 与 ArchiMate 3.2（Document C226, October 2022）向后兼容
 
 **说明**：⚠️ 早期审计因官网信息滞后产生误判；项目已按官方发布页面纠正表述，并在所有 ArchiMate 4.0 引用处补充官方来源链接。
 
 **修正建议**：
 
-1. 统一使用“ArchiMate 4.0 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”
+1. 统一使用“ArchiMate 4.0 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”
 2. 在 ArchiMate 4.0 引用处补充官方来源：<https://www.opengroup.org/archimate-licensed-downloads>、<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
 3. 保留历史勘误记录于 `99-reference/CHANGELOG.md` 与 `view/` 历史文档
 4. 持续跟踪 The Open Group 官方页面与工具厂商的过渡状态
@@ -332,7 +332,7 @@
 
 2. **工业 IoT 纵深极具价值**：ISA-95 L0-L4 资产目录、OPC UA FX 协议帧结构、PLCopen 功能块、AAS-OPC UA NodeSet 映射等内容，填补了中文技术社区在工业软件架构复用领域的空白。
 
-3. **AI 原生协议分析领先**：MCP 2025-11-25 深度解析（含 Tasks/Icons/Elicitation 等新特性）、A2A v1.0.0.0.0.0 协议架构、混合 A2A-MCP PoC 等，在技术前沿性上超越大多数同类知识产品。
+3. **AI 原生协议分析领先**：MCP 2025-11-25 深度解析（含 Tasks/Icons/Elicitation 等新特性）、A2A v1.0.0.0.0.0.0 协议架构、混合 A2A-MCP PoC 等，在技术前沿性上超越大多数同类知识产品。
 
 4. **形式化验证文档深度**：TLA+（Payment/MCP/A2A/OPC UA FX）、Alloy（组件依赖/MCP 工具图/跨层映射/ISA-95）、Rust 类型系统、SPARK/Ada、B Method 的文档和代码示例丰富，展现了扎实的形式化方法功底。
 

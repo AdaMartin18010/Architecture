@@ -7,7 +7,7 @@
 >
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
-> - ArchiMate 4.0 Specification (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
+> - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - ArchiMate 4.0 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
 > - ISO 26550: <https://www.iso.org/standard/69529.html>
 > **核查日期**: 2026-07-07

@@ -1,7 +1,7 @@
 # FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射
 
 > **版本**: 2026-06-06
-> **对齐来源**: FEA BRM 2.0 Release Document (OMB, 2003/2004), DoD EA BRM Supplement (2004), TOGAF Standard 10th Edition (2022), DoDAF 2.02 Reference Models
+> **对齐来源**: FEA BRM 2.0 Release Document (OMB, 2003/2004), DoD EA BRM Supplement (2004), TOGAF Standard 10 (2022), DoDAF 2.02 Reference Models
 
 ---
 
@@ -290,7 +290,7 @@ TOGAF Architecture Continuum
 - OMB: *The Business Reference Model Version 2.0* (2004-06) — [https://obamawhitehouse.archives.gov/omb/e-gov/fea](https://obamawhitehouse.archives.gov/omb/e-gov/fea)（归档页含 FEA/BRM 系列文档链接；原 dragon1 PDF 镜像仍可作为历史副本引用）
 - DoD: *DoD Enterprise Architecture Business Reference Model* (V0.4, 2004) — DoD Supplement to FEA BRM 2.0
 - DoDAF 2.02: *DoD Architecture Framework* — Reference Models 章节对 FEA BRM 的权威解释
-- The Open Group: *TOGAF Standard, 10th Edition* (2022) — Phase B: Business Architecture
+- The Open Group: *TOGAF Standard 10* (2022) — Phase B: Business Architecture
 - HHS OCIO: *EPLC Business Process Modeling Practices Guide* — FEA BRM 在卫生部门的实施指南
 - Sessions, R.: *Simple Architectures for Complex Enterprises* (Microsoft Press, 2008) — FEA 五大参考模型关系论述
 - Internet Policy (ScienceDirect): FEA BRM 2.0 作为跨机构分析框架的理论基础

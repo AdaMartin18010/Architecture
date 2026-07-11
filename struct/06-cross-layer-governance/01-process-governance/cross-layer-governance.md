@@ -316,7 +316,7 @@ flowchart LR
 > | ISO/IEC/IEEE 42020:2019 — Architecture processes | <https://www.iso.org/standard/68982.html> | 2026-07-08 |
 > | ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework | <https://www.iso.org/standard/73436.html> | 2026-07-08 |
 > | ISO/IEC/IEEE 12207:2026 — Software life cycle processes | <https://www.iso.org/standard/90219.html> | 2026-07-08 |
-> | TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-08 |
+> | TOGAF Standard 10 | <https://www.opengroup.org/togaf> | 2026-07-08 |
 > | COBIT 2019 Framework | <https://www.isaca.org/resources/cobit> | 2026-07-08 |
 > | ITIL 4 — Service Management | <https://www.axelos.com/certifications/itil-service-management> | 2026-07-08 |
 

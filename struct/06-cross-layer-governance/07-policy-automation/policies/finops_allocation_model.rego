@@ -51,8 +51,17 @@ allow if {
     model == "OVERHEAD"
 }
 
-deny_reason := "" if { allow }
+default deny_reason := ""
+
 deny_reason := sprintf("跨层共享成本项必须选择 Layer-Based，当前模型=%s", [model]) if {
     input.cross_layer_shared == true
     model != "LAYER_BASED"
 }
+
+violation if {
+    input.cross_layer_shared == true
+    model != "LAYER_BASED"
+}
+
+reason := sprintf("成本项采用 %s 分摊模型", [model]) if { allow }
+reason := sprintf("跨层共享成本项必须选择 Layer-Based，当前模型=%s", [model]) if { violation }

@@ -47,6 +47,58 @@
 
 ---
 
+## Rego 策略清单
+
+| 策略文件 | 包名 | 决策点 | 输出 |
+|:---|:---|:---|:---|
+| `policies/reuse_economic_decision.rego` | `reuse.economic` | 复用经济判定（AAF 阈值） | `decision` / `allow` / `reason` |
+| `policies/finops_allocation_model.rego` | `finops.allocation` | FinOps 四级分摊模型选择 | `model` / `allow` / `reason` / `violation` |
+| `policies/supply_chain_decision.rego` | `supply.chain` | 供应链安全复用准入 | `decision` / `allow` / `reason` |
+| `policies/ai_model_selection.rego` | `ai.model.selection` | AI 模型层级选择 | `decision` / `allow` / `reason` |
+| `policies/upgrade_downgrade_matrix.rego` | `reuse.matrix` | 跨层复用升级/降级矩阵 | `decision` / `target_layer` / `risk_level` / `reason` / `allow` |
+| `policies/reuse_six_phase_decision.rego` | `reuse.six.phase` | 六阶段统一复用判定 | `decision` / `allow` / `reason` |
+
+### 运行方式
+
+```bash
+# 方式 1：使用 OPA CLI（推荐）
+opa test struct/06-cross-layer-governance/07-policy-automation/policies --verbose
+
+# 方式 2：使用项目脚本（未安装 OPA 时自动走 Python fallback）
+python scripts/policy-check.py
+```
+
+### 输入/输出约定
+
+所有策略均遵循统一输入/输出约定：
+- **输入**：通过 OPA `input` 传入结构化 JSON。
+- **输出**：
+  - `decision` / `model`：策略判定结果（字符串）。
+  - `allow`：布尔值，`true` 表示允许/通过。
+  - `reason`：可解释的自然语言理由。
+  - 升级/降级矩阵额外输出 `target_layer`（目标层级）和 `risk_level`（风险等级）。
+
+### AI 模型选择策略示例
+
+```bash
+# OPA 评估示例
+echo '{"task_type":"classification","min_accuracy":0.95,"max_latency_p99_ms":200,"max_cost_per_1k_tokens":0.05,"data_privacy_required":false,"safety_level_required":"medium","available_tiers":["premium","balanced","economy"]}' | \
+  opa eval --data policies/ai_model_selection.rego --stdin-input 'data.ai.model.selection.decision'
+```
+
+预期输出：`"PREMIUM"`。
+
+### 升级/降级矩阵策略示例
+
+```bash
+echo '{"current_layer":"component","consumers":5,"cross_team":true,"cross_org":false,"tech_compatibility_ratio":0.9,"semantic_coverage_ratio":0.85,"coupling_impact_ratio":0.1,"security_level_required":"L2","component_cert_level":"L2","confidence_gamma":0.95,"config_conflicts":0,"latency_requirement_ms":200,"shared_service_p99_ms":150,"upgrade_benefit":10.0,"downgrade_benefit":0.0}' | \
+  opa eval --data policies/upgrade_downgrade_matrix.rego --stdin-input 'data.reuse.matrix'
+```
+
+预期输出包含 `{"decision":"UPGRADE","target_layer":"app_service","risk_level":"中"}`。
+
+---
+
 ## 检查清单
 
 - [ ] 是否将治理规则编码为版本化策略？

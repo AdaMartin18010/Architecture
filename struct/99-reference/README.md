@@ -63,7 +63,7 @@ graph TD
 
 ### 示例 3：标准索引驱动的更新流程
 
-`standards-index/master-alignment-matrix.md` 记录每个标准的版本、状态与对应文件夹；当 ISO 12207:2026 发布或 SLSA 1.2 更新时，可快速定位受影响主题并启动更新。
+`standards-index/master-alignment-matrix.md` 记录每个标准的版本、状态与对应文件夹；当 ISO/IEC/IEEE 12207:2026 发布或 SLSA 1.2 更新时，可快速定位受影响主题并启动更新。
 
 ### 示例 4：可视化资源复用
 

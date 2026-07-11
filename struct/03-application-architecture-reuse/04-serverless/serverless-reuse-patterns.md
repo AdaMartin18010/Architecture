@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-10
 > **定位**: 应用架构层（Level 2）—— Serverless/FaaS 复用边界、模式与成本优化
-> **对齐标准**: CNCF Serverless Whitepaper v2, ISO/IEC 12207:2026
+> **对齐标准**: CNCF Serverless Whitepaper v2, ISO/IEC/IEEE 12207:2026
 > **状态**: ✅ 已完成（Phase A 深化 + 内容要素补全）
 > **字数**: ~10000字
 

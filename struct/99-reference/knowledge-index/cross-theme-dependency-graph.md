@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-07
 > **定位**: 建立 `struct/` 13 个一级主题之间的依赖、支撑、互斥与蕴含关系，作为激进全面重构方案 A 的参考索引
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC 26550:2015, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, MCP 2025-11-25, A2A v1.0.0.0.0
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC 26550:2015, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, MCP 2025-11-25, A2A v1.0.0.0.0.0
 > **核查日期**: 2026-07-07
 
 ---

@@ -1,7 +1,7 @@
 # TOGAF 10 企业连续体与构建块复用
 >
 > 版本: 2026-06-06
-> 对齐来源: The Open Group TOGAF Standard 10th Edition (2022/2025 Update), Visual Paradigm 2025, Sparx Systems, Barnes & Noble 2025 出版物
+> 对齐来源: The Open Group TOGAF Standard 10 (2022/2025 Update), Visual Paradigm 2025, Sparx Systems, Barnes & Noble 2025 出版物
 
 ## 1. TOGAF 10 核心文档集
 
@@ -129,7 +129,7 @@ SBB: Keycloak + 定制扩展
 
 ## 7. 参考索引
 
-- The Open Group: *TOGAF Standard, 10th Edition* (2022)
+- The Open Group: *TOGAF Standard 10* (2022)
 - The Open Group: *TOGAF Standard — Architecture Development Method — 2025 Update* (2025-06)
 - Visual Paradigm: "Comprehensive Guide to the Enterprise Continuum in TOGAF" (2025-02)
 - Paradigma Digital: "The 5 Key Components of TOGAF" (2025-03)

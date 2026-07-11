@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-10
 > **定位**: 应用架构层（Level 2）—— 事件驱动架构复用模式、契约治理与流处理
-> **对齐标准**: CNCF CloudEvents, OASIS, Apache Kafka / Pulsar / Flink, ISO/IEC 12207:2026
+> **对齐标准**: CNCF CloudEvents, OASIS, Apache Kafka / Pulsar / Flink, ISO/IEC/IEEE 12207:2026
 > **状态**: ✅ 已完成（Phase A 深化）
 > **字数**: ~5000字
 

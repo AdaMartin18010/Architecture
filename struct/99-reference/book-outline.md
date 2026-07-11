@@ -198,7 +198,7 @@
 **关键节**：
 6.1 功能复用五层模型：算法 → 函数 → 业务规则 → 工作流 → AI 功能
 6.2 MCP 2025-11-25 协议架构：tools/resources/prompts/sampling 四层能力（当前稳定版）
-6.3 A2A v1.0.0.0.0.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
+6.3 A2A v1.0.0.0.0.0.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
 6.4 MCP + A2A 互补复用架构：工具调用 vs Agent 协作的边界
 6.5 Temporal 工作流复用模式：Saga、Cron、Child Workflow、Signal
 6.6 AI 功能复用的概率契约：置信度函数、温度参数、模型版本漂移的确定性边界
@@ -215,7 +215,7 @@
 
 ### 第 7 章：跨层复用治理与成熟度
 
-**核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC 42020（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。
+**核心论点**：无治理的复用退化为克隆；无度量的治理退化为形式。跨层治理需要同时覆盖 ISO/IEC/IEEE 42020:2019（过程）与 42030（评估），并建立资产级/项目级/组织级/生态级四级度量体系。
 
 **关键节**：
 7.1 复用治理的国际标准框架：42020/42030/25010/26565（产品线成熟度框架）/26566（产品线纹理）的协同
@@ -330,7 +330,7 @@
 
 **关键节**：
 12.1 MCP 2025-11-25 深度解析：能力发现、安全机制（当前稳定版；2026 RC 历史分析见 `mcp-2026-deep-dive.md`）
-12.2 A2A v1.0.0.0.0.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
+12.2 A2A v1.0.0.0.0.0.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
 12.3 概率契约框架：置信度函数 γ(x) ∈ [0,1]、校准方法、确定性边界声明
 12.4 Conformal Prediction：边际覆盖保证 P(y ∈ C(x)) ≥ 1-α 在代码生成中的应用
 12.5 平台工程作为复用载体：IDP、Golden Path、自服务模板的组织设计
@@ -480,7 +480,7 @@ flowchart TB
 本书框架设计至少引用以下三类权威来源：
 
 1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26565:2026（产品线成熟度框架）; ISO/IEC 26566:2026（产品线纹理方法/工具能力）、IEC 61508（功能安全）
-2. **行业框架与协议**：The Open Group TOGAF Standard 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0.0.0.0.0
+2. **行业框架与协议**：The Open Group TOGAF Standard 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0.0.0.0.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义
 
 完整权威来源列表参见 `struct/99-reference/external-links/authoritative-sources.md`。

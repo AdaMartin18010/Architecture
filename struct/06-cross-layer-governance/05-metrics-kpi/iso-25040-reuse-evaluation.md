@@ -96,7 +96,7 @@
 
 ### 1.1 标准演进：从 2005 到 2024
 
-ISO/IEC 25040 属于 SQuaRE（Systems and Software Quality Requirements and Evaluation，系统与软件质量要求与评价）标准族。该标准族是 ISO/IEC 9126 和 ISO/IEC 14598 的继承与扩展，经历了以下关键演进：
+ISO/IEC 25040:2024 属于 SQuaRE（Systems and Software Quality Requirements and Evaluation，系统与软件质量要求与评价）标准族。该标准族是 ISO/IEC 9126 和 ISO/IEC 14598 的继承与扩展，经历了以下关键演进：
 
 | 时期 | 标准 | 核心特征 |
 |------|------|----------|
@@ -600,9 +600,9 @@ ISO/IEC 25010:2023 是 SQuaRE 框架的核心质量模型标准，相较于 2011
 1. **术语更新**：用 "系统/软件质量" 替代 "产品质量"，强调质量不仅存在于代码，还存在于数据、模型、服务；
 2. **特性重组**：
    - 将 "可维护性" 子特性重新组织，强化 **Modularity**、**Reusability**、**Analysability**；
-   - 新增 **AI 质量特性**（ISO/IEC 25059 的集成）；
+   - 新增 **AI 质量特性**（ISO/IEC 25059:2023 的集成）；
    - 将 "安全性" 提升为与 "功能性" 并列的一级特性；
-3. **使用质量独立**：将使用质量（Quality in Use）模型独立为 ISO/IEC 25011，使 25010 专注于系统/软件内在质量。
+3. **使用质量独立**：将使用质量（Quality in Use）模型独立为 ISO/IEC 25011:2017，使 25010 专注于系统/软件内在质量。
 
 ### 4.2 复用决策相关的关键质量子特性
 

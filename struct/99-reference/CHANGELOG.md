@@ -37,7 +37,7 @@
 - `struct/SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` — Phase 0–5 + Phase D 完整路线图。
 - `struct/README.md` — 对齐实际目录结构与最新路线图。
 - `struct/99-reference/tools/requirements.txt` — 项目级 Python 依赖索引。
-- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0.0.0.0.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
+- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0.0.0.0.0.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
 
 ### 已知边界
 
@@ -69,7 +69,7 @@
 
 **ArchiMate 4.0 状态追溯（2026-06-12 最终结论）**
 
-项目早期曾因 The Open Group 官网未即时更新，将 ArchiMate 4.0 标记为“厂商预发布”；随后又基于第三方信息误判为“已正式发布”，并在 2026-06-08 二次勘误中回退为“厂商预发布”。经最终复核 The Open Group 官方新闻稿（Document C260, April 2026），**ArchiMate 4.0 Specification 已于 2026-04-27 正式发布**，与 ArchiMate 3.2 向后兼容。2026-06-12 起，项目统一采用“已正式发布（2026-04-27）”作为权威表述，并在 view/ 历史文档中以三次勘误标记保留认知演进记录。
+项目早期曾因 The Open Group 官网未即时更新，将 ArchiMate 4.0 标记为“厂商预发布”；随后又基于第三方信息误判为“已正式发布”，并在 2026-06-08 二次勘误中回退为“厂商预发布”。经最终复核 The Open Group 官方新闻稿（Document C260, April 2026），**ArchiMate 4.0 已于 2026-04-27 正式发布**，与 ArchiMate 3.2 向后兼容。2026-06-12 起，项目统一采用“已正式发布（2026-04-27）”作为权威表述，并在 view/ 历史文档中以三次勘误标记保留认知演进记录。
 
 ### 新增文件
 
@@ -181,7 +181,7 @@
 
 ### ArchiMate 4.0 官方发布纠偏
 
-> **关键纠正**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0 Specification**。此前项目中将 "ArchiMate 4.0" 标注为"厂商预告/未获官方确认"属于**过渡期间的保守误判**，现全面纠正。
+> **关键纠正**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0**。此前项目中将 "ArchiMate 4.0" 标注为"厂商预告/未获官方确认"属于**过渡期间的保守误判**，现全面纠正。
 
 **已更新文件**：
 
@@ -200,7 +200,7 @@
 
 > **勘误原因**：经网络核查，The Open Group 官方网站在 2026-06-08 仍显示 ArchiMate 最新版本为 3.1，无 ArchiMate 4.0 正式发布信息。此前项目将厂商预发布/第三方声明误判为官方正式发布。
 
-> **2026-06-12 更新**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0 Specification**（Document C260, April 2026），官方新闻稿确认。项目已据此更新为正式发布状态。
+> **2026-06-12 更新**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0**（Document C260, April 2026），官方新闻稿确认。项目已据此更新为正式发布状态。
 
 **已勘误文件**（将"已正式发布"声明回退为"厂商预发布"）：
 
@@ -382,7 +382,7 @@
 #### AI 原生复用
 
 - `mcp-2025-11-25-authoritative.md` — 基于官方规范解读 MCP 2025-11-25
-- `a2a-v1-authoritative.md` — 对齐 A2A v1.0.0.0.0.0 正式发布版本
+- `a2a-v1-authoritative.md` — 对齐 A2A v1.0.0.0.0.0.0 正式发布版本
 - `owasp-llm-mcp-security.md` — 对齐 OWASP LLM/MCP/Agentic AI Top 10
 
 #### 形式化验证
@@ -509,7 +509,7 @@
 
 #### Track B4: 05 功能架构复用
 
-- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0.0.0.0.0 协议架构复用分析
+- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0.0.0.0.0.0 协议架构复用分析
 - `04-workflow-orchestration/temporal-reuse-patterns.md` — Temporal 工作流复用模式（Saga/Parallel/Child/Schedule）
 - `decision-tree-granularity-cost-roi.md` — 功能复用的粒度-成本-收益决策树
 

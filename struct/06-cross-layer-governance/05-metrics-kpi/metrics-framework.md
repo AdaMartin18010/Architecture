@@ -617,7 +617,7 @@ ISO/IEC 25040:2024《系统和软件工程 — 系统与软件质量评价过程
 
 ### 9.2 正例：ISO 25040 驱动的复用资产评估
 
-某医疗设备厂商按 ISO 25040 评价过程评估内部图像处理库：
+某医疗设备厂商按 ISO/IEC 25040:2024 评价过程评估内部图像处理库：
 
 1. **确立需求**：FDA 合规要求证明复用组件质量可控；
 2. **规定评价**：选定 RRI、TC、SC、RDIR 四个指标，目标值分别为 ≥7.0、≥90%、100%、≤5%；
@@ -686,7 +686,7 @@ flowchart LR
 ### 9.6 与相关概念的关系
 
 - **上位概念**：[Software quality](https://en.wikipedia.org/wiki/Software_quality) 评价、IT governance；
-- **下位概念**：24 个具体指标、ISO 25040 评价过程；
+- **下位概念**：24 个具体指标、ISO/IEC 25040:2024 评价过程；
 - **等价/映射概念**：[ISO/IEC 25010:2023](https://en.wikipedia.org/wiki/ISO/IEC_25010) 质量模型、[Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)；
 - **依赖概念**：CI/CD 工具链、SCA/SBOM、APM、财务系统、项目管理工具。
 

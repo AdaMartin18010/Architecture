@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-10
 > **定位**: 应用架构层（Level 2）—— 经典与现代分层架构的复用边界、模式与反模式
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK v4, ISO/IEC 12207:2026
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK V4, ISO/IEC/IEEE 12207:2026
 > **状态**: ✅ 已完成（Phase A 深化 + 内容要素补全）
 > **字数**: ~7000字
 
@@ -151,7 +151,7 @@ MVC（Model-View-Controller）起源于 1970 年代的 Smalltalk 用户界面框
 
 分层架构（Layered Architecture）是应用架构中最经典的组织模式，其核心思想是**将系统按职责垂直划分为若干层，每层仅与直接相邻层交互**。从复用视角看，分层架构的边界定义了复用粒度的自然切割面。
 
-ISO/IEC/IEEE 42010:2022 将架构描述的基本单元定义为 **Architecture View Component**，而分层架构中的每一层（Layer）本质上就是一个可复用的 View Component。SWEBOK v4 在软件设计中进一步强调：层的独立性是复用可行性的前提条件。
+ISO/IEC/IEEE 42010:2022 将架构描述的基本单元定义为 **Architecture View Component**，而分层架构中的每一层（Layer）本质上就是一个可复用的 View Component。SWEBOK V4 在软件设计中进一步强调：层的独立性是复用可行性的前提条件。
 
 ### 1.1 经典分层 vs. 现代演进
 
@@ -889,5 +889,5 @@ graph TB
 > - Vertical Slice Architecture: <https://www.jimmybogard.com/vertical-slice-architecture/> (核查日期: 2026-07-08)
 > - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-08)
 > - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-08)
-> - SWEBOK v4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-08)
+> - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-08)
 > - ISO/IEC 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-08)

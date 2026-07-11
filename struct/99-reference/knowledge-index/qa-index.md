@@ -200,7 +200,7 @@
   - A: 定理 S.RB.2：系统有效等级为 `min(L₁, L₂, ..., Lₙ)`，即最短板决定整体等级。详见 `10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md` §4。
 
 - **Q: SBOM 三种主流格式 SPDX / CycloneDX / SWID 的适用场景差异？**
-  - A: SPDX 适用于许可证合规与法律咨询（ISO 5962）；CycloneDX 适用于安全漏洞管理与 DevSecOps；SWID 适用于软件资产盘点与 ITAM（NIST 对齐）。详见 `10-supply-chain-security/02-sbom-standards/sbom-comparison.md`。
+  - A: SPDX 适用于许可证合规与法律咨询（ISO/IEC 5962）；CycloneDX 适用于安全漏洞管理与 DevSecOps；SWID 适用于软件资产盘点与 ITAM（NIST 对齐）。详见 `10-supply-chain-security/02-sbom-standards/sbom-comparison.md`。
 
 - **Q: 零信任软件供应链的五个验证点是什么？**
   - A: 源代码验证、依赖验证、构建验证、制品验证、部署验证。公理 ZT.1 要求对每一个环节都进行验证。详见 `10-supply-chain-security/05-zero-trust-supply-chain/zero-trust-principles.md` §2。

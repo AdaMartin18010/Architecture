@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-07
 > **定位**: 03 应用架构复用的基础子主题 — 分层架构的复用模式与决策
-> **对齐**: ISO/IEC/IEEE 42010:2022, SWEBOK v4, TOGAF Standard 10
+> **对齐**: ISO/IEC/IEEE 42010:2022, SWEBOK V4, TOGAF Standard 10
 > **状态**: ✅ 核心内容已填充
 
 ---

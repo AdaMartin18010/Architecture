@@ -124,7 +124,7 @@
 - [MCP 2025-11-25 综合更新与复用影响评估](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
 - [MCP 2025-11-25 规范深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 - [MCP 2026-07-28 RC 深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-- [A2A v1.0.0.0.0.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+- [A2A v1.0.0.0.0.0.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
 - … 共 20 个文件
 
 ### 13 新兴趋势

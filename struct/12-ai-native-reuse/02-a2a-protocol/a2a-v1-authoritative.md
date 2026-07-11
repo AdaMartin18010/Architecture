@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
-> **定位**: 对齐 A2A v1.0.0.0.0.0 正式发布版本的核心概念与架构模式
+> **定位**: 对齐 A2A v1.0.0.0.0.0.0 正式发布版本的核心概念与架构模式
 
 ---
 
@@ -15,7 +15,7 @@
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
 | **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0.0.0.0.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0.0.0.0.0 的发布以官方规范页面为准。
+> **关键确认**: A2A v1.0.0.0.0.0.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0.0.0.0.0.0 的发布以官方规范页面为准。
 
 ---
 
