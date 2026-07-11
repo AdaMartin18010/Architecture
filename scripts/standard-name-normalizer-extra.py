@@ -27,6 +27,7 @@ EXTRA_SAFE_REPLACEMENTS: List[Tuple[str, str]] = [
     (r"SLSA v1\.0", "SLSA 1.0"),
     (r"SWEBOK v4", "SWEBOK V4"),
     (r"ArchiMate 4\.0 Specification", "ArchiMate 4.0"),
+    # 注：不为 "ArchiMate 3.2 Specification" 去后缀——参考文献语境需保留官方题名
 
     # ISO/IEC 前缀缺失 + 年份补齐（低风险）
     (r"ISO 42010\b(?!:)", "ISO/IEC/IEEE 42010:2022"),
@@ -61,8 +62,10 @@ EXTRA_SAFE_REPLACEMENTS: List[Tuple[str, str]] = [
     (r"ISO/IEC 42020:2019", "ISO/IEC/IEEE 42020:2019"),
     (r"ISO/IEC 42020\b(?!:)", "ISO/IEC/IEEE 42020:2019"),
 
-    # NIST 变体
+    # NIST 变体（仅无歧义补全；800-204A/800-204B 为独立真实文档，不归到 800-204）
     (r"NIST SP 800-161 Rev\. 1", "NIST SP 800-161"),
+    (r"(?<!NIST )SSDF 1\.2\b", "NIST SSDF 1.2"),
+    # 注：不做 BPMN 2.1->2.0——“没有官方 BPMN 2.1” 等否定语境会被颠倒语义
 ]
 
 
