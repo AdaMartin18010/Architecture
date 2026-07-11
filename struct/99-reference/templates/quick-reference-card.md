@@ -42,10 +42,12 @@
 ### 何时复用？
 
 ```text
-AAF < 0.7          → 优先复用
-0.7 ≤ AAF < 0.9    → 权衡决策（考虑战略价值）
-AAF ≥ 0.9          → 重新实现
+AAF < 0.7 (AAF_ECONOMIC_FLOOR)    → REUSE_ECONOMIC（优先复用）
+0.7 ≤ AAF < 0.9                   → TRADE_OFF（权衡决策，考虑战略价值）
+AAF ≥ 0.9 (AAF_REBUILD_CEILING)   → REBUILD（重新实现）
 ```
+
+> AAF canonical 形式为 [0.0, 1.0] 小数；统一判定函数见 [`struct/09-value-quantification/tools/reuse_thresholds.py`](../../09-value-quantification/tools/reuse_thresholds.py)。
 
 ### 选择哪个架构模式？
 

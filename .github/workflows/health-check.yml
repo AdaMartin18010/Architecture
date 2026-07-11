@@ -24,6 +24,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install OPA
+        run: |
+          curl -L -o /usr/local/bin/opa \
+            https://openpolicyagent.org/downloads/v1.0.0/opa_linux_amd64_static
+          chmod +x /usr/local/bin/opa
+          opa version
+
+      - name: Run policy-check.py
+        run: python scripts/policy-check.py
+
       - name: Run link-checker.py
         run: python scripts/link-checker.py --report reports/link-checker.md
 

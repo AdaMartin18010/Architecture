@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ar:ontology a owl:Ontology ;
-    dct:created "2026-07-08T19:11:29.732196+00:00" ;
+    dct:created "2026-07-11T00:22:50.736262+00:00" ;
     dct:description "Ontology for software architecture reuse knowledge base" ;
     dct:title "Architecture Reuse Knowledge Graph Ontology" .
 

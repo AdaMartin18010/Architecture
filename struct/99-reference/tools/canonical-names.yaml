@@ -1,0 +1,124 @@
+# 标准与协议名称 canonical 字典
+# 用于 knowledge-extractor.py 将项目中的变体写法归一到单一权威实体。
+# canonical: KG 中使用的权威名称（也是实体 label）
+# aliases: 项目中常见的等价/错误写法，出现即归一到 canonical
+# invalid_versions: 已知的错误版本号；若 extractor 通过前缀匹配到这些版本，也归一到 canonical 并报警告
+
+standards:
+  - canonical: "ISO/IEC 25010:2023"
+    aliases:
+      - "ISO/IEC 25010"
+      - "ISO/IEC 25010:2024"
+      - "ISO 25010:2023"
+      - "ISO 25010:2024"
+      - "IEC 25010:2023"
+      - "IEC 25010:2024"
+      - "ISO 25010"
+      - "IEC 25010"
+    invalid_versions:
+      - "2024"
+      - "2025"
+
+  - canonical: "ISO/IEC/IEEE 42010:2022"
+    aliases:
+      - "ISO/IEC/IEEE 42010"
+      - "ISO 42010:2022"
+      - "ISO/IEC 42010:2022"
+      - "ISO 42010"
+      - "IEC/IEEE 42010:2022"
+      - "IEC/IEEE 42010"
+
+  - canonical: "ArchiMate 4.0"
+    aliases:
+      - "ArchiMate 4"
+      - "ArchiMate 4.0 Specification"
+      - "ArchiMate 3.2"
+      - "ArchiMate 3.2 Specification"
+      - "ArchiMate 4.2"
+      - "ArchiMate 4.2 Specification"
+    invalid_versions:
+      - "4.1"
+      - "4.2"
+      - "4.3"
+      - "5.0"
+
+  - canonical: "ISO/IEC/IEEE 15288:2023"
+    aliases:
+      - "ISO 15288:2023"
+      - "ISO/IEC 15288:2023"
+      - "ISO/IEC/IEEE 15288"
+      - "ISO 15288"
+
+  - canonical: "ISO/IEC/IEEE 24765:2017"
+    aliases:
+      - "ISO 24765"
+      - "ISO/IEC 24765"
+      - "ISO/IEC/IEEE 24765"
+
+  - canonical: "ISO/IEC 26550:2015"
+    aliases:
+      - "ISO 26550:2015"
+      - "ISO 26550"
+    invalid_versions:
+      - "2023"
+      - "2025"
+
+  - canonical: "ISO/IEC 26564:2022"
+    aliases:
+      - "ISO 26564:2022"
+      - "ISO 26564"
+    invalid_versions:
+      - "2025"
+
+  - canonical: "ISO/IEC 26565:2026"
+    aliases:
+      - "ISO 26565:2026"
+      - "ISO 26565"
+    invalid_versions:
+      - "2023"
+      - "2025"
+
+  - canonical: "ISO/IEC 26566:2026"
+    aliases:
+      - "ISO 26566:2026"
+      - "ISO 26566"
+
+  - canonical: "ISO/IEC 21838"
+    aliases:
+      - "ISO 21838"
+      - "ISO/IEC 21838-1:2021"
+      - "ISO/IEC 21838-2:2021"
+      - "ISO/IEC 21838-3:2023"
+      - "ISO 21838-1:2021"
+      - "ISO 21838-2:2021"
+      - "ISO 21838-3:2023"
+
+  - canonical: "IEC 62443-4-2:2019"
+    aliases:
+      - "IEC 62443-4-2"
+      - "IEC 62443-4-2:2025"
+    invalid_versions:
+      - "2025"
+
+  - canonical: "NIST SSDF 1.2"
+    aliases:
+      - "SSDF 1.2"
+      - "NIST SP 800-218 Rev. 1"
+      - "NIST SP 800-218 Rev.1"
+      - "SP 800-218 Rev.1"
+
+  - canonical: "MCP 2025-11-25"
+    aliases:
+      - "MCP"
+      - "MCP 2025-11-25"
+
+  - canonical: "MCP 2026-07-28 RC"
+    aliases:
+      - "MCP 2026-07-28"
+      - "MCP 2026-07-28 RC"
+
+  - canonical: "A2A v1.0.0"
+    aliases:
+      - "A2A"
+      - "A2A v1.0"
+      - "A2A v1.0.0"

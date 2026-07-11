@@ -610,7 +610,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 
 **公理重述**：$\mathrm{EconomicallyViable}(a) \Leftrightarrow C_{\text{reuse}}(a) < C_{\text{build}}(a) + V_{\text{reuse}}(a)$。
 
-**证明草图**：将复用视为投资决策。净收益 $N = (C_{\text{build}} + V_{\text{reuse}}) - C_{\text{reuse}}$。$N>0$ 即经济可行。阈值 $\theta=0.7$ 来自 COCOMO II 的改编调整因子 AAF 经验数据。
+**证明草图**：将复用视为投资决策。净收益 $N = (C_{\text{build}} + V_{\text{reuse}}) - C_{\text{reuse}}$。$N>0$ 即经济可行。阈值 $\theta = \text{AAF_ECONOMIC_FLOOR} = 0.7$ 来自 COCOMO II 的改编调整因子 AAF 经验数据（canonical [0.0, 1.0]）。
 
 **反模型示例**：某团队为复用开源 ERP 投入 $C_{\text{reuse}} = 600$ 万人天，自研仅需 $C_{\text{build}} = 400$ 万人天，且长期价值 $V_{\text{reuse}} = 100$ 万人天。此时 $600 \not< 500$，E.2 判定不可行。若管理层因政治原因强制复用，则项目净收益为负。
 

@@ -11,8 +11,9 @@ COCOMO II 2026 复用成本计算器
 
     ESLOC = ASLOC × (1 - AT/100) × AAM
 
-    AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100   (AAF ≤ 50)
-    AAM = [AA + AAF + (SU × UNFM)] / 100              (AAF > 50)
+    AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100   (AAF ≤ 50, canonical 0.5)
+    AAM = [AA + AAF + (SU × UNFM)] / 100              (AAF > 50, canonical 0.5)
+    # AAF canonical 形式为 [0.0, 1.0] 小数；公式中按百分比书写以兼容 COCOMO II 原始模型。
 
     AAF = 0.4 × DM + 0.3 × CM + 0.3 × IM
 
@@ -149,7 +150,7 @@ def compute_aam(aa: float, aaf: float, su: float, unfm: float) -> float:
 
     参数均为百分比，仅 UNFM 为 0-1 的小数。
     """
-    if aaf <= 50.0:
+    if aaf <= COCOMO_AAM_BRANCH * 100.0:
         return (aa + aaf * (1.0 + 0.02 * su * unfm)) / 100.0
     return (aa + aaf + (su * unfm)) / 100.0
 
@@ -846,23 +847,18 @@ def print_report(result: dict[str, Any], sensitivity: list[dict[str, Any]] | Non
 
     print("=" * 70)
 
-    # 复用决策建议
+    # 复用决策建议（统一 AAF 判定函数）
     aaf_or_aam = result["inputs"].get("aaf")
-    threshold_exceeded = False
-    if result["inputs"]["mode"] == "official" and aaf_or_aam is not None and aaf_or_aam >= 70.0:
-        threshold_exceeded = True
-    elif result["inputs"]["mode"] != "official" and result["inputs"].get("aam", 0.0) >= 0.7:
-        threshold_exceeded = True
+    if result["inputs"]["mode"] != "official":
+        aaf_or_aam = result["inputs"].get("aam", 0.0)
 
     roi_key = "roi_actual_percent" if "roi_actual_percent" in result["roi"] else "roi_nominal_percent"
     roi_value = result["roi"][roi_key]
 
-    if threshold_exceeded:
-        print("⚠️  警告: AAF/AAM ≥ 0.7，复用改编成本接近重新开发，建议评估战略价值而非仅看直接 ROI。")
-    elif roi_value < 0:
+    if aaf_or_aam is not None:
+        print(legacy_warning(aaf_or_aam))
+    if roi_value < 0:
         print("⚠️  警告: ROI 为负，复用未产生正向收益，请审查输入参数假设。")
-    else:
-        print("✅ 复用方案经济可行，建议执行。")
 
 
 # ---------------------------------------------------------------------------

@@ -23,6 +23,7 @@ Markdown 知识抽取器。
 import argparse
 import json
 import re
+import yaml
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -75,6 +76,61 @@ STANDARD_PATTERNS = [
     # EU CRA 2024/2847
     (r"EU\s+CRA(?:\s+\d{4}/\d+)?", "Standard"),
 ]
+
+# ---------------------------------------------------------------------------
+# Canonical 名称归一
+# ---------------------------------------------------------------------------
+
+CANONICAL_NAMES_PATH = PROJECT_ROOT / "struct" / "99-reference" / "tools" / "canonical-names.yaml"
+
+
+def load_canonical_names(path: Path = CANONICAL_NAMES_PATH) -> Dict[str, Dict]:
+    """加载标准/协议的 canonical 名称字典。"""
+    registry: Dict[str, Dict] = {}
+    if not path.exists():
+        return registry
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    for item in data.get("standards", []):
+        canonical = item.get("canonical", "").strip()
+        if not canonical:
+            continue
+        aliases = set(item.get("aliases", []))
+        aliases.add(canonical)
+        registry[canonical] = {
+            "aliases": aliases,
+            "invalid_versions": set(str(v) for v in item.get("invalid_versions", [])),
+        }
+    return registry
+
+
+CANONICAL_REGISTRY = load_canonical_names()
+
+
+def canonicalize_name(name: str, entity_type: str) -> Optional[str]:
+    """将标准/协议名称归一到 canonical 名称；对不存在版本返回 None（跳过）。"""
+    if entity_type not in ("Standard", "Protocol"):
+        return name
+    if not CANONICAL_REGISTRY:
+        return name
+
+    # 1) 完全匹配 canonical 或 alias
+    for canonical, meta in CANONICAL_REGISTRY.items():
+        if name in meta["aliases"]:
+            return canonical
+
+    # 2) 前缀 + 版本匹配：检查是否命中某个 canonical 的 invalid_versions
+    version_match = re.search(r"[:\s\-]\s*(\d{4}|\d+\.\d+)$", name)
+    if version_match:
+        version = version_match.group(1)
+        prefix = name[: version_match.start()].strip().rstrip("-: ")
+        for canonical, meta in CANONICAL_REGISTRY.items():
+            if version in meta["invalid_versions"]:
+                canon_core = re.sub(r"[^a-z0-9]", "", canonical.lower())
+                test_core = re.sub(r"[^a-z0-9]", "", prefix.lower())
+                if canon_core == test_core or test_core in canon_core:
+                    return canonical
+    return name
+
 
 # 组织/厂商
 ORGANIZATION_PATTERNS = [
@@ -222,6 +278,8 @@ class KnowledgeExtractor:
         self.relations: List[Relation] = []
         self.file_topic_cache: Dict[Path, Optional[str]] = {}
         self.section_stack: List[str] = []
+        self.canonical_hits: Dict[str, str] = {}
+        self.invalid_standard_aliases: set = set()
 
     def add_entity(
         self,
@@ -230,8 +288,15 @@ class KnowledgeExtractor:
         source_file: str,
         source_line: int,
         context: str = "",
-    ) -> Entity:
+    ) -> Optional[Entity]:
         name = normalize_name(name)
+        canonical = canonicalize_name(name, entity_type)
+        if canonical is None:
+            self.invalid_standard_aliases.add(name)
+            return None
+        if canonical != name:
+            self.canonical_hits[name] = canonical
+        name = canonical
         entity_id = make_id(entity_type, name)
         # 如果同名同类型已存在，保留第一次出现的元数据
         if entity_id not in self.entities:
@@ -384,7 +449,9 @@ class KnowledgeExtractor:
         for pattern, entity_type in STANDARD_PATTERNS:
             for match in re.finditer(pattern, line, re.IGNORECASE):
                 name = match.group(0).strip()
-                self.add_entity(name, entity_type, source_file, source_line, context)
+                entity = self.add_entity(name, entity_type, source_file, source_line, context)
+                if entity is None:
+                    continue
 
     def _extract_organizations(
         self, line: str, source_file: str, source_line: int, context: str
@@ -540,6 +607,24 @@ class KnowledgeExtractor:
         ])
         for rel, count in relation_counts.most_common():
             lines.append(f"| {rel} | {count} |")
+
+        # Canonical 归一统计
+        lines.extend([
+            "",
+            "## Canonical 归一统计",
+            "",
+            f"- 归一条目数: {len(self.canonical_hits)}",
+            f"- 拦截的不存在版本/非法别名数: {len(self.invalid_standard_aliases)}",
+            "",
+        ])
+        if self.canonical_hits:
+            lines.extend(["| 原始写法 | 归一后 |", "|----------|--------|"])
+            for src, dst in sorted(self.canonical_hits.items())[:50]:
+                lines.append(f"| {src} | {dst} |")
+        if self.invalid_standard_aliases:
+            lines.extend(["", "**被拦截的别名**:"])
+            for alias in sorted(self.invalid_standard_aliases)[:50]:
+                lines.append(f"- {alias}")
 
         lines.extend([
             "",

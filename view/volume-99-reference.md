@@ -7549,11 +7549,11 @@ kg-relations.jsonl# 7,715 关系
 
 | 关系 | 数量 | 含义 |
 |------|------|------|
-| `defines` | 2,618 | 文件定义了某术语 |
-| `providesNegativeExample` | 2,382 | 文件提供反例/反模式 |
+| `defines` | 2,622 | 文件定义了某术语 |
+| `providesNegativeExample` | 2,358 | 文件提供反例/反模式 |
 | `providesPositiveExample` | 1,703 | 文件提供正向案例 |
-| `references` | 689 | 文件引用某标准 |
-| `belongsTo` | 323 | 文件属于某主题 |
+| `references` | 702 | 文件引用某标准 |
+| `belongsTo` | 324 | 文件属于某主题 |
 
 > **统计口径与已知限制（P0-4 标注）**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，与 `reports/stats.json` 一致，合计 7,715）。
 > 注意：`kg.ttl` 序列化后的语义边**远少于 jsonl**——`:defines` 仅 202，`:relatedTo` / `:evolvedFrom` / `:mentions` / `:implementedBy` 当前为 0（抽取器未实化 + dangling 关系被静默跳过）。

@@ -43,6 +43,7 @@ def main():
         ("Markdown 链接检查", [sys.executable, "scripts/link-checker.py", "--report", "reports/link-checker.md"]),
         ("交叉索引一致性", [sys.executable, "scripts/cross-index-check.py"]),
         ("struct/view 同步", [sys.executable, "scripts/sync-view-from-struct.py"]),
+        ("OPA/Rego 策略执行", [sys.executable, "scripts/policy-check.py"]),
     ]
 
     all_ok = True
