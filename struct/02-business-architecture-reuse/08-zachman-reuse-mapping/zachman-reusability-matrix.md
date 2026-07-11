@@ -593,7 +593,7 @@ Why 维度是复用治理的**决策锚点**。每个复用资产的引入、更
 
 GERAM（Generalized Enterprise Reference Architecture and Methodology，通用企业参考架构和方法论）是由 IFIP-IFAC 任务组提出的企业工程元框架，后被 ISO 15704:2019《企业集成——企业参考架构方法论需求》采纳为国际标准。
 
-GERAM 的核心目标是为企业架构方法论提供一个**元级框架（meta-framework）**，使得不同的企业架构框架（如 Zachman、TOGAF、ARIS、DoDAF）可以在统一的元模型下进行比较、映射和集成。
+GERAM 的核心目标是为企业架构方法论提供一个**元级框架（meta-framework）**，使得不同的企业架构框架（如 Zachman、TOGAF Standard 10、ARIS、DoDAF）可以在统一的元模型下进行比较、映射和集成。
 
 ### 4.2 GERAM 核心构件与复用映射
 

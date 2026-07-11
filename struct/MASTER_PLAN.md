@@ -177,8 +177,8 @@
 
 **对齐活动**:
 
-- 对照 Anthropic / Linux Foundation Agentic AI Foundation MCP 官方规范 (2025-11-25)
-- 对照 Google A2A / Linux Foundation 官方文档
+- 对照 Anthropic / Linux Foundation Agentic AI Foundation MCP（Model Context Protocol） 官方规范 (2025-11-25)
+- 对照 Google A2A（Agent-to-Agent Protocol） / Linux Foundation 官方文档
 - 对照 NVIDIA Omniverse / Microsoft Azure Digital Twins 工业数字孪生实践
 
 ---

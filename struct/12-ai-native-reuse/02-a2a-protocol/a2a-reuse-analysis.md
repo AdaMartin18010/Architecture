@@ -1,7 +1,7 @@
 # A2A v1.0.0 协议复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: A2A v1.0 (2026-03-12 发布), Linux Foundation 治理
+> **对齐标准**: A2A v1.0.0 (2026-03-12 发布), Linux Foundation 治理
 > **定位**: Agent 间协作协议的复用流程与价值分析
 
 ---
@@ -258,6 +258,6 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
 > **权威来源**:
 >
-> - [A2A Protocol](https://google.github.io/A2A)
+> - [A2A Protocol](https://a2a-protocol.org/latest/)
 > - [Google A2A Blog](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)
 > - 核查日期：2026-07-07

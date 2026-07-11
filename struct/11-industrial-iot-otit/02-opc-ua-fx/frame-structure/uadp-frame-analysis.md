@@ -51,7 +51,7 @@ OPC UA FX 将 UADP 作为其底层传输协议，覆盖三种通信场景：
 | **C2D** | Controller-to-Device | 500 μs – 10 ms | 控制器到 IO/驱动 |
 | **D2D** | Device-to-Device | 250 μs – 1 ms | 设备间直连 |
 
-UADP 的核心设计目标是在保持 OPC UA 信息模型语义完整性的同时，将协议开销降至最低，以满足现场级通信的严苛时延要求。
+UADP 的核心设计目标是在保持 OPC UA（OPC Unified Architecture）信息模型语义完整性的同时，将协议开销降至最低，以满足现场级通信的严苛时延要求。
 [OPC Foundation, Part 14 v1.05]
 
 ---

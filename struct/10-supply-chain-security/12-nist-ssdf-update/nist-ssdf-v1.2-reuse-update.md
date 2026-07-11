@@ -153,7 +153,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 **复用中（During Reuse）**:
 
 - [ ] SSDF PW.4.3: SBOM 维护和依赖追踪
-- [ ] SLSA: 持续验证 provenance
+- [ ] SLSA（Supply-chain Levels for Software Artifacts）: 持续验证 provenance
 - [ ] EU CRA: 漏洞报告义务（2026-09-11 起）
 - [ ] OSPS: 监控项目安全状态变化
 

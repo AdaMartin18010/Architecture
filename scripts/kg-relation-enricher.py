@@ -58,6 +58,7 @@ EVOLVED_FROM_PAIRS: List[Tuple[str, str]] = [
     ("ISO/IEC/IEEE 15288:2023", "ISO/IEC/IEEE 15288:2015"),
     ("NIST SSDF 1.2", "NIST SSDF 1.1"),
     ("ISO/IEC 30141:2024", "ISO/IEC 30141:2018"),
+    ("ISO/IEC 5230:2024", "ISO/IEC 5230:2021"),
 ]
 
 # 历史版本 Standard 实体补全（KG 中缺失但 EVOLVED_FROM 谱系需要的旧版本实体）

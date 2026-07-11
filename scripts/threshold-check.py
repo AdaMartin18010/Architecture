@@ -282,6 +282,8 @@ def scan_file(path: Path, rel: str, thresholds: List[Threshold]) -> List[Hit]:
                         continue  # 前导零编号（如 09-1 章节号），非数值
                     if re.search(r"[Vv]\.[A-Z]?$", text[max(0, nm.start() - 3):nm.start()]):
                         continue  # 版本/定理编号（如 V.1、V.T1），非数值
+                    if text[max(0, nm.start() - 2):nm.start()].rstrip().endswith("§"):
+                        continue  # 章节引用（如 批判报告 §4.2），非数值
                     num = float(num_str)
                     is_pct = bool(nm.group(2))
                     key = (num, is_pct)

@@ -2,7 +2,7 @@
 
 ## 定位
 
-整个知识体系的概念地基。定义"复用"的元模型、术语体系，以及与 ISO/IEC/IEEE、TOGAF、ArchiMate 等国际标准的对齐映射。
+整个知识体系的概念地基。定义"复用"的元模型、术语体系，以及与 ISO/IEC/IEEE、TOGAF Standard 10、ArchiMate 等国际标准的对齐映射。
 
 ## 核心内容
 
@@ -15,6 +15,10 @@
 - **ISO/IEC/IEEE 1517:2010** 软件生命周期复用过程
 - SWEBOK V4 的知识领域对齐
 - 复用视角的形式化公理体系（元公理、存在性公理、结构性公理、过程性公理）
+
+## 主题图谱
+
+![01 元模型与标准对齐 — 知识体系思维导图](../99-reference/visualizations/mindmaps/01-meta-model-standards.svg)
 
 ## 标准-主题速查表
 

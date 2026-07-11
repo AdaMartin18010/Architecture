@@ -26,7 +26,7 @@
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
 |:---|:---|:---|:---|:---|
 | MCP Specification | 2025-11-25 | Tools, Resources, Prompts, Sampling, Transports | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
-| A2A Protocol | v1.0.0 | Agent-to-Agent Protocol (Google / Linux Foundation) | <https://a2aprotocol.org/> | 2026-07-08 |
+| A2A Protocol | v1.0.0 | Agent-to-Agent Protocol (Google / Linux Foundation) | <https://a2a-protocol.org/latest/> | 2026-07-08 |
 | DMN | 1.5 | §6 Decision Requirements, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
 | Temporal | 2026 | Workflows, Activities, Workers, Schedules | <https://docs.temporal.io/> | 2026-07-08 |
 | DDD | Evans 2003 | Entities, Value Objects, Aggregates, Bounded Contexts | <https://martinfowler.com/bliki/DomainDrivenDesign.html> | 2026-07-08 |

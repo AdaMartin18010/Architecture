@@ -65,7 +65,7 @@ python struct/99-reference/tools/standards-version-audit.py .
 2. **IEC 标准**: `https://webstore.iec.ch/publication/<number>`
 3. **The Open Group**: `https://www.opengroup.org/press-releases/feed` 与官方下载页
 4. **NIST**: `https://csrc.nist.gov/news/feed`
-5. **MCP / A2A / SLSA / WASI**: GitHub releases / 官方博客 feed
+5. **MCP（Model Context Protocol） / A2A（Agent-to-Agent Protocol） / SLSA 1.2 / WASI**: GitHub releases / 官方博客 feed
 6. **OWASP / OpenSSF / CNCF**: 官方项目页面与 GitHub releases
 
 ### 步骤 4：评估影响并更新索引

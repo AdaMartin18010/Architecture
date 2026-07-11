@@ -141,6 +141,7 @@ standards:
       - "A2A"
       - "A2A v1.0"
       - "A2A v1.0.0"
+      - "A2A v1"
 
   # ISO/IEC/IEEE 42020 / 42030（架构评估与治理）
   - canonical: "ISO/IEC/IEEE 42020:2019"
@@ -377,6 +378,11 @@ standards:
       - "NIST SSDF"
       - "SSDF"
 
+  - canonical: "NIST SSDF 1.1"
+    aliases:
+      - "SSDF 1.1"
+    # 历史版本（SP 800-218 Rev.1, 2022 发布），NIST SSDF 1.2 的前身；KG 谱系 NIST SSDF 1.2 EVOLVED_FROM NIST SSDF 1.1
+
   # ISO/IEC 2504x / 2505x / 2503x 质量度量族
   - canonical: "ISO/IEC 25040:2024"
     aliases:
@@ -551,6 +557,11 @@ standards:
     aliases:
       - "SLSA v1.0"
 
+  - canonical: "SLSA 1.1"
+    aliases:
+      - "SLSA v1.1"
+    # 历史版本（2023 发布），现行 SLSA 1.2 的前身；KG 谱系 SLSA 1.2 EVOLVED_FROM SLSA 1.1
+
   # SysML / BPMN / DMN
   - canonical: "SysML v2"
     aliases:
@@ -614,6 +625,12 @@ standards:
       - "IEC 21031:2024"
       - "IEC 21031"
 
+  - canonical: "ISO/IEC 5230:2021"
+    aliases:
+      - "IEC 5230:2021"
+      - "ISO 5230:2021"
+    # 历史版本（OpenChain 首版），ISO/IEC 5230:2024 的前身；KG 谱系 5230:2024 EVOLVED_FROM 5230:2021
+
   - canonical: "ISO/IEC 5230:2024"
     aliases:
       - "ISO/IEC 5230"
@@ -671,6 +688,19 @@ standards:
     aliases:
       - "ISO 9001:2015"
       - "IEC 9001"
+
+  # ISO/IEC/IEEE 420xx 族（族名截断登记：正文 "ISO/IEC/IEEE 420xx 系列" 被截断为 420）
+  - canonical: "ISO/IEC/IEEE 420"
+    aliases:
+      - "IEEE 420"
+      - "ISO/IEC/IEEE 420xx"
+    # 族级条目，指 42010/42020/42024/42030/42042 系列整体，与 "ISO/IEC 330"（330xx 族）同例
+
+  # IEEE 802.x 局域网/城域网族（TSN 时间敏感网络）
+  - canonical: "IEEE 802.1"
+    aliases:
+      - "IEEE Std 802.1"
+      - "IEEE 802.1 TSN"
 
   # NIST 变体
   - canonical: "NIST SP 800-161"

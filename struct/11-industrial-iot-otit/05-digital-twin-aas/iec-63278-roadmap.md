@@ -140,7 +140,7 @@ IDTA 维护的子模型模板清单（2026 状态）：
 
 ### OPC UA 映射
 
-IEC 63278-5 将标准化 AAS 到 OPC UA 的映射规则：
+IEC 63278-5 将标准化 AAS 到 OPC UA（OPC Unified Architecture）的映射规则：
 
 | AAS 元素 | OPC UA 对应 |
 |---------|------------|

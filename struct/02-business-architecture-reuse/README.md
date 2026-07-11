@@ -19,6 +19,12 @@
 - FEA BRM（联邦企业架构业务参考模型）五层业务线结构
 - 业务复用反模式：流程克隆、能力膨胀、价值流断裂
 
+## 主题图谱
+
+![02 业务架构复用 — 知识体系思维导图](../99-reference/visualizations/mindmaps/02-business-architecture-reuse.svg)
+
+![02 业务架构复用 — 复用层次决策树](../99-reference/visualizations/decision-trees/02-business-architecture-reuse-decision-tree.svg)
+
 ## 权威对齐
 
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
@@ -46,7 +52,7 @@
 - [x] 五层层次结构定义
 - [x] 决策矩阵与判定树
 - [x] BPMN/DMN 可执行语义案例补充 (`06-bpmn-dmn/bpmn-dmn-executable-cases.md`)
-- [x] FEA BRM 与 TOGAF Capability Map 交叉映射 (`02-business-capability/fea-brm-togaf-mapping.md`)
+- [x] FEA BRM 与 TOGAF Standard 10 Capability Map 交叉映射 (`02-business-capability/fea-brm-togaf-mapping.md`)
 - [x] 行业垂直场景（金融、医疗、制造）案例库 (`case-studies/industry-vertical-cases.md`)
 
 ## 子目录导航

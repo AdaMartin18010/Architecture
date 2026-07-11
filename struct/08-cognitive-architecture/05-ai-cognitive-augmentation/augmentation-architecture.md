@@ -7,7 +7,7 @@
 > - Kahneman, D. (2011). *Thinking, Fast and Slow*.
 > - Sweller, J. (1988). Cognitive Load Theory.
 > - [MCP Specification](https://modelcontextprotocol.io) (Anthropic, 2026)
-> - [A2A Protocol](https://a2aprotocol.org) (Google / Linux Foundation)
+> - [A2A Protocol](https://a2a-protocol.org/latest/) (Google / Linux Foundation)
 
 ---
 
@@ -355,7 +355,7 @@ flowchart LR
 > - [Wikipedia - Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence)
 > - [Wikipedia - Human-Computer Interaction](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)
 > - [MCP Specification](https://modelcontextprotocol.io)
-> - [A2A Protocol](https://a2aprotocol.org)
+> - [A2A Protocol](https://a2a-protocol.org/latest/)
 > - 核查日期：2026-07-07
 
 ### 交叉引用

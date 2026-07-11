@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ar:ontology a owl:Ontology ;
-    dct:created "2026-07-11T01:01:11.477509+00:00" ;
+    dct:created "2026-07-11T21:51:05.145102+00:00" ;
     dct:description "Ontology for software architecture reuse knowledge base" ;
     dct:title "Architecture Reuse Knowledge Graph Ontology" .
 
@@ -24,6 +24,10 @@ aro:Organization a owl:Class ;
 
 aro:Protocol a owl:Class ;
     rdfs:label "协议规范" ;
+    rdfs:subClassOf aro:Entity .
+
+aro:Specification a owl:Class ;
+    rdfs:label "形式化规约工件（TLA+/Alloy/Rego 等）" ;
     rdfs:subClassOf aro:Entity .
 
 aro:Theorem a owl:Class ;
@@ -56,9 +60,9 @@ aro:implementedBy a owl:ObjectProperty ;
     rdfs:range aro:Tool .
 
 aro:mentions a owl:ObjectProperty ;
-    rdfs:label "提及" ;
+    rdfs:label "提及标准" ;
     rdfs:domain aro:File ;
-    rdfs:range aro:Entity .
+    rdfs:range aro:Standard .
 
 aro:providesNegativeExample a owl:ObjectProperty ;
     rdfs:label "提供反例" ;
@@ -71,9 +75,9 @@ aro:providesPositiveExample a owl:ObjectProperty ;
     rdfs:range aro:Term .
 
 aro:references a owl:ObjectProperty ;
-    rdfs:label "引用标准" ;
+    rdfs:label "引用（内部链接）" ;
     rdfs:domain aro:File ;
-    rdfs:range aro:Standard .
+    rdfs:range aro:File .
 
 aro:relatedTo a owl:ObjectProperty ;
     rdfs:label "相关" ;
@@ -102,18 +106,14 @@ aro:Standard a owl:Class ;
     rdfs:label "国际/行业标准或框架" ;
     rdfs:subClassOf aro:Entity .
 
-aro:File a owl:Class ;
-    rdfs:label "Markdown 源文件" ;
-    rdfs:subClassOf aro:Entity .
-
 aro:Term a owl:Class ;
     rdfs:label "术语或概念" ;
     rdfs:subClassOf aro:Entity .
 
+aro:File a owl:Class ;
+    rdfs:label "Markdown 源文件" ;
+    rdfs:subClassOf aro:Entity .
+
 aro:Entity a owl:Class ;
     rdfs:label "实体" .
-
-aro:Specification a owl:Class ;
-    rdfs:subClassOf aro:Entity ;
-    rdfs:label "形式化规约/策略工件" .
 

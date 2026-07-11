@@ -8,7 +8,7 @@
 ### ISO/IEC/IEEE 42010:2022
 
 - `01-meta-model-standards/01-iso-420xx-family/iso-42010-2022-update.md` — 术语变更
-- `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — TOGAF 与 ISO/IEC/IEEE 42010:2022 映射
+- `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — TOGAF Standard 10 与 ISO/IEC/IEEE 42010:2022 映射
 
 ### ISO/IEC 25010:2023
 
@@ -24,12 +24,12 @@
 ### NIST SP 800-204 系列
 
 - `03-application-architecture-reuse/07-cloud-native-patterns/nist-sp-800-204-microservices-security.md` — 微服务安全
-- `10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` — SSDF 1.2
+- `10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` — NIST SSDF 1.2
 
 ### MCP / A2A
 
-- `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md` — MCP 规范
-- `12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md` — A2A 规范
+- `12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md` — MCP（Model Context Protocol） 规范
+- `12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md` — A2A（Agent-to-Agent Protocol） 规范
 - `05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md` — 函数复用模式
 - `08-cognitive-architecture/02-bdi-model/bdi-agent-reuse.md` — BDI 与 MCP/A2A 语义映射
 

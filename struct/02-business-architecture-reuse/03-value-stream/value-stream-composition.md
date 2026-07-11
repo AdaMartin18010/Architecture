@@ -1,7 +1,7 @@
 # 价值流复用的形式化组合
 
 > **版本**: 2026-07-08
-> **对齐标准**: TOGAF Value Stream, ArchiMate 4.0 Value Stream, SAFe, BPMN 2.0
+> **对齐标准**: TOGAF Standard 10 Value Stream, ArchiMate 4.0 Value Stream, SAFe, BPMN 2.0
 > **定位**: 将价值流复用形式化为业务能力的有序组合
 
 ---

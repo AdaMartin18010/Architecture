@@ -48,7 +48,7 @@
 | 标准/技术 | 当前状态 | 权威来源 | 备注 |
 |:---|:---|:---|:---|
 | **MCP 2025-11-25** | 现行稳定版 | modelcontextprotocol.io | 2026-07-28 RC 仍在预期中 |
-| **A2A v1.0.0** | 已发布（2026-03-12） | a2aprotocol.io | 无变更 |
+| **A2A v1.0.0** | 已发布（2026-03-12） | <https://a2a-protocol.org/latest/> | 无变更 |
 | **SLSA 1.2** | Build/Source Track 已发布；Build Environment Track / L4 仍在开发 | slsa.dev | 无变更 |
 | **OPC UA FX Parts 80–84** | 已发布 | OPC Foundation | C2D/D2D 完善中 |
 | **IEC 61508 Ed.3** | CDV 已完成，预计 2026 末–2027 初发布 | IEC | 无变更 |

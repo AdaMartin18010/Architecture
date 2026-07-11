@@ -78,7 +78,7 @@ AAS 子模型模板（如 Digital Nameplate、Carbon Footprint、Battery Passpor
 
 ### 反例 3：AAS 与 OPC UA 由不同团队独立维护
 
-某汽车制造商 AAS 建模团队与 OPC UA 工程团队独立工作，导致 `idShort` 被直接用作 `NodeId`，设备参数冲突；实时数据仍走 REST API，延迟 > 2s，数字孪生与物理资产脱节。
+某汽车制造商 AAS 建模团队与 OPC UA（OPC Unified Architecture）工程团队独立工作，导致 `idShort` 被直接用作 `NodeId`，设备参数冲突；实时数据仍走 REST API，延迟 > 2s，数字孪生与物理资产脱节。
 
 ---
 

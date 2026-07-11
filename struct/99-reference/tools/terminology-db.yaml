@@ -11,6 +11,18 @@ terms:
     - Viewpoint
     - Correspondence
     - Stakeholder
+  Architecture Decision:
+    definitions:
+      ISO/IEC/IEEE 42010:2022: A decision that affects the architecture of a system, recorded together with its rationale;
+        in engineering practice often captured as an Architecture Decision Record (ADR).
+    aliases:
+    - 架构决策
+    - ADR
+    - Architecture Decision Record
+    related:
+    - Architecture Description
+    - Concern
+    - Stakeholder
   View:
     definitions:
       ISO/IEC/IEEE 42010:2022: A representation of a whole system from the perspective of a related set of concerns.
@@ -226,6 +238,17 @@ terms:
     - Architecture Repository
     - Building Block
     - Architecture Building Block
+  TOGAF:
+    definitions:
+      TOGAF 10: 'The Open Group Architecture Framework: an enterprise architecture framework that provides an approach
+        for designing, planning, implementing, and governing an enterprise information architecture, centered on the
+        Architecture Development Method (ADM).'
+    aliases:
+    - The Open Group Architecture Framework
+    related:
+    - Architecture Development Method
+    - Enterprise Continuum
+    - Architecture Repository
   Building Block:
     definitions:
       TOGAF 10: A potentially reusable component of business, IT, or architectural capability that combines with other building
@@ -246,6 +269,43 @@ terms:
     - Enterprise Continuum
     - Architecture Repository
     - Building Block
+  Business Capability:
+    definitions:
+      TOGAF 10: A particular ability or capacity that a business may possess or exchange to achieve a specific purpose
+        or outcome.
+    aliases:
+    - 业务能力
+    related:
+    - Value Stream
+    - Service
+  Value Stream:
+    definitions:
+      TOGAF 10: A representation of an end-to-end collection of value-adding activities that create an overall result
+        for a customer, stakeholder, or end user.
+    aliases:
+    - 价值流
+    related:
+    - Business Capability
+    - Service
+  Component:
+    definitions:
+      General: A modular, deployable, and replaceable part of a system that encapsulates implementation and exposes
+        well-defined interfaces.
+    aliases:
+    - 组件
+    related:
+    - Service
+    - Asset
+    - Reusability
+  Service:
+    definitions:
+      ArchiMate 4.0: An explicitly defined exposed behavior.
+      TOGAF 10: A logical representation of a repeatable business activity that has a specified outcome and is self-contained.
+    aliases:
+    - 服务
+    related:
+    - Component
+    - Business Capability
   Reusability:
     definitions:
       IEEE 1517-2010: The degree to which a software asset can be used in systems other than the one for which it was originally
@@ -396,6 +456,29 @@ terms:
     - Attestation
     - Artifact
     - Source Integrity
+  SBOM:
+    definitions:
+      NTIA 2021: A formal, machine-readable inventory of software components and dependencies, including supplier,
+        version, and license information, used to track supply chain relationships.
+    aliases:
+    - Software Bill of Materials
+    - 软件物料清单
+    related:
+    - Supply Chain
+    - Artifact
+    - Attestation
+  SLSA:
+    definitions:
+      SLSA 1.2: 'Supply-chain Levels for Software Artifacts: a security framework, a check-list of standards and controls
+        to prevent tampering, improve integrity, and secure packages and infrastructure.'
+    aliases:
+    - Supply-chain Levels for Software Artifacts
+    - 软件制品供应链等级
+    related:
+    - Provenance
+    - Attestation
+    - Build Level
+    - Supply Chain
   Model Context Protocol:
     definitions:
       MCP 2025-11-25: An open protocol that standardizes how applications provide context to large language models, enabling
@@ -511,6 +594,10 @@ aliases:
   - 800-218
   General:
   - general
+  NTIA 2021:
+  - ntia
+  - ntia2021
+  - sbom
 version_hints:
   ISO/IEC/IEEE 42010:2022:
     version: '2022'
@@ -552,3 +639,7 @@ version_hints:
     version: '1.2'
     status: Initial Public Draft
     note: 非最终版
+  NTIA 2021:
+    version: '2021'
+    status: 已发布
+    note: The Minimum Elements For a Software Bill of Materials (SBOM)

@@ -97,9 +97,9 @@ def _rewrite_links(text: str, source_file: Path, struct_root: Path, output_root:
         try:
             rel = target.relative_to(struct_root).as_posix()
             suffixes = (".md", ".py", ".yaml", ".yml", ".json", ".sh", ".html")
-            has_known_ext = any(str(bare).lower().endswith(ext) for ext in suffixes)
             if target.exists() or any(target.with_suffix(ext).exists() for ext in suffixes):
-                if not has_known_ext and (struct_root / rel).with_suffix(".md").exists():
+                # 仅当链接无扩展名时才尝试补 .md（避免把 foo.als 误改为 foo.als.md）
+                if not Path(bare).suffix and (struct_root / rel).with_suffix(".md").exists():
                     rel += ".md"
                 new_target = (struct_root / rel).resolve()
                 return f"{md_prefix}{_rel_to_output(new_target)}{fragment}{suffix}"

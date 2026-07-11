@@ -158,5 +158,5 @@ MCP Tool 分类
 > **权威来源**:
 >
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
-> - [A2A Protocol](https://google.github.io/A2A)
+> - [A2A Protocol](https://a2a-protocol.org/latest/)
 > - 核查日期：2026-07-07

@@ -1,0 +1,553 @@
+# 可视化图库索引（figure index）
+# 版本: 2026-07-12 | 维护: scripts/figure-check.py 校验覆盖完整性
+# 字段说明:
+#   id            图标识（相对 visualizations/ 的无扩展名路径）
+#   type          图类型: mindmap / comparison-matrix / decision-tree / reasoning-tree / cross-layer-mapping / overview / topic-overview
+#   topic         关联主题编号（01-13 或 cross-topic）
+#   title         图标题
+#   referenced_by 当前引用该图(.mmd/.svg)的 Markdown 文档（grep 得出）
+#   embed_target  建议嵌入的正文文档（按命名约定与内容判断）
+figures:
+  - id: "02-business-architecture-reuse"
+    type: topic-overview
+    topic: "02"
+    title: "02 业务架构复用 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/02-business-architecture-reuse/README.md"
+  - id: "03-application-architecture-reuse"
+    type: topic-overview
+    topic: "03"
+    title: "03 应用架构复用 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/03-application-architecture-reuse/README.md"
+  - id: "04-component-architecture-reuse"
+    type: topic-overview
+    topic: "04"
+    title: "04 组件架构复用 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/04-component-architecture-reuse/README.md"
+  - id: "05-functional-architecture-reuse"
+    type: topic-overview
+    topic: "05"
+    title: "05 功能架构复用 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/05-functional-architecture-reuse/README.md"
+  - id: "06-cross-layer-governance"
+    type: topic-overview
+    topic: "06"
+    title: "06 跨层复用治理 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "07-formal-verification"
+    type: topic-overview
+    topic: "07"
+    title: "07 形式化验证 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/07-formal-verification/README.md"
+  - id: "08-cognitive-architecture"
+    type: topic-overview
+    topic: "08"
+    title: "08 认知架构 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/08-cognitive-architecture/README.md"
+  - id: "09-value-quantification"
+    type: topic-overview
+    topic: "09"
+    title: "09 价值量化 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/09-value-quantification/README.md"
+  - id: "10-supply-chain-security"
+    type: topic-overview
+    topic: "10"
+    title: "10 供应链安全 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/10-supply-chain-security/README.md"
+  - id: "11-industrial-iot-otit"
+    type: topic-overview
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "12-ai-native-reuse"
+    type: topic-overview
+    topic: "12"
+    title: "12 AI 原生复用 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "13-emerging-trends"
+    type: topic-overview
+    topic: "13"
+    title: "13 前沿趋势 — 主题结构总览"
+    referenced_by:
+      - "struct/99-reference/deliverables-manifest.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "axiom-theorem-full-graph"
+    type: overview
+    topic: "cross-topic"
+    title: "公理-定理-猜想完整推导网络图"
+    referenced_by:
+      - "struct/01-meta-model-standards/06-formal-axioms/axiom-rigor-audit.md"
+      - "struct/99-reference/glossary/axiom-theorem-tree.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-01-meta-model-standards.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md"
+  - id: "comparison-matrices/01-meta-model-standards-matrix"
+    type: comparison-matrix
+    topic: "01"
+    title: "01 元模型与标准对齐 — 核心标准对比矩阵"
+    referenced_by: []
+    embed_target: "struct/01-meta-model-standards/README.md"
+  - id: "comparison-matrices/02-business-architecture-reuse-matrix"
+    type: comparison-matrix
+    topic: "02"
+    title: "02 业务架构复用 — 核心制品对比矩阵"
+    referenced_by: []
+    embed_target: "struct/02-business-architecture-reuse/README.md"
+  - id: "comparison-matrices/03-application-architecture-reuse-matrix"
+    type: comparison-matrix
+    topic: "03"
+    title: "03 应用架构复用 — 架构模式对比矩阵"
+    referenced_by: []
+    embed_target: "struct/03-application-architecture-reuse/README.md"
+  - id: "comparison-matrices/04-component-architecture-reuse-matrix"
+    type: comparison-matrix
+    topic: "04"
+    title: "04 组件架构复用 — 语言生态对比矩阵"
+    referenced_by: []
+    embed_target: "struct/04-component-architecture-reuse/README.md"
+  - id: "comparison-matrices/05-functional-architecture-reuse-matrix"
+    type: comparison-matrix
+    topic: "05"
+    title: "05 功能架构复用 — 复用机制对比矩阵"
+    referenced_by: []
+    embed_target: "struct/05-functional-architecture-reuse/README.md"
+  - id: "comparison-matrices/06-cross-layer-governance-matrix"
+    type: comparison-matrix
+    topic: "06"
+    title: "06 跨层治理框架与成熟度模型对比矩阵"
+    referenced_by: []
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "comparison-matrices/07-formal-verification-matrix"
+    type: comparison-matrix
+    topic: "07"
+    title: "07 形式化验证方法对比矩阵"
+    referenced_by: []
+    embed_target: "struct/07-formal-verification/README.md"
+  - id: "comparison-matrices/08-cognitive-architecture-matrix"
+    type: comparison-matrix
+    topic: "08"
+    title: "08 认知架构模型对比矩阵"
+    referenced_by: []
+    embed_target: "struct/08-cognitive-architecture/README.md"
+  - id: "comparison-matrices/09-value-quantification-matrix"
+    type: comparison-matrix
+    topic: "09"
+    title: "09 复用价值量化指标对比矩阵"
+    referenced_by: []
+    embed_target: "struct/09-value-quantification/README.md"
+  - id: "comparison-matrices/10-supply-chain-security-matrix"
+    type: comparison-matrix
+    topic: "10"
+    title: "10 供应链安全机制对比矩阵"
+    referenced_by: []
+    embed_target: "struct/10-supply-chain-security/README.md"
+  - id: "comparison-matrices/11-industrial-iot-otit-matrix"
+    type: comparison-matrix
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 多维对比矩阵"
+    referenced_by: []
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "comparison-matrices/12-ai-native-reuse-matrix"
+    type: comparison-matrix
+    topic: "12"
+    title: "12 AI 原生复用 — 多维对比矩阵"
+    referenced_by: []
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "comparison-matrices/13-emerging-trends-matrix"
+    type: comparison-matrix
+    topic: "13"
+    title: "13 新兴趋势 — 多维对比矩阵"
+    referenced_by: []
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "comparison-matrices/standards-comparison-matrix"
+    type: comparison-matrix
+    topic: "cross-topic"
+    title: "架构与复用标准对比矩阵"
+    referenced_by: []
+    embed_target: "struct/01-meta-model-standards/README.md"
+  - id: "concept-mapping"
+    type: overview
+    topic: "cross-topic"
+    title: "核心概念映射图（13 主题语义关联）"
+    referenced_by:
+      - "struct/01-meta-model-standards/plans-tasks/roadmap.md"
+      - "struct/99-reference/CHANGELOG.md"
+      - "struct/99-reference/audit/2026-06-06-completion-stats.md"
+      - "struct/99-reference/audit/roadmap-consistency-audit.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/99-reference/glossary/glossary-master.md"
+  - id: "cross-layer-mappings/11-industrial-iot-otit-cross-layer"
+    type: cross-layer-mapping
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 跨层映射图"
+    referenced_by: []
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "cross-layer-mappings/12-ai-native-reuse-cross-layer"
+    type: cross-layer-mapping
+    topic: "12"
+    title: "12 AI 原生复用 — 跨层映射图"
+    referenced_by: []
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "cross-layer-mappings/13-emerging-trends-cross-layer"
+    type: cross-layer-mapping
+    topic: "13"
+    title: "13 新兴趋势 — 跨层映射图"
+    referenced_by: []
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "cross-layer-mappings/four-layer-reuse-mapping"
+    type: cross-layer-mapping
+    topic: "cross-topic"
+    title: "四层复用跨层映射图"
+    referenced_by:
+      - "struct/06-cross-layer-governance/README.md"
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "decision-trees/01-meta-model-standards-decision-tree"
+    type: decision-tree
+    topic: "01"
+    title: "01 元模型与标准对齐 — 标准选用决策树"
+    referenced_by: []
+    embed_target: "struct/01-meta-model-standards/README.md"
+  - id: "decision-trees/02-business-architecture-reuse-decision-tree"
+    type: decision-tree
+    topic: "02"
+    title: "02 业务架构复用 — 复用层次决策树"
+    referenced_by:
+      - "struct/02-business-architecture-reuse/README.md"
+    embed_target: "struct/02-business-architecture-reuse/README.md"
+  - id: "decision-trees/03-application-architecture-reuse-decision-tree"
+    type: decision-tree
+    topic: "03"
+    title: "03 应用架构复用 — 架构模式决策树"
+    referenced_by:
+      - "struct/03-application-architecture-reuse/README.md"
+    embed_target: "struct/03-application-architecture-reuse/README.md"
+  - id: "decision-trees/04-component-architecture-reuse-decision-tree"
+    type: decision-tree
+    topic: "04"
+    title: "04 组件架构复用 — 组件/依赖策略决策树"
+    referenced_by: []
+    embed_target: "struct/04-component-architecture-reuse/README.md"
+  - id: "decision-trees/05-functional-architecture-reuse-decision-tree"
+    type: decision-tree
+    topic: "05"
+    title: "05 功能架构复用 — 粒度-成本-收益决策树"
+    referenced_by: []
+    embed_target: "struct/05-functional-architecture-reuse/README.md"
+  - id: "decision-trees/06-cross-layer-governance-decision-tree"
+    type: decision-tree
+    topic: "06"
+    title: "06 跨层复用治理模式采纳决策树"
+    referenced_by:
+      - "struct/06-cross-layer-governance/README.md"
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "decision-trees/07-formal-verification-decision-tree"
+    type: decision-tree
+    topic: "07"
+    title: "07 形式化验证方法采纳决策树"
+    referenced_by: []
+    embed_target: "struct/07-formal-verification/README.md"
+  - id: "decision-trees/08-cognitive-architecture-decision-tree"
+    type: decision-tree
+    topic: "08"
+    title: "08 认知支持模式采纳决策树"
+    referenced_by: []
+    embed_target: "struct/08-cognitive-architecture/README.md"
+  - id: "decision-trees/09-value-quantification-decision-tree"
+    type: decision-tree
+    topic: "09"
+    title: "09 复用投资决策价值量化决策树"
+    referenced_by: []
+    embed_target: "struct/09-value-quantification/README.md"
+  - id: "decision-trees/10-supply-chain-security-decision-tree"
+    type: decision-tree
+    topic: "10"
+    title: "10 供应链安全控制采纳决策树"
+    referenced_by:
+      - "struct/10-supply-chain-security/README.md"
+    embed_target: "struct/10-supply-chain-security/README.md"
+  - id: "decision-trees/11-industrial-iot-otit-decision-tree"
+    type: decision-tree
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 场景决策树"
+    referenced_by: []
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "decision-trees/12-ai-native-reuse-decision-tree"
+    type: decision-tree
+    topic: "12"
+    title: "12 AI 原生复用 — 场景决策树"
+    referenced_by: []
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "decision-trees/13-emerging-trends-decision-tree"
+    type: decision-tree
+    topic: "13"
+    title: "13 新兴趋势 — 场景决策树"
+    referenced_by: []
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "decision-trees/reuse-granularity-decision-tree"
+    type: decision-tree
+    topic: "cross-topic"
+    title: "复用粒度选择决策树（业务/应用/组件/功能层）"
+    referenced_by: []
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "mindmaps/01-meta-model-standards"
+    type: mindmap
+    topic: "01"
+    title: "01 元模型与标准对齐 — 知识体系思维导图"
+    referenced_by:
+      - "struct/01-meta-model-standards/README.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/01-meta-model-standards/README.md"
+  - id: "mindmaps/02-business-architecture-reuse"
+    type: mindmap
+    topic: "02"
+    title: "02 业务架构复用 — 知识体系思维导图"
+    referenced_by:
+      - "struct/02-business-architecture-reuse/README.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/02-business-architecture-reuse/README.md"
+  - id: "mindmaps/03-application-architecture-reuse"
+    type: mindmap
+    topic: "03"
+    title: "03 应用架构复用 — 知识体系思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/03-application-architecture-reuse/README.md"
+  - id: "mindmaps/04-component-architecture-reuse"
+    type: mindmap
+    topic: "04"
+    title: "04 组件架构复用 — 知识体系思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/04-component-architecture-reuse/README.md"
+  - id: "mindmaps/05-functional-architecture-reuse"
+    type: mindmap
+    topic: "05"
+    title: "05 功能架构复用 — 知识体系思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/05-functional-architecture-reuse/README.md"
+  - id: "mindmaps/06-cross-layer-governance"
+    type: mindmap
+    topic: "06"
+    title: "06 跨层复用治理与成熟度主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "mindmaps/07-formal-verification"
+    type: mindmap
+    topic: "07"
+    title: "07 形式化验证与复用正确性主题思维导图"
+    referenced_by:
+      - "struct/07-formal-verification/README.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/07-formal-verification/README.md"
+  - id: "mindmaps/08-cognitive-architecture"
+    type: mindmap
+    topic: "08"
+    title: "08 认知架构与复用决策主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/08-cognitive-architecture/README.md"
+  - id: "mindmaps/09-value-quantification"
+    type: mindmap
+    topic: "09"
+    title: "09 价值量化与 ROI 模型主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/09-value-quantification/README.md"
+  - id: "mindmaps/10-supply-chain-security"
+    type: mindmap
+    topic: "10"
+    title: "10 供应链安全工程主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/10-supply-chain-security/README.md"
+  - id: "mindmaps/11-industrial-iot-otit"
+    type: mindmap
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "mindmaps/12-ai-native-reuse"
+    type: mindmap
+    topic: "12"
+    title: "12 AI 原生复用 — 主题思维导图"
+    referenced_by:
+      - "struct/12-ai-native-reuse/README.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "mindmaps/13-emerging-trends"
+    type: mindmap
+    topic: "13"
+    title: "13 新兴趋势 — 主题思维导图"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "mindmaps/knowledge-system-mindmap"
+    type: mindmap
+    topic: "cross-topic"
+    title: "知识体系总览思维导图（全 13 主题）"
+    referenced_by:
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/README.md"
+  - id: "reasoning-trees/01-meta-model-standards-reasoning-tree"
+    type: reasoning-tree
+    topic: "01"
+    title: "01 元模型与标准对齐 — 公理推理树"
+    referenced_by: []
+    embed_target: "struct/01-meta-model-standards/README.md"
+  - id: "reasoning-trees/02-business-architecture-reuse-reasoning-tree"
+    type: reasoning-tree
+    topic: "02"
+    title: "02 业务架构复用 — 公理推理树"
+    referenced_by: []
+    embed_target: "struct/02-business-architecture-reuse/README.md"
+  - id: "reasoning-trees/03-application-architecture-reuse-reasoning-tree"
+    type: reasoning-tree
+    topic: "03"
+    title: "03 应用架构复用 — 定理推理树"
+    referenced_by: []
+    embed_target: "struct/03-application-architecture-reuse/README.md"
+  - id: "reasoning-trees/04-component-architecture-reuse-reasoning-tree"
+    type: reasoning-tree
+    topic: "04"
+    title: "04 组件架构复用 — 公理推理树"
+    referenced_by: []
+    embed_target: "struct/04-component-architecture-reuse/README.md"
+  - id: "reasoning-trees/05-functional-architecture-reuse-reasoning-tree"
+    type: reasoning-tree
+    topic: "05"
+    title: "05 功能架构复用 — 定理推理树"
+    referenced_by: []
+    embed_target: "struct/05-functional-architecture-reuse/README.md"
+  - id: "reasoning-trees/06-cross-layer-governance-reasoning-tree"
+    type: reasoning-tree
+    topic: "06"
+    title: "06 跨层复用治理公理→定理推理树"
+    referenced_by: []
+    embed_target: "struct/06-cross-layer-governance/README.md"
+  - id: "reasoning-trees/07-formal-verification-reasoning-tree"
+    type: reasoning-tree
+    topic: "07"
+    title: "07 形式化验证公理→定理推理树"
+    referenced_by: []
+    embed_target: "struct/07-formal-verification/README.md"
+  - id: "reasoning-trees/08-cognitive-architecture-reasoning-tree"
+    type: reasoning-tree
+    topic: "08"
+    title: "08 认知架构公理→定理推理树"
+    referenced_by: []
+    embed_target: "struct/08-cognitive-architecture/README.md"
+  - id: "reasoning-trees/09-value-quantification-reasoning-tree"
+    type: reasoning-tree
+    topic: "09"
+    title: "09 复用价值量化公理→定理推理树"
+    referenced_by: []
+    embed_target: "struct/09-value-quantification/README.md"
+  - id: "reasoning-trees/10-supply-chain-security-reasoning-tree"
+    type: reasoning-tree
+    topic: "10"
+    title: "10 供应链安全公理→定理推理树"
+    referenced_by: []
+    embed_target: "struct/10-supply-chain-security/README.md"
+  - id: "reasoning-trees/11-industrial-iot-otit-reasoning-tree"
+    type: reasoning-tree
+    topic: "11"
+    title: "11 工业 IoT/OT-IT 融合 — 公理化推理树"
+    referenced_by: []
+    embed_target: "struct/11-industrial-iot-otit/README.md"
+  - id: "reasoning-trees/12-ai-native-reuse-reasoning-tree"
+    type: reasoning-tree
+    topic: "12"
+    title: "12 AI 原生复用 — 公理化推理树"
+    referenced_by: []
+    embed_target: "struct/12-ai-native-reuse/README.md"
+  - id: "reasoning-trees/13-emerging-trends-reasoning-tree"
+    type: reasoning-tree
+    topic: "13"
+    title: "13 新兴趋势 — 公理化推理树"
+    referenced_by: []
+    embed_target: "struct/13-emerging-trends/README.md"
+  - id: "reasoning-trees/axiom-to-theorem-reasoning-tree"
+    type: reasoning-tree
+    topic: "cross-topic"
+    title: "公理到定理推理树（全体系）"
+    referenced_by: []
+    embed_target: "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md"
+  - id: "standard-family-tree"
+    type: overview
+    topic: "cross-topic"
+    title: "国际标准族谱树"
+    referenced_by:
+      - "struct/01-meta-model-standards/plans-tasks/roadmap.md"
+      - "struct/99-reference/CHANGELOG.md"
+      - "struct/99-reference/audit/2026-06-06-completion-stats.md"
+      - "struct/99-reference/audit/roadmap-consistency-audit.md"
+      - "struct/99-reference/templates/academic-citation-template.md"
+      - "struct/99-reference/visualizations/README.md"
+      - "view/volume-99-reference.md"
+    embed_target: "struct/01-meta-model-standards/README.md"

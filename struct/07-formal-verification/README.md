@@ -42,6 +42,10 @@ graph TD
     K --> P[铁路信号复用]
 ```
 
+图库完整版（含工具链、工业案例与成本收益）：
+
+![07 形式化验证与复用正确性 — 知识体系思维导图](../99-reference/visualizations/mindmaps/07-formal-verification.svg)
+
 ---
 
 ## 3. 正向示例

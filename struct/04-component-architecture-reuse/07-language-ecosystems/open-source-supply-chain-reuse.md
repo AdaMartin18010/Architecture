@@ -1,7 +1,7 @@
 # 开源语言生态与供应链复用治理
 >
 > 版本: 2026-06-06
-> 对齐来源: NIST SP 800-161r1 (供应链风险管理), OWASP SCVS, OpenSSF, SLSA, CISA SBOM, PyPI/npm/Maven Central 实践
+> 对齐来源: NIST SP 800-161r1 (供应链风险管理), OWASP SCVS, OpenSSF, SLSA 1.2, CISA SBOM, PyPI/npm/Maven Central 实践
 
 ## 1. 开源复用的双面性
 
@@ -334,7 +334,7 @@ Artifact Repository
 ### 5.2 分发阶段
 
 - 随 release artifact 分发 SBOM
-- 符合 EU CRA、NIST SSDF、EO 14028 要求
+- 符合 EU CRA 2024/2847、NIST SSDF、EO 14028 要求
 
 ### 5.3 消费阶段
 

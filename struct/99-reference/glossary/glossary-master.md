@@ -1,6 +1,25 @@
 
 ## A
 
+### Architecture Building Block / Solution Building Block (ABB/SBB, 架构构建块/解决方案构建块)
+
+- **定义**: TOGAF Standard 10 中构建块（Building Block）的两种形态：ABB 是架构模型中描述整体架构单一方面的构成要素，与实现无关，定义"需要什么"；SBB 是实现一个或多个 ABB 的候选物理组件，定义"用什么实现"。
+- **属性**:
+  - ABB：描述所需服务与接口，独立于实现技术
+  - SBB：具体产品、组件或服务，有版本与供应商
+  - ABB 到 SBB 可一对多映射
+  - 均可纳入架构存储库分类管理
+- **关系**:
+  - 上位：Building Block（TOGAF 内容元模型）
+  - 存储：Architecture Repository；分类：Enterprise Continuum
+  - 方法：ADM 阶段 B–D 定义 ABB，阶段 E–F 映射 SBB
+- **解释**: ABB/SBB 分离是架构复用的关键机制：ABB 作为稳定的需求侧复用单元跨项目共享，SBB 作为供给侧可替换，支持"同一架构、多种实现"。
+- **示例**: "客户身份管理"ABB 规定认证、授权与目录同步服务；SBB 候选为 Keycloak 或云厂商 IAM，各项目按约束选型实现。
+- **反例**: 架构文档直接写死具体产品（如"使用某厂商数据库"）作为 ABB，技术升级或供应商更换时架构描述整体失效。
+- **权威来源**:
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（Building Block、ABB、SBB 定义）
+  - 核查日期：2026-07-12
+
 ### Architecture Decision / ADR (架构决策)
 
 - **定义**: 对系统架构产生影响的决策，连同其依据（rationale）的记录。ISO/IEC/IEEE 42010:2022 将 architecture decision 定义为影响系统架构的决策，architecture rationale 为支持架构决策的解释、论证或推理；工程实践中通常以轻量级文档 ADR（Architecture Decision Record）形式固化。
@@ -19,7 +38,46 @@
 - **示例**: 某平台团队以 ADR-0017 记录"采用 gRPC 作为内部服务间通信协议"，记载备选方案 REST 及取舍理由，后续 3 个项目据此复用同一协议栈与中间件配置。
 - **反例**: 关键选型仅在即时通讯中口头决定且未归档，半年后新成员质疑技术选型，团队无法给出依据，被迫重新评估，浪费数周。
 - **权威来源**:
-  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO（第 3 章术语：architecture decision、architecture rationale；标准全文需购买，链接为已验证的官方目录页）
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture decision、architecture rationale；标准全文需购买，链接为已验证的官方目录页）
+  - 核查日期：2026-07-12
+
+### Architecture Description (架构描述)
+
+- **定义**: 用于表达架构的工作产品，包含架构视图、视点规格说明、对应关系规则以及架构决策等内容（ISO/IEC/IEEE 42010:2022）。
+- **属性**:
+  - 标识所描述的系统及其利益相关者与关注点
+  - 包含一个或多个架构视图（View），每个视图遵循一个视点（Viewpoint）
+  - 包含视图间对应关系（Correspondence）
+  - 可记录架构决策与依据（ADR）
+- **关系**:
+  - 组成：View、Viewpoint、Model Kind、Correspondence、Architecture Decision
+  - 规范：Architecture Description Framework（ADF）
+  - 存储：Architecture Repository
+- **解释**: 架构描述是架构复用的载体：复用一个架构实质上是复用其 AD 中可移植的部分（视点库、视图模板、模型与决策记录），而非复用文档本身。
+- **示例**: 某支付平台的 AD 包含业务视图、应用视图、部署视图与 12 条 ADR；新项目复用其视点库与安全视图模板，仅重写差异部分。
+- **反例**: 架构仅以一组无视点约定、无对应关系的演示图表达，视图间一致性无法验证，复用时语义歧义频出。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture description）
+  - 核查日期：2026-07-12
+
+### Artifact (制品)
+
+- **定义**: 构建过程产出的不可变数据对象（软件包、容器镜像、二进制文件等），由来源证明（provenance）与证明（attestation）描述（SLSA 1.2 术语体系）。
+- **属性**:
+  - 不可变（immutable）
+  - 可寻址（名称 + 加密摘要）
+  - 有来源记录与签名证明
+  - 是供应链治理的基本对象
+- **关系**:
+  - 描述：Provenance、Attestation
+  - 清单：SBOM（成分）
+  - 流转：Supply Chain（source → build → package → distribute）
+  - 实例关系：Artifact 是 Asset 在交付形态上的实例
+- **解释**: 复用第三方组件实质是消费其制品及其证明；制品的不可变性与可验证来源决定了复用的信任边界。
+- **示例**: CI 流水线产出 `payment-service:1.4.2` 容器镜像，附带 SLSA provenance 与 SBOM，部署前由策略引擎校验签名与摘要。
+- **反例**: 生产环境直接部署开发者本地构建、无哈希记录、无来源证明的二进制包，出现安全事件后无法追溯构建过程。
+- **权威来源**:
+  - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（Terminology：artifact）
   - 核查日期：2026-07-12
 
 ### Asset (资产)
@@ -40,6 +98,26 @@
 - **权威来源**:
   - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/PDF) — OMG（Reusable Asset Specification，Asset 定义）
   - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程，asset 作为复用候选）
+  - 核查日期：2026-07-12
+
+### Attestation (数字证明)
+
+- **定义**: 关于软件制品的加密签名声明，用于断言其来源、构建过程或测试结果等事实（SLSA 1.2 术语体系；技术实现通常基于 in-toto attestation 框架）。
+- **属性**:
+  - 加密签名、防篡改
+  - 包含谓词（predicate，声明内容）与主体（subject，制品摘要）
+  - 可机器验证
+  - 可与制品分离存储与分发
+- **关系**:
+  - 承载：Provenance（来源证明以 attestation 形式签发）
+  - 实现：in-toto、Sigstore/cosign
+  - 对象：Artifact；互补：SBOM
+  - 等级：SLSA Build Level 越高，attestation 的签发环境隔离越强
+- **解释**: 证明使"信任"可机器验证：复用方无需信任构建者的口头承诺，可自动校验制品确实来自声称的流水线与源码。
+- **示例**: 开源库发布时附带 in-toto provenance attestation，消费方用 cosign 验证签名与构建仓库一致后才允许引入依赖。
+- **反例**: 仅以 README 声明"本包由官方 CI 构建"而无任何签名证明，制品被中间人替换后无法发现。
+- **权威来源**:
+  - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（Terminology：attestation；in-toto 作为实现框架引用）
   - 核查日期：2026-07-12
 
 ---
@@ -89,6 +167,26 @@
 ---
 
 ## C
+
+### Concern (关注点)
+
+- **定义**: 利益相关者对系统的兴趣点，涉及系统开发、运行或任何其他方面的问题（ISO/IEC/IEEE 42010:2022）。
+- **属性**:
+  - 归属于一个或多个利益相关者
+  - 驱动视点的定义与视图的产生
+  - 可跨利益相关者共享，也可能相互冲突需权衡
+  - 是架构决策的重要输入
+- **关系**:
+  - 持有：Stakeholder
+  - 响应：Viewpoint、View
+  - 驱动：Architecture Decision
+  - 属于：Architecture Description 的需求侧要素
+- **解释**: 关注点是架构描述的"需求侧"：复用架构视图前必须确认目标利益相关者的关注点与原设计一致，否则复用的视图答非所问。
+- **示例**: "系统在峰值 10 万 QPS 下的可用性"是运维团队的关注点，驱动性能视图与容量模型的创建。
+- **反例**: 直接复用旧系统的部署视图用于新项目，未重新识别关注点，遗漏监管合规视角，审计时被迫补做。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：concern）
+  - 核查日期：2026-07-12
 
 ### Component (组件)
 
@@ -239,6 +337,27 @@
   - [CNCF Serverless Whitepaper v2](https://github.com/cncf/wg-serverless/blob/master/whitepapers/serverless-overview/README.md) — CNCF
   - 核查日期：2026-07-07
 
+### Feature Model (特征模型)
+
+- **定义**: 以层次结构组织特征及其关系与约束的模型，用于表达和管理产品线的可变性（ISO/IEC 26550:2015）；ISO/IEC 26580:2021 进一步规范了基于特征的产品线工程方法。
+- **属性**:
+  - 特征层次结构（必选 mandatory / 可选 optional / 互斥 alternative / 或 or）
+  - 跨特征约束（requires / excludes）
+  - 与变性点绑定，支持产品配置派生
+  - 可工具化（FeatureIDE、Pure::Variants）
+- **关系**:
+  - 表达：Variability、Commonality
+  - 关联：Variation Point
+  - 产出：Domain Engineering；消费：Application Engineering
+  - 上位：Product Line Engineering
+- **解释**: 特征模型是产品线复用的"配置语言"：把"哪些共性可复用、哪些变性可选"显式化，使产品派生从手工裁剪变为受控配置。
+- **示例**: 车载信息娱乐产品线的特征模型定义"导航（可选）""座椅加热（按市场必选/可选）"，派生具体车型配置时自动校验约束。
+- **反例**: 用电子表格罗列变体差异而无特征间约束，派生产品时出现"选择了 A 却缺少其依赖 B"的无效配置。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（特征模型与可变性建模）
+  - [ISO/IEC 26580:2021](https://www.iso.org/standard/43139.html) — ISO（基于特征的产品线工程）
+  - 核查日期：2026-07-12
+
 ### Formal Verification (形式化验证)
 
 - **定义**: 使用数学方法严格证明系统或其规约满足特定性质（如安全性、活性、不变量）的技术集合，包括模型检测、定理证明、类型系统验证等。
@@ -339,7 +458,7 @@
   - 互补：A2A（Agent 间）、ANP、ACP
   - 依赖：JSON-RPC、OAuth 2.1、JSON Schema
   - 安全：OWASP MCP Top 10、Authorization spec
-- **解释**: MCP 使 AI Agent 能够以统一方式复用外部能力，避免每个工具都写一次集成代码。
+- **解释**: MCP（Model Context Protocol） 使 AI Agent 能够以统一方式复用外部能力，避免每个工具都写一次集成代码。
 - **示例**: 一个代码助手通过 MCP 连接到 GitHub、Jira、内部文档库，动态获取上下文并执行搜索、创建 Issue 等工具。
 - **反例**: 将 MCP Server 暴露给不受信任的客户端而未实施授权与输入校验，导致工具投毒（tool poisoning）攻击。
 - **权威来源**:
@@ -476,6 +595,26 @@
   - [Probabilistic Contracts](https://doi.org/10.1145/3544548.3580835) — 相关 ACM 论文
   - 核查日期：2026-07-07
 
+### Provenance (来源证明)
+
+- **定义**: 描述软件制品如何构建的可验证记录，包括构建过程、输入材料与依赖（SLSA 1.2）。
+- **属性**:
+  - 机器可读、可验证
+  - 记录构建者（builder）、构建参数与输入摘要
+  - 以防篡改的证明（attestation）形式签发
+  - 随 SLSA Build Level 提升而增强（托管构建、隔离环境）
+- **关系**:
+  - 承载于：Attestation（in-toto 格式）
+  - 对象：Artifact
+  - 互补：SBOM（成分视角）、Source Integrity（源码视角）
+  - 等级：Build Level（SLSA Build L1–L3）
+- **解释**: 来源证明回答"这个制品从哪来、怎么构建的"，是复用外部组件时判断可信度的核心证据。
+- **示例**: SLSA L3 流水线为每次发布生成 provenance，记录 Git 提交、构建工作流与依赖摘要，消费方据此验证镜像未被篡改。
+- **反例**: 制品仅标注版本号而无构建来源记录，发生恶意代码注入事件后无法确定受影响批次。
+- **权威来源**:
+  - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（Terminology：provenance）
+  - 核查日期：2026-07-12
+
 ---
 
 ## R
@@ -556,7 +695,7 @@
 - **关系**:
   - 互补：SLSA、Sigstore、GUAC
   - 标准：SPDX 2.3、CycloneDX 1.6
-  - 法规：EU CRA、US EO 14028
+  - 法规：EU CRA 2024/2847、US EO 14028
 - **解释**: 没有 SBOM，组织无法快速判断自身是否受某个供应链漏洞影响；SBOM 是复用资产治理的"成分表"。
 - **示例**: 某产品发布时附带 SPDX SBOM，当 Log4Shell 爆发时，安全团队 30 分钟内定位受影响实例。
 - **反例**: SBOM 仅在手写文档中维护，与实际构建产物不一致，导致漏洞响应基于过时信息。
@@ -666,6 +805,47 @@
   - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
   - 核查日期：2026-07-07
 
+### Supply Chain (供应链)
+
+- **定义**: 软件生产与分发所涉及的全部步骤与参与者，包括源代码、依赖、构建工具、发布与分发渠道（SLSA 1.2 术语体系）；本项目第 10 主题（供应链安全）以此为核心。
+- **属性**:
+  - 多环节：source → build → package → distribute → deploy
+  - 多参与方：开发者、CI/CD、仓库、镜像源、分发渠道
+  - 任一环节均可能成为攻击入口
+  - 可经 SBOM、SLSA、签名与准入策略治理
+- **关系**:
+  - 对象：Artifact、Provenance、Attestation、SBOM
+  - 治理框架：SLSA、NIST SP 800-218（SSDF）、Sigstore
+  - 法规：EU CRA、US EO 14028
+- **解释**: 复用即引入供应链依赖；复用的安全边界取决于对供应链各环节的可验证性，而非对组件功能的信任。
+- **示例**: 某企业规定所有第三方依赖必须来自内部代理仓库、附 SBOM 且达到 SLSA L2 以上，降低依赖投毒风险。
+- **反例**: 构建脚本直接从公网下载未固定版本、未校验哈希的依赖，遭遇依赖混淆攻击后恶意包进入生产环境。
+- **权威来源**:
+  - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（供应链环节模型）
+  - NIST SP 800-218（SSDF，安全软件开发框架，标准号引用）
+  - 核查日期：2026-07-12
+
+### System (系统)
+
+- **定义**: 为实现一个或多个既定目的而组织起来的相互作用元素的组合（ISO/IEC/IEEE 42010:2022）；元素可为软件、硬件、数据、人员或过程，系统可任意粒度嵌套。
+- **属性**:
+  - 有既定目的与明确边界
+  - 由相互作用的元素组成
+  - 可嵌套（系统的系统，system of systems）
+  - 是架构描述（AD）的对象
+- **关系**:
+  - 被描述：Architecture Description
+  - 关注：Stakeholder、Concern
+  - 分解：Component、Service
+  - 生命周期：ISO/IEC/IEEE 15288（系统）、ISO/IEC/IEEE 12207（软件）
+- **解释**: 明确系统边界是复用的前提：复用单元来自某系统的分解，应用到另一系统时必须重新界定边界、上下文与责任范围。
+- **示例**: "在线支付系统"包含网关、风控、清算三个子系统；风控子系统经治理后作为可复用资产被贷款系统复用。
+- **反例**: 架构文档未界定系统边界，把外部 SaaS 与内部服务混为一谈，复用评估时无法确定责任与风险范围。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：system）
+  - [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html) — ISO（系统生命周期过程）
+  - 核查日期：2026-07-12
+
 ---
 
 ## T
@@ -733,6 +913,26 @@
   - [Value Stream Management](https://www.scaledagileframework.com/value-streams/) — SAFe
   - 核查日期：2026-07-07
 
+### Variability (可变性)
+
+- **定义**: 软件制品能够被高效地扩展、修改、定制或配置以适应特定上下文的能力（ISO/IEC 26550:2015）；与共性（Commonality）相对，是产品线复用管理的一极。
+- **属性**:
+  - 以变性点（Variation Point）标识可变位置
+  - 由特征模型（Feature Model）表达
+  - 有绑定时间（编译时、部署时、运行时）
+  - 需显式约束，防止组合爆炸
+- **关系**:
+  - 对立统一：Commonality（共性复用 + 变性适配）
+  - 表达：Feature Model；落地：Variation Point
+  - 过程：Domain Engineering 定义、Application Engineering 绑定
+  - 上位：Product Line Engineering
+- **解释**: 复用的本质是"共性复用 + 变性适配"；变性管理能力决定了同一资产能服务多少上下文以及每次适配的成本。
+- **示例**: 电商中台将"促销规则"设计为变性，通过规则引擎配置满减、折扣、赠品等策略，各业务线复用同一交易核心。
+- **反例**: 为每个客户分支硬编码差异而无显式变性管理，分支数量随客户线性增长，合并与升级成本失控。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（variability 定义）
+  - 核查日期：2026-07-12
+
 ### Variation Point (变性点)
 
 - **定义**: 软件资产族中允许不同产品或上下文进行差异化实现的位置；是管理共性与变性的关键机制。
@@ -752,6 +952,26 @@
   - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO
   - [Feature-Oriented Domain Analysis (FODA)](https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=11231) — SEI
   - 核查日期：2026-07-07
+
+### View (架构视图)
+
+- **定义**: 从一组相关关注点的视角对整个系统的表示（ISO/IEC/IEEE 42010:2022）；每个视图遵循一个视点，由一个或多个按模型种类创建的模型构成。
+- **属性**:
+  - 覆盖整个系统（而非局部）
+  - 面向一组相关关注点与特定受众
+  - 遵循恰好一个视点（Viewpoint）
+  - 由模型（Model Kind 的实例）组成
+- **关系**:
+  - 遵循：Viewpoint
+  - 组成：Model、Model Kind
+  - 属于：Architecture Description
+  - 一致性：Correspondence（视图间）
+- **解释**: 视图是架构复用的常用粒度：视点库、视图模板与参考视图可跨项目复用，但复用前需核对关注点与利益相关者是否匹配。
+- **示例**: "安全视图"用威胁模型与数据流图表达认证、授权与加密边界，经评审后作为模板被多个项目复用。
+- **反例**: 某图只画了部分子系统却声称是"部署视图"，违反视图覆盖整个系统的约定，误导架构评审结论。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：view）
+  - 核查日期：2026-07-12
 
 ### Viewpoint (视点)
 
@@ -829,19 +1049,24 @@
 | AAS | A | 11-工业 IoT | OPC UA、ISA-95、Digital Twin |
 | API | A | 05-功能架构复用 | REST、gRPC、GraphQL |
 | Architecture Decision / ADR | A | 01-元模型 | ISO 42010、Architecture Rationale |
+| Architecture Building Block / Solution Building Block | A | 01-元模型 | TOGAF、Architecture Repository |
 | Asset | A | 01-元模型 | Reusable Asset、OMG RAS |
 | ArchiMate | A | 01-元模型 | TOGAF、ISO 42010 |
 | Architecture | A | 01-元模型 | AD、Viewpoint、View |
 | Architecture Description | A | 01-元模型 | ADL、ADF、Model Kind |
+| Artifact | A | 10-供应链安全 | Provenance、Attestation、SBOM |
+| Attestation | A | 10-供应链安全 | Provenance、SLSA、in-toto |
 | Business Capability | B | 02-业务架构 | TOGAF、FEA BRM |
 | Business Process | B | 02-业务架构 | BPMN、DMN |
 | Component | C | 04-组件架构 | Interface Contract、Component Model |
+| Concern | C | 01-元模型 | Stakeholder、Viewpoint、View |
 | Component Model | C | 04-组件架构 | WASM、CORBA、OSGi |
 | Conformal Prediction | C | 12-AI 原生复用 | Probabilistic Contract |
 | Correspondence | C | 01-元模型 | View、Model Kind |
 | Digital Twin | D | 11-工业 IoT | AAS、OPC UA |
 | EDA | E | 03-应用架构 | Kafka、CQRS |
 | FaaS | F | 05-功能架构 | Serverless、Lambda |
+| Feature Model | F | 01-元模型/02-业务 | Variability、PLE、Variation Point |
 | Formal Verification | F | 07-形式化验证 | TLA+、Alloy、Coq |
 | IDP | I | 13-新兴趋势 | Platform Engineering、Backstage |
 | Interface Contract | I | 04-组件架构 | Design-by-Contract |
@@ -853,6 +1078,7 @@
 | Platform Engineering | P | 13-新兴趋势 | IDP、Golden Path |
 | Product Line Engineering | P | 01-元模型/02-业务 | ISO 26550、Feature Model |
 | Probabilistic Contract | P | 12-AI 原生复用 | Conformal Prediction |
+| Provenance | P | 10-供应链安全 | Attestation、Artifact、SLSA |
 | Reuse | R | 01-元模型 | Reusable Asset、PLE |
 | Reusable Asset | R | 01-元模型 | RAS、SLSA |
 | ROI | R | 09-价值量化 | COCOMO II、NPV |
@@ -862,9 +1088,13 @@
 | Service Mesh | S | 03-应用架构 | Istio、Linkerd |
 | SLSA | S | 10-供应链安全 | SBOM、Sigstore |
 | Stakeholder | S | 01-元模型 | Concern、Viewpoint |
+| Supply Chain | S | 10-供应链安全 | SBOM、SLSA、Sigstore |
+| System | S | 01-元模型 | Architecture Description、ISO 15288 |
 | TLA+ | T | 07-形式化验证 | TLC、TLAPS |
 | TOGAF | T | 01-元模型 | ADM、ArchiMate |
 | Value Stream | V | 02-业务架构 | BPMN、Capability |
+| Variability | V | 01-元模型 | Commonality、Feature Model |
 | Variation Point | V | 01-元模型/04-组件 | Feature Model |
+| View | V | 01-元模型 | Viewpoint、Concern、Model Kind |
 | Viewpoint | V | 01-元模型 | View、Stakeholder |
 | WASM Component Model | W | 13-新兴趋势 | WIT、WASI |

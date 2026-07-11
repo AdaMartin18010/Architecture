@@ -39,7 +39,7 @@ L0 现场层是 ISA-95 五层模型的最底层，直接面向物理生产过程
 
 1. **同类替换复用**: 当现场更换同型号传感器（如将 Endress+Hauser Prosonic 更换为同系列新型号），直接复用既有 IODD/GSDML 文件，仅需更新版本号与固件兼容性校验。
 2. **族系模板继承**: 基于设备厂商的族系模板（如 Siemens SIRIUS 电机启动器族），通过参数差异表派生具体型号描述，避免从零创建。
-3. **多协议桥接复用**: 通过 OPC UA DI + PA-DIM 将面向 L1 的 Profinet GSDML 语义自动转换为 OPC UA 信息模型，实现一份资产描述跨协议复用。
+3. **多协议桥接复用**: 通过 OPC UA DI + PA-DIM 将面向 L1 的 Profinet GSDML 语义自动转换为 OPC UA（OPC Unified Architecture）信息模型，实现一份资产描述跨协议复用。
 
 ### 3.2 跨层复用接口
 

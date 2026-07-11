@@ -35,6 +35,10 @@ graph TD
     G --> H
 ```
 
+图库完整版（含 Agent 架构模式、运行时治理与模型资产复用）：
+
+![12 AI 原生复用 — 知识体系思维导图](../99-reference/visualizations/mindmaps/12-ai-native-reuse.svg)
+
 ---
 
 ## 3. 正向示例

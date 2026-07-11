@@ -23,10 +23,10 @@
 
 ```text
 kg.ttl            # 由 kg-builder.py 自动生成
-kg-entities.jsonl # 11,245 实体（机器真源）
-kg-relations.jsonl# 6,150 关系（机器真源）
-覆盖文件          # 324 篇 struct/ 下 Markdown
-通过 SHACL 验证   # ✅ Conforms: True
+kg-entities.jsonl # 11,277 实体（机器真源）
+kg-relations.jsonl# 8,283 关系（机器真源）
+覆盖文件          # 324+ 篇 struct/ 下 Markdown
+通过 SHACL 验证   # ✅ scripts/kg-shacl-validate.py 全约束通过
 ```
 
 ### 2.1 实体类型分布
@@ -35,10 +35,12 @@ kg-relations.jsonl# 6,150 关系（机器真源）
 |------|------|------|
 | `Term` | 10,375 | 从标题、加粗术语、定义/示例章节中抽取的核心概念 |
 | `File` | 652 | Markdown 源文件节点 |
-| `Standard` | 162 | ISO、TOGAF、ArchiMate 等标准/框架（canonical 归一后） |
+| `Standard` | 156 | ISO、TOGAF、ArchiMate 等标准/框架（canonical 归一后） |
 | `Organization` | 32 | 标准组织或厂商 |
+| `Specification` | 29 | TLA+/Alloy/Rego 等形式化规约工件 |
 | `Topic` | 14 | 13 个一级主题 + 99-reference |
-| `Protocol` | 10 | 协议规范（如 MCP、A2A、OPC UA FX） |
+| `Tool` | 11 | 验证/执行工具（TLC、Alloy Analyzer、OPA 等） |
+| `Protocol` | 8 | 协议规范（如 MCP、A2A、OPC UA FX） |
 
 ### 2.2 关系类型分布
 
@@ -47,12 +49,15 @@ kg-relations.jsonl# 6,150 关系（机器真源）
 | `defines` | 1,999 | 文件定义了某术语 |
 | `providesNegativeExample` | 1,698 | 文件提供反例/反模式 |
 | `providesPositiveExample` | 1,425 | 文件提供正向案例 |
-| `references` | 704 | 文件引用某标准 |
+| `mentions` | 1,877 | 文件提及某标准 |
+| `references` | 704 | 文件引用内部链接 |
 | `belongsTo` | 324 | 文件属于某主题 |
+| `relatedTo` | 208 | 术语关联（glossary 关系段） |
+| `implementedBy` | 34 | 规约工件由工具实现/验证 |
+| `evolvedFrom` | 14 | 标准版本谱系（新 → 旧） |
 
-> **统计口径（P1 更新）**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，与 `reports/stats.json` 一致，合计 6,150）。
-> P1 已完成 `canonical-names.yaml` 归一：`ISO/IEC 25010:2023`、`ArchiMate 4.0.2` 等不存在版本已归并到权威 canonical；Standard 实体由 345 收敛到 164。
-> 注意：`kg.ttl` 序列化后的语义边仍少于 jsonl——`:defines` 等关系已随 `kg-builder.py` 生成，但 `:relatedTo` / `:evolvedFrom` / `:mentions` / `:implementedBy` 当前仍为 0（抽取器未实化这些关系类型）。SHACL 验证在 P1 已增加 canonical 正则、版本白名单、dangling 关系等真约束（详见 `kg-shacl-report.md`）。
+> **统计口径**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，合计 8,283）。
+> SHACL 真约束校验由 `scripts/kg-shacl-validate.py` 执行：label 非空、关系两端实体存在（dangling 即 exit 1）、Standard/Protocol canonical 名称规范、历史版本 EVOLVED_FROM/版本语境、Term 多定义告警（详见 `kg-shacl-report.md`）。
 
 完整统计参见：[知识抽取质量报告](../../../reports/kg-extraction-report.md)。
 
@@ -95,6 +100,8 @@ kg-relations.jsonl# 6,150 关系（机器真源）
 
 - **抽取脚本**：[../tools/knowledge-extractor.py](../tools/knowledge-extractor.py)
 - **图谱构建脚本**：[../tools/kg-builder.py](../tools/kg-builder.py)
+- **语义关系增量补充**：[../../../scripts/kg-relation-enricher.py](../../../scripts/kg-relation-enricher.py)
+- **SHACL 真约束校验器**：[../../../scripts/kg-shacl-validate.py](../../../scripts/kg-shacl-validate.py)
 - **查询接口**：[../tools/kg-query.py](../tools/kg-query.py)
 - **形式化本体**：[arch-reuse-ontology.ttl](./arch-reuse-ontology.ttl)
 - **实例图谱**：[kg.ttl](./kg.ttl)
@@ -171,6 +178,6 @@ python struct/99-reference/tools/kg-query.py sparql "SELECT ?s ?label WHERE { ?s
 
 ---
 
-> **生成时间**: 2026-07-08
+> **生成时间**: 2026-07-12
 > **生成工具**: `knowledge-extractor.py` / `kg-builder.py`
 > **许可证**: 与本仓库一致

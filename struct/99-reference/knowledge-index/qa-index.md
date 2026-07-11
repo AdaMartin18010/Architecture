@@ -83,7 +83,7 @@
 - **Q: MCP (Model Context Protocol) 的四层能力原语是什么？**
   - A: tools（函数复用）、resources（数据复用）、prompts（提示模板复用）、sampling（推理复用）。详见 `05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md` 及 `12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md`。
 
-- **Q: A2A 与 MCP 的根本区分是什么？**
+- **Q: A2A（Agent-to-Agent Protocol） 与 MCP 的根本区分是什么？**
   - A: MCP 是垂直协议（Agent ↔ Tool，无状态结构化调用），A2A 是水平协议（Agent ↔ Agent，有状态多轮任务委托）。详见 `12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md` §5.1。
 
 - **Q: Temporal 工作流复用的核心模式有哪些？**

@@ -890,4 +890,4 @@ graph TB
 > - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-08)
 > - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-08)
 > - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-08)
-> - ISO/IEC/IEEE 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-08)
+> - ISO/IEC/IEEE 12207:2026: <https://iso.org/standard/90219.html> (核查日期: 2026-07-08)

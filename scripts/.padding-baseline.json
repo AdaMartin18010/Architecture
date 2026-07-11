@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "description": "template-padding-check.py 的 ratchet 基线：记录当前 padding 占比超过阈值（30%）且未豁免的文件。基线内文件仅警告；新增超限文件或基线文件占比恶化即 exit 1。整改后用 --update-baseline 收紧基线（只减不增）。",
+  "threshold": 30.0,
+  "files": {}
+}

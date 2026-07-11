@@ -170,7 +170,7 @@ Equipment Capability
 - XML Schema 实现 ISA-95 数据交换
 - 覆盖：人员、设备、物料、过程段、生产能力、生产调度、生产绩效
 - 与 SOAP/Web Services 集成
-- 现代替代：REST/JSON + OPC UA + AAS
+- 现代替代：REST/JSON + OPC UA（OPC Unified Architecture） + AAS
 
 ## 6. 资产目录复用策略
 

@@ -79,8 +79,8 @@ def scan_file(file_path: Path, patterns: List[Tuple[re.Pattern, str, str]]) -> L
         for pattern, alias, canonical in patterns:
             for match in pattern.finditer(line):
                 start, end = match.start(), match.end()
-                # 跳过 URL 尖括号 / 普通 Markdown 链接文本括号内
-                if line[max(0, start - 1):start] in "<(":
+                # 跳过 URL 尖括号 / 普通 Markdown 链接文本括号内 / 全称展开式的括号内（含全角括号）
+                if line[max(0, start - 1):start] in "<(（":
                     continue
                 # 如果别名后紧跟 `:YYYY`，说明当前已经是更完整的版本写法，跳过
                 if re.match(r":\d{4}", line[end:end + 5]):

@@ -174,7 +174,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 3. 关系说明
 
 - **上位概念**：元模型与标准对齐（本主题）是矩阵的宿主；国际标准族（ISO/IEC/IEEE 42010:2022 族）提供概念基础。
-- **下位概念**：每一行映射条目可进一步展开为详细映射文档（如 TOGAF 详细映射、ArchiMate 映射）。
+- **下位概念**：每一行映射条目可进一步展开为详细映射文档（如 TOGAF Standard 10 详细映射、ArchiMate 映射）。
 - **等价/映射概念**：矩阵中的“核心标准”列与“辅助标准”列形成主/次映射；例如 ISO/IEC/IEEE 42010:2022 与 TOGAF Content Framework 在架构描述元模型层面等价。
 - **依赖概念**：矩阵依赖 [`iso-42010-2022.md`](./iso-42010-2022.md) 的术语定义、[`../02-togaf-10-alignment/detailed-mapping.md`](../02-togaf-10-alignment/detailed-mapping.md) 的方法论映射，以及 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md) 的语言映射。
 

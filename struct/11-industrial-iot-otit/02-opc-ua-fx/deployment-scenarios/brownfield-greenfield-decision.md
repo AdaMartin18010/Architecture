@@ -181,7 +181,7 @@ flowchart TB
     F3 --- F2
 ```
 
-- **核心决策**: 从现场到云端统一使用 OPC UA 语义层，仅传输层根据实时性要求选择不同映射
+- **核心决策**: 从现场到云端统一使用 OPC UA（OPC Unified Architecture）语义层，仅传输层根据实时性要求选择不同映射
   - 实时控制: UADP over TSN（C2C/C2D/D2D）
   - 配置/诊断: OPC UA TCP Client/Server
   - 云端上传: OPC UA over MQTT

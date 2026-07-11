@@ -55,11 +55,11 @@ graph TD
 
 ### 示例 1：权威来源登记
 
-`external-links/authoritative-sources.md` 登记所有 ISO/IEC、IEEE、NIST、CNCF、SLSA、OPC Foundation 等来源 URL 与核查日期；任何主题文档引用时均可追溯，避免“死链”或“二手引用”。
+`external-links/authoritative-sources.md` 登记所有 ISO/IEC、IEEE、NIST、CNCF、SLSA 1.2、OPC Foundation 等来源 URL 与核查日期；任何主题文档引用时均可追溯，避免“死链”或“二手引用”。
 
 ### 示例 2：术语一致性审计
 
-通过 `glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO/IEC/IEEE 42010:2022 与项目自定义术语建立映射；当主题文档新增术语时，自动触发一致性检查，减少跨文档语义偏差。
+通过 `glossary/terminology-crosswalk.md` 将 TOGAF Standard 10、ArchiMate、ISO/IEC/IEEE 42010:2022 与项目自定义术语建立映射；当主题文档新增术语时，自动触发一致性检查，减少跨文档语义偏差。
 
 ### 示例 3：标准索引驱动的更新流程
 

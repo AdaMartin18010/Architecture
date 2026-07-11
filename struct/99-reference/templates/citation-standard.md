@@ -134,7 +134,7 @@
 | ENISA | <https://www.enisa.europa.eu/> | EU 网络安全 |
 | OpenSSF / SLSA | <https://slsa.dev/> | 供应链安全 |
 | MCP 规范 | <https://modelcontextprotocol.io/specification/> | 当前稳定版首页 |
-| A2A 协议 | <https://google.github.io/A2A/> | Google / LF |
+| A2A 协议 | <https://a2a-protocol.org/latest/> | Google / LF |
 | CloudEvents | <https://cloudevents.io/> | CNCF |
 | BIAN | <https://bian.org/> | 银行业架构 |
 | TMForum | <https://www.tmforum.org/> | 电信架构 |

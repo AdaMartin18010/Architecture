@@ -1,7 +1,7 @@
 # LLM 函数复用与智能体功能架构
 >
 > 版本: 2026-06-06
-> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0
+> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0.0
 
 ## 1. LLM 函数调用生态演进
 

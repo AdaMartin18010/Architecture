@@ -203,8 +203,8 @@ C = ⟨code_review, X_review, Y_review, 0.85⟩
 
 ### 4.3 与 MCP/A2A 的结合点
 
-- **MCP Tool 输出**：当 MCP Server 提供的 Tool 返回统计性结果时，可通过 CP 输出预测集合而非单一值，Host 据此决定是否授权后续操作。
-- **A2A Artifact 交付**：A2A Agent 返回的 Artifact 可附带置信度与预测集合信息，调用方 Agent 根据概率契约决定是否接受结果或委托给其他 Agent。
+- **Model Context Protocol (MCP) Tool 输出**：当 MCP Server 提供的 Tool 返回统计性结果时，可通过 CP 输出预测集合而非单一值，Host 据此决定是否授权后续操作。
+- **Agent-to-Agent Protocol (A2A) Artifact 交付**：A2A Agent 返回的 Artifact 可附带置信度与预测集合信息，调用方 Agent 根据概率契约决定是否接受结果或委托给其他 Agent。
 
 ---
 

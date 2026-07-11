@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-07
 > **定位**: 建立 `struct/` 13 个一级主题之间的依赖、支撑、互斥与蕴含关系，作为激进全面重构方案 A 的参考索引
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC 26550:2015, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, MCP 2025-11-25, A2A v1.0
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC 26550:2015, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3, MCP 2025-11-25, A2A v1.0.0
 > **核查日期**: 2026-07-07
 
 ---
@@ -441,7 +441,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 > - IEC 61508 Ed.3（制定中，未出版；CDV 投票完成 RVC 2026-05-15）. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>
 > - ISA-95 / IEC 62264. *Enterprise-control system integration*. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
 > - Model Context Protocol. *MCP Specification 2025-11-25*. <https://modelcontextprotocol.io/specification/2025-11-25>
-> - Google / LF Agentic AI Foundation. *Agent2Agent Protocol v1.0*. <https://a2aprotocol.ai/>
+> - Google / LF Agentic AI Foundation. *Agent2Agent Protocol v1.0*. <https://a2a-protocol.org/latest/>
 > - OWASP. *OWASP MCP Top 10*. <https://owasp.org/www-project-mcp-top-10/>
 > - OpenSSF. *Supply Chain Security Best Practices*. <https://openssf.org/resources/guides/>
 > - Carnegie Mellon SEI. *Software Architecture*. <https://www.sei.cmu.edu/our-work/software-architecture/>

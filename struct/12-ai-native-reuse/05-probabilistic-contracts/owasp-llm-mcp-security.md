@@ -25,7 +25,7 @@
 
 ## 2. OWASP MCP Top 10 (2025)
 
-OWASP 针对 MCP 专门发布了 Top 10：
+OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 
 | 排名 | 风险 | 说明 |
 |------|------|------|

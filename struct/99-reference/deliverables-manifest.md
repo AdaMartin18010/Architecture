@@ -49,7 +49,7 @@
 
 ### 05 功能架构复用
 
-- **协议栈**: MCP、A2A、REST/OpenAPI、gRPC、GraphQL、Event
+- **协议栈**: MCP（Model Context Protocol）、A2A（Agent-to-Agent Protocol）、REST/OpenAPI、gRPC、GraphQL、Event
 - **复用单元**: 纯函数、Tool、Resource、Prompt、Agent Card、Task、Workflow
 - **质量保障**: 单元测试、Mock、契约测试（Pact）、性能基准
 - **可视化**: `05-functional-architecture-reuse.mmd` + `.svg`
@@ -92,7 +92,7 @@
 - **SLSA**: 1.2 Multi-Track（Build/Source/Env）、L1→L4 递进
 - **SBOM**: SPDX / CycloneDX / SWID、VEX
 - **签名**: Sigstore（Fulcio/Rekor/Cosign）
-- **合规**: NIST SSDF 1.2、EU CRA、OWASP SCVS、EO 14028
+- **合规**: NIST SSDF 1.2、EU CRA 2024/2847、OWASP SCVS、EO 14028
 - **可视化**: `10-supply-chain-security.mmd` + `.svg`
 
 ### 11 工业 IoT/OT-IT 融合
@@ -107,7 +107,7 @@
 
 ### 12 AI 原生架构复用
 
-- **协议**: MCP 2025-11-25、A2A v1.0、ANP（实验性）
+- **协议**: MCP 2025-11-25、A2A v1.0.0、ANP（实验性）
 - **Agent 架构**: ReAct、Plan-and-Execute、Multi-Agent、主管-工作者
 - **模型资产**: RAG、LoRA/QLoRA/DoRA、Adapter、Prompt 模板库
 - **运行时治理**: 温度控制、漂移检测、Guardrails、Token 预算

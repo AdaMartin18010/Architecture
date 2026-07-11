@@ -1,6 +1,6 @@
 # MCP 2026-07-28 RC 深度解析
 
-> ✅ **版本声明**：MCP 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
+> ✅ **版本声明**：Model Context Protocol (MCP) 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
 >
 > 请参考关联文档：
 >

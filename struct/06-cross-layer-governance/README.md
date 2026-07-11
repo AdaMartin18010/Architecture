@@ -14,6 +14,12 @@
 - FinOps 跨层复用成本模型
 - 复用成熟度评估问卷（基于 ISO/IEC 26565 产品线成熟度框架）
 
+## 主题图谱
+
+![四层复用跨层映射图](../99-reference/visualizations/cross-layer-mappings/four-layer-reuse-mapping.svg)
+
+![06 跨层复用治理 — 复用治理决策树](../99-reference/visualizations/decision-trees/06-cross-layer-governance-decision-tree.svg)
+
 ## 概念定义
 
 **定义**：跨层复用治理是将业务层、应用层、组件层与功能层中的可复用资产，在战略、流程、质量、价值与风险维度上进行统一规范、度量与持续改进的组织能力集合。

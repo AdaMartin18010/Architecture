@@ -1087,7 +1087,7 @@ flowchart TB
 | ISO/IEC 33004:2022 评估参考模型要求 | <https://www.iso.org/standard/80240.html> | 2026-06-10 |
 | ISO/IEC/IEEE 12207:2026 软件生命周期过程 | <https://www.iso.org/standard/90219.html> | 2026-06-12 |
 | ISO/IEC/IEEE 12207:2017 软件生命周期过程（历史对照版） | <https://www.iso.org/standard/63712.html> | 2026-06-12 |
-| ISO/IEC 26565:2026 产品线成熟度模型 | <https://www.iso.org/standard/43091.html> | 2026-06-10 |
+| ISO/IEC 26565:2026 产品线成熟度模型 | <https://www.iso.org/standard/81436.html> | 2026-06-10 |
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |
 | RiSE 复用成熟度框架参考 | <https://rise.org.br> | 2026-06-10 |

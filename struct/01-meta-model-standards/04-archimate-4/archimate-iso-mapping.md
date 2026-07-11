@@ -1,7 +1,7 @@
 # ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表（ArchiMate 4 已正式发布）
 
 > **版本**: 2026-06-12
-> **对齐来源**: The Open Group ArchiMate 3.2 Specification (2023); **ArchiMate 4.0（已正式发布，2026-04-27，Document C260）**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
+> **对齐来源**: The Open Group ArchiMate 3.2 (2023); **ArchiMate 4.0（已正式发布，2026-04-27，Document C260）**; ISO/IEC/IEEE 42010:2022; ArchiMate Forum, The Open Group
 > **适用范围**: 软件工程架构复用知识体系 Track A — 01 元模型与标准对齐
 > 📝 **勘误说明（2026-06-12）**
 >
@@ -97,7 +97,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 
 ### 3.1 业务层核心元素
 
-ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Phase B（Business Architecture）直接对应。
+ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Standard 10 Phase B（Business Architecture）直接对应。
 
 | ArchiMate 3.2 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
 |---------------------|---------------------|----------|---------------------|------|

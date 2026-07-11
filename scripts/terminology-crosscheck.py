@@ -43,6 +43,9 @@ ALIAS_EQUIVALENTS = [
     ("Reuse", "Reusability"),
     ("Architecture Decision", "ADR"),
     ("Architecture Decision", "Architecture Rationale"),
+    # TOGAF 中 Building Block 仅有 ABB/SBB 两种形态，glossary 以合并词条覆盖
+    ("Building Block", "Architecture Building Block"),
+    ("Building Block", "Solution Building Block"),
 ]
 
 

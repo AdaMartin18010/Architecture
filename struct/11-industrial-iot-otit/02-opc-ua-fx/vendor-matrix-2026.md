@@ -247,7 +247,7 @@ TSN 交换机（802.1Qbv/AS/CB 支持）在所有主要厂商中已可采购。
 
 ## 概念定义
 
-**定义**：OPC UA FX（Field eXchange）扩展 OPC UA 至现场级，支持确定性时间同步、PubSub 帧结构与冗余，实现 OT 设备间可互操作的信息模型复用。
+**定义**：OPC UA FX（Field eXchange）扩展 OPC UA（OPC Unified Architecture）至现场级，支持确定性时间同步、PubSub 帧结构与冗余，实现 OT 设备间可互操作的信息模型复用。
 
 ## 示例
 

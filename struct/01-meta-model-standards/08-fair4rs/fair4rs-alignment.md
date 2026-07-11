@@ -34,7 +34,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 
 - **Findable** 在各层均要求可检索的目录机制：业务能力通过 FEA BRM 分类目录发现；应用服务通过 API 注册表发现；组件通过包管理器索引发现；AI 功能通过 MCP Tool Registry 发现。
 - **Accessible** 要求分层协议透明：业务流程模型以开放标准（BPMN/DMN）发布；应用服务通过 API 网关暴露；组件通过包仓库分发；功能通过标准化端点调用。
-- **Interoperable** 要求跨层格式统一：业务层使用 ArchiMate 交换；应用层使用 CNCF 接口标准；组件层使用 SPDX 描述和 SemVer 版本约束；功能层使用 A2A 或 MCP 协议实现互操作。
+- **Interoperable** 要求跨层格式统一：业务层使用 ArchiMate 交换；应用层使用 CNCF 接口标准；组件层使用 SPDX 描述和 SemVer 版本约束；功能层使用 A2A（Agent-to-Agent Protocol） 或 MCP 协议实现互操作。
 - **Reusable** 要求各层提供可验证的复用契约：业务规则库需配套决策逻辑说明；微服务模板需配套部署配置；组件需明确许可证和 SBOM；功能需声明输入输出 Schema 和概率契约。
 
 ---
@@ -258,7 +258,7 @@ graph LR
 - **Findable**：在 Zenodo 注册 DOI，代码仓库附带 `CITATION.cff` 与 `codemeta.json`，并在 PyPI 发布。
 - **Accessible**：源码与二进制通过 GitHub Releases 和 PyPI 以 HTTPS 分发；元数据在 Zenodo 长期保存。
 - **Interoperable**：输入输出采用 NetCDF 与 CSV 标准格式；API 使用 REST + OpenAPI 3.0；依赖使用 SemVer 约束。
-- **Reusable**：采用 MIT 许可证并附带 SPDX 标识符；提供 SBOM；CI/CD 生成 SLSA provenance；README 包含安装、使用、贡献指南；测试覆盖率 78%。
+- **Reusable**：采用 MIT 许可证并附带 SPDX 标识符；提供 SBOM；CI/CD 生成 SLSA 1.2 provenance；README 包含安装、使用、贡献指南；测试覆盖率 78%。
 
 结果：该库被 12 个国际研究团队复用，论文引用量显著提升，漏洞修复可在 24 小时内通过依赖更新传播。
 
@@ -284,7 +284,7 @@ graph LR
 > - [Chue Hong et al. (2022), Nature Scientific Data](https://doi.org/10.1038/s41597-022-01710-x)
 > - [FAIR data - Wikipedia](https://en.wikipedia.org/wiki/FAIR_data)
 > - [Open science - Wikipedia](https://en.wikipedia.org/wiki/Open_science)
-> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78178.html) — ISO
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — ISO
 >
 > **核查日期**：2026-07-07
 

@@ -26,7 +26,7 @@
 - [IEEE 1517-2010 软件生命周期复用过程](../../01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
 - [ISO/IEC/IEEE 12207:2026 与软件复用过程对齐](../../01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
 - [ISO/IEC 25010:2023 AI/ML 质量特性与复用评估](../../01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md)
-- … 共 26 个文件
+- … 共 27 个文件
 
 ### 02 业务架构复用
 
@@ -60,8 +60,8 @@
 - [API 设计模式与功能复用](../../05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 - [函数即服务（FaaS）与功能复用模式](../../05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 - [事件驱动函数复用模式](../../05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-- [领域函数目录](../../05-functional-architecture-reuse/07-domain-functions/domain-function-catalog.md)
 - [Temporal 工作流复用模式](../../05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
+- [LLM 函数复用与智能体功能架构](../../05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
 - … 共 10 个文件
 
 ### 06 跨层复用治理与成熟度模型
@@ -71,7 +71,7 @@
 - [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../../06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
 - [ISO/IEC 26565:2026 & 26566:2026 正式版与产品线成熟度/纹理管理对齐](../../06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
 - [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../../06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
-- … 共 24 个文件
+- … 共 25 个文件
 
 ### 07 形式化验证与复用正确性
 

@@ -217,7 +217,7 @@ flowchart LR
 
 ### 7.2 局限
 
-- **发布较早**：2010 年标准，未原生涉及 AI、云原生、容器、MCP 等现代复用形态
+- **发布较早**：2010 年标准，未原生涉及 AI、云原生、容器、MCP（Model Context Protocol） 等现代复用形态
 - **缺少具体技术格式**：不规定资产包装格式（需结合 OMG RAS、SBOM 等补充）
 - **度量不够量化**：复用 ROI、成本的精确计算需结合 COCOMO II 等模型
 
@@ -245,7 +245,7 @@ flowchart LR
 1. IEEE. *ISO/IEC/IEEE 1517:2010 — Standard for Information Technology — System and Software Life Cycle Processes — Reuse Processes*. 2010. <https://standards.ieee.org/ieee/1517/4603/>
 2. ISO/IEC/IEEE. *ISO/IEC/IEEE 12207:2026 — Systems and software engineering — Software life cycle processes*. 2026. <https://www.iso.org/standard/90219.html>
    ISO/IEC/IEEE. *ISO/IEC/IEEE 12207:2017 — Systems and software engineering — Software life cycle processes*. 2017. <https://www.iso.org/standard/63712.html>（历史对照版）
-3. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/43089.html>
+3. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/69529.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42020:2019 — Software, systems and enterprise — Architecture processes*. 2019.
 5. Frakes, W. B. & Kang, K. *Software Reuse Research: Status and Future*. IEEE Transactions on Software Engineering, 2005.
 6. Clements, P. & Northrop, L. *Software Product Lines: Practices and Patterns*. Addison-Wesley, 2001.

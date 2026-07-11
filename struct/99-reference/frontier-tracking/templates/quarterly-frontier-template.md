@@ -34,7 +34,7 @@
 ## 4. 下季度重点跟踪项
 
 1. **示例**: 跟踪 ISO/IEC XXXXX DIS 投票结果。
-2. **示例**: 跟踪 MCP 新版本发布。
+2. **示例**: 跟踪 MCP（Model Context Protocol） 新版本发布。
 
 ---
 

@@ -35,22 +35,25 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run standard status checker
+        # 网络检查（URL 可达性）：保留 continue-on-error 防止网络抖动误红
         run: python scripts/standard-status-checker.py
         continue-on-error: true
 
       - name: Run standard tracker snapshot
+        # 网络检查（标准状态页/RSS）：保留 continue-on-error
         run: python struct/99-reference/tools/standard-tracker.py --snapshot
         continue-on-error: true
 
       - name: Run quarterly report (quarterly only)
+        # 网络检查（标准状态页/RSS）：保留 continue-on-error
         if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
         run: python struct/99-reference/tools/standard-tracker.py --quarterly-report
         continue-on-error: true
 
       - name: Run standards version audit
+        # 纯本地检查（仓库内 Markdown 正则扫描，无网络依赖）：硬化为真门禁
         if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
         run: python struct/99-reference/tools/standards-version-audit.py .
-        continue-on-error: true
 
       - name: Upload frontier reports
         if: always()
@@ -66,7 +69,8 @@ jobs:
           if-no-files-found: ignore
 
       - name: Create issue for significant changes
-        if: github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly'
+        # always() 确保前置检查失败（门禁拦截）时仍能自动开 issue 报告告警
+        if: always() && (github.event.schedule == '0 2 5 1,4,7,10 *' || github.event.inputs.check_type == 'quarterly')
         uses: actions/github-script@v7
         with:
           script: |

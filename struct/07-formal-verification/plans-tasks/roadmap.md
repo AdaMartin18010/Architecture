@@ -52,7 +52,7 @@
 
 - [x] T06: 分布式支付服务组件的 TLA+ 规约（来自 view/）
 - [x] T07: MCP Server 能力协商协议的 TLA+ 规约
-- [x] T08: A2A Task 状态机的 TLA+ 规约
+- [x] T08: A2A（Agent-to-Agent Protocol） Task 状态机的 TLA+ 规约
 - [x] T09: OPC UA FX Connection Manager 的 TLA+ 规约（跨主题交付于 `11-industrial-iot-otit/02-opc-ua-fx/connection-manager/tla-specification.tla`）
 - [x] T10: PLCopen MC_Power / MC_MoveAbsolute 的 TLA+ 规约（跨主题交付于 `11-industrial-iot-otit/04-plcopen-motion/plcopen-motion.tla`）
 

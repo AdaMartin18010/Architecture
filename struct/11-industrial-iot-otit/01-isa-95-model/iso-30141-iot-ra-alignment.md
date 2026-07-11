@@ -434,7 +434,7 @@ IoT 生态系统的最显著特征是设备的极端异构性：
 **软件异构**：
 
 - 操作系统：裸机、FreeRTOS、Zephyr、Linux、Windows IoT
-- 协议栈：MQTT、CoAP、HTTP/2、DDS、OPC UA、Modbus
+- 协议栈：MQTT、CoAP、HTTP/2、DDS、OPC UA（OPC Unified Architecture）、Modbus
 - 编程语言：C/C++、Rust、Python、JavaScript、Go
 
 **复用挑战**：在通用 IT 系统中，组件复用通常意味着在同一运行时环境中共享库或服务。而在 IoT 中，"复用"往往需要跨越完全不同的硬件和软件边界。解决方案包括：

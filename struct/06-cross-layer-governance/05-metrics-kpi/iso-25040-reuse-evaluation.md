@@ -1072,10 +1072,10 @@ ISO/IEC/IEEE 42030:2019 推荐的方法之一是 ATAM（Architecture Tradeoff An
 
 | 来源 | URL | 核查日期 |
 |------|-----|----------|
-| ISO/IEC 25040:2024 软件质量评估过程 | <https://www.iso.org/standard/81094.html> | 2026-06-10 |
+| ISO/IEC 25040:2024 软件质量评估过程 | <https://www.iso.org/standard/83467.html> | 2026-06-10 |
 | ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78176.html> | 2026-06-10 |
 | ISO/IEC 25041:2023 评估指南 | <https://www.iso.org/standard/80695.html> | 2026-06-10 |
-| ISO/IEC/IEEE 42030:2019 架构评估框架 | <https://www.iso.org/standard/66475.html> | 2026-06-10 |
+| ISO/IEC/IEEE 42030:2019 架构评估框架 | <https://www.iso.org/standard/73436.html> | 2026-06-10 |
 | SQuaRE 标准族概览 | <https://www.iso.org/committee/45020/x/catalogue/p/1/u/1/w/1/d/0> | 2026-06-10 |
 | OWASP 软件组件安全验证标准 (SCSVS) | <https://scsvs.owasp.org> | 2026-06-10 |
 | NIST SBOM 指南 | <https://www.nist.gov/itl/executing-order-14028-improving-nations-cybersecurity/software-security-supply-chains> | 2026-06-10 |

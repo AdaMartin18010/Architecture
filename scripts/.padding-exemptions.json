@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "description": "template-padding-check.py 的 per-file 豁免清单。豁免依据：struct/99-reference/templates/content-block-guideline.md §4（README 导航文件、99-reference/templates|audit|tools、历史归档不受内容块规则约束）。新增豁免必须写明理由并经评审。",
+  "threshold": 30.0,
+  "hard_cap": 60.0,
+  "exemptions": {
+    "03-application-architecture-reuse/03-app-service/README.md": {
+      "reason": "README 导航文件（内容块规则 §4 例外）；尾部内容块与本主题直接相关，非机械复制",
+      "added": "2026-07-12"
+    },
+    "03-application-architecture-reuse/04-serverless/README.md": {
+      "reason": "README 导航文件（§4 例外）；内容块为主题摘要，完整内容见 reuse-patterns.md 等主文档",
+      "added": "2026-07-12"
+    },
+    "03-application-architecture-reuse/07-cloud-native-patterns/README.md": {
+      "reason": "README 导航文件（§4 例外）；文件短导致必需内容块占比天然偏高",
+      "added": "2026-07-12"
+    },
+    "06-cross-layer-governance/08-reserved/README.md": {
+      "reason": "预留编号占位 README（§4 例外）；占位文件天然短小，内容块为质量门控所需",
+      "added": "2026-07-12"
+    },
+    "13-emerging-trends/08-reserved/README.md": {
+      "reason": "预留编号占位 README（§4 例外）；占位文件天然短小，内容块为质量门控所需",
+      "added": "2026-07-12"
+    },
+    "99-reference/tools/standard-tracker-report.md": {
+      "reason": "standard-tracker.py 自动生成的监控报告（§4 tools 例外），非手写知识文件",
+      "added": "2026-07-12"
+    },
+    "99-reference/tools/standard-tracker-quarterly-report.md": {
+      "reason": "standard-tracker.py --quarterly-report 自动生成（§4 tools 例外），非手写知识文件",
+      "added": "2026-07-12"
+    },
+    "99-reference/tools/reuse-decision-tool/README.md": {
+      "reason": "v1 工具已归档（DEPRECATED，2026-07-12），仅作历史参考（§4 tools 例外）",
+      "added": "2026-07-12"
+    },
+    "99-reference/tools/reuse-decision-tool-v2/templates/report_template.md": {
+      "reason": "Jinja2 报告模板，重复结构由模板语法决定（§4 tools/templates 例外）",
+      "added": "2026-07-12"
+    }
+  }
+}

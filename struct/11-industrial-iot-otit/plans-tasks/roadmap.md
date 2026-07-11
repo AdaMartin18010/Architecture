@@ -69,7 +69,7 @@
 
 - [x] T13: PLCopen Motion Control V2.0 核心功能块接口定义 → `04-plcopen-motion/function-block-interfaces.md`
 - [x] T14: MC_Power / MC_MoveAbsolute 状态机的 TLA+ 验证 → `04-plcopen-motion/plcopen-motion.tla`
-- [x] T15: AAS 元模型与 OPC UA 信息模型的完整映射（文件存在，需确认完整度）→ `05-digital-twin-aas/aas-opcua-mapping.md`
+- [x] T15: AAS 元模型与 OPC UA（OPC Unified Architecture）信息模型的完整映射（文件存在，需确认完整度）→ `05-digital-twin-aas/aas-opcua-mapping.md`
 - [x] T16: AAS 子模型模板清单（14 个标准子模型） → `05-digital-twin-aas/submodel-templates/catalog.md`
 - [x] T17: AASX 包格式交换规范 → 已整合于 AAS-OPC UA 映射文档
 

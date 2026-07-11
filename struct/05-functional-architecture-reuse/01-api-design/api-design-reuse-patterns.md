@@ -193,7 +193,7 @@ API 弃用时间线
 
 **复用价值**:
 
-- 封装 MCP 工具定义
+- 封装 Model Context Protocol (MCP) 工具定义
 - 管理 Agent 上下文和状态
 - 提供结构化的功能接口供 LLM 调用
 

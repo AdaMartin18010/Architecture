@@ -6,7 +6,7 @@
 
 ## 1. 概念定义
 
-**Provenance（来源证明）**：以密码学方式记录软件制品如何被构建、由谁构建、基于哪些输入的元数据。在 SLSA 框架中，provenance 是 Build Track 的核心交付物，用于回答"这个制品从哪来、是否被篡改"的问题。
+**Provenance（来源证明）**：以密码学方式记录软件制品如何被构建、由谁构建、基于哪些输入的元数据。在 SLSA（Supply-chain Levels for Software Artifacts）框架中，provenance 是 Build Track 的核心交付物，用于回答"这个制品从哪来、是否被篡改"的问题。
 
 **Attestation（证明）**：对某一声明（如"此镜像由某 CI 工作流构建"）的密码学签名文档。SLSA provenance 是一种特定类型的 attestation，遵循 in-toto 证明格式。
 

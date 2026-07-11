@@ -1,6 +1,6 @@
 # A2A v1.0.0 权威深度解析
 
-> **定位**：Agent-to-Agent 协议的全面技术对齐，明确 MCP 与 A2A 的互补关系，指导多 Agent 架构复用。
+> **定位**：Agent-to-Agent 协议的全面技术对齐，明确 Model Context Protocol (MCP) 与 A2A 的互补关系，指导多 Agent 架构复用。
 > **权威来源**：a2a-protocol.org、Google A2A GitHub、Linux Foundation Agentic AI Foundation (AAIF)、Cloud Next 2026。
 > **版本状态**：A2A **v1.0.1** 为当前最新稳定版（v1.0.0 于 2026‑03‑12 GA；v1.0.1 维护版 2026‑05‑26 发布，仅 bug fix）
 

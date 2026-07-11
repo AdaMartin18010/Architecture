@@ -19,6 +19,7 @@ kg-builder.py
 """
 
 import argparse
+import hashlib
 import json
 import re
 from datetime import datetime, timezone
@@ -55,18 +56,19 @@ CLASSES = [
     ("Organization", "组织或厂商"),
     ("Axiom", "形式化公理"),
     ("Theorem", "定理或命题"),
+    ("Specification", "形式化规约工件（TLA+/Alloy/Rego 等）"),
 ]
 
 PROPERTIES = [
     # 对象属性
     ("defines", "File", "Term", "定义"),
-    ("references", "File", "Standard", "引用标准"),
+    ("references", "File", "File", "引用（内部链接）"),
     ("belongsTo", "File", "Topic", "属于主题"),
     ("providesPositiveExample", "File", "Term", "提供正向示例"),
     ("providesNegativeExample", "File", "Term", "提供反例"),
-    ("mentions", "File", "Term", "提及"),
-    ("implementedBy", "Standard", "Tool", "由工具实现"),
-    ("relatedTo", "Term", "Term", "相关"),
+    ("mentions", "File", "Standard", "提及标准"),
+    ("implementedBy", "Entity", "Tool", "由工具实现"),
+    ("relatedTo", "Term", "Entity", "相关"),
     ("evolvedFrom", "Standard", "Standard", "演进自"),
     # 数据属性
     ("sourceFile", "Entity", None, "来源文件"),
@@ -79,11 +81,18 @@ PROPERTIES = [
 # ---------------------------------------------------------------------------
 
 def safe_uri(local_name: str) -> str:
-    """将本地名称转换为 URI 安全字符串。"""
+    """将本地名称转换为 URI 安全字符串。
+
+    超长名称取前 80 字符 + 16 位哈希后缀，避免截断导致不同实体撞 URI
+    （如 xxx.rego 与 xxx_test.rego 长路径）。
+    """
     safe = re.sub(r"[^\w\-]", "_", local_name).strip("_")
     if not safe:
         safe = "_"
-    return safe[:100]
+    if len(safe) > 100:
+        digest = hashlib.md5(local_name.encode("utf-8")).hexdigest()[:16]
+        safe = safe[:80] + "_" + digest
+    return safe
 
 
 def entity_uri(entity_id: str) -> URIRef:
@@ -276,27 +285,38 @@ def build_shacl_shapes() -> Graph:
     g.add((URIRef(BASE_URI + "shapes/TermLabel"), SH.minCount, Literal(1)))
     g.add((URIRef(BASE_URI + "shapes/TermLabel"), SH.maxLength, Literal(120)))
 
-    # 对象属性：object 必须属于声明的 range 类（dangling 即失败）
+    # 全局 label 约束：任何实体（带 ar:sourceFile）必须有非空 rdfs:label
+    # 不用 targetSubjectsOf rdf:type：rdfs 推理会给字面量补 rdf:type 产生误报
+    label_ns = URIRef(BASE_URI + "shapes/EntityLabelShape")
+    label_ps = URIRef(BASE_URI + "shapes/EntityLabelProp")
+    g.add((label_ns, RDF.type, SH.NodeShape))
+    g.add((label_ns, SH.targetSubjectsOf, AR.sourceFile))
+    g.add((label_ns, SH.property, label_ps))
+    g.add((label_ps, SH.path, RDFS.label))
+    g.add((label_ps, SH.minCount, Literal(1)))
+    g.add((label_ps, SH.minLength, Literal(1)))
+
+    # 对象属性：值必须是有 rdf:type 的实体节点（dangling 存根无类型即失败）
+    # 用 targetSubjectsOf 确保约束真正作用于每条边，而非依赖 Entity 类推断
     object_props = [
-        ("defines", ARO.Term),
-        ("references", ARO.Standard),
-        ("belongsTo", ARO.Topic),
-        ("providesPositiveExample", ARO.Term),
-        ("providesNegativeExample", ARO.Term),
-        ("mentions", ARO.Term),
-        ("implementedBy", ARO.Tool),
-        ("relatedTo", ARO.Term),
-        ("evolvedFrom", ARO.Standard),
+        "defines", "references", "belongsTo", "providesPositiveExample",
+        "providesNegativeExample", "mentions", "implementedBy", "relatedTo",
+        "evolvedFrom",
     ]
-    global_shape = URIRef(BASE_URI + "shapes/GlobalObjectPropertyShape")
-    g.add((global_shape, RDF.type, SH.NodeShape))
-    g.add((global_shape, SH.targetClass, ARO.Entity))
-    for idx, (prop_name, range_cls) in enumerate(object_props):
-        ps = URIRef(BASE_URI + f"shapes/PropertyShape{idx}")
-        g.add((ps, RDF.type, SH.PropertyShape))
-        g.add((ps, SH.path, property_uri(prop_name)))
-        g.add((ps, URIRef(str(SH) + "class"), range_cls))
-        g.add((global_shape, SH.property, ps))
+    for prop_name in object_props:
+        ns = URIRef(BASE_URI + f"shapes/{prop_name}ObjectExistsShape")
+        qn = URIRef(BASE_URI + f"shapes/{prop_name}ObjectExistsSparql")
+        g.add((ns, RDF.type, SH.NodeShape))
+        g.add((ns, SH.targetSubjectsOf, property_uri(prop_name)))
+        g.add((ns, SH.sparql, qn))
+        g.add((qn, RDF.type, SH.SPARQLConstraint))
+        g.add((qn, SH.select, Literal(
+            "PREFIX aro: <" + str(ARO) + ">\n"
+            "SELECT $this ?value WHERE {\n"
+            f"  $this aro:{prop_name} ?value .\n"
+            "  FILTER NOT EXISTS { ?value a ?anyType }\n"
+            "}", datatype=XSD.string)))
+        g.add((qn, SH.message, Literal(f"aro:{prop_name} 的对象不是已定义实体（dangling）")))
 
     return g
 
@@ -304,10 +324,12 @@ def build_shacl_shapes() -> Graph:
 def run_shacl_validation(data_graph: Graph) -> Tuple[bool, str]:
     """运行 SHACL 验证并返回结果。"""
     shapes_graph = build_shacl_shapes()
+    # 注意：必须用 inference="none"——pyshacl 在 rdfs 推理下 SPARQL 约束不响應，
+    # 且数据图所有实体均显式带 rdf:type，无需推理。
     conforms, results_graph, results_text = validate(
         data_graph,
         shacl_graph=shapes_graph,
-        inference="rdfs",
+        inference="none",
         abort_on_first=False,
         meta_shacl=False,
         debug=False,

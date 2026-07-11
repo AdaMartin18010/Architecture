@@ -225,7 +225,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 | **适用复用层** | 05 功能架构 / 12 AI 原生 | 03 应用架构 / 12 AI 原生 | 03 应用架构 / 04 组件架构 |
 | **典型组合** | A2A Agent 内部调用 MCP Tools | 编排 Agent 委托子任务给专业 Agent | 非 AI 场景的遗留系统 |
 
-> **最佳实践**: 在多层 Agent 架构中，外层 Agent 间使用 **A2A** 协作，每个 Agent 内部通过 **MCP** 访问工具和数据，底层通过 **直接 API** 连接传统服务。详见 [deep-dive §6](./mcp-2025-11-25-deep-dive.md#6-与-a2a-协议的关系)。
+> **最佳实践**: 在多层 Agent 架构中，外层 Agent 间使用 **Agent-to-Agent Protocol (A2A)** 协作，每个 Agent 内部通过 **MCP** 访问工具和数据，底层通过 **直接 API** 连接传统服务。详见 [deep-dive §6](./mcp-2025-11-25-deep-dive.md#6-与-a2a-协议的关系)。
 
 ### 5.3 安全评估清单
 

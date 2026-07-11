@@ -22,6 +22,8 @@
 | **质量门控** | `struct/` 288/288 通过，`view/` 14/14 通过，死链 0，模板重复 0 |
 | **交叉索引** | 公理 0 未定义 / 0 重复；标准版本冲突 0；术语定义冲突 0 |
 
+> **口径说明**（2026-07-12 起）：上表“冲突 0” = `cross-index-check.py` 现行口径（公理引用闭合为硬门禁；标准版本/术语定义为跨文件语义比对 + 豁免语境的报告型检查，详见 `reports/cross-index-report.md`）。语义层另有硬门禁守护：`threshold-check.py`（阈值单一事实源）、`structure-lint.py`（目录结构）、`errata-lint.py`（勘误规则）、`figure-check.py`（图库完整性）、`kg-shacl-validate.py`（KG 语义约束）、`terminology-crosscheck.py`（术语双库），均纳入 `health-check.py`。
+
 ---
 
 ## 🗂️ 知识体系结构

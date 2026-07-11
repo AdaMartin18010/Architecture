@@ -35,6 +35,10 @@ graph LR
     H -->|仓库劫持| E
 ```
 
+复用组件引入的安全控制采纳决策（图库完整版）：
+
+![10 供应链安全 — 安全控制采纳决策树](../99-reference/visualizations/decision-trees/10-supply-chain-security-decision-tree.svg)
+
 ---
 
 ## 3. 正向示例
@@ -53,7 +57,7 @@ graph LR
 
 ### 示例 4：GUAC 风险图谱
 
-组织将 SBOM、SLSA 证明与漏洞公告导入 GUAC，形成 artifact 关系图；当某开源库披露高危漏洞时，可秒级查询所有直接和间接依赖该库的服务。
+组织将 SBOM、SLSA（Supply-chain Levels for Software Artifacts）证明与漏洞公告导入 GUAC，形成 artifact 关系图；当某开源库披露高危漏洞时，可秒级查询所有直接和间接依赖该库的服务。
 
 ### 示例 5：GitHub Artifact Attestations 规模化落地
 

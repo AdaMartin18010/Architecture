@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
-> **定位**: 对齐 A2A v1.0 正式发布版本的核心概念与架构模式
+> **定位**: 对齐 A2A v1.0.0 正式发布版本的核心概念与架构模式
 
 ---
 
@@ -15,7 +15,7 @@
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
 | **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0 的发布以官方规范页面为准。
+> **关键确认**: A2A v1.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0 的发布以官方规范页面为准。
 
 ---
 
@@ -307,7 +307,7 @@ graph TB
 在上图中：
 
 - **A2A 负责 Agent 之间的协作边界**：编排 Agent 不需要知道研究 Agent 内部如何工作，只需要通过 Agent Card 了解其 Skill、端点与认证方式。
-- **MCP 负责 Agent 与工具之间的能力边界**：每个 Specialist Agent 通过 MCP 调用具体的工具（数据库、Git、文档检索），这些工具的细节对编排 Agent 不可见。
+- **Model Context Protocol (MCP) 负责 Agent 与工具之间的能力边界**：每个 Specialist Agent 通过 MCP 调用具体的工具（数据库、Git、文档检索），这些工具的细节对编排 Agent 不可见。
 - **这种分层架构的价值**：当需要替换某个 Specialist Agent 时，只要其 Agent Card 保持兼容，编排 Agent 无需修改；当需要新增工具时，只需在对应 Specialist Agent 内部新增 MCP Server 连接，不影响 A2A 接口。
 
 ---

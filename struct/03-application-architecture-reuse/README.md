@@ -17,6 +17,10 @@
 - 事件驱动架构 (EDA) 的四种复用模式
 - 数据网格 (Data Mesh) 的域导向复用
 
+## 主题图谱
+
+![03 应用架构复用 — 架构模式选择决策树](../99-reference/visualizations/decision-trees/03-application-architecture-reuse-decision-tree.svg)
+
 ## 权威对齐
 
 | 标准/框架 | 作用 | 权威 URL | 核查日期 |

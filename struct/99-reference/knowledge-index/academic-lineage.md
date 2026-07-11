@@ -368,7 +368,7 @@ flowchart LR
 
 ### 7.2 Model Context Protocol / Agent Protocol / 模型上下文协议与智能体协议
 
-- **定义**：MCP 是由 Anthropic 提出并捐赠给 Agentic AI Foundation（Linux Foundation）的开放协议，它标准化了 LLM 应用如何发现、调用外部工具与资源；Agent Protocol（如 Google A2A）则进一步规范多智能体之间的能力发现、任务协商与上下文交换。
+- **定义**：MCP（Model Context Protocol） 是由 Anthropic 提出并捐赠给 Agentic AI Foundation（Linux Foundation）的开放协议，它标准化了 LLM 应用如何发现、调用外部工具与资源；Agent Protocol（如 Google A2A（Agent-to-Agent Protocol））则进一步规范多智能体之间的能力发现、任务协商与上下文交换。
 - **Wikipedia**：[Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol)
 - **学术来源**：
   - Anthropic. (2025). *Model Context Protocol Specification* (2025-11-25). [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/2025-11-25)。

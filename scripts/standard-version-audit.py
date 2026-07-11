@@ -7,7 +7,7 @@ standard-version-audit.py
 只读审计：扫描 struct/ 正文，检测两类问题：
 
 1. “标准族 + 版本号”引用中使用了 canonical-names.yaml 标记为 invalid
-   （不存在/已废弃）的版本号（历史规则，命中仅告警，不影响退出码）。
+   （不存在/已废弃）的版本号。命中时脚本以非零码退出（回归门控）。
 2. “畸形版本串”——批量归一脚本重复叠加产生的损坏文本，例如
    ``A2A v1.0.0.0.0.0.0.0``、``ISO/IEC/IEEE 1517:2010-2010``。
    此类命中无合法语境，命中时脚本以非零码退出（回归门控）。
@@ -16,11 +16,14 @@ standard-version-audit.py
   - 只读、零改动：仅输出审计报告，绝不自动修改正文。
   - 跳过代码块、Mermaid、表格、标题、行内代码、Markdown 链接文本与 URL
     （畸形版本串规则额外扫描标题与表格——损坏文本常出现在标题中）。
-  - 命中 invalid 版本记为“疑似硬错误”，需人工结合上下文确认（历史对照语境可能合法）。
+  - 命中 invalid 版本记为“疑似硬错误”，命中即 exit 1；历史对照语境确属合法时
+    应修正措辞或移入受保护语境（行内代码/链接），而非放宽门控。
 
 退出码：
-  - 0: 无畸形版本串命中（invalid 版本告警不影响退出码）。
-  - 1: 存在畸形版本串命中。
+  - 0: 无 invalid 版本号命中且无畸形版本串命中。
+  - 1: 存在 invalid 版本号命中或畸形版本串命中。
+  若历史对照语境确属合法（如“2011 版已被 2023 版取代”的演进叙述），
+  应修正措辞或将引用移入行内代码/链接等受保护语境，而不是放宽门控。
 
 用法：
     python scripts/standard-version-audit.py
@@ -144,7 +147,7 @@ def main() -> int:
         "",
         f"> 生成时间: {datetime.datetime.now().isoformat(timespec='seconds')}",
         "> 源: struct/ 正文 × canonical-names.yaml invalid_versions",
-        "> 性质: 只读审计，不改动正文；命中为疑似不存在/已废弃版本号，需人工结合上下文确认。",
+        "> 性质: 只读审计，不改动正文；命中为疑似不存在/已废弃版本号，命中即门控失败。",
         "",
         "## 摘要",
         "",
@@ -194,8 +197,8 @@ def main() -> int:
     for h in malformed_hits:
         print(f"  {h['file']}:{h['line']}  {h['match']}  ({h['note']})")
     print(f"报告: {REPORT_FILE}")
-    # 仅“畸形版本串”规则影响退出码（回归门控）；invalid 版本告警保持历史行为
-    return 1 if malformed_hits else 0
+    # invalid 版本号命中与畸形版本串命中均为回归门控（命中即 exit 1）
+    return 1 if (malformed_hits or all_hits) else 0
 
 
 if __name__ == "__main__":

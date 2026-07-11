@@ -1,12 +1,12 @@
 # MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0 (Google / Linux Foundation)
+> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0 (Google / Linux Foundation)
 > **定位**: 功能架构层最细粒度复用——AI 功能与 Agent 协作的协议化复用框架
 > **权威来源**:
 >
 > - [Model Context Protocol Specification](https://modelcontextprotocol.io) (Anthropic / Linux Foundation Agentic AI Foundation, 2025-11-25)
-> - [A2A Protocol Specification](https://a2aprotocol.org) (Google / Linux Foundation, v1.0.0)
+> - [A2A Protocol Specification](https://a2a-protocol.org/latest/) (Google / Linux Foundation, v1.0.0)
 > - [MCP 2026 Deep Dive](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
 > - [A2A Reuse Analysis](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
 
@@ -324,7 +324,7 @@ MCP + A2A 联合治理
 > **对齐验证**:
 >
 > - MCP 内容对照 [modelcontextprotocol.io](https://modelcontextprotocol.io) 2025-11-25 规范验证
-> - A2A 内容对照 [a2aprotocol.org](https://a2aprotocol.org) v1.0.0 规范验证
+> - A2A 内容对照 [a2a-protocol.org](https://a2a-protocol.org/latest/) v1.0.0 规范验证
 > - 互补架构设计基于 Anthropic 与 Google 官方博客的联合声明
 >
 > 最后更新: 2026-06-06

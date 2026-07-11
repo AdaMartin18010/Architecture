@@ -221,7 +221,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ## 13. 交叉引用
 
 - 相关协议分析：[`protocol-analysis.md`](../../05-functional-architecture-reuse/06-mcp-a2a-protocols/protocol-analysis.md)
-- A2A Task 生命周期 TLA+ 规约：[`a2a-task-lifecycle.md`](./a2a-task-lifecycle.md)
+- A2A（Agent-to-Agent Protocol） Task 生命周期 TLA+ 规约：[`a2a-task-lifecycle.md`](./a2a-task-lifecycle.md)
 - 形式化验证总览：[`struct/07-formal-verification/README.md`](../README.md)
 
 > 最后更新：2026-07-09

@@ -912,7 +912,7 @@ flowchart TD
 > - [Function as a service - Wikipedia](https://en.wikipedia.org/wiki/Function_as_a_service) (核查日期: 2026-07-08)
 > - [Cloud computing - Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing) (核查日期: 2026-07-08)
 > - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — *Systems and software engineering — SQuaRE — Product quality model* (核查日期: 2026-07-08)
-> - [ISO/IEC 12207:2026](https://www.iso.org/standard/85683.html) — *Systems and software engineering — Software life cycle processes* (核查日期: 2026-07-08)
+> - [ISO/IEC 12207:2026](https://www.iso.org/standard/90219.html) — *Systems and software engineering — Software life cycle processes* (核查日期: 2026-07-08)
 > - CNCF Serverless Whitepaper v2: <https://github.com/cncf/wg-serverless/blob/master/whitepapers/serverless-overview.md> (核查日期: 2026-07-08)
 > - CNCF Cloud Native Landscape: <https://landscape.cncf.io/> (核查日期: 2026-07-08)
 > - CNCF Graduated and Incubating Projects: <https://www.cncf.io/projects/> (核查日期: 2026-07-08)
