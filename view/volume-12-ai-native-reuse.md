@@ -1712,14 +1712,14 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 # A2A v1.0.0 协议复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: A2A v1.0.0.0.0.0.0.0 (2026-03-12 发布), Linux Foundation 治理
+> **对齐标准**: A2A v1.0 (2026-03-12 发布), Linux Foundation 治理
 > **定位**: Agent 间协作协议的复用流程与价值分析
 
 ---
 
 ## 目录
 
-- [A2A v1.0.0.0.0.0.0.0 协议复用分析](#a2a-v100-协议复用分析)
+- [A2A v1.0.0 协议复用分析](#a2a-v100-协议复用分析)
   - [目录](#目录)
   - [1. 核心对象](#1-核心对象)
   - [2. 协议流程的复用分析](#2-协议流程的复用分析)
@@ -1729,7 +1729,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
   - [5. 多模态 Artifact](#5-多模态-artifact)
   - [6. 安全增强：Signed Agent Cards](#6-安全增强signed-agent-cards)
   - [7. 协作模式](#7-协作模式)
-  - [补充说明：A2A v1.0.0.0.0.0.0.0 协议复用分析](#补充说明a2a-v100-协议复用分析)
+  - [补充说明：A2A v1.0.0 协议复用分析](#补充说明a2a-v100-协议复用分析)
   - [概念定义](#概念定义)
   - [示例](#示例)
   - [反例](#反例)
@@ -1973,6 +1973,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 > - [Google A2A Blog](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -1982,7 +1983,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
 > **版本**: 2026-07-08
 > **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
-> **定位**: 对齐 A2A v1.0.0.0.0.0.0 正式发布版本的核心概念与架构模式
+> **定位**: 对齐 A2A v1.0 正式发布版本的核心概念与架构模式
 
 ---
 
@@ -1995,7 +1996,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
 | **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0.0.0.0.0.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0.0.0.0.0.0 的发布以官方规范页面为准。
+> **关键确认**: A2A v1.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0 的发布以官方规范页面为准。
 
 ---
 
@@ -2545,6 +2546,7 @@ flowchart TD
 
 > 最后更新: 2026-07-08
 
+
 ---
 
 
@@ -2554,7 +2556,7 @@ flowchart TD
 
 > **定位**：Agent-to-Agent 协议的全面技术对齐，明确 MCP 与 A2A 的互补关系，指导多 Agent 架构复用。
 > **权威来源**：a2a-protocol.org、Google A2A GitHub、Linux Foundation Agentic AI Foundation (AAIF)、Cloud Next 2026。
-> **版本状态**：A2A v1.2 当前稳定版（2026‑03‑12 GA，v1.0 一周年）
+> **版本状态**：A2A **v1.0.1** 为当前最新稳定版（v1.0.0 于 2026‑03‑12 GA；v1.0.1 维护版 2026‑05‑26 发布，仅 bug fix）
 
 ---
 
@@ -2582,7 +2584,7 @@ flowchart TD
 2025-12-09    Linux Foundation 成立 AAIF（Agentic AI Foundation），同时托管 MCP + A2A
 2026-03-12    v1.0.0 GA（一周年）：Signed Agent Cards、gRPC、多租户
 2026-04-09    Cloud Next 2026：ADK 1.0 GA、AP2 支付协议、Latency 广播
-2026-Q2       v1.2 当前稳定版
+2026-05-26    v1.0.1 维护版（HTTP binding、TaskStatus 等 bug fix，当前最新）
 ```
 
 ---
@@ -2654,7 +2656,7 @@ submitted → working → [input-required | auth-required] → completed
 
 ### 5.1 根本区分
 
-| 维度 | **MCP 2025-11-25** | **A2A v1.2** |
+| 维度 | **MCP 2025-11-25** | **A2A v1.0.1** |
 |------|---------------------|--------------|
 | **层级** | 垂直：Agent → Tool | 水平：Agent → Agent |
 | **交互模型** | 无状态结构化函数调用 | 有状态多轮任务委托 |
@@ -2786,7 +2788,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 
 ---
 
-*文档生成时间：2026-06-06 · 对齐 A2A v1.2 / Cloud Next 2026 / Linux Foundation AAIF*
+*文档生成时间：2026-06-06 · 对齐 A2A v1.0.1（2026-05-26，当前最新稳定版）/ Linux Foundation AAIF*
 
 
 ---
@@ -2804,6 +2806,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 ## 分析
 
 **分析**：A2A 关注 Agent 之间的协作语义，与 MCP 形成“工具-代理”双层协议体系。
+
 
 ---
 
@@ -3584,7 +3587,7 @@ Agent A: "请 Agent B 再次检查..."
 # A2A + MCP 混合 Agent 服务 PoC
 
 > **定位**：演示 "A2A 用于 Agent 协作，MCP 用于工具调用" 的生产最佳实践。
-> **对齐**：A2A v1.0.0.0.0.0.0.0, MCP 2025-11-25
+> **对齐**：A2A v1.0, MCP 2025-11-25
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
@@ -3808,7 +3811,8 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-*文档生成时间：2026-07-08 · 对齐 A2A v1.0.0.0.0.0.0.0 / MCP 2025-11-25*
+*文档生成时间：2026-07-08 · 对齐 A2A v1.0 / MCP 2025-11-25*
+
 
 ---
 

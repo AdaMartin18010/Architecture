@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-07（Phase A 止血与基础修复版）
 > **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构；当前正在进行统计口径校准、模板污染清理与内容深度补齐
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 15288:2023, 24765, 26550:2015, **26564:2022, 26565:2026**, 26566:2026, **21838 系列**, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3 (CDV/认证基准 2026; IEC 正式发布预计 ~2027), ISA-95, MCP 2025-11-25, A2A v1.0.0.0.0.0.0.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 15288:2023, 24765, 26550:2015, **26564:2022, 26565:2026**, 26566:2026, **21838 系列**, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3 (CDV 投票完成/RVC 2026-05-15；IEC 官方预测发布 2026-07；认证基准 2026), ISA-95, MCP 2025-11-25, A2A v1.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
 > **权威参考**: Carnegie Mellon SEI, USC COCOMO II, ETH Zurich (RustBelt/Prusti), Inria (Aeneas/Coq), NASA RRL
 
 ---
@@ -110,12 +110,12 @@
 |----------|------|------|-----------|
 | ISA-95 / IEC 62264 | 企业-控制系统集成 | 生效 | `11-industrial-iot-otit/01-isa-95-model` |
 | OPC UA FX 1.0 (2026) | 现场级确定性通信 | **新兴** | `11-industrial-iot-otit/02-opc-ua-fx` |
-| IEC/IEEE 60802 TSN | 时间敏感网络 | 草案 | `11-industrial-iot-otit/03-tsn-deterministic` |
-| IEC 61508 Ed.3 | 功能安全（含软件复用） | CDV 已完成；TÜV 等认证机构 2026 起可采用；IEC 官方正式发布预计 ~2027 | `11-industrial-iot-otit/06-functional-safety` |
-| ISO 21448 Ed.2 | 预期功能安全 (SOTIF) | 制定中/预计 2026 发布 | `11-industrial-iot-otit/06-functional-safety` |
+| IEC/IEEE 60802 TSN | 时间敏感网络 | ✅ 已发布 (2026-06, Ed.1.0，IEC/IEEE 双标徽) | `11-industrial-iot-otit/03-tsn-deterministic` |
+| IEC 61508 Ed.3 | 功能安全（含软件复用） | CDV 投票完成（RVC 2026-05-15）；IEC 官方预测发布 2026-07；TÜV 等认证机构 2026 起已可采用 | `11-industrial-iot-otit/06-functional-safety` |
+| ISO 21448 Ed.2 | 预期功能安全 (SOTIF) | 修订中（ISO/AWI 21448，AWI 阶段）；现行版本为 ISO 21448:2022，发布时点未官宣 | `11-industrial-iot-otit/06-functional-safety` |
 | ISO 26262 | 汽车功能安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
 | IEC 63278-1 (AAS) | 资产管理壳结构 | ✅ 已发布 (2023) | `11-industrial-iot-otit/05-digital-twin-aas` |
-| IEC 63278-2 (AAS) | 信息元模型 | 🔄 DIS ballot / 开发中（预计 2026 末–2027 初发布） | `11-industrial-iot-otit/05-digital-twin-aas` |
+| IEC 63278-2 (AAS) | 信息元模型 | 🔄 CDV 投票中（截止 2026-08-07）；预计 2026 末–2027 初发布 | `11-industrial-iot-otit/05-digital-twin-aas` |
 | IEC 62443 | 工业网络安全 | 生效 | `11-industrial-iot-otit/06-functional-safety` |
 
 ### 3.3 供应链与软件安全标准

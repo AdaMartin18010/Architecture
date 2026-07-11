@@ -1,7 +1,7 @@
 # MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0.0.0.0.0.0 (Google / Linux Foundation)
+> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0 (Google / Linux Foundation)
 > **定位**: 功能架构层最细粒度复用——AI 功能与 Agent 协作的协议化复用框架
 > **权威来源**:
 >

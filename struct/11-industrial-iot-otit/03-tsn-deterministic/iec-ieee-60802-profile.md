@@ -1,7 +1,8 @@
 # IEC/IEEE 60802 TSN 工业自动化配置文件
 
-> **版本**: 2026-06-06
+> **版本**: 2026-06-06（2026-07-11 更新标准状态）
 > **权威来源**: IEEE 802.1 TSN, IEC SC65C/WG18
+> **标准状态**: IEC/IEEE 60802:2026 **Ed.1.0 已于 2026-06 正式发布**（IEC/IEEE 双标徽；FDIS 65C/1406 投票通过，RVD 65C/1438/RVD；products.iec.ch 可查）
 > **定位**: 对齐 IEC/IEEE 60802 TSN Profile for Industrial Automation
 
 ---

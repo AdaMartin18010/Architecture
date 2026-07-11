@@ -6,11 +6,11 @@
 
 ---
 
-## 1. WASI 0.3 最新状态（RC阶段）
+## 1. WASI 0.3 最新状态（2026-06-11 正式发布）
 
 ### 1.1 原生 async I/O：stream<T> / future<T>
 
-WASI 0.3 于 2025 年 11 月进入首个 **Release Candidate (RC)** 阶段，其核心变革是引入了**原生异步 I/O 抽象**：
+WASI 0.3.0 于 **2026-06-11 正式发布**（2025 年 11 月进入 RC 阶段；Wasmtime 43+ / jco 已支持），其核心变革是引入了**原生异步 I/O 抽象**：
 
 - **`stream<T>`**：表示异步数据流（如 HTTP 请求体、文件流），支持背压（backpressure）和批量读写
 - **`future<T>`**：表示一次性异步计算结果，对标 Rust `Future`、JavaScript `Promise`
@@ -21,7 +21,7 @@ WASI 0.3 于 2025 年 11 月进入首个 **Release Candidate (RC)** 阶段，其
 
 Bytecode Alliance 采取了**渐进式迁移**策略：
 
-| 维度 | WASI 0.2 | WASI 0.3 (RC) | 兼容性措施 |
+| 维度 | WASI 0.2 | WASI 0.3 | 兼容性措施 |
 |------|----------|---------------|-----------|
 | 异步模型 | 基于 `poll` 的显式轮询 | `stream<T>` / `future<T>` 原生 async | 0.3 运行时兼容执行 0.2 模块（通过适配层） |
 | 接口版本 | `wasi:http@0.2.0` | `wasi:http@0.3.x` | 同一组件可同时导出 0.2 和 0.3 接口 |

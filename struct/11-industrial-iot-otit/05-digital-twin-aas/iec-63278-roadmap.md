@@ -21,7 +21,7 @@ IEC 63278 定义了工业应用中资产管理壳（Asset Administration Shell, 
 | 部分 | 标题 | 状态 | 发布/预计时间 |
 |------|------|------|--------------|
 | **IEC 63278-1** | Asset Administration Shell structure（AAS 结构） | ✅ 已发布 | 2023-12-14 |
-| **IEC 63278-2** | Information meta model（信息元模型） | 🔄 DIS ballot / 开发中 | 预计 2026 下半年进入 PRVC，正式出版 2026 末–2027 初 |
+| **IEC 63278-2** | Information meta model（信息元模型） | 🔄 CDV 投票中（截止 2026-08-07） | 预计 2026 下半年进入 PRVC，正式出版 2026 末–2027 初 |
 | **IEC 63278-3** | Security provisions for Asset Administration Shells（安全规定） | 🔄 开发中 | 预计 2024-2025 |
 | **IEC 63278-4** | Use cases and modelling examples（用例和建模示例） | 🔄 开发中 | 预计 2025 |
 | **IEC 63278-5** | Interfaces（接口） | 📝 预研 | 预计 2026 |

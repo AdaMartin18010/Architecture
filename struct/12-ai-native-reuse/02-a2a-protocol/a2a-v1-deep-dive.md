@@ -2,7 +2,7 @@
 
 > **定位**：Agent-to-Agent 协议的全面技术对齐，明确 MCP 与 A2A 的互补关系，指导多 Agent 架构复用。
 > **权威来源**：a2a-protocol.org、Google A2A GitHub、Linux Foundation Agentic AI Foundation (AAIF)、Cloud Next 2026。
-> **版本状态**：A2A v1.2 当前稳定版（2026‑03‑12 GA，v1.0 一周年）
+> **版本状态**：A2A **v1.0.1** 为当前最新稳定版（v1.0.0 于 2026‑03‑12 GA；v1.0.1 维护版 2026‑05‑26 发布，仅 bug fix）
 
 ---
 
@@ -30,7 +30,7 @@
 2025-12-09    Linux Foundation 成立 AAIF（Agentic AI Foundation），同时托管 MCP + A2A
 2026-03-12    v1.0.0 GA（一周年）：Signed Agent Cards、gRPC、多租户
 2026-04-09    Cloud Next 2026：ADK 1.0 GA、AP2 支付协议、Latency 广播
-2026-Q2       v1.2 当前稳定版
+2026-05-26    v1.0.1 维护版（HTTP binding、TaskStatus 等 bug fix，当前最新）
 ```
 
 ---
@@ -102,7 +102,7 @@ submitted → working → [input-required | auth-required] → completed
 
 ### 5.1 根本区分
 
-| 维度 | **MCP 2025-11-25** | **A2A v1.2** |
+| 维度 | **MCP 2025-11-25** | **A2A v1.0.1** |
 |------|---------------------|--------------|
 | **层级** | 垂直：Agent → Tool | 水平：Agent → Agent |
 | **交互模型** | 无状态结构化函数调用 | 有状态多轮任务委托 |
@@ -234,7 +234,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 
 ---
 
-*文档生成时间：2026-06-06 · 对齐 A2A v1.2 / Cloud Next 2026 / Linux Foundation AAIF*
+*文档生成时间：2026-06-06 · 对齐 A2A v1.0.1（2026-05-26，当前最新稳定版）/ Linux Foundation AAIF*
 
 
 ---

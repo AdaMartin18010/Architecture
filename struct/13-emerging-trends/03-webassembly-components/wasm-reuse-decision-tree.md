@@ -8,7 +8,7 @@
 
 ## 1. 核心问题：何时选择 WASM 组件化？
 
-WebAssembly Component Model 3.0（2025-12 发布）与 WASI 0.3（2026-02 发布）使 WASM 从浏览器实验走向云原生核心。
+WebAssembly Component Model 3.0（2025-12 发布）与 WASI 0.3（2026-06-11 正式发布，Wasmtime 43+ / jco 支持）使 WASM 从浏览器实验走向云原生核心。
 但并非所有复用场景都适合 WASM。本决策树提供系统化的选型框架。
 
 ---
@@ -332,7 +332,7 @@ flowchart TB
 | 版本 | 时间 | 核心特性 | 对复用决策的影响 |
 |------|------|---------|---------------|
 | **WASI 0.2** | 2024-01 | Component Model + HTTP/网络 | 当前生产基线；推荐所有新项目 |
-| **WASI 0.3** | 2026-02 | 原生 async I/O；stream/future 类型 | Serverless 和事件驱动场景正式就绪 |
+| **WASI 0.3** | 2026-06-11 | 原生 async I/O；stream/future 类型；wasi:io 并入 Canonical ABI | Serverless 和事件驱动场景正式就绪 |
 | **WASI 0.3.x** | 2026 全年 | 取消令牌、线程、流优化 | 通用后端微服务可行性提升 |
 | **WASI 1.0** | 2026 底–2027 初 | 稳定长期标准 | 企业大规模采用的信号 |
 

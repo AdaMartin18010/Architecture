@@ -223,7 +223,7 @@ flowchart TD
 
 | 项目 | 状态 | 说明 |
 |:---|:---|:---|
-| **WASI 0.3** | 2026-02 正式发布 | 原生异步 I/O（futures/streams） |
+| **WASI 0.3** | 2026-06-11 正式发布（Wasmtime 43+ / jco 支持） | 原生异步 I/O（futures/streams） |
 | **WASI 1.0** | 预期 2026 末-2027 初 | 企业级稳定性保证 |
 | **wasm-pkg-tools** | 活跃开发 | OCI 兼容的 WASM 包管理 |
 | **Component Model** | Phase 2+ | 可组合性提升 |

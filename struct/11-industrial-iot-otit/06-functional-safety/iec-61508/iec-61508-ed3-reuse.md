@@ -148,9 +148,9 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 
 ## 7. 权威来源
 
-- IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>
-- IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*：<https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010>
-- IEC 61508 Ed.3 CDV 状态（2026-01-28 投票完成，预计 2026 末发布）：<https://webstore.iec.ch/publication/66912>
+- IEC 61508-3:2010 *Software safety requirements*：<https://webstore.iec.ch/en/publication/5517>（IEC 官方 webstore）
+- IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*：<https://webstore.iec.ch/en/publication/5520>（IEC 官方 webstore）
+- IEC 61508 Ed.3 状态（CDV 投票完成，RVC 2026-05-15 发布：65A/1231~1234/RVC；IEC 官方 Fcst. Publ. Date 2026-07）：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>（IEC SC 65A 项目仪表板；Ed.3 尚未正式出版，webstore 暂无 Ed.3 页面）
 - ISO 26262:2018 *Road vehicles — Functional safety*：<https://www.iso.org/standard/68383.html>
 - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
 - Intertek Blog: "Exploring the IEC 61508 Proven-In-Use Concept" (2026-01-22)
@@ -159,9 +159,9 @@ IEC 61508-6 附录 D 要求使用 χ² 分布计算置信区间：
 
 > **权威来源**（带核查日期）：
 >
-> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
-> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010>（核查日期：2026-07-09）
-> - IEC 61508 Ed.3 CDV/RVC 状态（IEC SC 65A 仪表板）：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>（核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*: <https://webstore.iec.ch/en/publication/5517>（IEC 官方 webstore，核查日期：2026-07-11）
+> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://webstore.iec.ch/en/publication/5520>（IEC 官方 webstore，核查日期：2026-07-11）
+> - IEC 61508 Ed.3 CDV/RVC 状态（IEC SC 65A 仪表板，RVC 2026-05-15、官方预测发布 2026-07）：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>（核查日期：2026-07-11）
 > - ISO 26262:2018 *Road vehicles — Functional safety*: <https://www.iso.org/standard/68383.html>（核查日期：2026-07-09）
 > - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>（核查日期：2026-07-09）
 

@@ -115,8 +115,8 @@
 |-----------|------|------|----------|------|
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
-| **IEC 61508** | **Ed.3 (认证基准 2026；IEC 正式发布预计 ~2027)** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起可采用 Ed.3 作为 SIL 2+ 认证基准** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构强制采用”与“IEC 国际标准正式发布” |
-| **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
+| **IEC 61508** | **Ed.3（CDV 投票完成，RVC 2026-05-15 发布：65A/1231~1234/RVC；IEC 官方 Fcst. Publ. Date 2026-07）** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起已可按 IEC 61508-3:2026 执行 SIL 2+ 认证** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构按 61508-3:2026 执行”与“IEC 国际标准正式出版（官方预测 2026-07）” |
+| **ISO 21448** | 2022 | Ed.2 修订中（ISO/AWI 21448，AWI 阶段） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；Ed.2 扩展覆盖 SAE L1-L5 驾驶自动化及远程用户操作/后台通信；发布时点未官宣 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
 | **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://reference.opcfoundation.org/specs/OPC-10000-80> | 现场级通信；OPC Foundation 主站对自动化访问限制较严，规范参考页（Parts 80–84）可正常访问 |
@@ -136,7 +136,7 @@
 | **NIST AI 600-1** | — | 已发布（2024-07 final；DOI 解析当前不稳定） | <https://airc.nist.gov/docs/NIST.AI.600-1.GenAI-Profile.ipd.pdf> | AI RMF Generative AI Profile（生成式 AI 风险管理）；IPD PDF 可稳定访问 |
 | **WebAssembly Core** | 3.0 | 已发布 | <https://webassembly.org> | W3C WebAssembly 核心规范 |
 | **WASM Component Model** | — | W3C Phase 1 | <https://component-model.bytecodealliance.org/> | 跨语言组件模型 |
-| **WASI** | 0.3 Preview | 2026-02 发布 preview；Wasmtime 37+ 支持 | <https://github.com/WebAssembly/WASI> | 原生 async I/O（stream/future）；WASI 1.0 目标 2026末/2027初 |
+| **WASI** | 0.3.0 | **2026-06-11 正式发布**；Wasmtime 43+ / jco 支持 | <https://github.com/WebAssembly/WASI> | 原生 async I/O（stream/future，wasi:io 并入 Canonical ABI）；WASI 1.0 目标 2026末/2027初 |
 | **DMN** | 1.5 | 2024 发布 | <https://www.omg.org/spec/DMN/1.5> | 决策模型与符号 |
 | **CloudEvents** | 1.0.2 | 已发布 | <https://cloudevents.io/> | 事件数据规范 |
 
@@ -180,6 +180,8 @@
 | 2026-07-06 | 更新为 v2.1：更新 DIS 42024/42042 状态、IEC 61508 Ed.3、ISO 21448 Ed.2、SLSA 1.2、NIST SSDF 1.2 状态；新增 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI | 自动对齐代理 |
 | 2026-07-07 | 更新为 v2.2：ArchiMate 4.0 增加“官方页面更新滞后”备注；新增 MCP 2026-07-28 RC 条目；细化 IEC 61508 Ed.3“认证机构采用 vs 标准发布”区分；关联 `content-fact-fix-2026-07.md` 勘误报告 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.4：补录 ISO/IEC 26564:2022、ISO/IEC 26565:2026、ISO/IEC 21838 系列（真实已发布但原表漏收）| 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.5（联网核对）：IEC 61508 Ed.3 状态订正为“CDV 投票完成、RVC 2026-05-15（65A/1231~1234/RVC）、IEC 官方 Fcst. Publ. Date 2026-07”，取代旧表述“预计 ~2027”；复核 DIS 42024/42042（Close of voting 40.60）、SSDF 1.2（IPD，意见截止 2026-01-30，仍 Draft）、ArchiMate 4.0（C260/W262，2026-04 发布）、MCP 2026-07-28 RC（2026-05-21 锁定，稳定版仍 2025-11-25）均与表内一致 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.6（联网核对）：ISO 21448 Ed.2 订正为“ISO/AWI 21448（AWI 阶段），现行 2022 版，发布时点未官宣”（iso.org/standard/93071），取代“预计 2026 发布”；WASI 0.3.0 订正为“已发布（2026-06-11，Preview 3）”，取代“2026-02 preview”；复核 IEC/IEEE 60802:2026（2026-06 发布）、IEC 63278-2 CDV（65/1193，投票截止 2026-08-07）、ISO/IEC 26566:2026（81437，2026-05 发布）、SysML v2.0/KerML 1.0（OMG formal/2026-03，已提交 ISO）、EU CRA 2024/2847（2026-09-11 漏洞报告义务生效、2027-12-11 全面适用）、OWASP Top 10 for Agentic Applications 2026（2025-12-09 发布）与 OWASP MCP Top 10（MCP01:2025–MCP10:2025，Phase 3 Beta）均与表内一致 | 自动对齐代理 |
 
 ---
 

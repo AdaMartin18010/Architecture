@@ -8801,7 +8801,6 @@
 {"id": "Term:模式_2__Gateway_统一路由", "name": "模式 2: Gateway 统一路由", "type": "Term", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md", "source_line": 513, "context": "模式 2: Gateway 统一路由"}
 {"id": "File:01-mcp-protocol_mcp-2025-11-25-authoritative_md", "name": "../01-mcp-protocol/mcp-2025-11-25-authoritative.md", "type": "File", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-authoritative.md", "source_line": 558, "context": ""}
 {"id": "File:struct_12-ai-native-reuse_02-a2a-protocol_a2a-v1-deep-dive_md", "name": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "type": "File", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "source_line": 1, "context": ""}
-{"id": "Protocol:A2A_v1_2", "name": "A2A v1.2", "type": "Protocol", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "source_line": 5, "context": "A2A v1.0.0 权威深度解析"}
 {"id": "Term:水平协议", "name": "水平协议", "type": "Term", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "source_line": 13, "context": "1. 关键结论（TL;DR）"}
 {"id": "Term:v1_0_headline", "name": "v1.0 headline", "type": "Term", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "source_line": 15, "context": "1. 关键结论（TL;DR）"}
 {"id": "Term:Signed_Agent_Cards", "name": "Signed Agent Cards", "type": "Term", "source_file": "struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md", "source_line": 15, "context": "1. 关键结论（TL;DR）"}

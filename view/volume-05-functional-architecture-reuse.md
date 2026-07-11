@@ -2032,7 +2032,7 @@ flowchart TD
 # LLM 函数复用与智能体功能架构
 >
 > 版本: 2026-06-06
-> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0.0.0.0.0.0
+> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0
 
 ## 1. LLM 函数调用生态演进
 
@@ -2196,7 +2196,7 @@ Agent 声明依赖：
 - Microsoft: AutoGen Documentation
 - Microsoft Agent Framework (MAF): 2025-10 Announcement, 2026-Q1 GA
 - Model Context Protocol: Specification 2025-11-25
-- Google A2A Protocol: v1.0 (Cloud Next 2026-04)
+- Google A2A Protocol: v1.0 (2026-03-12 GA；v1.0.1 维护版 2026-05-26)
 
 
 ---
@@ -2405,7 +2405,7 @@ MCP Tool 分类
 # MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0.0.0.0.0.0 (Google / Linux Foundation)
+> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0 (Google / Linux Foundation)
 > **定位**: 功能架构层最细粒度复用——AI 功能与 Agent 协作的协议化复用框架
 > **权威来源**:
 >

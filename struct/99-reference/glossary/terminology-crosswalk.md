@@ -147,7 +147,7 @@
 | IEC 63278 | - | Part 1: 2023; Parts 2-5 开发中 | AAS 系列标准 |
 | OPC UA FX | - | Parts 80-84 | C2C, Offline Engineering |
 | MCP | 2024-11-05 | 2025-11-25 | Streamable HTTP, OAuth 2.1, schema 拆分 |
-| A2A | v0.1 (2025-04) | v1.0 (2026-04) | Signed Agent Cards, gRPC, 多租户 |
+| A2A | v0.1 (2025-04) | v1.0 (2026-03) / v1.0.1 (2026-05) | Signed Agent Cards, gRPC, 多租户 |
 
 ---
 
