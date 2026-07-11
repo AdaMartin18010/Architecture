@@ -20,7 +20,7 @@
 | **ArchiMate 4.0** | 厂商预发布/未获官方确认 | ✅ **已正式发布（2026-04-27，Document C260，白皮书 W262）** | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 2026-06-12 |
 | **ISO/IEC/IEEE 12207:2026** | 仍在制定中 | ✅ **已发布（2026-04-29）** | <https://www.iso.org/standard/90219.html> | 2026-06-12 |
 | **ISO/IEC 30141:2024** | 被误审为“不存在 2024 版” | ✅ **已发布（2024-08）** | <https://www.iso.org/standard/88800.html> | 2026-06-12 |
-| **ISO/IEC 25010** | 多处误写为 2024 版 | ✅ **正式版为 2023** | <https://www.iso.org/standard/78175.html> | 2026-06-12 |
+| **ISO/IEC 25010** | 多处误写为 2024 版 | ✅ **正式版为 2023** | <https://www.iso.org/standard/78176.html> | 2026-06-12 |
 | **NIST SSDF 1.2** | 正式版 | ⚠️ **Initial Public Draft（征求意见稿）** | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> | 2026-06-12 |
 | **IEC 62443-4-2** | 误写为 2025 版 | ✅ **现行版为 2019** | <https://webstore.iec.ch/en/publication/34421> | 2026-06-12 |
 | **ISO/IEC 5338** | 制定中 | ✅ **2023 版已发布** | <https://www.iso.org/standard/81118.html> | 2026-06-12 |

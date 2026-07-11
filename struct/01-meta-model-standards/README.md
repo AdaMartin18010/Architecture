@@ -32,7 +32,7 @@
 
 | 标准/框架 | 权威 URL | 核查日期 |
 |---|---|---|
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-09 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42010:2022 OBP 在线浏览 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | <https://www.iso.org/standard/68982.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | <https://www.iso.org/standard/73436.html> | 2026-07-09 |
@@ -107,7 +107,7 @@
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-08）

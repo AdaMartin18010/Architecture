@@ -922,7 +922,7 @@ graph TB
 > 最后更新: 2026-07-08
 > 权威来源:
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO (核查日期: 2026-07-08)
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO (核查日期: 2026-07-08)
 > - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — *Systems and software engineering — SQuaRE — Product quality model* (核查日期: 2026-07-08)
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group (核查日期: 2026-07-08)
 > - [Software architecture - Wikipedia](https://en.wikipedia.org/wiki/Software_architecture) (核查日期: 2026-07-08)
@@ -1015,7 +1015,7 @@ graph TB
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK V4, TOGAF Standard 10
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > **核查日期**: 2026-07-07
@@ -1360,7 +1360,7 @@ flowchart TB
 > - Martin, R. C. (2012). *The Clean Architecture*. blog.cleancoder.com. <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html>
 > - Palermo, J. (2008). *The Onion Architecture*. <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/>
 > - Cockburn, A. (2005). *Hexagonal Architecture*. <https://alistair.cockburn.us/hexagonal-architecture/>
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - SWEBOK V4. *Software Engineering Body of Knowledge*. IEEE Computer Society. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
 >
 > **核查日期**: 2026-07-07
@@ -2355,7 +2355,7 @@ flowchart TD
 >
 > - CNCF: <https://www.cncf.io/>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-> - ISO 25010: <https://www.iso.org/standard/78175.html>
+> - ISO 25010: <https://www.iso.org/standard/78176.html>
 > **核查日期**: 2026-07-07
 
 ---
@@ -2698,7 +2698,7 @@ flowchart TB
 > - OASIS SOA Reference Architecture: <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=soa-ra>
 > - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > **核查日期**: 2026-07-07
 
 ---
@@ -3078,7 +3078,7 @@ flowchart LR
 - ArchiMate 4.0 — Application Service: <https://pubs.opengroup.org/architecture/archimate3-doc/chap09.html>
 - TOGAF Standard 10 — Application Architecture: <https://www.opengroup.org/togaf>
 - NIST SP 800-204 — Security Strategies for Microservices-based Application Systems: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74393.html>
 - OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>
 - AsyncAPI Specification: <https://www.asyncapi.com/en/spec-list>
 
@@ -3707,7 +3707,7 @@ flowchart TB
 > - Microsoft. *Azure Functions Documentation*. <https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview>
 > - Google Cloud. *Cloud Functions Documentation*. <https://cloud.google.com/functions/docs>
 > - Roberts, M. (2018). *Serverless Architectures*. Martin Fowler. <https://martinfowler.com/articles/serverless.html>
-> - ISO/IEC 25010:2023. *Systems and software engineering — Quality models*. <https://www.iso.org/standard/78175.html>
+> - ISO/IEC 25010:2023. *Systems and software engineering — Quality models*. <https://www.iso.org/standard/78176.html>
 >
 > **核查日期**: 2026-07-07
 
@@ -4664,7 +4664,7 @@ flowchart TD
 > - Data Mesh by Zhamak Dehghani: <https://martinfowler.com/articles/data-mesh-intro.html>
 > - DAMA-DMBOK: <https://dama.org/content/body-knowledge>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > **核查日期**: 2026-07-07
 
 ---
@@ -5396,7 +5396,7 @@ flowchart LR
 - Dehghani, Z. — *Data Mesh* (O'Reilly, 2022): <https://www.oreilly.com/library/view/data-mesh/9781492092384/>
 - DAMA International — DAMA-DMBOK Data Management Body of Knowledge: <https://dama.org/content/body-knowledge>
 - TOGAF Standard 10 — Data Architecture: <https://www.opengroup.org/togaf>
-- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74393.html>
 - OpenLineage: <https://openlineage.io/>
 - DataHub Project: <https://datahubproject.io/>
 - Databricks — Unity Catalog and Data Governance: <https://www.databricks.com/product/unity-catalog>
@@ -6700,7 +6700,7 @@ graph TB
 > - Fowler, M. (2005). *Event-Driven Architecture*. Martin Fowler. <https://martinfowler.com/articles/201701-event-driven.html>
 > - CNCF. *CloudEvents Specification*. <https://cloudevents.io/>
 > - Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.（Chapter 11: Stream Processing）
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 >
 > **核查日期**: 2026-07-07
 
@@ -6998,7 +6998,7 @@ NIST SP 800-204 系列将微服务安全抽象为 MS-SS-1 ~ MS-SS-11 控制点�
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, CNCF Cloud Native Trail Map, NIST SP 800-204 系列
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - CNCF: <https://www.cncf.io/>
 > - CNCF Cloud Native Landscape: <https://landscape.cncf.io/>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
@@ -7472,7 +7472,7 @@ flowchart LR
 
 ## 13. 权威来源
 
-- ISO/IEC/IEEE 42010:2022 — Systems and software engineering — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Systems and software engineering — Architecture description: <https://www.iso.org/standard/74393.html>
 - ISO/IEC 25010:2023 — Systems and software engineering — SQuaRE — Product quality model: <https://www.iso.org/standard/78176.html>
 - CNCF — Cloud Native Computing Foundation: <https://www.cncf.io/>
 - CNCF Cloud Native Landscape: <https://landscape.cncf.io/>

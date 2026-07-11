@@ -1091,4 +1091,4 @@ flowchart TB
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |
 | RiSE 复用成熟度框架参考 | <https://rise.org.br> | 2026-06-10 |
-| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78175.html> | 2026-06-10 |
+| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78176.html> | 2026-06-10 |

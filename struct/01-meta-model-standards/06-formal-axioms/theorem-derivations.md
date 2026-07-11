@@ -614,7 +614,7 @@ $$
 > - [M. J. C. Gordon, Programming Language Theory and its Implementation](https://www.cl.cam.ac.uk/~mjcg/) — 形式化语义与定理证明
 > - [Leslie Lamport, Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers](https://lamport.azurewebsites.net/tla/book.html) — TLA+ 规约语言
 > - [Daniel Jackson, Software Abstractions: Logic, Language, and Analysis](https://mitpress.mit.edu/9780262528900/software-abstractions/) — Alloy 与轻量级形式化方法
-> - [ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description](https://www.iso.org/standard/74296.html) — 架构描述标准
+> - [ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description](https://www.iso.org/standard/74393.html) — 架构描述标准
 > - [W. W. B. R. Wand and R. Weber, An Ontological Model of an Information System](https://ieeexplore.ieee.org/document/79346) — BWW 本体论
 >
 > **核查日期**: 2026-07-07

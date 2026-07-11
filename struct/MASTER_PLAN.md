@@ -317,7 +317,7 @@
 
 > **权威来源**:
 >
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - ISO/IEC/IEEE 15288:2023. *Systems and software engineering — System life cycle processes*. <https://www.iso.org/standard/81702.html>
 > - ISO/IEC/IEEE 12207:2026. *Systems and software engineering — Software life cycle processes*. <https://www.iso.org/standard/90219.html>
 > - Project Management Institute. *PMBOK® Guide — Seventh Edition*. <https://www.pmi.org/pmbok-guide-standards/foundational/pmbok>

@@ -135,7 +135,7 @@
 ## 权威来源
 
 - Anderson, L. W., & Krathwohl, D. R. (2001). *A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives*. <https://www.uky.edu/~rsand1/china2018/texts/Anderson-Krathwohl%20Taxonomy.pdf>
-- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 - OpenSSF. *SLSA 1.2*. <https://slsa.dev/spec/v1.2/levels>
 - OWASP. *Software Component Verification Standard*. <https://owasp.org/scvs/>

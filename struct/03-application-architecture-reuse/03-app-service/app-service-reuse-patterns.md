@@ -8,7 +8,7 @@
 > - OASIS SOA Reference Architecture: <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=soa-ra>
 > - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > **核查日期**: 2026-07-07
 
 ---
@@ -388,7 +388,7 @@ flowchart LR
 - ArchiMate 4.0 — Application Service: <https://pubs.opengroup.org/architecture/archimate3-doc/chap09.html>
 - TOGAF Standard 10 — Application Architecture: <https://www.opengroup.org/togaf>
 - NIST SP 800-204 — Security Strategies for Microservices-based Application Systems: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74393.html>
 - OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>
 - AsyncAPI Specification: <https://www.asyncapi.com/en/spec-list>
 

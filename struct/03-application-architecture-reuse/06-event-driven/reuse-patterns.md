@@ -506,6 +506,6 @@ graph TB
 > - Fowler, M. (2005). *Event-Driven Architecture*. Martin Fowler. <https://martinfowler.com/articles/201701-event-driven.html>
 > - CNCF. *CloudEvents Specification*. <https://cloudevents.io/>
 > - Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.（Chapter 11: Stream Processing）
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 >
 > **核查日期**: 2026-07-07

@@ -5,7 +5,7 @@
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK V4, TOGAF Standard 10
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > **核查日期**: 2026-07-07
@@ -350,7 +350,7 @@ flowchart TB
 > - Martin, R. C. (2012). *The Clean Architecture*. blog.cleancoder.com. <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html>
 > - Palermo, J. (2008). *The Onion Architecture*. <https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/>
 > - Cockburn, A. (2005). *Hexagonal Architecture*. <https://alistair.cockburn.us/hexagonal-architecture/>
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - SWEBOK V4. *Software Engineering Body of Knowledge*. IEEE Computer Society. <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
 >
 > **核查日期**: 2026-07-07

@@ -11,7 +11,7 @@
 > | Vovk et al., *Algorithmic Learning in a Random World* | Springer, 2005 |
 > | NIST AI 600-1 Generative AI Profile | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> |
 > | NIST AI RMF 1.0 | <https://www.nist.gov/itl/ai-risk-management-framework> |
-> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> |
+> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> |
 
 ---
 
@@ -698,7 +698,7 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 6. MCP Specification 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25/>
 7. NIST AI 600-1, *Generative Artificial Intelligence Profile*. <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf>
 8. NIST AI RMF 1.0. <https://www.nist.gov/itl/ai-risk-management-framework>
-9. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+9. ISO/IEC/IEEE 42010:2022, *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 
 > **权威来源**（已核查 2026-07-08）：
 >
@@ -711,7 +711,7 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 > | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25/> |
 > | NIST AI 600-1 Generative AI Profile | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> |
 > | NIST AI RMF 1.0 | <https://www.nist.gov/itl/ai-risk-management-framework> |
-> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> |
+> | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> |
 >
 > **核查日期**: 2026-07-08
 

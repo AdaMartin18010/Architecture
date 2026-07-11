@@ -2376,7 +2376,7 @@ flowchart TB
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |
 | RiSE 复用成熟度框架参考 | <https://rise.org.br> | 2026-06-10 |
-| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78175.html> | 2026-06-10 |
+| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78176.html> | 2026-06-10 |
 
 
 ---
@@ -4123,7 +4123,7 @@ flowchart TB
 > | FinOps Foundation — Cost Allocation Capability | <https://www.finops.org/framework/capabilities/manage/allocate-costs/> | 2026-07-07 |
 > | AWS — Cost Allocation Tags Best Practices | <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html> | 2026-07-07 |
 > | DORA — State of DevOps Report 2024 | <https://dora.dev/research/2024/dora-report/> | 2026-07-07 |
-> | ISO/IEC 26564:2022 — Software Reuse Measurement and Metrics | <https://www.iso.org/standard/81622.html> | 2026-07-07 |
+> | ISO/IEC 26564:2022 — Software Reuse Measurement and Metrics | <https://www.iso.org/standard/43123.html> | 2026-07-07 |
 
 - Opslyft: "Cloud Unit Economics & Cloud COGS Playbook" (2026)
 - Finout: "Top 50 FinOps Tools to Consider in 2026" (2026-05)
@@ -7482,7 +7482,7 @@ ISO/IEC/IEEE 42030:2019 推荐的方法之一是 ATAM（Architecture Tradeoff An
 | 来源 | URL | 核查日期 |
 |------|-----|----------|
 | ISO/IEC 25040:2024 软件质量评估过程 | <https://www.iso.org/standard/81094.html> | 2026-06-10 |
-| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78175.html> | 2026-06-10 |
+| ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78176.html> | 2026-06-10 |
 | ISO/IEC 25041:2023 评估指南 | <https://www.iso.org/standard/80695.html> | 2026-06-10 |
 | ISO/IEC/IEEE 42030:2019 架构评估框架 | <https://www.iso.org/standard/66475.html> | 2026-06-10 |
 | SQuaRE 标准族概览 | <https://www.iso.org/committee/45020/x/catalogue/p/1/u/1/w/1/d/0> | 2026-06-10 |

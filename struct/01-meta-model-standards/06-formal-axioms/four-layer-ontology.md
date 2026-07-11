@@ -5,7 +5,7 @@
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF Standard 10, ArchiMate 4.0, ISO/IEC 26550:2015
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - ArchiMate 4.0 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
@@ -334,7 +334,7 @@ flowchart LR
 
 > **权威来源**:
 >
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 > - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
@@ -445,7 +445,7 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO/IEC

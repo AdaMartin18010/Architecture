@@ -7,7 +7,7 @@
 >
 > - CNCF: <https://www.cncf.io/>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
-> - ISO 25010: <https://www.iso.org/standard/78175.html>
+> - ISO 25010: <https://www.iso.org/standard/78176.html>
 > **核查日期**: 2026-07-07
 
 ---

@@ -265,7 +265,7 @@ graph TB
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
@@ -1196,7 +1196,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 > 最后更新: 2026-06-08
 > 权威来源:
 >
-> - <https://www.iso.org/standard/78175.html> (ISO/IEC 25010:2023)
+> - <https://www.iso.org/standard/78176.html> (ISO/IEC 25010:2023)
 > - <https://www.iso.org/standard/35733.html> (ISO/IEC 25012:2008 数据质量模型)
 > - <https://owasp.org/www-project-top-ten/> (OWASP Top 10)
 
@@ -1221,7 +1221,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 
 > **权威来源**:
 >
-> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78175.html)
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 > - [ISO/IEC/IEEE Standards](https://www.iso.org)
 > - 核查日期：2026-07-07
 
@@ -1386,7 +1386,7 @@ ISO/IEC 25010:2023 Product Quality Model
 ---
 
 > 最后更新: 2026-06-08
-> 权威来源: <https://www.iso.org/standard/78175.html>
+> 权威来源: <https://www.iso.org/standard/78176.html>
 
 
 ---
@@ -1612,7 +1612,7 @@ ISO/IEC/IEEE 42010:2022 (架构描述)
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线预览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en)（核查日期：2026-07-08）
@@ -1819,7 +1819,7 @@ graph LR
 | 来源 | URL |
 |:---|:---|
 | Wikipedia - ISO/IEC/IEEE 42010 | <https://en.wikipedia.org/wiki/ISO/IEC/IEEE_42010> |
-| ISO 42010:2022 官方页面 | <https://www.iso.org/standard/74296.html> |
+| ISO 42010:2022 官方页面 | <https://www.iso.org/standard/74393.html> |
 | IEEE 1471-2000 | <https://standards.ieee.org/standard/1471-2000.html> |
 | The Open Group - TOGAF | <https://www.opengroup.org/togaf> |
 | The Open Group - ArchiMate 4 Specification | <https://www.opengroup.org/archimate-licensed-downloads> |
@@ -1988,7 +1988,7 @@ AD = (EoI, Stakeholders, Concerns, {Viewpoint_i}, {ModelKind_j}, {View_k}, {Corr
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO 官方页面（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO 官方页面（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
@@ -2120,7 +2120,7 @@ ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**�
 >
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42020:ed-1:v1:en) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
 > - [The Open Group ArchiMate 4.0 Specification (C260)](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（核查日期：2026-07-09）
@@ -2327,7 +2327,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 | ArchiMate 4 Specification (The Open Group) | <https://www.opengroup.org/archimate-licensed-downloads> |
 | ArchiMate 4 Announcement (The Open Group) | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | TOGAF 10 | <https://www.opengroup.org/togaf> |
-| ISO 42010:2022 | <https://www.iso.org/standard/74296.html> |
+| ISO 42010:2022 | <https://www.iso.org/standard/74393.html> |
 | ISO DIS 42024 / 42042 | <https://www.iso.org/committee/45086/x/catalogue/> |
 | OMG Specifications | <https://www.omg.org/spec/> |
 | FEAF v2 | <https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/egov_docs/fea_v2.pdf> |
@@ -2803,7 +2803,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
 > - [The Open Group TOGAF Architecture Content](https://publications.opengroup.org/togaf-library) — The Open Group（核查日期：2026-07-09）
 > - [The Open Group TOGAF Library — Enterprise Continuum](https://pubs.opengroup.org/togaf-standard/enterprisecontinuum/) — The Open Group（核查日期：2026-07-09）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
 > - [The Open Group ArchiMate 4.0 Specification (C260 / W262)](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（核查日期：2026-07-09）
@@ -2816,7 +2816,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 
 1. The Open Group. *TOGAF Standard 10*. 2022. <https://www.opengroup.org/togaf>
 2. The Open Group. *TOGAF Series Guide: A Practitioners' Approach to Developing Enterprise Architecture Following the TOGAF ADM*. 2023.
-3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
+3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74393.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022, Annex F — Architecture description frameworks*. 2022.
 5. Visual Paradigm. "Comprehensive Guide to the Enterprise Continuum in TOGAF". 2025. <https://www.visual-paradigm.com/guide/togaf/what-is-togaf/>
 6. Ardoq. "What Is TOGAF? Definition and Uses of This EA Framework". 2024. <https://www.ardoq.com/knowledge-hub/togaf>
@@ -3130,7 +3130,7 @@ graph TB
 >
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [TOGAF - Wikipedia](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)
 >
 > **核查日期**：2026-07-07
@@ -3379,11 +3379,11 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 - **ISO/IEC 26550:2015, Clause 4.2** — 定义了产品线参考模型的五个组成部分（策略规划、组织、方法论、系统和组件集成、配置管理）。本映射将这五个组成部分分别映射到 ISO/IEC/IEEE 42010:2022 的架构描述元素和 ISO/IEC/IEEE 42020:2019 的架构过程。[[来源](https://www.iso.org/obp/ui/#iso:std:iso-iec:26550:ed-2:v1:en)]
 - **ISO/IEC 26550:2015, Clause 5.3** — 明确了领域工程与应用工程的双轨生命周期，以及可变性在两条轨道之间的传递机制。本映射的第 3、4 节逐层展开了这一双轨机制与 ISO/IEC/IEEE 42010:2022/42020 的对应关系。
-- **ISO/IEC 26580:2021** — 作为 ISO/IEC 26550:2015 的配套标准，提供了基于特征的产品线工程方法与工具指南，进一步细化了 Feature Model、Variation Point、Binding 等概念的操作定义。[[来源](https://www.iso.org/standard/71883.html)]
+- **ISO/IEC 26580:2021** — 作为 ISO/IEC 26550:2015 的配套标准，提供了基于特征的产品线工程方法与工具指南，进一步细化了 Feature Model、Variation Point、Binding 等概念的操作定义。[[来源](https://www.iso.org/standard/43139.html)]
 
 ### 7.2 与 ISO 42010:2022 的对齐
 
-- **ISO/IEC/IEEE 42010:2022, Clause 5.2** — 定义了架构描述的概念模型，包括 Entity of Interest、Stakeholder、Concern、Viewpoint、View、View Component、Model Kind、Correspondence 等。本映射将产品线（Product Line）和成员产品（Member Product）分别映射为不同粒度的 EoI，将 Core Asset 映射为可复用的 View Component。[[来源](https://www.iso.org/standard/74296.html)]
+- **ISO/IEC/IEEE 42010:2022, Clause 5.2** — 定义了架构描述的概念模型，包括 Entity of Interest、Stakeholder、Concern、Viewpoint、View、View Component、Model Kind、Correspondence 等。本映射将产品线（Product Line）和成员产品（Member Product）分别映射为不同粒度的 EoI，将 Core Asset 映射为可复用的 View Component。[[来源](https://www.iso.org/standard/74393.html)]
 - **ISO/IEC/IEEE 42010:2022, Clause 6.8** — 引入 View Component 作为"one or more architecture views 的可分离部分"，恰好容纳了 Core Asset（共性/变性部分）作为跨视图复用单元的定位。
 - **ISO/IEC/IEEE 42010:2022, Clause 6.10** — 要求记录 Architecture Decision 和 Architecture Rationale。本映射将 Binding Time Decision、Variability Scoping Decision 等关键决策纳入此框架。
 
@@ -3404,8 +3404,8 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 ## 8. 参考索引
 
 1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/69529.html>
-2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/71883.html>
-3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
+2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/43139.html>
+3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74393.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42020:2019 — Software, systems and enterprise — Architecture processes*. 2019. <https://www.iso.org/standard/68982.html>
 5. Pohl, K., Böckle, G., & van der Linden, F. *Software Product Line Engineering: Foundations, Principles and Techniques*. Springer, 2005.（ISO/IEC 26550:2015 的核心参考来源之一）
 6. Clements, P. & Northrop, L. *Software Product Lines: Practices and Patterns*. Addison-Wesley, 2002.
@@ -3448,8 +3448,8 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 > **权威来源**：
 >
 > - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html)（核查日期：2026-07-08）
-> - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/71883.html)（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/43139.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html)（核查日期：2026-07-08）
 >
@@ -3804,7 +3804,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方�
 
 1. The Open Group. *ArchiMate 3.2 Specification*. 2023. <https://pubs.opengroup.org/architecture/archimate32-doc/>
 2. The Open Group. *ArchiMate 4.0*（正式发布，2026-04-27，Document C260，白皮书 W262）. <https://www.opengroup.org/archimate-licensed-downloads>
-3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
+3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74393.html>
 4. 4m4.it. "ArchiMate 4.0 and the Cartography of Complexity". 2026. <https://4m4.it/longforms/archimate_4_and_the_cartography_of_complexity/>
 5. LeanIX. "What is ArchiMate? Key Components & Comparisons". <https://www.leanix.net/en/wiki/ea/what-is-archimate>
 6. Visual Paradigm. "ArchiMate Diagram Tutorial". <https://online.visual-paradigm.com/diagrams/tutorials/archimate-tutorial/>
@@ -3921,7 +3921,7 @@ graph TB
 > - [The Open Group - ArchiMate 4.0 Changes White Paper W262](https://publications.opengroup.org/w262) — The Open Group（核查日期：2026-07-09）
 > - [The Open Group - ArchiMate 4.0 发布公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-08）
 > - [The Open Group - ArchiMate 3.2 Specification](https://pubs.opengroup.org/architecture/archimate32-doc/) — The Open Group（核查日期：2026-07-09）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
@@ -5711,13 +5711,13 @@ graph TD
 - [DOLCE - Wikipedia](https://en.wikipedia.org/wiki/DOLCE)
 - [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
 - Bunge, M. (1977). *Treatise on Basic Philosophy: Ontology I*. <https://www.springer.com/gp/book/9789027707188>
-- ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/74307.html>
+- ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/78927.html>
 - Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
 
 > **权威来源核查**：
 >
-> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/74307.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/78927.html) — ISO（核查日期：2026-07-11 实测确认）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
@@ -6658,7 +6658,7 @@ P.4                                                                             
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF Standard 10, ArchiMate 4.0, ISO/IEC 26550:2015
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > - ArchiMate 4.0 (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
 > - ArchiMate 4.0 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
@@ -6987,7 +6987,7 @@ flowchart LR
 
 > **权威来源**:
 >
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 > - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
@@ -7098,7 +7098,7 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 
 > **权威来源**：
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
 > - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO/IEC
@@ -7738,7 +7738,7 @@ $$
 > - [M. J. C. Gordon, Programming Language Theory and its Implementation](https://www.cl.cam.ac.uk/~mjcg/) — 形式化语义与定理证明
 > - [Leslie Lamport, Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers](https://lamport.azurewebsites.net/tla/book.html) — TLA+ 规约语言
 > - [Daniel Jackson, Software Abstractions: Logic, Language, and Analysis](https://mitpress.mit.edu/9780262528900/software-abstractions/) — Alloy 与轻量级形式化方法
-> - [ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description](https://www.iso.org/standard/74296.html) — 架构描述标准
+> - [ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description](https://www.iso.org/standard/74393.html) — 架构描述标准
 > - [W. W. B. R. Wand and R. Weber, An Ontological Model of an Information System](https://ieeexplore.ieee.org/document/79346) — BWW 本体论
 >
 > **核查日期**: 2026-07-07
@@ -8105,7 +8105,7 @@ graph TB
 > - [OMG RAS v2.2 Normative PDF](https://www.omg.org/spec/RAS/2.2/PDF) — OMG
 > - [Code reuse - Wikipedia](https://en.wikipedia.org/wiki/Code_reuse)
 > - [Component-based software engineering - Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 >
 > **核查日期**：2026-07-07
 
@@ -9009,7 +9009,7 @@ part rs_sat_b : Satellite {
 | [1] | OMG SysML v2 Specification, Version 2.0, 2023 | <https://www.omg.org/spec/SysML/> | 2026-06-10 |
 | [2] | OMG KerML Specification (Kernel Modeling Language) | <https://www.omg.org/spec/KerML/> | 2026-06-10 |
 | [3] | OMG SysML v2 REST API Specification | <https://github.com/Systems-Modeling/SysML-v2-API-Java-Client> | 2026-06-10 |
-| [4] | ISO/IEC/IEEE 42010:2022, Architecture Description | <https://www.iso.org/standard/74296.html> | 2026-06-10 |
+| [4] | ISO/IEC/IEEE 42010:2022, Architecture Description | <https://www.iso.org/standard/74393.html> | 2026-06-10 |
 | [5] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/69529.html> | 2026-06-10 |
 | [6] | OMG Reusable Asset Specification (RAS) 2.0 | <https://www.omg.org/spec/RAS/> | 2026-06-10 |
 | [7] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
@@ -9763,7 +9763,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 
 | 标准/框架 | 权威 URL | 核查日期 |
 |---|---|---|
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-09 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42010:2022 OBP 在线浏览 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | <https://www.iso.org/standard/68982.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | <https://www.iso.org/standard/73436.html> | 2026-07-09 |
@@ -9838,7 +9838,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-08）

@@ -670,13 +670,13 @@ graph TD
 - [DOLCE - Wikipedia](https://en.wikipedia.org/wiki/DOLCE)
 - [Ontology (information science) - Wikipedia](https://en.wikipedia.org/wiki/Ontology_(information_science))
 - Bunge, M. (1977). *Treatise on Basic Philosophy: Ontology I*. <https://www.springer.com/gp/book/9789027707188>
-- ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/74307.html>
+- ISO/IEC 21838-3:2023. DOLCE. <https://www.iso.org/standard/78927.html>
 - Lamport, L. *Specifying Systems*. <https://lamport.azurewebsites.net/tla/book.html>
 
 > **权威来源核查**：
 >
-> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/74307.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 21838-3:2023 — DOLCE top-level ontology](https://www.iso.org/standard/78927.html) — ISO（核查日期：2026-07-11 实测确认）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）

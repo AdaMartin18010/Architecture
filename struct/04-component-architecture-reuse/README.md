@@ -25,7 +25,7 @@
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
 |:---|:---|:---|:---|:---|
 | UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
 | GoF Design Patterns | 1994 | 23 Creational/Structural/Behavioral Patterns | <https://en.wikipedia.org/wiki/Design_Patterns> | 2026-07-08 |
 | Enterprise Integration Patterns | 2003/2024 | 65 Messaging Patterns (Hohpe & Woolf) | <https://www.enterpriseintegrationpatterns.com/> | 2026-07-08 |

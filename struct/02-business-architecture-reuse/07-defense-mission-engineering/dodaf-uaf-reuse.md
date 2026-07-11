@@ -505,7 +505,7 @@ FMN 将 LOI 概念应用于任务网络的规划与评估：
    核查日期: 2026-06-10
 
 4. **ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description**
-   URL: <https://www.iso.org/standard/74296.html>
+   URL: <https://www.iso.org/standard/74393.html>
    核查日期: 2026-06-10
 
 5. **NATO Federated Mission Networking (FMN) Implementation Plan**

@@ -108,7 +108,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 > 最后更新: 2026-06-08
 > 权威来源:
 >
-> - <https://www.iso.org/standard/78175.html> (ISO/IEC 25010:2023)
+> - <https://www.iso.org/standard/78176.html> (ISO/IEC 25010:2023)
 > - <https://www.iso.org/standard/35733.html> (ISO/IEC 25012:2008 数据质量模型)
 > - <https://owasp.org/www-project-top-ten/> (OWASP Top 10)
 
@@ -133,6 +133,6 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 
 > **权威来源**:
 >
-> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78175.html)
+> - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)
 > - [ISO/IEC/IEEE Standards](https://www.iso.org)
 > - 核查日期：2026-07-07

@@ -479,7 +479,7 @@ flowchart TB
 > | FinOps Foundation — Cost Allocation Capability | <https://www.finops.org/framework/capabilities/manage/allocate-costs/> | 2026-07-07 |
 > | AWS — Cost Allocation Tags Best Practices | <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html> | 2026-07-07 |
 > | DORA — State of DevOps Report 2024 | <https://dora.dev/research/2024/dora-report/> | 2026-07-07 |
-> | ISO/IEC 26564:2022 — Software Reuse Measurement and Metrics | <https://www.iso.org/standard/81622.html> | 2026-07-07 |
+> | ISO/IEC 26564:2022 — Software Reuse Measurement and Metrics | <https://www.iso.org/standard/43123.html> | 2026-07-07 |
 
 - Opslyft: "Cloud Unit Economics & Cloud COGS Playbook" (2026)
 - Finout: "Top 50 FinOps Tools to Consider in 2026" (2026-05)

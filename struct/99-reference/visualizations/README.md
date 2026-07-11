@@ -105,7 +105,7 @@ done
 > **权威来源**:
 >
 > - [Mermaid Documentation](https://mermaid.js.org/) — Mermaid
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 >
 > **核查日期**: 2026-07-07
 

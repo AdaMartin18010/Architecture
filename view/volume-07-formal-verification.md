@@ -1626,7 +1626,7 @@ BusinessAsset$0 -> Mapping$0 -> ComponentAsset$1
 - [Alloy (specification language) - Wikipedia](https://en.wikipedia.org/wiki/Alloy_(specification_language))
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
 - Jackson, D. *Software Abstractions*. <https://alloytools.org/book.html>
-- ISO/IEC/IEEE 42010:2022. <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022. <https://www.iso.org/standard/74393.html>
 - The Open Group. *TOGAF Standard, Version 10*. <https://pubs.opengroup.org/togaf-standard/>
 
 ---

@@ -234,7 +234,7 @@ flowchart TD
 | wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-07-08 |
 | OSGi Alliance | <https://www.osgi.org/> | 2026-07-08 |
 | JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 
 
 ---
@@ -383,7 +383,7 @@ flowchart LR
 > **权威来源**:
 >
 > - [OMG UML 2.5.1 Specification](https://www.omg.org/spec/UML/2.5.1/) — UML 组件与组件图；核查日期：2026-07-08
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准；核查日期：2026-07-08
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — 架构描述标准；核查日期：2026-07-08
 > - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance；核查日期：2026-07-08
 > - [OSGi Alliance](https://www.osgi.org/) — OSGi R8 规范；核查日期：2026-07-08
 > - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/) — Java Platform Module System；核查日期：2026-07-08

@@ -296,7 +296,7 @@ graph TB
 >
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260）
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [TOGAF - Wikipedia](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)
 >
 > **核查日期**：2026-07-07

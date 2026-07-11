@@ -180,7 +180,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 | ArchiMate 4 Specification (The Open Group) | <https://www.opengroup.org/archimate-licensed-downloads> |
 | ArchiMate 4 Announcement (The Open Group) | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | TOGAF 10 | <https://www.opengroup.org/togaf> |
-| ISO 42010:2022 | <https://www.iso.org/standard/74296.html> |
+| ISO 42010:2022 | <https://www.iso.org/standard/74393.html> |
 | ISO DIS 42024 / 42042 | <https://www.iso.org/committee/45086/x/catalogue/> |
 | OMG Specifications | <https://www.omg.org/spec/> |
 | FEAF v2 | <https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/egov_docs/fea_v2.pdf> |

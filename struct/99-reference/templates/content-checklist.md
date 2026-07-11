@@ -145,7 +145,7 @@
 ```markdown
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group
 >
 > **核查日期**: 2026-07-07
@@ -225,7 +225,7 @@ python scripts/quality-gate-v2.py struct/ --report report.md
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 > - [Bloom's Taxonomy of Educational Objectives](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy) — Wikipedia
 >
 > **核查日期**: 2026-07-07

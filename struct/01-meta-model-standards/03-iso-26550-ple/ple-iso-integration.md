@@ -229,11 +229,11 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 - **ISO/IEC 26550:2015, Clause 4.2** — 定义了产品线参考模型的五个组成部分（策略规划、组织、方法论、系统和组件集成、配置管理）。本映射将这五个组成部分分别映射到 ISO/IEC/IEEE 42010:2022 的架构描述元素和 ISO/IEC/IEEE 42020:2019 的架构过程。[[来源](https://www.iso.org/obp/ui/#iso:std:iso-iec:26550:ed-2:v1:en)]
 - **ISO/IEC 26550:2015, Clause 5.3** — 明确了领域工程与应用工程的双轨生命周期，以及可变性在两条轨道之间的传递机制。本映射的第 3、4 节逐层展开了这一双轨机制与 ISO/IEC/IEEE 42010:2022/42020 的对应关系。
-- **ISO/IEC 26580:2021** — 作为 ISO/IEC 26550:2015 的配套标准，提供了基于特征的产品线工程方法与工具指南，进一步细化了 Feature Model、Variation Point、Binding 等概念的操作定义。[[来源](https://www.iso.org/standard/71883.html)]
+- **ISO/IEC 26580:2021** — 作为 ISO/IEC 26550:2015 的配套标准，提供了基于特征的产品线工程方法与工具指南，进一步细化了 Feature Model、Variation Point、Binding 等概念的操作定义。[[来源](https://www.iso.org/standard/43139.html)]
 
 ### 7.2 与 ISO 42010:2022 的对齐
 
-- **ISO/IEC/IEEE 42010:2022, Clause 5.2** — 定义了架构描述的概念模型，包括 Entity of Interest、Stakeholder、Concern、Viewpoint、View、View Component、Model Kind、Correspondence 等。本映射将产品线（Product Line）和成员产品（Member Product）分别映射为不同粒度的 EoI，将 Core Asset 映射为可复用的 View Component。[[来源](https://www.iso.org/standard/74296.html)]
+- **ISO/IEC/IEEE 42010:2022, Clause 5.2** — 定义了架构描述的概念模型，包括 Entity of Interest、Stakeholder、Concern、Viewpoint、View、View Component、Model Kind、Correspondence 等。本映射将产品线（Product Line）和成员产品（Member Product）分别映射为不同粒度的 EoI，将 Core Asset 映射为可复用的 View Component。[[来源](https://www.iso.org/standard/74393.html)]
 - **ISO/IEC/IEEE 42010:2022, Clause 6.8** — 引入 View Component 作为"one or more architecture views 的可分离部分"，恰好容纳了 Core Asset（共性/变性部分）作为跨视图复用单元的定位。
 - **ISO/IEC/IEEE 42010:2022, Clause 6.10** — 要求记录 Architecture Decision 和 Architecture Rationale。本映射将 Binding Time Decision、Variability Scoping Decision 等关键决策纳入此框架。
 
@@ -254,8 +254,8 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 ## 8. 参考索引
 
 1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/69529.html>
-2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/71883.html>
-3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
+2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/43139.html>
+3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74393.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42020:2019 — Software, systems and enterprise — Architecture processes*. 2019. <https://www.iso.org/standard/68982.html>
 5. Pohl, K., Böckle, G., & van der Linden, F. *Software Product Line Engineering: Foundations, Principles and Techniques*. Springer, 2005.（ISO/IEC 26550:2015 的核心参考来源之一）
 6. Clements, P. & Northrop, L. *Software Product Lines: Practices and Patterns*. Addison-Wesley, 2002.
@@ -298,8 +298,8 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 > **权威来源**：
 >
 > - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html)（核查日期：2026-07-08）
-> - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/71883.html)（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/43139.html)（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74393.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html)（核查日期：2026-07-08）
 >

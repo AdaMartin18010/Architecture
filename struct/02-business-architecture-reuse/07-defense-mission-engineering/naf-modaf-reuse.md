@@ -572,7 +572,7 @@ JISR 的架构复用实践在互操作性等级（LOI）上取得了显著进展
     核查日期: 2026-06-10
 
 11. **ISO/IEC/IEEE 42010:2022, Systems and software engineering — Architecture description**
-    URL: <https://www.iso.org/standard/74296.html>
+    URL: <https://www.iso.org/standard/74393.html>
     核查日期: 2026-06-10
 
 12. **NATO Defence Planning Process (NDPP) Capability Targets**

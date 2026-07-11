@@ -420,7 +420,7 @@ describe('Inventory API contract', () => {
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
 | OMG UML 2.5.1 | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471:2000 | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
 | OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-08 |
 | gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-08 |

@@ -592,7 +592,7 @@ OPC UA 的安全机制（X.509 证书、用户令牌、安全通道）可以与 
    （ISO 官方标准页面，第二版 IoT 参考架构）
 
 2. **ISO/IEC/IEEE 42010:2022 - Architecture Description**
-   URL: <https://www.iso.org/standard/74296.html>
+   URL: <https://www.iso.org/standard/74393.html>
    核查日期: 2026-06-10
    （系统和软件工程架构描述国际标准）
 

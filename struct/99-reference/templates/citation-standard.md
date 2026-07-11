@@ -39,7 +39,7 @@
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, ISO/IEC 12207:2026
 > **核查日期**: 2026-06-10
 > **来源 URL**:
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - ISO 12207: <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:12207:ed-2:v1:en>
 ```
 
@@ -55,7 +55,7 @@
 正文中首次提及某标准时，必须使用完整格式：
 
 ```markdown
-**ISO/IEC/IEEE 42010:2022**（架构描述）[来源](https://www.iso.org/standard/74296.html)（核查日期: 2026-06-10）
+**ISO/IEC/IEEE 42010:2022**（架构描述）[来源](https://www.iso.org/standard/74393.html)（核查日期: 2026-06-10）
 ```
 
 后续可简写为：

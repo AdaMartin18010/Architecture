@@ -264,7 +264,7 @@ flowchart TD
 | wasm-pkg-tools | <https://github.com/bytecodealliance/wasm-pkg-tools> | 2026-07-08 |
 | OSGi Alliance | <https://www.osgi.org/> | 2026-07-08 |
 | JPMS (Java 9+) | <https://openjdk.org/projects/jigsaw/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 
 
 ---
@@ -413,7 +413,7 @@ flowchart LR
 > **权威来源**:
 >
 > - [OMG UML 2.5.1 Specification](https://www.omg.org/spec/UML/2.5.1/) — UML 组件与组件图；核查日期：2026-07-08
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准；核查日期：2026-07-08
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — 架构描述标准；核查日期：2026-07-08
 > - [WASM Component Model](https://component-model.bytecodealliance.org/) — Bytecode Alliance；核查日期：2026-07-08
 > - [OSGi Alliance](https://www.osgi.org/) — OSGi R8 规范；核查日期：2026-07-08
 > - [JPMS (Java 9+)](https://openjdk.org/projects/jigsaw/) — Java Platform Module System；核查日期：2026-07-08
@@ -855,7 +855,7 @@ describe('Inventory API contract', () => {
 | 来源 | URL | 核查日期 |
 |:---|:---|:---|
 | OMG UML 2.5.1 | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471:2000 | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
 | OpenAPI Specification 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-07-08 |
 | gRPC / Protocol Buffers | <https://grpc.io/> | 2026-07-08 |
@@ -3674,7 +3674,7 @@ Artifact Repository
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
 |:---|:---|:---|:---|:---|
 | UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
-| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74296.html> | 2026-07-08 |
+| ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
 | GoF Design Patterns | 1994 | 23 Creational/Structural/Behavioral Patterns | <https://en.wikipedia.org/wiki/Design_Patterns> | 2026-07-08 |
 | Enterprise Integration Patterns | 2003/2024 | 65 Messaging Patterns (Hohpe & Woolf) | <https://www.enterpriseintegrationpatterns.com/> | 2026-07-08 |

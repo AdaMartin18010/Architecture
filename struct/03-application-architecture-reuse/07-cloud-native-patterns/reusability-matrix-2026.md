@@ -5,7 +5,7 @@
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, CNCF Cloud Native Trail Map, NIST SP 800-204 系列
 > **来源 URL**:
 >
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > - CNCF: <https://www.cncf.io/>
 > - CNCF Cloud Native Landscape: <https://landscape.cncf.io/>
 > - NIST SP 800-204: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
@@ -479,7 +479,7 @@ flowchart LR
 
 ## 13. 权威来源
 
-- ISO/IEC/IEEE 42010:2022 — Systems and software engineering — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Systems and software engineering — Architecture description: <https://www.iso.org/standard/74393.html>
 - ISO/IEC 25010:2023 — Systems and software engineering — SQuaRE — Product quality model: <https://www.iso.org/standard/78176.html>
 - CNCF — Cloud Native Computing Foundation: <https://www.cncf.io/>
 - CNCF Cloud Native Landscape: <https://landscape.cncf.io/>

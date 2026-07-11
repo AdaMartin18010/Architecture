@@ -433,7 +433,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 
 > **权威来源**:
 >
-> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74296.html>
+> - ISO/IEC/IEEE 42010:2022. *Systems and software engineering — Architecture description*. <https://www.iso.org/standard/74393.html>
 > - ISO/IEC 26550:2015. *Software engineering — Reference model for product line engineering and management*. <https://www.iso.org/standard/69529.html>
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 > - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>

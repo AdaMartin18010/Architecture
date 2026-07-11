@@ -103,13 +103,13 @@ graph TD
 
 | 标准 | 主题 | 状态 | 链接 | 核查日期 |
 |------|------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) | 2026-07-09 |
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | 01-元模型/复用 | 生效 | [ISO](https://www.iso.org/standard/68982.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | 01-元模型/评估 | 生效 | [ISO](https://www.iso.org/standard/73436.html) | 2026-07-09 |
 | ISO/IEC 26550:2015 | 跨层复用 | 生效 | [ISO](https://www.iso.org/standard/69529.html) | 2026-07-09 |
 | ISO/IEC 26565:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81436.html) | 2026-07-09 |
 | ISO/IEC 26566:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81437.html) | 2026-07-09 |
-| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78175.html) | 2026-07-09 |
+| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78176.html) | 2026-07-09 |
 | ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 2026-07-09 |
 | ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/90219.html) | 2026-07-09 |
 | TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) | 2026-07-09 |

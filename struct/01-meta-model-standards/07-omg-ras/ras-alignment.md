@@ -324,7 +324,7 @@ graph TB
 > - [OMG RAS v2.2 Normative PDF](https://www.omg.org/spec/RAS/2.2/PDF) — OMG
 > - [Code reuse - Wikipedia](https://en.wikipedia.org/wiki/Code_reuse)
 > - [Component-based software engineering - Wikipedia](https://en.wikipedia.org/wiki/Component-based_software_engineering)
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
+> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO
 >
 > **核查日期**：2026-07-07
 

@@ -41,8 +41,8 @@
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
-| **ISO/IEC 21838** | -1:2021 / -2:2021（BFO）/ -3:2023（DOLCE）/ -4:2023（TUpper） | 已发布；-5（UFO）DIS 阶段 | <https://www.iso.org/standard/74307.html> | Top-Level Ontologies（TLO）；项目内引用 74307 为第 3 分部 DOLCE 的 URL；-4 TUpper = iso.org/standard/78928；-5 UFO 于 2025-12 进入 DIS，投票中 |
-| **ISO/IEC/IEEE 42010** | 2022 | 现行 | <https://www.iso.org/standard/74296.html> | 架构描述（Architecture Description） |
+| **ISO/IEC 21838** | -1:2021 / -2:2021（BFO）/ -3:2023（DOLCE）/ -4:2023（TUpper） | 已发布；-5（UFO）DIS 阶段 | <https://www.iso.org/standard/71954.html> | Top-Level Ontologies（TLO）；链接为 -1（Requirements，实测确认）；-4 TUpper = iso.org/standard/78928；-5 UFO = iso.org/standard/89915（2025-12 进入 DIS） |
+| **ISO/IEC/IEEE 42010** | 2022 | 现行 | <https://www.iso.org/standard/74393.html> | 架构描述（Architecture Description）；URL 经 iso.org 直连实测确认（原误填 74296=ISO/IEC 22989） |
 | **ISO/IEC/IEEE 42020** | 2019 | 现行；计划修订 | <https://www.iso.org/standard/68982.html> | 架构过程（Architecture Processes） |
 | **ISO/IEC/IEEE 42030** | 2019 | 现行；AWI 修订中 | <https://www.iso.org/standard/73436.html> | 架构评估（Architecture Evaluation） |
 | **ISO/IEC/IEEE AWI 42030** | — | 已注册工作项 | <https://www.iso.org/standard/93814.html> | 42030 修订项目 |
@@ -51,13 +51,13 @@
 | **ISO/IEC/IEEE 12207** | **2026** | **已发布** | <https://www.iso.org/standard/90219.html> | 软件生命周期过程；2026-04-29 发布，取代 2017 版 |
 | **ISO/IEC/IEEE 15288** | 2023 | 现行 | <https://www.iso.org/standard/81702.html> | 系统生命周期过程 |
 | **ISO/IEC/IEEE 24765** | 2017 | 现行；计划修订 | <https://www.iso.org/standard/71952.html> | 系统与软件工程词汇 |
-| **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
+| **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78176.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版**；URL 经 iso.org 直连实测确认（原误填 78175=ISO/IEC 25002:2024） |
 | **ISO/IEC 25040** | 2024 | 已发布 | <https://www.iso.org/standard/83467.html> | 质量评估框架 |
 | **ISO/IEC 26550** | 2015 | 现行 | <https://www.iso.org/standard/69529.html> | 产品线工程参考模型；**注意：不存在 2025 版** |
-| **ISO/IEC 26564** | 2022 | 已发布 | <https://www.iso.org/standard/81622.html> | 产品线度量（product line measurement）；URL 待 ISO 直连复核 |
-| **ISO/IEC 26565** | 2026 | 已发布 | <https://www.iso.org/standard/81436.html> | 产品线成熟度框架（product line maturity framework）；2026-05-29 发布；URL 待 ISO 直连复核 |
+| **ISO/IEC 26564** | 2022 | 已发布 | <https://www.iso.org/standard/43123.html> | 产品线度量（product line measurement）；2022-12 首版；URL 经 iso.org 直连实测确认（原误填 81622=ISO/TS 24560-1）|
+| **ISO/IEC 26565** | 2026 | 已发布 | <https://www.iso.org/standard/81436.html> | 产品线成熟度框架（product line maturity framework）；2026-05-29 发布；URL 经 iso.org 直连实测确认 |
 | **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
-| **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
+| **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/43139.html> | 基于特征的产品线工程（feature-based PLE）；URL 经 iso.org 直连实测确认（原误填 71883=ISO 10204） |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
 | **IEEE 1517** | 2010 | 现行 | <https://standards.ieee.org/ieee/1517/4603/> | 软件生命周期复用过程 |
 | **OMG RAS** | v2.2 | 已发布 | <https://www.omg.org/spec/RAS/2.2/PDF> | 可复用资产规范（Reusable Asset Specification） |
@@ -183,6 +183,7 @@
 | 2026-07-11 | 更新为 v2.5（联网核对）：IEC 61508 Ed.3 状态订正为“CDV 投票完成、RVC 2026-05-15（65A/1231~1234/RVC）、IEC 官方 Fcst. Publ. Date 2026-07”，取代旧表述“预计 ~2027”；复核 DIS 42024/42042（Close of voting 40.60）、SSDF 1.2（IPD，意见截止 2026-01-30，仍 Draft）、ArchiMate 4.0（C260/W262，2026-04 发布）、MCP 2026-07-28 RC（2026-05-21 锁定，稳定版仍 2025-11-25）均与表内一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.6（联网核对）：ISO 21448 Ed.2 订正为“ISO/AWI 21448（AWI 阶段），现行 2022 版，发布时点未官宣”（iso.org/standard/93071），取代“预计 2026 发布”；WASI 0.3.0 订正为“已发布（2026-06-11，Preview 3）”，取代“2026-02 preview”；复核 IEC/IEEE 60802:2026（2026-06 发布）、IEC 63278-2 CDV（65/1193，投票截止 2026-08-07）、ISO/IEC 26566:2026（81437，2026-05 发布）、SysML v2.0/KerML 1.0（OMG formal/2026-03，已提交 ISO）、EU CRA 2024/2847（2026-09-11 漏洞报告义务生效、2027-12-11 全面适用）、OWASP Top 10 for Agentic Applications 2026（2025-12-09 发布）与 OWASP MCP Top 10（MCP01:2025–MCP10:2025，Phase 3 Beta）均与表内一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.7（联网核对）：GSF SCI for AI 订正为 2025-12 ratified（GSF 公告 2025-12-17，基于 ISO/IEC 21031:2024）；ISO/IEC 21838 系列补全为 -1:2021/-2:2021(BFO)/-3:2023(DOLCE)/-4:2023(TUpper)，-5(UFO) 2025-12 进入 DIS；复核 OMG RAS v2.2（2005-11）、FAIR4RS v1.0（2022-06 RDA 批准）、CNCF Platform Engineering Maturity Model（2023-11 首版，无 v1.0 编号）、Microsoft Agent Governance Toolkit（2026-04-02 开源）、OSPS Baseline v2026.02.19、OPC UA FX Part 80-84 v1.00.03（2026-05-23）、ISO/IEC/IEEE 12207:2026（2026-04-29 发布）、ISO/IEC 25010:2023（现行）均一致 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.8（iso.org 全表链接实测复核，Mozilla UA 直连成功，23 条中 4 条纠错）：ISO/IEC 21838 链接 74307（实为 ISO 17889-2 瓷砖）→ 71954（-1:2021）；ISO/IEC/IEEE 42010 链接 74296（实为 ISO/IEC 22989:2022）→ 74393；ISO/IEC 25010 链接 78175（实为 ISO/IEC 25002:2024）→ 78176；ISO/IEC 26580 链接 71883（实为 ISO 10204 铁矿石）→ 43139；ISO/IEC 26564 链接 81622（实为 ISO/TS 24560-1 医疗）→ 43123；ISO/IEC 26565/26566（81436/81437）、26550（69529）复核确认 | 自动对齐代理 |
 
 ---
 

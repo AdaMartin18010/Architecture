@@ -8,7 +8,7 @@
 > - Data Mesh by Zhamak Dehghani: <https://martinfowler.com/articles/data-mesh-intro.html>
 > - DAMA-DMBOK: <https://dama.org/content/body-knowledge>
 > - TOGAF Standard 10: <https://www.opengroup.org/togaf>
-> - ISO 42010: <https://www.iso.org/standard/74296.html>
+> - ISO 42010: <https://www.iso.org/standard/74393.html>
 > **核查日期**: 2026-07-07
 
 ---
@@ -740,7 +740,7 @@ flowchart LR
 - Dehghani, Z. — *Data Mesh* (O'Reilly, 2022): <https://www.oreilly.com/library/view/data-mesh/9781492092384/>
 - DAMA International — DAMA-DMBOK Data Management Body of Knowledge: <https://dama.org/content/body-knowledge>
 - TOGAF Standard 10 — Data Architecture: <https://www.opengroup.org/togaf>
-- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
+- ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74393.html>
 - OpenLineage: <https://openlineage.io/>
 - DataHub Project: <https://datahubproject.io/>
 - Databricks — Unity Catalog and Data Governance: <https://www.databricks.com/product/unity-catalog>

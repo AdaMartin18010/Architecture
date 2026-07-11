@@ -437,7 +437,7 @@
 | WASI 路线图 | <https://wasi.dev/roadmap> | 2026-06-08 | WASI 版本核实 |
 | Warg Registry | <https://github.com/bytecodealliance/registry/>（已停止积极开发，社区转向 OCI-based registry） | 2026-06-08 | Warg 状态核实 |
 | Bytecode Alliance | <https://bytecodealliance.org/> | 2026-06-08 | WASM 生态 |
-| ISO 25010:2023 | <https://www.iso.org/standard/78175.html> | 2026-06-08 | 质量模型版本 |
+| ISO 25010:2023 | <https://www.iso.org/standard/78176.html> | 2026-06-08 | 质量模型版本 |
 | Verina 论文 | arXiv (Ye et al., 2025/2026) | 2026-06-08 | CP + 代码生成 |
 | AutoVerus (OOPSLA) | Yang et al., 2025 | 2026-06-08 | Rust 形式化验证 |
 | Cherian & Candès (NeurIPS 2024) | Large language model validity via enhanced conformal prediction methods | 2026-06-08 | CP + LLM |

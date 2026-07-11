@@ -357,6 +357,6 @@ flowchart TB
 > - Microsoft. *Azure Functions Documentation*. <https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview>
 > - Google Cloud. *Cloud Functions Documentation*. <https://cloud.google.com/functions/docs>
 > - Roberts, M. (2018). *Serverless Architectures*. Martin Fowler. <https://martinfowler.com/articles/serverless.html>
-> - ISO/IEC 25010:2023. *Systems and software engineering — Quality models*. <https://www.iso.org/standard/78175.html>
+> - ISO/IEC 25010:2023. *Systems and software engineering — Quality models*. <https://www.iso.org/standard/78176.html>
 >
 > **核查日期**: 2026-07-07

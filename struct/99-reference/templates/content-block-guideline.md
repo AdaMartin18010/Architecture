@@ -117,7 +117,7 @@
 
 ## 权威来源
 
-- [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — 架构描述标准
+- [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — 架构描述标准
 - [The Chicago Manual of Style, 17th ed.](https://www.chicagomanualofstyle.org/) — 学术写作避免冗余的规范
 - [Google Technical Writing Course](https://developers.google.com/tech-writing) — 技术文档简洁性最佳实践
 
