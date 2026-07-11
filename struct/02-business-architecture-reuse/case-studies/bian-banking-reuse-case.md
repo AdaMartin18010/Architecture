@@ -863,7 +863,7 @@ BIAN 服务域可映射到 Zachman 矩阵的 C2-1（What, Business）、C2-2（H
 > - [Decision Model and Notation - Wikipedia](https://en.wikipedia.org/wiki/Decision_Model_and_Notation) — DMN 关联
 > - [BIAN 官方网站](https://bian.org/) — Service Landscape 12.0 与服务域规范
 > - [The Open Group TOGAF](https://www.opengroup.org/togaf) — 架构开发方法
-> - [FEA Framework](https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/) — 联邦企业架构框架
+> - [FEA Framework](https://obamawhitehouse.archives.gov/omb/e-gov/fea) — 联邦企业架构框架
 >
 > **核查日期**: 2026-07-07
 
@@ -1060,7 +1060,7 @@ flowchart TB
 | 3 | BIAN 服务域详细规范与 API 定义 | <https://bian.org/servicelandscape/> | 2026-07-08 |
 | 4 | BIAN Service Landscape 14.0 发布新闻（2026-05） | <https://bian.org/news-room/bian-unveils-new-service-landscape-14-0-to-accelerate-ai-ready-banking-architecture/> | 2026-07-08 |
 | 5 | TOGAF 10 标准文档（The Open Group） | <https://www.opengroup.org/togaf> | 2026-07-08 |
-| 6 | FEA Framework 6.0（美国联邦企业架构框架） | <https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/> | 2026-07-08 |
+| 6 | FEA Framework 6.0（美国联邦企业架构框架） | <https://obamawhitehouse.archives.gov/omb/e-gov/fea> | 2026-07-08 |
 | 7 | ISO 20022 金融报文标准官方站点 | <https://www.iso20022.org/> | 2026-07-08 |
 | 8 | DMN 1.5 规范（Object Management Group） | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
 | 9 | BPMN 2.0.2 规范（Object Management Group） | <https://www.omg.org/spec/BPMN/2.0.2/> | 2026-07-08 |

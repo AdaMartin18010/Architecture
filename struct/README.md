@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-07（Phase A 止血与基础修复版）
 > **定位**: 基于 `view/` 全部文档内容全面梳理后，对齐网络权威国际化内容，构建的可持续推进主题结构；当前正在进行统计口径校准、模板污染清理与内容深度补齐
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 15288:2023, 24765, 26550:2015, **26564:2022, 26565:2026**, 26566:2026, **21838 系列**, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3 (CDV/认证基准 2026; IEC 正式发布预计 ~2027), ISA-95, MCP 2025-11-25, A2A v1.0.0.0.0.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, 12207:2026, 15288:2023, 24765, 26550:2015, **26564:2022, 26565:2026**, 26566:2026, **21838 系列**, TOGAF Standard 10, ArchiMate 4.0, SLSA 1.2, IEC 61508 Ed.3 (CDV/认证基准 2026; IEC 正式发布预计 ~2027), ISA-95, MCP 2025-11-25, A2A v1.0.0.0.0.0.0, OWASP MCP Top 10, Microsoft Agent Governance Toolkit, GSF SCI for AI
 > **权威参考**: Carnegie Mellon SEI, USC COCOMO II, ETH Zurich (RustBelt/Prusti), Inria (Aeneas/Coq), NASA RRL
 
 ---

@@ -75,7 +75,7 @@
 | **TOGAF Standard** | 10th Edition | 现行 | <https://www.opengroup.org/togaf> | The Open Group 企业架构框架 |
 | **ArchiMate** | 4.0 | **已正式发布（2026-04-27，Document C260，白皮书 W262）** | <https://www.opengroup.org/archimate-licensed-downloads> | The Open Group EA 建模语言；与 ArchiMate 3.2 向后兼容；官方发布公告见 <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | **ArchiMate** | 3.2 | 仍有效 | <https://pubs.opengroup.org/architecture/archimate32-doc/> | 与 4.0 向后兼容 |
-| **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://www.whitehouse.gov/omb/management/egov/> | 美国联邦企业架构参考模型 |
+| **FEA** | 2.0 / BRM / ARM / SRM | 现行 | <https://obamawhitehouse.archives.gov/omb/e-gov/fea> | 美国联邦企业架构参考模型；原 whitehouse.gov 链接已迁移至国家档案馆归档页 |
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
 | **DMN** | 1.5 | 2024 发布 | <https://www.omg.org/spec/DMN/1.5> | 决策模型与符号 |
 | **OMG SysML v2** | v2 | 已发布 | <https://www.omg.org/spec/SysML/> | 系统建模语言第二版 |
@@ -87,12 +87,12 @@
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
 | **SLSA** | 1.2 | 已发布 | <https://slsa.dev/spec/v1.2/> | Multi-Track；Build/Source Track 已发布；Build Environment Track / Build Level 4 仍在开发 |
-| **NIST SSDF** | v1.2 | **Initial Public Draft（最终版预计 2026-Q3）** | <https://csrc.nist.gov/publications/detail/sp/800-218r1/draft> | SP 800-218 Rev. 1，2025-12-17 发布征求意见稿；**非最终版** |
-| **OWASP Top 10 for Agentic AI** | 2025/2026 | 已发布 | <https://owasp.org/www-project-agentic-ai/> | 自主 Agent 应用安全风险（ASI01–ASI10） |
-| **OWASP MCP Top 10** | 2025/2026 | 已发布 | <https://cycode.com/blog/owasp-mcp-top-10/> | Model Context Protocol 专用安全风险 |
+| **NIST SSDF** | v1.2 | **Initial Public Draft（最终版预计 2026-Q3）** | <https://csrc.nist.gov/pubs/sp/800/218/r1/ipd> | SP 800-218 Rev. 1，2025-12-17 发布征求意见稿；**非最终版** |
+| **OWASP Top 10 for Agentic AI** | 2026 | 已发布 | <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/> | 自主 Agent 应用安全风险（ASI01–ASI10） |
+| **OWASP MCP Top 10** | 2025/2026 | 已发布（Beta / v0.1） | <https://owasp.org/www-project-mcp-top-10/> | Model Context Protocol 专用安全风险 |
 | **Microsoft Agent Governance Toolkit** | 1.0 | **2026-04-02 开源** | <https://github.com/microsoft/agent-governance-toolkit> | Agent 运行时治理、审计、策略执行；覆盖 OWASP Agentic Top 10 |
 | **NIST SP 800-218** | v1.1 | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-218/final> | SSDF v1.1 正式版 |
-| **NIST SP 800-218A** | — | 已发布 | <https://csrc.nist.gov/publications/detail/sp/800-218a/final> | 生成式 AI 安全开发实践社区配置文件 |
+| **NIST SP 800-218A** | — | 已发布（2024-07 final） | <https://csrc.nist.gov/pubs/sp/800/218/a/final> | 生成式 AI 安全开发实践社区配置文件 |
 | **OWASP Top 10** | 2025 | 已发布 | <https://owasp.org/www-project-top-ten/> | — |
 | **OWASP ASVS** | 5.0.0 | 已发布 | <https://owasp.org/www-project-application-security-verification-standard/> | — |
 | **OWASP SCVS** | 1.0 | 已发布 | <https://owasp.org/www-project-software-component-verification-standard/> | 软件组件验证标准 |
@@ -104,7 +104,7 @@
 | **NIST SP 800-161 Rev. 1** | — | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final> | 供应链网络安全风险管理 |
 | **NIST SP 800-204** | 系列 | 2025 更新 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 微服务安全架构 |
 | **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/publication/66912> | IACS 安全产品开发生命周期要求 |
-| **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/publication/66913> | IACS 组件技术安全要求；**注意：不是 2025 版** |
+| **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/en/publication/34421> | IACS 组件技术安全要求；**注意：不是 2025 版** |
 | **IEC TS 62443-6-2** | 2025 | 已发布 | <https://webstore.iec.ch/en/publication/67463> | IACS 组件评估方法论 |
 
 ---
@@ -119,9 +119,9 @@
 | **ISO 21448** | 2022 | Ed.2 制定中（预计 2026） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；扩展至 SAE L3-L5 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
-| **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/> | 现场级通信 |
+| **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://reference.opcfoundation.org/specs/OPC-10000-80> | 现场级通信；OPC Foundation 主站对自动化访问限制较严，规范参考页（Parts 80–84）可正常访问 |
 | **IEC/IEEE 60802** | — | 草案/完善中 | <https://www.iec.ch/dyn/www/f?p=103:38:0::::::> | TSN 工业自动化配置文件 |
-| **PLCopen Motion Control** | Part 1–4 + Safety | 现行 | <https://plcopen.org/technical-activities/motion-control> | 运动控制功能块 |
+| **PLCopen Motion Control** | Part 1–4 + Safety | 现行 | <https://www.plcopen.org/standards/motion-control/> | 运动控制功能块 |
 
 ---
 
@@ -133,7 +133,7 @@
 | **MCP** | 2026-07-28 | **Release Candidate（RC）已发布（2026-05-29）；最终版预计 2026-07-28** | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases> | 协议改为 stateless，新增 Extensions 框架、Tasks、MCP Apps；引用时必须标注 RC |
 | **A2A** | **v1.0.0** | **已发布** | <https://a2a-protocol.org/latest/> | Agent-to-Agent Protocol；Google Cloud Next 2026-04 GA；Signed Agent Cards / AP2 |
 | **NIST AI RMF** | 1.0 | 已发布 | <https://www.nist.gov/itl/ai-risk-management-framework> | AI 风险管理框架 |
-| **NIST AI 600-1** | — | 已发布 | <https://www.nist.gov/artificial-intelligence/ai-600-1> | AI 红队测试 |
+| **NIST AI 600-1** | — | 已发布（2024-07 final；DOI 解析当前不稳定） | <https://airc.nist.gov/docs/NIST.AI.600-1.GenAI-Profile.ipd.pdf> | AI RMF Generative AI Profile（生成式 AI 风险管理）；IPD PDF 可稳定访问 |
 | **WebAssembly Core** | 3.0 | 已发布 | <https://webassembly.org> | W3C WebAssembly 核心规范 |
 | **WASM Component Model** | — | W3C Phase 1 | <https://component-model.bytecodealliance.org/> | 跨语言组件模型 |
 | **WASI** | 0.3 Preview | 2026-02 发布 preview；Wasmtime 37+ 支持 | <https://github.com/WebAssembly/WASI> | 原生 async I/O（stream/future）；WASI 1.0 目标 2026末/2027初 |

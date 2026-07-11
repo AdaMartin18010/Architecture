@@ -107,7 +107,7 @@
 
 ### 12 AI 原生架构复用
 
-- **协议**: MCP 2025-11-25、A2A v1.0.0.0.0、ANP（实验性）
+- **协议**: MCP 2025-11-25、A2A v1.0.0.0.0.0、ANP（实验性）
 - **Agent 架构**: ReAct、Plan-and-Execute、Multi-Agent、主管-工作者
 - **模型资产**: RAG、LoRA/QLoRA/DoRA、Adapter、Prompt 模板库
 - **运行时治理**: 温度控制、漂移检测、Guardrails、Token 预算

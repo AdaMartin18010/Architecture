@@ -27,7 +27,7 @@
   - [4. ASVS 作为复用组件安全准入标准的实施路径](#4-asvs-作为复用组件安全准入标准的实施路径)
     - [4.1 三阶段实施模型](#41-三阶段实施模型)
     - [4.2 检查清单模板](#42-检查清单模板)
-  - [5. ASVS 与 ISO 25010:2023 / NIST SSDF / SLSA 1.2 协同框架](#5-asvs-与-iso-250102023--nist-ssdf--slsa-12-协同框架)
+  - [5. ASVS 与 ISO/IEC 25010:2023 / NIST SSDF / SLSA 1.2 协同框架](#5-asvs-与-iso-250102023--nist-ssdf--slsa-12-协同框架)
     - [5.1 四维协同矩阵](#51-四维协同矩阵)
     - [5.2 联合实施建议](#52-联合实施建议)
   - [6. 案例：基于 ASVS 的第三方组件安全审查](#6-案例基于-asvs-的第三方组件安全审查)
@@ -240,12 +240,12 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 
 **对于 L2 场景**:
 
-- ASVS L2 + ISO 25010:2023 Security 评估 + NIST SSDF 全实践 + SLSA Build L2
+- ASVS L2 + ISO/IEC 25010:2023 Security 评估 + NIST SSDF 全实践 + SLSA Build L2
 - 重点: 完整 SBOM + 自动扫描 + 溯源验证
 
 **对于 L3 场景**:
 
-- ASVS L3 + ISO 25010:2023 全质量特性评估 + NIST SSDF + SLSA Build L3 + 形式化验证
+- ASVS L3 + ISO/IEC 25010:2023 全质量特性评估 + NIST SSDF + SLSA Build L3 + 形式化验证
 - 重点: 审计级保证 + 可重现构建 + 安全证明
 
 ---

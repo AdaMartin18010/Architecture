@@ -3,7 +3,7 @@
 > **版本**: 2026-06-08 (Phase 2 扩展版)
 > **对应规约**: `cross-layer-mapping.als`, `isa95-hierarchy.als`
 > **交叉引用**: `struct/01-meta-model-standards/06-formal-axioms/axiom-system.md`, `struct/11-industrial-iot-otit/01-isa-95-model/`
-> **理论来源**: Jackson, D. *Software Abstractions*; ISO/IEC 42010:2022; TOGAF Standard 10; ANSI/ISA-95.00.01-2010
+> **理论来源**: Jackson, D. *Software Abstractions*; ISO/IEC/IEEE 42010:2022; TOGAF Standard 10; ANSI/ISA-95.00.01-2010
 
 ---
 

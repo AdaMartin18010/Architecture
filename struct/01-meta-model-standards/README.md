@@ -12,7 +12,7 @@
 - ISO/IEC 25010:2023 / 25040:2024 质量模型与评估过程
 - **OMG RAS v2.2** 可复用资产规范（Classification / Solution / Usage / RelatedAssets）
 - **FAIR4RS** 原则与软件资产可持续复用
-- **IEEE 1517-2010** 软件生命周期复用过程
+- **ISO/IEC/IEEE 1517:2010-2010** 软件生命周期复用过程
 - SWEBOK V4 的知识领域对齐
 - 复用视角的形式化公理体系（元公理、存在性公理、结构性公理、过程性公理）
 
@@ -62,11 +62,11 @@
 - [x] ISO/IEC/IEEE 42020:2019 架构过程映射 (`01-iso-420xx-family/iso-42020-2019-architecture-processes.md`)
 - [x] TOGAF Standard 10 ABB/SBB 与 ISO/IEC/IEEE 42010:2022 详细映射 (`02-togaf-10-alignment/detailed-mapping.md`)
 - [x] ArchiMate 3.2/4.0 与 ISO/IEC/IEEE 42010:2022 对照表 (`04-archimate-4/archimate-iso-mapping.md`)；已按 4.0 正式发布状态更新
-- [x] ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 交叉映射 (`03-iso-26550-ple/ple-iso-integration.md`)
+- [x] ISO/IEC 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 交叉映射 (`03-iso-26550-ple/ple-iso-integration.md`)
 - [x] SWEBOK V4 知识领域对应关系 (`05-swebok-v4/swebok-alignment.md`)
 - [x] OMG RAS v2.2 与四层复用架构对齐 (`07-omg-ras/ras-alignment.md`)
 - [x] FAIR4RS 原则与软件复用对照 (`08-fair4rs/fair4rs-alignment.md`)
-- [x] IEEE 1517-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 复用过程映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
+- [x] ISO/IEC/IEEE 1517:2010-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 复用过程映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
 - [x] DIS 42024/42042 当前状态对齐 (`01-iso-420xx-family/iso-42024-42042-dis-alignment.md`)
 - [x] ISO/IEC 25010:2023 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2023-update.md`)
 - [x] ArchiMate 4.0 映射更新（2026-04-27 已正式发布，映射已完成）

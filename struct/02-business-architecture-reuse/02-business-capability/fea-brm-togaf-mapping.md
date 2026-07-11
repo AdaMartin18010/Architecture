@@ -287,7 +287,7 @@ TOGAF Architecture Continuum
 
 ## 参考索引
 
-- OMB: *The Business Reference Model Version 2.0* (2004-06) — [https://www.dragon1.com/downloads/fea_brm_release_document_rev_2.pdf](https://www.dragon1.com/downloads/fea_brm_release_document_rev_2.pdf)
+- OMB: *The Business Reference Model Version 2.0* (2004-06) — [https://obamawhitehouse.archives.gov/omb/e-gov/fea](https://obamawhitehouse.archives.gov/omb/e-gov/fea)（归档页含 FEA/BRM 系列文档链接；原 dragon1 PDF 镜像仍可作为历史副本引用）
 - DoD: *DoD Enterprise Architecture Business Reference Model* (V0.4, 2004) — DoD Supplement to FEA BRM 2.0
 - DoDAF 2.02: *DoD Architecture Framework* — Reference Models 章节对 FEA BRM 的权威解释
 - The Open Group: *TOGAF Standard, 10th Edition* (2022) — Phase B: Business Architecture

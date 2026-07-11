@@ -437,7 +437,7 @@ flowchart LR
 
 > **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 接口契约驱动的复用：从 IDL 到 OpenAPI 到 WIT 的演进
-> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/ISO/IEC/IEEE 42010:2022, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
+> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/IEEE 42010:2022, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
 > **状态**: ✅ 已完成
 
 ---

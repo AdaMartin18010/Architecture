@@ -37,7 +37,7 @@
 - `struct/SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` — Phase 0–5 + Phase D 完整路线图。
 - `struct/README.md` — 对齐实际目录结构与最新路线图。
 - `struct/99-reference/tools/requirements.txt` — 项目级 Python 依赖索引。
-- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0.0.0.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
+- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0.0.0.0.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
 
 ### 已知边界
 
@@ -100,7 +100,7 @@
 
 ### 元模型与标准对齐
 
-- **IEEE 1517 复用过程映射**: `01/01-iso-420xx-family/ieee-1517-reuse-processes.md` — 三过程组(领域/应用/管理)、与12207/26550对照、30项检查清单
+- **ISO/IEC/IEEE 1517:2010 复用过程映射**: `01/01-iso-420xx-family/ieee-1517-reuse-processes.md` — 三过程组(领域/应用/管理)、与12207/26550对照、30项检查清单
 
 ---
 
@@ -323,7 +323,7 @@
 
 - `07-omg-ras/ras-alignment.md` — 对齐 OMG RAS v2.2（formal/05-11-02），覆盖 Core RAS 四元组（Classification/Solution/Usage/RelatedAssets）、Profile 扩展、`.ras` 包格式、仓库服务接口，以及与 ISO/IEC/IEEE 42010:2022 / TOGAF 的映射
 - `08-fair4rs/fair4rs-alignment.md` — 对齐 FAIR4RS Principles v1.0 (RDA, 2022)，覆盖 F/A/I/R 17 条子原则、与 SBOM/MCP/容器注册表的整合、架构资产 FAIR4RS 合规行动清单
-- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 IEEE 1517-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO/IEC/IEEE 12207:2017 / 42020 / TOGAF ADM
+- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 ISO/IEC/IEEE 1517:2010-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO/IEC/IEEE 12207:2017 / 42020 / TOGAF ADM
 
 #### AI 原生复用
 
@@ -338,7 +338,7 @@
 
 ### 更新的 README/状态
 
-- `struct/01-meta-model-standards/README.md` — 新增 OMG RAS、FAIR4RS、IEEE 1517 内容
+- `struct/01-meta-model-standards/README.md` — 新增 OMG RAS、FAIR4RS、ISO/IEC/IEEE 1517:2010 内容
 - `struct/12-ai-native-reuse/README.md` — 修正 MCP 版本为 2025-11-25，添加 calibration-tool 状态
 - `struct/05-functional-architecture-reuse/README.md` — 修正 MCP 版本引用
 - `struct/06-cross-layer-governance/README.md` — 标记成熟度评估问卷 CLI 已完成
@@ -347,7 +347,7 @@
 
 - OMG RAS v2.2 formal/05-11-02: <https://www.omg.org/spec/RAS/2.2/PDF>
 - FAIR4RS v1.0 (RDA, 2022): <https://doi.org/10.15497/RDA00068>
-- IEEE 1517-2010: <https://standards.ieee.org/standard/1517-2010.html>
+- ISO/IEC/IEEE 1517:2010-2010: <https://standards.ieee.org/standard/1517-2010.html>
 - MCP 2025-11-25 Spec: <https://modelcontextprotocol.io/specification/2025-11-25>
 - MCP Linux Foundation Governance: <https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation>
 - Angelopoulos & Bates, "A Gentle Introduction to Conformal Prediction" (2021): <https://arxiv.org/abs/2107.07511>
@@ -361,8 +361,8 @@
 
 #### 元模型与标准对齐
 
-- `iso-42010-2022-update.md` — 对齐 ISO 42010:2022 第二版关键变更（EoI、ADF、View Component、Aspect、Perspective）
-- `iso-25010-2023-update.md` — 对齐 ISO 25010:2023 九大质量特性（勘误：此前误写为 2023 版，已统一更正）
+- `iso-42010-2022-update.md` — 对齐 ISO/IEC/IEEE 42010:2022 第二版关键变更（EoI、ADF、View Component、Aspect、Perspective）
+- `iso-25010-2023-update.md` — 对齐 ISO/IEC 25010:2023 九大质量特性（勘误：此前误写为 2023 版，已统一更正）
 
 #### 供应链安全
 
@@ -382,7 +382,7 @@
 #### AI 原生复用
 
 - `mcp-2025-11-25-authoritative.md` — 基于官方规范解读 MCP 2025-11-25
-- `a2a-v1-authoritative.md` — 对齐 A2A v1.0.0.0.0 正式发布版本
+- `a2a-v1-authoritative.md` — 对齐 A2A v1.0.0.0.0.0 正式发布版本
 - `owasp-llm-mcp-security.md` — 对齐 OWASP LLM/MCP/Agentic AI Top 10
 
 #### 形式化验证
@@ -398,7 +398,7 @@
 
 #### 元模型与标准对齐
 
-- `togaf-enterprise-continuum-reuse.md` — 对齐 TOGAF Standard 10 企业连续体、ABB/SBB、架构仓库与 ISO 42010:2022 映射
+- `togaf-enterprise-continuum-reuse.md` — 对齐 TOGAF Standard 10 企业连续体、ABB/SBB、架构仓库与 ISO/IEC/IEEE 42010:2022 映射
 
 #### 应用架构复用
 
@@ -485,9 +485,9 @@
 
 #### Track A: 01 元模型与标准对齐
 
-- `02-togaf-10-alignment/detailed-mapping.md` — TOGAF Standard 10 ABB/SBB 与 ISO 42010:2022 的详细映射（覆盖10个ADM阶段）
-- `04-archimate-4/archimate-iso-mapping.md` — ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表（四层全覆盖）
-- `03-iso-26550-ple/ple-iso-integration.md` — ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射（双轨）
+- `02-togaf-10-alignment/detailed-mapping.md` — TOGAF Standard 10 ABB/SBB 与 ISO/IEC/IEEE 42010:2022 的详细映射（覆盖10个ADM阶段）
+- `04-archimate-4/archimate-iso-mapping.md` — ArchiMate 3.2/4.0 元素与 ISO/IEC/IEEE 42010:2022 的对照表（四层全覆盖）
+- `03-iso-26550-ple/ple-iso-integration.md` — ISO/IEC 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射（双轨）
 - `05-swebok-v4/swebok-alignment.md` — SWEBOK V4 知识领域与本体系 13 个主题的对应关系
 
 #### Track B1: 02 业务架构复用
@@ -509,7 +509,7 @@
 
 #### Track B4: 05 功能架构复用
 
-- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0.0.0.0 协议架构复用分析
+- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0.0.0.0.0 协议架构复用分析
 - `04-workflow-orchestration/temporal-reuse-patterns.md` — Temporal 工作流复用模式（Saga/Parallel/Child/Schedule）
 - `decision-tree-granularity-cost-roi.md` — 功能复用的粒度-成本-收益决策树
 

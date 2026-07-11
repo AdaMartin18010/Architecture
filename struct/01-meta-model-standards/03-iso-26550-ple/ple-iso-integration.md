@@ -54,7 +54,7 @@ ISO 26550:2015 将产品线工程与管理（Product Line Engineering and Manage
 
 ### 2.2 产品线工程作为架构描述的生命周期
 
-从 ISO 42010:2022 的视角看，产品线工程本质上是一个**多层级架构描述生命周期**：
+从 ISO/IEC/IEEE 42010:2022 的视角看，产品线工程本质上是一个**多层级架构描述生命周期**：
 
 ```text
 Architecture Description (Product Line Level)

@@ -283,7 +283,7 @@ Gov(C): C 的治理主体、生命周期与版本策略
 > **权威来源**:
 >
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — TOGAF Standard 10 Phase B 业务能力定义；核查日期：2026-07-08
-> - [FEA BRM 2.0](https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/) — 联邦企业架构业务参考模型；核查日期：2026-07-08
+> - [FEA BRM 2.0](https://obamawhitehouse.archives.gov/omb/e-gov/fea) — 联邦企业架构业务参考模型；核查日期：2026-07-08
 > - [ArchiMate 4.0 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate 业务层 Capability / Value Stream；核查日期：2026-07-08
 > - [Zachman Framework](https://www.zachman.com/) — 企业架构 What/How 维度；核查日期：2026-07-08
 >

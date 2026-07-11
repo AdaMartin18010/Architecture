@@ -20,7 +20,7 @@
 - [x] 形式化公理体系完整版 → `06-formal-axioms/axiom-system.md` + `theorem-derivations.md`
 - [x] OMG RAS v2.2 与四层复用架构对齐 → `07-omg-ras/ras-alignment.md`
 - [x] FAIR4RS 原则与架构资产复用对齐 → `08-fair4rs/fair4rs-alignment.md`
-- [x] IEEE 1517-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 映射 → `01-iso-420xx-family/ieee-1517-reuse-processes.md`
+- [x] ISO/IEC/IEEE 1517:2010-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 映射 → `01-iso-420xx-family/ieee-1517-reuse-processes.md`
 - [x] DIS 42024/42042 当前状态对齐 → `01-iso-420xx-family/iso-42024-42042-dis-alignment.md`
 
 ---
@@ -49,7 +49,7 @@
   - 交付: `02-togaf-10-alignment/detailed-mapping.md`（覆盖 10 个 ADM 阶段）
 - [x] T06: 编写 ArchiMate 3.2/4.0 元素与 ISO/IEC/IEEE 42010:2022 的对照表
   - 交付: `04-archimate-4/archimate-iso-mapping.md`（四层全覆盖）
-- [x] T07: 编写 ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射
+- [x] T07: 编写 ISO/IEC 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射
   - 交付: `03-iso-26550-ple/ple-iso-integration.md`（双轨映射）
 - [x] T08: 编写 SWEBOK V4 知识领域与本体系的对应关系
   - 交付: `05-swebok-v4/swebok-alignment.md`（15 个 KAs 全覆盖）

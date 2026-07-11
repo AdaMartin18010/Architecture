@@ -85,7 +85,7 @@ ISO/IEC 26564:2022 将软件复用度量定义为"对复用过程、资产和结
 | **组织级** | 企业/部门 | 每季度 | 工程总监、CTO | §5.4 组织复用度量 |
 | **生态级** | 跨组织/开源生态 | 每半年/年度 | 生态治理委员会 | §5.5 生态复用度量 |
 
-> **交叉引用**: 本框架与 [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md) 中的 ISO 26550:2015 产品线工程模型对齐，与 [`struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`](../03-maturity-models/reuse-maturity-models-rcmm-rise.md) 中的 RCMM Level 4+ 量化管理要求对齐。
+> **交叉引用**: 本框架与 [`struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md`](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md) 中的 ISO/IEC 26550:2015 产品线工程模型对齐，与 [`struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`](../03-maturity-models/reuse-maturity-models-rcmm-rise.md) 中的 RCMM Level 4+ 量化管理要求对齐。
 
 ---
 

@@ -2025,7 +2025,7 @@ flowchart TD
 # LLM 函数复用与智能体功能架构
 >
 > 版本: 2026-06-06
-> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0.0.0.0
+> 对齐来源: OpenAI Function Calling, MCP 2025-11-25, Semantic Kernel / AutoGen / Microsoft Agent Framework (MAF), Google A2A v1.0.0.0.0.0
 
 ## 1. LLM 函数调用生态演进
 
@@ -2396,7 +2396,7 @@ MCP Tool 分类
 # MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0.0.0.0 (Google / Linux Foundation)
+> **对齐标准**: MCP 2025-11-25（当前稳定版）(Anthropic / Linux Foundation Agentic AI Foundation), A2A v1.0.0.0.0.0.0 (Google / Linux Foundation)
 > **定位**: 功能架构层最细粒度复用——AI 功能与 Agent 协作的协议化复用框架
 > **权威来源**:
 >
@@ -2409,7 +2409,7 @@ MCP Tool 分类
 
 ## 目录
 
-- [MCP 2025-11-25 + A2A v1.0.0.0.0.0 协议架构复用分析](#mcp-2025-11-25--a2a-v100-协议架构复用分析)
+- [MCP 2025-11-25 + A2A v1.0.0.0.0.0.0 协议架构复用分析](#mcp-2025-11-25--a2a-v100-协议架构复用分析)
   - [目录](#目录)
   - [1. 协议定位与互补架构](#1-协议定位与互补架构)
   - [2. 协议栈层次对比](#2-协议栈层次对比)
@@ -2425,7 +2425,7 @@ MCP Tool 分类
     - [7.2 A2A 复用质量指标](#72-a2a-复用质量指标)
     - [7.3 联合治理模型](#73-联合治理模型)
   - [8. 2026 路线图与演进预测](#8-2026-路线图与演进预测)
-  - [补充说明：MCP 2025-11-25 + A2A v1.0.0.0.0.0 协议架构复用分析](#补充说明mcp-2025-11-25--a2a-v100-协议架构复用分析)
+  - [补充说明：MCP 2025-11-25 + A2A v1.0.0.0.0.0.0 协议架构复用分析](#补充说明mcp-2025-11-25--a2a-v100-协议架构复用分析)
   - [概念定义](#概念定义)
   - [示例](#示例)
   - [反例](#反例)

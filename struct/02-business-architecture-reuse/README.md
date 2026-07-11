@@ -26,7 +26,7 @@
 | OMG BPMN | 2.0.2 (2014) | §8.3 Process, §10.4 Collaboration, 可执行语义 | <https://www.omg.org/spec/BPMN/2.0.2/> | 2026-07-08 |
 | OMG DMN | 1.5 (2024) | §6 Decision Requirements, §7 FEEL, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
 | TOGAF | 10 (2022) | Phase B Business Architecture, Capability Mapping | <https://www.opengroup.org/togaf> | 2026-07-08 |
-| FEA BRM | 2.0 | 五层业务线（Mission, Business, Customer, Data Management, Mission Support） | <https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/> | 2026-07-08 |
+| FEA BRM | 2.0 | 五层业务线（Mission, Business, Customer, Data Management, Mission Support） | <https://obamawhitehouse.archives.gov/omb/e-gov/fea> | 2026-07-08 |
 | ArchiMate | 4.2 | Business Layer: Capability, Value Stream, Business Process | <https://pubs.opengroup.org/architecture/archimate4-doc/> | 2026-07-08 |
 
 ## 关键公理

@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-12
 > **定位**: 06-cross-layer-governance / 02-reuse-process
-> **对齐标准**: IEEE 1517-2010, ISO/IEC/IEEE 12207:2026, ISO/IEC 26550:2015
+> **对齐标准**: ISO/IEC/IEEE 1517:2010-2010, ISO/IEC/IEEE 12207:2026, ISO/IEC 26550:2015
 
 ---
 
@@ -73,7 +73,7 @@ IEEE 1517 将复用过程分为三大过程组：
 
 ## 关联主题
 
-- `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` — IEEE 1517 与 12207:2026 的对照
+- `01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md` — ISO/IEC/IEEE 1517:2010 与 12207:2026 的对照
 - `06-cross-layer-governance/03-maturity-models/` — 复用成熟度评估
 - `06-cross-layer-governance/05-metrics-kpi/` — 复用度量指标
 

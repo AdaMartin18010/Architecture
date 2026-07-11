@@ -607,7 +607,7 @@ OPC UA 的安全机制（X.509 证书、用户令牌、安全通道）可以与 
    （工业 4.0 平台 AAS 规范官方文档）
 
 5. **OPC UA Field eXchange (FX) Specification**
-   URL: <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/>
+   URL: <https://reference.opcfoundation.org/specs/OPC-10000-80>
    核查日期: 2026-06-10
    （OPC 基金会 OPC UA FX 官方页面）
 

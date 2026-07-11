@@ -97,7 +97,7 @@
 **对齐活动**:
 
 - 对照 [IREB CPRE Glossary](https://isqi.org) 更新术语定义
-- 对照 [ISO 42010:2022 官方标准](https://www.iso.org/obp/ui) 验证概念映射
+- 对照 [ISO/IEC/IEEE 42010:2022 官方标准](https://www.iso.org/obp/ui) 验证概念映射
 
 ---
 

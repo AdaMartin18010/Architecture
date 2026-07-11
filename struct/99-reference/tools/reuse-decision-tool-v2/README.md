@@ -303,7 +303,7 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 ---
 
 > **最后更新**: 2026-06-10
-> **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO 25010:2023 · ISO 42010:2022 · NASA RRL
+> **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO/IEC 25010:2023 · ISO/IEC/IEEE 42010:2022 · NASA RRL
 
 
 ---

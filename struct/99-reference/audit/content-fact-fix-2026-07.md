@@ -99,7 +99,7 @@
 ### 项目现状
 
 - 项目已统一为 **ISO/IEC 25010:2023**（见 MASTER_PLAN Phase C）。
-- `view/software_architecture_reuse_full_2026.md` 等历史文档保留“ISO/IEC 25010:2024”作为勘误记录。
+- `view/software_architecture_reuse_full_2026.md` 等历史文档保留“ISO/IEC 25010:2023”作为勘误记录。
 
 ### 权威来源复核
 

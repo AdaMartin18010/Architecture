@@ -8,7 +8,7 @@
 
 ## 2. 规约背景与动机
 
-Agent-to-Agent（A2A）协议是由 Google 于 2025 年 4 月发起、现由 Linux Foundation 维护的开放标准，旨在实现 AI Agent 之间的互操作通信[^7]。与 MCP（Model Context Protocol）解决"Agent ↔ Tool"的垂直集成问题不同，A2A 聚焦于"Agent ↔ Agent"的水平协作问题。A2A v1.0.0.0.0 规范（2026 年 3 月正式发布）定义了一个精细的任务生命周期（Task Lifecycle）状态机，这是协议的核心语义骨架[^8]。
+Agent-to-Agent（A2A）协议是由 Google 于 2025 年 4 月发起、现由 Linux Foundation 维护的开放标准，旨在实现 AI Agent 之间的互操作通信[^7]。与 MCP（Model Context Protocol）解决"Agent ↔ Tool"的垂直集成问题不同，A2A 聚焦于"Agent ↔ Agent"的水平协作问题。A2A v1.0.0.0.0.0 规范（2026 年 3 月正式发布）定义了一个精细的任务生命周期（Task Lifecycle）状态机，这是协议的核心语义骨架[^8]。
 
 Task 生命周期之所以需要形式化验证，原因在于：
 
@@ -33,7 +33,7 @@ A2A v1.0 规范定义了以下状态[^8]：
 | `failed` | 处理失败（终止状态） | 无 |
 | `canceled` | 被 Client 取消（终止状态） | 无 |
 
-值得注意的是，A2A v1.0.0.0.0 还定义了 `auth_required` 和 `rejected` 状态，本规约出于简化考虑聚焦于最核心六态模型，但其扩展至八态模型在结构上完全同质。
+值得注意的是，A2A v1.0.0.0.0.0 还定义了 `auth_required` 和 `rejected` 状态，本规约出于简化考虑聚焦于最核心六态模型，但其扩展至八态模型在结构上完全同质。
 
 ### 3.2 消息与 Artifact 模型
 
@@ -150,7 +150,7 @@ taskState[t1] = "working"  // 无限期保持，无 CompleteTask/FailTask/Cancel
 
 ## 8. 与 A2A v1.0 规范的对应关系
 
-本规约与 A2A v1.0.0.0.0 规范的对应如下[^8]：
+本规约与 A2A v1.0.0.0.0.0 规范的对应如下[^8]：
 
 | 规约动作/变量 | A2A 规范对应 | 说明 |
 |---------------|-------------|------|

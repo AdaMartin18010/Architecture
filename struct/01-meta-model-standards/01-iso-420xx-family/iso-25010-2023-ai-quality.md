@@ -1,7 +1,7 @@
 # ISO/IEC 25010:2023 AI/ML 质量特性与复用评估
 
 > **版本**: 2026-06-08
-> **定位**: 元模型层（Level 0）—— ISO 25010:2023 新增 AI/ML 质量特性的架构复用映射
+> **定位**: 元模型层（Level 0）—— ISO/IEC 25010:2023 新增 AI/ML 质量特性的架构复用映射
 > **对齐标准**: ISO/IEC 25010:2023 Systems and software engineering — SQuaRE — Product quality model
 > **状态**: ⏳ 框架填充中
 

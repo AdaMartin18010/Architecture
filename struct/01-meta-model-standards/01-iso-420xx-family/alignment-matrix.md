@@ -139,7 +139,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ---
 
 > 最后更新: 2026-07-09
-> 注意: 本矩阵将随标准更新持续维护；ISO 42010:2022 条款映射详见第 2.2 节。
+> 注意: 本矩阵将随标准更新持续维护；ISO/IEC/IEEE 42010:2022 条款映射详见第 2.2 节。
 
 
 ---
@@ -150,7 +150,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 
 > 本节对齐矩阵本身进行元模型级补全，包括定义、属性、关系、正例、反例、形式化矩阵、权威来源与交叉引用。
 > 相关 Wikipedia 概念结构：
-> [ISO/IEC/ISO/IEC/IEEE 42010:2022](https://en.wikipedia.org/wiki/ISO/IEC/IEEE_42010)、
+> [ISO/IEC/IEEE 42010:2022](https://en.wikipedia.org/wiki/ISO/IEC/IEEE_42010)、
 > [TOGAF](https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework)、
 > [ArchiMate](https://en.wikipedia.org/wiki/ArchiMate)、
 > [SWEBOK](https://en.wikipedia.org/wiki/Software_Engineering_Body_of_Knowledge)、

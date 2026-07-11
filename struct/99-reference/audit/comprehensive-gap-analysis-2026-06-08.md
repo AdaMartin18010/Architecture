@@ -332,7 +332,7 @@
 
 2. **工业 IoT 纵深极具价值**：ISA-95 L0-L4 资产目录、OPC UA FX 协议帧结构、PLCopen 功能块、AAS-OPC UA NodeSet 映射等内容，填补了中文技术社区在工业软件架构复用领域的空白。
 
-3. **AI 原生协议分析领先**：MCP 2025-11-25 深度解析（含 Tasks/Icons/Elicitation 等新特性）、A2A v1.0.0.0.0 协议架构、混合 A2A-MCP PoC 等，在技术前沿性上超越大多数同类知识产品。
+3. **AI 原生协议分析领先**：MCP 2025-11-25 深度解析（含 Tasks/Icons/Elicitation 等新特性）、A2A v1.0.0.0.0.0 协议架构、混合 A2A-MCP PoC 等，在技术前沿性上超越大多数同类知识产品。
 
 4. **形式化验证文档深度**：TLA+（Payment/MCP/A2A/OPC UA FX）、Alloy（组件依赖/MCP 工具图/跨层映射/ISA-95）、Rust 类型系统、SPARK/Ada、B Method 的文档和代码示例丰富，展现了扎实的形式化方法功底。
 

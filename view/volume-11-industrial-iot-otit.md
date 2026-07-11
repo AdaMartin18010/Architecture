@@ -1251,7 +1251,7 @@ OPC UA 的安全机制（X.509 证书、用户令牌、安全通道）可以与 
    （工业 4.0 平台 AAS 规范官方文档）
 
 5. **OPC UA Field eXchange (FX) Specification**
-   URL: <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/>
+   URL: <https://reference.opcfoundation.org/specs/OPC-10000-80>
    核查日期: 2026-06-10
    （OPC 基金会 OPC UA FX 官方页面）
 
@@ -8289,7 +8289,7 @@ PLC-X2000 在 2019 年获得了 IEC 62443-4-2 CL 2 认证（证书编号：TÜV-
 
 3. IEC 62443-4-2:2019, *Security for industrial automation and control systems - Part 4-2: Technical security requirements for IACS components*. 国际电工委员会. <https://webstore.iec.ch/publication/66917> （核查日期：2026-06-10）
 
-4. IEC 61508:2010, *Functional safety of electrical/electronic/programmable electronic safety-related systems*. 国际电工委员会. <https://webstore.iec.ch/publication/66913> （核查日期：2026-06-10）
+4. IEC 61508:2010, *Functional safety of electrical/electronic/programmable electronic safety-related systems*. 国际电工委员会. <https://webstore.iec.ch/en/publication/34421> （核查日期：2026-06-10）
 
 5. EU Cyber Resilience Act, Regulation (EU) 2024/2847. 欧盟官方公报. <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847> （核查日期：2026-06-10）
 

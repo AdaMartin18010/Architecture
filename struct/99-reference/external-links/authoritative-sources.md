@@ -103,8 +103,8 @@
 | 资源 | 链接 |
 |------|------|
 | OPC Foundation | <https://opcfoundation.org/> |
-| OPC UA FX 1.0 | <https://opcfoundation.org/about/opc-technologies/opc-ua/opc-ua-fx/> |
-| PLCopen Motion Control | <https://plcopen.org/technical-activities/motion-control> |
+| OPC UA FX 1.0 | <https://reference.opcfoundation.org/specs/OPC-10000-80> |
+| PLCopen Motion Control | <https://www.plcopen.org/standards/motion-control/> |
 | IDTA - AAS Specifications | <https://industrialdigitaltwin.org/> |
 | IEC 61508 | <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363> |
 | ISA-95 / IEC 62264 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> |

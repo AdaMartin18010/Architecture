@@ -51,7 +51,7 @@ kg-relations.jsonl# 6,150 关系（机器真源）
 | `belongsTo` | 324 | 文件属于某主题 |
 
 > **统计口径（P1 更新）**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，与 `reports/stats.json` 一致，合计 6,150）。
-> P1 已完成 `canonical-names.yaml` 归一：`ISO/IEC 25010:2024`、`ArchiMate 4.0.2` 等不存在版本已归并到权威 canonical；Standard 实体由 345 收敛到 164。
+> P1 已完成 `canonical-names.yaml` 归一：`ISO/IEC 25010:2023`、`ArchiMate 4.0.2` 等不存在版本已归并到权威 canonical；Standard 实体由 345 收敛到 164。
 > 注意：`kg.ttl` 序列化后的语义边仍少于 jsonl——`:defines` 等关系已随 `kg-builder.py` 生成，但 `:relatedTo` / `:evolvedFrom` / `:mentions` / `:implementedBy` 当前仍为 0（抽取器未实化这些关系类型）。SHACL 验证在 P1 已增加 canonical 正则、版本白名单、dangling 关系等真约束（详见 `kg-shacl-report.md`）。
 
 完整统计参见：[知识抽取质量报告](../../../reports/kg-extraction-report.md)。

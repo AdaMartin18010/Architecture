@@ -23,7 +23,7 @@
 
 - [核心标准对齐矩阵](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 - [ISO/IEC/IEEE AWI 42030 修订跟踪](../../01-meta-model-standards/01-iso-420xx-family/awi-42030-tracking.md)
-- [IEEE 1517-2010 软件生命周期复用过程](../../01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
+- [ISO/IEC/IEEE 1517:2010-2010 软件生命周期复用过程](../../01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
 - [ISO/IEC/IEEE 12207:2026 与软件复用过程对齐](../../01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
 - [ISO/IEC 25010:2023 AI/ML 质量特性与复用评估](../../01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md)
 - … 共 25 个文件
@@ -124,7 +124,7 @@
 - [MCP 2025-11-25 综合更新与复用影响评估](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
 - [MCP 2025-11-25 规范深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 - [MCP 2026-07-28 RC 深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-- [A2A v1.0.0.0.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+- [A2A v1.0.0.0.0.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
 - … 共 20 个文件
 
 ### 13 新兴趋势

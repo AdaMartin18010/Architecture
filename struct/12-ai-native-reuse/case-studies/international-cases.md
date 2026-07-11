@@ -90,7 +90,7 @@ AI 原生复用引入了两个传统软件复用中不存在的新挑战：
 - Model Context Protocol, <https://modelcontextprotocol.io/>
 - Agent-to-Agent Protocol, <https://a2a-protocol.org/>
 - Microsoft Agent Governance Toolkit, <https://github.com/microsoft/agent-governance-toolkit>
-- OWASP Agentic AI Top 10, <https://owasp.org/www-project-agentic-ai/>
+- OWASP Agentic AI Top 10, <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/>
 - 核查日期：2026-07-08
 
 ---

@@ -296,7 +296,7 @@
 >
 > 形式化: Interoperable(Proto_A, Proto_B) ⟺ ∃ SemanticLayer: DataModel_A ⊆ SemanticLayer ∧ DataModel_B ⊆ SemanticLayer
 >
-> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0, ISO/IEC/IEEE 42010:2022 Correspondence Rule
+> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0.0, ISO/IEC/IEEE 42010:2022 Correspondence Rule
 
 **定理 5.1** (Tool Reuse Equivalence)
 > MCP Tool 的复用等价于其**语义描述**与**模式约束**在目标 LLM 上下文中的可传递性。
@@ -441,7 +441,7 @@
 >
 > 形式化: Coverage(MCP ∪ A2A) > Coverage(MCP) + Coverage(A2A) - Coverage(MCP ∩ A2A)
 >
-> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0 Specification
+> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0.0 Specification
 
 **定理 AI.3** (MCP Tool Composability)
 > 两个 MCP Server 的工具集可组合当且仅当它们的工具命名空间不冲突且模式约束兼容。

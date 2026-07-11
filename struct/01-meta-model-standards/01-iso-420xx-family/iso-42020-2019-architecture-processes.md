@@ -8,7 +8,7 @@
 
 ## 1. 概念定义
 
-**定义**：ISO/IEC/IEEE 42020:2019 是系统与软件工程领域的**架构过程**标准，它规定了架构治理（Governance）、管理（Management）、概念化（Conceptualization）、评估（Evaluation）、细化（Elaboration）和使能（Enablement）六个核心过程。该标准与 ISO/IEC/ISO/IEC/IEEE 42010:2022（架构描述）和 42030（架构评估）共同构成 420xx 标准族的过程维度。
+**定义**：ISO/IEC/IEEE 42020:2019 是系统与软件工程领域的**架构过程**标准，它规定了架构治理（Governance）、管理（Management）、概念化（Conceptualization）、评估（Evaluation）、细化（Elaboration）和使能（Enablement）六个核心过程。该标准与 ISO/IEC/IEEE 42010:2022（架构描述）和 42030（架构评估）共同构成 420xx 标准族的过程维度。
 
 ## 2. 核心过程概览
 

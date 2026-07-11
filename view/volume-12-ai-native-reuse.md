@@ -1712,14 +1712,14 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 # A2A v1.0.0 协议复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: A2A v1.0.0.0.0.0 (2026-03-12 发布), Linux Foundation 治理
+> **对齐标准**: A2A v1.0.0.0.0.0.0 (2026-03-12 发布), Linux Foundation 治理
 > **定位**: Agent 间协作协议的复用流程与价值分析
 
 ---
 
 ## 目录
 
-- [A2A v1.0.0.0.0.0 协议复用分析](#a2a-v100-协议复用分析)
+- [A2A v1.0.0.0.0.0.0 协议复用分析](#a2a-v100-协议复用分析)
   - [目录](#目录)
   - [1. 核心对象](#1-核心对象)
   - [2. 协议流程的复用分析](#2-协议流程的复用分析)
@@ -1729,7 +1729,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
   - [5. 多模态 Artifact](#5-多模态-artifact)
   - [6. 安全增强：Signed Agent Cards](#6-安全增强signed-agent-cards)
   - [7. 协作模式](#7-协作模式)
-  - [补充说明：A2A v1.0.0.0.0.0 协议复用分析](#补充说明a2a-v100-协议复用分析)
+  - [补充说明：A2A v1.0.0.0.0.0.0 协议复用分析](#补充说明a2a-v100-协议复用分析)
   - [概念定义](#概念定义)
   - [示例](#示例)
   - [反例](#反例)
@@ -1982,7 +1982,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
 > **版本**: 2026-07-08
 > **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
-> **定位**: 对齐 A2A v1.0.0.0.0 正式发布版本的核心概念与架构模式
+> **定位**: 对齐 A2A v1.0.0.0.0.0 正式发布版本的核心概念与架构模式
 
 ---
 
@@ -1995,7 +1995,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
 | **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0.0.0.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0.0.0.0 的发布以官方规范页面为准。
+> **关键确认**: A2A v1.0.0.0.0.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0.0.0.0.0 的发布以官方规范页面为准。
 
 ---
 
@@ -3584,7 +3584,7 @@ Agent A: "请 Agent B 再次检查..."
 # A2A + MCP 混合 Agent 服务 PoC
 
 > **定位**：演示 "A2A 用于 Agent 协作，MCP 用于工具调用" 的生产最佳实践。
-> **对齐**：A2A v1.0.0.0.0.0, MCP 2025-11-25
+> **对齐**：A2A v1.0.0.0.0.0.0, MCP 2025-11-25
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
@@ -3808,7 +3808,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-*文档生成时间：2026-07-08 · 对齐 A2A v1.0.0.0.0.0 / MCP 2025-11-25*
+*文档生成时间：2026-07-08 · 对齐 A2A v1.0.0.0.0.0.0 / MCP 2025-11-25*
 
 ---
 
@@ -6970,7 +6970,7 @@ AI 原生复用引入了两个传统软件复用中不存在的新挑战：
 - Model Context Protocol, <https://modelcontextprotocol.io/>
 - Agent-to-Agent Protocol, <https://a2a-protocol.org/>
 - Microsoft Agent Governance Toolkit, <https://github.com/microsoft/agent-governance-toolkit>
-- OWASP Agentic AI Top 10, <https://owasp.org/www-project-agentic-ai/>
+- OWASP Agentic AI Top 10, <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/>
 - 核查日期：2026-07-08
 
 ---
