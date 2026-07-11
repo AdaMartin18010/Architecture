@@ -1049,7 +1049,6 @@
 {"id": "Term:Phase_1__概念地基", "name": "Phase 1: 概念地基", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 28, "context": "Phase 1: 概念地基（已完成，2026-06-06）"}
 {"id": "Term:已完成_2026-06-06", "name": "已完成，2026-06-06", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 28, "context": "Phase 1: 概念地基（已完成，2026-06-06）"}
 {"id": "Term:任务", "name": "任务", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 30, "context": "Phase 1: 概念地基（已完成，2026-06-06）"}
-{"id": "Standard:ISO_420", "name": "ISO 420", "type": "Standard", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 33, "context": "Phase 1: 概念地基（已完成，2026-06-06）"}
 {"id": "Term:交付物", "name": "交付物", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 37, "context": "Phase 1: 概念地基（已完成，2026-06-06）"}
 {"id": "Term:2026-06_第三周", "name": "2026-06 第三周", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 66, "context": "Phase 3: 形式化公理体系（2026-06 第三周）"}
 {"id": "Term:已完成", "name": "已完成", "type": "Term", "source_file": "struct/01-meta-model-standards/plans-tasks/roadmap.md", "source_line": 87, "context": "Phase 4: 可视化与工具（2026-06 第四周）— 部分完成"}
@@ -7357,7 +7356,6 @@
 {"id": "Term:DCS_控制器", "name": "DCS 控制器", "type": "Term", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 44, "context": "1.3 L1 控制器资产类型"}
 {"id": "Standard:IEC_61499", "name": "IEC 61499", "type": "Standard", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 44, "context": "1.3 L1 控制器资产类型"}
 {"id": "Term:CNC", "name": "CNC", "type": "Term", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 45, "context": "1.3 L1 控制器资产类型"}
-{"id": "Standard:ISO_6983", "name": "ISO 6983", "type": "Standard", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 45, "context": "1.3 L1 控制器资产类型"}
 {"id": "Term:运动控制器", "name": "运动控制器", "type": "Term", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 46, "context": "1.3 L1 控制器资产类型"}
 {"id": "Term:机器人控制器", "name": "机器人控制器", "type": "Term", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 47, "context": "1.3 L1 控制器资产类型"}
 {"id": "Standard:ISO_10218", "name": "ISO 10218", "type": "Standard", "source_file": "struct/11-industrial-iot-otit/01-isa-95-model/isa-95-asset-catalog-deep-dive.md", "source_line": 47, "context": "1.3 L1 控制器资产类型"}
@@ -10127,15 +10125,8 @@
 {"id": "Term:6-A", "name": "6-A", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 19, "context": "关键决策"}
 {"id": "Term:工具验证与依赖修复", "name": "工具验证与依赖修复", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 21, "context": "工具验证与依赖修复"}
 {"id": "Term:已知边界", "name": "已知边界", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 42, "context": "已知边界"}
-{"id": "Standard:ISO_78175", "name": "ISO 78175", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 57, "context": "已修正的标准状态"}
-{"id": "Standard:ISO_90219", "name": "ISO 90219", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 59, "context": "已修正的标准状态"}
 {"id": "Term:已发布_2024-08", "name": "已发布（2024-08）", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 60, "context": "已修正的标准状态"}
-{"id": "Standard:ISO_88800", "name": "ISO 88800", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 60, "context": "已修正的标准状态"}
 {"id": "Term:NIST_SSDF_1_2", "name": "NIST SSDF 1.2", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 61, "context": "已修正的标准状态"}
-{"id": "Standard:ISO_69529", "name": "ISO 69529", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 62, "context": "已修正的标准状态"}
-{"id": "Standard:IEC_67463", "name": "IEC 67463", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 63, "context": "已修正的标准状态"}
-{"id": "Standard:ISO_81118", "name": "ISO 81118", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 64, "context": "已修正的标准状态"}
-{"id": "Standard:ISO_83467", "name": "ISO 83467", "type": "Standard", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 65, "context": "已修正的标准状态"}
 {"id": "Term:主要修改文件", "name": "主要修改文件", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 80, "context": "主要修改文件"}
 {"id": "Term:2026-06-08_Phase_4_安全与供应链纵深完成", "name": "2026-06-08 Phase 4 安全与供应链纵深完成", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 91, "context": "2026-06-08 Phase 4 安全与供应链纵深完成"}
 {"id": "Term:供应链攻击树可视化", "name": "供应链攻击树可视化", "type": "Term", "source_file": "struct/99-reference/CHANGELOG.md", "source_line": 97, "context": "供应链安全"}
