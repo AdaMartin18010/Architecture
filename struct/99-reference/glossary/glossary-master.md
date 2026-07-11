@@ -60,6 +60,66 @@
   - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture description）
   - 核查日期：2026-07-12
 
+### Architecture Description Framework / ADF (架构描述框架)
+
+- **定义**: 在特定应用领域或利益相关者社群中描述架构所遵循的约定、原则与实践的集合，规定所用的视点（Viewpoint）、模型种类（Model Kind）、对应关系规则及架构决策记录方式（ISO/IEC/IEEE 42010:2022，第 3 章）。
+- **属性**:
+  - 面向特定领域或社群，而非单一系统
+  - 规定视点库与模型种类库
+  - 定义对应关系（Correspondence）规则
+  - 可实例化为组织的架构描述模板
+- **关系**:
+  - 规范：Architecture Description（AD 的"元级"约定）
+  - 组成：Viewpoint、Model Kind、Correspondence
+  - 关联：Architecture Decision / ADR
+  - 实例：TOGAF 内容元模型、DoDAF/MODAF 视点集
+- **解释**: ADF 是架构复用在"元级"的载体：复用一套 ADF（视点库 + 模型约定 + 对应规则）比复用单个 AD 更稳定，新项目只需在既有 ADF 下产出本系统的视图与决策。
+- **示例**: 某集团定义企业级 ADF，规定业务/应用/技术三视点及各自模型种类（ArchiMate 图、BPMN、部署图），所有子公司架构描述遵循同一 ADF，视图可直接横向对比与复用。
+- **反例**: 各项目组自创视图记号与视点划分，无统一 ADF，跨项目复用架构描述时需要逐图重新解释符号语义。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture description framework；标准全文需购买，链接为已验证的官方目录页）
+  - 核查日期：2026-07-12
+
+### Architecture Development Method / ADM (架构开发方法)
+
+- **定义**: TOGAF Standard 10th Edition 的核心方法，提供开发企业架构的可迭代、可裁剪的逐步过程，覆盖从预备阶段（Preliminary）、架构愿景（A）到业务/信息系统/技术架构（B–D）、机会与解决方案（E）、迁移规划（F）、实施治理（G）与架构变更管理（H）的完整循环，以需求管理为持续中心。
+- **属性**:
+  - 迭代循环（阶段可回退、可嵌套迭代）
+  - 每阶段有明确输入、步骤与输出
+  - 可裁剪（ tailoring ）适配组织语境
+  - 以需求管理贯穿全程
+- **关系**:
+  - 属于：TOGAF Standard 10 的核心组成部分
+  - 产出：Architecture Description、ABB/SBB，存入 Architecture Repository
+  - 分类支撑：Enterprise Continuum
+  - 治理：架构治理框架与能力框架
+- **解释**: ADM 是架构复用的"过程侧"保障：B–D 阶段以 ABB 沉淀可复用架构，E–F 阶段映射 SBB 选型，阶段 G 通过合规评审确保实现未偏离复用决策。
+- **示例**: 某企业按 ADM 开展支付平台架构：阶段 B 复用行业业务能力模型，阶段 C–D 定义 ABB，阶段 E 将 ABB 映射到候选 SBB 并记录选型 ADR。
+- **反例**: 跳过 ADM 阶段直接编写技术方案，架构愿景与业务驱动力缺失，方案无法回溯到利益相关者关注点，复用评估无从谈起。
+- **权威来源**:
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（ADM 各阶段定义）
+  - 核查日期：2026-07-12
+
+### Architecture Repository / Enterprise Continuum / Foundation Architecture (架构存储库/企业连续体/基础架构)
+
+- **定义**: TOGAF Standard 10 中架构资产管理的三个关联概念：Architecture Repository 是保存全部架构相关产出（交付物、模型、模式、标准）的逻辑存储；Enterprise Continuum 是对架构与解决方案制品进行分类的方法视图，沿"基础→通用→行业→组织特定"连续谱组织；Foundation Architecture 位于连续谱最通用端，由通用构建块及其相互关系和配套标准构成，定义通用基础平台。
+- **属性**:
+  - Repository：逻辑而非物理存储，含架构元模型、能力、景观与参考库
+  - Continuum：按抽象度/通用度分类架构与解决方案制品
+  - Foundation Architecture：最通用、跨组织可复用
+  - 三者共同支撑"越通用越可复用"的资产分层
+- **关系**:
+  - 属于：TOGAF Standard 10 架构内容框架
+  - 存储对象：Architecture Description、ABB/SBB、ADR
+  - 过程：ADM 各阶段产出入库、复用时出库
+  - 关联：Asset、Reusable Asset
+- **解释**: 三者构成架构复用的"存储与分类"机制：资产按通用度沿连续谱分层存放，复用时优先从更通用层选取，避免重复发明行业已有方案。
+- **示例**: 某银行将技术参考模型归入 Foundation 层，行业支付参考架构归入行业层，本行渠道架构归入组织特定层；新项目沿连续谱自上而下检索可复用制品。
+- **反例**: 架构制品散落各项目共享盘、无分类无版本，复用全靠"问老员工"，资产库形同虚设。
+- **权威来源**:
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（Architecture Repository、Enterprise Continuum、Foundation Architecture 定义）
+  - 核查日期：2026-07-12
+
 ### Artifact (制品)
 
 - **定义**: 构建过程产出的不可变数据对象（软件包、容器镜像、二进制文件等），由来源证明（provenance）与证明（attestation）描述（SLSA 1.2 术语体系）。
@@ -188,6 +248,26 @@
   - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：concern）
   - 核查日期：2026-07-12
 
+### Commonality (共性)
+
+- **定义**: 产品线全体成员共享、不随产品变异的属性集合，是产品线工程（PLE）中与可变性（Variability）相对的核心概念（ISO/IEC 26550:2015）。
+- **属性**:
+  - 跨产品稳定不变
+  - 由领域工程识别并固化为核心资产
+  - 决定产品线的经济收益边界
+  - 与可变性共同刻画产品族范围
+- **关系**:
+  - 对立互补：Variability（共性之外的部分）
+  - 产出过程：Domain Engineering / Domain Analysis
+  - 载体：Feature Model（共性通常建模为必选特征）
+  - 上位：Product Line Engineering
+- **解释**: 复用收益来自共性：共性越大，核心资产被越多产品复用；但过度扩大共性会牺牲产品差异化，需在领域分析阶段与市场定位共同权衡。
+- **示例**: 车载信息娱乐产品线中，CAN 总线接入与系统启动流程为共性，UI 主题与导航地图为可变性；共性部分沉淀为平台核心资产被全系车型复用。
+- **反例**: 未显式识别共性，各产品团队各自实现本可共享的启动与通信模块，代码重复率居高不下，缺陷修复需多点同步。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（软件与系统工程——产品线工程参考模型，commonality 定义；官方目录页）
+  - 核查日期：2026-07-12
+
 ### Component (组件)
 
 - **定义**: 系统中具有明确接口、可独立部署、可替换的软件单元，是组件级复用的基本对象。在本知识体系中，组件是架构约束在模块层的载体。
@@ -268,6 +348,27 @@
 ---
 
 ## D
+
+### Domain Engineering / Application Engineering / Domain Analysis (领域工程/应用工程/领域分析)
+
+- **定义**: 产品线工程（PLE）的两个互补过程及其前端活动（ISO/IEC 26550:2015；IEEE 1517-2010）：Domain Engineering 是定义并实现产品线共性与可变性、产出可复用领域资产的过程；Application Engineering 是通过复用领域资产并利用已捕获的可变性来构建单个产品的过程；Domain Analysis 是领域工程的前端活动，基于对现有系统及其开发历史的研究，识别、收集、组织并表达领域内的相关信息（IEEE 1517-2010）。
+- **属性**:
+  - 领域工程：面向产品族，产出核心资产与特征模型
+  - 应用工程：面向单个产品，消费并绑定可变性
+  - 领域分析：研究现有系统与历史，划定领域范围
+  - 两过程持续反馈：应用工程的问题回流改进领域资产
+- **关系**:
+  - 上位：Product Line Engineering（PLE 三大子过程之二）
+  - 输入/输出：Domain Analysis → Domain Engineering → Application Engineering
+  - 管理对象：Commonality、Variability、Feature Model
+  - 支撑设施：Reuse Library
+- **解释**: “为复用而开发（领域工程）”与“通过复用而开发（应用工程）”的分离是系统化复用的核心机制；领域分析决定复用的经济边界——范围过窄收益不足，过宽则共性难以维持。
+- **示例**: 某工业软件厂商领域工程团队维护控制算法核心资产库与特征模型；各项目应用工程团队按特征选择派生产品，仅开发产品特有逻辑。
+- **反例**: 无领域工程角色，所有“复用”靠应用工程师复制粘贴旧项目代码，分支逐渐发散，复用退化为克隆。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（产品线工程参考模型：domain engineering、application engineering；官方目录页）
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程：domain analysis、domain engineering、application engineering）
+  - 核查日期：2026-07-12
 
 ### Digital Twin (数字孪生)
 
@@ -466,6 +567,28 @@
   - [MCP Authorization](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization) — MCP
   - 核查日期：2026-07-07
 
+### MCP Primitives (Server, Client, Tool, Resource, Prompt, Sampling, MCP 原语)
+
+- **定义**: MCP（Model Context Protocol）Host-Client-Server 架构中的角色与能力原语集合（MCP 2025-11-25 规范）：Server 是向 Client 暴露能力的程序；Client 是 Host 应用内与 Server 保持 1:1 连接、聚合其能力的连接器；Tool 是 Server 暴露的、供模型执行动作（查询、调用 API）的模型可控函数；Resource 是 Server 暴露的、为模型提供上下文数据的应用可控只读数据；Prompt 是 Server 暴露的、帮助用户完成特定任务的用户可控预定义模板；Sampling 是 Server 反向请求 Client 生成模型补全的机制，支持服务端编排。
+- **属性**:
+  - 角色：Host / Client / Server 三元模型，Client-Server 1:1 连接
+  - 三类暴露能力：Tools（模型控制）、Resources（应用控制）、Prompts（用户控制）
+  - Sampling 使 Server 可发起 LLM 请求，需用户同意门控
+  - 全部基于 JSON-RPC 2.0 消息与能力协商（capability negotiation）
+- **关系**:
+  - 上位：MCP（Model Context Protocol）
+  - 依赖：JSON-RPC 2.0、JSON Schema、OAuth 2.1（远程 Server）
+  - 安全：OWASP MCP Top 10（tool poisoning、prompt injection 等）
+  - 类比：A2A 的 Agent Card / Task / Message（Agent 间原语）
+- **解释**: 原语集合定义了 AI 能力复用的最小语义单元：工具、数据、模板三类能力以统一接口暴露，任何兼容 Client 均可复用任何 Server，集成成本从 M×N 降为 M+N。
+- **示例**: 数据库 MCP Server 暴露 `query`（Tool）、表结构（Resource）、常用分析模板（Prompt），并通过 Sampling 请求模型生成 SQL 解释；IDE 内置 Client 聚合多个 Server 供编码助手使用。
+- **反例**: Server 将所有能力不分类型地摊平为 Tool，把只读数据也包装成函数调用，模型误把数据读取当动作执行，且丧失 Resource 的 URI 寻址与订阅能力。
+- **权威来源**:
+  - [MCP Specification 2025-11-25 — Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture) — MCP（Host/Client/Server 角色）
+  - [MCP Specification 2025-11-25 — Server](https://modelcontextprotocol.io/specification/2025-11-25/server) — MCP（Tools/Resources/Prompts）
+  - [MCP Specification 2025-11-25 — Client](https://modelcontextprotocol.io/specification/2025-11-25/client) — MCP（Sampling）
+  - 核查日期：2026-07-12
+
 ### Microservices (微服务)
 
 - **定义**: 一种将应用构建为围绕业务能力组织的小型、自治服务的架构风格；每个服务独立部署、独立扩展，通过轻量级机制通信。
@@ -613,6 +736,30 @@
 - **反例**: 制品仅标注版本号而无构建来源记录，发生恶意代码注入事件后无法确定受影响批次。
 - **权威来源**:
   - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（Terminology：provenance）
+  - 核查日期：2026-07-12
+
+---
+
+## Q
+
+### Qualification / Certification (资产资格认定与认证)
+
+- **定义**: 软件复用资产管理中两个递进的评估过程（IEEE 1517-2010）：Qualification（资格认定）是评估一个可复用资产是否满足在给定语境下复用的指定要求的过程；Certification（认证）是正式确认一个可复用资产满足复用所需指定标准或要求的过程。资格认定回答"这个资产能不能在当前场景复用"，认证回答"这个资产是否达到入库/发布标准"。
+- **属性**:
+  - Qualification：语境相关（面向具体复用场景）
+  - Certification：标准相关（面向组织级复用标准）
+  - 通常先 Certification 入库，再 Qualification 选型
+  - 均产出可追溯的评估记录
+- **关系**:
+  - 对象：Asset / Reusable Asset
+  - 设施：Reuse Library（认证决定入库资格）
+  - 互补：Adaptation（认定通过后可能仍需适配）
+  - 供应链类比：SLSA 的 provenance/attestation 验证
+- **解释**: 资格认定与认证是复用质量的"双闸门"：没有认证的资产库会沦为代码垃圾场，没有资格认定的选型会把"高质量但不适用"的资产强加给项目。
+- **示例**: 组织规定入复用库的资产须通过认证（测试覆盖率 ≥80%、有 API 文档、SBOM 完整）；某项目复用前再做资格认定，确认该加密库满足本系统的合规算法清单。
+- **反例**: 复用库无认证门槛，任何人可上传代码片段；使用者引用了一个看似匹配但未经资格认定的组件，生产环境暴露许可证与安全漏洞问题。
+- **权威来源**:
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程：asset qualification、certification）
   - 核查日期：2026-07-12
 
 ---
@@ -785,6 +932,26 @@
   - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF
   - [OpenSSF Secure Open Source Software Vision Brief 2025](https://openssf.org/wp-content/uploads/2025/02/OpenSSF_2025_Vision_Brief.pdf) — OpenSSF
   - 核查日期：2026-07-07
+
+### Source Integrity / Build Level (源码完整性/构建等级)
+
+- **定义**: SLSA 1.2 框架中度量与保障软件构建可信度的两个关联概念：Source Integrity（源码完整性）指用于构建制品的源代码未被篡改且可追溯至其来源的属性；Build Level（构建等级）是 SLSA 构建轨道的编号等级（Build L1–L3），表示构建完整性保证的强度——L1 要求来源证明（provenance）存在，L2 要求由托管构建平台签发防篡改 provenance，L3 要求强化（hardened）构建平台提供更强隔离与防伪造保证。
+- **属性**:
+  - Source Integrity：版本控制、不可变引用、篡改可追溯
+  - Build Level：L1/L2/L3 递进，覆盖 provenance 存在性、签发隔离与平台加固
+  - 等级越高，对构建基础设施的要求越严格
+  - 两者均以 Attestation 为机器可验证载体
+- **关系**:
+  - 上位：SLSA（Build Track）
+  - 载体：Provenance、Attestation
+  - 对象：Artifact；生态：SBOM（成分维度互补）
+  - 复用治理类比：IEEE 1517 的 Certification
+- **解释**: 复用第三方制品时，Build Level 给出"该信到什么程度"的量化依据：L1 只能确认有构建记录，L3 才能对抗构建平台内部的篡改与伪造；源码完整性是这一切的起点——来源不可信，等级再高也无意义。
+- **示例**: 企业制品仓库准入策略要求外部依赖至少 SLSA Build L2（托管 CI 签发 provenance），核心安全组件要求 L3，并校验源码仓库的签名提交以保证源码完整性。
+- **反例**: 仅检查依赖是否有 provenance 文件（满足 L1）即引入生产，未验证签发者与构建平台隔离，攻击者通过被入侵的开发者自托管 runner 伪造构建记录。
+- **权威来源**:
+  - [SLSA Specification v1.2 — Build Track](https://slsa.dev/spec/v1.2/about) — OpenSSF（Build L1–L3 等级与源码完整性要求）
+  - 核查日期：2026-07-12
 
 ### Stakeholder (利益相关者)
 
@@ -1054,16 +1221,21 @@
 | ArchiMate | A | 01-元模型 | TOGAF、ISO 42010 |
 | Architecture | A | 01-元模型 | AD、Viewpoint、View |
 | Architecture Description | A | 01-元模型 | ADL、ADF、Model Kind |
+| Architecture Description Framework / ADF | A | 01-元模型 | ISO 42010、Viewpoint、Model Kind |
+| Architecture Development Method / ADM | A | 01-元模型 | TOGAF、Architecture Repository |
+| Architecture Repository / Enterprise Continuum / Foundation Architecture | A | 01-元模型 | TOGAF、ADM、ABB/SBB |
 | Artifact | A | 10-供应链安全 | Provenance、Attestation、SBOM |
 | Attestation | A | 10-供应链安全 | Provenance、SLSA、in-toto |
 | Business Capability | B | 02-业务架构 | TOGAF、FEA BRM |
 | Business Process | B | 02-业务架构 | BPMN、DMN |
 | Component | C | 04-组件架构 | Interface Contract、Component Model |
+| Commonality | C | 01-元模型/02-业务 | Variability、PLE、Feature Model |
 | Concern | C | 01-元模型 | Stakeholder、Viewpoint、View |
 | Component Model | C | 04-组件架构 | WASM、CORBA、OSGi |
 | Conformal Prediction | C | 12-AI 原生复用 | Probabilistic Contract |
 | Correspondence | C | 01-元模型 | View、Model Kind |
 | Digital Twin | D | 11-工业 IoT | AAS、OPC UA |
+| Domain Engineering / Application Engineering / Domain Analysis | D | 01-元模型/02-业务 | PLE、ISO 26550、Reuse Library |
 | EDA | E | 03-应用架构 | Kafka、CQRS |
 | FaaS | F | 05-功能架构 | Serverless、Lambda |
 | Feature Model | F | 01-元模型/02-业务 | Variability、PLE、Variation Point |
@@ -1072,6 +1244,7 @@
 | Interface Contract | I | 04-组件架构 | Design-by-Contract |
 | ISA-95 | I | 11-工业 IoT | AAS、OPC UA |
 | MCP | M | 12-AI 原生复用 | A2A、Tool、Resource |
+| MCP Primitives | M | 12-AI 原生复用 | MCP、A2A、JSON-RPC |
 | Microservices | M | 03-应用架构 | Service Mesh、API Gateway |
 | Model Kind | M | 01-元模型 | Viewpoint、AD |
 | OPC UA | O | 11-工业 IoT | AAS、ISA-95 |
@@ -1079,6 +1252,7 @@
 | Product Line Engineering | P | 01-元模型/02-业务 | ISO 26550、Feature Model |
 | Probabilistic Contract | P | 12-AI 原生复用 | Conformal Prediction |
 | Provenance | P | 10-供应链安全 | Attestation、Artifact、SLSA |
+| Qualification / Certification | Q | 01-元模型 | IEEE 1517、Reusable Asset |
 | Reuse | R | 01-元模型 | Reusable Asset、PLE |
 | Reusable Asset | R | 01-元模型 | RAS、SLSA |
 | ROI | R | 09-价值量化 | COCOMO II、NPV |
@@ -1087,6 +1261,7 @@
 | Service | S | 跨层（02–05） | Microservices、Service Mesh、API |
 | Service Mesh | S | 03-应用架构 | Istio、Linkerd |
 | SLSA | S | 10-供应链安全 | SBOM、Sigstore |
+| Source Integrity / Build Level | S | 10-供应链安全 | SLSA、Provenance、Attestation |
 | Stakeholder | S | 01-元模型 | Concern、Viewpoint |
 | Supply Chain | S | 10-供应链安全 | SBOM、SLSA、Sigstore |
 | System | S | 01-元模型 | Architecture Description、ISO 15288 |

@@ -3,7 +3,7 @@
 > **版本**: 2026-07-07
 > **周期**: 2026 Q2 → 2027 Q4（6 个季度）
 > **目标**: 将 view/ 中 ~31 万字源文档转化为结构化、可验证、可输出的知识产品
-> **项目统计**: `struct/` 330 + `view/` 23 = 353 Markdown 文档 · 严格公理 10/启发式 5/定理 17 · ~109.2 万词 · 25+ 国际标准（真源 `reports/stats.json`）
+> **项目统计**: `struct/` 332 + `view/` 23 = 355 Markdown 文档 · 严格公理 10/启发式 5/定理 17 · ~111.3 万词 · 25+ 国际标准（真源 `reports/stats.json`）
 > **历史计划**: [`_HISTORICAL_MASTER_PLAN_2026_NETWORK_ALIGNED.md`](./_ARCHIVE/_HISTORICAL_MASTER_PLAN_2026_NETWORK_ALIGNED.md)、[`_HISTORICAL_SUBSEQUENT_PLAN_2026.md`](./_ARCHIVE/_HISTORICAL_SUBSEQUENT_PLAN_2026.md)、[`_HISTORICAL_SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md`](./_ARCHIVE/_HISTORICAL_SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md)
 
 ---
@@ -61,7 +61,7 @@
 
 **关键决策更新（2026-07-07）**:
 
-- **A1**: 统计口径以实际文件数为准：`struct/` 330 + `view/` 23 = 353 Markdown，~109.2 万词（1,091,745）；严格公理 10 / 启发式 5 / 定理 17（机器真源：`reports/stats.json`）。
+- **A1**: 统计口径以实际文件数为准：`struct/` 332 + `view/` 23 = 355 Markdown，~111.3 万词（1,112,540）；严格公理 10 / 启发式 5 / 定理 17（机器真源：`reports/stats.json`）。
 - **A2**: 停止批量模板注入；默认报告模式，人工复核后决定是否应用修复。
 - **A3**: `view/` 定位为 2026-06 历史快照，`struct/` 为当前真源，长期通过同步脚本维护。
 

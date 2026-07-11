@@ -2373,7 +2373,7 @@ flowchart TB
 | ISO/IEC 33004:2022 评估参考模型要求 | <https://www.iso.org/standard/80240.html> | 2026-06-10 |
 | ISO/IEC/IEEE 12207:2026 软件生命周期过程 | <https://www.iso.org/standard/90219.html> | 2026-06-12 |
 | ISO/IEC/IEEE 12207:2017 软件生命周期过程（历史对照版） | <https://www.iso.org/standard/63712.html> | 2026-06-12 |
-| ISO/IEC 26565:2026 产品线成熟度模型 | <https://www.iso.org/standard/43091.html> | 2026-06-10 |
+| ISO/IEC 26565:2026 产品线成熟度模型 | <https://www.iso.org/standard/81436.html> | 2026-06-10 |
 | CMMI 2.0 官方资源 | <https://cmmiinstitute.com/cmmi> | 2026-06-10 |
 | SPICE 用户组 (ISO/IEC JTC 1/SC 7 WG 10) | <https://www.spiceusergroup.org> | 2026-06-10 |
 | RiSE 复用成熟度框架参考 | <https://rise.org.br> | 2026-06-10 |
@@ -7482,10 +7482,10 @@ ISO/IEC/IEEE 42030:2019 推荐的方法之一是 ATAM（Architecture Tradeoff An
 
 | 来源 | URL | 核查日期 |
 |------|-----|----------|
-| ISO/IEC 25040:2024 软件质量评估过程 | <https://www.iso.org/standard/81094.html> | 2026-06-10 |
+| ISO/IEC 25040:2024 软件质量评估过程 | <https://www.iso.org/standard/83467.html> | 2026-06-10 |
 | ISO/IEC 25010:2023 系统与软件质量模型 | <https://www.iso.org/standard/78176.html> | 2026-06-10 |
 | ISO/IEC 25041:2023 评估指南 | <https://www.iso.org/standard/80695.html> | 2026-06-10 |
-| ISO/IEC/IEEE 42030:2019 架构评估框架 | <https://www.iso.org/standard/66475.html> | 2026-06-10 |
+| ISO/IEC/IEEE 42030:2019 架构评估框架 | <https://www.iso.org/standard/73436.html> | 2026-06-10 |
 | SQuaRE 标准族概览 | <https://www.iso.org/committee/45020/x/catalogue/p/1/u/1/w/1/d/0> | 2026-06-10 |
 | OWASP 软件组件安全验证标准 (SCSVS) | <https://scsvs.owasp.org> | 2026-06-10 |
 | NIST SBOM 指南 | <https://www.nist.gov/itl/executing-order-14028-improving-nations-cybersecurity/software-security-supply-chains> | 2026-06-10 |
@@ -9566,6 +9566,12 @@ Agent Behavioral Contract (ABC)
 - 复用度量指标体系（资产级/项目级/组织级/生态级）
 - FinOps 跨层复用成本模型
 - 复用成熟度评估问卷（基于 ISO/IEC 26565 产品线成熟度框架）
+
+## 主题图谱
+
+![四层复用跨层映射图](../struct/99-reference/visualizations/cross-layer-mappings/four-layer-reuse-mapping.svg)
+
+![06 跨层复用治理 — 复用治理决策树](../struct/99-reference/visualizations/decision-trees/06-cross-layer-governance-decision-tree.svg)
 
 ## 概念定义
 

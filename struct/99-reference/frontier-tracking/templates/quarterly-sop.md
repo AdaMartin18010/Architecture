@@ -11,6 +11,22 @@
 
 建立可重复、可审计的季度前沿跟踪流程，确保知识体系中的标准、框架、协议引用与国际权威来源保持同步。
 
+### 概念定位：SOP 的定义与边界
+
+**标准作业程序（Standard Operating Procedure, SOP）** 在本目录中指：将"季度前沿跟踪"这一周期性活动拆解为固定步骤、固定角色与固定输出物的操作规范，使任何接任的跟踪负责人都能在不依赖个人经验的情况下复现同等质量的复核结果。本 SOP 的边界是"标准状态复核与索引更新"，不包括主题文档的内容创作（后者由各领域负责人按 `struct/MASTER_PLAN.md` 执行）。
+
+### 示例：一次紧急复核的实际执行
+
+例如：2026-05-29 MCP 官方发布 RC 2026-07-28 时，跟踪负责人按本 SOP 的"紧急复核"路径执行：运行 `standard-status-checker.py` → 人工访问 modelcontextprotocol.io 确认 RC 状态 → 在 `2026-q3-frontier-report.md` 中登记"RC 已发布，稳定版仍为 2025-11-25" → 更新本目录 README 的活跃跟踪项。该记录可在 `../2026-q3-frontier-report.md` 中查证。
+
+### 反例：违反本 SOP 的做法
+
+- 仅凭第三方报道或记忆就修改 `authoritative-sources-v2.md` 中的标准状态（跳过步骤 3 的人工官方页面复核）；
+- 将"征求意见稿（IPD）"直接标注为"已发布"（违反状态四分类原则）；
+- 更新索引后跳过步骤 7 的质量门禁，导致死链或格式破坏进入主干。
+
+因此，本 SOP 将"人工权威来源复核"（步骤 3）设为不可跳过环节：自动化脚本只负责发现候选变更，状态确认必须有人工访问官方页面的记录。
+
 ---
 
 ## 2. 频率与触发条件
@@ -136,6 +152,20 @@ python scripts/health-check.py
 ---
 
 ## 7. 关联脚本与文档
+
+### 权威来源与核查
+
+> **权威来源**（本 SOP 步骤 3 人工复核所访问的官方页面）：
+>
+> - ISO 标准检索：<https://www.iso.org/standards.html>
+> - IEC Webstore：<https://webstore.iec.ch/>
+> - The Open Group 标准库：<https://pubs.opengroup.org/togaf-standard/>
+> - NIST CSRC 出版物：<https://csrc.nist.gov/publications/detail/sp/800-218/final>
+> - MCP 官方规范：<https://modelcontextprotocol.io/specification/2025-11-25>
+>
+> **核查日期**: 2026-07-08
+
+### 相关文档与脚本
 
 - `scripts/standard-status-checker.py`
 - `struct/99-reference/tools/standard-tracker.py`

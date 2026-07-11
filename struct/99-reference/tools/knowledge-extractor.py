@@ -104,7 +104,20 @@ def load_canonical_names(path: Path = CANONICAL_NAMES_PATH) -> Dict[str, Dict]:
     return registry
 
 
+def load_noise_names(path: Path = CANONICAL_NAMES_PATH) -> set:
+    """加载抽取噪声名单（noise_names）：这些名称不是独立标准/协议实体。"""
+    if not path.exists():
+        return set()
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    return {
+        str(n).strip().lower()
+        for n in (data.get("noise_names", []) or [])
+        if str(n).strip()
+    }
+
+
 CANONICAL_REGISTRY = load_canonical_names()
+NOISE_NAMES = load_noise_names()
 
 
 def _core_key(name: str) -> Tuple[Optional[str], Optional[str]]:
@@ -127,6 +140,9 @@ def canonicalize_name(name: str, entity_type: str) -> Optional[str]:
 
     # 1) 完全匹配 canonical 或 alias（大小写不敏感）
     name_lower = name.lower()
+    # 0) 噪声名单：非独立标准/协议（如 SLSA L3 成熟度级别、否定语境的 BPMN 2.1）
+    if name_lower in NOISE_NAMES:
+        return None
     for canonical, meta in CANONICAL_REGISTRY.items():
         if name_lower == canonical.lower() or name_lower in {a.lower() for a in meta["aliases"]}:
             return canonical

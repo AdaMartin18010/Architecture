@@ -3,6 +3,16 @@
 # canonical: KG 中使用的权威名称（也是实体 label）
 # aliases: 项目中常见的等价/错误写法，出现即归一到 canonical
 # invalid_versions: 已知的错误版本号；若 extractor 通过前缀匹配到这些版本，也归一到 canonical 并报警告
+# noise_names: 抽取噪声名单——这些名称不是独立标准/协议实体，extractor 命中即跳过（不建实体）
+
+noise_names:
+  # SLSA L1-L4 是 SLSA 规范的成熟度级别（与版本号正交），不是独立标准
+  - "SLSA L1"
+  - "SLSA L2"
+  - "SLSA L3"
+  - "SLSA L4"
+  # BPMN 2.1 无官方发布（现行 2.0, 2011）；仅出现在“没有官方 BPMN 2.1”等否定语境
+  - "BPMN 2.1"
 
 standards:
   - canonical: "ISO/IEC 25010:2023"
@@ -567,6 +577,7 @@ standards:
     aliases:
       - "SysML 2"
       - "SysML 2.0"
+      - "SysML v2.0"
       - "sysml2"
       - "sysml v2"
 
@@ -688,6 +699,34 @@ standards:
     aliases:
       - "ISO 9001:2015"
       - "IEC 9001"
+
+  # JTC1 标准的 IEC 前缀误引变体（ISO/IEC X:YYYY 常被误写为 IEC X:YYYY）
+  - canonical: "ISO/IEC 15026:2019"
+    aliases:
+      - "IEC 15026:2019"
+      - "IEC 15026"
+
+  - canonical: "ISO/IEC 17025:2017"
+    aliases:
+      - "IEC 17025:2017"
+      - "IEC 17025"
+      - "ISO/IEC 17025"
+
+  - canonical: "ISO/IEC 22989:2022"
+    aliases:
+      - "IEC 22989:2022"
+      - "ISO/IEC 22989"
+
+  - canonical: "ISO/IEC 25002:2024"
+    aliases:
+      - "IEC 25002:2024"
+      - "ISO/IEC 25002"
+
+  - canonical: "ISO/IEC 5338:2023"
+    aliases:
+      - "IEC 5338:2023"
+      - "IEC 5338"
+      - "ISO/IEC 5338"
 
   # ISO/IEC/IEEE 420xx 族（族名截断登记：正文 "ISO/IEC/IEEE 420xx 系列" 被截断为 420）
   - canonical: "ISO/IEC/IEEE 420"

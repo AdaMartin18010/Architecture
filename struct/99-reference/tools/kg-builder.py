@@ -69,7 +69,7 @@ PROPERTIES = [
     ("mentions", "File", "Standard", "提及标准"),
     ("implementedBy", "Entity", "Tool", "由工具实现"),
     ("relatedTo", "Term", "Entity", "相关"),
-    ("evolvedFrom", "Standard", "Standard", "演进自"),
+    ("evolvedFrom", "Entity", "Entity", "演进自（标准/协议版本谱系，端点须为 Standard 或 Protocol，由 kg-shacl-validate.py C6 约束）"),
     # 数据属性
     ("sourceFile", "Entity", None, "来源文件"),
     ("sourceLine", "Entity", None, "来源行号"),

@@ -6,7 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ar:ontology a owl:Ontology ;
-    dct:created "2026-07-11T21:51:05.145102+00:00" ;
+    dct:created "2026-07-11T22:24:10.688751+00:00" ;
     dct:description "Ontology for software architecture reuse knowledge base" ;
     dct:title "Architecture Reuse Knowledge Graph Ontology" .
 
@@ -50,9 +50,9 @@ aro:defines a owl:ObjectProperty ;
     rdfs:range aro:Term .
 
 aro:evolvedFrom a owl:ObjectProperty ;
-    rdfs:label "演进自" ;
-    rdfs:domain aro:Standard ;
-    rdfs:range aro:Standard .
+    rdfs:label "演进自（标准/协议版本谱系，端点须为 Standard 或 Protocol，由 kg-shacl-validate.py C6 约束）" ;
+    rdfs:domain aro:Entity ;
+    rdfs:range aro:Entity .
 
 aro:implementedBy a owl:ObjectProperty ;
     rdfs:label "由工具实现" ;
@@ -94,16 +94,16 @@ aro:sourceLine a owl:DatatypeProperty ;
     rdfs:domain aro:Entity ;
     rdfs:range xsd:integer .
 
+aro:Standard a owl:Class ;
+    rdfs:label "国际/行业标准或框架" ;
+    rdfs:subClassOf aro:Entity .
+
 aro:Tool a owl:Class ;
     rdfs:label "工具、脚本或平台" ;
     rdfs:subClassOf aro:Entity .
 
 aro:Topic a owl:Class ;
     rdfs:label "知识主题，如 01-meta-model-standards" ;
-    rdfs:subClassOf aro:Entity .
-
-aro:Standard a owl:Class ;
-    rdfs:label "国际/行业标准或框架" ;
     rdfs:subClassOf aro:Entity .
 
 aro:Term a owl:Class ;

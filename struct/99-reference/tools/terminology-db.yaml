@@ -553,6 +553,85 @@ terms:
     related:
     - Model Context Protocol
     - Server
+  Microservices:
+    definitions:
+      Fowler & Lewis 2014: 'In short, the microservice architectural style is an approach to developing a single application
+        as a suite of small services, each running in its own process and communicating with lightweight mechanisms,
+        often an HTTP resource API.'
+    aliases:
+    - 微服务
+    - Microservice Architecture
+    related:
+    - Service
+    - Service Mesh
+    - Component
+  Service Mesh:
+    definitions:
+      Buoyant 2017: A service mesh is a dedicated infrastructure layer for facilitating service-to-service communications
+        between services or microservices, using a lightweight proxy.
+    aliases:
+    - 服务网格
+    related:
+    - Microservices
+    - Service
+    - Component
+  Platform Engineering:
+    definitions:
+      CNCF Platforms White Paper: Platform engineering is the discipline of designing and building toolchains and workflows
+        that enable self-service capabilities for software engineering organizations in the cloud-native era.
+    aliases:
+    - 平台工程
+    related:
+    - Service
+    - Component
+    - Reusability
+  Formal Verification:
+    definitions:
+      General: The use of mathematically rigorous techniques for the specification, development, analysis, and verification
+        of software and hardware systems, proving or disproving correctness with respect to a formal specification.
+    aliases:
+    - 形式化验证
+    - Formal Methods
+    related:
+    - Qualification
+    - Certification
+  TLA+:
+    definitions:
+      TLA+ Project: TLA+ is a high-level language for modeling programs and systems--especially concurrent and distributed
+        ones.
+    aliases:
+    - TLA Plus
+    related:
+    - Formal Verification
+  OPC UA:
+    definitions:
+      OPC Foundation: OPC UA is a platform independent service-oriented architecture that integrates all the functionality
+        of the individual OPC Classic specifications into one extensible framework.
+    aliases:
+    - OPC Unified Architecture
+    - IEC 62541
+    related:
+    - Service
+    - Component
+  Digital Twin:
+    definitions:
+      ISO 23247-1:2021: Fit for purpose digital representation of an observable manufacturing element with a means to
+        enable convergence between the element and its digital representation.
+    aliases:
+    - 数字孪生
+    related:
+    - OPC UA
+    - System
+  EDA:
+    definitions:
+      Gartner: 'Event-driven architecture (EDA) is a design paradigm in which a software component executes in response
+        to receiving one or more event notifications.'
+    aliases:
+    - Event-Driven Architecture
+    - 事件驱动架构
+    related:
+    - Microservices
+    - Service
 aliases:
   ISO/IEC/IEEE 42010:2022:
   - iso42010
@@ -598,6 +677,27 @@ aliases:
   - ntia
   - ntia2021
   - sbom
+  Fowler & Lewis 2014:
+  - fowler
+  - fowler2014
+  Buoyant 2017:
+  - buoyant
+  - buoyant2017
+  CNCF Platforms White Paper:
+  - cncf
+  - cncfplatforms
+  TLA+ Project:
+  - tlaplus
+  - tla+
+  OPC Foundation:
+  - opcua
+  - opcfoundation
+  - iec62541
+  ISO 23247-1:2021:
+  - iso23247
+  - '23247'
+  Gartner:
+  - gartner
 version_hints:
   ISO/IEC/IEEE 42010:2022:
     version: '2022'
@@ -643,3 +743,31 @@ version_hints:
     version: '2021'
     status: 已发布
     note: The Minimum Elements For a Software Bill of Materials (SBOM)
+  Fowler & Lewis 2014:
+    version: '2014'
+    status: 已发布
+    note: Microservices, martinfowler.com（定义性文章）
+  Buoyant 2017:
+    version: '2017'
+    status: 已发布
+    note: William Morgan, What's a service mesh?（service mesh 定义出处）
+  CNCF Platforms White Paper:
+    version: '2023'
+    status: 已发布
+    note: CNCF TAG App Delivery Platforms White Paper
+  TLA+ Project:
+    version: ''
+    status: 现行
+    note: tlaplus.us 官方定义
+  OPC Foundation:
+    version: ''
+    status: 现行
+    note: OPC UA = IEC 62541
+  ISO 23247-1:2021:
+    version: '2021'
+    status: 已发布
+    note: Digital Twin framework for manufacturing
+  Gartner:
+    version: ''
+    status: 现行
+    note: Gartner IT Glossary, event-driven architecture

@@ -254,6 +254,8 @@ $$
 **可证伪条件**
 若存在大规模实证研究显示：即使 $C_{\text{reuse}} > C_{\text{build}} + V_{\text{reuse}}$，组织仍持续复用且获得正向净收益，则 E.2 失效。
 
+> **机器验证**：本公理的 Alloy 公理级形式化见 [`struct/07-formal-verification/02-alloy/reuse-economics.als`](../../07-formal-verification/02-alloy/reuse-economics.als)（2026-07-12 Alloy Analyzer 6.2.0 复验：`RationalImpliesViable`/`AAFThresholdIsStrict` 均无反例，含负对照实验；阈值口径同 `threshold-registry.yaml` 登记项 THR-ECON-AAF-FLOOR）。
+
 ---
 
 ### E.3 Contextual Fitness (上下文适配性)
@@ -367,6 +369,8 @@ $$
 
 **可证伪条件**
 若存在技术手段（如形式化验证的隔离层）使得 $A$ 可以依赖 $B$ 而不继承 $B$ 对 $C$ 的信任需求，且该技术被广泛部署，则 S.3 需增加"隔离例外"条款。
+
+> **机器验证**：本公理的 Alloy 公理级形式化见 [`struct/07-formal-verification/02-alloy/trust-transitivity.als`](../../07-formal-verification/02-alloy/trust-transitivity.als)（2026-07-12 Alloy Analyzer 6.2.0 复验：`TrustBoundaryExtends`/`TrustIsClosedUnderDependents` 均无反例，含负对照实验）。
 
 ---
 
@@ -571,7 +575,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 | P.3 Governance Complexity Law | 组织理论 / 信息论 | 规模与复杂度增长规律 | 复用规模与治理复杂度满足 $N \cdot \log(N)$ |
 | P.4 Learning Curve Monotonicity | Sweller (1988) 认知负荷理论 | 内在负荷与图式获取 | 学习成本随复用次数单调不增 |
 
-> **公理→形式化规约映射**：15 条公理与 17 条定理对应的形式化规约（TLA+/Alloy/Coq/Isabelle）、机器验证状态与缺口分析，见 [`formalization-mapping.md`](formalization-mapping.md)（2026-07-12 建立；截至该日仅 S.4 已机器验证）。
+> **公理→形式化规约映射**：15 条公理与 17 条定理对应的形式化规约（TLA+/Alloy/Coq/Isabelle）、机器验证状态与缺口分析，见 [`formalization-mapping.md`](formalization-mapping.md)（2026-07-12 建立；截至该日 S.4、S.3、E.2 已机器验证）。
 
 ### 示例
 

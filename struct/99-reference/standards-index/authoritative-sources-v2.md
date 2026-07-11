@@ -1,9 +1,9 @@
-# 国际标准与权威来源索引 v2.9
+# 国际标准与权威来源索引 v3.0
 
-> **版本**: 2026-07-11 v2.9
+> **版本**: 2026-07-12 v3.0
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-11
+> **上次复核**: 2026-07-12
 > **下次复核**: 2026-09-30
 > **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../audit/content-fact-fix-2026-07.md)
 
@@ -65,6 +65,14 @@
 | **SWEBOK** | V4 | 已发布 | <https://www.computer.org/education/bodies-of-knowledge/software-engineering> | 软件工程知识体系 |
 | **ISO/IEC 5338** | 2023 | 已发布 | <https://www.iso.org/standard/81118.html> | AI 系统生命周期过程 |
 | **ISO/IEC 42001** | 2023 | 已发布 | <https://www.iso.org/standard/81230.html> | AI 管理体系 |
+| **ISO/IEC 19510** | 2013 | 已发布 | <https://www.iso.org/standard/62652.html> | OMG BPMN 2.0 的 ISO/IEC 采纳版；URL 经 iso.org 直连实测确认 |
+| **ISO 15704** | 2019 | 已发布（Ed.2；90.20 系统复审中） | <https://www.iso.org/standard/71890.html> | 企业建模与架构 — 企业参考架构与方法论要求（GERAM 基础）；URL 实测确认 |
+| **IEEE 1471** | 2000 | 已发布；已被 ISO/IEC/IEEE 42010 取代 | <https://standards.ieee.org/standard/1471-2000.html> | 软件密集型系统架构描述推荐实践（42010 前身） |
+| **ISO/IEC 33001** | 2015 | 已发布（2026 复审确认，stage 90.93） | <https://www.iso.org/standard/54175.html> | 过程评估 — 概念与术语（ISO/IEC 330xx 家族入口） |
+| **ISO/IEC 33004** | 2015 | 已发布（2026 复审确认，stage 90.93）；**注意：不存在 :2022 版** | <https://www.iso.org/standard/54178.html> | 过程评估 — 过程参考模型/评估模型/成熟度模型要求 |
+| **ISO/IEC 33020** | 2019 | 已发布（Ed.2，取代 2015 版） | <https://www.iso.org/standard/78526.html> | 过程能力测量框架（SPICE 能力等级 0–5）；URL 实测确认 |
+| **ISO/IEC 19770-1** | 2017 | 已发布 | <https://www.iso.org/standard/68531.html> | IT 资产管理 — 资产管理系统要求 |
+| **ISO 9001** | 2015 | 现行 | <https://www.iso.org/standard/62085.html> | 质量管理体系 — 要求 |
 
 ---
 
@@ -79,6 +87,7 @@
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
 | **DMN** | 1.5 | 2024 发布 | <https://www.omg.org/spec/DMN/1.5> | 决策模型与符号 |
 | **OMG SysML v2** | v2 | 已发布 | <https://www.omg.org/spec/SysML/> | 系统建模语言第二版 |
+| **ISO 20022-1** | 2013（Ed.2，Withdrawn；Ed.3 DIS 中） | 系列滚动修订 | <https://www.iso.org/standard/55005.html> | 金融业通用报文方案 — 元模型；系列新版陆续发布（如 -4:2026=84857）；注册机构门户 <https://www.iso20022.org/> |
 
 ---
 
@@ -106,6 +115,9 @@
 | **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/en/publication/33615> | IACS 安全产品开发生命周期要求 |
 | **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/en/publication/34421> | IACS 组件技术安全要求；**注意：不是 2025 版** |
 | **IEC TS 62443-6-2** | 2025 | 已发布 | <https://webstore.iec.ch/en/publication/67463> | IACS 组件评估方法论 |
+| **ISO/IEC 27001** | 2022 | 已发布（Ed.3；+Amd 1:2024=88435 气候行动修订） | <https://www.iso.org/standard/82875.html> | 信息安全管理体系（ISMS）— 要求；URL 实测确认 |
+| **ISO/IEC 5230** | 2020 | 已发布 | <https://www.iso.org/standard/81039.html> | OpenChain 规范（开源许可证合规流程）；URL 实测确认 |
+| **ISO/IEC 5962** | 2021 | 已发布 | <https://www.iso.org/standard/81870.html> | SPDX® Specification V2.2.1（SBOM 交换格式）；URL 实测确认 |
 
 ---
 
@@ -116,7 +128,8 @@
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
 | **IEC 61508** | **Ed.3（CDV 投票完成，RVC 2026-05-15 发布：65A/1231~1234/RVC；IEC 官方 Fcst. Publ. Date 2026-07）** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起已可按 IEC 61508-3:2026 执行 SIL 2+ 认证** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构按 61508-3:2026 执行”与“IEC 国际标准正式出版（官方预测 2026-07）” |
-| **ISO 21448** | 2022 | Ed.2 修订中（ISO/AWI 21448，AWI 阶段） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；Ed.2 扩展覆盖 SAE L1-L5 驾驶自动化及远程用户操作/后台通信；发布时点未官宣 |
+| **ISO 21448** | 2022 | 已发布（现行版） | <https://www.iso.org/standard/77490.html> | 预期功能安全 (SOTIF)；URL 经 iso.org 直连实测确认：77490=2022 已发布版页面，93071=Ed.2 工作项页面 |
+| **ISO/WD 21448** | Ed.2 | 修订中（WD 阶段，2026-07 实测；项目已从 AWI 推进至 WD） | <https://www.iso.org/standard/93071.html> | SOTIF Ed.2 工作项；扩展覆盖 SAE L1-L5 驾驶自动化及远程用户操作/后台通信；发布时点未官宣 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
 | **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://reference.opcfoundation.org/specs/OPC-10000-80> | 现场级通信；OPC Foundation 主站对自动化访问限制较严，规范参考页（Parts 80–84）可正常访问 |
@@ -138,6 +151,18 @@
 | **IEC 63365** | **2022** | 已发布 | <https://webstore.iec.ch/en/publication/67436> | 数字铭牌（Digital Nameplate）；**年份订正 2024→2022** |
 | **IEC 60870-5-104** | 2006 | 已发布（+AMD1:2016 CSV Ed.2.1，含 COR1:2023） | <https://webstore.iec.ch/en/publication/25035> | 电力远动传输 104 规约（TCP/IP 网络访问） |
 | **IEC 60068-1** | 2013 | 已发布（Ed.7） | <https://webstore.iec.ch/en/publication/501> | 环境试验 第 1 部分：总则与指南 |
+| **IEC TR 62541-1** | 2020 | 已发布（Ed.3） | <https://webstore.iec.ch/en/publication/61109> | OPC 统一架构（OPC UA）概览与概念；系列含 -14:2020 PubSub=61108；URL 实测确认 |
+| **IEC 61512-1** | 2026 | 已发布（Ed.2，2026-02-20 发布，取代 1997 版=5528） | <https://webstore.iec.ch/en/publication/75287> | 批控制 — 模型与术语（ISA-88）；URL 实测确认 |
+| **ISO 23247** | -1:2021 / -2:2021 | 已发布 | <https://www.iso.org/standard/75066.html> | 制造业数字孪生框架；链接为 -1（Overview，实测确认）；-2=78743 |
+| **ISO/IEC 30173** | 2023 | 已发布 | <https://www.iso.org/standard/81442.html> | 数字孪生 — 概念与术语；URL 实测确认 |
+| **ISO 21434（ISO/SAE 21434）** | 2021 | 已发布 | <https://www.iso.org/standard/70918.html> | 道路车辆 — 网络安全工程；URL 实测确认 |
+| **ISO 13849-1** | 2023 | 已发布（Ed.4，取代 2015 版=69883） | <https://www.iso.org/standard/73481.html> | 机械安全 — 控制系统安全相关部件 第 1 部分：设计通则 |
+| **IEC 61800-5-2** | 2016 | 已发布（Ed.2；RLV 合订=24555） | <https://webstore.iec.ch/en/publication/24555> | 调速电气传动系统 — 功能安全（STO 等指定安全子功能）；URL 实测确认 |
+| **IEC 61804-2** | 2018 | 已发布（Ed.3，整合已撤销的 61804-1） | <https://webstore.iec.ch/en/publication/28131> | 过程控制功能块（FB）与 EDDL — FB 概念规范；URL 实测确认 |
+| **ISO 22400-2** | 2014 | 已发布 | <https://www.iso.org/standard/54497.html> | 制造运营管理 KPI — 第 2 部分：定义与描述 |
+| **ISO 50001** | 2018 | 现行 | <https://www.iso.org/standard/69426.html> | 能源管理体系 — 要求与使用指南 |
+| **ISO 14064-1** | 2018 | 已发布 | <https://www.iso.org/standard/66453.html> | 温室气体 — 第 1 部分：组织层面排放与清除的量化与报告规范 |
+| **IEEE 802.1** | 系列（802.1AS / 802.1Qbv 等） | 现行（滚动修订） | <https://1.ieee802.org/tsn/> | 时间敏感网络（TSN）任务组；OPC UA FX 确定性传输基础；URL 实测确认 |
 
 ---
 
@@ -201,6 +226,7 @@
 | 2026-07-11 | 更新为 v2.7（联网核对）：GSF SCI for AI 订正为 2025-12 ratified（GSF 公告 2025-12-17，基于 ISO/IEC 21031:2024）；ISO/IEC 21838 系列补全为 -1:2021/-2:2021(BFO)/-3:2023(DOLCE)/-4:2023(TUpper)，-5(UFO) 2025-12 进入 DIS；复核 OMG RAS v2.2（2005-11）、FAIR4RS v1.0（2022-06 RDA 批准）、CNCF Platform Engineering Maturity Model（2023-11 首版，无 v1.0 编号）、Microsoft Agent Governance Toolkit（2026-04-02 开源）、OSPS Baseline v2026.02.19、OPC UA FX Part 80-84 v1.00.03（2026-05-23）、ISO/IEC/IEEE 12207:2026（2026-04-29 发布）、ISO/IEC 25010:2023（现行）均一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.8（iso.org 全表链接实测复核，Mozilla UA 直连成功，23 条中 4 条纠错）：ISO/IEC 21838 链接 74307（实为 ISO 17889-2 瓷砖）→ 71954（-1:2021）；ISO/IEC/IEEE 42010 链接 74296（实为 ISO/IEC 22989:2022）→ 74393；ISO/IEC 25010 链接 78175（实为 ISO/IEC 25002:2024）→ 78176；ISO/IEC 26580 链接 71883（实为 ISO 10204 铁矿石）→ 43139；ISO/IEC 26564 链接 81622（实为 ISO/TS 24560-1 医疗）→ 43123；ISO/IEC 26565/26566（81436/81437）、26550（69529）复核确认 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.9（IEC webstore 直连实测，16 条工业自动化标准补全 publication 号，全部经 `<title>` 实测确认）：IEC 61511-1:2016=24241（+AMD1:2017 CSV=61289、-2:2016=25510、:2026 SER 系列合订=5527）、IEC 61513:2011=5532、IEC 61131-3:2025 Ed.4=68533（2025-05 发布，UTF-8 字符串纳入、IL 移除，取代 2013 版）、IEC 62061:2021=59927、IEC 62304:2006=6792（AMD1:2015=22790）、IEC 61000-4-2:2008=4189、IEC 61784-1/-2:2019=59887/59888、IEC 61499-1/-2:2012=5506/5507、IEC 61360-1:2017=28560（-7:2024=72956）、IEC 62682:2022=65543、IEC 63339:2024=iso.org/standard/82374、IEC 63365 年份订正 2024→2022（=67436）、IEC 60870-5-104:2006+AMD1:2016 CSV=25035、IEC 60068-1:2013=501 | 自动对齐代理 |
+| 2026-07-12 | 更新为 v3.0（R5 基准完备性补录 24 条 + ISO 21448 悬案澄清，全部 URL 经 iso.org/IEC webstore 直连 `<title>` 实测确认）：补录 ISO/IEC 19510:2013=62652、ISO 15704:2019=71890、IEEE 1471:2000、ISO/IEC 33001:2015=54175、ISO/IEC 33004:2015=54178（注：不存在 :2022 版）、ISO/IEC 33020:2019=78526、ISO/IEC 19770-1:2017=68531、ISO 9001:2015=62085、ISO 20022-1:2013=55005（Withdrawn，Ed.3 DIS）、ISO/IEC 27001:2022=82875、ISO/IEC 5230:2020=81039、ISO/IEC 5962:2021=81870、IEC TR 62541-1:2020=61109、IEC 61512-1:2026=75287（Ed.2，2026-02-20 发布，取代 1997 版）、ISO 23247-1:2021=75066、ISO/IEC 30173:2023=81442、ISO/SAE 21434:2021=70918、ISO 13849-1:2023=73481、IEC 61800-5-2:2016=24555、IEC 61804-2:2018=28131、ISO 22400-2:2014=54497、ISO 50001:2018=69426、ISO 14064-1:2018=66453、IEEE 802.1（TSN）；**ISO 21448 悬案**：iso.org 实测 77490=ISO 21448:2022 已发布版页面、93071=ISO/WD 21448（Ed.2 工作项，已从 AWI 推进至 WD 阶段），正文 6 处 77490 引用正确，基准表拆为“2022 已发布版（77490）+ Ed.2 工作项（93071）”两条 | 自动对齐代理 |
 
 ---
 

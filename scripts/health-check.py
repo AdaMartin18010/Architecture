@@ -19,6 +19,10 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
+# 本地 .venv 优先（含 rdflib/pyshacl 等重依赖）；CI 环境无 .venv 时回退当前解释器
+_VENV_PY = PROJECT_ROOT / ".venv" / "Scripts" / "python.exe"
+PY = str(_VENV_PY) if _VENV_PY.exists() else sys.executable
+
 
 def run(cmd: list, cwd: Path = PROJECT_ROOT, timeout: int = 300) -> tuple:
     try:
@@ -38,20 +42,20 @@ def run(cmd: list, cwd: Path = PROJECT_ROOT, timeout: int = 300) -> tuple:
 
 def main():
     checks = [
-        ("struct/ 质量门控 V2", [sys.executable, "scripts/quality-gate-v2.py", "struct/"]),
-        ("view/ 质量门控 V2", [sys.executable, "scripts/quality-gate-v2.py", "view/"]),
-        ("Markdown 链接检查", [sys.executable, "scripts/link-checker.py", "--report", "reports/link-checker.md"]),
-        ("交叉索引一致性", [sys.executable, "scripts/cross-index-check.py"]),
-        ("标准版本号硬错误审计", [sys.executable, "scripts/standard-version-audit.py"]),
-        ("阈值一致性检查", [sys.executable, "scripts/threshold-check.py"]),
-        ("目录结构一致性", [sys.executable, "scripts/structure-lint.py"]),
-        ("勘误规则 lint", [sys.executable, "scripts/errata-lint.py"]),
-        ("图库完整性检查", [sys.executable, "scripts/figure-check.py"]),
-        ("KG SHACL 语义校验", [sys.executable, "scripts/kg-shacl-validate.py"]),
-        ("术语双库交叉校验", [sys.executable, "scripts/terminology-crosscheck.py"]),
-        ("权威来源质量审计", [sys.executable, "scripts/authority-source-audit.py"]),
-        ("struct/view 同步", [sys.executable, "scripts/sync-view-from-struct.py"]),
-        ("OPA/Rego 策略执行", [sys.executable, "scripts/policy-check.py"]),
+        ("struct/ 质量门控 V2", [PY, "scripts/quality-gate-v2.py", "struct/"]),
+        ("view/ 质量门控 V2", [PY, "scripts/quality-gate-v2.py", "view/"]),
+        ("Markdown 链接检查", [PY, "scripts/link-checker.py", "--report", "reports/link-checker.md"]),
+        ("交叉索引一致性", [PY, "scripts/cross-index-check.py"]),
+        ("标准版本号硬错误审计", [PY, "scripts/standard-version-audit.py"]),
+        ("阈值一致性检查", [PY, "scripts/threshold-check.py"]),
+        ("目录结构一致性", [PY, "scripts/structure-lint.py"]),
+        ("勘误规则 lint", [PY, "scripts/errata-lint.py"]),
+        ("图库完整性检查", [PY, "scripts/figure-check.py"]),
+        ("KG SHACL 语义校验", [PY, "scripts/kg-shacl-validate.py"]),
+        ("术语双库交叉校验", [PY, "scripts/terminology-crosscheck.py"]),
+        ("权威来源质量审计", [PY, "scripts/authority-source-audit.py"]),
+        ("struct/view 同步", [PY, "scripts/sync-view-from-struct.py"]),
+        ("OPA/Rego 策略执行", [PY, "scripts/policy-check.py"]),
     ]
 
     all_ok = True

@@ -934,7 +934,7 @@ graph TB
 > - Modular Monolith: <https://www.milanjovanovic.tech/blog/what-is-a-modular-monolith> (核查日期: 2026-07-08)
 > - Spotify Engineering: <https://engineering.atspotify.com/2014/03/building-products-at-spotify/> (核查日期: 2026-07-08)
 > - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering> (核查日期: 2026-07-08)
-> - ISO/IEC/IEEE 12207:2026: <https://iso.org/standard/85683.html> (核查日期: 2026-07-08)
+> - ISO/IEC/IEEE 12207:2026: <https://iso.org/standard/90219.html> (核查日期: 2026-07-08)
 
 
 ---
@@ -4640,7 +4640,7 @@ flowchart TD
 > - [Function as a service - Wikipedia](https://en.wikipedia.org/wiki/Function_as_a_service) (核查日期: 2026-07-08)
 > - [Cloud computing - Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing) (核查日期: 2026-07-08)
 > - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — *Systems and software engineering — SQuaRE — Product quality model* (核查日期: 2026-07-08)
-> - [ISO/IEC 12207:2026](https://www.iso.org/standard/85683.html) — *Systems and software engineering — Software life cycle processes* (核查日期: 2026-07-08)
+> - [ISO/IEC 12207:2026](https://www.iso.org/standard/90219.html) — *Systems and software engineering — Software life cycle processes* (核查日期: 2026-07-08)
 > - CNCF Serverless Whitepaper v2: <https://github.com/cncf/wg-serverless/blob/master/whitepapers/serverless-overview.md> (核查日期: 2026-07-08)
 > - CNCF Cloud Native Landscape: <https://landscape.cncf.io/> (核查日期: 2026-07-08)
 > - CNCF Graduated and Incubating Projects: <https://www.cncf.io/projects/> (核查日期: 2026-07-08)
@@ -8586,7 +8586,6 @@ flowchart LR
 
 ---
 
-[^1]: youngju.dev, "Service Mesh in 2026" (2026-05-16); Open Service Mesh 和 AWS App Mesh 已分别于 2024-01 和 2024-10 停止维护。
 
 
 ---
@@ -9645,6 +9644,10 @@ flowchart LR
 - 服务网格 (Istio/Envoy/Cilium) 的通信模式复用
 - 事件驱动架构 (EDA) 的四种复用模式
 - 数据网格 (Data Mesh) 的域导向复用
+
+## 主题图谱
+
+![03 应用架构复用 — 架构模式选择决策树](../struct/99-reference/visualizations/decision-trees/03-application-architecture-reuse-decision-tree.svg)
 
 ## 权威对齐
 

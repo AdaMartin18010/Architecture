@@ -2,6 +2,7 @@
 
 > **生成时间**: 2026-07-08
 > **验证命令**: `python scripts/health-check.py`
+> **注记（2026-07-12）**：本报告为 Phase 1.5 时点快照；当前机器真源统计为 `struct/` 332 + `view/` 23 = 355 Markdown（见 `reports/stats.json`），文中 330/353 等数字为历史时点值。
 
 ---
 

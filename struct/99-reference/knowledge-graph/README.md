@@ -23,8 +23,8 @@
 
 ```text
 kg.ttl            # 由 kg-builder.py 自动生成
-kg-entities.jsonl # 11,277 实体（机器真源）
-kg-relations.jsonl# 8,283 关系（机器真源）
+kg-entities.jsonl # 11,405 实体（机器真源）
+kg-relations.jsonl# 8,194 关系（机器真源）
 覆盖文件          # 324+ 篇 struct/ 下 Markdown
 通过 SHACL 验证   # ✅ scripts/kg-shacl-validate.py 全约束通过
 ```
@@ -33,9 +33,9 @@ kg-relations.jsonl# 8,283 关系（机器真源）
 
 | 类型 | 数量 | 说明 |
 |------|------|------|
-| `Term` | 10,375 | 从标题、加粗术语、定义/示例章节中抽取的核心概念 |
-| `File` | 652 | Markdown 源文件节点 |
-| `Standard` | 156 | ISO、TOGAF、ArchiMate 等标准/框架（canonical 归一后） |
+| `Term` | 10,451 | 从标题、加粗术语、定义/示例章节中抽取的核心概念 |
+| `File` | 695 | Markdown 源文件节点 |
+| `Standard` | 165 | ISO、TOGAF、ArchiMate 等标准/框架（canonical 归一后） |
 | `Organization` | 32 | 标准组织或厂商 |
 | `Specification` | 29 | TLA+/Alloy/Rego 等形式化规约工件 |
 | `Topic` | 14 | 13 个一级主题 + 99-reference |
@@ -46,17 +46,17 @@ kg-relations.jsonl# 8,283 关系（机器真源）
 
 | 关系 | 数量 | 含义 |
 |------|------|------|
-| `defines` | 1,999 | 文件定义了某术语 |
-| `providesNegativeExample` | 1,698 | 文件提供反例/反模式 |
-| `providesPositiveExample` | 1,425 | 文件提供正向案例 |
-| `mentions` | 1,877 | 文件提及某标准 |
-| `references` | 704 | 文件引用内部链接 |
-| `belongsTo` | 324 | 文件属于某主题 |
-| `relatedTo` | 208 | 术语关联（glossary 关系段） |
+| `defines` | 2,017 | 文件定义了某术语 |
+| `providesNegativeExample` | 1,684 | 文件提供反例/反模式 |
+| `providesPositiveExample` | 1,426 | 文件提供正向案例 |
+| `mentions` | 1,646 | 文件提及某标准 |
+| `references` | 768 | 文件引用内部链接 |
+| `belongsTo` | 326 | 文件属于某主题 |
+| `relatedTo` | 279 | 术语关联（glossary 关系段） |
 | `implementedBy` | 34 | 规约工件由工具实现/验证 |
 | `evolvedFrom` | 14 | 标准版本谱系（新 → 旧） |
 
-> **统计口径**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，合计 8,283）。
+> **统计口径**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，合计 8,194）。
 > SHACL 真约束校验由 `scripts/kg-shacl-validate.py` 执行：label 非空、关系两端实体存在（dangling 即 exit 1）、Standard/Protocol canonical 名称规范、历史版本 EVOLVED_FROM/版本语境、Term 多定义告警（详见 `kg-shacl-report.md`）。
 
 完整统计参见：[知识抽取质量报告](../../../reports/kg-extraction-report.md)。

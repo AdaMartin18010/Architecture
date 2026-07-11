@@ -138,7 +138,9 @@ def _rewrite_links(text: str, source_file: Path, struct_root: Path, output_root:
                 suffixes = (".md", ".py", ".yaml", ".yml", ".json", ".sh", ".html")
                 has_known_ext = any(str(bare).lower().endswith(ext) for ext in suffixes)
                 if resolved.exists() or any(resolved.with_suffix(ext).exists() for ext in suffixes):
-                    if not has_known_ext and (struct_root / rel).with_suffix(".md").exists():
+                    # 仅当链接完全无扩展名时才尝试补 .md（避免 .als/.tla 被错改为 .als.md）
+                    has_any_ext = bool(re.search(r"\.[A-Za-z0-9]+$", str(bare)))
+                    if not has_known_ext and not has_any_ext and (struct_root / rel).with_suffix(".md").exists():
                         rel += ".md"
                     new_target = (struct_root / rel).resolve()
                     return f"[{link_text}]({_rel_to_output(new_target)}{fragment})"

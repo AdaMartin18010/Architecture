@@ -5,7 +5,7 @@ kg-relation-enricher.py
 =======================
 
 为知识图谱增量补充 ontology 已定义但抽取器此前未产出的语义关系：
-  - evolvedFrom  (Standard -> Standard)：权威版本谱系（事实）
+  - evolvedFrom  (Standard/Protocol -> Standard/Protocol)：权威版本谱系（事实）
   - mentions     (File -> Standard/Term)：文件正文对权威标准/术语的引用
   - relatedTo    (Term -> Term)：glossary 词条"关系"段解析（可选）
   - implementedBy(Standard -> Tool)：标准 -> 实现/验证工具（可选，需 Tool 实体）
@@ -44,6 +44,7 @@ REL_TO_PREDICATE = {
 }
 
 # 权威版本谱系：new 版本 evolvedFrom old 版本（事实，仅当两端实体均存在时生成）
+# 端点类型可为 Standard 或 Protocol（本体已放宽，C6 EVOLVED-TYPE 约束）。
 EVOLVED_FROM_PAIRS: List[Tuple[str, str]] = [
     ("ISO/IEC/IEEE 12207:2026", "ISO/IEC/IEEE 12207:2017"),
     ("ISO/IEC 25010:2023", "ISO/IEC 25010:2011"),
@@ -59,6 +60,12 @@ EVOLVED_FROM_PAIRS: List[Tuple[str, str]] = [
     ("NIST SSDF 1.2", "NIST SSDF 1.1"),
     ("ISO/IEC 30141:2024", "ISO/IEC 30141:2018"),
     ("ISO/IEC 5230:2024", "ISO/IEC 5230:2021"),
+    # 协议版本线（来源：struct/12-ai-native-reuse/ 权威文档版本表）
+    ("MCP 2025-03-26", "MCP 2024-11-05"),
+    ("MCP 2025-06-18", "MCP 2025-03-26"),
+    ("MCP 2025-11-25", "MCP 2025-06-18"),
+    ("A2A v1.0.0", "A2A v0.3.0"),
+    ("A2A v1.0.1", "A2A v1.0.0"),
 ]
 
 # 历史版本 Standard 实体补全（KG 中缺失但 EVOLVED_FROM 谱系需要的旧版本实体）
@@ -70,9 +77,20 @@ NEW_HISTORICAL_STANDARDS: Dict[str, str] = {
     "ISO/IEC 30141:2018": "ISO/IEC 30141:2018 (IoT RA), predecessor of 30141:2024",
 }
 
+# 历史版本 Protocol 实体补全（协议版本谱系旧版端点，来源见 context 中权威文档）
+NEW_HISTORICAL_PROTOCOLS: Dict[str, str] = {
+    "MCP 2024-11-05": "MCP 2024-11-05 初始发布（JSON-RPC 2.0、HTTP+SSE），predecessor of MCP 2025-03-26；"
+                      "来源 struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md 版本表",
+    "A2A v0.3.0": "A2A v0.3.0（2025-07-30：流式传输、Agent Card 能力协商），predecessor of A2A v1.0.0 GA；"
+                  "来源 struct/12-ai-native-reuse/02-a2a-protocol/a2a-v1-deep-dive.md 版本时间线",
+}
+
 
 def load_entities() -> Tuple[Dict[str, dict], Dict[str, str]]:
-    """返回 (id->entity, name(lower)->standard_id)。"""
+    """返回 (id->entity, name(lower)->entity_id)。
+
+    name 索引覆盖 Standard 与 Protocol（EVOLVED_FROM 端点类型）。
+    """
     by_id: Dict[str, dict] = {}
     std_name_to_id: Dict[str, str] = {}
     with (KG_DIR / "kg-entities.jsonl").open(encoding="utf-8") as f:
@@ -82,7 +100,7 @@ def load_entities() -> Tuple[Dict[str, dict], Dict[str, str]]:
                 continue
             o = json.loads(ln)
             by_id[o["id"]] = o
-            if o.get("type") == "Standard":
+            if o.get("type") in ("Standard", "Protocol"):
                 std_name_to_id[o["name"].lower()] = o["id"]
     return by_id, std_name_to_id
 
@@ -114,25 +132,26 @@ def load_standard_aliases() -> Dict[str, List[str]]:
     return out
 
 
-def std_id(name: str) -> str:
-    return "Standard:" + re.sub(r"[/ :.]", "_", name)
+def std_id(name: str, etype: str = "Standard") -> str:
+    return etype + ":" + re.sub(r"[/ :.]", "_", name)
 
 
 def ensure_historical_entities(by_id, std_name_to_id) -> List[dict]:
-    """补全 EVOLVED_FROM 谱系所需的历史版本 Standard 实体（幂等）。返回新增实体列表。"""
+    """补全 EVOLVED_FROM 谱系所需的历史版本 Standard/Protocol 实体（幂等）。返回新增实体列表。"""
     added: List[dict] = []
-    for name, ctx in NEW_HISTORICAL_STANDARDS.items():
-        if name.lower() in std_name_to_id:
-            continue
-        eid = std_id(name)
-        ent = {
-            "id": eid, "name": name, "type": "Standard",
-            "source_file": "struct/99-reference/tools/canonical-names.yaml",
-            "source_line": 1, "context": ctx,
-        }
-        by_id[eid] = ent
-        std_name_to_id[name.lower()] = eid
-        added.append(ent)
+    for etype, table in (("Standard", NEW_HISTORICAL_STANDARDS), ("Protocol", NEW_HISTORICAL_PROTOCOLS)):
+        for name, ctx in table.items():
+            if name.lower() in std_name_to_id:
+                continue
+            eid = std_id(name, etype)
+            ent = {
+                "id": eid, "name": name, "type": etype,
+                "source_file": "struct/99-reference/tools/canonical-names.yaml",
+                "source_line": 1, "context": ctx,
+            }
+            by_id[eid] = ent
+            std_name_to_id[name.lower()] = eid
+            added.append(ent)
     return added
 
 

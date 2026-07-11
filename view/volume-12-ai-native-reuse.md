@@ -762,7 +762,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 | **适用复用层** | 05 功能架构 / 12 AI 原生 | 03 应用架构 / 12 AI 原生 | 03 应用架构 / 04 组件架构 |
 | **典型组合** | A2A Agent 内部调用 MCP Tools | 编排 Agent 委托子任务给专业 Agent | 非 AI 场景的遗留系统 |
 
-> **最佳实践**: 在多层 Agent 架构中，外层 Agent 间使用 **A2A** 协作，每个 Agent 内部通过 **MCP** 访问工具和数据，底层通过 **直接 API** 连接传统服务。详见 [deep-dive §6](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md#6-与-a2a-协议的关系)。
+> **最佳实践**: 在多层 Agent 架构中，外层 Agent 间使用 **Agent-to-Agent Protocol (A2A)** 协作，每个 Agent 内部通过 **MCP** 访问工具和数据，底层通过 **直接 API** 连接传统服务。详见 [deep-dive §6](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md#6-与-a2a-协议的关系)。
 
 ### 5.3 安全评估清单
 
@@ -1084,7 +1084,7 @@ Server: "protocolVersion": "2025-11-25" 或回退到支持的版本
 
 ## 6. 与 A2A 协议的关系
 
-MCP 和 A2A **互补而非竞争**:
+MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 
 | 协议 | 层级 | 解决的问题 |
 |------|------|-----------|
@@ -1224,7 +1224,7 @@ MCP 和 A2A **互补而非竞争**:
 
 # MCP 2026-07-28 RC 深度解析
 
-> ✅ **版本声明**：MCP 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
+> ✅ **版本声明**：Model Context Protocol (MCP) 2026-07-28 Release Candidate（RC）已于 **2026-05-29** 发布（见 <https://github.com/modelcontextprotocol/modelcontextprotocol/releases>）。本文档基于该 RC 进行深度解析；最终正式版预计仍为 **2026-07-28**。当前生产环境最新稳定规范仍为 **2025-11-25**（<https://modelcontextprotocol.io/specification/2025-11-25>）。
 >
 > 请参考关联文档：
 >
@@ -1593,7 +1593,7 @@ Extensions 注册机制
 
 ## 1. 概念定义
 
-**MCP 迁移** 是指将 MCP Server/Client/Gateway 从既有协议版本（通常为 2025-11-25）升级到新版（2026-07-28）的过程，涉及传输模型、生命周期、路由、缓存、扩展框架与授权机制的调整。
+**Model Context Protocol (MCP) 迁移** 是指将 MCP Server/Client/Gateway 从既有协议版本（通常为 2025-11-25）升级到新版（2026-07-28）的过程，涉及传输模型、生命周期、路由、缓存、扩展框架与授权机制的调整。
 
 ---
 
@@ -1713,7 +1713,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 # A2A v1.0.0 协议复用分析
 
 > **版本**: 2026-06-06
-> **对齐标准**: A2A v1.0 (2026-03-12 发布), Linux Foundation 治理
+> **对齐标准**: A2A v1.0.0 (2026-03-12 发布), Linux Foundation 治理
 > **定位**: Agent 间协作协议的复用流程与价值分析
 
 ---
@@ -1970,7 +1970,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
 > **权威来源**:
 >
-> - [A2A Protocol](https://google.github.io/A2A)
+> - [A2A Protocol](https://a2a-protocol.org/latest/)
 > - [Google A2A Blog](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)
 > - 核查日期：2026-07-07
 
@@ -1984,7 +1984,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 
 > **版本**: 2026-07-08
 > **权威来源**: A2A Protocol v1.0.0, Agentic AI Foundation, Google A2A Project, Linux Foundation
-> **定位**: 对齐 A2A v1.0 正式发布版本的核心概念与架构模式
+> **定位**: 对齐 A2A v1.0.0 正式发布版本的核心概念与架构模式
 
 ---
 
@@ -1997,7 +1997,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
 | **v1.0.0** | **2026-03-12** | **A2A 协议官方正式发布** |
 
-> **关键确认**: A2A v1.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0 的发布以官方规范页面为准。
+> **关键确认**: A2A v1.0.0 于 **2026-03-12** 正式发布（见 [A2A Protocol Specification](https://a2a-protocol.org/latest/specification/)）。此前文档中关于 2026-04 在 Google Cloud Next '26 发布的说法需要修正；A2A v1.0.0 的发布以官方规范页面为准。
 
 ---
 
@@ -2289,7 +2289,7 @@ graph TB
 在上图中：
 
 - **A2A 负责 Agent 之间的协作边界**：编排 Agent 不需要知道研究 Agent 内部如何工作，只需要通过 Agent Card 了解其 Skill、端点与认证方式。
-- **MCP 负责 Agent 与工具之间的能力边界**：每个 Specialist Agent 通过 MCP 调用具体的工具（数据库、Git、文档检索），这些工具的细节对编排 Agent 不可见。
+- **Model Context Protocol (MCP) 负责 Agent 与工具之间的能力边界**：每个 Specialist Agent 通过 MCP 调用具体的工具（数据库、Git、文档检索），这些工具的细节对编排 Agent 不可见。
 - **这种分层架构的价值**：当需要替换某个 Specialist Agent 时，只要其 Agent Card 保持兼容，编排 Agent 无需修改；当需要新增工具时，只需在对应 Specialist Agent 内部新增 MCP Server 连接，不影响 A2A 接口。
 
 ---
@@ -2555,7 +2555,7 @@ flowchart TD
 
 # A2A v1.0.0 权威深度解析
 
-> **定位**：Agent-to-Agent 协议的全面技术对齐，明确 MCP 与 A2A 的互补关系，指导多 Agent 架构复用。
+> **定位**：Agent-to-Agent 协议的全面技术对齐，明确 Model Context Protocol (MCP) 与 A2A 的互补关系，指导多 Agent 架构复用。
 > **权威来源**：a2a-protocol.org、Google A2A GitHub、Linux Foundation Agentic AI Foundation (AAIF)、Cloud Next 2026。
 > **版本状态**：A2A **v1.0.1** 为当前最新稳定版（v1.0.0 于 2026‑03‑12 GA；v1.0.1 维护版 2026‑05‑26 发布，仅 bug fix）
 
@@ -3588,7 +3588,7 @@ Agent A: "请 Agent B 再次检查..."
 # A2A + MCP 混合 Agent 服务 PoC
 
 > **定位**：演示 "A2A 用于 Agent 协作，MCP 用于工具调用" 的生产最佳实践。
-> **对齐**：A2A v1.0, MCP 2025-11-25
+> **对齐**：A2A v1.0.0, MCP 2025-11-25
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
@@ -3812,7 +3812,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 
 ---
 
-*文档生成时间：2026-07-08 · 对齐 A2A v1.0 / MCP 2025-11-25*
+*文档生成时间：2026-07-08 · 对齐 A2A v1.0.0 / MCP 2025-11-25*
 
 
 ---
@@ -4213,7 +4213,7 @@ latency_seconds = Histogram(
 
 ## 2. OWASP MCP Top 10 (2025)
 
-OWASP 针对 MCP 专门发布了 Top 10：
+OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 
 | 排名 | 风险 | 说明 |
 |------|------|------|
@@ -5642,7 +5642,7 @@ Brier = Reliability − Resolution + Uncertainty
 > **权威来源**:
 >
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
-> - [A2A Protocol](https://google.github.io/A2A)
+> - [A2A Protocol](https://a2a-protocol.org/latest/)
 > - [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/)
 > - 核查日期：2026-07-07
 
@@ -5697,7 +5697,7 @@ Brier = Reliability − Resolution + Uncertainty
 
 ## 概念定义
 
-**AI 组件复用风险**：在架构中复用预训练模型、微调模型、AI 服务、Agent 框架或 MCP 工具时，因上游组件的缺陷、偏见、漏洞或合规问题向 downstream 系统传递的可能性。
+**AI 组件复用风险**：在架构中复用预训练模型、微调模型、AI 服务、Agent 框架或 Model Context Protocol (MCP) 工具时，因上游组件的缺陷、偏见、漏洞或合规问题向 downstream 系统传递的可能性。
 
 **信任评估框架**：基于技术可信度、数据可信度与供应链可信度三个维度，对 AI 组件进行量化评分，以支持复用决策的结构化方法。
 
@@ -6709,8 +6709,8 @@ C = ⟨code_review, X_review, Y_review, 0.85⟩
 
 ### 4.3 与 MCP/A2A 的结合点
 
-- **MCP Tool 输出**：当 MCP Server 提供的 Tool 返回统计性结果时，可通过 CP 输出预测集合而非单一值，Host 据此决定是否授权后续操作。
-- **A2A Artifact 交付**：A2A Agent 返回的 Artifact 可附带置信度与预测集合信息，调用方 Agent 根据概率契约决定是否接受结果或委托给其他 Agent。
+- **Model Context Protocol (MCP) Tool 输出**：当 MCP Server 提供的 Tool 返回统计性结果时，可通过 CP 输出预测集合而非单一值，Host 据此决定是否授权后续操作。
+- **Agent-to-Agent Protocol (A2A) Artifact 交付**：A2A Agent 返回的 Artifact 可附带置信度与预测集合信息，调用方 Agent 根据概率契约决定是否接受结果或委托给其他 Agent。
 
 ---
 
@@ -7045,6 +7045,10 @@ graph TD
     F --> H
     G --> H
 ```
+
+图库完整版（含 Agent 架构模式、运行时治理与模型资产复用）：
+
+![12 AI 原生复用 — 知识体系思维导图](../struct/99-reference/visualizations/mindmaps/12-ai-native-reuse.svg)
 
 ---
 

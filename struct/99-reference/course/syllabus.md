@@ -6,6 +6,33 @@
 
 ---
 
+## 概念定位：课程大纲的范围
+
+**课程大纲（Syllabus）** 在本目录中的定义是：将 `struct/` 知识体系转化为 16 周教学周期的结构化方案，规定每周的主题、核心内容与实践作业。它与 `learning-path.md` 的分工是：学习路径按**读者角色**组织（4 条并行路径），课程大纲按**时间轴**组织（16 周串行推进）；二者共享同一套 `struct/` 源文档，因此大纲的周次主题与 13 个一级主题一一对应，不引入知识体系之外的内容。
+
+### 示例：一周教学单元的构成
+
+例如：第 2-3 周"元模型与标准"单元，核心内容取自 `struct/01-meta-model-standards/`（ISO 42010/42020/42030、TOGAF 10、ArchiMate 4.0），实践作业是完成一份标准对齐矩阵——该作业的模板与评分口径可直接复用 `struct/99-reference/templates/` 与 `alignment-matrix.md` 的现有结构。
+
+### 反例：不属于本大纲的内容
+
+- 具体知识点的详细讲解文本（属于 `struct/` 各主题文档，大纲只索引不复制）；
+- 随技术演进每季度变化的标准状态细节（属于 `99-reference/frontier-tracking/`，大纲只标注主题稳定性）；
+- 面向自学者而非课堂的个性化路径（属于 `learning-path.md`）。
+
+### 权威来源
+
+> **权威来源**（课程设置所依据的知识体系与标准框架）：
+>
+> - SWEBOK V4（软件工程知识体系，课程知识领域划分基准）：<https://www.computer.org/education/bodies-of-knowledge/software-engineering>
+> - The Open Group TOGAF Standard（企业架构教学单元基准）：<https://pubs.opengroup.org/togaf-standard/>
+> - ISO/IEC/IEEE 42010:2022（架构描述教学单元基准）：<https://www.iso.org/standard/74393.html>
+>
+> **核查日期**: 2026-07-08
+> **参见**: `struct/99-reference/course/learning-path.md`（按角色组织的学习路径）、`struct/99-reference/course/quiz.md`（配套测验）
+
+---
+
 ## 课程目标
 
 1. 理解架构复用的元模型、标准与公理体系。
