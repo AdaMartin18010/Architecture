@@ -2,12 +2,12 @@
 
 > **版本**: 2026-07-07
 > **定位**: 03 应用架构复用层核心子主题 —— 数据架构复用：Data Mesh、数据产品与联邦计算治理
-> **对齐标准**: Zhamak Dehghani Data Mesh, DAMA-DMBOK, TOGAF 10 Data Architecture, ISO/IEC/IEEE 42010:2022
+> **对齐标准**: Zhamak Dehghani Data Mesh, DAMA-DMBOK, TOGAF Standard 10 Data Architecture, ISO/IEC/IEEE 42010:2022
 > **来源 URL**:
 >
 > - Data Mesh by Zhamak Dehghani: <https://martinfowler.com/articles/data-mesh-intro.html>
 > - DAMA-DMBOK: <https://dama.org/content/body-knowledge>
-> - TOGAF 10: <https://www.opengroup.org/togaf>
+> - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
 > **核查日期**: 2026-07-07
 
@@ -739,7 +739,7 @@ flowchart LR
 - Dehghani, Z. — "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh" (2019): <https://martinfowler.com/articles/data-mesh-intro.html>
 - Dehghani, Z. — *Data Mesh* (O'Reilly, 2022): <https://www.oreilly.com/library/view/data-mesh/9781492092384/>
 - DAMA International — DAMA-DMBOK Data Management Body of Knowledge: <https://dama.org/content/body-knowledge>
-- TOGAF 10 — Data Architecture: <https://www.opengroup.org/togaf>
+- TOGAF Standard 10 — Data Architecture: <https://www.opengroup.org/togaf>
 - ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
 - OpenLineage: <https://openlineage.io/>
 - DataHub Project: <https://datahubproject.io/>

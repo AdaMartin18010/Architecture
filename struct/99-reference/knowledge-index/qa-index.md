@@ -23,13 +23,13 @@
   - A: 视点定义了描述一类关注点的约定，一旦标准化，所有项目可基于相同视点生成视图，降低架构描述成本并保证跨项目结构一致性。详见 `01-meta-model-standards/01-iso-420xx-family/iso-42010-2022.md` §1–§2。
 
 - **Q: 软件复用的定义在 ISO 26550:2015 中如何界定？**
-  - A: ISO 26550 定义产品线工程参考模型，采用"领域工程 + 应用工程"双轨制，将复用从项目级提升到组织级资产库管理。详见 `01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md`。
+  - A: ISO/IEC 26550:2015 定义产品线工程参考模型，采用"领域工程 + 应用工程"双轨制，将复用从项目级提升到组织级资产库管理。详见 `01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md`。
 
 - **Q: OMG RAS v2.2 定义了可复用资产的哪四个核心 facet？**
   - A: Classification（分类）、Solution（解决方案）、Usage（使用描述）、RelatedAssets（相关资产）。详见 `01-meta-model-standards/07-omg-ras/ras-alignment.md`。
 
-- **Q: TOGAF 10 的 ABB/SBB 与 ISO 42010 如何映射？**
-  - A: TOGAF 10 的架构构建块（ABB）和解决方案构建块（SBB）可映射到 ISO 42010 的架构描述元模型中的模型种类与对应规则。详见 `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md`。
+- **Q: TOGAF Standard 10 的 ABB/SBB 与 ISO/IEC/IEEE 42010:2022 如何映射？**
+  - A: TOGAF Standard 10 的架构构建块（ABB）和解决方案构建块（SBB）可映射到 ISO/IEC/IEEE 42010:2022 的架构描述元模型中的模型种类与对应规则。详见 `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md`。
 
 - **Q: FAIR4RS 原则如何指导软件资产的可持续复用？**
   - A: FAIR4RS 要求软件资产具备可发现(Findable)、可访问(Accessible)、可互操作(Interoperable)、可重用(Reusable)属性，是研究软件长期治理的基准。详见 `01-meta-model-standards/08-fair4rs/fair4rs-alignment.md`。
@@ -172,7 +172,7 @@
   - A: `AAM = [AA + AAF × (1 + 0.02 × SU × UNFM)] / 100`（AAF ≤ 50）；AAF 由设计修改(DM)、代码修改(CM)、集成修改(IM)加权计算。详见 `09-value-quantification/01-cocomo-ii-reuse/cocomo-ii-reuse-model-deep-dive.md` §2.2。
 
 - **Q: AAF 的阈值对复用 ROI 有什么决定性影响？**
-  - A: 定理 V.1 指出，复用 ROI 为正的必要条件是 AAF < 0.7；若 AAF ≥ 0.7，直接经济价值消失，仅剩战略价值。详见 `09-value-quantification/02-roi-npv-models/roi-framework.md` §3。
+  - A: 定理 V.1 指出，复用 ROI 为正的必要条件是 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）；若 AAF ≥ AAF_ECONOMIC_FLOOR（0.7），直接经济价值消失，仅剩战略价值。详见 `09-value-quantification/02-roi-npv-models/roi-framework.md` §3。
 
 - **Q: COCOMO II 2026 校准版适配了哪些现代开发模式？**
   - A: 适配 AI 辅助开发、Serverless、低代码平台，并将功能点扩展至故事点/对象点、依赖复杂度等新规模度量。详见 `09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md`。

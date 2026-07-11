@@ -66,6 +66,15 @@ RESTRICTED_HOSTS = {
     "gist.github.com",
     "gitlab.com",
     "www.gitlab.com",
+    "iso.org",
+    "www.iso.org",
+    "iec.ch",
+    "www.iec.ch",
+    "opengroup.org",
+    "www.opengroup.org",
+    "csrc.nist.gov",
+    "nist.gov",
+    "www.nist.gov",
 }
 
 # 已知会返回 3xx 重定向但仍为有效官方来源的域名
@@ -287,6 +296,10 @@ def check_url(url: str, follow_redirects: bool = False) -> dict[str, Any]:
         elif 400 <= exc.code < 600:
             result["status"] = STATUS_BROKEN
             result["error"] = f"HTTP {exc.code}"
+            # 对已知反爬/限流域名，403 视为受限而非失效
+            if exc.code == 403 and is_restricted_host(url):
+                result["status"] = STATUS_RESTRICTED
+                result["error"] = f"HTTP 403（反爬受限）"
         else:
             result["status"] = STATUS_UNREACHABLE
             result["error"] = str(exc.reason)

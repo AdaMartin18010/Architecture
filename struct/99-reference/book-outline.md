@@ -52,7 +52,7 @@
 
 **核心贡献**：
 
-1. 首次将 ISO/IEC/IEEE 420xx 族谱、TOGAF 10、ArchiMate 4.0、SLSA、MCP/A2A 等 30 个标准纳入统一的复用元模型（v2.0）
+1. 首次将 ISO/IEC/IEEE 420xx 族谱、TOGAF Standard 10、ArchiMate 4.0、SLSA、MCP/A2A 等 30 个标准纳入统一的复用元模型（v2.0）
 2. 建立从业务语义到 AI 功能的全栈复用层次体系
 3. 提供形式化验证、价值量化、认知负荷三类可操作方法论
 4. 覆盖工业 IoT/OT-IT 融合与软件供应链安全两大垂直纵深
@@ -105,12 +105,12 @@
 
 ### 第 2 章：元模型与标准对齐
 
-**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF 10 提供了企业架构的过程框架，ArchiMate 3.2（仍有效，向后兼容）与 ArchiMate 4.0（已正式发布，2026-04-27）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
+**核心论点**：没有统一元模型的复用是方言混乱。ISO/IEC/IEEE 42010:2022 提供了架构描述的通用语言，TOGAF Standard 10 提供了企业架构的过程框架，ArchiMate 3.2（仍有效，向后兼容）与 ArchiMate 4.0（已正式发布，2026-04-27）提供了可视化语法，三者与 ISO/IEC 26550:2015 的产品线工程模型共同构成复用工程的概念地基。
 
 **关键节**：
 2.1 ISO/IEC/IEEE 420xx 族谱：42010（描述）/ 42020（过程）/ 42030（评估）/ DIS 42024 / DIS 42042
 2.2 复用视角的元模型：Stakeholder → Concern → Viewpoint → View → Model 的复用扩展
-2.3 TOGAF 10 与 ISO 42010 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
+2.3 TOGAF Standard 10 与 ISO/IEC/IEEE 42010:2022 的概念映射：ABB/SBB → 架构模型，Enterprise Continuum → 复用资产库
 2.4 ArchiMate 3.2/4.0 的复用语义增强：Business Service / Application Component / Technology Service 的复用边界；ArchiMate 4.0 Common Domain 与跨层行为元素统一
 2.5 ISO/IEC 26550:2015 产品线工程：领域工程 + 应用工程双轨模型
 2.6 形式化公理体系：元公理、存在性公理、结构性公理、过程性公理
@@ -198,7 +198,7 @@
 **关键节**：
 6.1 功能复用五层模型：算法 → 函数 → 业务规则 → 工作流 → AI 功能
 6.2 MCP 2025-11-25 协议架构：tools/resources/prompts/sampling 四层能力（当前稳定版）
-6.3 A2A v1.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
+6.3 A2A v1.0.0.0.0.0 协议架构：Agent Card → Task → Artifact → Message → Part
 6.4 MCP + A2A 互补复用架构：工具调用 vs Agent 协作的边界
 6.5 Temporal 工作流复用模式：Saga、Cron、Child Workflow、Signal
 6.6 AI 功能复用的概率契约：置信度函数、温度参数、模型版本漂移的确定性边界
@@ -267,7 +267,7 @@
 9.3 专家 vs 新手的复用模式识别差异
 9.4 COCOMO II 复用模型 2026 校准版：ESLOC、AAF、RUSE 乘数的 AI 辅助开发适配
 9.5 复用 ROI 完整计算模型：直接收益 + 间接收益 + 战略收益 + NPV
-9.6 盈亏平衡点分析：AAF < 0.7 的经济学含义
+9.6 盈亏平衡点分析：AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]） 的经济学含义
 9.7 AI 辅助复用决策的认知增强架构：RAG + LLM 的开发者体验设计
 
 **引用主题来源**：
@@ -330,7 +330,7 @@
 
 **关键节**：
 12.1 MCP 2025-11-25 深度解析：能力发现、安全机制（当前稳定版；2026 RC 历史分析见 `mcp-2026-deep-dive.md`）
-12.2 A2A v1.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
+12.2 A2A v1.0.0.0.0.0 复用流程：Agent Card → 任务委托 → 消息交互 → 结果交付 → 安全验证
 12.3 概率契约框架：置信度函数 γ(x) ∈ [0,1]、校准方法、确定性边界声明
 12.4 Conformal Prediction：边际覆盖保证 P(y ∈ C(x)) ≥ 1-α 在代码生成中的应用
 12.5 平台工程作为复用载体：IDP、Golden Path、自服务模板的组织设计
@@ -480,7 +480,7 @@ flowchart TB
 本书框架设计至少引用以下三类权威来源：
 
 1. **国际标准组织**：ISO/IEC/IEEE 42010:2022（架构描述）、ISO/IEC 26550:2015（产品线工程）、ISO/IEC 26565:2026（产品线成熟度框架）; ISO/IEC 26566:2026（产品线纹理方法/工具能力）、IEC 61508（功能安全）
-2. **行业框架与协议**：The Open Group TOGAF 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0
+2. **行业框架与协议**：The Open Group TOGAF Standard 10 / ArchiMate 3.2、OpenSSF SLSA 1.2、MCP 2025-11-25、Google A2A v1.0.0.0.0.0
 3. **学术与研究机构**：USC COCOMO II Model Definition Manual（Boehm et al.）、Carnegie Mellon ACT-R 认知架构、Leslie Lamport TLA+ 规约方法、MPI-SWS RustBelt 形式化语义
 
 完整权威来源列表参见 `struct/99-reference/external-links/authoritative-sources.md`。

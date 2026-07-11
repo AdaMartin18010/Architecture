@@ -35,7 +35,7 @@
     - [5.1 OMG RAS（Reusable Asset Specification）映射](#51-omg-rasreusable-asset-specification映射)
     - [5.2 模型资产的粒度层次](#52-模型资产的粒度层次)
     - [5.3 模型资产的质量与验证](#53-模型资产的质量与验证)
-  - [6. SysML v2 与产品线工程（ISO 26550）的结合](#6-sysml-v2-与产品线工程iso-26550的结合)
+  - [6. SysML v2 与产品线工程（ISO/IEC 26550:2015）的结合](#6-sysml-v2-与产品线工程iso-26550的结合)
     - [6.1 ISO/IEC 26550:2015 概述](#61-isoiec-265502015-概述)
     - [6.2 共性/变性在 SysML v2 模型层的表达](#62-共性变性在-sysml-v2-模型层的表达)
       - [6.2.1 纯变体（Pure Variation）：`variation` 关键字](#621-纯变体pure-variationvariation-关键字)
@@ -215,7 +215,7 @@ OMG 为 SysML v2 定义了分层标准库体系：
 
 ## 4. SysML v2 与 ISO/IEC 42010:2022 的对照
 
-ISO/IEC 42010:2022《系统和软件工程 — 架构描述》是国际标准化组织发布的架构描述框架标准。SysML v2 作为系统建模语言，其概念体系与 ISO 42010 存在天然的映射关系。
+ISO/IEC 42010:2022《系统和软件工程 — 架构描述》是国际标准化组织发布的架构描述框架标准。SysML v2 作为系统建模语言，其概念体系与 ISO/IEC/IEEE 42010:2022 存在天然的映射关系。
 
 ### 4.1 核心概念映射表
 
@@ -233,7 +233,7 @@ ISO/IEC 42010:2022《系统和软件工程 — 架构描述》是国际标准化
 
 ### 4.2 Viewpoint 与 View 的实现
 
-SysML v2 对 ISO 42010 的 Viewpoint-View 框架提供了原生语言支持：
+SysML v2 对 ISO/IEC/IEEE 42010:2022 的 Viewpoint-View 框架提供了原生语言支持：
 
 ```
 viewpoint def Functional_Viewpoint {

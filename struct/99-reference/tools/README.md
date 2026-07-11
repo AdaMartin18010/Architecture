@@ -126,7 +126,7 @@ python reuse-decision-tool-v2/main.py --help
 - FinOps 单位经济学与 AI 成本模块 — Phase 1
 - 概率契约校准 GUI / Streamlit 版 — Phase 1
 - MCP/Agentic 安全治理扫描器（策略/工具清单） — Phase 1
-- ISO 25010/25040 质量矩阵评估器 — Phase 1
+- ISO/IEC 25010:2023/25040 质量矩阵评估器 — Phase 1
 - PIU 贝叶斯验证完整输入示例 — Phase 2
 - 供应链攻击树可视化扩展（MCP/Agentic 攻击向量） — Phase 2
 - `reuse-decision-tool/` 与 v2 能力对齐 — Phase 6

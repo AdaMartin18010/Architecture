@@ -99,7 +99,7 @@ Cost per API call = 80,000 / 200,000,000 = ¥0.0004/次
 
 ## 4. 关键定理
 
-> **定理 V.T1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
+> **定理 V.T1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ AAF_ECONOMIC_FLOOR，复用的直接经济价值消失，仅剩战略价值。
 > **定理 V.T2** (Break-Even Point):
 >
 > ```text

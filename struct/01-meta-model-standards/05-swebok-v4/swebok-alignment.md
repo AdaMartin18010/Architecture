@@ -62,7 +62,7 @@ V4 特别强调模型驱动的需求规格（Model-Driven Requirements Specifica
 | **01-元模型与标准** | 需求规格标准（如 ISO/IEC/IEEE 29148:2018）与 ISO 42010 的 Stakeholder/Concern 概念对齐。需求追溯矩阵（Requirements Traceability Matrix）对应 ISO 42010 的 Correspondence 机制。 |
 | **06-跨层治理** | 需求变更的治理（Change Control Board）、需求优先级排序（Backlog Governance）和跨层需求一致性检查属于跨层治理范畴。 |
 
-> **本体系扩展**: 本体系在 02-业务架构复用 中引入了**可变性需求工程**（Variability Requirements Engineering），将 SWEBOK 的传统需求工程与 ISO 26550 的产品线工程特征建模相结合，支持从业务需求到架构变体的直接映射。
+> **本体系扩展**: 本体系在 02-业务架构复用 中引入了**可变性需求工程**（Variability Requirements Engineering），将 SWEBOK 的传统需求工程与 ISO/IEC 26550:2015 的产品线工程特征建模相结合，支持从业务需求到架构变体的直接映射。
 
 ---
 
@@ -210,7 +210,7 @@ SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管
 
 ### 3.12 KA12 — Software Quality（软件质量）
 
-覆盖软件质量基础、质量模型（ISO 25010）、质量测量、质量策划、质量保证和质量控制。
+覆盖软件质量基础、质量模型（ISO/IEC 25010:2023）、质量测量、质量策划、质量保证和质量控制。
 
 | 本体系主题 | 对应关系说明 |
 |:-----------|:-------------|
@@ -328,7 +328,7 @@ SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 
 ## 示例
 
-**示例**：将 SWEBOK 的软件设计知识领域与 ISO 42010 架构描述、GoF 设计模式建立映射，形成从理论到实践的知识路径。
+**示例**：将 SWEBOK 的软件设计知识领域与 ISO/IEC/IEEE 42010:2022 架构描述、GoF 设计模式建立映射，形成从理论到实践的知识路径。
 
 ## 反例
 
@@ -431,8 +431,8 @@ graph LR
 
 ### 8. 交叉引用
 
-- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- ISO/IEC/IEEE 42010:2022 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
 - 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)
 - TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
-- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- ArchiMate 与 ISO/IEC/IEEE 42010:2022 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
 - 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)

@@ -687,12 +687,12 @@ flowchart LR
 
 - **上位概念**：[Software quality](https://en.wikipedia.org/wiki/Software_quality) 评价、IT governance；
 - **下位概念**：24 个具体指标、ISO 25040 评价过程；
-- **等价/映射概念**：[ISO/IEC 25010](https://en.wikipedia.org/wiki/ISO/IEC_25010) 质量模型、[Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)；
+- **等价/映射概念**：[ISO/IEC 25010:2023](https://en.wikipedia.org/wiki/ISO/IEC_25010) 质量模型、[Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)；
 - **依赖概念**：CI/CD 工具链、SCA/SBOM、APM、财务系统、项目管理工具。
 
 > **权威来源（补充）**:
 >
-> - [ISO/IEC 25010 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_25010)
+> - [ISO/IEC 25010:2023 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_25010)
 > - [Software quality — Wikipedia](https://en.wikipedia.org/wiki/Software_quality)
 > - [Metric — Wikipedia](https://en.wikipedia.org/wiki/Metric_(mathematics))
 > - [Capability Maturity Model — Wikipedia](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
@@ -758,7 +758,7 @@ flowchart TB
 
 > **权威来源（补充）**:
 >
-> - [ISO/IEC 25010 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_25010)
+> - [ISO/IEC 25010:2023 — Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_25010)
 > - [Software quality — Wikipedia](https://en.wikipedia.org/wiki/Software_quality)
 > - [ISO/IEC 25040:2024](https://www.iso.org/standard/iso-iec-25040.html)
 >

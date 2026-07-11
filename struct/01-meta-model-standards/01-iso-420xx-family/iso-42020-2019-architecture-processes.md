@@ -8,7 +8,7 @@
 
 ## 1. 概念定义
 
-**定义**：ISO/IEC/IEEE 42020:2019 是系统与软件工程领域的**架构过程**标准，它规定了架构治理（Governance）、管理（Management）、概念化（Conceptualization）、评估（Evaluation）、细化（Elaboration）和使能（Enablement）六个核心过程。该标准与 ISO/IEC/IEEE 42010（架构描述）和 42030（架构评估）共同构成 420xx 标准族的过程维度。
+**定义**：ISO/IEC/IEEE 42020:2019 是系统与软件工程领域的**架构过程**标准，它规定了架构治理（Governance）、管理（Management）、概念化（Conceptualization）、评估（Evaluation）、细化（Elaboration）和使能（Enablement）六个核心过程。该标准与 ISO/IEC/ISO/IEC/IEEE 42010:2022（架构描述）和 42030（架构评估）共同构成 420xx 标准族的过程维度。
 
 ## 2. 核心过程概览
 
@@ -52,7 +52,7 @@ ISO/IEC/IEEE 42020:2019
 
 ## 4. 与 ISO 42010:2022 的协同
 
-ISO 42020 回答**“如何产生架构”**，ISO 42010 回答**“如何描述架构”**。两者协同关系如下：
+ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**“如何描述架构”**。两者协同关系如下：
 
 | ISO 42020:2019 过程 | ISO 42010:2022 对应条款 | 协同说明 |
 |---|---|---|
@@ -75,13 +75,13 @@ ISO 42020 回答**“如何产生架构”**，ISO 42010 回答**“如何描述
 
 ## 示例
 
-**正向示例：某金融机构基于 ISO 42020 建立架构资产治理体系**
+**正向示例：某金融机构基于 ISO/IEC/IEEE 42020:2019 建立架构资产治理体系**
 
 - **Architecture Governance（Clause 6）**：架构委员会定义“所有新建系统必须使用企业级认证服务”的治理指令。
 - **Architecture Management（Clause 7）**：架构办公室维护认证服务的 ABB 定义、已部署 SBB 清单和版本路线图。
 - **Architecture Conceptualization（Clause 8）**：在新支付平台概念化阶段，识别出“强身份认证”关注点，并复用现有认证能力 ABB。
 - **Architecture Evaluation（Clause 9）**：评估候选方案（Keycloak vs Okta vs 自研）对安全、成本和集成的满足度。
-- **Architecture Elaboration（Clause 10）**：使用 ArchiMate 4.0 通用域生成认证服务视图，并按 ISO 42010 Clause 6 记录视点、视图组件和对应关系。
+- **Architecture Elaboration（Clause 10）**：使用 ArchiMate 4.0 通用域生成认证服务视图，并按 ISO/IEC/IEEE 42010:2022 Clause 6 记录视点、视图组件和对应关系。
 - **Architecture Enablement（Clause 11）**：建立认证服务模板库、CI/CD 流水线模板和架构师培训计划。
 
 结果：新支付平台在 6 周内完成认证能力集成，较历史项目缩短 60%。
@@ -90,7 +90,7 @@ ISO 42020 回答**“如何产生架构”**，ISO 42010 回答**“如何描述
 
 **反模式：评估过程流于形式**
 
-某团队在架构评审时仅检查“是否有架构图”，未按 ISO 42020 Clause 9 制定评估目标、准则和方法：
+某团队在架构评审时仅检查“是否有架构图”，未按 ISO/IEC/IEEE 42020:2019 Clause 9 制定评估目标、准则和方法：
 
 - 没有明确利益相关者关注点与评估准则的对应关系；
 - 未记录评估假设和测量技术；
@@ -107,13 +107,13 @@ ISO 42020 回答**“如何产生架构”**，ISO 42010 回答**“如何描述
 > - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
-> - [The Open Group ArchiMate 4 Specification (C260)](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（核查日期：2026-07-09）
+> - [The Open Group ArchiMate 4.0 Specification (C260)](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（核查日期：2026-07-09）
 >
 > **核查日期**：2026-07-09
 
 ## 9. 交叉引用
 
-- ISO 42010 核心概念详见 [`iso-42010-2022.md`](./iso-42010-2022.md)
+- ISO/IEC/IEEE 42010:2022 核心概念详见 [`iso-42010-2022.md`](./iso-42010-2022.md)
 - 标准对齐矩阵详见 [`alignment-matrix.md`](./alignment-matrix.md)
 - TOGAF 详细映射详见 [`../02-togaf-10-alignment/detailed-mapping.md`](../02-togaf-10-alignment/detailed-mapping.md)
 - ArchiMate 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)

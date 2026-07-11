@@ -43,8 +43,8 @@ STANDARD_PATTERNS = [
     (r"ISO/IEC(?:/IEEE)?\s+\d+(?::\d{4})?", "Standard"),
     # IEC 61508, IEC 63278 等
     (r"IEC\s+(?:TS\s+)?\d+(?::\d{4})?", "Standard"),
-    # IEEE 1517-2010, IEEE 1012-2024 等
-    (r"IEEE\s+\d+(?:\.\d+)?(?:-\d{4})?", "Standard"),
+    # IEEE 1517-2010, IEEE Std 1012-2024 等
+    (r"IEEE(?:\s+Std)?\s+\d+(?:\.\d+)?(?:-\d{4})?", "Standard"),
     # NIST SP 800-218, NIST AI RMF 等
     (r"NIST\s+(?:SP\s+)?\d{3}(?:[A-Z]|-\d+)?(?:\s+Rev\.\s*\d+)?", "Standard"),
     # OWASP Top 10, OWASP ASVS 等
@@ -106,6 +106,17 @@ def load_canonical_names(path: Path = CANONICAL_NAMES_PATH) -> Dict[str, Dict]:
 CANONICAL_REGISTRY = load_canonical_names()
 
 
+def _core_key(name: str) -> Tuple[Optional[str], Optional[str]]:
+    """把标准名解析为 (编号, 版本)。"""
+    # 去掉常见组织前缀
+    s = re.sub(r"^(?:ISO/IEC/IEEE|ISO/IEC|IEEE|IEC|ISO)\s+", "", name, flags=re.IGNORECASE)
+    s = s.strip()
+    m = re.match(r"(\d+(?:\.\d+)?)(?::(\d{4}))?", s)
+    if not m:
+        return (None, None)
+    return (m.group(1), m.group(2))
+
+
 def canonicalize_name(name: str, entity_type: str) -> Optional[str]:
     """将标准/协议名称归一到 canonical 名称；对不存在版本返回 None（跳过）。"""
     if entity_type not in ("Standard", "Protocol"):
@@ -113,9 +124,10 @@ def canonicalize_name(name: str, entity_type: str) -> Optional[str]:
     if not CANONICAL_REGISTRY:
         return name
 
-    # 1) 完全匹配 canonical 或 alias
+    # 1) 完全匹配 canonical 或 alias（大小写不敏感）
+    name_lower = name.lower()
     for canonical, meta in CANONICAL_REGISTRY.items():
-        if name in meta["aliases"]:
+        if name_lower == canonical.lower() or name_lower in {a.lower() for a in meta["aliases"]}:
             return canonical
 
     # 2) 前缀 + 版本匹配：检查是否命中某个 canonical 的 invalid_versions
@@ -129,6 +141,18 @@ def canonicalize_name(name: str, entity_type: str) -> Optional[str]:
                 test_core = re.sub(r"[^a-z0-9]", "", prefix.lower())
                 if canon_core == test_core or test_core in canon_core:
                     return canonical
+
+    # 3) 编号 + 版本模糊归一（处理缺组织前缀 / 缺版本 / 小写变体）
+    num, ver = _core_key(name)
+    if num:
+        for canonical, meta in CANONICAL_REGISTRY.items():
+            cnum, cver = _core_key(canonical)
+            if cnum != num:
+                continue
+            # 明确版本必须一致；name 无版本时按 canonical 文件顺序匹配第一个
+            if ver and cver and ver != cver:
+                continue
+            return canonical
     return name
 
 
@@ -411,6 +435,34 @@ class KnowledgeExtractor:
                 line, file_entity.id, rel_path, line_no, current_heading
             )
 
+    def _is_valid_term(self, term: str, max_len: int = 60) -> bool:
+        """判断一个文本是否应作为 Term 实体入库。"""
+        if not (2 <= len(term) <= max_len):
+            return False
+        if re.match(r"^\d+$", term) or re.match(r"^https?://", term):
+            return False
+        if not re.search(r"[A-Za-z\u4e00-\u9fff]", term):
+            return False
+        # 跳过编号/章节/模板化标题
+        if re.match(r"^\d+(\.\d+)*\s*[\.、]", term):
+            return False
+        if self._is_section_title(term):
+            return False
+        # 跳过整句/错误 Term（含中文标点或发布/已于等叙事词）
+        if re.search(r"[，。！？；]", term) and len(term) > 20:
+            return False
+        if re.search(r"Specification.*(?:发布|已于|announced)|(?:发布|已于).*Specification", term, re.IGNORECASE):
+            return False
+        # 跳过标准/协议与组织名，由专门抽取器统一 canonicalize
+        if self._looks_like_standard_or_org(term):
+            return False
+        # 如果 term 内部包含标准/协议名但整段不是标准名，说明是整句/标题
+        for pattern, _ in STANDARD_PATTERNS:
+            m = re.search(pattern, term, re.IGNORECASE)
+            if m and (m.start() > 0 or m.end() < len(term)):
+                return False
+        return True
+
     def _extract_term_heading(
         self, heading: str, source_file: str, source_line: int
     ) -> None:
@@ -423,8 +475,46 @@ class KnowledgeExtractor:
         term_zh = match.group(2).strip() if match.group(2) else ""
         # 只保留看起来像术语的标题（长度适中、非纯中文短句）
         for term in (term_en, term_zh):
-            if term and 2 <= len(term) <= 80 and re.search(r"[A-Za-z\u4e00-\u9fff]", term):
+            if self._is_valid_term(term, max_len=80):
                 self.add_entity(term, "Term", source_file, source_line, heading)
+
+    # 模板化章节标题黑名单（大小写不敏感）
+    _SECTION_BLACKLIST = [
+        "矩阵", "使用方法", "维护流程", "条款映射", "轨道模型", "补充说明",
+        "权威来源", "交叉引用", "概念定义", "属性", "关系说明", "形式化",
+        "示例", "反例", "反模式", "避免建议", "正向示例", "核心标准对齐",
+        "表 ", "图 ", "定义", "版本", "定位", "目录", "来源 url", "跟踪对象",
+        "当前状态", "上一版本", "标准编号", "注册日期", "当前阶段", "预计发布",
+        "技术委员会", "阶段追踪", "目标层", "因素层", "方法层", "基于社区讨论",
+        "评估自动化", "资产入库", "供应商评估", "审计合规", "标准更新监测",
+        "影响评估", "专家评审", "版本发布", "通知与同步", "架构评审",
+        "架构债务评估", "架构评估", "持续架构",
+        "上位概念", "下位概念", "等价/映射概念", "依赖概念", "正例",
+        "核查日期", "合理推测", "对齐来源", "状态", "权威链接",
+        "评估框架基准", "扩展位", "跟踪但不等待", "互补", "修订跟踪",
+        "双向过程", "领域分析", "domain engineering", "软件生命周期复用过程",
+        "继续使用", "预留", "对齐标准", "关键变更", "技术过程", "技术管理",
+        "新概念", "明确支持", "最后更新", "维护者", "公理", "定理", "发布较早",
+        "缺少", "不够量化", "作为过程框架", "结合现代", "结合 ai", "持续跟踪",
+        "10 项", "过程完整", "与主流标准兼容", "实践导向", "对齐", "正式发布",
+        "关键概念", "引用标准", "新增或强化", "知识管理", "结论", "质量特性",
+        "质量评估需求", "新增", "扩展", "平台工程作为复用载体", "快速评估框架",
+        "长期维护成本", "过程裁剪", "信息项映射", "过程资产库", "协同", "复用含义",
+        "跨组织业务服务复用", "服务网格通信复用", "分类体系", "专门化到",
+        "附录", "意义", "勘误说明", "变更", "分析", "细化", "强化", "必要准入",
+        "必要", "领域工程、应用工程",
+    ]
+
+    def _is_section_title(self, term: str) -> bool:
+        """判断加粗文本是否为章节/模板化标题而非术语。"""
+        lower = term.lower()
+        for kw in self._SECTION_BLACKLIST:
+            if kw.lower() in lower:
+                return True
+        # 编号开头
+        if re.match(r"^\d+(\.\d+)*\s*[\.、]", term):
+            return True
+        return False
 
     def _extract_bold_terms(
         self, line: str, source_file: str, source_line: int, context: str
@@ -433,14 +523,15 @@ class KnowledgeExtractor:
         # 匹配 **Term** 或 **Term (中文)**
         for match in re.finditer(r"\*\*([^\*\n]+?)\*\*", line):
             term = match.group(1).strip()
-            # 过滤过长、过短、纯数字、URL
-            if (
-                2 <= len(term) <= 60
-                and not re.match(r"^\d+$", term)
-                and not re.match(r"^https?://", term)
-                and re.search(r"[A-Za-z\u4e00-\u9fff]", term)
-            ):
+            if self._is_valid_term(term, max_len=60):
                 self.add_entity(term, "Term", source_file, source_line, context)
+
+    def _looks_like_standard_or_org(self, term: str) -> bool:
+        """判断加粗/标题文本是否应作为 Standard/Protocol/Organization 抽取。"""
+        for pattern, _ in STANDARD_PATTERNS + ORGANIZATION_PATTERNS:
+            if re.fullmatch(pattern, term, re.IGNORECASE):
+                return True
+        return False
 
     def _extract_standards(
         self, line: str, source_file: str, source_line: int, context: str
@@ -516,7 +607,7 @@ class KnowledgeExtractor:
         if current_section == "definition":
             for match in re.finditer(r"\*\*([^\*\n]+?)\*\*", line):
                 term = match.group(1).strip()
-                if 2 <= len(term) <= 60:
+                if self._is_valid_term(term, max_len=60):
                     entity = self.add_entity(term, "Term", source_file, source_line, context)
                     self.add_relation(
                         source_id=file_entity_id,
@@ -531,7 +622,7 @@ class KnowledgeExtractor:
             rel = "PROVIDES_POSITIVE_EXAMPLE" if current_section == "positive_example" else "PROVIDES_NEGATIVE_EXAMPLE"
             for match in re.finditer(r"\*\*([^\*\n]+?)\*\*", line):
                 term = match.group(1).strip()
-                if 2 <= len(term) <= 60:
+                if self._is_valid_term(term, max_len=60):
                     entity = self.add_entity(term, "Term", source_file, source_line, context)
                     self.add_relation(
                         source_id=file_entity_id,

@@ -2,7 +2,7 @@
 
 > **报告日期**: 2026-06-10
 > **分析范围**: 项目 13 个一级主题 + 99-reference 参考层
-> **对齐基准**: ISO/IEC/IEEE 420xx 族谱、TOGAF 10、SLSA 1.2、MCP/A2A、SWEBOK V4、CNCF、IEC/ISA 工业标准族、OpenSSF 安全框架、学术前沿（ICSA/ECSA/CP）
+> **对齐基准**: ISO/IEC/IEEE 420xx 族谱、TOGAF Standard 10、SLSA 1.2、MCP/A2A、SWEBOK V4、CNCF、IEC/ISA 工业标准族、OpenSSF 安全框架、学术前沿（ICSA/ECSA/CP）
 > **分析维度**: 主题覆盖对称差、标准版本准确性、视角差异、内容深度对比、后续补全计划
 
 ---

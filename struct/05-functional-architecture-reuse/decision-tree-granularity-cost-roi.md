@@ -105,7 +105,7 @@ B_reuse = (C_rebuild - C_reuse) × N_use + B_quality + B_consistency
 | **L4 工作流** | 40-200 | 4-16 | 40-200 | 3-12 次 | 1.8x |
 | **L5 AI 功能** | 8-40 | 4-16 | 8-80 | 2-10 次 | 1.1x (概率性风险) |
 
-> **定理 V.1 (ROI Threshold)**: 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
+> **定理 V.1 (ROI Threshold)**: 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ AAF_ECONOMIC_FLOOR（0.7），复用的直接经济价值消失，仅剩战略价值。
 >
 > 其中 AAF = C_adapt / C_rebuild，表示复用时所需的适配工作量占重新实现的比例。
 

@@ -198,7 +198,7 @@ $$
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
-> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（2026-04-27 正式发布，Document C260；核查日期：2026-07-09）
+> - [ArchiMate 4.0 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（2026-04-27 正式发布，Document C260；核查日期：2026-07-09）
 > - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — ISO（核查日期：2026-07-09）
 
-**跨层映射权威性说明**：本矩阵的层次划分与对应关系（correspondence）直接引用 ISO/IEC/IEEE 42010:2022 的架构描述概念；业务/应用/组件/功能四层映射与 TOGAF 10 的分层企业架构方法一致；质量属性（性能、安全、可靠性、碳效率）映射引用 ISO/IEC 25010:2023 的产品质量模型。矩阵的每次结构性变更应同步更新 `glossary/terminology-crosswalk.md` 与 `99-reference/CHANGELOG.md`。
+**跨层映射权威性说明**：本矩阵的层次划分与对应关系（correspondence）直接引用 ISO/IEC/IEEE 42010:2022 的架构描述概念；业务/应用/组件/功能四层映射与 TOGAF Standard 10 的分层企业架构方法一致；质量属性（性能、安全、可靠性、碳效率）映射引用 ISO/IEC 25010:2023 的产品质量模型。矩阵的每次结构性变更应同步更新 `glossary/terminology-crosswalk.md` 与 `99-reference/CHANGELOG.md`。

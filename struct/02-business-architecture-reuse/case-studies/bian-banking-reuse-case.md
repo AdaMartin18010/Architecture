@@ -3,7 +3,7 @@
   任务: BIAN 金融服务域复用案例
   版本: 2026-07-08
   定位: 业务架构复用领域的金融行业标准化实践指南
-  对齐标准: BIAN Service Landscape 12.0/14.0, TOGAF 10, FEA 6.0, ISO 20022, DMN 1.5, BPMN 2.0
+  对齐标准: BIAN Service Landscape 12.0/14.0, TOGAF Standard 10, FEA 6.0, ISO 20022, DMN 1.5, BPMN 2.0
   状态: ✅ 已完成
 -->
 
@@ -835,7 +835,7 @@ BIAN 服务域是银行业务能力的标准化表达，可映射到通用业务
 
 ### 10.2 与 TOGAF/FEA 的关系
 
-BIAN 提供银行业特定的 ABB（架构构建块），TOGAF 提供 ABB 的管理方法论，FEA BRM 提供跨行业业务能力分类参考。详细映射见 [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md)。
+BIAN 提供银行业特定的 ABB（架构构建块），TOGAF 提供 ABB 的管理方法论，FEA BRM 提供跨行业业务能力分类参考。详细映射见 [FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md)。
 
 ### 10.3 与 BPMN/DMN 的关系
 
@@ -873,7 +873,7 @@ BIAN 服务域可映射到 Zachman 矩阵的 C2-1（What, Business）、C2-2（H
 - [BPMN 2.0 / DMN 业务过程与决策的复用编排](../06-bpmn-dmn/bpmn-dmn-reuse-orchestration.md) — BIAN 与 BPMN/DMN 的结合
 - [业务能力复用](../02-business-capability/capability-reuse.md) — 服务域作为银行业务能力单元
 - [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — 金融服务价值流组合
-- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md) — BIAN 与 FEA/TOGAF 的映射基础
+- [FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射](../02-business-capability/fea-brm-togaf-mapping.md) — BIAN 与 FEA/TOGAF 的映射基础
 
 
 

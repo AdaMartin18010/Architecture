@@ -7,7 +7,7 @@
 > - BIAN (Banking Industry Architecture Network) Service Landscape 2026
 > - HL7 FHIR R5 (Healthcare Level Seven)
 > - ISA-95 / IEC 62264 (制造领域)
-> - TOGAF 10 Phase B (Business Architecture)
+> - TOGAF Standard 10 Phase B (Business Architecture)
 
 ---
 

@@ -6,12 +6,16 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ar:ontology a owl:Ontology ;
-    dct:created "2026-07-11T00:22:50.736262+00:00" ;
+    dct:created "2026-07-11T01:01:11.477509+00:00" ;
     dct:description "Ontology for software architecture reuse knowledge base" ;
     dct:title "Architecture Reuse Knowledge Graph Ontology" .
 
 aro:Axiom a owl:Class ;
     rdfs:label "形式化公理" ;
+    rdfs:subClassOf aro:Entity .
+
+aro:CaseStudy a owl:Class ;
+    rdfs:label "正向或反例案例" ;
     rdfs:subClassOf aro:Entity .
 
 aro:Organization a owl:Class ;
@@ -59,12 +63,12 @@ aro:mentions a owl:ObjectProperty ;
 aro:providesNegativeExample a owl:ObjectProperty ;
     rdfs:label "提供反例" ;
     rdfs:domain aro:File ;
-    rdfs:range aro:CaseStudy .
+    rdfs:range aro:Term .
 
 aro:providesPositiveExample a owl:ObjectProperty ;
     rdfs:label "提供正向示例" ;
     rdfs:domain aro:File ;
-    rdfs:range aro:CaseStudy .
+    rdfs:range aro:Term .
 
 aro:references a owl:ObjectProperty ;
     rdfs:label "引用标准" ;
@@ -94,20 +98,16 @@ aro:Topic a owl:Class ;
     rdfs:label "知识主题，如 01-meta-model-standards" ;
     rdfs:subClassOf aro:Entity .
 
-aro:CaseStudy a owl:Class ;
-    rdfs:label "正向或反例案例" ;
-    rdfs:subClassOf aro:Entity .
-
 aro:Standard a owl:Class ;
     rdfs:label "国际/行业标准或框架" ;
     rdfs:subClassOf aro:Entity .
 
-aro:Term a owl:Class ;
-    rdfs:label "术语或概念" ;
-    rdfs:subClassOf aro:Entity .
-
 aro:File a owl:Class ;
     rdfs:label "Markdown 源文件" ;
+    rdfs:subClassOf aro:Entity .
+
+aro:Term a owl:Class ;
+    rdfs:label "术语或概念" ;
     rdfs:subClassOf aro:Entity .
 
 aro:Entity a owl:Class ;

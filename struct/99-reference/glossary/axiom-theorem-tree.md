@@ -35,6 +35,10 @@
     - [6.2 01 主题公理层次结构](#62-01-主题公理层次结构)
     - [6.3 关键路径 (01 主题)](#63-关键路径-01-主题)
   - [7. 待证明猜想](#7-待证明猜想)
+  - [6. 概念界定](#6-概念界定)
+  - [7. 示例场景](#7-示例场景)
+  - [8. 反模式警示](#8-反模式警示)
+  - [9. 参考来源](#9-参考来源)
 
 ---
 
@@ -87,7 +91,7 @@
 >
 > 形式化: $\mathrm{Reuse}(S) \Leftrightarrow B \neq \emptyset \land V \neq \emptyset \land \forall \mathit{ctx}: \Gamma(V, \mathit{ctx})$ 良定义
 >
-> 依据: ISO 26550 产品线工程, DOLCE 本体论
+> 依据: ISO/IEC 26550:2015 产品线工程, DOLCE 本体论
 
 **公理 M.3** (Hierarchy Non-Reduction)
 > 复用具有层次性（业务→应用→组件→功能），层次间**不可约化**。
@@ -142,14 +146,14 @@
 **公理 S.4** (Abstraction Layering)
 > 复用资产的组织必须遵循严格的抽象层次，禁止跨层直接依赖。
 >
-> 依据: ISO 42010 架构层次, TOGAF 架构 continuum
+> 依据: ISO/IEC/IEEE 42010:2022 架构层次, TOGAF 架构 continuum
 
 **过程性公理 (Process Axioms)**
 
 **公理 P.1** (Evolution Independence)
 > 可复用资产的生命周期独立于任何单一使用它的系统。
 >
-> 依据: ISO 26550 产品线工程 (领域工程与应用工程分离)
+> 依据: ISO/IEC 26550:2015 产品线工程 (领域工程与应用工程分离)
 
 **公理 P.2** (Feedback Convergence)
 > 复用资产的改进必须来源于使用者的反馈，且必须经过治理过滤。
@@ -232,7 +236,7 @@
 **公理 2.1** (Capability Atomicity)
 > 业务能力是可复用的最小业务语义单元，其边界由**价值创造**而非**组织结构**定义。
 >
-> 依据: TOGAF 10 Capability Mapping, FEA BRM
+> 依据: TOGAF Standard 10 Capability Mapping, FEA BRM
 
 **定理 2.2** (Value Stream Composition)
 > 端到端价值流的可复用性等于其组成业务能力可复用性的加权乘积，权重为各能力在价值创造中的贡献度。
@@ -292,7 +296,7 @@
 >
 > 形式化: Interoperable(Proto_A, Proto_B) ⟺ ∃ SemanticLayer: DataModel_A ⊆ SemanticLayer ∧ DataModel_B ⊆ SemanticLayer
 >
-> 依据: MCP 2025-11-25, A2A v1.0.0, ISO 42010 Correspondence Rule
+> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0, ISO/IEC/IEEE 42010:2022 Correspondence Rule
 
 **定理 5.1** (Tool Reuse Equivalence)
 > MCP Tool 的复用等价于其**语义描述**与**模式约束**在目标 LLM 上下文中的可传递性。
@@ -341,9 +345,9 @@
 > 依据: COCOMO II (Boehm et al., USC), FinOps Framework
 
 **定理 V.1** (ROI Threshold)
-> 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
+> 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ AAF_ECONOMIC_FLOOR（0.7），复用的直接经济价值消失，仅剩战略价值。
 >
-> 形式化: ROI > 0 ⟹ AAF < 0.7
+> 形式化: ROI > 0 ⟹ AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）
 >
 > 依据: COCOMO II Reuse Model, NASA RRL 经济分析
 
@@ -437,7 +441,7 @@
 >
 > 形式化: Coverage(MCP ∪ A2A) > Coverage(MCP) + Coverage(A2A) - Coverage(MCP ∩ A2A)
 >
-> 依据: MCP 2025-11-25, A2A v1.0.0 Specification
+> 依据: MCP 2025-11-25, A2A v1.0.0.0.0.0 Specification
 
 **定理 AI.3** (MCP Tool Composability)
 > 两个 MCP Server 的工具集可组合当且仅当它们的工具命名空间不冲突且模式约束兼容。
@@ -545,3 +549,25 @@ M.3 (层次不可约性)
 > 3. 定理的证明概要应链接到对应主题的形式化文档
 >
 > 最后更新: 2026-06-06
+
+## 6. 概念界定
+
+**公理-定理推理树**：以公理为根、定理为节点、推导关系为边，可视化呈现复用知识体系的逻辑依赖结构。
+
+## 7. 示例场景
+
+**示例**：维护 authoritative-sources.md 登记所有 ISO/IEC、IEEE、NIST、CNCF 来源 URL 与核查日期，确保全书引用可验证。
+
+## 8. 反模式警示
+
+**反模式**：参考层链接长期不更新，术语表与正文定义冲突，读者无法确认内容准确性与时效性。
+
+## 9. 参考来源
+
+> **权威来源**:
+>
+> - [ISO](https://www.iso.org)
+> - [IEEE Standards](https://standards.ieee.org)
+> - [NIST](https://www.nist.gov)
+> - [CNCF](https://www.cncf.io)
+> - 核查日期：2026-07-07

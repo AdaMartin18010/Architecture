@@ -97,11 +97,11 @@
 
 ### 正向示例
 
-**示例**：在 2026-Q2 跟踪中，团队通过 ISO 官网与 The Open Group 新闻稿交叉验证，确认 ArchiMate 4 已于 2026-04-27 正式发布（Document C260），并及时修正了早期审计报告中的"虚假发布"误判，避免了知识库回退到过时版本。
+**示例**：在 2026-Q2 跟踪中，团队通过 ISO 官网与 The Open Group 新闻稿交叉验证，确认 ArchiMate 4.0 已于 2026-04-27 正式发布（Document C260），并及时修正了早期审计报告中的"虚假发布"误判，避免了知识库回退到过时版本。
 
 ### 反例
 
-**反例**：某季度报告仅依赖工具厂商页面判断 ArchiMate 4 未发布，未核对 The Open Group 官方公告，导致项目多处引用被错误标记为"需回退"，引发不必要的返工。
+**反例**：某季度报告仅依赖工具厂商页面判断 ArchiMate 4.0 未发布，未核对 The Open Group 官方公告，导致项目多处引用被错误标记为"需回退"，引发不必要的返工。
 
 ---
 
@@ -109,7 +109,7 @@
 
 > 本报告中的标准状态以下列权威来源为准：
 >
-> - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [The Open Group — ArchiMate 4.0 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
 > - [The Open Group — TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 12207:2026](https://www.iso.org/standard/90219.html)（核查日期：2026-07-09）

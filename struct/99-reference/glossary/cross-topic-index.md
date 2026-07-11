@@ -8,7 +8,7 @@
 ### ISO/IEC/IEEE 42010:2022
 
 - `01-meta-model-standards/01-iso-420xx-family/iso-42010-2022-update.md` — 术语变更
-- `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — TOGAF 与 ISO 42010 映射
+- `01-meta-model-standards/02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md` — TOGAF 与 ISO/IEC/IEEE 42010:2022 映射
 
 ### ISO/IEC 25010:2023
 
@@ -120,9 +120,9 @@
 
 ### 元模型与标准对齐
 
-- `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md` — TOGAF 10 × ISO 42010 详细映射
-- `01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md` — ArchiMate × ISO 42010 对照表
-- `01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md` — ISO 26550 × ISO 42010/42020 映射
+- `01-meta-model-standards/02-togaf-10-alignment/detailed-mapping.md` — TOGAF Standard 10 × ISO/IEC/IEEE 42010:2022 详细映射
+- `01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md` — ArchiMate × ISO/IEC/IEEE 42010:2022 对照表
+- `01-meta-model-standards/03-iso-26550-ple/ple-iso-integration.md` — ISO/IEC 26550:2015 × ISO/IEC/IEEE 42010:2022/42020 映射
 - `01-meta-model-standards/05-swebok-v4/swebok-alignment.md` — SWEBOK V4 × 本体系 13 主题
 - `01-meta-model-standards/06-formal-axioms/axiom-system.md` — 形式化公理体系（15 公理）
 - `01-meta-model-standards/06-formal-axioms/theorem-derivations.md` — 定理推导集（17 定理）

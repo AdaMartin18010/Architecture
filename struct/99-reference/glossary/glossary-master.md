@@ -399,7 +399,7 @@
   - 核心资产库
   - 绑定时间与变性点
 - **关系**:
-  - 标准：ISO/IEC 26550、ISO/IEC 26565（产品线成熟度框架）、ISO/IEC 26566（产品线纹理）
+  - 标准：ISO/IEC 26550:2015、ISO/IEC 26565（产品线成熟度框架）、ISO/IEC 26566（产品线纹理）
   - 方法：FODA、FeatureIDE、Pure::Variants
   - 应用：汽车、航空、工业自动化、移动设备
 - **解释**: PLE 是系统化复用的高级形式；通过特征模型可在产品族内高效派生多个变体。
@@ -633,7 +633,7 @@
   - 企业连续体（Enterprise Continuum）
   - 架构能力与治理
 - **关系**:
-  - 对齐：ArchiMate、ISO 42010
+  - 对齐：ArchiMate、ISO/IEC/IEEE 42010:2022
   - 应用：业务架构、应用架构、技术架构
   - 版本：TOGAF Standard, 10th Edition
 - **解释**: TOGAF 为组织级复用提供方法框架；企业连续体帮助组织识别可复用的架构资产。
@@ -698,7 +698,7 @@
 - **关系**:
   - 产生：View
   - 属于：Architecture Description
-  - 对齐：ISO 42010 Viewpoint、Kruchten 4+1、C4
+  - 对齐：ISO/IEC/IEEE 42010:2022 Viewpoint、Kruchten 4+1、C4
 - **解释**: 视点是架构描述的"镜头"；不同视点让不同利益相关者看到与自身相关的架构方面。
 - **示例**: "性能视点"关注响应时间、吞吐量、资源使用，使用性能模型与瓶颈分析技术。
 - **反例**: 一个视图混合了安全、性能与业务逻辑三种关注点，未采用不同视点，导致沟通效率低下。
@@ -750,7 +750,7 @@
 >
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（核查日期：2026-07-09）
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
-> - [ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-09）
+> - [ArchiMate 4.0 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) — The Open Group（核查日期：2026-07-09）
 > - [OMG BPMN 2.0](https://www.omg.org/spec/BPMN/) — Object Management Group（核查日期：2026-07-09）
 
 ---

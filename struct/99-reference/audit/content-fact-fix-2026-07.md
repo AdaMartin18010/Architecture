@@ -2,7 +2,7 @@
 
 > **报告目的**：响应方案 A“激进全面重构”Phase 0 要求，对项目中的关键事实争议进行网络权威来源复核，给出修正结论与后续行动。
 > **复核日期**: 2026-07-09
-> **复核范围**: ArchiMate 4.0、MCP 版本、IEC 61508 Ed.3、ISO/IEC 25010、Warg Registry、不实学者引用
+> **复核范围**: ArchiMate 4.0、MCP 版本、IEC 61508 Ed.3、ISO/IEC 25010:2023、Warg Registry、不实学者引用
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### 项目现状
 
-- 项目部分文件声称：ArchiMate 4 Specification 已于 **2026-04-27 正式发布（Document C260）**。
+- 项目部分文件声称：ArchiMate 4.0 Specification 已于 **2026-04-27 正式发布（Document C260）**。
 - 早期审计报告（`comprehensive-gap-analysis-2026-06-08.md`）曾指控此为“虚假发布声明”，要求回退。
 - 项目 CHANGELOG 记录了三次勘误：误判为发布 → 回退为厂商预发布 → 再次确认发布。
 
@@ -31,12 +31,12 @@
 
 ### 复核结论
 
-- **复核结论**：经 The Open Group 官方新闻稿与发布页面确认，**ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260, April 2026；白皮书 W262）**，与 ArchiMate 3.2 向后兼容。官方来源：
+- **复核结论**：经 The Open Group 官方新闻稿与发布页面确认，**ArchiMate 4.0 Specification 已于 2026-04-27 正式发布（Document C260, April 2026；白皮书 W262）**，与 ArchiMate 3.2 向后兼容。官方来源：
   - 官方下载/许可页面：<https://www.opengroup.org/archimate-licensed-downloads>
   - 官方发布公告：<https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
 - 部分工具厂商页面可能存在过渡延迟，但实际采用前应以 The Open Group 官方公告为准。
-- **推荐表述**：统一使用“ArchiMate 4 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”，并附上述官方来源链接。
-- **行动**：在所有 ArchiMate 4 引用处更新为上述权威表述，补充官方链接。
+- **推荐表述**：统一使用“ArchiMate 4.0 Specification 已于 2026-04-27 正式发布（Document C260），与 ArchiMate 3.2 向后兼容”，并附上述官方来源链接。
+- **行动**：在所有 ArchiMate 4.0 引用处更新为上述权威表述，补充官方链接。
 
 ---
 
@@ -178,7 +178,7 @@
 
 > 本报告复核所依据的权威来源：
 >
-> - [The Open Group — ArchiMate 4 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
+> - [The Open Group — ArchiMate 4.0 Specification](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification)（核查日期：2026-07-09）
 > - [The Open Group — TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html)（核查日期：2026-07-09）

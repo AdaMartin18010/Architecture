@@ -6,7 +6,7 @@
 
 ## 核心内容
 
-- 复用治理与产品线纹理的国际标准框架（ISO/IEC/IEEE 42020 / 42030 / 25010 / 26565 / 26566）
+- 复用治理与产品线纹理的国际标准框架（ISO/IEC/ISO/IEC/IEEE 42020:2019 / 42030 / 25010 / 26565 / 26566）
 - 复用成熟度五级模型（以 ISO/IEC 26565 产品线成熟度框架为基准，整合 RiSE / RCMM / NASA RRL；26566 提供产品线纹理方法/工具能力支撑）
   - Level 1: 初始 (Initial) → Level 5: 优化 (Optimizing)
 - 跨层复用的升级/降级决策矩阵
@@ -24,7 +24,7 @@
 
 **治理措施**：
 
-1. 依据 ISO/IEC/IEEE 42020 建立架构治理过程，成立企业架构委员会（EAC）；
+1. 依据 ISO/IEC/ISO/IEC/IEEE 42020:2019 建立架构治理过程，成立企业架构委员会（EAC）；
 2. 以业务能力目录映射到统一的产品线纹理（ISO/IEC 26566），识别 40+ 可复用业务组件；
 3. 引入 RCMM/RiSE 成熟度评估，将复用能力从 L2 提升至 L4；
 4. 通过 FinOps 四级成本分摊模型，把共享平台成本透明分摊到各工厂。
@@ -81,6 +81,6 @@
 
 - 所有层次主题（治理贯穿全部）
 - [`09-value-quantification`](../09-value-quantification/README.md)（ROI 与成本模型）
-- [`01-meta-model-standards/01-iso-420xx-family`](../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)（ISO 42020/42030 标准族）
+- [`01-meta-model-standards/01-iso-420xx-family`](../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)（ISO/IEC/IEEE 42020:2019/42030 标准族）
 
 > 最后更新：2026-07-08

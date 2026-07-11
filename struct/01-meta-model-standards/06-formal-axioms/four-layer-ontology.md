@@ -2,13 +2,13 @@
 
 > **版本**: 2026-07-07
 > **定位**: 定义业务架构 → 应用架构 → 组件架构 → 功能架构四层复用视角的统一概念本体
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF 10, ArchiMate 4.0, ISO/IEC 26550:2015
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF Standard 10, ArchiMate 4.0, ISO/IEC 26550:2015
 > **来源 URL**:
 >
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
-> - TOGAF 10: <https://www.opengroup.org/togaf>
-> - ArchiMate 4 Specification (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
-> - ArchiMate 4 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
+> - TOGAF Standard 10: <https://www.opengroup.org/togaf>
+> - ArchiMate 4.0 Specification (官方下载): <https://www.opengroup.org/archimate-licensed-downloads>
+> - ArchiMate 4.0 发布公告: <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification>
 > - ISO 26550: <https://www.iso.org/standard/69529.html>
 > **核查日期**: 2026-07-07
 
@@ -36,7 +36,7 @@
     - [反例 2：组件层复用破坏业务语义](#反例-2组件层复用破坏业务语义)
     - [反例 3：应用架构选择不当导致复用失败](#反例-3应用架构选择不当导致复用失败)
   - [7. 多维映射矩阵](#7-多维映射矩阵)
-    - [7.1 四层 × ISO/IEC 42010 架构描述元素](#71-四层--isoiec-42010-架构描述元素)
+    - [7.1 四层 × ISO/IEC/IEEE 42010:2022 架构描述元素](#71-四层--isoiec-42010-架构描述元素)
     - [7.2 四层 × 复用策略](#72-四层--复用策略)
   - [8. 概念谱系与权威来源](#8-概念谱系与权威来源)
   - [9. 权威来源](#9-权威来源)
@@ -357,7 +357,7 @@ flowchart LR
 
 ### 1. 概念定义
 
-**定义**：四层架构复用概念本体（Concept Architecture Reuse Ontology, CARC）是一个半形式化本体，它将软件系统的复用问题组织为业务架构层、应用架构层、组件架构层与功能架构层四个抽象层次，并定义层间的 realizes、maps-to、decomposes-to、supports、implements、exposes、enables 等关系。CARC 既是本知识体系的顶层概念骨架，也是连接 ISO 42010、TOGAF、ArchiMate 与 ISO 26550 的语义桥梁。
+**定义**：四层架构复用概念本体（Concept Architecture Reuse Ontology, CARC）是一个半形式化本体，它将软件系统的复用问题组织为业务架构层、应用架构层、组件架构层与功能架构层四个抽象层次，并定义层间的 realizes、maps-to、decomposes-to、supports、implements、exposes、enables 等关系。CARC 既是本知识体系的顶层概念骨架，也是连接 ISO/IEC/IEEE 42010:2022、TOGAF、ArchiMate 与 ISO/IEC 26550:2015 的语义桥梁。
 
 ### 2. 本体属性
 
@@ -377,7 +377,7 @@ flowchart LR
 - **组件架构层 ↔ 功能架构层**：implements（组件到功能）与 exposes（功能到组件）。
 - **功能架构层 ↔ 业务架构层**：enables（功能使能业务）。
 - **上层 → 下层**：上层变更可能传播至下层；下层变更应尽量通过抽象与接口隔离，减少向上传播。
-- **CARC ↔ ISO 42010**：每层可视为一个 Viewpoint；每层核心概念可视为 Model Kind；层间关系可视为 Correspondence。
+- **CARC ↔ ISO/IEC/IEEE 42010:2022**：每层可视为一个 Viewpoint；每层核心概念可视为 Model Kind；层间关系可视为 Correspondence。
 - **CARC ↔ TOGAF**：业务架构层对应 TOGAF Phase B；应用/技术层对应 Phase C/D；组件与功能层对应 SBB 实现；架构仓库保存各层制品。
 
 ### 4. 形式化/结构化分析
@@ -456,10 +456,10 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 
 ### 8. 交叉引用
 
-- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- ISO/IEC/IEEE 42010:2022 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
 - 标准对齐矩阵详见 [`../01-iso-420xx-family/alignment-matrix.md`](../01-iso-420xx-family/alignment-matrix.md)
 - TOGAF 企业连续体与构建块复用详见 [`../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md`](../02-togaf-10-alignment/togaf-enterprise-continuum-reuse.md)
-- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- ArchiMate 与 ISO/IEC/IEEE 42010:2022 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
 - SWEBOK V4 对齐详见 [`../05-swebok-v4/swebok-alignment.md`](../05-swebok-v4/swebok-alignment.md)
 - OMG RAS 对齐详见 [`../07-omg-ras/ras-alignment.md`](../07-omg-ras/ras-alignment.md)
 - FAIR4RS 对齐详见 [`../08-fair4rs/fair4rs-alignment.md`](../08-fair4rs/fair4rs-alignment.md)

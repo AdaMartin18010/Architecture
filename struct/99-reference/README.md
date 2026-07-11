@@ -59,7 +59,7 @@ graph TD
 
 ### 示例 2：术语一致性审计
 
-通过 `glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO 42010 与项目自定义术语建立映射；当主题文档新增术语时，自动触发一致性检查，减少跨文档语义偏差。
+通过 `glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO/IEC/IEEE 42010:2022 与项目自定义术语建立映射；当主题文档新增术语时，自动触发一致性检查，减少跨文档语义偏差。
 
 ### 示例 3：标准索引驱动的更新流程
 
@@ -130,7 +130,7 @@ graph TD
 参考层通过以下机制保证术语定义一致性：
 
 - **单一事实源**：`glossary/glossary-master.md` 作为项目术语的单一事实源；主题文档首次使用术语时应链接到术语表。
-- **跨标准映射**：`glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO 42010、BIAN 等外部标准术语与项目自定义术语建立映射，减少跨文档语义偏差。
+- **跨标准映射**：`glossary/terminology-crosswalk.md` 将 TOGAF、ArchiMate、ISO/IEC/IEEE 42010:2022、BIAN 等外部标准术语与项目自定义术语建立映射，减少跨文档语义偏差。
 - **变更评审**：任何术语定义的变更需在 CI 中触发一致性扫描，确保不产生冲突定义。
 - **核查周期**：每季度对照权威来源（ISO OBP、The Open Group、OMG 等）复核术语定义与链接。
 
@@ -138,7 +138,7 @@ graph TD
 
 [`knowledge-index/cross-layer-reuse-mapping-matrix.md`](knowledge-index/cross-layer-reuse-mapping-matrix.md) 是四层复用资产映射的权威表达。其权威性来自：
 
-- **标准对齐**：映射关系基于 ISO/IEC/IEEE 42010:2022（架构描述、视点与对应关系）、TOGAF 10（业务/应用/技术架构分层）与 ISO/IEC 25010:2023（质量模型）。
+- **标准对齐**：映射关系基于 ISO/IEC/IEEE 42010:2022（架构描述、视点与对应关系）、TOGAF Standard 10（业务/应用/技术架构分层）与 ISO/IEC 25010:2023（质量模型）。
 - **失败传递模式**：矩阵中记录的跨层失败传递模式（如业务定义漂移 → 应用服务冗余 → 组件接口耦合）应随审计报告持续验证。
 - **版本控制**：矩阵的每次更新必须在 `CHANGELOG.md` 与 `audit/` 中记录变更理由与权威来源。
 
@@ -231,7 +231,7 @@ graph TD
 ## 14. 延伸阅读
 
 1. ISO/IEC/IEEE 42010:2022 — 架构描述标准。
-2. TOGAF 10 — 企业架构开发方法论。
+2. TOGAF Standard 10 — 企业架构开发方法论。
 3. SWEBOK V4 — 软件工程知识体系指南。
 4. The Open Group. *ArchiMate 3.2 Specification*。
 5. NIST. *Cybersecurity Supply Chain Risk Management*。

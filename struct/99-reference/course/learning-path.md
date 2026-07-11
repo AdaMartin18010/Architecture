@@ -32,7 +32,7 @@
 
 - [01 业务域复用（Business Domain Reuse）](../../02-business-architecture-reuse/01-business-domain-reuse/README.md)
 - [业务能力复用](../../02-business-architecture-reuse/02-business-capability/capability-reuse.md)
-- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../../02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
+- [FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射](../../02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
 - [价值流复用的形式化组合](../../02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
 - [04 业务流程复用（Business Process Reuse）](../../02-business-architecture-reuse/04-business-process-reuse/README.md)
 - … 共 15 个文件
@@ -124,7 +124,7 @@
 - [MCP 2025-11-25 综合更新与复用影响评估](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
 - [MCP 2025-11-25 规范深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 - [MCP 2026-07-28 RC 深度解析](../../12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-- [A2A v1.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
+- [A2A v1.0.0.0.0.0 协议复用分析](../../12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
 - … 共 20 个文件
 
 ### 13 新兴趋势
@@ -153,7 +153,7 @@
 
 ## 示例
 
-**示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
+**示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF Standard 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
 
 ## 反例
 
@@ -162,5 +162,5 @@
 ## 权威来源
 
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - [The Open Group - ArchiMate 4.0 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
 > - 核查日期：2026-07-08

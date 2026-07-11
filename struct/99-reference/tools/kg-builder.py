@@ -62,8 +62,8 @@ PROPERTIES = [
     ("defines", "File", "Term", "定义"),
     ("references", "File", "Standard", "引用标准"),
     ("belongsTo", "File", "Topic", "属于主题"),
-    ("providesPositiveExample", "File", "CaseStudy", "提供正向示例"),
-    ("providesNegativeExample", "File", "CaseStudy", "提供反例"),
+    ("providesPositiveExample", "File", "Term", "提供正向示例"),
+    ("providesNegativeExample", "File", "Term", "提供反例"),
     ("mentions", "File", "Term", "提及"),
     ("implementedBy", "Standard", "Tool", "由工具实现"),
     ("relatedTo", "Term", "Term", "相关"),
@@ -195,7 +195,7 @@ def build_knowledge_graph(
             if context:
                 g.add((uri, AR.context, Literal(context)))
 
-    # 加载关系
+    # 加载关系；dangling 关系不跳过，保留无 type 节点以让 SHACL 失败
     relation_to_property = {
         "DEFINES": ARO.defines,
         "REFERENCES": ARO.references,
@@ -208,7 +208,7 @@ def build_knowledge_graph(
         "EVOLVED_FROM": ARO.evolvedFrom,
     }
 
-    missing_count = 0
+    missing_targets = set()
     with open(relations_path, "r", encoding="utf-8") as f:
         for line in f:
             record = json.loads(line)
@@ -216,16 +216,20 @@ def build_knowledge_graph(
             relation = record["relation"]
             target_id = record["target_id"]
 
-            if source_id not in entities or target_id not in entities:
-                missing_count += 1
-                continue
+            source_uri = entities.get(source_id)
+            if source_uri is None:
+                continue  # 源文件实体必须存在
+            if target_id not in entities:
+                missing_targets.add(target_id)
+                # 创建 dangling URI（无 rdf:type），让 SHACL class 约束失败
+                entities[target_id] = entity_uri(target_id)
 
             prop = relation_to_property.get(relation)
             if prop:
-                g.add((entities[source_id], prop, entities[target_id]))
+                g.add((source_uri, prop, entities[target_id]))
 
-    if missing_count:
-        print(f"警告: {missing_count} 条关系因实体缺失被跳过")
+    if missing_targets:
+        print(f"警告: {len(missing_targets)} 个关系目标实体缺失（dangling），SHACL 应报失败: {sorted(missing_targets)[:5]}")
 
     return g, entities
 
@@ -235,26 +239,64 @@ def build_knowledge_graph(
 # ---------------------------------------------------------------------------
 
 def build_shacl_shapes() -> Graph:
-    """构建 SHACL 形状约束。"""
+    """构建 SHACL 形状约束：label、dangling、canonical 正则。"""
     g = Graph()
     g.bind("sh", SH)
     g.bind("aro", ARO)
 
-    # Standard 必须有 RDFS.label
+    # 标准/协议名称前缀正则（确保不是普通词汇）
+    std_label_pattern = Literal(
+        r"^(ISO|IEC|IEEE|NIST|OWASP|TOGAF|ArchiMate|SLSA|SysML|BPMN|DMN|FAIR4RS|EU CRA|ISA-95|SWEBOK|OPC UA)"
+    )
+
+    # Standard 必须有 RDFS.label，且 label 必须像标准名
     shape = URIRef(BASE_URI + "shapes/StandardShape")
     g.add((shape, RDF.type, SH.NodeShape))
     g.add((shape, SH.targetClass, ARO.Standard))
     g.add((shape, SH.property, URIRef(BASE_URI + "shapes/StandardLabel")))
     g.add((URIRef(BASE_URI + "shapes/StandardLabel"), SH.path, RDFS.label))
     g.add((URIRef(BASE_URI + "shapes/StandardLabel"), SH.minCount, Literal(1)))
+    g.add((URIRef(BASE_URI + "shapes/StandardLabel"), SH.pattern, std_label_pattern))
 
-    # Term 必须有 RDFS.label
+    # Protocol 必须有 RDFS.label，且 label 必须像协议名
+    shape_p = URIRef(BASE_URI + "shapes/ProtocolShape")
+    g.add((shape_p, RDF.type, SH.NodeShape))
+    g.add((shape_p, SH.targetClass, ARO.Protocol))
+    g.add((shape_p, SH.property, URIRef(BASE_URI + "shapes/ProtocolLabel")))
+    g.add((URIRef(BASE_URI + "shapes/ProtocolLabel"), SH.path, RDFS.label))
+    g.add((URIRef(BASE_URI + "shapes/ProtocolLabel"), SH.minCount, Literal(1)))
+    g.add((URIRef(BASE_URI + "shapes/ProtocolLabel"), SH.pattern, Literal(r"^(MCP|A2A|OPC UA|HTTP|MQTT|CoAP|gRPC|REST)", datatype=XSD.string)))
+
+    # Term 必须有 RDFS.label，且 label 不得像标准/协议名
     shape2 = URIRef(BASE_URI + "shapes/TermShape")
     g.add((shape2, RDF.type, SH.NodeShape))
     g.add((shape2, SH.targetClass, ARO.Term))
     g.add((shape2, SH.property, URIRef(BASE_URI + "shapes/TermLabel")))
     g.add((URIRef(BASE_URI + "shapes/TermLabel"), SH.path, RDFS.label))
     g.add((URIRef(BASE_URI + "shapes/TermLabel"), SH.minCount, Literal(1)))
+    g.add((URIRef(BASE_URI + "shapes/TermLabel"), SH.maxLength, Literal(120)))
+
+    # 对象属性：object 必须属于声明的 range 类（dangling 即失败）
+    object_props = [
+        ("defines", ARO.Term),
+        ("references", ARO.Standard),
+        ("belongsTo", ARO.Topic),
+        ("providesPositiveExample", ARO.Term),
+        ("providesNegativeExample", ARO.Term),
+        ("mentions", ARO.Term),
+        ("implementedBy", ARO.Tool),
+        ("relatedTo", ARO.Term),
+        ("evolvedFrom", ARO.Standard),
+    ]
+    global_shape = URIRef(BASE_URI + "shapes/GlobalObjectPropertyShape")
+    g.add((global_shape, RDF.type, SH.NodeShape))
+    g.add((global_shape, SH.targetClass, ARO.Entity))
+    for idx, (prop_name, range_cls) in enumerate(object_props):
+        ps = URIRef(BASE_URI + f"shapes/PropertyShape{idx}")
+        g.add((ps, RDF.type, SH.PropertyShape))
+        g.add((ps, SH.path, property_uri(prop_name)))
+        g.add((ps, URIRef(str(SH) + "class"), range_cls))
+        g.add((global_shape, SH.property, ps))
 
     return g
 

@@ -428,7 +428,6 @@ flowchart LR
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 语言级组件模型能力对比
 - [软件架构复用框架总览](../struct/README.md) — 知识体系全局视图
 
-
 ---
 
 
@@ -438,7 +437,7 @@ flowchart LR
 
 > **版本**: 2026-07-08
 > **定位**: 组件架构层 —— 接口契约驱动的复用：从 IDL 到 OpenAPI 到 WIT 的演进
-> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/IEEE 42010, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
+> **对齐标准**: UML 2.5.1 Interfaces, ISO/IEC/ISO/IEC/IEEE 42010:2022, OpenAPI 3.1, gRPC Protobuf, AsyncAPI, WIT, Pact, Spring Cloud Contract
 > **状态**: ✅ 已完成
 
 ---
@@ -875,7 +874,6 @@ describe('Inventory API contract', () => {
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对接口契约工具链的支持差异
 - [软件架构复用框架总览](../struct/README.md) — 本知识体系的全局视图
 
-
 ---
 
 
@@ -1113,7 +1111,6 @@ Lockfile vs SBOM
 ## 分析
 
 **分析**：依赖管理是组件复用的风险控制点，需平衡更新灵活性与构建可重现性。
-
 
 ---
 
@@ -1599,7 +1596,6 @@ class Authenticated:
 >
 > **核查日期**: 2026-07-08
 
-
 ---
 
 
@@ -1908,7 +1904,6 @@ flowchart TD
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对设计模式实现机制的支持
 - [软件架构复用框架总览](../struct/README.md) — 知识体系总览
 
-
 ---
 
 
@@ -2133,7 +2128,6 @@ Kubernetes API 版本演进
 | Kubernetes API Versioning | <https://kubernetes.io/docs/reference/using-api/api-overview/> | 2026-06-10 |
 | ZeroVer (讽刺网站) | <https://0ver.org/> | 2026-06-10 |
 
-
 ---
 
 
@@ -2269,7 +2263,6 @@ spec:
 ## 分析
 
 **分析**：组件复用关注依赖管理、接口稳定性与供应链安全，是现代软件工程的基础能力。
-
 
 ---
 
@@ -2527,7 +2520,6 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 分析
 
 **分析**：云原生网络复用需要抽象底层实现差异，Gateway API 提供了跨 Ingress 控制器的可移植接口。
-
 
 ---
 
@@ -3255,7 +3247,6 @@ flowchart TD
 - [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
 - [软件架构复用框架总览](../struct/README.md) — 知识体系总览
 
-
 ---
 
 
@@ -3646,7 +3637,6 @@ Artifact Repository
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
-
 ---
 
 
@@ -3724,6 +3714,5 @@ Artifact Repository
 
 - `10-supply-chain-security`（SBOM、SLSA、漏洞管理）
 - `07-formal-verification`（Rust 类型系统形式化）
-
 
 ---

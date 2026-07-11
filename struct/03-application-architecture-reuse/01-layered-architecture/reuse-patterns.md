@@ -2,12 +2,12 @@
 
 > **版本**: 2026-07-07
 > **定位**: 03 应用架构复用的基础子主题 —— 分层架构（Layered Architecture）的复用模式、边界与决策
-> **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK v4, TOGAF 10
+> **对齐标准**: ISO/IEC/IEEE 42010:2022, SWEBOK v4, TOGAF Standard 10
 > **来源 URL**:
 >
 > - ISO 42010: <https://www.iso.org/standard/74296.html>
 > - SWEBOK V4: <https://www.computer.org/education/bodies-of-knowledge/software-engineering>
-> - TOGAF 10: <https://www.opengroup.org/togaf>
+> - TOGAF Standard 10: <https://www.opengroup.org/togaf>
 > **核查日期**: 2026-07-07
 
 ---

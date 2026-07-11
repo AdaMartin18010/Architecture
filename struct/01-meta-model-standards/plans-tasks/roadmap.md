@@ -14,13 +14,13 @@
 - [x] 05-swebok-v4 目录结构
 - [x] 06-formal-axioms 目录结构
 - [x] 核心对齐矩阵文档（alignment-matrix.md）
-- [x] TOGAF 10 详细映射 → `02-togaf-10-alignment/detailed-mapping.md`
+- [x] TOGAF Standard 10 详细映射 → `02-togaf-10-alignment/detailed-mapping.md`
 - [x] ArchiMate 4.0 映射更新（2026-04-27 已正式发布，映射已完成）
 - [x] SWEBOK V4 对齐 → `05-swebok-v4/swebok-alignment.md`
 - [x] 形式化公理体系完整版 → `06-formal-axioms/axiom-system.md` + `theorem-derivations.md`
 - [x] OMG RAS v2.2 与四层复用架构对齐 → `07-omg-ras/ras-alignment.md`
 - [x] FAIR4RS 原则与架构资产复用对齐 → `08-fair4rs/fair4rs-alignment.md`
-- [x] IEEE 1517-2010 与 ISO 12207 / 42020 映射 → `01-iso-420xx-family/ieee-1517-reuse-processes.md`
+- [x] IEEE 1517-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 映射 → `01-iso-420xx-family/ieee-1517-reuse-processes.md`
 - [x] DIS 42024/42042 当前状态对齐 → `01-iso-420xx-family/iso-42024-42042-dis-alignment.md`
 
 ---
@@ -45,11 +45,11 @@
 
 **任务**:
 
-- [x] T05: 编写 TOGAF 10 ABB/SBB 与 ISO 42010 的详细映射
+- [x] T05: 编写 TOGAF Standard 10 ABB/SBB 与 ISO/IEC/IEEE 42010:2022 的详细映射
   - 交付: `02-togaf-10-alignment/detailed-mapping.md`（覆盖 10 个 ADM 阶段）
-- [x] T06: 编写 ArchiMate 3.2/4.0 元素与 ISO 42010 的对照表
+- [x] T06: 编写 ArchiMate 3.2/4.0 元素与 ISO/IEC/IEEE 42010:2022 的对照表
   - 交付: `04-archimate-4/archimate-iso-mapping.md`（四层全覆盖）
-- [x] T07: 编写 ISO 26550:2015 与 ISO 42010/42020 的交叉映射
+- [x] T07: 编写 ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射
   - 交付: `03-iso-26550-ple/ple-iso-integration.md`（双轨映射）
 - [x] T08: 编写 SWEBOK V4 知识领域与本体系的对应关系
   - 交付: `05-swebok-v4/swebok-alignment.md`（15 个 KAs 全覆盖）

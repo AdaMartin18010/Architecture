@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-12
 > **定位**: 02-business-architecture-reuse / 05-business-service-reuse
-> **对齐标准**: SOA, OASIS SOA Reference Architecture, TOGAF 10
+> **对齐标准**: SOA, OASIS SOA Reference Architecture, TOGAF Standard 10
 
 ---
 

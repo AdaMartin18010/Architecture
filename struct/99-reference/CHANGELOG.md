@@ -14,7 +14,7 @@
 - **1-A**: 以实际 `struct/` 目录结构为准，重写 `struct/README.md` 并同步 `MASTER_PLAN`。
 - **2-A（已按用户要求调整）**: 形式化验证仅做内容审阅，不安装/验证 TLA+/Alloy/Coq/Isabelle/Kani/Prusti/Miri。
 - **3-A**: 可执行工具采用 Python CLI + Streamlit MVP。
-- **4-A**: 优先 MCP/Agentic 安全治理、IDP、ISO 25010/25040 质量矩阵、COCOMO/FinOps 增强；量子计算暂缓。
+- **4-A**: 优先 MCP/Agentic 安全治理、IDP、ISO/IEC 25010:2023/25040 质量矩阵、COCOMO/FinOps 增强；量子计算暂缓。
 - **5-A**: 每篇文档需引用 1–3 个权威来源并登记到 `authoritative-sources-v2.md`。
 - **6-A**: 追踪 IEC 61508 Ed.3 / ISO 21448 Ed.2，发布后 4 周内更新。
 
@@ -37,7 +37,7 @@
 - `struct/SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` — Phase 0–5 + Phase D 完整路线图。
 - `struct/README.md` — 对齐实际目录结构与最新路线图。
 - `struct/99-reference/tools/requirements.txt` — 项目级 Python 依赖索引。
-- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
+- `struct/99-reference/standards-index/authoritative-sources-v2.md` — 更新为 v2.1，加入 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0.0.0.0 GA、WASI 0.3、GSF SCI for AI、IEC 61508 Ed.3 / ISO 21448 Ed.2 等条目。
 
 ### 已知边界
 
@@ -69,7 +69,7 @@
 
 **ArchiMate 4.0 状态追溯（2026-06-12 最终结论）**
 
-项目早期曾因 The Open Group 官网未即时更新，将 ArchiMate 4.0 标记为“厂商预发布”；随后又基于第三方信息误判为“已正式发布”，并在 2026-06-08 二次勘误中回退为“厂商预发布”。经最终复核 The Open Group 官方新闻稿（Document C260, April 2026），**ArchiMate 4 Specification 已于 2026-04-27 正式发布**，与 ArchiMate 3.2 向后兼容。2026-06-12 起，项目统一采用“已正式发布（2026-04-27）”作为权威表述，并在 view/ 历史文档中以三次勘误标记保留认知演进记录。
+项目早期曾因 The Open Group 官网未即时更新，将 ArchiMate 4.0 标记为“厂商预发布”；随后又基于第三方信息误判为“已正式发布”，并在 2026-06-08 二次勘误中回退为“厂商预发布”。经最终复核 The Open Group 官方新闻稿（Document C260, April 2026），**ArchiMate 4.0 Specification 已于 2026-04-27 正式发布**，与 ArchiMate 3.2 向后兼容。2026-06-12 起，项目统一采用“已正式发布（2026-04-27）”作为权威表述，并在 view/ 历史文档中以三次勘误标记保留认知演进记录。
 
 ### 新增文件
 
@@ -80,8 +80,8 @@
 ### 主要修改文件
 
 - `README.md` — 更新标准列表与勘误说明
-- `view/software_architecture_reuse_framework_2026.md` — 回滚 ISO 25010 版本号、修正勘误说明
-- `view/software_architecture_reuse_full_2026.md` — 回滚 ISO 25010 版本号、更新 ArchiMate 勘误
+- `view/software_architecture_reuse_framework_2026.md` — 回滚 ISO/IEC 25010:2023 版本号、修正勘误说明
+- `view/software_architecture_reuse_full_2026.md` — 回滚 ISO/IEC 25010:2023 版本号、更新 ArchiMate 勘误
 - `struct/99-reference/standards-index/master-alignment-matrix.md` — 更新 ArchiMate 4.0 状态
 - `struct/13-emerging-trends/09-frontier-tracking/frontier-status-2026-06.md` — 更新 12207/26550/5338/62443/ArchiMate 状态与 URL
 - `struct/10-supply-chain-security/06-case-studies/nist-ssdf-1-2-alignment.md` — 修正 SSDF 1.2 为征求意见稿
@@ -116,7 +116,7 @@
 
 ### 元模型与标准对齐
 
-- **FAIR4RS 原则与软件复用对照**: `01/08-fair4rs/fair4rs-alignment.md` — 4×4架构映射矩阵、40项检查清单(0-3分评分)、与ISO 25010/OMG RAS/IEEE 1517对照
+- **FAIR4RS 原则与软件复用对照**: `01/08-fair4rs/fair4rs-alignment.md` — 4×4架构映射矩阵、40项检查清单(0-3分评分)、与ISO/IEC 25010:2023/OMG RAS/IEEE 1517对照
 
 ---
 
@@ -181,7 +181,7 @@
 
 ### ArchiMate 4.0 官方发布纠偏
 
-> **关键纠正**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4 Specification**。此前项目中将 "ArchiMate 4.0" 标注为"厂商预告/未获官方确认"属于**过渡期间的保守误判**，现全面纠正。
+> **关键纠正**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0 Specification**。此前项目中将 "ArchiMate 4.0" 标注为"厂商预告/未获官方确认"属于**过渡期间的保守误判**，现全面纠正。
 
 **已更新文件**：
 
@@ -200,7 +200,7 @@
 
 > **勘误原因**：经网络核查，The Open Group 官方网站在 2026-06-08 仍显示 ArchiMate 最新版本为 3.1，无 ArchiMate 4.0 正式发布信息。此前项目将厂商预发布/第三方声明误判为官方正式发布。
 
-> **2026-06-12 更新**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4 Specification**（Document C260, April 2026），官方新闻稿确认。项目已据此更新为正式发布状态。
+> **2026-06-12 更新**：The Open Group 已于 **2026-04-27 正式发布 ArchiMate 4.0 Specification**（Document C260, April 2026），官方新闻稿确认。项目已据此更新为正式发布状态。
 
 **已勘误文件**（将"已正式发布"声明回退为"厂商预发布"）：
 
@@ -282,7 +282,7 @@
 ---
 
 
-> **2026-07-08 后续说明**：经 The Open Group 官方发布页面确认，[ArchiMate 4 Specification 已于 2026-04-27 正式发布](https://www.opengroup.org/archimate-licensed-downloads)（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。本 2026-06-08 条目中的“发布声明撤回”结论已被纠正；项目已统一采用正式发布表述。
+> **2026-07-08 后续说明**：经 The Open Group 官方发布页面确认，[ArchiMate 4.0 Specification 已于 2026-04-27 正式发布](https://www.opengroup.org/archimate-licensed-downloads)（Document C260，白皮书 W262），与 ArchiMate 3.2 向后兼容。本 2026-06-08 条目中的“发布声明撤回”结论已被纠正；项目已统一采用正式发布表述。
 >
 ## 2026-06-06 Phase 1.5 修复（用户确认 1A/2A/3A/4A/5A 后执行）
 
@@ -321,9 +321,9 @@
 
 #### 元模型与标准对齐
 
-- `07-omg-ras/ras-alignment.md` — 对齐 OMG RAS v2.2（formal/05-11-02），覆盖 Core RAS 四元组（Classification/Solution/Usage/RelatedAssets）、Profile 扩展、`.ras` 包格式、仓库服务接口，以及与 ISO 42010 / TOGAF 的映射
+- `07-omg-ras/ras-alignment.md` — 对齐 OMG RAS v2.2（formal/05-11-02），覆盖 Core RAS 四元组（Classification/Solution/Usage/RelatedAssets）、Profile 扩展、`.ras` 包格式、仓库服务接口，以及与 ISO/IEC/IEEE 42010:2022 / TOGAF 的映射
 - `08-fair4rs/fair4rs-alignment.md` — 对齐 FAIR4RS Principles v1.0 (RDA, 2022)，覆盖 F/A/I/R 17 条子原则、与 SBOM/MCP/容器注册表的整合、架构资产 FAIR4RS 合规行动清单
-- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 IEEE 1517-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO 12207 / 42020 / TOGAF ADM
+- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 IEEE 1517-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO/IEC/IEEE 12207:2017 / 42020 / TOGAF ADM
 
 #### AI 原生复用
 
@@ -331,7 +331,7 @@
 
 ### 新增可执行工具原型
 
-- `99-reference/tools/terminology-query.py` — 跨标准术语查询 CLI（ISO 42010 / ISO 25010 / TOGAF / SLSA / MCP / A2A）
+- `99-reference/tools/terminology-query.py` — 跨标准术语查询 CLI（ISO/IEC/IEEE 42010:2022 / ISO/IEC 25010:2023 / TOGAF / SLSA / MCP / A2A）
 - `99-reference/tools/cocomo-calculator.py` — COCOMO II 复用模型 2026 版计算器
 - `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` — 基于 **Conformal Prediction** 的 AI 功能概率契约校准工具，输出 P(correctness) ≥ 1-α 的统计保证
 - `06-cross-layer-governance/03-maturity-models/assessment-tool.py` — 基于 **ISO/IEC 26565:2026 / RCMM / RiSE / NASA RRL** 的复用成熟度评估问卷 CLI，生成分维度雷达图和总体成熟度报告（26566 提供产品线纹理方法/工具能力支撑）
@@ -382,7 +382,7 @@
 #### AI 原生复用
 
 - `mcp-2025-11-25-authoritative.md` — 基于官方规范解读 MCP 2025-11-25
-- `a2a-v1-authoritative.md` — 对齐 A2A v1.0 正式发布版本
+- `a2a-v1-authoritative.md` — 对齐 A2A v1.0.0.0.0 正式发布版本
 - `owasp-llm-mcp-security.md` — 对齐 OWASP LLM/MCP/Agentic AI Top 10
 
 #### 形式化验证
@@ -398,7 +398,7 @@
 
 #### 元模型与标准对齐
 
-- `togaf-enterprise-continuum-reuse.md` — 对齐 TOGAF 10 企业连续体、ABB/SBB、架构仓库与 ISO 42010:2022 映射
+- `togaf-enterprise-continuum-reuse.md` — 对齐 TOGAF Standard 10 企业连续体、ABB/SBB、架构仓库与 ISO 42010:2022 映射
 
 #### 应用架构复用
 
@@ -485,14 +485,14 @@
 
 #### Track A: 01 元模型与标准对齐
 
-- `02-togaf-10-alignment/detailed-mapping.md` — TOGAF 10 ABB/SBB 与 ISO 42010:2022 的详细映射（覆盖10个ADM阶段）
+- `02-togaf-10-alignment/detailed-mapping.md` — TOGAF Standard 10 ABB/SBB 与 ISO 42010:2022 的详细映射（覆盖10个ADM阶段）
 - `04-archimate-4/archimate-iso-mapping.md` — ArchiMate 3.2/4.0 元素与 ISO 42010:2022 的对照表（四层全覆盖）
-- `03-iso-26550-ple/ple-iso-integration.md` — ISO 26550:2015 与 ISO 42010/42020 的交叉映射（双轨）
+- `03-iso-26550-ple/ple-iso-integration.md` — ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 的交叉映射（双轨）
 - `05-swebok-v4/swebok-alignment.md` — SWEBOK V4 知识领域与本体系 13 个主题的对应关系
 
 #### Track B1: 02 业务架构复用
 
-- `02-business-capability/fea-brm-togaf-mapping.md` — FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射
+- `02-business-capability/fea-brm-togaf-mapping.md` — FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射
 - `06-bpmn-dmn/bpmn-dmn-executable-cases.md` — BPMN 2.0 / DMN 1.5 可执行语义案例集（3个生产级案例）
 - `case-studies/industry-vertical-cases.md` — 行业垂直场景案例库（金融开放银行、医疗 FHIR、制造 ISA-95）
 
@@ -509,7 +509,7 @@
 
 #### Track B4: 05 功能架构复用
 
-- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析
+- `06-mcp-a2a-protocols/protocol-analysis.md` — MCP 2025-11-25 + A2A v1.0.0.0.0.0 协议架构复用分析
 - `04-workflow-orchestration/temporal-reuse-patterns.md` — Temporal 工作流复用模式（Saga/Parallel/Child/Schedule）
 - `decision-tree-granularity-cost-roi.md` — 功能复用的粒度-成本-收益决策树
 

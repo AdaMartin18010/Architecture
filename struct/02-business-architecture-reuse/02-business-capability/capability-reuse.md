@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **定位**: 将业务能力作为业务架构复用的核心单元
-> **对齐标准**: TOGAF 10, FEA BRM 2.0, ArchiMate 4.0, Zachman Framework
+> **对齐标准**: TOGAF Standard 10, FEA BRM 2.0, ArchiMate 4.0, Zachman Framework
 
 ---
 
@@ -282,7 +282,7 @@ Gov(C): C 的治理主体、生命周期与版本策略
 
 > **权威来源**:
 >
-> - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — TOGAF 10 Phase B 业务能力定义；核查日期：2026-07-08
+> - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — TOGAF Standard 10 Phase B 业务能力定义；核查日期：2026-07-08
 > - [FEA BRM 2.0](https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/) — 联邦企业架构业务参考模型；核查日期：2026-07-08
 > - [ArchiMate 4.0 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate 业务层 Capability / Value Stream；核查日期：2026-07-08
 > - [Zachman Framework](https://www.zachman.com/) — 企业架构 What/How 维度；核查日期：2026-07-08
@@ -291,7 +291,7 @@ Gov(C): C 的治理主体、生命周期与版本策略
 
 **交叉引用**：
 
-- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](./fea-brm-togaf-mapping.md) — 业务能力与标准框架的详细映射
+- [FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射](./fea-brm-togaf-mapping.md) — 业务能力与标准框架的详细映射
 - [价值流复用的形式化组合](../03-value-stream/value-stream-composition.md) — 能力如何组合为价值流
 - [Zachman Framework 与软件架构复用映射](../08-zachman-reuse-mapping/zachman-reusability-matrix.md) — 能力在 Zachman 矩阵中的位置
 - [BIAN 金融服务域复用案例](../case-studies/bian-banking-reuse-case.md) — 银行业能力复用实践

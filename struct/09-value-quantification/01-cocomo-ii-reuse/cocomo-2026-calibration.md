@@ -378,7 +378,7 @@ PM_2026 = A_2026 × (Size_2026)^E × ∏(EMᵢ_2026)
 
 > **公理 V.1** (Value Quantification Uncertainty): 复用的价值量化存在固有的不确定性。COCOMO II 的校准常数基于历史数据，对 AI 辅助开发、Serverless 架构、低代码平台的适用性存在偏差。任何量化结果应被视为"最佳估计"而非"精确真理"。
 > **公理 V.2** (Strategic Value Non-Quantifiability): 复用的战略价值（上市时间优势、生态系统网络效应、组织能力进化）难以用货币精确量化，但不可因此忽略。
-> **定理 V.1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < 0.7。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略价值。
+> **定理 V.1** (ROI Threshold): 复用项目的 ROI 为正的必要条件是：复用资产的改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ AAF_ECONOMIC_FLOOR，复用的直接经济价值消失，仅剩战略价值。
 > **定理 V.2** (AI Net Benefit Ceiling): 在 2026 年的技术条件下，AI 辅助开发对 COCOMO II 估算的综合净收益上限约为 30-35%（相对于传统开发），远低于表面编码效率提升的 55%。组织在决策时应采用保守估算（净收益 15-25%）。
 
 ---

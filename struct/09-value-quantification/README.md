@@ -85,7 +85,7 @@ graph LR
 | NPV | Σ(CF_t / (1+r)^t) | 折现现金流净现值 |
 | SCI | (E × I) / R | 软件碳强度 |
 
-> **定理 V.1**（ROI Threshold）：复用项目的 ROI 为正的必要条件是复用资产的改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ 0.7，复用的直接经济价值消失，仅剩战略或学习价值。统一判定函数见 [`reuse_thresholds.py`](../09-value-quantification/tools/reuse_thresholds.py)。
+> **定理 V.1**（ROI Threshold）：复用项目的 ROI 为正的必要条件是复用资产的改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）。若 AAF ≥ AAF_ECONOMIC_FLOOR，复用的直接经济价值消失，仅剩战略或学习价值。统一判定函数见 [`reuse_thresholds.py`](../09-value-quantification/tools/reuse_thresholds.py)。
 
 ---
 
@@ -129,7 +129,7 @@ graph LR
 在将复用价值量化用于投资决策前，团队应完成以下检查：
 
 - [ ] 是否识别了复用资产的直接收益、间接收益与战略收益？
-- [ ] 是否估算改编调整因子 AAF，并验证其是否低于 0.7？
+- [ ] 是否估算改编调整因子 AAF（canonical [0.0, 1.0]），并验证其是否低于 AAF_ECONOMIC_FLOOR（0.7）？
 - [ ] 是否计入维护、治理、培训与升级协调等隐性成本？
 - [ ] 是否使用 NPV 或 ROI 对多期现金流进行贴现比较？
 - [ ] 是否评估了机会成本与实物期权价值？

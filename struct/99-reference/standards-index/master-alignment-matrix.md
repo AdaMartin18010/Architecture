@@ -206,7 +206,7 @@
 | NIST SP 800-161r1 | 现行 | 供应链风险管理 | 开源组件安全治理 | TBD |
 | NIST SP 800-204 系列 | 2025 更新 | DevSecOps + 供应链集成 | 微服务安全架构复用 | TBD |
 
-> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"；A2A v1.0.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
+> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"；A2A v1.0.0.0.0.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
 
 ---
 
@@ -226,7 +226,7 @@
 > 以下来源用于验证本文件中的标准编号、状态及技术细节：
 
 1. **[MCP 2025-11-25]** Anthropic / Linux Foundation Agentic AI Foundation, *Model Context Protocol Specification*, 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25> — 验证 MCP 协议状态、Tasks、Sampling、OAuth 安全模型。
-2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2a-protocol.org/latest/> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
+2. **[A2A v1.0.0.0.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2a-protocol.org/latest/> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
 3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
 4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。

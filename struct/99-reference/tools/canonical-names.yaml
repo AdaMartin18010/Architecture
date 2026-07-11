@@ -25,8 +25,17 @@ standards:
       - "ISO 42010:2022"
       - "ISO/IEC 42010:2022"
       - "ISO 42010"
+      - "ISO 42010:2011"
+      - "ISO/IEEE 42010:2022"
       - "IEC/IEEE 42010:2022"
       - "IEC/IEEE 42010"
+      - "IEEE 42010"
+      - "IEEE 42010:2022"
+      - "ISO/IEC/IEEE 42010:2011"
+      - "IEC 42010:2022"
+      - "IEC 42010"
+    invalid_versions:
+      - "2011"
 
   - canonical: "ArchiMate 4.0"
     aliases:
@@ -36,6 +45,9 @@ standards:
       - "ArchiMate 3.2 Specification"
       - "ArchiMate 4.2"
       - "ArchiMate 4.2 Specification"
+      - "archimate4"
+      - "archimate32"
+      - "archimate3"
     invalid_versions:
       - "4.1"
       - "4.2"
@@ -48,6 +60,8 @@ standards:
       - "ISO/IEC 15288:2023"
       - "ISO/IEC/IEEE 15288"
       - "ISO 15288"
+      - "IEEE 15288"
+      - "IEEE 15288:2023"
 
   - canonical: "ISO/IEC/IEEE 24765:2017"
     aliases:
@@ -57,8 +71,11 @@ standards:
 
   - canonical: "ISO/IEC 26550:2015"
     aliases:
+      - "ISO/IEC 26550"
       - "ISO 26550:2015"
       - "ISO 26550"
+      - "IEC 26550:2015"
+      - "IEC 26550"
     invalid_versions:
       - "2023"
       - "2025"
@@ -86,6 +103,7 @@ standards:
   - canonical: "ISO/IEC 21838"
     aliases:
       - "ISO 21838"
+      - "IEC 21838"
       - "ISO/IEC 21838-1:2021"
       - "ISO/IEC 21838-2:2021"
       - "ISO/IEC 21838-3:2023"
@@ -122,3 +140,535 @@ standards:
       - "A2A"
       - "A2A v1.0"
       - "A2A v1.0.0"
+
+  # ISO/IEC/IEEE 42020 / 42030（架构评估与治理）
+  - canonical: "ISO/IEC/IEEE 42020:2019"
+    aliases:
+      - "ISO/IEC/IEEE 42020"
+      - "ISO/IEC 42020:2019"
+      - "ISO/IEC 42020"
+      - "ISO 42020:2019"
+      - "ISO 42020"
+      - "IEEE 42020"
+      - "IEEE 42020:2019"
+      - "IEC 42020:2019"
+      - "IEC 42020"
+
+  - canonical: "ISO/IEC/IEEE 42024"
+    aliases:
+      - "IEEE 42024"
+      - "ISO/IEC 42024"
+      - "ISO 42024"
+
+  - canonical: "ISO/IEC/IEEE 42042"
+    aliases:
+      - "IEEE 42042"
+      - "ISO/IEC 42042"
+      - "ISO 42042"
+
+  - canonical: "ISO/IEC/IEEE 42030:2019"
+    aliases:
+      - "ISO/IEC/IEEE 42030"
+      - "ISO/IEC 42030:2019"
+      - "ISO/IEC 42030"
+      - "ISO 42030:2019"
+      - "ISO 42030"
+      - "IEEE 42030"
+      - "IEEE 42030:2019"
+      - "IEEE 42030-2019"
+      - "IEC 42030:2019"
+      - "IEC 42030"
+
+  # 生命周期与质量
+  - canonical: "ISO/IEC/IEEE 12207:2017"
+    aliases:
+      - "ISO/IEC/IEEE 12207"
+      - "ISO/IEC 12207:2017"
+      - "ISO/IEC 12207"
+      - "ISO 12207:2017"
+      - "ISO 12207"
+      - "IEEE 12207"
+      - "IEEE 12207:2017"
+
+  - canonical: "ISO/IEC/IEEE 15289:2019"
+    aliases:
+      - "ISO/IEC/IEEE 15289"
+      - "ISO/IEC 15289:2019"
+      - "ISO/IEC 15289"
+      - "ISO 15289:2019"
+      - "ISO 15289"
+      - "IEEE 15289"
+
+  - canonical: "ISO/IEC/IEEE 1517:2010"
+    aliases:
+      - "IEEE 1517"
+      - "IEEE 1517-2010"
+      - "IEEE Std 1517-2010"
+      - "ISO/IEC/IEEE 1517"
+      - "ISO/IEC/IEEE 1517-2010"
+      - "ISO 1517:2010"
+
+  - canonical: "ISO/IEC 26550:2015"
+    aliases:
+      - "ISO/IEC 26550"
+      - "IEC 26550:2015"
+      - "IEC 26550"
+      - "ISO 26550"
+
+  - canonical: "ISO/IEC 5962"
+    aliases:
+      - "ISO 5962"
+      - "IEC 5962"
+
+  - canonical: "ISO/IEC 19770"
+    aliases:
+      - "ISO 19770"
+      - "IEC 19770"
+
+  - canonical: "ISO/IEC 330"
+    aliases:
+      - "ISO 330"
+      - "IEC 330"
+
+  - canonical: "ISO/IEC 33000"
+    aliases:
+      - "ISO 33000"
+      - "IEC 33000"
+
+  - canonical: "FAIR4RS"
+    aliases:
+      - "fair4rs"
+
+  - canonical: "EU CRA 2024/2847"
+    aliases:
+      - "EU CRA"
+      - "EU CRA 2024"
+
+  - canonical: "ISO 26262"
+    aliases:
+      - "IEC 26262"
+
+  - canonical: "IEC 61508"
+    aliases:
+      - "ISO/IEC 61508"
+
+  - canonical: "ISO/IEC 25010:2011"
+    aliases:
+      - "ISO/IEC 25010:2011"
+      - "ISO 25010:2011"
+      - "IEC 25010:2011"
+    invalid_versions:
+      - "2011"
+
+  - canonical: "ISO/IEC 25012:2008"
+    aliases:
+      - "ISO/IEC 25012"
+      - "ISO 25012:2008"
+      - "ISO 25012"
+      - "IEC 25012:2008"
+      - "IEC 25012"
+
+  - canonical: "ISO/IEC 25019"
+    aliases:
+      - "ISO 25019"
+      - "IEC 25019"
+
+  - canonical: "IEEE 60802"
+    aliases:
+      - "IEC 60802"
+      - "ISO/IEC 60802"
+
+  - canonical: "ISA-95"
+    aliases:
+      - "ISA 95"
+      - "ISA95"
+
+  - canonical: "SWEBOK V4"
+    aliases:
+      - "SWEBOK"
+      - "SWEBOK 4"
+      - "SWEBOK v4"
+
+  - canonical: "TOGAF Standard 10"
+    aliases:
+      - "TOGAF 10"
+      - "TOGAF Standard 10th Edition"
+      - "TOGAF Standard, 10th Edition"
+      - "TOGAF"
+      - "togaf10"
+
+  - canonical: "OPC UA FX"
+    aliases:
+      - "OPC UA"
+      - "OPC-UA FX"
+
+  - canonical: "IEC 63278"
+    aliases:
+      - "ISO/IEC 63278"
+      - "ISO 63278"
+      - "IEC 63278:2023"
+
+  - canonical: "ISO/IEC 19941"
+    aliases:
+      - "IEC 19941"
+
+  - canonical: "ISO/IEC 19510:2013"
+    aliases:
+      - "ISO/IEC 19510"
+      - "IEC 19510:2013"
+      - "IEC 19510"
+      - "bpmn20"
+
+  - canonical: "ISO 15704:2019"
+    aliases:
+      - "ISO 15704"
+
+  - canonical: "IEEE 1471:2000"
+    aliases:
+      - "IEEE 1471-2000"
+      - "IEEE 1471"
+
+  - canonical: "DMN 1.5"
+    aliases:
+      - "dmn11"
+
+  - canonical: "DMN 1.6"
+    aliases:
+      - "dmn16"
+
+  - canonical: "BPMN 2.0"
+    aliases:
+      - "BPMN 2.1"
+
+  - canonical: "ISA-95"
+    aliases:
+      - "isa-95"
+      - "IEC 62264"
+
+  - canonical: "ISO/IEC/IEEE 12207:2026"
+    aliases:
+      - "ISO/IEC 12207:2026"
+      - "ISO 12207:2026"
+      - "IEC 12207:2026"
+      - "IEEE 12207:2026"
+
+  - canonical: "OWASP Top 10"
+    aliases:
+      - "OWASP Top 10 for Agentic AI"
+      - "OWASP Top 10 MCP"
+      - "OWASP"
+
+  - canonical: "SLSA 1.2"
+    aliases:
+      - "SLSA"
+      - "SLSA Level 1"
+      - "SLSA L1"
+      - "SLSA L2"
+      - "SLSA L3"
+      - "SLSA L4"
+
+  - canonical: "NIST SP 800-218"
+    aliases:
+      - "NIST SP 800-218 Rev. 1"
+      - "NIST SP 800-218 Rev.1"
+      - "SP 800-218 Rev.1"
+      - "NIST SSDF"
+      - "SSDF"
+
+  # ISO/IEC 2504x / 2505x / 2503x 质量度量族
+  - canonical: "ISO/IEC 25040:2024"
+    aliases:
+      - "ISO/IEC 25040"
+      - "ISO 25040:2024"
+      - "ISO 25040"
+      - "IEC 25040:2024"
+      - "IEC 25040"
+
+  - canonical: "ISO/IEC 25040:2005"
+    aliases:
+      - "ISO/IEC 25040:2005"
+      - "IEC 25040:2005"
+
+  - canonical: "ISO/IEC 25011:2017"
+    aliases:
+      - "ISO/IEC 25011"
+      - "ISO 25011:2017"
+      - "ISO 25011"
+      - "IEC 25011:2017"
+      - "IEC 25011"
+
+  - canonical: "ISO/IEC 25059:2023"
+    aliases:
+      - "ISO/IEC 25059"
+      - "ISO 25059:2023"
+      - "ISO 25059"
+      - "IEC 25059:2023"
+      - "IEC 25059"
+
+  - canonical: "ISO/IEC 25030:2023"
+    aliases:
+      - "ISO/IEC 25030"
+      - "ISO 25030:2023"
+      - "ISO 25030"
+      - "IEC 25030:2023"
+      - "IEC 25030"
+
+  - canonical: "ISO/IEC 9126"
+    aliases:
+      - "ISO 9126"
+      - "IEC 9126"
+
+  - canonical: "ISO/IEC 14598"
+    aliases:
+      - "ISO 14598"
+      - "IEC 14598"
+
+  # ISO/IEC 330xx 过程评估族
+  - canonical: "ISO/IEC 33001:2014"
+    aliases:
+      - "ISO/IEC 33001"
+      - "ISO 33001:2014"
+      - "ISO 33001"
+      - "IEC 33001:2014"
+      - "IEC 33001"
+
+  - canonical: "ISO/IEC 33002:2020"
+    aliases:
+      - "ISO/IEC 33002"
+      - "ISO 33002:2020"
+      - "ISO 33002"
+      - "IEC 33002:2020"
+      - "IEC 33002"
+
+  - canonical: "ISO/IEC 33003:2019"
+    aliases:
+      - "ISO/IEC 33003"
+      - "ISO 33003:2019"
+      - "ISO 33003"
+      - "IEC 33003:2019"
+      - "IEC 33003"
+
+  - canonical: "ISO/IEC 33004:2022"
+    aliases:
+      - "ISO/IEC 33004"
+      - "ISO 33004:2022"
+      - "ISO 33004"
+      - "IEC 33004:2022"
+      - "IEC 33004"
+
+  - canonical: "ISO/IEC 33020:2019"
+    aliases:
+      - "ISO/IEC 33020"
+      - "ISO 33020:2019"
+      - "ISO 33020"
+      - "IEC 33020:2019"
+      - "IEC 33020"
+
+  # 产品线成熟度 / 参考本体
+  - canonical: "ISO/IEC 26564:2022"
+    aliases:
+      - "ISO 26564:2022"
+      - "ISO 26564"
+      - "IEC 26564:2022"
+      - "IEC 26564"
+
+  - canonical: "ISO/IEC 26565:2026"
+    aliases:
+      - "ISO 26565:2026"
+      - "ISO 26565"
+      - "IEC 26565:2026"
+      - "IEC 26565"
+
+  - canonical: "ISO/IEC 26566:2026"
+    aliases:
+      - "ISO 26566:2026"
+      - "ISO 26566"
+      - "IEC 26566:2026"
+      - "IEC 26566"
+
+  - canonical: "ISO/IEC 26580:2021"
+    aliases:
+      - "ISO 26580:2021"
+      - "ISO 26580"
+      - "IEC 26580:2021"
+      - "IEC 26580"
+
+  # 通用管理与安全标准
+  - canonical: "ISO 9001"
+    aliases:
+      - "ISO 9001:2015"
+      - "IEC 9001"
+
+  - canonical: "ISO 20022"
+    aliases:
+      - "IEC 20022"
+
+  - canonical: "ISO 22514"
+    aliases:
+      - "IEC 22514"
+
+  - canonical: "ISO/IEC 29148:2018"
+    aliases:
+      - "ISO/IEC/IEEE 29148:2018"
+      - "ISO 29148:2018"
+      - "ISO 29148"
+      - "IEC 29148:2018"
+      - "IEC 29148"
+      - "IEEE 29148"
+      - "IEEE 29148:2018"
+
+  # NIST SP 800 系列
+  - canonical: "NIST SP 800-161"
+    aliases:
+      - "NIST SP 800-161 Rev. 1"
+
+  - canonical: "NIST SP 800-204"
+    aliases:
+      - "NIST SP 800-204A"
+      - "NIST SP 800-204B"
+
+  - canonical: "NIST SP 800-207"
+    aliases:
+      - "NIST Zero Trust Architecture"
+
+  - canonical: "NIST SP 800-233"
+
+  # OWASP / OpenSSF
+  - canonical: "OWASP SCVS"
+    aliases:
+      - "OWASP Software Component Verification Standard"
+
+  - canonical: "OWASP ASVS"
+
+  # SLSA 版本
+  - canonical: "SLSA 1.0"
+    aliases:
+      - "SLSA v1.0"
+
+  # SysML / BPMN / DMN
+  - canonical: "SysML v2"
+    aliases:
+      - "SysML 2"
+      - "SysML 2.0"
+      - "sysml2"
+      - "sysml v2"
+
+  - canonical: "SysML v1"
+    aliases:
+      - "SysML 1"
+      - "SysML 1.x"
+
+  # ISO/IEC 2504x 质量评估 / 需求
+  - canonical: "ISO/IEC 25041:2023"
+    aliases:
+      - "ISO/IEC 25041"
+      - "ISO 25041:2023"
+      - "ISO 25041"
+      - "IEC 25041:2023"
+      - "IEC 25041"
+
+  - canonical: "ISO/IEC 25042:2023"
+    aliases:
+      - "ISO/IEC 25042"
+      - "ISO 25042:2023"
+      - "ISO 25042"
+      - "IEC 25042:2023"
+      - "IEC 25042"
+
+  - canonical: "ISO/IEC 25045:2023"
+    aliases:
+      - "ISO/IEC 25045"
+      - "ISO 25045:2023"
+      - "ISO 25045"
+      - "IEC 25045:2023"
+      - "IEC 25045"
+
+  - canonical: "ISO/IEC 25065:2019"
+    aliases:
+      - "ISO/IEC 25065"
+      - "ISO 25065:2019"
+      - "ISO 25065"
+      - "IEC 25065:2019"
+      - "IEC 25065"
+
+  # 人工智能 / 安全 / 服务标准
+  - canonical: "ISO/IEC 42001:2023"
+    aliases:
+      - "ISO/IEC 42001"
+      - "ISO 42001:2023"
+      - "ISO 42001"
+      - "IEC 42001:2023"
+      - "IEC 42001"
+
+  - canonical: "ISO/IEC 21031:2024"
+    aliases:
+      - "ISO/IEC 21031"
+      - "ISO 21031:2024"
+      - "ISO 21031"
+      - "IEC 21031:2024"
+      - "IEC 21031"
+
+  - canonical: "ISO/IEC 5230:2024"
+    aliases:
+      - "ISO/IEC 5230"
+      - "ISO 5230:2024"
+      - "ISO 5230"
+      - "IEC 5230:2024"
+      - "IEC 5230"
+
+  - canonical: "ISO/IEC 30141:2024"
+    aliases:
+      - "ISO/IEC 30141"
+      - "ISO 30141:2024"
+      - "ISO 30141"
+      - "IEC 30141:2024"
+      - "IEC 30141"
+      - "ISO/IEC 30141:2018"
+      - "ISO 30141:2018"
+      - "IEC 30141:2018"
+
+  - canonical: "ISO/IEC/IEEE 1012:2024"
+    aliases:
+      - "ISO/IEC/IEEE 1012"
+      - "ISO/IEC 1012:2024"
+      - "ISO/IEC 1012"
+      - "ISO 1012:2024"
+      - "ISO 1012"
+      - "IEEE 1012:2024"
+      - "IEEE 1012-2024"
+      - "IEEE 1012-2012"
+      - "IEEE 1012-2005"
+      - "IEEE 1012-1998"
+      - "IEEE 1012-1986"
+      - "IEEE 1012"
+      - "IEC 1012:2024"
+      - "IEC 1012"
+
+  # 常见管理标准
+  - canonical: "ISO/IEC 27001"
+    aliases:
+      - "ISO 27001"
+      - "ISO 27001:2022"
+      - "IEC 27001"
+      - "IEC 27001:2022"
+
+  - canonical: "ISO 14040"
+    aliases:
+      - "ISO 14040:2006"
+      - "IEC 14040"
+
+  - canonical: "ISO 22400"
+    aliases:
+      - "IEC 22400"
+
+  - canonical: "ISO 9001"
+    aliases:
+      - "ISO 9001:2015"
+      - "IEC 9001"
+
+  # NIST 变体
+  - canonical: "NIST SP 800-161"
+    aliases:
+      - "NIST 800-161"
+      - "NIST SP 800-161 Rev. 1"
+      - "NIST 800-161 Rev. 1"

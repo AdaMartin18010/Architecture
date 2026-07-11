@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-12
 > **定位**: 02-business-architecture-reuse / 01-business-domain-reuse
-> **对齐标准**: TOGAF 10 Business Architecture, BMM (Business Motivation Model), FEA BRM
+> **对齐标准**: TOGAF Standard 10 Business Architecture, BMM (Business Motivation Model), FEA BRM
 
 ---
 

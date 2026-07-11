@@ -63,12 +63,12 @@
 
 **【研究背景】** 软件复用已从早期的子程序库演进至云原生组件、AI 功能协议（MCP/A2A）等多元形态，但缺乏覆盖业务→应用→组件→功能四层架构的统一知识体系。现有研究多聚焦单一层次或单一技术栈，跨层治理、形式化正确性保证与价值量化的系统整合尚属空白。
 
-**【问题陈述】** 如何在 ISO/IEC/IEEE 420xx 标准族、TOGAF 10、SLSA 等 30 余个国际标准的框架下，建立一套可验证、可度量、可治理的全栈软件架构复用方法论？特别是在 AI 原生功能复用引入概率性契约、工业 OT 场景要求确定性保证的双重张力下，复用的边界与条件如何形式化定义？
+**【问题陈述】** 如何在 ISO/IEC/IEEE 420xx 标准族、TOGAF Standard 10、SLSA 等 30 余个国际标准的框架下，建立一套可验证、可度量、可治理的全栈软件架构复用方法论？特别是在 AI 原生功能复用引入概率性契约、工业 OT 场景要求确定性保证的双重张力下，复用的边界与条件如何形式化定义？
 
 **【方法论】** 本文基于 Software Architecture Reuse Knowledge Base (SAR-KB) 的四层架构视角（业务架构→应用架构→组件架构→功能架构），提出：
 
-1. **元模型层**：以 ISO/IEC/IEEE 42010:2022 为概念地基，整合 TOGAF 10、ArchiMate 3.2、ISO 26550:2015 产品线工程模型，建立统一的复用术语体系与 20 条形式化公理；
-2. **层次层**：逐层分析业务能力（FEA BRM）、云原生应用（CNCF/NIST SP 800-204）、组件接口契约（Design by Contract）、AI 功能协议（MCP 2025-11-25 / A2A v1.0.0）的复用机制与反模式；
+1. **元模型层**：以 ISO/IEC/IEEE 42010:2022 为概念地基，整合 TOGAF Standard 10、ArchiMate 3.2、ISO 26550:2015 产品线工程模型，建立统一的复用术语体系与 20 条形式化公理；
+2. **层次层**：逐层分析业务能力（FEA BRM）、云原生应用（CNCF/NIST SP 800-204）、组件接口契约（Design by Contract）、AI 功能协议（MCP 2025-11-25 / A2A v1.0.0.0.0.0）的复用机制与反模式；
 3. **验证层**：运用 TLA+、Alloy、Coq/Isabelle、Rust 类型系统、SPARK/Ada 等形式化方法，构建从分布式协议到内存安全的多层次正确性保证框架；
 4. **治理与量化层**：建立基于 ISO/IEC 26565:2026 的五级成熟度模型（26566 提供产品线纹理方法/工具能力支撑）、COCOMO II 2026 校准版的 ROI 计算模型，以及 NASA-TLX 适配版的认知负荷评估方法。
 
@@ -89,12 +89,12 @@
 
 **Background.** Software reuse has evolved from subroutine libraries to cloud-native components and AI function protocols (MCP/A2A). Yet a unified knowledge system spanning Business → Application → Component → Function architecture layers remains absent. Existing research typically focuses on a single layer or technology stack, leaving cross-layer governance, formal correctness assurance, and value quantification as fragmented concerns.
 
-**Problem.** How can a verifiable, measurable, and governable full-stack software architecture reuse methodology be established under the umbrella of 30+ international standards—including the ISO/IEC/IEEE 420xx family, TOGAF 10, and SLSA? In particular, how can reuse boundaries be formalized under the dual tension of probabilistic AI-native function contracts and deterministic industrial OT constraints?
+**Problem.** How can a verifiable, measurable, and governable full-stack software architecture reuse methodology be established under the umbrella of 30+ international standards—including the ISO/IEC/IEEE 420xx family, TOGAF Standard 10, and SLSA? In particular, how can reuse boundaries be formalized under the dual tension of probabilistic AI-native function contracts and deterministic industrial OT constraints?
 
 **Methodology.** This paper adopts the four-layer architectural perspective of the Software Architecture Reuse Knowledge Base (SAR-KB):
 
-1. **Meta-model layer**: Uses ISO/IEC/IEEE 42010:2022 as the conceptual foundation, integrating TOGAF 10, ArchiMate 3.2, and ISO 26550:2015 product-line engineering to establish a unified terminology system and 20 formal axioms;
-2. **Layer-wise analysis**: Examines reuse mechanisms and anti-patterns for business capabilities (FEA BRM), cloud-native applications (CNCF / NIST SP 800-204), component interface contracts (Design by Contract), and AI function protocols (MCP 2025-11-25 / A2A v1.0.0);
+1. **Meta-model layer**: Uses ISO/IEC/IEEE 42010:2022 as the conceptual foundation, integrating TOGAF Standard 10, ArchiMate 3.2, and ISO 26550:2015 product-line engineering to establish a unified terminology system and 20 formal axioms;
+2. **Layer-wise analysis**: Examines reuse mechanisms and anti-patterns for business capabilities (FEA BRM), cloud-native applications (CNCF / NIST SP 800-204), component interface contracts (Design by Contract), and AI function protocols (MCP 2025-11-25 / A2A v1.0.0.0.0.0);
 3. **Formal verification**: Employs TLA+, Alloy, Coq/Isabelle, Rust type systems, and SPARK/Ada to construct a multi-level correctness assurance framework spanning distributed protocols to memory safety;
 4. **Governance & quantification**: Proposes a five-level maturity model aligned with ISO/IEC 26565:2026 (26566 provides product line texture methods/tool capabilities), a COCOMO II 2026-calibrated ROI model, and a NASA-TLX-adapted cognitive load assessment method.
 
@@ -301,7 +301,7 @@
 
 | # | 核心论点 | 权威来源 | SAR-KB 支撑文件 |
 |---|---------|---------|----------------|
-| 09-1 | **AAF < 0.7 阈值定理**：复用项目 ROI 为正的必要条件是改编调整因子 AAF < 0.7；AAF ≥ 0.7 时仅剩战略价值。 | COCOMO II Reuse Model (Boehm et al., USC); NASA RRL | `09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md` |
+| 09-1 | **AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]） 阈值定理**：复用项目 ROI 为正的必要条件是改编调整因子 AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）；AAF ≥ AAF_ECONOMIC_FLOOR（0.7） 时仅剩战略价值。 | COCOMO II Reuse Model (Boehm et al., USC); NASA RRL | `09-value-quantification/01-cocomo-ii-reuse/cocomo-2026-calibration.md` |
 | 09-2 | **COCOMO II 2026 校准版**：ESLOC、AAF、RUSE 乘数的 AI 辅助开发适配。 | USC COCOMO II Model Definition Manual | 同上 |
 | 09-3 | **复用 ROI 完整模型**：直接收益 + 间接收益 + 战略收益 + NPV。 | FinOps Framework; Real Options Theory | `09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md` |
 

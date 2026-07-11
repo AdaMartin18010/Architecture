@@ -7,7 +7,7 @@
 ## 核心内容
 
 - ISO/IEC/IEEE 420xx 系列（42010/42020/42030/DIS 42024/DIS 42042）的族谱与演进
-- TOGAF 10 + ArchiMate 3.2（仍有效，与 4.0 向后兼容）；ArchiMate 4.0 已正式发布（2026-04-27，Document C260，白皮书 W262）
+- TOGAF Standard 10 + ArchiMate 3.2（仍有效，与 4.0 向后兼容）；ArchiMate 4.0 已正式发布（2026-04-27，Document C260，白皮书 W262）
 - ISO/IEC 26550:2015 产品线工程参考模型（领域工程 + 应用工程双轨）
 - ISO/IEC 25010:2023 / 25040:2024 质量模型与评估过程
 - **OMG RAS v2.2** 可复用资产规范（Classification / Solution / Usage / RelatedAssets）
@@ -60,13 +60,13 @@
 - [x] 标准族谱梳理
 - [x] ISO/IEC/IEEE 42010:2022 条款级映射 (`01-iso-420xx-family/iso-42010-2022.md`)
 - [x] ISO/IEC/IEEE 42020:2019 架构过程映射 (`01-iso-420xx-family/iso-42020-2019-architecture-processes.md`)
-- [x] TOGAF 10 ABB/SBB 与 ISO 42010 详细映射 (`02-togaf-10-alignment/detailed-mapping.md`)
-- [x] ArchiMate 3.2/4.0 与 ISO 42010 对照表 (`04-archimate-4/archimate-iso-mapping.md`)；已按 4.0 正式发布状态更新
-- [x] ISO 26550:2015 与 ISO 42010/42020 交叉映射 (`03-iso-26550-ple/ple-iso-integration.md`)
+- [x] TOGAF Standard 10 ABB/SBB 与 ISO/IEC/IEEE 42010:2022 详细映射 (`02-togaf-10-alignment/detailed-mapping.md`)
+- [x] ArchiMate 3.2/4.0 与 ISO/IEC/IEEE 42010:2022 对照表 (`04-archimate-4/archimate-iso-mapping.md`)；已按 4.0 正式发布状态更新
+- [x] ISO 26550:2015 与 ISO/IEC/IEEE 42010:2022/42020 交叉映射 (`03-iso-26550-ple/ple-iso-integration.md`)
 - [x] SWEBOK V4 知识领域对应关系 (`05-swebok-v4/swebok-alignment.md`)
 - [x] OMG RAS v2.2 与四层复用架构对齐 (`07-omg-ras/ras-alignment.md`)
 - [x] FAIR4RS 原则与软件复用对照 (`08-fair4rs/fair4rs-alignment.md`)
-- [x] IEEE 1517-2010 与 ISO 12207 / 42020 复用过程映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
+- [x] IEEE 1517-2010 与 ISO/IEC/IEEE 12207:2017 / 42020 复用过程映射 (`01-iso-420xx-family/ieee-1517-reuse-processes.md`)
 - [x] DIS 42024/42042 当前状态对齐 (`01-iso-420xx-family/iso-42024-42042-dis-alignment.md`)
 - [x] ISO/IEC 25010:2023 AI/ML质量特性影响矩阵 (`01-iso-420xx-family/iso-25010-2023-update.md`)
 - [x] ArchiMate 4.0 映射更新（2026-04-27 已正式发布，映射已完成）
@@ -87,9 +87,9 @@
 
 **正向示例 1：跨国银行架构描述统一**
 
-某跨国银行采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，结合 TOGAF ADM Phase B/C 和 ArchiMate 4.0 通用域，统一了全球 12 个业务单元的架构描述语言。外部审计时，团队可在 2 小时内展示业务服务到应用组件的追溯链符合 ISO 42010 Clause 5.2 与 Clause 6.8 的要求。
+某跨国银行采用 ISO/IEC/IEEE 42010:2022 的 Entity of Interest、Architecture Description Framework 与 Stakeholder Perspective，结合 TOGAF ADM Phase B/C 和 ArchiMate 4.0 通用域，统一了全球 12 个业务单元的架构描述语言。外部审计时，团队可在 2 小时内展示业务服务到应用组件的追溯链符合 ISO/IEC/IEEE 42010:2022 Clause 5.2 与 Clause 6.8 的要求。
 
-**正向示例 2：汽车电子基于 ISO 26550 的产品线复用**
+**正向示例 2：汽车电子基于 ISO/IEC 26550:2015 的产品线复用**
 
 某汽车电子供应商在 ISO/IEC 26550:2015 双轨生命周期指导下，将 ECU 软件平台拆分为领域工程资产（Feature Model + Variation Point）与应用工程资产（特定车型配置）。通过 ISO/IEC/IEEE 42010:2022 视点框架记录各车型架构描述，实现 78% 的代码复用率，并将新车型适配周期从 9 个月缩短至 3 个月。
 
@@ -101,7 +101,7 @@
 
 **反模式 2：跳过对应规则导致追溯断裂**
 
-某项目为赶工期直接复用 ArchiMate 3.2 业务层模型，但未按 ISO 42010 Clause 6.9 记录业务服务与应用服务之间的 Correspondence Rule。当业务规则变更时，团队无法快速定位受影响的应用组件，导致 6 个微服务需要返工，额外投入 240 人天。
+某项目为赶工期直接复用 ArchiMate 3.2 业务层模型，但未按 ISO/IEC/IEEE 42010:2022 Clause 6.9 记录业务服务与应用服务之间的 Correspondence Rule。当业务规则变更时，团队无法快速定位受影响的应用组件，导致 6 个微服务需要返工，额外投入 240 人天。
 
 ## 国际权威来源核查
 
@@ -112,7 +112,7 @@
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-08）
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-08）
-> - [The Open Group ArchiMate 4 Specification (C260/W262)](https://www.opengroup.org/archimate-licensed-downloads)（核查日期：2026-07-08）
+> - [The Open Group ArchiMate 4.0 Specification (C260/W262)](https://www.opengroup.org/archimate-licensed-downloads)（核查日期：2026-07-08）
 > - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/)（核查日期：2026-07-08）
 > - [FAIR4RS Principles](https://ardc.edu.au/resource/fair-principles-for-research-software-fair4rs/)（核查日期：2026-07-08）
 > - [OMG SysML v2 Specification](https://www.omg.org/spec/SysML/20250201/SysML.json)（核查日期：2026-07-08）

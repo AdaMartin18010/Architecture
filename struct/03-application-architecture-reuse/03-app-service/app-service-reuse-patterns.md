@@ -386,7 +386,7 @@ flowchart LR
 - OASIS SOA Reference Architecture: <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=soa-ra>
 - OASIS SOA Reference Model: <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=soa-rm>
 - ArchiMate 4.0 — Application Service: <https://pubs.opengroup.org/architecture/archimate3-doc/chap09.html>
-- TOGAF 10 — Application Architecture: <https://www.opengroup.org/togaf>
+- TOGAF Standard 10 — Application Architecture: <https://www.opengroup.org/togaf>
 - NIST SP 800-204 — Security Strategies for Microservices-based Application Systems: <https://csrc.nist.gov/publications/detail/sp/800-204/final>
 - ISO/IEC/IEEE 42010:2022 — Architecture description: <https://www.iso.org/standard/74296.html>
 - OpenAPI Specification: <https://spec.openapis.org/oas/latest.html>

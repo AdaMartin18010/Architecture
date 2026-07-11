@@ -153,7 +153,7 @@ SBB: Keycloak + 定制扩展
 > **权威来源**:
 >
 > - [The Open Group TOGAF](https://www.opengroup.org/togaf)
-> - [ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads)
+> - [ArchiMate 4.0 Specification](https://www.opengroup.org/archimate-licensed-downloads)
 > - 核查日期：2026-07-07
 
 ## 分析
@@ -173,7 +173,7 @@ SBB: Keycloak + 定制扩展
 
 ### 1. 概念定义
 
-**定义**：TOGAF 10 企业连续体是一个覆盖企业内外全部架构资产的“虚拟仓库”，通过架构连续体（Architecture Continuum）与解决方案连续体（Solutions Continuum）两条轴线，将抽象的架构构建块（ABB）逐步精化为可落地的解决方案构建块（SBB）。架构仓库（Architecture Repository）则是这些资产的物理/逻辑存储与治理载体。
+**定义**：TOGAF Standard 10 企业连续体是一个覆盖企业内外全部架构资产的“虚拟仓库”，通过架构连续体（Architecture Continuum）与解决方案连续体（Solutions Continuum）两条轴线，将抽象的架构构建块（ABB）逐步精化为可落地的解决方案构建块（SBB）。架构仓库（Architecture Repository）则是这些资产的物理/逻辑存储与治理载体。
 
 ### 2. 核心概念属性
 
@@ -244,7 +244,7 @@ SBB: Keycloak + 定制扩展
 - **Architecture Repository ↔ Continuum**：仓库是连续体的物理/逻辑载体；连续体定义仓库中资产的分类与演进路径。
 - **ABB ↔ SBB**：ABB 回答“需要什么能力”，SBB 回答“用什么实现该能力”。
 - **TOGAF ADM → Continuum/Repository**：ADM 各阶段产生、消费并治理连续体中的资产。
-- **ISO 42010 ADF ↔ Enterprise Continuum**：ISO 42010 的 ADF 定义架构描述的元模型，TOGAF 企业连续体则提供资产分类与复用梯度。
+- **ISO/IEC/IEEE 42010:2022 ADF ↔ Enterprise Continuum**：ISO/IEC/IEEE 42010:2022 的 ADF 定义架构描述的元模型，TOGAF 企业连续体则提供资产分类与复用梯度。
 
 ### 4. 形式化/结构化分析
 
@@ -303,8 +303,8 @@ graph TB
 
 ### 8. 交叉引用
 
-- TOGAF 与 ISO 42010 详细映射见本文档第 6 节
+- TOGAF 与 ISO/IEC/IEEE 42010:2022 详细映射见本文档第 6 节
 - TOGAF 详细映射文档详见 [`detailed-mapping.md`](./detailed-mapping.md)
-- ArchiMate 与 ISO 42010 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
+- ArchiMate 与 ISO/IEC/IEEE 42010:2022 映射详见 [`../04-archimate-4/archimate-iso-mapping.md`](../04-archimate-4/archimate-iso-mapping.md)
 - 四层复用本体详见 [`../06-formal-axioms/four-layer-ontology.md`](../06-formal-axioms/four-layer-ontology.md)
-- ISO 42010 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)
+- ISO/IEC/IEEE 42010:2022 核心概念详见 [`../01-iso-420xx-family/iso-42010-2022.md`](../01-iso-420xx-family/iso-42010-2022.md)

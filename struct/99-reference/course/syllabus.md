@@ -51,7 +51,7 @@
 
 ## 示例
 
-**示例**：第 2-3 周通过 ISO 42010/42020/42030、TOGAF 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
+**示例**：第 2-3 周通过 ISO/IEC/IEEE 42010:2022/42020/42030、TOGAF Standard 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
 
 ## 反例
 
@@ -60,5 +60,5 @@
 ## 权威来源
 
 > - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [The Open Group - ArchiMate 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
+> - [The Open Group - ArchiMate 4.0 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
 > - 核查日期：2026-07-08

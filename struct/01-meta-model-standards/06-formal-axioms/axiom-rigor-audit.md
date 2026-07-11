@@ -144,7 +144,7 @@
 | 5.2 | 05 | AI Function Non-Determinism | EH | N + A | 高 | AI 功能复用 | 正确：AI 功能可复用性受温度、模型漂移制约，但 δ 的具体函数形式是经验模型。 |
 | 5.W.1 | 05 | Workflow Deterministic Reuse | ST | Y（定义性） | 低 | 工作流复用 | Temporal 确定性的定义性等价。 |
 | 6.2 | 06 | Maturity-Scale Correspondence | EH | N + A | 高 | 复用成熟度 | 成熟度与规模正相关且存在最优规模点是经验观察，非定理。 |
-| V.1 | 09 | ROI Threshold | EH | N + A | 中 | 价值量化 | AAF<0.7 来自 COCOMO II 经验数据。不应作为严格定理。 |
+| V.1 | 09 | ROI Threshold | EH | N + A | 中 | 价值量化 | AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]） 来自 COCOMO II 经验数据。不应作为严格定理。 |
 | S.2 | 10 | SBOM Completeness Boundary | ST | Y | 低 | 供应链安全 | 动态依赖、条件编译、运行时插件的不可完全捕获性可由可计算性/静态分析理论支持。 |
 | S.3 | 10 | SLSA Reuse Equivalence | DE | E | 低 | 供应链安全 | 将可替换性定义为 SLSA 等级与来源证明等价。 |
 | I.2 | 11 | ISA-95 Layer Independence | EH | N + A | 中 | 工业 IoT | ISA-95 层间标准化程度差异是经验观察。 |
