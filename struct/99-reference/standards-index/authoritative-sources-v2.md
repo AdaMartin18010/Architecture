@@ -103,7 +103,7 @@
 | **EU CRA** | 2024/2847 | 已发布 | <https://eur-lex.europa.eu/eli/reg/2024/2847> | 欧盟网络弹性法案 |
 | **NIST SP 800-161 Rev. 1** | — | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final> | 供应链网络安全风险管理 |
 | **NIST SP 800-204** | 系列 | 2025 更新 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 微服务安全架构 |
-| **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/publication/66912> | IACS 安全产品开发生命周期要求 |
+| **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/en/publication/33615> | IACS 安全产品开发生命周期要求 |
 | **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/en/publication/34421> | IACS 组件技术安全要求；**注意：不是 2025 版** |
 | **IEC TS 62443-6-2** | 2025 | 已发布 | <https://webstore.iec.ch/en/publication/67463> | IACS 组件评估方法论 |
 

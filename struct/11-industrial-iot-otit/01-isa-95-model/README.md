@@ -89,10 +89,10 @@ ISA-95 的抽象模型需要映射到可执行的信息模型。下表给出关�
 
 > **权威来源**:
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013> （核查日期：2026-07-09）
-> - IEC 62264-2:2013 *Object model attributes*: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
-> - IEC 62264-3:2013 *Activity models of manufacturing operations management*: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
-> - IEC 61512-1:1995 *Batch control — Part 1: Models and terminology* (ISA-88): <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*: <https://webstore.iec.ch/en/publication/6675> （核查日期：2026-07-09）
+> - IEC 62264-2:2013 *Object and attributes for enterprise-control system integration*: <https://webstore.iec.ch/en/publication/6676> （核查日期：2026-07-11）
+> - IEC 62264-3:2016 *Activity models of manufacturing operations management*: <https://webstore.iec.ch/en/publication/33511> （核查日期：2026-07-11）
+> - IEC 61512-1:1997 *Batch control — Part 1: Models and terminology* (ISA-88): <https://webstore.iec.ch/en/publication/5528> （核查日期：2026-07-09）
 > - ISA-95 / IEC 62264 官方概述： <https://www.isa.org/standards-and-publications/isa-standards/isa-95> （核查日期：2026-07-09）
 > - MESA International / B2MML： <https://www.mesa.org/en/B2MML.asp> （核查日期：2026-07-09）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/publication/65628> （核查日期：2026-07-09）

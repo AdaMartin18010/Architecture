@@ -180,7 +180,7 @@ SEooC Component
 
 > **权威来源**:
 >
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [ISO 26262](https://www.iso.org/standard/68383.html)
 > - [IEC 62443](https://www.iec.ch/cybersecurity)
 > - 核查日期：2026-07-07

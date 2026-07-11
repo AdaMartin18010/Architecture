@@ -212,18 +212,18 @@ sequenceDiagram
 | TensorFlow Lite | <https://www.tensorflow.org/lite> |
 | STM32Cube.AI | <https://stm32ai.st.com> |
 | CMSIS-NN | <https://github.com/ARM-software/CMSIS-NN> |
-| IEC 61508-3:2010 Software safety requirements | <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> |
+| IEC 61508-3:2010 Software safety requirements | <https://webstore.iec.ch/en/publication/5517> |
 | IEC 61508 Ed.3 CDV/RVC 状态 | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> |
 | IEC TR 61508-3-3:2025 Guidance on object-oriented software | <https://webstore.iec.ch/en/publication/99554> |
 | ISO 21448:2022 SOTIF | <https://www.iso.org/standard/77490.html> |
 | ISO/PAS 8800 Road vehicles — Safety and artificial intelligence | <https://www.iso.org/standard/84387.html> |
-| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| IEC 61784-3:2021 Functional safety fieldbuses | <https://webstore.iec.ch/en/publication/62095> |
 | ISA/IEC 62443 series | <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards> |
 | ISO 13849-1 Safety of machinery | <https://www.iso.org/standard/69883.html> |
 
 > **权威来源**（带核查日期）：
 >
-> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*: <https://webstore.iec.ch/en/publication/5517>（核查日期：2026-07-09）
 > - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*: <https://webstore.iec.ch/en/publication/99554>（核查日期：2026-07-09）
 > - ISO 21448:2022 *Road vehicles — Safety of the intended functionality (SOTIF)*: <https://www.iso.org/standard/77490.html>（核查日期：2026-07-09）
 > - ISO/PAS 8800 *Road vehicles — Safety and artificial intelligence*: <https://www.iso.org/standard/84387.html>（核查日期：2026-07-09）

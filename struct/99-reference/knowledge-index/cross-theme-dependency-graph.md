@@ -438,7 +438,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 > - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - SLSA. *Supply-chain Levels for Software Artifacts v1.2*. <https://slsa.dev/spec/v1.2/>
-> - IEC 61508 Ed.3. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://webstore.iec.ch/publication/66912>
+> - IEC 61508 Ed.3（制定中，未出版；CDV 投票完成 RVC 2026-05-15）. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>
 > - ISA-95 / IEC 62264. *Enterprise-control system integration*. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
 > - Model Context Protocol. *MCP Specification 2025-11-25*. <https://modelcontextprotocol.io/specification/2025-11-25>
 > - Google / LF Agentic AI Foundation. *Agent2Agent Protocol v1.0*. <https://a2aprotocol.ai/>

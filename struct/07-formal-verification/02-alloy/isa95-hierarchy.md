@@ -237,7 +237,7 @@ EnterpriseResource$0 (L4)
 - [Formal methods - Wikipedia](https://en.wikipedia.org/wiki/Formal_methods)
 - Jackson, D. *Software Abstractions*. <https://alloytools.org/book.html>
 - ANSI/ISA-95.00.01-2010 / IEC 62264-1. <https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard>
-- IEC 62443. <https://webstore.iec.ch/publication/66912>
+- IEC 62443 系列. <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
 
 ---
 

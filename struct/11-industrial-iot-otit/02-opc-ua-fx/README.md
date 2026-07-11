@@ -110,7 +110,7 @@ flowchart TD
 > - OPC UA FX Part 83 (Offline Engineering): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/> （核查日期：2026-07-09）
 > - OPC UA FX Part 84 (Profiles): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/> （核查日期：2026-07-09）
 > - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/> （核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/> （核查日期：2026-07-09）
 > - OPC Foundation FLC Technical Paper – OPC UA FX C2C: <https://opcfoundation.org/wp-content/uploads/2023/11/OPCF-FLC-Technical-Paper-C2C-EN.pdf> （核查日期：2026-07-09）
 
 ---

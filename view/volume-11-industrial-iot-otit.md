@@ -267,7 +267,7 @@ ISA-95 五层模型的核心设计意图之一是**定义清晰的层间接口�
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -613,8 +613,8 @@ graph TB
 
 > **权威来源**：
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
-> - IEC 62264-3:2013 *Activity models of manufacturing operations management*：<https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://webstore.iec.ch/en/publication/6675>（核查日期：2026-07-09）
+> - IEC 62264-3:2016 *Activity models of manufacturing operations management*：<https://webstore.iec.ch/en/publication/33511>（核查日期：2026-07-11）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/en/publication/65628>（核查日期：2026-07-09）
 > - ISO/IEC 30141:2024 *Internet of Things reference architecture*：<https://www.iso.org/standard/88800.html>（核查日期：2026-07-09）
 > - OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>（核查日期：2026-07-09）
@@ -1360,7 +1360,7 @@ L0 现场层是 ISA-95 五层模型的最底层，直接面向物理生产过程
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -1463,7 +1463,7 @@ PLCopen 运动控制库的成功实践表明，标准化 FB 可将跨厂商移�
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -1571,7 +1571,7 @@ L2 监控层承担区域级生产过程可视化、报警管理、历史数据�
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -1676,7 +1676,7 @@ L3 MES 层是连接企业计划 (L4) 与现场控制 (L1-L2) 的关键枢纽，�
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -1787,7 +1787,7 @@ L4 企业层是 ISA-95 五层模型的最高层，面向业务规划与资源优
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -1888,10 +1888,10 @@ ISA-95 的抽象模型需要映射到可执行的信息模型。下表给出关�
 
 > **权威来源**:
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013> （核查日期：2026-07-09）
-> - IEC 62264-2:2013 *Object model attributes*: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
-> - IEC 62264-3:2013 *Activity models of manufacturing operations management*: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
-> - IEC 61512-1:1995 *Batch control — Part 1: Models and terminology* (ISA-88): <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*: <https://webstore.iec.ch/en/publication/6675> （核查日期：2026-07-09）
+> - IEC 62264-2:2013 *Object and attributes for enterprise-control system integration*: <https://webstore.iec.ch/en/publication/6676> （核查日期：2026-07-11）
+> - IEC 62264-3:2016 *Activity models of manufacturing operations management*: <https://webstore.iec.ch/en/publication/33511> （核查日期：2026-07-11）
+> - IEC 61512-1:1997 *Batch control — Part 1: Models and terminology* (ISA-88): <https://webstore.iec.ch/en/publication/5528> （核查日期：2026-07-09）
 > - ISA-95 / IEC 62264 官方概述： <https://www.isa.org/standards-and-publications/isa-standards/isa-95> （核查日期：2026-07-09）
 > - MESA International / B2MML： <https://www.mesa.org/en/B2MML.asp> （核查日期：2026-07-09）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/publication/65628> （核查日期：2026-07-09）
@@ -2247,7 +2247,7 @@ java -cp tla2tools.jar tla2sany.SANY FXConnectionManager.tla
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -2697,7 +2697,7 @@ OPC UA FX 部署场景决策树
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -3025,7 +3025,7 @@ UADP 帧解析器的正确性可通过 `struct/07-formal-verification/` 中的�
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -3372,8 +3372,8 @@ graph TB
 > - OPC UA FX Part 83 (Controller-to-Device): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>（核查日期：2026-07-09）
 > - OPC UA FX Part 84 (Device-to-Device): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>（核查日期：2026-07-09）
 > - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/>（核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
-> - IEC 62264-1:2013 *Enterprise-control system integration*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration*: <https://webstore.iec.ch/en/publication/6675>（核查日期：2026-07-09）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/en/publication/65628>（核查日期：2026-07-09）
 > - IDTA AAS Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>（核查日期：2026-07-09）
 
@@ -3512,7 +3512,7 @@ flowchart TD
 > - OPC UA FX Part 83 (Offline Engineering): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/> （核查日期：2026-07-09）
 > - OPC UA FX Part 84 (Profiles): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/> （核查日期：2026-07-09）
 > - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/> （核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912> （核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/> （核查日期：2026-07-09）
 > - OPC Foundation FLC Technical Paper – OPC UA FX C2C: <https://opcfoundation.org/wp-content/uploads/2023/11/OPCF-FLC-Technical-Paper-C2C-EN.pdf> （核查日期：2026-07-09）
 
 ---
@@ -4200,7 +4200,7 @@ tc qdisc add dev eth0 parent root handle 100 taprio \
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -4412,8 +4412,8 @@ Star/Ring Topology
 > - IEEE 802.1AS-Rev (gPTP): <https://1.ieee802.org/tsn/802-1as/>（核查日期：2026-07-09）
 > - IEEE 802.1Qbv (Time-Aware Shaper): <https://1.ieee802.org/tsn/802-1qbv/>（核查日期：2026-07-09）
 > - OPC UA FX Part 80: <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
-> - IEC 61784-3 Functional safety fieldbuses: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/>（核查日期：2026-07-09）
+> - IEC 61784-3:2021 Functional safety fieldbuses: <https://webstore.iec.ch/en/publication/62095>（核查日期：2026-07-09）
 > - TSN Industrial Automation Conformance Collaboration (TIACC): <https://www.tiacc.net/>（核查日期：2026-07-09）
 
 ## 13. 交叉引用
@@ -4434,8 +4434,8 @@ Star/Ring Topology
 | IEEE 802.1AS-Rev (gPTP) | <https://1.ieee802.org/tsn/802-1as/> |
 | IEEE 802.1Qbv (Time-Aware Shaper) | <https://1.ieee802.org/tsn/802-1qbv/> |
 | OPC UA FX Part 80 | <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/> |
-| IEC 62541 OPC Unified Architecture | <https://webstore.iec.ch/publication/66912> |
-| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| IEC 62541 OPC Unified Architecture | <https://reference.opcfoundation.org/> |
+| IEC 61784-3:2021 Functional safety fieldbuses | <https://webstore.iec.ch/en/publication/62095> |
 | TSN Industrial Automation Conformance Collaboration (TIACC) | <https://www.tiacc.net/> |
 
 ---
@@ -4910,7 +4910,7 @@ PLCopen 定义了标准错误码范围（如 `0x8000`-`0x8FFF` 为轴错误，`0
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -5095,7 +5095,7 @@ PLCopen Safety 采用**双通道架构**：
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -5441,7 +5441,7 @@ Model Checking Results:
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -6273,7 +6273,7 @@ flowchart TD
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -6486,7 +6486,7 @@ AAS 位于这些基础标准之上，作为工业资产的**具体数字孪生�
 1. IDTA AAS Specifications: <https://industrialdigitaltwin.org/en/content-hub/specifications>
 2. IDTA Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>
 3. OPC Foundation UAFX: <https://reference.opcfoundation.org/>
-4. IEC 63278-1: <https://webstore.iec.ch/publication/66912>
+4. IEC 63278-1:2023: <https://webstore.iec.ch/en/publication/65628>
 5. Eclipse BaSyx: <https://www.eclipse.org/basyx/>
 6. Eclipse BaSyx GitHub: <https://github.com/eclipse-basyx>
 7. Microsoft/Siemens DTDL-W3C Convergence: <https://press.siemens.com/global/en/pressrelease/siemens-and-microsoft-converge-digital-twin-definition-language-w3c-thing-description>
@@ -7098,7 +7098,7 @@ AAS 子模型模板（如 Digital Nameplate、Carbon Footprint、Battery Passpor
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -7425,7 +7425,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -8347,7 +8347,7 @@ PLC-X2000 在 2019 年获得了 IEC 62443-4-2:2019 CL 2 认证（证书编号：
 
 ## 权威来源
 
-1. IEC 62443-1-1:2009, *Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models*. 国际电工委员会. <https://webstore.iec.ch/publication/66912> （核查日期：2026-06-10）
+1. IEC 62443-1-1:2009, *Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models*. 国际电工委员会. <https://webstore.iec.ch/en/publication/7029> （核查日期：2026-06-10）
 
 2. IEC 62443-3-3:2013, *Industrial communication networks - Network and system security - Part 3-3: System security requirements and security levels*. 国际电工委员会. <https://webstore.iec.ch/publication/66915> （核查日期：2026-06-10）
 
@@ -8366,6 +8366,7 @@ PLC-X2000 在 2019 年获得了 IEC 62443-4-2:2019 CL 2 认证（证书编号：
 9. BSI, IEC 62443 与 EU CRA 协同白皮书. 德国联邦信息安全办公室. <https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IEC-62443/iec-62443_node.html> （核查日期：2026-06-10）
 
 10. IEC 62443-2-3:2015, *Patch management in the IACS environment*. 国际电工委员会. <https://webstore.iec.ch/publication/22396> （核查日期：2026-06-10）
+
 
 ---
 
@@ -8554,7 +8555,7 @@ SEooC Component
 
 > **权威来源**:
 >
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [ISO 26262](https://www.iso.org/standard/68383.html)
 > - [IEC 62443](https://www.iec.ch/cybersecurity)
 > - 核查日期：2026-07-07
@@ -8778,6 +8779,7 @@ flowchart TB
 ---
 
 ## 补充章节
+
 ## 示例
 
 **示例**：某供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 SEooC 复用到多款车型，通过安全手册明确假设与使用约束。
@@ -8790,7 +8792,7 @@ flowchart TB
 
 > **权威来源**:
 >
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [ISO 26262](https://www.iso.org/standard/68383.html)
 > - [IEC 62443](https://www.iec.ch/cybersecurity)
 > - 核查日期：2026-07-07
@@ -8798,6 +8800,7 @@ flowchart TB
 ## 分析
 
 **分析**：功能安全复用不是简单复制代码，而是复用经过验证的安全证据与假设约束。
+
 
 ---
 
@@ -8913,8 +8916,8 @@ flowchart TB
 
 > **权威来源**:
 >
-> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> （核查日期：2026-07-09）
-> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010> （核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*: <https://webstore.iec.ch/en/publication/5517> （核查日期：2026-07-09）
+> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://webstore.iec.ch/en/publication/5520> （核查日期：2026-07-09）
 > - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*: <https://webstore.iec.ch/en/publication/99554> （核查日期：2026-07-09）
 > - ISO 26262:2018 *Road vehicles — Functional safety*: <https://www.iso.org/standard/68383.html> （核查日期：2026-07-09）
 > - ISO 21448:2022 *Road vehicles — Safety of the intended functionality (SOTIF)*: <https://www.iso.org/standard/77490.html> （核查日期：2026-07-09）
@@ -9038,7 +9041,7 @@ GSN 的 **Away Goals** 允许子系统安全案例引用组件级论证而不嵌
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -9294,7 +9297,7 @@ MCP Tool 调用安全增强
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -9517,18 +9520,18 @@ sequenceDiagram
 | TensorFlow Lite | <https://www.tensorflow.org/lite> |
 | STM32Cube.AI | <https://stm32ai.st.com> |
 | CMSIS-NN | <https://github.com/ARM-software/CMSIS-NN> |
-| IEC 61508-3:2010 Software safety requirements | <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> |
+| IEC 61508-3:2010 Software safety requirements | <https://webstore.iec.ch/en/publication/5517> |
 | IEC 61508 Ed.3 CDV/RVC 状态 | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> |
 | IEC TR 61508-3-3:2025 Guidance on object-oriented software | <https://webstore.iec.ch/en/publication/99554> |
 | ISO 21448:2022 SOTIF | <https://www.iso.org/standard/77490.html> |
 | ISO/PAS 8800 Road vehicles — Safety and artificial intelligence | <https://www.iso.org/standard/84387.html> |
-| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| IEC 61784-3:2021 Functional safety fieldbuses | <https://webstore.iec.ch/en/publication/62095> |
 | ISA/IEC 62443 series | <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards> |
 | ISO 13849-1 Safety of machinery | <https://www.iso.org/standard/69883.html> |
 
 > **权威来源**（带核查日期）：
 >
-> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*: <https://webstore.iec.ch/en/publication/5517>（核查日期：2026-07-09）
 > - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*: <https://webstore.iec.ch/en/publication/99554>（核查日期：2026-07-09）
 > - ISO 21448:2022 *Road vehicles — Safety of the intended functionality (SOTIF)*: <https://www.iso.org/standard/77490.html>（核查日期：2026-07-09）
 > - ISO/PAS 8800 *Road vehicles — Safety and artificial intelligence*: <https://www.iso.org/standard/84387.html>（核查日期：2026-07-09）
@@ -9720,7 +9723,7 @@ TinyML 增强立方星任务能力：
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07
 
@@ -10147,7 +10150,7 @@ DDS（Data Distribution Service）是面向实时系统的数据分发中间件�
 | 1 | ISO 23247-1:2021 Digital Twin Framework for Manufacturing — Part 1: Overview and General Principles | <https://www.iso.org/standard/75066.html> | 2026-06-10 |
 | 2 | Alliance for Digital Twins (AEDT) Official Website | <https://www.alliancefordigitaltwins.org/> | 2026-06-10 |
 | 3 | Gartner — What Is a Digital Twin? | <https://www.gartner.com/en/information-technology/glossary/digital-twin> | 2026-06-10 |
-| 4 | IEC 63278-1:2023 Asset Administration Shell for Industrial Systems — Part 1: Asset Administration Shell Structure | <https://webstore.iec.ch/publication/66912> | 2026-06-10 |
+| 4 | IEC 63278-1:2023 Asset Administration Shell for Industrial Systems — Part 1: Asset Administration Shell Structure | <https://webstore.iec.ch/en/publication/65628> | 2026-06-10 |
 | 5 | RAMI 4.0 Reference Architecture Model Industrie 4.0 | <https://www.plattform-i40.de/IP/Navigation/EN/RAMI40/rami40.html> | 2026-06-10 |
 | 6 | Digital Twins Definition Language (DTDL) Documentation | <https://github.com/Azure/opendigitaltwins-dtdl> | 2026-06-10 |
 | 7 | Singapore Virtual Singapore Project — NRF | <https://www.nrf.gov.sg/programmes/virtual-singapore> | 2026-06-10 |
@@ -10577,7 +10580,7 @@ graph TD
 
 > **权威来源**：
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://webstore.iec.ch/en/publication/6675>（核查日期：2026-07-09）
 > - OPC UA FX Part 80 (UAFX Overview and Concepts)：<https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
 > - OPC UA FX Part 81 (Connecting Devices and Information Model)：<https://reference.opcfoundation.org/UAFX/Part81/v100/docs/>（核查日期：2026-07-09）
 > - OPC UA FX Part 82 (Networking)：<https://reference.opcfoundation.org/UAFX/Part82/v100/docs/>（核查日期：2026-07-09）
@@ -10588,7 +10591,7 @@ graph TD
 > - IEC 63278-2 ED1 *Information meta model* (DIS/CDV)：<https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1363>（核查日期：2026-07-09）
 > - IDTA AAS Specifications：<https://industrialdigitaltwin.org/en/content-hub/specifications>（核查日期：2026-07-09）
 > - IDTA Submodel Templates：<https://industrialdigitaltwin.org/en/content-hub/submodels>（核查日期：2026-07-09）
-> - IEC 61508-3:2010 *Software safety requirements*：<https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010>（核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*：<https://webstore.iec.ch/en/publication/5517>（核查日期：2026-07-09）
 > - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*：<https://webstore.iec.ch/en/publication/99554>（核查日期：2026-07-09）
 > - ISO 21448:2022 *Safety of the intended functionality (SOTIF)*：<https://www.iso.org/standard/77490.html>（核查日期：2026-07-09）
 > - ISA/IEC 62443 系列：<https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>（核查日期：2026-07-09）

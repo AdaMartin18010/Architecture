@@ -438,6 +438,6 @@ OPC UA FX 部署场景决策树
 >
 > - [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95)
 > - [OPC Foundation](https://opcfoundation.org)
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [IEC 63278 AAS](https://iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363)
 > - 核查日期：2026-07-07

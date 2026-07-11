@@ -200,8 +200,8 @@ Star/Ring Topology
 > - IEEE 802.1AS-Rev (gPTP): <https://1.ieee802.org/tsn/802-1as/>（核查日期：2026-07-09）
 > - IEEE 802.1Qbv (Time-Aware Shaper): <https://1.ieee802.org/tsn/802-1qbv/>（核查日期：2026-07-09）
 > - OPC UA FX Part 80: <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/>（核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
-> - IEC 61784-3 Functional safety fieldbuses: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/>（核查日期：2026-07-09）
+> - IEC 61784-3:2021 Functional safety fieldbuses: <https://webstore.iec.ch/en/publication/62095>（核查日期：2026-07-09）
 > - TSN Industrial Automation Conformance Collaboration (TIACC): <https://www.tiacc.net/>（核查日期：2026-07-09）
 
 ## 13. 交叉引用
@@ -222,8 +222,8 @@ Star/Ring Topology
 | IEEE 802.1AS-Rev (gPTP) | <https://1.ieee802.org/tsn/802-1as/> |
 | IEEE 802.1Qbv (Time-Aware Shaper) | <https://1.ieee802.org/tsn/802-1qbv/> |
 | OPC UA FX Part 80 | <https://reference.opcfoundation.org/UAFX/Part80/v100/docs/> |
-| IEC 62541 OPC Unified Architecture | <https://webstore.iec.ch/publication/66912> |
-| IEC 61784-3 Functional safety fieldbuses | <https://webstore.iec.ch/publication/66912> |
+| IEC 62541 OPC Unified Architecture | <https://reference.opcfoundation.org/> |
+| IEC 61784-3:2021 Functional safety fieldbuses | <https://webstore.iec.ch/en/publication/62095> |
 | TSN Industrial Automation Conformance Collaboration (TIACC) | <https://www.tiacc.net/> |
 
 ---

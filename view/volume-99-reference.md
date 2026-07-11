@@ -5321,7 +5321,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 | ISO/IEC 5962 (SPDX) | <https://www.iso.org/standard/81800.html> | 软件物料清单 |
 | ISO/IEC 19770-2 (SWID) | <https://www.iso.org/standard/65603.html> | 软件标识 |
 | IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | AAS 结构 |
-| IEC 61508 | <https://webstore.iec.ch/publication/66912> | 功能安全 |
+| IEC 61508-1:2010 | <https://webstore.iec.ch/en/publication/5515> | 功能安全 |
 | ISO 26262 | <https://www.iso.org/standard/68383.html> | 汽车功能安全 |
 
 ## 架构框架
@@ -6638,7 +6638,7 @@ M.3 (层次不可约性)
 - **反例**: 仅建立 3D 可视化模型而无实时数据连接与仿真能力，称其为"数字孪生"。
 - **权威来源**:
   - [Digital Twin](https://en.wikipedia.org/wiki/Digital_twin) — Wikipedia
-  - [IEC 63278 AAS](https://webstore.iec.ch/publication/66912) — IEC
+  - [IEC 63278-1:2023 AAS](https://webstore.iec.ch/en/publication/65628) — IEC
   - 核查日期：2026-07-07
 
 ---
@@ -8102,7 +8102,7 @@ flowchart LR
 | 标准 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | ISO/IEC/IEEE | 2026-07-07 |
 | 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | ISO/IEC | 2026-07-07 |
 | 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/publication/66028> | IEC | 2026-07-07 |
-| 标准 | IEC 61508:2010 | <https://webstore.iec.ch/publication/66912> | IEC | 2026-07-07 |
+| 标准 | IEC 61508:2010 | <https://webstore.iec.ch/en/publication/5515> | IEC | 2026-07-07 |
 | 标准 | ISO 26262:2018 | <https://www.iso.org/standard/68383.html> | ISO | 2026-07-07 |
 | 标准 | SLSA v1.1 / v1.2 | <https://slsa.dev/spec/v1.1/> | OpenSSF | 2026-07-07 |
 | 标准 | NIST SSDF v1.1 | <https://csrc.nist.gov/publications/detail/white-paper/2023/07/06/mitigating-risk-of-software-vulnerabilities> | NIST | 2026-07-07 |
@@ -8793,7 +8793,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 > - The Open Group. *TOGAF® Standard, 10th Edition*. <https://www.opengroup.org/togaf>
 > - The Open Group. *ArchiMate® 4 Specification, Document C260* (2026-04-27 正式发布). <https://www.opengroup.org/archimate-licensed-downloads>
 > - SLSA. *Supply-chain Levels for Software Artifacts v1.2*. <https://slsa.dev/spec/v1.2/>
-> - IEC 61508 Ed.3. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://webstore.iec.ch/publication/66912>
+> - IEC 61508 Ed.3（制定中，未出版；CDV 投票完成 RVC 2026-05-15）. *Functional safety of electrical/electronic/programmable electronic safety-related systems*. <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369>
 > - ISA-95 / IEC 62264. *Enterprise-control system integration*. <https://www.isa.org/standards-and-publications/isa-standards/isa-95>
 > - Model Context Protocol. *MCP Specification 2025-11-25*. <https://modelcontextprotocol.io/specification/2025-11-25>
 > - Google / LF Agentic AI Foundation. *Agent2Agent Protocol v1.0*. <https://a2aprotocol.ai/>
@@ -9692,7 +9692,7 @@ graph TD
 | **EU CRA** | 2024/2847 | 已发布 | <https://eur-lex.europa.eu/eli/reg/2024/2847> | 欧盟网络弹性法案 |
 | **NIST SP 800-161 Rev. 1** | — | 现行 | <https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final> | 供应链网络安全风险管理 |
 | **NIST SP 800-204** | 系列 | 2025 更新 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 微服务安全架构 |
-| **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/publication/66912> | IACS 安全产品开发生命周期要求 |
+| **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/en/publication/33615> | IACS 安全产品开发生命周期要求 |
 | **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/en/publication/34421> | IACS 组件技术安全要求；**注意：不是 2025 版** |
 | **IEC TS 62443-6-2** | 2025 | 已发布 | <https://webstore.iec.ch/en/publication/67463> | IACS 组件评估方法论 |
 

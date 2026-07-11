@@ -335,8 +335,8 @@ graph TB
 > - OPC UA FX Part 83 (Controller-to-Device): <https://reference.opcfoundation.org/UAFX/Part83/v100/docs/>（核查日期：2026-07-09）
 > - OPC UA FX Part 84 (Device-to-Device): <https://reference.opcfoundation.org/UAFX/Part84/v100/docs/>（核查日期：2026-07-09）
 > - IEC/IEEE 60802 TSN Profile for Industrial Automation: <https://1.ieee802.org/tsn/iec-ieee-60802/>（核查日期：2026-07-09）
-> - IEC 62541 OPC Unified Architecture: <https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
-> - IEC 62264-1:2013 *Enterprise-control system integration*: <https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
+> - IEC 62541 OPC Unified Architecture: <https://reference.opcfoundation.org/>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration*: <https://webstore.iec.ch/en/publication/6675>（核查日期：2026-07-09）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*: <https://webstore.iec.ch/en/publication/65628>（核查日期：2026-07-09）
 > - IDTA AAS Submodel Templates: <https://industrialdigitaltwin.org/en/content-hub/submodels>（核查日期：2026-07-09）
 

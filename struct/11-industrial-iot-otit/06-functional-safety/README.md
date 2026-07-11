@@ -107,8 +107,8 @@
 
 > **权威来源**:
 >
-> - IEC 61508-3:2010 *Software safety requirements*: <https://standards.iteh.ai/catalog/standards/iec/f6570ef4-4785-4a0c-bc73-35d31a657dfb/iec-61508-3-2010> （核查日期：2026-07-09）
-> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://standards.iteh.ai/catalog/standards/iec/e6145828-18e4-44ed-8aee-104e68bfbb85/iec-61508-6-2010> （核查日期：2026-07-09）
+> - IEC 61508-3:2010 *Software safety requirements*: <https://webstore.iec.ch/en/publication/5517> （核查日期：2026-07-09）
+> - IEC 61508-6:2010 *Guidelines on the application of IEC 61508-2 and IEC 61508-3*: <https://webstore.iec.ch/en/publication/5520> （核查日期：2026-07-09）
 > - IEC TR 61508-3-3:2025 *Guidance on object-oriented software*: <https://webstore.iec.ch/en/publication/99554> （核查日期：2026-07-09）
 > - ISO 26262:2018 *Road vehicles — Functional safety*: <https://www.iso.org/standard/68383.html> （核查日期：2026-07-09）
 > - ISO 21448:2022 *Road vehicles — Safety of the intended functionality (SOTIF)*: <https://www.iso.org/standard/77490.html> （核查日期：2026-07-09）

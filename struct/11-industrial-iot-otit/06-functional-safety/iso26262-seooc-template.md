@@ -208,6 +208,7 @@ flowchart TB
 ---
 
 ## 补充章节
+
 ## 示例
 
 **示例**：某供应商将经 ISO 26262 ASIL-D 认证的制动控制软件作为 SEooC 复用到多款车型，通过安全手册明确假设与使用约束。
@@ -220,7 +221,7 @@ flowchart TB
 
 > **权威来源**:
 >
-> - [IEC 61508](https://webstore.iec.ch/publication/66912)
+> - [IEC 61508-1:2010](https://webstore.iec.ch/en/publication/5515)
 > - [ISO 26262](https://www.iso.org/standard/68383.html)
 > - [IEC 62443](https://www.iec.ch/cybersecurity)
 > - 核查日期：2026-07-07

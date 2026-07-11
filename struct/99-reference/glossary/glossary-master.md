@@ -143,7 +143,7 @@
 - **反例**: 仅建立 3D 可视化模型而无实时数据连接与仿真能力，称其为"数字孪生"。
 - **权威来源**:
   - [Digital Twin](https://en.wikipedia.org/wiki/Digital_twin) — Wikipedia
-  - [IEC 63278 AAS](https://webstore.iec.ch/publication/66912) — IEC
+  - [IEC 63278-1:2023 AAS](https://webstore.iec.ch/en/publication/65628) — IEC
   - 核查日期：2026-07-07
 
 ---

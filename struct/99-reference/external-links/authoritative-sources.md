@@ -15,7 +15,7 @@
 | ISO/IEC 5962 (SPDX) | <https://www.iso.org/standard/81800.html> | 软件物料清单 |
 | ISO/IEC 19770-2 (SWID) | <https://www.iso.org/standard/65603.html> | 软件标识 |
 | IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | AAS 结构 |
-| IEC 61508 | <https://webstore.iec.ch/publication/66912> | 功能安全 |
+| IEC 61508-1:2010 | <https://webstore.iec.ch/en/publication/5515> | 功能安全 |
 | ISO 26262 | <https://www.iso.org/standard/68383.html> | 汽车功能安全 |
 
 ## 架构框架

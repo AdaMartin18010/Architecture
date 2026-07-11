@@ -430,7 +430,7 @@ PLC-X2000 在 2019 年获得了 IEC 62443-4-2:2019 CL 2 认证（证书编号：
 
 ## 权威来源
 
-1. IEC 62443-1-1:2009, *Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models*. 国际电工委员会. <https://webstore.iec.ch/publication/66912> （核查日期：2026-06-10）
+1. IEC 62443-1-1:2009, *Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models*. 国际电工委员会. <https://webstore.iec.ch/en/publication/7029> （核查日期：2026-06-10）
 
 2. IEC 62443-3-3:2013, *Industrial communication networks - Network and system security - Part 3-3: System security requirements and security levels*. 国际电工委员会. <https://webstore.iec.ch/publication/66915> （核查日期：2026-06-10）
 

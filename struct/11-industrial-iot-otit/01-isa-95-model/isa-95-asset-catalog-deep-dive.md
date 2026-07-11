@@ -330,8 +330,8 @@ graph TB
 
 > **权威来源**：
 >
-> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://standards.iteh.ai/catalog/standards/iec/57ebd369-7020-4c85-bb76-5890601d051d/iec-62264-1-2013>（核查日期：2026-07-09）
-> - IEC 62264-3:2013 *Activity models of manufacturing operations management*：<https://webstore.iec.ch/publication/66912>（核查日期：2026-07-09）
+> - IEC 62264-1:2013 *Enterprise-control system integration — Part 1: Models and terminology*：<https://webstore.iec.ch/en/publication/6675>（核查日期：2026-07-09）
+> - IEC 62264-3:2016 *Activity models of manufacturing operations management*：<https://webstore.iec.ch/en/publication/33511>（核查日期：2026-07-11）
 > - IEC 63278-1:2023 *Asset Administration Shell structure*：<https://webstore.iec.ch/en/publication/65628>（核查日期：2026-07-09）
 > - ISO/IEC 30141:2024 *Internet of Things reference architecture*：<https://www.iso.org/standard/88800.html>（核查日期：2026-07-09）
 > - OPC UA for Devices (DI): <https://reference.opcfoundation.org/DI/v105/docs/>（核查日期：2026-07-09）
