@@ -427,7 +427,7 @@ flowchart LR
 |----------|------|-----|------|----------|
 | 标准 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | ISO/IEC/IEEE | 2026-07-07 |
 | 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | ISO/IEC | 2026-07-07 |
-| 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/publication/66028> | IEC | 2026-07-07 |
+| 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | IEC | 2026-07-07 |
 | 标准 | IEC 61508:2010 | <https://webstore.iec.ch/en/publication/5515> | IEC | 2026-07-07 |
 | 标准 | ISO 26262:2018 | <https://www.iso.org/standard/68383.html> | ISO | 2026-07-07 |
 | 标准 | SLSA v1.1 / v1.2 | <https://slsa.dev/spec/v1.1/> | OpenSSF | 2026-07-07 |

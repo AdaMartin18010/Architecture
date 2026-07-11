@@ -187,7 +187,7 @@
 > - [ISO — ISO/IEC 30141:2024](https://www.iso.org/standard/88800.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25040:2024](https://www.iso.org/standard/83467.html)（核查日期：2026-07-09）
-> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/publication/67463)（核查日期：2026-07-09）
+> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/en/publication/34421)（核查日期：2026-07-09）
 > - [NIST — AI Risk Management Framework 1.0](https://www.nist.gov/itl/ai-risk-management-framework)（核查日期：2026-07-09）
 > - [OpenSSF — SLSA Specification v1.2](https://slsa.dev/spec/v1.2/)（核查日期：2026-07-09）
 

@@ -22,7 +22,7 @@
 | **ISO/IEC 30141:2024** | 被误审为“不存在 2024 版” | ✅ **已发布（2024-08）** | <https://www.iso.org/standard/88800.html> | 2026-06-12 |
 | **ISO/IEC 25010** | 多处误写为 2024 版 | ✅ **正式版为 2023** | <https://www.iso.org/standard/78175.html> | 2026-06-12 |
 | **NIST SSDF 1.2** | 正式版 | ⚠️ **Initial Public Draft（征求意见稿）** | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> | 2026-06-12 |
-| **IEC 62443-4-2** | 误写为 2025 版 | ✅ **现行版为 2019** | <https://webstore.iec.ch/publication/67463> | 2026-06-12 |
+| **IEC 62443-4-2** | 误写为 2025 版 | ✅ **现行版为 2019** | <https://webstore.iec.ch/en/publication/34421> | 2026-06-12 |
 | **ISO/IEC 5338** | 制定中 | ✅ **2023 版已发布** | <https://www.iso.org/standard/81118.html> | 2026-06-12 |
 | **ISO/IEC 25040** | URL 指向 /standard/64768.html | ✅ **正确 URL 为 /standard/83467.html** | <https://www.iso.org/standard/83467.html> | 2026-06-12 |
 
@@ -35,7 +35,7 @@
 | ISO/IEC 30141:2024 | ISO | <https://www.iso.org/standard/88800.html> | 已发布（2024-08） | 2026-07-09 |
 | ISO/IEC 25010:2023 | ISO | <https://www.iso.org/standard/78176.html> | 现行正式版 | 2026-07-09 |
 | NIST SSDF 1.2 | NIST CSRC | <https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2> | Initial Public Draft | 2026-07-09 |
-| IEC 62443-4-2 | IEC Webstore | <https://webstore.iec.ch/publication/67463> | 现行版 2019 | 2026-07-09 |
+| IEC 62443-4-2 | IEC Webstore | <https://webstore.iec.ch/en/publication/34421> | 现行版 2019 | 2026-07-09 |
 | ISO/IEC 5338:2023 | ISO | <https://www.iso.org/standard/81118.html> | 已发布 | 2026-07-09 |
 | ISO/IEC 25040:2024 | ISO | <https://www.iso.org/standard/83467.html> | 已发布 | 2026-07-09 |
 
@@ -117,7 +117,7 @@
 > - [ISO — ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 25040:2024](https://www.iso.org/standard/83467.html)（核查日期：2026-07-09）
 > - [ISO — ISO/IEC 5338:2023](https://www.iso.org/standard/81118.html)（核查日期：2026-07-09）
-> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/publication/67463)（核查日期：2026-07-09）
+> - [IEC — IEC 62443-4-2:2019](https://webstore.iec.ch/en/publication/34421)（核查日期：2026-07-09）
 > - [NIST — SSDF 1.2 Initial Public Draft](https://csrc.nist.gov/News/2025/draft-ssdf-version-1-2)（核查日期：2026-07-09）
 > - [NIST — AI Risk Management Framework 1.0](https://www.nist.gov/itl/ai-risk-management-framework)（核查日期：2026-07-09）
 
