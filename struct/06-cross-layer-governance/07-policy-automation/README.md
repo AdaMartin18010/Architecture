@@ -71,6 +71,7 @@ python scripts/policy-check.py
 ### 输入/输出约定
 
 所有策略均遵循统一输入/输出约定：
+
 - **输入**：通过 OPA `input` 传入结构化 JSON。
 - **输出**：
   - `decision` / `model`：策略判定结果（字符串）。

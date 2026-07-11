@@ -2128,6 +2128,7 @@ Kubernetes API 版本演进
 | Kubernetes API Versioning | <https://kubernetes.io/docs/reference/using-api/api-overview/> | 2026-06-10 |
 | ZeroVer (讽刺网站) | <https://0ver.org/> | 2026-06-10 |
 
+
 ---
 
 
@@ -2263,6 +2264,7 @@ spec:
 ## 分析
 
 **分析**：组件复用关注依赖管理、接口稳定性与供应链安全，是现代软件工程的基础能力。
+
 
 ---
 
@@ -2520,6 +2522,7 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 分析
 
 **分析**：云原生网络复用需要抽象底层实现差异，Gateway API 提供了跨 Ingress 控制器的可移植接口。
+
 
 ---
 
@@ -3247,6 +3250,7 @@ flowchart TD
 - [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 语言无关的结构复用模式
 - [软件架构复用框架总览](../struct/README.md) — 知识体系总览
 
+
 ---
 
 
@@ -3636,6 +3640,7 @@ Artifact Repository
 > - [Rust](https://www.rust-lang.org)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
 
 ---
 

@@ -456,6 +456,7 @@ flowchart LR
 | Stripe API Docs | <https://docs.stripe.com/api> | 2026-06-10 |
 | Richardson Maturity Model | <https://martinfowler.com/articles/richardsonMaturityModel.html> | 2026-06-10 |
 
+
 ---
 
 
@@ -932,6 +933,7 @@ flowchart TD
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/> | 2026-06-10 |
 | OpenFunction | <https://openfunction.dev/> | 2026-06-10 |
 
+
 ---
 
 
@@ -950,6 +952,7 @@ flowchart TD
 
 - [事件驱动函数复用模式](#事件驱动函数复用模式)
   - [目录](#目录)
+  - [核心概念定义](#核心概念定义)
   - [1. 事件驱动函数概述](#1-事件驱动函数概述)
     - [1.1 EDA + FaaS 的结合](#11-eda--faas-的结合)
     - [1.2 事件驱动函数的核心要素](#12-事件驱动函数的核心要素)
@@ -969,6 +972,7 @@ flowchart TD
   - [6. 案例：Kafka + CloudEvents + Knative Eventing 构建可复用事件处理流水线](#6-案例kafka--cloudevents--knative-eventing-构建可复用事件处理流水线)
     - [6.1 架构](#61-架构)
     - [6.2 可复用组件](#62-可复用组件)
+  - [收益与风险分析](#收益与风险分析)
   - [7. 权威来源](#7-权威来源)
   - [8. 标准条款映射](#8-标准条款映射)
   - [9. 权威来源](#9-权威来源)
@@ -1274,6 +1278,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 >
 > **核查日期**: 2026-07-08
 
+
 ---
 
 
@@ -1540,6 +1545,7 @@ def validate_inventory_reservation(reservation: InventoryReservation) -> Validat
 - [工作流编排复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md) — 长事务与 Saga 中的领域函数编排
 - [AI/LLM 功能复用模式](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md) — AI 功能作为领域函数的扩展
 - [组件接口契约设计模式](../struct/04-component-architecture-reuse/04-design-patterns/interface-design-patterns.md) — 函数级复用的接口契约原则
+
 
 ---
 
@@ -2017,6 +2023,7 @@ flowchart TD
 
 **反例**：将工作流硬编码在应用代码中，流程变更需要重新编译部署，业务人员无法参与优化。
 
+
 ---
 
 
@@ -2220,6 +2227,7 @@ Agent 声明依赖：
 
 **分析**：AI 功能复用需要引入概率边界、版本管理与监控，以应对模型漂移与输出不确定性。
 
+
 ---
 
 
@@ -2388,6 +2396,7 @@ MCP Tool 分类
 > - [A2A Protocol](https://google.github.io/A2A)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -2409,7 +2418,7 @@ MCP Tool 分类
 
 ## 目录
 
-- [MCP 2025-11-25 + A2A v1.0.0.0.0.0.0.0 协议架构复用分析](#mcp-2025-11-25--a2a-v100-协议架构复用分析)
+- [MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](#mcp-2025-11-25--a2a-v100-协议架构复用分析)
   - [目录](#目录)
   - [1. 协议定位与互补架构](#1-协议定位与互补架构)
   - [2. 协议栈层次对比](#2-协议栈层次对比)
@@ -2425,7 +2434,7 @@ MCP Tool 分类
     - [7.2 A2A 复用质量指标](#72-a2a-复用质量指标)
     - [7.3 联合治理模型](#73-联合治理模型)
   - [8. 2026 路线图与演进预测](#8-2026-路线图与演进预测)
-  - [补充说明：MCP 2025-11-25 + A2A v1.0.0.0.0.0.0.0 协议架构复用分析](#补充说明mcp-2025-11-25--a2a-v100-协议架构复用分析)
+  - [补充说明：MCP 2025-11-25 + A2A v1.0.0 协议架构复用分析](#补充说明mcp-2025-11-25--a2a-v100-协议架构复用分析)
   - [概念定义](#概念定义)
   - [示例](#示例)
   - [反例](#反例)
@@ -2741,6 +2750,7 @@ MCP + A2A 联合治理
 
 **反例**：各 Agent 使用私有 RPC 协议与工具交互，导致工具无法在 Agent 之间共享，形成新的孤岛。
 
+
 ---
 
 
@@ -3007,6 +3017,7 @@ flowchart TD
 > - [Temporal Documentation](https://docs.temporal.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -3083,5 +3094,6 @@ flowchart TD
 
 - `12-ai-native-reuse`（AI 原生复用的协议层）
 - `07-formal-verification`（AI 概率边界形式化）
+
 
 ---
