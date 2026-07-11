@@ -42,6 +42,7 @@ def main():
         ("view/ 质量门控 V2", [sys.executable, "scripts/quality-gate-v2.py", "view/"]),
         ("Markdown 链接检查", [sys.executable, "scripts/link-checker.py", "--report", "reports/link-checker.md"]),
         ("交叉索引一致性", [sys.executable, "scripts/cross-index-check.py"]),
+        ("标准版本号硬错误审计", [sys.executable, "scripts/standard-version-audit.py"]),
         ("struct/view 同步", [sys.executable, "scripts/sync-view-from-struct.py"]),
         ("OPA/Rego 策略执行", [sys.executable, "scripts/policy-check.py"]),
     ]
