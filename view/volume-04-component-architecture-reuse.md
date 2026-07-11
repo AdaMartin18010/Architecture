@@ -1,6 +1,6 @@
 # 组件模型与架构复用
 
-> **版本**: 2026-07-11
+> **版本**: 2026-07-12
 > **定位**: 由 `struct/04-component-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 04-component-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -427,6 +427,7 @@ flowchart LR
 - [组件设计模式选择指南](../struct/04-component-architecture-reuse/04-design-patterns/pattern-selection-guide.md) — 组件内部结构复用
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 语言级组件模型能力对比
 - [软件架构复用框架总览](../struct/README.md) — 知识体系全局视图
+
 
 ---
 
@@ -874,6 +875,7 @@ describe('Inventory API contract', () => {
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对接口契约工具链的支持差异
 - [软件架构复用框架总览](../struct/README.md) — 本知识体系的全局视图
 
+
 ---
 
 
@@ -1112,6 +1114,7 @@ Lockfile vs SBOM
 
 **分析**：依赖管理是组件复用的风险控制点，需平衡更新灵活性与构建可重现性。
 
+
 ---
 
 
@@ -1129,6 +1132,7 @@ Lockfile vs SBOM
 
 - [组件接口契约设计模式](#组件接口契约设计模式)
   - [目录](#目录)
+  - [核心概念定义](#核心概念定义)
   - [1. 接口契约的层次](#1-接口契约的层次)
   - [2. 核心设计模式](#2-核心设计模式)
     - [模式 1: Stable Abstraction Principle (SAP)](#模式-1-stable-abstraction-principle-sap)
@@ -1153,6 +1157,7 @@ Lockfile vs SBOM
     - [反模式 1: 接口膨胀 (Interface Bloat)](#反模式-1-接口膨胀-interface-bloat)
     - [反模式 2: 循环依赖 (Circular Dependency)](#反模式-2-循环依赖-circular-dependency)
     - [反模式 3: 隐式契约 (Implicit Contract)](#反模式-3-隐式契约-implicit-contract)
+  - [正向复用案例](#正向复用案例)
   - [8. 标准条款映射](#8-标准条款映射)
   - [9. 权威来源](#9-权威来源)
 
@@ -1596,6 +1601,7 @@ class Authenticated:
 >
 > **核查日期**: 2026-07-08
 
+
 ---
 
 
@@ -1903,6 +1909,7 @@ flowchart TD
 - [接口契约与架构复用](../struct/04-component-architecture-reuse/02-interface-contracts/interface-contracts-reuse.md) — 模式实现需遵循的接口契约
 - [6大语言生态组件复用成熟度深度对比 2026](../struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) — 不同语言生态对设计模式实现机制的支持
 - [软件架构复用框架总览](../struct/README.md) — 知识体系总览
+
 
 ---
 
@@ -3719,5 +3726,6 @@ Artifact Repository
 
 - `10-supply-chain-security`（SBOM、SLSA、漏洞管理）
 - `07-formal-verification`（Rust 类型系统形式化）
+
 
 ---

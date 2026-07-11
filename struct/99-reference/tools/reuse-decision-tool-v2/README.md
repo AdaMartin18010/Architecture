@@ -1,8 +1,9 @@
 # 交互式复用决策工具 v2.0
 
-> **定位**: 支持六阶段复用决策流程的交互式工具（CLI + Streamlit Web）
+> **定位**: 支持六阶段复用决策流程的交互式工具（CLI + Streamlit Web）— **本项目复用决策工具的权威实现**
 > **版本**: 2.0.0
 > **技术栈**: Python 3.10+ · Streamlit · 标准库为主
+> **版本关系**: v1（[`../reuse-decision-tool/`](../reuse-decision-tool/README.md)）已归档，仅作历史参考
 
 ---
 
@@ -20,6 +21,21 @@
 | 4 | 安全合规判定 | 许可证 ⊆ 策略？安全等级 ≥ 要求？ | 合规风险、法律纠纷 |
 | 5 | 成本收益判定 | COCOMO II AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）？NPV > 0？ | 经济上不如自研 |
 | 6 | 治理合规判定 | 组织成熟度 ≥ 要求？流程标准化？ | 缺乏治理能力，复用难以持续 |
+
+### 与 v1 生命周期视角的对应关系
+
+v1（已归档）的六阶段是**生命周期视角**（复用活动全过程），v2 的六阶段是**判定门径视角**（复用准入的六道判定门）。两者不矛盾，映射关系如下：
+
+| v1 生命周期阶段（历史） | v2 判定门径阶段（权威） |
+|------|------|
+| 1. 识别 — 发现潜在可复用资产 | 前置活动：资产发现与候选登记（不在门径内） |
+| 2. 评估 — 质量、成熟度、合规性评估 | 3. 质量达标判定 + 4. 安全合规判定 |
+| 3. 适配 — 计算 AAF、修改范围 | 1. 语义兼容性判定 + 2. 变性绑定判定 |
+| 4. 集成 — 架构兼容性、依赖影响 | 1. 语义兼容性判定（技术约束 ⊆ 上下文） |
+| 5. 验证 — 测试、形式化验证、SBOM 审查 | 4. 安全合规判定 |
+| 6. 治理 — 度量、成熟度、成本分摊 | 5. 成本收益判定 + 6. 治理合规判定 |
+
+相关治理文档：[统一复用决策模型（URDM）](../../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)（本工具对应其中 L3 复用决策引擎层）、[升级/降级矩阵](../../../06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md)。
 
 ---
 
@@ -276,6 +292,8 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 ## 与 v1.0 的差异
 
+> **注意**: v1.0（`../reuse-decision-tool/`）已于 2026-07-12 归档，仅作历史参考；本工具（v2.0）为权威实现。
+
 | 特性 | v1.0 | v2.0 |
 |------|------|------|
 | 决策流程 | 6 阶段概念框架 | **可执行规则引擎** |
@@ -302,6 +320,8 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 ---
 
+> **参见**：《统一复用决策模型》——本工具（六阶段引擎）在统一决策栈中定位为 L3 适配判定层：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](../../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)
+>
 > **最后更新**: 2026-06-10
 > **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO/IEC 25010:2023 · ISO/IEC/IEEE 42010:2022 · NASA RRL
 

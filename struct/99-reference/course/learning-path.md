@@ -60,7 +60,7 @@
 - [API 设计模式与功能复用](../../05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 - [函数即服务（FaaS）与功能复用模式](../../05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 - [事件驱动函数复用模式](../../05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-- [领域函数目录](../../05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md)
+- [领域函数目录](../../05-functional-architecture-reuse/07-domain-functions/domain-function-catalog.md)
 - [Temporal 工作流复用模式](../../05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
 - … 共 10 个文件
 

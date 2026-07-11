@@ -3,11 +3,11 @@ name: SLSA L4 PoC Build
 on:
   push:
     paths:
-      - 'struct/10-supply-chain-security/05-slsa-l4-poc/**'
+      - 'struct/10-supply-chain-security/13-slsa-l4-poc/**'
       - '.github/workflows/slsa-l4-poc.yml'
   pull_request:
     paths:
-      - 'struct/10-supply-chain-security/05-slsa-l4-poc/**'
+      - 'struct/10-supply-chain-security/13-slsa-l4-poc/**'
       - '.github/workflows/slsa-l4-poc.yml'
   workflow_dispatch:
 
@@ -36,17 +36,17 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run SLSA L4 PoC build
-        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        working-directory: struct/10-supply-chain-security/13-slsa-l4-poc/
         run: |
           python build.py
 
       - name: Verify provenance
-        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        working-directory: struct/10-supply-chain-security/13-slsa-l4-poc/
         run: |
           python verify-provenance.py
 
       - name: Test built artifact
-        working-directory: struct/10-supply-chain-security/05-slsa-l4-poc/
+        working-directory: struct/10-supply-chain-security/13-slsa-l4-poc/
         run: |
           python dist/app
 
@@ -55,5 +55,5 @@ jobs:
         with:
           name: slsa-l4-poc-artifact
           path: |
-            struct/10-supply-chain-security/05-slsa-l4-poc/dist/app
-            struct/10-supply-chain-security/05-slsa-l4-poc/dist/provenance.json
+            struct/10-supply-chain-security/13-slsa-l4-poc/dist/app
+            struct/10-supply-chain-security/13-slsa-l4-poc/dist/provenance.json

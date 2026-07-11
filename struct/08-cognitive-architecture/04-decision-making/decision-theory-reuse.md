@@ -185,6 +185,10 @@ A/B 测试设计：复用 vs 自建
 
 ---
 
+> 参见：《统一复用决策模型》——认知决策理论在统一决策栈中定位为 L0 认知校准层：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)
+
+---
+
 ## 补充说明：认知架构中的决策理论与复用
 
 ## 概念定义

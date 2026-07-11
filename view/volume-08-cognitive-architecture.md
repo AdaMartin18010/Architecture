@@ -1,6 +1,6 @@
 # ACT-R 认知架构与知识复用
 
-> **版本**: 2026-07-11
+> **版本**: 2026-07-12
 > **定位**: 由 `struct/08-cognitive-architecture` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 08-cognitive-architecture --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -2306,6 +2306,10 @@ A/B 测试设计：复用 vs 自建
 | DORA 2025 Report | <https://cloud.google.com/blog/products/devops-sre/dora-2025-report> | 2026-06-10 |
 | NASA-TLX | <https://humansystems.arc.nasa.gov/groups/TLX/> | 2026-06-10 |
 
+
+---
+
+> 参见：《统一复用决策模型》——认知决策理论在统一决策栈中定位为 L0 认知校准层：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](../struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)
 
 ---
 

@@ -153,7 +153,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 >
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE AWI 42030 项目页](https://www.iso.org/standard/93814.html) — ISO Stage 20.00（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42030:2019-2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42030:2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
 > - [arc42 Quality Blog: ISO/IEC/IEEE 42030:2019 Overview](https://quality.arc42.org/standards/iso-iec-ieee-42030)（核查日期：2026-07-08）
 >
 > **核查日期**: 2026-07-08
@@ -192,7 +192,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 >
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation framework](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE AWI 42030 项目页](https://www.iso.org/standard/93814.html) — ISO Stage 20.00（核查日期：2026-07-08）
-> - [ISO/IEC/IEEE 42030:2019-2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
+> - [ISO/IEC/IEEE 42030:2019 官方页面](https://standards.ieee.org/ieee/42030/7602/) — IEEE SA（核查日期：2026-07-08）
 > - [arc42 Quality Blog: ISO/IEC/IEEE 42030:2019 Overview](https://quality.arc42.org/standards/iso-iec-ieee-42030)（核查日期：2026-07-08）
 >
 > **核查日期**：2026-07-08

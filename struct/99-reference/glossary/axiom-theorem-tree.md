@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-06 Phase 3 完整版
 > **定位**: 全知识体系的逻辑骨架——从公理出发推导定理，建立可验证的知识依赖关系
-> **状态**: ✅ 已达成目标（15 公理 + 29 定理 = 44 条），详见 `struct/01-meta-model-standards/06-formal-axioms/` 和 `struct/07-formal-verification/`
+> **状态**: ✅ 已达成目标（01 主题：10 公理 + 17 定理 = 27 条，均为严格公理与派生定理；另含工程启发式 5 条，不计入严格公理。全体系含其他主题共 71 条命题，见下方统计表），详见 `struct/01-meta-model-standards/06-formal-axioms/` 和 `struct/07-formal-verification/`
 > **可视化**: 完整依赖网络图见 `struct/99-reference/visualizations/axiom-theorem-full-graph.mmd`
 
 ---

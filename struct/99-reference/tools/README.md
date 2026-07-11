@@ -34,8 +34,8 @@ pip install -r struct/99-reference/tools/requirements.txt
 | PIU 贝叶斯验证 | `../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | IEC 61508 Proven-in-Use 统计验证 | ✅ 依赖就绪 |
 | 供应链攻击树可视化 | `../../10-supply-chain-security/03-attack-vectors/attack-tree-interactive.py` | 5 种攻击场景、单文件 HTML 生成 | ✅ 可用 |
 | EU CRA 合规检查 | `../../10-supply-chain-security/06-case-studies/eu-cra-checklist.py` | 20 项检查清单、JSON/Markdown 报告 | ✅ 可用 |
-| 复用决策工具 v1 | `reuse-decision-tool/` | 交互式六阶段复用决策（Web/CLI） | 🔄 Phase 6 |
-| 复用决策工具 v2 | `reuse-decision-tool-v2/main.py` | 增强版复用决策（Streamlit / CLI） | ✅ help 可用 |
+| 复用决策工具 v1 | `reuse-decision-tool/` | 交互式六阶段复用决策（生命周期视角，历史概念稿） | 📦 已归档（DEPRECATED，权威实现为 v2） |
+| 复用决策工具 v2 | `reuse-decision-tool-v2/main.py` | 增强版复用决策（判定门径视角，Streamlit / CLI）— **权威实现** | ✅ help 可用 |
 | 形式化验证环境 | `formal-verification-env/` | Docker 化 TLA+/Alloy/Coq/Isabelle | ⚠️ 仅文档/占位，未安装验证 |
 
 > **说明**: 形式化验证工具按用户要求仅保留内容与占位，不进行 Docker 安装或运行时验证。
@@ -129,7 +129,7 @@ python reuse-decision-tool-v2/main.py --help
 - ISO/IEC 25010:2023/25040 质量矩阵评估器 — Phase 1
 - PIU 贝叶斯验证完整输入示例 — Phase 2
 - 供应链攻击树可视化扩展（MCP/Agentic 攻击向量） — Phase 2
-- `reuse-decision-tool/` 与 v2 能力对齐 — Phase 6
+- ~~`reuse-decision-tool/` 与 v2 能力对齐 — Phase 6~~ **已取消**：v1 已于 2026-07-12 归档，以 `reuse-decision-tool-v2/` 为权威实现，不再做能力对齐
 
 ---
 

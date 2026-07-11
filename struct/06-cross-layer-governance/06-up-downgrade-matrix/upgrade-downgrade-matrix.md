@@ -369,6 +369,7 @@ sequenceDiagram
 
 > **交叉引用**:
 >
+> - 统一复用决策模型：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](./unified-reuse-decision-model.md)（本矩阵在统一决策栈中定位为 L2 层级判定）
 > - 跨层复用治理框架：[`struct/06-cross-layer-governance/01-process-governance/cross-layer-governance.md`](../01-process-governance/cross-layer-governance.md)
 > - FinOps 单位经济学：[`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../04-finops-cost/finops-unit-economics-2026.md)
 > - 复用度量指标体系：[`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../05-metrics-kpi/metrics-framework.md)

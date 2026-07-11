@@ -17,7 +17,7 @@
 | **C-05 GUAC 供应链图谱** | GUAC v0.x, SLSA 1.2, OpenSSF Scorecard, SPDX 2.3, CycloneDX 1.6, OSV | 供应链安全 / 风险量化与知识图谱 | 与 C-04 SCVS 互补：C-04 提供验证标准，C-05 提供动态风险分析能力；与 10/03 攻击向量形成"防御-检测"闭环 | GUAC: <https://guac.sh/> (2026)<br>OpenSSF Scorecard: <https://securityscorecards.dev/> (2026)<br>OSV: <https://osv.dev/> (2026) |
 | **C-06 TMForum 电信架构复用** | TMForum ODF, eTOM, SID, ODA, CAMARA | 业务架构 / 电信垂直行业 | 与 02/02 FEA BRM、B-04 BIAN 形成"政府-金融-电信"三行业业务能力映射互补；与 03 应用架构微服务形成行业-技术映射 | TMForum: <https://www.tmforum.org/> (2026)<br>CAMARA: <https://camara.project.org/> (2026) |
 | **C-07 NAF/MODAF 北约架构复用** | NAF 4.0, MODAF, DoDAF 2.02, UAF 1.3 | 业务架构 / 国防使命工程 | 与 B-01 DoDAF/UAF 互补：B-01 覆盖美国/国际视角，C-07 覆盖北约/英国视角；与 02/07 国防使命工程形成纵深 | NATO NAF: <https://nafdocs.org/> (2018)<br>MODAF: <https://www.mod.uk/> (2012)<br>DoDAF: <https://dodcio.defense.gov/dodaf/> (2010) |
-| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26565:2026 产品线成熟度框架 / 26566 产品线纹理, NASA RRL) | 工具链 / 复用决策支持 | 与 99-reference/tools/reuse-decision-tool/ (v1.0) 互补：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26565: <https://www.iso.org/standard/81436.html> (2026)<br>ISO 26566: <https://www.iso.org/standard/81437.html> (2026) |
+| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26565:2026 产品线成熟度框架 / 26566 产品线纹理, NASA RRL) | 工具链 / 复用决策支持 | 取代 99-reference/tools/reuse-decision-tool/ (v1.0，已归档)：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26565: <https://www.iso.org/standard/81436.html> (2026)<br>ISO 26566: <https://www.iso.org/standard/81437.html> (2026) |
 
 ---
 

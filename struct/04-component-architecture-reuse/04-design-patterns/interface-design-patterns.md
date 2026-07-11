@@ -10,6 +10,7 @@
 
 - [组件接口契约设计模式](#组件接口契约设计模式)
   - [目录](#目录)
+  - [核心概念定义](#核心概念定义)
   - [1. 接口契约的层次](#1-接口契约的层次)
   - [2. 核心设计模式](#2-核心设计模式)
     - [模式 1: Stable Abstraction Principle (SAP)](#模式-1-stable-abstraction-principle-sap)
@@ -34,6 +35,7 @@
     - [反模式 1: 接口膨胀 (Interface Bloat)](#反模式-1-接口膨胀-interface-bloat)
     - [反模式 2: 循环依赖 (Circular Dependency)](#反模式-2-循环依赖-circular-dependency)
     - [反模式 3: 隐式契约 (Implicit Contract)](#反模式-3-隐式契约-implicit-contract)
+  - [正向复用案例](#正向复用案例)
   - [8. 标准条款映射](#8-标准条款映射)
   - [9. 权威来源](#9-权威来源)
 

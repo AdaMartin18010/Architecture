@@ -1,7 +1,18 @@
 # 交互式复用决策工具
 
-> **定位**: 支持六阶段复用决策流程的交互式工具（Web/CLI）
-> **计划阶段**: Phase 6（2027-Q4）
+> ## ⛔ DEPRECATED — 已归档，仅作历史参考
+>
+> **本目录（v1）已归档，不再维护。** 权威实现为 **[复用决策工具 v2.0](../reuse-decision-tool-v2/README.md)**（CLI + Streamlit Web，含可执行规则引擎、数据驱动模板与单元测试）。
+>
+> **两套“六阶段”的关系（不矛盾，视角不同）**：
+>
+> - **v1 = 生命周期视角**：识别 → 评估 → 适配 → 集成 → 验证 → 治理（描述复用活动的全过程）
+> - **v2 = 判定门径视角**：语义兼容 → 变性绑定 → 质量 → 安全合规 → 成本收益 → 治理合规（描述复用准入的六道判定门，见 v2 README 中的映射表）
+>
+> 相关治理文档：[统一复用决策模型（URDM）](../../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)、[升级/降级矩阵](../../../06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md)。
+
+> **定位**: 支持六阶段复用决策流程的交互式工具（Web/CLI）— **历史概念稿**
+> **状态**: 📦 已归档（2026-07-12），权威实现为 [v2.0](../reuse-decision-tool-v2/README.md)
 > **技术栈**: Python + Streamlit（按决策 3A）
 
 ---

@@ -1,4 +1,10 @@
 (* Coq/Rocq 插入排序正确性证明
+
+   【定位标注】教学示例：演示证明工具用法（函数正确性：有序性 + 排列保持），
+   非本项目公理体系（M/E/S/P 公理与 Th 定理）的形式化。
+   公理→形式化规约的完整映射见：
+   struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md
+
    目标：
    1. insertion_sort_sorted — 输出列表按升序排列
    2. insertion_sort_count — 输出保持元素计数不变（排列）

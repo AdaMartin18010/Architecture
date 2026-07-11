@@ -299,7 +299,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 
 对应项目 PoC 与模板：
 
-- `struct/10-supply-chain-security/05-slsa-l4-poc/`：演示双人审查、密封构建、可复现构建、来源证明的最小可运行实现。
+- `struct/10-supply-chain-security/13-slsa-l4-poc/`：演示双人审查、密封构建、可复现构建、来源证明的最小可运行实现。
 - `struct/10-supply-chain-security/04-provenance-examples/`：提供 GitHub Actions + cosign + OCI referrers 的完整工作流模板。
 
 ---

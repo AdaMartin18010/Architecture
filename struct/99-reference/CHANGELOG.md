@@ -5,6 +5,15 @@
 
 ---
 
+## 2026-07-12 复用决策工具 v1 归档
+
+- `99-reference/tools/reuse-decision-tool/`（v1，生命周期视角六阶段，历史概念稿）**已归档（DEPRECATED）**，仅作历史参考，不再维护。
+- 权威实现为 `99-reference/tools/reuse-decision-tool-v2/`（v2.0，判定门径视角六阶段：语义兼容 → 变性绑定 → 质量 → 安全合规 → 成本收益 → 治理合规）。
+- 两套“六阶段”不矛盾：v1 描述复用活动全生命周期，v2 描述复用准入判定门；映射表见 v2 README。
+- 同步修正：`struct/99-reference/tools/README.md` 工具索引、`struct/MASTER_PLAN.md`、`struct/99-reference/deliverables-manifest.md`、`struct/06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md`、`struct/99-reference/alignment-matrix-phase-c.md` 中的引用表述。
+
+---
+
 ## 2026-07-06 Phase 0 执行与基础修复完成
 
 > **触发原因**: 在启动 Phase 1 内容深化前，按 `SUBSEQUENT_PLAN_2026_NETWORK_ALIGNED_v2.md` 执行 Phase 0：对齐目录结构、修复工具依赖、验证可执行脚本、建立统一依赖索引，并完成权威来源索引更新。
@@ -323,7 +332,7 @@
 
 - `07-omg-ras/ras-alignment.md` — 对齐 OMG RAS v2.2（formal/05-11-02），覆盖 Core RAS 四元组（Classification/Solution/Usage/RelatedAssets）、Profile 扩展、`.ras` 包格式、仓库服务接口，以及与 ISO/IEC/IEEE 42010:2022 / TOGAF 的映射
 - `08-fair4rs/fair4rs-alignment.md` — 对齐 FAIR4RS Principles v1.0 (RDA, 2022)，覆盖 F/A/I/R 17 条子原则、与 SBOM/MCP/容器注册表的整合、架构资产 FAIR4RS 合规行动清单
-- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 ISO/IEC/IEEE 1517:2010-2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO/IEC/IEEE 12207:2017 / 42020 / TOGAF ADM
+- `01-iso-420xx-family/ieee-1517-reuse-processes.md` — 对齐 ISO/IEC/IEEE 1517:2010 软件生命周期复用过程，映射 Domain Engineering / Reuse Asset Management / Reuse Program Management 与 ISO/IEC/IEEE 12207:2017 / 42020 / TOGAF ADM
 
 #### AI 原生复用
 
@@ -347,7 +356,7 @@
 
 - OMG RAS v2.2 formal/05-11-02: <https://www.omg.org/spec/RAS/2.2/PDF>
 - FAIR4RS v1.0 (RDA, 2022): <https://archive.rd-alliance.org/sites/default/files/FAIR%20Principles%20for%20Research%20Software%20%28FAIR4RS%20Principles%29.pdf>
-- ISO/IEC/IEEE 1517:2010-2010: <https://standards.ieee.org/ieee/1517/4603/>
+- ISO/IEC/IEEE 1517:2010: <https://standards.ieee.org/ieee/1517/4603/>
 - MCP 2025-11-25 Spec: <https://modelcontextprotocol.io/specification/2025-11-25>
 - MCP Linux Foundation Governance: <https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation>
 - Angelopoulos & Bates, "A Gentle Introduction to Conformal Prediction" (2021): <https://arxiv.org/abs/2107.07511>

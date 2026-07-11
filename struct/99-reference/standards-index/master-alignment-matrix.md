@@ -21,7 +21,7 @@
 
 > **更新说明**:
 > 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；**2026-07-28** 为官方 Release Candidate（2026-05-29 发布），最终版预计 2026-07-28，本矩阵统一以稳定版 2025-11-25 为基线。
-> 新增 **OMG RAS v2.2**、**FAIR4RS**、**ISO/IEC/IEEE 1517:2010-2010** 三个元模型层标准对齐。
+> 新增 **OMG RAS v2.2**、**FAIR4RS**、**ISO/IEC/IEEE 1517:2010** 三个元模型层标准对齐。
 > A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
 > 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
 > [1](https://modelcontextprotocol.io/specification/2025-11-25)
@@ -206,7 +206,7 @@
 | NIST SP 800-161r1 | 现行 | 供应链风险管理 | 开源组件安全治理 | TBD |
 | NIST SP 800-204 系列 | 2025 更新 | DevSecOps + 供应链集成 | 微服务安全架构复用 | TBD |
 
-> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"；A2A v1.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
+> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；2026-07-28 为官方 RC（2026-05-29 发布），最终版尚未发布，本矩阵以稳定版 2025-11-25 为基线；A2A v1.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
 
 ---
 

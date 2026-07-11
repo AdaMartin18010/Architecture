@@ -1,6 +1,6 @@
 # T13: 跨层复用映射的约束验证 (Alloy)
 
-> **版本**: 2026-06-08 (Phase 2 扩展版)
+> **版本**: 2026-07-12 (修复 F2/F3/A3 映射方向逻辑矛盾)
 > **对应规约**: `cross-layer-mapping.als`, `isa95-hierarchy.als`
 > **交叉引用**: `struct/01-meta-model-standards/06-formal-axioms/axiom-system.md`, `struct/11-industrial-iot-otit/01-isa-95-model/`
 > **理论来源**: Jackson, D. *Software Abstractions*; ISO/IEC/IEEE 42010:2022; TOGAF Standard 10; ANSI/ISA-95.00.01-2010
@@ -90,18 +90,24 @@ sig FunctionLayer extends Layer {}
 
 ```alloy
 fact AdjacentLayerMapping {
-    all m: Mapping |
-        (m.source in BusinessAsset implies m.target in ApplicationAsset) and
-        (m.source in ApplicationAsset implies m.target in ComponentAsset) and
-        (m.source in ComponentAsset implies m.target in FunctionAsset) and
-        (m.source in FunctionAsset implies m.target in ComponentAsset)
+    all m: Mapping | AdjacentLayers[m.source.layer, m.target.layer]
+}
+
+-- 其中：
+pred AdjacentLayers[upper, lower: Layer] {
+    (upper in BusinessLayer and lower in ApplicationLayer) or
+    (upper in ApplicationLayer and lower in ComponentLayer) or
+    (upper in ComponentLayer and lower in FunctionLayer)
+}
 ```
 
 这一约束形式化了 `struct/01-meta-model-standards/06-formal-axioms/axiom-system.md` 中的 **S.4 Abstraction Layering**（抽象分层）公理：
 
 > "任何资产只能依赖同层或其直接下层资产。"
 
-在 Alloy 中，我们将"依赖"具体化为"映射目标"，将"同层或直接下层"具体化为相邻层约束。允许 `ComponentAsset -> FunctionAsset` 的双向映射，是因为组件层和功能层之间存在紧密的往返关系：组件精化为函数，函数又反过来实现组件接口。
+在 Alloy 中，我们将"依赖"具体化为"映射目标"，将"同层或直接下层"具体化为相邻层约束（同层映射在本规约中被进一步收紧为禁止，以与 A3 `NoReverseMapping` 的方向约定保持一致）。
+
+> **2026-07-12 修复说明**：本规约曾存在 F2/F3/A3 逻辑矛盾——原 F2 `MappingDirection` 允许 `ApplicationAsset → BusinessAsset`、`ComponentAsset → ApplicationAsset`、`FunctionAsset → ComponentAsset` 三对反向映射，原 F3 允许 `FunctionAsset → ComponentAsset`，而 A3 `NoReverseMapping` 禁止全部反向映射，导致方向约定不自洽。依据 S.4 原文“每一层只依赖其直接下层的接口”，方向约定为严格的“上层→下层”（Business → Application → Component → Function）。修复后 F2 移除全部反向映射对并禁止 `FunctionAsset` 作为映射源，F3 改用 `AdjacentLayers` 谓词表达相邻层约束。修复后 F2∧F3 ⇒ A3；事实集仍可满足（存在含 `ComponentAsset` 的合法实例，见 .als 文件内“修复后人工推演”注释与 `run ShowValidMapping`），故 A3 的 check 通过是真实蕴涵而非空虚真（已于 2026-07-12 用 Alloy Analyzer 6.2.0 / SAT4J 机器复验：三条 check 均无反例，`run ShowValidMapping` 可生成实例；负对照实验中弱化 F2/F3 后 A3 能检出反例）。组件与函数之间的往返关系（组件精化为函数、函数实现组件接口）应建模为两条独立的单向映射（精化链与实现链各有其 `Mapping` 实例），而非同一映射的双向边。
 
 ### F4: ConcernConsistency（关注点一致性）
 
@@ -354,7 +360,7 @@ BusinessAsset$0 -> Mapping$0 -> ComponentAsset$1
 
 ### 10.5 边界条件
 
-- `MappingDirection` fact 当前允许 `ApplicationAsset → BusinessAsset` 等反向映射（用于回溯/追溯），但 `NoReverseMapping` 断言禁止这些反向映射成为规约的合法状态。设计时需明确区分“允许追溯”与“禁止反向实现”。
+- ~~`MappingDirection` fact 当前允许 `ApplicationAsset → BusinessAsset` 等反向映射~~ **（2026-07-12 已修复）**：`MappingDirection` 不再允许任何反向映射，方向严格为 Business → Application → Component → Function，`FunctionAsset` 不能作为映射源。若需表达“回溯/追溯”关系，应使用独立的追溯关系签名（本规约未建模），而非复用 `Mapping` 的反向边。
 - 版本兼容性、时间特性、SIL 等扩展约束在第 4 节以伪代码形式给出，若要在 Alloy 中验证，需补充对应的签名与事实。
 
 ### 10.6 延伸阅读
@@ -379,7 +385,7 @@ BusinessAsset$0 -> Mapping$0 -> ComponentAsset$1
 
 ---
 
-> 最后更新: 2026-06-08 (Phase 2 扩展 ISA-95 约束与 SIL/时间兼容性)
+> 最后更新: 2026-07-12 (修复 F2/F3/A3 映射方向逻辑矛盾；此前版本: 2026-06-08 Phase 2 扩展 ISA-95 约束与 SIL/时间兼容性)
 
 
 ---

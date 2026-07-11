@@ -1,6 +1,6 @@
 # API 设计模式与功能复用
 
-> **版本**: 2026-07-11
+> **版本**: 2026-07-12
 > **定位**: 由 `struct/05-functional-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 05-functional-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -14,7 +14,7 @@
 1. [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 2. [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 3. [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-4. [领域函数目录](../struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md)
+4. [领域函数目录](../struct/05-functional-architecture-reuse/07-domain-functions/domain-function-catalog.md)
 5. [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
 6. [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
 7. [MCP Tool 的可复用设计](../struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/mcp-tool-design.md)
@@ -1282,7 +1282,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ---
 
 
-<!-- SOURCE: struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md -->
+<!-- SOURCE: struct/05-functional-architecture-reuse/07-domain-functions/domain-function-catalog.md -->
 
 # 领域函数目录
 

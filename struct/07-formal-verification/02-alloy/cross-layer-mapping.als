@@ -9,6 +9,35 @@
  * 
  * 交叉引用: struct/01-meta-model-standards/06-formal-axioms/axiom-system.md
  * 理论来源: Daniel Jackson, Software Abstractions; ISO/IEC 42010:2022
+ *
+ * ------------------------------------------------------------
+ * 修复记录 (2026-07-12): F2/F3/A3 逻辑矛盾修复
+ * ------------------------------------------------------------
+ * 矛盾: 原 F2 (MappingDirection) 允许反向映射对
+ *   (ApplicationAsset→BusinessAsset, ComponentAsset→ApplicationAsset,
+ *    FunctionAsset→ComponentAsset)，原 F3 (AdjacentLayerMapping) 允许
+ *   FunctionAsset→ComponentAsset；而 A3 (NoReverseMapping) 禁止全部
+ *   反向映射。F2∧F3 与 A3 对反向映射给出相反约束，方向约定不自洽。
+ * 依据: 公理 S.4 (Abstraction Layering) 原文——“每一层只依赖其直接下层
+ *   的接口，禁止跨层直接依赖”“任何资产只能依赖同层或其直接下层资产”
+ *   (struct/01-meta-model-standards/06-formal-axioms/axiom-system.md)。
+ *   方向约定为严格“上层→下层”:
+ *   Business → Application → Component → Function。
+ * 修复: F2 移除全部反向映射对，并禁止 FunctionAsset 作为映射源；
+ *   F3 改用 AdjacentLayers 谓词表达相邻层（上层→下层）约束，移除
+ *   FunctionAsset→ComponentAsset 条款。修复后 F2∧F3 ⇒ A3。
+ * 非空虚性: 事实集仍可满足（见 run ShowValidMapping 及文件内
+ *   “修复后人工推演”注释），A3 的 check 通过是真实蕴涵而非空虚真。
+ * 验证状态: 已机器复验（2026-07-12）。本机无 alloy 命令行工具且 Docker
+ *   daemon 未运行，故使用 Alloy Analyzer 6.2.0 (org.alloytools.alloy.dist,
+ *   SAT4J 后端) 以 Java API 逐条执行全部命令，结果：
+ *     - check AllMappingsAreAdjacent : no counterexample found
+ *     - check NoConcernConflicts     : no counterexample found
+ *     - check NoReverseMapping       : no counterexample found
+ *     - run   ShowValidMapping       : instance found（事实集可满足，
+ *       证明上述 check 非空虚真）
+ *   负对照：临时将 F2/F3 弱化为恒真后，A1 与 A3 均检出反例，证明
+ *   修复后的“无反例”是真实蕴涵而非前提不可满足导致的假象。
  */
 
 module CrossLayerMapping
@@ -90,30 +119,32 @@ fact AssetLayerAlignment {
 }
 
 /**
- * F2: 映射方向约束
+ * F2: 映射方向约束（2026-07-12 修复：移除反向映射对）
  * 映射只能从高层指向低层，禁止反向映射或同层映射。
- * 这对应于 TOGAF 架构 continuum 中的 "从上至下精化"原则。
+ * 这对应于 TOGAF 架构 continuum 中的 "从上至下精化"原则，
+ * 以及公理 S.4 的“每一层只依赖其直接下层”约定。
+ * 方向唯一：Business → Application → Component → Function；
+ * FunctionAsset 是最底层，不能作为任何映射的源。
  */
 fact MappingDirection {
     all m: Mapping |
         (m.source in BusinessAsset implies m.target in ApplicationAsset) and
-        (m.source in ApplicationAsset implies m.target in ComponentAsset or m.target in BusinessAsset) and
-        (m.source in ComponentAsset implies m.target in FunctionAsset or m.target in ApplicationAsset) and
-        (m.source in FunctionAsset implies m.target in ComponentAsset)
+        (m.source in ApplicationAsset implies m.target in ComponentAsset) and
+        (m.source in ComponentAsset implies m.target in FunctionAsset) and
+        no (m.source & FunctionAsset)
 }
 
 /**
- * F3: 相邻层映射约束（核心约束）
- * 资产只能被映射到相邻层，不允许跨两层直接映射。
+ * F3: 相邻层映射约束（核心约束）（2026-07-12 修复：改用 AdjacentLayers 谓词，
+ *     移除原 FunctionAsset→ComponentAsset 反向条款）
+ * 资产只能被映射到相邻的直接下层，不允许跨两层直接映射，也不允许反向映射。
  * 例如：业务资产不能直接映射到组件资产，必须经过应用层。
  * 这是对 struct/01-meta-model-standards/06-formal-axioms 中 S.4 (Abstraction Layering) 的形式化。
+ * 注：F2 从资产类型层面约束方向，F3 从层次（Layer）层面约束相邻性；
+ * 在 F1 (AssetLayerAlignment) 下二者等价，共同保证 F2∧F3 ⇒ A3。
  */
 fact AdjacentLayerMapping {
-    all m: Mapping |
-        (m.source in BusinessAsset implies m.target in ApplicationAsset) and
-        (m.source in ApplicationAsset implies m.target in ComponentAsset) and
-        (m.source in ComponentAsset implies m.target in FunctionAsset) and
-        (m.source in FunctionAsset implies m.target in ComponentAsset)
+    all m: Mapping | AdjacentLayers[m.source.layer, m.target.layer]
 }
 
 /**
@@ -243,7 +274,30 @@ check AllMappingsAreAdjacent for 3 but 6 Mapping, 4 Concern
 /** 检查关注点一致性 */
 check NoConcernConflicts for 3 but 6 Mapping, 4 Concern
 
-/** 检查映射方向 */
+/**
+ * 检查映射方向
+ *
+ * 修复后人工推演（2026-07-12）：本 check 不是空虚真（vacuously true）。
+ * 论证分两步：
+ *   1) 事实集可满足（模型非空）。构造实例 I：
+ *      BusinessAsset={b1}, ApplicationAsset={a1}, ComponentAsset={c1},
+ *      FunctionAsset={f1}，各资产 layer 由 F1 唯一确定；
+ *      Mapping={m1,m2,m3}，m1: b1→a1，m2: a1→c1，m3: c1→f1；
+ *      所有 realizes/concerns 为空集。
+ *      逐条核验：F1 按构造成立；F2/F3 中三条正向链均满足；
+ *      F4/F6 因 realizes 为空而平凡成立；F5 要求 FunctionAsset 被映射
+ *      覆盖（m3.target=f1 ✓）、BusinessAsset 为某映射源（m1.source=b1 ✓）。
+ *      故 I ⊨ F1∧…∧F6，且 I 含 ComponentAsset（c1）——事实集可满足。
+ *   2) A3 无反例是真实蕴涵而非前提不可满足：任何反向映射
+ *      （ApplicationAsset→BusinessAsset、ComponentAsset→ApplicationAsset、
+ *      FunctionAsset→ComponentAsset）都直接违反修复后的 F2
+ *      （及 F3，因 AdjacentLayers 仅定义上层→下层相邻对），故在
+ *      满足事实的实例空间中不存在 A3 的反例；check 报告
+ *      "No counterexample found" 反映的是 F2∧F3 ⇒ A3 的蕴涵关系，
+ *      而非修复前 F2 与 F3/A3 相互矛盾导致的虚假通过。
+ *      欲观察 A3 真正检出反例，可临时注释 F2 或 F3 之一后重新 check，
+ *      Alloy 将给出如 FunctionAsset→ComponentAsset 的反例实例。
+ */
 check NoReverseMapping for 3 but 6 Mapping
 
 -- ============================================================

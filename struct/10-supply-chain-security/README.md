@@ -132,7 +132,7 @@ graph LR
 - [x] SBOM 标准对比 (`02-sbom-standards/`)
 - [x] 供应链攻击树与 MITRE 映射 (`03-attack-vectors/`)
 - [x] 零信任供应链模板 (`05-zero-trust-supply-chain/`)
-- [x] SLSA Build Level 4 PoC (`05-slsa-l4-poc/`)
+- [x] SLSA Build Level 4 PoC (`13-slsa-l4-poc/`)
 - [x] EU CRA 合规检查清单 (`06-case-studies/`)
 
 关联主题：
@@ -214,7 +214,7 @@ graph LR
 | L1：自动化生成 Provenance | CI/CD 流水线统一配置，禁止本地手动构建 | 检查 `.github/workflows/` 存在构建工作流 |
 | L2：托管构建 + 签名 Provenance | 使用 GitHub Actions + `actions/attest-build-provenance` 或 cosign keyless | `slsa-verifier` 验证 builder.id 与签名链 |
 | L3：隔离/密封/临时构建 | 构建容器 `--network=none`，每次构建新 runner，签名密钥由 OIDC 联邦签发 | 审计 runner 网络策略与 provenance 中 `internalParameters` |
-| L4（草案）：双人审查 + 可复现构建 | 主分支强制 ≥2 人审批，构建脚本与输入锁定 | 本主题 `05-slsa-l4-poc/` 提供最小可运行演示 |
+| L4（草案）：双人审查 + 可复现构建 | 主分支强制 ≥2 人审批，构建脚本与输入锁定 | 本主题 `13-slsa-l4-poc/` 提供最小可运行演示 |
 
 ## 16. 持续改进方向
 

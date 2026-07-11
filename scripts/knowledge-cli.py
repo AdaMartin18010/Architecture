@@ -120,8 +120,18 @@ def _crosscheck_axiom_tree(path: Path, strict_total: int, theorem_count: int) ->
             warnings.append(
                 f"axiom-theorem-tree 头部称定理 {h_theorem}，theorem-derivations 实 {theorem_count}（不一致）"
             )
-    for t in totals:
-        warnings.append(f"axiom-theorem-tree 统计表总计 = {t}（与头部/解析口径可能不一致，待 P1 归一）")
+    for t_str in totals:
+        # 统计表总计校验：总计必须等于其上方各行“数量”列之和（而非无条件告警）
+        row_m = re.search(rf"^\|\s*\*\*总计\*\*\s*\|\s*\*\*{t_str}\*\*.*$", text, re.MULTILINE)
+        if not row_m:
+            continue
+        table_head = text.rfind("###", 0, row_m.start())
+        block = text[table_head:row_m.start()] if table_head != -1 else text[:row_m.start()]
+        rows = re.findall(r"^\|[^|]*\|\s*(\d+)\s*\|", block, re.MULTILINE)
+        if rows and sum(int(x) for x in rows) != int(t_str):
+            warnings.append(
+                f"axiom-theorem-tree 统计表总计 = {t_str}，各行合计 = {sum(int(x) for x in rows)}（不一致）"
+            )
     return warnings
 
 

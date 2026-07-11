@@ -264,7 +264,7 @@ flowchart LR
 
 ## 概念定义
 
-**定义**：ISO/IEC/IEEE 1517:2010-2010 定义了软件生命周期中复用过程的结构，包括组织管理、领域工程、资产提供、资产消费与资产维护等过程。
+**定义**：ISO/IEC/IEEE 1517:2010 定义了软件生命周期中复用过程的结构，包括组织管理、领域工程、资产提供、资产消费与资产维护等过程。
 
 ## 示例
 
@@ -274,6 +274,6 @@ flowchart LR
 
 > **权威来源**:
 >
-> - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/)
+> - [ISO/IEC/IEEE 1517:2010](https://standards.ieee.org/ieee/1517/4603/)
 > - [IEEE Standards](https://standards.ieee.org)
 > - 核查日期：2026-07-07

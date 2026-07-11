@@ -1,6 +1,7 @@
 # Coq/Rocq & Isabelle/HOL 可复用组件验证案例
 
 > **定位**：为高安全等级可复用组件提供可运行的形式化验证示例，覆盖函数级正确性与状态不变量。
+> **教学示例声明**：本目录下全部 `.v`/`.thy` 文件均为**教学示例**，用于演示证明工具用法，**非本项目公理体系（M/E/S/P 公理与 Th 定理）的形式化**。公理→形式化规约的完整映射与形式化状态见 [`struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md`](../../01-meta-model-standards/06-formal-axioms/formalization-mapping.md)。
 > **环境**：Rocq 9.0+ / Isabelle2025+；详见 `struct/99-reference/tools/formal-verification-env/`。
 
 ---

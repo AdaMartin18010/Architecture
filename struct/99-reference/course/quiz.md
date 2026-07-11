@@ -116,7 +116,7 @@
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
-- D. MCP 2026-07-28 RC（已废弃） ✅
+- D. MCP 2026-07-28（未标注 RC，直接当作稳定版引用） ✅
 
 ---
 

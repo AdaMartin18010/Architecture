@@ -40,11 +40,12 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "struct" / "99-reference" / "knowledge-graph
 # 标准/框架/协议的关键词与正则
 STANDARD_PATTERNS = [
     # ISO/IEC/IEEE 42010:2022, ISO/IEC 25010:2023 等
-    (r"ISO/IEC(?:/IEEE)?\s+\d+(?::\d{4})?", "Standard"),
+    # 尾部 (?![\dA-Za-z]) 防止把 "420xx" 族占位截断成 "ISO/IEC/IEEE 420"
+    (r"ISO/IEC(?:/IEEE)?\s+\d+(?::\d{4})?(?![\dA-Za-z])", "Standard"),
     # IEC 61508, IEC 63278 等
-    (r"IEC\s+(?:TS\s+)?\d+(?::\d{4})?", "Standard"),
+    (r"IEC\s+(?:TS\s+)?\d+(?::\d{4})?(?![\dA-Za-z])", "Standard"),
     # IEEE 1517-2010, IEEE Std 1012-2024 等
-    (r"IEEE(?:\s+Std)?\s+\d+(?:\.\d+)?(?:-\d{4})?", "Standard"),
+    (r"IEEE(?:\s+Std)?\s+\d+(?:\.\d+)?(?:-\d{4})?(?![\dA-Za-z])", "Standard"),
     # NIST SP 800-218, NIST AI RMF 等
     (r"NIST\s+(?:SP\s+)?\d{3}(?:[A-Z]|-\d+)?(?:\s+Rev\.\s*\d+)?", "Standard"),
     # OWASP Top 10, OWASP ASVS 等
@@ -61,14 +62,14 @@ STANDARD_PATTERNS = [
     (r"(?:BPMN|DMN)\s*\d+(?:\.\d+)?", "Standard"),
     # MCP 2025-11-25, MCP 2026-07-28
     (r"MCP\s+\d{4}-\d{2}-\d{2}(?:\s+RC)?", "Protocol"),
-    # A2A v1.0.0
-    (r"A2A\s+v?\d+(?:\.\d+)*", "Protocol"),
+    # A2A v1.0.0 / A2A 2.0（必须带 v 前缀或为小数版本，防止误抽 "A2A 150+ 企业采用"）
+    (r"A2A\s+(?:v\d+(?:\.\d+)*|\d+\.\d+(?:\.\d+)?)(?![\d.+])", "Protocol"),
     # OPC UA FX
     (r"OPC\s+UA\s*(?:FX)?", "Standard"),
     # ISA-95
     (r"ISA-95", "Standard"),
     # ISO 26262, ISO 21448
-    (r"ISO\s+\d+(?::\d{4})?", "Standard"),
+    (r"ISO\s+\d+(?::\d{4})?(?![\dA-Za-z])", "Standard"),
     # FAIR4RS
     (r"FAIR4RS", "Standard"),
     # SWEBOK V4

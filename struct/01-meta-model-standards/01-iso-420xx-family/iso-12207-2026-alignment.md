@@ -18,8 +18,8 @@
     - [2.2 支持过程中的复用活动](#22-支持过程中的复用活动)
     - [2.3 组织过程中的复用活动](#23-组织过程中的复用活动)
   - [3. 与四层复用模型的对照](#3-与四层复用模型的对照)
-  - [4. 与 ISO/IEC/IEEE 1517:2010 的复用过程对照](#4-与-ieee-1517-的复用过程对照)
-  - [5. 与 ISO/IEC 26550:2015 产品线工程的对照](#5-与-isoiec-26550-产品线工程的对照)
+  - [4. 与 IEEE 1517 的复用过程对照](#4-与-ieee-1517-的复用过程对照)
+  - [5. 与 ISO/IEC 26550 产品线工程的对照](#5-与-isoiec-26550-产品线工程的对照)
   - [6. 2026 版新增概念对复用的影响](#6-2026-版新增概念对复用的影响)
     - [6.1 系统之系统（System of Systems, SoS）](#61-系统之系统system-of-systems-sos)
     - [6.2 技术债务（Technical Debt）](#62-技术债务technical-debt)
@@ -203,7 +203,7 @@ IEEE 1517-2010 定义了软件生命周期中的复用专用过程，包括：**
 > - IEC Webstore: ISO/IEC/IEEE 12207:2026. <https://webstore.iec.ch/en/publication/113447>
 > - ISO/IEC/IEEE 12207:2017 (First edition, replaced by 2026 edition)
 > - ISO/IEC 26550:2015 Software and systems engineering — Reference model for product line engineering and management
-> - ISO/IEC/IEEE 1517:2010-2010 IEEE Standard for Information Technology—System and Software Life Cycle Processes—Reuse Processes
+> - ISO/IEC/IEEE 1517:2010 IEEE Standard for Information Technology—System and Software Life Cycle Processes—Reuse Processes
 >
 > **核查日期**: 2026-06-10
 

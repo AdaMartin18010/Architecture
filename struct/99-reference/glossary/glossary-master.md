@@ -1,4 +1,49 @@
 
+## A
+
+### Architecture Decision / ADR (架构决策)
+
+- **定义**: 对系统架构产生影响的决策，连同其依据（rationale）的记录。ISO/IEC/IEEE 42010:2022 将 architecture decision 定义为影响系统架构的决策，architecture rationale 为支持架构决策的解释、论证或推理；工程实践中通常以轻量级文档 ADR（Architecture Decision Record）形式固化。
+- **属性**:
+  - 唯一标识与状态（proposed / accepted / deprecated / superseded）
+  - 上下文与驱动力（context & forces）
+  - 备选方案与取舍（alternatives & trade-offs）
+  - 后果（consequences，含正面与负面）
+  - 可追溯至关注点、需求与利益相关者
+- **关系**:
+  - 上位：Architecture Rationale（ISO/IEC/IEEE 42010:2022，参 `terminology-crosswalk.md` ISO 42010 vs TOGAF 对照表）
+  - 属于：Architecture Description 的组成部分
+  - 关联：Concern、Stakeholder、Viewpoint
+  - 实践模板：Nygard ADR、MADR（Markdown ADR）
+- **解释**: 架构决策是复用治理的"记忆体"：复用 vs 自研、技术选型、接口冻结等关键判断若无 ADR 记录，后续维护者无法理解决策上下文，导致重复争论或无意间推翻既有架构约束。
+- **示例**: 某平台团队以 ADR-0017 记录"采用 gRPC 作为内部服务间通信协议"，记载备选方案 REST 及取舍理由，后续 3 个项目据此复用同一协议栈与中间件配置。
+- **反例**: 关键选型仅在即时通讯中口头决定且未归档，半年后新成员质疑技术选型，团队无法给出依据，被迫重新评估，浪费数周。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO（第 3 章术语：architecture decision、architecture rationale；标准全文需购买，链接为已验证的官方目录页）
+  - 核查日期：2026-07-12
+
+### Asset (资产)
+
+- **定义**: 在软件工程语境下，对组织具有价值、可被管理的任何工作产品或制品（代码、文档、模型、测试用例、配置、数据等）。OMG RAS（Reusable Asset Specification）将 asset 定义为"为解决特定问题而打包的一组制品集合（a collection of artifacts that provides a solution to a problem）"。Asset 是 Reusable Asset 的上位概念。
+- **属性**:
+  - 有明确属主与价值
+  - 可分类、可编目（元数据）
+  - 具有生命周期（创建、维护、退役）
+  - 不必然具备复用就绪性
+- **关系**:
+  - 下位/特化：[Reusable Asset](#reusable-asset-可复用资产)——资产经设计、文档化与治理后成为可复用资产
+  - 实例：Artifact（制品）、组件、服务、模式、知识包
+  - 治理：OMG RAS、复用库（Reuse Library）、SBOM
+- **解释**: Asset 强调"有价值且受管理"；Reusable Asset 在此基础上追加稳定性、通用性、封装性、可发现性与可验证质量五项属性。换言之，所有可复用资产都是资产，但并非所有资产都可复用——资产治理的目标之一是识别并培育具备复用潜力的资产。
+- **示例**: 某项目的数据库迁移脚本受版本管理、有属主、有文档，是团队资产；但因强耦合特定环境配置，尚不构成可复用资产。
+- **反例**: 将散落在个人电脑、无版本号、无属主的代码片段称为"资产"并纳入资产库统计，导致资产盘点数据失真。
+- **权威来源**:
+  - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/PDF) — OMG（Reusable Asset Specification，Asset 定义）
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程，asset 作为复用候选）
+  - 核查日期：2026-07-12
+
+---
+
 ## B
 
 ### Business Capability (业务能力)
@@ -452,7 +497,7 @@
 - **反例**: 将高度耦合的代码片段复制到多个项目，未剥离业务专属逻辑，导致后续变更需要在多处同步修改。
 - **权威来源**:
   - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
-  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
+  - [ISO/IEC/IEEE 1517:2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
   - 核查日期：2026-07-07
 
 ### Reusable Asset (可复用资产)
@@ -540,6 +585,27 @@
   - [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing) — Wikipedia
   - [CNCF Serverless Whitepaper v2](https://github.com/cncf/wg-serverless/blob/master/whitepapers/serverless-overview/README.md) — CNCF
   - 核查日期：2026-07-07
+
+### Service (服务)
+
+- **定义**: 通过定义良好的接口显式对外暴露的行为能力单元，向使用者交付价值并隐藏内部实现。ArchiMate 将 service 定义为"显式定义的暴露行为（an explicitly defined exposed behavior）"；TOGAF 将服务视为"具有指定结果、自包含、可重复的业务活动的逻辑表示"。
+- **属性**:
+  - 显式接口契约
+  - 实现封装（消费者不依赖内部结构）
+  - 面向结果与价值
+  - 可发现、可组合
+  - 存在提供者-消费者关系
+- **关系**:
+  - 四层映射：业务服务（02-业务架构层，面向业务能力的对外承诺）、应用服务（03-应用架构层，面向应用功能）、组件服务（04-组件架构层，面向组件接口）、功能服务（05-功能架构层，面向函数/API）
+  - 标准映射：ArchiMate Business/Application/Technology Service、SOA、微服务
+  - 实现：REST、gRPC、消息接口、FaaS 触发器
+- **解释**: 本知识体系承认各层"服务"定义略有差异（参 `struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`）：业务服务强调业务结果，应用服务强调功能暴露，组件服务强调接口契约，功能服务强调可调用单元；ArchiMate 4.0 已将 Service 统一为通用域（Common Domain）元素，通过层标注（layer tag）区分上下文。服务是跨层复用的通用货币——同一"认证服务"在业务层是能力承诺，在应用层是可调用接口，在组件层是可部署单元。
+- **示例**: 组织级"身份认证服务"：业务层描述为"统一登录能力"，应用层暴露 OAuth 2.1 接口，组件层以独立部署的认证组件实现，三个业务系统通过同一契约复用。
+- **反例**: 将内部工具函数直接包装为"服务"，无契约、无版本、无 SLA，消费者绕过接口直接访问其数据库，导致提供者无法独立演进。
+- **权威来源**:
+  - [ArchiMate Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（ArchiMate 3.2 各层 Service 元素定义；4.0 统一为通用域 Service）
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（service 定义）
+  - 核查日期：2026-07-12
 
 ### Service Mesh (服务网格)
 
@@ -762,6 +828,8 @@
 | A2A | A | 12-AI 原生复用 | MCP、Agent |
 | AAS | A | 11-工业 IoT | OPC UA、ISA-95、Digital Twin |
 | API | A | 05-功能架构复用 | REST、gRPC、GraphQL |
+| Architecture Decision / ADR | A | 01-元模型 | ISO 42010、Architecture Rationale |
+| Asset | A | 01-元模型 | Reusable Asset、OMG RAS |
 | ArchiMate | A | 01-元模型 | TOGAF、ISO 42010 |
 | Architecture | A | 01-元模型 | AD、Viewpoint、View |
 | Architecture Description | A | 01-元模型 | ADL、ADF、Model Kind |
@@ -790,6 +858,7 @@
 | ROI | R | 09-价值量化 | COCOMO II、NPV |
 | SBOM | S | 10-供应链安全 | SLSA、SPDX、CycloneDX |
 | Serverless | S | 03-应用架构 | FaaS、BaaS |
+| Service | S | 跨层（02–05） | Microservices、Service Mesh、API |
 | Service Mesh | S | 03-应用架构 | Istio、Linkerd |
 | SLSA | S | 10-供应链安全 | SBOM、Sigstore |
 | Stakeholder | S | 01-元模型 | Concern、Viewpoint |

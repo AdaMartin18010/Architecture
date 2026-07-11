@@ -6,6 +6,49 @@
 
 ---
 
+## 目录
+
+- [形式化公理体系](#形式化公理体系)
+  - [目录](#目录)
+  - [概念定义](#概念定义)
+  - [符号约定](#符号约定)
+  - [1. 元公理 (Meta-Axioms)](#1-元公理-meta-axioms)
+    - [M.1 Architecture-Reuse Duality (架构-复用二元性) {#m1-architecture-reuse-duality}](#m1-architecture-reuse-duality-架构-复用二元性-m1-architecture-reuse-duality)
+    - [M.2 Variability Axiom (可变性公理) {#m2-variability-axiom}](#m2-variability-axiom-可变性公理-m2-variability-axiom)
+    - [M.3 Hierarchy Non-Reduction (层次不可约性) {#m3-hierarchy-non-reduction}](#m3-hierarchy-non-reduction-层次不可约性-m3-hierarchy-non-reduction)
+    - [M.4 Identity Preservation (同一性保持) {#m4-identity-preservation}](#m4-identity-preservation-同一性保持-m4-identity-preservation)
+  - [2. 存在性公理 (Existence Axioms)](#2-存在性公理-existence-axioms)
+    - [E.1 Reuse Asset Existence (复用资产存在性)](#e1-reuse-asset-existence-复用资产存在性)
+    - [E.2 Cost-Benefit Threshold (成本-收益阈值)](#e2-cost-benefit-threshold-成本-收益阈值)
+    - [E.3 Contextual Fitness (上下文适配性)](#e3-contextual-fitness-上下文适配性)
+  - [3. 结构性公理 (Structural Axioms)](#3-结构性公理-structural-axioms)
+    - [S.1 Interface Substitution (接口可替换性)](#s1-interface-substitution-接口可替换性)
+    - [S.2 Compositionality (组合性)](#s2-compositionality-组合性)
+    - [S.3 Dependency Transitivity of Trust (信任传递性)](#s3-dependency-transitivity-of-trust-信任传递性)
+    - [S.4 Abstraction Layering (抽象分层) \[工程启发式原则\]](#s4-abstraction-layering-抽象分层-工程启发式原则)
+  - [4. 过程性公理 (Process Axioms)](#4-过程性公理-process-axioms)
+    - [P.1 Evolution Independence (演化独立性) \[工程启发式原则\]](#p1-evolution-independence-演化独立性-工程启发式原则)
+    - [P.2 Feedback Convergence (反馈收敛性) \[工程启发式原则\]](#p2-feedback-convergence-反馈收敛性-工程启发式原则)
+    - [P.3 Governance Complexity Law (治理复杂度定律) \[工程启发式原则\]](#p3-governance-complexity-law-治理复杂度定律-工程启发式原则)
+    - [P.4 Learning Curve Monotonicity (学习曲线单调性) \[工程启发式原则\]](#p4-learning-curve-monotonicity-学习曲线单调性-工程启发式原则)
+  - [5. 公理体系统计与映射](#5-公理体系统计与映射)
+    - [公理到主题的映射](#公理到主题的映射)
+    - [5.1 标准条款映射](#51-标准条款映射)
+    - [示例](#示例)
+    - [反例](#反例)
+  - [7. 公理补全：证明草图、反模型与体系关联](#7-公理补全证明草图反模型与体系关联)
+    - [7.1 M.1 Architecture-Reuse Duality](#71-m1-architecture-reuse-duality)
+    - [7.2 M.2 Variability Axiom](#72-m2-variability-axiom)
+    - [7.3 M.3 Hierarchy Non-Reduction](#73-m3-hierarchy-non-reduction)
+    - [7.4 M.4 Identity Preservation](#74-m4-identity-preservation)
+    - [7.5 E.1 Reuse Asset Existence](#75-e1-reuse-asset-existence)
+    - [7.6 E.2 Cost-Benefit Threshold](#76-e2-cost-benefit-threshold)
+    - [7.7 E.3 Contextual Fitness](#77-e3-contextual-fitness)
+    - [7.8 S.1 Interface Substitution 边界说明](#78-s1-interface-substitution-边界说明)
+  - [8. 公理→定理推理链（Mermaid）](#8-公理定理推理链mermaid)
+  - [9. 权威来源与延伸阅读](#9-权威来源与延伸阅读)
+  - [10. 参考文献](#10-参考文献)
+
 ## 概念定义
 
 **定义**：形式化公理体系是通过公理、定理与推导规则对“复用”概念进行严格数学刻画的知识基础，旨在消除自然语言歧义，为跨层复用提供逻辑一致性保证。
@@ -528,6 +571,8 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 | P.3 Governance Complexity Law | 组织理论 / 信息论 | 规模与复杂度增长规律 | 复用规模与治理复杂度满足 $N \cdot \log(N)$ |
 | P.4 Learning Curve Monotonicity | Sweller (1988) 认知负荷理论 | 内在负荷与图式获取 | 学习成本随复用次数单调不增 |
 
+> **公理→形式化规约映射**：15 条公理与 17 条定理对应的形式化规约（TLA+/Alloy/Coq/Isabelle）、机器验证状态与缺口分析，见 [`formalization-mapping.md`](formalization-mapping.md)（2026-07-12 建立；截至该日仅 S.4 已机器验证）。
+
 ### 示例
 
 **正向示例 1：汽车电子 ECU 平台复用**
@@ -705,6 +750,10 @@ graph TD
 13. Boehm, B., et al. (2000). *Software Cost Estimation with COCOMO II*. Prentice Hall.
 14. ISO/IEC 26550:2015. *Software and systems engineering — Reference model for product line engineering and management*.
 15. ISO/IEC/IEEE 42010:2022. *Software, systems and enterprise — Architecture description*.
+
+---
+
+> 参见：《统一复用决策模型》——公理 E.2/E.3 在统一决策栈中定位为 L1 战略判定层：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # Phase C 对齐矩阵与 A+B+C 累计汇总
 
-> **版本**: 2026-07-11
+> **版本**: 2026-07-12
 > **定位**: 由 `struct/99-reference` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 99-reference --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -90,7 +90,7 @@
 | **C-05 GUAC 供应链图谱** | GUAC v0.x, SLSA 1.2, OpenSSF Scorecard, SPDX 2.3, CycloneDX 1.6, OSV | 供应链安全 / 风险量化与知识图谱 | 与 C-04 SCVS 互补：C-04 提供验证标准，C-05 提供动态风险分析能力；与 10/03 攻击向量形成"防御-检测"闭环 | GUAC: <https://guac.sh/> (2026)<br>OpenSSF Scorecard: <https://securityscorecards.dev/> (2026)<br>OSV: <https://osv.dev/> (2026) |
 | **C-06 TMForum 电信架构复用** | TMForum ODF, eTOM, SID, ODA, CAMARA | 业务架构 / 电信垂直行业 | 与 02/02 FEA BRM、B-04 BIAN 形成"政府-金融-电信"三行业业务能力映射互补；与 03 应用架构微服务形成行业-技术映射 | TMForum: <https://www.tmforum.org/> (2026)<br>CAMARA: <https://camara.project.org/> (2026) |
 | **C-07 NAF/MODAF 北约架构复用** | NAF 4.0, MODAF, DoDAF 2.02, UAF 1.3 | 业务架构 / 国防使命工程 | 与 B-01 DoDAF/UAF 互补：B-01 覆盖美国/国际视角，C-07 覆盖北约/英国视角；与 02/07 国防使命工程形成纵深 | NATO NAF: <https://nafdocs.org/> (2018)<br>MODAF: <https://www.mod.uk/> (2012)<br>DoDAF: <https://dodcio.defense.gov/dodaf/> (2010) |
-| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26565:2026 产品线成熟度框架 / 26566 产品线纹理, NASA RRL) | 工具链 / 复用决策支持 | 与 99-reference/tools/reuse-decision-tool/ (v1.0) 互补：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26565: <https://www.iso.org/standard/81436.html> (2026)<br>ISO 26566: <https://www.iso.org/standard/81437.html> (2026) |
+| **C-08 复用决策工具 v2.0** | — (内部工具，对齐 ISO 26565:2026 产品线成熟度框架 / 26566 产品线纹理, NASA RRL) | 工具链 / 复用决策支持 | 取代 99-reference/tools/reuse-decision-tool/ (v1.0，已归档)：升级为 CLI+Web 双模，新增数据驱动模板与测试覆盖；与 06/03 成熟度模型形成评估-决策闭环 | 项目内部: `./struct/99-reference/tools/reuse-decision-tool-v2/` (2026-06-10)<br>ISO 26565: <https://www.iso.org/standard/81436.html> (2026)<br>ISO 26566: <https://www.iso.org/standard/81437.html> (2026) |
 
 ---
 
@@ -4729,7 +4729,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 - [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 - [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
-- [领域函数目录](../struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md)
+- [领域函数目录](../struct/05-functional-architecture-reuse/07-domain-functions/domain-function-catalog.md)
 - [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
 - … 共 10 个文件
 
@@ -4938,7 +4938,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - A. ISO/IEC 25010:2023
 - B. TOGAF® Standard, 10th Edition
 - C. SLSA 1.2
-- D. MCP 2026-07-28 RC（已废弃） ✅
+- D. MCP 2026-07-28（未标注 RC，直接当作稳定版引用） ✅
 
 ---
 
@@ -5237,7 +5237,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 | `standard-tracker.py` | CLI | 标准状态监控与报告生成 | `99-reference/tools/` |
 | `cocomo-calculator.py` | CLI | COCOMO II 复用成本计算 | `09-value-quantification/tools/` |
 | `maturity-assessment.py` | CLI | RCMM 成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/` |
-| `reuse-decision-tree.py` | CLI | 6 阶段复用决策流程 | `99-reference/tools/reuse-decision-tool/` |
+| `reuse-decision-tool-v2/main.py` | CLI | 6 阶段复用决策流程（判定门径视角，权威实现；v1 `reuse-decision-tool/` 已归档） | `99-reference/tools/reuse-decision-tool-v2/` |
 
 ---
 
@@ -5492,7 +5492,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 > **版本**: 2026-06-06 Phase 3 完整版
 > **定位**: 全知识体系的逻辑骨架——从公理出发推导定理，建立可验证的知识依赖关系
-> **状态**: ✅ 已达成目标（15 公理 + 29 定理 = 44 条），详见 `struct/01-meta-model-standards/06-formal-axioms/` 和 `struct/07-formal-verification/`
+> **状态**: ✅ 已达成目标（01 主题：10 公理 + 17 定理 = 27 条，均为严格公理与派生定理；另含工程启发式 5 条，不计入严格公理。全体系含其他主题共 71 条命题，见下方统计表），详见 `struct/01-meta-model-standards/06-formal-axioms/` 和 `struct/07-formal-verification/`
 > **可视化**: 完整依赖网络图见 `struct/99-reference/visualizations/axiom-theorem-full-graph.mmd`
 
 ---
@@ -6494,6 +6494,51 @@ M.3 (层次不可约性)
 <!-- SOURCE: struct/99-reference/glossary/glossary-master.md -->
 
 
+## A
+
+### Architecture Decision / ADR (架构决策)
+
+- **定义**: 对系统架构产生影响的决策，连同其依据（rationale）的记录。ISO/IEC/IEEE 42010:2022 将 architecture decision 定义为影响系统架构的决策，architecture rationale 为支持架构决策的解释、论证或推理；工程实践中通常以轻量级文档 ADR（Architecture Decision Record）形式固化。
+- **属性**:
+  - 唯一标识与状态（proposed / accepted / deprecated / superseded）
+  - 上下文与驱动力（context & forces）
+  - 备选方案与取舍（alternatives & trade-offs）
+  - 后果（consequences，含正面与负面）
+  - 可追溯至关注点、需求与利益相关者
+- **关系**:
+  - 上位：Architecture Rationale（ISO/IEC/IEEE 42010:2022，参 `terminology-crosswalk.md` ISO 42010 vs TOGAF 对照表）
+  - 属于：Architecture Description 的组成部分
+  - 关联：Concern、Stakeholder、Viewpoint
+  - 实践模板：Nygard ADR、MADR（Markdown ADR）
+- **解释**: 架构决策是复用治理的"记忆体"：复用 vs 自研、技术选型、接口冻结等关键判断若无 ADR 记录，后续维护者无法理解决策上下文，导致重复争论或无意间推翻既有架构约束。
+- **示例**: 某平台团队以 ADR-0017 记录"采用 gRPC 作为内部服务间通信协议"，记载备选方案 REST 及取舍理由，后续 3 个项目据此复用同一协议栈与中间件配置。
+- **反例**: 关键选型仅在即时通讯中口头决定且未归档，半年后新成员质疑技术选型，团队无法给出依据，被迫重新评估，浪费数周。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO（第 3 章术语：architecture decision、architecture rationale；标准全文需购买，链接为已验证的官方目录页）
+  - 核查日期：2026-07-12
+
+### Asset (资产)
+
+- **定义**: 在软件工程语境下，对组织具有价值、可被管理的任何工作产品或制品（代码、文档、模型、测试用例、配置、数据等）。OMG RAS（Reusable Asset Specification）将 asset 定义为"为解决特定问题而打包的一组制品集合（a collection of artifacts that provides a solution to a problem）"。Asset 是 Reusable Asset 的上位概念。
+- **属性**:
+  - 有明确属主与价值
+  - 可分类、可编目（元数据）
+  - 具有生命周期（创建、维护、退役）
+  - 不必然具备复用就绪性
+- **关系**:
+  - 下位/特化：[Reusable Asset](#reusable-asset-可复用资产)——资产经设计、文档化与治理后成为可复用资产
+  - 实例：Artifact（制品）、组件、服务、模式、知识包
+  - 治理：OMG RAS、复用库（Reuse Library）、SBOM
+- **解释**: Asset 强调"有价值且受管理"；Reusable Asset 在此基础上追加稳定性、通用性、封装性、可发现性与可验证质量五项属性。换言之，所有可复用资产都是资产，但并非所有资产都可复用——资产治理的目标之一是识别并培育具备复用潜力的资产。
+- **示例**: 某项目的数据库迁移脚本受版本管理、有属主、有文档，是团队资产；但因强耦合特定环境配置，尚不构成可复用资产。
+- **反例**: 将散落在个人电脑、无版本号、无属主的代码片段称为"资产"并纳入资产库统计，导致资产盘点数据失真。
+- **权威来源**:
+  - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/PDF) — OMG（Reusable Asset Specification，Asset 定义）
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程，asset 作为复用候选）
+  - 核查日期：2026-07-12
+
+---
+
 ## B
 
 ### Business Capability (业务能力)
@@ -6947,7 +6992,7 @@ M.3 (层次不可约性)
 - **反例**: 将高度耦合的代码片段复制到多个项目，未剥离业务专属逻辑，导致后续变更需要在多处同步修改。
 - **权威来源**:
   - [Software reuse](https://en.wikipedia.org/wiki/Code_reuse) — Wikipedia
-  - [ISO/IEC/IEEE 1517:2010-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
+  - [ISO/IEC/IEEE 1517:2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE
   - 核查日期：2026-07-07
 
 ### Reusable Asset (可复用资产)
@@ -7035,6 +7080,27 @@ M.3 (层次不可约性)
   - [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing) — Wikipedia
   - [CNCF Serverless Whitepaper v2](https://github.com/cncf/wg-serverless/blob/master/whitepapers/serverless-overview/README.md) — CNCF
   - 核查日期：2026-07-07
+
+### Service (服务)
+
+- **定义**: 通过定义良好的接口显式对外暴露的行为能力单元，向使用者交付价值并隐藏内部实现。ArchiMate 将 service 定义为"显式定义的暴露行为（an explicitly defined exposed behavior）"；TOGAF 将服务视为"具有指定结果、自包含、可重复的业务活动的逻辑表示"。
+- **属性**:
+  - 显式接口契约
+  - 实现封装（消费者不依赖内部结构）
+  - 面向结果与价值
+  - 可发现、可组合
+  - 存在提供者-消费者关系
+- **关系**:
+  - 四层映射：业务服务（02-业务架构层，面向业务能力的对外承诺）、应用服务（03-应用架构层，面向应用功能）、组件服务（04-组件架构层，面向组件接口）、功能服务（05-功能架构层，面向函数/API）
+  - 标准映射：ArchiMate Business/Application/Technology Service、SOA、微服务
+  - 实现：REST、gRPC、消息接口、FaaS 触发器
+- **解释**: 本知识体系承认各层"服务"定义略有差异（参 `struct/01-meta-model-standards/04-archimate-4/archimate-iso-mapping.md`）：业务服务强调业务结果，应用服务强调功能暴露，组件服务强调接口契约，功能服务强调可调用单元；ArchiMate 4.0 已将 Service 统一为通用域（Common Domain）元素，通过层标注（layer tag）区分上下文。服务是跨层复用的通用货币——同一"认证服务"在业务层是能力承诺，在应用层是可调用接口，在组件层是可部署单元。
+- **示例**: 组织级"身份认证服务"：业务层描述为"统一登录能力"，应用层暴露 OAuth 2.1 接口，组件层以独立部署的认证组件实现，三个业务系统通过同一契约复用。
+- **反例**: 将内部工具函数直接包装为"服务"，无契约、无版本、无 SLA，消费者绕过接口直接访问其数据库，导致提供者无法独立演进。
+- **权威来源**:
+  - [ArchiMate Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（ArchiMate 3.2 各层 Service 元素定义；4.0 统一为通用域 Service）
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（service 定义）
+  - 核查日期：2026-07-12
 
 ### Service Mesh (服务网格)
 
@@ -7257,6 +7323,8 @@ M.3 (层次不可约性)
 | A2A | A | 12-AI 原生复用 | MCP、Agent |
 | AAS | A | 11-工业 IoT | OPC UA、ISA-95、Digital Twin |
 | API | A | 05-功能架构复用 | REST、gRPC、GraphQL |
+| Architecture Decision / ADR | A | 01-元模型 | ISO 42010、Architecture Rationale |
+| Asset | A | 01-元模型 | Reusable Asset、OMG RAS |
 | ArchiMate | A | 01-元模型 | TOGAF、ISO 42010 |
 | Architecture | A | 01-元模型 | AD、Viewpoint、View |
 | Architecture Description | A | 01-元模型 | ADL、ADF、Model Kind |
@@ -7285,6 +7353,7 @@ M.3 (层次不可约性)
 | ROI | R | 09-价值量化 | COCOMO II、NPV |
 | SBOM | S | 10-供应链安全 | SLSA、SPDX、CycloneDX |
 | Serverless | S | 03-应用架构 | FaaS、BaaS |
+| Service | S | 跨层（02–05） | Microservices、Service Mesh、API |
 | Service Mesh | S | 03-应用架构 | Istio、Linkerd |
 | SLSA | S | 10-供应链安全 | SBOM、Sigstore |
 | Stakeholder | S | 01-元模型 | Concern、Viewpoint |
@@ -9851,7 +9920,7 @@ graph TD
 
 > **更新说明**:
 > 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；**2026-07-28** 为官方 Release Candidate（2026-05-29 发布），最终版预计 2026-07-28，本矩阵统一以稳定版 2025-11-25 为基线。
-> 新增 **OMG RAS v2.2**、**FAIR4RS**、**ISO/IEC/IEEE 1517:2010-2010** 三个元模型层标准对齐。
+> 新增 **OMG RAS v2.2**、**FAIR4RS**、**ISO/IEC/IEEE 1517:2010** 三个元模型层标准对齐。
 > A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
 > 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
 > [1](https://modelcontextprotocol.io/specification/2025-11-25)
@@ -10036,7 +10105,7 @@ graph TD
 | NIST SP 800-161r1 | 现行 | 供应链风险管理 | 开源组件安全治理 | TBD |
 | NIST SP 800-204 系列 | 2025 更新 | DevSecOps + 供应链集成 | 微服务安全架构复用 | TBD |
 
-> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"；A2A v1.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
+> **本轮更新重点**: MCP 官方当前稳定版为 **2025-11-25**（Anthropic 于 2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；2026-07-28 为官方 RC（2026-05-29 发布），最终版尚未发布，本矩阵以稳定版 2025-11-25 为基线；A2A v1.0（Google / Linux Foundation）已 GA；OPC UA FX Parts 80–84 已发布，C2D 进入多厂商试点阶段；WASM Component Model 与 WASI 0.3 使 WASM 从实验走向生产基线。
 
 ---
 
@@ -12126,8 +12195,8 @@ pip install -r struct/99-reference/tools/requirements.txt
 | PIU 贝叶斯验证 | `../../11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | IEC 61508 Proven-in-Use 统计验证 | ✅ 依赖就绪 |
 | 供应链攻击树可视化 | `../../10-supply-chain-security/03-attack-vectors/attack-tree-interactive.py` | 5 种攻击场景、单文件 HTML 生成 | ✅ 可用 |
 | EU CRA 合规检查 | `../../10-supply-chain-security/06-case-studies/eu-cra-checklist.py` | 20 项检查清单、JSON/Markdown 报告 | ✅ 可用 |
-| 复用决策工具 v1 | `reuse-decision-tool/` | 交互式六阶段复用决策（Web/CLI） | 🔄 Phase 6 |
-| 复用决策工具 v2 | `reuse-decision-tool-v2/main.py` | 增强版复用决策（Streamlit / CLI） | ✅ help 可用 |
+| 复用决策工具 v1 | `reuse-decision-tool/` | 交互式六阶段复用决策（生命周期视角，历史概念稿） | 📦 已归档（DEPRECATED，权威实现为 v2） |
+| 复用决策工具 v2 | `reuse-decision-tool-v2/main.py` | 增强版复用决策（判定门径视角，Streamlit / CLI）— **权威实现** | ✅ help 可用 |
 | 形式化验证环境 | `formal-verification-env/` | Docker 化 TLA+/Alloy/Coq/Isabelle | ⚠️ 仅文档/占位，未安装验证 |
 
 > **说明**: 形式化验证工具按用户要求仅保留内容与占位，不进行 Docker 安装或运行时验证。
@@ -12221,7 +12290,7 @@ python reuse-decision-tool-v2/main.py --help
 - ISO/IEC 25010:2023/25040 质量矩阵评估器 — Phase 1
 - PIU 贝叶斯验证完整输入示例 — Phase 2
 - 供应链攻击树可视化扩展（MCP/Agentic 攻击向量） — Phase 2
-- `reuse-decision-tool/` 与 v2 能力对齐 — Phase 6
+- ~~`reuse-decision-tool/` 与 v2 能力对齐 — Phase 6~~ **已取消**：v1 已于 2026-07-12 归档，以 `reuse-decision-tool-v2/` 为权威实现，不再做能力对齐
 
 ---
 
@@ -12261,8 +12330,19 @@ python reuse-decision-tool-v2/main.py --help
 
 # 交互式复用决策工具
 
-> **定位**: 支持六阶段复用决策流程的交互式工具（Web/CLI）
-> **计划阶段**: Phase 6（2027-Q4）
+> ## ⛔ DEPRECATED — 已归档，仅作历史参考
+>
+> **本目录（v1）已归档，不再维护。** 权威实现为 **[复用决策工具 v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)**（CLI + Streamlit Web，含可执行规则引擎、数据驱动模板与单元测试）。
+>
+> **两套“六阶段”的关系（不矛盾，视角不同）**：
+>
+> - **v1 = 生命周期视角**：识别 → 评估 → 适配 → 集成 → 验证 → 治理（描述复用活动的全过程）
+> - **v2 = 判定门径视角**：语义兼容 → 变性绑定 → 质量 → 安全合规 → 成本收益 → 治理合规（描述复用准入的六道判定门，见 v2 README 中的映射表）
+>
+> 相关治理文档：[统一复用决策模型（URDM）](../struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)、[升级/降级矩阵](../struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md)。
+
+> **定位**: 支持六阶段复用决策流程的交互式工具（Web/CLI）— **历史概念稿**
+> **状态**: 📦 已归档（2026-07-12），权威实现为 [v2.0](../struct/99-reference/tools/reuse-decision-tool-v2/README.md)
 > **技术栈**: Python + Streamlit（按决策 3A）
 
 ---
@@ -12327,9 +12407,10 @@ python reuse-decision-tool-v2/main.py --help
 
 # 交互式复用决策工具 v2.0
 
-> **定位**: 支持六阶段复用决策流程的交互式工具（CLI + Streamlit Web）
+> **定位**: 支持六阶段复用决策流程的交互式工具（CLI + Streamlit Web）— **本项目复用决策工具的权威实现**
 > **版本**: 2.0.0
 > **技术栈**: Python 3.10+ · Streamlit · 标准库为主
+> **版本关系**: v1（[`../reuse-decision-tool/`](../struct/99-reference/tools/reuse-decision-tool/README.md)）已归档，仅作历史参考
 
 ---
 
@@ -12347,6 +12428,21 @@ python reuse-decision-tool-v2/main.py --help
 | 4 | 安全合规判定 | 许可证 ⊆ 策略？安全等级 ≥ 要求？ | 合规风险、法律纠纷 |
 | 5 | 成本收益判定 | COCOMO II AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]）？NPV > 0？ | 经济上不如自研 |
 | 6 | 治理合规判定 | 组织成熟度 ≥ 要求？流程标准化？ | 缺乏治理能力，复用难以持续 |
+
+### 与 v1 生命周期视角的对应关系
+
+v1（已归档）的六阶段是**生命周期视角**（复用活动全过程），v2 的六阶段是**判定门径视角**（复用准入的六道判定门）。两者不矛盾，映射关系如下：
+
+| v1 生命周期阶段（历史） | v2 判定门径阶段（权威） |
+|------|------|
+| 1. 识别 — 发现潜在可复用资产 | 前置活动：资产发现与候选登记（不在门径内） |
+| 2. 评估 — 质量、成熟度、合规性评估 | 3. 质量达标判定 + 4. 安全合规判定 |
+| 3. 适配 — 计算 AAF、修改范围 | 1. 语义兼容性判定 + 2. 变性绑定判定 |
+| 4. 集成 — 架构兼容性、依赖影响 | 1. 语义兼容性判定（技术约束 ⊆ 上下文） |
+| 5. 验证 — 测试、形式化验证、SBOM 审查 | 4. 安全合规判定 |
+| 6. 治理 — 度量、成熟度、成本分摊 | 5. 成本收益判定 + 6. 治理合规判定 |
+
+相关治理文档：[统一复用决策模型（URDM）](../struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)（本工具对应其中 L3 复用决策引擎层）、[升级/降级矩阵](../struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md)。
 
 ---
 
@@ -12603,6 +12699,8 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 ## 与 v1.0 的差异
 
+> **注意**: v1.0（`../reuse-decision-tool/`）已于 2026-07-12 归档，仅作历史参考；本工具（v2.0）为权威实现。
+
 | 特性 | v1.0 | v2.0 |
 |------|------|------|
 | 决策流程 | 6 阶段概念框架 | **可执行规则引擎** |
@@ -12629,6 +12727,8 @@ python -m pytest test_decision_engine.py::TestReuseDecisionEngine -v
 
 ---
 
+> **参见**：《统一复用决策模型》——本工具（六阶段引擎）在统一决策栈中定位为 L3 适配判定层：[`struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md`](../struct/06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md)
+>
 > **最后更新**: 2026-06-10
 > **对齐标准**: ISO/IEC 26565:2026（产品线成熟度框架） · ISO/IEC 26566:2026（产品线纹理方法/工具能力） · ISO/IEC 25010:2023 · ISO/IEC/IEEE 42010:2022 · NASA RRL
 

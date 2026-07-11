@@ -6,6 +6,10 @@ begin
    状态：locked（是否锁定）、alarm（是否报警）
    事件：Coin（投币）、Push（推杆）
    目标：证明 ok 不变量在 step 后保持
+
+   【定位标注】教学示例：演示证明工具用法（状态机不变量保持），非本项目
+   公理体系（M/E/S/P 公理与 Th 定理）的形式化。公理→形式化规约的完整映射见：
+   struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md
 *)
 
 record turnstile =

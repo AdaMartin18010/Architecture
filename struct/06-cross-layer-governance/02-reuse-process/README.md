@@ -2,7 +2,7 @@
 
 > **版本**: 2026-06-12
 > **定位**: 06-cross-layer-governance / 02-reuse-process
-> **对齐标准**: ISO/IEC/IEEE 1517:2010-2010, ISO/IEC/IEEE 12207:2026, ISO/IEC 26550:2015
+> **对齐标准**: ISO/IEC/IEEE 1517:2010, ISO/IEC/IEEE 12207:2026, ISO/IEC 26550:2015
 
 ---
 

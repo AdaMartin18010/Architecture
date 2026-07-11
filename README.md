@@ -76,7 +76,9 @@ struct/
 │   ├── 03-event-functions/             # 事件函数模式
 │   ├── 04-workflow-orchestration/      # Temporal 工作流复用
 │   ├── 05-ai-llm-functions/            # AI/LLM 功能复用
-│   └── 06-mcp-a2a-protocols/           # MCP + A2A 协议分析
+│   ├── 06-mcp-a2a-protocols/           # MCP + A2A 协议分析
+│   ├── 07-domain-functions/            # 领域函数目录
+│   └── decision-tree-granularity-cost-roi.md  # 粒度-成本-ROI 决策树
 ├── 06-cross-layer-governance/          # 跨层治理与量化
 │   ├── 01-process-governance/          # 复用过程治理
 │   ├── 02-reuse-process/               # 02 reuse process
@@ -103,11 +105,13 @@ struct/
 │   ├── 02-bdi-model/                   # BDI 模型
 │   ├── 03-cognitive-load-theory/       # 认知负荷理论
 │   ├── 04-decision-making/             # 决策机制
-│   └── 05-ai-cognitive-augmentation/   # AI 认知增强
+│   ├── 05-ai-cognitive-augmentation/   # AI 认知增强
+│   └── 06-knowledge-graphs/            # 知识图谱
 ├── 09-value-quantification/            # 价值量化
 │   ├── 01-cocomo-ii-reuse/             # COCOMO II 2026 校准
 │   ├── 02-roi-npv-models/              # ROI 与 NPV 模型
 │   ├── 03-carbon-dimension/            # 碳排维度
+│   ├── 04-maturity-economics/          # 成熟度经济学
 │   └── tools/                          # 工具脚本
 ├── 10-supply-chain-security/           # 供应链安全
 │   ├── 01-slsa-framework/              # SLSA 框架
@@ -121,7 +125,8 @@ struct/
 │   ├── 09-owasp-asvs/                  # OWASP ASVS
 │   ├── 10-owasp-top10-2025/            # OWASP Top 10 2025
 │   ├── 11-osps-baseline/               # OSPS 基线
-│   └── 12-nist-ssdf-update/            # NIST SSDF 更新
+│   ├── 12-nist-ssdf-update/            # NIST SSDF 更新
+│   └── 13-slsa-l4-poc/                 # SLSA L4 概念验证（PoC）
 ├── 11-industrial-iot-otit/             # 工业 IoT / OT-IT 融合
 │   ├── 01-isa-95-model/                # ISA-95 五层资产目录
 │   ├── 02-opc-ua-fx/                   # OPC UA FX 深化
@@ -140,7 +145,8 @@ struct/
 │   ├── 04-hybrid-a2a-mcp-poc/          # A2A/MCP 混合 PoC
 │   ├── 05-probabilistic-contracts/     # 概率契约
 │   ├── 06-ai-governance/               # AI 治理
-│   └── 07-conformal-prediction/        # Conformal Prediction
+│   ├── 07-conformal-prediction/        # Conformal Prediction
+│   └── case-studies/                   # 案例研究
 ├── 13-emerging-trends/                 # 前沿趋势
 │   ├── 01-platform-engineering/        # 平台工程成熟度
 │   ├── 02-modular-monolith/            # 模块化单体

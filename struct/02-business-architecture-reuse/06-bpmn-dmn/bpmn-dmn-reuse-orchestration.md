@@ -311,6 +311,7 @@ flowchart LR
 
 **交叉引用**：
 
+- [统一复用决策模型](../../06-cross-layer-governance/06-up-downgrade-matrix/unified-reuse-decision-model.md) — DMN 决策表在统一决策栈中定位为 L4 执行编码层
 - [BPMN 2.0 / DMN 1.5 可执行语义案例集](./bpmn-dmn-executable-cases.md) — 具体可执行案例
 - [BIAN 金融服务域复用案例](../case-studies/bian-banking-reuse-case.md) — BPMN/DMN 在金融场景的结合
 - [业务能力复用](../02-business-capability/capability-reuse.md) — 业务复用层定义

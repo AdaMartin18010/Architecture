@@ -151,7 +151,7 @@
 | `standard-tracker.py` | CLI | 标准状态监控与报告生成 | `99-reference/tools/` |
 | `cocomo-calculator.py` | CLI | COCOMO II 复用成本计算 | `09-value-quantification/tools/` |
 | `maturity-assessment.py` | CLI | RCMM 成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/` |
-| `reuse-decision-tree.py` | CLI | 6 阶段复用决策流程 | `99-reference/tools/reuse-decision-tool/` |
+| `reuse-decision-tool-v2/main.py` | CLI | 6 阶段复用决策流程（判定门径视角，权威实现；v1 `reuse-decision-tool/` 已归档） | `99-reference/tools/reuse-decision-tool-v2/` |
 
 ---
 

@@ -1,0 +1,137 @@
+# 复用决策阈值登记表（Threshold Registry）
+#
+# 单一事实源（Single Source of Truth）：
+# 《统一复用决策模型》及项目内所有决策机制（公理体系、升降级矩阵、
+# 复用决策引擎 v2、DMN 决策表、认知决策框架）引用的所有阈值，
+# 必须在此登记并以 id 引用，禁止在文档/代码中硬编码未登记阈值。
+#
+# 可选字段：
+#   aliases        文档扫描用的名称/别名（threshold-check.py 使用）
+#   allow_values   声明合法的其他取值（如分场景上调值）
+#   downgrade_value 降级方向阈值，视为合法取值
+#   canonical_range 取值域，其端点视为合法取值
+#
+# 版本: 2026-07-12
+# 维护: 架构治理委员会
+version: "1.0.0"
+updated: "2026-07-12"
+
+thresholds:
+  # ---- 经济阈值（L1 战略判定 / 公理 E.2 / v2 引擎阶段 5） ----
+  - id: THR-ECON-AAF-FLOOR
+    name: AAF 经济阈值下限
+    aliases: [AAF, AAF_ECONOMIC_FLOOR, "AAF 经济阈值"]
+    value: 0.7
+    operator: "<"
+    canonical_range: [0.0, 1.0]
+    meaning: "复用改编成本 / 自研成本（COCOMO II AAF）必须 < 0.7，复用才具备直接经济价值"
+    sources:
+      - "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md (E.2, θ=0.7)"
+      - "struct/99-reference/tools/reuse-decision-tool-v2/data/decision_rules.json (AAF 经济阈值)"
+    authority: "COCOMO II / NASA RRL 实证"
+
+  - id: THR-ECON-NPV-MIN
+    name: NPV 正值阈值
+    aliases: [NPV]
+    value: 0
+    operator: ">"
+    meaning: "复用投资净现值必须为正"
+    sources:
+      - "struct/99-reference/tools/reuse-decision-tool-v2 (阶段 5 NPV 检查)"
+
+  - id: THR-ECON-ROI-UPGRADE
+    name: 升级 ROI 下限
+    aliases: [ROI, "升级 ROI"]
+    value: 1.5
+    operator: ">="
+    meaning: "升级决策要求 Upgrade_Benefit > 0 且 ROI >= 150%"
+    sources:
+      - "struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md (§7.7)"
+
+  # ---- 适配阈值（公理 E.3 / v2 引擎阶段 1-2） ----
+  - id: THR-FIT-TAU
+    name: 上下文适配度阈值 τ
+    aliases: [τ, 适配度, 上下文适配度]
+    # 0.85 为高治理等级场景的上调取值（见 note）；0.5/0.3/0.2 为 Fit 权重
+    allow_values: [0.85]
+    value: 0.7
+    operator: ">="
+    canonical_range: [0.0, 1.0]
+    meaning: "Fit(a, ctx) = 0.5·SemSim + 0.3·TechComp + 0.2·OrgAlign，须 >= τ 方可复用"
+    weights: { semantic: 0.5, technical: 0.3, organizational: 0.2 }
+    sources:
+      - "struct/01-meta-model-standards/06-formal-axioms/axiom-system.md (E.3, 权重 0.5/0.3/0.2)"
+    note: "τ 默认值 0.7；高治理等级场景可上调（如 0.85，见公理体系 §7.7 反模型示例）"
+
+  # ---- 层级判定阈值（L2 升降级矩阵） ----
+  - id: THR-LAYER-MIN-CONSUMERS
+    name: 升级最小消费方数
+    aliases: [消费方数量, 消费方数]
+    value: 3
+    operator: ">="
+    meaning: "功能/组件/Prompt 被 3+ 消费方使用方可触发升级评估"
+    sources:
+      - "struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md (升级矩阵)"
+
+  - id: THR-LAYER-SEMANTIC-COVERAGE
+    name: 语义覆盖率下限
+    aliases: [语义覆盖率]
+    value: 0.8
+    operator: ">="
+    canonical_range: [0.0, 1.0]
+    meaning: "业务语义覆盖率 >= 80% 方可升级；< 80% 触发降级评估（语义漂移）"
+    sources:
+      - "struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md (降级矩阵 / §7.5)"
+
+  - id: THR-LAYER-TECH-COMPAT
+    name: 技术栈兼容性下限
+    aliases: [技术栈兼容性]
+    value: 0.8
+    operator: ">="
+    canonical_range: [0.0, 1.0]
+    meaning: "技术栈兼容性 >= 80% 倾向升级；< 50% 触发降级（适配器/防腐层）"
+    downgrade_value: 0.5
+    sources:
+      - "struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md (§7.7)"
+
+  - id: THR-LAYER-AI-CONFIDENCE
+    name: AI 功能置信度下限 γ
+    aliases: ["置信度 γ", 置信度γ]
+    value: 0.8
+    operator: ">="
+    canonical_range: [0.0, 1.0]
+    meaning: "AI 功能置信度 γ < 0.8 时降级为规则引擎（混合推理/人在回路）"
+    sources:
+      - "struct/06-cross-layer-governance/06-up-downgrade-matrix/upgrade-downgrade-matrix.md (降级矩阵)"
+
+  # ---- v2 引擎阶段评分阈值（L3 适配判定） ----
+  - id: THR-ENGINE-PHASE-PASS
+    name: 阶段通过分数
+    aliases: [pass_threshold, 阶段通过分数]
+    # 75/80 为 PHASE-3/4/6（质量/安全/治理）的更严格覆盖值（decision_rules.json）
+    allow_values: [75, 80]
+    value: 70
+    operator: ">="
+    meaning: "v2 决策引擎单阶段加权得分 >= 70 判定通过"
+    sources:
+      - "struct/99-reference/tools/reuse-decision-tool-v2/decision_engine.py (pass_threshold)"
+
+  - id: THR-ENGINE-PHASE-CONDITIONAL
+    name: 阶段条件通过分数
+    aliases: [conditional_threshold, 阶段条件通过分数]
+    # 55/60 为 PHASE-3/4/6（质量/安全/治理）的更严格覆盖值（decision_rules.json）
+    allow_values: [55, 60]
+    value: 50
+    operator: ">="
+    meaning: "v2 决策引擎单阶段得分 >= 50 且 < 70 判定条件通过"
+    sources:
+      - "struct/99-reference/tools/reuse-decision-tool-v2/decision_engine.py (conditional_threshold)"
+
+  - id: THR-ENGINE-MAX-CONDITIONAL-PHASES
+    name: 最大条件通过阶段数
+    aliases: [最大条件通过阶段数, 条件通过阶段]
+    value: 2
+    operator: "<="
+    meaning: "条件通过阶段 > 2 时最终决策降级为拒绝"
+    sources:
+      - "struct/99-reference/tools/reuse-decision-tool-v2/README.md (最终决策逻辑)"
