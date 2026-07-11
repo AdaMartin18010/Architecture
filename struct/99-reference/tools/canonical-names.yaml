@@ -353,10 +353,17 @@ standards:
       - "IEEE 12207:2026"
 
   - canonical: "OWASP Top 10"
+    # 注：OWASP 为组织名，不作为 Top 10 别名
+
+  - canonical: "OWASP Top 10 for Agentic AI Applications"
     aliases:
       - "OWASP Top 10 for Agentic AI"
+    # 2026 版 Agentic AI 应用 Top 10（独立标准，非通用 Web Top 10）
+
+  - canonical: "OWASP Top 10 for MCP"
+    aliases:
       - "OWASP Top 10 MCP"
-    # 注：OWASP 为组织名，不作为 Top 10 别名
+    # OWASP MCP Top 10（独立标准）
 
   - canonical: "SLSA 1.2"
     aliases:
