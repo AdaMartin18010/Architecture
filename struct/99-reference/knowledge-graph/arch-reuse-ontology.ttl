@@ -52,7 +52,7 @@ aro:evolvedFrom a owl:ObjectProperty ;
 
 aro:implementedBy a owl:ObjectProperty ;
     rdfs:label "由工具实现" ;
-    rdfs:domain aro:Standard ;
+    rdfs:domain aro:Entity ;
     rdfs:range aro:Tool .
 
 aro:mentions a owl:ObjectProperty ;
@@ -112,4 +112,8 @@ aro:Term a owl:Class ;
 
 aro:Entity a owl:Class ;
     rdfs:label "实体" .
+
+aro:Specification a owl:Class ;
+    rdfs:subClassOf aro:Entity ;
+    rdfs:label "形式化规约/策略工件" .
 

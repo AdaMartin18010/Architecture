@@ -149,7 +149,7 @@ def append_entities_ttl(entities: List[dict]) -> int:
     lines = ["", "# === 历史版本 Standard 实体补全（kg-relation-enricher.py） ===",
              f"# 生成时间: {datetime.datetime.now().isoformat(timespec='seconds')}", ""]
     for e in entities:
-        lines.append(f"{id_to_uri(e['id'])} a aro:Standard ;")
+        lines.append(f"{id_to_uri(e['id'])} a aro:{e['type']} ;")
         lines.append(f'    rdfs:label "{e["name"]}" ;')
         lines.append(f'    ar:sourceFile "{e["source_file"]}" ;')
         lines.append(f"    ar:sourceLine {e['source_line']} .")
@@ -322,6 +322,107 @@ def build_related_to(by_id, seen) -> List[dict]:
     return rels
 
 
+# 形式化规约/策略工件 → 验证/执行工具映射（IMPLEMENTED_BY）
+EXT_TOOL: Dict[str, str] = {
+    ".tla": "TLC", ".als": "Alloy Analyzer", ".v": "Rocq",
+    ".thy": "Isabelle/HOL", ".rego": "OPA",
+}
+RS_PREFIX_TOOL: Dict[str, str] = {
+    "kani": "Kani", "miri": "Miri", "verus": "Verus", "prusti": "Prusti",
+}
+MD_DIR_TOOL: Dict[str, str] = {
+    "05-spark-ada": "SPARK Pro", "06-b-method": "Atelier B",
+}
+NEW_TOOLS: Dict[str, str] = {
+    "TLC": "TLA+ model checker",
+    "Alloy Analyzer": "Alloy model finder",
+    "Rocq": "Rocq (Coq) proof assistant",
+    "Isabelle/HOL": "Isabelle/HOL theorem prover",
+    "Kani": "Kani Rust Verifier",
+    "Miri": "Miri UB detector for Rust",
+    "Verus": "Verus verified Rust",
+    "Prusti": "Prusti verifier for Rust",
+    "OPA": "Open Policy Agent (Rego)",
+    "SPARK Pro": "SPARK Pro (Ada) verification toolset",
+    "Atelier B": "Atelier B / Rodin (B / Event-B)",
+}
+
+
+def tool_id(name: str) -> str:
+    return "Tool:" + re.sub(r"[/ :.]", "_", name)
+
+
+def spec_id(relpath: str) -> str:
+    return "Specification:" + re.sub(r"[/\\.]", "_", relpath)
+
+
+def ensure_tool_entities(by_id) -> List[dict]:
+    added: List[dict] = []
+    existing = {o["name"].lower() for o in by_id.values() if o.get("type") == "Tool"}
+    for name, ctx in NEW_TOOLS.items():
+        if name.lower() in existing:
+            continue
+        eid = tool_id(name)
+        ent = {"id": eid, "name": name, "type": "Tool",
+               "source_file": "struct/99-reference/tools/formal-verification-env/README.md",
+               "source_line": 1, "context": ctx}
+        by_id[eid] = ent
+        added.append(ent)
+        existing.add(name.lower())
+    return added
+
+
+def build_implemented_by(by_id, seen) -> Tuple[List[dict], List[dict]]:
+    rels: List[dict] = []
+    spec_entities: List[dict] = []
+    artifact_exts = set(EXT_TOOL) | {".rs"}
+    for path in sorted(STRUCT_DIR.rglob("*")):
+        if not path.is_file() or path.suffix.lower() not in artifact_exts:
+            continue
+        rel = path.relative_to(PROJECT_ROOT).as_posix()
+        ext = path.suffix.lower()
+        if ext == ".rs":
+            stem = path.stem.lower()
+            tool = next((t for p, t in RS_PREFIX_TOOL.items() if stem.startswith(p)), None)
+        else:
+            tool = EXT_TOOL.get(ext)
+        if not tool:
+            continue
+        tid = tool_id(tool)
+        if tid not in by_id:
+            continue
+        sid = spec_id(rel)
+        if sid not in by_id:
+            ent = {"id": sid, "name": rel, "type": "Specification",
+                   "source_file": rel, "source_line": 1, "context": f"formal artifact implementedBy {tool}"}
+            by_id[sid] = ent
+            spec_entities.append(ent)
+        key = (sid, "IMPLEMENTED_BY", tid)
+        if key in seen:
+            continue
+        rels.append({"source_id": sid, "relation": "IMPLEMENTED_BY", "target_id": tid,
+                     "source_file": rel, "source_line": 1, "weight": 1.0})
+        seen.add(key)
+    # md 文档级规约（SPARK / B Method 内联规约）→ 复用 File 实体
+    for sub, tool in MD_DIR_TOOL.items():
+        tid = tool_id(tool)
+        if tid not in by_id:
+            continue
+        for fo in by_id.values():
+            if fo.get("type") != "File" or fo.get("name", "").startswith(("./", "../")):
+                continue
+            sf = fo.get("source_file", "")
+            if f"/07-formal-verification/{sub}/" not in ("/" + sf):
+                continue
+            key = (fo["id"], "IMPLEMENTED_BY", tid)
+            if key in seen:
+                continue
+            rels.append({"source_id": fo["id"], "relation": "IMPLEMENTED_BY", "target_id": tid,
+                         "source_file": sf, "source_line": 1, "weight": 1.0})
+            seen.add(key)
+    return rels, spec_entities
+
+
 def id_to_uri(eid: str) -> str:
     return f"<{ENTITY_URI_PREFIX}{eid.replace(':', '_', 1)}>"
 
@@ -363,11 +464,14 @@ def main() -> int:
     aliases_map = load_standard_aliases()
 
     new_entities = ensure_historical_entities(by_id, std_name_to_id)
+    new_entities += ensure_tool_entities(by_id)
 
     evolved = build_evolved_from(by_id, std_name_to_id, seen)
     mentions = build_mentions(by_id, std_name_to_id, aliases_map, seen)
     related = build_related_to(by_id, seen)
-    new_rels = evolved + mentions + related
+    impl_rels, spec_entities = build_implemented_by(by_id, seen)
+    new_entities += spec_entities
+    new_rels = evolved + mentions + related + impl_rels
 
     by_rel: Dict[str, int] = {}
     for r in new_rels:
@@ -375,9 +479,14 @@ def main() -> int:
 
     print("=== KG 语义关系增量补充（dry-run） ===" if not args.apply else "=== KG 语义关系增量补充（apply） ===")
     print(f"现有关系去重集合: {len(seen)} 条")
-    print(f"新增历史版本实体: {len(new_entities)} 个")
+    print(f"新增实体: {len(new_entities)} 个")
+    _et: Dict[str, int] = {}
     for e in new_entities:
-        print(f"  + Standard: {e['name']}")
+        _et[e["type"]] = _et.get(e["type"], 0) + 1
+    for t, c in sorted(_et.items()):
+        print(f"  {t}: +{c}")
+    for e in new_entities[:12]:
+        print(f"  + [{e['type']}] {e['name']}")
     print(f"新增关系总计: {len(new_rels)} 条")
     for rel, c in sorted(by_rel.items()):
         print(f"  {rel}: +{c}")
