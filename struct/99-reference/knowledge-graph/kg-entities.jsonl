@@ -11243,3 +11243,8 @@
 {"id": "Term:当前执行版", "name": "当前执行版", "type": "Term", "source_file": "struct/README.md", "source_line": 317, "context": "6. 持续推进路线图"}
 {"id": "Term:Phase_0_立即修复与交付物验证", "name": "Phase 0 立即修复与交付物验证", "type": "Term", "source_file": "struct/README.md", "source_line": 319, "context": "6. 持续推进路线图"}
 {"id": "Term:2-A", "name": "2-A'", "type": "Term", "source_file": "struct/README.md", "source_line": 322, "context": "6. 持续推进路线图"}
+{"id": "Standard:ArchiMate_3_2", "name": "ArchiMate 3.2", "type": "Standard", "source_file": "struct/99-reference/tools/canonical-names.yaml", "source_line": 1, "context": "ArchiMate 3.2 Specification (2022), predecessor of ArchiMate 4.0"}
+{"id": "Standard:ISO_IEC_IEEE_42010_2011", "name": "ISO/IEC/IEEE 42010:2011", "type": "Standard", "source_file": "struct/99-reference/tools/canonical-names.yaml", "source_line": 1, "context": "ISO/IEC/IEEE 42010:2011, predecessor of 42010:2022"}
+{"id": "Standard:ISO_IEC_IEEE_15288_2015", "name": "ISO/IEC/IEEE 15288:2015", "type": "Standard", "source_file": "struct/99-reference/tools/canonical-names.yaml", "source_line": 1, "context": "ISO/IEC/IEEE 15288:2015, predecessor of 15288:2023"}
+{"id": "Standard:NIST_SSDF_1_1", "name": "NIST SSDF 1.1", "type": "Standard", "source_file": "struct/99-reference/tools/canonical-names.yaml", "source_line": 1, "context": "NIST SP 800-218 Rev.1 (SSDF 1.1, 2022), predecessor of SSDF 1.2 (IPD)"}
+{"id": "Standard:ISO_IEC_30141_2018", "name": "ISO/IEC 30141:2018", "type": "Standard", "source_file": "struct/99-reference/tools/canonical-names.yaml", "source_line": 1, "context": "ISO/IEC 30141:2018 (IoT RA), predecessor of 30141:2024"}

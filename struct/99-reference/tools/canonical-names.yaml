@@ -41,18 +41,20 @@ standards:
     aliases:
       - "ArchiMate 4"
       - "ArchiMate 4.0 Specification"
-      - "ArchiMate 3.2"
-      - "ArchiMate 3.2 Specification"
-      - "ArchiMate 4.2"
-      - "ArchiMate 4.2 Specification"
       - "archimate4"
-      - "archimate32"
-      - "archimate3"
     invalid_versions:
       - "4.1"
       - "4.2"
       - "4.3"
       - "5.0"
+    # 注：ArchiMate 3.2 是 2022 真实发布的历史版本，不作为 4.0 别名；见独立 canonical "ArchiMate 3.2"
+
+  - canonical: "ArchiMate 3.2"
+    aliases:
+      - "ArchiMate 3.2 Specification"
+      - "archimate32"
+      - "archimate3"
+    # 2022 发布的历史版本，ArchiMate 4.0 的前身
 
   - canonical: "ISO/IEC/IEEE 15288:2023"
     aliases:
@@ -257,8 +259,7 @@ standards:
       - "ISO/IEC 25010:2011"
       - "ISO 25010:2011"
       - "IEC 25010:2011"
-    invalid_versions:
-      - "2011"
+    # 注：2011 为本 canonical 的合法版本，非 invalid
 
   - canonical: "ISO/IEC 25012:2008"
     aliases:
@@ -356,16 +357,12 @@ standards:
     aliases:
       - "OWASP Top 10 for Agentic AI"
       - "OWASP Top 10 MCP"
-      - "OWASP"
+    # 注：OWASP 为组织名，不作为 Top 10 别名
 
   - canonical: "SLSA 1.2"
     aliases:
       - "SLSA"
-      - "SLSA Level 1"
-      - "SLSA L1"
-      - "SLSA L2"
-      - "SLSA L3"
-      - "SLSA L4"
+    # 注：SLSA Level 1-4 / L1-L4 为成熟度级别（与版本号正交），不作为 1.2 别名
 
   - canonical: "NIST SP 800-218"
     aliases:

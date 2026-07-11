@@ -78,7 +78,7 @@ aro:references a owl:ObjectProperty ;
 aro:relatedTo a owl:ObjectProperty ;
     rdfs:label "相关" ;
     rdfs:domain aro:Term ;
-    rdfs:range aro:Term .
+    rdfs:range aro:Entity .
 
 aro:sourceFile a owl:DatatypeProperty ;
     rdfs:label "来源文件" ;

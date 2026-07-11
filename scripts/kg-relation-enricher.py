@@ -53,7 +53,21 @@ EVOLVED_FROM_PAIRS: List[Tuple[str, str]] = [
     ("SLSA 2.0", "SLSA 1.2"),
     ("SysML v2", "SysML v1"),
     ("DMN 1.6", "DMN 1.5"),
+    ("ArchiMate 4.0", "ArchiMate 3.2"),
+    ("ISO/IEC/IEEE 42010:2022", "ISO/IEC/IEEE 42010:2011"),
+    ("ISO/IEC/IEEE 15288:2023", "ISO/IEC/IEEE 15288:2015"),
+    ("NIST SSDF 1.2", "NIST SSDF 1.1"),
+    ("ISO/IEC 30141:2024", "ISO/IEC 30141:2018"),
 ]
+
+# 历史版本 Standard 实体补全（KG 中缺失但 EVOLVED_FROM 谱系需要的旧版本实体）
+NEW_HISTORICAL_STANDARDS: Dict[str, str] = {
+    "ArchiMate 3.2": "ArchiMate 3.2 Specification (2022), predecessor of ArchiMate 4.0",
+    "ISO/IEC/IEEE 42010:2011": "ISO/IEC/IEEE 42010:2011, predecessor of 42010:2022",
+    "ISO/IEC/IEEE 15288:2015": "ISO/IEC/IEEE 15288:2015, predecessor of 15288:2023",
+    "NIST SSDF 1.1": "NIST SP 800-218 Rev.1 (SSDF 1.1, 2022), predecessor of SSDF 1.2 (IPD)",
+    "ISO/IEC 30141:2018": "ISO/IEC 30141:2018 (IoT RA), predecessor of 30141:2024",
+}
 
 
 def load_entities() -> Tuple[Dict[str, dict], Dict[str, str]]:
@@ -97,6 +111,52 @@ def load_standard_aliases() -> Dict[str, List[str]]:
                 aliases.append(a)
         out[canon.lower()] = aliases
     return out
+
+
+def std_id(name: str) -> str:
+    return "Standard:" + re.sub(r"[/ :.]", "_", name)
+
+
+def ensure_historical_entities(by_id, std_name_to_id) -> List[dict]:
+    """补全 EVOLVED_FROM 谱系所需的历史版本 Standard 实体（幂等）。返回新增实体列表。"""
+    added: List[dict] = []
+    for name, ctx in NEW_HISTORICAL_STANDARDS.items():
+        if name.lower() in std_name_to_id:
+            continue
+        eid = std_id(name)
+        ent = {
+            "id": eid, "name": name, "type": "Standard",
+            "source_file": "struct/99-reference/tools/canonical-names.yaml",
+            "source_line": 1, "context": ctx,
+        }
+        by_id[eid] = ent
+        std_name_to_id[name.lower()] = eid
+        added.append(ent)
+    return added
+
+
+def append_entities_jsonl(entities: List[dict]) -> None:
+    if not entities:
+        return
+    with (KG_DIR / "kg-entities.jsonl").open("a", encoding="utf-8") as f:
+        for e in entities:
+            f.write(json.dumps(e, ensure_ascii=False) + "\n")
+
+
+def append_entities_ttl(entities: List[dict]) -> int:
+    if not entities:
+        return 0
+    lines = ["", "# === 历史版本 Standard 实体补全（kg-relation-enricher.py） ===",
+             f"# 生成时间: {datetime.datetime.now().isoformat(timespec='seconds')}", ""]
+    for e in entities:
+        lines.append(f"{id_to_uri(e['id'])} a aro:Standard ;")
+        lines.append(f'    rdfs:label "{e["name"]}" ;')
+        lines.append(f'    ar:sourceFile "{e["source_file"]}" ;')
+        lines.append(f"    ar:sourceLine {e['source_line']} .")
+        lines.append("")
+    with (KG_DIR / "kg.ttl").open("a", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+    return len(entities)
 
 
 def build_evolved_from(by_id, std_name_to_id, seen) -> List[dict]:
@@ -180,6 +240,88 @@ def build_mentions(by_id, std_name_to_id, aliases_map, seen) -> List[dict]:
     return rels
 
 
+GLOSSARY_FILE = STRUCT_DIR / "99-reference" / "glossary" / "glossary-master.md"
+
+# 关系段前缀标签（抽取关联项时去除）
+_REL_LABELS = ("方法", "标准", "上位", "下位", "实现", "对齐", "应用", "参见", "工具",
+               "框架", "协议", "类似", "对比", "互补", "替代", "依赖", "组成")
+
+
+def parse_glossary_relations(text: str) -> Dict[str, List[str]]:
+    """解析 glossary-master.md：{词条英文主名 lower: [关联项原文...]}。"""
+    out: Dict[str, List[str]] = {}
+    # 按 ### 词条分块
+    blocks = re.split(r"(?m)^### ", text)
+    for blk in blocks[1:]:
+        head_end = blk.find("\n")
+        if head_end < 0:
+            continue
+        head = blk[:head_end].strip()
+        en = re.split(r"\s*\(", head)[0].strip().lower()
+        if not en:
+            continue
+        body = blk[head_end:]
+        # 提取 “关系” 段：- **关系**: 到下一个 - ** 或 --- 或 ### 之间
+        m = re.search(r"-\s*\*\*关系\*\*\s*[:：](.*?)(?=\n-\s*\*\*|\n---|\Z)", body, re.S)
+        if not m:
+            continue
+        seg = m.group(1)
+        items: List[str] = []
+        for line in seg.splitlines():
+            line = line.strip().lstrip("-").strip()
+            if not line:
+                continue
+            # 去前缀标签
+            for lab in _REL_LABELS:
+                line = re.sub(rf"^{re.escape(lab)}\s*[:：]", "", line).strip()
+            # 分割并列项
+            for tok in re.split(r"[、，,;；/]", line):
+                tok = tok.strip().strip("（）()《》\"'`").strip()
+                if len(tok) >= 2:
+                    items.append(tok)
+        if items:
+            out[en] = items
+    return out
+
+
+def build_related_to(by_id, seen) -> List[dict]:
+    if not GLOSSARY_FILE.exists():
+        return []
+    relmap = parse_glossary_relations(GLOSSARY_FILE.read_text(encoding="utf-8", errors="ignore"))
+    # 名称索引：Term/Standard/Protocol/Organization
+    name_idx: Dict[str, str] = {}
+    for o in by_id.values():
+        if o.get("type") in ("Term", "Standard", "Protocol", "Organization"):
+            name_idx.setdefault(o["name"].lower(), o["id"])
+    rels = []
+    for en, items in relmap.items():
+        src_id = name_idx.get(en)
+        # 源必须是 Term
+        if not src_id or by_id[src_id].get("type") != "Term":
+            continue
+        for tok in items:
+            tl = tok.lower()
+            tgt_id = name_idx.get(tl)
+            if not tgt_id:
+                # 退而求其次：实体名被关联项包含（实体名>=4）或关联项包含实体名(>=4)
+                for nm, eid in name_idx.items():
+                    if len(nm) >= 4 and (nm in tl or tl in nm):
+                        tgt_id = eid
+                        break
+            if not tgt_id or tgt_id == src_id:
+                continue
+            key = (src_id, "RELATED_TO", tgt_id)
+            if key in seen:
+                continue
+            rels.append({
+                "source_id": src_id, "relation": "RELATED_TO", "target_id": tgt_id,
+                "source_file": "struct/99-reference/glossary/glossary-master.md",
+                "source_line": 1, "weight": 1.0,
+            })
+            seen.add(key)
+    return rels
+
+
 def id_to_uri(eid: str) -> str:
     return f"<{ENTITY_URI_PREFIX}{eid.replace(':', '_', 1)}>"
 
@@ -220,9 +362,12 @@ def main() -> int:
     seen = load_existing_relations()
     aliases_map = load_standard_aliases()
 
+    new_entities = ensure_historical_entities(by_id, std_name_to_id)
+
     evolved = build_evolved_from(by_id, std_name_to_id, seen)
     mentions = build_mentions(by_id, std_name_to_id, aliases_map, seen)
-    new_rels = evolved + mentions
+    related = build_related_to(by_id, seen)
+    new_rels = evolved + mentions + related
 
     by_rel: Dict[str, int] = {}
     for r in new_rels:
@@ -230,6 +375,9 @@ def main() -> int:
 
     print("=== KG 语义关系增量补充（dry-run） ===" if not args.apply else "=== KG 语义关系增量补充（apply） ===")
     print(f"现有关系去重集合: {len(seen)} 条")
+    print(f"新增历史版本实体: {len(new_entities)} 个")
+    for e in new_entities:
+        print(f"  + Standard: {e['name']}")
     print(f"新增关系总计: {len(new_rels)} 条")
     for rel, c in sorted(by_rel.items()):
         print(f"  {rel}: +{c}")
@@ -244,10 +392,13 @@ def main() -> int:
         print(f"  [{r['relation']}] {s}  ->  {t}  ({r['source_file']}:{r['source_line']})")
 
     if args.apply:
+        append_entities_jsonl(new_entities)
+        ne = append_entities_ttl(new_entities)
         append_jsonl(new_rels)
         n = append_ttl(new_rels)
-        print(f"\n已追加 kg-relations.jsonl: +{len(new_rels)} 行")
-        print(f"已追加 kg.ttl: +{n} 条谓词语句")
+        print(f"\n已追加 kg-entities.jsonl: +{len(new_entities)} 实体")
+        print(f"已追加 kg-relations.jsonl: +{len(new_rels)} 行")
+        print(f"已追加 kg.ttl: +{ne} 实体声明 + {n} 条谓词语句")
         print("提示：运行 `python scripts/health-check.py` 与 `python scripts/knowledge-cli.py stats` 复核。")
     else:
         print("\n（dry-run：未写入。加 --apply 落盘。）")
