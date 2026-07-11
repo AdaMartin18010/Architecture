@@ -583,7 +583,7 @@ part rs_sat_b : Satellite {
 | [2] | OMG KerML Specification (Kernel Modeling Language) | <https://www.omg.org/spec/KerML/> | 2026-06-10 |
 | [3] | OMG SysML v2 REST API Specification | <https://github.com/Systems-Modeling/SysML-v2-API-Java-Client> | 2026-06-10 |
 | [4] | ISO/IEC/IEEE 42010:2022, Architecture Description | <https://www.iso.org/standard/74296.html> | 2026-06-10 |
-| [5] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/81739.html> | 2026-06-10 |
+| [5] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/69529.html> | 2026-06-10 |
 | [6] | OMG Reusable Asset Specification (RAS) 2.0 | <https://www.omg.org/spec/RAS/> | 2026-06-10 |
 | [7] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [8] | SysML v2 Tutorial, OMG/INCOSE Joint Tutorial, 2023 | <https://github.com/Systems-Modeling/SysML-v2-Release> | 2026-06-10 |

@@ -477,7 +477,7 @@ IEEE 1517 将复用过程分为三大过程组：
 
 > **权威来源**:
 >
-> - [ISO/IEC 26550:2015](https://www.iso.org/standard/43007.html)
+> - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html)
 > - [IEEE Standards](https://standards.ieee.org)
 > - 核查日期：2026-07-07
 
@@ -1056,7 +1056,7 @@ ISO/IEC 26550:2015 产品线工程参考模型
 >
 > - ISO/IEC 26565:2026. Software and systems engineering — Methods and tools for product line maturity framework. Published 2026-05. <https://www.iso.org/standard/81436.html> (核查日期: 2026-06-10)
 > - ISO/IEC 26566:2026. Software and systems engineering — Methods and tools for product line texture. Published 2026-05. <https://www.iso.org/standard/81437.html> (核查日期: 2026-06-10)
-> - ISO/IEC 26550:2015. Software and systems engineering — Reference model for product line engineering and management. <https://www.iso.org/standard/43039.html>
+> - ISO/IEC 26550:2015. Software and systems engineering — Reference model for product line engineering and management. <https://www.iso.org/standard/69529.html>
 > - SWEBOK V4. Guide to the Software Engineering Body of Knowledge. IEEE Computer Society, 2024. <https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf>
 >
 > **核查日期**: 2026-06-10

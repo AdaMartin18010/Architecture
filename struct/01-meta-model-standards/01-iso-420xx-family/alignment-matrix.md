@@ -224,7 +224,7 @@ graph TB
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-09）
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
 > - [TOGAF Architecture Content](https://publications.opengroup.org/togaf-library) — The Open Group（核查日期：2026-07-09）
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260，白皮书 W262）（核查日期：2026-07-09）

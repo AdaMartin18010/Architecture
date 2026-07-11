@@ -84,7 +84,7 @@
 | 文档名称 | 对齐标准 | 覆盖领域 | 与已有文档的互补关系 | 引用规范（URL + 日期） |
 |---|---|---|---|---|
 | **C-01 SysML v2 复用映射** | OMG SysML v2 (2023), ISO/IEC 42010:2022, OMG RAS 2.0, ISO/IEC 26550:2015, IEEE 1471 | 元模型标准层 / 模型驱动系统工程 | 与 C-02 MBSE 整合互补：C-01 聚焦语言级复用语义，C-02 聚焦方法论与工具链；与 01/03 PLE 整合文档形成标准族互补 | OMG SysML v2: <https://www.omg.org/spec/SysML/> (2023-06)<br>ISO 42010:2022: <https://www.iso.org/obp/ui> (2022)<br>OMG RAS: <https://www.omg.org/spec/RAS/> (2024) |
-| **C-02 MBSE 与 PLE 整合** | INCOSE SE Vision 2035, ISO/IEC 26550:2015, ISO/IEC 42010:2022, IEC 63278 (AAS), ISO 15288:2023, OMG SysML v2 | 元模型标准层 / 系统工程与产品线工程 | 与 C-01 形成"语言-方法"双轴；与 11/05 AAS-OPC UA 映射形成工业-系统工程桥梁 | INCOSE: <https://www.incose.org/SEVision2035> (2023)<br>ISO 26550: <https://www.iso.org/standard/82556.html> (2023)<br>ISO 15288: <https://www.iso.org/standard/81713.html> (2023) |
+| **C-02 MBSE 与 PLE 整合** | INCOSE SE Vision 2035, ISO/IEC 26550:2015, ISO/IEC 42010:2022, IEC 63278 (AAS), ISO 15288:2023, OMG SysML v2 | 元模型标准层 / 系统工程与产品线工程 | 与 C-01 形成"语言-方法"双轴；与 11/05 AAS-OPC UA 映射形成工业-系统工程桥梁 | INCOSE: <https://www.incose.org/SEVision2035> (2023)<br>ISO 26550: <https://www.iso.org/standard/69529.html> (2023)<br>ISO 15288: <https://www.iso.org/standard/81702.html> (2023) |
 | **C-03 数字孪生通用参考架构** | ISO 23247, AEDT, Gartner 数字孪生框架, IEC 63278 (AAS 对比参考) | 工业物联网 / 数字孪生（非工业场景） | 与 11/05 AAS-OPC UA 映射互补：C-03 覆盖通用/商业数字孪生，11/05 聚焦工业自动化；与 C-02 MBSE 形成模型-孪生闭环 | ISO 23247: <https://www.iso.org/standard/77378.html> (2021)<br>AEDT: <https://www.digitaltwinconsortium.org/> (2026-06) |
 | **C-04 OWASP SCVS 映射** | OWASP SCVS 1.0, SLSA 1.2, SPDX 2.3, CycloneDX 1.6, NIST SSDF | 供应链安全 / 组件验证 | 与 10/01 SLSA、10/02 SBOM 形成"构建-清单-验证"三角；C-04 填补组件验证控制族空白，与 C-05 GUAC 形成"标准-工具"闭环 | OWASP SCVS: <https://scvs.owasp.org/> (2020)<br>SLSA 1.2: <https://slsa.dev/spec/v1.2/> (2025)<br>NIST SSDF: <https://csrc.nist.gov/projects/ssdf> (2024) |
 | **C-05 GUAC 供应链图谱** | GUAC v0.x, SLSA 1.2, OpenSSF Scorecard, SPDX 2.3, CycloneDX 1.6, OSV | 供应链安全 / 风险量化与知识图谱 | 与 C-04 SCVS 互补：C-04 提供验证标准，C-05 提供动态风险分析能力；与 10/03 攻击向量形成"防御-检测"闭环 | GUAC: <https://guac.sh/> (2026)<br>OpenSSF Scorecard: <https://securityscorecards.dev/> (2026)<br>OSV: <https://osv.dev/> (2026) |
@@ -7549,11 +7549,15 @@ kg-relations.jsonl# 7,715 关系
 
 | 关系 | 数量 | 含义 |
 |------|------|------|
-| `defines` | 2,312 | 文件定义了某术语 |
-| `providesNegativeExample` | 1,944 | 文件提供反例/反模式 |
-| `providesPositiveExample` | 1,482 | 文件提供正向案例 |
-| `references` | 572 | 文件引用某标准 |
+| `defines` | 2,618 | 文件定义了某术语 |
+| `providesNegativeExample` | 2,382 | 文件提供反例/反模式 |
+| `providesPositiveExample` | 1,703 | 文件提供正向案例 |
+| `references` | 689 | 文件引用某标准 |
 | `belongsTo` | 323 | 文件属于某主题 |
+
+> **统计口径与已知限制（P0-4 标注）**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，与 `reports/stats.json` 一致，合计 7,715）。
+> 注意：`kg.ttl` 序列化后的语义边**远少于 jsonl**——`:defines` 仅 202，`:relatedTo` / `:evolvedFrom` / `:mentions` / `:implementedBy` 当前为 0（抽取器未实化 + dangling 关系被静默跳过）。
+> 故 SHACL「Conforms: True」仅证明 `label` 非空等**语法层**约束，**不**证明语义边完整。语义边实化与 dangling-即-失败留 **P1**（规则 R1/R2/R6：canonical 归一 + SHACL 真约束）修复。`25010:2024` 三变体、`ArchiMate 4.2` 等不存在版本仍以实体存在于 KG（详见 `reports/authority-alignment-errata.md` A1/F1），需 P1 重建时归并。
 
 完整统计参见：[知识抽取质量报告](../reports/kg-extraction-report.md)。
 
@@ -8110,7 +8114,7 @@ flowchart LR
 | 来源类别 | 名称 | URL | 机构 | 核查日期 |
 |----------|------|-----|------|----------|
 | 标准 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | ISO/IEC/IEEE | 2026-07-07 |
-| 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/43039.html> | ISO/IEC | 2026-07-07 |
+| 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | ISO/IEC | 2026-07-07 |
 | 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/publication/66028> | IEC | 2026-07-07 |
 | 标准 | IEC 61508:2010 | <https://webstore.iec.ch/publication/66912> | IEC | 2026-07-07 |
 | 标准 | ISO 26262:2018 | <https://www.iso.org/standard/68383.html> | ISO | 2026-07-07 |
@@ -9444,13 +9448,13 @@ graph TD
 
 | 标准 | 主题 | 状态 | 链接 | 核查日期 |
 |------|------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) | 2026-07-09 |
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | 01-元模型/复用 | 生效 | [ISO](https://www.iso.org/standard/68982.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | 01-元模型/评估 | 生效 | [ISO](https://www.iso.org/standard/73436.html) | 2026-07-09 |
 | ISO/IEC 26550:2015 | 跨层复用 | 生效 | [ISO](https://www.iso.org/standard/69529.html) | 2026-07-09 |
 | ISO/IEC 26565:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81436.html) | 2026-07-09 |
 | ISO/IEC 26566:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81437.html) | 2026-07-09 |
-| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78176.html) | 2026-07-09 |
+| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78175.html) | 2026-07-09 |
 | ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 2026-07-09 |
 | ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/90219.html) | 2026-07-09 |
 | TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) | 2026-07-09 |
@@ -9458,11 +9462,11 @@ graph TD
 | SPDX 2.3 / CycloneDX 1.6 | 10-供应链安全 | 生效 | [SPDX](https://spdx.dev), [CycloneDX](https://cyclonedx.org) | 2026-07-09 |
 | ISA-95 / IEC 62264 | 11-工业 IoT | 生效 | [ISA](https://www.isa.org/standards-and-publications/isa-standards/isa-95) | 2026-07-09 |
 | OPC UA FX 1.0 | 11-工业 IoT | 新兴 | [OPC Foundation](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/) | 2026-07-09 |
-| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制（认证机构采用） | [IEC](https://webstore.iec.ch/publication/66912) | 2026-07-09 |
+| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制（认证机构采用） | [IEC](https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369) | 2026-07-09 |
 | NIST AI RMF 1.0 | 12-AI 原生/治理 | 生效 | [NIST](https://www.nist.gov/itl/ai-risk-management-framework) | 2026-07-09 |
 | FinOps Foundation | 09-价值量化 | 生效 | [FinOps](https://www.finops.org/) | 2026-07-09 |
 | MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) | 2026-07-09 |
-| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) | 2026-07-09 |
+| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://a2a-protocol.org/latest/) | 2026-07-09 |
 
 > **索引说明**：本表所列链接均指向 ISO、IEC、The Open Group、NIST 等官方发布页面；`核查日期` 为最近一次人工或自动化复核的日期。标准状态变更时应同步更新本表与 [`frontier-tracking/2026-q2-frontier-report.md`](../struct/99-reference/frontier-tracking/2026-q2-frontier-report.md)。
 
@@ -9640,6 +9644,7 @@ graph TD
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
+| **ISO/IEC 21838** | -1:2021 / -2:2021 / -3:2023 | 已发布 | <https://www.iso.org/standard/74307.html> | Top-Level Ontologies（TLO）；项目内引用 74307 为第 3 分部 DOLCE 的 URL |
 | **ISO/IEC/IEEE 42010** | 2022 | 现行 | <https://www.iso.org/standard/74296.html> | 架构描述（Architecture Description） |
 | **ISO/IEC/IEEE 42020** | 2019 | 现行；计划修订 | <https://www.iso.org/standard/68982.html> | 架构过程（Architecture Processes） |
 | **ISO/IEC/IEEE 42030** | 2019 | 现行；AWI 修订中 | <https://www.iso.org/standard/73436.html> | 架构评估（Architecture Evaluation） |
@@ -9652,6 +9657,8 @@ graph TD
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
 | **ISO/IEC 25040** | 2024 | 已发布 | <https://www.iso.org/standard/83467.html> | 质量评估框架 |
 | **ISO/IEC 26550** | 2015 | 现行 | <https://www.iso.org/standard/69529.html> | 产品线工程参考模型；**注意：不存在 2025 版** |
+| **ISO/IEC 26564** | 2022 | 已发布 | <https://www.iso.org/standard/81622.html> | 产品线度量（product line measurement）；URL 待 ISO 直连复核 |
+| **ISO/IEC 26565** | 2026 | 已发布 | <https://www.iso.org/standard/81436.html> | 产品线成熟度框架（product line maturity framework）；2026-05-29 发布；URL 待 ISO 直连复核 |
 | **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
 | **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
@@ -9775,6 +9782,7 @@ graph TD
 | 2026-06-12 | 新增 ISO/IEC 5338:2023、ISO/IEC 42001:2023、IEC TS 62443-6-2:2025 等条目 | 自动对齐代理 |
 | 2026-07-06 | 更新为 v2.1：更新 DIS 42024/42042 状态、IEC 61508 Ed.3、ISO 21448 Ed.2、SLSA 1.2、NIST SSDF 1.2 状态；新增 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI | 自动对齐代理 |
 | 2026-07-07 | 更新为 v2.2：ArchiMate 4.0 增加“官方页面更新滞后”备注；新增 MCP 2026-07-28 RC 条目；细化 IEC 61508 Ed.3“认证机构采用 vs 标准发布”区分；关联 `content-fact-fix-2026-07.md` 勘误报告 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.4：补录 ISO/IEC 26564:2022、ISO/IEC 26565:2026、ISO/IEC 21838 系列（真实已发布但原表漏收）| 自动对齐代理 |
 
 ---
 
@@ -9825,22 +9833,22 @@ graph TD
 
 | 复用层次 | 核心标准 | 辅助标准 | 架构框架 | 建模语言 | 质量度量 | 过程标准 | 协议/接口 | 2026 新增 |
 |----------|----------|----------|----------|----------|----------|----------|-----------|-----------|
-| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
-| **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
-| **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
-| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
+| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO/IEC/IEEE 24765, ISO/IEC/IEEE 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
+| **业务** | FEA BRM 2.0 | ISO/IEC/IEEE 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
+| **应用** | FEA ARM/SRM | ISO/IEC 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
+| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3 Preview, SBOM |
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
-| **治理** | ISO 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
+| **治理** | ISO/IEC 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO/IEC 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
 > **更新说明**:
-> 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。
+> 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；**2026-07-28** 为官方 Release Candidate（2026-05-29 发布），最终版预计 2026-07-28，本矩阵统一以稳定版 2025-11-25 为基线。
 > 新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。
 > A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
 > 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
 > [1](https://modelcontextprotocol.io/specification/2025-11-25)
-> [2](https://a2aprotocol.org)
+> [2](https://a2a-protocol.org/latest/)
 > [3](https://webassembly.org)
 > [4](https://opcfoundation.org)
 
@@ -9875,7 +9883,7 @@ graph TD
 | **ISO 33000 (SPICE)** | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **NIST SP 800-204** | ☆☆☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ☆☆☆☆☆ |
 | **IEC 62443** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★★★ |
-| **ISO 21838** | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
+| **ISO/IEC 21838** | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **OMG SysML v2** | ★★★☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
 | **W3C WASM Core** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★☆☆☆ |
 | **The Open Group O-PAS** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★★ |
@@ -10041,7 +10049,7 @@ graph TD
 > 以下来源用于验证本文件中的标准编号、状态及技术细节：
 
 1. **[MCP 2025-11-25]** Anthropic / Linux Foundation Agentic AI Foundation, *Model Context Protocol Specification*, 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25> — 验证 MCP 协议状态、Tasks、Sampling、OAuth 安全模型。
-2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2aprotocol.org> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
+2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2a-protocol.org/latest/> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
 3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
 4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。

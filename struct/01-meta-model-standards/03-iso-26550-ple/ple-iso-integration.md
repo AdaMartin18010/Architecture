@@ -253,7 +253,7 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 ## 8. 参考索引
 
-1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/61188.html>
+1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/69529.html>
 2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/71883.html>
 3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42020:2019 — Software, systems and enterprise — Architecture processes*. 2019. <https://www.iso.org/standard/68982.html>
@@ -297,7 +297,7 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 > **权威来源**：
 >
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html)（核查日期：2026-07-08）
 > - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/71883.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）

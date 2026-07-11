@@ -202,20 +202,20 @@ struct/
 **软件工程**
 
 - ISO/IEC 26550:2015（产品线工程）
-- ISO/IEC 26564:2022（复用过程评估）
+- ISO/IEC 26564:2022（产品线度量）
 - SWEBOK V4（软件工程知识体系）
 
 **安全与供应链**
 
 - SLSA 1.2（Supply-chain Levels for Software Artifacts）
-- NIST SP 800-218 / SSDF 1.2
+- NIST SP 800-218 / SSDF 1.2 (IPD，最终版预计 2026-Q3)
 - EU CRA（网络弹性法案）
 - OWASP SCVS / LLM Top 10 / MCP Top 10
 
 **工业自动化**
 
 - ISA-95（企业-控制系统集成）
-- IEC 61508（功能安全）
+- IEC 61508 Ed.3（功能安全；CDV/认证基准 2026；IEC 正式发布预计 ~2027）
 - ISO 26262（道路车辆功能安全）
 - IEC 63278（资产管理壳 AAS）
 - PLCopen Motion Control Part 1-4

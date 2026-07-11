@@ -44,11 +44,15 @@ kg-relations.jsonl# 7,715 关系
 
 | 关系 | 数量 | 含义 |
 |------|------|------|
-| `defines` | 2,312 | 文件定义了某术语 |
-| `providesNegativeExample` | 1,944 | 文件提供反例/反模式 |
-| `providesPositiveExample` | 1,482 | 文件提供正向案例 |
-| `references` | 572 | 文件引用某标准 |
+| `defines` | 2,618 | 文件定义了某术语 |
+| `providesNegativeExample` | 2,382 | 文件提供反例/反模式 |
+| `providesPositiveExample` | 1,703 | 文件提供正向案例 |
+| `references` | 689 | 文件引用某标准 |
 | `belongsTo` | 323 | 文件属于某主题 |
+
+> **统计口径与已知限制（P0-4 标注）**：上表数量为 `kg-relations.jsonl` **行级聚合**（机器真源，与 `reports/stats.json` 一致，合计 7,715）。
+> 注意：`kg.ttl` 序列化后的语义边**远少于 jsonl**——`:defines` 仅 202，`:relatedTo` / `:evolvedFrom` / `:mentions` / `:implementedBy` 当前为 0（抽取器未实化 + dangling 关系被静默跳过）。
+> 故 SHACL「Conforms: True」仅证明 `label` 非空等**语法层**约束，**不**证明语义边完整。语义边实化与 dangling-即-失败留 **P1**（规则 R1/R2/R6：canonical 归一 + SHACL 真约束）修复。`25010:2024` 三变体、`ArchiMate 4.2` 等不存在版本仍以实体存在于 KG（详见 `reports/authority-alignment-errata.md` A1/F1），需 P1 重建时归并。
 
 完整统计参见：[知识抽取质量报告](../../../reports/kg-extraction-report.md)。
 

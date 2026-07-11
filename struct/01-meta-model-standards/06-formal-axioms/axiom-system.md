@@ -680,7 +680,7 @@ graph TD
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-09）
 > - [NASA Software Reuse Library (RRL) cost model](https://ntrs.nasa.gov/) — NASA（核查日期：2026-07-09）
 > - [Liskov substitution principle - Wikipedia](https://en.wikipedia.org/wiki/Liskov_substitution_principle) — Wikimedia（核查日期：2026-07-09）
 >

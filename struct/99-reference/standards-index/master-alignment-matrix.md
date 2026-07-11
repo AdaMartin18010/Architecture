@@ -10,22 +10,22 @@
 
 | 复用层次 | 核心标准 | 辅助标准 | 架构框架 | 建模语言 | 质量度量 | 过程标准 | 协议/接口 | 2026 新增 |
 |----------|----------|----------|----------|----------|----------|----------|-----------|-----------|
-| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO 24765, ISO 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
-| **业务** | FEA BRM 2.0 | ISO 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
-| **应用** | FEA ARM/SRM | ISO 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
-| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3, SBOM |
+| **元模型** | ISO/IEC/IEEE 42010:2022 | ISO/IEC/IEEE 24765, ISO/IEC/IEEE 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
+| **业务** | FEA BRM 2.0 | ISO/IEC/IEEE 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
+| **应用** | FEA ARM/SRM | ISO/IEC 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
+| **组件** | ISO 26566:2026（产品线纹理方法/工具能力） | IEEE 1517, C4, OWASP SCVS | arc42, C4 | UML Component | NASA RRL | 42020/12207 | FFI/WIT/Bindgen | WASM Component Model 3.0, WASI 0.3 Preview, SBOM |
 | **功能** | IEEE 1517 | ISO 25010, COCOMO II | Serverless, Temporal | 代码/流程图/决策表/BPMN | 复用率/覆盖率 | 12207/15504 | MCP/A2A/DMN | **MCP 2025-11-25**, A2A v1.0, DMN 1.5 |
-| **治理** | ISO 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
+| **治理** | ISO/IEC 26565:2026（产品线成熟度框架） | RiSE/RCMM, FinOps, CMMI | TOGAF ADM | 成熟度模型 | ISO/IEC 26564:2022 | 42030 | OPA/Gatekeeper | Agentic Governance, Cloud Unit Economics |
 | **安全** | SLSA 1.2 | NIST SSDF 1.2, OWASP SCVS | 零信任架构 | 攻击树、威胁模型 | CVSS/EPSS | ISO 27034, EU CRA | Sigstore/cosign | SLSA Multi-Track, Agentic AI Security |
 | **工业** | ISA-95 / IEC 62264 | **IEC 61508 Ed.3** (认证基准 2026；IEC 正式发布预计 ~2027), **ISO 26262 Ed.3** (~2029) | RAMI 4.0 | UML, IEC 63278 AAS, PLCopen | SIL/ASIL | IEC 61508 lifecycle | OPC UA FX, TSN, Safe Motion | OPC UA FX 1.0 (Parts 80–84), TinyML, Edge AI, UADP |
 
 > **更新说明**:
-> 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation），已替换此前误引的 "2026-07-28 RC"。
+> 经权威核实，MCP 当前稳定版为 **2025-11-25**（2025-12-09 捐给 Linux Foundation Agentic AI Foundation）；**2026-07-28** 为官方 Release Candidate（2026-05-29 发布），最终版预计 2026-07-28，本矩阵统一以稳定版 2025-11-25 为基线。
 > 新增 **OMG RAS v2.2**、**FAIR4RS**、**IEEE 1517-2010** 三个元模型层标准对齐。
 > A2A 当前稳定版为 v1.0（Google Cloud Next 2026 发布）。WASM Component Model 跟踪 WASI 0.3 preview（2026 初）和 1.0 目标（2026 末/2027 初）。
 > 工业层 UADP 作为 OPC UA FX 底层传输独立标注。
 > [1](https://modelcontextprotocol.io/specification/2025-11-25)
-> [2](https://a2aprotocol.org)
+> [2](https://a2a-protocol.org/latest/)
 > [3](https://webassembly.org)
 > [4](https://opcfoundation.org)
 
@@ -60,7 +60,7 @@
 | **ISO 33000 (SPICE)** | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **NIST SP 800-204** | ☆☆☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★☆☆☆ | ★★★★☆ | ☆☆☆☆☆ |
 | **IEC 62443** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★☆ | ★★★★★ | ★★★★★ |
-| **ISO 21838** | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
+| **ISO/IEC 21838** | ★★★★★ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ |
 | **OMG SysML v2** | ★★★☆☆ | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
 | **W3C WASM Core** | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★☆☆☆ |
 | **The Open Group O-PAS** | ★★☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★★★★ |
@@ -226,7 +226,7 @@
 > 以下来源用于验证本文件中的标准编号、状态及技术细节：
 
 1. **[MCP 2025-11-25]** Anthropic / Linux Foundation Agentic AI Foundation, *Model Context Protocol Specification*, 2025-11-25. <https://modelcontextprotocol.io/specification/2025-11-25> — 验证 MCP 协议状态、Tasks、Sampling、OAuth 安全模型。
-2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2aprotocol.org> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
+2. **[A2A v1.0.0]** Google / Linux Foundation, *Agent-to-Agent Protocol Specification*, v1.0.0, Cloud Next 2026-04. <https://a2a-protocol.org/latest/> — 验证 Agent Card、Task Lifecycle、gRPC 绑定、Signed Agent Cards。
 3. **[W3C WebAssembly 3.0 / Component Model]** W3C WebAssembly Community Group, *WebAssembly 3.0*, 2025-09; Bytecode Alliance, *Component Model* & WASI Roadmap. <https://webassembly.org> — 验证 WASM Component Model 3.0 发布状态、WIT 接口定义、WASI 0.3 async I/O。
 4. **[OPC UA FX Parts 80–84]** OPC Foundation, *OPC Unified Architecture – Field Level Communications (FX)*, Parts 80–84, 2024–2026; IEC 62541-14 PubSub v1.05. <https://opcfoundation.org> — 验证 OPC UA FX 1.0 状态、UADP 帧结构、C2C/C2D/D2D 模式差异。
 5. **[IEEE 802.1Qbv-2021 / IEC/IEEE 60802]** IEEE, *Standard for Local and Metropolitan Area Networks–Bridges and Bridged Networks–Amendment 25: Enhancements for Scheduled Traffic*, 2021; IEC/IEEE 60802 TSN Profile for Industrial Automation (Draft, 2025) — 验证 GCL（Gate Control List）参数、TSN 工业配置文件。

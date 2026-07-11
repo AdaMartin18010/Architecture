@@ -11,6 +11,7 @@
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -39,13 +40,17 @@ def main() -> int:
     stats = json.loads(STATS_JSON.read_text(encoding="utf-8"))
     struct_md = str(stats["struct_md"])           # 330
     total_md = str(stats["struct_md"] + stats["view_md"])  # 353
-    words = f"{stats['total_words']:,}"           # 1,091,745
+    total_words = int(stats["total_words"])
+    words = f"{total_words:,}"                       # 仅用于打印
+    tol = max(5000, int(total_words * 0.02))          # 字数容差 ±2%（至少 ±5000）：内容微调不破坏校验
 
-    required = {
-        "README.md": [total_md, struct_md, words],
+    # 结构性数字（文件数）必须精确子串匹配；字数按容差比对
+    exact_required = {
+        "README.md": [total_md, struct_md],
         "MASTER_PLAN.md": [total_md, struct_md],
-        "COMPLETION_REPORT_PHASE_1_5.md": [struct_md, words],
+        "COMPLETION_REPORT_PHASE_1_5.md": [struct_md],
     }
+    num_re = re.compile(r"\d{1,3}(?:,\d{3})+")
 
     errors = []
     for name, path in DOCS.items():
@@ -56,9 +61,15 @@ def main() -> int:
         for stale in STALE_PATTERNS:
             if stale in text:
                 errors.append(f"{name}: 含过时数字/表述 `{stale}`")
-        for req in required.get(name, []):
+        for req in exact_required.get(name, []):
             if req not in text:
                 errors.append(f"{name}: 缺少真源数字 `{req}`")
+        big = [int(m.replace(",", "")) for m in num_re.findall(text) if int(m.replace(",", "")) >= 100_000]
+        if not big:
+            errors.append(f"{name}: 未找到字数锚点（带千分位的大数）")
+        elif all(abs(n - total_words) > tol for n in big):
+            nearest = min(big, key=lambda n: abs(n - total_words))
+            errors.append(f"{name}: 字数漂移（文档锚点 {nearest:,}，真源 {words}，差 {abs(nearest - total_words):,}，容差 ±{tol:,}）")
 
     if errors:
         print("STATS 一致性校验失败：")

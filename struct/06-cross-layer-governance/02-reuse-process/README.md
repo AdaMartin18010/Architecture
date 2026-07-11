@@ -94,7 +94,7 @@ IEEE 1517 将复用过程分为三大过程组：
 
 > **权威来源**:
 >
-> - [ISO/IEC 26550:2015](https://www.iso.org/standard/43007.html)
+> - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html)
 > - [IEEE Standards](https://standards.ieee.org)
 > - 核查日期：2026-07-07
 

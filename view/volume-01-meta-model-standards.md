@@ -269,7 +269,7 @@ graph TB
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-09）
 > - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（核查日期：2026-07-09）
 > - [TOGAF Architecture Content](https://publications.opengroup.org/togaf-library) — The Open Group（核查日期：2026-07-09）
 > - [ArchiMate® 4 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布，Document C260，白皮书 W262）（核查日期：2026-07-09）
@@ -3414,7 +3414,7 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 ## 8. 参考索引
 
-1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/61188.html>
+1. ISO/IEC. *ISO/IEC 26550:2015 — Software and systems engineering — Reference model for product line engineering and management*. 2015. <https://www.iso.org/standard/69529.html>
 2. ISO/IEC. *ISO/IEC 26580:2021 — Software and systems engineering — Methods and tools for the feature-based approach to software and systems product line engineering*. 2021. <https://www.iso.org/standard/71883.html>
 3. ISO/IEC/IEEE. *ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description*. 2022. <https://www.iso.org/standard/74296.html>
 4. ISO/IEC/IEEE. *ISO/IEC/IEEE 42020:2019 — Software, systems and enterprise — Architecture processes*. 2019. <https://www.iso.org/standard/68982.html>
@@ -3458,7 +3458,7 @@ ISO 42020:2019 的六大架构过程为产品线工程提供了过程骨架：
 
 > **权威来源**：
 >
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html)（核查日期：2026-07-08）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html)（核查日期：2026-07-08）
 > - [ISO/IEC 26580:2021 — Feature-based PLE](https://www.iso.org/standard/71883.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html)（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html)（核查日期：2026-07-08）
@@ -5736,7 +5736,7 @@ graph TD
 > - [ISO/IEC/IEEE 42010:2022 OBP 在线浏览](https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-09）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-09）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-09）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-09）
 > - [NASA Software Reuse Library (RRL) cost model](https://ntrs.nasa.gov/) — NASA（核查日期：2026-07-09）
 > - [Liskov substitution principle - Wikipedia](https://en.wikipedia.org/wiki/Liskov_substitution_principle) — Wikimedia（核查日期：2026-07-09）
 >
@@ -8992,7 +8992,7 @@ part rs_sat_b : Satellite {
 | [2] | OMG KerML Specification (Kernel Modeling Language) | <https://www.omg.org/spec/KerML/> | 2026-06-10 |
 | [3] | OMG SysML v2 REST API Specification | <https://github.com/Systems-Modeling/SysML-v2-API-Java-Client> | 2026-06-10 |
 | [4] | ISO/IEC/IEEE 42010:2022, Architecture Description | <https://www.iso.org/standard/74296.html> | 2026-06-10 |
-| [5] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/81739.html> | 2026-06-10 |
+| [5] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/69529.html> | 2026-06-10 |
 | [6] | OMG Reusable Asset Specification (RAS) 2.0 | <https://www.omg.org/spec/RAS/> | 2026-06-10 |
 | [7] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [8] | SysML v2 Tutorial, OMG/INCOSE Joint Tutorial, 2023 | <https://github.com/Systems-Modeling/SysML-v2-Release> | 2026-06-10 |
@@ -9011,7 +9011,7 @@ part rs_sat_b : Satellite {
 |---|---|
 | **版本** | 2026-06-10 |
 | **定位** | Phase C-02：元模型标准层 — MBSE 复用层次与产品线工程整合框架 |
-| **对齐标准** | INCOSE SE Vision 2035、ISO/IEC 26550:2015、ISO/IEC 42010:2022、IEC 63278（AAS）、ISO 15288:2023、OMG SysML v2 |
+| **对齐标准** | INCOSE SE Vision 2035、ISO/IEC 26550:2015、ISO/IEC 42010:2022、IEC 63278（AAS）、ISO/IEC/IEEE 15288:2023、OMG SysML v2 |
 | **状态** | ✅ 已完成 |
 
 ---
@@ -9694,8 +9694,8 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 |---|---|---|---|
 | [1] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [2] | DoD Digital Engineering Strategy, 2018 | <https://www.dau.edu/sites/default/files/2023-11/Digital-Engineering-Strategy_2018.pdf> | 2026-06-10 |
-| [3] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/81739.html> | 2026-06-10 |
-| [4] | ISO/IEC/IEEE 15288:2023, System Life Cycle Processes | <https://www.iso.org/standard/81713.html> | 2026-06-10 |
+| [3] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/69529.html> | 2026-06-10 |
+| [4] | ISO/IEC/IEEE 15288:2023, System Life Cycle Processes | <https://www.iso.org/standard/81702.html> | 2026-06-10 |
 | [5] | IEC 63278:2023, Asset Administration Shell for Industrial Applications | <https://www.iec.ch/dyn/www/f?p=103:38:0::::FSP_ORG_ID:1363> | 2026-06-10 |
 | [6] | OMG SysML v2 Specification, Version 2.0 | <https://www.omg.org/spec/SysML/> | 2026-06-10 |
 | [7] | Capella / ARCADIA Official Documentation | <https://www.eclipse.org/capella/> | 2026-06-10 |
@@ -9751,7 +9751,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 | ISO/IEC/IEEE 42010:2022 OBP 在线浏览 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | <https://www.iso.org/standard/68982.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | <https://www.iso.org/standard/73436.html> | 2026-07-09 |
-| ISO/IEC 26550:2015 | <https://www.iso.org/standard/61188.html> | 2026-07-09 |
+| ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | 2026-07-09 |
 | The Open Group TOGAF Standard, 10th Edition | <https://www.opengroup.org/togaf> | 2026-07-09 |
 | The Open Group TOGAF Library / Architecture Content | <https://publications.opengroup.org/togaf-library> | 2026-07-09 |
 | ArchiMate 4 Specification (Document C260) | <https://www.opengroup.org/archimate-licensed-downloads> | 2026-07-09 |
@@ -9825,7 +9825,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 > - [ISO/IEC/IEEE 42010:2022 — Architecture description](https://www.iso.org/standard/74296.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42020:2019 — Architecture processes](https://www.iso.org/standard/68982.html) — ISO（核查日期：2026-07-08）
 > - [ISO/IEC/IEEE 42030:2019 — Architecture evaluation](https://www.iso.org/standard/73436.html) — ISO（核查日期：2026-07-08）
-> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/61188.html) — ISO（核查日期：2026-07-08）
+> - [ISO/IEC 26550:2015 — Product line engineering](https://www.iso.org/standard/69529.html) — ISO（核查日期：2026-07-08）
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf)（核查日期：2026-07-08）
 > - [The Open Group ArchiMate 4 Specification (C260/W262)](https://www.opengroup.org/archimate-licensed-downloads)（核查日期：2026-07-08）
 > - [OMG RAS v2.2](https://www.omg.org/spec/RAS/2.2/)（核查日期：2026-07-08）

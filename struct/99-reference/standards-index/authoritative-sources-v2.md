@@ -41,6 +41,7 @@
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
+| **ISO/IEC 21838** | -1:2021 / -2:2021 / -3:2023 | 已发布 | <https://www.iso.org/standard/74307.html> | Top-Level Ontologies（TLO）；项目内引用 74307 为第 3 分部 DOLCE 的 URL |
 | **ISO/IEC/IEEE 42010** | 2022 | 现行 | <https://www.iso.org/standard/74296.html> | 架构描述（Architecture Description） |
 | **ISO/IEC/IEEE 42020** | 2019 | 现行；计划修订 | <https://www.iso.org/standard/68982.html> | 架构过程（Architecture Processes） |
 | **ISO/IEC/IEEE 42030** | 2019 | 现行；AWI 修订中 | <https://www.iso.org/standard/73436.html> | 架构评估（Architecture Evaluation） |
@@ -53,6 +54,8 @@
 | **ISO/IEC 25010** | **2023** | 已发布 | <https://www.iso.org/standard/78175.html> | SQuaRE 产品质量模型；**注意：不存在 :2024 版** |
 | **ISO/IEC 25040** | 2024 | 已发布 | <https://www.iso.org/standard/83467.html> | 质量评估框架 |
 | **ISO/IEC 26550** | 2015 | 现行 | <https://www.iso.org/standard/69529.html> | 产品线工程参考模型；**注意：不存在 2025 版** |
+| **ISO/IEC 26564** | 2022 | 已发布 | <https://www.iso.org/standard/81622.html> | 产品线度量（product line measurement）；URL 待 ISO 直连复核 |
+| **ISO/IEC 26565** | 2026 | 已发布 | <https://www.iso.org/standard/81436.html> | 产品线成熟度框架（product line maturity framework）；2026-05-29 发布；URL 待 ISO 直连复核 |
 | **ISO/IEC 26566** | 2026 | 已发布 | <https://www.iso.org/standard/81437.html> | 软件和系统工程 — 产品线纹理（product line texture）的方法与工具能力；定义纹理管理、操作化与支持的过程、方法能力和工具能力 |
 | **ISO/IEC 26580** | 2021 | 已发布 | <https://www.iso.org/standard/71883.html> | 基于特征的产品线工程 |
 | **ISO/IEC 33000 (SPICE)** | 系列 | 现行 | <https://www.iso.org/ics/35.080/x/> | 软件过程评估与能力确定 |
@@ -176,6 +179,7 @@
 | 2026-06-12 | 新增 ISO/IEC 5338:2023、ISO/IEC 42001:2023、IEC TS 62443-6-2:2025 等条目 | 自动对齐代理 |
 | 2026-07-06 | 更新为 v2.1：更新 DIS 42024/42042 状态、IEC 61508 Ed.3、ISO 21448 Ed.2、SLSA 1.2、NIST SSDF 1.2 状态；新增 OWASP Agentic AI / MCP Top 10、Microsoft Agent Governance Toolkit、A2A v1.0 GA、WASI 0.3、GSF SCI for AI | 自动对齐代理 |
 | 2026-07-07 | 更新为 v2.2：ArchiMate 4.0 增加“官方页面更新滞后”备注；新增 MCP 2026-07-28 RC 条目；细化 IEC 61508 Ed.3“认证机构采用 vs 标准发布”区分；关联 `content-fact-fix-2026-07.md` 勘误报告 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.4：补录 ISO/IEC 26564:2022、ISO/IEC 26565:2026、ISO/IEC 21838 系列（真实已发布但原表漏收）| 自动对齐代理 |
 
 ---
 
