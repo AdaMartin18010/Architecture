@@ -58,7 +58,7 @@ aro:implementedBy a owl:ObjectProperty ;
 aro:mentions a owl:ObjectProperty ;
     rdfs:label "提及" ;
     rdfs:domain aro:File ;
-    rdfs:range aro:Term .
+    rdfs:range aro:Entity .
 
 aro:providesNegativeExample a owl:ObjectProperty ;
     rdfs:label "提供反例" ;
