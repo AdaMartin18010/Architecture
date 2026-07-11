@@ -169,6 +169,7 @@ Phase C（纵深扩展）
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
 
+
 ---
 
 
@@ -2163,6 +2164,7 @@ flowchart LR
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -2733,6 +2735,7 @@ flowchart TB
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -3261,6 +3264,7 @@ flowchart TB
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
 
 ---
 
@@ -5334,6 +5338,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 > **生成命令**: `python scripts/knowledge-cli.py build`
 
+
 ---
 
 
@@ -6097,6 +6102,7 @@ M.3 (层次不可约性)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -6320,6 +6326,7 @@ M.3 (层次不可约性)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -6519,6 +6526,7 @@ M.3 (层次不可约性)
 ---
 
 > **最后更新**: 2026-07-08
+
 
 ---
 
@@ -7515,6 +7523,7 @@ M.3 (层次不可约性)
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
 
+
 ---
 
 
@@ -7696,6 +7705,7 @@ python struct/99-reference/tools/kg-query.py sparql "SELECT ?s ?label WHERE { ?s
 > **生成时间**: 2026-07-08
 > **生成工具**: `knowledge-extractor.py` / `kg-builder.py`
 > **许可证**: 与本仓库一致
+
 
 ---
 
@@ -8166,6 +8176,7 @@ flowchart LR
 
 > **核查说明**：Wikipedia 链接均通过公开搜索与引用交叉验证；由于本地网络对 `en.wikipedia.org` 的 HTTPS 直连受限，部分页面通过 SearchWeb 的二次引用确认了条目存在与 URL 有效性。标准与规范链接以 ISO、IEC、NIST、OpenSSF、OMG 等官方网站或授权经销商页面为准。
 
+
 ---
 
 
@@ -8375,6 +8386,7 @@ $$
 > - [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — ISO（核查日期：2026-07-09）
 
 **跨层映射权威性说明**：本矩阵的层次划分与对应关系（correspondence）直接引用 ISO/IEC/IEEE 42010:2022 的架构描述概念；业务/应用/组件/功能四层映射与 TOGAF Standard 10 的分层企业架构方法一致；质量属性（性能、安全、可靠性、碳效率）映射引用 ISO/IEC 25010:2023 的产品质量模型。矩阵的每次结构性变更应同步更新 `glossary/terminology-crosswalk.md` 与 `99-reference/CHANGELOG.md`。
+
 
 ---
 
@@ -8833,6 +8845,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 >
 > **核查日期**: 2026-07-07
 
+
 ---
 
 
@@ -9183,6 +9196,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -9348,6 +9362,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ## 分析
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
+
 
 ---
 
@@ -9605,6 +9620,7 @@ graph TD
 - 为每个新增主题制定参考层补充清单。
 - 建立跨主题术语变更的评审流程。
 - 将失效链接修复纳入常规维护排期。
+
 
 ---
 
@@ -10074,6 +10090,7 @@ graph TD
 > 最后更新: 2026-06-28
 > 更新责任人: 专业写作代理（6 月第 4 周全面更新）
 > 下次计划更新: 2026-09-30（Q3 季度审查）
+
 
 ---
 
@@ -10662,6 +10679,7 @@ graph TD
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -10821,6 +10839,7 @@ graph TD
 ## 分析
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
+
 
 ---
 
@@ -11035,6 +11054,7 @@ def check_standard_version(standard_name, cited_version):
 
 **分析**：参考层的价值不在于内容本身，而在于建立知识之间的信任锚点；必须随标准演进定期审计与更新。
 
+
 ---
 
 
@@ -11170,6 +11190,7 @@ def check_standard_version(standard_name, cited_version):
 - 内容块检查清单：[`content-checklist.md`](../struct/99-reference/templates/content-checklist.md)
 - 质量门控实现：[`../../../scripts/quality-gate-v2.py`](../scripts/quality-gate-v2.py)
 - Padding 扫描脚本：[`../../../scripts/template-padding-check.py`](../scripts/template-padding-check.py)
+
 
 ---
 
@@ -11408,6 +11429,7 @@ python scripts/quality-gate-v2.py struct/ --report report.md
 >
 > **核查日期**: 2026-07-07
 
+
 ---
 
 
@@ -11563,6 +11585,7 @@ def example():
 > - 与 `struct/README.md` 中的文件夹结构导航一致
 >
 > 最后更新: 2026-06-06
+
 
 ---
 
@@ -11728,6 +11751,7 @@ def example():
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -11879,6 +11903,7 @@ COCOMO II 复用调整:
 > - [NIST](https://www.nist.gov)
 > - [CNCF](https://www.cncf.io)
 > - 核查日期：2026-07-07
+
 
 ---
 
