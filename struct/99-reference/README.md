@@ -103,13 +103,13 @@ graph TD
 
 | 标准 | 主题 | 状态 | 链接 | 核查日期 |
 |------|------|------|------|------|
-| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) | 2026-07-09 |
+| ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74296.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | 01-元模型/复用 | 生效 | [ISO](https://www.iso.org/standard/68982.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | 01-元模型/评估 | 生效 | [ISO](https://www.iso.org/standard/73436.html) | 2026-07-09 |
 | ISO/IEC 26550:2015 | 跨层复用 | 生效 | [ISO](https://www.iso.org/standard/69529.html) | 2026-07-09 |
 | ISO/IEC 26565:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81436.html) | 2026-07-09 |
 | ISO/IEC 26566:2026 | 跨层复用 | 已发布 | [ISO](https://www.iso.org/standard/81437.html) | 2026-07-09 |
-| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78176.html) | 2026-07-09 |
+| ISO/IEC 25010:2023 | 01-元模型/质量 | 生效 | [ISO](https://www.iso.org/standard/78175.html) | 2026-07-09 |
 | ArchiMate 4 Specification | 01-元模型 | 2026-04-27 发布 | [The Open Group](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 2026-07-09 |
 | ISO/IEC/IEEE 12207:2026 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/90219.html) | 2026-07-09 |
 | TOGAF 10 | 01-元模型 | 生效 | [Open Group](https://www.opengroup.org/togaf) | 2026-07-09 |
@@ -117,11 +117,11 @@ graph TD
 | SPDX 2.3 / CycloneDX 1.6 | 10-供应链安全 | 生效 | [SPDX](https://spdx.dev), [CycloneDX](https://cyclonedx.org) | 2026-07-09 |
 | ISA-95 / IEC 62264 | 11-工业 IoT | 生效 | [ISA](https://www.isa.org/standards-and-publications/isa-standards/isa-95) | 2026-07-09 |
 | OPC UA FX 1.0 | 11-工业 IoT | 新兴 | [OPC Foundation](https://opcfoundation.org/opc-ua-field-exchange-opc-ua-fx/) | 2026-07-09 |
-| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制（认证机构采用） | [IEC](https://webstore.iec.ch/publication/66912) | 2026-07-09 |
+| IEC 61508 Ed.3 | 11-工业 IoT | 2026 强制（认证机构采用） | [IEC](https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369) | 2026-07-09 |
 | NIST AI RMF 1.0 | 12-AI 原生/治理 | 生效 | [NIST](https://www.nist.gov/itl/ai-risk-management-framework) | 2026-07-09 |
 | FinOps Foundation | 09-价值量化 | 生效 | [FinOps](https://www.finops.org/) | 2026-07-09 |
 | MCP 2025-11-25 | 12-AI 原生 | 生效 | [MCP](https://modelcontextprotocol.io/specification/2025-11-25) | 2026-07-09 |
-| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://google.github.io/A2A) | 2026-07-09 |
+| A2A v1.0 | 12-AI 原生 | 生效 | [A2A](https://a2a-protocol.org/latest/) | 2026-07-09 |
 
 > **索引说明**：本表所列链接均指向 ISO、IEC、The Open Group、NIST 等官方发布页面；`核查日期` 为最近一次人工或自动化复核的日期。标准状态变更时应同步更新本表与 [`frontier-tracking/2026-q2-frontier-report.md`](frontier-tracking/2026-q2-frontier-report.md)。
 

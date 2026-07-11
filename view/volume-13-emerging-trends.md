@@ -1,6 +1,6 @@
 # 内部开发者平台 (IDP) 与架构复用
 
-> **版本**: 2026-07-09
+> **版本**: 2026-07-11
 > **定位**: 由 `struct/13-emerging-trends` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 13-emerging-trends --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -4439,7 +4439,6 @@ SCI for AI 要求提供方和使用方分别度量各自可控的排放：
 ---
 
 ## 补充章节
-
 ## 概念定义
 
 **定义**：新兴趋势包括平台工程、模块化单体、WebAssembly 组件、绿色软件与 RegTech AI，它们通过新抽象层或新约束推动复用资产的可移植性、可持续性与治理自动化。

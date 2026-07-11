@@ -1,6 +1,6 @@
 # API 设计模式与功能复用
 
-> **版本**: 2026-07-09
+> **版本**: 2026-07-11
 > **定位**: 由 `struct/05-functional-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 05-functional-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。

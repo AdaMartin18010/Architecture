@@ -2,7 +2,7 @@
 
 > **版本**: 2026-07-08
 > **定位**: 将业务能力作为业务架构复用的核心单元
-> **对齐标准**: TOGAF 10, FEA BRM 2.0, ArchiMate 4.2, Zachman Framework
+> **对齐标准**: TOGAF 10, FEA BRM 2.0, ArchiMate 4.0, Zachman Framework
 
 ---
 
@@ -173,7 +173,7 @@ Gov(C): C 的治理主体、生命周期与版本策略
 | TOGAF 10 | Business Capability | Phase B §B.3.3, Content Metamodel | 业务能力映射到 TOGAF 内容元模型中的 Business Capability；Organization Unit 映射到能力的 Owner；Function 映射到能力下的活动 |
 | TOGAF 10 | ABB / SBB | ADM Phase C/D | 业务能力定义为 ABB（架构构建块），具体 IT 实现为 SBB（解决方案构建块） |
 | FEA BRM 2.0 | Line of Business / Sub-function | 五层业务线结构 | FEA BRM 的业务线（LoB）映射为能力组（Level 1），子功能映射为具体能力（Level 2-3） |
-| ArchiMate 4.2 | Capability / Resource / Value | §5 Business Layer, §7.2 Capability | ArchiMate 的 Capability 与本概念等价；Resource 为能力实现；Value 为能力创造的价值 |
+| ArchiMate 4.0 | Capability / Resource / Value | §5 Business Layer, §7.2 Capability | ArchiMate 的 Capability 与本概念等价；Resource 为能力实现；Value 为能力创造的价值 |
 | Zachman Framework | What / How (Business Perspective) | C2-1, C2-2 | 业务能力映射到 Zachman 矩阵的"业务视角-做什么"与"业务视角-怎么做" |
 
 ---
@@ -284,7 +284,7 @@ Gov(C): C 的治理主体、生命周期与版本策略
 >
 > - [The Open Group TOGAF Standard, 10th Edition](https://www.opengroup.org/togaf) — TOGAF 10 Phase B 业务能力定义；核查日期：2026-07-08
 > - [FEA BRM 2.0](https://www.whitehouse.gov/omb/management/federal-enterprise-architecture/) — 联邦企业架构业务参考模型；核查日期：2026-07-08
-> - [ArchiMate 4.2 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate 业务层 Capability / Value Stream；核查日期：2026-07-08
+> - [ArchiMate 4.0 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate 业务层 Capability / Value Stream；核查日期：2026-07-08
 > - [Zachman Framework](https://www.zachman.com/) — 企业架构 What/How 维度；核查日期：2026-07-08
 >
 > **核查日期**: 2026-07-08

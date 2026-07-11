@@ -26,11 +26,18 @@ jobs:
 
       - name: Run link-checker.py
         run: python scripts/link-checker.py --report reports/link-checker.md
-        continue-on-error: true
 
       - name: Run cross-index-check.py
         run: python scripts/cross-index-check.py
-        continue-on-error: true
+
+      - name: Generate machine stats (reports/stats.json)
+        run: python scripts/knowledge-cli.py stats
+
+      - name: Run check-stats-consistency.py
+        run: python scripts/check-stats-consistency.py
+
+      - name: Run sync-view-from-struct.py (strict)
+        run: python scripts/sync-view-from-struct.py
 
       - name: Run template-padding-check.py
         run: python scripts/template-padding-check.py

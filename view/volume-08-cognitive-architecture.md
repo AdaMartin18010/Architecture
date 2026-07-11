@@ -1,6 +1,6 @@
 # ACT-R 认知架构与知识复用
 
-> **版本**: 2026-07-09
+> **版本**: 2026-07-11
 > **定位**: 由 `struct/08-cognitive-architecture` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 08-cognitive-architecture --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。

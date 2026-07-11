@@ -25,12 +25,12 @@
 
 | 指标 | 数据 |
 |------|------|
-| struct/ Markdown | 309 |
+| struct/ Markdown | 330 |
 | view/ Markdown | 23 |
 | 一级主题 | 14（13 + 99-reference） |
 | Mermaid 源文件 | 75 |
 | SVG 渲染输出 | 75 |
-| 累计字数 | 1,004,537 |
+| 累计字数 | 1,091,745 |
 | Python 脚本 | 12+ |
 
 ---
@@ -70,7 +70,7 @@
 | `2395af8` | feat(phase-6): 测验、幻灯片、PDF 输出 |
 | `4b2f6bb` | feat(phase-6): 课程 README、交付物清单、门户增强 |
 
-**本地仓库**: 已提交 7 个未 push commit，工作区干净。  
+**本地仓库**: 已提交 7 个未 push commit，工作区干净。
 **远程推送**: ❌ 当前环境无法连接 `github.com:443`，SSH publickey 未授权。
 
 ---
@@ -80,10 +80,13 @@
 ### 6.1 推送代码到 GitHub（必须手动解决）
 
 1. 将公钥添加到 GitHub 账户 Settings → SSH and GPG keys：
+
    ```text
    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAymukzPSDoLQ4MlS4a65KeB7bTDPcDmMbOzUTNC3Cc1 architecture-kimi-bot@github
    ```
+
 2. 在仓库目录执行：
+
    ```bash
    git remote set-url origin git@github.com-architecture:AdaMartin18010/Architecture.git
    git push
@@ -98,6 +101,6 @@
 
 ## 7. 结论
 
-项目在**内容、结构、质量门控、可视化、课程产品、输出工具、CI 配置**等维度已达到当前环境所能实现的 **100% 完成度**。  
-继续扩展会产生更多未 push 的本地 commit，无法进一步提升"完成度"。  
+项目在**内容、结构、质量门控、可视化、课程产品、输出工具、CI 配置**等维度已达到当前环境所能实现的 **100% 完成度**。
+继续扩展会产生更多未 push 的本地 commit，无法进一步提升"完成度"。
 **建议优先解决 SSH key 授权与 push 问题**，使 CI 能够在 GitHub 上真正运行，再决定后续扩展方向。

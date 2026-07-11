@@ -1,6 +1,6 @@
 # 跨层复用治理框架
 
-> **版本**: 2026-07-09
+> **版本**: 2026-07-11
 > **定位**: 由 `struct/06-cross-layer-governance` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 06-cross-layer-governance --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -8349,6 +8349,7 @@ flowchart TB
 | 变性绑定冲突 | 运行期 → 配置期 | 重构变性模型，简化配置空间 | 中 | 配置冲突数 ≥ 5 |
 | 安全等级不匹配 | 共享组件 → 隔离组件 | 安全加固，独立部署，访问控制 | 极高 | 目标安全等级 > 组件认证等级 |
 | 性能要求无法通过共享满足 | 应用服务 → 本地功能 | 内嵌实现，缓存优化，异步化 | 中 | 延迟要求 < 共享服务 P99 |
+| 业务语义漂移 | 业务服务 → 应用服务 | 领域重新划分，业务能力重新定义 | 高 | 语义覆盖率 < 80% |
 
 ---
 
@@ -8471,12 +8472,10 @@ flowchart TD
 > - 降级矩阵对照 Netflix/CNCF 服务拆分最佳实践验证
 > - 经济分析对照 COCOMO II (USC) 和 NASA RRL 成本模型验证
 >
-> 最后更新: 2026-06-06
-| 业务语义漂移 | 业务服务 → 应用服务 | 领域重新划分，业务能力重新定义 | 高 | 语义覆盖率 < 80% |
 
 ---
 
-## 决策流程图
+## 升级/降级治理流程（5 阶段）
 
 ```
 跨层复用决策流程
@@ -8695,27 +8694,6 @@ sequenceDiagram
 > - FinOps 单位经济学：[`struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md`](../struct/06-cross-layer-governance/04-finops-cost/finops-unit-economics-2026.md)
 > - 复用度量指标体系：[`struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md`](../struct/06-cross-layer-governance/05-metrics-kpi/metrics-framework.md)
 > - 复用成熟度模型：[`struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md`](../struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
-
----
-
-## 补充说明：跨层复用升级/降级决策矩阵
-
-## 概念定义
-
-**定义**：升级/降级矩阵是用于判断可复用资产应从项目级提升到组织级，或从组织级降级到项目级/退役的决策框架。
-
-## 反例
-
-**反例**：某组件仅被 1 个团队使用却被强制提升为组织标准，导致其他团队被迫承担不必要的依赖与变更成本。
-
-## 权威来源
-
-> **权威来源**:
->
-> - [Wikipedia — Capability Maturity Model](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
-> - [Wikipedia — IT governance](https://en.wikipedia.org/wiki/IT_governance)
-> - [ISO/IEC 26566:2026](https://www.iso.org/standard/81437.html) 产品线纹理方法/工具能力
-> - 核查日期：2026-07-07
 
 
 ---

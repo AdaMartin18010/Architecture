@@ -73,7 +73,7 @@
 | 本主题概念 | 对应标准条款 | 映射说明 |
 |:---|:---|:---|
 | 业务能力 | TOGAF 10 §B.3.3 Business Capability | 能力为业务架构的内容元模型核心元素 |
-| 价值流 | ArchiMate 4.2 §7.3 Value Stream | 端到端价值创造活动的结构化表达 |
+| 价值流 | ArchiMate 4.0 §7.3 Value Stream | 端到端价值创造活动的结构化表达 |
 | 业务流程 | BPMN 2.0 §8 Process | 可执行流程模型与人工可读图形的双重语义 |
 | 业务决策 | DMN 1.5 §6 Decision Requirements Diagram | 决策逻辑与流程结构的解耦复用 |
 | 业务线分类 | FEA BRM 2.0 Line of Business / Sub-function | 联邦政府跨机构业务能力复用基准 |

@@ -19,6 +19,7 @@ struct/ → view/ 同步与差异报告脚本
 import re
 import sys
 import argparse
+import hashlib
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple
@@ -66,7 +67,8 @@ def _collect_topic_files(topic_dir: Path) -> List[Path]:
         rel = md.relative_to(topic_dir)
         # 跳过审计、CHANGELOG、plans-tasks 等元数据
         rel_posix = rel.as_posix()
-        if any(sp in rel_posix for sp in ["99-reference/audit/", "CHANGELOG", "frontier-tracking/", "plans-tasks/"]):
+        rel_lower = rel_posix.lower()
+        if any(sp in rel_lower for sp in ["99-reference/audit/", "changelog", "frontier-tracking/", "plans-tasks/", "_historical/"]):
             continue
         files.append(md)
     return files
@@ -151,13 +153,12 @@ def _rewrite_links(text: str, source_file: Path, struct_root: Path, output_root:
     return link_re.sub(repl, text)
 
 
-def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -> None:
-    """将主题目录下的文件聚合并写入 view 卷册"""
+def render_view_volume(topic_dir: Path, output_root: Path, project_root: Path) -> Optional[str]:
+    """将主题目录下的文件聚合为 view 卷册文本（不写文件，返回字符串；无文件返回 None）。"""
     files = _collect_topic_files(topic_dir)
     if not files:
-        return
+        return None
 
-    view_file.parent.mkdir(parents=True, exist_ok=True)
     title = _extract_first_heading(files[0].read_text(encoding="utf-8")) if files else topic_dir.name
     date = datetime.now().strftime("%Y-%m-%d")
     struct_root = project_root / "struct"
@@ -172,13 +173,29 @@ def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -
 
     for md in files:
         text = md.read_text(encoding="utf-8")
-        text = _rewrite_links(text, md, struct_root, view_file.parent)
+        text = _rewrite_links(text, md, struct_root, output_root)
         rel = md.relative_to(struct_root).as_posix()
         parts.append(f"\n<!-- SOURCE: struct/{rel} -->\n")
         parts.append(text)
         parts.append("\n---\n")
 
-    view_file.write_text("\n".join(parts), encoding="utf-8")
+    return "\n".join(parts)
+
+
+def generate_view_volume(topic_dir: Path, view_file: Path, project_root: Path) -> None:
+    """将主题目录下的文件聚合并写入 view 卷册"""
+    text = render_view_volume(topic_dir, view_file.parent, project_root)
+    if text is None:
+        return
+    view_file.parent.mkdir(parents=True, exist_ok=True)
+    view_file.write_text(text, encoding="utf-8")
+
+
+def _content_hash(text: str) -> str:
+    """对卷册正文（首个 <!-- SOURCE: 起）取 sha256，剔除头部生成日期/目录等易变部分。"""
+    i = text.find("<!-- SOURCE:")
+    body = text[i:] if i >= 0 else text
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
 
 
 def compute_diff(struct_dir: Path, view_dir: Path, topic_filter: Optional[str] = None) -> List[DiffEntry]:
@@ -206,8 +223,6 @@ def compute_diff(struct_dir: Path, view_dir: Path, topic_filter: Optional[str] =
             ))
             continue
 
-        view_mtime = view_file.stat().st_mtime
-        newest_struct_mtime = max(f.stat().st_mtime for f in struct_files)
         view_text = view_file.read_text(encoding="utf-8")
         struct_files_rel = [f.relative_to(struct_dir).as_posix() for f in struct_files]
         sources_in_view = set(re.findall(r"<!-- SOURCE: struct/(.+?) -->", view_text))
@@ -221,22 +236,26 @@ def compute_diff(struct_dir: Path, view_dir: Path, topic_filter: Optional[str] =
                 struct_files=struct_files_rel,
                 message=f"source 集合不一致（view 中 {len(sources_in_view)} 个，struct 中 {len(expected_sources)} 个）",
             ))
-        elif newest_struct_mtime > view_mtime:
-            diffs.append(DiffEntry(
-                topic=topic_dir.name,
-                view_file=view_file,
-                status="newer",
-                struct_files=struct_files_rel,
-                message=f"struct 文件比 view 卷册新（最新 {newest_struct_mtime - view_mtime:.0f} 秒）",
-            ))
         else:
-            diffs.append(DiffEntry(
-                topic=topic_dir.name,
-                view_file=view_file,
-                status="same",
-                struct_files=struct_files_rel,
-                message="已同步",
-            ))
+            # 内容级比对：重新渲染期望卷册并比对正文哈希，剔除头部生成日期/目录易变部分
+            project_root = struct_dir.parent
+            expected_text = render_view_volume(topic_dir, view_file.parent, project_root)
+            if expected_text is not None and _content_hash(view_text) != _content_hash(expected_text):
+                diffs.append(DiffEntry(
+                    topic=topic_dir.name,
+                    view_file=view_file,
+                    status="content_diff",
+                    struct_files=struct_files_rel,
+                    message="卷册正文与 struct 不一致（内容哈希不同）",
+                ))
+            else:
+                diffs.append(DiffEntry(
+                    topic=topic_dir.name,
+                    view_file=view_file,
+                    status="same",
+                    struct_files=struct_files_rel,
+                    message="已同步（内容哈希一致）",
+                ))
 
     # 检查 view/ 中孤儿文件
     if view_dir.exists():
@@ -321,6 +340,11 @@ def main():
         default="view",
         help="view 目录路径（默认 view/）",
     )
+    parser.add_argument(
+        "--allow-newer",
+        action="store_true",
+        help="逃生舱：content_diff 降级为 warning（exit 0）；missing 仍 exit 2",
+    )
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parent.parent
@@ -351,18 +375,22 @@ def main():
     write_diff_report(Path(args.report), diffs, struct_dir, view_dir)
     print(f"差异报告已保存: {args.report}")
 
-    # 仅将 missing / content_diff 视为未同步；newer 仅为 mtime 差异，source 集合一致
-    out_of_sync = [d for d in diffs if d.status in ("missing", "content_diff")]
-    newer_only = [d for d in diffs if d.status == "newer"]
-    if out_of_sync:
-        print(f"警告: {len(out_of_sync)} 个主题未同步")
-    elif newer_only:
-        print(f"提示: {len(newer_only)} 个主题 struct 文件 mtime 较新，但 source 集合一致")
-        print("所有主题已同步")
-    else:
-        print("所有主题已同步")
+    # strict 默认：missing / content_diff 均视为未同步（exit 2）。
+    # --allow-newer 逃生：content_diff 降级为 warning（exit 0），missing 仍 exit 2。
+    missing = [d for d in diffs if d.status == "missing"]
+    content_diff = [d for d in diffs if d.status == "content_diff"]
+    if missing:
+        print(f"警告: {len(missing)} 个主题 view 卷册缺失（必须补全）")
+    if content_diff:
+        print(f"警告: {len(content_diff)} 个主题内容不一致（source 集合或正文哈希不同）")
+    if not missing and not content_diff:
+        print("所有主题已同步（内容哈希一致）")
 
-    sys.exit(0 if not out_of_sync else 2)
+    if missing:
+        sys.exit(2)
+    if content_diff and not args.allow_newer:
+        sys.exit(2)
+    sys.exit(0)
 
 
 if __name__ == "__main__":

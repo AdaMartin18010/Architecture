@@ -1,7 +1,7 @@
 # 价值流复用的形式化组合
 
 > **版本**: 2026-07-08
-> **对齐标准**: TOGAF Value Stream, ArchiMate 4.2 Value Stream, SAFe, BPMN 2.0
+> **对齐标准**: TOGAF Value Stream, ArchiMate 4.0 Value Stream, SAFe, BPMN 2.0
 > **定位**: 将价值流复用形式化为业务能力的有序组合
 
 ---
@@ -227,7 +227,7 @@ flowchart LR
 | 框架/标准 | 对应概念 | 条款/章节 | 映射说明 |
 |---|---|---|---|
 | TOGAF 10 | Value Stream | Phase B, Business Architecture | TOGAF 价值流描述端到端价值交付，由业务能力阶段组成 |
-| ArchiMate 4.2 | Value Stream | §7.3 Value Stream | ArchiMate Value Stream 与本概念等价，可关联 Capability、Business Process |
+| ArchiMate 4.0 | Value Stream | §7.3 Value Stream | ArchiMate Value Stream 与本概念等价，可关联 Capability、Business Process |
 | BPMN 2.0 | Process / Collaboration | §8 Process, §10 Collaboration | 价值流的可执行编排由 BPMN Process 承载，跨组织协作由 Collaboration 承载 |
 | DMN 1.5 | Decision Service | §6 Decision Requirements, §8 Decision Table | 价值流中的条件分支与决策规则由 DMN 决策服务承载 |
 | SAFe | Operational Value Stream | SAFe 6.0 Value Streams | 运营价值流（Operational Value Stream）定义端到端交付活动序列 |
@@ -325,7 +325,7 @@ flowchart LR
 > **权威来源**:
 >
 > - [The Open Group TOGAF Series Guide: Value Streams](https://www.opengroup.org/togaf) — TOGAF 价值流指南；核查日期：2026-07-08
-> - [ArchiMate 4.2 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate Value Stream 元模型；核查日期：2026-07-08
+> - [ArchiMate 4.0 Specification](https://pubs.opengroup.org/architecture/archimate4-doc/) — ArchiMate Value Stream 元模型；核查日期：2026-07-08
 > - [OMG BPMN 2.0.2 Specification](https://www.omg.org/spec/BPMN/2.0.2/) — 价值流可执行编排标准；核查日期：2026-07-08
 > - [OMG DMN 1.5 Specification](https://www.omg.org/spec/DMN/1.5/) — 决策服务与价值流条件分支；核查日期：2026-07-08
 > - [SAFe Value Streams](https://scaledagileframework.com/value-streams/) — SAFe 价值流框架；核查日期：2026-07-08
