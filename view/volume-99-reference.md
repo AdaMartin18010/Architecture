@@ -4692,16 +4692,16 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 
 - [核心标准对齐矩阵](../struct/01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md)
 - [ISO/IEC/IEEE AWI 42030 修订跟踪](../struct/01-meta-model-standards/01-iso-420xx-family/awi-42030-tracking.md)
-- [ISO/IEC/IEEE 1517:2010-2010 软件生命周期复用过程](../struct/01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
+- [IEEE 1517-2010 软件生命周期复用过程](../struct/01-meta-model-standards/01-iso-420xx-family/ieee-1517-reuse-processes.md)
 - [ISO/IEC/IEEE 12207:2026 与软件复用过程对齐](../struct/01-meta-model-standards/01-iso-420xx-family/iso-12207-2026-alignment.md)
 - [ISO/IEC 25010:2023 AI/ML 质量特性与复用评估](../struct/01-meta-model-standards/01-iso-420xx-family/iso-25010-2023-ai-quality.md)
-- … 共 25 个文件
+- … 共 26 个文件
 
 ### 02 业务架构复用
 
 - [01 业务域复用（Business Domain Reuse）](../struct/02-business-architecture-reuse/01-business-domain-reuse/README.md)
 - [业务能力复用](../struct/02-business-architecture-reuse/02-business-capability/capability-reuse.md)
-- [FEA BRM 2.0 与 TOGAF Standard 10 Phase B 业务能力图交叉映射](../struct/02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
+- [FEA BRM 2.0 与 TOGAF 10 Phase B 业务能力图交叉映射](../struct/02-business-architecture-reuse/02-business-capability/fea-brm-togaf-mapping.md)
 - [价值流复用的形式化组合](../struct/02-business-architecture-reuse/03-value-stream/value-stream-composition.md)
 - [04 业务流程复用（Business Process Reuse）](../struct/02-business-architecture-reuse/04-business-process-reuse/README.md)
 - … 共 15 个文件
@@ -4729,9 +4729,9 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [API 设计模式与功能复用](../struct/05-functional-architecture-reuse/01-api-design/api-design-reuse-patterns.md)
 - [函数即服务（FaaS）与功能复用模式](../struct/05-functional-architecture-reuse/02-function-as-a-service/faas-reuse-patterns.md)
 - [事件驱动函数复用模式](../struct/05-functional-architecture-reuse/03-event-functions/event-driven-function-reuse.md)
+- [领域函数目录](../struct/05-functional-architecture-reuse/04-domain-functions/domain-function-catalog.md)
 - [Temporal 工作流复用模式](../struct/05-functional-architecture-reuse/04-workflow-orchestration/temporal-reuse-patterns.md)
-- [LLM 函数复用与智能体功能架构](../struct/05-functional-architecture-reuse/05-ai-llm-functions/llm-function-reuse-patterns.md)
-- … 共 9 个文件
+- … 共 10 个文件
 
 ### 06 跨层复用治理与成熟度模型
 
@@ -4740,7 +4740,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [软件架构复用成熟度评估问卷（SAR-MAQ v1.0）](../struct/06-cross-layer-governance/03-maturity-models/assessment-questionnaire.md)
 - [ISO/IEC 26565:2026 & 26566:2026 正式版与产品线成熟度/纹理管理对齐](../struct/06-cross-layer-governance/03-maturity-models/iso-26565-26566-final.md)
 - [软件复用成熟度模型：RCMM、RiSE-RM 与行业映射](../struct/06-cross-layer-governance/03-maturity-models/reuse-maturity-models-rcmm-rise.md)
-- … 共 23 个文件
+- … 共 24 个文件
 
 ### 07 形式化验证与复用正确性
 
@@ -4758,7 +4758,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [认知负荷理论与架构复用](../struct/08-cognitive-architecture/03-cognitive-load-theory/cognitive-load-theory.md)
 - [DORA 2025 认知负荷与复用采纳率](../struct/08-cognitive-architecture/03-cognitive-load-theory/dora-2025-cognitive-load.md)
 - [开发者复用决策的认知负荷量化模型](../struct/08-cognitive-architecture/03-cognitive-load-theory/quantitative-model.md)
-- … 共 9 个文件
+- … 共 10 个文件
 
 ### 09 价值量化与 ROI 模型
 
@@ -4767,7 +4767,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [架构复用 ROI 框架](../struct/09-value-quantification/02-roi-npv-models/roi-framework.md)
 - [软件复用的 ROI、实物期权与战略价值量化](../struct/09-value-quantification/02-roi-npv-models/roi-real-options-strategic-value.md)
 - [价值量化碳维度扩展：SCI 复用碳模型](../struct/09-value-quantification/03-carbon-dimension/sci-reuse-value-extension.md)
-- … 共 6 个文件
+- … 共 7 个文件
 
 ### 10 供应链安全工程
 
@@ -4776,7 +4776,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [SLSA L4 分布式构建验证实践](../struct/10-supply-chain-security/01-slsa-framework/slsa-l4-distributed-builds.md)
 - [SLSA v1.2 多轨道复用安全边界详解](../struct/10-supply-chain-security/01-slsa-framework/slsa-reuse-boundaries.md)
 - [SBOM 格式对比：SPDX vs CycloneDX vs SWID](../struct/10-supply-chain-security/02-sbom-standards/sbom-comparison.md)
-- … 共 24 个文件
+- … 共 25 个文件
 
 ### 11 工业 IoT / OT-IT 融合复用
 
@@ -4785,7 +4785,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [ISO/IEC 30141:2024 IoT 参考架构对齐](../struct/11-industrial-iot-otit/01-isa-95-model/iso-30141-iot-ra-alignment.md)
 - [L0 现场层复用资产目录](../struct/11-industrial-iot-otit/01-isa-95-model/l0-field/asset-catalog.md)
 - [L1 控制层复用资产目录](../struct/11-industrial-iot-otit/01-isa-95-model/l1-control/asset-catalog.md)
-- … 共 35 个文件
+- … 共 39 个文件
 
 ### 12 AI 原生复用
 
@@ -4793,8 +4793,8 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [MCP 2025-11-25 综合更新与复用影响评估](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-comprehensive-update.md)
 - [MCP 2025-11-25 规范深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md)
 - [MCP 2026-07-28 RC 深度解析](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-deep-dive.md)
-- [A2A v1.0.0.0.0.0.0.0 协议复用分析](../struct/12-ai-native-reuse/02-a2a-protocol/a2a-reuse-analysis.md)
-- … 共 20 个文件
+- [MCP 2026-07-28 RC → 正式版迁移指南](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2026-transition-guide.md)
+- … 共 22 个文件
 
 ### 13 新兴趋势
 
@@ -4812,27 +4812,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [《软件工程架构复用视角》全面差距分析报告](../struct/99-reference/audit/comprehensive-gap-analysis-2026-06-08.md)
 - [内容事实勘误与权威来源对齐报告（2026-07-07）](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 - [交叉引用有效性检查报告](../struct/99-reference/audit/cross-reference-audit.md)
-- … 共 51 个文件
-
----
-
-## 定义
-
-**定义**：学习路径是面向不同角色读者的递进式学习顺序，帮助读者从基础概念逐步深入到特定垂直领域的复用工程实践。
-
-## 示例
-
-**示例**：架构师路径从 ISO/IEC/IEEE 42010:2022、TOGAF Standard 10、ArchiMate 4.0 元模型开始，逐步深入业务架构、应用架构、组件架构与功能架构四层复用设计。
-
-## 反例
-
-**反例**：跳过元模型与标准对齐直接学习 MCP/A2A 协议，会导致复用设计缺乏统一术语、视点与治理基线，最终形成难以集成的局部约定。
-
-## 权威来源
-
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [The Open Group - ArchiMate 4.0 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
-> - 核查日期：2026-07-08
+- … 共 54 个文件
 
 
 ---
@@ -5097,26 +5077,6 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - 复用决策工具：`struct/99-reference/tools/reuse-decision-tool-v2/`
 - COCOMO 计算器：`struct/99-reference/tools/cocomo-calculator.py`
 - 全书构建：`python scripts/build-deliverables.py`
-
----
-
-## 定义
-
-**定义**：本课程大纲是软件架构复用工程知识的系统化教学安排，覆盖元模型、四层架构、治理、安全与前沿趋势。
-
-## 示例
-
-**示例**：第 2-3 周通过 ISO/IEC/IEEE 42010:2022/42020/42030、TOGAF Standard 10 与 ArchiMate 4.0 建立元模型与标准对齐基础，为后续各主题提供统一术语与视点框架。
-
-## 反例
-
-**反例**：课程若缺少权威标准来源与可验证的案例实践，学员容易将厂商特定概念误当作通用架构复用知识。
-
-## 权威来源
-
-> - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74296.html) — ISO
-> - [The Open Group - ArchiMate 4.0 Specification](https://www.opengroup.org/archimate-licensed-downloads) — The Open Group（2026-04-27 正式发布）
-> - 核查日期：2026-07-08
 
 
 ---
