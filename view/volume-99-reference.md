@@ -9630,7 +9630,7 @@ graph TD
 
 | 标准/框架 | 版本 | 状态 | 官方 URL | 备注 |
 |-----------|------|------|----------|------|
-| **ISO/IEC 21838** | -1:2021 / -2:2021 / -3:2023 | 已发布 | <https://www.iso.org/standard/74307.html> | Top-Level Ontologies（TLO）；项目内引用 74307 为第 3 分部 DOLCE 的 URL |
+| **ISO/IEC 21838** | -1:2021 / -2:2021（BFO）/ -3:2023（DOLCE）/ -4:2023（TUpper） | 已发布；-5（UFO）DIS 阶段 | <https://www.iso.org/standard/74307.html> | Top-Level Ontologies（TLO）；项目内引用 74307 为第 3 分部 DOLCE 的 URL；-4 TUpper = iso.org/standard/78928；-5 UFO 于 2025-12 进入 DIS，投票中 |
 | **ISO/IEC/IEEE 42010** | 2022 | 现行 | <https://www.iso.org/standard/74296.html> | 架构描述（Architecture Description） |
 | **ISO/IEC/IEEE 42020** | 2019 | 现行；计划修订 | <https://www.iso.org/standard/68982.html> | 架构过程（Architecture Processes） |
 | **ISO/IEC/IEEE 42030** | 2019 | 现行；AWI 修订中 | <https://www.iso.org/standard/73436.html> | 架构评估（Architecture Evaluation） |
@@ -9755,7 +9755,7 @@ graph TD
 | **COCOMO II** | 2000.1 / 后续校准 | 现行 | <https://boehmcsse.org/tools/cocomo-models/> | 软件成本估算模型；原 USC csse.usc.edu 域名已无法解析，现改用 Boehm CSSE 官方页面 |
 | **FinOps Foundation** | — | 现行 | <https://www.finops.org/> | 云成本管理框架 |
 | **GSF SCI** | — | 现行；已 ISO/IEC 21031:2024 | <https://sci.greensoftware.foundation/> | 软件碳强度规范 |
-| **GSF SCI for AI** | — | **2026-Q1 ratified** | <https://greensoftware.foundation/standards/sci-ai/> | AI 系统全生命周期碳强度度量 |
+| **GSF SCI for AI** | — | **2025-12 ratified**（GSF 公告 2025-12-17；SCI 方法论首个 AI 扩展规范，基于 ISO/IEC 21031:2024） | <https://greensoftware.foundation/standards/sci-ai/> | AI 系统全生命周期碳强度度量；provider/consumer 双边界责任模型 |
 | **ISO/IEC 14040** | 系列 | 现行 | <https://www.iso.org/standard/37456.html> | 生命周期评价 |
 
 ---
@@ -9771,6 +9771,7 @@ graph TD
 | 2026-07-11 | 更新为 v2.4：补录 ISO/IEC 26564:2022、ISO/IEC 26565:2026、ISO/IEC 21838 系列（真实已发布但原表漏收）| 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.5（联网核对）：IEC 61508 Ed.3 状态订正为“CDV 投票完成、RVC 2026-05-15（65A/1231~1234/RVC）、IEC 官方 Fcst. Publ. Date 2026-07”，取代旧表述“预计 ~2027”；复核 DIS 42024/42042（Close of voting 40.60）、SSDF 1.2（IPD，意见截止 2026-01-30，仍 Draft）、ArchiMate 4.0（C260/W262，2026-04 发布）、MCP 2026-07-28 RC（2026-05-21 锁定，稳定版仍 2025-11-25）均与表内一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.6（联网核对）：ISO 21448 Ed.2 订正为“ISO/AWI 21448（AWI 阶段），现行 2022 版，发布时点未官宣”（iso.org/standard/93071），取代“预计 2026 发布”；WASI 0.3.0 订正为“已发布（2026-06-11，Preview 3）”，取代“2026-02 preview”；复核 IEC/IEEE 60802:2026（2026-06 发布）、IEC 63278-2 CDV（65/1193，投票截止 2026-08-07）、ISO/IEC 26566:2026（81437，2026-05 发布）、SysML v2.0/KerML 1.0（OMG formal/2026-03，已提交 ISO）、EU CRA 2024/2847（2026-09-11 漏洞报告义务生效、2027-12-11 全面适用）、OWASP Top 10 for Agentic Applications 2026（2025-12-09 发布）与 OWASP MCP Top 10（MCP01:2025–MCP10:2025，Phase 3 Beta）均与表内一致 | 自动对齐代理 |
+| 2026-07-11 | 更新为 v2.7（联网核对）：GSF SCI for AI 订正为 2025-12 ratified（GSF 公告 2025-12-17，基于 ISO/IEC 21031:2024）；ISO/IEC 21838 系列补全为 -1:2021/-2:2021(BFO)/-3:2023(DOLCE)/-4:2023(TUpper)，-5(UFO) 2025-12 进入 DIS；复核 OMG RAS v2.2（2005-11）、FAIR4RS v1.0（2022-06 RDA 批准）、CNCF Platform Engineering Maturity Model（2023-11 首版，无 v1.0 编号）、Microsoft Agent Governance Toolkit（2026-04-02 开源）、OSPS Baseline v2026.02.19、OPC UA FX Part 80-84 v1.00.03（2026-05-23）、ISO/IEC/IEEE 12207:2026（2026-04-29 发布）、ISO/IEC 25010:2023（现行）均一致 | 自动对齐代理 |
 
 ---
 
