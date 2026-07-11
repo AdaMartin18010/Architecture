@@ -34,8 +34,7 @@ standards:
       - "ISO/IEC/IEEE 42010:2011"
       - "IEC 42010:2022"
       - "IEC 42010"
-    invalid_versions:
-      - "2011"
+    # 注：2011 为真实历史版本（由 aliases 归一到 2022 作现行 canonical），非 invalid
 
   - canonical: "ArchiMate 4.0"
     aliases:
