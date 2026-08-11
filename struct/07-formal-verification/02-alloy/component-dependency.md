@@ -109,7 +109,7 @@ fact DependencyInversion {
 本规约定义了三个断言，覆盖组件级、模块级和架构局部性三个维度：
 
 | 断言 | 目的 | Scope |
-|------|------|-------|
+| ------ | ------ | ------- |
 | `NoCircularDependencies` | 验证组件依赖图 DAG | 5 Component |
 | `NoCircularModuleImports` | 验证模块导入图 DAG | 4 Module |
 | `DependencyLocality` | 验证跨模块依赖必须通过导入声明 | 5 Component, 3 Module |
@@ -204,7 +204,7 @@ check DependencyLocality for 5 but 3 Module
 **命令含义**：
 
 | 命令 | 搜索空间 | 验证目标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | `check NoCircularDependencies for 5` | 最多 5 个 `Component` 实例 | 组件依赖图无环 |
 | `check NoCircularModuleImports for 4` | 最多 4 个 `Module` 实例 | 模块导入图无环 |
 | `check DependencyLocality for 5 but 3 Module` | 最多 5 个组件、3 个模块 | 跨模块依赖必须通过导入声明 |
@@ -234,7 +234,7 @@ run ShowValidSystem for 5 but 3 Module
 ## 9. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具/后端 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | 组件依赖结构正确性 | Alloy Analyzer | 无反例报告 |
 | IEEE 1012-2024 §9.4（软件构建 V&V） | 模块导入关系一致性 | Alloy / SAT4J / MiniSat | 模型实例 / 反例 |
 | DO-333 §6.3.2（形式化分析替代测试） | 无环性等结构性质 | Alloy 模型查找 | 检查命令输出 |
@@ -243,7 +243,7 @@ run ShowValidSystem for 5 but 3 Module
 ### 9.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | Alloy Analyzer | 6.2.0 (2025-01-09) | IEEE 1012-2024 §9.3 | 内置 SAT4J / MiniSat |
 | Kodkod / Pardinus | 随 Alloy 6 分发 | 结构约束求解 | 底层模型查找引擎 |
 | nuXmv | 2.x | Alloy 6 时态性质 | 支持无界模型检查 |
@@ -256,7 +256,7 @@ run ShowValidSystem for 5 but 3 Module
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Alloy Tools / Alloy Analyzer 6.2.0 | <https://alloytools.org> | 2026-07-09 |
 | Alloy 6 GitHub Releases | <https://github.com/AlloyTools/org.alloytools.alloy/releases> | 2026-07-09 |
 | *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |

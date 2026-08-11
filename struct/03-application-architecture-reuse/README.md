@@ -24,7 +24,7 @@
 ## 权威对齐
 
 | 标准/框架 | 作用 | 权威 URL | 核查日期 |
-|-----------|------|----------|----------|
+| ----------- | ------ | ---------- | ---------- |
 | ISO/IEC 25010:2023 | 软件产品质量模型（含可维护性、可复用性子特征） | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
 | NIST SP 800-204 系列 | 微服务安全策略、服务网格与 DevSecOps 指引 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 2026-07-09 |
 | NIST SP 800-204A | 基于服务网格架构构建安全微服务应用 | <https://csrc.nist.gov/pubs/sp/800/204/a/final> | 2026-07-09 |
@@ -43,7 +43,7 @@
 ## 标准/框架映射
 
 | 复用场景 | 适用标准/框架 | 关键映射点 |
-|---------|--------------|-----------|
+| --------- | -------------- | ----------- |
 | 微服务安全复用 | NIST SP 800-204/204A/204B | 认证(MS-SS-1)、安全通信(MS-SS-4)、ABAC 授权(MS-SS-2) |
 | API 网关与路由复用 | Kubernetes Gateway API v1.5 | ListenerSet 多租户边界、TLSRoute SNI 路由、ReferenceGrant 跨命名空间授权 |
 | 事件驱动复用 | CNCF CloudEvents 1.0.2 | 事件元数据标准化、跨传输层可移植 |
@@ -72,7 +72,7 @@
 ## 子目录导航
 
 | 子目录 | 主题 | 核心文档 | 状态 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | `01-layered-architecture/` | 分层架构复用模式 | [`reuse-patterns.md`](01-layered-architecture/reuse-patterns.md) | ✅ 已填充 |
 | `02-microservices/` | 微服务架构复用模式 | [`reuse-patterns.md`](02-microservices/reuse-patterns.md) | ✅ 已填充 |
 | `03-app-service/` | 应用服务复用 | — | ✅ 核心文档 |

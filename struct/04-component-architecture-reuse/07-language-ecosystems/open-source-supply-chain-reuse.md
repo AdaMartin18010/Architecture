@@ -14,7 +14,7 @@
 ### 1.2 风险
 
 | 风险类型 | 示例 | 影响 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | 已知漏洞 | Log4Shell (CVE-2021-44228) | 远程代码执行 |
 | 恶意包 | typosquatting, dependency confusion | 供应链攻击 |
 | 维护者流失 | left-pad 事件 | 构建中断 |
@@ -33,8 +33,8 @@
 ### 2.2 OWASP Software Component Verification Standard (SCVS)
 
 | 控制域 | 目标 |
-|-------|------|
-| **V1: 清单** | 维护准确的软件组件清单（SBOM）|
+| ------- | ------ |
+| **V1: 清单** | 维护准确的软件组件清单（SBOM） |
 | **V2: SBOM 完整性** | SBOM 完整、准确、及时更新 |
 | **V3: 构建环境** | 构建过程可复现、可验证 |
 | **V4: 包管理** | 依赖解析安全、包来源可信 |
@@ -46,17 +46,17 @@
 ### 3.1 Java / JVM（Maven Central）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `pom.xml` + Maven Enforcer Plugin |
 | 漏洞扫描 | OWASP Dependency-Check, Snyk, Mend |
-| 签名验证 | GPG 签名（Maven Central 要求）|
+| 签名验证 | GPG 签名（Maven Central 要求） |
 | SBOM 生成 | CycloneDX Maven Plugin |
 | 私有仓库 | Nexus / Artifactory |
 
 ### 3.2 JavaScript / TypeScript（npm）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml` |
 | 漏洞扫描 | `npm audit`, Snyk, Socket.dev |
 | 签名验证 | npm provenance (SLSA Build L3) |
@@ -66,7 +66,7 @@
 ### 3.3 Python（PyPI）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `requirements.txt` + `pip-compile` / `poetry.lock` |
 | 漏洞扫描 | `pip-audit`, Safety, Snyk |
 | 签名验证 | Sigstore (`pypi.org` 支持) |
@@ -76,7 +76,7 @@
 ### 3.4 Rust（crates.io）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `Cargo.lock` |
 | 漏洞扫描 | `cargo-audit` (RustSec Advisory DB) |
 | SBOM 生成 | `cargo-cyclonedx`, `cargo-spdx` |
@@ -85,7 +85,7 @@
 ### 3.5 Go（pkg.go.dev）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `go.mod` + `go.sum` |
 | 漏洞扫描 | `govulncheck` (Go 官方) |
 | SBOM 生成 | `syft` |
@@ -98,7 +98,7 @@
 ### 4.1 算法谱系
 
 | 算法 | 代表生态 | 时间复杂度 | 多版本共存 | 核心哲学 |
-|------|---------|-----------|-----------|---------|
+| ------ | --------- | ----------- | ----------- | --------- |
 | **SAT / CDCL 求解** | Cargo (PubGrub), Poetry, npm (部分) | NP-完全（实践可接受） | ✅ 允许 | 在满足所有约束的前提下选择最新兼容版本 |
 | **Minimal Version Selection (MVS)** | Go Modules | **O(n)** 线性 | ❌ 同一模块仅一个版本 | 选择满足所有最小约束的**最保守**版本 |
 | **图遍历 + 启发式** | pip (legacy), npm (legacy) | 多项式（但可能非终止） | ✅ 允许 | 贪心选择，局部最优 |
@@ -148,7 +148,7 @@ MVS(G, R):
 ### 4.4 算法选择对复用安全的影响
 
 | 场景 | 推荐算法 | 理由 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 需要严格版本上限约束 | PubGrub / SAT | MVS 不支持上限表达 |
 | 追求极致构建确定性 | MVS | 线性时间，零随机性 |
 | 大型 monorepo（1000+ 依赖） | PubGrub | 冲突学习加速大规模求解 |
@@ -173,7 +173,7 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 5.1 Lockfile 安全属性
 
 | 属性 | 说明 | 风险 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **完整性** | Lockfile 包含所有传递依赖的精确版本 | 攻击者篡改 lockfile 可注入恶意版本 |
 | **可验证性** | 是否包含密码学哈希（hash）校验 | 无哈希的 lockfile 无法检测包篡改 |
 | **不可伪造性** | 生成过程是否可信 | CI 环境被入侵可生成恶意 lockfile |
@@ -182,7 +182,7 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 5.2 各生态 Lockfile 安全能力对比
 
 | 生态 | Lockfile 格式 | 哈希校验 | 生成者验证 | 2026 安全增强 |
-|------|--------------|---------|-----------|--------------|
+| ------ | -------------- | --------- | ----------- | -------------- |
 | **Rust (Cargo)** | `Cargo.lock` (TOML) | ✅ SHA-256 | Cargo 官方 | MSRV 感知解析、Trusted Publishing |
 | **Go** | `go.sum` | ✅ SHA-256 | Go 官方 + 校验和数据库 | CVE-2026-42501 修复校验和验证 |
 | **Node.js (npm)** | `package-lock.json` | ✅ SHA-512 | npm CLI | provenance attestation (SLSA L3) |
@@ -237,14 +237,14 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 6.1 策略定义
 
 | 策略 | 定义 | 代表工具/命令 |
-|------|------|-------------|
+| ------ | ------ | ------------- |
 | **Vendoring** | 将依赖源码复制到项目 `vendor/` 目录，纳入版本控制 | `go mod vendor`, `cargo vendor`, `npm shrinkwrap`（已废弃） |
 | **Proxy Registry** | 部署内部 registry 代理/缓存公共 registry，支持审批流程 | Nexus, Artifactory, Cloudsmith, Verdaccio, Devpi |
 
 ### 6.2 决策矩阵
 
 | 评估维度 | Vendoring | Proxy Registry |
-|---------|:---------:|:--------------:|
+| --------- | :---------: | :--------------: |
 | **构建可复现性** | ⭐⭐⭐⭐⭐ 无需网络 | ⭐⭐⭐⭐ 需内部网络 |
 | **依赖审查便利性** | ⭐⭐⭐⭐⭐ 源码即 diff | ⭐⭐⭐ 需额外工具 |
 | **仓库大小** | ⭐⭐ 仓库膨胀 | ⭐⭐⭐⭐⭐ 无膨胀 |
@@ -281,7 +281,7 @@ Layer 4: Vendoring（可选终极防线）
 ### 6.4 各生态具体实践
 
 | 生态 | Vendoring 命令 | Proxy Registry 工具 | 推荐场景 |
-|------|---------------|---------------------|---------|
+| ------ | --------------- | --------------------- | --------- |
 | **Go** | `go mod vendor` + `-mod=vendor` | `Athens`, `GOPROXY` 私有代理 | 云原生基础设施（Kubernetes 采用 vendor） |
 | **Rust** | `cargo vendor` + `[source.crates-io]` 替换 | `cloudsmith`, `Artifactory` | 嵌入式/离线环境 |
 | **Node.js** | 不推荐原生 vendor；使用 `pnpm` 离线缓存 | `Verdaccio`, `npm Enterprise` | 前端工程化 |
@@ -304,7 +304,7 @@ Layer 4: Vendoring（可选终极防线）
 ### 4.2 版本策略
 
 | 策略 | 说明 | 适用 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **Pin（锁定）** | 精确版本，确定性构建 | 生产发布 |
 | **SemVer 范围** | `^1.2.3` 允许兼容更新 | 开发阶段 |
 | **Renovate/Bot** | 自动创建升级 PR，CI 验证后合并 | 持续维护 |
@@ -326,7 +326,7 @@ Artifact Repository
 ### 5.1 生成阶段
 
 | 阶段 | 工具 | 输出格式 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | 构建时 | CycloneDX plugins, Syft, SPDX tools | CycloneDX JSON/XML, SPDX Tag/JSON/RDF |
 | 容器镜像 | Syft, Trivy, Grype | CycloneDX, SPDX |
 | 运行时 | 运维平台导出 | VEX (Vulnerability Exploitability eXchange) |
@@ -344,7 +344,7 @@ Artifact Repository
 ## 6. 复用质量评估模型
 
 | 维度 | 指标 | 评估方法 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **健康度** | 星标、贡献者数量、最近提交、Issue 响应时间 | OpenSSF Scorecard |
 | **安全性** | 已知 CVE、恶意代码历史、签名状态 | Snyk / OSV / NVD |
 | **合规性** | SPDX 许可证标识、许可证兼容性 | FOSSology / ScanCode |

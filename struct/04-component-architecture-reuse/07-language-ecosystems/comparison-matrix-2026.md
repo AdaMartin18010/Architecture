@@ -97,7 +97,7 @@ radar
 ### 2.1 包管理器特性
 
 | 特性 | Maven | Gradle |
-|------|-------|--------|
+| ------ | ------- | -------- |
 | **版本锁定** | `pom.xml` + `dependencyManagement` 集中版本控制；Gradle 支持 `gradle.lockfile` | 支持依赖锁定与校验和验证（Dependency Verification） |
 | **Semver 支持** | 原生支持版本范围（`[1.0,2.0)`、`LATEST`、`RELEASE`） | 支持动态版本与自定义解析策略 |
 | **范围依赖** | 通过 `<scope>`（compile/test/provided/runtime）精细控制传递性 | `implementation`/`api` 分离，Compile Avoidance 优化 |
@@ -121,7 +121,7 @@ module com.example.service {
 ### 2.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型（Generics）** | 类型擦除（Type Erasure） | 运行时无类型信息，限制反射复用 |
 | **JIT 编译** | HotSpot / GraalVM | 运行时优化，跨组件边界内联 |
 | **宏 / 元编程** | 注解处理器（Annotation Processor） | 编译期代码生成，如 Lombok、MapStruct |
@@ -130,16 +130,16 @@ module com.example.service {
 ### 2.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | CycloneDX Maven Plugin, Syft |
 | 签名验证 | GPG 签名（Maven Central 强制要求） |
 | 漏洞扫描 | OWASP Dependency-Check, Snyk, Mend |
-|  provenance | Gradle Dependency Verification (`verification-metadata.xml`) |
+| provenance | Gradle Dependency Verification (`verification-metadata.xml`) |
 
 ### 2.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | 锁定与校验机制成熟，但缺乏原生 vendor 支持 |
 | 组件模型 | 4 | JPMS 提供强封装，但采用率仍在提升中 |
 | 变性机制 | 4 | JIT 强大，但类型擦除限制泛型复用深度 |
@@ -155,7 +155,7 @@ module com.example.service {
 2026 年 Node.js 包管理器格局呈现**三足鼎立**：npm（默认）、pnpm（新兴默认）、Yarn Berry v4（Plug'n'Play）。
 
 | 特性 | npm 11 | pnpm 10 | Yarn 4 (Berry) |
-|------|--------|---------|----------------|
+| ------ | -------- | --------- | ---------------- |
 | **版本锁定** | `package-lock.json` (JSON) | `pnpm-lock.yaml` (YAML) | `yarn.lock` (自定义格式) |
 | **Semver 支持** | `^`、`~`、范围原生支持 | 同 npm | 同 npm |
 | **范围依赖** | 扁平化 `node_modules`，存在 phantom deps 风险 | 内容寻址存储 + 严格隔离 | PnP 零 `node_modules`，严格解析 |
@@ -184,7 +184,7 @@ import { utils } from './utils.js';
 ### 3.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | TypeScript 编译期泛型（擦除为 JS） | 类型复用仅在编译期有效 |
 | **JIT 编译** | V8 引擎 | 运行时优化，但跨模块边界内联受限 |
 | **宏 / 元编程** | Babel / SWC / esbuild 转换 | 编译期代码生成，生态丰富 |
@@ -199,7 +199,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 - Socket.dev、Snyk 提供实时恶意包检测
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `npm sbom`, CycloneDX Node, Syft |
 | 签名验证 | npm provenance (Sigstore / SLSA L3) |
 | 漏洞扫描 | `npm audit`, Socket.dev, Snyk |
@@ -208,7 +208,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 ### 3.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | pnpm 解决 phantom deps，但 npm 默认行为仍宽松 |
 | 组件模型 | 3 | 无编译期模块边界，运行时错误风险高 |
 | 变性机制 | 3 | TS 类型擦除，无零开销抽象 |
@@ -224,7 +224,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 Cargo 是 Rust 的官方构建系统与包管理器，2026 年已全面采用 **PubGrub 依赖解析算法**（CDCL SAT Solver 的变种）。
 
 | 特性 | Cargo |
-|------|-------|
+| ------ | ------- |
 | **版本锁定** | `Cargo.lock`（TOML 格式，跨平台确定性构建） |
 | **Semver 支持** | 严格 Semver，`^` 为默认，支持 `=`/`>=`/`~` 范围 |
 | **范围依赖** | 支持复杂范围（`>=1.0, <3.0`），允许同一 crate 多版本共存 |
@@ -262,7 +262,7 @@ pub struct UserService<R: Repository<User>> {
 ### 4.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | 编译期单态化（Monomorphization） | 零开销抽象，每个实例化生成独立机器码 |
 | **JIT 编译** | 不支持 | 纯 AOT，无运行时优化 |
 | **宏 / 元编程** | 声明宏（`macro_rules!`）+ 过程宏（Procedural Macros） | 编译期元编程，如 `serde_derive`、`async_trait` |
@@ -273,11 +273,11 @@ pub struct UserService<R: Repository<User>> {
 Rust 生态在安全方面处于**领先地位**：
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `cargo-cyclonedx`, `cargo-spdx`, `cargo-sbom` |
 | 签名验证 | crates.io 发布令牌 + Trusted Publishing (OIDC) |
 | 漏洞扫描 | `cargo-audit`（RustSec Advisory DB） |
-|  provenance | Sigstore 集成实验性推进中 |
+| provenance | Sigstore 集成实验性推进中 |
 
  crates.io 2026 年新增功能：
 
@@ -288,7 +288,7 @@ Rust 生态在安全方面处于**领先地位**：
 ### 4.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 5 | PubGrub 解析器 + `Cargo.lock` 确定性 + 原生 vendor |
 | 组件模型 | 5 | Trait + 所有权系统提供编译期强契约 |
 | 变性机制 | 5 | 单态化 + 宏系统，零开销抽象 |
@@ -304,7 +304,7 @@ Rust 生态在安全方面处于**领先地位**：
 Go Modules 采用独特的 **Minimal Version Selection (MVS)** 算法，这是所有主流包管理器中唯一的**线性时间**依赖解析策略。
 
 | 特性 | Go Modules |
-|------|------------|
+| ------ | ------------ |
 | **版本锁定** | `go.mod`（最小版本声明）+ `go.sum`（校验和锁定） |
 | **Semver 支持** | 强制 Semver，主版本号作为模块路径的一部分（`v2`+ 需显式路径变更） |
 | **范围依赖** | **不支持范围**：仅声明最小版本，MVS 自动选择满足所有约束的最大最小版本 |
@@ -346,7 +346,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | Go 1.18+ 支持，基于 GC Shape Stenciling | 编译期部分单态化，仍有接口装箱 fallback |
 | **JIT 编译** | 不支持 | 纯 AOT 编译 |
 | **宏 / 元编程** | `go generate` + 代码生成工具 | 无编译期宏，依赖外部代码生成 |
@@ -355,7 +355,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `syft`（Go 二进制支持原生 SBOM 嵌入） |
 | 签名验证 | `proxy.golang.org` + 校验和数据库（`sum.golang.org`） |
 | 漏洞扫描 | `govulncheck`（Go 官方，基于调用图精确分析） |
@@ -366,7 +366,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | MVS 确定性高但灵活性低；原生 vendor 优秀 |
 | 组件模型 | 4 | 隐式接口简洁，但缺乏显式契约声明 |
 | 变性机制 | 3 | 泛型实现较晚，宏机制薄弱 |
@@ -382,7 +382,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 2026 年是 Python 包管理器的**分水岭**：`uv`（Astral，Rust 编写）以压倒性性能优势快速取代传统工具。
 
 | 特性 | pip | Poetry | uv |
-|------|-----|--------|-----|
+| ------ | ----- | -------- | ----- |
 | **版本锁定** | `requirements.txt`（无原生 lock） | `poetry.lock`（完整锁定） | `uv.lock`（TOML，哈希校验） |
 | **Semver 支持** | 通过 `pip` 版本说明符 | 原生 Semver | 原生 Semver |
 | **范围依赖** | 支持 | 支持 | 支持 |
@@ -391,7 +391,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 **性能对比**（Python Package Manager Shootout 2026，Sentry 依赖集）：
 
 | 操作 | pip-tools | Poetry | uv |
-|------|-----------|--------|-----|
+| ------ | ----------- | -------- | ----- |
 | 冷安装（lockfile） | ~33s | ~11s | **~3s** |
 | Lock 文件生成 | ~35s | ~22s | **~8s** |
 | 添加单个包 | ~6s | ~3s | **<1s** |
@@ -417,7 +417,7 @@ Python 3.8+ 的 `typing.Protocol` 提供了类似 Go 隐式接口的能力，但
 ### 6.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | `typing.Generic`（运行时不检查，mypy/pyright 静态检查） | 类型信息运行时擦除 |
 | **JIT 编译** | CPython 无 JIT；PyPy 支持 tracing JIT | 主流仍依赖 CPython 解释器 |
 | **宏 / 元编程** | 装饰器（Decorator）、元类（Metaclass） | 运行时元编程，灵活但难以追踪 |
@@ -428,7 +428,7 @@ Python 3.8+ 的 `typing.Protocol` 提供了类似 Go 隐式接口的能力，但
 Python 生态 2026 年供应链安全能力**大幅提升**：
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `cyclonedx-py`, `syft` |
 | 签名验证 | Sigstore（PyPI 支持 Trusted Publishing + 包证明） |
 | 漏洞扫描 | `pip-audit`, `uv-secure`, Snyk |
@@ -439,7 +439,7 @@ PyPI 2025 年处理超过 2000 起恶意包报告，66% 在 4 小时内响应。
 ### 6.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | uv 带来质的飞跃，但历史包袱（pip 兼容性）仍在 |
 | 组件模型 | 3 | Protocol 进步显著，但无编译期强制 |
 | 变性机制 | 3 | 运行时类型系统，JIT 未普及 |
@@ -455,7 +455,7 @@ PyPI 2025 年处理超过 2000 起恶意包报告，66% 在 4 小时内响应。
 NuGet 是 .NET 的官方包管理器，2026 年深度集成于 Visual Studio 2026 与 .NET SDK。
 
 | 特性 | NuGet |
-|------|-------|
+| ------ | ------- |
 | **版本锁定** | `packages.lock.json`（MSBuild 项目支持） |
 | **Semver 支持** | 原生 Semver 2.0，`^` 通过 MSBuild 属性模拟 |
 | **范围依赖** | `[1.0, 2.0)` 等区间表示法 |
@@ -489,7 +489,7 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ### 7.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | 运行时类型保留（Reified Generics） | 泛型类型信息运行时可用，支持 `typeof(List<int>)` |
 | **JIT 编译** | RyuJIT / Tiered Compilation | 跨程序集边界内联优化 |
 | **宏 / 元编程** | Source Generators（源生成器） | 编译期代码生成，Roslyn 驱动 |
@@ -498,16 +498,16 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ### 7.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `dotnet sbom`（官方 CLI），Syft |
 | 签名验证 | NuGet 包签名（X.509 证书），NuGet.org 强制签名 |
 | 漏洞扫描 | `dotnet audit`, GitGuardian, Snyk |
-|  provenance | SLSA provenance 支持（NuGet.org Build Service） |
+| provenance | SLSA provenance 支持（NuGet.org Build Service） |
 
 ### 7.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | 锁定与求解器成熟，NuGetSolver AI 集成领先 |
 | 组件模型 | 4 | 程序集边界清晰，internal 访问控制有效 |
 | 变性机制 | 4 | Source Generators + Reified Generics 强大 |
@@ -519,7 +519,7 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ## 8. 六维总对比矩阵
 
 | 维度 | JVM (Maven/Gradle) | Node.js (npm/pnpm) | Rust (Cargo) | Go (Modules) | Python (pip/Poetry/uv) | .NET (NuGet) |
-|------|:------------------:|:------------------:|:------------:|:------------:|:----------------------:|:------------:|
+| ------ | :------------------: | :------------------: | :------------: | :------------: | :----------------------: | :------------: |
 | **包管理器：版本锁定** | `pom.xml` + Gradle lockfile | `package-lock.json` / `pnpm-lock.yaml` | `Cargo.lock` | `go.mod` + `go.sum` | `uv.lock` / `poetry.lock` | `packages.lock.json` |
 | **包管理器：范围依赖** | Maven 范围 / Gradle 配置 | `^` / `~` / 范围 | `^` / `>=` / 复杂范围 | **仅最小版本**（MVS） | 版本说明符 | `[min, max)` 区间 |
 | **包管理器：供应商化** | ❌ 不支持 | ❌ 不支持（pnP 缓存近似） | ✅ `cargo vendor` | ✅ `go mod vendor` | ❌ 不支持 | ❌ 不支持 |
@@ -563,7 +563,7 @@ quadrantChart
 ### 9.2 趋势预测（2026-2028）
 
 | 生态 | 预测趋势 | 关键驱动力 |
-|------|---------|-----------|
+| ------ | --------- | ----------- |
 | **Rust** | 持续上升 | WASM Component Model、嵌入式、Linux 内核接纳 |
 | **Go** | 稳步上升 | 云原生基础设施主导、泛型生态成熟 |
 | **Python** | 快速上升 | uv 工具链统一、AI/ML 生态不可替代 |
@@ -629,7 +629,7 @@ quadrantChart
 ### 核心属性
 
 | 属性 | 说明 | 重要性 |
-|---|---|---|
+| --- | --- | --- |
 | **包管理成熟度** | 版本锁定、范围依赖、依赖解析算法与供应商化能力 | 高 |
 | **组件模型强度** | 模块边界、可见性控制、接口定义与编译期检查 | 高 |
 | **变性机制** | 泛型、JIT、宏/元编程、单态化等提升复用表达力的机制 | 中 |

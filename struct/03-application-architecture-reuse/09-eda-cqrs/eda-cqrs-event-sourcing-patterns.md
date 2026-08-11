@@ -14,7 +14,7 @@ Event-Driven Architecture (EDA)
 ```
 
 | 模式 | 定义 | 复用层级 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **EDA** | 以事件的生产、检测和消费为中心的系统行为建模 | 应用架构 |
 | **CQRS** | 读操作与写操作使用分离的接口和模型 | 应用/组件架构 |
 | **Event Sourcing** | 系统状态变化以事件序列存储，支持状态重建 | 数据/组件架构 |
@@ -73,19 +73,19 @@ Command → Aggregate → 生成 Event → Event Store
 ### 3.3 常见挑战与缓解
 
 | 挑战 | 缓解策略 |
-|-----|---------|
+| ----- | --------- |
 | 最终一致性延迟 | 读取自写（Read-your-writes）模式、缓存标记 |
 | 事件顺序与乱序 | 分区键保证顺序、版本号/序列号检测 |
 | 幂等消费 | 消费者端幂等键、去重表 |
 | 分布式追踪 | OpenTelemetry 跨异步边界传播 Trace Context |
-| 事件 Schema 演化 | Schema Registry（Avro/Protobuf/JSON Schema）|
+| 事件 Schema 演化 | Schema Registry（Avro/Protobuf/JSON Schema） |
 
 ## 4. Saga 协调模式
 
 在微服务事务中，Saga 将长事务拆分为本地事务序列，通过补偿事务处理失败：
 
 | 类型 | 协调方式 | 适用场景 |
-|-----|---------|---------|
+| ----- | --------- | --------- |
 | **编排式 Saga（Choreography）** | 每个服务完成本地事务后发送事件，触发下一个服务 | 简单流程、松耦合优先 |
 | **编排式 Saga（Orchestration）** | 中央协调器（Saga Orchestrator）指挥各服务步骤 | 复杂流程、需要可见性 |
 
@@ -94,7 +94,7 @@ Command → Aggregate → 生成 Event → Event Store
 ### 5.1 消息代理
 
 | 系统 | 定位 | 复用特征 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **Apache Kafka** | 分布式日志、高吞吐 | 分区顺序保证、Schema Registry、Connect |
 | **RabbitMQ** | 传统消息队列、灵活路由 | 交换机拓扑复用、死信队列 |
 | **NATS / NATS JetStream** | 轻量、云原生 | 主题层级、流持久化 |
@@ -103,7 +103,7 @@ Command → Aggregate → 生成 Event → Event Store
 ### 5.2 事件存储
 
 | 系统 | 定位 |
-|-----|------|
+| ----- | ------ |
 | **EventStoreDB** | 专用事件溯源数据库 |
 | **Axon Server** | CQRS/ES 专用平台 |
 | **PostgreSQL + 扩展** | 通用数据库 + 事件表 + 发布逻辑 |
@@ -111,7 +111,7 @@ Command → Aggregate → 生成 Event → Event Store
 ### 5.3 框架与库
 
 | 语言/平台 | 框架 | 能力 |
-|----------|------|------|
+| ---------- | ------ | ------ |
 | Java | Axon Framework | Saga、聚合、事件存储 |
 | .NET | MassTransit / MediatR | 发布/订阅、Saga、Outbox |
 | Go | Watermill / Eventus | 消息路由、CQRS 构建块 |
@@ -122,11 +122,11 @@ Command → Aggregate → 生成 Event → Event Store
 EDA/CQRS/ES 与领域驱动设计（DDD）天然契合：
 
 | DDD 概念 | EDA/CQRS 映射 |
-|---------|--------------|
+| --------- | -------------- |
 | 限界上下文（Bounded Context） | 微服务边界；上下文间通过事件集成 |
 | 聚合（Aggregate） | 命令侧一致性边界；事件发布单位 |
 | 领域事件（Domain Event） | 业务发生的事实；系统间契约 |
-|  ubiquitous Language | 事件命名即业务语言 |
+| ubiquitous Language | 事件命名即业务语言 |
 
 ## 7. 云原生最佳实践
 

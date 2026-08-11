@@ -11,7 +11,7 @@
 策略自动化将跨层治理规则（安全、合规、成本、质量、复用准入）编码为**可执行、可审计、可版本控制**的策略。它使治理从“人工检查”转变为“自动门禁”，从而在大规模复用场景中保持一致性。
 
 | 策略类型 | 关注点 | 典型规则示例 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **安全策略** | 组件/服务准入、漏洞阈值 | 禁止引入 CVSS ≥ 7.0 的依赖 |
 | **合规策略** | 许可证、数据主权、行业法规 | 禁止 GPL-3.0 依赖进入闭源产品 |
 | **成本策略** | FinOps、资源利用率 | 未使用超过 30 天的资源自动降级 |
@@ -23,7 +23,7 @@
 ## 技术栈对照
 
 | 工具/框架 | 适用场景 | 与复用治理的结合 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **Open Policy Agent (OPA)** | 云原生、Kubernetes、API 网关策略 | 准入控制：镜像/依赖是否允许复用 |
 | **HashiCorp Sentinel** | Terraform Enterprise/Cloud | 基础设施即代码复用的合规门禁 |
 | **Cedar** | AWS 风格授权 | 细粒度 RBAC：谁可以消费/发布资产 |
@@ -50,7 +50,7 @@
 ## Rego 策略清单
 
 | 策略文件 | 包名 | 决策点 | 输出 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | `policies/reuse_economic_decision.rego` | `reuse.economic` | 复用经济判定（AAF 阈值） | `decision` / `allow` / `reason` |
 | `policies/finops_allocation_model.rego` | `finops.allocation` | FinOps 四级分摊模型选择 | `model` / `allow` / `reason` / `violation` |
 | `policies/supply_chain_decision.rego` | `supply.chain` | 供应链安全复用准入 | `decision` / `allow` / `reason` |

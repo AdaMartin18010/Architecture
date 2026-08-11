@@ -8,7 +8,7 @@
 ## 1. 关键结论（TL;DR）
 
 | 标准/项目 | 最新状态 | 核心意义 |
-|-----------|----------|----------|
+| ----------- | ---------- | ---------- |
 | **Gateway API v1.5** | 2026‑02 发布，最大 GA 版本 | ListenerSet、TLSRoute、CORS Filter、Client Cert Validation 全部进入 Standard 通道 |
 | **GAMMA** | Gateway API 子项目，Experimental | 将 HTTPRoute/GRPCRoute 附加到 **Service**（非 Gateway），统一东西/南北向流量 |
 | **SMI** | 实质上被 GAMMA 取代 | 2022 年 SMI 社区正式加入 GAMMA；无独立重大发布 |
@@ -92,7 +92,7 @@ spec:
 ### 4.1 三种架构对比
 
 | 维度 | Istio Ambient | Cilium (eBPF) | Linkerd (Sidecar) |
-|------|---------------|---------------|-------------------|
+| ------ | --------------- | --------------- | ------------------- |
 | **L4 处理** | Ztunnel (每节点，用户空间) | eBPF + WireGuard (内核) | Rust micro-proxy (每 Pod) |
 | **L7 处理** | Waypoint Proxy (每服务账号) | 每节点共享 Envoy | 每 Pod Rust proxy |
 | **mTLS 延迟开销** | ~8% | ~99% (WireGuard) | 低 |
@@ -171,7 +171,7 @@ spec:
 Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 
 | 角色 | 资源 | 复用模式 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 基础设施提供商 | GatewayClass | 定义批准的控制器类型（如 "internal-l7"、"public-l7"） |
 | 集群运维 | Gateway | 配置 TLS、IP、监听器；团队附加路由 |
 | 应用开发者 | HTTPRoute/GRPCRoute | 附加到 Gateway 或 Service (GAMMA)；定义金丝雀、重试、认证 |
@@ -198,7 +198,7 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 8. 选型决策框架
 
 | 场景 | 推荐 |
-|------|------|
+| ------ | ------ |
 | Greenfield 简单 L7 Ingress | Gateway API + Envoy Gateway 或 Cilium Gateway API |
 | Ingress + Service Mesh, <500 节点 | Cilium（CNI + Gateway API + GAMMA Mesh 一体） |
 | 大规模、多集群、企业级 | Istio Ambient（最佳多集群、成熟生态） |
@@ -218,7 +218,7 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 9. 权威来源
 
 | 资源 | URL |
-|------|-----|
+| ------ | ----- |
 | Gateway API v1.5 Blog | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> |
 | Gateway API v1.4 Blog | <https://kubernetes.io/blog/2025/11/06/gateway-api-v1-4/> |
 | GAMMA Initiative | <https://gateway-api.sigs.k8s.io/mesh/gamma/> |

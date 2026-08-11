@@ -33,7 +33,7 @@ Tool := ⟨Name, Description, InputSchema, OutputSchema, Annotations, ErrorModel
 为 MCP Tool 设计的扩展原则：
 
 | 原则 | 说明 | 实践 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **S - Single Responsibility** | 每个 Tool 做一件事 | Tool 粒度应等同于单一业务操作 |
 | **O - Open/Closed** | 对扩展开放，对修改关闭 | 新增可选参数而非修改现有参数结构 |
 | **L - Literal Clarity** | 描述必须字面准确 | 避免歧义动词，使用领域术语 |
@@ -124,7 +124,7 @@ MCP Tool 分类
 ## 6. Tool 复用质量指标
 
 | 指标 | 说明 | 目标值 |
-|------|------|--------|
+| ------ | ------ | -------- |
 | **Tool Clarity Score** | 描述清晰度和示例覆盖度 | ≥ 0.85 |
 | **Schema Completeness** | JSON Schema 的约束完整性 | ≥ 0.90 |
 | **Example Coverage** | 示例覆盖正常/边界/错误场景 | ≥ 3 个/Tool |

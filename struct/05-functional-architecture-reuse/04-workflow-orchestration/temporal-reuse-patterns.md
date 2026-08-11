@@ -67,7 +67,7 @@ Workflow := ⟨Id, Definition, State, History, Signals, Queries⟩
 **与传统工作流引擎的对比**:
 
 | 特性 | Temporal | 传统 BPMN 引擎 | 传统定时任务 (Cron) |
-|------|----------|---------------|-------------------|
+| ------ | ---------- | --------------- | ------------------- |
 | **持久化** | 自动（事件溯源） | 需配置数据库 | 无（进程内存） |
 | **容错** | 进程崩溃自动恢复 | 依赖外部事务 | 需手动重试 |
 | **可复用性** | 代码级复用（函数/库） | 模型级复用（XML/BPMN） | 脚本级复用 |
@@ -256,7 +256,7 @@ func QueryHandler(state *WorkflowState) (WorkflowStatus, error) {
 Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表支持从业务层到功能层的**降维复用**：
 
 | BPMN 元素 | Temporal 对应 | 复用差异 |
-|----------|--------------|---------|
+| ---------- | -------------- | --------- |
 | **任务 (Task)** | Activity | BPMN: 可视化配置；Temporal: 代码实现，更灵活但需工程能力 |
 | **网关 (Gateway)** | `if/switch` 或 Selector | BPMN: 可视化分支；Temporal: 代码控制流 |
 | **事件 (Event)** | Signal / Timer | 语义等价，Temporal 信号更灵活 |
@@ -275,7 +275,7 @@ Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表�
 ## 4. 工作流复用的粒度-成本-收益分析
 
 | 复用粒度 | 示例 | 创建成本 | 维护成本 | 复用收益 | 适用场景 |
-|---------|------|---------|---------|---------|---------|
+| --------- | ------ | --------- | --------- | --------- | --------- |
 | **Activity** | `SendEmail`, `QueryDatabase` | 低 (2-4h) | 低 | 高 (高频使用) | 通用基础设施操作 |
 | **Child Workflow** | `CodeReviewWorkflow` | 中 (1-2d) | 中 | 高 (跨项目复用) | 独立业务单元 |
 | **Parent Workflow** | `CICDPipelineWorkflow` | 高 (3-5d) | 高 | 中 (特定场景) | 端到端编排 |
@@ -287,7 +287,7 @@ Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表�
 ## 5. 反模式与陷阱
 
 | 反模式 | 描述 | 后果 | 修正策略 |
-|--------|------|------|---------|
+| -------- | ------ | ------ | --------- |
 | **God Workflow** | 单个工作流包含过多 Activity (>20) | 难以测试、版本管理复杂 | 分解为 Child Workflow |
 | **Non-Deterministic Code** | 工作流中使用随机数、时间.Now()、外部 API | 重放不一致，状态损坏 | 使用 `workflow.Now()`, `workflow.SideEffect` |
 | **Deep Nesting** | 多层 Child Workflow 嵌套 (>3层) | 调试困难、延迟累积 | 扁平化设计，使用 Signal 协调 |
@@ -329,7 +329,7 @@ DurableExecution := ⟨ActivityInvocations, Timers, Signals, Queries, Compensati
 Temporal 中的 Saga 实现有两种策略：
 
 | 策略 | 适用场景 | 实现方式 | 风险 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **正向补偿（Forward Recovery）** | 临时性失败可重试 | Activity 失败时不断重试，直到成功 | 可能导致长时间阻塞 |
 | **反向补偿（Backward Recovery）** | 业务失败需回滚 | 执行补偿 Activity 撤销已完成的操作 | 补偿本身可能失败，需设计补偿的补偿 |
 
@@ -390,7 +390,7 @@ flowchart TD
 ### 5.7 Temporal Workflow 复用核心属性
 
 | 属性 | 说明 | 重要性 | 可观察性 |
-|------|------|--------|----------|
+| ------ | ------ | -------- | ---------- |
 | **确定性（Determinism）** | 给定相同事件历史，工作流必须产生一致的 Activity 调用序列 | 高 | 重放测试通过率 100% |
 | **持久性（Durability）** | 执行状态持久化为不可变事件历史，支持崩溃恢复 | 高 | 事件历史完整率 |
 | **可组合性** | 子工作流、Saga、Parallel 等模式可组合为复杂业务 | 高 | 模式复用次数 |

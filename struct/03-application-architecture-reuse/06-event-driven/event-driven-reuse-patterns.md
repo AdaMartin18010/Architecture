@@ -129,7 +129,7 @@ Martin Fowler 在 *Patterns of Enterprise Application Architecture* 中系统阐
 - **优势**: 完整审计轨迹、时间旅行调试、状态重建
 
 | 模式 | 复用粒度 | 耦合度 | 主要风险 | 适用场景 |
-|------|---------|--------|---------|---------|
+| ------ | --------- | -------- | --------- | --------- |
 | Event Notification | 事件类型 | 低 | N+1 查询 | 跨系统解耦 |
 | Event-Carried State Transfer | 事件 Schema | 中 | Payload 膨胀 | 数据同步 |
 | CQRS | Handler / Projection | 中 | 最终一致性复杂度 | 读写过载分离 |
@@ -169,7 +169,7 @@ CloudEvents 是 CNCF 主导的跨平台事件格式标准，定义了事件的�
 ## 4. 消息中间件复用特征
 
 | 特性 | Apache Kafka | Apache Pulsar |
-|------|-------------|---------------|
+| ------ | ------------- | --------------- |
 | 存储模型 | 日志分段（Log Segment） | 分层存储（BookKeeper + 对象存储） |
 | 多租户 | 弱（需物理集群隔离） | 强（命名空间 + 配额） |
 | 地理复制 | MirrorMaker / MM2 | 内置 Geo-Replication |
@@ -328,7 +328,7 @@ CQRS 不仅是一种模式，更是一套需要深思熟虑的实现策略体系
 ### 7.2 读模型一致性权衡
 
 | 一致性级别 | 延迟 | 复杂度 | 适用场景 |
-|-----------|------|--------|---------|
+| ----------- | ------ | -------- | --------- |
 | 强一致性 | 高 | 高 | 资金交易、库存扣减 |
 | 会话一致性 | 中 | 中 | 用户操作后的即时反馈 |
 | 最终一致性 | 低 | 低 | 报表、推荐、非关键读场景 |
@@ -381,7 +381,7 @@ CQRS 和 Event Sourcing 经常被同时使用，但二者并非绑定关系：
 ### 8.2 Schema 序列化格式对比
 
 | 特性 | Avro | Protobuf | JSON Schema |
-|------|------|----------|-------------|
+| ------ | ------ | ---------- | ------------- |
 | Schema 演进支持 | 优秀（内置 Evoluion） | 优秀（字段编号机制） | 良好（需显式定义） |
 | 二进制体积 | 小（无字段名） | 小（无字段名） | 大（含字段名） |
 | 可读性 | 差（二进制） | 差（二进制） | 优（纯文本） |
@@ -448,7 +448,7 @@ CQRS 和 Event Sourcing 经常被同时使用，但二者并非绑定关系：
 ### 10.1 主流流处理框架对比
 
 | 特性 | Kafka Streams | Apache Flink | Spark Streaming |
-|------|---------------|--------------|-----------------|
+| ------ | --------------- | -------------- | ----------------- |
 | 处理语义 | At-Least-Once / Exactly-Once | Exactly-Once | Exactly-Once (Micro-batch) |
 | 状态管理 | 内置 RocksDB State Store | 分布式 Checkpoint | 基于 RDD Checkpoint |
 | 延迟 | 毫秒 ~ 秒 | 毫秒 | 秒 ~ 分钟 (Micro-batch) |
@@ -532,7 +532,7 @@ CQRS 和 Event Sourcing 经常被同时使用，但二者并非绑定关系：
 ## 12. 与 ISO/IEC 25010:2023 及 CloudEvents 的标准/技术映射
 
 | 标准/技术 | 核心要求 | 本项目 EDA 复用模式映射 |
-|----------|---------|------------------------|
+| ---------- | --------- | ------------------------ |
 | ISO/IEC 25010:2023 — Maintainability → Reusability | 复用性是可维护性的子特征 | 2. EDA 四种复用模式（Event Notification / ECST / CQRS / Event Sourcing） |
 | ISO/IEC 25010:2023 — Compatibility → Interoperability | 跨系统互操作 | 3.2 CloudEvents 规范、12.3 AsyncAPI 规范 |
 | ISO/IEC 25010:2023 — Reliability → Fault Tolerance | 故障容忍与恢复 | 6. Saga 模式、9.2.2 Transactional Outbox、11.2 事件丢失 |
@@ -676,19 +676,19 @@ Uber 的业务高度依赖实时数据——从司机位置更新到动态定价
 ## 15. 标准/框架映射
 
 | 复用场景 | 标准/框架 | 关键映射点 |
-|---------|----------|-----------|
+| --------- | ---------- | ----------- |
 | 跨平台事件格式 | CNCF CloudEvents 1.0.2 | `specversion`、`type`、`source`、`id`、`datacontenttype` 元数据标准化 |
 | 异步 API 契约 | AsyncAPI 2.6+ | 事件驱动 API 的 OpenAPI 等价物，支持代码生成与契约测试 |
 | Schema 演进治理 | Confluent Schema Registry / AWS Glue Schema Registry | BACKWARD/FORWARD/FULL 兼容性检查 |
 | 事件流基础设施 | Apache Kafka / Apache Pulsar / Apache Flink | Topic/Partition/Subscription 复用边界 |
 | 事件溯源与 CQRS | Axon Framework / EventStoreDB | 聚合边界 = 事件溯源强一致性边界 |
-|  Saga 编排 | Temporal / Camunda / Netflix Conductor | 跨服务长事务的协调与补偿 |
+| Saga 编排 | Temporal / Camunda / Netflix Conductor | 跨服务长事务的协调与补偿 |
 | 质量模型 | ISO/IEC 25010:2023 — Reusability / Interoperability / Fault Tolerance | EDA 四种模式对应可复用、互操作、容错 |
 
 ## 16. 权威来源
 
 | 来源 | 权威 URL | 核查日期 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 2026-07-09 |
 | CloudEvents Specification | <https://cloudevents.io/> | 2026-07-09 |
 | CloudEvents 1.0.2 Spec | <https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md> | 2026-07-09 |

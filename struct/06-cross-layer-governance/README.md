@@ -54,7 +54,7 @@
 ## 权威对齐与条款映射
 
 | 权威来源 | URL | 对应条款/能力 | 本主题映射 | 核查日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | ISO/IEC/IEEE 42020:2019 Architecture processes | <https://www.iso.org/standard/68982.html> | Clause 6 Architecture Governance process；Clause 7 Architecture Management process | 跨层复用治理组织、决策与生命周期管理 | 2026-07-08 |
 | ISO/IEC/IEEE 42030:2019 Architecture evaluation framework | <https://www.iso.org/standard/73436.html> | Clause 5.2 Concerns & stakeholders；Clause 6 Evaluation synthesis & value assessment | 复用资产评估、成熟度评价与价值判定 | 2026-07-08 |
 | COBIT 2019 | <https://www.isaca.org/resources/cobit> | EDM01 Ensure governance framework；APO12 Manage risk；MEA01 Monitor, evaluate and assess performance | IT 治理、风险与绩效评估 | 2026-07-08 |
@@ -64,7 +64,7 @@
 ## 子目录导航
 
 | 子目录 | 主题 | 状态 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | `01-process-governance/` | 复用过程治理 | ✅ |
 | `02-reuse-process/` | 复用过程治理（IEEE 1517 / 12207 / 26550 视角） | 🆕 已创建 |
 | `03-maturity-models/` | 成熟度模型（RCMM/RiSE/SPICE） | ✅ |

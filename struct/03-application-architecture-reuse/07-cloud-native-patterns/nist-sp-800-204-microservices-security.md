@@ -7,7 +7,7 @@
 ## 1. NIST SP 800-204 系列概览
 
 | 出版物 | 主题 | 核心贡献 | 权威 URL |
-|-------|------|---------|----------|
+| ------- | ------ | --------- | ---------- |
 | **SP 800-204** | 微服务安全策略 | 技术背景、威胁分析、核心安全特性 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> |
 | **SP 800-204A** | 服务网格架构 | Kubernetes + Istio 参考平台、数据平面/控制平面 | <https://csrc.nist.gov/pubs/sp/800/204/a/final> |
 | **SP 800-204B** | ABAC 访问控制 | 基于属性的细粒度授权、NGAC 模型 | <https://csrc.nist.gov/publications/detail/sp/800-204b/final> |
@@ -28,7 +28,7 @@
 ### 2.2 衍生的设计原则
 
 | 原则 | 复用含义 |
-|-----|---------|
+| ----- | --------- |
 | **自治（Autonomy）** | 服务独立演进，内部实现可替换 |
 | **可发现性（Discoverability）** | 服务注册中心支持动态复用 |
 | **容错（Fault Tolerance）** | 熔断器、重试、超时模式复用 |
@@ -99,7 +99,7 @@
 ## 4. NIST 控制点与微服务复用边界映射
 
 | MS-SS 控制点 | 安全目标 | 复用边界 | 典型实现 |
-|-------------|---------|---------|---------|
+| ------------- | --------- | --------- | --------- |
 | MS-SS-1 认证 | 证明调用者身份 | API 网关 / 身份代理 | OAuth2/OIDC、SPIFFE/SPIRE |
 | MS-SS-2 访问管理 | 授权决策 | 访问服务器 + 服务网格策略 | OPA、Kyverno、Istio AuthorizationPolicy |
 | MS-SS-3 服务发现 | 安全注册与发现 | 服务注册表 / 控制平面 | Consul、Kubernetes DNS、Istio Pilot |
@@ -115,7 +115,7 @@
 ### 5.1 服务网格组件
 
 | 组件 | 功能 |
-|-----|------|
+| ----- | ------ |
 | **数据平面（Data Plane）** | Envoy 代理实例集合，作为 Sidecar 与每个服务实例并排部署；也可作为 Ingress/Egress Controller |
 | **控制平面（Control Plane）** | 控制和配置整个网格的数据平面行为 |
 
@@ -200,7 +200,7 @@ SP 800-204 系列与 SP 800-207（零信任架构）形成互补：
 ## 10. 参考索引
 
 | 来源 | URL | 核查日期 |
-|------|-----|----------|
+| ------ | ----- | ---------- |
 | NIST SP 800-204 | <https://csrc.nist.gov/publications/detail/sp/800-204/final> | 2026-07-09 |
 | NIST SP 800-204A | <https://csrc.nist.gov/pubs/sp/800/204/a/final> | 2026-07-09 |
 | NIST SP 800-204B | <https://csrc.nist.gov/publications/detail/sp/800-204b/final> | 2026-07-09 |

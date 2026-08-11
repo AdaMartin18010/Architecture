@@ -17,7 +17,7 @@
 ## 文档导航
 
 | 文件 | 主题 |
-|:---|:---|
+| :--- | :--- |
 | `app-service-reuse-patterns.md` | 应用服务复用模式与检查清单 |
 | `service-reuse-decision-checklist.md` | 服务复用决策检查清单 |
 

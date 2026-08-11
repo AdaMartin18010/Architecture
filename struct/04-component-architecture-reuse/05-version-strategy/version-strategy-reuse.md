@@ -36,7 +36,7 @@
 ### 1.1 主流版本策略对比
 
 | 策略 | 格式 | 代表项目 | 优点 | 缺点 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **Semver** | `MAJOR.MINOR.PATCH` | npm, Cargo, Maven | 语义清晰、兼容性强 | 主观判断 breaking |
 | **CalVer** | `YYYY.MM.MICRO` | Ubuntu, pip, Chrome | 时间线清晰 | 无兼容语义 |
 | **HashVer** | `git-sha` | Docker 镜像、Go | 精确对应源码 | 无可读性 |
@@ -77,7 +77,7 @@ PATCH: 向后兼容的问题修复
 ### 2.1 版本变更的复用风险映射
 
 | 变更类型 | Semver | 复用风险 | 决策建议 |
-|:---|:---:|:---|:---|
+| :--- | :---: | :--- | :--- |
 | **Patch** | x.x.Z | 🟢 低 | 自动升级，安全复用 |
 | **Minor** | x.Y.x | 🟡 中 | 条件复用，回归测试后升级 |
 | **Major** | X.x.x | 🔴 高 | 详细审查，制定迁移计划 |
@@ -109,7 +109,7 @@ PATCH: 向后兼容的问题修复
 **场景**: 同一系统需要复用同一组件的两个 Major 版本。
 
 | 语言/平台 | 实现方式 |
-|:---|:---|
+| :--- | :--- |
 | **Java** | 不同 ClassLoader（OSGi、JPMS） |
 | **.NET** | 强命名 + GAC / 本地复制 |
 | **Node.js** | npm 的嵌套 node_modules |
@@ -179,7 +179,7 @@ Sunset Timeline
 Kubernetes 采用三级版本策略：
 
 | 级别 | 含义 | 稳定性 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | **Alpha** | 默认禁用，可能有 Bug | ❌ 不稳定 |
 | **Beta** | 默认启用，经过测试 | ⚠️ 可能变更 |
 | **GA (Stable)** | 生产就绪，长期支持 | ✅ 稳定 |
@@ -211,7 +211,7 @@ Kubernetes API 版本演进
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Semver 2.0.0 | <https://semver.org/> | 2026-06-10 |
 | CalVer | <https://calver.org/> | 2026-06-10 |
 | Kubernetes API Versioning | <https://kubernetes.io/docs/reference/using-api/api-overview/> | 2026-06-10 |

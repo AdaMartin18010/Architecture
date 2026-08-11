@@ -58,7 +58,7 @@ kubectl get authorizationpolicy
 ### 3.1 平台团队发布的 Golden Path
 
 | 模板 | 复用价值 |
-|------|----------|
+| ------ | ---------- |
 | **GatewayClass 模板** | 定义批准的控制器类型（`istio`、`envoy`、`cilium`） |
 | **HTTPRoute 标准模板** | 重试预算、CORS、超时默认值内建 |
 | **GAMMA Producer Route** | 命名空间级服务默认路由策略 |
@@ -90,7 +90,7 @@ spec:
 ## 4. 与项目结构的映射
 
 | 项目目录 | 云原生网络角色 |
-|----------|----------------|
+| ---------- | ---------------- |
 | `struct/04-component-architecture-reuse/` | HTTPRoute/BackendTLSPolicy = 可复用网络组件 |
 | `struct/06-cross-layer-governance/` | AuthorizationPolicy = 跨层安全治理 |
 | `struct/10-supply-chain-security/` | mTLS + SPIFFE = 零信任供应链安全 |

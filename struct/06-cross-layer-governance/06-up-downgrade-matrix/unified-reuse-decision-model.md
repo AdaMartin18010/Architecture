@@ -13,7 +13,7 @@
 割裂现状（统一前）：
 
 | 机制 | 位置 | 问题 |
-|------|------|------|
+| ------ | ------ | ------ |
 | A. 升降级决策矩阵 | [`upgrade-downgrade-matrix.md`](./upgrade-downgrade-matrix.md) | 有触发条件与决策流程，但只回答"升到哪层"，不回答"值不值得复用" |
 | B. 认知决策理论 | [`decision-theory-reuse.md`](../../08-cognitive-architecture/04-decision-making/decision-theory-reuse.md) | 有自己的复用决策树，与 A 零交叉引用，MAUT 权重与公理 E.3 权重并存 |
 | C. DMN 决策表 | [`bpmn-dmn-reuse-orchestration.md`](../../02-business-architecture-reuse/06-bpmn-dmn/bpmn-dmn-reuse-orchestration.md) | 可执行决策表，但与 A/B/F 零连接，业务规则与技术判定脱节 |
@@ -64,7 +64,7 @@ flowchart TB
 ## 3. 机制映射表
 
 | 机制 | 层级 | 输入 | 输出 | 核心阈值（registry id） | 何时使用 | 与其他机制的接口 |
-|------|------|------|------|--------------------------|----------|------------------|
+| ------ | ------ | ------ | ------ | -------------------------- | ---------- | ------------------ |
 | **F** 公理化判定（E.2/E.3） | L1 战略判定 | 候选资产成本画像（AAF、NPV）、上下文画像（语义/技术/组织适配） | 复用/自建的理性判定 + Fit 分数 | `THR-ECON-AAF-FLOOR` (θ=0.7)、`THR-ECON-NPV-MIN`、`THR-FIT-TAU` (τ≥0.7, 权重 0.5/0.3/0.2) | 发现候选资产后的第一道门；投资评审 | → A：E.2/E.3 通过才进入层级判定；→ D：E.2 实例化为引擎阶段 5，E.3 实例化为阶段 1–2 |
 | **A** 升降级决策矩阵 | L2 层级判定 | 消费方数量、语义覆盖率、技术栈兼容性、AI 置信度、安全等级、经济公式结果 | 升级/维持/降级决策 + 目标层级 + 治理动作 | `THR-LAYER-MIN-CONSUMERS` (≥3)、`THR-LAYER-SEMANTIC-COVERAGE` (≥0.8)、`THR-LAYER-TECH-COMPAT` (≥0.8/<0.5 降级)、`THR-LAYER-AI-CONFIDENCE` (γ≥0.8)、`THR-ECON-ROI-UPGRADE` (≥1.5) | 资产复用范围跨越当前层级边界时；定期资产盘点 | ← F：以 E.2 经济判定为前提；→ D：升级目标层级确定后由引擎逐资产验证；→ C：升降级触发条件可编码为 DMN 规则 |
 | **D** 复用决策引擎 v2 | L3 适配判定 | 资产画像（RRL、成熟度、许可证、SLSA、AAF、NPV）+ 上下文画像 | 批准/条件批准/拒绝 + 置信度评分 + 风险登记 + 升级/降级路径建议 | `THR-ECON-AAF-FLOOR` (<0.7)、`THR-ENGINE-PHASE-PASS` (≥70)、`THR-ENGINE-PHASE-CONDITIONAL` (≥50)、`THR-ENGINE-MAX-CONDITIONAL-PHASES` (≤2) | 具体资产接入前的强制门禁（CLI/Web 可执行） | ← F：阶段 5 是 E.2 的可执行实例，阶段 1–2 是 E.3 的可执行实例；→ A：引擎输出的升级/降级路径建议回流升降级矩阵；→ C：批准结果生成决策卡片供 DMN 引用 |
@@ -123,7 +123,7 @@ flowchart TD
 **背景**：某电商平台数据团队发现内部"推荐算法"工具函数已被 3 个项目复制使用，提案复用。
 
 | 步骤 | 层级 | 判定 | 结果 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | 偏差自检 | L0 · B | 团队存在 NIH 倾向（"别人的推荐逻辑不适合我们"） | 要求量化自建 vs 复用 ROI，引入平台团队独立审查 |
 | 战略判定 | L1 · F | 实测 AAF=0.3 < 0.7（`THR-ECON-AAF-FLOOR`）；Fit=0.82 ≥ τ=0.7（`THR-FIT-TAU`） | 通过：复用是理性选择 |
 | 层级判定 | L2 · A | 消费方 3 个（≥`THR-LAYER-MIN-CONSUMERS`），语义覆盖率 85%（≥0.8） | 触发升级：功能 → 共享组件 |
@@ -159,7 +159,7 @@ flowchart TD
 > **权威来源**:
 >
 > | 来源 | URL | 核查日期 |
-> |------|-----|----------|
+> | ------ | ----- | ---------- |
 > | COCOMO II Model Definition Manual (USC) — AAF 复用成本模型 | <http://csse.usc.edu/csse/research/COCOMOII/cocomo_main.html> | 2026-07-12 |
 > | Wikipedia — Decision Model and Notation | <https://en.wikipedia.org/wiki/Decision_Model_and_Notation> | 2026-07-12 |
 > | Wikipedia — Prospect Theory | <https://en.wikipedia.org/wiki/Prospect_theory> | 2026-07-12 |

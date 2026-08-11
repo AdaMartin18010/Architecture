@@ -25,7 +25,7 @@ Task 生命周期之所以需要形式化验证，原因在于：
 A2A v1.0 规范定义了以下状态[^8]：
 
 | 状态 | 语义 | 允许转移 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | `submitted` | Task 已创建，等待 Server Agent 处理 | `working`, `canceled` |
 | `working` | Server Agent 正在积极处理 | `input_required`, `completed`, `failed`, `canceled` |
 | `input_required` | 需要额外输入才能继续 | `working`, `canceled`, `failed` |
@@ -153,7 +153,7 @@ taskState[t1] = "working"  // 无限期保持，无 CompleteTask/FailTask/Cancel
 本规约与 A2A v1.0.0 规范的对应如下[^8]：
 
 | 规约动作/变量 | A2A 规范对应 | 说明 |
-|---------------|-------------|------|
+| --------------- | ------------- | ------ |
 | `taskState` | Task.status | 核心状态字段 |
 | `taskMessages` | Task.messages | 消息历史数组 |
 | `taskArtifacts` | Task.artifacts | 输出产物集合 |
@@ -178,7 +178,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ## 10. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | Task 状态机设计验证 | TLA+ / TLC | 不变量与活性报告 |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 状态转移与消息一致性 | TLAPS（可选） | 形式化证明 |
 | DO-333 §6.3.2（形式化分析替代测试） | 状态机活性穷举 | TLC 模型检验 | 模型检查报告 |
@@ -197,7 +197,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ## 12. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
 | TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-08 |

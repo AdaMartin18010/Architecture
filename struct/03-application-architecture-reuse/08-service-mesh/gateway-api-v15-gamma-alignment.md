@@ -8,7 +8,7 @@
 ## 1. 服务网格标准化演进时间线
 
 | 时间 | 事件 | 意义 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | 2017 | Istio、Linkerd 等项目诞生 | 服务网格概念普及 |
 | 2019-05 | SMI 在 KubeCon EU 发布 | 试图统一服务网格 API |
 | 2020-03 | SMI 加入 CNCF Sandbox | 多网格互操作愿景 |
@@ -55,7 +55,7 @@ GatewayClass
 ### 3.2 v1.5 关键特性与复用映射
 
 | v1.5 特性 | 说明 | 本项目复用模式映射 |
-|----------|------|------------------|
+| ---------- | ------ | ------------------ |
 | **ListenerSet** | 将 Listener 定义为独立资源，可附加到目标 Gateway；平台团队维护统一 Gateway，应用团队独立扩展监听配置 | 多团队共享网关的复用边界；降低多租户协作冲突 |
 | **TLSRoute (v1)** | 基于 SNI 的 TLS 流量路由，支持 terminate / passthrough 模式 | 非 HTTP TLS 流量（数据库、消息队列、自定义协议）的网关复用 |
 | **HTTPRoute CORS Filter** | 在 HTTPRoute 中直接配置跨域头 | BFF / 边缘网关的横切逻辑复用，减少后端重复实现 |
@@ -66,7 +66,7 @@ GatewayClass
 ### 3.3 与 Ingress 的对比
 
 | 能力 | Ingress | Gateway API |
-|-----|---------|-------------|
+| ----- | --------- | ------------- |
 | 路由类型 | 仅 HTTP | HTTP、TCP、TLS、gRPC、UDP |
 | 角色分离 | 无 | Gateway(基础设施) ↔ Route(应用) |
 | 跨 Namespace | 受限 | 原生支持 |
@@ -100,9 +100,9 @@ GAMMA 是 Kubernetes SIG Network initiative，将 Gateway API 扩展至**服务�
 ### 4.2 GAMMA 与 Sidecar-less 架构
 
 | 模式 | 特点 | 代表 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **Sidecar** | 每个 Pod 注入 Envoy 代理；功能完整但资源开销大 | 传统 Istio |
-| **Ambient Mesh** | 无 Sidecar；分层架构：ztunnel（L4）+ waypoint proxy（L7）| Istio 2023+ |
+| **Ambient Mesh** | 无 Sidecar；分层架构：ztunnel（L4）+ waypoint proxy（L7） | Istio 2023+ |
 | **Proxyless** | 直接 SDK 集成；最高性能但语言绑定 | gRPC xDS |
 
 ### 4.3 Istio Ambient Multicluster Beta（2026-03）
@@ -136,7 +136,7 @@ GAMMA 是 Kubernetes SIG Network initiative，将 Gateway API 扩展至**服务�
 ### 6.1 能力即服务
 
 | 能力 | 复用形式 | 接口标准 |
-|-----|---------|---------|
+| ----- | --------- | --------- |
 | 流量路由 | Gateway / HTTPRoute | Gateway API |
 | 流量分割 | TrafficSplit (已归档) → HTTPRoute 权重 | Gateway API |
 | 安全通信 | ztunnel mTLS | Istio Ambient |
@@ -151,7 +151,7 @@ GAMMA 是 Kubernetes SIG Network initiative，将 Gateway API 扩展至**服务�
 ## 7. 标准/框架映射
 
 | 复用场景 | 标准/项目 | 关键映射点 |
-|---------|----------|-----------|
+| --------- | ---------- | ----------- |
 | Kubernetes 入口路由 | Gateway API v1.5 | GatewayClass → Gateway → HTTPRoute/GRPCRoute/TLSRoute |
 | 多团队共享网关 | ListenerSet + ReferenceGrant | 平台团队管 Gateway，应用团队管 ListenerSet，安全团队管跨 NS 授权 |
 | 服务网格内部流量 | GAMMA Initiative | HTTPRoute 附加到 Service（parentRef kind=Service） |
@@ -162,11 +162,11 @@ GAMMA 是 Kubernetes SIG Network initiative，将 Gateway API 扩展至**服务�
 ## 8. 选型指南（2026）
 
 | 场景 | 推荐方案 | 理由 |
-|-----|---------|------|
+| ----- | --------- | ------ |
 | 纯 Kubernetes，追求简单 | Linkerd | 轻量、安全、易操作 |
 | 多云/混合/VM + K8s | Istio (Ambient Mode) | 最灵活，无 Sidecar 简化运维 |
-| 公有云原生 | 厂商方案（ASM / App Mesh）| 托管减少运维负担 |
-| 高性能 gRPC | Proxyless（xDS SDK）| 零代理开销 |
+| 公有云原生 | 厂商方案（ASM / App Mesh） | 托管减少运维负担 |
+| 高性能 gRPC | Proxyless（xDS SDK） | 零代理开销 |
 | AI/ML 工作负载 | Cilium / Istio + Gateway API Inference Extension | eBPF 可观测性 + 模型感知路由 |
 
 ## 9. 正向示例与反例
@@ -203,7 +203,7 @@ GAMMA 是 Kubernetes SIG Network initiative，将 Gateway API 扩展至**服务�
 ## 10. 参考索引
 
 | 来源 | URL | 核查日期 |
-|------|-----|----------|
+| ------ | ----- | ---------- |
 | Kubernetes Gateway API v1.5 Release | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> | 2026-07-09 |
 | Kubernetes Gateway API Docs | <https://gateway-api.sigs.k8s.io> | 2026-07-09 |
 | GAMMA Initiative | <https://gateway-api.sigs.k8s.io/mesh/gamma/> | 2026-07-09 |

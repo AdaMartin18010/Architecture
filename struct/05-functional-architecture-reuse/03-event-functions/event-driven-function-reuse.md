@@ -82,7 +82,7 @@
 ### 2.1 Schema 演进策略
 
 | 策略 | 描述 | 兼容性 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | **后向兼容** | 新增可选字段 | ✅ 旧消费者可用 |
 | **前向兼容** | 消费者忽略未知字段 | ✅ 新消费者可用 |
 | **完全兼容** | 同时支持前后向 | ✅✅ 最佳 |
@@ -151,7 +151,7 @@ Event Router Pattern
 ### 3.2 可复用的事件处理中间件
 
 | 功能 | 工具 | 复用方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 事件过滤 | AWS EventBridge Rules | 规则模板复用 |
 | 事件转换 | Kafka Streams / Flink | 拓扑模板复用 |
 | 事件聚合 | Kafka Streams Windowing | 窗口策略复用 |
@@ -277,7 +277,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ### 6.2 可复用组件
 
 | 组件 | 复用内容 | 复用方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CloudEvents 包装器 | 事件格式标准化 | 共享库 |
 | Kafka Producer | 发布事件 | 共享库/模板 |
 | Knative Trigger | 事件路由规则 | YAML 模板 |
@@ -295,7 +295,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CloudEvents | <https://cloudevents.io/> | 2026-07-08 |
 | AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
 | Apache Kafka | <https://kafka.apache.org/> | 2026-07-08 |
@@ -312,7 +312,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ## 8. 标准条款映射
 
 | 本主题概念 | 对应标准/文献 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 事件封装格式 | CloudEvents 1.0 Specification | 跨平台事件元数据标准（specversion, type, source, id, data） |
 | 异步 API 契约 | AsyncAPI 3.x | 事件驱动 API 的通道、消息、Schema 定义标准 |
 | 消息路由模式 | Enterprise Integration Patterns (Hohpe & Woolf) | Content-Based Router, Message Filter, Recipient List, Aggregator |

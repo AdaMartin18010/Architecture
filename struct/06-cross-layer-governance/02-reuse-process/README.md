@@ -13,7 +13,7 @@
 IEEE 1517 将复用过程分为三大过程组：
 
 | 过程组 | 核心活动 | 对应本体系 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **领域工程（Domain Engineering）** | 识别、构建、维护可复用资产 | `02-business` / `03-application` / `04-component` |
 | **应用工程（Application Engineering）** | 消费和适配可复用资产 | `03-application` / `04-component` / `05-functional` |
 | **复用管理（Reuse Management）** | 计划、监控、改进复用活动 | `06-cross-layer-governance` / `09-value-quantification` |

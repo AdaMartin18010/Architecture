@@ -23,7 +23,7 @@
 ## 权威对齐
 
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
 | ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
@@ -48,7 +48,7 @@
 ## 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 组件 / 接口 | UML 2.5.1 §11 Components | 组件通过提供的/需要的接口定义边界 |
 | 组件图 | UML 2.5.1 §19.3 Component Diagrams | 可视化组件、接口与依赖关系 |
 | 架构描述 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件视图作为架构描述的一种视图 |

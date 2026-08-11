@@ -38,7 +38,7 @@
 **关键属性**：
 
 | 属性 | 说明 | 复用含义 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 事件驱动 | 函数由事件触发 | 事件源映射可在多个函数间复用 |
 | 自动扩缩容 | 平台根据负载自动扩展到零或无限 | 容量规划模板可复用 |
 | 按使用付费 | 按调用次数和执行时间计费 | 成本模型需要被复用方理解 |
@@ -68,7 +68,7 @@
 ## 标准/框架映射
 
 | 复用场景 | 标准/框架 | 关键映射点 |
-|---------|----------|-----------|
+| --------- | ---------- | ----------- |
 | 无状态函数设计 | 12-Factor App (Processes) | 进程无状态、共享 nothing、状态外置到 BaaS |
 | 配置管理 | 12-Factor App (Config) | 配置存储在环境变量，函数模板可跨环境复用 |
 | 事件格式标准化 | CNCF CloudEvents 1.0.2 | 跨云、跨函数平台的事件互操作 |
@@ -82,7 +82,7 @@ Serverless 复用的核心价值在于将无状态计算、事件处理与后端
 ## 权威来源
 
 | 标准/框架 | 权威 URL | 核查日期 |
-|----------|----------|----------|
+| ---------- | ---------- | ---------- |
 | CNCF Serverless Whitepaper v2 | <https://github.com/cncf/wg-serverless/tree/main/whitepapers/serverless-overview> | 2026-07-09 |
 | CNCF CloudEvents 1.0.2 | <https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md> | 2026-07-09 |
 | Knative (CNCF Graduated) | <https://knative.dev/> | 2026-07-09 |

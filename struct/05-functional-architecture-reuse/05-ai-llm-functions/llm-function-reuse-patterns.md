@@ -8,7 +8,7 @@
 ### 1.1 三代函数复用范式
 
 | 世代 | 时间 | 范式 | 代表技术 |
-|-----|------|------|---------|
+| ----- | ------ | ------ | --------- |
 | **Gen 1** | 2023–2024 | 原生 Function Calling | OpenAI Tools, Anthropic Tool Use |
 | **Gen 2** | 2024–2025 | 框架抽象层 | LangChain Tools, Semantic Kernel Plugins, LlamaIndex Agents |
 | **Gen 3** | 2025–2026 | 标准化协议层 | MCP (agent↔tool), A2A (agent↔agent), MAF (企业编排) |
@@ -40,10 +40,10 @@
 ### 2.2 工具注册与发现
 
 | 层级 | 机制 | 复用范围 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **本地** | `stdio` 传输，本地进程 | 单用户/单会话 |
 | **远程** | Streamable HTTP，OAuth 2.1 | 团队/企业 |
-| **市场** | 社区 Registry（未来）| 跨组织生态 |
+| **市场** | 社区 Registry（未来） | 跨组织生态 |
 
 ### 2.3 工具组合模式
 
@@ -75,9 +75,9 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 3.2 复用层次
 
 | 层次 | 复用单元 | 说明 |
-|-----|---------|------|
+| ----- | --------- | ------ |
 | **Kernel Plugin** | 函数集合 | 封装 API 调用、数据库查询、文件操作 |
-| **Agent** | 角色 + 工具 + 记忆 | 可复用的智能体模板（如"客服代理"、"代码审查代理"）|
+| **Agent** | 角色 + 工具 + 记忆 | 可复用的智能体模板（如"客服代理"、"代码审查代理"） |
 | **Team** | 多智能体编排 | Group Chat 模式、层级汇报模式、竞争评审模式 |
 
 ## 4. A2A（Agent-to-Agent）能力复用
@@ -106,7 +106,7 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 4.2 A2A 与 MCP 的互补复用
 
 | 维度 | MCP | A2A |
-|-----|-----|-----|
+| ----- | ----- | ----- |
 | 关系 | Agent ↔ Tool | Agent ↔ Agent |
 | 协议 | JSON-RPC 2.0 | HTTP + JSON-RPC + SSE |
 | 能力描述 | Tool Schema | Agent Card |
@@ -119,11 +119,11 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 5.1 函数设计原则
 
 | 原则 | 说明 |
-|-----|------|
+| ----- | ------ |
 | **单一职责** | 每个函数只做一件事，便于 LLM 组合 |
 | **自描述** | `description` 必须精确说明功能、输入、输出、副作用 |
 | **幂等性** | 函数应尽可能幂等，支持重试 |
-| **确定性** | 相同输入产生相同输出（或明确标记不确定性）|
+| **确定性** | 相同输入产生相同输出（或明确标记不确定性） |
 | **防御性** | 参数校验、范围检查、优雅降级 |
 
 ### 5.2 版本与兼容性
@@ -141,21 +141,21 @@ Agent 声明依赖：
 ### 5.3 安全边界
 
 | 风险 | 缓解 |
-|-----|------|
+| ----- | ------ |
 | 提示注入通过工具参数 | 输入净化、参数类型严格校验 |
-| 工具过度授权 | 最小权限原则、能力证明（Capability Attestation）|
+| 工具过度授权 | 最小权限原则、能力证明（Capability Attestation） |
 | 工具版本漂移 | 版本锁定、兼容性测试 |
 | 敏感数据泄漏 | 输出过滤、审计日志、数据分类 |
 
 ## 6. 与功能架构复用的映射
 
 | 传统功能复用 | LLM 时代映射 | 协议/标准 |
-|------------|------------|----------|
-| 共享库（Library）| Kernel Plugin / MCP Tool | MCP 2025-11-25 |
-| 服务 API（Service）| Agent Skill / Agent Card | A2A v1.0 |
-| 工作流（Workflow）| Agent Team / Group Chat | MAF / AutoGen |
-| 业务规则（Business Rule）| LLM Prompt + Tool Guardrails | 自定义 |
-| 数据访问（DAO）| Retrieval Resource | MCP Resource |
+| ------------ | ------------ | ---------- |
+| 共享库（Library） | Kernel Plugin / MCP Tool | MCP 2025-11-25 |
+| 服务 API（Service） | Agent Skill / Agent Card | A2A v1.0 |
+| 工作流（Workflow） | Agent Team / Group Chat | MAF / AutoGen |
+| 业务规则（Business Rule） | LLM Prompt + Tool Guardrails | 自定义 |
+| 数据访问（DAO） | Retrieval Resource | MCP Resource |
 
 ## 7. 参考索引
 
