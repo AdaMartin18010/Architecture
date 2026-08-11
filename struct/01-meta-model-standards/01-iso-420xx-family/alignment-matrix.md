@@ -46,7 +46,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 2. 主题-标准对齐矩阵
 
 | 主题 | 核心标准 | 辅助标准 | 状态 |
-|------|---------|---------|------|
+| ------ | --------- | --------- | ------ |
 | 01 元模型与标准 | ISO 42010:2022, ISO 25010:2023, ISO 26550 | TOGAF 10, ArchiMate, SWEBOK V4 | ✅ 已对齐 |
 | 02 业务架构 | TOGAF 10, ArchiMate BPMN, DMN, FEA | ISO 42010, BRM | ✅ 已对齐 |
 | 03 应用架构 | TOGAF 10, ArchiMate ISO 25010 | OpenAPI, AsyncAPI | ✅ 已对齐 |
@@ -64,7 +64,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2.1 ISO 42020 条款映射示例
 
 | ISO/IEC/IEEE 42020:2019 条款 | 过程名称 | 本框架对应过程/制品 |
-|---|---|---|
+| --- | --- | --- |
 | Clause 6 | Architecture Governance（架构治理） | `06-cross-layer-governance` 的治理策略与原则目录 |
 | Clause 7 | Architecture Management（架构管理） | 本主题 `alignment-matrix.md` 的版本维护与状态跟踪 |
 | Clause 8 | Architecture Conceptualization（概念化） | `02-business-architecture-reuse` 业务能力地图定义 |
@@ -75,7 +75,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2.2 ISO/IEC/IEEE 42010:2022 核心条款映射
 
 | 条款 | 核心内容 | 架构描述元素 | 复用映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Decision/Rationale | 元模型资产复用的术语基础 |
 | Clause 6.1–6.10 | AD 规约要求 | 识别 EoI、利益相关者、视角、关注点、视点、视图、视图组件、对应关系、决策与依据 | 组织级 AD 模板与检查清单 |
 | Clause 7.1–7.2 | ADF / ADL 规约 | Architecture Description Framework、Architecture Description Language 的 conformance 要求 | TOGAF/ArchiMate/SysML 对齐基准 |
@@ -88,7 +88,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 > 2022 版关键术语变更：
 
 | 2011 版 | 2022 版 | 说明 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | System of Interest | **Entity of Interest (EoI)** | 扩展至非系统架构 |
 | Architecture Framework | **Architecture Description Framework (ADF)** | 与评估框架区分 |
 | Architecture Model | **Architecture View Component** | 更准确反映实践 |
@@ -101,7 +101,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 4. ISO 25010:2023 质量特性
 
 | 特性 | 旧版名称 | 状态 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | Functional Suitability | 保持不变 | ✅ |
 | Performance Efficiency | 保持不变 | ✅ |
 | Compatibility | 保持不变 | ✅ |
@@ -117,7 +117,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 5. SLSA 1.2 轨道模型
 
 | 轨道 | 等级 | 关键要求 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | Build Track | L1-L4 | Provenance → Hosted Build → Hardened → Reproducible |
 | Source Track | L1-L3 | Version Control → Authenticated History → Two-Person Review |
 | Attested Build Environments | L1+ | 构建环境认证 |
@@ -127,7 +127,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 6. MCP 2025-11-25 vs A2A v1.0
 
 | 维度 | MCP 2025-11-25 | A2A v1.0 |
-|------|---------------|---------|
+| ------ | --------------- | --------- |
 | 范围 | Agent ↔ Tool | Agent ↔ Agent |
 | 关系 | Client-Server (Stateful) | Peer-to-Peer |
 | 发现 | Server lists capabilities | Agent Card (/.well-known/agent.json) |
@@ -163,7 +163,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2. 属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 主题维度完整性 | 行覆盖全部 13 个一级主题 | 高 |
 | 标准维度完整性 | 列覆盖国际标准族、行业框架与协议 | 高 |
 | 映射关系明确性 | 主对应 / 次对应 / 扩展关系标注清晰 | 高 |
@@ -281,7 +281,7 @@ flowchart LR
 ### 3. 角色职责
 
 | 角色 | 职责 |
-|------|------|
+| ------ | ------ |
 | 标准联络人 | 监测权威标准动态，提交更新建议 |
 | 主题架构师 | 验证本主题映射的准确性与完整性 |
 | 质量门禁管理员 | 运行 `scripts/quality-gate.py`，确保文件持续合规 |

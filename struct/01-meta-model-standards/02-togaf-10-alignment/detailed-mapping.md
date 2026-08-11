@@ -26,7 +26,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 ### 1.2 映射原则
 
 | 原则 | 说明 |
-|------|------|
+| ------ | ------ |
 | **阶段全覆盖** | 覆盖 ADM 全部 10 个阶段（含预备阶段和需求管理） |
 | **ABB/SBB 分离** | 区分逻辑构建块（ABB）与物理构建块（SBB）在 ISO 42010 中的不同映射 |
 | **视点驱动** | 以 ISO 42010 的 Viewpoint-View-Model Kind 三层结构作为映射骨架 |
@@ -39,7 +39,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 在展开逐阶段映射之前，先建立 TOGAF Standard 10 与 ISO/IEC/IEEE 42010:2022 的核心概念桥梁：
 
 | ISO 42010:2022 概念 | TOGAF 10 概念 | 映射说明 |
-|---------------------|---------------|----------|
+| --------------------- | --------------- | ---------- |
 | Entity of Interest (EoI) | Enterprise / Architecture Project | 架构工作的对象实体；TOGAF 中扩展为"企业"及其子系统 |
 | Architecture Description (AD) | Architecture Deliverables / Catalogs | ADM 各阶段输出的架构交付物集合 |
 | Architecture Description Framework (ADF) | TOGAF Content Framework + ADM | TOGAF 整体即是一个符合 ISO 42010 的 ADF |
@@ -63,7 +63,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 建立架构能力、定义架构原则、适配 ADM、设立治理框架。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 架构组织、CIO、业务高管 | 识别对架构能力有决策权的利益相关者 |
 | **Concern** | 架构原则、治理需求、合规要求 | 关注"如何规范地进行架构工作" |
 | **Viewpoint** | *Architecture Capability Viewpoint* | 定义架构能力的观察角度 |
@@ -80,7 +80,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 定义架构愿景、识别利益相关者、确认业务目标、获得审批。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 赞助者、业务负责人、最终用户 | 通过 Stakeholder Map 识别 |
 | **Concern** | 业务目标、约束、风险、ROI | 架构愿景需要回应的核心关注点 |
 | **Viewpoint** | *Stakeholder Requirements Viewpoint* | 利益相关者需求视点 |
@@ -97,7 +97,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 开发业务架构，包括组织单元、功能、流程、信息、能力地图。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 业务分析师、流程Owner、产品经理 | 关注业务结构和能力 |
 | **Concern** | 业务能力、流程效率、信息需求、组织一致性 | 业务架构的核心关注点 |
 | **Viewpoint** | *Business Architecture Viewpoint* (TOGAF 内容框架定义) | 业务架构视点 |
@@ -116,7 +116,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 #### 3.4.1 Data Architecture
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 数据架构师、合规官、数据治理委员会 | 关注数据一致性、质量、合规 |
 | **Concern** | 数据实体、逻辑模型、治理规则、主数据管理 | 数据架构关注点 |
 | **Viewpoint** | *Data Architecture Viewpoint* | 数据架构视点 |
@@ -129,7 +129,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 #### 3.4.2 Application Architecture
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 应用架构师、开发团队、集成团队 | 关注应用组合与集成 |
 | **Concern** | 应用组合、接口目录、集成模式、可替换性 | 应用架构关注点 |
 | **Viewpoint** | *Application Architecture Viewpoint* | 应用架构视点 |
@@ -146,7 +146,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 开发技术架构，定义平台、基础设施、中间件、网络、硬件标准。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 基础设施架构师、运维团队、安全团队、采购部门 | 关注技术平台与标准 |
 | **Concern** | 技术标准、平台蓝图、迁移路径、容量、可用性、安全基线 | 技术架构关注点 |
 | **Viewpoint** | *Technology Architecture Viewpoint* | 技术架构视点 |
@@ -163,7 +163,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 评估实施目标，识别工作包，进行差距分析，确定过渡架构。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 项目组合经理、业务负责人、架构委员会 | 关注实施可行性与优先级 |
 | **Concern** | 差距、复用机会、工作包分组、过渡状态 | 机会与解决方案关注点 |
 | **Viewpoint** | *Transition Architecture Viewpoint* | 过渡架构视点 |
@@ -180,7 +180,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 制定详细的迁移计划，排序项目，分配业务价值，确认路线图。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | PMO、项目组合经理、财务规划者 | 关注实施顺序与投资回报 |
 | **Concern** | 迁移顺序、依赖关系、风险、成本、收益时间表 | 迁移规划关注点 |
 | **Viewpoint** | *Implementation and Migration Viewpoint* | 实现与迁移视点 |
@@ -197,7 +197,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 监督实施，确保架构合规，管理架构契约。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 实施团队、架构委员会、质量保证团队 | 关注合规与交付质量 |
 | **Concern** | 架构合规、偏差管理、契约履行、合规评估 | 实施治理关注点 |
 | **Viewpoint** | *Architecture Compliance Review Viewpoint* | 架构合规审查视点 |
@@ -214,7 +214,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 管理架构变更请求，评估变更影响，更新架构基线。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 变更请求者、架构委员会、运维团队 | 关注变更影响与持续演进 |
 | **Concern** | 变更影响范围、基线一致性、回滚策略、技术债 | 变更管理关注点 |
 | **Viewpoint** | *Change Management Viewpoint* | 变更管理视点 |
@@ -231,7 +231,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 贯穿全生命周期的需求管理，确保需求变化被正确记录、评估和整合。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 需求工程师、业务分析师、测试团队 | 关注需求可追溯性 |
 | **Concern** | 需求完整性、一致性、可追溯性、优先级变化 | 需求管理关注点 |
 | **Viewpoint** | *Requirements Engineering Viewpoint* | 需求工程视点 |
@@ -252,7 +252,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 TOGAF 10 的 **Enterprise Continuum** 是一个覆盖企业内外全部架构资产的"虚拟仓库"，通过 **Architecture Continuum**（ABB）和 **Solutions Continuum**（SBB）两条轴线，将抽象能力逐步精化为可落地实现。该结构与 ISO/IEC/IEEE 42010:2022 的 ADF/ADL 规约形成互补：Enterprise Continuum 提供资产分类与复用梯度，ISO/IEC/IEEE 42010:2022 提供描述这些资产的元模型。
 
 | Continuum 层级 | Architecture Continuum (ABB) | Solutions Continuum (SBB) | 复用模式 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Foundation** | 通用参考模型、核心原则、基础能力 | 操作系统、编程语言、运行时 | 全行业共享，变更频率最低 |
 | **Common Systems** | 跨行业系统架构（如 IAM、CRM、ESB） | 商业化平台（Keycloak、Salesforce、Kong） | 跨组织复用，通过配置适配 |
 | **Industry** | 垂直行业参考架构（如 eTOM、ARTS、HL7） | 行业解决方案（电信计费、零售 POS、医疗集成平台） | 行业生态复用 |
@@ -263,7 +263,7 @@ TOGAF 10 的 **Enterprise Continuum** 是一个覆盖企业内外全部架构资
 TOGAF 10 的 **Architecture Repository** 是 Enterprise Continuum 的物理/逻辑载体。其分区与复用资产的对应关系如下：
 
 | Repository 分区 | 内容 | 复用资产示例 | ISO 42010:2022 映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture Metamodel** | 建模语言、记号、关系 | ArchiMate Profile、UML/SysML 模板 | ADF / ADL（Clause 7） |
 | **Architecture Capability** | 组织角色、技能、流程 | 架构师能力模型、治理 RACI | Stakeholder / Concern（Clause 5.2.3） |
 | **Architecture Landscape** | 基线、目标、过渡架构快照 | ABB/SBB 目录、 capability map | Architecture View / View Component（Clause 6.7–6.8） |
@@ -297,7 +297,7 @@ Architecture Repository
 ### 4.4 与 ISO 42010:2022 的对应
 
 | TOGAF 10 复用概念 | ISO 42010:2022 概念 | 对应条款 | 说明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Enterprise Continuum | Architecture Description Framework (ADF) | Clause 7.1 | Continuum 定义了企业级 ADF 的资产分类 |
 | Architecture Repository | Architecture Description (AD) 的物理载体 | Clause 6.1 | Repository 存储 AD 的标识、版本与组成 |
 | Architecture Metamodel | Architecture Description Language (ADL) | Clause 7.2 | ArchiMate/UML 等 ADL 的存储与治理 |
@@ -311,7 +311,7 @@ Architecture Repository
 ## 5. 综合映射矩阵
 
 | ADM Phase | 主要 ISO 42010 Viewpoint | ABB (逻辑层) | SBB (物理层) | 关键 Correspondence Rule |
-|-----------|-------------------------|--------------|--------------|--------------------------|
+| ----------- | ------------------------- | -------------- | -------------- | -------------------------- |
 | **Preliminary** | Architecture Capability Viewpoint | Governance Framework, Principles Catalog | EA Tool, Repository Schema | Principles → Compliance Criteria |
 | **Phase A** | Stakeholder Requirements Viewpoint | Architecture Vision, Business Scenario | Approved Charter, Budget | Vision → Goals Traceability |
 | **Phase B** | Business Architecture Viewpoint | Business Function, Process, Service, Object | CRM, ERP, BPM Configuration | Function → Process → Service |
@@ -353,7 +353,7 @@ ISO 42010:2022 引入的 **View Component** 概念（替代 2011 版的 Model）
 TOGAF 10 的 ABB/SBB 可通过 ArchiMate 语言进行实例化描述：
 
 | ArchiMate 元素 | ABB 映射 | SBB 映射 |
-|----------------|----------|----------|
+| ---------------- | ---------- | ---------- |
 | Business Function / Process | 业务 ABB | BPM 工具中的工作流配置 |
 | Application Component / Service | 应用 ABB | 部署的微服务/软件包 |
 | Technology Service / Node | 技术 ABB | 具体的云实例/物理服务器 |
@@ -420,7 +420,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 ## 10. 条款映射汇总
 
 | 标准条款 | 核心内容 | 本文件映射位置 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42010:2022, Clause 5.2 | 架构描述概念模型 | 第 3 节“核心概念预映射” |
 | ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 定义 | 第 6 节“ABB/SBB 在 ISO 42010 中的元模型定位” |
 | ISO/IEC/IEEE 42010:2022, Clause 6.10 | Architecture Decision / Rationale | 第 3 节 ADM 各阶段映射表 |

@@ -26,7 +26,7 @@ ISO/IEC/IEEE 42020:2019
 ```
 
 | 过程 | 目的 | 关键活动 | 复用意义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture Governance** | 确保架构集合与企业目标、政策和战略保持一致 | 制定治理指令、监控合规、做出治理决策 | 定义复用资产的准入、退役和治理规则 |
 | **Architecture Management** | 实施治理指令并管理架构集合 | 维护架构集合、监控架构活动有效性 | 维护资产库版本、状态与依赖关系 |
 | **Architecture Conceptualization** | 识别满足利益相关者关注点的解决方案 | 问题空间刻画、目标定义、候选架构形成 | 识别可复用的领域模式与参考架构 |
@@ -37,7 +37,7 @@ ISO/IEC/IEEE 42020:2019
 ## 3. 条款映射（Clause 5–11）
 
 | 条款 | 核心内容 | 过程输出/制品 | 本框架对应主题 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.1 | 过程概述与应用 | 架构过程与生命周期、设计的关系 | 全过程治理视角 |
 | Clause 5.2 | 架构与其他过程和信息元素的关系 | 架构过程与 ISO 15288/12207 的衔接 | 生命周期对齐 |
 | Clause 5.3 | 治理与管理过程 | Governance 与 Management 的双层结构 | `06-cross-layer-governance` |
@@ -55,7 +55,7 @@ ISO/IEC/IEEE 42020:2019
 ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**“如何描述架构”**。两者协同关系如下：
 
 | ISO 42020:2019 过程 | ISO 42010:2022 对应条款 | 协同说明 |
-|---|---|---|
+| --- | --- | --- |
 | Architecture Conceptualization (Clause 8) | Clause 5.2.3 / 6.4（关注点识别） | 概念化过程识别 EoI 与利益相关者关注点 |
 | Architecture Elaboration (Clause 10) | Clause 6.6–6.8（视点、视图、视图组件） | 细化过程产生符合 42010 的 AD |
 | Architecture Evaluation (Clause 9) | Clause 6.10（决策与依据） | 评估结果形成 Architecture Rationale |
@@ -65,7 +65,7 @@ ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**�
 ## 5. 与 TOGAF 10 / ArchiMate 的映射
 
 | ISO 42020:2019 过程 | TOGAF 10 ADM 阶段 | ArchiMate 4.0 元素/域 | 复用场景 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Architecture Governance | Preliminary Phase | Motivation Domain（Goal / Principle） | 原则目录、治理框架 |
 | Architecture Management | Preliminary Phase + Phase H | Implementation & Migration Layer | 架构仓库维护 |
 | Architecture Conceptualization | Phase A（Architecture Vision） | Strategy Domain（Capability / Value Stream） | 业务能力地图复用 |

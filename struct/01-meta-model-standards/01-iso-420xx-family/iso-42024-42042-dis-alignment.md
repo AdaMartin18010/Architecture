@@ -8,7 +8,7 @@
 ## 1. 关键结论（TL;DR）
 
 | 标准 | 状态 | 核心内容 | 预期发布 |
-|------|------|----------|----------|
+| ------ | ------ | ---------- | ---------- |
 | **ISO/IEC/IEEE DIS 42024** | DIS 投票中（截止 2026‑01） | 架构基础：词汇、概念、原则；显式覆盖 AI/ML/IoT/数字孪生 | 2026 末–2027 初 |
 | **ISO/IEC/IEEE DIS 42042** | DIS 投票中（截止 2026‑01‑30） | 参考架构规范要求；支持领域特定 RA 的一致性评估 | 2026 末–2027 初 |
 | **ArchiMate 4.0** | **已正式发布（2026-04-27）** | Common Domain、策略域、Path 概念；与 3.2 向后兼容 | — |
@@ -136,7 +136,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 ### 7.1 私营企业 / 跨行业组织
 
 | 目标 | 推荐标准组合 |
-|------|-------------|
+| ------ | ------------- |
 | 核心 EA 方法论 | TOGAF 10 (Fundamental + 相关 Series Guides) |
 | 建模语言 | **ArchiMate 4.0**（已正式发布，2026-04-27，与 3.2 向后兼容）；3.2 仍有效 |
 | 架构描述一致性 | ISO/IEC/IEEE 42010:2022 |
@@ -165,7 +165,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 > ISO/IEC/IEEE DIS 42024 与 DIS 42042 的 enquiry 投票已分别于 2026-01-12 与 2026-01-30 结束。两标准预计于 **2026 末–2027 初**正式发布。以下映射应在正式版发布后补充到本知识体系：
 
 | 标准 | 正式发布后需补充的映射 | 影响主题 | 优先级 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **ISO/IEC/IEEE 42024** | 架构基础词汇与本项目元模型术语的对照表 | `01-meta-model-standards/`、`99-reference/glossary/` | P0 |
 | **ISO/IEC/IEEE 42024** | AI/ML、数字孪生、网络安全等应用领域与主题 08/11/10 的映射 | `08-cognitive-architecture/`、`11-industrial-iot-otit/`、`10-supply-chain-security/` | P1 |
 | **ISO/IEC/IEEE 42042** | 参考架构规范要求与主题 01–13 各参考架构的对齐评估 | 全项目 | P0 |
@@ -176,7 +176,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 ## 9. 权威来源
 
 | 标准 | URL |
-|------|-----|
+| ------ | ----- |
 | ArchiMate 4 Specification (The Open Group) | <https://www.opengroup.org/archimate-licensed-downloads> |
 | ArchiMate 4 Announcement (The Open Group) | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | TOGAF 10 | <https://www.opengroup.org/togaf> |
