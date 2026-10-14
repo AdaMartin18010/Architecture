@@ -2,7 +2,7 @@
 
 > **版本声明**: `view/` 中的 8 个 Markdown 卷册是 **2026-06-05/06 版本的历史快照**。
 > **定位**: 基于原始 ~31 万字源文档整理的长文档/书籍视角，便于一次性阅读、课程讲义或书籍输出。
-> **当前真源**: `struct/` 目录为当前结构化知识体系的唯一真源；`view/` 与 `struct/` 之间**未建立自动同步机制**，可能存在内容差异。
+> **当前真源**: `struct/` 目录为当前结构化知识体系的唯一真源；`view/` 根目录的 14 个现役卷册由 `scripts/sync-view-from-struct.py` 按内容哈希自动同步（当前 14/14 一致，差异报告见 `reports/view-diff-report.md`）。
 > **状态**: 不主动维护细节更新，重大修订通过 `scripts/sync-view-from-struct.py` 重新生成或手动同步。
 
 ---
@@ -28,7 +28,7 @@
 ## 卷册清单
 
 | 文件 | 主题/定位 | 对应 `struct/` 主题 | 版本日期 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `software_architecture_reuse_framework_2026.md` | 国际标准对齐与层次化提纲 | 01 + 02 + 03 + 04 + 05 + 06 | 2026-06-05 |
 | `software_architecture_reuse_full_2026.md` | 全面展开论证 | 01–07 综合 | 2026-06-06 |
 | `software_architecture_reuse_extension_2026.md` | 全面扩展卷（标准演进、BPMN/DMN、MCP/A2A、度量） | 01–06 + 12 + 13 | 2026-06-06 |
@@ -47,7 +47,7 @@
 ## 同步机制
 
 - 长期目标：通过 `scripts/sync-view-from-struct.py` 从 `struct/` 自动生成 `view/` 或差异报告。
-- 当前状态：同步脚本尚未实现，`view/` 为只读历史快照。
+- 当前状态：`scripts/sync-view-from-struct.py` 已实现内容哈希同步；本目录（`_HISTORICAL_/`）保持只读历史快照，不参与同步。
 - 参见：`struct/README.md`（当前真源入口）、`view/volume-01-meta-model-standards.md`（现役卷册示例）
 
 ## 权威来源

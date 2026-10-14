@@ -79,22 +79,37 @@ def main():
     # 形式化验证 shell 脚本（best-effort；Windows 优先使用 wsl）
     verify_script = PROJECT_ROOT / "struct" / "99-reference" / "tools" / "formal-verification-env" / "verify-all.sh"
     if sys.platform == "win32":
-        # 将 Windows 路径转换为 WSL 路径 /mnt/<drive>/...
-        drive = PROJECT_ROOT.drive.lower().rstrip(":") if PROJECT_ROOT.drive else "e"
-        rest = PROJECT_ROOT.as_posix()[2:]  # 去掉 "E:" 等盘符前缀
-        wsl_path = f"/mnt/{drive}{rest}"
-        wsl_script = f"{wsl_path}/struct/99-reference/tools/formal-verification-env/verify-all.sh"
-        rc, stdout, stderr = run(["wsl", "bash", wsl_script])
+        # 先探测 WSL 环境是否可用：.wslconfig 损坏或未安装发行版时优雅跳过
+        # （best-effort 项；Linux CI 中仍严格执行 verify-all.sh，不受影响）
+        probe_rc, _, probe_err = run(["wsl", "echo", "ok"], timeout=30)
+        if probe_rc != 0:
+            print("\n形式化验证脚本: ⚠️ 跳过（WSL 环境不可用，属 best-effort；CI 中将严格执行）")
+            print(f"  探测输出: {(probe_err or '').strip()[:200]}")
+        else:
+            # 将 Windows 路径转换为 WSL 路径 /mnt/<drive>/...
+            drive = PROJECT_ROOT.drive.lower().rstrip(":") if PROJECT_ROOT.drive else "e"
+            rest = PROJECT_ROOT.as_posix()[2:]  # 去掉 "E:" 等盘符前缀
+            wsl_path = f"/mnt/{drive}{rest}"
+            wsl_script = f"{wsl_path}/struct/99-reference/tools/formal-verification-env/verify-all.sh"
+            rc, stdout, stderr = run(["wsl", "bash", wsl_script])
+            ok = rc == 0
+            all_ok = all_ok and ok
+            status = "✅ 通过" if ok else "❌ 失败"
+            print(f"\n形式化验证脚本: {status}")
+            if not ok:
+                print(stderr or stdout)
+            else:
+                print(f"  {stdout.strip().splitlines()[-1]}")
     else:
         rc, stdout, stderr = run(["bash", str(verify_script)])
-    ok = rc == 0
-    all_ok = all_ok and ok
-    status = "✅ 通过" if ok else "❌ 失败"
-    print(f"\n形式化验证脚本: {status}")
-    if not ok:
-        print(stderr or stdout)
-    else:
-        print(f"  {stdout.strip().splitlines()[-1]}")
+        ok = rc == 0
+        all_ok = all_ok and ok
+        status = "✅ 通过" if ok else "❌ 失败"
+        print(f"\n形式化验证脚本: {status}")
+        if not ok:
+            print(stderr or stdout)
+        else:
+            print(f"  {stdout.strip().splitlines()[-1]}")
 
     print("\n" + "=" * 60)
     if all_ok:
