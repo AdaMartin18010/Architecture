@@ -32,7 +32,7 @@ Asset Administration Shell
 ## 2. IEC 63278 系列路线图与标准条款映射
 
 | 部分 | 标题 | 状态 | 与复用的关系 |
-|------|------|------|-------------|
+| ------ | ------ | ------ | ------------- |
 | **IEC 63278-1:2023** | Asset Administration Shell structure | 已发布 | AAS 根对象、AssetInformation、Submodel 引用结构 |
 | **IEC 63278-2** | Information meta model | DIS / CDV 阶段 | SubmodelElement、Reference、Identifier 等元模型语义 |
 | **IEC 63278-3** | Security provisions | 开发中 | AAS 身份验证、授权、安全通信 |
@@ -40,7 +40,7 @@ Asset Administration Shell
 | **IEC 63278-5** | Interfaces | 预研 | REST/HTTP、OPC UA、MQTT、AASX Package 接口 |
 
 | AAS 元素 | OPC UA NodeSet 映射（I4AAS） | ISA-95 层级映射 |
-|---------|---------------------------|-----------------|
+| --------- | --------------------------- | ----------------- |
 | AssetAdministrationShell | `AASAssetAdministrationShellType` Object | L0-L4 资产数字代表 |
 | Submodel | `AASSubmodelType` Object | 按功能（技术数据、维护、计划） |
 | Property | `AASPropertyType` Variable | L0 过程值、L1 控制参数 |
@@ -85,7 +85,7 @@ AAS 子模型模板（如 Digital Nameplate、Carbon Footprint、Battery Passpor
 ## 5. 复用策略矩阵
 
 | 层次 | 复用资产 | 建议 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **元模型层** | IEC 63278-1 / IDTA-01001 | 严格遵循，避免自定义扩展 |
 | **子模型模板层** | IDTA-020xx 模板 | 优先使用标准模板，减少自定义 |
 | **接口层** | OPC UA / REST API / AASX | 按场景选择，确保互操作性 |

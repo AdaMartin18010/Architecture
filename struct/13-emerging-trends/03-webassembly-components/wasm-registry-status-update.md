@@ -34,7 +34,7 @@
 ## 2. Warg Registry 历史与现状
 
 | 时间 | 事件 |
-|:---|:---|
+| :--- | :--- |
 | 2022-2023 | Bytecode Alliance 启动 Warg 项目，意图为 WebAssembly 组件建立专用注册协议 |
 | 2024 | Warg 实现可用，但社区采用率低于预期 |
 | 2025 | Bytecode Alliance 宣布 **停止 Warg 的积极开发** |
@@ -63,7 +63,7 @@ WebAssembly 组件分发（2026 推荐方案）
 ### 3.2 wasm-pkg-tools 功能
 
 | 功能 | 说明 |
-|:---|:---|
+| :--- | :--- |
 | `wasm-pkg-publish` | 将 Wasm 组件发布到 OCI 注册表 |
 | `wasm-pkg-fetch` | 从 OCI 注册表获取 Wasm 组件 |
 | `wasm-pkg-lock` | 生成并管理组件依赖锁定文件 |
@@ -83,7 +83,7 @@ OCI-based 方案的最大优势是**复用现有容器供应链安全基础设�
 ## 4. 对本项目的影响
 
 | 本项目文档 | 状态 | 建议 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | `13/03-webassembly-components/wasm-reuse-decision-tree.md` | 未引用 Warg | 如后续修订，统一使用 "OCI-based registry / wasm-pkg-tools" 术语 |
 | `13/03-webassembly-components/wasm-wasi-03-boundaries.md` | 计划中 | 组件分发章节应采用 OCI 方案 |
 | `10-supply-chain-security/` 相关文档 | 未交叉引用 | 可在供应链安全文档中增加 "Wasm 组件的 OCI 溯源" 案例 |
@@ -93,7 +93,7 @@ OCI-based 方案的最大优势是**复用现有容器供应链安全基础设�
 ## 5. 关键里程碑
 
 | 时间 | 事件 |
-|:---|:---|
+| :--- | :--- |
 | 2026-02 | WASI 0.3 Preview 发布，wasm-pkg-tools 初步支持 |
 | 2026 末/2027 初 | WASI 1.0 预计发布，OCI-based 分发预计成为事实标准 |
 | 持续 | Bytecode Alliance 与 W3C 推进 Component Model 标准化（W3C Phase 1 → 2） |

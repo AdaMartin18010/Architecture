@@ -23,7 +23,7 @@
 ## 标准-主题速查表
 
 | 主题 | 核心国际标准 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | 架构描述 | ISO/IEC/IEEE 42010:2022 | 定义 Entity of Interest、ADF、Viewpoint、View Component |
 | 架构过程 | ISO/IEC/IEEE 42020:2019 | Governance / Management / Conceptualization / Evaluation / Elaboration / Enablement |
 | 架构评估 | ISO/IEC/IEEE 42030:2019 | Objectives-Factors-Methods 三层评估框架 |
@@ -35,7 +35,7 @@
 ## 权威对齐
 
 | 标准/框架 | 权威 URL | 核查日期 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42010:2022 OBP 在线浏览 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | <https://www.iso.org/standard/68982.html> | 2026-07-09 |
@@ -53,7 +53,7 @@
 ## ISO/IEC/IEEE 42010:2022 核心条款映射
 
 | 条款 | 核心内容 | 架构描述元素 | 复用意义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Decision/Rationale | 建立可复用的元模型词汇表 |
 | Clause 6.1–6.10 | AD 规约要求 | 识别 EoI、利益相关者、视角、关注点、视点、视图、视图组件、对应关系、决策与依据 | 定义架构描述必须包含的信息项，可直接作为模板检查清单 |
 | Clause 7.1–7.2 | ADF / ADL 规约 | Architecture Description Framework、Architecture Description Language 的 conformance 要求 | TOGAF、ArchiMate、SysML 等框架可声明符合 42010 |

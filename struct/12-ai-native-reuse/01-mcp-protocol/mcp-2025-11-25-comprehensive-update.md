@@ -6,7 +6,7 @@
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | MCP 2025-11-25 官方规范 | <https://modelcontextprotocol.io/specification/2025-11-25> |
 > | MCP 2025-11-25 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> |
 > | MCP Registry | <https://registry.modelcontextprotocol.io> |
@@ -31,7 +31,7 @@
 #### 1.1 Tasks（实验性，SEP-1686）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 此前 MCP 缺乏标准化的异步原语，长时间运行的工具调用（如代码分析、批量数据处理）只能依赖客户端超时重试或带外轮询，导致状态不一致和资源泄漏 |
 | **解决方案** | 引入标准化的 Task 生命周期：`working` → `input_required` → `completed`/`failed`/`cancelled`，支持 `tasks/get` 轮询、`tasks/cancel` 取消、`notifications/tasks/status` 服务器主动推送 |
 | **复用影响** | Tasks 使 MCP Server 从"同步函数"升级为"可编排的工作流节点"，支持跨会话的持久化请求跟踪。在复用架构中，这意味着 MCP Server 可以作为长时间运行服务被集成，而非仅限于短时状态less函数调用。详见 [deep-dive §3.1](./mcp-2025-11-25-deep-dive.md#31-tasks-能力sep-1686) |
@@ -39,7 +39,7 @@
 #### 1.2 Icons（SEP-973）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 随着 Registry 中 Server 数量爆炸式增长，开发者和终端用户难以在 UI 中快速识别和区分不同的工具/资源/提示 |
 | **解决方案** | Server 可为 `Tool`、`Resource`、`ResourceTemplate`、`Prompt` 附加 `icons` 数组，支持 HTTPS URL 或 `data:` URI，推荐 PNG/JPEG，SVG 需安全审查，支持 `theme: light \| dark` 适配 |
 | **复用影响** | Icons 看似是 UI 层增强，实则是**可复用资产目录化**的关键步骤——为后续在 Registry 中进行视觉化浏览和分类奠定基础 |
@@ -47,7 +47,7 @@
 #### 1.3 URL Mode Elicitation（SEP-1036）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 某些交互（OAuth 同意流、支付确认、API-key 输入）不适合通过 MCP 客户端的 JSON-RPC 通道直接传递，需要安全的带外交互机制 |
 | **解决方案** | 新增 `mode: "url"` Elicitation，错误码 `-32042` (`URLElicitationRequiredError`) 表示需要 URL elicitation；服务器可通过 `notifications/elicitation/complete` 通知交互完成 |
 | **复用影响** | 解决了 MCP Server 集成外部 SaaS 服务时的认证/授权断点问题，使"第三方工具复用"的边界从纯协议交互扩展到安全的 Web 重定向流 |
@@ -57,7 +57,7 @@
 #### 1.4 OAuth 企业级增强
 
 | 变更项 | 技术要点 | 复用意义 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | OIDC Discovery 1.0 | 标准化授权服务器发现机制 | 降低多厂商 Server 的认证配置复杂度 |
 | RFC 9728 | OAuth 2.0 Protected Resource Metadata | Server 自描述安全要求，Client 自动适配 |
 | 增量 scope 同意 | 通过 `WWW-Authenticate` 按需请求额外 scope | 实现最小权限原则的动态升级 |
@@ -117,7 +117,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 这一扩展使得 MCP Server 不仅可以暴露数据和功能，还可以暴露**可嵌入的交互界面**。从复用架构视角，这意味着：
 
 | 传统复用模式 | MCP Apps 新模式 |
-|-------------|----------------|
+| ------------- | ---------------- |
 | API 返回 JSON，客户端自行渲染 | Server 推送结构化 UI 定义 |
 | 功能复用 + 界面自行开发 | 功能与界面一同复用 |
 | 文本/卡片级交互 | 富表单、图表、配置向导 |
@@ -125,7 +125,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 ### 2.3 安全风险
 
 | 风险 | 描述 | 缓解措施 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **XSS** | `structuredContent` 中可能包含恶意脚本 | Host 必须通过严格 CSP 和 iframe 沙箱隔离 |
 | **点击劫持** | iframe 内界面可能被恶意 Host 覆盖伪装 | Server 应验证 `X-Frame-Options` 和 `frame-ancestors` |
 | **iframe 逃逸** | 沙箱逃逸可能导致 Host 上下文被访问 | 使用 `sandbox="allow-scripts"` 最小权限，禁止 `allow-same-origin` |
@@ -138,7 +138,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 ### 3.1 规模数据（截至 2026-05）
 
 | 指标 | 数值 | 来源/日期 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Registry 总记录数 | 28,959 条 | registry.modelcontextprotocol.io，2026-05 |
 | Server 记录数 | 9,652 条 | registry.modelcontextprotocol.io，2026-05 |
 | SDK 月下载量 | 1.1 亿次 | 2026-04 统计 |
@@ -156,7 +156,7 @@ MCP Registry 不仅是 Server 的枚举列表，它正在演进为 AI 原生时�
 ### 3.3 与 OMG RAS v2.2 Classification 的映射
 
 | OMG RAS v2.2 维度 | MCP Registry 对应机制 |
-|------------------|----------------------|
+| ------------------ | ---------------------- |
 | **Solution** (功能域) | Server 的 `Implementation.description` + 分类标签 |
 | **Classification** (分类) | Registry 中的分类目录 + 工具语义标注 |
 | **Usage** (使用模式) | `tools/call` Schema、`inputSchema` 定义了调用契约 |
@@ -176,7 +176,7 @@ MCP Registry 不仅是 Server 的枚举列表，它正在演进为 AI 原生时�
 **消除厂商锁定的结构保障**:
 
 | 治理机制 | 作用 |
-|---------|------|
+| --------- | ------ |
 | Specification Enhancement Proposal (SEP) | 正式、透明的变更流程 |
 | 12+ 个月废弃窗口 | 企业用户有足够的迁移时间 |
 | 公开废弃特性注册表 | 可预测的向后兼容性管理 |
@@ -205,7 +205,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ### 5.1 何时选择 MCP？
 
 | 场景 | 选择 MCP | 理由 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | AI Agent 需要发现/调用外部工具 | ✅ | 标准化的能力发现和调用契约 |
 | 需要向 AI 提供上下文资源 | ✅ | Resources 原语支持 URI 寻址和订阅 |
 | 需要复用提示模板工作流 | ✅ | Prompts 支持参数化模板 |
@@ -216,7 +216,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ### 5.2 MCP vs A2A vs 直接 API 决策矩阵
 
 | 维度 | MCP | A2A | 直接 API |
-|------|-----|-----|---------|
+| ------ | ----- | ----- | --------- |
 | **层级** | Agent ↔ Tool | Agent ↔ Agent | Service ↔ Service |
 | **核心问题** | 工具发现与调用 | 自主 Agent 协作与任务委托 | 功能调用与数据传输 |
 | **协议基础** | JSON-RPC 2.0 | HTTP + JSON | 任意（REST/gRPC/GraphQL） |
@@ -232,7 +232,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 在引入 MCP Server 作为可复用资产前，执行以下检查：
 
 | 检查项 | 验证内容 | 风险等级 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | **OAuth Scope 审查** | 确认 Server 请求的 scope 是否最小必要；是否支持增量 scope 同意 | 🔴 高 |
 | **Elicitation 风险评估** | 检查 Server 是否使用 `mode: "url"`；验证 URL 是否指向可信域名 | 🔴 高 |
 | **Apps 沙箱验证** | 确认 Host 对 `structuredContent` 使用 iframe 沙箱 + CSP | 🔴 高 |
@@ -249,7 +249,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 某金融科技公司构建内部 DevOps 智能助手，采用 MCP 工具层 + A2A Agent 协作层双层架构：
 
 | 层级 | 组件 | 协议机制 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 编排层 | 需求解析 Agent | A2A Agent Card 声明需求分析技能 |
 | 执行层 | 代码生成 Agent、测试 Agent、部署 Agent | A2A Task 委托与 Artifact 交付 |
 | 工具层 | Git 检索、代码生成、单元测试、K8s 部署 | MCP `tools/list` + `tools/call` |
@@ -288,7 +288,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ## 7. 具体协议条款映射
 
 | 业务需求 | MCP 2025-11-25 机制 | 规范条款/SEP |
-|---------|---------------------|-------------|
+| --------- | --------------------- | ------------- |
 | 工具发现与调用 | `tools/list`、`tools/call`、`inputSchema` / `outputSchema` | Base Server Capabilities |
 | 上下文资源订阅 | `resources/list`、`resources/read`、`resources/subscribe` | Resources |
 | 提示模板复用 | `prompts/list`、`prompts/get` | Prompts |
@@ -304,7 +304,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ## 8. 权威来源
 
 | 来源 | URL | 日期 |
-|------|-----|------|
+| ------ | ----- | ------ |
 | MCP 2025-11-25 规范 | <https://modelcontextprotocol.io/specification/2025-11-25> | 2025-11-25 |
 | 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> | 2025-11-25 |
 | MCP Registry | <https://registry.modelcontextprotocol.io> | 2026-05 |

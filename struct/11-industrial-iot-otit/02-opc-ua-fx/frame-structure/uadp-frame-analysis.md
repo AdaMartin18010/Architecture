@@ -46,7 +46,7 @@ UADP（UA Datagram Protocol）是 OPC UA PubSub 的核心传输映射之一，�
 OPC UA FX 将 UADP 作为其底层传输协议，覆盖三种通信场景：
 
 | 通信模式 | 全称 | 典型周期 | 适用层级 |
-|---------|------|---------|---------|
+| --------- | ------ | --------- | --------- |
 | **C2C** | Controller-to-Controller | 10–100 ms | 单元间/产线间协调 |
 | **C2D** | Controller-to-Device | 500 μs – 10 ms | 控制器到 IO/驱动 |
 | **D2D** | Device-to-Device | 250 μs – 1 ms | 设备间直连 |
@@ -72,7 +72,7 @@ UADP NetworkMessage 的帧格式采用紧凑二进制编码，所有字段按网
 ```
 
 | 字段 | 类型 | 位宽 | 说明 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | **UADPVersion** | Bit[0-3] | 4 bits | UADP 版本号，当前固定为 `1` |
 | **UADPFlags** | Bit[4-7] | 4 bits | Bit 4: PublisherId 启用；Bit 5: GroupHeader 启用；Bit 6: PayloadHeader 启用；Bit 7: ExtendedFlags1 启用 |
 | **ExtendedFlags1** | Byte | 8 bits | Bit 0-2: PublisherId 类型（`001`=UInt16, `011`=UInt64）；Bit 3: DataSetClassId 启用；Bit 4: SecurityHeader 启用；Bit 5: Timestamp 启用；Bit 6: PicoSeconds 启用；Bit 7: ExtendedFlags2 启用 |
@@ -82,7 +82,7 @@ UADP NetworkMessage 的帧格式采用紧凑二进制编码，所有字段按网
 PublisherId 标识网络中的发布者节点，其类型由 ExtendedFlags1 的 Bit 0-2 决定：
 
 | ExtendedFlags1[0-2] | PublisherId 类型 | 长度 | 典型使用场景 |
-|--------------------|------------------|------|-------------|
+| -------------------- | ------------------ | ------ | ------------- |
 | `000` | 无 PublisherId | 0 byte | 不推荐 |
 | `001` | UInt16 | 2 bytes | C2D/D2D 小型网络 |
 | `010` | Byte[1] | 1 byte | 遗留兼容 |
@@ -94,7 +94,7 @@ PublisherId 标识网络中的发布者节点，其类型由 ExtendedFlags1 的 
 当 UADPFlags Bit 5 = 1 时，GroupHeader 存在：
 
 | 字段 | 类型 | 条件 | 说明 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | **GroupFlags** | Byte | 始终存在 | Bit 0: WriterGroupId 启用；Bit 1: GroupVersion 启用；Bit 2: NetworkMessageNumber 启用；Bit 3: SequenceNumber 启用 |
 | **WriterGroupId** | UInt16 | GroupFlags Bit 0 = 1 | WriterGroup 在 Publisher 内的唯一标识 |
 | **GroupVersion** | VersionTime | GroupFlags Bit 1 = 1 | 头与载荷布局配置的版本号 |
@@ -118,7 +118,7 @@ PublisherId 标识网络中的发布者节点，其类型由 ExtendedFlags1 的 
 ### 3.1 帧头字段启用对比
 
 | 头字段 | C2C (10–100 ms) | C2D (500 μs–10 ms) | D2D (250 μs–1 ms) |
-|--------|----------------|-------------------|------------------|
+| -------- | ---------------- | ------------------- | ------------------ |
 | **UADPVersion** | 1 | 1 | 1 |
 | **PublisherId** | UInt64（跨域唯一） | UInt16（域内唯一） | UInt16 或 Byte |
 | **GroupHeader** | 启用 | 启用 | 可选（极简模式禁用） |
@@ -147,7 +147,7 @@ graph LR
 ```
 
 | 指标 | C2C | C2D | D2D |
-|------|-----|-----|-----|
+| ------ | ----- | ----- | ----- |
 | **典型帧大小** | 500 – 1500 bytes | 100 – 500 bytes | 50 – 200 bytes |
 | **头开销占比** | ~10–20% | ~15–30% | ~10–25% |
 | **Payload 结构** | 多 DataSet（复杂数据结构） | 单 DataSet（IO 数据） | 单 DataSet 或原始值 |
@@ -211,7 +211,7 @@ D2D 场景（如视觉传感器直连伺服驱动）追求最低时延，允许�
 ## 4. 与经典 OPC UA TCP 的对比
 
 | 维度 | OPC UA TCP (Client/Server) | UADP (PubSub) |
-|------|---------------------------|---------------|
+| ------ | --------------------------- | --------------- |
 | **传输层** | TCP/IP | UDP/IP 或 Ethernet Layer 2 |
 | **连接模式** | 面向连接（会话/安全通道） | 无连接（发布/订阅） |
 | **握手延迟** | TLS + UA Secure Channel 握手（>100 ms） | 无握手（预配置密钥） |
@@ -233,7 +233,7 @@ D2D 场景（如视觉传感器直连伺服驱动）追求最低时延，允许�
 以下 UADP 帧元素在所有三种通信模式中保持一致，可作为**协议栈库**的硬编码常量复用：
 
 | 可复用元素 | 复用层级 | 说明 |
-|-----------|---------|------|
+| ----------- | --------- | ------ |
 | UADPVersion = 1 | 协议栈常量 | 所有 FX 帧固定 |
 | 字节序（Big-Endian） | 编解码器 | 跨平台一致 |
 | VersionTime 编码 | 时间戳库 | C2C/C2D 共用 |
@@ -245,7 +245,7 @@ D2D 场景（如视觉传感器直连伺服驱动）追求最低时延，允许�
 以下元素需要**运行时配置**，但解析/编码逻辑可复用：
 
 | 可复用元素 | 配置参数 | 复用策略 |
-|-----------|---------|---------|
+| ----------- | --------- | --------- |
 | PublisherId 类型 | `publisherIdType ∈ {UInt16, UInt64}` | 单一编解码器，按配置切换 |
 | GroupFlags 启用位 | `groupHeaderEnabled`, `sequenceNumberEnabled` | 位掩码生成器复用 |
 | Payload 布局 | `fixedLayoutURI` | 布局描述文件复用 |
@@ -253,7 +253,7 @@ D2D 场景（如视觉传感器直连伺服驱动）追求最低时延，允许�
 ### 5.3 不可复用/需谨慎适配元素
 
 | 元素 | 不可复用原因 | 适配策略 |
-|------|-------------|---------|
+| ------ | ------------- | --------- |
 | GroupVersion 更新策略 | C2C 支持在线重配置，D2D 固件固定 | C2C 需版本协商状态机，D2D 省略 |
 | Security 模式 | D2D 仅签名，C2C 签名+加密 | 安全配置文件按场景选择 |
 | 时间戳精度 | D2D 依赖硬件 gPTP，不携带 Timestamp 字段 | D2D 需硬件时间戳 API |

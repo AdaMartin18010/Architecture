@@ -68,7 +68,7 @@
 ## 2. 主题与 view/ 文件映射
 
 | 一级主题 | 主要来源文件 | 覆盖范围 |
-|----------|-------------|----------|
+| ---------- | ------------- | ---------- |
 | 01 元模型与标准对齐 | `software_architecture_reuse_framework_2026.md`, `software_architecture_reuse_full_2026.md` | ISO 420xx、TOGAF 10、ArchiMate、26550 系列、OMG RAS |
 | 02 业务架构复用 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | FEA BRM、BPMN/DMN、业务能力、价值流 |
 | 03 应用架构复用 | `software_architecture_reuse_full_2026.md`, `software_architecture_reuse_extension_2026.md` | 云原生模式、服务网格、EDA、数据网格 |
@@ -90,7 +90,7 @@
 ### 3.1 ISO/IEC/IEEE 核心标准族
 
 | 标准编号 | 主题 | 状态 | 对应文件夹 |
-|----------|------|------|-----------|
+| ---------- | ------ | ------ | ----------- |
 | ISO/IEC/IEEE 42010:2022 | 架构描述 (AD) | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC/IEEE 42020:2019 | 架构过程 | 生效 | `01-meta-model-standards/01-iso-420xx-family` |
 | ISO/IEC/IEEE 42030:2019 | 架构评估 | 生效 | `06-cross-layer-governance/03-maturity-models` |
@@ -107,7 +107,7 @@
 ### 3.2 工业与垂直领域标准
 
 | 标准编号 | 主题 | 状态 | 对应文件夹 |
-|----------|------|------|-----------|
+| ---------- | ------ | ------ | ----------- |
 | ISA-95 / IEC 62264 | 企业-控制系统集成 | 生效 | `11-industrial-iot-otit/01-isa-95-model` |
 | OPC UA FX 1.0 (2026) | 现场级确定性通信 | **新兴** | `11-industrial-iot-otit/02-opc-ua-fx` |
 | IEC/IEEE 60802 TSN | 时间敏感网络 | ✅ 已发布 (2026-06, Ed.1.0，IEC/IEEE 双标徽) | `11-industrial-iot-otit/03-tsn-deterministic` |
@@ -121,7 +121,7 @@
 ### 3.3 供应链与软件安全标准
 
 | 标准/框架 | 主题 | 状态 | 对应文件夹 |
-|-----------|------|------|-----------|
+| ----------- | ------ | ------ | ----------- |
 | SLSA 1.2 | 供应链安全等级（Multi-Track） | **Build/Source Track 生效**；Build L4 开发中 | `10-supply-chain-security/01-slsa-framework` |
 | SPDX 2.3 | SBOM 格式 | 生效 | `10-supply-chain-security/02-sbom-standards` |
 | CycloneDX 1.6 | SBOM 格式 | 生效 | `10-supply-chain-security/02-sbom-standards` |
@@ -135,7 +135,7 @@
 ## 4. 国际大学课程对标
 
 | 大学/机构 | 课程/研究方向 | 对应主题 | 核心贡献 |
-|-----------|--------------|----------|----------|
+| ----------- | -------------- | ---------- | ---------- |
 | **Carnegie Mellon University** (SEI) | Software Architecture, ATAM, ADD | 01, 03, 06 | SAAM/ATAM 架构评估、架构战术 |
 | **University of Southern California** (USC) | COCOMO II, Software Economics | 09 | Barry Boehm 成本估算模型 |
 | **ETH Zurich** | Systems Group, Prusti | 07, 04 | Rust 形式化验证 (Viper) |

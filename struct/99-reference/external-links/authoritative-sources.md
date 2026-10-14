@@ -8,7 +8,7 @@
 ## 国际标准
 
 | 标准 | 链接 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 架构描述 |
 | ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 产品质量模型 |
 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | 产品线工程 |
@@ -21,7 +21,7 @@
 ## 架构框架
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TOGAF 10 | <https://pubs.opengroup.org/togaf-standard/> |
 | ArchiMate 3.2 | <https://pubs.opengroup.org/architecture/archimate32-doc/> |
 | SWEBOK V4 | <https://www.computer.org/education/bodies-of-knowledge/software-engineering> |
@@ -30,7 +30,7 @@
 ## 供应链安全
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | SLSA 1.2 | <https://slsa.dev/spec/v1.2/> |
 | SLSA 1.1 | <https://slsa.dev/spec/v1.1/> |
 | SLSA 1.0 | <https://slsa.dev/spec/v1.0/> |
@@ -44,7 +44,7 @@
 ## 工业 IoT
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | OPC Foundation | <https://opcfoundation.org/> |
 | IDTA (AAS) | <https://industrialdigitaltwin.org/> |
 | IEC/IEEE 60802 TSN Profile | <https://1.ieee802.org/tsn/iec-ieee-60802/> |
@@ -55,7 +55,7 @@
 ## 形式化方法
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TLA+ | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy | <https://alloytools.org/> |
 | Coq | <https://coq.inria.fr/> |
@@ -66,7 +66,7 @@
 ## AI 原生协议
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | MCP Spec 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25/> |
 | MCP Official | <https://modelcontextprotocol.io/> |
 | A2A Protocol | <https://a2a-protocol.org/latest/> |
@@ -76,7 +76,7 @@
 ## 其他
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | COCOMO II | <https://boehmcsse.org/tools/cocomo-models/> |
 | WebAssembly | <https://webassembly.org/> |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org/> |
@@ -86,7 +86,7 @@
 ## 形式化验证
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TLA+ Home Page | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy Tools | <https://alloytools.org/> |
 | Coq Proof Assistant | <https://coq.inria.fr/> |
@@ -101,7 +101,7 @@
 ## 工业自动化
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | OPC Foundation | <https://opcfoundation.org/> |
 | OPC UA FX 1.0 | <https://reference.opcfoundation.org/specs/OPC-10000-80> |
 | PLCopen Motion Control | <https://www.plcopen.org/standards/motion-control/> |
@@ -113,7 +113,7 @@
 ## 供应链安全
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | SLSA.dev | <https://slsa.dev/> |
 | OpenSSF | <https://openssf.org/> |
 | Sigstore | <https://www.sigstore.dev/> |
@@ -125,7 +125,7 @@
 ## 认知科学与 AI
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | ACT-R Cognitive Architecture | <https://act-r.psy.cmu.edu/> |
 | NASA-TLX | <https://humansystems.arc.nasa.gov/groups/TLX/> |
 | Conformal Prediction Book | <https://arxiv.org/abs/2107.07511> |
@@ -135,7 +135,7 @@
 ## 平台工程与云原生
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | CNCF Platforms White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platforms/> |
 | Backstage IDP | <https://backstage.io/> |
 | FinOps Foundation | <https://www.finops.org/> |

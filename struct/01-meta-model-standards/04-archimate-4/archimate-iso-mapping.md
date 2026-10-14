@@ -31,7 +31,7 @@ ISO/IEC/IEEE 42010:2022 规定了架构描述（Architecture Description）的�
 ArchiMate 4 Specification（2026-04-27 发布）相对 3.2 的核心变化如下，这些变化直接影响架构复用资产的建模与消费：
 
 | 变更主题 | ArchiMate 3.2 状态 | ArchiMate 4.0 状态 | 对复用的影响 | W262 说明 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **通用域（Common Domain）** | 行为/结构元素按层重复定义（Business Process、Application Process、Technology Process 等） | 抽取跨层通用元素：Actor、Role、Collaboration、Process、Function、Interaction、Event、Service、Interface 等，通过层标注（layer tag）区分业务/应用/技术 | 可复用模式不再受层绑定限制；同一“服务”或“流程”抽象可在多层级复用 | W262 指出 Common Domain 是"housekeeping"式清理，避免概念债务无限累积 |
 | **行为元素合并** | Business/Application/Technology Process/Function/Interaction/Event/Service 独立 | 合并为 Common Domain 的通用行为元素 | 减少元模型冗余，降低资产库分类复杂度 | W262 强调合并后通过 layer tag 保留上下文，不损失语义 |
 | **多重性（Multiplicity）** | 仅部分关系支持数量表达 | 在元素和关系上显式支持 Multiplicity（0..1、1..*、* 等） | 支持规模化复用场景（如 N 个微服务实例、负载均衡组件） | W262 将 Multiplicity 列为最重要的新特性，支持数据建模、多流程实例、集群规模 |
@@ -61,7 +61,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ## 1.6 ArchiMate 4.0 与 ISO 42010:2022 条款映射
 
 | ISO 42010:2022 条款 | 核心要求 | ArchiMate 4.0 对应 | 复用映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | Layer / Domain / Aspect / Element / Relationship | 元模型资产分类基础 |
 | Clause 6.1 | AD 识别与概述 | ArchiMate Model / Repository 标识 | 模型资产库目录 |
 | Clause 6.6 | 包含视点 | ArchiMate Viewpoint（23+ 标准视点） | 可复用视点模板 |
@@ -78,7 +78,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ## 2. 元模型级映射：ArchiMate 语言结构 vs ISO 42010
 
 | ISO 42010:2022 概念 | ArchiMate 3.2/4.0 对应 | 映射说明 |
-|---------------------|------------------------|----------|
+| --------------------- | ------------------------ | ---------- |
 | **Architecture Description (AD)** | ArchiMate Model / Repository | ArchiMate 模型库是 AD 的载体 |
 | **Architecture Description Framework (ADF)** | ArchiMate Full Framework | ArchiMate 本身是一个符合 ISO 42010 的 ADF |
 | **Architecture Description Language (ADL)** | ArchiMate Modeling Language | ArchiMate 是一种标准化的 ADL |
@@ -100,7 +100,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Standard 10 Phase B（Business Architecture）直接对应。
 
 | ArchiMate 3.2 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|---------------------|---------------------|----------|---------------------|------|
+| --------------------- | --------------------- | ---------- | --------------------- | ------ |
 | Business Actor | Actor (Common Domain, 可标注为业务) | 主动结构 | Stakeholder / Active Structure View Component | 业务参与者 |
 | Business Role | Role (Common Domain, 可标注为业务) | 主动结构 | Active Structure View Component | 业务角色 |
 | Business Collaboration | Collaboration (Common Domain) | 主动结构 | Active Structure View Component | 跨主体协作 |
@@ -119,7 +119,7 @@ ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Sta
 ### 3.2 业务层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 业务层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Organization Viewpoint | Stakeholder Perspective Viewpoint | Organization Model | 组织责任、汇报线 |
 | Business Process Viewpoint | Behavioral Viewpoint | Process Model (BPMN-like) | 流程效率、瓶颈 |
 | Product Viewpoint | Structural Viewpoint | Product Composition Model | 产品构成、价值交付 |
@@ -141,7 +141,7 @@ ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Sta
 ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 
 | ArchiMate 3.2 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|---------------------|---------------------|----------|---------------------|------|
+| --------------------- | --------------------- | ---------- | --------------------- | ------ |
 | Application Component | Application Component | 主动结构 | Active Structure View Component | 应用组件 |
 | Application Collaboration | Collaboration (Common Domain) | 主动结构 | Active Structure View Component | 应用协作 |
 | Application Interface | Interface (Common Domain, 可标注为应用) | 主动结构 | Active Structure View Component | 应用接口 |
@@ -155,7 +155,7 @@ ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 ### 4.2 应用层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 应用层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Application Structure Viewpoint | Structural Viewpoint | Component Model | 应用组合、模块化 |
 | Application Behavior Viewpoint | Behavioral Viewpoint | Process/Function Model | 应用行为、处理逻辑 |
 | Application Usage Viewpoint | Usage Viewpoint | Usage Model | 业务-应用依赖关系 |
@@ -177,7 +177,7 @@ ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 ArchiMate 技术层描述技术基础设施，包括 IT 和物理技术（ArchiMate 4.0 将 Physical Layer 并入 Technology Domain）。
 
 | ArchiMate 3.2/3.1 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|------------------------|---------------------|----------|---------------------|------|
+| ------------------------ | --------------------- | ---------- | --------------------- | ------ |
 | Node | Node | 主动结构 | Active Structure View Component | 计算节点 |
 | Device | Device | 主动结构 | Active Structure View Component | 物理设备 |
 | System Software | System Software | 主动结构 | Active Structure View Component | 系统软件 |
@@ -198,7 +198,7 @@ ArchiMate 技术层描述技术基础设施，包括 IT 和物理技术（ArchiM
 ### 5.2 技术层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 技术层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Infrastructure Viewpoint | Deployment Viewpoint | Deployment Model | 基础设施布局、容量 |
 | Technology Usage Viewpoint | Dependency Viewpoint | Dependency Model | 应用-技术依赖关系 |
 | Equipment Viewpoint (Physical) | Physical Viewpoint | Physical Layout Model | 物理设备布局、OT 安全 |
@@ -231,7 +231,7 @@ Path "Secure API Gateway Path" (Common Domain)
 该层支持 TOGAF ADM Phase E/F/G 的实现规划与迁移管理。
 
 | ArchiMate 3.2/3.1 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|------------------------|---------------------|----------|---------------------|------|
+| ------------------------ | --------------------- | ---------- | --------------------- | ------ |
 | Work Package | Work Package | 实现元素 | Process/Activity View Component | 工作包 |
 | Deliverable | Deliverable | 实现元素 | View Component / Information Part | 交付物 |
 | Plateau | Plateau | 实现元素 | Baseline / State View Component | 架构基线/ plateau |
@@ -241,7 +241,7 @@ Path "Secure API Gateway Path" (Common Domain)
 ### 6.2 实现与迁移层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate I&M 视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|----------------------------|--------------------------|-------------------|----------------|
+| ---------------------------- | -------------------------- | ------------------- | ---------------- |
 | Implementation and Migration Viewpoint | Transition Viewpoint | Migration/Transition Model | 迁移顺序、依赖、风险 |
 | Project Viewpoint | Project Management Viewpoint | Work Breakdown Model | 工作包分解、资源分配 |
 | Plateau & Gap Viewpoint (3.2) | Baseline Comparison Viewpoint | Diff/Baseline Model | 基线差异、差距分析 |
@@ -252,7 +252,7 @@ ISO 42010:2022 要求 Architecture Description 必须包含 **Architecture Decis
 ArchiMate 的实现与迁移元素提供了决策的载体：
 
 | ISO 42010:2022 | ArchiMate 4.0 映射 | 说明 |
-|----------------|--------------------|------|
+| ---------------- | -------------------- | ------ |
 | Architecture Decision | Work Package + Deliverable | 工作包定义了"做什么决策"，交付物定义了"决策结果" |
 | Architecture Rationale | Assessment + Goal + Outcome | 动机域的 Assessment 与 Goal 提供决策依据 |
 | Decision Timeline | Plateau → Plateau Transition | Plateau 序列表达决策的时间线 |
@@ -266,7 +266,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ### 7.1 动机域元素映射
 
 | ArchiMate 4.0 元素 | ISO 42010:2022 映射 | 说明 |
-|--------------------|--------------------|------|
+| -------------------- | -------------------- | ------ |
 | Stakeholder | Stakeholder | 直接对应 |
 | Driver | Concern (environmental influence) | 驱动因素是外部环境影响 |
 | Assessment | Concern / Rationale input | 评估结果是决策输入 |
@@ -281,7 +281,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ### 7.2 策略域元素映射
 
 | ArchiMate 4.0 元素 | ISO 42010:2022 映射 | 说明 |
-|--------------------|--------------------|------|
+| -------------------- | -------------------- | ------ |
 | Resource | Active Structure View Component | 战略资源 |
 | Capability | Behavior View Component | 业务能力 |
 | Value Stream | Behavior View Component (sequence) | 价值流 |
@@ -292,7 +292,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ## 8. 综合对照矩阵：四层核心元素 vs ISO 42010
 
 | 层面 | 主动结构 (Active Structure) | 行为 (Behavior) | 被动结构 (Passive Structure) | ISO 42010 Model Kind |
-|------|----------------------------|-----------------|------------------------------|---------------------|
+| ------ | ---------------------------- | ----------------- | ------------------------------ | --------------------- |
 | **业务层** | Actor, Role, Collaboration | Process, Function, Service, Event | Business Object, Product | Business Model Kind |
 | **应用层** | Application Component, Interface | Process, Function, Service, Event | Data Object | Application Model Kind |
 | **技术层** | Node, Device, System Software, Network | Process, Function, Service, Event | Artifact, Material | Technology Model Kind |
@@ -305,7 +305,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方式：
 
 | 变化项 | ArchiMate 3.2 | ArchiMate 4.0 | ISO 42010 映射影响 |
-|--------|---------------|---------------|-------------------|
+| -------- | --------------- | --------------- | ------------------- |
 | 层特定行为元素 | Business Process, Application Process, Technology Process | 通用 Process (Common Domain) + 层标注 | Model Kind 的区分从元素类型转向标注/Profile，更符合 ISO 42010 的"Model Kind 是约定类别"的定义 |
 | 层特定角色/协作 | Business Role, Business Collaboration, etc. | 通用 Role, Collaboration + 层标注 | 同上 |
 | Constraint / Contract / Gap / Representation | 独立元素类型 | 移除或合并到通用元素 + 标注 | View Component 的粒度统一，Correspondence 通过关系而非元素类型表达 |
@@ -372,7 +372,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方�
 ### 2. ArchiMate 4.0 六层/域属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 分层清晰性 | 每个元素明确归属于某一层或域 | 高 |
 | 方面一致性 | 每个元素属于主动结构、行为或被动结构之一 | 高 |
 | 通用域复用 | 跨层通用元素可通过层标注（layer tag）区分上下文 | 中 |
@@ -383,7 +383,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方�
 ### 3. 六层/域与 ISO 42010 映射
 
 | ArchiMate 4.0 层/域 | ISO 42010:2022 概念 | 核心元素（示例） | 复用说明 |
-|---------------------|---------------------|------------------|----------|
+| --------------------- | --------------------- | ------------------ | ---------- |
 | **业务层 Business Layer** | Viewpoint / Model Kind / View | Actor、Role、Process、Function、Service、Event、Business Object、Product | 业务能力目录与价值流模板在该层复用 |
 | **应用层 Application Layer** | Viewpoint / Model Kind / View | Application Component、Interface、Application Service、Data Object | 微服务模板、API 契约、数据模型在该层复用 |
 | **技术层 Technology Layer** | Viewpoint / Model Kind / View | Node、Device、System Software、Technology Service、Artifact、Communication Network | 容器镜像、基础设施即代码、网络拓扑在该层复用 |

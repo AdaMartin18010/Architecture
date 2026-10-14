@@ -43,7 +43,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 1.1 适用范围
 
 | 产品类别 | 示例 | 合规路径 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **所有带数字元素的产品 (PDE)** | IoT 设备、软件、操作系统、App、工业控制器 | 自我评估 (Module A) 或 第三方认证 |
 | **重要产品 (Important Products)** | 身份管理系统、浏览器、VPN、操作系统、工业自动化系统 | 第三方认证 (Module B+C 或 H) |
 | **关键产品 (Critical Products)** | 硬件安全模块、智能卡、工业监控系统等 | 强制第三方认证 (Module H) |
@@ -53,7 +53,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 1.2 核心义务（Article 10 + Annex I）
 
 | 义务 | 要求摘要 | 对复用的影响 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **安全设计 (Security by Design)** | 产品在设计阶段即需集成网络安全 | 复用组件必须经过安全评估才能纳入产品 |
 | **安全默认 (Security by Default)** | 出厂配置即具备适当安全设置 | 复用组件的默认配置不得引入漏洞 |
 | **漏洞管理** | 识别、记录、修复漏洞的完整流程 | 复用组件的漏洞必须可追踪至上游 |
@@ -70,7 +70,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.1 复用前评估（Pre-Reuse Assessment）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | R-01 | 复用组件是否来自可信来源？ | 验证供应商是否提供 CRA 合规声明 | P0 |
 | R-02 | 复用组件是否有已知的 actively exploited vulnerabilities？ | 查询 CVE / NVD / ENISA 威胁 Landscape | P0 |
 | R-03 | 复用组件是否提供 SBOM（SPDX/CycloneDX）？ | 要求供应商提供机器可读 SBOM | P0 |
@@ -85,7 +85,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.2 复用中管理（In-Use Management）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | M-01 | 您的产品 SBOM 是否完整包含所有复用组件及其版本？ | SBOM 生成工具（Syft, Trivy, FOSSology） | P0 |
 | M-02 | 是否建立了复用组件的漏洞监控机制？ | CVE 订阅 + SCA 工具（Snyk, Mend, Black Duck） | P0 |
 | M-03 | 是否能在 24h 内识别复用组件的 actively exploited vulnerability 对您产品的影响？ | 影响分析流程 + 自动化工具 | P0 |
@@ -98,7 +98,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.3 复用后报告（Post-Incident Reporting）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | P-01 | 发现复用组件的 actively exploited vulnerability 后，是否在 24h 内向 ENISA 报告？ | 事件响应流程 | P0 |
 | P-02 | 报告内容是否包含：产品标识、漏洞描述、影响评估、缓解措施？ | 报告模板审查 | P0 |
 | P-03 | 严重安全事件（severe incidents）是否在 24h 内报告 ENISA？ | 事件分级标准 | P0 |
@@ -115,7 +115,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ### 3.1 供应商合同检查清单
 
 | 条款 | 建议内容 |
-|:---|:---|
+| :--- | :--- |
 | **安全要求条款** | 供应商保证组件符合 CRA Annex I 的基本要求 |
 | **漏洞通报义务** | 供应商在发现漏洞后 X 小时内通知您 |
 | **SBOM 交付** | 每版本提供 SPDX 2.3 或 CycloneDX 1.6 格式 SBOM |
@@ -144,7 +144,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ## 4. 与 SLSA / SBOM / SSDF 的协同
 
 | CRA 要求 | SLSA 对应 | SBOM 对应 | SSDF 对应 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 安全设计 | SLSA L3+（可审计构建） | — | PW.1.1（安全设计） |
 | 漏洞管理 | — | VEX（漏洞利用交换） | RV.1.1（漏洞接收） |
 | SBOM | SLSA Provenance | SPDX 2.3 / CycloneDX 1.6 | PO.3.2（软件组件清单） |
@@ -171,7 +171,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ## 6. 工具推荐
 
 | 用途 | 工具 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | SBOM 生成 | Syft, Trivy, FOSSology | 从容器/代码生成 SPDX/CycloneDX |
 | SCA / 漏洞扫描 | Snyk, Mend (WhiteSource), Black Duck, OWASP Dependency-Check | 持续监控复用组件漏洞 |
 | 漏洞报告 | ENISA 单一报告平台（开发中） | Article 16 要求，预计 2026 上线 |

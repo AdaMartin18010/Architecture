@@ -76,7 +76,7 @@ gh attestation verify <artifact> --owner 你的组织
 ## 6. 与项目复用体系的映射
 
 | 项目目录 | 供应链安全角色 |
-|----------|----------------|
+| ---------- | ---------------- |
 | `struct/04-component-architecture-reuse/` | 容器镜像 = 可复用组件；OCI provenance = 组件信任护照 |
 | `struct/06-cross-layer-governance/` | SLSA L3 + SBOM = 组件目录准入门槛 |
 | `struct/10-supply-chain-security/` | SLSA、Sigstore、SBOM 的完整工具链 |
@@ -148,7 +148,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 ## 9. 控制点映射：SLSA Build Track L2/L3 → 工作流实现
 
 | SLSA 要求 | 工作流实现 | 验证命令 |
-|----------|-----------|---------|
+| ---------- | ----------- | --------- |
 | L1：自动化 provenance | `.github/workflows/slsa-provenance.yml` 触发构建 | 检查 Actions 运行日志 |
 | L2：托管构建 + 签名 | `slsa-github-generator` 生成 provenance；`actions/attest-build-provenance` 签名 | `gh attestation verify` |
 | L2：来源可验证 | provenance 中 `resolvedDependencies` 包含 commit SHA | `slsa-verifier --source-uri` |
@@ -161,7 +161,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 ## 10. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构与 Build Track L1-L3 | 2026-07-08 |
 | SLSA Provenance v1 | <https://slsa.dev/spec/v1.2/provenance> | Provenance predicate 格式 | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名与验证 | 2026-07-08 |

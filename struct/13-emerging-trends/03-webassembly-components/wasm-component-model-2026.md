@@ -10,7 +10,7 @@
 2025 年 9 月 17 日，W3C WebAssembly 社区组与工作组的 **WebAssembly 3.0** 成为正式 live standard。该版本被规范作者称为自 Wasm 诞生以来最大的一次更新，整合了多项开发周期达 6–8 年的提案：
 
 | 特性 | 状态 | 意义 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | Memory64 | 已完成 | 地址类型扩展为 `i64`，理论地址空间从 4 GB 提升到 16 EB，浏览器上限约 16 GB |
 | WasmGC | 已完成 | 宿主引擎原生垃圾回收，Java/Kotlin/Dart 等语言无需打包完整 GC 运行时 |
 | Exception Handling (exnref) | 已完成 | 结构化异常传播，所有主流浏览器已支持 |
@@ -26,7 +26,7 @@
 **WebAssembly Component Model** 是 Wasm 的模块化与互操作层，将单个 Wasm 模块提升为**组件（Component）**：一种具有显式、类型化导入（import）与导出（export）接口的可组合单元。组件之间通过 **WebAssembly Interface Types（WIT）** 定义契约，实现跨语言、跨运行时的二进制复用。
 
 | 属性 | 说明 | 复用价值 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **语言无关** | Rust、Go/TinyGo、Python、C#、JS/TS、C/C++ 等均可编译为组件 | 打破语言孤岛 |
 | **接口类型化** | WIT 强类型接口，编译期与运行期均可校验 | 明确契约，降低集成风险 |
 | **沙箱隔离** | 基于 capability-based security，默认最小权限 | 安全复用不可信第三方组件 |
@@ -38,7 +38,7 @@
 WASI 是组件访问操作系统能力的标准接口集合。WASI 0.3 基于 Component Model 构建，在 ABI 层引入 `stream<T,E>` / `future<T,E>` 类型，使语言绑定可生成惯用的 `await`。
 
 | 版本 | 发布时间 | 关键特性 |
-|-----|---------|---------|
+| ----- | --------- | --------- |
 | WASI 0.1 (Preview 1) | 2019 | 基本文件/环境访问，类 POSIX ABI |
 | WASI 0.2 (Preview 2) | 2024-01-25 | 稳定 Component Model、`wasi:http` / `wasi:sockets`、WIT 接口 |
 | **WASI 0.3 (Preview 3)** | **2026-06-11 正式发布**（Wasmtime 43+ / jco 支持） | **原生 async/await、`stream<T>`/`future<T>`、`wasi:io` 并入 Canonical ABI** |
@@ -130,7 +130,7 @@ Edge
 ### 3.3 平台能力复用
 
 | 能力 | Wasm 组件形式 | 运行时 |
-|-----|-------------|--------|
+| ----- | ------------- | -------- |
 | HTTP 网关 | `wasi:http` 处理器 | wasmCloud / WasmEdge / Wasmtime |
 | 密钥管理 | `wasi:keyvalue` | 任何 WASI 运行时 |
 | 消息处理 | `wasi:messaging` | NATS + wasmCloud |
@@ -150,7 +150,7 @@ Edge
 > "wasmCloud is an open source CNCF project that enables teams to build, manage, and scale polyglot Wasm apps across any cloud, K8s, or edge."
 
 | 版本 | 时间 | 特性 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | 1.0 | 2024-05 | 稳定运行时、组件支持 |
 | 2.0 | 2026-03-23 | 下一代运行时、性能提升 |
 | WASI P3 | 2026-04 | 异步组件支持 |
@@ -166,7 +166,7 @@ Edge
 ## 6. 语言与框架支持（2026）
 
 | 语言 | Wasm 支持状态 | 组件模型支持 |
-|-----|-------------|-------------|
+| ----- | ------------- | ------------- |
 | Rust | 原生一级支持 | `wasm32-wasip2`（Tier 2） |
 | Go | TinyGo 官方支持 | `wit-bindgen-go` + wasmCloud Go SDK |
 | Python | `componentize-py` | 稳定 |
@@ -183,7 +183,7 @@ Rust 目标更新：自 Rust 1.84（2025-01）起，旧的 `wasm32-wasi` 目标�
 组件复用并非"一切 WASM 化"。基于 [`wasm-wasi-03-boundaries.md`](./wasm-wasi-03-boundaries.md) 的边界分析，建议按以下规则决策：
 
 | 适合 WASM Component | 不适合 WASM Component |
-|:---|:---|
+| :--- | :--- |
 | 跨语言共享的算法/工具库（加密、图像处理、协议解析） | 强 OS 依赖、大量原生系统调用 |
 | 需要亚秒级冷启动的边缘函数/插件 | 长时间运行、有状态且需要复杂线程模型的服务 |
 | 多租户场景下的不可信第三方代码沙箱 | 对峰值吞吐延迟极度敏感、无法容忍任何虚拟化开销的核心路径 |
@@ -241,7 +241,7 @@ Rust 目标更新：自 Rust 1.84（2025-01）起，旧的 `wasm32-wasi` 目标�
 ## 11. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org> | 2026-07-09 |
 | WASI — WebAssembly System Interface | <https://wasi.dev> | 2026-07-09 |
 | WASI Roadmap (GitHub) | <https://github.com/WebAssembly/WASI> | 2026-07-09 |

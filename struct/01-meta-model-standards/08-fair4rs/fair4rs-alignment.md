@@ -13,7 +13,7 @@
 FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于 2022 年联合发布，将 FAIR 数据原则适配至研究软件领域。与数据不同，软件具有**可执行性**与**组合性**，因此原则强调机器可操作与多粒度标识。
 
 | 原则 | 核心要求 | 软件复用含义 |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Findable** | 软件资产可被唯一标识和检索 | 全局持久 ID + 可搜索元数据索引 |
 | **Accessible** | 协议标准化、元数据可获取 | 开放协议检索，认证授权不阻碍访问 |
 | **Interoperable** | 使用标准格式和词汇表 | API/数据格式标准化，限定引用 |
@@ -24,7 +24,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ## 2. 与四层复用架构的对照映射
 
 | FAIR4RS 原则 | 业务架构 | 应用架构 | 组件架构 | 功能架构 |
-|-------------|---------|---------|---------|---------|
+| ------------- | --------- | --------- | --------- | --------- |
 | **Findable** | 能力目录 (FEA BRM) | 服务注册表 (OpenAPI/UDDI) | 包管理索引 (npm/PyPI/Cargo) | 函数注册表 (MCP Tool Registry) |
 | **Accessible** | BPMN/DMN 开放规范 | API 网关 + OpenAPI 文档 | 包仓库 (npm registry/Maven) | Protocol 端点 (stdio/SSE/HTTP) |
 | **Interoperable** | ArchiMate 标准交换格式 | CNCF 标准 (gRPC/CloudEvents) | SPDX / SemVer 语义版本 | A2A / MCP 标准协议 |
@@ -44,7 +44,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ### 3.1 FAIR4RS + SBOM
 
 | FAIR4RS 原则 | SBOM 映射 | 实践含义 |
-|-------------|----------|---------|
+| ------------- | ---------- | --------- |
 | Findable | SBOM 存在性 | 每个发布版本附带 SPDX/CycloneDX SBOM，使组件可被机器发现 |
 | Reusable | 许可证合规 | SBOM 中的 `licenseConcluded` 字段确保许可证清晰，支撑法律复用 |
 
@@ -57,7 +57,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ### 3.3 FAIR4RS + MCP Tool 注册表
 
 | FAIR4RS 原则 | MCP 映射 | 实践含义 |
-|-------------|----------|---------|
+| ------------- | ---------- | --------- |
 | Findable | Tool Registry 索引 | 每个 MCP Server 在注册表中登记 `name`, `version`, `description` |
 | Accessible | stdio / HTTP(S) with SSE | 标准传输层确保 AI 功能的访问不受厂商绑定 |
 
@@ -68,7 +68,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 评分模型：**0 = 未实施, 1 = 部分实施, 2 = 基本实施, 3 = 完全实施**。总分 120 分。
 
 | 编号 | Findable (F) 检查项 | 分值 |
-|------|---------------------|------|
+| ------ | --------------------- | ------ |
 | F-01 | 软件资产分配全局唯一持久标识符 (DOI/SWHID/PURL) | 0–3 |
 | F-02 | 不同粒度 (系统/模块/函数) 均有独立标识 | 0–3 |
 | F-03 | 每个发布版本有独立持久标识 (SemVer + Git Tag) | 0–3 |
@@ -81,7 +81,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | F-10 | 架构决策记录 (ADR) 可被独立检索 | 0–3 |
 
 | 编号 | Accessible (A) 检查项 | 分值 |
-|------|----------------------|------|
+| ------ | ---------------------- | ------ |
 | A-01 | 通过开放、免费、通用协议分发 (HTTPS/Git) | 0–3 |
 | A-02 | 协议支持必要的认证与授权 (OIDC/OAuth2) | 0–3 |
 | A-03 | 元数据在软件不可用时仍可访问 (Zenodo / SWH) | 0–3 |
@@ -94,7 +94,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | A-10 | 许可证全文随制品一同分发 | 0–3 |
 
 | 编号 | Interoperable (I) 检查项 | 分值 |
-|------|-------------------------|------|
+| ------ | ------------------------- | ------ |
 | I-01 | 数据交换采用领域社区标准格式 (JSON/XML/Protobuf) | 0–3 |
 | I-02 | API 使用限定引用指向外部资源 (PURL/CPE) | 0–3 |
 | I-03 | 组件接口遵循开放标准 (OpenAPI/gRPC/MQTT) | 0–3 |
@@ -107,7 +107,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | I-10 | 协议端点支持内容协商 (Content Negotiation) | 0–3 |
 
 | 编号 | Reusable (R) 检查项 | 分值 |
-|------|---------------------|------|
+| ------ | --------------------- | ------ |
 | R-01 | 使用 SPDX 标识符明确声明许可证 | 0–3 |
 | R-02 | 提供完整来源 provenance (作者/资助/项目) | 0–3 |
 | R-03 | 包含 SBOM (SPDX/CycloneDX) 声明依赖 | 0–3 |
@@ -135,7 +135,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建其他软件资产的程度"。映射关系：
 
 | ISO 25010:2023 子特性 | FAIR4RS 对应原则 | 对齐说明 |
-|----------------------|-----------------|---------|
+| ---------------------- | ----------------- | --------- |
 | Modularity | Interoperable | 模块化接口标准促进互操作 |
 | Reusability (资产包装) | Findable + Accessible | RAS/SPDX 包装使资产可发现与获取 |
 | Compatibility | Interoperable | 数据格式与 API 标准兼容性 |
@@ -144,7 +144,7 @@ ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建�
 ### 5.2 FAIR4RS ↔ OMG RAS v2.2 Classification/Usage
 
 | RAS v2.2 核心部分 | FAIR4RS 原则 | 对齐说明 |
-|------------------|-------------|---------|
+| ------------------ | ------------- | --------- |
 | Classification | Findable | 分类信息回答"这是什么"，是发现的首要依据 |
 | Solution | Accessible + Interoperable | 解决方案包含实际制品与可变性点 |
 | Usage | Reusable | 使用指南回答"如何安装、定制、运行" |
@@ -155,7 +155,7 @@ ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建�
 IEEE 1517-2010 定义软件生命周期中的复用过程，包括领域工程与应用工程双轨。映射：
 
 | IEEE 1517 过程域 | FAIR4RS 原则 | 对齐说明 |
-|-----------------|-------------|---------|
+| ----------------- | ------------- | --------- |
 | 领域工程 (Domain Engineering) | Findable + Interoperable | 构建可复用资产库，要求标准分类与接口 |
 | 应用工程 (Application Engineering) | Accessible + Reusable | 从资产库检索、适配、集成到目标系统 |
 | 复用管理 (Reuse Management) | Reusable | 资产成熟度评估、版本控制、许可证审计 |
@@ -216,7 +216,7 @@ IEEE 1517-2010 定义软件生命周期中的复用过程，包括领域工程�
 ### 2. 原则属性
 
 | 原则 | 核心属性 | 可观察指标 | 重要性 |
-|------|----------|------------|--------|
+| ------ | ---------- | ------------ | -------- |
 | **Findable** | 持久标识、机器可读元数据、注册目录 | DOI / PURL / SWHID / Git Tag、CodeMeta / CITATION.cff、搜索引擎索引 | 高 |
 | **Accessible** | 开放协议、元数据长期可获取、权限可管理 | HTTPS / Git、Zenodo / Software Heritage、OAuth / OIDC | 高 |
 | **Interoperable** | 标准格式、限定引用、共享词汇 | JSON / XML / Protobuf、PURL / CPE、Schema.org / ECLASS | 高 |

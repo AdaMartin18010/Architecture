@@ -9,7 +9,7 @@
 ## 1. A2A 发展历程
 
 | 里程碑 | 时间 | 事件 |
-|--------|------|------|
+| -------- | ------ | ------ |
 | 首次发布 | 2025-04 | Google 发布 A2A 协议，50+ 合作伙伴 |
 | 捐赠 LF | 2025-12 | Anthropic 将 MCP 捐赠给 AAIF；A2A 生态同步纳入 Linux Foundation Agentic AI Foundation 治理 |
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
@@ -65,7 +65,7 @@ A2A Protocol
 ### 2.2 A2A 核心概念属性
 
 | 概念 | 核心属性 | 属性说明 | 可观察/可验证 |
-|------|---------|---------|--------------|
+| ------ | --------- | --------- | -------------- |
 | Agent Card | 可发现性 | 通过 well-known URL 公开访问 | HTTP GET `/.well-known/agent.json` |
 | Agent Card | 可验证性 | v1.0 支持数字签名 | 验证签名公钥与证书链 |
 | Agent Card | 能力声明 | 明确列出 skills、输入/输出模式 | 解析 `capabilities` 与 `skills` |
@@ -168,7 +168,7 @@ A2A 的核心价值在于**跨厂商 Agent 互操作**。单一企业或团队�
 ### v1.0 新增字段
 
 | 字段 | 说明 |
-|------|------|
+| ------ | ------ |
 | `signature` | Agent Card 的数字签名 |
 | `multiTenant` | 是否支持多租户 |
 | `rateLimits` | 速率限制声明 |
@@ -274,7 +274,7 @@ Task Lifecycle
 ```
 
 | 维度 | MCP | A2A |
-|------|-----|-----|
+| ------ | ----- | ----- |
 | 范围 | Agent → Tool | Agent → Agent |
 | 关系 | Client-Server | Peer-to-Peer |
 | 发现 | Server lists capabilities | Agent Card at well-known URL |
@@ -389,7 +389,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 某跨境电商构建多语言智能客服系统，采用 A2A 编排 + MCP 工具调用架构：
 
 | 组件 | 协议/机制 | 职责 |
-|------|----------|------|
+| ------ | ---------- | ------ |
 | 客服编排 Agent | A2A Client | 接收用户问题，判断意图，委托子任务 |
 | 订单查询 Agent | A2A Server + Agent Card | 通过订单号查询物流与退款状态 |
 | 退换货 Agent | A2A Server + Agent Card | 处理退货政策解释与退货单创建 |
@@ -429,7 +429,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 ## 9. 具体协议条款映射
 
 | 业务需求 | A2A v1.0 机制 | 规范位置 |
-|---------|--------------|---------|
+| --------- | -------------- | --------- |
 | Agent 能力发现 | `/.well-known/agent.json`、Agent Card | Discovery |
 | 任务委托 | `tasks/send`、`tasks/sendSubscribe` | Tasks |
 | 任务状态查询 | `tasks/get` | Tasks |
@@ -446,7 +446,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 ## 10. 生态系统状态（2026-07）
 
 | 指标 | 数值 |
-|------|------|
+| ------ | ------ |
 | 正式发布版本 | v1.0.0（2026-03-12） |
 | 支持组织 | 150+ |
 | GitHub Stars | 22,000+ |
@@ -545,7 +545,7 @@ flowchart TD
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol 官方网站 | <https://a2a-protocol.org/latest/> |
 > | A2A Project GitHub | <https://github.com/a2aproject/a2a> |

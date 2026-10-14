@@ -9,7 +9,7 @@
 **AI 原生复用** 是在大模型与 Agent 系统中，通过 MCP（Model Context Protocol）、A2A（Agent-to-Agent Protocol）与概率契约，将提示模板、RAG 管道、工具、模型推理服务与 Agent 技能封装为可组合、可治理的资产。
 
 | 概念 | 定义 | 复用层次 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **MCP** | Model Context Protocol，模型与工具/上下文源之间的开放协议 | 工具与上下文复用 |
 | **A2A** | Agent-to-Agent Protocol，Agent 之间的协作协议 | Agent 能力与任务复用 |
 | **概率契约** | 对 AI 服务输出质量边界的概率承诺 | AI 服务等级与风险边界 |
@@ -108,7 +108,7 @@ Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制；
 ## 5. AI 复用决策矩阵
 
 | 资产类型 | 协议/机制 | 关键治理点 | 风险 |
-|----------|-----------|------------|------|
+| ---------- | ----------- | ------------ | ------ |
 | 工具 | MCP | Schema 版本、权限、可观测性 | 工具变更导致调用失效 |
 | Agent 能力 | A2A | 能力发现、信任凭证、任务委托 | Agent 协作不可控 |
 | 提示模板 | 模板仓库 + 版本控制 | A/B 测试、输出模式校验 | 提示漂移 |
@@ -128,7 +128,7 @@ Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制；
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL | 说明 |
-> |------|-----|------|
+> | ------ | ----- | ------ |
 > | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> | MCP 官方规范，定义 JSON-RPC 2.0 消息、Tools/Resources/Prompts/Sampling/Roots/Elicitation 等机制 |
 > | MCP Introduction | <https://modelcontextprotocol.io/introduction> | 官方介绍与架构概述 |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> | A2A 官方规范，定义 Agent Card、Task、Message、Artifact、安全机制 |

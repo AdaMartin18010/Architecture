@@ -25,7 +25,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02006: Nameplate（铭牌）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 2.0 |
 | **标准来源** | IDTA-02006-2-0, 基于 ZVEI 数字铭牌倡议 |
 | **用途** | 提供设备的法定铭牌信息，支持数字产品护照（DPP）合规 |
@@ -42,7 +42,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02003: Technical Data（技术数据）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.2 |
 | **标准来源** | IDTA-02003-1-2 |
 | **用途** | 标准化的设备技术规格描述，支持工程选型和系统集成 |
@@ -53,7 +53,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02007: Identification（标识）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02007-1-0 |
 | **用途** | 管理资产的多重标识符，支持全生命周期追踪追溯 |
@@ -64,7 +64,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02002: Contact Information（联系信息）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02002-1-0 |
 | **用途** | 记录与资产相关的组织/人员联系信息 |
@@ -79,7 +79,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02008: Handover Documentation（移交文档）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02008-1-0 |
 | **用途** | 标准化工厂验收测试（FAT）和现场验收测试（SAT）的文档移交 |
@@ -90,7 +90,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02012: Service Notifications（服务通知）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02012-1-0 |
 | **用途** | 记录服务事件和通知，支持与 CMMS（计算机化维护管理系统）集成 |
@@ -101,7 +101,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02014: Maintenance（维护）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 (草案) |
 | **标准来源** | IDTA-02014-1-0 |
 | **用途** | 维护计划、维护记录、维护工单的语义化描述 |
@@ -116,7 +116,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02016: Carbon Footprint（碳足迹）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02016-1-0, 对齐 GHG Protocol |
 | **用途** | 提供资产或产品的碳足迹数据，支持 ESG 报告和欧盟数字产品护照 |
@@ -127,7 +127,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02017: Material（材料）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02017-1-0, 对齐 IMDS |
 | **用途** | 材料成分声明和可回收性信息 |
@@ -142,7 +142,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02022: Time Series Data（时序数据）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.1 |
 | **标准来源** | IDTA-02022-1-1 |
 | **用途** | 时间序列数据的标准化描述，支持传感器数据、历史数据库集成 |
@@ -160,7 +160,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02026: Provision of 3D Models（3D 模型提供）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02026-1-0 |
 | **用途** | 3D 几何模型的标准化引用，支持数字孪生可视化 |
@@ -175,7 +175,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02025: Functional Safety（功能安全）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02025-1-0, 对齐 IEC 61508 / IEC 62061 |
 | **用途** | 安全相关参数的标准化描述，支持 TÜV 认证和功能安全评估 |
@@ -190,7 +190,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02021: Sizing of Power Drive Trains（电力传动系统选型）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.1 |
 | **标准来源** | IDTA-02021-1-1 |
 | **用途** | 驱动系统（电机+变频器+齿轮箱）选型信息的标准化交换 |
@@ -201,7 +201,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 #### IDTA-02017-1: Asset Interface Description（资产接口描述）
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 1.0 |
 | **标准来源** | IDTA-02017-1-0 |
 | **用途** | 描述资产接口（OPC UA, MQTT, Modbus, HTTP 等），支持自动连接建立 |
@@ -216,7 +216,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 ### 3.1 按资产类型推荐
 
 | 资产类型 | 必备子模型 | 推荐子模型 | 可选子模型 |
-|---------|----------|----------|----------|
+| --------- | ---------- | ---------- | ---------- |
 | **旋转机械** (泵、风机、压缩机) | Nameplate, Technical Data | Time Series, Maintenance | Carbon Footprint, 3D Models |
 | **电气设备** (变压器、开关柜) | Nameplate, Technical Data | Maintenance, Circuit Breaker | Cybersecurity, Functional Safety |
 | **伺服驱动系统** | Nameplate, Technical Data | Sizing of Power Drive Trains | Time Series, Maintenance |
@@ -228,7 +228,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 ### 3.2 按生命周期阶段推荐
 
 | 阶段 | 核心子模型 | 目标 |
-|------|----------|------|
+| ------ | ---------- | ------ |
 | **设计与采购** | Nameplate + Technical Data + Sizing of Power Drive Trains + Carbon Footprint | 工程选型、供应商评估 |
 | **制造与交付** | Nameplate + Handover Documentation + Contact Information + 3D Models | FAT/SAT、文档移交 |
 | **安装与调试** | Asset Interface Description + Functional Safety + Handover Documentation | 自动配置、安全认证 |
@@ -242,7 +242,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 欧盟数字产品护照 (Digital Product Passport, DPP) 要求的 AAS 子模型组合：
 
 | DPP 数据类别 | 对应 AAS 子模型模板 | 法规来源 |
-|-------------|-------------------|---------|
+| ------------- | ------------------- | --------- |
 | 产品标识 | Identification + Nameplate | ESPR (EU) 2024/1781 |
 | 合规信息 | Handover Documentation (证书部分) | CE 标志法规 |
 | 可持续性 | Carbon Footprint + Material | EU Taxonomy, CSRD |
@@ -257,7 +257,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 每个子模型模板元素通过 `semanticId` 关联到工业数据字典：
 
 | 前缀 | 来源 | 说明 | 示例 |
-|-----|------|------|------|
+| ----- | ------ | ------ | ------ |
 | `0173-1#...` | ECLASS | 工业分类标准属性 | `0173-1#02-AAO677#002` (ManufacturerName) |
 | `0112/2///61360_4#...` | IEC CDD | IEC 公共数据字典 | `0112/2///61360_4#AAF276#001` |
 | `https://admin-shell.io/...` | IDTA | AAS 特定语义标识 | `https://admin-shell.io/idta/TimeSeries/1/1` |
@@ -267,7 +267,7 @@ AAS 子模型模板（Submodel Template, SMT）是数字孪生语义互操作的
 ## 6. 子模型模板复用价值评估
 
 | 评估维度 | 权重 | 评估方法 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | **行业采纳率** | 35% | IDTA Registry 下载量、GitHub 引用数 |
 | **标准成熟度** | 25% | 版本号、审查状态（Published/In Review/Draft） |
 | **工具支持度** | 20% | AASX Package Explorer、BaSyx、Siemens Polarion 等工具的内置模板 |

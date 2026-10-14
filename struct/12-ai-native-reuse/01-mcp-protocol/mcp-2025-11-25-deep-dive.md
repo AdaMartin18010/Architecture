@@ -58,7 +58,7 @@
 ## 2. 规范来源
 
 | 资源 | URL | 作用 |
-|------|-----|------|
+| ------ | ----- | ------ |
 | 规范主页 | <https://modelcontextprotocol.io/specification/2025-11-25> | 官方 landing page |
 | 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> | 2025-06-18 → 2025-11-25 的完整变更 |
 | 权威 Schema | GitHub `schema/2025-11-25/schema.ts` | 消息结构和方法的权威来源 |
@@ -163,7 +163,7 @@
 ### 3.5 OAuth / OpenID Connect 企业级增强
 
 | 变更 | 详情 |
-|------|------|
+| ------ | ------ |
 | OpenID Connect Discovery 1.0 | 新增支持的授权服务器发现机制 |
 | 增量 scope 同意 | 通过 `WWW-Authenticate` 请求额外 scope |
 | RFC 9728 对齐 | OAuth 2.0 Protected Resource Metadata 发现 |
@@ -225,7 +225,7 @@ Server: "protocolVersion": "2025-11-25" 或回退到支持的版本
 MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 
 | 协议 | 层级 | 解决的问题 |
-|------|------|-----------|
+| ------ | ------ | ----------- |
 | **MCP** | Agent ↔ Tool | AI 如何发现、调用工具，访问资源和提示 |
 | **A2A** | Agent ↔ Agent | 自主 Agent 如何相互发现、协商任务、委托工作、交换结果 |
 
@@ -277,7 +277,7 @@ MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 2025-11-25 被广泛视为 MCP 的“企业就绪”版本，因为它解决了以下生产部署障碍：
 
 | 企业需求 | 2025-11-25 解决方案 |
-|---------|-------------------|
+| --------- | ------------------- |
 | 长时间运行工作流 | Tasks 提供标准异步句柄 |
 | 受管认证 | CIMD、RFC 9728、PKCE、RFC 8707、增量 scope |
 | 联邦 / M2M 访问 | Client ID Metadata Documents |
@@ -290,7 +290,7 @@ MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 ## 9. 与四层复用架构的映射
 
 | 本体系层次 | MCP 2025-11-25 映射 |
-|-----------|---------------------|
+| ----------- | --------------------- |
 | 05 功能架构 | Tool / Resource / Prompt / Sampling 是功能级复用的协议层 |
 | 04 组件架构 | MCP Server 作为可复用组件，需 SBOM + SLSA provenance |
 | 03 应用架构 | 多 MCP Server 组合构成 Agentic 应用架构 |

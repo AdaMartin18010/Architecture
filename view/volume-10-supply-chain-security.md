@@ -55,7 +55,7 @@
 ## 1. SLSA 版本演进
 
 | 版本 | 发布时间 | 核心特征 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | SLSA v0.1 | 2022 | 单一等级 L1-L4，覆盖源码和构建 |
 | SLSA v1.0 | 2023-04 | 引入 **Build Track**，Source 要求分离 |
 | SLSA v1.1 | 2024 | 完善 Build Track，增强验证指南 |
@@ -179,7 +179,7 @@ SLSA v1.2 Tracks
 SLSA 推荐使用以下证明格式：
 
 | 格式 | 用途 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Build Provenance** | 记录构建过程 | 推荐 |
 | **Source Provenance** | 记录源码来源 | v1.2 新增 |
 | **Verification Summary Attestation (VSA)** | 汇总验证结果 | 推荐 |
@@ -212,7 +212,7 @@ SLSA 推荐使用以下证明格式：
 ## 7. SLSA 与 NIST SSDF 的映射
 
 | SLSA 要求 | NIST SSDF 实践 | 说明 |
-|-----------|---------------|------|
+| ----------- | --------------- | ------ |
 | Build L1 Provenance | PO.1 Secure Software | 保护软件 |
 | Build L2 Source-aware | PW.4 Reusable Code | 安全复用代码 |
 | Build L3 Hardened | PW.6 Configure Compiler | 配置编译器 |
@@ -239,7 +239,7 @@ SLSA 推荐使用以下证明格式：
 ## 9. 2026 实施建议
 
 | 优先级 | 行动 | 预期效果 |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | P0 | 为所有关键组件生成 Build Provenance | 达到 Build L1 |
 | P1 | 使用托管 CI/CD 并签名 Provenance | 达到 Build L2 |
 | P2 | 强化构建平台（隔离、临时环境） | 达到 Build L3 |
@@ -284,7 +284,7 @@ SLSA 推荐使用以下证明格式：
 ## 1. 关键结论（TL;DR）
 
 | 版本 | 状态 | 核心变化 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **SLSA v1.1** | 2025‑04 批准 | 澄清刷新；VSA（Verification Summary Attestation）新增验证器元数据 |
 | **SLSA v1.2** | 2025‑11 批准 | **Source Track** 从实验提升为正式；引入 **Multi-Track** 架构 |
 | **BuildEnv Track** | 草案 | 构建环境可信：vTPM → TEE（AMD SEV-SNP / Intel TDX） |
@@ -322,7 +322,7 @@ SLSA v1.2
 **核心洞察**：消费者现在可以**机械验证**被复用组件的每一次提交都经过了强制的代码审查和分支保护，而不仅仅是声明。
 
 | 场景 | Source L3 要求 | 复用价值 |
-|------|---------------|----------|
+| ------ | --------------- | ---------- |
 | 内部库复用 | 主分支强制 PR 审查 + 签名提交 + 状态检查 | 防止恶意内部提交污染共享组件 |
 | OSS 引入 | 验证上游 Source Track 等级 | 将社区项目按供应链健康度分级 |
 | 合规审计 | VSA 声明 Source L2+ | 满足 FedRAMP / NIST 800-161 溯源要求 |
@@ -362,7 +362,7 @@ SLSA v1.2
 ## 4. SBOM 规范：CycloneDX v1.7 vs SPDX 3.0
 
 | 特性 | CycloneDX v1.7 | SPDX 3.0 |
-|------|---------------|----------|
+| ------ | --------------- | ---------- |
 | **标准状态** | ECMA-424 (2024) | ISO/IEC 5962 更新提交中 |
 | **AI/ML BOM** | ML-BOM 成熟 | AI Profile (模型元数据、训练数据、评估标准) |
 | **生命周期** | `metadata.lifecycles[].phase` | 通过 Annotation / Relationship 表达 |
@@ -417,7 +417,7 @@ CISA 2025 年 8 月发布 **Minimum Elements Draft** 更新：
 Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 
 | 级别 | 主题 | 关键要求 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **L1** | 摄入控制 | 包管理器、本地副本、漏洞扫描、许可证扫描、SBOM 清单 |
 | **L2** | 安全消费 / MTTR | 自动更新、PR 级 CVE 告警、EOL 扫描、事件响应、完整性验证 |
 | **L3** | 恶意软件 / 零日防御 | 拒绝列表、源码克隆、恶意软件扫描、主动安全审查、**来源强制执行** |
@@ -432,7 +432,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.1 安全如何**促进**复用
 
 | 机制 | 说明 |
-|------|------|
+| ------ | ------ |
 | **信任即元数据** | SLSA Source L3 + Build L3 证明作为组件的“信任护照” |
 | **SBOM 即复用契约** | SBOM 记录依赖足迹、许可证兼容性、已知漏洞 |
 | **Scorecard 预筛选** | 分支保护、签名发布、固定依赖等 probes 自动评估候选库 |
@@ -441,7 +441,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.2 安全如何**约束**复用
 
 | 约束 | 缓解 |
-|------|------|
+| ------ | ------ |
 | 来源门槛 | 高安全环境要求 SLSA Build L2+，缩小候选池 |
 | SBOM 向下传递 | NIST 800-161r2 预期要求 SBOM 沿依赖链传播 |
 | AI/ML 来源空白 | 需 ML-BOM 记录训练数据、能耗、伦理考量 |
@@ -450,7 +450,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.3 架构建议
 
 | 层级 | 推荐控制 |
-|------|----------|
+| ------ | ---------- |
 | **组件目录** | “Approved” 层级要求 SLSA Build L2+ 且 Scorecard ≥ 7；显示 Source Track 等级 |
 | **摄入管道** | S2C2F L2 底线：代理所有公共注册表、入站扫描、生成 SBOM |
 | **构建管道** | GitHub Actions / GitLab CI 生成 SLSA provenance；Sigstore/Cosign 签名 |
@@ -463,7 +463,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ## 8. 权威来源
 
 | 标准/项目 | URL |
-|-----------|-----|
+| ----------- | ----- |
 | SLSA Spec | <https://slsa.dev> |
 | OpenSSF Scorecard | <https://scorecard.dev> |
 | OpenSSF Protobom | <https://github.com/protobom/protobom> |
@@ -739,7 +739,7 @@ Baseline 的内容围绕多个安全域展开，每个域对应一组必须满�
 Baseline 并非孤立存在，而是与 OpenSSF 生态系统中的其他项目形成了互补关系：
 
 | 工具/标准 | 定位 | 与 Baseline 的关系 |
-|-----------|------|-------------------|
+| ----------- | ------ | ------------------- |
 | Scorecard | 自动化评估工具 | Baseline 的要求可以作为 Scorecard 检查项的"及格线"，Scorecard 评分可以用来验证项目是否满足 Baseline |
 | SLSA | 供应链完整性框架 | Baseline 的构建与发布安全要求直接对应 SLSA 的 Build 和 Provenance 要求 |
 | Best Practices Badge | 自我认证徽章 | Baseline 可以作为 Best Practices Badge 中安全相关条目的补充和强化 |
@@ -824,7 +824,7 @@ Baseline 并非孤立存在，而是与 OpenSSF 生态系统中的其他项目�
 在实际应用中，总分虽然重要，但不应是唯一的决策依据。组织应结合各检查项的得分进行细化分析：
 
 | 关键检查项 | 高信任阈值 | 条件复用阈值 | 避免阈值 |
-|-----------|-----------|-------------|---------|
+| ----------- | ----------- | ------------- | --------- |
 | Code-Review | ≥ 8 | 5-7 | < 5 |
 | Signed-Releases | ≥ 8 | 5-7 | < 5 |
 | Vulnerabilities | 10（无已知漏洞） | 7-9（低危漏洞） | < 7（中高危漏洞） |
@@ -1048,7 +1048,7 @@ SLSA 主要关注构建和发布过程的安全性，而 Scorecard 覆盖更广�
 #### 6.2.2 SLSA 等级与复用安全边界的对应关系
 
 | SLSA Build Level | Scorecard 总分 | 复用安全边界建议 |
-|-----------------|---------------|----------------|
+| ----------------- | --------------- | ---------------- |
 | L4 | ≥ 8 | 完全信任，无需额外隔离措施 |
 | L3 | ≥ 7 | 标准信任，常规容器沙箱 |
 | L2 | 5-7 | 条件信任，网络隔离 + 最小权限 |
@@ -1127,7 +1127,7 @@ Apache Log4j 2 是 Java 生态系统中使用最广泛的日志框架之一。
 在 2021 年漏洞爆发前，对 Apache Log4j 2 仓库进行回溯性 Scorecard 评估，结果大致如下：
 
 | 检查项 | 预估评分 | 说明 |
-|--------|---------|------|
+| -------- | --------- | ------ |
 | Code-Review | 6-7 | Apache 项目普遍要求代码审查，但部分提交可能存在审查不充分的情况 |
 | Dependency-Update-Tool | 3-4 | Log4j 项目当时未配置 Dependabot 或类似的自动化依赖更新工具 |
 | Signed-Releases | 7-8 | Apache 项目通常对发布产物进行 GPG 签名 |
@@ -1173,7 +1173,7 @@ Log4j 2 的预估 Scorecard 评分揭示了以下关键问题，这些问题在�
 XZ Utils 项目在攻击发生前是一个由个人维护者主导的小型开源项目，其 Scorecard 评估结果具有明显的警示信号：
 
 | 检查项 | 预估评分 | 说明 |
-|--------|---------|------|
+| -------- | --------- | ------ |
 | Code-Review | 3-4 | 项目主要由单一维护者控制，缺乏有效的多审者代码审查 |
 | Dependency-Update-Tool | 2-3 | 未配置自动化的依赖更新工具 |
 | Signed-Releases | 4-5 | 虽然 tarball 有签名，但签名密钥由单一维护者控制 |
@@ -1208,7 +1208,7 @@ XZ Utils 案例是 Scorecard 作为复用决策工具价值的极端验证。
 ### 7.4 两个案例的对比总结
 
 | 维度 | Log4j (Log4Shell) | XZ Utils 后门 |
-|------|-------------------|---------------|
+| ------ | ------------------- | --------------- |
 | 项目规模 | 大型、广泛使用 | 小型、个人维护 |
 | Scorecard 预估总分 | 6.0-6.5（条件复用） | 3.5-4.5（避免复用） |
 | 根本成因 | 功能设计缺陷 + 缺乏依赖安全监控 | 社会工程 + 缺乏代码审查 |
@@ -1322,7 +1322,7 @@ XZ Utils 案例是 Scorecard 作为复用决策工具价值的极端验证。
 ### 1.1 v1.0 → v1.1 → v1.2 的关键变化
 
 | 版本 | 发布时间 | 状态 | 核心变化 |
-|------|---------|------|----------|
+| ------ | --------- | ------ | ---------- |
 | **SLSA v1.0** | 2023-04 | 正式版 | 引入 **Build Track**，将 Source 要求从单一等级中剥离，专注构建 provenance 的可信度 |
 | **SLSA v1.1** | 2024 | 正式版 | 澄清性刷新；增强验证指南；VSA（Verification Summary Attestation）新增验证器元数据字段 |
 | **SLSA v1.2** | 2025-11 | 正式版 | **Source Track** 从实验提升为正式轨道；引入 **Multi-Track** 架构；新增 **Build Environment Track**（草案） |
@@ -1364,7 +1364,7 @@ SLSA v1.2 Multi-Track 架构
 下表汇总 SLSA v1.2 正式定义的三轨道九个单元格的具体要求。每个单元格代表该轨道等级必须满足的**最小控制集**。
 
 | 等级 | Build Track | Source Track | Build Environment Track |
-|------|------------|--------------|------------------------|
+| ------ | ------------ | -------------- | ------------------------ |
 | **L1** | 自动化构建 | 版本控制 | 基础环境记录 |
 | **L2** | 签名构建 | 提交签名 | 环境验证 |
 | **L3** | 隔离/密封构建 | 多重审查 | 完全可复现 |
@@ -1372,7 +1372,7 @@ SLSA v1.2 Multi-Track 架构
 ### 2.1 Build Track 详解
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | BT-L1-R1 | 构建过程完全脚本化/自动化，无手动步骤 | 存在 CI/CD 配置文件或构建脚本 |
 | | BT-L1-R2 | 生成并发布符合 SLSA Provenance v1 格式的 provenance | 使用 `slsa-verifier` 验证 predicate 结构完整性 |
 | **L2** | BT-L2-R1 | 源码来源于版本控制系统（Git/SVN 等） | provenance 中 `resolvedDependencies` 指向 commit SHA |
@@ -1390,7 +1390,7 @@ SLSA v1.2 Multi-Track 架构
 Source Track 在 v1.2 中正式化，解决"源码在提交到构建之前发生了什么"的溯源问题。
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | ST-L1-R1 | 源代码存储在版本控制系统中 | 仓库存在且可克隆 |
 | | ST-L1-R2 | 每个变更关联到稳定、不可变的标识符（commit SHA/tag） | 标签为 annotated tag 或 commit SHA 可独立引用 |
 | **L2** | ST-L2-R1 | 提交历史经过认证，无法伪造提交者身份 | 启用 GPG/SSH commit signing，拒绝未签名提交 |
@@ -1406,7 +1406,7 @@ Source Track 在 v1.2 中正式化，解决"源码在提交到构建之前发生
 Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream）阶段，目标是证明"运行构建的物理/虚拟环境本身未被篡改"。
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | BET-L1-R1 | 构建环境（容器镜像/VM 模板）具有 provenance | 镜像签名并附带 SBOM，记录基础镜像和安装的软件包 |
 | | BET-L1-R2 | 构建环境版本被记录并与构建产物关联 | provenance 的 `internalParameters` 包含环境版本标识 |
 | **L2** | BET-L2-R1 | 构建实例启动时生成启动证明（Boot attestation） | 使用 vTPM 测量启动链（Bootloader → Kernel → Initrd） |
@@ -1427,7 +1427,7 @@ Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream
 复用决策必须根据组件的**使用场景和风险暴露面**选择最低 SLSA 轨道等级要求，而非一刀切地追求 L3。
 
 | 复用场景 | Build Track | Source Track | Build Env Track | 理由 |
-|---------|------------|--------------|----------------|------|
+| --------- | ------------ | -------------- | ---------------- | ------ |
 | 内部原型 / POC | L1 | — | — | 仅需追溯来源，无需篡改保护 |
 | 内部工具 / 后台管理 | L2 | L1 | — | 防止构建后篡改，源码在内部 VCS 即可 |
 | 企业 SaaS 核心服务 | L3 | L2 | L1 | 生产级防篡改 + 认证源码历史 + 环境记录 |
@@ -1448,7 +1448,7 @@ Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream
 ### 3.2 内部复用 vs 外部开源复用的 SLSA 策略差异
 
 | 维度 | 内部复用 | 外部开源复用 |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Build Track 控制** | 企业可直接升级 CI/CD 至 L3，掌控构建平台 | 依赖上游社区提供 provenance（npm provenance, crates.io Trusted Publishing） |
 | **Source Track 控制** | 直接强制内部 Git 平台的 branch protection 和 signed commits | 通过 Scorecard probes 间接评估，无法强制上游流程 |
 | **Build Env Track 控制** | 可部署私有 TEE 构建集群（AMD SEV-SNP VM） | 几乎不可控，仅能验证上游公开的 builder 信息 |
@@ -1527,7 +1527,7 @@ flowchart LR
 ```
 
 | 阶段 | 目标 | Build Track 关键行动 | Source Track 关键行动 | Build Env Track 关键行动 |
-|------|------|---------------------|----------------------|------------------------|
+| ------ | ------ | --------------------- | ---------------------- | ------------------------ |
 | **Phase 1**<br>2026 Q3 | L1 全覆盖 | 所有组件接入 CI/CD；使用 SLSA GitHub Generator 生成 provenance | 确保所有仓库纳入版本控制（Git） | 记录构建镜像版本于 provenance |
 | **Phase 2**<br>2026 Q4 | L2 核心系统 | 托管 CI/CD + cosign keyless 签名；Sigstore Rekor 入日志 | 启用 GPG/SSH commit signing；配置不可变仓库镜像 | 启用 vTPM 启动证明（如 AWS Nitro TPM, GCP Shielded VM） |
 | **Phase 3**<br>2027 Q1 | L3 生产基线 | 隔离构建（`--network=none`）；临时环境；分离构建者与签名者权限 | 强制分支保护 + PR 审查 + 状态检查；Source Provenance 发布 | 试点 TEE 构建（AMD SEV-SNP VM）用于金融/核心组件 |
@@ -1535,7 +1535,7 @@ flowchart LR
 ### 4.2 每个级别的典型工具链
 
 | 等级 | Build Track 工具链 | Source Track 工具链 | Build Env Track 工具链 |
-|------|-------------------|--------------------|------------------------|
+| ------ | ------------------- | -------------------- | ------------------------ |
 | **L1** | GitHub Actions, GitLab CI, Jenkins, SLSA GitHub Generator | Git, GitHub, GitLab | Docker image SBOM (`syft`, `trivy`) |
 | **L2** | Sigstore/cosign keyless, SLSA GitHub Generator v2.0+, Rekor CLI | GPG/SSH commit signing, GitHub branch protection rules | vTPM tools (`tpm2-tools`), GCP Shielded VM, AWS Nitro Enclaves |
 | **L3** | GitHub Actions (hardened runners), Google Cloud Build, GitLab native attestation, `slsa-verifier` | GitHub required reviewers + status checks, GitLab MR approvals, in-toto attestations | AMD SEV-SNP, Intel TDX, Nix (hermetic builds), Bazel (sandboxed) |
@@ -1543,7 +1543,7 @@ flowchart LR
 ### 4.3 成本-收益分析
 
 | 升级路径 | 一次性成本 | 持续运营成本 | 收益 | ROI 评估 |
-|---------|-----------|-------------|------|---------|
+| --------- | ----------- | ------------- | ------ | --------- |
 | **L0 → L1** | 低（CI/CD 配置化） | 低（自动化运行） | 来源可追溯；满足 SBOM 最小元素要求 | ⭐⭐⭐⭐⭐ 立即实施 |
 | **L1 → L2** | 中（Sigstore 集成、密钥管理迁移） | 低（keyless 无长期密钥） | 防止构建后篡改；满足 NIST 800-161 基础要求 | ⭐⭐⭐⭐⭐ 核心系统必做 |
 | **L2 → L3** | 中高（隔离网络、临时环境、平台审计） | 中（构建时间增加 10-30%） | 防止构建中篡改；满足 EU CRA / FedRAMP | ⭐⭐⭐⭐ 生产系统推荐 |
@@ -1592,7 +1592,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 ## 7. 控制点映射：SLSA Build Track → 项目实现
 
 | SLSA 要求 | 项目控制点 | 实现/验证方式 |
-|----------|-----------|--------------|
+| ---------- | ----------- | -------------- |
 | BT-L1-R1 自动化构建 | 所有关键仓库配置 `.github/workflows/build.yml` | quality-gate 扫描工作流存在性 |
 | BT-L2-R3 Provenance 签名 | 使用 `actions/attest-build-provenance` 或 `slsa-github-generator` | `slsa-verifier` / `gh attestation verify` |
 | BT-L3-R2 临时环境 | GitHub-hosted runner 每次新建 VM；自托管 runner 采用 Kubernetes 临时 Pod | 审计 runner 生命周期日志 |
@@ -1610,7 +1610,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 ## 8. 权威来源
 
 | 标准/规范 | URL | 说明 | 核查日期 |
-|-----------|-----|------|----------|
+| ----------- | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构、Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
 | SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L1–L3 构建要求详细规范 | 2026-07-08 |
 | SLSA Source Track | <https://slsa.dev/spec/v1.2/levels#source-track> | v1.2 正式化的源码轨道要求 | 2026-07-08 |
@@ -1646,7 +1646,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 ### 1.1 L4 与 L3 的核心差异
 
 | 维度 | Build L3 | Build L4 |
-|------|---------|----------------|
+| ------ | --------- | ---------------- |
 | **审查机制** | 构建过程隔离，但源码审查策略由平台自行决定 | **双因素审查**：所有源码变更强制经过双人审查 + 自动化安全扫描 |
 | **构建可复现性** | 不强制要求（允许非确定性构建） | **完全可复现**：不同时间、不同构建器产生 bit-for-bit identical 产物 |
 | **信任模型** | 依赖单一 CI/CD 平台（GitHub Actions, Cloud Build） | **分布式信任**：不依赖单一构建器，通过多独立构建器交叉验证建立共识 |
@@ -1719,7 +1719,7 @@ flowchart TD
 **实现要点**:
 
 | 非确定性来源 | 消除策略 | 工具/技术 |
-|-------------|---------|----------|
+| ------------- | --------- | ---------- |
 | 时间戳嵌入 | 使用 `SOURCE_DATE_EPOCH` 规范化 | `strip-nondeterminism` |
 | 文件系统路径 | 构建于固定 chroot 路径或使用 `-ffile-prefix-map` | Bazel, Nix |
 | 随机数/UUID | 使用确定性伪随机种子 | 源码级修复 |
@@ -1765,7 +1765,7 @@ cosign verify \
 ### 3.2 Fulcio（短寿命证书）+ Rekor（透明日志）
 
 | 组件 | 功能 | 在分布式验证中的角色 |
-|------|------|-------------------|
+| ------ | ------ | ------------------- |
 | **Fulcio** | OIDC 身份 → X.509 短寿命证书（默认 10 分钟） | 每个构建器的 CI 身份独立获得证书，无需长期密钥管理 |
 | **Rekor** | 透明日志，记录所有签名和 provenance 的哈希 | 全局时间排序和不可篡改审计；检测回滚攻击和重签名攻击 |
 | **Timestamp Authority** | RFC 3161 合规时间戳 | 为签名提供独立于构建器时钟的可信时间锚点 |
@@ -1854,7 +1854,7 @@ flowchart LR
 ### 4.2 威胁模型：单一构建器被攻破的场景
 
 | 威胁场景 | 攻击方式 | 检测机制 | 缓解措施 |
-|---------|---------|---------|---------|
+| --------- | --------- | --------- | --------- |
 | **构建器 A 被植入后门** | 恶意 CI runner 注入 payload | 构建器 B/C/D 产物哈希与 A 不一致 | 拒绝 A 的 provenance；触发调查；临时提升阈值至 4/4 |
 | **源码仓库被篡改** | 攻击者强制推送恶意 commit | 所有构建器基于 tampered 源码生成一致哈希；Source Track L3 审查日志可检测异常合并 | Source Track + 分支保护作为独立防线；Git 不可变引用辅助审计 |
 | **聚合器本身被攻破** | 聚合器伪造 VSA 掩盖不一致 | VSA 也被签名并写入 Rekor；客户端可独立重验证 | 客户端不信任聚合器，仅作缓存；定期全量重验证 |
@@ -1890,7 +1890,7 @@ flowchart LR
 组件进入企业制品注册表前，验证门控执行以下检查：
 
 | 检查项 | 工具 | 失败行为 |
-|-------|------|---------|
+| ------- | ------ | --------- |
 | Provenance 存在且格式合规 | `slsa-verifier` | 阻断，要求上游补充 |
 | Build Track ≥ 目标等级 | `slsa-verifier --build-level` | 降级至更低信任区或阻断 |
 | Source Track ≥ 目标等级 | 解析 Source Provenance / Scorecard | 标记为"未验证源码"，增加运行时监控 |
@@ -1920,7 +1920,7 @@ flowchart LR
 ## 6. 权威来源
 
 | 来源 | URL | 说明 |
-|------|-----|------|
+| ------ | ----- | ------ |
 | SLSA Spec v1.2 | <https://slsa.dev/spec/v1.2/> | Build L3 正式规范；L4 社区讨论基础 |
 | OpenSSF SLSA GitHub | <https://github.com/slsa-framework/slsa> | Active Workstreams、社区提案、路线图 |
 | SLSA Build Level 4 Workstream | <https://github.com/slsa-framework/slsa/labels/build-level-4> | L4 定义的讨论 Issue 和 PR |
@@ -1984,7 +1984,7 @@ SLSA（Supply-chain Levels for Software Artifacts）框架通过分级构建证�
 SLSA v1.2 采用**多轨道（Multi-Track）模型**：Build Track 正式定义 L1–L3；Source Track 于 v1.2 正式化；Build Environment Track 处于草案阶段。v1.0 中的单一 L4 标量描述（"可复现构建 + 双人审查"）已过时，其要求被拆分到 Source Track 与 BuildEnv Track。因此，复用边界应采用**轨道等级向量** `(Build Lx, Source Ly, Env Lz)` 表示。
 
 | 等级 | Build Track 核心目标 | 复用安全边界含义 | 2026 工具链支持 |
-|------|---------------------|-----------------|----------------|
+| ------ | --------------------- | ----------------- | ---------------- |
 | **L0** | 无保证 | 不可信资产，禁止复用于生产环境 | — |
 | **L1** | 知道软件从何而来 | 可复用于内部原型、POC 阶段 | GitHub Actions, GitLab CI |
 | **L2** | 防止构建后被篡改 | 可复用于非关键业务系统、内部工具 | Sigstore/cosign keyless, SLSA GitHub Generator |
@@ -2003,7 +2003,7 @@ SLSA v1.2 采用**多轨道（Multi-Track）模型**：Build Track 正式定义 
 #### 要求清单
 
 | 要求编号 | 要求描述 | 验证方法 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | BL1-R1 | 构建过程完全脚本化/自动化 | 存在 `Makefile` / `build.sh` / CI 配置文件 |
 | BL1-R2 | 生成并发布 Provenance（来源证明） | Provenance 文件随制品分发 |
 | BL1-R3 | Provenance 包含构建定义和依赖信息 | 符合 SLSA Provenance v1 格式 |
@@ -2011,7 +2011,7 @@ SLSA v1.2 采用**多轨道（Multi-Track）模型**：Build Track 正式定义 
 #### 复用决策矩阵
 
 | 复用场景 | 允许性 | 条件与限制 |
-|---------|-------|-----------|
+| --------- | ------- | ----------- |
 | 内部原型 / POC | ✅ 允许 | 需在 SBOM 中标记为 L1，明确无篡改保护 |
 | 开发/测试环境 | ⚠️ 有条件 | 需配合依赖扫描（`npm audit`, `cargo audit`）使用 |
 | 非关键生产系统 | ❌ 不建议 | 无签名保护，无法检测构建后篡改 |
@@ -2037,7 +2037,7 @@ L0 → L1
 #### 要求清单
 
 | 要求编号 | 要求描述 | 验证方法 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | BL2-R1 | 使用版本控制系统（Git/SVN） | 源码来源可追溯至特定 commit |
 | BL2-R2 | 使用托管构建服务 | 构建在 GitHub Actions / Cloud Build / GitLab CI 等托管平台执行 |
 | BL2-R3 | Provenance 经过签名和认证 | 使用 Sigstore/cosign keyless signing 或 GPG/X.509 签名 |
@@ -2046,7 +2046,7 @@ L0 → L1
 #### 复用决策矩阵
 
 | 复用场景 | 允许性 | 条件与限制 |
-|---------|-------|-----------|
+| --------- | ------- | ----------- |
 | 内部工具/后台管理 | ✅ 允许 | 适合非面向客户的业务支持系统 |
 | SaaS 服务（非核心模块） | ✅ 允许 | 需配合运行时监控（Falco/Tetragon） |
 | 金融服务（非交易核心） | ⚠️ 有条件 | 需叠加 SAST/SCA 扫描，并满足 Source Track L1 |
@@ -2076,7 +2076,7 @@ L1 → L2
 #### 要求清单
 
 | 要求编号 | 要求描述 | 验证方法 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | BL3-R1 | 构建定义来源于版本控制中的源码 | `buildType` 指向仓库内文件，非外部配置 |
 | BL3-R2 | 构建环境是临时的（Ephemeral） | 每次构建使用全新 VM/容器，构建后销毁 |
 | BL3-R3 | 构建环境是隔离的（Isolated） | 构建间无共享状态、无网络访问（除必要依赖下载） |
@@ -2086,7 +2086,7 @@ L1 → L2
 #### 复用决策矩阵
 
 | 复用场景 | 允许性 | 条件与限制 |
-|---------|-------|-----------|
+| --------- | ------- | ----------- |
 | 企业级 SaaS 核心服务 | ✅ 允许 | 2026 年企业基线标准 |
 | 金融服务（含交易核心） | ✅ 允许 | 满足 PCI-DSS、SOX 合规要求 |
 | 医疗系统（HIPAA/CRA） | ✅ 允许 | 满足 EU CRA 网络安全要求 |
@@ -2133,7 +2133,7 @@ SLSA 1.0 曾将 L4 描述为"最高可信复用"的标量等级，要求双人�
 本文件将其与 SLSA 等级映射如下：
 
 | 防御层 | 依赖治理措施 | 对应 SLSA 等级 | 理由 |
-|-------|-------------|---------------|------|
+| ------- | ------------- | --------------- | ------ |
 | Layer 1: Proxy Registry | 缓存公共 registry，自动漏洞扫描 | L1–L2 | 保证来源可追溯，但无构建保证 |
 | Layer 2: 审批工作流 | 新包/新版本需安全团队审批，7天冷却期 | L2–L3 | 结合签名证明和托管构建信任 |
 | Layer 3: Lockfile + 哈希 | 精确版本锁定，密码学哈希验证 | L3 | 需要硬化构建平台保证 lockfile 未被篡改 |
@@ -2149,7 +2149,7 @@ SLSA 1.0 曾将 L4 描述为"最高可信复用"的标量等级，要求双人�
 ## 5. 2026–2027 实施路线图
 
 | 阶段 | 时间 | 目标等级 | 关键行动 |
-|------|------|---------|---------|
+| ------ | ------ | --------- | --------- |
 | **Phase 1** | 2026 Q3 | L1 全覆盖 | 所有组件生成 Provenance；CI/CD 全自动化 |
 | **Phase 2** | 2026 Q4 | L2 核心系统 | 核心组件启用托管构建 + cosign keyless 签名 |
 | **Phase 3** | 2027 Q1 | L3 生产基线 | 生产组件全部达到 Build L3；推动关键供应商提供 L3 证明 |
@@ -2179,7 +2179,7 @@ SLSA v1.2 引入 Multi-Track 架构，将供应链信任从单一 Build Track �
 下表给出不同轨道等级组合对应的复用边界与典型场景。
 
 | Build | Source | BuildEnv | 复用边界 | 典型场景 |
-|-------|--------|----------|---------|---------|
+| ------- | -------- | ---------- | --------- | --------- |
 | L1 | — | — | 仅可追溯，无篡改防护 | 内部原型、POC |
 | L2 | L1 | — | 防止构建后篡改，源码在版本控制中 | 内部工具、后台管理 |
 | L3 | L2 | L1 | 防止构建中篡改，认证源码历史，记录环境版本 | 企业 SaaS 核心服务 |
@@ -2205,7 +2205,7 @@ SLSA v1.2 引入 Multi-Track 架构，将供应链信任从单一 Build Track �
 ### 7.4 正例
 
 | 组件 | 等级向量 | 复用价值 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | npm 包 with provenance | Build L3, Source L2 | 消费者可验证包由 npm 官方 CI 构建，提交历史经 GPG/SSH 签名 |
 | GitHub Actions 构建的内部共享库 | Build L3, Source L3 | 主分支强制 PR 审查与状态检查，隔离构建环境 |
 | 金融核心模块在 AMD SEV-SNP VM 中构建 | Build L3, Source L3, Env L3 | 硬件证明环境完整性，满足最高合规要求 |
@@ -2213,7 +2213,7 @@ SLSA v1.2 引入 Multi-Track 架构，将供应链信任从单一 Build Track �
 ### 7.5 反例
 
 | 反例 | 风险说明 |
-|------|---------|
+| ------ | --------- |
 | 仅宣称"Build L3"但 Source Track 未评估 | 源码仓库未启用分支保护，攻击者可直接推送恶意代码 |
 | 使用自托管 runner 且未记录镜像 provenance（Env L0） | 构建环境可被持久化攻击，runner 镜像含后门 |
 | 将 v1.0 的"L4"当作单一标量采购要求 | 忽略了 Source/Env 短板，合同条款无法覆盖多轨道验证 |
@@ -2255,7 +2255,7 @@ flowchart TD
 Build Track 解决的核心问题是：**复用者收到的二进制制品，是否真实地来自声明的源码，且在构建后未被篡改**。在复用场景中，Build Track 等级直接决定了组件可作为何种类型的"信任输入"进入下游系统。
 
 | Build Track 等级 | 对复用边界的影响 | 可复用性结论 |
-|-----------------|-----------------|-------------|
+| ----------------- | ----------------- | ------------- |
 | **L0** | 无 provenance，无法验证来源或完整性 | **禁止**进入生产交付包；仅可作为本地实验代码 |
 | **L1** | 知道构建脚本和依赖清单，但无密码学保证 | 可复用于内部原型、POC、开发工具；不得用于客户-facing 生产系统 |
 | **L2** | 构建在托管环境执行，provenance 经签名认证 | 可复用于非关键生产系统、内部共享服务；需叠加依赖扫描 |
@@ -2274,7 +2274,7 @@ Build Track 解决的核心问题是：**复用者收到的二进制制品，是
 Source Track 解决的核心问题是：**进入构建的源码是否经过适当的版本控制、身份认证和审查流程**。在复用场景中，Source Track 等级决定了上游仓库被恶意控制或历史被篡改的抵抗能力。
 
 | Source Track 等级 | 对复用边界的影响 | 可复用性结论 |
-|------------------|-----------------|-------------|
+| ------------------ | ----------------- | ------------- |
 | **L0** | 源码未纳入版本控制或无法验证标识符 | **禁止**作为可复用组件；等同于不可追溯代码 |
 | **L1** | 源码在版本控制中，每个变更有不可变标识符 | 可复用于内部工具、非关键模块；可回答"这是哪个版本" |
 | **L2** | 提交历史经认证（GPG/SSH 签名）并永久保留 | 可复用于企业核心服务；防止 maintainer 身份伪造和历史重写 |
@@ -2293,7 +2293,7 @@ Source Track 解决的核心问题是：**进入构建的源码是否经过适�
 Build Environment Track 解决的核心问题是：**执行构建的环境本身是否可信**。在最高安全场景下，即使 Build Track 和 Source Track 都达到 L3，构建环境若被持久化攻击（如 runner 镜像植入后门），仍可能污染产物。
 
 | BuildEnv Track 等级 | 对复用边界的影响 | 可复用性结论 |
-|--------------------|-----------------|-------------|
+| -------------------- | ----------------- | ------------- |
 | **L0** | 未记录或验证构建环境 | 不适用于关键基础设施；无法证明环境一致性 |
 | **L1** | 构建环境附带 provenance/SBOM | 可复用于企业 SaaS 核心服务；环境版本可追踪 |
 | **L2** | 启动证明（vTPM/Secure Boot）验证环境 | 可复用于金融/医疗高合规系统；防止环境启动链篡改 |
@@ -2314,7 +2314,7 @@ SLSA 1.0 曾将 L4 描述为 Build Track 的最高等级，要求"双人审查 +
 #### 正例
 
 | 场景 | 等级向量 | 复用决策说明 |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | 内部 CRM 插件 | (Build L2, Source L1, Env L0) | 非关键业务，有签名 provenance 即可 |
 | 支付网关 SDK | (Build L3, Source L3, Env L2) | 金融核心，需双人审查 + 启动证明 |
 | 开源日志库（Log4j 类） | (Build L3, Source L2, Env L1) | 广泛使用的基础库，需高 Build/Source 等级 |
@@ -2323,7 +2323,7 @@ SLSA 1.0 曾将 L4 描述为 Build Track 的最高等级，要求"双人审查 +
 #### 反例
 
 | 反例 | 风险说明 |
-|------|---------|
+| ------ | --------- |
 | 合同要求"SLSA L4"但无轨道限定 | L4 处于草案，无法验证；应改为明确的 `(Build L3, Source L3, Env L3)` |
 | 仅关注 Build Track，忽略 Source Track | 源码仓库被攻破后，Build L3 无法阻止恶意代码进入构建 |
 | 将 Source L3 误认为 Build L3 | 源码审查再严格，构建环境被篡改仍会产生恶意产物 |
@@ -2369,7 +2369,7 @@ flowchart TD
 ### 9.1 三轨道等级属性表
 
 | Track | Level | 核心目标 | 信任假设 | 关键产物 | 复用边界 | 典型场景 |
-|-------|-------|----------|----------|----------|----------|----------|
+| ------- | ------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 | Build Track | L1 | 知道软件从何而来 | 自动化构建脚本 | Provenance | 内部原型/POC | 实验性工具 |
 | Build Track | L2 | 防止构建后被篡改 | 托管构建 + 签名 | Signed Provenance | 内部工具/非关键 SaaS | 后台服务 |
 | Build Track | L3 | 防止构建过程中被篡改 | 隔离/硬化构建平台 | Hermetic Provenance | 生产/金融/医疗 | 核心交易服务 |
@@ -2395,7 +2395,7 @@ SLSA Provenance 是 SBOM 的“构建过程视角”，两者共同构成复用�
 ### 9.3 正例
 
 | 场景 | 等级向量 | 复用决策说明 |
-|------|----------|--------------|
+| ------ | ---------- | -------------- |
 | npm provenance 包 | (Build L3, Source L2, Env L1) | 消费者可验证包由 npm 官方 CI 构建，提交历史经签名保护 |
 | GitHub Actions 内部共享库 | (Build L3, Source L3, Env L2) | 主分支强制 PR 审查，runner 启动经 vTPM 证明 |
 | 国防通信模块 | (Build L3, Source L3, Env L3) | 在 AMD SEV-SNP VM 中构建，提供硬件级环境完整性证明 |
@@ -2403,7 +2403,7 @@ SLSA Provenance 是 SBOM 的“构建过程视角”，两者共同构成复用�
 ### 9.4 反例
 
 | 反例 | 风险说明 |
-|------|----------|
+| ------ | ---------- |
 | 采购合同仅写“达到 SLSA L4” | L4 处于草案，无法验证，应改为明确的三轨道向量 |
 | 只看 Build L3 忽略 Source Track | 源码仓库被攻破后，硬化构建平台仍会构建恶意代码 |
 | 自托管 runner 未记录 Env 等级 | 环境镜像无 provenance，持久化后门难以发现 |
@@ -2462,7 +2462,7 @@ graph LR
 ## 1. 三种格式概览
 
 | 特性 | SPDX (ISO/IEC 5962) | CycloneDX (OWASP) | SWID (ISO/IEC 19770-2) |
-|------|---------------------|-------------------|------------------------|
+| ------ | --------------------- | ------------------- | ------------------------ |
 | **标准化组织** | Linux Foundation / ISO | OWASP | ISO/IEC / NIST |
 | **主要用途** | 许可证合规 + 供应链安全 | 供应链安全 + 漏洞管理 | 软件资产管理 |
 | **表达复杂度** | 高 | 中 | 低 |
@@ -2597,7 +2597,7 @@ SBOM 格式选择
 ## 6. 2026 趋势
 
 | 需求 | 说明 |
-|------|------|
+| ------ | ------ |
 | 运行时 SBOM | 记录实际加载的组件 |
 | AI 模型 SBOM | 记录训练数据、依赖库、超参数 |
 | VEX 自动化 | 自动化漏洞可利用性评估 |
@@ -2615,7 +2615,7 @@ SBOM 格式选择
 ### 7.2 SPDX / CycloneDX / SWID 详细对比矩阵
 
 | 属性 | SPDX (ISO/IEC 5962) | CycloneDX (OWASP/ECMA-424) | SWID (ISO/IEC 19770-2) |
-|------|--------------------|---------------------------|------------------------|
+| ------ | -------------------- | --------------------------- | ------------------------ |
 | 标准化组织 | Linux Foundation / ISO | OWASP / ECMA | ISO/IEC / NIST |
 | 主要目标 | 许可证合规 + 供应链安全 | 供应链安全 + 漏洞管理 | 软件资产管理 (ITAM) |
 | 核心交换格式 | RDF/XML, JSON, Tag-Value, YAML, SPDX-Lite | JSON, XML, Protocol Buffers | XML |
@@ -2691,7 +2691,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:maven/org.apache.logging.log4j/log4j-core@
 ### 7.4 正例
 
 | 场景 | 推荐格式 | 价值 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 向欧盟市场交付含数字元素的产品 | SPDX 或 CycloneDX | 满足 EU CRA 技术文档与 SBOM 要求 |
 | 构建 DevSecOps 流水线 | CycloneDX | 原生漏洞字段与 CI/CD 工具集成 |
 | 大规模企业软件资产盘点 | SWID + SPDX | SWID 与 CMDB 集成，SPDX 补充许可证 |
@@ -2700,7 +2700,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:maven/org.apache.logging.log4j/log4j-core@
 ### 7.5 反例
 
 | 反例 | 后果 |
-|------|------|
+| ------ | ------ |
 | 用 SWID 替代 CycloneDX 进行漏洞管理 | SWID 缺乏原生漏洞字段，无法直接关联 CVE |
 | SBOM 仅列直接依赖，遗漏传递依赖 | 攻击面被低估，Log4j 类事件无法快速定位 |
 | purl 使用不规范（大小写、命名空间缺失） | 自动化工具无法匹配漏洞数据库 |
@@ -2809,7 +2809,7 @@ Software Bill of Materials（SBOM）在架构复用中的角色已从"合规附�
 ## 2. 三标准核心特性对比（2026 更新版）
 
 | 特性维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID ISO/IEC 19770-2 |
-|---------|-----------------|---------------|---------------------|
+| --------- | ----------------- | --------------- | --------------------- |
 | **标准化组织** | Linux Foundation / ISO/IEC 5962 | OWASP / ECMA-424 | ISO/IEC / NIST |
 | **设计哲学** | 许可证合规优先，通用语义模型 | 供应链安全优先，轻量敏捷 | 软件资产管理（ITAM）优先 |
 | **数据模型** | 图模型（Element + Relationship） | 层次模型（bom -> components -> dependencies） | 标签模型（SoftwareIdentity + Entity + Payload） |
@@ -2832,7 +2832,7 @@ Software Bill of Materials（SBOM）在架构复用中的角色已从"合规附�
 **场景描述**: 开发者在编码阶段或 CI 构建阶段生成 SBOM，用于即时漏洞扫描和许可证冲突检测。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **生成速度** | 中（模型复杂） | **快**（JSON 轻量） | 慢（XML 冗长） |
 | **漏洞关联** | 需 VEX 扩展 | **原生优秀** | 不支持 |
 | **IDE 集成** | 有限 | **优秀**（Dependency-Track, Jenkins, GitHub） | 无 |
@@ -2852,7 +2852,7 @@ CycloneDX 的原生 vulnerabilities[] 数组和 dependency 图结构使 OWASP De
 **场景描述**: 组织在采购商业软件或评估开源组件时，要求供应商提供 SBOM 以进行安全、合规和供应链风险评估。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **许可证深度** | **优秀**（400+ 标准标识符，文件级归因） | 良好 | 有限 |
 | **合规认可度** | **高**（ISO 标准，美国 FDA 引用） | **高**（ECMA 标准，OWASP 背书） | 中（NIST 要求，但工具生态弱） |
 | **供应商信息** | 丰富（supplier, originator, downloadLocation） | 丰富（supplier, publisher, author） | 基础（Entity role） |
@@ -2873,7 +2873,7 @@ CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可�
 **场景描述**: 新漏洞（如 Log4Shell、XZ Utils）爆发时，组织需要快速回答"我是否受影响？影响范围多大？"
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **快速查询** | 中（需遍历 Relationship 图） | **快**（扁平组件列表 + PURL/CPE 索引） | 慢 |
 | **漏洞匹配** | 需外部 VEX | **原生**（vulnerabilities + VEX 内嵌） | 不支持 |
 | **影响范围分析** | **优秀**（DESCRIBES/DEPENDS_ON/CONTAINS 关系） | **优秀**（dependency 图传递分析） | 差（无依赖关系） |
@@ -2896,7 +2896,7 @@ CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可�
 **场景描述**: 向监管机构（欧盟 BSI、美国 CISA、FDA）提交软件成分透明性证明，满足 EO 14028、EU CRA、FDA 预市场指导等要求。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **EO 14028 / NTIA** | 满足 | 满足 | 满足 |
 | **EU CRA / BSI TR-03183-2** | **明确要求 2.3+ / 3.0+** | **明确要求 1.6+** | 未列入 |
 | **FDA 医疗器械** | 引用 SPDX | 引用 CycloneDX | 未引用 |
@@ -2916,7 +2916,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 4. 综合决策矩阵
 
 | 应用场景 | 首选格式 | 次选格式 | 避免使用 | 关键理由 |
-|---------|---------|---------|---------|---------|
+| --------- | --------- | --------- | --------- | --------- |
 | **开发时安全扫描** | CycloneDX JSON | SPDX JSON | SWID | 原生漏洞支持，DevSecOps 工具链完善 |
 | **采购审计** | SPDX 2.3/3.0.1 JSON | CycloneDX 1.6 JSON | SWID | ISO 标准 + 许可证深度 = 法律审计最优 |
 | **事件响应** | CycloneDX + VEX | SPDX + 外部 VEX | SWID | 速度优先，原生漏洞+依赖图 |
@@ -2927,7 +2927,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 5. SPDX / CycloneDX 字段对比（EU CRA 关键字段）
 
 | 信息要素 | SPDX 2.3 字段 | CycloneDX 1.6 字段 | EU CRA 要求 | 说明 |
-|---------|--------------|-------------------|------------|------|
+| --------- | -------------- | ------------------- | ------------ | ------ |
 | 供应商/作者 | `packages[].supplier` / `packages[].originator` | `components[].supplier` / `metadata.authors` | 强制 | 明确责任主体 |
 | 组件名称 | `packages[].name` | `components[].name` | 强制 | NTIA 最小要素 |
 | 版本 | `packages[].versionInfo` | `components[].version` | 强制 | 精确识别组件 |
@@ -2950,7 +2950,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ### 6.1 CRA 对 SBOM 的核心要求
 
 | CRA 义务 | SBOM 支持方式 | 对应字段/实践 |
-|---------|-------------|--------------|
+| --------- | ------------- | -------------- |
 | 产品设计和开发安全 | SBOM 作为技术文档组成部分，记录所有软件组件 | 完整组件清单 + 依赖图 |
 | 漏洞管理 | 通过 SBOM 快速识别受影响产品版本 | `vulnerabilities[]` / 外部 VEX |
 | 安全更新 | 明确受影响组件、修复版本和部署路径 | `dependencies[]` + 版本范围 |
@@ -3154,7 +3154,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` 提出了 Lockfile 安全性和分层防御策略。SBOM 是这一策略的输出证明：
 
 | 防御层 | 依赖治理措施 | SBOM 角色 | 推荐格式 |
-|-------|-------------|----------|---------|
+| ------- | ------------- | ---------- | --------- |
 | Layer 1: Proxy Registry | 缓存公共 registry，自动漏洞扫描 | 记录代理来源和扫描结果 | CycloneDX JSON |
 | Layer 2: 审批工作流 | 新包/新版本需安全团队审批 | 审批决策的证据基线 | SPDX JSON |
 | Layer 3: Lockfile + 哈希 | 精确版本锁定，密码学哈希验证 | 验证 SBOM 中的 hashes[] 与 lockfile 一致性 | CycloneDX JSON |
@@ -3172,7 +3172,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 12. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SPDX Specification v2.3 | <https://spdx.github.io/spdx-spec/v2.3/> | ISO/IEC 5962 SBOM 标准 | 2026-07-08 |
 | SPDX Specification v3.0.1 | <https://spdx.github.io/spdx-spec/v3.0.1/> | 模块化 Profile 架构 | 2026-07-08 |
 | CycloneDX Specification v1.6 | <https://cyclonedx.org/specification/overview/> | OWASP/ECMA-424 标准 | 2026-07-08 |
@@ -3205,7 +3205,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 1. 映射总览
 
 | 编号 | 攻击路径 | 主 Technique | 相关 Techniques | 主要 Mitigations | 风险等级 |
-|------|---------|-------------|----------------|------------------|---------|
+| ------ | --------- | ------------- | ---------------- | ------------------ | --------- |
 | 3.1 | 开发环境渗透 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | T1078, T1552, T1566, T1059 | M1013, M1017, M1026, M1027, M1030 | High |
 | 3.2 | 构建系统篡改 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | T1059, T1078, T1552 | M1013, M1030, M1045, M1047, M1051 | Critical |
 | 3.3 | 包管理器投毒 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | T1583, T1584, T1078 | M1013, M1016, M1019, M1021, M1045 | High |
@@ -3223,7 +3223,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 通过控制开发者工作站、IDE 或本地工具链，向最终产品注入恶意代码。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 网络钓鱼攻击 | [T1566](https://attack.mitre.org/techniques/T1566/) Phishing | 窃取开发者凭据或诱导安装恶意扩展 |
 | 凭证填充攻击 | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts | 使用泄露凭据登录开发者账户 |
 | 键盘记录恶意软件 | [T1056](https://attack.mitre.org/techniques/T1056/) Input Capture | 捕获 IDE/仓库访问凭据 |
@@ -3239,7 +3239,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 在 CI/CD 或构建基础设施中植入后门，使恶意产物获得合法签名。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 被攻陷的 CI/CD 流水线 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | SolarWinds Orion (2020) 典型路径 |
 | 恶意构建脚本 | [T1059](https://attack.mitre.org/techniques/T1059/) Command and Scripting Interpreter | 在 build script 中执行任意命令 |
 | 伪造构建来源证明 | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts + [T1552](https://attack.mitre.org/techniques/T1552/) Unsecured Credentials | 盗用签名凭据伪造 provenance |
@@ -3254,7 +3254,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 在公共或私有包注册表中发布或篡改包，使下游消费者自动拉取恶意代码。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 拼写混淆 Typosquatting | [T1583](https://attack.mitre.org/techniques/T1583/) Acquire Infrastructure | 注册与流行包近似的包名 |
 | 窃取维护者凭证 | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts | 合法包被恶意发布 |
 | 社会工程学接管 | [T1199](https://attack.mitre.org/techniques/T1199/) Trusted Relationship | XZ Utils 后门 (2024) 前期步骤 |
@@ -3269,7 +3269,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 利用包解析器优先选择公共注册表高版本包的机制，使内部项目拉取攻击者发布的同名包。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 扫描公开仓库识别内部包名 | [T1593](https://attack.mitre.org/techniques/T1593/) Search Open Websites/Domains | 从公开代码中收集内部依赖名 |
 | 分析错误信息 | [T1594](https://attack.mitre.org/techniques/T1594/) Search Victim-Owned Websites | 从 CI 日志/错误堆栈推断包名 |
 | 发布更高版本到公共注册表 | [T1583](https://attack.mitre.org/techniques/T1583/) Acquire Infrastructure | Alex Birsan (2021) 经典研究 |
@@ -3284,7 +3284,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 在开源/第三方源代码仓库中植入后门，通过正常合并流程进入下游依赖。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 伪装良性的隐藏后门 PR | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | 通过测试文件、构建脚本隐藏载荷 |
 | 利用对维护者的信任 | [T1199](https://attack.mitre.org/techniques/T1199/) Trusted Relationship | 长期社会工程学获取提交权限 |
 | 强制推送重写历史 | [T1071](https://attack.mitre.org/techniques/T1071/) Application Layer Protocol / [T1491](https://attack.mitre.org/techniques/T1491/) Defacement | 篡改已发布标签或提交 |
@@ -3299,7 +3299,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 在软件分发阶段（下载、CDN、镜像）篡改传输内容或重定向下载地址。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | DNS 劫持 | [T1584](https://attack.mitre.org/techniques/T1584/) Compromise Infrastructure | 重定向下载域名 |
 | BGP 劫持 | [T1584](https://attack.mitre.org/techniques/T1584/) Compromise Infrastructure | 劫持路由前缀 |
 | 下载过程 MITM | [T1557](https://attack.mitre.org/techniques/T1557/) Man-in-the-Middle | Codecov Bash Uploader (2021) 类型事件 |
@@ -3314,7 +3314,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 **核心目标**: 利用运行时的动态加载、插件系统或解释器供应链，在程序运行阶段执行恶意代码。
 
 | 子攻击手段 | MITRE Technique | 说明 |
-|-----------|-----------------|------|
+| ----------- | ----------------- | ------ |
 | 运行时无验证下载 | [T1105](https://attack.mitre.org/techniques/T1105/) Ingress Tool Transfer | 动态拉取远程模块 |
 | 无沙箱的插件系统 | [T1059](https://attack.mitre.org/techniques/T1059/) Command and Scripting Interpreter | 插件具备完整进程权限 |
 | 被攻陷的 JVM / Node.js / Python 运行时 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | 解释器或运行时本身被污染 |
@@ -3329,7 +3329,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ### Techniques（技术）
 
 | ID | 英文名称 | 中文含义 | 适用路径 |
-|----|---------|---------|---------|
+| ---- | --------- | --------- | --------- |
 | T1195 | Supply Chain Compromise | 供应链妥协 | 全部 |
 | T1195.001 | Software Supply Chain Compromise | 软件供应链妥协 | 全部 |
 | T1059 | Command and Scripting Interpreter | 命令与脚本解释器 | 3.2, 3.7 |
@@ -3353,7 +3353,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ### Mitigations（缓解措施）
 
 | ID | 英文名称 | 中文含义 | 适用路径 |
-|----|---------|---------|---------|
+| ---- | --------- | --------- | --------- |
 | M1013 | Application Developer Guidance | 应用开发者指南 | 全部 |
 | M1016 | Vulnerability Scanning | 漏洞扫描 | 3.2, 3.3, 3.4, 3.7 |
 | M1017 | User Training | 用户培训 | 3.1, 3.3 |
@@ -3709,7 +3709,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 4. 典型案例映射
 
 | 案例 | 时间 | 攻击路径 | 影响 | 发现方式 |
-|------|------|---------|------|---------|
+| ------ | ------ | --------- | ------ | --------- |
 | **SolarWinds Orion** | 2020 | 构建系统篡改 (3.2) | 18,000+ 组织 | FireEye 内部安全调查 |
 | **Codecov Bash Uploader** | 2021 | 分发渠道劫持 (3.6) | 29,000+ 组织 | 客户报告凭证泄露 |
 | **Dependency Confusion** | 2021 | 包管理器投毒 (3.4) | 35+ 科技公司 | 研究者主动披露 |
@@ -3723,7 +3723,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 5. 防御策略矩阵
 
 | 攻击路径 | SLSA 等级 | 技术控制 | 流程控制 | 检测机制 |
-|---------|----------|---------|---------|---------|
+| --------- | ---------- | --------- | --------- | --------- |
 | **3.1 开发环境渗透** | L1 | MFA、硬件密钥、开发者沙箱 | 最小权限原则、定期轮换 | UEBA、异常登录检测 |
 | **3.2 构建系统篡改** | L2-L3 | Hermetic Build、隔离构建环境 | CI/CD 审批流程、双人复核 | 构建产物哈希对比 |
 | **3.3 包管理器投毒** | L1-L2 | 私有注册表、命名空间隔离 | 包发布 MFA、维护者背景审查 | 包名相似度监控 |
@@ -3756,7 +3756,7 @@ SLSA 等级与攻击路径覆盖
 ### 6.1 早期预警信号
 
 | 信号 | 严重度 | 说明 |
-|------|--------|------|
+| ------ | -------- | ------ |
 | **新包名与内部包高度相似** | 🔴 高 | 可能的 typosquatting 或依赖混淆 |
 | **包版本号异常跳升** | 🔴 高 | 如从 1.2.3 跳到 999.0.0 |
 | **维护者账户异地登录** | 🔴 高 | 可能的凭证泄露 |
@@ -3805,7 +3805,7 @@ SLSA 等级与攻击路径覆盖
 XZ Utils 后门（CVE-2024-3094）是近年来最复杂的上游代码植入案例之一。攻击者 `Jia Tan` 通过数年社会工程学获得项目维护权限，最终在 `xz-utils` 5.6.0/5.6.1 的测试文件中植入后门，利用 `glibc` 的 `IFUNC` 机制在 SSH 守护进程加载 `liblzma` 时劫持 RSA 验证。
 
 | 阶段 | 时间 | 关键动作 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 潜伏 | 2021–2023 | 通过邮件列表贡献有效补丁，建立维护者信任 |
 | 渗透 | 2023–2024 | 获得 commit 权限，开始修改测试文件与构建脚本 |
 | 植入 | 2024-02 | 在 `tests/files/bad-3-corrupt.lzma` 等文件中隐藏恶意二进制 |
@@ -3817,7 +3817,7 @@ XZ Utils 后门（CVE-2024-3094）是近年来最复杂的上游代码植入案�
 将 XZ Utils 案例映射到 MITRE ATT&CK for Supply Chain（含 ICS/Enterprise）有助于统一威胁情报与防御设计。
 
 | 攻击路径 | MITRE ATT&CK 技术 ID | 技术名称 |
-|---------|---------------------|---------|
+| --------- | --------------------- | --------- |
 | 社会工程学获取维护者权限 | T1189 / T1566 | Drive-by Compromise / Phishing |
 | 在源码中植入混淆后门 | T1195.001 | Supply Chain Compromise: Software Supply Chain |
 | 修改构建/测试脚本以隐藏载荷 | T1547 | Boot or Logon Autostart Execution（IFUNC 劫持） |
@@ -3839,7 +3839,7 @@ XZ Utils 后门（CVE-2024-3094）是近年来最复杂的上游代码植入案�
 ### 8.1 常见反例（错误假设）
 
 | 反例 | 错误假设 | 实际风险 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | "我们只使用官方源，所以安全" | 官方源 = 可信 | XZ Utils 即来自官方 tarball 与 GitHub release |
 | "有 SLSA Build L2 就够了" | Build L2 可防御所有攻击 | Build L2 不保证 Source Track，无法防止上游代码植入 |
 | "依赖扫描每天跑一次即可" | 日扫描足够 | 主动利用漏洞需在 24 小时内响应（EU CRA） |
@@ -3848,7 +3848,7 @@ XZ Utils 后门（CVE-2024-3094）是近年来最复杂的上游代码植入案�
 ### 8.2 分层缓解措施
 
 | 攻击树路径 | 缓解控制 | 验证指标 |
-|-----------|---------|---------|
+| ----------- | --------- | --------- |
 | 3.1 开发环境渗透 | MFA + 硬件密钥 + 开发者沙箱 | 100% 开发者启用 MFA，异常登录告警 |
 | 3.2 构建系统篡改 | SLSA Build L3 + 隔离构建 | 所有产物附带 provenance，slsa-verifier 100% 通过 |
 | 3.3 包管理器投毒 | 私有代理 + 命名空间隔离 | 无公共注册表直接依赖 |
@@ -3901,7 +3901,7 @@ flowchart TD
 为了将攻击树与 MITRE ATT&CK Enterprise v16 对齐，下表将 7 条主要攻击路径细化为 28 项子技术，并给出对应的缓解措施（Mitigation）和检测信号。
 
 | 攻击路径 | 子攻击手段 | MITRE Technique | 主要 Mitigation | 检测信号 |
-|---------|-----------|----------------|----------------|---------|
+| --------- | ----------- | ---------------- | ---------------- | --------- |
 | 3.1 开发环境渗透 | 网络钓鱼窃取开发者凭据 | [T1566](https://attack.mitre.org/techniques/T1566/) Phishing | M1017 User Training, M1030 Network Segmentation | 异常登录地/时间、MFA 绕过尝试 |
 | 3.1 开发环境渗透 | 恶意 IDE/编辑器扩展 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1013 Application Developer Guidance, M1042 Disable or Remove Feature | 扩展权限申请、扩展市场新包名相似度 |
 | 3.1 开发环境渗透 | 被篡改的编译器/工具链 | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) Software Supply Chain Compromise | M1013, M1047 Audit | 编译输出哈希突变、工具链来源异常 |
@@ -3931,7 +3931,7 @@ flowchart TD
 #### 案例 1：SolarWinds Orion (2020)
 
 | 维度 | 内容 |
-|------|------|
+| ------ | ------ |
 | **攻击路径** | 3.2 构建系统篡改 |
 | **MITRE Technique** | T1195.001 Software Supply Chain Compromise |
 | **攻击链** | 攻陷 CI/CD → 在构建过程中注入 SUNBURST 后门 → 通过合法签名分发 |
@@ -3942,7 +3942,7 @@ flowchart TD
 #### 案例 2：Codecov Bash Uploader (2021)
 
 | 维度 | 内容 |
-|------|------|
+| ------ | ------ |
 | **攻击路径** | 3.6 分发渠道劫持 |
 | **MITRE Technique** | T1557 Man-in-the-Middle / T1584 Compromise Infrastructure |
 | **攻击链** | 篡改 Bash Uploader 脚本分发服务器 → 脚本窃取 CI 环境变量 |
@@ -3953,7 +3953,7 @@ flowchart TD
 #### 案例 3：3CX Desktop App (2023)
 
 | 维度 | 内容 |
-|------|------|
+| ------ | ------ |
 | **攻击路径** | 3.5 上游代码植入 + 3.6 分发渠道劫持 |
 | **MITRE Technique** | T1195.001 / T1078 Valid Accounts |
 | **攻击链** | 上游库被植入恶意代码 → 3CX 构建并分发带毒安装包 |
@@ -3964,7 +3964,7 @@ flowchart TD
 #### 案例 4：Dependency Confusion by Alex Birsan (2021)
 
 | 维度 | 内容 |
-|------|------|
+| ------ | ------ |
 | **攻击路径** | 3.4 依赖混淆 |
 | **MITRE Technique** | T1583 Acquire Infrastructure / T1071 Application Layer Protocol |
 | **攻击链** | 发现内部包名 → 在公共 npm/PyPI 发布更高版本 → 自动被 CI/CD 拉取 |
@@ -3975,7 +3975,7 @@ flowchart TD
 ### 9.3 分层缓解措施与验证指标
 
 | 攻击树路径 | 缓解控制 | 验证指标 | 对应 SLSA 等级 |
-|-----------|---------|---------|---------------|
+| ----------- | --------- | --------- | --------------- |
 | 3.1 开发环境渗透 | MFA + 硬件密钥 + 开发者沙箱 + IDE 扩展白名单 | 100% 开发者启用 MFA；扩展审批率 100% | Source L2+ |
 | 3.2 构建系统篡改 | SLSA Build L3 + 隔离构建 + 分离签名权限 | 所有产物附带 provenance；slsa-verifier 100% 通过 | Build L3 |
 | 3.3 包管理器投毒 | 私有代理 + 命名空间隔离 + 维护者 MFA | 无公共注册表直接依赖；包发布 MFA 率 100% | Build L2+ |
@@ -4028,7 +4028,7 @@ graph TD
 ### 10.1 攻击路径属性表
 
 | 攻击路径 | 入口点 | MITRE 技术 | 攻击面 | 对应 SLSA 控制 | 典型检测信号 | 典型案例 |
-|----------|--------|------------|--------|----------------|--------------|----------|
+| ---------- | -------- | ------------ | -------- | ---------------- | -------------- | ---------- |
 | 3.1 开发环境渗透 | 开发者凭据 / IDE 扩展 / 工具链 | T1566 / T1195.001 | 终端与身份 | Source L2+、Build L2+ | 异常登录、扩展权限 | 钓鱼窃取代码签名密钥 |
 | 3.2 构建系统篡改 | CI/CD / 构建脚本 / 产物仓库 | T1195.001 / T1059 | 构建平台 | Build L3、Env L2+ | 产物哈希突变、CI 配置变更 | SolarWinds Orion |
 | 3.3 包管理器投毒 | 公共注册表 / 维护者账户 | T1583 / T1078 / T1199 | 包生态 | Build L2+ | 包名相似、版本号跳升 | PyTorch 恶意依赖 |
@@ -4053,7 +4053,7 @@ graph TD
 ### 10.3 正例
 
 | 案例 | 正例说明 |
-|------|----------|
+| ------ | ---------- |
 | XZ Utils 后门发现 | Andres Freund 通过 SSH 登录性能异常定位到 liblzma，展示了持续监控与基线对比的价值 |
 | SolarWinds 事件响应 | FireEye 通过内部安全调查逆向出 SUNBURST 后门，推动行业加强构建隔离与 provenance 验证 |
 | Dependency Confusion 研究 | Alex Birsan 主动披露并退还赏金，证明命名空间隔离与显式注册源可有效阻止此类攻击 |
@@ -4061,7 +4061,7 @@ graph TD
 ### 10.4 反例（错误假设）
 
 | 反例 | 风险说明 |
-|------|----------|
+| ------ | ---------- |
 | “我们只从官方源下载，所以安全” | XZ Utils 与 SolarWinds 均来自官方分发渠道 |
 | “有数字签名就够了” | 签名无法证明构建过程未被篡改 |
 | “依赖扫描每天一次足够” | 主动利用漏洞需在 24 小时内响应（EU CRA） |
@@ -4119,7 +4119,7 @@ flowchart TD
 ## 文件清单
 
 | 文件 | 说明 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `attack-tree.md` | 软件供应链攻击树主文档 | 7 大攻击路径详解、典型案例、防御矩阵 |
 | `attack-tree.mmd` | Mermaid `flowchart TD` 源文件 | 在 Markdown/GitHub/Mermaid Live Editor 中渲染 |
 | `attack-tree.dot` | Graphviz DOT 源文件 | 生成 PDF/PNG/SVG 高清矢量图 |
@@ -4198,13 +4198,13 @@ TEST PASSED
 ## 攻击树图例
 
 | 节点类型 | Mermaid 形状 | Graphviz 形状 | 含义 |
-|---------|-------------|---------------|------|
+| --------- | ------------- | --------------- | ------ |
 | OR 节点 | 圆角矩形 | 圆角矩形 | 任一子路径成功即可 |
 | AND 节点 | 菱形 | 菱形 | 必须同时满足所有子条件 |
 | 叶节点 | 矩形 / 椭圆 | 椭圆 | 原子级攻击手段 |
 
 | 风险等级 | 颜色 | 说明 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | Critical | `#e53e3e` | 红色，最高优先级 |
 | High | `#dd6b20` | 橙色 |
 | Medium | `#d69e2e` | 黄色 |
@@ -4217,7 +4217,7 @@ TEST PASSED
 详见 `attack-tree-mitre-mapping.md`。核心映射：
 
 | 攻击路径 | 主 Technique | 相关 Techniques |
-|---------|-------------|----------------|
+| --------- | ------------- | ---------------- |
 | 3.1 开发环境渗透 | T1195.001 | T1078, T1552, T1566, T1056 |
 | 3.2 构建系统篡改 | T1195.001 | T1059, T1078, T1552 |
 | 3.3 包管理器投毒 | T1195.001 | T1583, T1584, T1078 |
@@ -4343,7 +4343,7 @@ gh attestation verify <artifact> --owner 你的组织
 ## 6. 与项目复用体系的映射
 
 | 项目目录 | 供应链安全角色 |
-|----------|----------------|
+| ---------- | ---------------- |
 | `struct/04-component-architecture-reuse/` | 容器镜像 = 可复用组件；OCI provenance = 组件信任护照 |
 | `struct/06-cross-layer-governance/` | SLSA L3 + SBOM = 组件目录准入门槛 |
 | `struct/10-supply-chain-security/` | SLSA、Sigstore、SBOM 的完整工具链 |
@@ -4415,7 +4415,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 ## 9. 控制点映射：SLSA Build Track L2/L3 → 工作流实现
 
 | SLSA 要求 | 工作流实现 | 验证命令 |
-|----------|-----------|---------|
+| ---------- | ----------- | --------- |
 | L1：自动化 provenance | `.github/workflows/slsa-provenance.yml` 触发构建 | 检查 Actions 运行日志 |
 | L2：托管构建 + 签名 | `slsa-github-generator` 生成 provenance；`actions/attest-build-provenance` 签名 | `gh attestation verify` |
 | L2：来源可验证 | provenance 中 `resolvedDependencies` 包含 commit SHA | `slsa-verifier --source-uri` |
@@ -4428,7 +4428,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 ## 10. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构与 Build Track L1-L3 | 2026-07-08 |
 | SLSA Provenance v1 | <https://slsa.dev/spec/v1.2/provenance> | Provenance predicate 格式 | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名与验证 | 2026-07-08 |
@@ -4458,7 +4458,7 @@ regctl artifact get --subject ghcr.io/org/app@sha256:<digest> \
 ## 检查单总览
 
 | 检查项 | 关键交付物 | 合格标准 | 责任人 | 状态 |
-|--------|-----------|---------|--------|------|
+| -------- | ----------- | --------- | -------- | ------ |
 | 1. SBOM | `sbom-spdx-3.0-template.json` 或 `sbom-cyclonedx-1.6-template.json` | 组件提供 SPDX 2.3/3.0+ 或 CycloneDX 1.4+ SBOM | 组件提供方 / 架构师 | ☐ |
 | 2. Provenance | `slsa-provenance-template.intoto.jsonl` | SLSA Build L2+ provenance attestation 存在且可验证 | 安全工程师 | ☐ |
 | 3. 签名 | Sigstore/cosign / GPG / HSM 签名 | 制品签名可验证，公钥/证书可信 | 安全工程师 | ☐ |
@@ -4565,7 +4565,7 @@ cosign verify-attestation \
 ### 4.3 合格标准
 
 | 严重度 | 准入要求 |
-|--------|---------|
+| -------- | --------- |
 | Critical | 必须修复或提供经安全团队批准的 VEX 例外 |
 | High | 原则上修复；如无法修复需记录缓解措施 |
 | Medium | 建议修复，允许带风险引入并制定修复计划 |
@@ -4594,7 +4594,7 @@ cosign verify-attestation \
 ### 5.2 常见风险许可证
 
 | 许可证 | 风险说明 | 建议 |
-|--------|---------|------|
+| -------- | --------- | ------ |
 | GPL-2.0/3.0 | Copyleft，可能触发衍生作品开源义务 | 法务评审 |
 | AGPL-3.0 | 网络使用也触发开源义务 | 通常禁止用于服务端闭源组件 |
 | SSPL | 非 OSI 认可，云服务限制 | 通常禁止 |
@@ -4632,7 +4632,7 @@ cosign verify-attestation \
 ## 7. 参考模板
 
 | 模板 | 用途 | 文件 |
-|------|------|------|
+| ------ | ------ | ------ |
 | SPDX 3.0.1 SBOM | 标准化物料清单 | `sbom-spdx-3.0-template.json` |
 | CycloneDX 1.6 SBOM | 标准化物料清单 | `sbom-cyclonedx-1.6-template.json` |
 | SLSA v1.2 Provenance | Build Track 来源证明 | `slsa-provenance-template.intoto.jsonl` |
@@ -4743,7 +4743,7 @@ cosign verify-attestation \
 ### 源代码层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 强制提交签名 | Git commit signing |
 | 分支保护 | GitHub/GitLab branch protection |
 | 代码审查 | Pull request review |
@@ -4753,7 +4753,7 @@ cosign verify-attestation \
 ### 依赖层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | Syft, Trivy, GitHub Dependency Graph |
 | 漏洞扫描 | Snyk, Dependabot, OWASP DC |
 | 依赖锁定 | lockfile, hash pinning |
@@ -4762,7 +4762,7 @@ cosign verify-attestation \
 ### 构建层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 隔离构建环境 | GitHub Actions hosted runners |
 | SLSA Provenance | SLSA GitHub Generator |
 | 可复现构建 | Reproducible Builds |
@@ -4771,7 +4771,7 @@ cosign verify-attestation \
 ### 部署层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 镜像签名验证 | Kyverno, OPA/Gatekeeper |
 | 运行时安全 | Falco, Tetragon |
 | 网络策略 | Kubernetes NetworkPolicy |
@@ -4789,7 +4789,7 @@ cosign verify-attestation \
 ## 5. 成熟度模型
 
 | 级别 | 特征 |
-|------|------|
+| ------ | ------ |
 | **L1 基础** | 有 SBOM，有漏洞扫描 |
 | **L2 管理** | 依赖锁定，构建签名，代码审查 |
 | **L3 定义** | SLSA L3，可复现构建，部署验证 |
@@ -4864,7 +4864,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 每层包含信任验证点、最小权限策略和持续监控指标。
 
 | 防御层 | NIST SP 800-207 对应 | SSDF 1.2 对应 | SLSA 映射 |
-|-------|---------------------|--------------|----------|
+| ------- | --------------------- | -------------- | ---------- |
 | **身份** | Identity | PO.1, PS.1 | Source Track L2-L3 |
 | **设备** | Device | PS.2 | Build Track L2-L3 |
 | **网络** | Network | PW.4 | Build Track L2 |
@@ -4878,7 +4878,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 3.1 信任验证点
 
 | 验证点 | 控制措施 | 验证方法 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **开发者身份** | 强制 MFA + 硬件安全密钥（FIDO2/WebAuthn） | 登录日志审计 |
 | **提交者身份** | 强制 GPG/SSH commit signing | `git verify-commit` 自动检查 |
 | **CI/CD 身份** | OIDC 联邦身份（非长期密钥） | Sigstore Fulcio 证书验证 |
@@ -4887,7 +4887,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 3.2 最小权限策略
 
 | 策略 | 实施方法 | 工具 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **最小仓库访问** | 仅授予必要的仓库读/写权限 | GitHub RBAC, GitLab 权限组 |
 | **最小 CI 权限** | CI token 仅访问必要的 secrets 和 registry | GitHub Actions `permissions` 关键字 |
 | **临时凭证** | 所有凭证有效期 <= 1 小时 | OIDC token, short-lived PAT |
@@ -4896,7 +4896,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 3.3 持续监控指标
 
 | 指标 | 阈值 | 告警级别 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 未签名提交比例 | > 0% | P0（阻断构建） |
 | MFA 绕过事件 | >= 1 | P0 |
 | 长期凭证使用 | >= 1 | P1 |
@@ -4912,7 +4912,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 4.1 信任验证点
 
 | 验证点 | 控制措施 | 验证方法 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **开发设备** | EDR/XDR 代理安装，设备健康证明 | CrowdStrike, Microsoft Defender |
 | **构建设备** | 托管 CI runner（非 self-hosted） | GitHub Actions hosted runners |
 | **构建环境** | 临时 + 隔离（Ephemeral + Isolated） | 每次构建新 VM/容器 |
@@ -4921,7 +4921,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 4.2 最小权限策略
 
 | 策略 | 实施方法 | 工具 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **设备隔离** | 开发机与生产网络物理/逻辑隔离 | VLAN, VPN 分割 |
 | **构建环境无持久化** | 构建后自动销毁所有状态 | GitHub Actions, Cloud Build |
 | **最小工具链** | 构建镜像仅包含必要工具 | Distroless, Wolfi, Chainguard |
@@ -4930,7 +4930,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 4.3 持续监控指标
 
 | 指标 | 阈值 | 告警级别 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 未注册设备访问源码 | >= 1 | P0 |
 | Self-hosted runner 使用 | >= 1（非例外审批） | P1 |
 | 构建环境 CVE 评分 | >= 7.0 | P1 |
@@ -4948,7 +4948,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 5.1 信任验证点
 
 | 验证点 | 控制措施 | 验证方法 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **微分段** | 按功能/团队划分网络段 | Kubernetes NetworkPolicy, Calico |
 | **加密传输** | 所有流量 TLS 1.3 | cert-manager, Istio mTLS |
 | **出口控制** | 构建环境禁止任意出站连接 | 防火墙规则, NetworkPolicy |
@@ -4957,7 +4957,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 5.2 最小权限策略
 
 | 策略 | 实施方法 | 工具 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **零信任网络访问** | 无 VPN，基于身份的逐资源访问 | Zscaler, BeyondCorp Enterprise |
 | **构建网络隔离** | 构建环境仅允许访问内部代理仓库 | 防火墙白名单 |
 | **服务间最小通信** | 默认拒绝，显式允许 | Kubernetes NetworkPolicy |
@@ -4966,7 +4966,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 5.3 持续监控指标
 
 | 指标 | 阈值 | 告警级别 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 未加密流量比例 | > 0% | P0 |
 | 构建环境异常出站连接 | >= 1 | P0 |
 | 横向移动检测 | >= 1 | P0 |
@@ -4980,7 +4980,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 6.1 信任验证点
 
 | 验证点 | 控制措施 | 验证方法 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **源码完整性** | 所有变更经双人审查 | 分支保护规则 |
 | **构建证明** | SLSA Provenance 生成与验证 | slsa-verifier, cosign |
 | **制品签名** | 容器镜像/二进制文件签名 | Sigstore/cosign, Notary |
@@ -4990,7 +4990,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 6.2 最小权限策略
 
 | 策略 | 实施方法 | 工具 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **最小容器权限** | 非 root，只读文件系统，drop all capabilities | Kubernetes securityContext |
 | **最小依赖** | 仅引入必要的直接依赖 | Dependabot, Renovate |
 | **最小运行时** | 使用 Distroless 或 scratch 镜像 | Google Distroless, Chainguard |
@@ -4999,7 +4999,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 6.3 持续监控指标
 
 | 指标 | 阈值 | 告警级别 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 未签名镜像部署 | >= 1 | P0（阻断） |
 | SLSA Provenance 验证失败 | >= 1 | P0（阻断） |
 | 运行时异常系统调用 | >= 1 | P1 |
@@ -5015,7 +5015,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 7.1 信任验证点
 
 | 验证点 | 控制措施 | 验证方法 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **SBOM 完整性** | 每次构建生成并签名 SBOM | Syft, Trivy + cosign |
 | **数据加密** | 静态加密 + 传输加密 | AES-256-GCM, TLS 1.3 |
 | **数据溯源** | 数据血缘追踪 | OpenLineage, DataHub |
@@ -5024,7 +5024,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 7.2 最小权限策略
 
 | 策略 | 实施方法 | 工具 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **数据分类** | 按敏感度分级（公开/内部/机密/绝密） | Microsoft Purview |
 | **最小数据访问** | 按需访问，自动过期 | ABAC, Just-In-Time Access |
 | **SBOM 分级共享** | 根据客户/合作伙伴级别共享不同粒度 SBOM | SBOM 分发平台 |
@@ -5033,7 +5033,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ### 7.3 持续监控指标
 
 | 指标 | 阈值 | 告警级别 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 未签名 SBOM | >= 1 | P1 |
 | 数据泄露检测 | >= 1 | P0 |
 | 异常数据访问模式 | >= 1 | P1 |
@@ -5045,7 +5045,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 ## 8. 零信任供应链架构与 SLSA 等级映射
 
 | SLSA 等级 | 身份层要求 | 设备层要求 | 网络层要求 | 应用层要求 | 数据层要求 |
-|----------|-----------|-----------|-----------|-----------|-----------|
+| ---------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | **L1** | 基础身份验证 | 无特殊要求 | 基础 TLS | Provenance 生成 | SBOM 生成 |
 | **L2** | MFA + 签名提交 | 托管构建环境 | 微分段 | 签名 Provenance | 签名 SBOM |
 | **L3** | OIDC 联邦身份 | 临时 + 隔离环境 | 构建网络隔离 | 硬化构建平台 | 完整审计日志 |
@@ -5107,7 +5107,7 @@ NIST SP 800-207 定义的零信任架构（Zero Trust Architecture, ZTA）核心
 NIST SSDF 1.2 Draft（SP 800-218r1）明确将供应链风险管理作为基础项目元素。本模板的五层防御与 SSDF 实践映射如下：
 
 | 零信任层 | SSDF 1.2 实践 | 任务 |
-|---------|--------------|------|
+| --------- | -------------- | ------ |
 | 身份 | PO.1, PS.1 | 组织准备、保护软件 |
 | 设备 | PS.2, PW.4 | 保护软件、安全复用代码 |
 | 网络 | PW.4, PW.6 | 安全复用代码、配置编译器 |
@@ -5121,7 +5121,7 @@ NIST SSDF 1.2 Draft（SP 800-218r1）明确将供应链风险管理作为基础�
 ## 11. 2026-2027 实施路线图
 
 | 阶段 | 时间 | 目标 | 关键里程碑 |
-|------|------|------|-----------|
+| ------ | ------ | ------ | ----------- |
 | **Phase 1: 基础** | 2026 Q3 | 身份 + 网络层 | MFA 全覆盖、TLS 1.3 全覆盖、基础微分段 |
 | **Phase 2: 构建** | 2026 Q4 | 设备 + 应用层 | 托管 CI 迁移、镜像签名、准入控制 |
 | **Phase 3: 数据** | 2027 Q1 | 数据层 | SBOM 全覆盖、审计日志集中化、数据分类 |
@@ -5206,7 +5206,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 1.1 适用范围
 
 | 产品类别 | 示例 | 合规路径 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **所有带数字元素的产品 (PDE)** | IoT 设备、软件、操作系统、App、工业控制器 | 自我评估 (Module A) 或 第三方认证 |
 | **重要产品 (Important Products)** | 身份管理系统、浏览器、VPN、操作系统、工业自动化系统 | 第三方认证 (Module B+C 或 H) |
 | **关键产品 (Critical Products)** | 硬件安全模块、智能卡、工业监控系统等 | 强制第三方认证 (Module H) |
@@ -5216,7 +5216,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 1.2 核心义务（Article 10 + Annex I）
 
 | 义务 | 要求摘要 | 对复用的影响 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **安全设计 (Security by Design)** | 产品在设计阶段即需集成网络安全 | 复用组件必须经过安全评估才能纳入产品 |
 | **安全默认 (Security by Default)** | 出厂配置即具备适当安全设置 | 复用组件的默认配置不得引入漏洞 |
 | **漏洞管理** | 识别、记录、修复漏洞的完整流程 | 复用组件的漏洞必须可追踪至上游 |
@@ -5233,7 +5233,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.1 复用前评估（Pre-Reuse Assessment）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | R-01 | 复用组件是否来自可信来源？ | 验证供应商是否提供 CRA 合规声明 | P0 |
 | R-02 | 复用组件是否有已知的 actively exploited vulnerabilities？ | 查询 CVE / NVD / ENISA 威胁 Landscape | P0 |
 | R-03 | 复用组件是否提供 SBOM（SPDX/CycloneDX）？ | 要求供应商提供机器可读 SBOM | P0 |
@@ -5248,7 +5248,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.2 复用中管理（In-Use Management）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | M-01 | 您的产品 SBOM 是否完整包含所有复用组件及其版本？ | SBOM 生成工具（Syft, Trivy, FOSSology） | P0 |
 | M-02 | 是否建立了复用组件的漏洞监控机制？ | CVE 订阅 + SCA 工具（Snyk, Mend, Black Duck） | P0 |
 | M-03 | 是否能在 24h 内识别复用组件的 actively exploited vulnerability 对您产品的影响？ | 影响分析流程 + 自动化工具 | P0 |
@@ -5261,7 +5261,7 @@ EU CRA 是首部对**所有带数字元素的产品**（hardware 和 software）
 ### 2.3 复用后报告（Post-Incident Reporting）
 
 | 检查项 | 要求 | 验证方法 | 优先级 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | P-01 | 发现复用组件的 actively exploited vulnerability 后，是否在 24h 内向 ENISA 报告？ | 事件响应流程 | P0 |
 | P-02 | 报告内容是否包含：产品标识、漏洞描述、影响评估、缓解措施？ | 报告模板审查 | P0 |
 | P-03 | 严重安全事件（severe incidents）是否在 24h 内报告 ENISA？ | 事件分级标准 | P0 |
@@ -5278,7 +5278,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ### 3.1 供应商合同检查清单
 
 | 条款 | 建议内容 |
-|:---|:---|
+| :--- | :--- |
 | **安全要求条款** | 供应商保证组件符合 CRA Annex I 的基本要求 |
 | **漏洞通报义务** | 供应商在发现漏洞后 X 小时内通知您 |
 | **SBOM 交付** | 每版本提供 SPDX 2.3 或 CycloneDX 1.6 格式 SBOM |
@@ -5307,7 +5307,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ## 4. 与 SLSA / SBOM / SSDF 的协同
 
 | CRA 要求 | SLSA 对应 | SBOM 对应 | SSDF 对应 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 安全设计 | SLSA L3+（可审计构建） | — | PW.1.1（安全设计） |
 | 漏洞管理 | — | VEX（漏洞利用交换） | RV.1.1（漏洞接收） |
 | SBOM | SLSA Provenance | SPDX 2.3 / CycloneDX 1.6 | PO.3.2（软件组件清单） |
@@ -5334,7 +5334,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ## 6. 工具推荐
 
 | 用途 | 工具 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | SBOM 生成 | Syft, Trivy, FOSSology | 从容器/代码生成 SPDX/CycloneDX |
 | SCA / 漏洞扫描 | Snyk, Mend (WhiteSource), Black Duck, OWASP Dependency-Check | 持续监控复用组件漏洞 |
 | 漏洞报告 | ENISA 单一报告平台（开发中） | Article 16 要求，预计 2026 上线 |
@@ -5391,7 +5391,7 @@ CRA 不仅约束制造商，也影响**进口商和分销商**。作为制造商
 ## 1. CRA 基本信息
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **法规编号** | Regulation (EU) 2024/2847 |
 | **生效日期** | 2024-12-30 |
 | **漏洞报告义务** | **2026-09-11** 起 |
@@ -5454,7 +5454,7 @@ EU CRA Obligations
 ### 必须包含的信息
 
 | 字段 | 说明 |
-|------|------|
+| ------ | ------ |
 | 组件名称 | 所有软件组件 |
 | 版本信息 | 精确版本号 |
 | 供应商/来源 | 组件制造商 |
@@ -5474,7 +5474,7 @@ EU CRA Obligations
 ## 5. 漏洞报告时间线
 
 | 事件 | 时间要求 | 报告对象 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 主动利用的漏洞 | **24 小时内** | CSIRT 或 ENISA |
 | 其他未修复漏洞 | 无具体天数，但需"及时" | 按程序 |
 | 补丁发布 | 合理时间内 | 用户/客户 |
@@ -5537,7 +5537,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 9.2 义务清单矩阵
 
 | 义务组 | 具体义务 | 适用对象 | 关键日期 | 违规风险 |
-|--------|---------|---------|---------|---------|
+| -------- | --------- | --------- | --------- | --------- |
 | 安全设计与默认 | 最小攻击面、安全默认配置、无默认凭证 | 所有 PDE 制造商 | 2027-12-11 | 市场禁入、罚款 |
 | 漏洞管理 | 识别、跟踪、修复漏洞；生命周期结束通知 | 所有 PDE 制造商 | 2026-09-11（报告义务） | 监管处罚 |
 | 事件检测与响应 | 检测影响 CIA 的事件；24h 报告主动利用漏洞 | 所有 PDE 制造商 | 2026-09-11 | 罚款、声誉损失 |
@@ -5547,7 +5547,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 9.3 SBOM 实施步骤
 
 | 步骤 | 行动 | 输出物 | 工具示例 |
-|------|------|--------|---------|
+| ------ | ------ | -------- | --------- |
 | 1. 工具选型 | 选择 SPDX/CycloneDX 生成工具 | 工具链决策记录 | Syft, Trivy, CycloneDX CLI |
 | 2. CI/CD 集成 | 每次构建自动生成 SBOM | `sbom.spdx.json` / `bom.json` | GitHub Actions / GitLab CI |
 | 3. 完整性校验 | 为 SBOM 附加哈希与签名 | 签名 SBOM | cosign |
@@ -5558,7 +5558,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 9.4 漏洞管理实施步骤
 
 | 步骤 | 行动 | 时间要求 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 1. 持续监控 | 订阅 CVE/OSV/供应商安全通告 | 实时 |
 | 2. 影响评估 | 根据 SBOM 判断受影响产品 | 48 小时内 |
 | 3. 修复计划 | 制定补丁或缓解方案 | 合理时间内 |
@@ -5577,7 +5577,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 9.6 正例
 
 | 实践 | 效果 |
-|------|------|
+| ------ | ------ |
 | 在 CI/CD 中自动生成 CycloneDX SBOM 并签名 | 满足 CRA 软件透明度要求，构建可验证 |
 | 建立 24 小时漏洞报告 SOP 并演练 | 满足主动利用漏洞报告义务 |
 | 对关键组件要求 SLSA Build L3 + Source L2 provenance | 降低第三方组件引入后门风险 |
@@ -5586,7 +5586,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 9.7 反例
 
 | 反例 | 后果 |
-|------|------|
+| ------ | ------ |
 | 认为"我们是 SaaS，不需要 CE 标记" | 远程数据处理软件属于 PDE，仍需合规 |
 | SBOM 缺失传递依赖或哈希 | 漏洞定位不完整，审计失败 |
 | 将开源组件豁免误解为完全免责 | 商业集成仍需承担漏洞处理义务 |
@@ -5637,7 +5637,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 下表将 CRA 的核心义务从法规条款映射到可执行检查项，便于组织进行差距分析。
 
 | 义务组 | 法规条款 | 具体义务 | 适用对象 | 关键日期 | 违规风险 |
-|--------|---------|---------|---------|---------|---------|
+| -------- | --------- | --------- | --------- | --------- | --------- |
 | 安全设计与默认 | Article 10 + Annex I | 最小攻击面、安全默认配置、无默认凭证、加密、访问控制 | 所有 PDE 制造商 | 2027-12-11 | 市场禁入、罚款 |
 | 漏洞管理 | Article 13 + Annex II | 识别、跟踪、修复漏洞；生命周期结束通知 | 所有 PDE 制造商 | 2026-09-11（报告义务） | 监管处罚 |
 | 事件检测与响应 | Article 14 | 检测影响 CIA 的事件；24h 报告主动利用漏洞 | 所有 PDE 制造商 | 2026-09-11 | 罚款、声誉损失 |
@@ -5650,7 +5650,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 #### 必须包含的信息
 
 | 字段 | 说明 | 示例 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 组件名称 | 所有软件组件的名称 | `log4j-core` |
 | 版本信息 | 精确版本号 | `2.17.1` |
 | 供应商/来源 | 组件制造商或维护者 | Apache Software Foundation |
@@ -5658,7 +5658,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 | 已知漏洞 | 持续更新的 CVE/OSV 关联 | CVE-2021-44228 |
 | 依赖关系 | 包括传递依赖 | `log4j-api:2.17.1` |
 | 哈希校验 | 组件完整性验证 | SHA-256 digest |
-|  provenance 链接 | SLSA provenance 引用 | OCI referrer 或 URL |
+| provenance 链接 | SLSA provenance 引用 | OCI referrer 或 URL |
 
 #### 格式与交付要求
 
@@ -5675,7 +5675,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 #### 漏洞管理生命周期
 
 | 阶段 | 行动 | 时间要求 | 输出物 |
-|------|------|---------|--------|
+| ------ | ------ | --------- | -------- |
 | 1. 持续监控 | 订阅 CVE/OSV/供应商安全通告 | 实时 | 安全通告订阅列表 |
 | 2. 影响评估 | 根据 SBOM 判断受影响产品 | 48 小时内 | 影响评估报告 |
 | 3. 修复计划 | 制定补丁或缓解方案 | 合理时间内 | 修复计划与时间表 |
@@ -5730,7 +5730,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 10.7 正例补强
 
 | 实践 | 效果 |
-|------|------|
+| ------ | ------ |
 | 在 CI/CD 中自动生成 CycloneDX SBOM 并签名 | 满足 CRA 软件透明度要求，构建可验证 |
 | 建立 24 小时漏洞报告 SOP 并每季度演练 | 满足主动利用漏洞报告义务 |
 | 对关键组件要求 SLSA Build L3 + Source L2 provenance | 降低第三方组件引入后门风险 |
@@ -5741,7 +5741,7 @@ EU CRA 将"含数字元素的产品"（Products with Digital Elements, PDE）制
 ### 10.8 反例补强
 
 | 反例 | 后果 |
-|------|------|
+| ------ | ------ |
 | 认为"我们是 SaaS，不需要 CE 标记" | 远程数据处理软件属于 PDE，仍需合规 |
 | SBOM 缺失传递依赖或哈希 | 漏洞定位不完整，审计失败 |
 | 将开源组件豁免误解为完全免责 | 商业集成仍需承担漏洞处理义务 |
@@ -5791,7 +5791,7 @@ flowchart TD
 ### 11.1 责任主体属性表
 
 | 角色 | 法规定位 | 核心义务 | 关键交付物 | 时间要求 | 示例 |
-|------|----------|----------|------------|----------|------|
+| ------ | ---------- | ---------- | ------------ | ---------- | ------ |
 | PDE 制造商 | Article 3/10/13/14 | 安全设计、漏洞管理、事件报告、SBOM | SBOM、技术文档、DoC、CE 标记 | 2026-09-11 报告义务；2027-12-11 全面适用 | 工业软件供应商 |
 | 进口商 | Article 25 | 验证制造商合规、保留符合性证据 | 合规证据档案、DoC 副本 | 2027-12-11 | 欧盟外产品进口商 |
 | 分销商 | Article 26 | 不销售不合规产品、配合市场监管 | 产品追溯记录、下架记录 | 2027-12-11 | 电子设备经销商 |
@@ -5814,7 +5814,7 @@ PDE 制造商（责任起点）
 ### 11.3 正例
 
 | 实践 | 效果 |
-|------|------|
+| ------ | ------ |
 | 在 CI/CD 中自动生成并签名 CycloneDX SBOM | 满足软件透明度要求，构建过程可验证 |
 | 建立 24h 主动利用漏洞报告 SOP 并每季度演练 | 满足 Article 14 报告义务 |
 | 对关键组件要求 SLSA Build L3 + Source L2 provenance | 降低第三方组件引入后门风险 |
@@ -5824,7 +5824,7 @@ PDE 制造商（责任起点）
 ### 11.4 反例
 
 | 反例 | 后果 |
-|------|------|
+| ------ | ------ |
 | “我们是 SaaS，不需要 CE 标记” | 远程数据处理软件属于 PDE，仍需合规 |
 | SBOM 缺失传递依赖或哈希 | 漏洞定位不完整，审计失败 |
 | 未指定欧盟授权代表 | 非欧盟制造商无法合法投放市场 |
@@ -6018,7 +6018,7 @@ NIST 于 2025-12-17 发布 **SP 800-218 Rev.1 Initial Public Draft**（SSDF v1.2
 SSDF 1.2 包含 **四大实践组（Practice Groups）**，共 19 项核心实践：
 
 | 实践组 | 代号 | 核心目标 |
-|---|---|---|
+| --- | --- | --- |
 | Prepare the Organization | PO | 建立安全文化、定义标准、分配资源 |
 | Protect Software | PS | 保护源代码、构建环境、交付渠道 |
 | Produce Well-Secured Software | PW | 在设计与实现阶段内建安全 |
@@ -6034,7 +6034,7 @@ SSDF 1.2 包含 **四大实践组（Practice Groups）**，共 19 项核心实�
 SSDF 1.2 的四大实践组恰好覆盖了复用安全的治理、防护、生产与响应全链路。
 
 | SSDF 1.2 实践 | 本项目对应主题 | 复用安全含义 |
-|---|---|---|
+| --- | --- | --- |
 | **PO.1** 定义安全标准 | 01 元模型/标准对齐 | 复用资产的安全基线。在引入第三方组件前，必须定义可接受的安全阈值（如 CVE 严重程度上限、许可合规要求）。 |
 | **PO.2** 实施角色与培训 | 06 跨层治理/安全委员会 | 明确架构审查委员会对复用资产的安全审批权，建立安全培训与意识提升机制。 |
 | **PS.1** 保护源代码 | 10 供应链安全/SLSA | 防止源代码在复用前被篡改。通过 SLSA 来源证明（provenance）验证所复用组件的构建来源可信。 |
@@ -6070,7 +6070,7 @@ NIST 于 2025-12-17 发布 SP 800-218 Rev.1 的 **Initial Public Draft（征求�
 以下清单将 SSDF 1.2 的关键实践转化为 10 项可落地的检查项，并映射到 SLSA（Supply-chain Levels for Software Artifacts）等级要求。
 
 | # | 检查项 | SSDF 实践 | SLSA 映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | 已制定复用资产安全准入策略（CVE 阈值、许可白名单） | PO.1 | L1 |
 | 2 | 架构审查委员会对引入的新组件进行安全评审并留档 | PO.2 | L1 |
 | 3 | 所有复用资产的来源均可通过 SBOM 追溯至唯一坐标（PURL/CPE） | PS.1 | L2 |
@@ -6196,7 +6196,7 @@ SCVS 的核心设计理念是将"组件验证"从被动的漏洞扫描提升为�
 SCVS 1.0 定义了六个相互关联的控制族，构成组件验证的完整能力矩阵：
 
 | 控制族 | 英文名称 | 核心目标 |
-|--------|----------|----------|
+| -------- | ---------- | ---------- |
 | V1 | Inventory | 建立并维护准确的软件组件清单 |
 | V2 | Software Bill of Materials | 生成、维护和使用标准化的 SBOM |
 | V3 | Build Environment | 确保构建环境的安全性和可重复性 |
@@ -6416,7 +6416,7 @@ SCVS 的三个成熟度等级与架构复用决策形成明确的对应关系，
 SCVS 与 SLSA（Supply-chain Levels for Software Artifacts）是两个相互补充的供应链安全框架。理解它们的协同关系，对于建立完整的复用信任体系至关重要。
 
 | 维度 | OWASP SCVS | SLSA 1.2 |
-|------|-----------|----------|
+| ------ | ----------- | ---------- |
 | **核心关注点** | 组件本身的验证状态 | 构建过程和制品的可信度 |
 | **评估对象** | 软件组件（库、包、模块） | 软件制品（二进制、镜像、包） |
 | **关键输出** | 组件成熟度等级（L1-L3） | 构建等级（L1-L3） |
@@ -6499,7 +6499,7 @@ Level    L2   │  低     │  中等   │  较高   │
 **监控触发器**:
 
 | 触发类型 | 监控内容 | 响应动作 |
-|----------|----------|----------|
+| ---------- | ---------- | ---------- |
 | 新 CVE 披露 | NVD/OSV/CNVD 新漏洞匹配 | 24 小时内完成影响评估 |
 | SBOM 变更 | 上游发布新版本或变更依赖 | 重新执行准入检查清单 |
 | 许可证变更 | 组件更改许可证或新增依赖许可证冲突 | 法务+安全联合评审 |
@@ -6548,7 +6548,7 @@ Level    L2   │  低     │  中等   │  较高   │
 **SCVS 评估复盘**:
 
 | 控制族 | 事件前状态 | 理想状态（SCVS L3） | 差距 |
-|--------|-----------|---------------------|------|
+| -------- | ----------- | --------------------- | ------ |
 | V1 Inventory | 大量组织不知自己在使用 Log4j | 完整的组件清单，精确到版本 | 多数组织缺失 |
 | V2 SBOM | 极少组织有准确的 SBOM | 每个制品附带完整 SBOM | 严重缺失 |
 | V3 Build | Log4j 本身构建规范 | 复用方不审查构建环境 | 复用方缺失 |
@@ -6573,7 +6573,7 @@ Level    L2   │  低     │  中等   │  较高   │
 XZ 后门事件暴露了传统安全控制的盲区——即使源码看似正常，发布制品也可能被篡改。
 
 | 控制族 | 事件启示 |
-|--------|----------|
+| -------- | ---------- |
 | V1 Inventory | 许多 Linux 发行版和容器镜像隐含依赖 liblzma（XZ 的核心库），但组织往往未将其列入显式清单。 |
 | V2 SBOM | 容器镜像和操作系统缺少完整的 SBOM，导致无法快速定位 XZ 的使用位置。 |
 | V3 Build | XZ 的构建过程被篡改，若复用方不验证构建环境，则完全无法发现。 |
@@ -6596,7 +6596,7 @@ XZ 后门事件暴露了传统安全控制的盲区——即使源码看似正�
 **SCVS 评估复盘**:
 
 | 控制族 | 防御作用 |
-|--------|----------|
+| -------- | ---------- |
 | V4 Package | 若组织使用私有 npm 仓库并配置依赖锁定，新版本的恶意包不会自动进入构建。 |
 | V5 SCA | 恶意代码扫描（静态分析 + 社区情报）有概率识别出异常的加密和网络行为。 |
 | V6 Provenance | 若 npm 包支持签名验证（如 Sigstore），可验证发布者身份是否变更。 |
@@ -6607,7 +6607,7 @@ XZ 后门事件暴露了传统安全控制的盲区——即使源码看似正�
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|------|-----|----------|
+| ------ | ----- | ---------- |
 | OWASP SCVS 官方文档 | <https://scvs.owasp.org/> | 2026-06-10 |
 | OWASP SCVS GitHub 仓库 | <https://github.com/OWASP/Software-Component-Verification-Standard> | 2026-06-10 |
 | SLSA 1.2 规范 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
@@ -6855,7 +6855,7 @@ GUAC 不仅记录直接依赖，还通过 SBOM 解析传递依赖，构建完整
 GUAC 本身不直接扫描代码或生成 SBOM，而是通过**摄入器（Ingestor）**架构从多种外部源获取数据：
 
 | 数据源 | 数据类型 | 摄入方式 |
-|--------|----------|----------|
+| -------- | ---------- | ---------- |
 | SLSA Provenance | 构建来源证明 | 直接解析 JSON |
 | SPDX / CycloneDX SBOM | 软件物料清单 | 解析标准格式 |
 | OSV.dev API | 漏洞数据 | 自动同步 |
@@ -6951,7 +6951,7 @@ GUAC 通过图中心性算法（如度中心性、介数中心性）自动识别
 **攻击面扩展评估维度**:
 
 | 维度 | 数据来源 | 风险指标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | 代码规模 | SBOM + 源码统计 | 引入的代码行数（LOC） |
 | 网络暴露 | Scorecard + 人工标注 | 是否包含网络监听功能 |
 | 权限要求 | SBOM / 文档 | 是否需要 root / 管理员权限 |
@@ -7074,7 +7074,7 @@ query ReuseRiskAssessment($packageName: String!) {
 评分结果映射到复用决策：
 
 | 评分区间 | 风险等级 | 复用建议 |
-|----------|----------|----------|
+| ---------- | ---------- | ---------- |
 | 0 - 30 | 低 | 允许复用，常规监控 |
 | 31 - 60 | 中 | 允许复用，附加条件（如定期重评） |
 | 61 - 80 | 高 | 条件复用，需补偿控制 + 高级审批 |
@@ -7252,7 +7252,7 @@ GUAC 作为软件架构复用框架的安全增强层，部署在复用资产库
 推荐的部署选型：
 
 | 数据库 | 适用场景 | 备注 |
-|--------|----------|------|
+| -------- | ---------- | ------ |
 | Neo4j | 大规模生产部署 | 生态成熟，查询语言 Cypher 直观 |
 | ArangoDB | 多模型混合场景 | 同时支持图、文档、KV 查询 |
 | GUAC MemStore | 小规模和评测 | GUAC 内置，零外部依赖 |
@@ -7332,7 +7332,7 @@ GUAC 不替代组织的复用资产库（如内部 Nexus、Artifactory、Backsta
 ## 7. 控制点映射：GUAC 数据摄入 → 复用安全控制
 
 | 安全控制目标 | GUAC 节点/边 | 数据源 | 复用决策应用 |
-|-------------|-------------|--------|-------------|
+| ------------- | ------------- | -------- | ------------- |
 | 漏洞影响分析 | Vulnerability → Package/Artifact（`affected_by`） | OSV.dev、NVD、厂商公告 | 新 CVE 披露后秒级生成影响清单 |
 | 来源可信度验证 | Artifact → SLSA Provenance（`has_provenance`） | SLSA attestations、Sigstore Rekor | 过滤 Build Track < L2 的组件 |
 | 开源健康度评估 | Source → Scorecard（`has_scorecard`） | OpenSSF Scorecard API | 设定 Scorecard 最低分准入门槛 |
@@ -7351,7 +7351,7 @@ GUAC 不替代组织的复用资产库（如内部 Nexus、Artifactory、Backsta
 ## 8. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | GUAC 官方文档 | <https://guac.sh/> | GUAC 项目主页与文档 | 2026-07-08 |
 | GUAC GitHub 仓库 | <https://github.com/guacsec/guac> | 源码与发布 | 2026-07-08 |
 | OpenSSF GUAC 介绍 | <https://openssf.org/projects/guac/> | OpenSSF 项目页面 | 2026-07-08 |
@@ -7436,7 +7436,7 @@ OWASP Application Security Verification Standard (ASVS) 5.0.0 于 **2025 年 5 �
 ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 
 | 编号 | 控制类别 | 与复用相关性 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | V1 | 架构、设计与威胁建模 | 🔴 高 — 定义组件边界和安全假设 |
 | V2 | 认证与身份管理 | 🟡 中 — 复用身份组件的安全要求 |
 | V3 | 会话管理 | 🟡 中 — 复用会话库的安全基线 |
@@ -7459,7 +7459,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 ### 2.1 验证等级定义
 
 | 等级 | 定义 | 适用场景 | 复用安全含义 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | **L1** | 基础安全验证 | 低敏感度应用、内部工具、原型 | 复用组件需满足基本安全卫生要求 |
 | **L2** | 标准安全验证 | 大多数生产应用、商业软件、云服务 | 复用组件需通过安全审查和漏洞扫描 |
 | **L3** | 高级安全验证 | 高敏感度应用（金融、医疗、关键基础设施）、处理 PII/支付数据 | 复用组件需完整溯源、形式化验证或等价安全保证 |
@@ -7587,7 +7587,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 **复用前安全审查清单（基于 ASVS L2）**
 
 | 检查项 | 验证方法 | 通过标准 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | SBOM 可用性 | 要求供应商提供 | SPDX/CycloneDX 格式，包含传递依赖 |
 | 漏洞扫描 | SCA 工具扫描 | 无高危/严重 CVE（CVSS ≥ 7.0） |
 | 许可证合规 | FOSSA/Black Duck | 与组织策略兼容 |
@@ -7603,7 +7603,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 ### 5.1 四维协同矩阵
 
 | ASVS 5.0.0 条款 | ISO 25010:2023 质量特性 | NIST SSDF v1.1 实践 | SLSA 1.2 等级 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | V11.1.1 SBOM | — | PW.4 Reuse Well-Secured Software | Build L1+ |
 | V11.1.2 漏洞扫描 | Security | RV.1 漏洞响应 | Build L2+ |
 | V11.1.3 溯源验证 | — | PO.1 软件安全要求 | Build L3 |
@@ -7640,7 +7640,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 ### 6.2 ASVS L2 审查过程
 
 | 检查项 | 审查结果 | 决策 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | SBOM | 提供完整 Maven 依赖树 | ✅ 通过 |
 | 漏洞扫描 | NVD 扫描显示 CVE-2021-44228（CVSS 10.0） | ❌ **阻止** |
 | 许可证 | Apache 2.0 | ✅ 兼容 |
@@ -7652,7 +7652,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 ### 6.3 替代方案评估
 
 | 替代组件 | 漏洞扫描 | 维护状态 | 最终决定 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | Logback | 无高危 CVE | 活跃 | ✅ 批准 |
 | java.util.logging | 无已知漏洞 | JDK 内置 | ✅ 备选 |
 | TinyLog | 无高危 CVE | 活跃 | ✅ 备选 |
@@ -7662,7 +7662,7 @@ ASVS 5.0.0 将应用安全验证分为以下 14 个控制类别：
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OWASP ASVS 5.0.0 官方页面 | <https://owasp.org/www-project-application-security-verification-standard/> | 2026-06-10 |
 | OWASP Top 10:2025 | <https://owasp.org/www-project-top-ten/> | 2026-06-10 |
 | NIST SP 800-218 (SSDF) v1.1 | <https://csrc.nist.gov/projects/ssdf> | 2026-06-10 |
@@ -7731,7 +7731,7 @@ OWASP Top 10:2025 是 OWASP 发布的第 8 版十大安全风险清单，于 **2
 ### 1.2 2025 版 vs 2021 版对比
 
 | 排名 | Top 10:2021 | Top 10:2025 | 变化说明 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | A01 | Broken Access Control | Broken Access Control | 保持首位，SSRF 合并至此 |
 | A02 | Cryptographic Failures | Cryptographic Failures | 保持 |
 | A03 | Injection | **Software Supply Chain Failures** | 🔴 **新增核心风险** |
@@ -7766,7 +7766,7 @@ OWASP Top 10:2025 是 OWASP 发布的第 8 版十大安全风险清单，于 **2
 **对复用的直接影响**:
 
 | 子风险 | 复用场景 | 影响 | 缓解措施 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 漏洞组件 | 引入含已知 CVE 的开源库 | 直接攻击面 | SCA 扫描 + SBOM + 漏洞监控 |
 | 恶意包 | 使用 typosquatting 或 hijacked 包 | 供应链投毒 | 命名空间验证 + 签名检查 |
 | 构建篡改 | 复用未经加固构建平台产出的组件 | 构建时注入 | SLSA provenance 验证 |
@@ -7864,7 +7864,7 @@ def calculate_risk_score(component):
 ### 3.2 风险等级与决策映射
 
 | 风险评分 | 等级 | 决策建议 | 后续行动 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 0-25 | 🟢 低风险 | **批准复用** | 纳入常规监控 |
 | 26-50 | 🟡 中风险 | **条件批准** | 制定缓解计划 + 限期整改 |
 | 51-75 | 🟠 高风险 | **延迟复用** | 要求供应商修复或寻找替代方案 |
@@ -7969,7 +7969,7 @@ def calculate_risk_score(component):
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OWASP Top 10:2025 官方 | <https://owasp.org/www-project-top-ten/> | 2026-06-10 |
 | OWASP ASVS 5.0.0 | <https://owasp.org/www-project-application-security-verification-standard/> | 2026-06-10 |
 | CVE-2024-3094 (XZ Utils) | <https://nvd.nist.gov/vuln/detail/CVE-2024-3094> | 2026-06-10 |
@@ -8073,7 +8073,7 @@ OSPS 遵循"**基线而非天花板**"的原则：
 ### 2.1 成熟度等级定义
 
 | 等级 | 名称 | 描述 | 复用安全含义 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | **Level 1** | 基础 (Baseline) | 项目具备基本安全实践 | 可作为**低风险场景**的复用候选 |
 | **Level 2** | 进阶 (Enhanced) | 项目具备增强的安全控制和流程 | 可作为**标准生产场景**的复用候选 |
 | **Level 3** | 高级 (Comprehensive) | 项目具备全面的安全保证和持续验证 | 可作为**高安全要求场景**的复用候选 |
@@ -8118,7 +8118,7 @@ Level 3 (高级)
 **目标**: 确保只有授权人员可以修改项目代码和配置。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 多因素认证 (MFA) 强制 | L2+ | 检查项目仓库的 MFA 策略 |
 | 分支保护规则 | L1+ | 检查 main/master 分支是否有保护 |
 | 代码审查强制 | L2+ | 检查合并是否需审查 |
@@ -8131,7 +8131,7 @@ Level 3 (高级)
 **目标**: 确保构建和发布过程的安全性和可重现性。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 自动化构建流程 | L1+ | 检查 CI/CD 配置 |
 | 构建环境隔离 | L2+ | 检查是否使用容器化/隔离构建 |
 | SLSA provenance | L3 | 检查是否有 provenance 签名 |
@@ -8144,7 +8144,7 @@ Level 3 (高级)
 **目标**: 确保安全信息对用户透明。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | LICENSE 存在 | L1 | 检查许可证文件 |
 | SECURITY.md | L2+ | 检查安全披露政策 |
 | 安全使用指南 | L3 | 检查安全配置文档 |
@@ -8154,7 +8154,7 @@ Level 3 (高级)
 **目标**: 确保项目具备基本质量保证。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 自动化测试 | L1+ | 检查测试覆盖率 |
 | 代码风格检查 | L2+ | 检查 linter/formatter 配置 |
 | 静态分析 | L2+ | 检查 SAST 工具集成 |
@@ -8164,7 +8164,7 @@ Level 3 (高级)
 **目标**: 确保项目具备漏洞发现和响应能力。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 依赖漏洞监控 | L2+ | 检查 Dependabot/Renovate 等工具 |
 | 漏洞披露响应 | L2+ | 检查历史 CVE 修复时间 |
 | 安全公告 | L3 | 检查 SECURITY ADVISORIES |
@@ -8174,7 +8174,7 @@ Level 3 (高级)
 **目标**: 确保项目法律合规。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 明确许可证 | L1 | 检查 LICENSE 文件 |
 | 许可证兼容性声明 | L3 | 检查多许可证项目 |
 
@@ -8183,7 +8183,7 @@ Level 3 (高级)
 **目标**: 确保第三方依赖的安全性。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 依赖清单 | L2+ | 检查 lockfile 或 SBOM |
 | 依赖更新策略 | L2+ | 检查自动化更新工具 |
 | 依赖审计 | L3 | 检查依赖树的定期审计 |
@@ -8193,7 +8193,7 @@ Level 3 (高级)
 **目标**: 确保项目持续安全监控。
 
 | OSPS 要求 | Level | 复用评估方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 安全指标跟踪 | L3 | 检查安全仪表盘 |
 | 异常检测 | L3 | 检查供应链异常监控 |
 
@@ -8204,7 +8204,7 @@ Level 3 (高级)
 ### 4.1 四维对比
 
 | 维度 | OSPS Baseline | SLSA 1.2 | OpenSSF Scorecard | OWASP SCVS |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **定位** | 开源项目安全基线 | 构建系统安全等级 | 开源项目安全评分 | 组件验证标准 |
 | **评估对象** | 开源项目本身 | 构建流程和产物 | 开源项目仓库 | 单个软件组件 |
 | **成熟度** | 3 级 (L1-L3) | 4 级 (L1-L3 Build Track) | 0-10 分 | 3 级 (L1-L3) |
@@ -8301,7 +8301,7 @@ Level 3 (高级)
 ### 6.1 案例：评估知名开源项目的 OSPS 达标情况
 
 | 项目 | 领域 | Scorecard | 估计 OSPS 等级 | 复用建议 |
-|:---|:---|:---:|:---|:---|
+| :--- | :--- | :---: | :--- | :--- |
 | Kubernetes | 容器编排 | ~8.5 | L3 | ✅ 高安全场景首选 |
 | React | 前端框架 | ~7.5 | L2-L3 | ✅ 标准生产场景 |
 | Spring Boot | Java 框架 | ~7.0 | L2 | ✅ 标准生产场景 |
@@ -8356,7 +8356,7 @@ OpenTelemetry 作为 OpenSSF 早期采纳 OSPS Baseline 的项目之一，通过
 ## 7. 控制点映射：OSPS Baseline → 复用评估流程
 
 | OSPS 控制类别 | OSPS 要求示例 | 复用评估方法 | 项目对应控制 |
-|--------------|--------------|-------------|-------------|
+| -------------- | -------------- | ------------- | ------------- |
 | 访问控制 (AC) | 多因素认证、分支保护、代码审查 | Scorecard API + GitHub/GitLab 分支保护检查 | 复用准入检查清单 |
 | 构建与发布 (BR) | 自动化构建、SLSA provenance、发布签名 | 检查 release artifacts 是否有 `.sigstore` 或 provenance | `04-provenance-examples/` 工作流模板 |
 | 文档 (DO) | SECURITY.md、LICENSE、安全使用指南 | 检查仓库根目录文件 | 复用组件目录元数据 |
@@ -8371,7 +8371,7 @@ OpenTelemetry 作为 OpenSSF 早期采纳 OSPS Baseline 的项目之一，通过
 ## 8. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | OpenSSF OSPS Baseline v2026.02.19 | <https://baseline.openssf.org/versions/2026-02-19.html> | 当前正式版本 | 2026-07-08 |
 | OpenSSF OSPS Baseline 首页 | <https://baseline.openssf.org/> | 项目入口与版本列表 | 2026-07-08 |
 | OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全评分 | 2026-07-08 |
@@ -8429,7 +8429,7 @@ OpenTelemetry 作为 OpenSSF 早期采纳 OSPS Baseline 的项目之一，通过
 ### 1.1 版本历史
 
 | 版本 | 状态 | 发布时间 | 核心变化 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | SSDF v1.0 | 草案 | 2020 | 初始框架，四大实践组 |
 | **SSDF v1.1** | **正式版** | **2022-02** | **细化实践，增加示例** |
 | **SSDF v1.2** | **草案** | **2025-12** | **扩展至 AI 组件、强化供应链要求** |
@@ -8473,7 +8473,7 @@ SSDF 框架结构
 ### 2.2 具体任务
 
 | 任务 | 描述 | 与复用决策的映射 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **PW.4.1** | 获取来源可信的软件组件 | 复用前：验证供应商/仓库的可信度 |
 | **PW.4.2** | 验证组件的完整性 | 复用前：校验和 / 签名 / SLSA provenance |
 | **PW.4.3** | 跟踪组件的来源 | 复用中：SBOM + 依赖图谱 |
@@ -8504,7 +8504,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 ### 3.1 AI 组件复用要求（草案）
 
 | 新增任务 | 描述 | 复用影响 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **PW.4.6** | 评估 AI 模型的训练数据来源 | 复用 AI 模型前验证数据合规性 |
 | **PW.4.7** | 验证 AI 模型的完整性和来源 | 复用 AI 模型前验证模型签名和 provenance |
 | **PW.4.8** | 评估 AI 组件的偏见和公平性 | 复用 AI 组件前进行偏见检测 |
@@ -8512,7 +8512,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 ### 3.2 强化供应链要求（草案）
 
 | 新增任务 | 描述 | 复用影响 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **PW.4.9** | 评估供应商的安全成熟度 | 将供应商安全评估作为复用前置条件 |
 | **PW.4.10** | 要求供应商提供安全证明 | 供应商需提供 SBOM、SLSA provenance 等 |
 
@@ -8523,7 +8523,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 ### 4.1 四维框架映射
 
 | SSDF 实践 | SLSA 1.2 | EU CRA | OSPS Baseline |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | PW.4.1 可信来源 | — | 供应链安全要求 | Access Control |
 | PW.4.2 完整性验证 | Build L1+ | 软件完整性 | Build & Release |
 | PW.4.3 来源追踪 | Build L2+ | SBOM 要求 | Dependencies |
@@ -8586,7 +8586,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 > NIST SSDF v1.2 当前仍为 **Initial Public Draft（2025-12-17 发布）**，最终版预计 2026-Q3 发布。以下动作为预对齐清单，最终版发布后应立即执行。
 
 | 检查项 | v1.1 现状 | v1.2 草案变化 | 最终版发布后的动作 | 优先级 |
-|---|---|---|---|:---:|
+| --- | --- | --- | --- | :---: |
 | AI 组件复用 | PW.4 通用复用要求 | **新增 AI 组件安全复用要求** | 在 AI 原生复用主题中补充 SSDF AI 组件映射 | P0 |
 | 供应链强化 | PS.2 / PW.4 基础要求 | **强化来源验证、SBOM、 provenance 要求** | 更新 SBOM 与 SLSA 联合实施检查清单 | P0 |
 | 威胁场景 | 覆盖通用软件供应链 | **增加生成式 AI 与 Agent 供应链威胁** | 在 OWASP Agentic AI / MCP Top 10 映射中引用 SSDF v1.2 | P1 |
@@ -8598,7 +8598,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | NIST SP 800-218 (SSDF) v1.1 | <https://csrc.nist.gov/projects/ssdf> | 2026-06-10 |
 | NIST SP 800-218 v1.2 (草案) | <https://csrc.nist.gov/pubs/sp/800/218/r1/ipd> | 2026-07-08 |
 | SLSA 1.2 | <https://slsa.dev/spec/v1.2/> | 2026-06-10 |
@@ -8658,7 +8658,7 @@ PW.4.5 维护更新      → 阶段 4: 安全合规判定（持续）
 本 PoC 演示 SLSA Build Level 4 核心控制点：
 
 | 控制点 | PoC 中的体现 |
-|--------|-------------|
+| -------- | ------------- |
 | **双人审查** | `verify-provenance.py` 检查 `REVIEWERS` 记录或 `SLSA_REVIEWERS` 环境变量中至少包含两名审批者。 |
 | **密封构建** | `build.py` 显式声明输入文件（`src/main.py`），不访问外部网络，构建脚本自身哈希也被记录。 |
 | **可复现构建** | 多次运行 `build.py`（同 commit、同脚本）产生的 `dist/app` 字节相同，`verify-provenance.py` 校验 SHA-256。 |
@@ -8748,7 +8748,7 @@ Chainguard 基于 Wolfi 发行版构建的容器镜像追求可复现构建与�
 ## 6. 反例 / 反模式
 
 | 反模式 | 风险 | 本 PoC 中的检测方式 |
-|--------|------|---------------------|
+| -------- | ------ | --------------------- |
 | **无来源证明** | 无法追溯构建来源，遭受供应链攻击后无法定位 | `verify-provenance.py` 检查 `provenance.json` 存在且字段完整 |
 | **单人审查/无审查** | 内部人员可单点注入恶意代码 | `verify-provenance.py` 要求至少两名审批者 |
 | **非密封构建** | 构建时拉取未声明依赖，导致输出不可预测 | `build.py` 不访问网络，输入文件显式声明 |
@@ -8768,7 +8768,7 @@ SolarWinds Orion 的构建环境被入侵后，攻击者在官方构建代理中
 ## 7. 控制点映射：SLSA Build Track L4 → PoC 实现
 
 | SLSA 要求 | PoC 文件/逻辑 | 关键字段/校验 |
-|----------|--------------|--------------|
+| ---------- | -------------- | -------------- |
 | 双人审查（Two-person review） | `REVIEWERS` + `verify-provenance.py` | 审批者数量 ≥ 2，且与 `SLSA_REVIEWERS`  env 可覆盖 |
 | 密封构建（Hermetic build） | `build.py` | 显式读取 `src/main.py`；不访问网络；构建脚本哈希写入 provenance |
 | 可复现构建（Reproducible build） | `build.py` + `verify-provenance.py` | 同 commit、同脚本下多次构建输出 `output_hash` 一致 |
@@ -8804,7 +8804,7 @@ SolarWinds Orion 的构建环境被入侵后，攻击者在官方构建代理中
 ## 10. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构与 Build Track L1-L3 | 2026-07-08 |
 | SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L4 草案要求（双人审查、可复现、密封） | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名 | 2026-07-08 |
@@ -8849,7 +8849,7 @@ SLSA Build L4 的核心价值不在于单一技术，而在于通过**过程控�
 **软件供应链安全** 关注在软件生命周期的源代码、依赖、构建、分发与部署各环节中，复用资产不被篡改、不引入已知漏洞、不违反许可证要求的能力。
 
 | 机制 | 定义 | 作用 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **SLSA** | Supply-chain Levels for Software Artifacts，OpenSSF 提出的安全等级框架 | 定义 Source / Build / Provenance / Common 等 Track 的可验证等级 |
 | **SBOM** | Software Bill of Materials | 以 SPDX / CycloneDX / SWID 枚举组件、版本、许可证与来源 |
 | **Provenance** | 来源证明 | 记录谁、何时、如何构建出软件制品 |
@@ -8936,7 +8936,7 @@ graph LR
 ## 5. 纵深防御矩阵
 
 | 层次 | 控制措施 | 对应标准/工具 |
-|------|----------|---------------|
+| ------ | ---------- | --------------- |
 | 源码 | 签名提交、分支保护、代码审查 | Git, Gitsign |
 | 依赖 | 漏洞扫描、私有仓库、typosquat 检测 | OSV, Dependabot, Snyk |
 | 构建 | 隔离构建、可复现构建、来源证明 | SLSA, Sigstore |
@@ -8954,7 +8954,7 @@ graph LR
 ## 7. 权威来源
 
 | 标准/规范 | URL | 说明 | 核查日期 |
-|-----------|-----|------|----------|
+| ----------- | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构，Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
 | OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全健康度自动化评分 | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名、Fulcio、Rekor 透明日志 | 2026-07-08 |
@@ -9001,7 +9001,7 @@ graph LR
 ## 10. 供应链安全能力矩阵
 
 | 能力 | L1 起步 | L2 基础 | L3 成熟 | L4 领先 |
-|------|---------|---------|---------|---------|
+| ------ | --------- | --------- | --------- | --------- |
 | SBOM | 手工清单 | CI 生成 | 全依赖覆盖 | 与运行时关联 |
 | 漏洞响应 | 事件驱动 | 定期扫描 | 自动化影响分析 | 主动威胁情报 |
 | 构建安全 | 未隔离 | 托管构建 | 隔离 + Provenance | 可复现构建 |
@@ -9054,7 +9054,7 @@ graph LR
 ## 15. 控制点映射：SLSA Build Track → 项目实现
 
 | SLSA Build Track 要求 | 项目控制点 | 验证方式 |
-|----------------------|-----------|---------|
+| ---------------------- | ----------- | --------- |
 | L1：自动化生成 Provenance | CI/CD 流水线统一配置，禁止本地手动构建 | 检查 `.github/workflows/` 存在构建工作流 |
 | L2：托管构建 + 签名 Provenance | 使用 GitHub Actions + `actions/attest-build-provenance` 或 cosign keyless | `slsa-verifier` 验证 builder.id 与签名链 |
 | L3：隔离/密封/临时构建 | 构建容器 `--network=none`，每次构建新 runner，签名密钥由 OIDC 联邦签发 | 审计 runner 网络策略与 provenance 中 `internalParameters` |

@@ -9,7 +9,7 @@
 ## 1. OWASP LLM Top 10 (2025)
 
 | 排名 | 风险 | 说明 | MCP 相关 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | **LLM01** | Prompt Injection | 提示注入攻击 | ✅ 高 |
 | **LLM02** | Sensitive Information Disclosure | 敏感信息泄露 | ✅ 中 |
 | **LLM03** | Supply Chain Vulnerabilities | 供应链漏洞 | ✅ 高 |
@@ -28,7 +28,7 @@
 OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 
 | 排名 | 风险 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **MCP1** | Prompt Injection via Tool Descriptions | 通过工具描述注入 |
 | **MCP2** | Tool Description Poisoning | 工具描述投毒 |
 | **MCP3** | Excessive Tool Permissions | 过度工具权限 |
@@ -45,7 +45,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 3. OWASP Agentic AI Top 10 (2026)
 
 | 排名 | 风险 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **ASI01** | Agent Goal Hijack | Agent 目标劫持 |
 | **ASI02** | Uncontrolled Autonomy | 不受控的自主性 |
 | **ASI03** | Identity and Privilege Abuse | 身份和权限滥用 |
@@ -124,7 +124,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 6. 复用安全建议
 
 | 复用场景 | 风险 | 建议 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | 复用第三方 MCP Server | Tool Poisoning | 代码审计 + 版本锁定 + 沙箱 |
 | 复用 Agent 角色模板 | 过度代理 | 限制权限范围 + 人在回路 |
 | 复用 Prompt 模板 | 提示注入 | 输入验证 + 参数化 |
@@ -136,7 +136,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 7. 工具推荐
 
 | 类别 | 工具 |
-|------|------|
+| ------ | ------ |
 | MCP 扫描 | MCPScan, MCPGuard, Cisco MCP Scanner |
 | Prompt 防护 | Prompt 过滤器、Layered Filtering |
 | 监控 | OpenTelemetry GenAI 约定 |

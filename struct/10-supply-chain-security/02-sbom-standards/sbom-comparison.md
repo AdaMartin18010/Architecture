@@ -8,7 +8,7 @@
 ## 1. 三种格式概览
 
 | 特性 | SPDX (ISO/IEC 5962) | CycloneDX (OWASP) | SWID (ISO/IEC 19770-2) |
-|------|---------------------|-------------------|------------------------|
+| ------ | --------------------- | ------------------- | ------------------------ |
 | **标准化组织** | Linux Foundation / ISO | OWASP | ISO/IEC / NIST |
 | **主要用途** | 许可证合规 + 供应链安全 | 供应链安全 + 漏洞管理 | 软件资产管理 |
 | **表达复杂度** | 高 | 中 | 低 |
@@ -143,7 +143,7 @@ SBOM 格式选择
 ## 6. 2026 趋势
 
 | 需求 | 说明 |
-|------|------|
+| ------ | ------ |
 | 运行时 SBOM | 记录实际加载的组件 |
 | AI 模型 SBOM | 记录训练数据、依赖库、超参数 |
 | VEX 自动化 | 自动化漏洞可利用性评估 |
@@ -161,7 +161,7 @@ SBOM 格式选择
 ### 7.2 SPDX / CycloneDX / SWID 详细对比矩阵
 
 | 属性 | SPDX (ISO/IEC 5962) | CycloneDX (OWASP/ECMA-424) | SWID (ISO/IEC 19770-2) |
-|------|--------------------|---------------------------|------------------------|
+| ------ | -------------------- | --------------------------- | ------------------------ |
 | 标准化组织 | Linux Foundation / ISO | OWASP / ECMA | ISO/IEC / NIST |
 | 主要目标 | 许可证合规 + 供应链安全 | 供应链安全 + 漏洞管理 | 软件资产管理 (ITAM) |
 | 核心交换格式 | RDF/XML, JSON, Tag-Value, YAML, SPDX-Lite | JSON, XML, Protocol Buffers | XML |
@@ -237,7 +237,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:maven/org.apache.logging.log4j/log4j-core@
 ### 7.4 正例
 
 | 场景 | 推荐格式 | 价值 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 向欧盟市场交付含数字元素的产品 | SPDX 或 CycloneDX | 满足 EU CRA 技术文档与 SBOM 要求 |
 | 构建 DevSecOps 流水线 | CycloneDX | 原生漏洞字段与 CI/CD 工具集成 |
 | 大规模企业软件资产盘点 | SWID + SPDX | SWID 与 CMDB 集成，SPDX 补充许可证 |
@@ -246,7 +246,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:maven/org.apache.logging.log4j/log4j-core@
 ### 7.5 反例
 
 | 反例 | 后果 |
-|------|------|
+| ------ | ------ |
 | 用 SWID 替代 CycloneDX 进行漏洞管理 | SWID 缺乏原生漏洞字段，无法直接关联 CVE |
 | SBOM 仅列直接依赖，遗漏传递依赖 | 攻击面被低估，Log4j 类事件无法快速定位 |
 | purl 使用不规范（大小写、命名空间缺失） | 自动化工具无法匹配漏洞数据库 |

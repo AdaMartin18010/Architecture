@@ -74,7 +74,7 @@ stateDiagram-v2
 ### 3.3 关键动作语义
 
 | 动作 | 前置条件 | 后置状态变化 | 安全性质依赖 |
-|------|---------|------------|------------|
+| ------ | --------- | ------------ | ------------ |
 | `PowerEnableOn` | `Disabled` ∧ `Enable=FALSE` | `Enabling`, `Busy=TRUE` | — |
 | `PowerEnableReady` | `Enabling` ∧ `Enable=TRUE` | `Standstill`, `Status=TRUE` | L2 |
 | `PowerEnableError` | `Enabling` ∧ `err≠0` | `ErrorStop`, `Error=TRUE` | I2 |
@@ -113,7 +113,7 @@ stateDiagram-v2
 ### 4.3 关键动作语义
 
 | 动作 | 前置条件 | 后置状态变化 | 安全性质依赖 |
-|------|---------|------------|------------|
+| ------ | --------- | ------------ | ------------ |
 | `MoveStart` | `Idle` ∧ `Execute=FALSE` ∧ `axisState=Standstill` ∧ `power=Standstill` | `Busy`, `Busy=TRUE` | I1 |
 | `MoveStartError` | `Idle` ∧ `Execute=FALSE` ∧ `axisState≠Standstill` | `Error`, `Error=TRUE` | — |
 | `MoveActivate` | `Busy` ∧ `Execute=TRUE` | `Active`, `Active=TRUE`, `axis=DiscreteMotion` | I1 |
@@ -260,7 +260,7 @@ Fairness ==
 ## 8. TLC 模型检查配置
 
 | 配置项 | 建议值 | 说明 |
-|-------|-------|------|
+| ------- | ------- | ------ |
 | `Axes` | `{axis1}` | 单轴验证已覆盖核心状态空间；多轴需乘积扩展 |
 | `MaxTimeoutSteps` | `5` | 较小的超时阈值以限制状态空间直径 |
 | `ErrorIDs` | `{0, 0x8A01, 0x8A02, 0x9001}` | 覆盖无错误、轴错误、功能块错误 |
@@ -286,7 +286,7 @@ Model Checking Results:
 本案例是 `struct/07-formal-verification/01-tla-plus/case-library.md` 中规划的 **T10** 案例：
 
 | 属性 | T06 支付服务 | T07 MCP 协商 | T08 A2A Task | **T10 PLCopen Motion** |
-|------|-----------|-----------|------------|----------------------|
+| ------ | ----------- | ----------- | ------------ | ---------------------- |
 | 状态机特征 | 事务状态 | 协议协商 | Agent 任务 | **IEC 61131-3 功能块** |
 | 核心不变量 | 资金守恒 | 能力一致性 | 终止状态无消息 | **StandstillRequiredForMove** |
 | 核心活性 | 事务最终完成 | 协商最终成功 | 任务最终终止 | **BusyEventuallyTerminates** |

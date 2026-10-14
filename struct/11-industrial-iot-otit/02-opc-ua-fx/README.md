@@ -11,7 +11,7 @@
 **OPC UA FX（Field eXchange）** 是 OPC Foundation 为现场级通信定义的扩展，基于 OPC UA PubSub over UDP（UADP）与 IEEE 802.1 TSN，实现跨厂商控制器与设备之间的确定性数据交换。其核心复用价值在于：用标准化信息模型替代私有现场总线，降低 vendor lock-in 与工程集成成本。
 
 | 通信模式 | 全称 | 典型周期 | 适用层级 | 复用成熟度 |
-|----------|------|---------|---------|-----------|
+| ---------- | ------ | --------- | --------- | ----------- |
 | **C2C** | Controller-to-Controller | 10–100 ms | L1-L2 协调 | 已量产（2025-2026） |
 | **C2D** | Controller-to-Device | 500 μs – 10 ms | L0-L1 控制 | Phase 2 试点 |
 | **D2D** | Device-to-Device | 250 μs – 1 ms | L0 设备直连 | 开发中 |
@@ -36,7 +36,7 @@
 ```
 
 | FX 规范部分 | OPC 编号 | 内容 | 与 ISA-95 / AAS 的映射 |
-|------------|---------|------|----------------------|
+| ------------ | --------- | ------ | ---------------------- |
 | **Part 80** | OPC 10000-80 | UAFX Overview and Concepts | 总体架构概念 |
 | **Part 81** | OPC 10000-81 | Connecting Devices and Information Model | AutomationComponent ↔ AAS Submodel 概念对齐 |
 | **Part 82** | OPC 10000-82 | Networking (TSN / topology / LLDP) | IEC/IEEE 60802 TSN 配置 |
@@ -44,7 +44,7 @@
 | **Part 84** | OPC 10000-84 | Profiles and Conformance Units | 设备能力声明与互操作测试 |
 
 | ISA-95 层级 | OPC UA FX 角色 | 复用关注点 |
-|------------|---------------|-----------|
+| ------------ | --------------- | ----------- |
 | L0 | C2D / D2D 现场设备数据接入 | 设备描述、I/O 映射、Companion Spec |
 | L1 | C2C 控制器间协调 | 控制回路同步、安全联锁 |
 | L2 | C2C + Client/Server 区域监控 | 报警、事件、历史数据 |

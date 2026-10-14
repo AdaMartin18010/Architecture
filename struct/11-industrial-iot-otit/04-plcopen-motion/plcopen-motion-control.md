@@ -6,7 +6,7 @@
 ## 1. 规范体系与版本
 
 | 规范部分 | 版本状态 | 核心内容 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | Part 1 & 2 | v2.0 合并版 | 单轴/多轴运动控制基础功能块 |
 | Part 3 | 现行 | 用户指南与工程实例 |
 | Part 4 | 2025 发布 | 协调运动（Coordinated Motion），机器人控制集成 |
@@ -31,7 +31,7 @@ Continuous Motion ──MC_CamIn/GearIn──→ Synchronized Motion
 ```
 
 | 状态 | 语义 |
-|-----|------|
+| ----- | ------ |
 | **Disabled** | 初始状态；伺服未使能，轴不受 FB 控制 |
 | **StandStill** | 伺服已使能，无运动命令；所有运动起点 |
 | **Homing** | 正在执行回零程序 |
@@ -52,7 +52,7 @@ Continuous Motion ──MC_CamIn/GearIn──→ Synchronized Motion
 ### 3.1 管理型功能块（Administrative FBs）
 
 | 功能块 | 作用 | 复用场景 |
-|-------|------|---------|
+| ------- | ------ | --------- |
 | `MC_Power` | 伺服使能/关闭 | 所有轴的启停标准化 |
 | `MC_Reset` | 清除轴错误 | 故障恢复流程复用 |
 | `MC_ReadStatus` | 读取轴状态字 | 诊断面板/HMI 复用 |
@@ -62,7 +62,7 @@ Continuous Motion ──MC_CamIn/GearIn──→ Synchronized Motion
 ### 3.2 单轴运动功能块
 
 | 功能块 | 运动类型 | 关键输入 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | `MC_MoveAbsolute` | 绝对定位 | Position, Velocity, Acceleration, Deceleration |
 | `MC_MoveRelative` | 相对定位 | Distance, ... |
 | `MC_MoveAdditive` | 叠加定位 | Distance, 在当前目标上累加 |
@@ -75,7 +75,7 @@ Continuous Motion ──MC_CamIn/GearIn──→ Synchronized Motion
 ### 3.3 多轴协调功能块
 
 | 功能块 | 协调模式 | 复用价值 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | `MC_CamIn` / `MC_CamOut` | 电子凸轮 | 包装、印刷、飞剪曲线复用 |
 | `MC_GearIn` / `MC_GearOut` | 电子齿轮 | 同步传动比复用 |
 | `MC_Phasing` | 相位偏移 | 套准（Register）控制 |
@@ -111,7 +111,7 @@ PLCopen Safety 采用**双通道架构**：
 2017 年发布的 Safe Motion 将 **17 个安全运动功能**映射到工业网络：
 
 | 功能类别 | 示例 | 安全机制 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | 安全停止 | SOS, STO, SS1, SS2 | 按 IEC 61800-5-2 安全停机曲线 |
 | 安全速度 | SLS, SSM, SSR | 速度监控与限制 |
 | 安全位置 | SLP, SCA | 范围与方向监控 |
@@ -140,7 +140,7 @@ PLCopen Safety 采用**双通道架构**：
 ## 6. 与 ISA-95 的层级映射
 
 | ISA-95 层级 | PLCopen 应用 | 典型功能块 |
-|------------|-------------|-----------|
+| ------------ | ------------- | ----------- |
 | L0 现场设备 | 伺服驱动器 | `MC_Power`, `MC_ReadActualPosition` |
 | L1 控制 | PLC 运动控制 | `MC_MoveAbsolute`, `MC_Home` |
 | L2  supervisory | 产线协调 | `MC_CamIn`, `MC_GearIn`, Motion Group |

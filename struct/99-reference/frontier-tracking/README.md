@@ -45,7 +45,7 @@
 ## 当前活跃跟踪项（2026-Q3）
 
 | 标准/技术 | 当前状态 | 权威来源 | 影响评估 | 跟踪负责人 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **MCP** | 稳定版 **2025-11-25**；**RC 2026-07-28 已发布（2026-05-29）** | modelcontextprotocol.io / GitHub Releases | 功能层 AI 协议基线 | TBD |
 | **A2A** | **v1.0.0** 已发布（2026-03-12） | <https://a2a-protocol.org/latest/> | Agent 互操作基线 | TBD |
 | **ArchiMate 4.0** | ✅ **已正式发布（2026-04-27）** | The Open Group Document C260 / [官方发布公告](https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification) | 元模型层更新 | TBD |

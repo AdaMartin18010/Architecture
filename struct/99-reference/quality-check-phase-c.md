@@ -10,7 +10,7 @@
 ## 1. 文档格式合规检查
 
 | 文档 | 版本头部 | 定位声明 | 状态标记 | 权威来源(URL+日期) | 结果 |
-|------|----------|----------|----------|-------------------|------|
+| ------ | ---------- | ---------- | ---------- | ------------------- | ------ |
 | C-01 SysML v2 复用映射 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
 | C-02 MBSE/PLE 整合 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
 | C-03 数字孪生通用架构 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
@@ -28,7 +28,7 @@
 **结果分布**:
 
 | 状态 | 数量 | 占比 | 说明 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | ✅ OK (200) | 63 | 60.6% | 正常访问 |
 | ⚠️ WARN (403) | 18 | 17.3% | WAF/Cloudflare 拦截，浏览器可正常访问 |
 | ❌ FAIL (404) | 9 | 8.7% | **需要修复** |
@@ -39,7 +39,7 @@
 ## 3. 需要修复的 URL（404）
 
 | # | URL | 所在文档 | 建议修复 |
-|---|-----|----------|----------|
+| --- | ----- | ---------- | ---------- |
 | 1 | `https://biglever.com/solution/featured-articles/` | C-01 | 替换为 `https://biglever.com/`（已验证可达）或 Gears PLE 产品页 |
 | 2 | `https://www.gov.uk/modaf` | C-07 | 替换为 `https://www.gov.uk/guidance/mod-architecture-framework` 或 UK MOD 架构框架最新入口 |
 | 3 | `https://www.incose.org/publications/se-handbook` | C-02 | 替换为 `https://www.incose.org/docs/default-source/se-handbook/` 或 INCOSE 官方商店链接 |
@@ -57,7 +57,7 @@
 以下 URL 返回连接错误（000ERR），**可能因网络环境或 TLS 配置导致 curl 失败，不代表 URL 本身无效**。建议通过浏览器人工复核：
 
 | URL | 所在文档 | 复核建议 |
-|-----|----------|----------|
+| ----- | ---------- | ---------- |
 | `https://github.com/Systems-Modeling/SysML-v2-API-Java-Client` | C-01 | GitHub 仓库，浏览器复核 |
 | `https://github.com/Systems-Modeling/SysML-v2-Release` | C-01 | GitHub 仓库，浏览器复核 |
 | `https://biglever.com/` | C-02 | 主站有时 200 有时 ERR，建议复核 |
@@ -79,7 +79,7 @@
 ### C-08 复用决策工具 v2.0
 
 | 检查项 | 结果 |
-|--------|------|
+| -------- | ------ |
 | 单元测试 | 25/25 通过 ✅ |
 | CLI 命令 | decide / check-standard / assess-maturity / card 全部可用 ✅ |
 | Streamlit Web | 结构完整，含输入面板、决策结果、风险热力图、导出功能 ✅ |
@@ -95,7 +95,7 @@
 **修复时间**: 2026-06-10（验证后立即修复）
 
 | # | 原 URL | 修复后 URL | 状态 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 1 | `biglever.com/solution/featured-articles/` | `https://biglever.com/` | ✅ 已修复 |
 | 2 | `www.gov.uk/modaf` | `https://www.gov.uk/guidance/mod-architecture-framework` | ✅ 已修复 |
 | 3 | `incose.org/publications/se-handbook` | `https://www.incose.org/docs/default-source/se-handbook/` | ✅ 已修复 |

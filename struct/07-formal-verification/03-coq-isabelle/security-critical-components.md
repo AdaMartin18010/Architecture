@@ -47,7 +47,7 @@
 Classical theorem-proving courses introduce induction over `nat`, list reversal, or a toy imperative language (WHILE).  Industrial verification must deal with C semantics, unbounded heap models, concurrency, and machine-code equivalence.  The table below maps the gap along seven dimensions.
 
 | Dimension | Teaching Example | Industrial Target | Consequence for Proof Architecture |
-|-----------|------------------|-------------------|-----------------------------------|
+| ----------- | ------------------ | ------------------- | ----------------------------------- |
 | **State space** | Small finite record (e.g., `pc :: nat`, `stk :: int list`) | Entire physical memory + device registers + MMU page tables | Need separation logic (VCC, Iris) or explicit memory model (seL4) |
 | **Language** | Custom WHILE grammar with big-step SOS | Subset of C11 / C17, or ARM assembly | Deeply embedded operational semantics in Coq/Isabelle |
 | **Abstraction layers** | 1–2 (e.g., spec + implementation) | 4–6 (abstract spec → executable spec → design → C → binary) | Layered refinement (Refinement Framework, Armada, L4.verified) |
@@ -194,7 +194,7 @@ lemma kernelEntry_invariant:
 ### 2.4 Mapping to `struct/` Topics
 
 | seL4 Concept | Maps to `struct/` Node |
-|--------------|------------------------|
+| -------------- | ------------------------ |
 | Capability model (Layer 0) | `struct/04-component-architecture-reuse/01-capability-model/` |
 | Refinement proof stack (Layers 0->3) | `struct/07-formal-verification/01-refinement-calculus/` |
 | C semantics / memory model | `struct/07-formal-verification/02-separation-logic/` |
@@ -272,7 +272,7 @@ Each compiler pass (e.g., `RTL -> LTL`) instantiates `fsim_match_states` with a 
 ### 3.4 Mapping to `struct/` Topics
 
 | CompCert Concept | Maps to `struct/` Node |
-|------------------|------------------------|
+| ------------------ | ------------------------ |
 | Semantic preservation theorem | `struct/07-formal-verification/01-refinement-calculus/` |
 | C semantics (Clight) | `struct/07-formal-verification/03-coq-isabelle/` (this file) |
 | Separation logic for memory model | `struct/07-formal-verification/02-separation-logic/` |
@@ -365,7 +365,7 @@ Admitted.
 ### 4.3 Alignment with Industrial Standards
 
 | Standard | Relevant Clause / Objective | How Formal Proof Helps |
-|----------|----------------------------|------------------------|
+| ---------- | ---------------------------- | ------------------------ |
 | **DO-178C** (Avionics) | Supplement DO-333 (Formal Methods) | Machine-checked proof replaces some tests, satisfies MC/5 (mitigation of compiler errors via CompCert) |
 | **ISO 26262** (Automotive) | ASIL D: Table A.4 (semi-formal methods), Table A.5 (formal design & verification) | RM schedulability proof satisfies "freedom from interference" (Part 6, 7.4.4) |
 | **IEC 61508** (General) | SIL 4: Table A.3 (formal methods), Table B.3 (static analysis) | Theorem-prover output is a "highly recommended" technique; reduces diagnostic-coverage demands |
@@ -401,7 +401,7 @@ Layer 3 — Concrete Implementation / Binary
 ### 5.2 Coq vs Isabelle Selection Guide
 
 | Criterion | Coq | Isabelle/HOL |
-|-----------|-----|--------------|
+| ----------- | ----- | -------------- |
 | **Foundations** | Dependent types + Calculus of Inductive Constructions (CIC) | Simply-typed HOL + axiomatic type classes + locales |
 | **Proof style** | Tactic scripts (Ltac, Ltac2, ssreflect) or proof terms | Tactic scripts (Isar, Eisbach) + ATP integration (Sledgehammer, Nitpick) |
 | **Automation** | `auto`, `eauto`, `tauto`, limited ATP (coq-hammer) | Strong SMT/ATP bridge (Sledgehammer, z3, vampire, e) |
@@ -416,7 +416,7 @@ Layer 3 — Concrete Implementation / Binary
 ### 5.3 Authoritative Sources and Further Reading
 
 | Source | Role | Link / Reference |
-|--------|------|------------------|
+| -------- | ------ | ------------------ |
 | **seL4 proofs** | Complete Isabelle/HOL proof stack for an OS kernel | `https://github.com/seL4/l4v` |
 | **CompCert** | Verified C compiler in Coq | `https://compcert.org/` |
 | **Isabelle/HOL** | System and documentation | `https://www.cl.cam.ac.uk/research/hvg/Isabelle/` |
@@ -433,7 +433,7 @@ Layer 3 — Concrete Implementation / Binary
 ## 6. Cross-References to Other `struct/` Topics
 
 | This File (T18b) | Related `struct/` Node | Relationship |
-|------------------|------------------------|--------------|
+| ------------------ | ------------------------ | -------------- |
 | `security-critical-components.md` | `struct/07-formal-verification/01-refinement-calculus/` | Refinement calculus provides the *method*; this file provides the *industrial instances* (seL4, CompCert). |
 | `security-critical-components.md` | `struct/07-formal-verification/02-separation-logic/` | seL4 C semantics and Iris-style reasoning for heap safety. |
 | `security-critical-components.md` | `struct/07-formal-verification/04-binary-verification/` | Layer 4 of seL4; CompCert produces Asm but does not verify the assembler/linker (see binary verification for that gap). |

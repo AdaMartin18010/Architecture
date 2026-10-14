@@ -16,7 +16,7 @@
 ## 1. 本季度新发布/变更的标准
 
 | 标准/技术 | 变更前状态 | 变更后状态 | 权威来源 URL | 发现日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **ArchiMate 4.0** | 厂商预发布/未获官方确认 | ✅ **已正式发布（2026-04-27，Document C260，白皮书 W262）** | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 2026-06-12 |
 | **ISO/IEC/IEEE 12207:2026** | 仍在制定中 | ✅ **已发布（2026-04-29）** | <https://www.iso.org/standard/90219.html> | 2026-06-12 |
 | **ISO/IEC 30141:2024** | 被误审为“不存在 2024 版” | ✅ **已发布（2024-08）** | <https://www.iso.org/standard/88800.html> | 2026-06-12 |
@@ -29,7 +29,7 @@
 ### 1.1 权威来源核验摘要
 
 | 标准/技术 | 官方来源 | 最新确认 URL | 状态 | 核查日期 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | ArchiMate 4.0 | The Open Group | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> | 已正式发布（2026-04-27） | 2026-07-09 |
 | ISO/IEC/IEEE 12207:2026 | ISO | <https://www.iso.org/standard/90219.html> | 已发布（2026-04-29） | 2026-07-09 |
 | ISO/IEC 30141:2024 | ISO | <https://www.iso.org/standard/88800.html> | 已发布（2024-08） | 2026-07-09 |
@@ -46,7 +46,7 @@
 ## 2. 本季度确认保持不变的预期
 
 | 标准/技术 | 当前状态 | 权威来源 | 备注 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | **MCP 2025-11-25** | 现行稳定版 | modelcontextprotocol.io | 2026-07-28 RC 仍在预期中 |
 | **A2A v1.0.0** | 已发布（2026-03-12） | <https://a2a-protocol.org/latest/> | 无变更 |
 | **SLSA 1.2** | Build/Source Track 已发布；Build Environment Track / L4 仍在开发 | slsa.dev | 无变更 |
@@ -59,7 +59,7 @@
 ## 3. 对本项目知识体系的潜在影响
 
 | 标准/技术 | 影响层级 | 影响描述 | 建议动作 | 优先级 |
-|:---|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :--- | :---: |
 | **ArchiMate 4.0** | 元模型层 | 已正式发布（2026-04-27，Document C260），与 3.2 向后兼容 | 已完成相关文档更新；持续跟踪官方页面 | 🟢 完成 |
 | **ISO/IEC/IEEE 12207:2026** | 生命周期过程层 | 取代 2017 版，成为现行软件生命周期过程基准 | 更新 `01/01-iso-420xx-family/ieee-1517-reuse-processes.md`、`06/03-maturity-models/` 等引用 | 🔴 P0 |
 | **ISO/IEC 30141:2024** | 工业 IoT 层 | 确认存在且为现行版，2018 版已被取代 | 强化 `11/01-isa-95-model/iso-30141-iot-ra-alignment.md` 与 2024 版第二版特性对齐 | 🔴 P0 |

@@ -38,7 +38,7 @@
 ## 1. 矩阵总览
 
 | 厂商 | 总部 | 代表产品线 | C2C 支持 | C2D 支持 | D2D 支持 | TSN 支持 | 发布时间 | 复用策略 |
-|------|------|-----------|:--------:|:--------:|:--------:|:--------:|:--------:|----------|
+| ------ | ------ | ----------- | :--------: | :--------: | :--------: | :--------: | :--------: | ---------- |
 | **Siemens** | 德国 | S7-1500 TM, ET 200, Scalance XCM | ✅ 已发布 | 🧪 2026 试点 | 📋 规划中 | ✅ 已发布 | 2024 (C2C) / 2026 H2 (C2D) | 原生 FX + Profinet 共存 |
 | **Rockwell** | 美国 | ControlLogix 5580, FLEXHA 5000, Stratix | ✅ 2026 Q1 | 🧪 2026 H2 | 📋 规划中 | ✅ 已发布 | 2026 Q1 (C2C) / 2026 H2 (C2D) | 固件升级现有平台 |
 | **Beckhoff** | 德国 | CX 系列, TwinCAT 3, EK/EL 耦合器 | ✅ 已发布 | ✅ 已发布 | 📋 规划中 | ✅ 已发布 | 2023 (C2C) / 2025 (C2D) | EtherCAT + FX 混合架构 |
@@ -57,7 +57,7 @@
 ### 2.1 Siemens（西门子）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | S7-1500 TM NET 通信模块（固件 V3.0+） |
 | **C2D 产品** | ET 200 SP IO-Link FX 预览模块（Hannover Messe 2026） |
 | **TSN 交换机** | Scalance XCM-300 / XCM-400 系列，支持 802.1Qbv/AS/CB |
@@ -73,7 +73,7 @@ S7-1500 TM 模块使现有控制器无需更换主机即可支持 FX，显著降
 ### 2.2 Rockwell Automation（罗克韦尔）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | ControlLogix 5580 控制器（2026 Q1 固件更新） |
 | **C2D 产品** | FLEXHA 5000 I/O（2026 H2 roadmap，Automation Fair 2026 GA） |
 | **TSN 交换机** | Stratix 5400/5410 系列（2024 年硬件就绪，2026 年 FX 固件刷新） |
@@ -88,7 +88,7 @@ FactoryTalk Design Hub 的工程模板复用是关键差异化点。[Rockwell Au
 ### 2.3 Beckhoff（倍福）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | TwinCAT 3（TF6xxx OPC UA FX 功能包） |
 | **C2D 产品** | CX TSN 网关（EK/EL 耦合器后挂 FX 接口） |
 | **TSN 交换机** | CX7000 系列 IPC 集成 TSN 端口 |
@@ -103,7 +103,7 @@ CX TSN 网关允许现有 EtherCAT 从站设备通过透明桥接参与 FX 网�
 ### 2.4 B&R Industrial Automation（ABB 旗下）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | X20 系列 PLC（X20CP3686 等） |
 | **C2D 产品** | ACOPOS M4 伺服驱动（2025 年 SPS 发布，原生 FX 支持） |
 | **TSN 交换机** | X20 总线耦合器集成 TSN 端口 |
@@ -119,7 +119,7 @@ B&R 的 ACOPOS M4 代表了 OPC UA FX C2D 的**理想形态**——无需网关�
 ### 2.5 Phoenix Contact（菲尼克斯电气）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | PLCnext 控制器（AXC F 2152 / RFC 4072S） |
 | **C2D 产品** | Axioline F2 I/O 模块（FX 预览版） |
 | **TSN 交换机** | FL SWITCH TSN 系列 |
@@ -136,7 +136,7 @@ Phoenix Contact 的 PLCnext 是工业控制器中**开放性最高**的平台之
 ### 2.6 Mitsubishi Electric（三菱电机）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | iQ-R 系列 PLC（2026 Q2 固件更新） |
 | **C2D 产品** | 尚未公布具体产品线 |
 | **TSN 交换机** | CC-Link IE TSN 模块（与 FX TSN 底层兼容） |
@@ -152,7 +152,7 @@ Bridge/Gateway 模式是理性选择。
 ### 2.7 Schneider Electric（施耐德电气）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | EcoStruxure OPC UA Server Expert（软件层） |
 | **C2D 产品** | Modicon M580 / PAC（FX 能力规划中） |
 | **TSN 交换机** | 部分 Industrial Ethernet 交换机支持 802.1AS |
@@ -168,7 +168,7 @@ Schneider 的 FX 策略偏向**软件定义**：不急于在底层控制器全�
 ### 2.8 Hilscher（赫优讯）
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **C2C 产品** | netX 90 / netX 4000 TSN 芯片（含 FX 协议栈） |
 | **C2D 产品** | netX 芯片 C2D 预览固件 |
 | **TSN 交换机** | 芯片级 TSN 支持（供 OEM 集成） |
@@ -212,7 +212,7 @@ TSN 交换机（802.1Qbv/AS/CB 支持）在所有主要厂商中已可采购。
 ## 4. 选型建议
 
 | 场景 | 推荐厂商组合 | 理由 |
-|------|-------------|------|
+| ------ | ------------- | ------ |
 | **全西门子生态扩展** | Siemens S7-1500 TM + Scalance XCM | 原生融合 Profinet，工程工具统一 |
 | **多厂商混合（欧美）** | Beckhoff CX + B&R X20 + Phoenix Contact PLCnext | 均支持原生 FX C2C，Berlin IOP 验证互通 |
 | **运动控制优先** | B&R ACOPOS M4 + Beckhoff TwinCAT | ACOPOS M4 原生 C2D，TwinCAT 运动库成熟 |

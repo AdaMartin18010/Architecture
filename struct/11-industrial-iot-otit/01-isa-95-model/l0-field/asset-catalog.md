@@ -21,7 +21,7 @@ L0 现场层是 ISA-95 五层模型的最底层，直接面向物理生产过程
 ## 2. 资产分类表
 
 | 序号 | 资产名称 | 描述 | 标准/规范 | 复用频率 | 成熟度 |
-|-----|---------|------|----------|---------|--------|
+| ----- | --------- | ------ | ---------- | --------- | -------- |
 | E1 | **IODD (IO-Link Device Description)** | IO-Link 设备的 XML 描述文件，包含标识数据、过程数据、参数集、诊断事件与菜单结构。支持 IO-Link 主站自动识别与参数化。 | IO-Link Specification V1.1.3+ (IO-Link Consortium) | 高 (每次新增同类传感器即复用) | 成熟 |
 | E2 | **GSD/GSDML (Generic Station Description)** | Profinet/Profibus 设备的通用站描述文件（GSD 用于 DP/PA，GSDML 用于 PN）。定义模块配置、参数集、诊断位、IO 映射与 DAP (Device Access Point)。 | PI (Profibus & Profinet International), IEC 61784 | 高 (Profinet 生态标配) | 成熟 |
 | E3 | **EDS (Electronic Data Sheet)** | EtherNet/IP 及 DeviceNet 设备的电子数据表，描述设备类别、参数对象、IO 汇编实例、显式/隐式报文连接。 | ODVA (Open DeviceNet Vendors Association), CIP Specification Vol. 1–3 | 高 (Rockwell/Omron 等生态核心) | 成熟 |

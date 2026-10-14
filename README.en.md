@@ -10,7 +10,7 @@
 ## 📊 Project Scale
 
 | Metric | Value |
-|--------|-------|
+| -------- | ------- |
 | **Markdown files** | **330** (`struct/` 307 + `view/` 23, including 14 aggregated volumes and 9 historical snapshots) |
 | **Formal specs / code** | **93** (TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 75 + SVG × 75, Python × 7) |
 | **Content volume** | **~790k Chinese characters** / **~977k total words** / **~2.94m characters** (`struct/` main repository) |
@@ -64,7 +64,7 @@ struct/
 ## 🚀 Quick Navigation
 
 | You want to learn about... | Start here |
-|----------------------------|------------|
+| ---------------------------- | ------------ |
 | Logical foundation of the whole system | [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) |
 | Comparison of 6 language ecosystems | [`04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`](struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) |
 | MCP / A2A protocol deep dive | [`12-ai-native-reuse/01-mcp-protocol/`](struct/12-ai-native-reuse/01-mcp-protocol/) |
@@ -126,7 +126,7 @@ This knowledge system is aligned with the following international standards and 
 See [`struct/MASTER_PLAN.md`](struct/MASTER_PLAN.md) for the full plan.
 
 | Phase | Timeframe | Goal | Status |
-|-------|-----------|------|--------|
+| ------- | ----------- | ------ | -------- |
 | 0 | 2026-Q2 | Foundation: source document structuring | ✅ Done |
 | 1–7 | 2026-Q2–2026-Q3 | Layered knowledge depth + authoritative alignment | ✅ Done |
 | 8 | 2026-Q3 | Sustainable frontier tracking + internationalization | 🔄 In progress |

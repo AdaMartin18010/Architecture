@@ -62,7 +62,7 @@
 ### 源代码层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 强制提交签名 | Git commit signing |
 | 分支保护 | GitHub/GitLab branch protection |
 | 代码审查 | Pull request review |
@@ -72,7 +72,7 @@
 ### 依赖层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | Syft, Trivy, GitHub Dependency Graph |
 | 漏洞扫描 | Snyk, Dependabot, OWASP DC |
 | 依赖锁定 | lockfile, hash pinning |
@@ -81,7 +81,7 @@
 ### 构建层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 隔离构建环境 | GitHub Actions hosted runners |
 | SLSA Provenance | SLSA GitHub Generator |
 | 可复现构建 | Reproducible Builds |
@@ -90,7 +90,7 @@
 ### 部署层
 
 | 控制 | 工具/方法 |
-|------|----------|
+| ------ | ---------- |
 | 镜像签名验证 | Kyverno, OPA/Gatekeeper |
 | 运行时安全 | Falco, Tetragon |
 | 网络策略 | Kubernetes NetworkPolicy |
@@ -108,7 +108,7 @@
 ## 5. 成熟度模型
 
 | 级别 | 特征 |
-|------|------|
+| ------ | ------ |
 | **L1 基础** | 有 SBOM，有漏洞扫描 |
 | **L2 管理** | 依赖锁定，构建签名，代码审查 |
 | **L3 定义** | SLSA L3，可复现构建，部署验证 |

@@ -9,7 +9,7 @@
 ## 一、Phase C 文档 × 标准/框架对齐矩阵
 
 | 文档名称 | 对齐标准 | 覆盖领域 | 与已有文档的互补关系 | 引用规范（URL + 日期） |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **C-01 SysML v2 复用映射** | OMG SysML v2 (2023), ISO/IEC 42010:2022, OMG RAS 2.0, ISO/IEC 26550:2015, IEEE 1471 | 元模型标准层 / 模型驱动系统工程 | 与 C-02 MBSE 整合互补：C-01 聚焦语言级复用语义，C-02 聚焦方法论与工具链；与 01/03 PLE 整合文档形成标准族互补 | OMG SysML v2: <https://www.omg.org/spec/SysML/> (2023-06)<br>ISO 42010:2022: <https://www.iso.org/obp/ui> (2022)<br>OMG RAS: <https://www.omg.org/spec/RAS/> (2024) |
 | **C-02 MBSE 与 PLE 整合** | INCOSE SE Vision 2035, ISO/IEC 26550:2015, ISO/IEC 42010:2022, IEC 63278 (AAS), ISO 15288:2023, OMG SysML v2 | 元模型标准层 / 系统工程与产品线工程 | 与 C-01 形成"语言-方法"双轴；与 11/05 AAS-OPC UA 映射形成工业-系统工程桥梁 | INCOSE: <https://www.incose.org/SEVision2035> (2023)<br>ISO 26550: <https://www.iso.org/standard/69529.html> (2023)<br>ISO 15288: <https://www.iso.org/standard/81702.html> (2023) |
 | **C-03 数字孪生通用参考架构** | ISO 23247, AEDT, Gartner 数字孪生框架, IEC 63278 (AAS 对比参考) | 工业物联网 / 数字孪生（非工业场景） | 与 11/05 AAS-OPC UA 映射互补：C-03 覆盖通用/商业数字孪生，11/05 聚焦工业自动化；与 C-02 MBSE 形成模型-孪生闭环 | ISO 23247: <https://www.iso.org/standard/77378.html> (2021)<br>AEDT: <https://www.digitaltwinconsortium.org/> (2026-06) |
@@ -24,7 +24,7 @@
 ## 二、Phase A+B+C 累计对齐矩阵（简化汇总）
 
 | 阶段 | 主题领域 | 新增对齐标准/框架 | 交付物数量 | 与前期内容的互补关系 |
-|------|----------|-------------------|------------|----------------------|
+| ------ | ---------- | ------------------- | ------------ | ---------------------- |
 | **Phase A** | 元模型 / 治理 / 供应链 / 应用架构 | ISO 12207:2026, ISO 26565/26566, EU CRA, SLSA 1.2 | 7 项 | **修复与更新**：纠正 ArchiMate 4.0 误报、MCP 版本勘误，补全 03 应用架构基础子目录（分层/微服务/Serverless/事件驱动） |
 | **Phase B** | 元模型 / 业务架构 / 治理 / 新兴趋势 | DoDAF/UAF, Zachman, SPICE (ISO 33000), BIAN, GreenArch, OMG RAS v2.2, IEEE 1517, FAIR4RS, ISO 25010:2023 AI 质量 | 12 项 | **横向扩展**：引入国防、金融、可持续软件等 5 个外部视角；标准覆盖从 30 扩展至 35+；工具链补充术语查询、COCOMO 计算器、成熟度问卷 |
 | **Phase C** | 元模型 / 工业 IoT / 供应链 / 业务架构 / 工具链 | SysML v2, MBSE/PLE, ISO 23247, AEDT, OWASP SCVS, GUAC, TMForum, NAF/MODAF | 8 项 | **纵深扩展**：填补 MBSE/数字孪生通用架构/电信/国防北约视角空白；升级决策工具至 v2.0；与 Phase 1-5 形成"通用+垂直+工具"完整闭环 |

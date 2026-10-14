@@ -11,7 +11,7 @@
 截至 2026-06，MCP 的官方稳定版本为 **2025-11-25**，这是 MCP 发布一周年的里程碑版本。
 
 | 版本 | 发布时间 | 关键变化 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 2024-11-05 | 初始发布 | JSON-RPC 2.0、HTTP+SSE、Tools/Resources/Prompts |
 | 2025-03-26 | Streamable HTTP | 替代 HTTP+SSE、Tool Annotations |
 | 2025-06-18 | OAuth 2.1 强化 | RFC 9728 Protected Resource Metadata、RFC 8707 Resource Indicators |
@@ -52,7 +52,7 @@ MCP 架构
 ### 2.2 MCP 核心概念属性
 
 | 概念 | 核心属性 | 属性说明 | 可观察/可验证 |
-|------|---------|---------|--------------|
+| ------ | --------- | --------- | -------------- |
 | Host | 用户代理性 | 代表用户发起连接、授权与撤销 | 通过审计日志验证 |
 | Host | 多 Client 管理 | 可同时管理多个独立 Server 连接 | 通过连接列表验证 |
 | Client | 1:1 连接 | 每个 Client 仅连接一个 Server | 通过会话隔离验证 |
@@ -114,7 +114,7 @@ MCP 存在的根本原因是解决 AI 应用与外部能力之间的**集成碎�
 MCP Server 可向 Client 提供以下能力：
 
 | 能力 | 英文 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Resources** | 资源 | 上下文和数据，供用户或 AI 模型使用 |
 | **Prompts** | 提示模板 | 模板化消息和工作流 |
 | **Tools** | 工具 | AI 模型可调用的函数 |
@@ -122,7 +122,7 @@ MCP Server 可向 Client 提供以下能力：
 ### Client 可向 Server 提供的能力
 
 | 能力 | 英文 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Sampling** | 采样 | Server 发起的 LLM 交互和递归 Agent 行为 |
 | **Roots** | 根边界 | Server 发起的 URI 或文件系统边界查询 |
 | **Elicitation** | 引导 | Server 向用户请求额外信息 |
@@ -151,7 +151,7 @@ interface ToolAnnotations {
 ### Tool 注解语义
 
 | 注解 | 含义 | 复用意义 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | `readOnlyHint: true` | 工具不修改任何状态 | 可安全地多次调用 |
 | `destructiveHint: true` | 工具可能删除或破坏数据 | 需要用户明确授权 |
 | `idempotentHint: true` | 多次调用结果相同 | 可安全重试 |
@@ -192,7 +192,7 @@ MCP 规范明确列出以下安全和信任原则：
 MCP 2025-06-18 及之后版本强化了对远程 Server 的认证要求，核心要点包括：
 
 | 要点 | 规范来源 | 实施建议 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 使用 OAuth 2.1 | MCP Authorization Spec | 废弃纯 Bearer Token，强制 PKCE |
 | Protected Resource Metadata | RFC 9728 | Host 通过元数据端点自动发现授权服务器 |
 | Resource Indicators | RFC 8707 | 区分不同 Server/资源的访问令牌范围 |
@@ -220,7 +220,7 @@ flowchart TD
 ## 6. 传输方式
 
 | 传输方式 | 适用场景 | 状态 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | **stdio** | 本地进程间通信 | 稳定 |
 | **HTTP+SSE** | 服务器端推送 | 被 Streamable HTTP 取代 |
 | **Streamable HTTP** | 远程 Server，支持流式 | 2025-03-26 引入 |
@@ -330,7 +330,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 根据公开数据：
 
 | 指标 | 数值 | 来源 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 月 SDK 下载量 | 97M+ | 2026-03 |
 | 发布的服务器数量 | 10,000+ | 2026-05 |
 | 支持厂商 | Anthropic, OpenAI, Google, Microsoft, AWS, Cloudflare | 2025-12 |
@@ -429,7 +429,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 ## 10. 2026 路线图关注点
 
 | 功能 | 状态 | 影响 |
-|------|------|------|
+| ------ | ------ | ------ |
 | Long-running Tasks | 开发中 | 支持长时间运行的 Agent 工作流 |
 | Capability Attestation | 草案 | 解决 Tool Poisoning |
 | Agent-to-Agent (A2A) | Linux Foundation 孵化 | 与 MCP 互补 |

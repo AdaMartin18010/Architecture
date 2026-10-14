@@ -53,7 +53,7 @@ IDP 是平台团队构建和维护的软件系统，为开发者提供：
 CNCF TAG App Delivery 发布的 [Platform Engineering Maturity Model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) 采用 **4 级 × 5 维度**的评估框架，比传统"5 级瀑布"更贴合工程实际。五个维度分别为：**投入（Investment）、采用（Adoption）、交互界面（Interface）、运营（Operation）、反馈（Feedback）**。
 
 | 级别 | 投入 | 采用 | 交互界面 | 运营 | 反馈 |
-|:---|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- | :--- |
 | **Level 1<br/>Provisional** | 自愿/临时；无专职团队 | 零散、不一致；依赖个人关系 | 手工流程；口口相传 | 按请求被动响应；无长期维护 | 几乎不收集；依赖轶事 |
 | **Level 2<br/>Operationalized** | 专职平台团队；中央预算 | 外部推动；部分能力有明确归属 | 标准工具；Paved Road 文档化 | 集中登记；生命周期 lightly defined | 结构化收集； surveys / forums |
 | **Level 3<br/>Scalable** | 产品化投入；UX/PM 角色 | 内在牵引；用户主动选择 | 自助服务；one-click 供给 | 集中编排；标准流程；持续交付 | 洞察驱动；明确成功指标 |
@@ -125,7 +125,7 @@ CNCF TAG App Delivery 发布的 [Platform Engineering Maturity Model](https://ta
 ### 6.1 平台能力作为可复用资产
 
 | 能力层 | 复用资产 | 交付形式 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | 计算运行时 | 容器平台、Serverless 框架 | Cluster 模板、Knative Service |
 | 数据层 | 数据库、消息队列、缓存 | Crossplane Composition |
 | 可观测性 | 日志、指标、追踪、告警 | Grafana Dashboard as Code |
@@ -153,7 +153,7 @@ Golden Path Library
 ## 7. 实施路线图
 
 | 阶段 | 时间 | 目标 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | Phase 1 | Weeks 1–4 | 发现摩擦点：观察开发者工作，识别等待和求助点 |
 | Phase 2 | Months 1–3 | 构建最小可行平台：自动化最高摩擦工作流 |
 | Phase 3 | Months 3–6 | 扩展 Golden Path：覆盖最常见工作负载，内置安全与可观测性 |
@@ -189,7 +189,7 @@ Golden Path Library
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CNCF Platform Engineering Maturity Model | <https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/> | 2026-07-09 |
 | CNCF Platforms White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platforms/> | 2026-07-09 |
 | Team Topologies (2nd ed., 2025) | <https://teamtopologies.com/book> | 2026-07-09 |

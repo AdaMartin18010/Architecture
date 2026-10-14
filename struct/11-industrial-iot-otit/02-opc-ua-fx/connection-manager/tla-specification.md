@@ -78,7 +78,7 @@ stateDiagram-v2
 ```
 
 | 状态 | 说明 | 进入条件 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **Offline** | 初始/复位状态，无连接上下文 | 初始状态；Error/Teardown 后的恢复终点 |
 | **Discovery** | 能力发现阶段，双方交换 FeatureSet | 网络可用时从 Offline 进入 |
 | **Configuration** | 配置协商，锁定 TSN 调度参数 | 双方能力匹配（CapabilitiesMatch） |
@@ -105,7 +105,7 @@ CONSTANTS
 ### 3.2 变量（VARIABLES）
 
 | 变量 | 类型 | 语义 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `cmState` | `CMStates` | 全局 Connection Manager 状态 |
 | `endpointState[e]` | `EndpointStates` | 端点 e 的本地协商状态 |
 | `localFeatures[e]` | `SUBSET FeatureSet` | 端点 e 声明的本地能力 |
@@ -244,7 +244,7 @@ ErrorRecovery ==
 本规约与 `struct/07-formal-verification/` 各子主题存在如下映射关系：
 
 | 本规约要素 | 07-形式化验证关联 | 说明 |
-|-----------|------------------|------|
+| ----------- | ------------------ | ------ |
 | TLA+ 规约语法 | `07-formal-verification/README.md` | TLA+ 被定位为"分布式复用组件的时序行为规约" |
 | CapabilityMatch 不变量 | `07-formal-verification/README.md` 公理 F.1 | 形式化验证的信任传递：若 Connection Manager 被证明满足 CapabilityMatchInvariant，则任何基于它的 FX 连接继承此保证 |
 | 状态机精化 | `07-formal-verification/06-b-method/event-b-railway-refinement.md` | Event-B 的精化方法论可应用于 Connection Manager：从抽象状态机（6 状态）逐步精化到含具体数据结构的实现 |

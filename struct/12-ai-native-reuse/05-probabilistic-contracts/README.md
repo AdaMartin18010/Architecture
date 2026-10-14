@@ -16,7 +16,7 @@
 ## 文件说明
 
 | 文件 | 说明 |
-|---|---|
+| --- | --- |
 | `calibration-tool.py` | 核心校准脚本，支持 calibrate / predict / drift / report / calibrate-temperature / calibrate-platt / calibrate-isotonic 子命令，以及 `--test` 内置测试 |
 | `probabilistic-contract-framework.md` | 概率契约框架：四元组定义、满足条件、γ(x) 设计、参数约束、违约阈值、SLA 转换、与布尔契约/DbC 区别 |
 | `monitoring-metrics.md` | 运行时监控指标定义、Prometheus 示例、Grafana 面板配置 |

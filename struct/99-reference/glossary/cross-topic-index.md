@@ -75,7 +75,7 @@
 ## 3. 按复用层次的交叉引用
 
 | 复用层次 | 代表文档 |
-|---------|---------|
+| --------- | --------- |
 | **元模型/标准** | `01-meta-model-standards/` 全部 |
 | **业务架构** | `02-business-architecture-reuse/` + BPMN/DMN 文件 |
 | **应用架构** | `03-application-architecture-reuse/` + Data Mesh + EDA/CQRS + Service Mesh |
@@ -94,7 +94,7 @@
 ## 4. 快速查找表：常见问题 → 文档
 
 | 问题 | 推荐文档 |
-|-----|---------|
+| ----- | --------- |
 | "ISO 42010:2022 改了什么术语？" | `iso-42010-2022-update.md` |
 | "如何评估复用成熟度？" | `reuse-maturity-models-rcmm-rise.md` |
 | "MCP 官方稳定版是哪个？" | `mcp-2025-11-25-authoritative.md` |

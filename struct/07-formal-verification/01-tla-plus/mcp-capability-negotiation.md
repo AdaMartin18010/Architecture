@@ -25,7 +25,7 @@ Model Context Protocol（MCP）是由 Anthropic 于 2024 年 11 月发布、现�
 MCP 的能力协商涉及两个独立的参与者：Client 和 Server。因此，我们的规约维护两个状态变量 `clientState` 和 `serverState`，分别追踪各自的生命周期：
 
 | Client 状态 | Server 状态 | 语义 |
-|-------------|-------------|------|
+| ------------- | ------------- | ------ |
 | `disconnected` | `disconnected` | 初始状态，未建立连接 |
 | `initializing` | `initializing` | 已发送/收到 `initialize` 消息 |
 | `negotiating` | `negotiating` | 正在交换能力集合和协议版本 |
@@ -158,7 +158,7 @@ clientState = "active", serverState = "active", agreedCaps = {}
 本规约严格对应 MCP 2025-03-26 规范中的初始化流程[^6]：
 
 | 规约动作 | MCP 规范对应 | JSON-RPC 方法 |
-|----------|-------------|---------------|
+| ---------- | ------------- | --------------- |
 | `ClientConnect` | Client 发送 initialize 请求 | `initialize` |
 | `ServerRespondInit` | Server 返回 initialize 结果 | `initialize` response |
 | `ClientReceiveInitAck` | Client 处理 Server 能力，计算交集 | 内部状态转移 |
@@ -178,7 +178,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ## 10. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | 能力协商状态机设计验证 | TLA+ / TLC | 不变量证明、反例轨迹 |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 协商守卫与实现一致性 | TLAPS（可选） | 形式化证明 |
 | DO-333 §6.3.2（形式化分析替代测试） | 协议安全性质穷举 | TLC 模型检验 | 模型检查报告 |
@@ -187,7 +187,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ### 10.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | TLA+ Language / TLC | TLA+ v2.18 (Toolbox 1.7.x) | IEEE 1012-2024 §9.3/§9.6 | 状态空间有限，需评估 scope |
 | TLAPS | TLAPS 1.5.x | DO-333 §6.3.2 | 用于不变式归纳证明 |
 | Apalache | 0.44.x | IEEE 1012-2024 §9.3 | 基于 SMT 的符号模型检查 |
@@ -208,7 +208,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ## 12. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-09 |
 | TLA+ Foundation | <https://foundation.tlapl.us/> | 2026-07-09 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-09 |

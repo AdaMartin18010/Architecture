@@ -40,7 +40,7 @@
 > 随着复用成熟度从“临时复用”向“系统化/产品线级复用”演进，单位资产的边际复用成本递减，但前期平台投资存在显著的沉没成本门槛。
 
 | 概念 | 定义 |
-|:---|:---|
+| :--- | :--- |
 | **成熟度价值曲线** | 描述成熟度等级与复用经济回报之间关系的 S 型或阶梯型曲线 |
 | **复用临界点** | 单位资产收益开始超过单位资产总成本的最低成熟度等级 |
 | **平台沉没成本** | 达到可规模化复用前必须投入的治理、工具、文档与认证成本 |
@@ -55,7 +55,7 @@
 CMMI（Capability Maturity Model Integration）由 SEI 提出，现由 CMMI Institute/ISACA 维护。其五级成熟度与复用实践的对应关系如下：
 
 | CMMI 等级 | 特征 | 复用实践映射 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Level 1 — Initial | 过程不可预测、依赖个人英雄 | 临时复用、复制粘贴、无管理 |
 | Level 2 — Managed | 项目级计划与监控 | 项目内代码库、团队级组件目录 |
 | Level 3 — Defined | 组织级标准过程 | 组织级组件库、Golden Path、IDP |
@@ -69,7 +69,7 @@ CMMI 研究表明，从 Level 1 提升至 Level 3 通常带来 20–40% 的生�
 RiSE（Reuse in Software Engineering）与 RCMM（Reuse Capability Maturity Model）是面向复用过程的专门成熟度模型，将复用能力分为 5 级：
 
 | 等级 | 名称 | 关键特征 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Level 1 | Ad hoc | 无复用过程，复用偶发 |
 | Level 2 | Opportunistic | 项目级库支持，个人/团队复用 |
 | Level 3 | Integrated | 复用与开发过程集成，组织级资产库 |
@@ -81,7 +81,7 @@ RiSE（Reuse in Software Engineering）与 RCMM（Reuse Capability Maturity Mode
 NASA ESDS Software Reuse Working Group 定义的 RRL 从 1 到 9 评估软件资产的可复用性：
 
 | RRL | 等级描述 | 经济含义 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | RRL 1 | Limited reusability | 不建议复用 |
 | RRL 2 | Initial reusability | 实际不可行 |
 | RRL 3 | Basic reusability | 高成本、高风险 |
@@ -115,7 +115,7 @@ NASA ESDS Software Reuse Working Group 定义的 RRL 从 1 到 9 评估软件资
 ```
 
 | 阶段 | 成熟度 | 价值特征 | 管理重点 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 投入期 | L1–L2 | 成本高、收益低，甚至为负 | 控制范围、选择高价值试点 |
 | 成长期 | L2–L3 | 收益快速增长 | 标准化、治理、工具链 |
 | 成熟期 | L3–L4 | 规模经济显现，边际成本递减 | 量化管理、投资组合优化 |
@@ -222,7 +222,7 @@ NPV = -800 + 250/(1.1)^1 + 250/(1.1)^2 + 250/(1.1)^3 + 250/(1.1)^4 + 250/(1.1)^5
 ## 9. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CMMI Institute | <https://cmmiinstitute.com/> | 2026-07-09 |
 | ISACA — CMMI Performance Solutions | <https://www.isaca.org/enterprise/cmmi-performance-solutions> | 2026-07-09 |
 | SEI — Carnegie Mellon University | <https://www.sei.cmu.edu/> | 2026-07-09 |

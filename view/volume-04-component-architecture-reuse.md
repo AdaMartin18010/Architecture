@@ -77,7 +77,7 @@
 ### 1.1 历史脉络
 
 | 时代 | 技术 | 复用粒度 | 关键特征 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 1960s | 子程序/函数库 | 代码片段 | 静态链接 |
 | 1980s | 对象/类库 | 对象 | 继承、多态 |
 | 1990s | COM/DCOM, EJB, CORBA | 二进制组件 | 接口契约、远程调用 |
@@ -115,7 +115,7 @@
 ### 2.1 语言级组件模型
 
 | 语言/平台 | 组件单元 | 接口定义 | 依赖管理 | 运行时特性 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **Java** | JPMS Module / OSGi Bundle | `module-info.java` / OSGi manifest | Maven/Gradle | 动态加载、服务注册 |
 | **.NET** | Assembly | `public` 接口 + XML 文档 | NuGet | 强命名、版本策略 |
 | **Rust** | Crate | `pub` 接口 + Trait | Cargo | 零成本抽象、编译时检查 |
@@ -153,7 +153,7 @@ WASM Component Model 架构
 ### 2.3 企业级组件模型对比：CORBA / EJB / OSGi / WASM Component Model
 
 | 模型 | 代表技术 | 接口定义 | 运行时 | 生命周期 | 动态性 | 主要适用场景 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **CORBA/CCM** | OMG CORBA, IDL | OMG IDL | ORB（对象请求代理） | 安装→注册→激活→销毁 | 弱 | 1990s 企业分布式对象 |
 | **EJB** | Java EE / Jakarta EE | Java 接口/注解 | EJB 容器 | 容器管理生命周期 | 中等 | 2000s 大型企业 Java 应用 |
 | **OSGi** | Eclipse Equinox, Apache Felix | Java 接口 + Bundle Manifest | OSGi Framework | 安装→解析→启动→停止→更新→卸载 | **强** | 动态模块化系统、IDE 插件 |
@@ -163,7 +163,7 @@ WASM Component Model 架构
 #### 选型决策矩阵
 
 | 选型维度 | CORBA | EJB | OSGi | .NET Assembly | WASM Component Model |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 跨语言互操作 | 强（多语言 IDL） | 弱（仅 Java） | 弱（仅 JVM） | 中等（多语言 .NET） | **强** |
 | 运行时隔离 | 进程级 | 容器级 | 模块级 | AppDomain/进程级 | **沙箱级** |
 | 动态加载/热更新 | 弱 | 中等 | **强** | 中等 | 中等 |
@@ -194,7 +194,7 @@ flowchart TD
 ### 3.1 兼容性判定
 
 | 兼容类型 | 定义 | 判定方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **二进制兼容** | 新组件可替换旧组件而无需重新编译消费者 | 检查 ABI 稳定性 |
 | **源码兼容** | 消费者源码无需修改即可编译 | 检查 API 签名变化 |
 | **语义兼容** | 新组件行为与旧组件一致 | 回归测试 + 形式化验证 |
@@ -222,7 +222,7 @@ flowchart TD
 ### 4.1 当前状态（2026-06）
 
 | 项目 | 状态 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **WASI 0.3** | 2026-06-11 正式发布（Wasmtime 43+ / jco 支持） | 原生异步 I/O（futures/streams） |
 | **WASI 1.0** | 预期 2026 末-2027 初 | 企业级稳定性保证 |
 | **wasm-pkg-tools** | 活跃开发 | OCI 兼容的 WASM 包管理 |
@@ -256,7 +256,7 @@ flowchart TD
 ## 5. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OMG UML 2.5.1 Components | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
 | WASM Component Model | <https://component-model.bytecodealliance.org/> | 2026-07-08 |
 | WIT 规范 | <https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md> | 2026-07-08 |
@@ -290,7 +290,7 @@ $$M = (I,\ Impl,\ D,\ L,\ Meta)$$
 ### 核心属性
 
 | 属性 | 说明 | 重要性 |
-|---|---|---|
+| --- | --- | --- |
 | **封装性** | 内部实现对使用者不可见，仅通过显式接口交互 | 高 |
 | **可替换性** | 满足接口与行为兼容的组件可互相替换 | 高 |
 | **可组合性** | 小组件可通过组合形成更大组件或系统 | 高 |
@@ -313,7 +313,7 @@ $$M = (I,\ Impl,\ D,\ L,\ Meta)$$
 ### 组件模型选型权衡矩阵
 
 | 关注点 | 强组件模型（OSGi/WASM） | 弱组件模型（脚本/简单包） | 权衡建议 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **运行时动态性** | 支持热更新、服务注册与发现 | 通常需重启进程 | 需要 7×24 在线更新的系统选强模型 |
 | **编译期安全性** | 接口与依赖在编译/链接期可验证 | 依赖运行时解析，错误延迟暴露 | 大型团队协作优先强模型 |
 | **部署粒度** | 组件独立部署，版本隔离 | 包级或应用级部署 | 微服务/插件架构优先组件级 |
@@ -400,7 +400,7 @@ flowchart LR
 ## 7. 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 组件（Component） | UML 2.5.1 §11 Components | 组件通过 Provided/Required Interface 定义可替换边界 |
 | 组件图 | UML 2.5.1 §19.3 Component Diagrams | 描述组件、端口、接口与依赖关系的结构视图 |
 | 组件替换条件 | Liskov Substitution Principle | 前置条件弱化、后置条件强化、不变量保持 |
@@ -484,7 +484,7 @@ flowchart LR
 ### 1.1 历史脉络
 
 | 时代 | 技术 | 用途 | 复用粒度 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 1990s | CORBA IDL | 分布式对象 | 对象方法 |
 | 2000s | WSDL | Web Service | 服务操作 |
 | 2010s | Swagger/OpenAPI | REST API | HTTP 端点 |
@@ -495,7 +495,7 @@ flowchart LR
 ### 1.2 现代接口契约技术对比
 
 | 技术 | 协议 | 序列化 | 流支持 | 代码生成 | 主要场景 |
-|:---|:---|:---|:---:|:---:|:---|
+| :--- | :--- | :--- | :---: | :---: | :--- |
 | **OpenAPI 3.1** | HTTP/REST | JSON/XML | ❌ | ✅ | Web API、微服务 |
 | **gRPC + Protobuf** | HTTP/2 | Protobuf | ✅ | ✅ | 内部服务、高性能 |
 | **GraphQL** | HTTP | JSON | ❌ | ✅ | 客户端驱动查询 |
@@ -526,7 +526,7 @@ $$C(o) = (Pre(o),\ Post(o),\ Inv(o))$$
 ### 1.4 接口契约的核心属性
 
 | 属性 | 说明 | 重要性 |
-|---|---|---|
+| --- | --- | --- |
 | **显式性** | 契约以 IDL/OpenAPI/WIT 等可机读形式声明，避免“口头约定” | 高 |
 | **可验证性** | 可通过契约测试、静态检查或模型检验验证调用双方是否履约 | 高 |
 | **稳定性** | 契约变更频率应低于实现变更频率，且遵循版本兼容策略 | 高 |
@@ -668,7 +668,7 @@ CDC 工作流程
 ### 2.2 契约作为复用单元
 
 | 契约类型 | 复用内容 | 复用方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **OpenAPI Spec** | API 定义、数据模型、示例 | 共享规范文件、代码生成 |
 | **Protobuf** | 消息格式、服务定义 | 共享 `.proto` 文件、编译为各语言绑定 |
 | **AsyncAPI** | 事件 schema、通道定义 | 共享 AsyncAPI 文档、生成发布/订阅代码 |
@@ -839,7 +839,7 @@ describe('Inventory API contract', () => {
 ## 6. 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 接口 / 接口实现 | UML 2.5.1 §10.4 Interfaces | 接口定义操作集合，组件通过 Interface Realization 实现接口 |
 | 组件图接口 | UML 2.5.1 §19.3 Component Diagrams | Provided/Required Interface 描述组件间供需关系 |
 | 架构视图 | ISO/IEC/IEEE 42010:2022 §5.4, §6.4 | 接口契约视图作为架构描述的模型种类之一 |
@@ -854,7 +854,7 @@ describe('Inventory API contract', () => {
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OMG UML 2.5.1 | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471:2000 | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
@@ -924,7 +924,7 @@ describe('Inventory API contract', () => {
 ### 1.1 历史脉络
 
 | 时代 | 工具/机制 | 创新 | 局限 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 1990s | 手动 JAR / `#include` | 简单直接 | 版本冲突、传递依赖地狱 |
 | 2000s | Maven / Ivy | 中央仓库、传递依赖自动解析 | XML 繁琐、版本冲突 |
 | 2010s | npm / Bundler / pip | 语义化版本、lockfile | 依赖膨胀、left-pad 事件 |
@@ -934,8 +934,8 @@ describe('Inventory API contract', () => {
 
 ### 1.2 现代依赖管理工具对比
 
-| 工具 | 生态 | 锁文件 |  workspaces | 内容寻址 | 安全扫描 |
-|:---|:---|:---:|:---:|:---:|:---:|
+| 工具 | 生态 | 锁文件 | workspaces | 内容寻址 | 安全扫描 |
+| :--- | :--- | :---: | :---: | :---: | :---: |
 | **Maven** | Java | `pom.xml` + lock plugin | ✅ | ❌ | 插件支持 |
 | **Gradle** | Java/Kotlin/Android | `gradle.lockfile` | ✅ | ❌ | 插件支持 |
 | **npm** | JavaScript | `package-lock.json` | ✅ | ❌ | `npm audit` |
@@ -965,7 +965,7 @@ describe('Inventory API contract', () => {
 **解决策略**:
 
 | 策略 | 工具 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **最近优先** | npm | 选择离根最近的版本 |
 | **最高满足** | Maven | 选择满足约束的最高版本 |
 | **最小版本** | Go Modules, Cargo | 选择满足约束的最低版本 |
@@ -1021,7 +1021,7 @@ Lockfile vs SBOM
 ### 4.1 自动化升级工具
 
 | 工具 | 功能 | 集成方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **Dependabot** | GitHub 原生，自动 PR | GitHub 集成 |
 | **Renovate** | 多平台，高度可配置 | CLI / CI / 托管 |
 | **Snyk** | 安全导向的升级建议 | CLI / IDE / CI |
@@ -1030,7 +1030,7 @@ Lockfile vs SBOM
 ### 4.2 升级策略矩阵
 
 | 变更类型 | Semver | 自动升级 | 人工审查 | 回滚计划 |
-|:---|:---:|:---:|:---:|:---:|
+| :--- | :---: | :---: | :---: | :---: |
 | Patch (bugfix) | x.x.Z | ✅ 自动 | ❌ | 自动 |
 | Minor (feature) | x.Y.x | ⚠️ 条件自动 | ⚠️ 快速审查 | 自动 |
 | Major (breaking) | X.x.x | ❌ 禁止自动 | ✅ 详细审查 | 手动 |
@@ -1084,7 +1084,7 @@ Lockfile vs SBOM
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Semver 2.0.0 | <https://semver.org/> | 2026-06-10 |
 | SPDX | <https://spdx.dev/> | 2026-06-10 |
 | CycloneDX | <https://cyclonedx.org/> | 2026-06-10 |
@@ -1261,7 +1261,7 @@ C' ⊑ C  iff
 ## 3. 反模式与重构
 
 | 反模式 | 症状 | 重构策略 |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | **God Interface** | 一个接口有 50+ 方法 | 拆分为角色接口 |
 | **Leaky Abstraction** | 实现细节暴露到接口 | 增加适配层或抽象层 |
 | **Tight Coupling** | 调用者与被调用者共享状态 | 引入事件/消息/依赖注入 |
@@ -1297,7 +1297,7 @@ GoF 设计模式在 2026 年已超越单一语言边界。不同语言的类型�
 **意图**：定义算法族，分别封装起来，让它们可以互相替换。
 
 | 语言 | 实现机制 | 代码示例 | 复用特点 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **Java** | `interface` + 多态实现 | `interface PaymentStrategy { void pay(BigDecimal amount); }` | 运行时动态绑定，需依赖注入框架（Spring）管理生命周期 |
 | **Rust** | `trait` + 泛型参数 / `dyn Trait` | `trait PaymentStrategy { fn pay(&self, amount: Decimal); }` | **零开销抽象**：泛型单态化消除动态分发；`dyn` 显式装箱 |
 | **Go** | `interface`（隐式实现） | `type PaymentStrategy interface { Pay(amount float64) }` | 隐式满足降低耦合，但无编译期契约检查 |
@@ -1322,7 +1322,7 @@ radar
 **意图**：将一个类的接口转换成客户希望的另外一个接口。
 
 | 语言 | 实现机制 | 复用场景 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **Java** | 类适配器（继承）/ 对象适配器（组合） | 遗留系统 API 现代化，如 `InputStreamReader` |
 | **Rust** | `From` / `Into` trait + 新类型模式（Newtype） | `From<ExternalError> for MyError` 实现错误链转换 |
 | **Go** | 结构体嵌入（Struct Embedding）+ 接口实现 | `io.Reader` 适配器生态，`io.MultiReader` 等 |
@@ -1337,7 +1337,7 @@ radar
 **意图**：定义一个用于创建对象的接口，让子类决定实例化哪一个类。
 
 | 语言 | 实现机制 | 2026 演进趋势 |
-|------|---------|--------------|
+| ------ | --------- | -------------- |
 | **Java** | `abstract class Factory` + 反射 / `Supplier<T>` | 向 `Sealed Class` + `Record` + `switch` 模式匹配演进 |
 | **Rust** | 关联函数（Associated Functions）+ `Box<dyn Trait>` | `enum` + `impl Trait` 取代部分 Factory 需求 |
 | **Go** | 工厂函数（Factory Function）返回接口 | Go 1.18+ 泛型工厂：`func NewStore[T any]() Store[T]` |
@@ -1348,7 +1348,7 @@ radar
 **依赖注入框架 2026 对比**：
 
 | 框架 | 语言 | 特性 | 成熟度 |
-|------|------|------|--------|
+| ------ | ------ | ------ | -------- |
 | Spring IoC | Java | 注解驱动、AOP 集成、条件装配 | 5/5 |
 | `dashmap` + 手动注入 | Rust | 无运行时 DI 框架，编译期组合为主 | 3/5 |
 | Wire (Google) | Go | 编译期代码生成，无反射开销 | 4/5 |
@@ -1365,7 +1365,7 @@ radar
 ### 6.1 语法层（Syntax Layer）—— 权重 15%
 
 | 检查项 | 通过标准 | 工具辅助 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | 参数类型完整 | 所有参数均有显式类型声明 | IDE 静态分析、编译器 |
 | 返回类型明确 | 无隐式返回；`void`/`Unit` 显式标注 | Linter |
 | 异常/错误声明 | 方法签名声明可能抛出的异常或返回的错误类型 | Java: `throws`; Rust: `Result<T,E>` |
@@ -1375,7 +1375,7 @@ radar
 ### 6.2 前置/后置层（Pre/Post Layer）—— 权重 25%
 
 | 检查项 | 通过标准 | 工具辅助 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | 前置条件文档化 | 参数有效范围、非空约束、状态前提明确记录 | Design-by-Contract 库 |
 | 后置条件文档化 | 返回值保证、副作用声明、状态变更说明 | Assert 语句、Property Testing |
 | 不变量声明 | 对象生命周期内始终为真的条件 | `invariant` 关键字（部分语言） |
@@ -1384,7 +1384,7 @@ radar
 ### 6.3 协议层（Protocol Layer）—— 权重 30%
 
 | 检查项 | 通过标准 | 工具辅助 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | 调用顺序约束 | 方法调用必须通过状态机或时序图说明 | State Machine 图、序列图 |
 | 资源生命周期 | `open` → `use` → `close` 等模式明确 | RAII（Rust）、`try-with-resources`（Java） |
 | 线程安全协议 | 并发访问的许可模式（Send/Sync、线程安全注解） | 静态并发分析器 |
@@ -1393,7 +1393,7 @@ radar
 ### 6.4 语义层（Semantic Layer）—— 权重 30%
 
 | 检查项 | 通过标准 | 工具辅助 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | 领域术语对齐 | 接口命名与 Ubiquitous Language 一致 | 领域词典、Code Review |
 | SLA/SLO 声明 | 响应时间、吞吐量、可用性指标文档化 | 性能基准测试 |
 | 幂等性保证 | 重复调用是否产生相同效果 | 契约测试（Pact） |
@@ -1577,7 +1577,7 @@ class Authenticated:
 ## 8. 标准条款映射
 
 | 本主题概念 | 对应标准/文献 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 接口隔离原则（ISP） | SOLID Principles | 客户端不应依赖其不使用的接口 |
 | 依赖倒置原则（DIP） | SOLID Principles | 高层模块与低层模块均依赖抽象 |
 | 里氏替换原则（LSP） | Liskov Substitution Principle | 子类型必须可替换基类型而不破坏正确性 |
@@ -1618,7 +1618,7 @@ class Authenticated:
 ## 模式选择矩阵
 
 | 复用场景 | 推荐模式 | 关键考量 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 需要统一创建一组相关对象 | **抽象工厂（Abstract Factory）** | 产品族一致性、跨平台适配 |
 | 需要延迟对象创建并集中管理 | **工厂方法（Factory Method）** | 子类化扩展、单一职责 |
 | 需要确保全局唯一实例 | **单例（Singleton）** | 线程安全、测试性、可配置性 |
@@ -1656,7 +1656,7 @@ class Authenticated:
 ## 反模式警示
 
 | 反模式 | 表现 | 风险 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **上帝对象（God Object）** | 一个类包含过多职责 | 难以复用、测试和维护 |
 | **过度工程（Over-Engineering）** | 为简单场景引入复杂模式 | 增加认知负担，降低复用性 |
 | **模式贫血（Anemic Pattern）** | 仅套用模式结构，无实际抽象价值 | 虚假复用，增加代码量 |
@@ -1693,7 +1693,7 @@ Wikipedia 对[Software design pattern](https://en.wikipedia.org/wiki/Software_de
 ### 核心属性
 
 | 属性 | 说明 | 重要性 |
-|---|---|---|
+| --- | --- | --- |
 | **情境性** | 模式只在特定上下文（forces）中才有价值，脱离上下文会失效 | 高 |
 | **可复用结构** | 提供类/对象/组件间的稳定协作结构，可被多次实例化 | 高 |
 | **开闭原则** | 对扩展开放、对修改关闭，新增变体不破坏既有代码 | 高 |
@@ -1729,7 +1729,7 @@ flowchart TB
 ### GoF 分类与典型模式映射
 
 | GoF 分类 | 典型模式 | 架构/微服务映射 | 复用场景 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **创建型** | 工厂方法、抽象工厂、建造者、单例、原型 | 服务实例化、对象池、依赖注入容器 | 统一创建一族相关服务 |
 | **结构型** | 适配器、桥接、组合、装饰器、外观、享元、代理 | API Gateway、Sidecar、Adapter Service、BFF | 接口适配与职责扩展 |
 | **行为型** | 观察者、策略、命令、迭代器、中介者、状态、访问者 | Saga、CQRS、事件总线、路由策略 | 解耦对象交互与算法切换 |
@@ -1739,7 +1739,7 @@ flowchart TB
 设计模式并非孤立存在，它们常常作为更 coarse-grained 架构模式的实现基础。下表给出常见映射关系：
 
 | 架构/微服务模式 | 底层设计模式组合 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | **API Gateway** | 外观（Facade）+ 适配器（Adapter）+ 代理（Proxy） | 统一封装后端服务差异，对外提供一致入口 |
 | **BFF（Backend for Frontend）** | 外观 + 策略 | 针对不同前端定制聚合逻辑，策略切换视图模型 |
 | **Saga / 分布式事务** | 命令（Command）+ 中介者（Mediator） | 将本地事务封装为命令，由 Saga 编排器协调 |
@@ -1954,7 +1954,7 @@ flowchart TD
 ### 1.1 主流版本策略对比
 
 | 策略 | 格式 | 代表项目 | 优点 | 缺点 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **Semver** | `MAJOR.MINOR.PATCH` | npm, Cargo, Maven | 语义清晰、兼容性强 | 主观判断 breaking |
 | **CalVer** | `YYYY.MM.MICRO` | Ubuntu, pip, Chrome | 时间线清晰 | 无兼容语义 |
 | **HashVer** | `git-sha` | Docker 镜像、Go | 精确对应源码 | 无可读性 |
@@ -1995,7 +1995,7 @@ PATCH: 向后兼容的问题修复
 ### 2.1 版本变更的复用风险映射
 
 | 变更类型 | Semver | 复用风险 | 决策建议 |
-|:---|:---:|:---|:---|
+| :--- | :---: | :--- | :--- |
 | **Patch** | x.x.Z | 🟢 低 | 自动升级，安全复用 |
 | **Minor** | x.Y.x | 🟡 中 | 条件复用，回归测试后升级 |
 | **Major** | X.x.x | 🔴 高 | 详细审查，制定迁移计划 |
@@ -2027,7 +2027,7 @@ PATCH: 向后兼容的问题修复
 **场景**: 同一系统需要复用同一组件的两个 Major 版本。
 
 | 语言/平台 | 实现方式 |
-|:---|:---|
+| :--- | :--- |
 | **Java** | 不同 ClassLoader（OSGi、JPMS） |
 | **.NET** | 强命名 + GAC / 本地复制 |
 | **Node.js** | npm 的嵌套 node_modules |
@@ -2097,7 +2097,7 @@ Sunset Timeline
 Kubernetes 采用三级版本策略：
 
 | 级别 | 含义 | 稳定性 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | **Alpha** | 默认禁用，可能有 Bug | ❌ 不稳定 |
 | **Beta** | 默认启用，经过测试 | ⚠️ 可能变更 |
 | **GA (Stable)** | 生产就绪，长期支持 | ✅ 稳定 |
@@ -2129,7 +2129,7 @@ Kubernetes API 版本演进
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Semver 2.0.0 | <https://semver.org/> | 2026-06-10 |
 | CalVer | <https://calver.org/> | 2026-06-10 |
 | Kubernetes API Versioning | <https://kubernetes.io/docs/reference/using-api/api-overview/> | 2026-06-10 |
@@ -2201,7 +2201,7 @@ kubectl get authorizationpolicy
 ### 3.1 平台团队发布的 Golden Path
 
 | 模板 | 复用价值 |
-|------|----------|
+| ------ | ---------- |
 | **GatewayClass 模板** | 定义批准的控制器类型（`istio`、`envoy`、`cilium`） |
 | **HTTPRoute 标准模板** | 重试预算、CORS、超时默认值内建 |
 | **GAMMA Producer Route** | 命名空间级服务默认路由策略 |
@@ -2233,7 +2233,7 @@ spec:
 ## 4. 与项目结构的映射
 
 | 项目目录 | 云原生网络角色 |
-|----------|----------------|
+| ---------- | ---------------- |
 | `struct/04-component-architecture-reuse/` | HTTPRoute/BackendTLSPolicy = 可复用网络组件 |
 | `struct/06-cross-layer-governance/` | AuthorizationPolicy = 跨层安全治理 |
 | `struct/10-supply-chain-security/` | mTLS + SPIFFE = 零信任供应链安全 |
@@ -2288,7 +2288,7 @@ spec:
 ## 1. 关键结论（TL;DR）
 
 | 标准/项目 | 最新状态 | 核心意义 |
-|-----------|----------|----------|
+| ----------- | ---------- | ---------- |
 | **Gateway API v1.5** | 2026‑02 发布，最大 GA 版本 | ListenerSet、TLSRoute、CORS Filter、Client Cert Validation 全部进入 Standard 通道 |
 | **GAMMA** | Gateway API 子项目，Experimental | 将 HTTPRoute/GRPCRoute 附加到 **Service**（非 Gateway），统一东西/南北向流量 |
 | **SMI** | 实质上被 GAMMA 取代 | 2022 年 SMI 社区正式加入 GAMMA；无独立重大发布 |
@@ -2372,7 +2372,7 @@ spec:
 ### 4.1 三种架构对比
 
 | 维度 | Istio Ambient | Cilium (eBPF) | Linkerd (Sidecar) |
-|------|---------------|---------------|-------------------|
+| ------ | --------------- | --------------- | ------------------- |
 | **L4 处理** | Ztunnel (每节点，用户空间) | eBPF + WireGuard (内核) | Rust micro-proxy (每 Pod) |
 | **L7 处理** | Waypoint Proxy (每服务账号) | 每节点共享 Envoy | 每 Pod Rust proxy |
 | **mTLS 延迟开销** | ~8% | ~99% (WireGuard) | 低 |
@@ -2451,7 +2451,7 @@ spec:
 Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 
 | 角色 | 资源 | 复用模式 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 基础设施提供商 | GatewayClass | 定义批准的控制器类型（如 "internal-l7"、"public-l7"） |
 | 集群运维 | Gateway | 配置 TLS、IP、监听器；团队附加路由 |
 | 应用开发者 | HTTPRoute/GRPCRoute | 附加到 Gateway 或 Service (GAMMA)；定义金丝雀、重试、认证 |
@@ -2478,7 +2478,7 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 8. 选型决策框架
 
 | 场景 | 推荐 |
-|------|------|
+| ------ | ------ |
 | Greenfield 简单 L7 Ingress | Gateway API + Envoy Gateway 或 Cilium Gateway API |
 | Ingress + Service Mesh, <500 节点 | Cilium（CNI + Gateway API + GAMMA Mesh 一体） |
 | 大规模、多集群、企业级 | Istio Ambient（最佳多集群、成熟生态） |
@@ -2498,7 +2498,7 @@ Gateway API 的**角色导向设计**使平台团队能提供自服务网络：
 ## 9. 权威来源
 
 | 资源 | URL |
-|------|-----|
+| ------ | ----- |
 | Gateway API v1.5 Blog | <https://kubernetes.io/blog/2026/04/21/gateway-api-v1-5/> |
 | Gateway API v1.4 Blog | <https://kubernetes.io/blog/2025/11/06/gateway-api-v1-4/> |
 | GAMMA Initiative | <https://gateway-api.sigs.k8s.io/mesh/gamma/> |
@@ -2635,7 +2635,7 @@ radar
 ### 2.1 包管理器特性
 
 | 特性 | Maven | Gradle |
-|------|-------|--------|
+| ------ | ------- | -------- |
 | **版本锁定** | `pom.xml` + `dependencyManagement` 集中版本控制；Gradle 支持 `gradle.lockfile` | 支持依赖锁定与校验和验证（Dependency Verification） |
 | **Semver 支持** | 原生支持版本范围（`[1.0,2.0)`、`LATEST`、`RELEASE`） | 支持动态版本与自定义解析策略 |
 | **范围依赖** | 通过 `<scope>`（compile/test/provided/runtime）精细控制传递性 | `implementation`/`api` 分离，Compile Avoidance 优化 |
@@ -2659,7 +2659,7 @@ module com.example.service {
 ### 2.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型（Generics）** | 类型擦除（Type Erasure） | 运行时无类型信息，限制反射复用 |
 | **JIT 编译** | HotSpot / GraalVM | 运行时优化，跨组件边界内联 |
 | **宏 / 元编程** | 注解处理器（Annotation Processor） | 编译期代码生成，如 Lombok、MapStruct |
@@ -2668,16 +2668,16 @@ module com.example.service {
 ### 2.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | CycloneDX Maven Plugin, Syft |
 | 签名验证 | GPG 签名（Maven Central 强制要求） |
 | 漏洞扫描 | OWASP Dependency-Check, Snyk, Mend |
-|  provenance | Gradle Dependency Verification (`verification-metadata.xml`) |
+| provenance | Gradle Dependency Verification (`verification-metadata.xml`) |
 
 ### 2.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | 锁定与校验机制成熟，但缺乏原生 vendor 支持 |
 | 组件模型 | 4 | JPMS 提供强封装，但采用率仍在提升中 |
 | 变性机制 | 4 | JIT 强大，但类型擦除限制泛型复用深度 |
@@ -2693,7 +2693,7 @@ module com.example.service {
 2026 年 Node.js 包管理器格局呈现**三足鼎立**：npm（默认）、pnpm（新兴默认）、Yarn Berry v4（Plug'n'Play）。
 
 | 特性 | npm 11 | pnpm 10 | Yarn 4 (Berry) |
-|------|--------|---------|----------------|
+| ------ | -------- | --------- | ---------------- |
 | **版本锁定** | `package-lock.json` (JSON) | `pnpm-lock.yaml` (YAML) | `yarn.lock` (自定义格式) |
 | **Semver 支持** | `^`、`~`、范围原生支持 | 同 npm | 同 npm |
 | **范围依赖** | 扁平化 `node_modules`，存在 phantom deps 风险 | 内容寻址存储 + 严格隔离 | PnP 零 `node_modules`，严格解析 |
@@ -2722,7 +2722,7 @@ import { utils } from './utils.js';
 ### 3.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | TypeScript 编译期泛型（擦除为 JS） | 类型复用仅在编译期有效 |
 | **JIT 编译** | V8 引擎 | 运行时优化，但跨模块边界内联受限 |
 | **宏 / 元编程** | Babel / SWC / esbuild 转换 | 编译期代码生成，生态丰富 |
@@ -2737,7 +2737,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 - Socket.dev、Snyk 提供实时恶意包检测
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `npm sbom`, CycloneDX Node, Syft |
 | 签名验证 | npm provenance (Sigstore / SLSA L3) |
 | 漏洞扫描 | `npm audit`, Socket.dev, Snyk |
@@ -2746,7 +2746,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 ### 3.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | pnpm 解决 phantom deps，但 npm 默认行为仍宽松 |
 | 组件模型 | 3 | 无编译期模块边界，运行时错误风险高 |
 | 变性机制 | 3 | TS 类型擦除，无零开销抽象 |
@@ -2762,7 +2762,7 @@ Node.js 是 2026 年供应链攻击的**重灾区**：
 Cargo 是 Rust 的官方构建系统与包管理器，2026 年已全面采用 **PubGrub 依赖解析算法**（CDCL SAT Solver 的变种）。
 
 | 特性 | Cargo |
-|------|-------|
+| ------ | ------- |
 | **版本锁定** | `Cargo.lock`（TOML 格式，跨平台确定性构建） |
 | **Semver 支持** | 严格 Semver，`^` 为默认，支持 `=`/`>=`/`~` 范围 |
 | **范围依赖** | 支持复杂范围（`>=1.0, <3.0`），允许同一 crate 多版本共存 |
@@ -2800,7 +2800,7 @@ pub struct UserService<R: Repository<User>> {
 ### 4.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | 编译期单态化（Monomorphization） | 零开销抽象，每个实例化生成独立机器码 |
 | **JIT 编译** | 不支持 | 纯 AOT，无运行时优化 |
 | **宏 / 元编程** | 声明宏（`macro_rules!`）+ 过程宏（Procedural Macros） | 编译期元编程，如 `serde_derive`、`async_trait` |
@@ -2811,11 +2811,11 @@ pub struct UserService<R: Repository<User>> {
 Rust 生态在安全方面处于**领先地位**：
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `cargo-cyclonedx`, `cargo-spdx`, `cargo-sbom` |
 | 签名验证 | crates.io 发布令牌 + Trusted Publishing (OIDC) |
 | 漏洞扫描 | `cargo-audit`（RustSec Advisory DB） |
-|  provenance | Sigstore 集成实验性推进中 |
+| provenance | Sigstore 集成实验性推进中 |
 
  crates.io 2026 年新增功能：
 
@@ -2826,7 +2826,7 @@ Rust 生态在安全方面处于**领先地位**：
 ### 4.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 5 | PubGrub 解析器 + `Cargo.lock` 确定性 + 原生 vendor |
 | 组件模型 | 5 | Trait + 所有权系统提供编译期强契约 |
 | 变性机制 | 5 | 单态化 + 宏系统，零开销抽象 |
@@ -2842,7 +2842,7 @@ Rust 生态在安全方面处于**领先地位**：
 Go Modules 采用独特的 **Minimal Version Selection (MVS)** 算法，这是所有主流包管理器中唯一的**线性时间**依赖解析策略。
 
 | 特性 | Go Modules |
-|------|------------|
+| ------ | ------------ |
 | **版本锁定** | `go.mod`（最小版本声明）+ `go.sum`（校验和锁定） |
 | **Semver 支持** | 强制 Semver，主版本号作为模块路径的一部分（`v2`+ 需显式路径变更） |
 | **范围依赖** | **不支持范围**：仅声明最小版本，MVS 自动选择满足所有约束的最大最小版本 |
@@ -2884,7 +2884,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | Go 1.18+ 支持，基于 GC Shape Stenciling | 编译期部分单态化，仍有接口装箱 fallback |
 | **JIT 编译** | 不支持 | 纯 AOT 编译 |
 | **宏 / 元编程** | `go generate` + 代码生成工具 | 无编译期宏，依赖外部代码生成 |
@@ -2893,7 +2893,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `syft`（Go 二进制支持原生 SBOM 嵌入） |
 | 签名验证 | `proxy.golang.org` + 校验和数据库（`sum.golang.org`） |
 | 漏洞扫描 | `govulncheck`（Go 官方，基于调用图精确分析） |
@@ -2904,7 +2904,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 ### 5.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | MVS 确定性高但灵活性低；原生 vendor 优秀 |
 | 组件模型 | 4 | 隐式接口简洁，但缺乏显式契约声明 |
 | 变性机制 | 3 | 泛型实现较晚，宏机制薄弱 |
@@ -2920,7 +2920,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 2026 年是 Python 包管理器的**分水岭**：`uv`（Astral，Rust 编写）以压倒性性能优势快速取代传统工具。
 
 | 特性 | pip | Poetry | uv |
-|------|-----|--------|-----|
+| ------ | ----- | -------- | ----- |
 | **版本锁定** | `requirements.txt`（无原生 lock） | `poetry.lock`（完整锁定） | `uv.lock`（TOML，哈希校验） |
 | **Semver 支持** | 通过 `pip` 版本说明符 | 原生 Semver | 原生 Semver |
 | **范围依赖** | 支持 | 支持 | 支持 |
@@ -2929,7 +2929,7 @@ Go 1.18+ 引入泛型，但使用相对保守，接口仍是组件复用的核�
 **性能对比**（Python Package Manager Shootout 2026，Sentry 依赖集）：
 
 | 操作 | pip-tools | Poetry | uv |
-|------|-----------|--------|-----|
+| ------ | ----------- | -------- | ----- |
 | 冷安装（lockfile） | ~33s | ~11s | **~3s** |
 | Lock 文件生成 | ~35s | ~22s | **~8s** |
 | 添加单个包 | ~6s | ~3s | **<1s** |
@@ -2955,7 +2955,7 @@ Python 3.8+ 的 `typing.Protocol` 提供了类似 Go 隐式接口的能力，但
 ### 6.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | `typing.Generic`（运行时不检查，mypy/pyright 静态检查） | 类型信息运行时擦除 |
 | **JIT 编译** | CPython 无 JIT；PyPy 支持 tracing JIT | 主流仍依赖 CPython 解释器 |
 | **宏 / 元编程** | 装饰器（Decorator）、元类（Metaclass） | 运行时元编程，灵活但难以追踪 |
@@ -2966,7 +2966,7 @@ Python 3.8+ 的 `typing.Protocol` 提供了类似 Go 隐式接口的能力，但
 Python 生态 2026 年供应链安全能力**大幅提升**：
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `cyclonedx-py`, `syft` |
 | 签名验证 | Sigstore（PyPI 支持 Trusted Publishing + 包证明） |
 | 漏洞扫描 | `pip-audit`, `uv-secure`, Snyk |
@@ -2977,7 +2977,7 @@ PyPI 2025 年处理超过 2000 起恶意包报告，66% 在 4 小时内响应。
 ### 6.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | uv 带来质的飞跃，但历史包袱（pip 兼容性）仍在 |
 | 组件模型 | 3 | Protocol 进步显著，但无编译期强制 |
 | 变性机制 | 3 | 运行时类型系统，JIT 未普及 |
@@ -2993,7 +2993,7 @@ PyPI 2025 年处理超过 2000 起恶意包报告，66% 在 4 小时内响应。
 NuGet 是 .NET 的官方包管理器，2026 年深度集成于 Visual Studio 2026 与 .NET SDK。
 
 | 特性 | NuGet |
-|------|-------|
+| ------ | ------- |
 | **版本锁定** | `packages.lock.json`（MSBuild 项目支持） |
 | **Semver 支持** | 原生 Semver 2.0，`^` 通过 MSBuild 属性模拟 |
 | **范围依赖** | `[1.0, 2.0)` 等区间表示法 |
@@ -3027,7 +3027,7 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ### 7.3 变性机制
 
 | 机制 | 支持情况 | 复用影响 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **泛型** | 运行时类型保留（Reified Generics） | 泛型类型信息运行时可用，支持 `typeof(List<int>)` |
 | **JIT 编译** | RyuJIT / Tiered Compilation | 跨程序集边界内联优化 |
 | **宏 / 元编程** | Source Generators（源生成器） | 编译期代码生成，Roslyn 驱动 |
@@ -3036,16 +3036,16 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ### 7.4 供应链安全
 
 | 能力 | 工具/机制 |
-|------|----------|
+| ------ | ---------- |
 | SBOM 生成 | `dotnet sbom`（官方 CLI），Syft |
 | 签名验证 | NuGet 包签名（X.509 证书），NuGet.org 强制签名 |
 | 漏洞扫描 | `dotnet audit`, GitGuardian, Snyk |
-|  provenance | SLSA provenance 支持（NuGet.org Build Service） |
+| provenance | SLSA provenance 支持（NuGet.org Build Service） |
 
 ### 7.5 2026 复用成熟度评分
 
 | 维度 | 评分 (1-5) | 说明 |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | 包管理器特性 | 4 | 锁定与求解器成熟，NuGetSolver AI 集成领先 |
 | 组件模型 | 4 | 程序集边界清晰，internal 访问控制有效 |
 | 变性机制 | 4 | Source Generators + Reified Generics 强大 |
@@ -3057,7 +3057,7 @@ C# 的 `internal` 关键字使组件边界与物理程序集对齐，`InternalsV
 ## 8. 六维总对比矩阵
 
 | 维度 | JVM (Maven/Gradle) | Node.js (npm/pnpm) | Rust (Cargo) | Go (Modules) | Python (pip/Poetry/uv) | .NET (NuGet) |
-|------|:------------------:|:------------------:|:------------:|:------------:|:----------------------:|:------------:|
+| ------ | :------------------: | :------------------: | :------------: | :------------: | :----------------------: | :------------: |
 | **包管理器：版本锁定** | `pom.xml` + Gradle lockfile | `package-lock.json` / `pnpm-lock.yaml` | `Cargo.lock` | `go.mod` + `go.sum` | `uv.lock` / `poetry.lock` | `packages.lock.json` |
 | **包管理器：范围依赖** | Maven 范围 / Gradle 配置 | `^` / `~` / 范围 | `^` / `>=` / 复杂范围 | **仅最小版本**（MVS） | 版本说明符 | `[min, max)` 区间 |
 | **包管理器：供应商化** | ❌ 不支持 | ❌ 不支持（pnP 缓存近似） | ✅ `cargo vendor` | ✅ `go mod vendor` | ❌ 不支持 | ❌ 不支持 |
@@ -3101,7 +3101,7 @@ quadrantChart
 ### 9.2 趋势预测（2026-2028）
 
 | 生态 | 预测趋势 | 关键驱动力 |
-|------|---------|-----------|
+| ------ | --------- | ----------- |
 | **Rust** | 持续上升 | WASM Component Model、嵌入式、Linux 内核接纳 |
 | **Go** | 稳步上升 | 云原生基础设施主导、泛型生态成熟 |
 | **Python** | 快速上升 | uv 工具链统一、AI/ML 生态不可替代 |
@@ -3167,7 +3167,7 @@ quadrantChart
 ### 核心属性
 
 | 属性 | 说明 | 重要性 |
-|---|---|---|
+| --- | --- | --- |
 | **包管理成熟度** | 版本锁定、范围依赖、依赖解析算法与供应商化能力 | 高 |
 | **组件模型强度** | 模块边界、可见性控制、接口定义与编译期检查 | 高 |
 | **变性机制** | 泛型、JIT、宏/元编程、单态化等提升复用表达力的机制 | 中 |
@@ -3279,7 +3279,7 @@ flowchart TD
 ### 1.2 风险
 
 | 风险类型 | 示例 | 影响 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | 已知漏洞 | Log4Shell (CVE-2021-44228) | 远程代码执行 |
 | 恶意包 | typosquatting, dependency confusion | 供应链攻击 |
 | 维护者流失 | left-pad 事件 | 构建中断 |
@@ -3298,8 +3298,8 @@ flowchart TD
 ### 2.2 OWASP Software Component Verification Standard (SCVS)
 
 | 控制域 | 目标 |
-|-------|------|
-| **V1: 清单** | 维护准确的软件组件清单（SBOM）|
+| ------- | ------ |
+| **V1: 清单** | 维护准确的软件组件清单（SBOM） |
 | **V2: SBOM 完整性** | SBOM 完整、准确、及时更新 |
 | **V3: 构建环境** | 构建过程可复现、可验证 |
 | **V4: 包管理** | 依赖解析安全、包来源可信 |
@@ -3311,17 +3311,17 @@ flowchart TD
 ### 3.1 Java / JVM（Maven Central）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `pom.xml` + Maven Enforcer Plugin |
 | 漏洞扫描 | OWASP Dependency-Check, Snyk, Mend |
-| 签名验证 | GPG 签名（Maven Central 要求）|
+| 签名验证 | GPG 签名（Maven Central 要求） |
 | SBOM 生成 | CycloneDX Maven Plugin |
 | 私有仓库 | Nexus / Artifactory |
 
 ### 3.2 JavaScript / TypeScript（npm）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml` |
 | 漏洞扫描 | `npm audit`, Snyk, Socket.dev |
 | 签名验证 | npm provenance (SLSA Build L3) |
@@ -3331,7 +3331,7 @@ flowchart TD
 ### 3.3 Python（PyPI）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `requirements.txt` + `pip-compile` / `poetry.lock` |
 | 漏洞扫描 | `pip-audit`, Safety, Snyk |
 | 签名验证 | Sigstore (`pypi.org` 支持) |
@@ -3341,7 +3341,7 @@ flowchart TD
 ### 3.4 Rust（crates.io）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `Cargo.lock` |
 | 漏洞扫描 | `cargo-audit` (RustSec Advisory DB) |
 | SBOM 生成 | `cargo-cyclonedx`, `cargo-spdx` |
@@ -3350,7 +3350,7 @@ flowchart TD
 ### 3.5 Go（pkg.go.dev）
 
 | 实践 | 工具/机制 |
-|-----|----------|
+| ----- | ---------- |
 | 依赖锁定 | `go.mod` + `go.sum` |
 | 漏洞扫描 | `govulncheck` (Go 官方) |
 | SBOM 生成 | `syft` |
@@ -3363,7 +3363,7 @@ flowchart TD
 ### 4.1 算法谱系
 
 | 算法 | 代表生态 | 时间复杂度 | 多版本共存 | 核心哲学 |
-|------|---------|-----------|-----------|---------|
+| ------ | --------- | ----------- | ----------- | --------- |
 | **SAT / CDCL 求解** | Cargo (PubGrub), Poetry, npm (部分) | NP-完全（实践可接受） | ✅ 允许 | 在满足所有约束的前提下选择最新兼容版本 |
 | **Minimal Version Selection (MVS)** | Go Modules | **O(n)** 线性 | ❌ 同一模块仅一个版本 | 选择满足所有最小约束的**最保守**版本 |
 | **图遍历 + 启发式** | pip (legacy), npm (legacy) | 多项式（但可能非终止） | ✅ 允许 | 贪心选择，局部最优 |
@@ -3413,7 +3413,7 @@ MVS(G, R):
 ### 4.4 算法选择对复用安全的影响
 
 | 场景 | 推荐算法 | 理由 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 需要严格版本上限约束 | PubGrub / SAT | MVS 不支持上限表达 |
 | 追求极致构建确定性 | MVS | 线性时间，零随机性 |
 | 大型 monorepo（1000+ 依赖） | PubGrub | 冲突学习加速大规模求解 |
@@ -3438,7 +3438,7 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 5.1 Lockfile 安全属性
 
 | 属性 | 说明 | 风险 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **完整性** | Lockfile 包含所有传递依赖的精确版本 | 攻击者篡改 lockfile 可注入恶意版本 |
 | **可验证性** | 是否包含密码学哈希（hash）校验 | 无哈希的 lockfile 无法检测包篡改 |
 | **不可伪造性** | 生成过程是否可信 | CI 环境被入侵可生成恶意 lockfile |
@@ -3447,7 +3447,7 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 5.2 各生态 Lockfile 安全能力对比
 
 | 生态 | Lockfile 格式 | 哈希校验 | 生成者验证 | 2026 安全增强 |
-|------|--------------|---------|-----------|--------------|
+| ------ | -------------- | --------- | ----------- | -------------- |
 | **Rust (Cargo)** | `Cargo.lock` (TOML) | ✅ SHA-256 | Cargo 官方 | MSRV 感知解析、Trusted Publishing |
 | **Go** | `go.sum` | ✅ SHA-256 | Go 官方 + 校验和数据库 | CVE-2026-42501 修复校验和验证 |
 | **Node.js (npm)** | `package-lock.json` | ✅ SHA-512 | npm CLI | provenance attestation (SLSA L3) |
@@ -3502,14 +3502,14 @@ Lockfile 是组件复用确定性的基石，但其本身也成为攻击面。
 ### 6.1 策略定义
 
 | 策略 | 定义 | 代表工具/命令 |
-|------|------|-------------|
+| ------ | ------ | ------------- |
 | **Vendoring** | 将依赖源码复制到项目 `vendor/` 目录，纳入版本控制 | `go mod vendor`, `cargo vendor`, `npm shrinkwrap`（已废弃） |
 | **Proxy Registry** | 部署内部 registry 代理/缓存公共 registry，支持审批流程 | Nexus, Artifactory, Cloudsmith, Verdaccio, Devpi |
 
 ### 6.2 决策矩阵
 
 | 评估维度 | Vendoring | Proxy Registry |
-|---------|:---------:|:--------------:|
+| --------- | :---------: | :--------------: |
 | **构建可复现性** | ⭐⭐⭐⭐⭐ 无需网络 | ⭐⭐⭐⭐ 需内部网络 |
 | **依赖审查便利性** | ⭐⭐⭐⭐⭐ 源码即 diff | ⭐⭐⭐ 需额外工具 |
 | **仓库大小** | ⭐⭐ 仓库膨胀 | ⭐⭐⭐⭐⭐ 无膨胀 |
@@ -3546,7 +3546,7 @@ Layer 4: Vendoring（可选终极防线）
 ### 6.4 各生态具体实践
 
 | 生态 | Vendoring 命令 | Proxy Registry 工具 | 推荐场景 |
-|------|---------------|---------------------|---------|
+| ------ | --------------- | --------------------- | --------- |
 | **Go** | `go mod vendor` + `-mod=vendor` | `Athens`, `GOPROXY` 私有代理 | 云原生基础设施（Kubernetes 采用 vendor） |
 | **Rust** | `cargo vendor` + `[source.crates-io]` 替换 | `cloudsmith`, `Artifactory` | 嵌入式/离线环境 |
 | **Node.js** | 不推荐原生 vendor；使用 `pnpm` 离线缓存 | `Verdaccio`, `npm Enterprise` | 前端工程化 |
@@ -3569,7 +3569,7 @@ Layer 4: Vendoring（可选终极防线）
 ### 4.2 版本策略
 
 | 策略 | 说明 | 适用 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **Pin（锁定）** | 精确版本，确定性构建 | 生产发布 |
 | **SemVer 范围** | `^1.2.3` 允许兼容更新 | 开发阶段 |
 | **Renovate/Bot** | 自动创建升级 PR，CI 验证后合并 | 持续维护 |
@@ -3591,7 +3591,7 @@ Artifact Repository
 ### 5.1 生成阶段
 
 | 阶段 | 工具 | 输出格式 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | 构建时 | CycloneDX plugins, Syft, SPDX tools | CycloneDX JSON/XML, SPDX Tag/JSON/RDF |
 | 容器镜像 | Syft, Trivy, Grype | CycloneDX, SPDX |
 | 运行时 | 运维平台导出 | VEX (Vulnerability Exploitability eXchange) |
@@ -3609,7 +3609,7 @@ Artifact Repository
 ## 6. 复用质量评估模型
 
 | 维度 | 指标 | 评估方法 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **健康度** | 星标、贡献者数量、最近提交、Issue 响应时间 | OpenSSF Scorecard |
 | **安全性** | 已知 CVE、恶意代码历史、签名状态 | Snyk / OSV / NVD |
 | **合规性** | SPDX 许可证标识、许可证兼容性 | FOSSology / ScanCode |
@@ -3679,7 +3679,7 @@ Artifact Repository
 ## 权威对齐
 
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | UML | 2.5.1 | §11 Components, §19.3 Component Diagrams | <https://www.omg.org/spec/UML/2.5.1/> | 2026-07-08 |
 | ISO/IEC/IEEE 42010 | 2022 | Architecture Description: Viewpoint, View, Correspondence | <https://www.iso.org/standard/74393.html> | 2026-07-08 |
 | IEEE 1471 | 2000 | Recommended Practice for Architectural Description | <https://standards.ieee.org/standard/1471-2000.html> | 2026-07-08 |
@@ -3704,7 +3704,7 @@ Artifact Repository
 ## 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 组件 / 接口 | UML 2.5.1 §11 Components | 组件通过提供的/需要的接口定义边界 |
 | 组件图 | UML 2.5.1 §19.3 Component Diagrams | 可视化组件、接口与依赖关系 |
 | 架构描述 | ISO/IEC/IEEE 42010:2022 §5.4 | 组件视图作为架构描述的一种视图 |

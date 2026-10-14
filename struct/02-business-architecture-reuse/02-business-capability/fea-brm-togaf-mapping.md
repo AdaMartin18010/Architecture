@@ -25,7 +25,7 @@ Business Area（业务域）
 ```
 
 | 层级 | 数量 | 说明 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **Business Area** | 4 | 最高层分类，按政府运营目的划分 |
 | **Line of Business** | 39 | 19 条外部业务线（面向公民服务）+ 20 条内部业务线（支持运营） |
 | **Sub-function** | 153 | 最细粒度，描述具体业务功能 |
@@ -103,7 +103,7 @@ FEA BRM 2.0
 TOGAF 10 Phase B（Business Architecture）定义以下与业务能力相关的核心交付物：
 
 | 交付物 | 内容 | 与 FEA BRM 的对应关系 |
-|-------|------|---------------------|
+| ------- | ------ | --------------------- |
 | **Business Capability Map** | 企业能力的分层分类图 | 对应 FEA BRM 的 Area + LOB 层级 |
 | **Value Stream Map** | 端到端价值交付序列 | 跨越多个 LOB 的 Sub-function 组合 |
 | **Organization Map** | 组织单元与能力的映射 | FEA BRM 明确分离：功能 ≠ 机构 |
@@ -126,7 +126,7 @@ Level 0: Enterprise Capability（企业能力）
 ### 3.1 层级映射矩阵
 
 | FEA BRM 2.0 | TOGAF 10 Phase B | 映射说明 |
-|------------|-----------------|---------|
+| ------------ | ----------------- | --------- |
 | **Business Area** | Capability Group (L1) | 按业务目的划分的大类，如"公民服务"对应"客户价值交付能力组" |
 | **Line of Business** | Capability (L2) | 动词+名词形式的能力，如"Health"→"管理公民健康" |
 | **Sub-function** | Sub-capability (L3) / Activity (L4) | 细粒度能力或流程活动，如"Disease Surveillance"→"监测疾病爆发" |
@@ -183,7 +183,7 @@ TOGAF Capability Map
 ### 3.3 映射规则总结
 
 | 规则编号 | 映射规则 | 说明 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | M1 | **名词动词化** | FEA BRM 的 LOB 名称为名词（如 "Health"），映射为 TOGAF Capability 时需转换为"动词+名词"（如 "管理公民健康"） |
 | M2 | **粒度对齐** | FEA Sub-function 若包含独立输入/输出/治理边界，映射为 L3 Sub-capability；若仅为活动步骤，映射为 L4 Activity |
 | M3 | **组织解耦** | FEA BRM 的"独立于机构"原则与 TOGAF Capability Map 的"能力稳定性"公理完全对齐 |
@@ -197,7 +197,7 @@ TOGAF Capability Map
 ### 4.1 决策矩阵
 
 | 评估维度 | 复用 FEA BRM 业务线 | 自定义业务线 | 混合策略 |
-|---------|------------------|-----------|---------|
+| --------- | ------------------ | ----------- | --------- |
 | **组织性质** | 政府机构、公共部门、政府承包商 | 私营企业、非政府组织（NGO） | 受监管行业（如医疗、金融）参考 FEA 结构后定制 |
 | **合规要求** | 必须对接联邦预算申报（OMB Exhibit 53/300） | 无政府合规要求 | 州/省级政府项目需局部映射 |
 | **跨机构协作** | 需与其他联邦/州机构共享数据或服务 | 完全内部运营 | 与政府机构有数据交换的私营企业 |
@@ -233,7 +233,7 @@ TOGAF Capability Map
 ### 4.3 典型场景建议
 
 | 场景 | 建议策略 | 理由 |
-|-----|---------|------|
+| ----- | --------- | ------ |
 | **美国联邦机构 IT 现代化** | 强制复用 FEA BRM 2.0 + DoD Supplement | OMB Circular A-11 合规要求 |
 | **州级 Medicaid 系统集成** | 复用 FEA "Health" + "Financial Management" LOB，自定义州级政策层 | 联邦结构 + 州级自治 |
 | **大型银行监管报送** | 参考 FEA "Controls & Oversight" + "Regulatory Development"，映射到 BIAN 服务域 | 监管逻辑与政府审计逻辑同源 |
@@ -265,7 +265,7 @@ TOGAF Architecture Continuum
 ### 5.2 在解决方案连续体中的映射
 
 | FEA BRM 元素 | 对应的解决方案构建块（SBB）示例 |
-|-------------|---------------------------|
+| ------------- | --------------------------- |
 | Health Care Delivery (Sub-function) | Epic EHR, Cerner Millennium, VA VistA |
 | Revenue Collection (LOB) | IRS 现代电子税务系统、州级税务平台 |
 | IT Security (Sub-function) | zero trust 架构平台、FedRAMP 合规云 |
@@ -276,7 +276,7 @@ TOGAF Architecture Continuum
 ## 6. 与 01 元模型标准的术语对齐
 
 | 本文件术语 | `struct/01-meta-model-standards/` 对应术语 | 说明 |
-|----------|----------------------------------------|------|
+| ---------- | ---------------------------------------- | ------ |
 | Business Area | Capability Group (L1) | 对齐 TOGAF 10 能力分层 |
 | Line of Business | Capability (L2) | 公理 2.1 定义的最小可复用业务语义单元 |
 | Sub-function | Sub-capability / Activity | 粒度由价值创造边界决定，非组织结构 |

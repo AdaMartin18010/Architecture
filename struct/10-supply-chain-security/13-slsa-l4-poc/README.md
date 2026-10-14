@@ -24,7 +24,7 @@
 本 PoC 演示 SLSA Build Level 4 核心控制点：
 
 | 控制点 | PoC 中的体现 |
-|--------|-------------|
+| -------- | ------------- |
 | **双人审查** | `verify-provenance.py` 检查 `REVIEWERS` 记录或 `SLSA_REVIEWERS` 环境变量中至少包含两名审批者。 |
 | **密封构建** | `build.py` 显式声明输入文件（`src/main.py`），不访问外部网络，构建脚本自身哈希也被记录。 |
 | **可复现构建** | 多次运行 `build.py`（同 commit、同脚本）产生的 `dist/app` 字节相同，`verify-provenance.py` 校验 SHA-256。 |
@@ -114,7 +114,7 @@ Chainguard 基于 Wolfi 发行版构建的容器镜像追求可复现构建与�
 ## 6. 反例 / 反模式
 
 | 反模式 | 风险 | 本 PoC 中的检测方式 |
-|--------|------|---------------------|
+| -------- | ------ | --------------------- |
 | **无来源证明** | 无法追溯构建来源，遭受供应链攻击后无法定位 | `verify-provenance.py` 检查 `provenance.json` 存在且字段完整 |
 | **单人审查/无审查** | 内部人员可单点注入恶意代码 | `verify-provenance.py` 要求至少两名审批者 |
 | **非密封构建** | 构建时拉取未声明依赖，导致输出不可预测 | `build.py` 不访问网络，输入文件显式声明 |
@@ -134,7 +134,7 @@ SolarWinds Orion 的构建环境被入侵后，攻击者在官方构建代理中
 ## 7. 控制点映射：SLSA Build Track L4 → PoC 实现
 
 | SLSA 要求 | PoC 文件/逻辑 | 关键字段/校验 |
-|----------|--------------|--------------|
+| ---------- | -------------- | -------------- |
 | 双人审查（Two-person review） | `REVIEWERS` + `verify-provenance.py` | 审批者数量 ≥ 2，且与 `SLSA_REVIEWERS`  env 可覆盖 |
 | 密封构建（Hermetic build） | `build.py` | 显式读取 `src/main.py`；不访问网络；构建脚本哈希写入 provenance |
 | 可复现构建（Reproducible build） | `build.py` + `verify-provenance.py` | 同 commit、同脚本下多次构建输出 `output_hash` 一致 |
@@ -170,7 +170,7 @@ SolarWinds Orion 的构建环境被入侵后，攻击者在官方构建代理中
 ## 10. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构与 Build Track L1-L3 | 2026-07-08 |
 | SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L4 草案要求（双人审查、可复现、密封） | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名 | 2026-07-08 |

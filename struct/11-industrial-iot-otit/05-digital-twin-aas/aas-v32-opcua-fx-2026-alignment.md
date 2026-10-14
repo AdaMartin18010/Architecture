@@ -8,7 +8,7 @@
 ## 1. 关键结论（TL;DR）
 
 | 标准 | 最新版本 | 关键更新 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | **AAS** | Part 1 v3.2 (2026‑03‑24) | 首个完全开源 HTML 规范；`idShort` 允许连字符；`DateTimeUtc` 统一；100+ Submodel Templates |
 | **OPC UA FX** | V1.00.03 (2025‑07‑31) | 诊断能力增强；LLDP 信息建模；C2C 已量产，C2D/D2D 进入 Phase 2 试点 |
 | **IEC 63278** | ‑1:2023 (EN 2024) | AAS 结构首份国际标准，赋予采购合同效力 |
@@ -32,7 +32,7 @@
 ### 2.2 v3.2 核心变更
 
 | 变更类别 | 具体内容 |
-|----------|----------|
+| ---------- | ---------- |
 | **数据类型** | `lastUpdate`、`timeStamp` 统一为 `DateTimeUtc`；`Identifier` 长度 2000→2048；`ContentType` 100→128 |
 | **约束放松** | `Blob/contentType`、`File/contentType`、`Entity/entityType`、`RelationshipElement/first/second` 变为可选；`idShort` 允许连字符 |
 | **新枚举** | `AasContainerSubmodelElements`、`AasNonContainerSubmodelElements`；`AssetKind/Role` 新增 |
@@ -44,7 +44,7 @@
 截至 2026 年初，IDTA 已注册 **100+ Submodel Templates**，涵盖：
 
 | SMT | ID | 复用场景 |
-|-----|-----|----------|
+| ----- | ----- | ---------- |
 | Digital Nameplate | IDTA-02006 | 资产身份标识 |
 | Technical Data | IDTA-02002 | 技术参数手册 |
 | Product Carbon Footprint | IDTA-02023 | ESG / CBAM 合规 |
@@ -62,7 +62,7 @@
 ### 3.1 状态概览
 
 | 维度 | 状态 |
-|------|------|
+| ------ | ------ |
 | **版本** | OPC 10000-80~84 V1.00.03 |
 | **发布日期** | 2025‑07‑31 |
 | **C2C** | 已量产，多厂商互操作（Siemens、Beckhoff、B&R、Phoenix Contact） |
@@ -93,7 +93,7 @@ OPC UA Client/Server (TCP/IP) — 仅用于连接建立
 ### 4.1 实现路径
 
 | 路径 | 机制 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **OPC UA Device Interface (IEC 62541-100)** | AAS 结构 ↔ UA Device Type 双向自动转换；Data Element → UA Variable；Service → UA Method | IDTA Plug-and-Produce 工作组验证 |
 | **UAFX AutomationComponent** | Part 81 的 `AutomationComponent` 在概念上与 AAS Submodel 对齐 | 概念对齐，无自动映射工具 |
 | **Companion Spec 引用** | AAS Submodel 语义标识符引用 OPC UA Companion Spec（Machinery、Robotics 等） | 工程实践中常见 |
@@ -124,7 +124,7 @@ OPC UA Client/Server (TCP/IP) — 仅用于连接建立
 ## 5. DTDL vs AAS：架构复用选择
 
 | 维度 | AAS (IDTA/IEC) | DTDL (Microsoft) |
-|------|----------------|------------------|
+| ------ | ---------------- | ------------------ |
 | **标准层级** | 国际标准 (IEC 63278) | 企业规范 |
 | **生态** | 欧洲制造 / 工业 4.0 / Catena-X | Azure IoT / 云原生 |
 | **语义丰富度** | 高（生命周期、Submodel Template） | 中（telemetry/property/command） |
@@ -144,7 +144,7 @@ OPC UA Client/Server (TCP/IP) — 仅用于连接建立
 ## 6. Eclipse BaSyx 生态最新
 
 | 组件 | 版本 | 亮点 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Python SDK** | v2.0.1 (2026‑04) | 实现 AAS Part 1 v3.0.1、Part 2 v3.0 |
 | **Java Server SDK** | v2.0.0‑m08 | Maven: `org.eclipse.digitaltwin.basyx` |
 | **Go Components** | 活跃 | 标准化 Server 组件 |
@@ -159,7 +159,7 @@ OPC UA Client/Server (TCP/IP) — 仅用于连接建立
 ## 7. IEC 智能制造基础标准层
 
 | 标准 | 内容 | 与 AAS 关系 |
-|------|------|-------------|
+| ------ | ------ | ------------- |
 | **IEC 63278-1:2023** | AAS 结构 | AAS 本体 |
 | **IEC TR 63319** | 智能制造参考模型元建模分析 (SEMP) | 理论基础 |
 | **IEC 63339** | 智能制造统一参考模型 | 跨域参考 |
@@ -188,7 +188,7 @@ AAS 位于这些基础标准之上，作为工业资产的**具体数字孪生�
 ### 8.2 分层映射
 
 | 项目目录 | 工业数字孪生角色 |
-|----------|------------------|
+| ---------- | ------------------ |
 | `struct/04-component-architecture-reuse/` | AAS Submodel = 工业组件语义契约 |
 | `struct/11-industrial-iot-otit/` | OPC UA FX = 现场实时通信；AAS = 数字护照 |
 | `struct/10-supply-chain-security/` | AAS + SBOM + SLSA = 全链路溯源 |

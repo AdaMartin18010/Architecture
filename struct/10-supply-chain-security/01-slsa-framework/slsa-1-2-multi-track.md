@@ -19,7 +19,7 @@
 ### 1.1 v1.0 → v1.1 → v1.2 的关键变化
 
 | 版本 | 发布时间 | 状态 | 核心变化 |
-|------|---------|------|----------|
+| ------ | --------- | ------ | ---------- |
 | **SLSA v1.0** | 2023-04 | 正式版 | 引入 **Build Track**，将 Source 要求从单一等级中剥离，专注构建 provenance 的可信度 |
 | **SLSA v1.1** | 2024 | 正式版 | 澄清性刷新；增强验证指南；VSA（Verification Summary Attestation）新增验证器元数据字段 |
 | **SLSA v1.2** | 2025-11 | 正式版 | **Source Track** 从实验提升为正式轨道；引入 **Multi-Track** 架构；新增 **Build Environment Track**（草案） |
@@ -61,7 +61,7 @@ SLSA v1.2 Multi-Track 架构
 下表汇总 SLSA v1.2 正式定义的三轨道九个单元格的具体要求。每个单元格代表该轨道等级必须满足的**最小控制集**。
 
 | 等级 | Build Track | Source Track | Build Environment Track |
-|------|------------|--------------|------------------------|
+| ------ | ------------ | -------------- | ------------------------ |
 | **L1** | 自动化构建 | 版本控制 | 基础环境记录 |
 | **L2** | 签名构建 | 提交签名 | 环境验证 |
 | **L3** | 隔离/密封构建 | 多重审查 | 完全可复现 |
@@ -69,7 +69,7 @@ SLSA v1.2 Multi-Track 架构
 ### 2.1 Build Track 详解
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | BT-L1-R1 | 构建过程完全脚本化/自动化，无手动步骤 | 存在 CI/CD 配置文件或构建脚本 |
 | | BT-L1-R2 | 生成并发布符合 SLSA Provenance v1 格式的 provenance | 使用 `slsa-verifier` 验证 predicate 结构完整性 |
 | **L2** | BT-L2-R1 | 源码来源于版本控制系统（Git/SVN 等） | provenance 中 `resolvedDependencies` 指向 commit SHA |
@@ -87,7 +87,7 @@ SLSA v1.2 Multi-Track 架构
 Source Track 在 v1.2 中正式化，解决"源码在提交到构建之前发生了什么"的溯源问题。
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | ST-L1-R1 | 源代码存储在版本控制系统中 | 仓库存在且可克隆 |
 | | ST-L1-R2 | 每个变更关联到稳定、不可变的标识符（commit SHA/tag） | 标签为 annotated tag 或 commit SHA 可独立引用 |
 | **L2** | ST-L2-R1 | 提交历史经过认证，无法伪造提交者身份 | 启用 GPG/SSH commit signing，拒绝未签名提交 |
@@ -103,7 +103,7 @@ Source Track 在 v1.2 中正式化，解决"源码在提交到构建之前发生
 Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream）阶段，目标是证明"运行构建的物理/虚拟环境本身未被篡改"。
 
 | 等级 | 要求编号 | 具体要求 | 验证方法 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1** | BET-L1-R1 | 构建环境（容器镜像/VM 模板）具有 provenance | 镜像签名并附带 SBOM，记录基础镜像和安装的软件包 |
 | | BET-L1-R2 | 构建环境版本被记录并与构建产物关联 | provenance 的 `internalParameters` 包含环境版本标识 |
 | **L2** | BET-L2-R1 | 构建实例启动时生成启动证明（Boot attestation） | 使用 vTPM 测量启动链（Bootloader → Kernel → Initrd） |
@@ -124,7 +124,7 @@ Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream
 复用决策必须根据组件的**使用场景和风险暴露面**选择最低 SLSA 轨道等级要求，而非一刀切地追求 L3。
 
 | 复用场景 | Build Track | Source Track | Build Env Track | 理由 |
-|---------|------------|--------------|----------------|------|
+| --------- | ------------ | -------------- | ---------------- | ------ |
 | 内部原型 / POC | L1 | — | — | 仅需追溯来源，无需篡改保护 |
 | 内部工具 / 后台管理 | L2 | L1 | — | 防止构建后篡改，源码在内部 VCS 即可 |
 | 企业 SaaS 核心服务 | L3 | L2 | L1 | 生产级防篡改 + 认证源码历史 + 环境记录 |
@@ -145,7 +145,7 @@ Build Environment Track 目前处于 OpenSSF 活跃工作流（Active Workstream
 ### 3.2 内部复用 vs 外部开源复用的 SLSA 策略差异
 
 | 维度 | 内部复用 | 外部开源复用 |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Build Track 控制** | 企业可直接升级 CI/CD 至 L3，掌控构建平台 | 依赖上游社区提供 provenance（npm provenance, crates.io Trusted Publishing） |
 | **Source Track 控制** | 直接强制内部 Git 平台的 branch protection 和 signed commits | 通过 Scorecard probes 间接评估，无法强制上游流程 |
 | **Build Env Track 控制** | 可部署私有 TEE 构建集群（AMD SEV-SNP VM） | 几乎不可控，仅能验证上游公开的 builder 信息 |
@@ -224,7 +224,7 @@ flowchart LR
 ```
 
 | 阶段 | 目标 | Build Track 关键行动 | Source Track 关键行动 | Build Env Track 关键行动 |
-|------|------|---------------------|----------------------|------------------------|
+| ------ | ------ | --------------------- | ---------------------- | ------------------------ |
 | **Phase 1**<br>2026 Q3 | L1 全覆盖 | 所有组件接入 CI/CD；使用 SLSA GitHub Generator 生成 provenance | 确保所有仓库纳入版本控制（Git） | 记录构建镜像版本于 provenance |
 | **Phase 2**<br>2026 Q4 | L2 核心系统 | 托管 CI/CD + cosign keyless 签名；Sigstore Rekor 入日志 | 启用 GPG/SSH commit signing；配置不可变仓库镜像 | 启用 vTPM 启动证明（如 AWS Nitro TPM, GCP Shielded VM） |
 | **Phase 3**<br>2027 Q1 | L3 生产基线 | 隔离构建（`--network=none`）；临时环境；分离构建者与签名者权限 | 强制分支保护 + PR 审查 + 状态检查；Source Provenance 发布 | 试点 TEE 构建（AMD SEV-SNP VM）用于金融/核心组件 |
@@ -232,7 +232,7 @@ flowchart LR
 ### 4.2 每个级别的典型工具链
 
 | 等级 | Build Track 工具链 | Source Track 工具链 | Build Env Track 工具链 |
-|------|-------------------|--------------------|------------------------|
+| ------ | ------------------- | -------------------- | ------------------------ |
 | **L1** | GitHub Actions, GitLab CI, Jenkins, SLSA GitHub Generator | Git, GitHub, GitLab | Docker image SBOM (`syft`, `trivy`) |
 | **L2** | Sigstore/cosign keyless, SLSA GitHub Generator v2.0+, Rekor CLI | GPG/SSH commit signing, GitHub branch protection rules | vTPM tools (`tpm2-tools`), GCP Shielded VM, AWS Nitro Enclaves |
 | **L3** | GitHub Actions (hardened runners), Google Cloud Build, GitLab native attestation, `slsa-verifier` | GitHub required reviewers + status checks, GitLab MR approvals, in-toto attestations | AMD SEV-SNP, Intel TDX, Nix (hermetic builds), Bazel (sandboxed) |
@@ -240,7 +240,7 @@ flowchart LR
 ### 4.3 成本-收益分析
 
 | 升级路径 | 一次性成本 | 持续运营成本 | 收益 | ROI 评估 |
-|---------|-----------|-------------|------|---------|
+| --------- | ----------- | ------------- | ------ | --------- |
 | **L0 → L1** | 低（CI/CD 配置化） | 低（自动化运行） | 来源可追溯；满足 SBOM 最小元素要求 | ⭐⭐⭐⭐⭐ 立即实施 |
 | **L1 → L2** | 中（Sigstore 集成、密钥管理迁移） | 低（keyless 无长期密钥） | 防止构建后篡改；满足 NIST 800-161 基础要求 | ⭐⭐⭐⭐⭐ 核心系统必做 |
 | **L2 → L3** | 中高（隔离网络、临时环境、平台审计） | 中（构建时间增加 10-30%） | 防止构建中篡改；满足 EU CRA / FedRAMP | ⭐⭐⭐⭐ 生产系统推荐 |
@@ -289,7 +289,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 ## 7. 控制点映射：SLSA Build Track → 项目实现
 
 | SLSA 要求 | 项目控制点 | 实现/验证方式 |
-|----------|-----------|--------------|
+| ---------- | ----------- | -------------- |
 | BT-L1-R1 自动化构建 | 所有关键仓库配置 `.github/workflows/build.yml` | quality-gate 扫描工作流存在性 |
 | BT-L2-R3 Provenance 签名 | 使用 `actions/attest-build-provenance` 或 `slsa-github-generator` | `slsa-verifier` / `gh attestation verify` |
 | BT-L3-R2 临时环境 | GitHub-hosted runner 每次新建 VM；自托管 runner 采用 Kubernetes 临时 Pod | 审计 runner 生命周期日志 |
@@ -307,7 +307,7 @@ npm 自 2023 年支持 `--provenance` 标志，通过 GitHub Actions OIDC 自动
 ## 8. 权威来源
 
 | 标准/规范 | URL | 说明 | 核查日期 |
-|-----------|-----|------|----------|
+| ----------- | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构、Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
 | SLSA Build Track | <https://slsa.dev/spec/v1.2/levels#build-track> | L1–L3 构建要求详细规范 | 2026-07-08 |
 | SLSA Source Track | <https://slsa.dev/spec/v1.2/levels#source-track> | v1.2 正式化的源码轨道要求 | 2026-07-08 |

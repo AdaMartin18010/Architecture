@@ -7,7 +7,7 @@
 ## 统计概览
 
 | 类别 | 数量 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | Markdown 文档 | 332 | 知识体系核心载体（struct/ 309 + view/ 23） |
 | Python 工具 | 12+ | CLI / Streamlit / 分析脚本 |
 | TLA+ 规约 | 3 | 时序逻辑形式化规约 |
@@ -128,7 +128,7 @@
 ## 参考索引层（99-reference）
 
 | 子目录 | 内容 | 关键文件 |
-|--------|------|----------|
+| -------- | ------ | ---------- |
 | `book-outline.md` | 全书 12 章框架 | 12 章 + 附录 + 读者分层 |
 | `glossary/` | 术语与推理体系 | `axiom-theorem-tree.md`（20 公理 + 35 定理） |
 | `standards-index/` | 标准对齐总矩阵 | `master-alignment-matrix.md`（30 标准 × 5 层次） |
@@ -145,7 +145,7 @@
 ## 交互式工具清单
 
 | 工具 | 类型 | 功能 | 路径 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | `terminology-query.py` | CLI | 跨标准术语查询（34+ 术语） | `99-reference/tools/` |
 | `reuse-toolkit-dashboard.py` | Streamlit | Web 仪表盘（术语+成熟度+决策树） | `99-reference/tools/` |
 | `standard-tracker.py` | CLI | 标准状态监控与报告生成 | `99-reference/tools/` |
@@ -196,7 +196,7 @@
 ## Phase 6 整合输出物
 
 | 交付物 | 路径 | 说明 |
-|--------|------|------|
+| -------- | ------ | ------ |
 | 全书聚合稿 | `dist/book-full.md` | 由 `scripts/build-deliverables.py` 生成 |
 | 主题分卷 | `dist/book-volumes/volume-*.md` | 14 个主题卷册 |
 | HTML 幻灯片 | `dist/slides/*.html` | 由 `scripts/build-slides.py` 生成（reveal.js） |

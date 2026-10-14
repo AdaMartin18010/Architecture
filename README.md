@@ -12,7 +12,7 @@
 > **统计口径**: 截至 2026-07-07；Markdown 按 `.md` 文件计数；字数按中文字符 + 英文词（连续字母）计数；形式化代码按扩展名计数。
 
 | 指标 | 数据 |
-|------|------|
+| ------ | ------ |
 | **Markdown 文件** | **355** 个（`struct/` 332 + `view/` 23；含 14 主题卷册与 9 历史快照；真源 `reports/stats.json`） |
 | **形式化规约/代码** | **93** 个（TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 75 + SVG × 75, Python × 7） |
 | **累计内容** | **~111.3 万词**（中文字 + 英文词，`struct/`；真源 1,112,540） |
@@ -177,7 +177,7 @@ struct/
 ## 🚀 快速导航
 
 | 你想了解... | 从这儿开始 |
-|------------|-----------|
+| ------------ | ----------- |
 | 整个体系的逻辑基础 | [`01-meta-model-standards/06-formal-axioms/axiom-system.md`](struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) |
 | 6 大编程语言生态怎么选 | [`04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md`](struct/04-component-architecture-reuse/07-language-ecosystems/comparison-matrix-2026.md) |
 | MCP / A2A 协议深度分析 | [`05-functional-architecture-reuse/06-mcp-a2a-protocols/`](struct/05-functional-architecture-reuse/06-mcp-a2a-protocols/) |
@@ -241,7 +241,7 @@ struct/
 详见 [`struct/MASTER_PLAN.md`](struct/MASTER_PLAN.md)
 
 | Phase | 时间 | 目标 | 状态 |
-|-------|------|------|------|
+| ------- | ------ | ------ | ------ |
 | 0 | 2026-Q2 | 基础奠基：源文档结构化 | ✅ 完成 |
 | 1 | 2026-Q3 | 核心层次深化：业务→应用→组件→功能 | ✅ **本轮完成** |
 | 2 | 2026-Q4 | 形式化与量化：TLA+/Alloy/Coq + COCOMO II | 🔄 预热中 |

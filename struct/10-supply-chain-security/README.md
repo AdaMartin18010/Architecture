@@ -9,7 +9,7 @@
 **软件供应链安全** 关注在软件生命周期的源代码、依赖、构建、分发与部署各环节中，复用资产不被篡改、不引入已知漏洞、不违反许可证要求的能力。
 
 | 机制 | 定义 | 作用 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **SLSA** | Supply-chain Levels for Software Artifacts，OpenSSF 提出的安全等级框架 | 定义 Source / Build / Provenance / Common 等 Track 的可验证等级 |
 | **SBOM** | Software Bill of Materials | 以 SPDX / CycloneDX / SWID 枚举组件、版本、许可证与来源 |
 | **Provenance** | 来源证明 | 记录谁、何时、如何构建出软件制品 |
@@ -96,7 +96,7 @@ graph LR
 ## 5. 纵深防御矩阵
 
 | 层次 | 控制措施 | 对应标准/工具 |
-|------|----------|---------------|
+| ------ | ---------- | --------------- |
 | 源码 | 签名提交、分支保护、代码审查 | Git, Gitsign |
 | 依赖 | 漏洞扫描、私有仓库、typosquat 检测 | OSV, Dependabot, Snyk |
 | 构建 | 隔离构建、可复现构建、来源证明 | SLSA, Sigstore |
@@ -114,7 +114,7 @@ graph LR
 ## 7. 权威来源
 
 | 标准/规范 | URL | 说明 | 核查日期 |
-|-----------|-----|------|----------|
+| ----------- | ----- | ------ | ---------- |
 | SLSA Specification v1.2 | <https://slsa.dev/spec/v1.2/> | Multi-Track 架构，Build/Source/BuildEnv Track 正式定义 | 2026-07-08 |
 | OpenSSF Scorecard | <https://scorecard.dev/> | 开源项目安全健康度自动化评分 | 2026-07-08 |
 | Sigstore / cosign | <https://docs.sigstore.dev/cosign/overview/> | 无密钥签名、Fulcio、Rekor 透明日志 | 2026-07-08 |
@@ -161,7 +161,7 @@ graph LR
 ## 10. 供应链安全能力矩阵
 
 | 能力 | L1 起步 | L2 基础 | L3 成熟 | L4 领先 |
-|------|---------|---------|---------|---------|
+| ------ | --------- | --------- | --------- | --------- |
 | SBOM | 手工清单 | CI 生成 | 全依赖覆盖 | 与运行时关联 |
 | 漏洞响应 | 事件驱动 | 定期扫描 | 自动化影响分析 | 主动威胁情报 |
 | 构建安全 | 未隔离 | 托管构建 | 隔离 + Provenance | 可复现构建 |
@@ -214,7 +214,7 @@ graph LR
 ## 15. 控制点映射：SLSA Build Track → 项目实现
 
 | SLSA Build Track 要求 | 项目控制点 | 验证方式 |
-|----------------------|-----------|---------|
+| ---------------------- | ----------- | --------- |
 | L1：自动化生成 Provenance | CI/CD 流水线统一配置，禁止本地手动构建 | 检查 `.github/workflows/` 存在构建工作流 |
 | L2：托管构建 + 签名 Provenance | 使用 GitHub Actions + `actions/attest-build-provenance` 或 cosign keyless | `slsa-verifier` 验证 builder.id 与签名链 |
 | L3：隔离/密封/临时构建 | 构建容器 `--network=none`，每次构建新 runner，签名密钥由 OIDC 联邦签发 | 审计 runner 网络策略与 provenance 中 `internalParameters` |

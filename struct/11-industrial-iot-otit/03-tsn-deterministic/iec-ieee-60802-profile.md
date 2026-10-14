@@ -21,7 +21,7 @@ IEC/IEEE 60802 是 IEC 和 IEEE 的联合项目，旨在为工业自动化定义
 这是一个**双标徽标准**（dual logo standard），同时是 IEC 和 IEEE 标准。
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | **标准名称** | IEC/IEEE 60802 TSN Profile for Industrial Automation |
 | **发起方** | IEC SC65C/WG18 + IEEE 802.1 TSN Task Group |
 | **目标** | 使 IEEE 802 标准能够在工业自动化中部署融合网络 |
@@ -72,7 +72,7 @@ TSN Four Pillars
 60802 定义了工业自动化中的典型流量类型：
 
 | 流量类型 | 周期 | 延迟要求 | 示例 |
-|---------|------|---------|------|
+| --------- | ------ | --------- | ------ |
 | **硬实时** | 250 μs - 1 ms | < 100 μs | 运动控制、安全 |
 | **软实时** | 1 ms - 10 ms | < 1 ms | PLC I/O |
 | **循环数据** | 10 ms - 100 ms | < 10 ms | 过程数据 |
@@ -106,7 +106,7 @@ OPC UA FX Stack
 IEC/IEEE 60802 要求的时间同步精度：
 
 | 应用场景 | 精度要求 |
-|---------|---------|
+| --------- | --------- |
 | 一般工业自动化 | ±1 μs |
 | 高精度运动控制 | ±100 ns |
 | 过程自动化 | ±10 ms |
@@ -216,7 +216,7 @@ Star/Ring Topology
 > **定理 TSN.60802.2** (Profile Convergence): 在融合网络中，只要所有时间触发设备严格遵循 IEC/IEEE 60802 的同步精度、GCL 周期与队列配置，OT 流量即可获得确定性延迟上界；任何 Profile 偏离都会将确定性保障退化为最佳努力统计。
 
 | 来源 | URL |
-|:---|:---|
+| :--- | :--- |
 | IEC/IEEE 60802 TSN Profile for Industrial Automation | <https://1.ieee802.org/tsn/iec-ieee-60802/> |
 | IEEE 802.1 TSN Task Group | <https://1.ieee802.org/tsn/> |
 | IEEE 802.1AS-Rev (gPTP) | <https://1.ieee802.org/tsn/802-1as/> |

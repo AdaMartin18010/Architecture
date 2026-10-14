@@ -185,7 +185,7 @@ reuse-framework v0.1.0
 本书使用 Markdown 兼容的 LaTeX 子集（通过 KaTeX 或 MathJax 渲染）。支持的语法：
 
 | 元素 | LaTeX | 示例 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 行内公式 | `$...$` | `$AAF = 0.4 \times AAF_{design} + 0.3 \times AAF_{code} + 0.3 \times AAF_{test}$` |
 | 独立编号公式 | `$$...$$` + 手动编号 | 见 3.2 节 |
 | 上标/下标 | `^` / `_` | `$x^2$`, `$x_i$` |

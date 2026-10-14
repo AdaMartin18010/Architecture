@@ -137,7 +137,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 7. 与 AI 的集成趋势
 
 | 工具 | 用途 |
-|------|------|
+| ------ | ------ |
 | **CoqPilot / RocqStar** | LLM 填充 `admit` 证明洞 |
 | **Sledgehammer** | Isabelle 自动调用外部 ATP |
 | **AutoCorrode** | AWS 开发的 Isabelle LLM 助手 |
@@ -150,7 +150,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 8. 标准条款与工具映射
 
 | 标准 / 条款 | 本目录对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 函数级正确性证明 | Coq/Rocq, Isabelle/HOL | `.v` / `.thy` 证明脚本 |
 | IEEE 1012-2024 SIL 4 | 高完整性组件验证 | 定理证明器 | 形式化证明证书 |
 | DO-178C / DO-333（DAL A） | 航电级软件验证 | SPARK/Ada + Isabelle 辅助 | DO-333 证据包 |
@@ -159,7 +159,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ### 8.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 典型证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | Rocq Prover | 9.0+ / Coq 8.20 兼容 | IEEE 1012-2024 §9.5 | `.v` 证明脚本、`rocqchk` 校验 |
 | Isabelle/HOL | Isabelle2025 | IEEE 1012-2024 §9.5 | `.thy` 证明脚本、会话记录 |
 | SMT 后端 | cvc5 / Z3 / Alt-Ergo | DO-178C / DO-333 | 自动证明步骤日志 |
@@ -180,7 +180,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | The Rocq Prover 9.0 (原 Coq) | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
 | ANSSI Requirements on the Use of Rocq (CC evaluations) | <https://inria.hal.science/hal-04452421v1/document> | 2026-07-09 |

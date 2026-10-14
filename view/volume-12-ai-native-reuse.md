@@ -52,7 +52,7 @@
 截至 2026-06，MCP 的官方稳定版本为 **2025-11-25**，这是 MCP 发布一周年的里程碑版本。
 
 | 版本 | 发布时间 | 关键变化 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 2024-11-05 | 初始发布 | JSON-RPC 2.0、HTTP+SSE、Tools/Resources/Prompts |
 | 2025-03-26 | Streamable HTTP | 替代 HTTP+SSE、Tool Annotations |
 | 2025-06-18 | OAuth 2.1 强化 | RFC 9728 Protected Resource Metadata、RFC 8707 Resource Indicators |
@@ -93,7 +93,7 @@ MCP 架构
 ### 2.2 MCP 核心概念属性
 
 | 概念 | 核心属性 | 属性说明 | 可观察/可验证 |
-|------|---------|---------|--------------|
+| ------ | --------- | --------- | -------------- |
 | Host | 用户代理性 | 代表用户发起连接、授权与撤销 | 通过审计日志验证 |
 | Host | 多 Client 管理 | 可同时管理多个独立 Server 连接 | 通过连接列表验证 |
 | Client | 1:1 连接 | 每个 Client 仅连接一个 Server | 通过会话隔离验证 |
@@ -155,7 +155,7 @@ MCP 存在的根本原因是解决 AI 应用与外部能力之间的**集成碎�
 MCP Server 可向 Client 提供以下能力：
 
 | 能力 | 英文 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Resources** | 资源 | 上下文和数据，供用户或 AI 模型使用 |
 | **Prompts** | 提示模板 | 模板化消息和工作流 |
 | **Tools** | 工具 | AI 模型可调用的函数 |
@@ -163,7 +163,7 @@ MCP Server 可向 Client 提供以下能力：
 ### Client 可向 Server 提供的能力
 
 | 能力 | 英文 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Sampling** | 采样 | Server 发起的 LLM 交互和递归 Agent 行为 |
 | **Roots** | 根边界 | Server 发起的 URI 或文件系统边界查询 |
 | **Elicitation** | 引导 | Server 向用户请求额外信息 |
@@ -192,7 +192,7 @@ interface ToolAnnotations {
 ### Tool 注解语义
 
 | 注解 | 含义 | 复用意义 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | `readOnlyHint: true` | 工具不修改任何状态 | 可安全地多次调用 |
 | `destructiveHint: true` | 工具可能删除或破坏数据 | 需要用户明确授权 |
 | `idempotentHint: true` | 多次调用结果相同 | 可安全重试 |
@@ -233,7 +233,7 @@ MCP 规范明确列出以下安全和信任原则：
 MCP 2025-06-18 及之后版本强化了对远程 Server 的认证要求，核心要点包括：
 
 | 要点 | 规范来源 | 实施建议 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 使用 OAuth 2.1 | MCP Authorization Spec | 废弃纯 Bearer Token，强制 PKCE |
 | Protected Resource Metadata | RFC 9728 | Host 通过元数据端点自动发现授权服务器 |
 | Resource Indicators | RFC 8707 | 区分不同 Server/资源的访问令牌范围 |
@@ -261,7 +261,7 @@ flowchart TD
 ## 6. 传输方式
 
 | 传输方式 | 适用场景 | 状态 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | **stdio** | 本地进程间通信 | 稳定 |
 | **HTTP+SSE** | 服务器端推送 | 被 Streamable HTTP 取代 |
 | **Streamable HTTP** | 远程 Server，支持流式 | 2025-03-26 引入 |
@@ -371,7 +371,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 根据公开数据：
 
 | 指标 | 数值 | 来源 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 月 SDK 下载量 | 97M+ | 2026-03 |
 | 发布的服务器数量 | 10,000+ | 2026-05 |
 | 支持厂商 | Anthropic, OpenAI, Google, Microsoft, AWS, Cloudflare | 2025-12 |
@@ -470,7 +470,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 ## 10. 2026 路线图关注点
 
 | 功能 | 状态 | 影响 |
-|------|------|------|
+| ------ | ------ | ------ |
 | Long-running Tasks | 开发中 | 支持长时间运行的 Agent 工作流 |
 | Capability Attestation | 草案 | 解决 Tool Poisoning |
 | Agent-to-Agent (A2A) | Linux Foundation 孵化 | 与 MCP 互补 |
@@ -543,7 +543,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | MCP 2025-11-25 官方规范 | <https://modelcontextprotocol.io/specification/2025-11-25> |
 > | MCP 2025-11-25 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> |
 > | MCP Registry | <https://registry.modelcontextprotocol.io> |
@@ -568,7 +568,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 #### 1.1 Tasks（实验性，SEP-1686）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 此前 MCP 缺乏标准化的异步原语，长时间运行的工具调用（如代码分析、批量数据处理）只能依赖客户端超时重试或带外轮询，导致状态不一致和资源泄漏 |
 | **解决方案** | 引入标准化的 Task 生命周期：`working` → `input_required` → `completed`/`failed`/`cancelled`，支持 `tasks/get` 轮询、`tasks/cancel` 取消、`notifications/tasks/status` 服务器主动推送 |
 | **复用影响** | Tasks 使 MCP Server 从"同步函数"升级为"可编排的工作流节点"，支持跨会话的持久化请求跟踪。在复用架构中，这意味着 MCP Server 可以作为长时间运行服务被集成，而非仅限于短时状态less函数调用。详见 [deep-dive §3.1](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md#31-tasks-能力sep-1686) |
@@ -576,7 +576,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 #### 1.2 Icons（SEP-973）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 随着 Registry 中 Server 数量爆炸式增长，开发者和终端用户难以在 UI 中快速识别和区分不同的工具/资源/提示 |
 | **解决方案** | Server 可为 `Tool`、`Resource`、`ResourceTemplate`、`Prompt` 附加 `icons` 数组，支持 HTTPS URL 或 `data:` URI，推荐 PNG/JPEG，SVG 需安全审查，支持 `theme: light \| dark` 适配 |
 | **复用影响** | Icons 看似是 UI 层增强，实则是**可复用资产目录化**的关键步骤——为后续在 Registry 中进行视觉化浏览和分类奠定基础 |
@@ -584,7 +584,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 #### 1.3 URL Mode Elicitation（SEP-1036）
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **问题背景** | 某些交互（OAuth 同意流、支付确认、API-key 输入）不适合通过 MCP 客户端的 JSON-RPC 通道直接传递，需要安全的带外交互机制 |
 | **解决方案** | 新增 `mode: "url"` Elicitation，错误码 `-32042` (`URLElicitationRequiredError`) 表示需要 URL elicitation；服务器可通过 `notifications/elicitation/complete` 通知交互完成 |
 | **复用影响** | 解决了 MCP Server 集成外部 SaaS 服务时的认证/授权断点问题，使"第三方工具复用"的边界从纯协议交互扩展到安全的 Web 重定向流 |
@@ -594,7 +594,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 #### 1.4 OAuth 企业级增强
 
 | 变更项 | 技术要点 | 复用意义 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | OIDC Discovery 1.0 | 标准化授权服务器发现机制 | 降低多厂商 Server 的认证配置复杂度 |
 | RFC 9728 | OAuth 2.0 Protected Resource Metadata | Server 自描述安全要求，Client 自动适配 |
 | 增量 scope 同意 | 通过 `WWW-Authenticate` 按需请求额外 scope | 实现最小权限原则的动态升级 |
@@ -654,7 +654,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 这一扩展使得 MCP Server 不仅可以暴露数据和功能，还可以暴露**可嵌入的交互界面**。从复用架构视角，这意味着：
 
 | 传统复用模式 | MCP Apps 新模式 |
-|-------------|----------------|
+| ------------- | ---------------- |
 | API 返回 JSON，客户端自行渲染 | Server 推送结构化 UI 定义 |
 | 功能复用 + 界面自行开发 | 功能与界面一同复用 |
 | 文本/卡片级交互 | 富表单、图表、配置向导 |
@@ -662,7 +662,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 ### 2.3 安全风险
 
 | 风险 | 描述 | 缓解措施 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **XSS** | `structuredContent` 中可能包含恶意脚本 | Host 必须通过严格 CSP 和 iframe 沙箱隔离 |
 | **点击劫持** | iframe 内界面可能被恶意 Host 覆盖伪装 | Server 应验证 `X-Frame-Options` 和 `frame-ancestors` |
 | **iframe 逃逸** | 沙箱逃逸可能导致 Host 上下文被访问 | 使用 `sandbox="allow-scripts"` 最小权限，禁止 `allow-same-origin` |
@@ -675,7 +675,7 @@ MCP Apps（2026-01-26 发布，首个官方扩展）代表了 MCP 从"纯文本�
 ### 3.1 规模数据（截至 2026-05）
 
 | 指标 | 数值 | 来源/日期 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Registry 总记录数 | 28,959 条 | registry.modelcontextprotocol.io，2026-05 |
 | Server 记录数 | 9,652 条 | registry.modelcontextprotocol.io，2026-05 |
 | SDK 月下载量 | 1.1 亿次 | 2026-04 统计 |
@@ -693,7 +693,7 @@ MCP Registry 不仅是 Server 的枚举列表，它正在演进为 AI 原生时�
 ### 3.3 与 OMG RAS v2.2 Classification 的映射
 
 | OMG RAS v2.2 维度 | MCP Registry 对应机制 |
-|------------------|----------------------|
+| ------------------ | ---------------------- |
 | **Solution** (功能域) | Server 的 `Implementation.description` + 分类标签 |
 | **Classification** (分类) | Registry 中的分类目录 + 工具语义标注 |
 | **Usage** (使用模式) | `tools/call` Schema、`inputSchema` 定义了调用契约 |
@@ -713,7 +713,7 @@ MCP Registry 不仅是 Server 的枚举列表，它正在演进为 AI 原生时�
 **消除厂商锁定的结构保障**:
 
 | 治理机制 | 作用 |
-|---------|------|
+| --------- | ------ |
 | Specification Enhancement Proposal (SEP) | 正式、透明的变更流程 |
 | 12+ 个月废弃窗口 | 企业用户有足够的迁移时间 |
 | 公开废弃特性注册表 | 可预测的向后兼容性管理 |
@@ -742,7 +742,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ### 5.1 何时选择 MCP？
 
 | 场景 | 选择 MCP | 理由 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | AI Agent 需要发现/调用外部工具 | ✅ | 标准化的能力发现和调用契约 |
 | 需要向 AI 提供上下文资源 | ✅ | Resources 原语支持 URI 寻址和订阅 |
 | 需要复用提示模板工作流 | ✅ | Prompts 支持参数化模板 |
@@ -753,7 +753,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ### 5.2 MCP vs A2A vs 直接 API 决策矩阵
 
 | 维度 | MCP | A2A | 直接 API |
-|------|-----|-----|---------|
+| ------ | ----- | ----- | --------- |
 | **层级** | Agent ↔ Tool | Agent ↔ Agent | Service ↔ Service |
 | **核心问题** | 工具发现与调用 | 自主 Agent 协作与任务委托 | 功能调用与数据传输 |
 | **协议基础** | JSON-RPC 2.0 | HTTP + JSON | 任意（REST/gRPC/GraphQL） |
@@ -769,7 +769,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 在引入 MCP Server 作为可复用资产前，执行以下检查：
 
 | 检查项 | 验证内容 | 风险等级 |
-|--------|---------|---------|
+| -------- | --------- | --------- |
 | **OAuth Scope 审查** | 确认 Server 请求的 scope 是否最小必要；是否支持增量 scope 同意 | 🔴 高 |
 | **Elicitation 风险评估** | 检查 Server 是否使用 `mode: "url"`；验证 URL 是否指向可信域名 | 🔴 高 |
 | **Apps 沙箱验证** | 确认 Host 对 `structuredContent` 使用 iframe 沙箱 + CSP | 🔴 高 |
@@ -786,7 +786,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 某金融科技公司构建内部 DevOps 智能助手，采用 MCP 工具层 + A2A Agent 协作层双层架构：
 
 | 层级 | 组件 | 协议机制 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 编排层 | 需求解析 Agent | A2A Agent Card 声明需求分析技能 |
 | 执行层 | 代码生成 Agent、测试 Agent、部署 Agent | A2A Task 委托与 Artifact 交付 |
 | 工具层 | Git 检索、代码生成、单元测试、K8s 部署 | MCP `tools/list` + `tools/call` |
@@ -825,7 +825,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ## 7. 具体协议条款映射
 
 | 业务需求 | MCP 2025-11-25 机制 | 规范条款/SEP |
-|---------|---------------------|-------------|
+| --------- | --------------------- | ------------- |
 | 工具发现与调用 | `tools/list`、`tools/call`、`inputSchema` / `outputSchema` | Base Server Capabilities |
 | 上下文资源订阅 | `resources/list`、`resources/read`、`resources/subscribe` | Resources |
 | 提示模板复用 | `prompts/list`、`prompts/get` | Prompts |
@@ -841,7 +841,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ## 8. 权威来源
 
 | 来源 | URL | 日期 |
-|------|-----|------|
+| ------ | ----- | ------ |
 | MCP 2025-11-25 规范 | <https://modelcontextprotocol.io/specification/2025-11-25> | 2025-11-25 |
 | 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> | 2025-11-25 |
 | MCP Registry | <https://registry.modelcontextprotocol.io> | 2026-05 |
@@ -920,7 +920,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ## 2. 规范来源
 
 | 资源 | URL | 作用 |
-|------|-----|------|
+| ------ | ----- | ------ |
 | 规范主页 | <https://modelcontextprotocol.io/specification/2025-11-25> | 官方 landing page |
 | 变更日志 | <https://modelcontextprotocol.io/specification/2025-11-25/changelog> | 2025-06-18 → 2025-11-25 的完整变更 |
 | 权威 Schema | GitHub `schema/2025-11-25/schema.ts` | 消息结构和方法的权威来源 |
@@ -1025,7 +1025,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 ### 3.5 OAuth / OpenID Connect 企业级增强
 
 | 变更 | 详情 |
-|------|------|
+| ------ | ------ |
 | OpenID Connect Discovery 1.0 | 新增支持的授权服务器发现机制 |
 | 增量 scope 同意 | 通过 `WWW-Authenticate` 请求额外 scope |
 | RFC 9728 对齐 | OAuth 2.0 Protected Resource Metadata 发现 |
@@ -1087,7 +1087,7 @@ Server: "protocolVersion": "2025-11-25" 或回退到支持的版本
 MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 
 | 协议 | 层级 | 解决的问题 |
-|------|------|-----------|
+| ------ | ------ | ----------- |
 | **MCP** | Agent ↔ Tool | AI 如何发现、调用工具，访问资源和提示 |
 | **A2A** | Agent ↔ Agent | 自主 Agent 如何相互发现、协商任务、委托工作、交换结果 |
 
@@ -1139,7 +1139,7 @@ MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 2025-11-25 被广泛视为 MCP 的“企业就绪”版本，因为它解决了以下生产部署障碍：
 
 | 企业需求 | 2025-11-25 解决方案 |
-|---------|-------------------|
+| --------- | ------------------- |
 | 长时间运行工作流 | Tasks 提供标准异步句柄 |
 | 受管认证 | CIMD、RFC 9728、PKCE、RFC 8707、增量 scope |
 | 联邦 / M2M 访问 | Client ID Metadata Documents |
@@ -1152,7 +1152,7 @@ MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 ## 9. 与四层复用架构的映射
 
 | 本体系层次 | MCP 2025-11-25 映射 |
-|-----------|---------------------|
+| ----------- | --------------------- |
 | 05 功能架构 | Tool / Resource / Prompt / Sampling 是功能级复用的协议层 |
 | 04 组件架构 | MCP Server 作为可复用组件，需 SBOM + SLSA provenance |
 | 03 应用架构 | 多 MCP Server 组合构成 Agentic 应用架构 |
@@ -1269,7 +1269,7 @@ MCP 和 Agent-to-Agent Protocol (A2A) **互补而非竞争**:
 ## 1. 核心变更对照表
 
 | 变更项 | 2025-11-25 (旧) | 2026-07-28 RC (新) | 复用影响 |
-|--------|----------------|-------------------|----------|
+| -------- | ---------------- | ------------------- | ---------- |
 | **传输模型** | 有状态会话 (Stateful) | **无状态核心 (Stateless)** | 支持负载均衡、自动扩缩容 |
 | **握手协议** | initialize/initialized 握手 | **移除握手**，每请求自包含 | 降低连接开销，简化网关 |
 | **会话标识** | Mcp-Session-Id 头部 | **移除** | 无需粘性会话 |
@@ -1372,7 +1372,7 @@ Authorization: Bearer <token>
 ### 传输层选择决策矩阵
 
 | 场景 | 推荐传输 | 理由 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 本地 CLI 工具 | stdio | 简单，无网络依赖 |
 | 服务器→客户端单向推送 | SSE | 兼容性好，支持防火墙穿透 |
 | 高并发 Web 服务 | Streamable HTTP | 无状态、可缓存、易扩展 |
@@ -1541,7 +1541,7 @@ Extensions 注册机制
 ### 威胁模型
 
 | 威胁 | 防御机制 |
-|------|---------|
+| ------ | --------- |
 | 恶意 MCP Server | Issuer 验证、TLS、证书固定 |
 | Token 泄露 | DPoP、短有效期 Token、刷新令牌轮换 |
 | 能力滥用 | 能力级 scope、最小权限原则 |
@@ -1600,7 +1600,7 @@ Extensions 注册机制
 ## 2. 版本状态
 
 | 版本 | 状态 | 发布日期 | 生产建议 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **2025-11-25** | 现行稳定版 | 2025-11-25 | 生产环境继续使用 |
 | **2026-07-28** | **Release Candidate 已发布** | 2026-05-29 | 可评估/试点；正式版发布后逐步迁移 |
 
@@ -1614,7 +1614,7 @@ Extensions 注册机制
 ## 3. 2026-07-28 核心变化对复用的影响
 
 | 变化项 | 对复用的影响 | 迁移动作 |
-|---|---|---|
+| --- | --- | --- |
 | **Stateless 核心** | Server 成为无状态函数，支持任意负载均衡与自动扩缩容 | 网关与基础设施移除粘性会话依赖 |
 | **移除 initialize/initialized 握手** | 每请求自包含，降低连接开销 | 客户端/服务端重构生命周期管理 |
 | **Mcp-Method 头部路由** | 网关无需解析 JSON-RPC body，可缓存、低延迟 | 更新网关与缓存策略 |
@@ -1665,7 +1665,7 @@ Extensions 注册机制
 ## 5. 版本共存策略
 
 | 场景 | 建议 |
-|---|---|
+| --- | --- |
 | 新 Server | 直接基于 2026-07-28 实现 |
 | 现有生产 Server | 保持 2025-11-25，在维护窗口中升级 |
 | 网关/中间件 | 同时支持 2025-11-25 与 2026-07-28，通过版本协商路由 |
@@ -1700,7 +1700,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 ## 9. 权威来源
 
 | 来源 | URL | 核查日期 |
-|---|---|---|
+| --- | --- | --- |
 | MCP 2025-11-25 规范 | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
 | MCP 2026-07-28 RC | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28-RC> | 2026-07-08 |
 | MCP Specification repo | <https://github.com/modelcontextprotocol/specification> | 2026-07-08 |
@@ -1741,7 +1741,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 ## 1. 核心对象
 
 | 对象 | 定义 | 复用语义 | 安全机制 |
-|------|------|----------|----------|
+| ------ | ------ | ---------- | ---------- |
 | **Agent Card** | Agent 的能力广告 JSON 文档 | 能力发现、技能目录、服务契约 | 签名验证（v1.0 新增） |
 | **Task** | 委托的工作单元 | 任务复用、状态追踪、生命周期管理 | OAuth 2.1 / mTLS |
 | **Artifact** | 结构化输出 | 结果复用、流式传输、多模态 | 传输加密 |
@@ -1937,7 +1937,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 ## 7. 协作模式
 
 | 模式 | 描述 | 适用场景 | A2A 实现 |
-|------|------|---------|---------|
+| ------ | ------ | --------- | --------- |
 | **串行** | Agent A → Agent B → Agent C | 流水线处理 | 顺序 Task 委托 |
 | **并行** | Agent A 同时委托给 B, C, D | 多角度分析 | 并发 Task 创建 |
 | **竞争** | 多个 Agent 同时处理，取最优结果 | 需要高可靠性 | 多 Task + 结果选择 |
@@ -1991,7 +1991,7 @@ A2A v1.0.0 新增 Signed Agent Cards，防止能力欺骗和中间人攻击。
 ## 1. A2A 发展历程
 
 | 里程碑 | 时间 | 事件 |
-|--------|------|------|
+| -------- | ------ | ------ |
 | 首次发布 | 2025-04 | Google 发布 A2A 协议，50+ 合作伙伴 |
 | 捐赠 LF | 2025-12 | Anthropic 将 MCP 捐赠给 AAIF；A2A 生态同步纳入 Linux Foundation Agentic AI Foundation 治理 |
 | v0.3 | 2026-03 | 增加 gRPC 支持、安全签名、多租户 |
@@ -2047,7 +2047,7 @@ A2A Protocol
 ### 2.2 A2A 核心概念属性
 
 | 概念 | 核心属性 | 属性说明 | 可观察/可验证 |
-|------|---------|---------|--------------|
+| ------ | --------- | --------- | -------------- |
 | Agent Card | 可发现性 | 通过 well-known URL 公开访问 | HTTP GET `/.well-known/agent.json` |
 | Agent Card | 可验证性 | v1.0 支持数字签名 | 验证签名公钥与证书链 |
 | Agent Card | 能力声明 | 明确列出 skills、输入/输出模式 | 解析 `capabilities` 与 `skills` |
@@ -2150,7 +2150,7 @@ A2A 的核心价值在于**跨厂商 Agent 互操作**。单一企业或团队�
 ### v1.0 新增字段
 
 | 字段 | 说明 |
-|------|------|
+| ------ | ------ |
 | `signature` | Agent Card 的数字签名 |
 | `multiTenant` | 是否支持多租户 |
 | `rateLimits` | 速率限制声明 |
@@ -2256,7 +2256,7 @@ Task Lifecycle
 ```
 
 | 维度 | MCP | A2A |
-|------|-----|-----|
+| ------ | ----- | ----- |
 | 范围 | Agent → Tool | Agent → Agent |
 | 关系 | Client-Server | Peer-to-Peer |
 | 发现 | Server lists capabilities | Agent Card at well-known URL |
@@ -2371,7 +2371,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 某跨境电商构建多语言智能客服系统，采用 A2A 编排 + MCP 工具调用架构：
 
 | 组件 | 协议/机制 | 职责 |
-|------|----------|------|
+| ------ | ---------- | ------ |
 | 客服编排 Agent | A2A Client | 接收用户问题，判断意图，委托子任务 |
 | 订单查询 Agent | A2A Server + Agent Card | 通过订单号查询物流与退款状态 |
 | 退换货 Agent | A2A Server + Agent Card | 处理退货政策解释与退货单创建 |
@@ -2411,7 +2411,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 ## 9. 具体协议条款映射
 
 | 业务需求 | A2A v1.0 机制 | 规范位置 |
-|---------|--------------|---------|
+| --------- | -------------- | --------- |
 | Agent 能力发现 | `/.well-known/agent.json`、Agent Card | Discovery |
 | 任务委托 | `tasks/send`、`tasks/sendSubscribe` | Tasks |
 | 任务状态查询 | `tasks/get` | Tasks |
@@ -2428,7 +2428,7 @@ v1.0 生态系统中出现 AP2（Agent Payments Protocol）：
 ## 10. 生态系统状态（2026-07）
 
 | 指标 | 数值 |
-|------|------|
+| ------ | ------ |
 | 正式发布版本 | v1.0.0（2026-03-12） |
 | 支持组织 | 150+ |
 | GitHub Stars | 22,000+ |
@@ -2527,7 +2527,7 @@ flowchart TD
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol 官方网站 | <https://a2a-protocol.org/latest/> |
 > | A2A Project GitHub | <https://github.com/a2aproject/a2a> |
@@ -2564,7 +2564,7 @@ flowchart TD
 ## 1. 关键结论（TL;DR）
 
 | 维度 | 关键结论 |
-|------|----------|
+| ------ | ---------- |
 | **A2A 定位** | **水平协议**：Agent ↔ Agent 的协作；与 MCP（垂直：Agent ↔ Tool）互补 |
 | **治理** | 2025‑12‑09 捐给 Linux Foundation AAIF，与 MCP 同基金会，中立治理 |
 | **v1.0  headline** | **Signed Agent Cards**（JWS 加密域验证）、gRPC 支持、多租户、AP2 支付协议 |
@@ -2642,7 +2642,7 @@ submitted → working → [input-required | auth-required] → completed
 ## 4. 安全模型
 
 | 机制 | 说明 |
-|------|------|
+| ------ | ------ |
 | **Signed Agent Cards** | JWS + JCS 签名，绑定发布域；防止 Agent Card 伪造 |
 | **OAuth 2.0 / OIDC** | 标准令牌委托 |
 | **mTLS** | 证书双向认证 |
@@ -2658,7 +2658,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 5.1 根本区分
 
 | 维度 | **MCP 2025-11-25** | **A2A v1.0.1** |
-|------|---------------------|--------------|
+| ------ | --------------------- | -------------- |
 | **层级** | 垂直：Agent → Tool | 水平：Agent → Agent |
 | **交互模型** | 无状态结构化函数调用 | 有状态多轮任务委托 |
 | **发现机制** | Tool registry / Server list | Agent Card @ well-known URI |
@@ -2669,7 +2669,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 5.2 选型指南
 
 | 场景 | 推荐 |
-|------|------|
+| ------ | ------ |
 | 单 Agent + 内部工具 | **仅 MCP** |
 | 多 Agent、同框架（全 LangGraph） | 框架原生消息 + A2A Agent Card 兼容 |
 | 跨框架 Agent（LangGraph ↔ CrewAI ↔ ADK） | **A2A 是务实默认** |
@@ -2691,7 +2691,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 6.1 A2A → BPMN 映射
 
 | A2A 概念 | BPMN 等价物 |
-|----------|-------------|
+| ---------- | ------------- |
 | Task | Service Task / Call Activity |
 | 生命周期状态 | Boundary events（timer、error、message） |
 | Artifact | Data Object / Message |
@@ -2720,7 +2720,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ## 7. 多 Agent 编排模式
 
 | 模式 | A2A 用法 | 适用场景 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | **Hub-and-Spoke** | 协调器发现专家 Agent，委托子任务，聚合产出 | 财务报表生成、代码审查流水线 |
 | **Peer-to-Peer** | 任意 Agent 直接调用其他 Agent；动态能力匹配 | 领域边界松散、专家不确定 |
 | **Pipeline** | 顺序链接：`tasks/send` + Artifact 交接 | 起草 → 审核 → 排版 → 发布 |
@@ -2734,7 +2734,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ### 8.1 活跃生产领域（2026 Q2）
 
 | 行业 | 用例 | 代表部署 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 金融服务 | 交易对账、KYC、监管报告、欺诈检测 | Deutsche Bank (40+ A2A agents) |
 | 保险 | 理赔分类、保单审核、风险评估 | 多家经 Accenture 实施 |
 | 供应链 | 库存协调、需求预测、物流 | SAP Joule + 合作伙伴 Agent |
@@ -2744,7 +2744,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ### 8.2 成熟度评估
 
 | 维度 | 评级 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 规范稳定性 | ⭐⭐⭐⭐☆ | v1.0 稳定；v1.2 当前；已定义废弃政策 |
 | 企业安全 | ⭐⭐⭐⭐☆ | Signed Agent Cards、OAuth、mTLS；审计流和同意流仍有缺口 |
 | 生态广度 | ⭐⭐⭐⭐⭐ | 150+ 组织、3 大云、5 SDK、6+ 框架 |
@@ -2768,7 +2768,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 ### 复用模式
 
 | 模式 | 复用收益 |
-|------|----------|
+| ------ | ---------- |
 | **能力市场** | 策展 Agent Card 注册表；Agent 一次发布，多部门/供应商消费 |
 | **专家 Agent 池** | 水平专家（法律、财务、安全）跨垂直工作流复用 |
 | **供应商抽象** | Agent Card 作为接口契约；更换底层供应商/Agent 无需更改消费端代码 |
@@ -2835,7 +2835,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 2026年4月2日，Microsoft 以 MIT 许可证开源 **Agent Governance Toolkit (AGT)**，提供覆盖 Agent 全生命周期的 7 包治理体系：
 
 | 包名 | 核心职责 | 复用映射 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **Agent OS** | 策略引擎（决策延迟 <0.1ms）、实时授权判定 | 作为治理基础设施的"内核"，提供可复用的策略判定服务 |
 | **Agent Mesh** | 分布式身份（DID/W3C）、Agent 间安全通信 | 复用身份凭证体系，避免每个 Agent 独立建设身份认证 |
 | **Agent Runtime** | 四级特权环（Ring 0-3）、沙箱隔离 | 定义标准运行边界，作为安全复用的前提条件 |
@@ -2851,7 +2851,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 2025年12月发布的 OWASP Top 10 for Agentic Applications 2026（ASI01–ASI10）为 Agent 治理提供了风险基线：
 
 | 风险编号 | 风险描述 | 缓解策略 | 复用控制点 |
-|----------|---------|---------|-----------|
+| ---------- | --------- | --------- | ----------- |
 | ASI01 | Agent Goal Hijack | 输入验证 + 语义过滤器 | Agent Runtime Ring 1 沙箱 |
 | ASI02 | Tool Misuse and Exploitation | 工具白名单 + 调用审计 | Agent Runtime Ring 2 工具网关 |
 | ASI03 | Identity and Privilege Abuse | 最小权限 + 身份凭证 | Agent Mesh DID 属性凭证 |
@@ -2866,7 +2866,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 ### 1.3 OWASP MCP Top 10 映射
 
 | 风险编号 | 风险描述 | AGT 控制点 |
-|----------|---------|-----------|
+| ---------- | --------- | ----------- |
 | MCP01 | Token Mismanagement & Secret Exposure | Agent Mesh 凭据管理、短生命周期 Token |
 | MCP02 | Privilege Escalation via Scope Creep | Agent OS 策略引擎、自动 scope 过期 |
 | MCP03 | Tool Poisoning | MCP Security Gateway、工具签名与漂移检测 |
@@ -2927,7 +2927,7 @@ Google Agent Gateway 作为企业级 Agent 入口，提供统一的身份认证�
 ### 2.2 三层审批流程（人类→Agent→工具）
 
 | 层级 | 审批主体 | 触发条件 | 最大延迟 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1：人类审批（HITL）** | 业务负责人/安全官 | 高风险操作（资金转移、数据出境、模型变更） | 4 工作小时 |
 | **L2：Agent 自治审批** | Agent OS 策略引擎 | 中风险操作（跨域数据访问、工具调用链 >3） | <100ms |
 | **L3：工具级审批** | 工具网关 + 资源 ACL | 所有工具调用 | <10ms |
@@ -3014,7 +3014,7 @@ allow if {
 ### 2.4 Kill Switch 和熔断器设计
 
 | 机制 | 触发条件 | 动作 | 恢复策略 |
-|------|---------|------|---------|
+| ------ | --------- | ------ | --------- |
 | **Agent Kill Switch** | 行为偏离基线 >3σ、检测到越狱尝试 | 立即终止 Agent 进程，吊销 Ephemeral Identity | 人工复核后重启 |
 | **域级熔断器** | 跨域错误率 >20%（1分钟窗口） | 切断该域所有对外调用，进入降级模式 | 自动探测恢复（指数退避） |
 | **模型级熔断器** | 输出毒性/幻觉率 >阈值 | 切换至备用模型，触发内容审查 | 自动恢复，记录异常 |
@@ -3044,7 +3044,7 @@ allow if {
 ### 3.2 与现有 DevOps/GitOps 流程的集成
 
 | 现有流程 | Agent 增强点 | 复用方式 |
-|---------|------------|---------|
+| --------- | ------------ | --------- |
 | CI 流水线 | 增加 Agent 策略编译（Cedar validate、Rego test） | 复用 Jenkins/GitHub Actions，新增 Agent 专用 Stage |
 | CD 流水线 | 增加金丝雀健康检查（Agent 行为基线对比） | 复用 Argo Rollouts，注入 Agent 轨迹验证 |
 | IaC | 增加 Agent Runtime 资源配置（Ring 级别、资源配额） | 复用 Terraform/Tofu，提供 Agent Runtime Module |
@@ -3058,7 +3058,7 @@ allow if {
 ### 4.1 EU AI Act 高风险义务检查清单（2026年8月2日生效）
 
 | 义务条款 | 要求 | AGT 映射 | 状态 |
-|---------|------|---------|------|
+| --------- | ------ | --------- | ------ |
 | **Art. 8：风险管理系统** | 建立持续风险评估流程 | Agent Compliance 包 + 审计日志 | ☐ 待实施 |
 | **Art. 9：数据治理** | 训练/测试/验证数据的质量管理 | Agent Marketplace SBOM + 数据溯源 | ☐ 待实施 |
 | **Art. 10：技术文档** | 提供完整技术文档（SaaS/内部均需） | TechDocs 模板 + Agent 架构决策记录 | ☐ 待实施 |
@@ -3070,7 +3070,7 @@ allow if {
 ### 4.2 FCA/SEC 监管要求对照
 
 | 监管领域 | 核心要求 | Agent 治理映射 |
-|---------|---------|---------------|
+| --------- | --------- | --------------- |
 | **FCA AI 透明度** | 金融决策可解释、可审计 | Agent Trace 全链路记录 + 决策归因 |
 | **SEC 投资顾问合规** | AI 生成的投资建议需人类复核 | 三层审批 L1 强制触发 |
 | **SEC 网络安全规则** | 及时披露重大网络安全事件 | Agent SRE 异常检测 → 自动化事件上报 |
@@ -3083,7 +3083,7 @@ allow if {
 某跨国银行建立 Agent CoE，统一治理内部 30+ 个业务 Agent：
 
 | 治理层 | 实践 |
-|--------|------|
+| -------- | ------ |
 | Agent Governance Board | 每月评审高风险 Agent 上线申请 |
 | Agent OS | 部署统一策略引擎，所有工具调用必须通过 `govern()` 包装 |
 | Agent Mesh | 为每个 Agent 签发 DID，跨域调用需 mTLS + 签名验证 |
@@ -3130,7 +3130,7 @@ OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT �
 ## 7. 实施路线图建议
 
 | 阶段 | 时间 | 目标 | 关键交付 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | **Phase 1：基础治理** | 0-3月 | 建立 Agent CoE、部署 Agent OS 策略引擎 | RBAC 策略基线、Kill Switch 机制 |
 | **Phase 2：规模化** | 3-6月 | 接入 AGT 7包、上线 Marketplace | Golden Path 模板、目录覆盖 >50% |
 | **Phase 3：合规就绪** | 6-9月 | EU AI Act 高风险义务满足 | 审计证据链、技术文档模板 |
@@ -3143,7 +3143,7 @@ OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT �
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | Microsoft Agent Governance Toolkit | <https://github.com/microsoft/agent-governance-toolkit> |
 > | AGT 官方文档 | <https://microsoft.github.io/agent-governance-toolkit/> |
 > | OWASP Top 10 for Agentic Applications 2026 | <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/> |
@@ -3189,7 +3189,7 @@ Agent := ⟨LLM, Memory, Tools, Planner, EnvironmentInterface⟩
 ### 1.1 LLM Agent 核心属性
 
 | 属性 | 说明 | 可观察/可验证 | 重要性 |
-|------|------|--------------|--------|
+| ------ | ------ | -------------- | -------- |
 | 自主性 | 能在无显式逐步指令下完成任务 | 任务完成率、人工干预频率 | 高 |
 | 感知能力 | 能读取环境状态、用户输入、工具返回 | 输入来源覆盖率 | 高 |
 | 推理能力 | 能进行多步规划、反思与决策 | 规划合理性评估 | 高 |
@@ -3389,7 +3389,7 @@ U_total ≈ U_manager + (1 − U_manager) × U_worker
 ### 4.2 质量保障策略
 
 | 策略 | 说明 |
-|------|------|
+| ------ | ------ |
 | **一致性采样** | 多次采样，选择最一致的输出 |
 | **人在回路** | 关键决策点引入人工确认 |
 | **置信度阈值** | 低置信度输出触发降级策略 |
@@ -3592,7 +3592,7 @@ Agent A: "请 Agent B 再次检查..."
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
 > | MCP Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |
@@ -3630,7 +3630,7 @@ Agent A: "请 Agent B 再次检查..."
 **协议映射**：
 
 | 功能 | 协议 | 关键方法/机制 |
-|------|------|--------------|
+| ------ | ------ | -------------- |
 | Agent 能力发现 | A2A | `/.well-known/agent-card.json` |
 | 任务委托 | A2A | `tasks/send`、`tasks/sendSubscribe` |
 | 工具发现 | MCP | `tools/list` |
@@ -3722,7 +3722,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 3. 代码结构
 
 | 文件 | 说明 |
-|------|------|
+| ------ | ------ |
 | `hybrid_agent_server.py` | FastAPI A2A Server + Mock MCP 工具层 |
 | `test_e2e.py` | 端到端测试 |
 | `test_mcp_server.py` | MCP 工具单元测试 |
@@ -3779,7 +3779,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 6. 生产演进路径
 
 | 阶段 | 改进 |
-|------|------|
+| ------ | ------ |
 | **当前 (PoC)** | Mock MCP 工具；内存任务存储；单进程 |
 | **短期** | 替换 `MockMCPTools` 为真实 `mcp.ClientSession`；连接外部 MCP Server |
 | **中期** | Redis 任务持久化；多 Worker 并发；OAuth2/JWT 认证 |
@@ -3790,7 +3790,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 7. 与项目结构的映射
 
 | 项目目录 | 本 PoC 角色 |
-|----------|-------------|
+| ---------- | ------------- |
 | `struct/12-ai-native-reuse/01-mcp-protocol/` | MCP 工具层规范 |
 | `struct/12-ai-native-reuse/02-a2a-protocol/` | A2A Agent 协作规范 |
 | `struct/04-component-architecture-reuse/` | Agent 作为可复用服务组件 |
@@ -3803,7 +3803,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
 > | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |
@@ -3830,7 +3830,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 1. 指标总览
 
 | 指标名 | 类型 | 标签 | 说明 |
-|--------|------|------|------|
+| -------- | ------ | ------ | ------ |
 | `ai_contract_coverage` | Gauge | `contract_id`, `model_version`, `temperature`, `top_p` | 经验覆盖率，目标 `≥ 1 − α` |
 | `ai_contract_calibration_error_ece` | Gauge | `contract_id`, `model_version`, `bin_strategy` | 期望校准误差（ECE） |
 | `ai_contract_brier_score` | Gauge | `contract_id`, `model_version` | Brier Score |
@@ -4138,7 +4138,7 @@ latency_seconds = Histogram(
 ## 5. 告警汇总建议
 
 | 告警名 | 表达式 | 严重度 | 升级策略 |
-|--------|--------|--------|----------|
+| -------- | -------- | -------- | ---------- |
 | ContractHardBreach | `coverage < γ − δ_hard` | critical | 立即熔断并通知值班 |
 | ContractSoftBreach | `γ − δ_soft ≤ coverage < γ − δ_hard` | warning | 记录并通知模型团队 |
 | HighCalibrationError | `ece > 0.05` | warning | 纳入校准周期 |
@@ -4151,7 +4151,7 @@ latency_seconds = Histogram(
 ## 6. 与概率契约框架的对应关系
 
 | 监控指标 | 框架元素 |
-|----------|----------|
+| ---------- | ---------- |
 | `ai_contract_coverage` | 契约满足条件 `P(correct) ≥ γ(x)` |
 | `ai_contract_calibration_error_ece` | 校准质量、定理 AI.1 Calibration Ceiling |
 | `ai_contract_prediction_set_size` | Conformal Prediction 集合 `C(x)` |
@@ -4197,7 +4197,7 @@ latency_seconds = Histogram(
 ## 1. OWASP LLM Top 10 (2025)
 
 | 排名 | 风险 | 说明 | MCP 相关 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | **LLM01** | Prompt Injection | 提示注入攻击 | ✅ 高 |
 | **LLM02** | Sensitive Information Disclosure | 敏感信息泄露 | ✅ 中 |
 | **LLM03** | Supply Chain Vulnerabilities | 供应链漏洞 | ✅ 高 |
@@ -4216,7 +4216,7 @@ latency_seconds = Histogram(
 OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 
 | 排名 | 风险 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **MCP1** | Prompt Injection via Tool Descriptions | 通过工具描述注入 |
 | **MCP2** | Tool Description Poisoning | 工具描述投毒 |
 | **MCP3** | Excessive Tool Permissions | 过度工具权限 |
@@ -4233,7 +4233,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 3. OWASP Agentic AI Top 10 (2026)
 
 | 排名 | 风险 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **ASI01** | Agent Goal Hijack | Agent 目标劫持 |
 | **ASI02** | Uncontrolled Autonomy | 不受控的自主性 |
 | **ASI03** | Identity and Privilege Abuse | 身份和权限滥用 |
@@ -4312,7 +4312,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 6. 复用安全建议
 
 | 复用场景 | 风险 | 建议 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | 复用第三方 MCP Server | Tool Poisoning | 代码审计 + 版本锁定 + 沙箱 |
 | 复用 Agent 角色模板 | 过度代理 | 限制权限范围 + 人在回路 |
 | 复用 Prompt 模板 | 提示注入 | 输入验证 + 参数化 |
@@ -4324,7 +4324,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 ## 7. 工具推荐
 
 | 类别 | 工具 |
-|------|------|
+| ------ | ------ |
 | MCP 扫描 | MCPScan, MCPGuard, Cisco MCP Scanner |
 | Prompt 防护 | Prompt 过滤器、Layered Filtering |
 | 监控 | OpenTelemetry GenAI 约定 |
@@ -4374,7 +4374,7 @@ OWASP 针对 Model Context Protocol (MCP) 专门发布了 Top 10：
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | Angelopoulos & Bates, *A Gentle Introduction to Conformal Prediction* | <https://arxiv.org/abs/2107.07511> |
 > | Vovk et al., *Algorithmic Learning in a Random World* | Springer, 2005 |
 > | NIST AI 600-1 Generative AI Profile | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> |
@@ -4448,7 +4448,7 @@ C = ⟨f, X, Y, γ⟩
 其中：
 
 | 符号 | 名称 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `f` | AI 功能 | `f: X → Distribution(Y)`，从输入空间到输出分布的映射。对 LLM 而言，f 通常由 `model(prompt(x))` 实现。 |
 | `X` | 输入空间 | 所有被契约覆盖的输入集合，包括 Prompt 模板、变量绑定、上下文窗口、用户角色等。 |
 | `Y` | 输出空间 | 所有可能的输出集合，包括结构化输出、文本、代码、工具调用参数等。 |
@@ -4531,7 +4531,7 @@ P(|p̂ − p| ≥ ε) ≤ 2 exp( − nε² / (2σ² + 2Mε/3) )
 #### 1.4.3 边界对比矩阵
 
 | 边界 | 分布假设 | 所需信息 | 样本效率 | 适用场景 |
-|------|---------|---------|---------|---------|
+| ------ | --------- | --------- | --------- | --------- |
 | Hoeffding | 有界变量，无其他假设 | 上界 M | 保守 | 黑盒模型、无分布信息 |
 | Bernstein | 有界变量 + 方差上界 | M 与 σ² | 较紧 | 白盒/灰盒模型、可估计方差 |
 | Chernoff | 独立同分布伯努利 | 仅 p | 紧 | 二元正确性指标 |
@@ -4611,7 +4611,7 @@ confidence_interval = [p̂ − ε, p̂ + ε]   （使用 Hoeffding 或 Bernstein
 **决策规则**：
 
 | 条件 | 动作 |
-|------|------|
+| ------ | ------ |
 | `empirical_coverage ≥ 0.95` 且 CI 下限 ≥ 0.93 | 继续服务 |
 | `0.93 ≤ empirical_coverage < 0.95` | 软违约：增加人在回路比例 |
 | `empirical_coverage < 0.93` | 硬违约：熔断并重新校准 |
@@ -4621,11 +4621,11 @@ confidence_interval = [p̂ − ε, p̂ + ε]   （使用 Hoeffding 或 Bernstein
 概率契约不仅是统计目标，更是一组可在运行时检查的**形式化约束**。建议将以下约束显式写入契约声明：
 
 | 约束类别 | 形式化表达 | 运行时检查 |
-|---------|-----------|-----------|
+| --------- | ----------- | ----------- |
 | **覆盖约束** | `∀x ∈ X: P(I(x) ∈ Correct(y) | x) ≥ γ(x)` | 滚动窗口经验覆盖率 |
 | **单调性约束** | `x₁ 更简单 ⇒ γ(x₁) ≥ γ(x₂)` | 输入复杂度评分 |
 | **漂移约束** | `D(P_deploy \|\| P_cal) ≤ δ_max` | PSI / KS 检验 |
-| **校准约束** | `|ECE| ≤ ε_max` | 期望校准误差 |
+| **校准约束** | ` | ECE | ≤ ε_max` | 期望校准误差 |
 | **样本约束** | `n ≥ ln(2/δ) / (2ε²)`（Hoeffding） | 校准集大小 |
 | **组合约束** | `γ₁₂ ≥ max(γ₁, γ₂)`（不确定性不降级） | 多模型串联评估 |
 
@@ -4661,7 +4661,7 @@ contract:
 输入复杂度越高，置信度应越低。建议从以下维度量化：
 
 | 维度 | 低复杂度 | 中复杂度 | 高复杂度 |
-|------|----------|----------|----------|
+| ------ | ---------- | ---------- | ---------- |
 | 代码行数 | < 50 | 50–200 | > 200 |
 | 控制流深度 | 顺序结构 | 条件/循环 | 递归/并发/分布式 |
 | 依赖数量 | 0–2 | 3–8 | > 8 |
@@ -4679,7 +4679,7 @@ d_complexity = max(0.5, 1.0 − complexity_score × 0.1)
 领域熟悉度反映模型在特定领域的训练覆盖度与组织内已沉淀的资产密度：
 
 | 熟悉度等级 | 条件 | 加成系数 `d_familiarity` |
-|------------|------|--------------------------|
+| ------------ | ------ | -------------------------- |
 | 高 | 高频任务、组织已有标准模板、公开基准覆盖充分 | 1.0 |
 | 中 | 中等频率、部分模板、领域数据有限 | 0.9 |
 | 低 | 低频任务、新领域、无历史数据 | 0.7–0.8 |
@@ -4705,7 +4705,7 @@ decay_factor(t) = exp(−λ × t)
 推荐基线 `γ_base`：
 
 | 功能类型 | γ_base |
-|----------|--------|
+| ---------- | -------- |
 | SQL 生成 / 关键决策支持 | 0.95 |
 | 代码生成 / 测试生成 | 0.90 |
 | 代码审查 / 配置生成 | 0.85 |
@@ -4719,7 +4719,7 @@ decay_factor(t) = exp(−λ × t)
 ### 3.1 参数语义与约束
 
 | 参数 | 语义 | 取值范围 | 约束说明 |
-|------|------|----------|----------|
+| ------ | ------ | ---------- | ---------- |
 | `temperature` | 采样温度，控制输出随机性 | [0, 2] | 越高多样性越强，确定性越低；关键任务建议 ≤ 0.2 |
 | `top_p` | 核采样概率质量阈值 | [0, 1] | 越低输出越集中；与 temperature 联合约束 |
 | `model_version` | 模型版本标识 | 字符串 | 版本变更必须重新校准 |
@@ -4738,7 +4738,7 @@ top_p ∈ [0, 1]
 ### 3.2 推荐默认矩阵
 
 | 功能类型 | 确定性需求 | 推荐 temperature | 推荐 top_p | 推荐 γ | 复用等级 |
-|----------|-----------|------------------|-----------|--------|----------|
+| ---------- | ----------- | ------------------ | ----------- | -------- | ---------- |
 | SQL 生成 | 极高 | 0.0–0.1 | 0.90–0.95 | 0.95 | 严格复用 |
 | 关键决策支持 | 极高 | 0.0–0.1 | 0.90–0.95 | 0.95 | 限制复用 |
 | 代码生成 | 高 | 0.1–0.2 | 0.90–0.95 | 0.90 | 条件复用 |
@@ -4764,7 +4764,7 @@ Hard Breach:  empirical_coverage < γ(x) − α_hard
 ```
 
 | 场景 | α_hard | 触发动作 |
-|------|--------|----------|
+| ------ | -------- | ---------- |
 | 生产环境关键路径 | 0.01 | 立即熔断、切换到人工或备用系统 |
 | 生产环境非关键路径 | 0.03 | 拒绝当前输出并记录 |
 | 开发/测试环境 | 0.05 | 标记高风险并通知责任人 |
@@ -4799,7 +4799,7 @@ HitL Trigger:  γ(x) < θ_hitl  OR  C(x) = {0, 1}
 其中 `C_review` 为人工审查成本，`C_error` 为错误成本。典型取值：
 
 | 功能类型 | θ_hitl |
-|----------|--------|
+| ---------- | -------- |
 | SQL 生成 / 关键决策 | 0.90 |
 | 代码生成 / 测试生成 | 0.80 |
 | 代码审查 | 0.75 |
@@ -4870,12 +4870,12 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 ### 5.3 SLA/SLO 设计模板（新增）
 
 | 维度 | SLO 指标 | 测量方法 | SLA 违约条件 |
-|------|---------|---------|-------------|
+| ------ | --------- | --------- | ------------- |
 | 正确性 | `correctness ≥ γ(x)` | 沙箱/规则/人工标注 | 结算周期错误率 > `1 − γ(x) + ε` |
 | 可用性 | `availability ≥ 99.9%` | 健康检查 | 月度停机 > 43 分钟 |
 | 延迟 | `p99_latency ≤ T` | OpenTelemetry | 连续 5 分钟 p99 > T |
 | 成本 | `cost_per_call ≤ C` | 计费监控 | 月度单均成本 > C × 1.2 |
-| 校准 | `|ECE| ≤ 0.05` | 校准报告 | 连续 2 周 ECE > 0.05 |
+| 校准 | ` | ECE | ≤ 0.05` | 校准报告 | 连续 2 周 ECE > 0.05 |
 | 人在回路 | `hitl_rate ≤ H` | 审批日志 | 因置信度过低导致 HitL 率 > H × 1.5 |
 
 **错误预算分配示例**：
@@ -4906,7 +4906,7 @@ MTBF_AI           = 1 / (1 − γ(x))  # 平均无故障调用次数（近似）
 ## 6. 与布尔契约、Design-by-Contract 的区别
 
 | 维度 | 布尔契约 / DbC | 概率契约 |
-|------|----------------|----------|
+| ------ | ---------------- | ---------- |
 | 真值 | 二值：满足 / 不满足 | 连续：[0, 1] 置信度 |
 | 适用对象 | 确定性软件组件 | AI/LLM 等随机性组件 |
 | 前置条件 | 严格：必须满足 | 统计：以概率满足 |
@@ -5037,9 +5037,9 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 ### 9.3 校准评估指标
 
 | 指标 | 定义 | 目标 |
-|------|------|------|
-| **ECE (Expected Calibration Error)** | 分箱后平均 `|准确率 − 置信度|` | ≤ 0.05 |
-| **MCE (Maximum Calibration Error)** | 分箱后最大 `|准确率 − 置信度|` | ≤ 0.10 |
+| ------ | ------ | ------ |
+| **ECE (Expected Calibration Error)** | 分箱后平均 ` | 准确率 − 置信度 | ` | ≤ 0.05 |
+| **MCE (Maximum Calibration Error)** | 分箱后最大 ` | 准确率 − 置信度 | ` | ≤ 0.10 |
 | **Empirical Coverage** | `(# 正确调用) / (# 总调用)` | ≥ γ(x) − ε |
 | **Prediction Set Size** | 平均预测集合大小 | 尽量小，避免无效空集合 |
 | **PSI / KS** | 分布漂移度量 | PSI ≤ 0.2；KS p-value ≥ 0.05 |
@@ -5047,7 +5047,7 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 ### 9.4 重新校准触发条件
 
 | 条件 | 动作 |
-|------|------|
+| ------ | ------ |
 | 经验覆盖率连续 7 天低于 γ(x) − ε | 触发软违约，增加 HitL 比例 |
 | ECE 连续 2 周 > 0.05 | 触发重新校准 |
 | PSI > 0.2 或 KS 检验显著 | 使用 ACI 或收集新校准集 |
@@ -5071,7 +5071,7 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | Conformal Prediction: A Gentle Introduction | <https://arxiv.org/abs/2107.07511> |
 > | Conformal Prediction Beyond Exchangeability | <https://arxiv.org/abs/2202.13415> |
 > | Hoeffding's Inequality | <https://en.wikipedia.org/wiki/Hoeffding%27s_inequality> |
@@ -5124,7 +5124,7 @@ q_{t+1} = q_t + η × (α − 𝟙[y_t ∈ C_t(x_t)])
 ## 文件说明
 
 | 文件 | 说明 |
-|---|---|
+| --- | --- |
 | `calibration-tool.py` | 核心校准脚本，支持 calibrate / predict / drift / report / calibrate-temperature / calibrate-platt / calibrate-isotonic 子命令，以及 `--test` 内置测试 |
 | `probabilistic-contract-framework.md` | 概率契约框架：四元组定义、满足条件、γ(x) 设计、参数约束、违约阈值、SLA 转换、与布尔契约/DbC 区别 |
 | `monitoring-metrics.md` | 运行时监控指标定义、Prometheus 示例、Grafana 面板配置 |
@@ -5314,7 +5314,7 @@ python calibration-tool.py --test
 ## 1. 服务概述
 
 | 项目 | 内容 |
-|------|------|
+| ------ | ------ |
 | 服务名称 | `{service_name}` |
 | 服务描述 | `{service_description}` |
 | 契约 ID | `{contract_id}` |
@@ -5327,7 +5327,7 @@ python calibration-tool.py --test
 ## 2. 服务等级目标（SLO）
 
 | SLO 项 | 目标值 | 测量方法 | 观测窗口 |
-|--------|--------|----------|----------|
+| -------- | -------- | ---------- | ---------- |
 | 正确率（Correctness） | `≥ {correctness_rate}` | 人工/规则/验证器判定输出正确 | 1 天 / 7 天 / 30 天 |
 | 可用性（Availability） | `≥ {availability}` | 服务成功响应比例 | 30 天 |
 | 延迟 P99（Latency） | `≤ {latency_p99_ms} ms` | 端到端调用耗时 | 1 天 |
@@ -5340,7 +5340,7 @@ python calibration-tool.py --test
 ## 3. 概率契约参数
 
 | 参数 | 设定值 | 说明 |
-|------|--------|------|
+| ------ | -------- | ------ |
 | 模型版本 | `{model_version}` | 版本变更需重新校准 |
 | Temperature | `{temperature}` | 关键任务建议 ≤ 0.2 |
 | Top-p | `{top_p}` | 与 temperature 联合约束 |
@@ -5358,7 +5358,7 @@ python calibration-tool.py --test
 ```
 
 | 触发动作 | 责任方 | 恢复时间目标（RTO） |
-|----------|--------|---------------------|
+| ---------- | -------- | --------------------- |
 | 立即熔断 / 拒绝复用 | 平台团队 | 15 分钟 |
 | 切换至备用模型或人工兜底 | 值班工程师 | 30 分钟 |
 | 生成事故报告并归档 | SRE | 24 小时 |
@@ -5370,7 +5370,7 @@ python calibration-tool.py --test
 ```
 
 | 触发动作 | 责任方 | 处理时限 |
-|----------|--------|----------|
+| ---------- | -------- | ---------- |
 | 增加一致性检查或重新采样 | 模型团队 | 1 小时 |
 | 降低置信度并扩大人在回路范围 | 产品团队 | 4 小时 |
 | 纳入下次校准周期重点观察 | 数据团队 | 7 天 |
@@ -5382,7 +5382,7 @@ python calibration-tool.py --test
 ```
 
 | 动作 | 说明 |
-|------|------|
+| ------ | ------ |
 | 强制人工复核 | 输出在上线或提交前必须经过人工确认 |
 | 记录复核结果 | 用于下一轮校准与模型改进 |
 | 动态调整 θ | 每月根据 C_review / C_error 重新计算 |
@@ -5399,7 +5399,7 @@ python calibration-tool.py --test
 错误预算消耗达以下比例时触发治理动作：
 
 | 消耗比例 | 动作 |
-|----------|------|
+| ---------- | ------ |
 | 50% | 发送预警通知 |
 | 75% | 冻结非紧急功能发布 |
 | 100% | 启动熔断或降级策略 |
@@ -5409,7 +5409,7 @@ python calibration-tool.py --test
 ## 6. 补偿与问责
 
 | 违约级别 | 条件 | 补偿/问责 |
-|----------|------|-----------|
+| ---------- | ------ | ----------- |
 | 轻微 | 单日内 SLO 未达成但仍在错误预算内 | 记录事件，无需补偿 |
 | 中等 | 连续 3 日未达成或单月错误预算超支 | 服务积分/延迟修复承诺 |
 | 严重 | 硬阈值触发导致生产事故 | 事故复盘 + 改进计划 |
@@ -5419,7 +5419,7 @@ python calibration-tool.py --test
 ## 7. 复核与更新
 
 | 触发条件 | 动作 |
-|----------|------|
+| ---------- | ------ |
 | 模型版本升级 | 7 天内重新校准并更新 SLO 基线 |
 | 输入分布显著漂移 | 触发漂移检测流程，必要时重新校准 |
 | 季度复盘 | 评审 SLO 达成率、错误预算消耗、违约记录 |
@@ -5483,7 +5483,7 @@ python calibration-tool.py --test
 ## 1. 数据摘要
 
 | 指标 | 数值 |
-|------|------|
+| ------ | ------ |
 | 校准样本量 | `{calibration_size}` |
 | 目标错误率 α | `{alpha}` |
 | 目标覆盖率 `1 − α` | `{target_coverage}` |
@@ -5504,7 +5504,7 @@ python calibration-tool.py --test
 ```
 
 | 指标 | 数值 |
-|------|------|
+| ------ | ------ |
 | Conformal 阈值 q | `{q}` |
 | 经验覆盖率 | `{empirical_coverage}` |
 | 平均预测集合大小 | `{avg_prediction_set_size}` |
@@ -5512,7 +5512,7 @@ python calibration-tool.py --test
 ### 2.2 校准质量指标
 
 | 指标 | 数值 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | ECE（Expected Calibration Error） | `{ece}` | 期望校准误差，越小越好 |
 | Brier Score | `{brier_score}` | 概率预测综合误差，越小越好 |
 | Brier 分解 - 可靠性 | `{brier_reliability}` | 校准曲线与对角线的偏离 |
@@ -5526,7 +5526,7 @@ python calibration-tool.py --test
 以下按预测概率等宽分桶，展示每个桶内的平均预测分数与实际准确率：
 
 | Bin 区间 | 样本数 | 平均预测分数 | 实际准确率 | 置信度-准确率偏差 |
-|----------|--------|--------------|------------|-------------------|
+| ---------- | -------- | -------------- | ------------ | ------------------- |
 | `{bin_1}` | `{count_1}` | `{avg_conf_1}` | `{acc_1}` | `{gap_1}` |
 | `{bin_2}` | `{count_2}` | `{avg_conf_2}` | `{acc_2}` | `{gap_2}` |
 | ... | ... | ... | ... | ... |
@@ -5540,7 +5540,7 @@ python calibration-tool.py --test
 按 `{stratify_by}` 分层后的校准结果：
 
 | 分层值 | 样本量 | ECE | Brier Score | 经验覆盖率 | 推荐 q |
-|--------|--------|-----|-------------|------------|--------|
+| -------- | -------- | ----- | ------------- | ------------ | -------- |
 | `{stratum_1}` | `{n_1}` | `{ece_1}` | `{brier_1}` | `{cov_1}` | `{q_1}` |
 | `{stratum_2}` | `{n_2}` | `{ece_2}` | `{brier_2}` | `{cov_2}` | `{q_2}` |
 | ... | ... | ... | ... | ... | ... |
@@ -5550,7 +5550,7 @@ python calibration-tool.py --test
 ## 5. 覆盖率分析
 
 | 指标 | 数值 |
-|------|------|
+| ------ | ------ |
 | 预测集合为 `[1]`（接受）的样本比例 | `{accept_rate}` |
 | 预测集合为 `[0]`（拒绝）的样本比例 | `{reject_rate}` |
 | 预测集合为 `[0, 1]`（不确定）的样本比例 | `{uncertain_rate}` |
@@ -5563,7 +5563,7 @@ python calibration-tool.py --test
 基于本次校准数据，推荐以下运行时阈值：
 
 | 阈值类型 | 推荐值 | 依据 |
-|----------|--------|------|
+| ---------- | -------- | ------ |
 | 置信度基线 γ_base | `{recommended_gamma_base}` | 目标覆盖率与 ECE 平衡 |
 | 人在回路阈值 θ_hitl | `{recommended_hitl_threshold}` | `C_review / C_error` 或不确定性区间比例 |
 | 硬违约阈值 δ_hard | `{recommended_hard_delta}` | 生产关键路径容忍度 |
@@ -5584,7 +5584,7 @@ python calibration-tool.py --test
 ### 7.2 后续行动
 
 | 优先级 | 行动项 | 负责人 | 截止日期 |
-|--------|--------|--------|----------|
+| -------- | -------- | -------- | ---------- |
 | P0 | 将校准阈值 q 写入契约 YAML | 平台工程师 | `{due_date_1}` |
 | P1 | 部署运行时监控面板 | SRE | `{due_date_2}` |
 | P2 | 按推荐阈值配置告警规则 | 值班工程师 | `{due_date_3}` |
@@ -5710,7 +5710,7 @@ Brier = Reliability − Resolution + Uncertainty
 NIST AI Risk Management Framework (AI RMF) 1.0 于 **2023 年 1 月 26 日**发布，是一个自愿性的 AI 风险管理框架，包含四大核心功能：
 
 | 功能 | 目标 | 与复用的关联 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **Govern** (治理) | 建立组织级 AI 风险治理结构 | 定义 AI 组件复用的治理策略和责任 |
 | **Map** (映射) | 识别 AI 系统的上下文和风险 | 识别复用 AI 组件的上下文和风险 |
 | **Measure** (度量) | 评估和追踪 AI 风险指标 | 建立复用 AI 组件的质量和安全性度量 |
@@ -5745,7 +5745,7 @@ NIST AI RMF Critical Infrastructure Profile 于 **2026 年 4 月 7 日**发布�
 ### 2.1 风险分类矩阵
 
 | 风险类别 | 具体风险 | 复用场景 | 严重程度 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | **模型风险** | 幻觉、偏见、性能漂移 | 复用预训练模型 | 🔴 高 |
 | **数据风险** | 训练数据污染、隐私泄露 | 复用训练数据集 | 🔴 高 |
 | **框架风险** | 推理框架漏洞、供应链攻击 | 复用 PyTorch/TensorFlow 等 | 🟡 中 |
@@ -5810,7 +5810,7 @@ AI 组件的风险具有**级联传递特性**：
 **模型复用度量**:
 
 | 度量项 | 方法 | 目标 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 模型卡完整性 | 检查 Model Cards 是否包含训练数据、性能基准、限制 | 100% 关键模型 |
 | 偏见检测 | 使用 Fairlearn/AIF360 进行公平性测试 | 偏差指标在可接受范围 |
 | 鲁棒性测试 | 对抗样本测试、分布外检测 | 攻击成功率 <阈值 |
@@ -5819,7 +5819,7 @@ AI 组件的风险具有**级联传递特性**：
 **框架复用度量**:
 
 | 度量项 | 方法 | 目标 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 漏洞扫描 | SCA 扫描框架依赖 | 无高危 CVE |
 | 供应链溯源 | SLSA provenance | Build L2+ |
 | 许可证合规 | FOSSA/Black Duck | 与策略兼容 |
@@ -5863,7 +5863,7 @@ AI 组件的风险具有**级联传递特性**：
 ### 4.2 技术可信度评估（结合 Conformal Prediction）
 
 | 评估维度 | 方法 | 工具/标准 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 预测可靠性 | Conformal Prediction 覆盖率 | 本项目 `calibration-tool.py` |
 | 性能稳定性 | 持续监控准确率/召回率/F1 | Prometheus + Grafana |
 | 对抗鲁棒性 | 对抗样本测试 | Adversarial Robustness Toolbox |
@@ -5872,7 +5872,7 @@ AI 组件的风险具有**级联传递特性**：
 ### 4.3 数据可信度评估
 
 | 评估维度 | 方法 | 工具/标准 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 数据来源 | 训练数据溯源 | Data Provenance 标准 |
 | 数据质量 | 数据清洗和验证记录 | Great Expectations |
 | 隐私合规 | 差分隐私评估 | Opacus, Google DP Library |
@@ -5881,7 +5881,7 @@ AI 组件的风险具有**级联传递特性**：
 ### 4.4 供应链可信度评估
 
 | 评估维度 | 方法 | 工具/标准 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 模型来源 | 模型签名验证 | Sigstore, C2PA |
 | 框架安全 | SCA 扫描 | Snyk, Trivy |
 | 构建可信 | SLSA provenance | SLSA Build L2+ |
@@ -5904,7 +5904,7 @@ AI 组件复用信任评分 =
 ```
 
 | 综合评分 | 信任等级 | 复用建议 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 85-100 | 🟢 A 级 | 无条件批准 |
 | 70-84 | 🟢 B 级 | 标准批准 |
 | 55-69 | 🟡 C 级 | 条件批准 + 缓解计划 |
@@ -5948,7 +5948,7 @@ AI 组件复用信任评分 =
 ### 5.3 信任评分计算
 
 | 维度 | 得分 | 权重 | 加权得分 |
-|:---|:---:|:---:|:---:|
+| :--- | :---: | :---: | :---: |
 | 技术可信度 | 78 | 0.3 | 23.4 |
 | 数据可信度 | 65 | 0.3 | 19.5 |
 | 供应链可信度 | 70 | 0.4 | 28.0 |
@@ -5963,7 +5963,7 @@ AI 组件复用信任评分 =
 某全球性科技公司建立 MCP 工具目录，并依据 NIST AI RMF 设计复用治理流程：
 
 | RMF 功能 | 复用控制实践 |
-|---------|-------------|
+| --------- | ------------- |
 | **Govern** | 成立 AI 组件复用委员会；制定《MCP 工具准入策略》；所有工具必须通过安全与合规审查 |
 | **Map** | 建立工具风险登记册；识别每个工具的数据访问范围、下游影响与监管映射 |
 | **Measure** | 对工具进行功能测试、SBOM 扫描、CVE 检查；高风险工具需红队测试 |
@@ -6015,7 +6015,7 @@ AI 组件复用的风险管理必须贯穿 Govern→Map→Measure→Manage 全�
 ## 8. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | NIST AI RMF 1.0 | <https://www.nist.gov/itl/ai-risk-management-framework> | 2026-07-08 |
 | NIST AI RMF 1.0 PDF | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf> | 2026-07-08 |
 | NIST AI 600-1 (GenAI Profile) PDF | <https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf> | 2026-07-08 |
@@ -6066,7 +6066,7 @@ $$
 关键特征：
 
 | 特性 | 说明 |
-|------|------|
+| ------ | ------ |
 | **有限样本保证** | 对任何样本量 n 均成立，无需渐近近似 |
 | **分布无关** | 不假设数据服从高斯分布等特定分布 |
 | **模型无关** | 适用于任何基础模型（GPT-4、Claude、Llama 等） |
@@ -6158,7 +6158,7 @@ flowchart TB
 非共形分数 (nonconformity score) 衡量样本与训练分布的"异常程度"。在代码生成中，可采用的分数包括：
 
 | 分数类型 | 定义 | 适用场景 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | **测试通过率** | s(x,y) = 1 − (通过测试数 / 总测试数) | 有测试用例的编程任务（MBPP, HumanEval） |
 | **语义熵** | s(x,y) = 基于执行轨迹的熵 | 需要语义等价性判断的场景 |
 | **logit 差距** | s(x,y) = 1 − P(正确代码) / P(最可能代码) | API 级访问模型概率的场景 |
@@ -6407,7 +6407,7 @@ if __name__ == "__main__":
 ### 4.1 关键代码解读
 
 | 代码段 | 含义 |
-|--------|------|
+| -------- | ------ |
 | `q_level = ceil((n+1)(1-alpha))/n` | 保证有限样本覆盖的核心公式，来源于 Vovk et al. (2005) |
 | `score = 1 - pass_rate` | 非共形分数：通过率越低，分数越高，越"异常" |
 | `score <= quantile` | 纳入预测集的条件：异常程度不超过校准阈值 |
@@ -6438,7 +6438,7 @@ flowchart TB
 ```
 
 | 维度 | 概率契约 | Conformal Prediction |
-|------|---------|---------------------|
+| ------ | --------- | --------------------- |
 | **保证类型** | 逻辑/规约保证 | 统计覆盖保证 |
 | **形式** | "不得泄露密钥" | "正确代码以 95% 概率在预测集中" |
 | **验证方式** | 静态分析、运行时检查 | 校准集 + 假设检验 |
@@ -6471,7 +6471,7 @@ flowchart TB
 ## 7. 实施建议
 
 | 场景 | 推荐方法 | 校准成本 | 覆盖保证 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | 单元级代码补全 | Split CP + 测试通过率 | 低（100–500 样本） | 边际覆盖 |
 | 项目级需求实现 | RisCoSet (AST 预测集) | 高（需执行测试） | 边际覆盖 + 结构保证 |
 | 高 stakes 安全代码 | CP + 形式化验证混合 | 极高 | 条件覆盖（近似） |
@@ -6556,7 +6556,7 @@ P(Y ∈ C_α(X)) ≥ 1 − α
 ### 2.2 条件覆盖与边际覆盖
 
 | 覆盖类型 | 定义 | 保证强度 | 实现难度 |
-|---------|------|---------|---------|
+| --------- | ------ | --------- | --------- |
 | 边际覆盖（Marginal） | `P(Y ∈ C_α(X)) ≥ 1 − α` | 较弱 | 容易 |
 | 条件覆盖（Conditional） | `P(Y ∈ C_α(X) | X = x) ≥ 1 − α` | 较强 | 理论上不可能无分布实现 |
 | 近似条件覆盖 | 对特定子群或分层成立 | 中等 | 可通过分层 CP 实现 |
@@ -6572,7 +6572,7 @@ P(Y ∈ C_α(X)) ≥ 1 − α
 CP 的边际覆盖保证依赖于**可交换性假设**（exchangeability）：校准集与测试集应从同一分布中独立同分布（或至少可交换）抽取。实际部署中，以下因素会破坏该假设：
 
 | 场景 | 破坏机制 | 影响 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 模型更新 | 部署后模型权重变化 | 校准分数分布漂移 |
 | 用户分布变化 | 新用户群体、新需求模式 | 输入分布漂移 |
 | 时间序列数据 | 季节、趋势、事件驱动 | 时间相关性 |
@@ -6836,7 +6836,7 @@ CP 的核心保证是：在交换性假设下，预测集合以概率 1−α 包
 ### 9.1 权威来源
 
 | 来源 | 说明 |
-|------|------|
+| ------ | ------ |
 | Vovk, Gammerman & Shafer (2005) | 《Algorithmic Learning in a Random World》——CP 理论奠基著作 |
 | Angelopoulos & Bates (2021) | CP 现代教程与分布无关不确定性量化 |
 | Cherian & Candès (NeurIPS 2024) | LLM validity via enhanced conformal prediction |
@@ -7020,7 +7020,7 @@ AI 原生复用引入了两个传统软件复用中不存在的新挑战：
 **AI 原生复用** 是在大模型与 Agent 系统中，通过 MCP（Model Context Protocol）、A2A（Agent-to-Agent Protocol）与概率契约，将提示模板、RAG 管道、工具、模型推理服务与 Agent 技能封装为可组合、可治理的资产。
 
 | 概念 | 定义 | 复用层次 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **MCP** | Model Context Protocol，模型与工具/上下文源之间的开放协议 | 工具与上下文复用 |
 | **A2A** | Agent-to-Agent Protocol，Agent 之间的协作协议 | Agent 能力与任务复用 |
 | **概率契约** | 对 AI 服务输出质量边界的概率承诺 | AI 服务等级与风险边界 |
@@ -7119,7 +7119,7 @@ Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制；
 ## 5. AI 复用决策矩阵
 
 | 资产类型 | 协议/机制 | 关键治理点 | 风险 |
-|----------|-----------|------------|------|
+| ---------- | ----------- | ------------ | ------ |
 | 工具 | MCP | Schema 版本、权限、可观测性 | 工具变更导致调用失效 |
 | Agent 能力 | A2A | 能力发现、信任凭证、任务委托 | Agent 协作不可控 |
 | 提示模板 | 模板仓库 + 版本控制 | A/B 测试、输出模式校验 | 提示漂移 |
@@ -7139,7 +7139,7 @@ Agent 通过私有 HTTP 端点调用工具，无 Schema 注册与权限控制；
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL | 说明 |
-> |------|-----|------|
+> | ------ | ----- | ------ |
 > | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> | MCP 官方规范，定义 JSON-RPC 2.0 消息、Tools/Resources/Prompts/Sampling/Roots/Elicitation 等机制 |
 > | MCP Introduction | <https://modelcontextprotocol.io/introduction> | 官方介绍与架构概述 |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> | A2A 官方规范，定义 Agent Card、Task、Message、Artifact、安全机制 |

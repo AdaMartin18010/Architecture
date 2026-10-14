@@ -51,7 +51,7 @@
 ### 1.1 从制造到网络到城市
 
 | 领域 | 标准/框架 | 成熟度 | 复用边界 |
-|:---|:---|:---:|:---|
+| :--- | :--- | :---: | :--- |
 | **制造** | ISO 23247, IEC 63278 AAS | 成熟 | 设备、产线、工厂 |
 | **网络** | IETF NMRG Network DT | 草案演进中 | 网络拓扑、协议、流量 |
 | **城市** | ITU-T Y.4600 | 需求框架 | 基础设施、交通、能源 |
@@ -85,7 +85,7 @@
 IETF NMRG（Network Management Research Group）的 Network Digital Twin 架构草案持续演进：
 
 | 版本 | 时间 | 关键进展 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | draft -00 | 2022 | 初始概念提出 |
 | draft -06 | 2024 | 架构框架成型 |
 | **draft -12** | **2025-2026** | **详细数据模型和接口定义** |
@@ -116,7 +116,7 @@ IETF Network Digital Twin 架构
 ### 2.3 网络模型的复用
 
 | 模型类型 | 复用内容 | 标准/格式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 拓扑模型 | 网络拓扑、设备连接关系 | YANG, JSON |
 | 配置模型 | 设备配置模板 | YANG, NETCONF |
 | 流量模型 | 流量矩阵、QoS 策略 | IPFIX, sFlow |
@@ -131,7 +131,7 @@ IETF Network Digital Twin 架构
 **GB/T 45616-2025** 是中国等同采用 **ISO 23247**（制造领域数字孪生框架）的国家标准：
 
 | 部分 | 名称 | 内容 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | GB/T 45616.1 | 概述和一般原则 | 框架、术语、用例 |
 | GB/T 45616.2 | 参考架构 | 系统架构、信息模型、接口 |
 | GB/T 45616.3 | 一致性测试 | 测试方法和准则 |
@@ -155,7 +155,7 @@ IETF Network Digital Twin 架构
 ### 4.1 跨域复用挑战
 
 | 挑战 | 说明 | 解决方向 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **语义差异** | 制造 DT 的"设备" vs 网络 DT 的"节点" | 统一 Ontology（如 SDF） |
 | **时间尺度** | 制造 DT 秒级 vs 网络 DT 毫秒级 | 多时间尺度建模 |
 | **动态性** | 制造 DT 相对稳定 vs 网络 DT 高度动态 | 增量更新和事件驱动 |
@@ -205,7 +205,7 @@ SDF for Digital Twin
 > **定理 NDT.3** (孪生保真度边界): 数字孪生的价值取决于其与物理实体同步的及时性与准确性。缺乏稳定数据采集与增量更新机制的高保真模型会迅速退化为可视化装饰，丧失决策支持能力。
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | IETF NMRG Network Digital Twin draft-12 | <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12> | 2026-07-08 |
 | IETF ASDF SDF for Digital Twin | <https://datatracker.ietf.org/doc/draft-ietf-asdf-digital-twin/> | 2026-07-08 |
 | GB/T 45616-2025 | <https://www.chinesestandard.net/PDF/English.aspx/GBT45616.2-2025> | 2026-07-08 |

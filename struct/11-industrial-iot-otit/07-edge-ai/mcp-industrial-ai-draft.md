@@ -15,7 +15,7 @@ MCP 默认面向云端异步 RPC，工业现场的四项核心约束要求对其
 MCP 默认基于 JSON-RPC，不保证延迟上界。工业控制回路要求严格上界。
 
 | 场景 | 允许最大延迟 | MCP 默认是否满足 | 必要扩展 |
-|------|------------|----------------|---------|
+| ------ | ------------ | ---------------- | --------- |
 | 运动控制指令 | < 1 ms | 否 | TSN 时间感知调度 |
 | 安全停机信号 | < 10 ms | 否 | 冗余通道 + 硬实时传输 |
 | 预测性维护推理 | < 100 ms | 边缘可满足 | 本地 MCP Server |
@@ -46,7 +46,7 @@ graph LR
 IEC 62443 定义安全等级（SL），MCP 工业扩展必须对齐：
 
 | SL | 威胁场景 | MCP 扩展要求 |
-|---|---------|-------------|
+| --- | --------- | ------------- |
 | **SL 1** | 偶然误操作 | 基础 X.509 身份认证 |
 | **SL 2** | 通用恶意攻击 | 双向 TLS + RBAC |
 | **SL 3** | 复杂攻击者 | 命令数字签名 + 审计日志不可篡改 |
@@ -65,7 +65,7 @@ IEC 62443 定义安全等级（SL），MCP 工业扩展必须对齐：
 工业 AI Agent 可调用的工具集。每个工具声明 **WCET 估计**、**安全影响等级**及**RBAC 权限**。
 
 | 工具名称 | 输入 | 输出 | WCET | 安全影响 | RBAC 权限 |
-|---------|------|------|------|---------|----------|
+| --------- | ------ | ------ | ------ | --------- | ---------- |
 | `read_sensor(tag)` | `{tag: "Line1.Press.AI1"}` | `{value, quality, ts}` | < 5 ms | 无 | `sensor:read` |
 | `write_actuator(tag, val)` | `{tag, val}` | `{ack, exec_ts}` | < 10 ms | 中 | `actuator:write` |
 | `predict_anomaly(model, window)` | `{model, samples[]}` | `{score, is_anomaly}` | < 50 ms | 低 | `model:infer` |
@@ -78,7 +78,7 @@ IEC 62443 定义安全等级（SL），MCP 工业扩展必须对齐：
 工业 AI Agent 可访问的资源采用 URI 方案，直接映射 OT 命名空间：
 
 | Resource URI | 语义 | 协议映射 | 更新模式 |
-|-------------|------|---------|---------|
+| ------------- | ------ | --------- | --------- |
 | `asset://{line}/{device}/{prop}` | 实时资产属性 | OPC UA Variable Node | Pub/Sub 采样 |
 | `model://{task}/{type}/{ver}` | 边缘 AI 模型文件 | HTTPS / OPC UA FileType | 手动 OTA |
 | `doc://{cat}/{doc}/{rev}` | 维护 SOP | HTTPS / AAS Submodel | 按需拉取 |
@@ -103,7 +103,7 @@ IEC 62443 定义安全等级（SL），MCP 工业扩展必须对齐：
 工业场景预设提示封装领域知识：
 
 | Prompt ID | 描述 | 输入 | 典型输出 |
-|----------|------|------|---------|
+| ---------- | ------ | ------ | --------- |
 | `troubleshoot_alarm` | 报警诊断 | `alarm_code`, `context_tags[]` | 根因分析 + 建议操作 |
 | `optimize_schedule` | 排程优化 | `orders[]`, `constraints{}` | Gantt 图 + 瓶颈分析 |
 | `predict_maintenance` | 预测性维护 | `asset_id`, `horizon_days` | 维护窗口 + 备件清单 |
@@ -130,7 +130,7 @@ sequenceDiagram
 OPC UA FX 1.0 是现场级确定性通信标准。MCP 工业扩展通过以下映射复用 FX 基础设施：
 
 | MCP 原语 | OPC UA FX 对应物 | 映射说明 |
-|---------|-----------------|---------|
+| --------- | ----------------- | --------- |
 | **MCP Resource** | **OPC UA Node (Variable / Object)** | Resource URI 映射至 NodeId；通过 FX Address Space 统一解析 |
 | **MCP Tool** | **OPC UA Method** | Tool 调用映射为 Method Call；参数映射为 Method Argument DataType |
 | **MCP Sampling** | **OPC UA Pub/Sub (UADP)** | 实时更新通过 FX Pub/Sub 组播；周期映射为 PublishingInterval |
@@ -171,7 +171,7 @@ graph TB
 ### 4.1 基于 IEC 62443 的安全等级认证
 
 | SL 目标 | 机制 | MCP 实现 |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | SL-2 | mTLS + RBAC | 强制校验 Client X.509；权限声明于 Session 建立时 |
 | SL-3 | 命令签名 + 审计日志 | Tool 调用附加 Ed25519 签名；日志写入 WORM 存储 |
 | SL-4 | 物理隔离 + 单向二极管 | MCP 仅暴露 Read-Only Resource；Write/Tool 禁用 |
@@ -199,7 +199,7 @@ MCP Tool 调用安全增强
 ## 5. 与现有体系的交叉引用
 
 | 本草案内容 | 关联文档 | 说明 |
-|-----------|---------|------|
+| ----------- | --------- | ------ |
 | ISA-95 层级数据访问 | [`01-isa-95-model`](../01-isa-95-model/isa-95-asset-catalog-deep-dive.md) | L1-L3 传感器、执行器、Historian 的 Resource URI 命名空间 |
 | OPC UA FX 确定性传输 | [`02-opc-ua-fx`](../02-opc-ua-fx/opc-ua-fx-reuse-hierarchy.md) | UADP 帧结构、Connection Manager、Pub/Sub 配置 |
 | TSN 网络保障 | [`03-tsn-deterministic`](../03-tsn-deterministic/iec-ieee-60802-profile.md) | 802.1Qbv 门控列表为 MCP 实时消息提供确定性时隙 |

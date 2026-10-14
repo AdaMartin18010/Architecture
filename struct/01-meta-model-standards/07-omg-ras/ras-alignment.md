@@ -41,7 +41,7 @@ OMG **Reusable Asset Specification (RAS)** v2.2 是供应商中立的软件资�
 回答“**与其他资产的关系？**”。RAS 预定义四种关系类型：
 
 | 关系类型 | 语义 | 示例 |
-|----------|------|------|
+| ---------- | ------ | ------ |
 | `aggregation` | 聚合/包含 | 资产包内含子模块 |
 | `similar` | 相似/替代 | 功能等价的备选方案 |
 | `dependency` | 依赖 | 编译期或运行期必需 |
@@ -52,7 +52,7 @@ OMG **Reusable Asset Specification (RAS)** v2.2 是供应商中立的软件资�
 RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增：子 Profile 不能删除父 Profile 的约束，只能增加或收紧。
 
 | Profile | 扩展自 | 用途 |
-|---------|--------|------|
+| --------- | -------- | ------ |
 | Default Profile 2.2 | Core RAS | 通用资产（业务流程、文档） |
 | Default Component Profile 2.2 | Default Profile | 二进制/设计时组件（J2EE、.NET 程序集） |
 | Default Web Service Profile 2.2 | Default Component Profile | Web Service 客户端包装 |
@@ -66,7 +66,7 @@ RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增
 本知识体系采用业务架构 → 应用架构 → 组件架构 → 功能架构的四层复用模型。RAS 的四维结构在各层中的映射如下：
 
 | RAS 概念 | 业务架构层 | 应用架构层 | 组件架构层 | 功能架构层 |
-|----------|-----------|-----------|-----------|-----------|
+| ---------- | ----------- | ----------- | ----------- | ----------- |
 | **Classification** | 业务能力分类（领域、价值流、组织单元） | 架构模式分类（微服务、事件驱动、分层） | 包/模块分类（语言生态、运行时、许可证） | 函数/算法分类（复杂度、确定性、并行性） |
 | **Solution** | 业务流程模型（BPMN、价值流图、领域模型） | 微服务模板（部署拓扑、数据流、API 契约） | 库/框架代码（源码、二进制、设计模式实例） | 可复用函数（算法实现、MCP Tool、A2A Agent Card） |
 | **Usage** | 价值流使用指南（角色职责、KPI 映射、变革管理） | 部署配置（Helm values、Terraform 模块参数） | API 文档（OpenAPI/AsyncAPI、调用契约、兼容性矩阵） | 调用示例（输入/输出样例、边界条件、性能基线） |
@@ -81,7 +81,7 @@ RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增
 RAS 作为元模型，与体系内引用的多个权威标准存在概念对应关系：
 
 | RAS 概念 | 对应标准/概念 | 映射说明 |
-|----------|--------------|----------|
+| ---------- | -------------- | ---------- |
 | **Classification** | ISO 42010 Viewpoint / Concern | RAS `ClassificationSchema` 可视为对 ISO 42010 中 Viewpoint 分类体系的具体化；`Context` 对应 Concern 的上下文边界 |
 | **Solution** | TOGAF ABB / SBB | RAS `Solution` 的抽象制品对应 Architecture Building Block（ABB），具体实现制品对应 Solution Building Block（SBB）；`VariabilityPoint` 对应 ABB/SBB 间的可变性管理 |
 | **Usage** | SWEBOK "Construction with Reuse" | RAS `Usage` 中的 `Activity` 与 `VariabilityPointBinding` 直接映射 SWEBOK V4 软件构造知识领域中“基于复用的构造”过程：检索、评估、适配、集成 |
@@ -106,7 +106,7 @@ RAS `Solution` 中的 `Artifact` 和 `ArtifactDependency` 提供了制品级依�
 SLSA 1.2 的 Build Track（L1-L4）为资产构建过程提供可信度等级。RAS 的 `Asset` 元数据可直接扩展 SLSA 字段：
 
 | SLSA 轨道 | RAS 扩展字段 | 作用 |
-|-----------|-------------|------|
+| ----------- | ------------- | ------ |
 | Build Track L1 | `provenance:attested` | 声明构建来源存在 |
 | Build Track L2 | `provenance:hosted` | 声明构建在托管环境中完成 |
 | Build Track L3 | `provenance:hardened` | 声明构建环境已加固 |
@@ -133,7 +133,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 ### 5.1 创建 RAS 描述前的 10 项检查
 
 | 序号 | 检查项 | 通过标准 |
-|------|--------|----------|
+| ------ | -------- | ---------- |
 | 1 | 分类完整性 | `Classification` 至少包含领域、用途、技术栈、成熟度四项描述 |
 | 2 | 制品可验证 | `Solution` 中每个 `Artifact` 均有校验和或签名 |
 | 3 | SBOM 嵌入 | 存在 SPDX/CycloneDX 格式的 SBOM 制品 |
@@ -214,7 +214,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.1 Asset（资产）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | id | 全局唯一标识符 | 高 |
 | name | 人类可读名称 | 高 |
 | version | 语义化版本（建议 SemVer） | 高 |
@@ -225,7 +225,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.2 Classification（分类）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Context | 资产适用上下文 | 高 |
 | DescriptorGroup | 描述符分组 | 高 |
 | NodeDescriptor | 分类树节点 | 中 |
@@ -236,7 +236,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.3 Solution（解决方案）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Artifact | 实际工作产品 | 高 |
 | ArtifactContext | 制品与上下文的关联 | 中 |
 | ArtifactDependency | 制品间依赖 | 高 |
@@ -247,7 +247,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.4 Usage（使用）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Activity | 使用指令 | 高 |
 | ArtifactActivity | 绑定到特定制品的活动 | 中 |
 | AssetActivity | 绑定到整个资产的活动 | 中 |
@@ -258,7 +258,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.5 RelatedAssets（相关资产）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | aggregation | 聚合/包含关系 | 高 |
 | similar | 相似/替代关系 | 中 |
 | dependency | 编译期或运行期依赖 | 高 |

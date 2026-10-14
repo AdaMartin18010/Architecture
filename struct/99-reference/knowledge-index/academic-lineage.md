@@ -108,7 +108,7 @@ flowchart LR
 ## 2. 主题分组索引
 
 | 主题 | 覆盖概念 | 项目目录 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 软件工程基础 | Software Architecture、Software Reuse、CBSE、Design Pattern、Software Product Line | `01-meta-model-standards/`、`04-component-architecture-reuse/` |
 | 架构模式与企业架构 | Enterprise Architecture、SOA、Microservices、Serverless、EDA、DDD、Clean/Onion/Hexagonal | `02-business-architecture-reuse/`、`03-application-architecture-reuse/` |
 | 形式化方法与安全 | Functional Safety、Supply Chain Security、Formal Methods、Model Checking | `07-formal-verification/`、`10-supply-chain-security/`、`11-industrial-iot-otit/06-functional-safety/` |
@@ -424,7 +424,7 @@ flowchart LR
 ## 13. 权威来源与核查记录
 
 | 来源类别 | 名称 | URL | 机构 | 核查日期 |
-|----------|------|-----|------|----------|
+| ---------- | ------ | ----- | ------ | ---------- |
 | 标准 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | ISO/IEC/IEEE | 2026-07-07 |
 | 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | ISO/IEC | 2026-07-07 |
 | 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | IEC | 2026-07-07 |

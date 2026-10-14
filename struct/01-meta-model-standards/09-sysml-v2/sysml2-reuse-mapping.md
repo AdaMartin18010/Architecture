@@ -1,7 +1,7 @@
 # OMG SysML v2 与架构复用映射指南
 
 | 属性 | 值 |
-|---|---|
+| --- | --- |
 | **版本** | 2026-06-10 |
 | **定位** | Phase C-01：元模型标准层 — SysML v2 复用语义与架构资产映射 |
 | **对齐标准** | OMG SysML v2（2023）、ISO/IEC 42010:2022、OMG RAS 2.0、ISO/IEC 26550:2015、OMG KDM、IEEE 1471 |
@@ -64,7 +64,7 @@ OMG SysML v2 于 2023 年 11 月由对象管理组织（OMG）正式发布，标
 SysML v2 的三大核心变革方向如下：
 
 | 变革维度 | SysML v1 的局限 | SysML v2 的改进 |
-|---|---|---|
+| --- | --- | --- |
 | **元模型架构** | 基于 UML 2.x 元模型继承，带来大量非必要复杂性 | 全新独立的 SysML v2 元模型，与 UML 解耦，采用 Kernel Modeling Language（KML）基础 |
 | **图形符号** | 图形与语义紧耦合，同一种概念存在多种图形表达，导致歧义 | 图形与语义分离（Separation of Concerns），统一语义映射到多种可选图形 |
 | **API 与交换** | 仅依赖 XMI 交换，缺乏标准化 API，工具间互操作性差 | 标准化 RESTful API（SysML v2 API）、JSON/LF 文本交换格式、原生模型库机制 |
@@ -187,7 +187,7 @@ connection def RF_Link {
 Library 的核心特征：
 
 | 特征 | 说明 |
-|---|---|
+| --- | --- |
 | **封装性** | Library 内的元素默认具有 controlled visibility，只有通过显式 export 的元素对外可见 |
 | **版本标识** | Library 可携带版本标记（version annotation），支持多版本共存和依赖管理 |
 | **依赖声明** | Library 通过 `import` 声明对其他 Library 的依赖，形成有向无环图（DAG）式的依赖结构 |
@@ -220,7 +220,7 @@ ISO/IEC 42010:2022《系统和软件工程 — 架构描述》是国际标准化
 ### 4.1 核心概念映射表
 
 | ISO/IEC 42010:2022 概念 | SysML v2 对应元素 | 映射说明 |
-|---|---|---|
+| --- | --- | --- |
 | **System**（系统） | `Occurrence` / `System` | SysML v2 中系统作为 Occurrence 存在，具有时空边界 |
 | **Architecture**（架构） | `Model`（模型子集） | 系统的架构由 SysML Model 中描述结构、行为和属性的元素集合表达 |
 | **Stakeholder**（利益相关方） | `Stakeholder`（注释元素） | 可通过 Comment / Metadata 关联到模型元素 |
@@ -268,7 +268,7 @@ ISO 42010:2022 强调架构决策（Architecture Decision）的显式记录。Sy
 OMG RAS（Reusable Asset Specification）2.0 定义了可复用资产的元数据模型，包括资产描述、分类、依赖、使用指南和工件集合。SysML v2 模型作为一类高价值可复用资产，可与 RAS 元模型建立如下映射：
 
 | RAS 元素 | SysML v2 对应 | 复用实践 |
-|---|---|---|
+| --- | --- | --- |
 | **Asset**（资产） | `Library` 或 `Model`（含复用意图标记） | 将经过验证的 SysML 模型打包为资产 |
 | **Artifact**（工件） | `Library` 内元素 + 图形 View | 资产包含语义模型和推荐视图 |
 | **Profile**（轮廓） | `Metadata` / `Annotation` | 描述资产适用领域、成熟度、质量等级 |
@@ -566,7 +566,7 @@ part rs_sat_b : Satellite {
 ### 7.5 复用效益分析
 
 | 指标 | 传统模式 | 基于 SysML v2 架构库 | 改进幅度 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 平台模型重复开发时间 | 每个型号 4-6 周 | 首建库后复用接近零 | 节省 ~95% |
 | 子系统接口不一致问题 | 平均每个型号 12 项 | 首建库后基本消除 | 降低 ~90% |
 | 平台技术状态变更传播 | 人工同步，易遗漏 | 库变更自动通知所有消费型号 | 效率提升显著 |
@@ -578,7 +578,7 @@ part rs_sat_b : Satellite {
 ## 8. 权威来源
 
 | 编号 | 来源 | URL | 核查日期 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [1] | OMG SysML v2 Specification, Version 2.0, 2023 | <https://www.omg.org/spec/SysML/> | 2026-06-10 |
 | [2] | OMG KerML Specification (Kernel Modeling Language) | <https://www.omg.org/spec/KerML/> | 2026-06-10 |
 | [3] | OMG SysML v2 REST API Specification | <https://github.com/Systems-Modeling/SysML-v2-API-Java-Client> | 2026-06-10 |

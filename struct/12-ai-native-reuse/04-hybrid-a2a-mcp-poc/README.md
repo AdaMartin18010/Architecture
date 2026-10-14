@@ -5,7 +5,7 @@
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
 > | MCP Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |
@@ -43,7 +43,7 @@
 **协议映射**：
 
 | 功能 | 协议 | 关键方法/机制 |
-|------|------|--------------|
+| ------ | ------ | -------------- |
 | Agent 能力发现 | A2A | `/.well-known/agent-card.json` |
 | 任务委托 | A2A | `tasks/send`、`tasks/sendSubscribe` |
 | 工具发现 | MCP | `tools/list` |
@@ -135,7 +135,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 3. 代码结构
 
 | 文件 | 说明 |
-|------|------|
+| ------ | ------ |
 | `hybrid_agent_server.py` | FastAPI A2A Server + Mock MCP 工具层 |
 | `test_e2e.py` | 端到端测试 |
 | `test_mcp_server.py` | MCP 工具单元测试 |
@@ -192,7 +192,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 6. 生产演进路径
 
 | 阶段 | 改进 |
-|------|------|
+| ------ | ------ |
 | **当前 (PoC)** | Mock MCP 工具；内存任务存储；单进程 |
 | **短期** | 替换 `MockMCPTools` 为真实 `mcp.ClientSession`；连接外部 MCP Server |
 | **中期** | Redis 任务持久化；多 Worker 并发；OAuth2/JWT 认证 |
@@ -203,7 +203,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 ## 7. 与项目结构的映射
 
 | 项目目录 | 本 PoC 角色 |
-|----------|-------------|
+| ---------- | ------------- |
 | `struct/12-ai-native-reuse/01-mcp-protocol/` | MCP 工具层规范 |
 | `struct/12-ai-native-reuse/02-a2a-protocol/` | A2A Agent 协作规范 |
 | `struct/04-component-architecture-reuse/` | Agent 作为可复用服务组件 |
@@ -216,7 +216,7 @@ curl -X POST http://localhost:8000/jsonrpc \
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | A2A Protocol Specification v1.0.0 | <https://a2a-protocol.org/latest/specification/> |
 > | A2A Protocol Latest | <https://a2a-protocol.org/latest/> |
 > | Model Context Protocol Specification 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25> |

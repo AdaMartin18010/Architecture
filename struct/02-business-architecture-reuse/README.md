@@ -28,7 +28,7 @@
 ## 权威对齐
 
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | OMG BPMN | 2.0.2 (2014) | §8.3 Process, §10.4 Collaboration, 可执行语义 | <https://www.omg.org/spec/BPMN/2.0.2/> | 2026-07-08 |
 | OMG DMN | 1.5 (2024) | §6 Decision Requirements, §7 FEEL, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
 | TOGAF | 10 (2022) | Phase B Business Architecture, Capability Mapping | <https://www.opengroup.org/togaf> | 2026-07-08 |
@@ -58,7 +58,7 @@
 ## 子目录导航
 
 | 子目录 | 主题 | 状态 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | `01-business-domain-reuse/` | 业务域复用 | 🆕 已创建 |
 | `02-business-capability/` | 业务能力建模 | ✅ 核心文档 |
 | `03-value-stream/` | 价值流复用 | ✅ 核心文档 |
@@ -77,7 +77,7 @@
 ## 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 业务能力 | TOGAF 10 §B.3.3 Business Capability | 能力为业务架构的内容元模型核心元素 |
 | 价值流 | ArchiMate 4.0 §7.3 Value Stream | 端到端价值创造活动的结构化表达 |
 | 业务流程 | BPMN 2.0 §8 Process | 可执行流程模型与人工可读图形的双重语义 |

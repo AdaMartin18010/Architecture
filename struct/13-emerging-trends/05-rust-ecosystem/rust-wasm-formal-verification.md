@@ -18,7 +18,7 @@ Rust 的核心创新是将内存安全规则编码进类型系统：
 ### 1.2 形式化研究
 
 | 研究项目 | 机构 | 目标 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | **RustBelt** | MPI-SWS / IMDEA | 在 Iris 分离逻辑框架下为 Rust 核心语言建立形式化语义 |
 | **Aeneas** | EPFL | 从 Safe Rust 提取纯函数式等价物用于交互式证明 |
 | **Creusot** | Inria | 基于 Why3 的 Rust 演绎验证 |
@@ -60,7 +60,7 @@ fn safe_abs_proof() {
 ### 2.3 Prusti 与 Creusot
 
 | 工具 | 方法 | 自动化 | 适用场景 |
-|-----|------|--------|---------|
+| ----- | ------ | -------- | --------- |
 | Kani | 模型检验 | 高 | 不安全代码、并发、协议 |
 | Miri | 动态解释 | 手动运行 | UB 检测、调试 |
 | Prusti | 演绎验证 | 中高 | 合同驱动设计、算法正确性 |
@@ -81,7 +81,7 @@ fn double_nonnegative(n: i32) -> i32 { n * 2 }
 Rust 原生支持以下 Wasm 目标：
 
 | 目标 | 说明 | 状态 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | `wasm32-unknown-unknown` | 浏览器场景，配合 `wasm-bindgen` | 稳定 |
 | `wasm32-wasip1` | WASI 0.1（类 POSIX） | Tier 2 |
 | `wasm32-wasip2` | WASI 0.2 + Component Model | Tier 3 |
@@ -151,7 +151,7 @@ graph LR
 ### 4.3 验证边界与成本效益分析
 
 | 验证对象 | 可证明属性 | 不可覆盖的假设 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Rust 源码 + Kani | 内存安全、无溢出、无 panic、函数契约 | 编译器正确性、Kani/CBMC 本身可信计算基（TCB） |
 | Miri | `unsafe` 块无未定义行为 | 仅覆盖实际执行路径；不会自动覆盖所有输入 |
 | 编译后的 WASM 字节码 | 字节码合法性、WIT 接口一致性 | 源码到字节码的编译过程未被篡改 |
@@ -174,7 +174,7 @@ graph LR
 ### 5.3 不安全代码边界管理
 
 | 策略 | 实现 | 复用保证 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | `unsafe` 封装 | 最小化 `unsafe` 块，用 safe API 封装 | 调用方无需关心内部 unsafe |
 | Miri CI | 持续集成中运行 Miri 检测 | 捕获回归的 UB |
 | Kani 证明 | 对核心不安全代码进行模型检验 | 数学保证安全边界 |
@@ -241,7 +241,7 @@ AWS 使用 Kani 验证 Firecracker microVM 和 Bottlerocket 中的关键 `unsafe
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | The Rust Programming Language | <https://www.rust-lang.org> | 2026-07-09 |
 | Rust Blog (wasm32-wasip2 Tier 2) | <https://blog.rust-lang.org/2024/11/26/wasm32-wasip2-tier-2.html> | 2026-07-09 |
 | Kani Rust Verifier | <https://github.com/model-checking/kani> | 2026-07-09 |

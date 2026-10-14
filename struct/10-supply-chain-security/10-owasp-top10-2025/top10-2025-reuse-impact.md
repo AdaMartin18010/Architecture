@@ -52,7 +52,7 @@ OWASP Top 10:2025 是 OWASP 发布的第 8 版十大安全风险清单，于 **2
 ### 1.2 2025 版 vs 2021 版对比
 
 | 排名 | Top 10:2021 | Top 10:2025 | 变化说明 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | A01 | Broken Access Control | Broken Access Control | 保持首位，SSRF 合并至此 |
 | A02 | Cryptographic Failures | Cryptographic Failures | 保持 |
 | A03 | Injection | **Software Supply Chain Failures** | 🔴 **新增核心风险** |
@@ -87,7 +87,7 @@ OWASP Top 10:2025 是 OWASP 发布的第 8 版十大安全风险清单，于 **2
 **对复用的直接影响**:
 
 | 子风险 | 复用场景 | 影响 | 缓解措施 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 漏洞组件 | 引入含已知 CVE 的开源库 | 直接攻击面 | SCA 扫描 + SBOM + 漏洞监控 |
 | 恶意包 | 使用 typosquatting 或 hijacked 包 | 供应链投毒 | 命名空间验证 + 签名检查 |
 | 构建篡改 | 复用未经加固构建平台产出的组件 | 构建时注入 | SLSA provenance 验证 |
@@ -185,7 +185,7 @@ def calculate_risk_score(component):
 ### 3.2 风险等级与决策映射
 
 | 风险评分 | 等级 | 决策建议 | 后续行动 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | 0-25 | 🟢 低风险 | **批准复用** | 纳入常规监控 |
 | 26-50 | 🟡 中风险 | **条件批准** | 制定缓解计划 + 限期整改 |
 | 51-75 | 🟠 高风险 | **延迟复用** | 要求供应商修复或寻找替代方案 |
@@ -290,7 +290,7 @@ def calculate_risk_score(component):
 ## 6. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OWASP Top 10:2025 官方 | <https://owasp.org/www-project-top-ten/> | 2026-06-10 |
 | OWASP ASVS 5.0.0 | <https://owasp.org/www-project-application-security-verification-standard/> | 2026-06-10 |
 | CVE-2024-3094 (XZ Utils) | <https://nvd.nist.gov/vuln/detail/CVE-2024-3094> | 2026-06-10 |

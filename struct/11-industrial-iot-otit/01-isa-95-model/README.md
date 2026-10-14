@@ -11,7 +11,7 @@
 **ISA-95 / IEC 62264** 是制造企业从企业层（L4）到现场层（L0）的垂直集成参考模型，定义了层级边界、资源模型、活动模型与信息交换对象模型。其核心复用价值在于：将企业的物理资产、活动与数据流抽象为跨厂商、跨项目的标准化语义契约。
 
 | 层级 | 名称 | 时间尺度 | 核心复用资产 |
-|------|------|---------|-------------|
+| ------ | ------ | --------- | ------------- |
 | **L0** | 现场设备 | 毫秒–秒 | 传感器/执行器模板、IODD/GSDML/EDS |
 | **L1** | 基本控制 | 秒–分 | PLCopen FB、IEC 61131-3 功能块、安全联锁模板 |
 | **L2** | 监控层 | 分–小时 | SCADA 画面、报警规则、PackML 状态机 |
@@ -27,7 +27,7 @@
 ISA-95 的抽象模型需要映射到可执行的信息模型。下表给出关键 ISA-95 概念与 IEC 63278 AAS 子模型、OPC UA（OPC Unified Architecture）信息模型的对应关系。
 
 | ISA-95 概念 | IEC 62264 条款 | AAS 对应（IEC 63278-1） | OPC UA 对应 | 复用说明 |
-|------------|---------------|------------------------|------------|---------|
+| ------------ | --------------- | ------------------------ | ------------ | --------- |
 | Equipment（实例） | Part 1, 5.3.3 | Asset (AssetKind = Instance) + Technical Data / Nameplate / Identification 子模型 | OPC UA DI NodeSet / AASAssetAdministrationShellType | 每台物理设备一个 AAS 实例 |
 | EquipmentClass（类型） | Part 1, 5.3.2 | Asset (AssetKind = Type) + Technical Data 子模型 | AASSubmodelType / Companion Spec | 设备族系模板 |
 | Personnel | Part 1, 5.3.5 | Asset（无形资产）+ Contact Information / Qualifications | — | 人员能力与资质复用 |
@@ -76,7 +76,7 @@ ISA-95 的抽象模型需要映射到可执行的信息模型。下表给出关�
 ## 5. 复用策略建议
 
 | 层次 | 复用资产 | 策略 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | L0 | IODD / GSDML / EDS | 同型号设备 100% 复用同一版设备描述文件 |
 | L1 | PLCopen FB / UDT | 建立平台级功能块库，版本化治理 |
 | L2 | SCADA 模板 / PackML | 按行业建立画面与状态机模板库 |

@@ -13,7 +13,7 @@
 IDTA AAS Specification Part 1 v3.2 (2026-03) 定义了工业数字孪生的核心元模型。四个顶层元素构成可复用的语义资产：
 
 | 元模型元素 | 语义 | 关键属性 |
-|-----------|------|---------|
+| ----------- | ------ | --------- |
 | **AssetAdministrationShell** | 资产的数字代表 | `id`, `idShort`, `assetInformation`, `submodels[]` |
 | **Submodel** | 描述资产某方面的结构化数据 | `id`, `kind` (Instance/Template), `semanticId`, `submodelElements[]` |
 | **ConceptDescription** | 语义定义与数据规范 | `id`, `embeddedDataSpecifications[]`, `isCaseOf[]` |
@@ -34,7 +34,7 @@ OPC UA（OPC Unified Architecture）信息模型以 **AddressSpace** 为全局�
 ### 2.1 NodeClass 体系
 
 | NodeClass | 语义 | AAS 映射场景 |
-|-----------|------|-------------|
+| ----------- | ------ | ------------- |
 | **Object** | 复合实体，可包含子节点 | AAS 根对象、Submodel、Entity、File |
 | **Variable** | 数据值，含 `DataValue` (值/时间戳/质量) | Property、SubmodelElement 数值 |
 | **Method** | 可调用操作，含输入/输出参数 | Operation |
@@ -64,7 +64,7 @@ Objects (i=85)
 ### 3.1 核心概念映射
 
 | AAS 概念 | OPC UA 映射 | 说明 |
-|----------|------------|------|
+| ---------- | ------------ | ------ |
 | AssetAdministrationShell | `Object` (AASAssetAdministrationShellType) | 根对象，Organizes 引用挂接于 AddressSpace |
 | Submodel | `Object` (AASSubmodelType) | AAS 的组件，通过 `HasComponent` 关联到 AAS |
 | SubmodelElement | `Variable` / `Object` | 根据具体类型映射（见下） |
@@ -80,7 +80,7 @@ Objects (i=85)
 ### 3.2 数据类型映射
 
 | AAS `valueType` | OPC UA `DataType` |
-|----------------|------------------|
+| ---------------- | ------------------ |
 | `xs:string` | `String` |
 | `xs:integer` | `Int32` / `Int64` |
 | `xs:double` | `Double` |
@@ -210,7 +210,7 @@ Objects (i=85)
 ### 5.1 标识符映射（IRI ↔ NodeId）
 
 | AAS 标识类型 | OPC UA NodeId 格式 | 示例 |
-|------------|------------------|------|
+| ------------ | ------------------ | ------ |
 | IRI | `ns=<idx>;s=<IRI>` | `ns=2;s=https://example.com/aas/TS-001` |
 | IRDI | `ns=<idx>;s=<IRDI>` | `ns=3;s=0173-1#02-BAA129#008` |
 | Custom | `ns=<idx>;i=<localId>` | `ns=2;i=1001` |
@@ -226,7 +226,7 @@ Objects (i=85)
 ### 5.3 生命周期同步（AAS 更新 → NodeSet 更新）
 
 | AAS 变更类型 | OPC UA NodeSet 响应 | 机制 |
-|-------------|-------------------|------|
+| ------------- | ------------------- | ------ |
 | SubmodelElement 值变更 | Variable `Value` 属性更新 | `DataChangeNotification` (发布-订阅) |
 | SubmodelElement 增删 | AddressSpace 节点增删 | `ModelChangeEvent` 通知客户端重建缓存 |
 | AAS 元数据变更（版本/修订） | `administration` 变量更新 | 强制客户端重新读取 `NodeVersion` |
@@ -255,7 +255,7 @@ Objects (i=85)
 下表将 AAS v3.2 元模型的主要元素映射到 OPC UA NodeSet 的对应构造，并说明标识符、引用类型和生命周期语义。
 
 | AAS 元模型元素 | OPC UA 映射 | NodeClass | 引用类型 | 映射说明 |
-|---------------|------------|-----------|---------|---------|
+| --------------- | ------------ | ----------- | --------- | --------- |
 | AssetAdministrationShell | `AASAssetAdministrationShellType` 的实例 | Object | Organizes (to Objects folder) | AAS 根对象，包含 Identification、AssetInformation、Submodels |
 | Submodel | `AASSubmodelType` 的实例 | Object | HasComponent (from AAS) | AAS 的组件，承载特定方面的数据 |
 | SubmodelElementCollection | `AASSubmodelElementCollectionType` 的实例 | Object | HasComponent (from Submodel) | 子模型元素集合 |
@@ -277,7 +277,7 @@ Objects (i=85)
 ### 7.2 数据类型映射补强
 
 | AAS `valueType` | OPC UA `DataType` | 说明 |
-|----------------|------------------|------|
+| ---------------- | ------------------ | ------ |
 | `xs:string` | `String` | Unicode 字符串 |
 | `xs:integer` | `Int32` / `Int64` | 根据范围选择 |
 | `xs:double` | `Double` | IEEE 754 双精度浮点 |
@@ -292,7 +292,7 @@ Objects (i=85)
 ### 7.3 标识符映射规则补强
 
 | AAS 标识类型 | OPC UA NodeId 格式 | 示例 |
-|------------|------------------|------|
+| ------------ | ------------------ | ------ |
 | IRI | `ns=<idx>;s=<IRI>` | `ns=2;s=https://example.com/aas/TS-001` |
 | IRDI | `ns=<idx>;s=<IRDI>` | `ns=3;s=0173-1#02-BAA129#008` |
 | Custom | `ns=<idx>;i=<localId>` | `ns=2;i=1001` |
@@ -466,7 +466,7 @@ Objects (i=85)
 ### 9.1 AAS 变更到 OPC UA 的同步机制
 
 | AAS 变更类型 | OPC UA NodeSet 响应 | 机制 |
-|-------------|-------------------|------|
+| ------------- | ------------------- | ------ |
 | SubmodelElement 值变更 | Variable `Value` 属性更新 | `DataChangeNotification` (发布-订阅) |
 | SubmodelElement 增删 | AddressSpace 节点增删 | `ModelChangeEvent` 通知客户端重建缓存 |
 | AAS 元数据变更（版本/修订） | `administration` 变量更新 | 强制客户端重新读取 `NodeVersion` |
@@ -491,7 +491,7 @@ Objects (i=85)
 ### 10.1 正例
 
 | 场景 | 映射实践 | 效果 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 设备供应商交付 | AAS Digital Nameplate + OPC UA DI NodeSet | 设备信息自动可被 MES/ERP 消费 |
 | 产线数字孪生 | AAS 承载静态技术数据，OPC UA 承载实时过程数据 | 数字孪生与物理资产同步 |
 | 跨工厂复制 | AAS Submodel Template 定义标准电机模型，OPC UA NodeSet 定义标准接口 | 新工厂快速集成同类设备 |
@@ -500,7 +500,7 @@ Objects (i=85)
 ### 10.2 反例
 
 | 反例 | 风险说明 |
-|------|---------|
+| ------ | --------- |
 | 将 AAS `idShort` 直接作为 OPC UA `NodeId` | `idShort` 不保证全局唯一，会导致 NodeId 冲突 |
 | 忽略 `valueType` 映射，统一使用 `String` | 丢失类型信息，OPC UA 客户端无法做类型检查 |
 | 将 `semanticId` 映射为普通 `Property` | 语义引用关系丢失，无法利用 ECLASS/IEC CDD 字典 |
@@ -580,7 +580,7 @@ graph TB
 在实际工程中，AAS 到 OPC UA 的映射通常采用以下三种模式：
 
 | 模式 | 描述 | 适用场景 | 优缺点 |
-|------|------|---------|--------|
+| ------ | ------ | --------- | -------- |
 | **模式 A: 直接映射（Direct Mapping）** | AAS 元模型元素一对一映射到 OPC UA NodeSet | 新建系统、绿色地带项目 | 语义保真度高，但需要维护双向同步 |
 | **模式 B: 网关映射（Gateway Mapping）** | AAS Server 与 OPC UA Server 并存，网关负责双向转换 | 棕地改造、异构系统并存 | 对现有系统影响小，但增加延迟和复杂度 |
 | **模式 C: 子模型选择性映射（Selective Mapping）** | 仅将需要实时访问的 AAS Submodel 映射到 OPC UA | 大规模系统、带宽受限场景 | 减少 OPC UA AddressSpace 规模，但可能丢失部分语义 |
@@ -590,7 +590,7 @@ graph TB
 ### 13.2 工具链与实现参考
 
 | 工具/框架 | 用途 | 说明 |
-|----------|------|------|
+| ---------- | ------ | ------ |
 | Eclipse BaSyx | AAS Server / Repository | 提供 Java/Python/Go SDK，支持 AAS v3.0/v3.1 |
 | OPC Foundation UA-.NET / open62541 | OPC UA Server / Client | 实现 OPC UA NodeSet 的加载与发布 |
 | IDTA AASX Package Explorer | AASX 编辑与查看 | 可视化编辑 AAS 并导出 AASX |
@@ -607,7 +607,7 @@ graph TB
 ### 13.4 性能考虑
 
 | 场景 | 建议 |
-|------|------|
+| ------ | ------ |
 | 大规模 AddressSpace | 使用 OPC UA 分页浏览（BrowseNext）和缓存策略 |
 | 高频实时数据 | 使用 OPC UA PubSub 而非 Client/Server 轮询 |
 | 大文件/Blob | AAS `File` 映射为 URL，避免直接嵌入 OPC UA Variable |
@@ -616,7 +616,7 @@ graph TB
 ### 13.5 更多反例
 
 | 反例 | 风险说明 |
-|------|---------|
+| ------ | --------- |
 | 所有 AAS 子模型都映射到 OPC UA | AddressSpace 过大，客户端性能下降 |
 | 将 AAS 的 `administration` 元数据暴露为可写变量 | 版本/修订信息被误修改，破坏审计链 |
 | 在 OPC UA 中直接暴露 AAS 的内部引用结构 | 破坏封装性，增加客户端耦合 |
@@ -662,7 +662,7 @@ flowchart TD
 ### 14.1 常见映射挑战
 
 | 挑战 | 根因 | 解决策略 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 标识符冲突 | AAS `id` 与 OPC UA `NodeId` 命名空间不同 | 严格分离 Namespace，使用 IRI/IRDI/UUID 映射 |
 | 语义漂移 | AAS `semanticId` 与 OPC UA `HasDictionaryEntry` 指向不同字典 | 建立统一语义注册表，使用 ECLASS/IEC CDD 作为单一事实来源 |
 | 实时性不足 | AAS REST API 无法满足 OT 实时要求 | 将实时数据通过 OPC UA PubSub 暴露，AAS 保留静态语义 |
@@ -683,7 +683,7 @@ flowchart TD
 **案例：某汽车制造商 AAS-OPC UA 集成项目**
 
 | 问题 | 根因 | 纠正 |
-|------|------|------|
+| ------ | ------ | ------ |
 | OPC UA 客户端无法找到设备参数 | AAS `idShort` 被直接用作 OPC UA `NodeId`，导致不同设备冲突 | 使用 AAS `id` 映射为全局唯一 `NodeId` |
 | 实时温度数据延迟 > 2s | 所有 AAS 数据通过 REST API 暴露，未使用 OPC UA PubSub | 实时数据通过 OPC UA PubSub 暴露，AAS 保留静态技术数据 |
 | 维护记录无法追溯 | AAS 与 OPC UA 由不同团队维护，版本不同步 | 建立统一模型变更流程和自动化同步工具 |
@@ -720,7 +720,7 @@ flowchart TD
 ### 15.1 完整元素映射属性表
 
 | AAS 元素 | OPC UA 映射 | NodeClass | 引用类型 | 示例 | 常见反例 |
-|----------|-------------|-----------|----------|------|----------|
+| ---------- | ------------- | ----------- | ---------- | ------ | ---------- |
 | AssetAdministrationShell | `AASAssetAdministrationShellType` 实例 | Object | Organizes | 温度传感器 AAS | 将 `idShort` 直接作为 `NodeId` |
 | Submodel | `AASSubmodelType` 实例 | Object | HasComponent | Measurement 子模型 | 缺失 `semanticId` 映射 |
 | SubmodelElementCollection | `AASSubmodelElementCollectionType` 实例 | Object | HasComponent | MotorParameters 集合 | 平铺为独立 Property |
@@ -750,7 +750,7 @@ flowchart TD
 ### 15.3 正例
 
 | 场景 | 映射实践 | 效果 |
-|------|----------|------|
+| ------ | ---------- | ------ |
 | 设备供应商交付 | AAS Digital Nameplate + OPC UA DI NodeSet | 设备信息自动可被 MES/ERP 消费 |
 | 产线数字孪生 | AAS 承载静态技术数据，OPC UA 承载实时过程数据 | 数字孪生与物理资产同步 |
 | 跨工厂复制 | AAS Submodel Template 定义标准电机模型，OPC UA NodeSet 定义标准接口 | 新工厂快速集成同类设备 |
@@ -759,7 +759,7 @@ flowchart TD
 ### 15.4 反例
 
 | 反例 | 风险说明 |
-|------|----------|
+| ------ | ---------- |
 | 将 AAS `idShort` 直接作为 OPC UA `NodeId` | `idShort` 不保证全局唯一，会导致 NodeId 冲突 |
 | 忽略 `valueType` 映射，统一使用 `String` | 丢失类型信息，OPC UA 客户端无法做类型检查 |
 | 将 `semanticId` 映射为普通 `Property` | 语义引用关系丢失，无法利用 ECLASS/IEC CDD 字典 |

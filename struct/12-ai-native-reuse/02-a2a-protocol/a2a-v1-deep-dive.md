@@ -9,7 +9,7 @@
 ## 1. 关键结论（TL;DR）
 
 | 维度 | 关键结论 |
-|------|----------|
+| ------ | ---------- |
 | **A2A 定位** | **水平协议**：Agent ↔ Agent 的协作；与 MCP（垂直：Agent ↔ Tool）互补 |
 | **治理** | 2025‑12‑09 捐给 Linux Foundation AAIF，与 MCP 同基金会，中立治理 |
 | **v1.0  headline** | **Signed Agent Cards**（JWS 加密域验证）、gRPC 支持、多租户、AP2 支付协议 |
@@ -87,7 +87,7 @@ submitted → working → [input-required | auth-required] → completed
 ## 4. 安全模型
 
 | 机制 | 说明 |
-|------|------|
+| ------ | ------ |
 | **Signed Agent Cards** | JWS + JCS 签名，绑定发布域；防止 Agent Card 伪造 |
 | **OAuth 2.0 / OIDC** | 标准令牌委托 |
 | **mTLS** | 证书双向认证 |
@@ -103,7 +103,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 5.1 根本区分
 
 | 维度 | **MCP 2025-11-25** | **A2A v1.0.1** |
-|------|---------------------|--------------|
+| ------ | --------------------- | -------------- |
 | **层级** | 垂直：Agent → Tool | 水平：Agent → Agent |
 | **交互模型** | 无状态结构化函数调用 | 有状态多轮任务委托 |
 | **发现机制** | Tool registry / Server list | Agent Card @ well-known URI |
@@ -114,7 +114,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 5.2 选型指南
 
 | 场景 | 推荐 |
-|------|------|
+| ------ | ------ |
 | 单 Agent + 内部工具 | **仅 MCP** |
 | 多 Agent、同框架（全 LangGraph） | 框架原生消息 + A2A Agent Card 兼容 |
 | 跨框架 Agent（LangGraph ↔ CrewAI ↔ ADK） | **A2A 是务实默认** |
@@ -136,7 +136,7 @@ submitted → working → [input-required | auth-required] → completed
 ### 6.1 A2A → BPMN 映射
 
 | A2A 概念 | BPMN 等价物 |
-|----------|-------------|
+| ---------- | ------------- |
 | Task | Service Task / Call Activity |
 | 生命周期状态 | Boundary events（timer、error、message） |
 | Artifact | Data Object / Message |
@@ -165,7 +165,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ## 7. 多 Agent 编排模式
 
 | 模式 | A2A 用法 | 适用场景 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | **Hub-and-Spoke** | 协调器发现专家 Agent，委托子任务，聚合产出 | 财务报表生成、代码审查流水线 |
 | **Peer-to-Peer** | 任意 Agent 直接调用其他 Agent；动态能力匹配 | 领域边界松散、专家不确定 |
 | **Pipeline** | 顺序链接：`tasks/send` + Artifact 交接 | 起草 → 审核 → 排版 → 发布 |
@@ -179,7 +179,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ### 8.1 活跃生产领域（2026 Q2）
 
 | 行业 | 用例 | 代表部署 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 金融服务 | 交易对账、KYC、监管报告、欺诈检测 | Deutsche Bank (40+ A2A agents) |
 | 保险 | 理赔分类、保单审核、风险评估 | 多家经 Accenture 实施 |
 | 供应链 | 库存协调、需求预测、物流 | SAP Joule + 合作伙伴 Agent |
@@ -189,7 +189,7 @@ DMN 决策表可用于**基于任务类型、SLA、成本或信任评分选择�
 ### 8.2 成熟度评估
 
 | 维度 | 评级 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 规范稳定性 | ⭐⭐⭐⭐☆ | v1.0 稳定；v1.2 当前；已定义废弃政策 |
 | 企业安全 | ⭐⭐⭐⭐☆ | Signed Agent Cards、OAuth、mTLS；审计流和同意流仍有缺口 |
 | 生态广度 | ⭐⭐⭐⭐⭐ | 150+ 组织、3 大云、5 SDK、6+ 框架 |
@@ -213,7 +213,7 @@ A2A 将 Agent 转变为**可组合、可发现的发现服务**：
 ### 复用模式
 
 | 模式 | 复用收益 |
-|------|----------|
+| ------ | ---------- |
 | **能力市场** | 策展 Agent Card 注册表；Agent 一次发布，多部门/供应商消费 |
 | **专家 Agent 池** | 水平专家（法律、财务、安全）跨垂直工作流复用 |
 | **供应商抽象** | Agent Card 作为接口契约；更换底层供应商/Agent 无需更改消费端代码 |

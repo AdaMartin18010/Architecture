@@ -9,7 +9,7 @@
 ## 1. 质量门控：100% 通过
 
 | 检查项 | 结果 |
-|--------|------|
+| -------- | ------ |
 | struct/ 质量门控 V2 | 292/292 通过 |
 | view/ 质量门控 V2 | 14/14 通过 |
 | 死链 | 0 |
@@ -25,7 +25,7 @@
 ## 2. 项目规模
 
 | 指标 | 数据 |
-|------|------|
+| ------ | ------ |
 | struct/ Markdown | 330 |
 | view/ Markdown | 23 |
 | 一级主题 | 14（13 + 99-reference） |
@@ -47,7 +47,7 @@
 ## 4. Phase 6 整合与输出已启动并完成首轮
 
 | 类别 | 交付物 |
-|------|--------|
+| ------ | -------- |
 | 全书输出 | `scripts/build-deliverables.py` → `dist/book-full.md` + 14 分卷 |
 | 课程产品 | `struct/99-reference/course/`：学习路径、课程大纲、测验、README |
 | 幻灯片 | `scripts/build-slides.py` → `dist/slides/*.html`（reveal.js） |
@@ -62,7 +62,7 @@
 ## 5. Git 状态
 
 | Commit | 说明 |
-|--------|------|
+| -------- | ------ |
 | `1cfe51f` | fix(sync): mtime newer 视为提示 |
 | `91f2b1d` | docs: Phase 1.5 完成度报告 |
 | `026893a` | feat(phase-6): 全书、课程、学习路径 |

@@ -1,7 +1,7 @@
 # C-06 TMForum ODF / eTOM 电信架构复用
 
 | 属性 | 内容 |
-|------|------|
+| ------ | ------ |
 | **版本** | 2026-06-10 |
 | **定位** | Phase C — 业务架构复用 — 电信行业案例研究 |
 | **对齐标准** | TMForum ODF（Open Digital Framework）、eTOM（Enhanced Telecom Operations Map）、SID（Shared Information/Data Model）、ODA（Open Digital Architecture）、CAMARA |
@@ -96,7 +96,7 @@ eTOM 采用分层的过程分解结构，从 L0（最高层）到 L5+（最细�
 eTOM L0 将整个电信企业的业务活动划分为三大核心过程域（Level 1）：
 
 | L1 过程域 | 英文名称 | 核心内容 |
-|-----------|----------|----------|
+| ----------- | ---------- | ---------- |
 | **战略、基础设施与产品** | Strategy, Infrastructure & Product（SIP） | 规划、生命周期管理、供应链管理 |
 | **运营** | Operations（OPS） | 日常服务交付、客户支撑、资源运维 |
 | **企业管理** | Enterprise Management（EM） | 财务、人力资源、法务、品牌等企业支撑职能 |
@@ -170,7 +170,7 @@ SID 的设计目标包括：
 SID 采用面向对象的方法，将电信企业的信息划分为多个主题领域（Domain），每个领域包含一组相关的业务实体（Business Entity）：
 
 | SID 主题领域 | 核心实体示例 | 复用价值 |
-|-------------|-------------|----------|
+| ------------- | ------------- | ---------- |
 | **客户域（Customer）** | 客户、账户、联系人、客户细分、偏好 | 360 度客户视图、客户数据平台（CDP） |
 | **产品域（Product）** | 产品规格、产品提供、产品目录、定价 | 产品配置器、报价引擎、订单编排 |
 | **服务域（Service）** | 服务规格、服务实例、服务拓扑、SLA | 服务保障、服务编排、服务目录 |
@@ -277,7 +277,7 @@ CAMARA 是 GSMA 和 TMForum 联合推动的电信 API 开放标准化项目，�
 ### 6.1 eTOM 与 TOGAF 的映射
 
 | 映射维度 | TOGAF ADM | eTOM / TMForum |
-|----------|-----------|----------------|
+| ---------- | ----------- | ---------------- |
 | **架构开发方法** | ADM 阶段 A-H 的迭代过程 | ODF 的 Catalyst 创新流程和 ODA 蓝图设计 |
 | **业务架构** | Business Architecture（阶段 B） | eTOM L1-L3 业务流程框架 |
 | **数据架构** | Data Architecture（阶段 C） | SID 共享信息模型 |
@@ -296,7 +296,7 @@ CAMARA 是 GSMA 和 TMForum 联合推动的电信 API 开放标准化项目，�
 BIAN（Banking Industry Architecture Network）是银行业架构标准，与 TMForum 有类似的使命。eTOM 与 BIAN 的映射对于提供金融+电信融合服务（如移动支付、数字银行、嵌入式金融）尤为重要。
 
 | eTOM 过程域 | BIAN 服务域 | 映射说明 |
-|-------------|-------------|----------|
+| ------------- | ------------- | ---------- |
 | 客户关系管理（2.1） | 客户档案管理（Customer Profile）、客户信息交换（Customer Information Exchange） | 客户主数据在两个框架间高度对应 |
 | 订单处理（2.1.3） | 产品目录（Product Directory）、订单履行（Order Fulfilment） | 订单编排逻辑可以跨行业复用 |
 | 计费与账务（2.1.6） | 支付执行（Payment Execution）、收款（Collections） | 计费引擎的核心算法通用性强 |
@@ -355,7 +355,7 @@ O2 是英国主要的移动运营商，其母公司 Telefónica 在全球范围�
 ## 8. 参考文献与权威来源
 
 | 编号 | 来源 | URL | 核查日期 |
-|------|------|-----|----------|
+| ------ | ------ | ----- | ---------- |
 | 1 | TMForum Open Digital Framework (ODF) Overview | <https://www.tmforum.org/oda/> | 2026-06-10 |
 | 2 | TMForum eTOM Business Process Framework GB921 | <https://www.tmforum.org/resources/standard/gb921-etom-business-process-framework/> | 2026-06-10 |
 | 3 | TMForum SID Shared Information/Data Model GB922 | <https://www.tmforum.org/resources/standard/gb922-shared-information-data-model/> | 2026-06-10 |

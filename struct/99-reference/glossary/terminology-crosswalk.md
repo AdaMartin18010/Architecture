@@ -8,7 +8,7 @@
 ## ISO 42010 vs TOGAF 10
 
 | ISO 42010:2022 | TOGAF 10 | 说明 |
-|-----------|---------|------|
+| ----------- | --------- | ------ |
 | Entity of Interest (EoI) | System of Interest | 2022 版新术语 |
 | Architecture Description (AD) | Architecture Repository / Catalog | 架构描述的载体 |
 | Stakeholder | Stakeholder | 利益相关者 |
@@ -24,7 +24,7 @@
 ## ArchiMate vs UML
 
 | ArchiMate | UML | 说明 |
-|-----------|-----|------|
+| ----------- | ----- | ------ |
 | Business Actor | Actor | 业务参与者 |
 | Business Role | Role | 业务角色 |
 | Business Process | Activity Diagram | 业务流程 |
@@ -39,7 +39,7 @@
 ## ISO 26550 vs 本体系
 
 | ISO 26550 | 本体系对应主题 | 说明 |
-|-----------|--------------|------|
+| ----------- | -------------- | ------ |
 | Domain Engineering | 01-元模型, 02-业务架构 | 领域工程产生可复用资产 |
 | Application Engineering | 03-应用架构, 04-组件架构 | 应用工程使用可复用资产 |
 | Product Line | 06-跨层治理 | 产品线管理复用资产 |
@@ -49,7 +49,7 @@
 ## SLSA vs NIST SSDF
 
 | SLSA 1.2 | NIST SSDF 1.2 | 说明 |
-|-----------|-----------|------|
+| ----------- | ----------- | ------ |
 | Build L1 Provenance | PO.1 Secure Software | 保护软件 |
 | Build L2 Source-aware | PW.4 Reusable Code | 安全复用代码 |
 | Build L3 Hardened | PW.6 Configure Compiler | 配置编译器 |
@@ -62,7 +62,7 @@
 ## Industrial Standards Crosswalk
 
 | IEC 63278 (AAS) | OPC UA | ISA-95 | 说明 |
-|-----------------|--------|--------|------|
+| ----------------- | -------- | -------- | ------ |
 | AssetAdministrationShell | Server / Object | Enterprise / Site / Area | 资产的管理壳 |
 | Submodel | ObjectType / Folder | Work Unit / Cell | 子模型 |
 | Property | Variable | Tag / Attribute | 属性 |
@@ -73,7 +73,7 @@
 ## TSN 标准映射
 
 | 标准 | 功能 | 应用场景 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | IEEE 802.1AS | 时间同步 | 所有 TSN 应用 |
 | IEEE 802.1Qbv | 门控调度 | 硬实时流量 |
 | IEEE 802.1Qbu/802.3br | 帧抢占 | 降低非实时流量对实时流量的影响 |
@@ -84,7 +84,7 @@
 ## AI Native Terminology
 
 | MCP 2025-11-25 | A2A v1.0 | 通用含义 |
-|----------|---------|---------|
+| ---------- | --------- | --------- |
 | Server | Agent | 提供服务/能力的实体 |
 | Tool | Skill | 可调用的具体能力 |
 | Resource | Artifact | 可被访问的数据/内容 |
@@ -95,7 +95,7 @@
 ## 形式化验证术语映射
 
 | TLA+ | Alloy | Coq/Isabelle | 通用含义 |
-|------|-------|--------------|---------|
+| ------ | ------- | -------------- | --------- |
 | State | Atom/Signature | Term/Type | 系统状态/元素 |
 | Action | Predicate/Fact | Lemma/Theorem | 状态转移/性质 |
 | Invariant | Assertion | Invariant | 不变量 |
@@ -108,7 +108,7 @@
 ## 认知架构术语
 
 | ACT-R | BDI | 双系统理论 | 通用含义 |
-|-------|-----|-----------|---------|
+| ------- | ----- | ----------- | --------- |
 | Chunk | Belief | Memory/Pattern | 知识单元 |
 | Production | Desire-Intention | System 1 (Fast) | 行为规则 |
 | Goal | Intention | System 2 (Slow) | 目标导向 |
@@ -118,7 +118,7 @@
 ## 平台工程与 WASM 术语
 
 | 平台工程 | WASM | 通用含义 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | IDP (Internal Developer Platform) | WASM Runtime | 内部开发者平台 / 运行时 |
 | Golden Path | WIT (Wasm Interface Types) | 标准化路径 / 接口类型 |
 | Software Catalog | Component Registry | 软件目录 / 组件注册表 |
@@ -128,7 +128,7 @@
 ## 供应链安全术语
 
 | SLSA | SBOM | 零信任 | 通用含义 |
-|------|------|--------|---------|
+| ------ | ------ | -------- | --------- |
 | Provenance | SPDX Document | Identity Verification | 来源证明 |
 | Attestation | CycloneDX BOM | Device Health | 证明/声明 |
 | Build Integrity | Component Hash | Least Privilege | 构建完整性 |
@@ -139,7 +139,7 @@
 ## 质量标准版本对照
 
 | 标准 | 旧版 | 新版 | 关键变化 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | ISO 42010 | 2011 | 2022 | EoI, ADF, View Component, Aspect, Perspective |
 | ISO 25010 | 2011 | 2023 | 9 特性，新增 Safety/Flexibility/Interaction Capability |
 | SLSA | v0.1 | v1.2 | Multi-Track: Build/Source/Environment |

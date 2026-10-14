@@ -9,7 +9,7 @@
 ## 资产清单
 
 | 工具/方法 | 文件数 | 主题覆盖 | 内容状态 | 权威来源对齐 |
-|-----------|--------|----------|----------|-------------|
+| ----------- | -------- | ---------- | ---------- | ------------- |
 | **TLA+** | 7 | 支付服务 (T06)、MCP 能力协商 (T07)、A2A Task 生命周期 (T08) | 初始案例完整，跨主题 T09/T10 在 `11-industrial-iot-otit/` 中交付 | Lamport《Specifying Systems》、Wayne《Practical TLA+》、AWS CACM'15 |
 | **Alloy** | 8 | 组件依赖无环 (T11)、MCP Tool 图 (T12)、跨层映射 (T13)、ISA-95 层次 (T14) | 全部完成，均有配套 `.als` + `.md` | Jackson《Software Abstractions》、ISO 42010:2022、ISA-95 |
 | **Coq/Isabelle** | 6 | 插入排序、有界计数器、旋转门状态机 | 教学示例完成 (T18a)，安全关键组件证明 (T18b) 待启动 | Software Foundations、Isabelle AFP |
@@ -31,7 +31,7 @@
 ### 1. 文件缺失与目录不一致
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **ci-workflows.md 缺失** | `03-coq-isabelle/README.md` 目录结构中列出 | 实际文件不存在；README 中描述的 Docker 验证流程无独立 CI 文档支撑 |
 | **T10 本地文件缺失** | `01-tla-plus/case-library.md` 案例索引 | 索引声称 `plcopen-motion.tla` 与 `tla-verification.md` 位于 `01-tla-plus/`，但本地不存在；T10 规约实际在 `11-industrial-iot-otit/04-plcopen-motion/plcopen-motion.tla`，且**无对应说明文档** |
 | **T09 本地无索引** | `01-tla-plus/case-library.md` | T09 规约仅在跨主题目录存在，`01-tla-plus/` 下无本地入口或链接说明 |
@@ -39,7 +39,7 @@
 ### 2. 版本号与前瞻性声明未区分
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Rust 1.93 前瞻性声明** | `04-rust-type-system/cargo-sat-resolution.md` §3 伪代码后 | 声称 "Rust 1.93 (2026) 的 PubGrub 实现增加了 MSRV 感知"，但对齐标准仅声明 Rust 1.85+；**Rust 1.93 在 2026-06-08 尚未发布**，文档未明确标注此为预测性内容 |
 | **Polonius "2026 稳定化"预测** | `04-rust-type-system/polonius-vs-nll.md` §1、§6.2 | 声称 "Polonius Alpha (Rust 1.85+ nightly, 目标 2026 稳定化)"；Rust 1.85 已于 2025-02 发布，Polonius 截至本报告日仍在 nightly，**"2026 稳定化"是项目目标而非既成事实**，文档未加预测性免责声明 |
 | **Rocq 9.0+ 版本** | `03-coq-isabelle/README.md` | 声称环境为 "Rocq 9.0+"；Rocq 9.0 在 2026-06-08 可能尚未正式发布，属于前瞻性版本声明 |
@@ -48,7 +48,7 @@
 ### 3. 引用来源权威性存疑
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **A2A 非官方域名** | `01-tla-plus/a2a-task-lifecycle.md` 参考文献 [^8] | 引用 `https://a2a-protocol.org` 作为 "Google A2A Protocol Specification v1.0" 来源；Google A2A 的官方发布渠道为 GitHub 仓库 (`google/A2A`)，该域名权威性需核实 |
 | **第三方博客替代官方规范** | `01-tla-plus/a2a-task-lifecycle.md` [^7] | 引用 PickAxe 博客 "MCP vs A2A Protocol" 作为 A2A 背景来源，非权威规范文档 |
 | **第三方博客替代官方规范** | `01-tla-plus/mcp-capability-negotiation.md` [^6] | 引用 DevelopersDigest 博客 "What Is the Model Context Protocol? A 2026 Primer" 作为 MCP 规范说明；官方规范来源应为 `https://spec.modelcontextprotocol.io` |

@@ -19,7 +19,7 @@
 IEC 63278 定义了工业应用中资产管理壳（Asset Administration Shell, AAS）的国际标准。该系列分为 5 个部分：
 
 | 部分 | 标题 | 状态 | 发布/预计时间 |
-|------|------|------|--------------|
+| ------ | ------ | ------ | -------------- |
 | **IEC 63278-1** | Asset Administration Shell structure（AAS 结构） | ✅ 已发布 | 2023-12-14 |
 | **IEC 63278-2** | Information meta model（信息元模型） | 🔄 CDV 投票中（截止 2026-08-07） | 预计 2026 下半年进入 PRVC，正式出版 2026 末–2027 初 |
 | **IEC 63278-3** | Security provisions for Asset Administration Shells（安全规定） | 🔄 开发中 | 预计 2024-2025 |
@@ -73,7 +73,7 @@ IDTA（Industrial Digital Twin Association）发布的元模型规范与 IEC 632
 ### 3.0 版主要变更
 
 | 变更项 | 说明 |
-|--------|------|
+| -------- | ------ |
 | **SubmodelElementCollection 拆分** | 拆分为 SubmodelElementList（有序）和 SubmodelElementCollection（无序） |
 | **Reference 重构** | 添加 referredSemanticId，移除 Local/Parent 属性 |
 | **Identifier 简化** | idType 从 Identifier 移除，ID 现为纯字符串 |
@@ -93,7 +93,7 @@ IDTA（Industrial Digital Twin Association）发布的元模型规范与 IEC 632
 IDTA 维护的子模型模板清单（2026 状态）：
 
 | 模板 ID | 模板名称 | 状态 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | IDTA-02002 | Contact Information | ✅ 已发布 |
 | IDTA-02003 | Technical Data | ✅ 已发布 |
 | IDTA-02006 | Nameplate | ✅ 已发布 |
@@ -132,7 +132,7 @@ IDTA 维护的子模型模板清单（2026 状态）：
 ### 规划中的接口类型
 
 | 接口类型 | 用途 |
-|---------|------|
+| --------- | ------ |
 | **REST/HTTP API** | 与 IT 系统集成 |
 | **OPC UA** | 与 OT 系统集成 |
 | **MQTT** | 物联网场景 |
@@ -143,7 +143,7 @@ IDTA 维护的子模型模板清单（2026 状态）：
 IEC 63278-5 将标准化 AAS 到 OPC UA（OPC Unified Architecture）的映射规则：
 
 | AAS 元素 | OPC UA 对应 |
-|---------|------------|
+| --------- | ------------ |
 | AssetAdministrationShell | Object / Folder |
 | Submodel | ObjectType / Folder |
 | Property | Variable |
@@ -186,7 +186,7 @@ AAS 是欧盟数字产品护照（Digital Product Passport, DPP）的技术基�
 ## 9. 复用策略建议
 
 | 层次 | 复用资产 | 建议 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | **元模型层** | IEC 63278-1 / IDTA-01001 | 严格遵循，避免自定义扩展 |
 | **子模型模板层** | IDTA-020xx 模板 | 优先使用标准模板，减少自定义 |
 | **接口层** | OPC UA / REST API | 按场景选择，确保互操作性 |

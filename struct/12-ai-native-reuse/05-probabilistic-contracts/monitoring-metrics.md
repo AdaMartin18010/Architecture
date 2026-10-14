@@ -8,7 +8,7 @@
 ## 1. 指标总览
 
 | 指标名 | 类型 | 标签 | 说明 |
-|--------|------|------|------|
+| -------- | ------ | ------ | ------ |
 | `ai_contract_coverage` | Gauge | `contract_id`, `model_version`, `temperature`, `top_p` | 经验覆盖率，目标 `≥ 1 − α` |
 | `ai_contract_calibration_error_ece` | Gauge | `contract_id`, `model_version`, `bin_strategy` | 期望校准误差（ECE） |
 | `ai_contract_brier_score` | Gauge | `contract_id`, `model_version` | Brier Score |
@@ -316,7 +316,7 @@ latency_seconds = Histogram(
 ## 5. 告警汇总建议
 
 | 告警名 | 表达式 | 严重度 | 升级策略 |
-|--------|--------|--------|----------|
+| -------- | -------- | -------- | ---------- |
 | ContractHardBreach | `coverage < γ − δ_hard` | critical | 立即熔断并通知值班 |
 | ContractSoftBreach | `γ − δ_soft ≤ coverage < γ − δ_hard` | warning | 记录并通知模型团队 |
 | HighCalibrationError | `ece > 0.05` | warning | 纳入校准周期 |
@@ -329,7 +329,7 @@ latency_seconds = Histogram(
 ## 6. 与概率契约框架的对应关系
 
 | 监控指标 | 框架元素 |
-|----------|----------|
+| ---------- | ---------- |
 | `ai_contract_coverage` | 契约满足条件 `P(correct) ≥ γ(x)` |
 | `ai_contract_calibration_error_ece` | 校准质量、定理 AI.1 Calibration Ceiling |
 | `ai_contract_prediction_set_size` | Conformal Prediction 集合 `C(x)` |

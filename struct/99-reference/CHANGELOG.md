@@ -30,7 +30,7 @@
 ### 工具验证与依赖修复
 
 | 工具路径 | 修复内容 | 当前状态 |
-|---|---|---|
+| --- | --- | --- |
 | `12-ai-native-reuse/05-probabilistic-contracts/calibration-tool.py` | 安装 `numpy`、`scipy` | ✅ `--test` 通过 |
 | `11-industrial-iot-otit/06-functional-safety/piu-bayesian-tool.py` | 安装 `numpy`、`scipy` | ✅ `--help` 通过 |
 | `06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | 安装 `pyyaml` | ✅ Excel 报告可生成 |
@@ -62,7 +62,7 @@
 ### 已修正的标准状态
 
 | 标准 | 原表述 | 修正后 | 权威来源 |
-|------|--------|--------|----------|
+| ------ | -------- | -------- | ---------- |
 | **ISO/IEC 25010** | 2024 版已发布 | **2023** 版为正式版 | ISO 78175 |
 | **ArchiMate 4.0** | 厂商预发布/未获官方确认 | **已正式发布（2026-04-27）** | The Open Group 新闻稿 |
 | **ISO/IEC/IEEE 12207** | 仍在制定中 | **已发布（2026-04-29）** | ISO 90219 |
@@ -145,7 +145,7 @@
 ### 可执行工具交付
 
 | 工具 | 路径 | 功能 |
-|------|------|------|
+| ------ | ------ | ------ |
 | COCOMO II 2026 计算器 | `09-value-quantification/tools/cocomo-calculator.py` | 成本估算、ROI计算 |
 | FinOps Excel 导出器 | `06-cross-layer-governance/04-finops-cost/templates/finops-exporter.py` | 四级成本分摊、Excel导出 |
 | 成熟度评估问卷 | `06-cross-layer-governance/03-maturity-models/reuse-maturity-assessment-cli.py` | 25题评估、雷达图报告 |
@@ -279,7 +279,7 @@
 **端到端验证结果**（7/7 通过 ✓）：
 
 | 测试项 | 结果 |
-|--------|------|
+| -------- | ------ |
 | Root endpoint / MCP mode | `real (3 tools)` ✓ |
 | Agent Card discovery | 3 skills ✓ |
 | MCP Tool Discovery | get_weather / calculator / search_docs ✓ |
@@ -463,7 +463,7 @@
 ### 重要勘误
 
 | 原内容 | 修正后 | 说明 |
-|--------|--------|------|
+| -------- | -------- | ------ |
 | MCP 2026-07-28（误作稳定版 / 或否认 RC 存在） | 2026-07-28 为官方 RC（2026-05-29 发布）；稳定版仍为 2025-11-25 | 2026-07-28 最终版尚未发布，生产以 2025-11-25 为基线 |
 | A2A v1.0.0 2026-03-12 | A2A v1.0 2026-04 Cloud Next | 官方正式发布时间 |
 | SLSA 1.0 单一等级模型 | SLSA 1.2 Multi-Track 模型 | Build/Source/Environment 三轨道 |

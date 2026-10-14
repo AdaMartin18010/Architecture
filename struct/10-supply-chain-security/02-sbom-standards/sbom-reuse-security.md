@@ -36,7 +36,7 @@ Software Bill of Materials（SBOM）在架构复用中的角色已从"合规附�
 ## 2. 三标准核心特性对比（2026 更新版）
 
 | 特性维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID ISO/IEC 19770-2 |
-|---------|-----------------|---------------|---------------------|
+| --------- | ----------------- | --------------- | --------------------- |
 | **标准化组织** | Linux Foundation / ISO/IEC 5962 | OWASP / ECMA-424 | ISO/IEC / NIST |
 | **设计哲学** | 许可证合规优先，通用语义模型 | 供应链安全优先，轻量敏捷 | 软件资产管理（ITAM）优先 |
 | **数据模型** | 图模型（Element + Relationship） | 层次模型（bom -> components -> dependencies） | 标签模型（SoftwareIdentity + Entity + Payload） |
@@ -59,7 +59,7 @@ Software Bill of Materials（SBOM）在架构复用中的角色已从"合规附�
 **场景描述**: 开发者在编码阶段或 CI 构建阶段生成 SBOM，用于即时漏洞扫描和许可证冲突检测。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **生成速度** | 中（模型复杂） | **快**（JSON 轻量） | 慢（XML 冗长） |
 | **漏洞关联** | 需 VEX 扩展 | **原生优秀** | 不支持 |
 | **IDE 集成** | 有限 | **优秀**（Dependency-Track, Jenkins, GitHub） | 无 |
@@ -79,7 +79,7 @@ CycloneDX 的原生 vulnerabilities[] 数组和 dependency 图结构使 OWASP De
 **场景描述**: 组织在采购商业软件或评估开源组件时，要求供应商提供 SBOM 以进行安全、合规和供应链风险评估。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **许可证深度** | **优秀**（400+ 标准标识符，文件级归因） | 良好 | 有限 |
 | **合规认可度** | **高**（ISO 标准，美国 FDA 引用） | **高**（ECMA 标准，OWASP 背书） | 中（NIST 要求，但工具生态弱） |
 | **供应商信息** | 丰富（supplier, originator, downloadLocation） | 丰富（supplier, publisher, author） | 基础（Entity role） |
@@ -100,7 +100,7 @@ CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可�
 **场景描述**: 新漏洞（如 Log4Shell、XZ Utils）爆发时，组织需要快速回答"我是否受影响？影响范围多大？"
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **快速查询** | 中（需遍历 Relationship 图） | **快**（扁平组件列表 + PURL/CPE 索引） | 慢 |
 | **漏洞匹配** | 需外部 VEX | **原生**（vulnerabilities + VEX 内嵌） | 不支持 |
 | **影响范围分析** | **优秀**（DESCRIBES/DEPENDS_ON/CONTAINS 关系） | **优秀**（dependency 图传递分析） | 差（无依赖关系） |
@@ -123,7 +123,7 @@ CycloneDX 1.6 的 CDXA（CycloneDX Attestation）支持"合规即代码"，可�
 **场景描述**: 向监管机构（欧盟 BSI、美国 CISA、FDA）提交软件成分透明性证明，满足 EO 14028、EU CRA、FDA 预市场指导等要求。
 
 | 评估维度 | SPDX 2.3 / 3.0.1 | CycloneDX 1.6+ | SWID |
-|---------|-----------------|---------------|------|
+| --------- | ----------------- | --------------- | ------ |
 | **EO 14028 / NTIA** | 满足 | 满足 | 满足 |
 | **EU CRA / BSI TR-03183-2** | **明确要求 2.3+ / 3.0+** | **明确要求 1.6+** | 未列入 |
 | **FDA 医疗器械** | 引用 SPDX | 引用 CycloneDX | 未引用 |
@@ -143,7 +143,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 4. 综合决策矩阵
 
 | 应用场景 | 首选格式 | 次选格式 | 避免使用 | 关键理由 |
-|---------|---------|---------|---------|---------|
+| --------- | --------- | --------- | --------- | --------- |
 | **开发时安全扫描** | CycloneDX JSON | SPDX JSON | SWID | 原生漏洞支持，DevSecOps 工具链完善 |
 | **采购审计** | SPDX 2.3/3.0.1 JSON | CycloneDX 1.6 JSON | SWID | ISO 标准 + 许可证深度 = 法律审计最优 |
 | **事件响应** | CycloneDX + VEX | SPDX + 外部 VEX | SWID | 速度优先，原生漏洞+依赖图 |
@@ -154,7 +154,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 5. SPDX / CycloneDX 字段对比（EU CRA 关键字段）
 
 | 信息要素 | SPDX 2.3 字段 | CycloneDX 1.6 字段 | EU CRA 要求 | 说明 |
-|---------|--------------|-------------------|------------|------|
+| --------- | -------------- | ------------------- | ------------ | ------ |
 | 供应商/作者 | `packages[].supplier` / `packages[].originator` | `components[].supplier` / `metadata.authors` | 强制 | 明确责任主体 |
 | 组件名称 | `packages[].name` | `components[].name` | 强制 | NTIA 最小要素 |
 | 版本 | `packages[].versionInfo` | `components[].version` | 强制 | 精确识别组件 |
@@ -177,7 +177,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ### 6.1 CRA 对 SBOM 的核心要求
 
 | CRA 义务 | SBOM 支持方式 | 对应字段/实践 |
-|---------|-------------|--------------|
+| --------- | ------------- | -------------- |
 | 产品设计和开发安全 | SBOM 作为技术文档组成部分，记录所有软件组件 | 完整组件清单 + 依赖图 |
 | 漏洞管理 | 通过 SBOM 快速识别受影响产品版本 | `vulnerabilities[]` / 外部 VEX |
 | 安全更新 | 明确受影响组件、修复版本和部署路径 | `dependencies[]` + 版本范围 |
@@ -381,7 +381,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 `struct/04-component-architecture-reuse/07-language-ecosystems/open-source-supply-chain-reuse.md` 提出了 Lockfile 安全性和分层防御策略。SBOM 是这一策略的输出证明：
 
 | 防御层 | 依赖治理措施 | SBOM 角色 | 推荐格式 |
-|-------|-------------|----------|---------|
+| ------- | ------------- | ---------- | --------- |
 | Layer 1: Proxy Registry | 缓存公共 registry，自动漏洞扫描 | 记录代理来源和扫描结果 | CycloneDX JSON |
 | Layer 2: 审批工作流 | 新包/新版本需安全团队审批 | 审批决策的证据基线 | SPDX JSON |
 | Layer 3: Lockfile + 哈希 | 精确版本锁定，密码学哈希验证 | 验证 SBOM 中的 hashes[] 与 lockfile 一致性 | CycloneDX JSON |
@@ -399,7 +399,7 @@ SWID 未被 BSI 列入认可格式，其工具生态系统也无法满足 CRA �
 ## 12. 权威来源
 
 | 来源 | URL | 说明 | 核查日期 |
-|------|-----|------|----------|
+| ------ | ----- | ------ | ---------- |
 | SPDX Specification v2.3 | <https://spdx.github.io/spdx-spec/v2.3/> | ISO/IEC 5962 SBOM 标准 | 2026-07-08 |
 | SPDX Specification v3.0.1 | <https://spdx.github.io/spdx-spec/v3.0.1/> | 模块化 Profile 架构 | 2026-07-08 |
 | CycloneDX Specification v1.6 | <https://cyclonedx.org/specification/overview/> | OWASP/ECMA-424 标准 | 2026-07-08 |

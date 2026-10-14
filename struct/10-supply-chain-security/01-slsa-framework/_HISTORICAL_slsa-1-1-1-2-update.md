@@ -9,7 +9,7 @@
 ## 1. SLSA 版本演进
 
 | 版本 | 发布时间 | 核心特征 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | SLSA v0.1 | 2022 | 单一等级 L1-L4，覆盖源码和构建 |
 | SLSA v1.0 | 2023-04 | 引入 **Build Track**，Source 要求分离 |
 | SLSA v1.1 | 2024 | 完善 Build Track，增强验证指南 |
@@ -133,7 +133,7 @@ SLSA v1.2 Tracks
 SLSA 推荐使用以下证明格式：
 
 | 格式 | 用途 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Build Provenance** | 记录构建过程 | 推荐 |
 | **Source Provenance** | 记录源码来源 | v1.2 新增 |
 | **Verification Summary Attestation (VSA)** | 汇总验证结果 | 推荐 |
@@ -166,7 +166,7 @@ SLSA 推荐使用以下证明格式：
 ## 7. SLSA 与 NIST SSDF 的映射
 
 | SLSA 要求 | NIST SSDF 实践 | 说明 |
-|-----------|---------------|------|
+| ----------- | --------------- | ------ |
 | Build L1 Provenance | PO.1 Secure Software | 保护软件 |
 | Build L2 Source-aware | PW.4 Reusable Code | 安全复用代码 |
 | Build L3 Hardened | PW.6 Configure Compiler | 配置编译器 |
@@ -193,7 +193,7 @@ SLSA 推荐使用以下证明格式：
 ## 9. 2026 实施建议
 
 | 优先级 | 行动 | 预期效果 |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | P0 | 为所有关键组件生成 Build Provenance | 达到 Build L1 |
 | P1 | 使用托管 CI/CD 并签名 Provenance | 达到 Build L2 |
 | P2 | 强化构建平台（隔离、临时环境） | 达到 Build L3 |

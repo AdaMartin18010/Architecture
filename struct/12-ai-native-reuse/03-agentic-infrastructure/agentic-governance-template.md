@@ -19,7 +19,7 @@
 2026年4月2日，Microsoft 以 MIT 许可证开源 **Agent Governance Toolkit (AGT)**，提供覆盖 Agent 全生命周期的 7 包治理体系：
 
 | 包名 | 核心职责 | 复用映射 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **Agent OS** | 策略引擎（决策延迟 <0.1ms）、实时授权判定 | 作为治理基础设施的"内核"，提供可复用的策略判定服务 |
 | **Agent Mesh** | 分布式身份（DID/W3C）、Agent 间安全通信 | 复用身份凭证体系，避免每个 Agent 独立建设身份认证 |
 | **Agent Runtime** | 四级特权环（Ring 0-3）、沙箱隔离 | 定义标准运行边界，作为安全复用的前提条件 |
@@ -35,7 +35,7 @@
 2025年12月发布的 OWASP Top 10 for Agentic Applications 2026（ASI01–ASI10）为 Agent 治理提供了风险基线：
 
 | 风险编号 | 风险描述 | 缓解策略 | 复用控制点 |
-|----------|---------|---------|-----------|
+| ---------- | --------- | --------- | ----------- |
 | ASI01 | Agent Goal Hijack | 输入验证 + 语义过滤器 | Agent Runtime Ring 1 沙箱 |
 | ASI02 | Tool Misuse and Exploitation | 工具白名单 + 调用审计 | Agent Runtime Ring 2 工具网关 |
 | ASI03 | Identity and Privilege Abuse | 最小权限 + 身份凭证 | Agent Mesh DID 属性凭证 |
@@ -50,7 +50,7 @@
 ### 1.3 OWASP MCP Top 10 映射
 
 | 风险编号 | 风险描述 | AGT 控制点 |
-|----------|---------|-----------|
+| ---------- | --------- | ----------- |
 | MCP01 | Token Mismanagement & Secret Exposure | Agent Mesh 凭据管理、短生命周期 Token |
 | MCP02 | Privilege Escalation via Scope Creep | Agent OS 策略引擎、自动 scope 过期 |
 | MCP03 | Tool Poisoning | MCP Security Gateway、工具签名与漂移检测 |
@@ -111,7 +111,7 @@ Google Agent Gateway 作为企业级 Agent 入口，提供统一的身份认证�
 ### 2.2 三层审批流程（人类→Agent→工具）
 
 | 层级 | 审批主体 | 触发条件 | 最大延迟 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **L1：人类审批（HITL）** | 业务负责人/安全官 | 高风险操作（资金转移、数据出境、模型变更） | 4 工作小时 |
 | **L2：Agent 自治审批** | Agent OS 策略引擎 | 中风险操作（跨域数据访问、工具调用链 >3） | <100ms |
 | **L3：工具级审批** | 工具网关 + 资源 ACL | 所有工具调用 | <10ms |
@@ -198,7 +198,7 @@ allow if {
 ### 2.4 Kill Switch 和熔断器设计
 
 | 机制 | 触发条件 | 动作 | 恢复策略 |
-|------|---------|------|---------|
+| ------ | --------- | ------ | --------- |
 | **Agent Kill Switch** | 行为偏离基线 >3σ、检测到越狱尝试 | 立即终止 Agent 进程，吊销 Ephemeral Identity | 人工复核后重启 |
 | **域级熔断器** | 跨域错误率 >20%（1分钟窗口） | 切断该域所有对外调用，进入降级模式 | 自动探测恢复（指数退避） |
 | **模型级熔断器** | 输出毒性/幻觉率 >阈值 | 切换至备用模型，触发内容审查 | 自动恢复，记录异常 |
@@ -228,7 +228,7 @@ allow if {
 ### 3.2 与现有 DevOps/GitOps 流程的集成
 
 | 现有流程 | Agent 增强点 | 复用方式 |
-|---------|------------|---------|
+| --------- | ------------ | --------- |
 | CI 流水线 | 增加 Agent 策略编译（Cedar validate、Rego test） | 复用 Jenkins/GitHub Actions，新增 Agent 专用 Stage |
 | CD 流水线 | 增加金丝雀健康检查（Agent 行为基线对比） | 复用 Argo Rollouts，注入 Agent 轨迹验证 |
 | IaC | 增加 Agent Runtime 资源配置（Ring 级别、资源配额） | 复用 Terraform/Tofu，提供 Agent Runtime Module |
@@ -242,7 +242,7 @@ allow if {
 ### 4.1 EU AI Act 高风险义务检查清单（2026年8月2日生效）
 
 | 义务条款 | 要求 | AGT 映射 | 状态 |
-|---------|------|---------|------|
+| --------- | ------ | --------- | ------ |
 | **Art. 8：风险管理系统** | 建立持续风险评估流程 | Agent Compliance 包 + 审计日志 | ☐ 待实施 |
 | **Art. 9：数据治理** | 训练/测试/验证数据的质量管理 | Agent Marketplace SBOM + 数据溯源 | ☐ 待实施 |
 | **Art. 10：技术文档** | 提供完整技术文档（SaaS/内部均需） | TechDocs 模板 + Agent 架构决策记录 | ☐ 待实施 |
@@ -254,7 +254,7 @@ allow if {
 ### 4.2 FCA/SEC 监管要求对照
 
 | 监管领域 | 核心要求 | Agent 治理映射 |
-|---------|---------|---------------|
+| --------- | --------- | --------------- |
 | **FCA AI 透明度** | 金融决策可解释、可审计 | Agent Trace 全链路记录 + 决策归因 |
 | **SEC 投资顾问合规** | AI 生成的投资建议需人类复核 | 三层审批 L1 强制触发 |
 | **SEC 网络安全规则** | 及时披露重大网络安全事件 | Agent SRE 异常检测 → 自动化事件上报 |
@@ -267,7 +267,7 @@ allow if {
 某跨国银行建立 Agent CoE，统一治理内部 30+ 个业务 Agent：
 
 | 治理层 | 实践 |
-|--------|------|
+| -------- | ------ |
 | Agent Governance Board | 每月评审高风险 Agent 上线申请 |
 | Agent OS | 部署统一策略引擎，所有工具调用必须通过 `govern()` 包装 |
 | Agent Mesh | 为每个 Agent 签发 DID，跨域调用需 mTLS + 签名验证 |
@@ -314,7 +314,7 @@ OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT �
 ## 7. 实施路线图建议
 
 | 阶段 | 时间 | 目标 | 关键交付 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | **Phase 1：基础治理** | 0-3月 | 建立 Agent CoE、部署 Agent OS 策略引擎 | RBAC 策略基线、Kill Switch 机制 |
 | **Phase 2：规模化** | 3-6月 | 接入 AGT 7包、上线 Marketplace | Golden Path 模板、目录覆盖 >50% |
 | **Phase 3：合规就绪** | 6-9月 | EU AI Act 高风险义务满足 | 审计证据链、技术文档模板 |
@@ -327,7 +327,7 @@ OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT �
 > **权威来源**（已核查 2026-07-08）：
 >
 > | 来源 | URL |
-> |------|-----|
+> | ------ | ----- |
 > | Microsoft Agent Governance Toolkit | <https://github.com/microsoft/agent-governance-toolkit> |
 > | AGT 官方文档 | <https://microsoft.github.io/agent-governance-toolkit/> |
 > | OWASP Top 10 for Agentic Applications 2026 | <https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/> |

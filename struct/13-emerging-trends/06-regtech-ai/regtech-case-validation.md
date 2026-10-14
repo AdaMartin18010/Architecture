@@ -66,7 +66,7 @@ RegTech 市场正从"事后合规报告"向"实时合规编排"演进，Agentic 
 ### 2.2 Agent 角色定义
 
 | Agent 角色 | 职责 | 核心能力 |
-|-----------|------|---------|
+| ----------- | ------ | --------- |
 | **Regulatory Analyst** | 解析监管文本，提取适用条款与义务 | 法规意图理解、跨法域映射、版本追踪 |
 | **Risk Assessor** | 评估 AI 系统风险等级，识别高风险分类 | 风险分类逻辑（EU Annex III）、影响评估、基线比对 |
 | **Evidence Collector** | 从技术系统收集合规证据 | API 集成、日志聚合、配置抓取、文档检索 |
@@ -85,7 +85,7 @@ RegTech 市场正从"事后合规报告"向"实时合规编排"演进，Agentic 
 ### 3.2 Article 9–15 要求映射
 
 | EU AI Act 条款 | 合规要求 | 检查点 |
-|---------------|---------|--------|
+| --------------- | --------- | -------- |
 | Article 9 | 风险管理系统 | 是否建立持续风险识别与缓解流程 |
 | Article 10 | 数据治理 | 训练数据质量、偏差缓解、数据相关性文档 |
 | Article 13 | 技术文档 | 系统架构、性能基准、安全架构文档 |
@@ -131,7 +131,7 @@ Step 4: Report Generator Agent
 本 RegTech Agentic 架构设计为与项目内已有交付物形成互补：
 
 | 项目交付物 | 集成点 | 价值 |
-|-----------|--------|------|
+| ----------- | -------- | ------ |
 | **P4-T5: EU CRA 合规检查清单工具** | Evidence Collector Agent 调用 CRA 检查清单作为证据收集模板 | 复用已有控制框架，降低重复建设 |
 | **P2-T6: 成熟度评估问卷** | Risk Assessor Agent 在分类前运行成熟度预评估 | 识别企业准备度差距，优先分配资源 |
 | **P3-T4: MCP Industrial AI 协议** | Agent 间通信采用 MCP 协议标准化 | 确保跨 Agent 互操作性，支持未来接入外部合规服务 |
@@ -141,7 +141,7 @@ Step 4: Report Generator Agent
 ## 5. 权威来源
 
 | 来源 | 说明 |
-|------|------|
+| ------ | ------ |
 | Regulation (EU) 2024/1689 (EU AI Act) | 欧盟人工智能法官方文本 |
 | European Commission AI Act Service Desk | 实施时间表与指南 |
 | FCA AI Live Testing Terms of Reference (2025–2026) | 英国 FCA AI 实测服务官方条款 |

@@ -9,7 +9,7 @@
 ## 检查单总览
 
 | 检查项 | 关键交付物 | 合格标准 | 责任人 | 状态 |
-|--------|-----------|---------|--------|------|
+| -------- | ----------- | --------- | -------- | ------ |
 | 1. SBOM | `sbom-spdx-3.0-template.json` 或 `sbom-cyclonedx-1.6-template.json` | 组件提供 SPDX 2.3/3.0+ 或 CycloneDX 1.4+ SBOM | 组件提供方 / 架构师 | ☐ |
 | 2. Provenance | `slsa-provenance-template.intoto.jsonl` | SLSA Build L2+ provenance attestation 存在且可验证 | 安全工程师 | ☐ |
 | 3. 签名 | Sigstore/cosign / GPG / HSM 签名 | 制品签名可验证，公钥/证书可信 | 安全工程师 | ☐ |
@@ -116,7 +116,7 @@ cosign verify-attestation \
 ### 4.3 合格标准
 
 | 严重度 | 准入要求 |
-|--------|---------|
+| -------- | --------- |
 | Critical | 必须修复或提供经安全团队批准的 VEX 例外 |
 | High | 原则上修复；如无法修复需记录缓解措施 |
 | Medium | 建议修复，允许带风险引入并制定修复计划 |
@@ -145,7 +145,7 @@ cosign verify-attestation \
 ### 5.2 常见风险许可证
 
 | 许可证 | 风险说明 | 建议 |
-|--------|---------|------|
+| -------- | --------- | ------ |
 | GPL-2.0/3.0 | Copyleft，可能触发衍生作品开源义务 | 法务评审 |
 | AGPL-3.0 | 网络使用也触发开源义务 | 通常禁止用于服务端闭源组件 |
 | SSPL | 非 OSI 认可，云服务限制 | 通常禁止 |
@@ -183,7 +183,7 @@ cosign verify-attestation \
 ## 7. 参考模板
 
 | 模板 | 用途 | 文件 |
-|------|------|------|
+| ------ | ------ | ------ |
 | SPDX 3.0.1 SBOM | 标准化物料清单 | `sbom-spdx-3.0-template.json` |
 | CycloneDX 1.6 SBOM | 标准化物料清单 | `sbom-cyclonedx-1.6-template.json` |
 | SLSA v1.2 Provenance | Build Track 来源证明 | `slsa-provenance-template.intoto.jsonl` |

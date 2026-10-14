@@ -8,7 +8,7 @@
 ## 1. 关键结论（TL;DR）
 
 | 版本 | 状态 | 核心变化 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **SLSA v1.1** | 2025‑04 批准 | 澄清刷新；VSA（Verification Summary Attestation）新增验证器元数据 |
 | **SLSA v1.2** | 2025‑11 批准 | **Source Track** 从实验提升为正式；引入 **Multi-Track** 架构 |
 | **BuildEnv Track** | 草案 | 构建环境可信：vTPM → TEE（AMD SEV-SNP / Intel TDX） |
@@ -46,7 +46,7 @@ SLSA v1.2
 **核心洞察**：消费者现在可以**机械验证**被复用组件的每一次提交都经过了强制的代码审查和分支保护，而不仅仅是声明。
 
 | 场景 | Source L3 要求 | 复用价值 |
-|------|---------------|----------|
+| ------ | --------------- | ---------- |
 | 内部库复用 | 主分支强制 PR 审查 + 签名提交 + 状态检查 | 防止恶意内部提交污染共享组件 |
 | OSS 引入 | 验证上游 Source Track 等级 | 将社区项目按供应链健康度分级 |
 | 合规审计 | VSA 声明 Source L2+ | 满足 FedRAMP / NIST 800-161 溯源要求 |
@@ -86,7 +86,7 @@ SLSA v1.2
 ## 4. SBOM 规范：CycloneDX v1.7 vs SPDX 3.0
 
 | 特性 | CycloneDX v1.7 | SPDX 3.0 |
-|------|---------------|----------|
+| ------ | --------------- | ---------- |
 | **标准状态** | ECMA-424 (2024) | ISO/IEC 5962 更新提交中 |
 | **AI/ML BOM** | ML-BOM 成熟 | AI Profile (模型元数据、训练数据、评估标准) |
 | **生命周期** | `metadata.lifecycles[].phase` | 通过 Annotation / Relationship 表达 |
@@ -141,7 +141,7 @@ CISA 2025 年 8 月发布 **Minimum Elements Draft** 更新：
 Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 
 | 级别 | 主题 | 关键要求 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | **L1** | 摄入控制 | 包管理器、本地副本、漏洞扫描、许可证扫描、SBOM 清单 |
 | **L2** | 安全消费 / MTTR | 自动更新、PR 级 CVE 告警、EOL 扫描、事件响应、完整性验证 |
 | **L3** | 恶意软件 / 零日防御 | 拒绝列表、源码克隆、恶意软件扫描、主动安全审查、**来源强制执行** |
@@ -156,7 +156,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.1 安全如何**促进**复用
 
 | 机制 | 说明 |
-|------|------|
+| ------ | ------ |
 | **信任即元数据** | SLSA Source L3 + Build L3 证明作为组件的“信任护照” |
 | **SBOM 即复用契约** | SBOM 记录依赖足迹、许可证兼容性、已知漏洞 |
 | **Scorecard 预筛选** | 分支保护、签名发布、固定依赖等 probes 自动评估候选库 |
@@ -165,7 +165,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.2 安全如何**约束**复用
 
 | 约束 | 缓解 |
-|------|------|
+| ------ | ------ |
 | 来源门槛 | 高安全环境要求 SLSA Build L2+，缩小候选池 |
 | SBOM 向下传递 | NIST 800-161r2 预期要求 SBOM 沿依赖链传播 |
 | AI/ML 来源空白 | 需 ML-BOM 记录训练数据、能耗、伦理考量 |
@@ -174,7 +174,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ### 7.3 架构建议
 
 | 层级 | 推荐控制 |
-|------|----------|
+| ------ | ---------- |
 | **组件目录** | “Approved” 层级要求 SLSA Build L2+ 且 Scorecard ≥ 7；显示 Source Track 等级 |
 | **摄入管道** | S2C2F L2 底线：代理所有公共注册表、入站扫描、生成 SBOM |
 | **构建管道** | GitHub Actions / GitLab CI 生成 SLSA provenance；Sigstore/Cosign 签名 |
@@ -187,7 +187,7 @@ Microsoft 捐赠给 OpenSSF，四级消费成熟度：
 ## 8. 权威来源
 
 | 标准/项目 | URL |
-|-----------|-----|
+| ----------- | ----- |
 | SLSA Spec | <https://slsa.dev> |
 | OpenSSF Scorecard | <https://scorecard.dev> |
 | OpenSSF Protobom | <https://github.com/protobom/protobom> |

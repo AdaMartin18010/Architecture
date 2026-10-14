@@ -92,7 +92,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 2. 主题-标准对齐矩阵
 
 | 主题 | 核心标准 | 辅助标准 | 状态 |
-|------|---------|---------|------|
+| ------ | --------- | --------- | ------ |
 | 01 元模型与标准 | ISO 42010:2022, ISO 25010:2023, ISO 26550 | TOGAF 10, ArchiMate, SWEBOK V4 | ✅ 已对齐 |
 | 02 业务架构 | TOGAF 10, ArchiMate BPMN, DMN, FEA | ISO 42010, BRM | ✅ 已对齐 |
 | 03 应用架构 | TOGAF 10, ArchiMate ISO 25010 | OpenAPI, AsyncAPI | ✅ 已对齐 |
@@ -110,7 +110,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2.1 ISO 42020 条款映射示例
 
 | ISO/IEC/IEEE 42020:2019 条款 | 过程名称 | 本框架对应过程/制品 |
-|---|---|---|
+| --- | --- | --- |
 | Clause 6 | Architecture Governance（架构治理） | `06-cross-layer-governance` 的治理策略与原则目录 |
 | Clause 7 | Architecture Management（架构管理） | 本主题 `alignment-matrix.md` 的版本维护与状态跟踪 |
 | Clause 8 | Architecture Conceptualization（概念化） | `02-business-architecture-reuse` 业务能力地图定义 |
@@ -121,7 +121,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2.2 ISO/IEC/IEEE 42010:2022 核心条款映射
 
 | 条款 | 核心内容 | 架构描述元素 | 复用映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Decision/Rationale | 元模型资产复用的术语基础 |
 | Clause 6.1–6.10 | AD 规约要求 | 识别 EoI、利益相关者、视角、关注点、视点、视图、视图组件、对应关系、决策与依据 | 组织级 AD 模板与检查清单 |
 | Clause 7.1–7.2 | ADF / ADL 规约 | Architecture Description Framework、Architecture Description Language 的 conformance 要求 | TOGAF/ArchiMate/SysML 对齐基准 |
@@ -134,7 +134,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 > 2022 版关键术语变更：
 
 | 2011 版 | 2022 版 | 说明 |
-|---------|---------|------|
+| --------- | --------- | ------ |
 | System of Interest | **Entity of Interest (EoI)** | 扩展至非系统架构 |
 | Architecture Framework | **Architecture Description Framework (ADF)** | 与评估框架区分 |
 | Architecture Model | **Architecture View Component** | 更准确反映实践 |
@@ -147,7 +147,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 4. ISO 25010:2023 质量特性
 
 | 特性 | 旧版名称 | 状态 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | Functional Suitability | 保持不变 | ✅ |
 | Performance Efficiency | 保持不变 | ✅ |
 | Compatibility | 保持不变 | ✅ |
@@ -163,7 +163,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 5. SLSA 1.2 轨道模型
 
 | 轨道 | 等级 | 关键要求 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | Build Track | L1-L4 | Provenance → Hosted Build → Hardened → Reproducible |
 | Source Track | L1-L3 | Version Control → Authenticated History → Two-Person Review |
 | Attested Build Environments | L1+ | 构建环境认证 |
@@ -173,7 +173,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ## 6. MCP 2025-11-25 vs A2A v1.0
 
 | 维度 | MCP 2025-11-25 | A2A v1.0 |
-|------|---------------|---------|
+| ------ | --------------- | --------- |
 | 范围 | Agent ↔ Tool | Agent ↔ Agent |
 | 关系 | Client-Server (Stateful) | Peer-to-Peer |
 | 发现 | Server lists capabilities | Agent Card (/.well-known/agent.json) |
@@ -209,7 +209,7 @@ MCP 2025-11-25 / A2A v1.0 (AI 原生协议)
 ### 2. 属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 主题维度完整性 | 行覆盖全部 13 个一级主题 | 高 |
 | 标准维度完整性 | 列覆盖国际标准族、行业框架与协议 | 高 |
 | 映射关系明确性 | 主对应 / 次对应 / 扩展关系标注清晰 | 高 |
@@ -327,7 +327,7 @@ flowchart LR
 ### 3. 角色职责
 
 | 角色 | 职责 |
-|------|------|
+| ------ | ------ |
 | 标准联络人 | 监测权威标准动态，提交更新建议 |
 | 主题架构师 | 验证本主题映射的准确性与完整性 |
 | 质量门禁管理员 | 运行 `scripts/quality-gate.py`，确保文件持续合规 |
@@ -416,7 +416,7 @@ ISO/IEC/IEEE 42030:2019 自发布以来，已成为架构评估领域的核心�
 ## 2. 修订状态
 
 | 属性 | 详情 |
-|:---|:---|
+| :--- | :--- |
 | **标准编号** | ISO/IEC/IEEE AWI 42030 |
 | **注册日期** | 2026-04-22（ISO 官网登记为新项目） |
 | **当前阶段** | 20.00 — New project registered in TC/SC work programme |
@@ -447,7 +447,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 ### 3.1 架构评估（AE）三层框架
 
 | 层级 | 内容 | 复用视角映射 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **目标层（Objectives）** | 评估目的、利益相关者关注点 | 复用决策的业务目标对齐 |
 | **因素层（Factors）** | 质量属性、架构决策、风险 | 复用资产的质量特性评估（ISO 25010） |
 | **方法层（Methods）** | 场景法、度量法、利益相关者评审 | 复用资产的兼容性验证方法 |
@@ -468,7 +468,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 ### 4.1 可能的增强领域
 
 | 领域 | 2019 版状态 | 预期修订方向 | 对本项目的影响 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | **AI/ML 架构评估** | 未覆盖 | 新增对概率性系统、模型漂移、数据依赖架构的评估指南 | 需更新 12 AI 原生复用中的评估方法 |
 | **持续评估** | 阶段性评估为主 | 嵌入 CI/CD 的自动化架构评估 | 与 13 平台工程（IDP Golden Path）联动 |
 | **架构债务量化** | 未明确 | 引入技术债务的架构维度评估 | 与 06 跨层治理的升级/降级矩阵关联 |
@@ -493,7 +493,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 建议通过以下渠道跟踪 AWI 42030 进展：
 
 | 来源 | URL | 跟踪频率 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | ISO 官网项目页 | <https://www.iso.org/standard/93814.html> | 季度 |
 | ISO/IEC JTC 1/SC 7 会议报告 | <https://www.iso.org/committee/45086.html> | 半年 |
 | IEEE Computer Society S2ESC | <https://sagroups.ieeecs.org/42030/> | 季度 |
@@ -549,7 +549,7 @@ AWI 42030 的修订将在 2019 版基础上演进。回顾现有框架：
 ## 标准条款映射
 
 | 标准条款 | 核心内容 | 本文件对应 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42030:2019, Clause 4.3 | Architecture evaluation tiers（目标/因素/方法） | 第 3.1 节三层框架 |
 | ISO/IEC/IEEE 42030:2019, Clause 6.1 | Evaluation synthesis general requirements | 第 5 节跟踪机制 |
 | ISO/IEC/IEEE 42030:2019, Clause 6.2 | Value assessment | 第 4 节预期修订方向 |
@@ -634,7 +634,7 @@ flowchart TB
 领域工程负责识别、构建和维护特定领域的可复用资产，是复用体系的"供给侧"。
 
 | 活动 | 核心任务 | 对应本体系 |
-|------|---------|-----------|
+| ------ | --------- | ----------- |
 | **领域分析** | 识别领域边界、分析共性（commonality）与可变性（variability）、建立领域模型 | `02-business-architecture-reuse` |
 | **领域设计** | 定义参考架构、可变性机制（binding time、参数化、继承、组合）、组件接口契约 | `03-application-architecture-reuse` / `04-component-architecture-reuse` |
 | **领域实现** | 编码、测试、打包可复用资产；建立资产文档和使用示例 | `04-component-architecture-reuse` / `05-functional-architecture-reuse` |
@@ -645,7 +645,7 @@ flowchart TB
 应用工程负责从需求到交付的完整生命周期，核心是识别复用机会并将可复用资产集成到目标系统中，是复用体系的"需求侧"。
 
 | 活动 | 核心任务 | 对应本体系 |
-|------|---------|-----------|
+| ------ | --------- | ----------- |
 | **需求分析** | 在利益相关者需求中识别可通过复用满足的部分；分析适配约束 | `02-business-architecture-reuse` |
 | **设计** | 选择候选资产；设计集成方案；处理可变性绑定（variability binding） | `03-application-architecture-reuse` / `04-component-architecture-reuse` |
 | **实现** | 适配、定制、组装可复用资产；编写胶水代码和集成测试 | `04-component-architecture-reuse` / `05-functional-architecture-reuse` |
@@ -656,7 +656,7 @@ flowchart TB
 复用管理是横跨领域工程与应用工程的治理层，确保复用活动在战略、度量和持续改进维度受控。
 
 | 活动 | 核心任务 | 对应本体系 |
-|------|---------|-----------|
+| ------ | --------- | ----------- |
 | **复用计划** | 制定复用策略、目标、范围、资源预算、工具链选型 | `09-value-quantification` |
 | **复用监控** | 定义并跟踪复用指标（复用率、适配成本、ROI、资产质量分） | `06-cross-layer-governance/05-metrics-kpi` |
 | **复用改进** | 基于度量和反馈持续优化复用流程、资产组合和治理机制 | `06-cross-layer-governance` |
@@ -670,7 +670,7 @@ flowchart TB
 ISO/IEC/IEEE 12207:2026 将复用 concern 整合为跨生命周期的活动，而 ISO/IEC/IEEE 1517:2010 则将其提升为独立过程组。下表给出核心过程的对照：
 
 | IEEE 1517 过程 | ISO/IEC/IEEE 12207:2026 对应过程 | 差异说明 |
-|---------------|------------------------|----------|
+| --------------- | ------------------------ | ---------- |
 | 领域分析 | 系统/软件需求分析（Stakeholder/Software Requirements） | 1517 强调**领域范围**而非单一系统；关注跨系统的共性和可变性分析 |
 | 领域设计 | 架构设计（Architectural Design） | 1517 强调**可变性设计**（variability modeling）和参考架构，而非单系统架构 |
 | 资产管理 | 配置管理（Configuration Management） | 1517 在版本控制基础上增加**分类体系、检索机制和分发策略** |
@@ -687,7 +687,7 @@ ISO/IEC/IEEE 12207:2026 将复用 concern 整合为跨生命周期的活动，�
 ISO/IEC 26550:2015（Software and Systems Engineering — Reference Model for Product Line Engineering and Management）与 ISO/IEC/IEEE 1517:2010 在结构上高度同源，但聚焦点不同：
 
 | IEEE 1517 过程组 | ISO/IEC 26550 对应过程 | 映射说明 |
-|-----------------|----------------------|----------|
+| ----------------- | ---------------------- | ---------- |
 | 领域工程 | 领域工程（Domain Engineering） | 双向映射；26550 增加了产品线特有的**可变点管理**和**核心资产基线**概念 |
 | 应用工程 | 应用工程（Application Engineering） | 双向映射；26550 强调**产品派生**（product derivation）过程，即通过绑定可变点自动生成产品实例 |
 | 复用管理 | 管理流程（Management Processes） | 双向映射；26550 的管理流程更聚焦于**产品线范围演化**和**多产品组合管理** |
@@ -705,7 +705,7 @@ ISO/IEC 26550:2015（Software and Systems Engineering — Reference Model for Pr
 本体系采用四层复用架构（业务架构 → 应用架构 → 组件架构 → 功能架构），ISO/IEC/IEEE 1517:2010 的三过程组与各层的映射关系如下：
 
 | IEEE 1517 过程组 | 四层复用架构映射 | 说明 |
-|-----------------|-----------------|------|
+| ----------------- | ----------------- | ------ |
 | **领域工程** | 业务架构 + 应用架构 | 领域分析识别可复用的**业务能力**和**业务实体**；领域设计产出可复用的**系统模式**和**参考架构** |
 | **应用工程** | 组件架构 + 功能架构 | 在组件层集成具体可复用组件（框架、库、服务）；在功能层适配和定制具体功能单元（算法、MCP Tool、函数） |
 | **复用管理** | 跨层治理 | 贯穿四层的**度量体系**、**成熟度评估**（RCMM/RiSE）、**FinOps 成本分摊**和**供应链安全治理** |
@@ -737,7 +737,7 @@ flowchart LR
 ### 6.1 领域工程检查清单（10 项）
 
 | # | 检查项 | RRL | RCMM | RiSE-RM |
-|---|--------|-----|------|---------|
+| --- | -------- | ----- | ------ | --------- |
 | DE-01 | 已识别领域边界并建立领域范围文档 | RRL 3-4 | L3 已定义 | L3 计划复用 |
 | DE-02 | 已完成共性/可变性分析（commonality/variability analysis） | RRL 4 | L3 已定义 | L3 计划复用 |
 | DE-03 | 已建立领域模型（领域术语、实体关系、业务规则） | RRL 4-5 | L3 已定义 | L3 计划复用 |
@@ -752,7 +752,7 @@ flowchart LR
 ### 6.2 应用工程检查清单（10 项）
 
 | # | 检查项 | RRL | RCMM | RiSE-RM |
-|---|--------|-----|------|---------|
+| --- | -------- | ----- | ------ | --------- |
 | AE-01 | 需求分析阶段主动查询资产库，识别复用机会 | RRL 3-4 | L2 可重复 | L2 基本复用 |
 | AE-02 | 已评估候选资产的适配成本（AAF < AAF_ECONOMIC_FLOOR（0.7，canonical [0.0, 1.0]） 为绿灯） | RRL 4-5 | L3 已定义 | L3 计划复用 |
 | AE-03 | 已分析资产依赖链长度（要求 < 5 层） | RRL 5 | L3 已定义 | L4 管理复用 |
@@ -767,7 +767,7 @@ flowchart LR
 ### 6.3 复用管理检查清单（10 项）
 
 | # | 检查项 | RRL | RCMM | RiSE-RM |
-|---|--------|-----|------|---------|
+| --- | -------- | ----- | ------ | --------- |
 | RM-01 | 已制定组织级复用战略，明确目标范围和 KPI | RRL 2-3 | L3 已定义 | L3 计划复用 |
 | RM-02 | 已建立复用治理委员会，定义角色和职责 | RRL 3-4 | L3 已定义 | L3 计划复用 |
 | RM-03 | 复用预算已纳入项目预算管理体系 | RRL 4 | L3 已定义 | L3 计划复用 |
@@ -897,7 +897,7 @@ ISO/IEC/IEEE 12207:2026 于 **2026-04-29 正式发布**，取代 2017 版第一�
 **关键变更（相比 2017 版）**：
 
 | 变更领域 | 2017 版 | 2026 版 | 对复用的影响 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | **技术过程澄清** | 基础定义 | 业务/任务分析、系统架构定义、实现、集成、运营、维护的当前实践澄清 | 复用资产的集成过程更明确 |
 | **技术管理过程改进** | 基础框架 | 风险管理、配置管理的改进 | 复用资产的配置项管理更精细 |
 | **关键概念更新** | 迭代、递归的简略描述 | 更精确的迭代、递归、系统之系统（SoS）、质量特性描述 | 支持多层级复用架构描述 |
@@ -940,7 +940,7 @@ ISO/IEC/IEEE 12207:2026 将技术过程划分为以下与复用直接相关的�
 ### 2.2 支持过程中的复用活动
 
 | 支持过程 | 复用活动 | 本项目对应 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 文档管理 | 模板复用、文档模式库 | `99-reference/templates/` |
 | 配置管理 | 基线复用、变更控制流程复用 | `06-cross-layer-governance/` |
 | 质量保证 | 检查清单复用、审计模板 | `99-reference/audit/` |
@@ -953,7 +953,7 @@ ISO/IEC/IEEE 12207:2026 将技术过程划分为以下与复用直接相关的�
 ### 2.3 组织过程中的复用活动
 
 | 组织过程 | 2026 版新增/强化 | 复用映射 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 管理过程 | 项目组合（Portfolio）管理强化 | 复用资产组合管理 |
 | 基础设施管理 | 敏捷/DevOps 环境支持明确化 | 内部开发者平台（IDP）作为复用基础设施 |
 | 改进过程 | 过程评估与改进框架 | 复用成熟度持续改进（RCMM/RiSE） |
@@ -965,7 +965,7 @@ ISO/IEC/IEEE 12207:2026 将技术过程划分为以下与复用直接相关的�
 ## 3. 与四层复用模型的对照
 
 | 12207:2026 过程 | 业务架构复用 | 应用架构复用 | 组件架构复用 | 功能架构复用 |
-|:---|:---:|:---:|:---:|:---:|
+| :--- | :---: | :---: | :---: | :---: |
 | 业务/任务分析 | ✅ 核心映射 | — | — | — |
 | 系统架构定义 | ⚠️ 参考 | ✅ 核心映射 | — | — |
 | 设计定义 | — | ⚠️ 参考 | ✅ 核心映射 | — |
@@ -981,7 +981,7 @@ ISO/IEC/IEEE 12207:2026 将技术过程划分为以下与复用直接相关的�
 IEEE 1517-2010 定义了软件生命周期中的复用专用过程，包括：**领域工程、应用工程、资产管理**。12207:2026 虽然没有独立列出"复用过程"，但将复用活动分散嵌入到各技术过程和支持过程中。
 
 | IEEE 1517 过程 | 12207:2026 对应位置 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 领域工程（Domain Engineering） | 6.4 业务分析 + 6.6 架构定义 + 6.8 设计定义 | 共性/变性识别融入标准技术过程 |
 | 应用工程（Application Engineering） | 6.5 需求定义 + 6.9 系统分析 + 6.10 实现 | 变性绑定成为实现过程的固有活动 |
 | 资产管理（Asset Management） | 7.2 配置管理 + 7.3 质量保证 + 8.1 管理 | 资产库管理由组织过程支持 |
@@ -993,7 +993,7 @@ IEEE 1517-2010 定义了软件生命周期中的复用专用过程，包括：**
 ## 5. 与 ISO/IEC 26550 产品线工程的对照
 
 | 26550:2015 活动 | 12207:2026 过程映射 | 关键差异 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 领域分析 | 6.4 业务分析 + 6.5 利益相关者需求 | 12207 更通用，26550 强调共性提取 |
 | 领域设计 | 6.6 系统架构定义 + 6.8 设计定义 | 26550 强调可变性建模 |
 | 领域实现 | 6.10 实现 + 6.11 集成 | 12207 未区分领域资产与应用产品 |
@@ -1111,7 +1111,7 @@ ISO/IEC 25010:2023 是继 2011 版后的重大修订，其核心驱动力之一�
 ### 1.1 版本对比
 
 | 维度 | 2011 版 | 2024 版 | AI/ML 相关性 |
-|------|---------|---------|-------------|
+| ------ | --------- | --------- | ------------- |
 | 质量特性数量 | 8 | 9 | — |
 | Safety | 隐含于 Reliability | 独立特性 | ✅ 关键新增 |
 | Usability | 独立特性 | 扩展为 Interaction Capability | ✅ 纳入 AI 交互 |
@@ -1127,7 +1127,7 @@ ISO/IEC 25010:2023 是继 2011 版后的重大修订，其核心驱动力之一�
 2024 版将 Safety 从 Reliability 中独立，反映 AI 系统在自动驾驶、医疗诊断等安全关键领域的特殊地位。
 
 | 子特性 | AI/ML 映射 | 复用含义 |
-|--------|-----------|---------|
+| -------- | ----------- | --------- |
 | Operational Constraint | AI 模型的运行边界条件 | 复用模型时必须复用其约束条件 |
 | Risk Identification | 模型失效模式的识别能力 | 复用组件需提供已知失效案例 |
 | Fail Safe | 故障时的安全降级策略 | 复用时需验证 Fail Safe 机制是否适配新上下文 |
@@ -1155,7 +1155,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 ## 3. 质量特性对架构复用决策的影响矩阵
 
 | 质量特性 | 复用决策问题 | AI 组件复用影响 | 权重（安全关键域） |
-|---------|------------|----------------|----------------|
+| --------- | ------------ | ---------------- | ---------------- |
 | Functional Suitability | 模型功能是否匹配需求？ | 任务类型对齐（分类/检测/生成） | 高 |
 | Performance Efficiency | 推理延迟/吞吐量是否达标？ | 硬件加速器依赖、量化策略 | 高 |
 | Safety | 是否满足功能安全等级？ | SIL/ASIL 等级匹配 | **必要** |
@@ -1177,7 +1177,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 针对 AI 生成代码（如 GitHub Copilot、CodeT5 等）和 AI 生成组件的复用，建议采用以下评估框架：
 
 | 评估维度 | 检查项 | 通过标准 |
-|---------|--------|---------|
+| --------- | -------- | --------- |
 | 来源可信度 | 训练数据许可 | OSI 认可的开源许可证 |
 | 功能正确性 | 单元测试通过率 | ≥ 90% 且边界条件覆盖 |
 | 安全卫生 | 已知漏洞扫描 | OWASP Top 10 无高危 |
@@ -1188,7 +1188,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 ### 4.2 复用风险分级
 
 | 风险等级 | 特征 | 复用策略 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | 🟢 低风险 | 生成代码经人工审查 + 测试覆盖 | 可直接复用 |
 | 🟡 中风险 | 生成代码逻辑简单但未经完整测试 | 复用后补充测试 |
 | 🔴 高风险 | 生成代码涉及安全/并发/资源管理 | 禁止直接复用，仅作参考 |
@@ -1247,7 +1247,7 @@ Flexibility 替代 Portability，其 **Adaptability** 子特性直接关联 AI �
 ## 1. 版本演进
 
 | 版本 | 发布时间 | 核心变化 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | ISO/IEC 25010:2011 | 2011 | 初始版本，8 个质量特性 |
 | **ISO/IEC 25010:2023** | **2024** | **当前生效版本，9 个质量特性，引入 Safety、Flexibility、Interaction Capability，新增 AI/ML 系统质量考量** |
 
@@ -1360,7 +1360,7 @@ ISO/IEC 25010:2023 Product Quality Model
 2024 版将 Quality in Use（使用质量）从 ISO/IEC 25010:2023 移至 **ISO/IEC 25019**。使用质量包括：
 
 | 特性 | 说明 |
-|------|------|
+| ------ | ------ |
 | Effectiveness | 用户实现目标的准确性和完整性 |
 | Efficiency | 实现目标所需的资源 |
 | Satisfaction | 用户舒适度、信任和积极体验 |
@@ -1377,7 +1377,7 @@ ISO/IEC 25010:2023 Product Quality Model
 ### 复用评估矩阵
 
 | 质量特性 | 复用评估问题 |
-|---------|------------|
+| --------- | ------------ |
 | Functional Suitability | 功能是否精确匹配需求？ |
 | Performance Efficiency | 性能是否满足目标上下文？ |
 | Compatibility | 是否与现有系统兼容？ |
@@ -1527,7 +1527,7 @@ Entity of Interest (EoI)
 ## 3. 关键术语定义（2022 版）
 
 | 术语 | 英文 | 定义 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 架构 | Architecture | 实体的基本概念或属性及其环境中 governing principles |
 | 架构描述 | Architecture Description | 用于表达架构的工作产物 |
 | 关注实体 | Entity of Interest (EoI) | 架构描述的主体 |
@@ -1605,7 +1605,7 @@ ISO/IEC/IEEE 42010:2022 (架构描述)
 ## 6. 标准条款映射
 
 | 标准条款 | 核心内容 | 本文件应用 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42010:2022, Clause 5.2 | 架构描述概念模型 | EoI / ADF / Viewpoint / View 的定义与关系 |
 | ISO/IEC/IEEE 42010:2022, Clause 6.4 | Concerns 识别 | 新版要求显式识别利益相关者关注点 |
 | ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Components | 复用单元从 Model 扩展到 View Component |
@@ -1670,7 +1670,7 @@ System-of-Interest (SoI)
 ### 关键术语
 
 | 术语 | 定义 | 复用意义 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **Concern** | 利益相关者对系统的兴趣点 | 复用决策必须首先识别谁的关注点被满足 |
 | **Viewpoint** | 描述一类关注点的约定 | 可复用的视点定义降低架构描述成本 |
 | **View** | 视点的实例化 | 基于视点生成的视图具有结构一致性 |
@@ -1682,7 +1682,7 @@ System-of-Interest (SoI)
 ## 2. ISO/IEC/IEEE 42010:2022 条款映射（Clause 5–7）
 
 | 条款 | 核心要求 | 架构描述元素 | 复用映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.1 | 通用基础 | 架构描述在生命周期中的定位 | 建立 AD 作为可复用工件的边界 |
 | Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Stakeholder Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Architecture Decision、Rationale | 元模型词汇表与资产分类基础 |
 | Clause 5.3 | 架构描述在生命周期中的位置 | AD 与实体生命周期的关系 | 定义 AD 在需求、设计、实现、运维各阶段的复用时机 |
@@ -1765,7 +1765,7 @@ ISO 42010 (架构描述元模型)
 Wikipedia 对该标准的结构化梳理可映射为以下知识块：
 
 | Wikipedia 主题 | 标准对应条款 | 核心内容 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **History** | IEEE 1471 → 42010:2011 → 42010:2022 | 从系统架构描述到企业架构描述的演进 |
 | **Concepts** | Clause 3 / Clause 5 | System-of-Interest、Stakeholder、Concern、Viewpoint、View、Model Kind |
 | **Architecture Description** | Clause 5.2 / Clause 6 | AD 是表达架构的工件集合，受 viewpoint 与 model kind 约束 |
@@ -1804,7 +1804,7 @@ graph LR
 ### 5.3 与 TOGAF/ArchiMate 的映射
 
 | ISO 42010:2022 | TOGAF 10 | ArchiMate 4.0 | 复用说明 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | System-of-Interest | Enterprise / Architecture Project | ArchiMate Model Scope | 架构工作的对象边界 |
 | Stakeholder | Stakeholder Map | Stakeholder（动机域） | 识别谁将消费复用资产 |
 | Concern | Drivers / Requirements / Vision | Driver / Goal / Requirement | 复用决策必须回应的关注点 |
@@ -1824,7 +1824,7 @@ graph LR
 ### 5.5 权威来源与交叉引用
 
 | 来源 | URL |
-|:---|:---|
+| :--- | :--- |
 | Wikipedia - ISO/IEC/IEEE 42010 | <https://en.wikipedia.org/wiki/ISO/IEC/IEEE_42010> |
 | ISO 42010:2022 官方页面 | <https://www.iso.org/standard/74393.html> |
 | IEEE 1471-2000 | <https://standards.ieee.org/standard/1471-2000.html> |
@@ -1879,7 +1879,7 @@ graph TB
 #### 2.1 Entity of Interest（EoI，关注实体）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 边界清晰性 | EoI 的范围、生命周期与外部接口被显式定义 | 高 |
 | 利益相关者关联性 | 存在明确的 Stakeholder 列表并与其关注点挂钩 | 高 |
 | 关注点可枚举性 | 其关键 Concern 可被列出并排序 | 中 |
@@ -1889,7 +1889,7 @@ graph TB
 #### 2.2 Architecture Description Framework（ADF，架构描述框架）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 视点集合 | 定义一组标准化的 Viewpoint | 高 |
 | 模型种类约定 | 规定 Model Kind 的语法、语义与符号 | 高 |
 | 对应规则框架 | 规定跨视图一致性的规则模板 | 中 |
@@ -1899,7 +1899,7 @@ graph TB
 #### 2.3 Architecture Viewpoint（架构视点）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 关注点覆盖 | 能够回应的 Concern 集合被显式声明 | 高 |
 | 模型种类绑定 | 指定适用的 Model Kind | 高 |
 | 符号约定 | 图形/文本记号规范完整 | 高 |
@@ -1909,7 +1909,7 @@ graph TB
 #### 2.4 Architecture View（架构视图）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 视点符合性 | 符合某个 Viewpoint 的约定 | 高 |
 | 关注点回应 | 明确回应至少一个 Concern | 高 |
 | 模型实例化 | 包含符合 Model Kind 的模型 | 高 |
@@ -1919,7 +1919,7 @@ graph TB
 #### 2.5 Model Kind（模型种类）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 语言/记号 | 使用的建模语言或符号被定义 | 高 |
 | 语法规则 | 合法模型的结构约束完整 | 高 |
 | 语义解释 | 符号到真实语义的映射明确 | 中 |
@@ -1929,7 +1929,7 @@ graph TB
 #### 2.6 Correspondence / Correspondence Rule（对应关系 / 对应规则）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 源/目标 | 涉及的两个或多个 AD 元素被显式声明 | 高 |
 | 关系类型 | 实现/跟踪/依赖/映射等语义明确 | 高 |
 | 规则引用 | 遵循的 Correspondence Rule 可被引用 | 中 |
@@ -2050,7 +2050,7 @@ ISO/IEC/IEEE 42020:2019
 ```
 
 | 过程 | 目的 | 关键活动 | 复用意义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture Governance** | 确保架构集合与企业目标、政策和战略保持一致 | 制定治理指令、监控合规、做出治理决策 | 定义复用资产的准入、退役和治理规则 |
 | **Architecture Management** | 实施治理指令并管理架构集合 | 维护架构集合、监控架构活动有效性 | 维护资产库版本、状态与依赖关系 |
 | **Architecture Conceptualization** | 识别满足利益相关者关注点的解决方案 | 问题空间刻画、目标定义、候选架构形成 | 识别可复用的领域模式与参考架构 |
@@ -2061,7 +2061,7 @@ ISO/IEC/IEEE 42020:2019
 ## 3. 条款映射（Clause 5–11）
 
 | 条款 | 核心内容 | 过程输出/制品 | 本框架对应主题 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.1 | 过程概述与应用 | 架构过程与生命周期、设计的关系 | 全过程治理视角 |
 | Clause 5.2 | 架构与其他过程和信息元素的关系 | 架构过程与 ISO 15288/12207 的衔接 | 生命周期对齐 |
 | Clause 5.3 | 治理与管理过程 | Governance 与 Management 的双层结构 | `06-cross-layer-governance` |
@@ -2079,7 +2079,7 @@ ISO/IEC/IEEE 42020:2019
 ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**“如何描述架构”**。两者协同关系如下：
 
 | ISO 42020:2019 过程 | ISO 42010:2022 对应条款 | 协同说明 |
-|---|---|---|
+| --- | --- | --- |
 | Architecture Conceptualization (Clause 8) | Clause 5.2.3 / 6.4（关注点识别） | 概念化过程识别 EoI 与利益相关者关注点 |
 | Architecture Elaboration (Clause 10) | Clause 6.6–6.8（视点、视图、视图组件） | 细化过程产生符合 42010 的 AD |
 | Architecture Evaluation (Clause 9) | Clause 6.10（决策与依据） | 评估结果形成 Architecture Rationale |
@@ -2089,7 +2089,7 @@ ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**�
 ## 5. 与 TOGAF 10 / ArchiMate 的映射
 
 | ISO 42020:2019 过程 | TOGAF 10 ADM 阶段 | ArchiMate 4.0 元素/域 | 复用场景 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Architecture Governance | Preliminary Phase | Motivation Domain（Goal / Principle） | 原则目录、治理框架 |
 | Architecture Management | Preliminary Phase + Phase H | Implementation & Migration Layer | 架构仓库维护 |
 | Architecture Conceptualization | Phase A（Architecture Vision） | Strategy Domain（Capability / Value Stream） | 业务能力地图复用 |
@@ -2164,7 +2164,7 @@ ISO 42020 回答**“如何产生架构”**，ISO/IEC/IEEE 42010:2022 回答**�
 ## 1. 关键结论（TL;DR）
 
 | 标准 | 状态 | 核心内容 | 预期发布 |
-|------|------|----------|----------|
+| ------ | ------ | ---------- | ---------- |
 | **ISO/IEC/IEEE DIS 42024** | DIS 投票中（截止 2026‑01） | 架构基础：词汇、概念、原则；显式覆盖 AI/ML/IoT/数字孪生 | 2026 末–2027 初 |
 | **ISO/IEC/IEEE DIS 42042** | DIS 投票中（截止 2026‑01‑30） | 参考架构规范要求；支持领域特定 RA 的一致性评估 | 2026 末–2027 初 |
 | **ArchiMate 4.0** | **已正式发布（2026-04-27）** | Common Domain、策略域、Path 概念；与 3.2 向后兼容 | — |
@@ -2292,7 +2292,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 ### 7.1 私营企业 / 跨行业组织
 
 | 目标 | 推荐标准组合 |
-|------|-------------|
+| ------ | ------------- |
 | 核心 EA 方法论 | TOGAF 10 (Fundamental + 相关 Series Guides) |
 | 建模语言 | **ArchiMate 4.0**（已正式发布，2026-04-27，与 3.2 向后兼容）；3.2 仍有效 |
 | 架构描述一致性 | ISO/IEC/IEEE 42010:2022 |
@@ -2321,7 +2321,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 > ISO/IEC/IEEE DIS 42024 与 DIS 42042 的 enquiry 投票已分别于 2026-01-12 与 2026-01-30 结束。两标准预计于 **2026 末–2027 初**正式发布。以下映射应在正式版发布后补充到本知识体系：
 
 | 标准 | 正式发布后需补充的映射 | 影响主题 | 优先级 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **ISO/IEC/IEEE 42024** | 架构基础词汇与本项目元模型术语的对照表 | `01-meta-model-standards/`、`99-reference/glossary/` | P0 |
 | **ISO/IEC/IEEE 42024** | AI/ML、数字孪生、网络安全等应用领域与主题 08/11/10 的映射 | `08-cognitive-architecture/`、`11-industrial-iot-otit/`、`10-supply-chain-security/` | P1 |
 | **ISO/IEC/IEEE 42042** | 参考架构规范要求与主题 01–13 各参考架构的对齐评估 | 全项目 | P0 |
@@ -2332,7 +2332,7 @@ Essence 的 kernel 元素（Requirements、Software System、Work、Team 等）�
 ## 9. 权威来源
 
 | 标准 | URL |
-|------|-----|
+| ------ | ----- |
 | ArchiMate 4 Specification (The Open Group) | <https://www.opengroup.org/archimate-licensed-downloads> |
 | ArchiMate 4 Announcement (The Open Group) | <https://www.opengroup.org/The-Open-Group-Announces-ArchiMate%C2%AE-4-Specification> |
 | TOGAF 10 | <https://www.opengroup.org/togaf> |
@@ -2400,7 +2400,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 ### 1.2 映射原则
 
 | 原则 | 说明 |
-|------|------|
+| ------ | ------ |
 | **阶段全覆盖** | 覆盖 ADM 全部 10 个阶段（含预备阶段和需求管理） |
 | **ABB/SBB 分离** | 区分逻辑构建块（ABB）与物理构建块（SBB）在 ISO 42010 中的不同映射 |
 | **视点驱动** | 以 ISO 42010 的 Viewpoint-View-Model Kind 三层结构作为映射骨架 |
@@ -2413,7 +2413,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 在展开逐阶段映射之前，先建立 TOGAF Standard 10 与 ISO/IEC/IEEE 42010:2022 的核心概念桥梁：
 
 | ISO 42010:2022 概念 | TOGAF 10 概念 | 映射说明 |
-|---------------------|---------------|----------|
+| --------------------- | --------------- | ---------- |
 | Entity of Interest (EoI) | Enterprise / Architecture Project | 架构工作的对象实体；TOGAF 中扩展为"企业"及其子系统 |
 | Architecture Description (AD) | Architecture Deliverables / Catalogs | ADM 各阶段输出的架构交付物集合 |
 | Architecture Description Framework (ADF) | TOGAF Content Framework + ADM | TOGAF 整体即是一个符合 ISO 42010 的 ADF |
@@ -2437,7 +2437,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 建立架构能力、定义架构原则、适配 ADM、设立治理框架。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 架构组织、CIO、业务高管 | 识别对架构能力有决策权的利益相关者 |
 | **Concern** | 架构原则、治理需求、合规要求 | 关注"如何规范地进行架构工作" |
 | **Viewpoint** | *Architecture Capability Viewpoint* | 定义架构能力的观察角度 |
@@ -2454,7 +2454,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 定义架构愿景、识别利益相关者、确认业务目标、获得审批。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 赞助者、业务负责人、最终用户 | 通过 Stakeholder Map 识别 |
 | **Concern** | 业务目标、约束、风险、ROI | 架构愿景需要回应的核心关注点 |
 | **Viewpoint** | *Stakeholder Requirements Viewpoint* | 利益相关者需求视点 |
@@ -2471,7 +2471,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 开发业务架构，包括组织单元、功能、流程、信息、能力地图。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 业务分析师、流程Owner、产品经理 | 关注业务结构和能力 |
 | **Concern** | 业务能力、流程效率、信息需求、组织一致性 | 业务架构的核心关注点 |
 | **Viewpoint** | *Business Architecture Viewpoint* (TOGAF 内容框架定义) | 业务架构视点 |
@@ -2490,7 +2490,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 #### 3.4.1 Data Architecture
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 数据架构师、合规官、数据治理委员会 | 关注数据一致性、质量、合规 |
 | **Concern** | 数据实体、逻辑模型、治理规则、主数据管理 | 数据架构关注点 |
 | **Viewpoint** | *Data Architecture Viewpoint* | 数据架构视点 |
@@ -2503,7 +2503,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 #### 3.4.2 Application Architecture
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 应用架构师、开发团队、集成团队 | 关注应用组合与集成 |
 | **Concern** | 应用组合、接口目录、集成模式、可替换性 | 应用架构关注点 |
 | **Viewpoint** | *Application Architecture Viewpoint* | 应用架构视点 |
@@ -2520,7 +2520,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 开发技术架构，定义平台、基础设施、中间件、网络、硬件标准。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 基础设施架构师、运维团队、安全团队、采购部门 | 关注技术平台与标准 |
 | **Concern** | 技术标准、平台蓝图、迁移路径、容量、可用性、安全基线 | 技术架构关注点 |
 | **Viewpoint** | *Technology Architecture Viewpoint* | 技术架构视点 |
@@ -2537,7 +2537,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 评估实施目标，识别工作包，进行差距分析，确定过渡架构。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 项目组合经理、业务负责人、架构委员会 | 关注实施可行性与优先级 |
 | **Concern** | 差距、复用机会、工作包分组、过渡状态 | 机会与解决方案关注点 |
 | **Viewpoint** | *Transition Architecture Viewpoint* | 过渡架构视点 |
@@ -2554,7 +2554,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 制定详细的迁移计划，排序项目，分配业务价值，确认路线图。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | PMO、项目组合经理、财务规划者 | 关注实施顺序与投资回报 |
 | **Concern** | 迁移顺序、依赖关系、风险、成本、收益时间表 | 迁移规划关注点 |
 | **Viewpoint** | *Implementation and Migration Viewpoint* | 实现与迁移视点 |
@@ -2571,7 +2571,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 监督实施，确保架构合规，管理架构契约。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 实施团队、架构委员会、质量保证团队 | 关注合规与交付质量 |
 | **Concern** | 架构合规、偏差管理、契约履行、合规评估 | 实施治理关注点 |
 | **Viewpoint** | *Architecture Compliance Review Viewpoint* | 架构合规审查视点 |
@@ -2588,7 +2588,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 管理架构变更请求，评估变更影响，更新架构基线。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 变更请求者、架构委员会、运维团队 | 关注变更影响与持续演进 |
 | **Concern** | 变更影响范围、基线一致性、回滚策略、技术债 | 变更管理关注点 |
 | **Viewpoint** | *Change Management Viewpoint* | 变更管理视点 |
@@ -2605,7 +2605,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 **TOGAF Standard 10 活动**: 贯穿全生命周期的需求管理，确保需求变化被正确记录、评估和整合。
 
 | ISO 42010:2022 | TOGAF 10 ABB/SBB | 映射说明 |
-|----------------|------------------|----------|
+| ---------------- | ------------------ | ---------- |
 | **Stakeholder** | 需求工程师、业务分析师、测试团队 | 关注需求可追溯性 |
 | **Concern** | 需求完整性、一致性、可追溯性、优先级变化 | 需求管理关注点 |
 | **Viewpoint** | *Requirements Engineering Viewpoint* | 需求工程视点 |
@@ -2626,7 +2626,7 @@ TOGAF 10 的架构开发方法（ADM）是一个迭代式、分阶段的企业�
 TOGAF 10 的 **Enterprise Continuum** 是一个覆盖企业内外全部架构资产的"虚拟仓库"，通过 **Architecture Continuum**（ABB）和 **Solutions Continuum**（SBB）两条轴线，将抽象能力逐步精化为可落地实现。该结构与 ISO/IEC/IEEE 42010:2022 的 ADF/ADL 规约形成互补：Enterprise Continuum 提供资产分类与复用梯度，ISO/IEC/IEEE 42010:2022 提供描述这些资产的元模型。
 
 | Continuum 层级 | Architecture Continuum (ABB) | Solutions Continuum (SBB) | 复用模式 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Foundation** | 通用参考模型、核心原则、基础能力 | 操作系统、编程语言、运行时 | 全行业共享，变更频率最低 |
 | **Common Systems** | 跨行业系统架构（如 IAM、CRM、ESB） | 商业化平台（Keycloak、Salesforce、Kong） | 跨组织复用，通过配置适配 |
 | **Industry** | 垂直行业参考架构（如 eTOM、ARTS、HL7） | 行业解决方案（电信计费、零售 POS、医疗集成平台） | 行业生态复用 |
@@ -2637,7 +2637,7 @@ TOGAF 10 的 **Enterprise Continuum** 是一个覆盖企业内外全部架构资
 TOGAF 10 的 **Architecture Repository** 是 Enterprise Continuum 的物理/逻辑载体。其分区与复用资产的对应关系如下：
 
 | Repository 分区 | 内容 | 复用资产示例 | ISO 42010:2022 映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture Metamodel** | 建模语言、记号、关系 | ArchiMate Profile、UML/SysML 模板 | ADF / ADL（Clause 7） |
 | **Architecture Capability** | 组织角色、技能、流程 | 架构师能力模型、治理 RACI | Stakeholder / Concern（Clause 5.2.3） |
 | **Architecture Landscape** | 基线、目标、过渡架构快照 | ABB/SBB 目录、 capability map | Architecture View / View Component（Clause 6.7–6.8） |
@@ -2671,7 +2671,7 @@ Architecture Repository
 ### 4.4 与 ISO 42010:2022 的对应
 
 | TOGAF 10 复用概念 | ISO 42010:2022 概念 | 对应条款 | 说明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Enterprise Continuum | Architecture Description Framework (ADF) | Clause 7.1 | Continuum 定义了企业级 ADF 的资产分类 |
 | Architecture Repository | Architecture Description (AD) 的物理载体 | Clause 6.1 | Repository 存储 AD 的标识、版本与组成 |
 | Architecture Metamodel | Architecture Description Language (ADL) | Clause 7.2 | ArchiMate/UML 等 ADL 的存储与治理 |
@@ -2685,7 +2685,7 @@ Architecture Repository
 ## 5. 综合映射矩阵
 
 | ADM Phase | 主要 ISO 42010 Viewpoint | ABB (逻辑层) | SBB (物理层) | 关键 Correspondence Rule |
-|-----------|-------------------------|--------------|--------------|--------------------------|
+| ----------- | ------------------------- | -------------- | -------------- | -------------------------- |
 | **Preliminary** | Architecture Capability Viewpoint | Governance Framework, Principles Catalog | EA Tool, Repository Schema | Principles → Compliance Criteria |
 | **Phase A** | Stakeholder Requirements Viewpoint | Architecture Vision, Business Scenario | Approved Charter, Budget | Vision → Goals Traceability |
 | **Phase B** | Business Architecture Viewpoint | Business Function, Process, Service, Object | CRM, ERP, BPM Configuration | Function → Process → Service |
@@ -2727,7 +2727,7 @@ ISO 42010:2022 引入的 **View Component** 概念（替代 2011 版的 Model）
 TOGAF 10 的 ABB/SBB 可通过 ArchiMate 语言进行实例化描述：
 
 | ArchiMate 元素 | ABB 映射 | SBB 映射 |
-|----------------|----------|----------|
+| ---------------- | ---------- | ---------- |
 | Business Function / Process | 业务 ABB | BPM 工具中的工作流配置 |
 | Application Component / Service | 应用 ABB | 部署的微服务/软件包 |
 | Technology Service / Node | 技术 ABB | 具体的云实例/物理服务器 |
@@ -2794,7 +2794,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 ## 10. 条款映射汇总
 
 | 标准条款 | 核心内容 | 本文件映射位置 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42010:2022, Clause 5.2 | 架构描述概念模型 | 第 3 节“核心概念预映射” |
 | ISO/IEC/IEEE 42010:2022, Clause 6.8 | View Component 定义 | 第 6 节“ABB/SBB 在 ISO 42010 中的元模型定位” |
 | ISO/IEC/IEEE 42010:2022, Clause 6.10 | Architecture Decision / Rationale | 第 3 节 ADM 各阶段映射表 |
@@ -2851,7 +2851,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 ## 1. TOGAF 10 核心文档集
 
 | 文档 | 内容 | 2025 更新 |
-|-----|------|----------|
+| ----- | ------ | ---------- |
 | **ADM** | 架构开发方法 — 迭代式企业架构开发 | 持续迭代优化 |
 | **ADM Techniques** | 技术集合 — 应用于 TOGAF ADM | 新增敏捷/数字孪生适配 |
 | **Applying the ADM** | ADM 适配指南 — 特定架构风格 | 扩展 AI/数据架构场景 |
@@ -2872,10 +2872,10 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 架构连续体是**架构构建块（ABBs）**的结构化分类库：
 
 | 层级 | 通用性 | 示例 |
-|-----|--------|------|
+| ----- | -------- | ------ |
 | **基础架构（Foundation）** | 最通用 | TOGAF TRM、网络七层模型 |
 | **通用系统架构（Common Systems）** | 跨行业 | Web 服务架构、安全管理框架 |
-| **行业架构（Industry）** | 垂直领域 | eTOM（电信）、ARTS（零售）、POSC（石油）|
+| **行业架构（Industry）** | 垂直领域 | eTOM（电信）、ARTS（零售）、POSC（石油） |
 | **组织特定架构（Organization-Specific）** | 企业专属 | 某银行的客户数据管理原则 |
 
 ### 2.3 解决方案连续体（Solutions Continuum）
@@ -2883,7 +2883,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 解决方案连续体是**解决方案构建块（SBBs）**的库，是 ABBs 的具体实现：
 
 | 层级 | 对应 ABB 层级 | 示例 |
-|-----|-------------|------|
+| ----- | ------------- | ------ |
 | **基础解决方案** | 基础架构 | 操作系统、编程语言运行时 |
 | **通用系统解决方案** | 通用系统架构 | CRM 套件、IAM 平台 |
 | **行业解决方案** | 行业架构 | 电信计费系统、零售 POS |
@@ -2894,7 +2894,7 @@ ArchiMate 4 Specification（2026-04-27 正式发布）进一步支持了跨层�
 ### 3.1 定义
 
 | 维度 | Architecture Building Block (ABB) | Solution Building Block (SBB) |
-|-----|-----------------------------------|-------------------------------|
+| ----- | ----------------------------------- | ------------------------------- |
 | **抽象层级** | 逻辑/概念 | 物理/实现 |
 | **内容** | 功能、接口、数据、行为定义 | 具体产品、软件、服务、硬件 |
 | **复用方式** | 架构描述中引用，指导设计 | 直接集成、配置、定制 |
@@ -2922,7 +2922,7 @@ SBB: Keycloak + 定制扩展
 ### 4.1 分区结构
 
 | 分区 | 内容 | 复用价值 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **架构元模型** | 企业使用的建模语言、记号、关系 | 保证全企业架构描述一致性 |
 | **架构能力** | 当前架构组织的角色、技能、流程 | 评估与规划架构资源 |
 | **架构景观** | 当前各层级架构的快照 | 影响分析、差距分析 |
@@ -2941,7 +2941,7 @@ SBB: Keycloak + 定制扩展
 ### 5.1 核心交付物
 
 | 交付物 | ADM 阶段 | 复用场景 |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **Architecture Vision** | Phase A | 多项目共享的战略上下文 |
 | **Business Architecture** | Phase B | 业务能力地图、组织解构 |
 | **Data Architecture** | Phase C | 数据实体、逻辑模型、治理规则 |
@@ -2961,7 +2961,7 @@ SBB: Keycloak + 定制扩展
 ## 6. TOGAF 与 ISO 42010:2022 的映射
 
 | ISO 42010:2022 | TOGAF 10 | 说明 |
-|---------------|---------|------|
+| --------------- | --------- | ------ |
 | Entity of Interest (EoI) | Enterprise / Architecture Project | 架构描述的对象 |
 | Architecture Description (AD) | Architecture Deliverables | 架构工作产物 |
 | Architecture Description Framework (ADF) | TOGAF Content Framework + ADM | 方法论框架 |
@@ -3025,7 +3025,7 @@ SBB: Keycloak + 定制扩展
 #### 2.1 Enterprise Continuum（企业连续体）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 虚拟仓库特性 | 不强制单一物理存储，强调逻辑统一视图 | 高 |
 | 双轴结构 | 包含 Architecture Continuum 与 Solutions Continuum | 高 |
 | 四层粒度 | Foundation → Common Systems → Industry → Organization-Specific | 高 |
@@ -3035,7 +3035,7 @@ SBB: Keycloak + 定制扩展
 #### 2.2 Architecture Continuum（架构连续体）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 抽象层级 | 逻辑/概念层 | 高 |
 | 核心单元 | Architecture Building Block（ABB） | 高 |
 | 通用性梯度 | 从 Foundation 到 Organization-Specific 递减 | 高 |
@@ -3045,7 +3045,7 @@ SBB: Keycloak + 定制扩展
 #### 2.3 Solutions Continuum（解决方案连续体）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 抽象层级 | 物理/实现层 | 高 |
 | 核心单元 | Solution Building Block（SBB） | 高 |
 | 对应关系 | 每个 SBB 实现一个或多个 ABB | 高 |
@@ -3055,7 +3055,7 @@ SBB: Keycloak + 定制扩展
 #### 2.4 Architecture Repository（架构仓库）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 分区结构 | 包含元模型、能力、景观、SIB、参考库、治理日志 | 高 |
 | 治理支撑 | 记录决策、合规评估与例外审批 | 高 |
 | 版本控制 | 支持架构景观基线、目标与过渡状态 | 中 |
@@ -3065,7 +3065,7 @@ SBB: Keycloak + 定制扩展
 #### 2.5 Architecture Building Block（ABB）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 抽象层级 | 逻辑/概念 | 高 |
 | 职责定义 | 明确的功能、接口、数据与行为 | 高 |
 | 技术无关性 | 不绑定具体产品或技术 | 高 |
@@ -3075,7 +3075,7 @@ SBB: Keycloak + 定制扩展
 #### 2.6 Solution Building Block（SBB）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 抽象层级 | 物理/实现 | 高 |
 | 产品绑定 | 对应具体产品、软件、服务或硬件 | 高 |
 | 配置信息 | 包含版本、参数、部署拓扑 | 高 |
@@ -3186,7 +3186,7 @@ ISO/IEC/IEEE 42010:2022 规定了架构描述（Architecture Description）的�
 ### 1.2 映射原则
 
 | 原则 | 说明 |
-|------|------|
+| ------ | ------ |
 | **双轨全覆盖** | 覆盖 Domain Engineering 和 Application Engineering 两条轨道的完整生命周期 |
 | **variability 显性化** | 将 Variability Model 作为一等公民映射到 ISO 42010/42020 的核心概念 |
 | **过程-描述协同** | 同时映射 ISO 42020（过程维度）与 ISO 42010（描述维度），避免"过程无描述"或"描述无过程" |
@@ -3204,7 +3204,7 @@ ISO 26550:2015 将产品线工程与管理（Product Line Engineering and Manage
 在此基础上，以下建立与 ISO/IEC/IEEE 42010:2022/42020 的核心概念桥梁：
 
 | ISO 26550:2015 概念 | ISO 42010:2022 对应 | ISO 42020:2019 对应 | 映射说明 |
-|---------------------|---------------------|---------------------|----------|
+| --------------------- | --------------------- | --------------------- | ---------- |
 | **Product Line** | Entity of Interest (EoI) — 产品线级 | Architecture Governance + Management | 产品线是被架构化的实体，其治理与管理由架构过程支撑 |
 | **Domain Engineering** | Architecture Description (AD) — 领域层 | Architecture Conceptualization + Elaboration | 领域工程产出领域资产的架构描述，对应概念化与细化过程 |
 | **Application Engineering** | Architecture Description (AD) — 应用层 | Architecture Evaluation + Enablement | 应用工程基于领域资产实例化具体产品，需要评估与使能支撑 |
@@ -3246,7 +3246,7 @@ ISO 26550:2015 明确指出，领域工程的目标是"定义和实现产品线�
 ### 3.2 领域工程 → ISO 42010:2022 映射
 
 | ISO 42010:2022 概念 | 领域工程中的实例 | 映射说明 |
-|---------------------|------------------|----------|
+| --------------------- | ------------------ | ---------- |
 | **Stakeholder** | 领域专家、产品线经理、市场分析师、架构委员会 | 关注共性功能提取与可变性边界 |
 | **Concern** | 可变性范围（Scope of Variability）、共性/变性比率、市场覆盖度 | "哪些可变、哪些不可变"是核心关注点 |
 | **Viewpoint** | *Domain Engineering Viewpoint* | 观察领域资产的专用视点 |
@@ -3260,7 +3260,7 @@ ISO 26550:2015 明确指出，领域工程的目标是"定义和实现产品线�
 ### 3.3 领域工程 → ISO 42020:2019 映射
 
 | ISO 42020:2019 过程 | 领域工程活动 | 映射说明 |
-|---------------------|--------------|----------|
+| --------------------- | -------------- | ---------- |
 | **Architecture Governance** | 制定产品线策略、可变性治理原则、资产准入标准 | 确保领域资产与组织战略目标对齐 |
 | **Architecture Management** | 领域资产版本管理、变更控制、发布计划 | 管理领域资产库的生命周期 |
 | **Architecture Conceptualization** | 特征建模、可变性分析、领域范围界定（Scoping） | 识别并综合产品线的概念架构 |
@@ -3282,7 +3282,7 @@ ISO 26550:2015 指出，应用工程的目标是"通过利用领域资产（包�
 ### 4.2 应用工程 → ISO 42010:2022 映射
 
 | ISO 42010:2022 概念 | 应用工程中的实例 | 映射说明 |
-|---------------------|------------------|----------|
+| --------------------- | ------------------ | ---------- |
 | **Stakeholder** | 产品负责人、客户、最终用户、合规审计员 | 关注具体产品的功能、质量、合规性 |
 | **Concern** | 产品差异化需求、性能约束、合规要求、上市时间 | 应用工程关注"这个产品具体是什么" |
 | **Viewpoint** | *Application Engineering Viewpoint* | 观察具体产品架构的视点 |
@@ -3296,7 +3296,7 @@ ISO 26550:2015 指出，应用工程的目标是"通过利用领域资产（包�
 ### 4.3 应用工程 → ISO 42020:2019 映射
 
 | ISO 42020:2019 过程 | 应用工程活动 | 映射说明 |
-|---------------------|--------------|----------|
+| --------------------- | -------------- | ---------- |
 | **Architecture Governance** | 产品配置合规审查、衍生品与产品线策略一致性检查 | 确保派生产品符合产品线治理框架 |
 | **Architecture Management** | 产品版本管理、衍生品生命周期管理、变更请求处理 | 管理具体产品的架构演进 |
 | **Architecture Conceptualization** | 产品需求分析、特征选择（Feature Selection）、可变性解析 | 理解特定产品的架构目标并综合解决方案 |
@@ -3311,7 +3311,7 @@ ISO 26550:2015 指出，应用工程的目标是"通过利用领域资产（包�
 ## 5. 综合映射表：ISO 26550 核心概念 → ISO 42010/42020
 
 | ISO 26550:2015 核心概念 | ISO 42010:2022 对应 | ISO 42020:2019 对应 | 双轨定位 |
-|------------------------|---------------------|---------------------|----------|
+| ------------------------ | --------------------- | --------------------- | ---------- |
 | **Product Line** | Entity of Interest (Class of Systems) | Architecture Governance | 治理对象 |
 | **Domain Engineering** | AD — Domain Layer Viewpoint | Conceptualization + Elaboration | 左轨：为复用而开发 |
 | **Application Engineering** | AD — Application Layer Viewpoint | Evaluation + Enablement | 右轨：基于复用而开发 |
@@ -3336,7 +3336,7 @@ ISO 26550:2015 指出，应用工程的目标是"通过利用领域资产（包�
 在软件工程架构复用知识体系中，复用存在清晰的阶梯层次：
 
 | 复用层级 | 复用单元 | 对应标准/框架 | 与本体系主题对应 |
-|----------|----------|---------------|------------------|
+| ---------- | ---------- | --------------- | ------------------ |
 | **代码级复用** | 函数、类、模块 | 语言标准库、开源组件 | 04-组件架构复用 |
 | **组件级复用** | 微服务、库、框架 | OSGi, Maven/npm, SPI | 04-组件架构复用 |
 | **架构模式复用** | 设计模式、架构风格 | GoF, POSA, TOGAF Patterns | 05-功能架构复用 |
@@ -3506,7 +3506,7 @@ ISO/IEC/IEEE 42010:2022 规定了架构描述（Architecture Description）的�
 ArchiMate 4 Specification（2026-04-27 发布）相对 3.2 的核心变化如下，这些变化直接影响架构复用资产的建模与消费：
 
 | 变更主题 | ArchiMate 3.2 状态 | ArchiMate 4.0 状态 | 对复用的影响 | W262 说明 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **通用域（Common Domain）** | 行为/结构元素按层重复定义（Business Process、Application Process、Technology Process 等） | 抽取跨层通用元素：Actor、Role、Collaboration、Process、Function、Interaction、Event、Service、Interface 等，通过层标注（layer tag）区分业务/应用/技术 | 可复用模式不再受层绑定限制；同一“服务”或“流程”抽象可在多层级复用 | W262 指出 Common Domain 是"housekeeping"式清理，避免概念债务无限累积 |
 | **行为元素合并** | Business/Application/Technology Process/Function/Interaction/Event/Service 独立 | 合并为 Common Domain 的通用行为元素 | 减少元模型冗余，降低资产库分类复杂度 | W262 强调合并后通过 layer tag 保留上下文，不损失语义 |
 | **多重性（Multiplicity）** | 仅部分关系支持数量表达 | 在元素和关系上显式支持 Multiplicity（0..1、1..*、* 等） | 支持规模化复用场景（如 N 个微服务实例、负载均衡组件） | W262 将 Multiplicity 列为最重要的新特性，支持数据建模、多流程实例、集群规模 |
@@ -3536,7 +3536,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ## 1.6 ArchiMate 4.0 与 ISO 42010:2022 条款映射
 
 | ISO 42010:2022 条款 | 核心要求 | ArchiMate 4.0 对应 | 复用映射 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | Layer / Domain / Aspect / Element / Relationship | 元模型资产分类基础 |
 | Clause 6.1 | AD 识别与概述 | ArchiMate Model / Repository 标识 | 模型资产库目录 |
 | Clause 6.6 | 包含视点 | ArchiMate Viewpoint（23+ 标准视点） | 可复用视点模板 |
@@ -3553,7 +3553,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ## 2. 元模型级映射：ArchiMate 语言结构 vs ISO 42010
 
 | ISO 42010:2022 概念 | ArchiMate 3.2/4.0 对应 | 映射说明 |
-|---------------------|------------------------|----------|
+| --------------------- | ------------------------ | ---------- |
 | **Architecture Description (AD)** | ArchiMate Model / Repository | ArchiMate 模型库是 AD 的载体 |
 | **Architecture Description Framework (ADF)** | ArchiMate Full Framework | ArchiMate 本身是一个符合 ISO 42010 的 ADF |
 | **Architecture Description Language (ADL)** | ArchiMate Modeling Language | ArchiMate 是一种标准化的 ADL |
@@ -3575,7 +3575,7 @@ The Open Group White Paper W262《The Motivation for Changes in the ArchiMate 4.
 ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Standard 10 Phase B（Business Architecture）直接对应。
 
 | ArchiMate 3.2 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|---------------------|---------------------|----------|---------------------|------|
+| --------------------- | --------------------- | ---------- | --------------------- | ------ |
 | Business Actor | Actor (Common Domain, 可标注为业务) | 主动结构 | Stakeholder / Active Structure View Component | 业务参与者 |
 | Business Role | Role (Common Domain, 可标注为业务) | 主动结构 | Active Structure View Component | 业务角色 |
 | Business Collaboration | Collaboration (Common Domain) | 主动结构 | Active Structure View Component | 跨主体协作 |
@@ -3594,7 +3594,7 @@ ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Sta
 ### 3.2 业务层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 业务层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Organization Viewpoint | Stakeholder Perspective Viewpoint | Organization Model | 组织责任、汇报线 |
 | Business Process Viewpoint | Behavioral Viewpoint | Process Model (BPMN-like) | 流程效率、瓶颈 |
 | Product Viewpoint | Structural Viewpoint | Product Composition Model | 产品构成、价值交付 |
@@ -3616,7 +3616,7 @@ ArchiMate 业务层描述企业的业务结构、行为和信息，与 TOGAF Sta
 ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 
 | ArchiMate 3.2 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|---------------------|---------------------|----------|---------------------|------|
+| --------------------- | --------------------- | ---------- | --------------------- | ------ |
 | Application Component | Application Component | 主动结构 | Active Structure View Component | 应用组件 |
 | Application Collaboration | Collaboration (Common Domain) | 主动结构 | Active Structure View Component | 应用协作 |
 | Application Interface | Interface (Common Domain, 可标注为应用) | 主动结构 | Active Structure View Component | 应用接口 |
@@ -3630,7 +3630,7 @@ ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 ### 4.2 应用层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 应用层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Application Structure Viewpoint | Structural Viewpoint | Component Model | 应用组合、模块化 |
 | Application Behavior Viewpoint | Behavioral Viewpoint | Process/Function Model | 应用行为、处理逻辑 |
 | Application Usage Viewpoint | Usage Viewpoint | Usage Model | 业务-应用依赖关系 |
@@ -3652,7 +3652,7 @@ ArchiMate 应用层描述支持业务的信息系统与应用软件架构。
 ArchiMate 技术层描述技术基础设施，包括 IT 和物理技术（ArchiMate 4.0 将 Physical Layer 并入 Technology Domain）。
 
 | ArchiMate 3.2/3.1 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|------------------------|---------------------|----------|---------------------|------|
+| ------------------------ | --------------------- | ---------- | --------------------- | ------ |
 | Node | Node | 主动结构 | Active Structure View Component | 计算节点 |
 | Device | Device | 主动结构 | Active Structure View Component | 物理设备 |
 | System Software | System Software | 主动结构 | Active Structure View Component | 系统软件 |
@@ -3673,7 +3673,7 @@ ArchiMate 技术层描述技术基础设施，包括 IT 和物理技术（ArchiM
 ### 5.2 技术层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate 技术层视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|------------------------------|--------------------------|-------------------|----------------|
+| ------------------------------ | -------------------------- | ------------------- | ---------------- |
 | Infrastructure Viewpoint | Deployment Viewpoint | Deployment Model | 基础设施布局、容量 |
 | Technology Usage Viewpoint | Dependency Viewpoint | Dependency Model | 应用-技术依赖关系 |
 | Equipment Viewpoint (Physical) | Physical Viewpoint | Physical Layout Model | 物理设备布局、OT 安全 |
@@ -3706,7 +3706,7 @@ Path "Secure API Gateway Path" (Common Domain)
 该层支持 TOGAF ADM Phase E/F/G 的实现规划与迁移管理。
 
 | ArchiMate 3.2/3.1 元素 | ArchiMate 4.0 元素 | 元素类别 | ISO 42010:2022 映射 | 说明 |
-|------------------------|---------------------|----------|---------------------|------|
+| ------------------------ | --------------------- | ---------- | --------------------- | ------ |
 | Work Package | Work Package | 实现元素 | Process/Activity View Component | 工作包 |
 | Deliverable | Deliverable | 实现元素 | View Component / Information Part | 交付物 |
 | Plateau | Plateau | 实现元素 | Baseline / State View Component | 架构基线/ plateau |
@@ -3716,7 +3716,7 @@ Path "Secure API Gateway Path" (Common Domain)
 ### 6.2 实现与迁移层 → ISO 42010 Viewpoint 映射
 
 | ArchiMate I&M 视点（示例） | ISO 42010:2022 Viewpoint | 包含的 Model Kind | 对应的 Concern |
-|----------------------------|--------------------------|-------------------|----------------|
+| ---------------------------- | -------------------------- | ------------------- | ---------------- |
 | Implementation and Migration Viewpoint | Transition Viewpoint | Migration/Transition Model | 迁移顺序、依赖、风险 |
 | Project Viewpoint | Project Management Viewpoint | Work Breakdown Model | 工作包分解、资源分配 |
 | Plateau & Gap Viewpoint (3.2) | Baseline Comparison Viewpoint | Diff/Baseline Model | 基线差异、差距分析 |
@@ -3727,7 +3727,7 @@ ISO 42010:2022 要求 Architecture Description 必须包含 **Architecture Decis
 ArchiMate 的实现与迁移元素提供了决策的载体：
 
 | ISO 42010:2022 | ArchiMate 4.0 映射 | 说明 |
-|----------------|--------------------|------|
+| ---------------- | -------------------- | ------ |
 | Architecture Decision | Work Package + Deliverable | 工作包定义了"做什么决策"，交付物定义了"决策结果" |
 | Architecture Rationale | Assessment + Goal + Outcome | 动机域的 Assessment 与 Goal 提供决策依据 |
 | Decision Timeline | Plateau → Plateau Transition | Plateau 序列表达决策的时间线 |
@@ -3741,7 +3741,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ### 7.1 动机域元素映射
 
 | ArchiMate 4.0 元素 | ISO 42010:2022 映射 | 说明 |
-|--------------------|--------------------|------|
+| -------------------- | -------------------- | ------ |
 | Stakeholder | Stakeholder | 直接对应 |
 | Driver | Concern (environmental influence) | 驱动因素是外部环境影响 |
 | Assessment | Concern / Rationale input | 评估结果是决策输入 |
@@ -3756,7 +3756,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ### 7.2 策略域元素映射
 
 | ArchiMate 4.0 元素 | ISO 42010:2022 映射 | 说明 |
-|--------------------|--------------------|------|
+| -------------------- | -------------------- | ------ |
 | Resource | Active Structure View Component | 战略资源 |
 | Capability | Behavior View Component | 业务能力 |
 | Value Stream | Behavior View Component (sequence) | 价值流 |
@@ -3767,7 +3767,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ## 8. 综合对照矩阵：四层核心元素 vs ISO 42010
 
 | 层面 | 主动结构 (Active Structure) | 行为 (Behavior) | 被动结构 (Passive Structure) | ISO 42010 Model Kind |
-|------|----------------------------|-----------------|------------------------------|---------------------|
+| ------ | ---------------------------- | ----------------- | ------------------------------ | --------------------- |
 | **业务层** | Actor, Role, Collaboration | Process, Function, Service, Event | Business Object, Product | Business Model Kind |
 | **应用层** | Application Component, Interface | Process, Function, Service, Event | Data Object | Application Model Kind |
 | **技术层** | Node, Device, System Software, Network | Process, Function, Service, Event | Artifact, Material | Technology Model Kind |
@@ -3780,7 +3780,7 @@ ArchiMate 的实现与迁移元素提供了决策的载体：
 ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方式：
 
 | 变化项 | ArchiMate 3.2 | ArchiMate 4.0 | ISO 42010 映射影响 |
-|--------|---------------|---------------|-------------------|
+| -------- | --------------- | --------------- | ------------------- |
 | 层特定行为元素 | Business Process, Application Process, Technology Process | 通用 Process (Common Domain) + 层标注 | Model Kind 的区分从元素类型转向标注/Profile，更符合 ISO 42010 的"Model Kind 是约定类别"的定义 |
 | 层特定角色/协作 | Business Role, Business Collaboration, etc. | 通用 Role, Collaboration + 层标注 | 同上 |
 | Constraint / Contract / Gap / Representation | 独立元素类型 | 移除或合并到通用元素 + 标注 | View Component 的粒度统一，Correspondence 通过关系而非元素类型表达 |
@@ -3847,7 +3847,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方�
 ### 2. ArchiMate 4.0 六层/域属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 分层清晰性 | 每个元素明确归属于某一层或域 | 高 |
 | 方面一致性 | 每个元素属于主动结构、行为或被动结构之一 | 高 |
 | 通用域复用 | 跨层通用元素可通过层标注（layer tag）区分上下文 | 中 |
@@ -3858,7 +3858,7 @@ ArchiMate 4.0 的重大概念简化影响了 ISO/IEC/IEEE 42010:2022 映射方�
 ### 3. 六层/域与 ISO 42010 映射
 
 | ArchiMate 4.0 层/域 | ISO 42010:2022 概念 | 核心元素（示例） | 复用说明 |
-|---------------------|---------------------|------------------|----------|
+| --------------------- | --------------------- | ------------------ | ---------- |
 | **业务层 Business Layer** | Viewpoint / Model Kind / View | Actor、Role、Process、Function、Service、Event、Business Object、Product | 业务能力目录与价值流模板在该层复用 |
 | **应用层 Application Layer** | Viewpoint / Model Kind / View | Application Component、Interface、Application Service、Data Object | 微服务模板、API 契约、数据模型在该层复用 |
 | **技术层 Technology Layer** | Viewpoint / Model Kind / View | Node、Device、System Software、Technology Service、Artifact、Communication Network | 容器镜像、基础设施即代码、网络拓扑在该层复用 |
@@ -3989,7 +3989,7 @@ IEEE Computer Society 于 2024 年 10 月发布的《软件工程知识体系指
 ## 2. 综合映射总表
 
 | SWEBOK V4 KA | 中文名称 | 本体系主要对应主题 | 次要对应主题 | 本体系扩展标注 |
-|:-------------|:---------|:-------------------|:-------------|:---------------|
+| :------------- | :--------- | :------------------- | :------------- | :--------------- |
 | KA1 — Software Requirements | 软件需求 | 02-业务架构复用 | 01-元模型与标准、06-跨层治理 | — |
 | KA2 — Software Architecture | 软件架构 | 03-应用架构复用 | 01-元模型与标准、05-功能架构复用 | — |
 | KA3 — Software Design | 软件设计 | 05-功能架构复用 | 03-应用架构复用、04-组件架构复用 | — |
@@ -4016,7 +4016,7 @@ SWEBOK V4 的需求领域覆盖需求获取（Elicitation）、分析（Analysis
 V4 特别强调模型驱动的需求规格（Model-Driven Requirements Specification）和基于验收标准的规格（Acceptance Criteria-Based Specification），以及长期维护中的需求文档价值。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **02-业务架构复用** | 需求工程是业务架构复用的"入口"。业务架构中定义的能力地图（Capability Map）、价值流（Value Stream）和业务场景（Business Scenario）直接驱动需求获取。可复用的需求模式（Requirements Pattern）和特征模型（Feature Model）是业务架构资产的重要组成部分。 |
 | **01-元模型与标准** | 需求规格标准（如 ISO/IEC/IEEE 29148:2018）与 ISO 42010 的 Stakeholder/Concern 概念对齐。需求追溯矩阵（Requirements Traceability Matrix）对应 ISO 42010 的 Correspondence 机制。 |
 | **06-跨层治理** | 需求变更的治理（Change Control Board）、需求优先级排序（Backlog Governance）和跨层需求一致性检查属于跨层治理范畴。 |
@@ -4031,7 +4031,7 @@ V4 特别强调模型驱动的需求规格（Model-Driven Requirements Specifica
 架构关注超越构造的连通性（Connectivity），并确保安全（Safety）、安保（Security）和可靠性（Dependability）等新质量水平。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **03-应用架构复用** | 软件架构是应用架构复用的核心载体。架构风格（Architectural Styles）、参考架构（Reference Architectures）和架构决策记录（ADR）作为可复用资产，在应用架构层被直接复用。微服务架构、事件驱动架构等风格定义了应用组合的标准模式。 |
 | **01-元模型与标准** | 架构描述标准 ISO 42010:2022、架构过程标准 ISO 42020:2019 和架构建模语言 ArchiMate 3.2/4.0 构成了架构描述与治理的元模型基础；其中 ArchiMate 4 Specification 已于 2026-04-27 正式发布，与 ArchiMate 3.2 向后兼容。TOGAF 10 的 ABB/SBB 机制提供了架构复用的分层实现路径。 |
 | **05-功能架构复用** | 功能架构（Functional Architecture）是软件架构的逻辑视图。功能分解模型、接口契约定义和端口-连接器模型（Port-Connector Model）在功能架构层被复用，支撑多种技术实现（SBB）。 |
@@ -4046,7 +4046,7 @@ Software Design 关注将需求转化为软件系统的表示。
 SWEBOK V4 强调敏捷、精益和增量设计对开发过程的影响，并扩展了新兴技术背景下的设计方法。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **05-功能架构复用** | 软件设计的核心产出——设计模式（Design Patterns）、框架（Frameworks）和组件接口——直接构成功能架构复用的内容库。GoF 模式、POSA 模式、领域驱动设计（DDD）的战术模式均属于功能架构层的可复用资产。 |
 | **03-应用架构复用** | 应用架构中的分层设计（Layered Architecture）、六边形架构（Hexagonal Architecture）和洋葱架构（Onion Architecture）为软件设计提供结构性约束和复用边界。 |
 | **04-组件架构复用** | 组件级设计（Component-Level Design）产出可复用的软件组件，包括类库、模块和微服务。组件的接口设计、依赖注入模式和插件架构直接支持组件层复用。 |
@@ -4059,7 +4059,7 @@ Software Construction 涵盖编码、单元测试、调试、代码评审、集�
 SWEBOK V4 将 Agile 实践（如 TDD、结对编程）和现代构建工具链纳入此 KA。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **04-组件架构复用** | 软件构造的直接产出——源代码、构建脚本和单元测试——是组件层复用最基本的单元。包管理器（npm/Maven/Go Modules）、容器镜像（Docker Image）和代码片段库（Code Snippet Repository）是构造资产的复用载体。 |
 | **05-功能架构复用** | 构造阶段的代码模板（Code Template）、脚手架工具（Scaffolding Tools）和领域特定语言（DSL）生成器将功能架构模型自动转化为可构造代码。 |
 | **10-供应链安全** | 软件构造是供应链攻击的主要入口。依赖项管理、SBOM（Software Bill of Materials）生成、SLSA（Supply-chain Levels for Software Artifacts）合规和漏洞扫描属于本体系 10-供应链安全 的核心关切。 |
@@ -4074,7 +4074,7 @@ SWEBOK V4 的测试领域覆盖测试级别（单元/集成/系统/验收）、�
 V4 特别加强了对自动化测试和持续测试的讨论。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **07-形式化验证** | 基于模型的测试（Model-Based Testing, MBT）和形式化测试用例生成是形式化验证与测试融合的前沿领域。本体系将契约式测试（Contract Testing）、属性测试（Property-Based Testing）和模型检验（Model Checking）统一在形式化验证主题下，扩展了 SWEBOK 的测试技术边界。 |
 | **05-功能架构复用** | 可复用组件的回归测试套件（Regression Test Suite）、接口兼容性测试（Compatibility Testing）和模糊测试（Fuzzing）是功能架构资产的质量门禁。 |
 | **06-跨层治理** | 跨层测试策略（如契约测试在微服务网格中的治理）、测试覆盖率阈值治理和测试债务管理属于跨层治理范畴。 |
@@ -4089,7 +4089,7 @@ V4 特别加强了对自动化测试和持续测试的讨论。
 涵盖部署、运维监控、事件响应、容量管理和混沌工程。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **06-跨层治理** | 运维是跨层治理的执行面。可观测性（Observability）数据（日志、指标、追踪）为架构治理提供实时反馈；SLO/SLA 治理连接业务目标与技术运维；混沌工程（Chaos Engineering）验证架构韧性。 |
 | **09-价值量化** | 运维数据是架构复用价值量化的关键输入。MTTR（平均修复时间）、部署频率、变更失败率等 DORA 指标直接反映复用资产在生产环境中的实际表现，支撑复用 ROI 计算。 |
 | **10-供应链安全** | 运维阶段的安全监控（Runtime Security Monitoring）、漏洞响应（Vulnerability Response）和供应链事件的应急处置属于供应链安全的运营闭环。 |
@@ -4104,7 +4104,7 @@ Software Maintenance 覆盖纠错性、适应性、完善性和预防性维护�
 SWEBOK V4 强调了遗留系统现代化（Legacy Modernization）和重构（Refactoring）在维护中的重要性。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **06-跨层治理** | 维护是架构治理的"反馈环"。维护请求（Maintenance Request）触发架构变更管理流程；技术债务（Technical Debt）的识别与清偿是跨层治理的持续活动。 |
 | **02-业务架构复用** | 业务需求变化驱动的适应性维护（Adaptive Maintenance）需要回溯到业务架构层，更新能力地图和价值流定义。 |
 | **09-价值量化** | 维护成本是复用价值量化的核心变量。可复用资产的维护成本分摊模型、技术债务利息计算和现代化投资回报分析属于价值量化主题。 |
@@ -4117,7 +4117,7 @@ SCM 覆盖配置标识、版本控制、变更控制、配置审计和发布管�
 SWEBOK V4 将 Git 工作流、GitOps 和基础设施即代码（IaC）纳入此 KA。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **06-跨层治理** | SCM 是跨层治理的技术底座。分支策略（Branching Strategy）、变更审批工作流（Approval Workflow）和发布治理（Release Governance）直接支撑跨层架构治理。 |
 | **04-组件架构复用** | 组件的版本管理、依赖解析和语义化版本控制（Semantic Versioning）是组件层复用的先决条件。Artifact Repository（如 Nexus、Artifactory）是组件资产的物理载体。 |
 | **10-供应链安全** | SCM 是供应链安全的"单点控制阀"。代码签名、提交溯源（Commit Provenance）、不可变构建（Immutable Build）和 VEX（Vulnerability Exploitability eXchange）的生成与 SCM 数据深度绑定。 |
@@ -4132,7 +4132,7 @@ SWEBOK V4 将 Git 工作流、GitOps 和基础设施即代码（IaC）纳入此 
 SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管理原则。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **09-价值量化** | 软件工程管理中的成本估算（COCOMO、功能点分析）、进度跟踪和风险管理是价值量化的管理输入。本体系在此基础上建立了**架构复用投资回报（ROI）模型**，将复用资产的开发成本、维护成本、节省成本量化为可比较指标。 |
 | **06-跨层治理** | 项目组合管理（Portfolio Management）和资源分配治理属于跨层治理的战略层。架构委员会（Architecture Board）对项目的技术路线审查是治理的关键活动。 |
 | **02-业务架构复用** | 业务架构中的能力成熟度评估和路线图规划直接指导项目优先级排序和资源分配。 |
@@ -4146,7 +4146,7 @@ SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管
 覆盖软件生命周期模型（瀑布、迭代、敏捷、DevOps）、过程评估与改进（CMMI、SPICE）和过程度量。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **01-元模型与标准** | 软件工程过程标准（ISO/IEC/IEEE 12207、ISO/IEC 33000 系列）与架构过程标准（ISO 42020）共同构成过程元模型。本体系的 Track A 将过程标准与架构标准进行统一对齐。 |
 | **06-跨层治理** | 过程治理（Process Governance）确保架构复用活动在组织范围内遵循统一的生命周期模型和质量标准。 |
 | **13-新兴趋势** | V4 中已整合 Agile 与 DevOps，但未深入讨论 AI 驱动的过程自适应（AI-Driven Process Adaptation）和自主代理（Autonomous Agents）参与软件过程，这属于 13-新兴趋势。 |
@@ -4158,7 +4158,7 @@ SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管
 覆盖建模语言（UML、SysML、BPMN）、形式化方法、原型方法、敏捷方法和模型驱动工程（MDE）。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **01-元模型与标准** | 建模语言标准（UML 2.5、SysML v2、ArchiMate 4）和架构描述标准（ISO 42010）是元模型与标准对齐的核心内容。本体系的 Track A 建立了这些标准之间的术语映射和概念桥梁。 |
 | **12-AI 原生复用** | SWEBOK V4 虽提及 AI/ML 在基础 KA 中的影响，但未将 AI 原生架构（AI-Native Architecture）作为独立方法讨论。本体系的 12-AI 原生复用 引入了 MCP（Model Context Protocol）、A2A（Agent-to-Agent）协议和 LLM 编排模式，扩展了模型与方法的边界。 |
 | **08-认知架构** | 认知架构（Cognitive Architecture）模型（如 SOAR、ACT-R）和基于大模型的认知代理架构，为 AI 原生软件系统提供了新的建模范式，属于本体系对 SWEBOK 的前瞻性扩展。 |
@@ -4172,7 +4172,7 @@ SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管
 覆盖软件质量基础、质量模型（ISO/IEC 25010:2023）、质量测量、质量策划、质量保证和质量控制。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **07-形式化验证** | 形式化验证是软件质量保证的最高层级。本体系将契约式验证（Contract-Based Verification）、类型驱动开发（Type-Driven Development）和证明携带代码（Proof-Carrying Code）纳入形式化验证主题，作为 SWEBOK 质量技术的增强。 |
 | **06-跨层治理** | 跨层质量门禁（Quality Gate）、技术债务度量和架构可维护性指数（Maintainability Index）治理属于跨层质量治理。 |
 | **09-价值量化** | 质量成本（Cost of Quality, CoQ）模型——包括预防成本、评估成本和失败成本——是价值量化的重要输入。 |
@@ -4185,7 +4185,7 @@ SWEBOK V4 整合了 Agile 项目管理实践（如 Scrum、Kanban）和精益管
 SWEBOK V4 强调安全左移（Shift-Left Security）和威胁建模（Threat Modeling）。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **10-供应链安全** | 供应链安全是软件安全在复用语境下的自然延伸。SLSA、NIST SSDF、SBOM、VEX、Sigstore 和软件物料清单治理属于本体系对 SWEBOK 安全 KA 的系统性扩展。 |
 | **06-跨层治理** | 安全治理（Security Governance）、零信任架构治理（Zero Trust Governance）和 DevSecOps 流程治理属于跨层治理的安全维度。 |
 | **07-形式化验证** | 形式化安全验证（Formal Security Verification）、信息流控制（Information Flow Control）和密码学协议验证是形式化验证在安全领域的应用。 |
@@ -4199,7 +4199,7 @@ SWEBOK V4 强调安全左移（Shift-Left Security）和威胁建模（Threat Mo
 涵盖专业伦理、团队动态、沟通技能、知识管理和终身学习。SWEBOK V4 更新了远程协作、多样性与包容性（Diversity & Inclusion）等现代实践。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **13-新兴趋势** | AI 辅助编程（AI-Assisted Programming）、低代码/无代码平台和自主代理团队（Agent Teams）正在重塑软件工程的专业实践边界，属于 13-新兴趋势。 |
 | **01-元模型与标准** | 专业认证标准（如 IEEE CS 认证、ITIL、TOGAF 认证）与知识体系标准（SWEBOK、SEBoK）共同定义了专业实践的知识边界。 |
 | **06-跨层治理** | 架构师社区实践（Community of Practice, CoP）、技术雷达（Technology Radar）和知识管理治理属于跨层治理的文化维度。 |
@@ -4212,7 +4212,7 @@ SWEBOK V4 强调安全左移（Shift-Left Security）和威胁建模（Threat Mo
 SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 
 | 本体系主题 | 对应关系说明 |
-|:-----------|:-------------|
+| :----------- | :------------- |
 | **09-价值量化** | 软件工程经济学是价值量量的理论基础。本体系在 SWEBOK 的成本模型基础上，建立了**架构复用资产的估值模型**（包括开发成本分摊、节省成本计算、机会成本分析和沉没成本处理）。 |
 | **02-业务架构复用** | 业务架构中的投资优先级排序（Investment Prioritization）和能力投资路线图（Capability Investment Roadmap）需要经济学分析支撑。 |
 | **06-跨层治理** | 跨层资源分配的经济学优化、技术债务的财务影响评估和架构投资决策治理属于跨层治理的经济维度。 |
@@ -4224,7 +4224,7 @@ SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 ## 4. 本体系对 SWEBOK V4 的扩展矩阵
 
 | 扩展领域 | 对应本体系主题 | SWEBOK V4 覆盖情况 | 本体系扩展内容 |
-|:---------|:---------------|:-------------------|:---------------|
+| :--------- | :--------------- | :------------------- | :--------------- |
 | **AI 原生复用** | 12-AI 原生复用 | 基础 KA 提及 AI/ML，无独立讨论 | MCP/A2A 协议、LLM 编排模式、AI 原生组件模型、提示工程模板库 |
 | **供应链安全** | 10-供应链安全 | KA13 覆盖软件安全，无供应链维度 | SLSA、SSDF、SBOM、VEX、Sigstore、可复用组件安全等级评估 |
 | **工业 IoT/OT-IT 融合** | 11-工业 IoT 与 OT/IT 融合 | 基础 KA 提及 IoT，无工业深度 | IEC 63278 (AAS)、OPC UA FX、TSN、数字孪生架构复用 |
@@ -4315,7 +4315,7 @@ SWEBOK V4 加强了敏捷和不确定环境下的经济决策讨论。
 ### 2. 属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 知识领域数量 | V4 共 18 个 KA（15 核心 + 3 基础） | 高 |
 | 生命周期覆盖 | 覆盖需求→设计→构造→测试→运维→退役 | 高 |
 | 本体系映射密度 | 每个核心 KA 至少映射到一个主题 | 高 |
@@ -4472,7 +4472,7 @@ graph LR
 审计发现：
 
 | 类别 | 数量 | 占比 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 严格定理（可形式化证明） | 20 | 28.2% |
 | 工程启发式（经验观察/设计原则） | 35 | 49.3% |
 | 待证猜想 | 10 | 14.1% |
@@ -4488,7 +4488,7 @@ graph LR
 ### 1.2 命题来源统计
 
 | 来源文件 | 公理数 | 定理数 | 猜想数 | 小计 |
-|----------|--------|--------|--------|------|
+| ---------- | -------- | -------- | -------- | ------ |
 | `axiom-system.md` | 15 | 0 | 0 | 15 |
 | `theorem-derivations.md` | 0 | 17 | 0 | 17 |
 | `axiom-theorem-tree.md`（扩展部分） | 13 | 21 | 5 | 39 |
@@ -4503,7 +4503,7 @@ graph LR
 对每条命题，从以下维度评估：
 
 | 维度 | 说明 |
-|------|------|
+| ------ | ------ |
 | **类型** | 严格定理 / 工程启发式 / 待证猜想 / 定义性命题 |
 | **可证明性** | 是否可在当前框架内证明？是否需要额外假设？ |
 | **反例可能性** | 是否存在边界条件或反例？ |
@@ -4523,7 +4523,7 @@ graph LR
 ### 表 1：01 主题公理（`axiom-system.md`）
 
 | 编号 | 名称 | 类型 | 可证明性 | 反例可能性 | 适用范围 | 审计意见 |
-|------|------|------|----------|------------|----------|----------|
+| ------ | ------ | ------ | ---------- | ------------ | ---------- | ---------- |
 | M.1 | Architecture-Reuse Duality | DE | E（作为定义接受） | 低 | 概念元层 | 将「架构」定义为约束集、「复用」定义为约束传递，是约定性框架。若脱离该定义讨论，则变为经验命题。 |
 | M.2 | Variability Axiom | DE | E（作为定义接受） | 中 | 可复用资产族 | 区分「共性/变性」是产品线工程的核心概念。但将无变性的复用排除为「克隆」属于术语约定。 |
 | M.3 | Hierarchy Non-Reduction | EH / CO | N + A | 高 | 多层架构分析 | 声称层次间不存在保持复用语义的双射，这是强的本体论断言，无法在当前集合论语境下证明。需补充层级的形式化语义。 |
@@ -4543,7 +4543,7 @@ graph LR
 ### 表 2：01 主题派生定理（`theorem-derivations.md`）
 
 | 编号 | 名称 | 类型 | 可证明性 | 反例可能性 | 适用范围 | 审计意见 |
-|------|------|------|----------|------------|----------|----------|
+| ------ | ------ | ------ | ---------- | ------------ | ---------- | ---------- |
 | Th.1 | Constraint Preservation | ST | Y（需补假设） | 低 | 架构迁移、重构 | 由 M.1 逻辑推出，但证明中「V₁∩V₂≠∅」应作为同一架构复用的前提显式声明。 |
 | Th.2 | Variability Closure | ST | Y（需有限性假设） | 低 | 产品线工程 | 组合上界在 Γ 为函数、Ctx 有限时成立。实际中绑定规则约束会显著缩小实例空间。 |
 | Th.3 | Hierarchy Failure Independence | EH | N + A | 中 | 故障分析 | 使用加权串联可靠性模型是建模选择，而非逻辑必然。权重的确定依赖主观判断。 |
@@ -4565,7 +4565,7 @@ graph LR
 ### 表 3：其他主题公理（`axiom-theorem-tree.md`）
 
 | 编号 | 主题 | 名称 | 类型 | 可证明性 | 反例可能性 | 适用范围 | 审计意见 |
-|------|------|------|------|----------|------------|----------|----------|
+| ------ | ------ | ------ | ------ | ---------- | ------------ | ---------- | ---------- |
 | F.1 | 07 | Formal Verification Trust Transfer | DE | E | 低 | 形式化验证 | 定义了验证性质继承的条件。前提是「使用方式不违反前置条件」，这是标准 Hoare 逻辑框架。 |
 | C.1 | 08 | Cognitive Load Conservation | DE | E | 低 | 认知架构 | 陈述 Sweller 认知负荷三分法。作为设计目标定义可接受。 |
 | 2.1 | 02 | Capability Atomicity | DE | E | 中 | 业务架构 | 将业务能力定义为最小业务语义单元，是 TOGAF/FEA 的概念约定。 |
@@ -4583,7 +4583,7 @@ graph LR
 ### 表 4：其他主题派生定理（`axiom-theorem-tree.md`）
 
 | 编号 | 主题 | 名称 | 类型 | 可证明性 | 反例可能性 | 适用范围 | 审计意见 |
-|------|------|------|------|----------|------------|----------|----------|
+| ------ | ------ | ------ | ------ | ---------- | ------------ | ---------- | ---------- |
 | F.2 | 07 | Composition Preservation | ST | Y（需 A-G 假设） | 低 | 形式化验证 | Assume-Guarantee 框架下的标准定理模板。 |
 | C.2 | 08 | Expertise Paradox | EH | N + A | 高 | 认知架构 | 与 01 主题 Th.15 内容重复但表述不同。专家决策时间「更短」与 Th.15「搜索成本更高」存在张力。 |
 | C.3 | 08 | Cognitive Load Minimization | CO | N | 高 | 文档设计 | 最优文档粒度存在性尚未证明，且 CL_total(g)=α/g+βg+γ 是拟设模型。 |
@@ -4609,7 +4609,7 @@ graph LR
 ### 表 5：待证猜想（`axiom-theorem-tree.md`）
 
 | 编号 | 名称 | 类型 | 可证明性 | 反例可能性 | 适用范围 | 审计意见 |
-|------|------|------|----------|------------|----------|----------|
+| ------ | ------ | ------ | ---------- | ------------ | ---------- | ---------- |
 | C.1 | 最优复用粒度 | CO | N | 高 | 认知架构、治理 | 需建立组织级认知负荷与粒度的可测量关系。 |
 | C.2 | AI 辅助复用采纳率与成熟度 | CO | N | 高 | AI 原生、治理 | 组织行为与成熟度关系复杂，难以形式化。 |
 | C.3 | 形式化验证成本摩尔定律 | CO | N | 高 | 形式化验证 | 技术成本演进受工具、硬件、人才多重因素影响，不宜用简单指数律描述。 |
@@ -4952,7 +4952,7 @@ Linux 内核的文件系统层（VFS）直接操作块设备层，跳过了若�
 ### 6.1 关键发现汇总
 
 | 序号 | 问题 | 影响 | 优先级 |
-|------|------|------|--------|
+| ------ | ------ | ------ | -------- |
 | 1 | `S.1` 编号冲突（01 主题 vs 10 主题） | 引用歧义，损害可追溯性 | 高 |
 | 2 | `axiom-theorem-tree.md` 中命题计数不一致 | 文档可信度下降 | 中 |
 | 3 | `Th.7` 证明存在符号错误 | 结论不可靠，可能误导决策 | 高 |
@@ -5016,7 +5016,7 @@ Linux 内核的文件系统层（VFS）直接操作块设备层，跳过了若�
 ## 7. 统计总结
 
 | 统计项 | 数量 |
-|--------|------|
+| -------- | ------ |
 | 审计命题总数 | 71 |
 | 01 主题公理 | 15 |
 | 01 主题定理 | 17 |
@@ -5080,11 +5080,11 @@ Linux 内核的文件系统层（VFS）直接操作块设备层，跳过了若�
 > **修复方案**: A — 激进全面重构（仅针对审计报告列出的 5 项具体问题，保持最小修改）
 
 | 序号 | 问题 | 修复内容 | 修改文件 | 修复原因 |
-|------|------|---------|---------|---------|
+| ------ | ------ | --------- | --------- | --------- |
 | 1 | S.1 编号冲突 | 将 10 主题「信任传递性崩塌」由 `S.1` 重命名为 `S.10`，并同步更新所有引用处。 | `struct/99-reference/glossary/axiom-theorem-tree.md`<br>`struct/10-supply-chain-security/README.md`<br>`struct/99-reference/templates/quick-reference-card.md`<br>`struct/99-reference/visualizations/axiom-theorem-full-graph.mmd`<br>`view/software_architecture_reuse_technical_deep_2026.md`<br>`struct/01-meta-model-standards/06-formal-axioms/axiom-rigor-audit.md` | 同一编号 `S.1` 指代 01 主题「接口可替换性」与 10 主题「信任传递性崩塌」两个完全不同的命题，导致引用歧义、可追溯性受损。 |
 | 2 | 命题计数不一致 | 重新核对 `axiom-theorem-tree.md` 中的枚举与 `axiom-system.md`、`theorem-derivations.md` 的实际数量，将统计修正为：01 主题 10 条严格公理 + 5 条工程启发式 + 17 条定理；其他主题 13 条公理 + 21 条定理；待证猜想 5 条；全体系合计 **71 条命题**。 | `struct/99-reference/glossary/axiom-theorem-tree.md` | 原文「15 公理 + 29 定理 = 44 条」与「核心公理体系达 20 条，定理达 35 条」均与实际枚举不符，降低文档可信度。 |
 | 3 | Th.7 公式符号错误 | 将适配度衰减模型从线性近似（取负归一化系数导致不等式方向错误）修正为指数衰减模型，得到上界：<br>$$\Delta(a, \mathit{ctx}) \leq \frac{\mathrm{Size}(a)}{\lambda} \cdot \ln\left(\frac{\mathrm{Fit}(a, \mathit{ctx})}{\tau}\right)$$<br>并更新应用示例。 | `struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md` | 原证明取 $k = \mathrm{Fit}(a, \mathit{ctx}) - 1 \leq 0$，导致不等式方向反转，原公式量纲与符号均混乱。 |
-| 4 | Th.12 GCD 误用 | 移除对连续发布节奏使用整数 GCD 的错误表达，改用连续解耦条件：<br>$$\forall k \in \mathbb{N}^+: \left| \frac{\rho(a)}{\rho(s_i)} - k \right| > \delta \quad \text{且} \quad \forall k \in \mathbb{N}^+: \left| \frac{\rho(s_i)}{\rho(a)} - k \right| > \delta$$<br>并标注该定理为「启发式推论」。 | `struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md` | GCD 定义于整数，发布节奏 $\rho$ 为连续时间量，原证明数学工具误用。 |
+| 4 | Th.12 GCD 误用 | 移除对连续发布节奏使用整数 GCD 的错误表达，改用连续解耦条件：<br>$$\forall k \in \mathbb{N}^+: \left | \frac{\rho(a)}{\rho(s_i)} - k \right | > \delta \quad \text{且} \quad \forall k \in \mathbb{N}^+: \left | \frac{\rho(s_i)}{\rho(a)} - k \right | > \delta$$<br>并标注该定理为「启发式推论」。 | `struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md` | GCD 定义于整数，发布节奏 $\rho$ 为连续时间量，原证明数学工具误用。 |
 | 5 | 设计原则误标为公理 | 将 `S.4`（抽象分层）、`P.1`（演化独立性）、`P.2`（反馈收敛性）、`P.3`（治理复杂度定律）、`P.4`（学习曲线单调性）降级为「工程启发式原则」/「工程约束」，并同步更新统计表、映射表及依赖它们的定理标注（Th.11、Th.12-Th.15、Th.14、Th.17 等标注为条件定理或启发式推论）。 | `struct/01-meta-model-standards/06-formal-axioms/axiom-system.md`<br>`struct/01-meta-model-standards/06-formal-axioms/theorem-derivations.md`<br>`struct/99-reference/glossary/axiom-theorem-tree.md` | 这些命题本质上是设计原则、经验模型或理想化假设，不具备逻辑公理所要求的普遍必然性，继续标为「公理」会混淆严格性与工程经验。 |
 
 ### 修复后状态
@@ -5161,7 +5161,7 @@ Linux 内核的文件系统层（VFS）直接操作块设备层，跳过了若�
 ## 符号约定
 
 | 符号 | 含义 |
-|------|------|
+| ------ | ------ |
 | $\mathcal{A}$ | 架构 (Architecture) 的论域 |
 | $\mathcal{C}$ | 组件 (Component) 的论域 |
 | $\mathcal{R}$ | 复用资产 (Reusable Asset) 的论域 |
@@ -5628,7 +5628,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 ## 5. 公理体系统计与映射
 
 | 类别 | 数量 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 元公理 (M) | 4 | ✅ 已确立 |
 | 存在性公理 (E) | 3 | ✅ 已确立 |
 | 结构性公理 (S) | 3 | ✅ 已确立 |
@@ -5640,7 +5640,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 ### 公理到主题的映射
 
 | 公理 | 主要相关主题 | 关键概念 |
-|------|------------|---------|
+| ------ | ------------ | --------- |
 | M.1 | 01, 04, 06 | 约束传递、架构二元性 |
 | M.2 | 02, 04, 12 | 共性/变性、产品线工程 |
 | M.3 | 01, 02, 03, 04, 05, 06 | 层次不可约、TLO |
@@ -5660,7 +5660,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 ### 5.1 标准条款映射
 
 | 公理/定理 | 对应国际标准条款 | 条款核心内容 | 说明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | M.1 Architecture-Reuse Duality | ISO/IEC/IEEE 42010:2022, Clause 5.2.7 | Architecture Viewpoint 规约关注点与约定 | 架构描述的 Viewpoint 本质是约束集合，复用即约束传递 |
 | M.2 Variability Axiom | ISO/IEC 26550:2015, Clause 4.2 / 6.4.2 | 产品线工程参考模型与显式可变性管理 | 产品线工程要求显式 Variability Model 与 Variation Point 管理 |
 | M.3 Hierarchy Non-Reduction | ISO/IEC 21838-3:2023 (DOLCE) | 顶层本体论与领域本体论的结构 | 顶层本体论与领域本体论不可相互还原，支持层次不可约性 |
@@ -6223,7 +6223,7 @@ P.4 的单调性要求过于理想化。软件产业的现实是"阶梯式学习
 ### 2.1 认识论局限
 
 | 局限 | 说明 |
-|------|------|
+| ------ | ------ |
 | **描述性 vs 规范性** | 本公理体系混合了描述性声明（"复用是什么"）和规范性声明（"复用应当如何"）。M.1-M.4 偏描述性，P.1-P.4 偏规范性。形式化公理无法自我证明其规范性基础的正当性。 |
 | **静态 vs 动态** | 公理体系描述的是某一时刻的"快照"。软件工程实践持续演化（如 AI 生成代码、低代码平台），公理可能需要每年修订。形式化的"稳定性"与领域的"动态性"存在张力。 |
 | **还原论局限** | 形式化要求将复用现象还原为数学对象（集合、函数、关系）。但复用本质上是社会-技术现象（涉及组织、文化、经济、认知），纯数学还原可能丢失关键语义。 |
@@ -6231,7 +6231,7 @@ P.4 的单调性要求过于理想化。软件产业的现实是"阶梯式学习
 ### 2.2 方法学局限
 
 | 局限 | 说明 |
-|------|------|
+| ------ | ------ |
 | **不可计算性** | 多条公理涉及不可计算或不可判定的概念。例如：M.1 中的 $\models$（语义有效）在一阶逻辑中不可判定；E.3 中的 $\mathrm{Fit}$ 函数缺乏可操作定义；P.3 中的 $G_{\text{org}}$ 无法客观度量。 |
 | **验证困难** | 公理的形式化表述使用了一阶逻辑、集合论和模态逻辑的混合。没有现成的自动定理证明器能直接验证这些混合公理的一致性。 |
 | **经验基础薄弱** | 部分公理（如 P.3 的 $N \log N$）缺乏大规模实证研究支撑。指数中的常数 $k$、阈值 $\tau$ 等参数需要行业数据校准。 |
@@ -6239,7 +6239,7 @@ P.4 的单调性要求过于理想化。软件产业的现实是"阶梯式学习
 ### 2.3 应用局限
 
 | 局限 | 说明 |
-|------|------|
+| ------ | ------ |
 | **尺度问题** | 公理体系在中小企业（复用资产 < 20）和超大规模组织（复用资产 > 10,000）中的适用性可能不同。当前公理未区分组织尺度。 |
 | **文化差异** | 公理隐含了西方软件工程文化（组件化、标准化、形式化）。在强调集体所有权和快速迭代的敏捷文化中，某些公理（如 P.1 的演化独立性）可能不被接受。 |
 | **技术范式依赖** | 公理体系基于"组件-接口-组合"范式。对于神经网络权重复用、提示工程 (Prompt Engineering) 复用、生成式 AI 的模型复用，当前公理覆盖不足。 |
@@ -6273,7 +6273,7 @@ P.4 的单调性要求过于理想化。软件产业的现实是"阶梯式学习
 ## 3. 反模式映射全景
 
 | 反模式 | 违反的公理 | 违反机制 | 缓解策略 |
-|--------|-----------|---------|---------|
+| -------- | ----------- | --------- | --------- |
 | **Copy-Paste Programming** | E.1, M.2 | 无封装、无变性管理 | 引入代码扫描工具，强制提取公共函数 |
 | **Golden Hammer** | E.3, M.3 | 忽视上下文适配、跨层误用 | 建立技术选型委员会，强制适配度评估 |
 | **Not Invented Here** | E.2, E.1 | 高估自研成本、低估外部资产质量 | 引入客观的成本-收益计算框架 |
@@ -6294,7 +6294,7 @@ P.4 的单调性要求过于理想化。软件产业的现实是"阶梯式学习
 ## 4. 公理体系的演进路线图
 
 | 版本 | 目标 | 主要修订 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 2026-06 (Phase 3) | 基础确立 | 15 条公理、17 条定理、依赖网络 |
 | 2026-Q4 | 实证校准 | 引入行业数据集校准 E.2、P.3 的参数；增加 AI 原生复用公理 |
 | 2027-Q2 | 尺度扩展 | 区分 SME / 大型企业 / 超大规模组织的公理变体 |
@@ -6579,7 +6579,7 @@ Th.15 → [Th.17*]
 **影响度定义**: 一个公理的影响度为其直接推导的定理数 + 间接影响的其他公理数。
 
 | 排名 | 公理 | 直接定理 | 间接定理 | 影响其他公理 | **总影响度** |
-|:---:|:---:|:---:|:---:|:---:|:---:|
+| :---: | :---: | :---: | :---: | :---: | :---: |
 | 1 | **P.3** | 2 (Th.14, Th.17) | 0 | 1 (P.4) | **4** |
 | 2 | **S.2** | 2 (Th.9, Th.16) | 1 (Th.16 受 Th.9 影响) | 1 (S.3) | **4** |
 | 3 | **S.3** | 2 (Th.10, Th.16) | 1 (Th.16 受 Th.10 影响) | 0 | **3** |
@@ -6636,7 +6636,7 @@ M.3 → Th.3 → Th.11* (间接)
 假设单条公理被证伪（即找到反例），分析其对整个体系的影响：
 
 | 被推翻公理 | 直接失效定理 | 间接失效定理 | 需修正定理 | **体系震荡等级** |
-|:---:|:---:|:---:|:---:|:---:|
+| :---: | :---: | :---: | :---: | :---: |
 | M.1 | Th.1 | Th.16 | Th.6, Th.8 | 🔴 **高** |
 | M.2 | Th.2 | Th.7 | Th.6 | 🟡 中 |
 | M.3 | Th.3 | Th.11 | Th.12, Th.14 | 🔴 **高** |
@@ -6729,7 +6729,7 @@ P.4                                                                             
 本依赖关系图与 `struct/99-reference/glossary/axiom-theorem-tree.md` 中的"依赖关系图"章节对齐并扩展：
 
 | 原文件内容 | 本文件扩展 |
-|-----------|-----------|
+| ----------- | ----------- |
 | 文本形式的推导树 | 增加 Mermaid 可视化图 |
 | 8 条推导链 | 扩展为 17 条定理的完整网络 |
 | 无关键路径分析 | 增加影响度排名和最长链分析 |
@@ -6780,7 +6780,7 @@ P.4                                                                             
 **定义**：公理→形式化规约映射是将自然语言/LaTeX 陈述的公理与定理，对应到可被机器检验工具（TLC 模型检验器、Alloy Analyzer、Coq/Rocq、Isabelle/HOL）执行的规约文件的过程。映射状态分三级：
 
 | 标记 | 含义 |
-|------|------|
+| ------ | ------ |
 | ✅ 已机器验证 | 存在编码该公理/定理语义的规约文件，且有明确的机器验证记录（工具、版本、日期、结果） |
 | 🟡 部分形式化 | 存在结构相关的规约（领域实例化或断言已编写），但未直接编码公理谓词，或缺少机器复验记录 |
 | ⬜ 仅自然语言 | 公理/定理仅以自然语言 + LaTeX 陈述，无任何对应规约 |
@@ -6792,7 +6792,7 @@ P.4                                                                             
 ## 2. 现状统计
 
 | 类别 | 总数 | ✅ 已机器验证 | 🟡 部分形式化 | ⬜ 仅自然语言 |
-|------|------|--------------|---------------|---------------|
+| ------ | ------ | -------------- | --------------- | --------------- |
 | 严格公理（M.1–M.4, E.1–E.3, S.1–S.3） | 10 | 0 | 1（S.3） | 9 |
 | 工程启发式（S.4, P.1–P.4） | 5 | 1（S.4） | 0 | 4 |
 | **命题合计** | **15** | **1** | **1** | **13** |
@@ -6805,7 +6805,7 @@ P.4                                                                             
 ## 3. 公理→形式化规约映射表
 
 | 编号 | 陈述摘要 | 形式化状态 | 对应规约文件 | 验证方式 | 缺口说明 |
-|------|----------|-----------|--------------|----------|----------|
+| ------ | ---------- | ----------- | -------------- | ---------- | ---------- |
 | M.1 | 架构-复用二元性：复用 ⇔ 约束传递（∃V′⊆V: V′⊨Ctx） | ⬜ | 无 | 无 | `cross-layer-mapping.md` 叙事性引用公理体系，但 `.als` 未编码"约束子集在上下文中语义有效"的谓词；`⊨` 在一阶逻辑中不可判定（见 `critique-and-boundaries.md`），需先给出可操作语义 |
 | M.2 | 可变性：复用 ⇔ 共性/变性分离且绑定规则良定义 | ⬜ | 无 | 无 | 无规约建模变体点集 V 与绑定规则 Γ |
 | M.3 | 层次不可约：层间不存在保持复用语义的双射 | ⬜ | 无 | 无 | 该命题是元层否定存在性陈述，Alloy/TLA+ 难以直接编码；`cross-layer-mapping.md` 仅叙事提及"与 M.3 一致"；`axiom-rigor-audit.md` 自承当前框架内不可证 |
@@ -6829,9 +6829,9 @@ P.4                                                                             
 全部 17 条定理均为 ⬜（仅自然语言 + 证明草图），无任何机器验证。下表给出每条定理的证明状态、最适合的形式化工具与主要缺口。
 
 | 编号 | 名称（依赖公理） | 形式化状态 | 对应规约文件 | 验证方式 | 缺口说明 |
-|------|------------------|-----------|--------------|----------|----------|
+| ------ | ------------------ | ----------- | -------------- | ---------- | ---------- |
 | Th.1 | 约束保持定理（M.1） | ⬜ | 无 | 无 | **证明待补强**（见 §5.1）：第 4 步"无共享约束即矛盾"无公理支持，第 5 步在"蕴含"语义下子集不保真 |
-| Th.2 | 变体闭包定理（M.2） | ⬜ | 无 | 无 | 上界 `|Ctx|^|V|` 的基数论证可在 Coq/Isabelle 中形式化（有限集势），前提需 Γ 为全函数 |
+| Th.2 | 变体闭包定理（M.2） | ⬜ | 无 | 无 | 上界 ` | Ctx | ^ | V | ` 的基数论证可在 Coq/Isabelle 中形式化（有限集势），前提需 Γ 为全函数 |
 | Th.3 | 层次失败独立性（M.3） | ⬜ | 无 | 无 | 加权可靠性模型 `(1-p)^w` 对非整数 w 需实分析；且隐含"层间失败独立"假设未声明（`theorem-derivations.md` §8.1 自承共因故障时仅为下界） |
 | Th.4 | 同一性追溯定理（M.4） | ⬜ | 无 | 无 | 对链长 n 的数学归纳，结构清晰，**最适合优先机械化**（Coq/Isabelle） |
 | Th.5 | 资产存在必要性（E.1） | ⬜ | 无 | 无 | 逆否命题直接由 E.1 等价式得到，逻辑 trivial；前提是 E.1 三谓词可判定 |
@@ -6884,7 +6884,7 @@ P.4                                                                             
 以下是对 `07-formal-verification/` 全部规约文件实际验证内容的核实结果（依据各文件头部注释与 assert/check/run 命令），用于防止把案例规约误计为公理形式化。
 
 | 规约文件 | 实际验证的性质 | 与公理体系的关系 |
-|----------|----------------|------------------|
+| ---------- | ---------------- | ------------------ |
 | [`payment-service.tla`](../struct/07-formal-verification/01-tla-plus/payment-service.tla) | 资金守恒、无双花、Committed 金额为正等 5 条不变量 + 1 条活性 | 案例规约，非公理形式化 |
 | [`mcp-capability-negotiation.tla`](../struct/07-formal-verification/01-tla-plus/mcp-capability-negotiation.tla) | Active 时能力交集非空、协议版本一致等 5 条不变量 + 2 条活性 | 案例规约，非公理形式化 |
 | [`a2a-task-lifecycle.tla`](../struct/07-formal-verification/01-tla-plus/a2a-task-lifecycle.tla) | 终止态无消息、Completed 必有 Artifact、状态转移合法等 5 条不变量 + 2 条活性 | 案例规约，非公理形式化 |
@@ -6915,7 +6915,7 @@ P.4                                                                             
 ## 8. 形式化路线图建议
 
 | 阶段 | 任务 | 目标产出 | 对齐 |
-|------|------|----------|------|
+| ------ | ------ | ---------- | ------ |
 | 近期（2026-Q3） | ① 用 TLC 跑通 3 个 `.tla`、用 Alloy Analyzer 复验其余 3 个 `.als`，把工具版本/日期/结果写回各文件头部；② 为 S.1 编写 Alloy 规约（有限迹集上的可观察行为等价 ⇒ 可替换关系为等价关系，顺带机械化 Th.8 的结构版） | 验证记录全覆盖；S.1 进入 ✅/🟡 | 批判报告 Phase 4 |
 | 中期（2026-Q4） | ① 用 Coq 或 Isabelle 机械化 Th.4（复用链同一性归纳）与 Th.8（等价关系三性质），替换教学示例的地位或并列存放；② 按 §5 补强 Th.1/Th.13 证明并复验；③ 统一 P.3/Th.14 的 log 底与 k 口径 | 定理实现 2–4/17 机器验证 | 批判报告 Phase 4 |
 | 长期（2027，与 `critique-and-boundaries.md` 的 2027-Q4 计划对齐） | ① 补全原语定义（约束 V、复用语义、层次 L、Trust 取值空间）；② M.1 的 CSP 弱形式编码；③ M.4 + Th.4 的 SBOM 同一性追踪实例（与主题 10 联动） | 元公理层实现弱形式机器验证 | `critique-and-boundaries.md:429` |
@@ -7056,7 +7056,7 @@ flowchart TB
 **核心概念**：
 
 | 概念 | 定义 | 复用形态 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **业务能力（Business Capability）** | 组织为达成特定目标而具备的能力，如“订单管理”、“客户信用评估” | 能力目录、能力地图 |
 | **价值流（Value Stream）** | 端到端交付价值的活动序列 | 价值流模板、阶段定义 |
 | **业务流程（Business Process）** | 完成业务目标的一系列有序任务 | BPMN 流程模型、流程片段 |
@@ -7078,7 +7078,7 @@ flowchart TB
 **核心概念**：
 
 | 概念 | 定义 | 复用形态 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **应用系统（Application System）** | 支撑一个或多个业务能力的软件系统 | 应用目录、系统蓝图 |
 | **架构模式（Architectural Pattern）** | 组织应用系统的通用结构，如分层、微服务、EDA | 架构决策记录（ADR）、模式库 |
 | **集成契约（Integration Contract）** | 应用系统间的交互协议与数据格式 | API 规范、事件契约 |
@@ -7099,7 +7099,7 @@ flowchart TB
 **核心概念**：
 
 | 概念 | 定义 | 复用形态 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **组件（Component）** | 具有明确接口和职责的模块化单元 | 库、包、模块、服务 |
 | **接口契约（Interface Contract）** | 组件对外暴露的能力约定 | API 接口、抽象类、协议 |
 | **依赖关系（Dependency）** | 组件之间的使用关系 | 依赖图、模块边界 |
@@ -7120,7 +7120,7 @@ flowchart TB
 **核心概念**：
 
 | 概念 | 定义 | 复用形态 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **功能（Function）** | 完成单一任务的最小可执行单元 | 函数、方法、操作 |
 | **API 操作（API Operation）** | 通过接口暴露的功能调用 | REST 操作、gRPC 方法 |
 | **事件处理器（Event Handler）** | 响应事件的功能单元 | 消费者函数、处理器 |
@@ -7152,7 +7152,7 @@ flowchart LR
 ```
 
 | 关系 | 起点 | 终点 | 说明 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | **realizes**（实现） | 应用架构 | 业务架构 | 应用系统实现业务能力 |
 | **maps-to**（映射） | 业务架构 | 应用架构 | 业务能力映射到应用系统 |
 | **decomposes-to**（分解为） | 应用架构 | 组件架构 | 应用系统分解为组件 |
@@ -7168,7 +7168,7 @@ flowchart LR
 ### 4.1 通用属性
 
 | 属性 | 业务架构 | 应用架构 | 组件架构 | 功能架构 |
-|------|---------|---------|---------|---------|
+| ------ | --------- | --------- | --------- | --------- |
 | **抽象层次** | 最高 | 高 | 中 | 低 |
 | **稳定性** | 高 | 中 | 低 | 最低 |
 | **复用粒度** | 能力/流程 | 系统/模式 | 组件/接口 | 函数/操作 |
@@ -7189,7 +7189,7 @@ flowchart LR
 ### 示例 1：订单业务能力 → 订单微服务 → 订单组件 → 下单 API
 
 | 层级 | 复用单元 | 说明 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 业务架构 | **订单管理能力** | 业务能力目录中的条目 |
 | 应用架构 | **Order Service** | 支撑订单管理能力的微服务 |
 | 组件架构 | **OrderRepository、PricingEngine** | 服务内部组件 |
@@ -7204,7 +7204,7 @@ flowchart LR
 ### 示例 2：支付业务能力 → 支付函数 → 支付 SDK
 
 | 层级 | 复用单元 | 说明 |
-|------|---------|------|
+| ------ | --------- | ------ |
 | 业务架构 | **支付处理能力** | 业务能力 |
 | 应用架构 | **Payment Service / Payment Functions** | 服务或 Serverless 函数集 |
 | 组件架构 | **Payment SDK** | 多语言支付客户端 |
@@ -7257,7 +7257,7 @@ flowchart LR
 ### 7.1 四层 × ISO/IEC 42010 架构描述元素
 
 | 四层视角 | 利益相关者关注点 | 架构视点 | 架构视图 | 模型 |
-|---------|----------------|---------|---------|------|
+| --------- | ---------------- | --------- | --------- | ------ |
 | 业务架构 | CEO、CIO、业务负责人 | 业务能力视点 | 能力地图、价值流图 | 业务能力模型 |
 | 应用架构 | 应用架构师 | 应用系统视点 | 系统蓝图、集成图 | 应用组合模型 |
 | 组件架构 | 技术负责人 | 组件视点 | 组件图、依赖图 | 组件模型 |
@@ -7266,7 +7266,7 @@ flowchart LR
 ### 7.2 四层 × 复用策略
 
 | 层级 | 复用策略 | 典型错误 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 业务架构 | 能力目录、价值流模板 | 将流程当能力，忽视稳定业务能力 |
 | 应用架构 | 架构模式库、系统集成契约 | 盲目追求微服务或 Serverless |
 | 组件架构 | 组件库、接口契约、设计模式 | 共享数据库、循环依赖 |
@@ -7328,7 +7328,7 @@ flowchart LR
 ### 2. 本体属性
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | 层数 | 4 层（业务 / 应用 / 组件 / 功能） | 高 |
 | 顶层概念 | 架构复用视角 / CARC | 高 |
 | 层间关系集合 | realizes、maps-to、decomposes-to、supports、implements、exposes、enables | 高 |
@@ -7449,7 +7449,7 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 延续 `axiom-system.md` 的符号体系，补充：
 
 | 符号 | 含义 |
-|------|------|
+| ------ | ------ |
 | $\vdash$ | 可推导 |
 | $\square$ | 证毕 (Q.E.D.) |
 | $\mathrm{Th}$ | 定理编号空间 |
@@ -7461,7 +7461,7 @@ A6: ∀x,y (changes(FunctionalArchitecture(x)) ∧ exposes(x, y) → minimal-imp
 ## 定理总览
 
 | 编号 | 名称 | 依赖公理 | 应用领域 |
-|------|------|---------|---------|
+| ------ | ------ | --------- | --------- |
 | Th.1 | 约束保持定理 | M.1 | 架构迁移、重构 |
 | Th.2 | 变体闭包定理 | M.2 | 产品线工程、配置管理 |
 | Th.3 | 层次失败独立性 | M.3 | 故障分析、根因定位 |
@@ -7978,7 +7978,7 @@ $$
 ## 定理推导统计
 
 | 类别 | 数量 | 来源公理 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 元公理定理 | 4 | M.1 - M.4 |
 | 存在性定理 | 3 | E.1 - E.3 |
 | 结构性定理 | 4 | S.1 - S.4 |
@@ -7997,7 +7997,7 @@ $$
 ### 8.1 元公理定理的直观解释
 
 | 定理 | 核心直觉 | 典型反例/边界条件 |
-|------|---------|------------------|
+| ------ | --------- | ------------------ |
 | Th.1 约束保持定理 | 同一架构在不同上下文复用时，真正传递的是共享约束子集 | 若两上下文需求互斥，$V_1 \cap V_2 = \emptyset$，则“同一架构”的复用语义为空 |
 | Th.2 变体闭包定理 | 变体点的组合空间构成有限上界 | 当绑定规则 $\Gamma$ 引入约束时，实际实例数可能远小于 $Card(\mathcal{Ctx})^{Card(V)}$ |
 | Th.3 层次失败独立性 | 串联可靠性：任一层完全失败则整条价值流失败 | 若假设层间失败独立，而实际存在共因故障（如共享库漏洞），则公式给出的是下界 |
@@ -8152,7 +8152,7 @@ OMG **Reusable Asset Specification (RAS)** v2.2 是供应商中立的软件资�
 回答“**与其他资产的关系？**”。RAS 预定义四种关系类型：
 
 | 关系类型 | 语义 | 示例 |
-|----------|------|------|
+| ---------- | ------ | ------ |
 | `aggregation` | 聚合/包含 | 资产包内含子模块 |
 | `similar` | 相似/替代 | 功能等价的备选方案 |
 | `dependency` | 依赖 | 编译期或运行期必需 |
@@ -8163,7 +8163,7 @@ OMG **Reusable Asset Specification (RAS)** v2.2 是供应商中立的软件资�
 RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增：子 Profile 不能删除父 Profile 的约束，只能增加或收紧。
 
 | Profile | 扩展自 | 用途 |
-|---------|--------|------|
+| --------- | -------- | ------ |
 | Default Profile 2.2 | Core RAS | 通用资产（业务流程、文档） |
 | Default Component Profile 2.2 | Default Profile | 二进制/设计时组件（J2EE、.NET 程序集） |
 | Default Web Service Profile 2.2 | Default Component Profile | Web Service 客户端包装 |
@@ -8177,7 +8177,7 @@ RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增
 本知识体系采用业务架构 → 应用架构 → 组件架构 → 功能架构的四层复用模型。RAS 的四维结构在各层中的映射如下：
 
 | RAS 概念 | 业务架构层 | 应用架构层 | 组件架构层 | 功能架构层 |
-|----------|-----------|-----------|-----------|-----------|
+| ---------- | ----------- | ----------- | ----------- | ----------- |
 | **Classification** | 业务能力分类（领域、价值流、组织单元） | 架构模式分类（微服务、事件驱动、分层） | 包/模块分类（语言生态、运行时、许可证） | 函数/算法分类（复杂度、确定性、并行性） |
 | **Solution** | 业务流程模型（BPMN、价值流图、领域模型） | 微服务模板（部署拓扑、数据流、API 契约） | 库/框架代码（源码、二进制、设计模式实例） | 可复用函数（算法实现、MCP Tool、A2A Agent Card） |
 | **Usage** | 价值流使用指南（角色职责、KPI 映射、变革管理） | 部署配置（Helm values、Terraform 模块参数） | API 文档（OpenAPI/AsyncAPI、调用契约、兼容性矩阵） | 调用示例（输入/输出样例、边界条件、性能基线） |
@@ -8192,7 +8192,7 @@ RAS 通过 **Profile（配置文件）** 实现领域扩展，约束单调递增
 RAS 作为元模型，与体系内引用的多个权威标准存在概念对应关系：
 
 | RAS 概念 | 对应标准/概念 | 映射说明 |
-|----------|--------------|----------|
+| ---------- | -------------- | ---------- |
 | **Classification** | ISO 42010 Viewpoint / Concern | RAS `ClassificationSchema` 可视为对 ISO 42010 中 Viewpoint 分类体系的具体化；`Context` 对应 Concern 的上下文边界 |
 | **Solution** | TOGAF ABB / SBB | RAS `Solution` 的抽象制品对应 Architecture Building Block（ABB），具体实现制品对应 Solution Building Block（SBB）；`VariabilityPoint` 对应 ABB/SBB 间的可变性管理 |
 | **Usage** | SWEBOK "Construction with Reuse" | RAS `Usage` 中的 `Activity` 与 `VariabilityPointBinding` 直接映射 SWEBOK V4 软件构造知识领域中“基于复用的构造”过程：检索、评估、适配、集成 |
@@ -8217,7 +8217,7 @@ RAS `Solution` 中的 `Artifact` 和 `ArtifactDependency` 提供了制品级依�
 SLSA 1.2 的 Build Track（L1-L4）为资产构建过程提供可信度等级。RAS 的 `Asset` 元数据可直接扩展 SLSA 字段：
 
 | SLSA 轨道 | RAS 扩展字段 | 作用 |
-|-----------|-------------|------|
+| ----------- | ------------- | ------ |
 | Build Track L1 | `provenance:attested` | 声明构建来源存在 |
 | Build Track L2 | `provenance:hosted` | 声明构建在托管环境中完成 |
 | Build Track L3 | `provenance:hardened` | 声明构建环境已加固 |
@@ -8244,7 +8244,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 ### 5.1 创建 RAS 描述前的 10 项检查
 
 | 序号 | 检查项 | 通过标准 |
-|------|--------|----------|
+| ------ | -------- | ---------- |
 | 1 | 分类完整性 | `Classification` 至少包含领域、用途、技术栈、成熟度四项描述 |
 | 2 | 制品可验证 | `Solution` 中每个 `Artifact` 均有校验和或签名 |
 | 3 | SBOM 嵌入 | 存在 SPDX/CycloneDX 格式的 SBOM 制品 |
@@ -8325,7 +8325,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.1 Asset（资产）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | id | 全局唯一标识符 | 高 |
 | name | 人类可读名称 | 高 |
 | version | 语义化版本（建议 SemVer） | 高 |
@@ -8336,7 +8336,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.2 Classification（分类）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Context | 资产适用上下文 | 高 |
 | DescriptorGroup | 描述符分组 | 高 |
 | NodeDescriptor | 分类树节点 | 中 |
@@ -8347,7 +8347,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.3 Solution（解决方案）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Artifact | 实际工作产品 | 高 |
 | ArtifactContext | 制品与上下文的关联 | 中 |
 | ArtifactDependency | 制品间依赖 | 高 |
@@ -8358,7 +8358,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.4 Usage（使用）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | Activity | 使用指令 | 高 |
 | ArtifactActivity | 绑定到特定制品的活动 | 中 |
 | AssetActivity | 绑定到整个资产的活动 | 中 |
@@ -8369,7 +8369,7 @@ TrustScore(A) = α × Completeness(Classification(A))
 #### 2.5 RelatedAssets（相关资产）
 
 | 属性 | 说明 | 可观察性 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | aggregation | 聚合/包含关系 | 高 |
 | similar | 相似/替代关系 | 中 |
 | dependency | 编译期或运行期依赖 | 高 |
@@ -8468,7 +8468,7 @@ graph TB
 FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于 2022 年联合发布，将 FAIR 数据原则适配至研究软件领域。与数据不同，软件具有**可执行性**与**组合性**，因此原则强调机器可操作与多粒度标识。
 
 | 原则 | 核心要求 | 软件复用含义 |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Findable** | 软件资产可被唯一标识和检索 | 全局持久 ID + 可搜索元数据索引 |
 | **Accessible** | 协议标准化、元数据可获取 | 开放协议检索，认证授权不阻碍访问 |
 | **Interoperable** | 使用标准格式和词汇表 | API/数据格式标准化，限定引用 |
@@ -8479,7 +8479,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ## 2. 与四层复用架构的对照映射
 
 | FAIR4RS 原则 | 业务架构 | 应用架构 | 组件架构 | 功能架构 |
-|-------------|---------|---------|---------|---------|
+| ------------- | --------- | --------- | --------- | --------- |
 | **Findable** | 能力目录 (FEA BRM) | 服务注册表 (OpenAPI/UDDI) | 包管理索引 (npm/PyPI/Cargo) | 函数注册表 (MCP Tool Registry) |
 | **Accessible** | BPMN/DMN 开放规范 | API 网关 + OpenAPI 文档 | 包仓库 (npm registry/Maven) | Protocol 端点 (stdio/SSE/HTTP) |
 | **Interoperable** | ArchiMate 标准交换格式 | CNCF 标准 (gRPC/CloudEvents) | SPDX / SemVer 语义版本 | A2A / MCP 标准协议 |
@@ -8499,7 +8499,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ### 3.1 FAIR4RS + SBOM
 
 | FAIR4RS 原则 | SBOM 映射 | 实践含义 |
-|-------------|----------|---------|
+| ------------- | ---------- | --------- |
 | Findable | SBOM 存在性 | 每个发布版本附带 SPDX/CycloneDX SBOM，使组件可被机器发现 |
 | Reusable | 许可证合规 | SBOM 中的 `licenseConcluded` 字段确保许可证清晰，支撑法律复用 |
 
@@ -8512,7 +8512,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ### 3.3 FAIR4RS + MCP Tool 注册表
 
 | FAIR4RS 原则 | MCP 映射 | 实践含义 |
-|-------------|----------|---------|
+| ------------- | ---------- | --------- |
 | Findable | Tool Registry 索引 | 每个 MCP Server 在注册表中登记 `name`, `version`, `description` |
 | Accessible | stdio / HTTP(S) with SSE | 标准传输层确保 AI 功能的访问不受厂商绑定 |
 
@@ -8523,7 +8523,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 评分模型：**0 = 未实施, 1 = 部分实施, 2 = 基本实施, 3 = 完全实施**。总分 120 分。
 
 | 编号 | Findable (F) 检查项 | 分值 |
-|------|---------------------|------|
+| ------ | --------------------- | ------ |
 | F-01 | 软件资产分配全局唯一持久标识符 (DOI/SWHID/PURL) | 0–3 |
 | F-02 | 不同粒度 (系统/模块/函数) 均有独立标识 | 0–3 |
 | F-03 | 每个发布版本有独立持久标识 (SemVer + Git Tag) | 0–3 |
@@ -8536,7 +8536,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | F-10 | 架构决策记录 (ADR) 可被独立检索 | 0–3 |
 
 | 编号 | Accessible (A) 检查项 | 分值 |
-|------|----------------------|------|
+| ------ | ---------------------- | ------ |
 | A-01 | 通过开放、免费、通用协议分发 (HTTPS/Git) | 0–3 |
 | A-02 | 协议支持必要的认证与授权 (OIDC/OAuth2) | 0–3 |
 | A-03 | 元数据在软件不可用时仍可访问 (Zenodo / SWH) | 0–3 |
@@ -8549,7 +8549,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | A-10 | 许可证全文随制品一同分发 | 0–3 |
 
 | 编号 | Interoperable (I) 检查项 | 分值 |
-|------|-------------------------|------|
+| ------ | ------------------------- | ------ |
 | I-01 | 数据交换采用领域社区标准格式 (JSON/XML/Protobuf) | 0–3 |
 | I-02 | API 使用限定引用指向外部资源 (PURL/CPE) | 0–3 |
 | I-03 | 组件接口遵循开放标准 (OpenAPI/gRPC/MQTT) | 0–3 |
@@ -8562,7 +8562,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 | I-10 | 协议端点支持内容协商 (Content Negotiation) | 0–3 |
 
 | 编号 | Reusable (R) 检查项 | 分值 |
-|------|---------------------|------|
+| ------ | --------------------- | ------ |
 | R-01 | 使用 SPDX 标识符明确声明许可证 | 0–3 |
 | R-02 | 提供完整来源 provenance (作者/资助/项目) | 0–3 |
 | R-03 | 包含 SBOM (SPDX/CycloneDX) 声明依赖 | 0–3 |
@@ -8590,7 +8590,7 @@ FAIR4RS（FAIR Principles for Research Software）由 RDA、FORCE11 与 ReSA 于
 ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建其他软件资产的程度"。映射关系：
 
 | ISO 25010:2023 子特性 | FAIR4RS 对应原则 | 对齐说明 |
-|----------------------|-----------------|---------|
+| ---------------------- | ----------------- | --------- |
 | Modularity | Interoperable | 模块化接口标准促进互操作 |
 | Reusability (资产包装) | Findable + Accessible | RAS/SPDX 包装使资产可发现与获取 |
 | Compatibility | Interoperable | 数据格式与 API 标准兼容性 |
@@ -8599,7 +8599,7 @@ ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建�
 ### 5.2 FAIR4RS ↔ OMG RAS v2.2 Classification/Usage
 
 | RAS v2.2 核心部分 | FAIR4RS 原则 | 对齐说明 |
-|------------------|-------------|---------|
+| ------------------ | ------------- | --------- |
 | Classification | Findable | 分类信息回答"这是什么"，是发现的首要依据 |
 | Solution | Accessible + Interoperable | 解决方案包含实际制品与可变性点 |
 | Usage | Reusable | 使用指南回答"如何安装、定制、运行" |
@@ -8610,7 +8610,7 @@ ISO/IEC 25010:2023 将 **Reusability** 定义为"软件资产可被用于构建�
 IEEE 1517-2010 定义软件生命周期中的复用过程，包括领域工程与应用工程双轨。映射：
 
 | IEEE 1517 过程域 | FAIR4RS 原则 | 对齐说明 |
-|-----------------|-------------|---------|
+| ----------------- | ------------- | --------- |
 | 领域工程 (Domain Engineering) | Findable + Interoperable | 构建可复用资产库，要求标准分类与接口 |
 | 应用工程 (Application Engineering) | Accessible + Reusable | 从资产库检索、适配、集成到目标系统 |
 | 复用管理 (Reuse Management) | Reusable | 资产成熟度评估、版本控制、许可证审计 |
@@ -8671,7 +8671,7 @@ IEEE 1517-2010 定义软件生命周期中的复用过程，包括领域工程�
 ### 2. 原则属性
 
 | 原则 | 核心属性 | 可观察指标 | 重要性 |
-|------|----------|------------|--------|
+| ------ | ---------- | ------------ | -------- |
 | **Findable** | 持久标识、机器可读元数据、注册目录 | DOI / PURL / SWHID / Git Tag、CodeMeta / CITATION.cff、搜索引擎索引 | 高 |
 | **Accessible** | 开放协议、元数据长期可获取、权限可管理 | HTTPS / Git、Zenodo / Software Heritage、OAuth / OIDC | 高 |
 | **Interoperable** | 标准格式、限定引用、共享词汇 | JSON / XML / Protobuf、PURL / CPE、Schema.org / ECLASS | 高 |
@@ -8760,7 +8760,7 @@ graph LR
 # OMG SysML v2 与架构复用映射指南
 
 | 属性 | 值 |
-|---|---|
+| --- | --- |
 | **版本** | 2026-06-10 |
 | **定位** | Phase C-01：元模型标准层 — SysML v2 复用语义与架构资产映射 |
 | **对齐标准** | OMG SysML v2（2023）、ISO/IEC 42010:2022、OMG RAS 2.0、ISO/IEC 26550:2015、OMG KDM、IEEE 1471 |
@@ -8823,7 +8823,7 @@ OMG SysML v2 于 2023 年 11 月由对象管理组织（OMG）正式发布，标
 SysML v2 的三大核心变革方向如下：
 
 | 变革维度 | SysML v1 的局限 | SysML v2 的改进 |
-|---|---|---|
+| --- | --- | --- |
 | **元模型架构** | 基于 UML 2.x 元模型继承，带来大量非必要复杂性 | 全新独立的 SysML v2 元模型，与 UML 解耦，采用 Kernel Modeling Language（KML）基础 |
 | **图形符号** | 图形与语义紧耦合，同一种概念存在多种图形表达，导致歧义 | 图形与语义分离（Separation of Concerns），统一语义映射到多种可选图形 |
 | **API 与交换** | 仅依赖 XMI 交换，缺乏标准化 API，工具间互操作性差 | 标准化 RESTful API（SysML v2 API）、JSON/LF 文本交换格式、原生模型库机制 |
@@ -8946,7 +8946,7 @@ connection def RF_Link {
 Library 的核心特征：
 
 | 特征 | 说明 |
-|---|---|
+| --- | --- |
 | **封装性** | Library 内的元素默认具有 controlled visibility，只有通过显式 export 的元素对外可见 |
 | **版本标识** | Library 可携带版本标记（version annotation），支持多版本共存和依赖管理 |
 | **依赖声明** | Library 通过 `import` 声明对其他 Library 的依赖，形成有向无环图（DAG）式的依赖结构 |
@@ -8979,7 +8979,7 @@ ISO/IEC 42010:2022《系统和软件工程 — 架构描述》是国际标准化
 ### 4.1 核心概念映射表
 
 | ISO/IEC 42010:2022 概念 | SysML v2 对应元素 | 映射说明 |
-|---|---|---|
+| --- | --- | --- |
 | **System**（系统） | `Occurrence` / `System` | SysML v2 中系统作为 Occurrence 存在，具有时空边界 |
 | **Architecture**（架构） | `Model`（模型子集） | 系统的架构由 SysML Model 中描述结构、行为和属性的元素集合表达 |
 | **Stakeholder**（利益相关方） | `Stakeholder`（注释元素） | 可通过 Comment / Metadata 关联到模型元素 |
@@ -9027,7 +9027,7 @@ ISO 42010:2022 强调架构决策（Architecture Decision）的显式记录。Sy
 OMG RAS（Reusable Asset Specification）2.0 定义了可复用资产的元数据模型，包括资产描述、分类、依赖、使用指南和工件集合。SysML v2 模型作为一类高价值可复用资产，可与 RAS 元模型建立如下映射：
 
 | RAS 元素 | SysML v2 对应 | 复用实践 |
-|---|---|---|
+| --- | --- | --- |
 | **Asset**（资产） | `Library` 或 `Model`（含复用意图标记） | 将经过验证的 SysML 模型打包为资产 |
 | **Artifact**（工件） | `Library` 内元素 + 图形 View | 资产包含语义模型和推荐视图 |
 | **Profile**（轮廓） | `Metadata` / `Annotation` | 描述资产适用领域、成熟度、质量等级 |
@@ -9325,7 +9325,7 @@ part rs_sat_b : Satellite {
 ### 7.5 复用效益分析
 
 | 指标 | 传统模式 | 基于 SysML v2 架构库 | 改进幅度 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 平台模型重复开发时间 | 每个型号 4-6 周 | 首建库后复用接近零 | 节省 ~95% |
 | 子系统接口不一致问题 | 平均每个型号 12 项 | 首建库后基本消除 | 降低 ~90% |
 | 平台技术状态变更传播 | 人工同步，易遗漏 | 库变更自动通知所有消费型号 | 效率提升显著 |
@@ -9337,7 +9337,7 @@ part rs_sat_b : Satellite {
 ## 8. 权威来源
 
 | 编号 | 来源 | URL | 核查日期 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [1] | OMG SysML v2 Specification, Version 2.0, 2023 | <https://www.omg.org/spec/SysML/> | 2026-06-10 |
 | [2] | OMG KerML Specification (Kernel Modeling Language) | <https://www.omg.org/spec/KerML/> | 2026-06-10 |
 | [3] | OMG SysML v2 REST API Specification | <https://github.com/Systems-Modeling/SysML-v2-API-Java-Client> | 2026-06-10 |
@@ -9358,7 +9358,7 @@ part rs_sat_b : Satellite {
 # MBSE 模型复用与产品线工程整合指南
 
 | 属性 | 值 |
-|---|---|
+| --- | --- |
 | **版本** | 2026-06-10 |
 | **定位** | Phase C-02：元模型标准层 — MBSE 复用层次与产品线工程整合框架 |
 | **对齐标准** | INCOSE SE Vision 2035、ISO/IEC 26550:2015、ISO/IEC 42010:2022、IEC 63278（AAS）、ISO/IEC/IEEE 15288:2023、OMG SysML v2 |
@@ -9437,7 +9437,7 @@ part rs_sat_b : Satellite {
 国际系统工程理事会（INCOSE）在《Systems Engineering Vision 2035》中描绘了 MBSE 的未来发展蓝图，明确提出到 2035 年系统工程将实现"模型中心"（Model-Centric）的全面转型。愿景中的关键目标包括：
 
 | 目标领域 | 2035 愿景要点 | 对复用的启示 |
-|---|---|---|
+| --- | --- | --- |
 | **形式化与自动化** | 系统模型具备完全形式化语义，支持自动推理和验证 | 可复用模型资产必须附带形式化契约，消费方可自动验证兼容性 |
 | **数字孪生融合** | 系统模型与物理系统的数字孪生实时同步 | 复用模型需支持运行时参数更新，形成"可演化的资产" |
 | **AI 增强工程** | 人工智能辅助设计优化、缺陷检测和需求生成 | 复用资产库是训练领域专用 AI 模型的关键语料 |
@@ -9559,7 +9559,7 @@ MBSE 模型复用并非单一粒度的活动，而是存在于由细到粗的四
 ### 2.5 复用层次对比总结
 
 | 复用层次 | 粒度 | 典型资产 | 复用方式 | 管理复杂度 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 模型元素 | 单个元素 | 类型定义、约束、端口 | Import / 引用 | 低 |
 | 模型片段 | 子图（10-100 个元素） | 子系统包、行为模式 | Import + 配置 | 中 |
 | 模型库 | 领域集合（1000+ 元素） | 协议库、组件库 | 库依赖管理 | 高 |
@@ -9700,7 +9700,7 @@ MBSE 领域的工具生态丰富，不同工具在复用支持方面各有特色
 **复用能力**：
 
 | 能力 | 支持情况 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | **REC/RPL 机制** | ⭐⭐⭐⭐⭐ | Replicable Element / Replica 是 Capella 的核心复用机制，支持任意模型片段的提取、封装和多处复用，复用实例（Replica）与原件保持可追溯关系 |
 | **库机制** | ⭐⭐⭐⭐ | 支持 Catalog（元素目录）和 Library（库项目），可在多个项目间共享 |
 | **变体管理** | ⭐⭐⭐ | 通过 Property Values Management（PVMT）扩展支持变体标记，但不如专业 PLE 工具完善 |
@@ -9720,7 +9720,7 @@ MBSE 领域的工具生态丰富，不同工具在复用支持方面各有特色
 **复用能力**：
 
 | 能力 | 支持情况 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | **Profile/Module** | ⭐⭐⭐⭐⭐ | 强大的 Profile 和 Module 机制，支持封装模型包为可复用模块，支持版本和依赖管理 |
 | **团队协作服务器** | ⭐⭐⭐⭐⭐ | Cameo Team Server / Cameo Collaborator 提供企业级模型资产库和协同环境 |
 | **变体管理** | ⭐⭐⭐⭐ | 支持通过 Property 和 Stereotype 实现变体标记，与外部 PLE 工具（如 Gears、Pure::Variants）有集成插件 |
@@ -9740,7 +9740,7 @@ MBSE 领域的工具生态丰富，不同工具在复用支持方面各有特色
 **复用能力**：
 
 | 能力 | 支持情况 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | **组件库** | ⭐⭐⭐⭐ | 支持可复用组件（Component）和库（Library）的定义与引用 |
 | **设计管理器** | ⭐⭐⭐⭐ | IBM Engineering Design Manager 提供模型版本控制和协同 |
 | **变体管理** | ⭐⭐⭐ | 支持通过 Configuration 和 Variant 机制管理变体，但配置复杂度较高 |
@@ -9760,7 +9760,7 @@ MBSE 领域的工具生态丰富，不同工具在复用支持方面各有特色
 **复用能力**：
 
 | 能力 | 支持情况 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | **Profile/插件** | ⭐⭐⭐⭐⭐ | 基于 Eclipse 插件体系，可深度定制复用机制和 UI |
 | **模型比较/合并** | ⭐⭐⭐⭐ | EMF Compare 提供模型差异比较和合并能力 |
 | **变体管理** | ⭐⭐⭐ | 可通过 Papyrus for Variability 等扩展支持，但生态不如 Capella 成熟 |
@@ -9776,7 +9776,7 @@ MBSE 领域的工具生态丰富，不同工具在复用支持方面各有特色
 ### 4.5 工具复用能力综合对比
 
 | 维度 | Capella | Cameo | Rhapsody | Papyrus |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 复用机制丰富度 | ★★★★★ | ★★★★★ | ★★★★ | ★★★★ |
 | 变体管理 | ★★★ | ★★★★ | ★★★ | ★★★ |
 | 企业级协同 | ★★★★★ | ★★★★★ | ★★★★ | ★★★ |
@@ -10018,7 +10018,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ### 7.4 关键成功因素
 
 | 成功因素 | 说明 |
-|---|---|
+| --- | --- |
 | **高层支持** | MBSE 转型是组织级变革，需要决策层持续的资源投入和政治支持 |
 | **方法适配** | 不要盲目照搬国外方法论，需结合组织业务特点、人员能力和工具生态进行适配 |
 | **小步快跑** | 通过试点积累经验和标杆案例，再逐步扩大范围，避免"大爆炸"式改革 |
@@ -10029,7 +10029,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ### 7.5 常见风险与应对
 
 | 风险 | 表现 | 应对策略 |
-|---|---|---|
+| --- | --- | --- |
 | **模型沦为画图工具** | 团队仅使用建模工具画框图，缺乏形式化语义和验证 | 强化建模规范审查，引入良构性自动检查 |
 | **复用资产无人维护** | 资产库中的模型与实际项目脱节，逐渐腐烂 | 建立资产所有者制度，将维护纳入日常工作 |
 | **工具锁定** | 过度依赖某一商业工具，资产难以迁移 | 优先使用开放标准和格式（SysML v2、AAS、ReqIF） |
@@ -10041,7 +10041,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ## 8. 权威来源
 
 | 编号 | 来源 | URL | 核查日期 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [1] | INCOSE Systems Engineering Vision 2035 | <https://www.incose.org/docs/default-source/se-vision/incose-se-vision-2035.pdf> | 2026-06-10 |
 | [2] | DoD Digital Engineering Strategy, 2018 | <https://www.dau.edu/sites/default/files/2023-11/Digital-Engineering-Strategy_2018.pdf> | 2026-06-10 |
 | [3] | ISO/IEC 26550:2015, Software and Systems Engineering — Product Line Engineering | <https://www.iso.org/standard/69529.html> | 2026-06-10 |
@@ -10088,7 +10088,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ## 标准-主题速查表
 
 | 主题 | 核心国际标准 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | 架构描述 | ISO/IEC/IEEE 42010:2022 | 定义 Entity of Interest、ADF、Viewpoint、View Component |
 | 架构过程 | ISO/IEC/IEEE 42020:2019 | Governance / Management / Conceptualization / Evaluation / Elaboration / Enablement |
 | 架构评估 | ISO/IEC/IEEE 42030:2019 | Objectives-Factors-Methods 三层评估框架 |
@@ -10100,7 +10100,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ## 权威对齐
 
 | 标准/框架 | 权威 URL | 核查日期 |
-|---|---|---|
+| --- | --- | --- |
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 2026-07-09 |
 | ISO/IEC/IEEE 42010:2022 OBP 在线浏览 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | <https://www.iso.org/standard/68982.html> | 2026-07-09 |
@@ -10118,7 +10118,7 @@ MBSE 模型复用的实施不是一蹴而就的，大多数组织需要经历三
 ## ISO/IEC/IEEE 42010:2022 核心条款映射
 
 | 条款 | 核心内容 | 架构描述元素 | 复用意义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Clause 5.2 | 架构描述概念模型 | EoI、Stakeholder、Concern、Perspective、Aspect、Viewpoint、View、Model Kind、View Component、Correspondence、Decision/Rationale | 建立可复用的元模型词汇表 |
 | Clause 6.1–6.10 | AD 规约要求 | 识别 EoI、利益相关者、视角、关注点、视点、视图、视图组件、对应关系、决策与依据 | 定义架构描述必须包含的信息项，可直接作为模板检查清单 |
 | Clause 7.1–7.2 | ADF / ADL 规约 | Architecture Description Framework、Architecture Description Language 的 conformance 要求 | TOGAF、ArchiMate、SysML 等框架可声明符合 42010 |

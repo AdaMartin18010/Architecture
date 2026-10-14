@@ -28,7 +28,7 @@
 ## 交付物清单
 
 | 文件 | 说明 |
-|------|------|
+| ------ | ------ |
 | [learning-path.md](learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
 | [syllabus.md](syllabus.md) | 16 周课程大纲、考核方式 |
 | [quiz.md](quiz.md) | 课程测验与参考答案 |

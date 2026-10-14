@@ -70,7 +70,7 @@ Task 生命周期之所以需要形式化验证，原因在于：
 A2A v1.0 规范定义了以下状态[^8]：
 
 | 状态 | 语义 | 允许转移 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | `submitted` | Task 已创建，等待 Server Agent 处理 | `working`, `canceled` |
 | `working` | Server Agent 正在积极处理 | `input_required`, `completed`, `failed`, `canceled` |
 | `input_required` | 需要额外输入才能继续 | `working`, `canceled`, `failed` |
@@ -198,7 +198,7 @@ taskState[t1] = "working"  // 无限期保持，无 CompleteTask/FailTask/Cancel
 本规约与 A2A v1.0.0 规范的对应如下[^8]：
 
 | 规约动作/变量 | A2A 规范对应 | 说明 |
-|---------------|-------------|------|
+| --------------- | ------------- | ------ |
 | `taskState` | Task.status | 核心状态字段 |
 | `taskMessages` | Task.messages | 消息历史数组 |
 | `taskArtifacts` | Task.artifacts | 输出产物集合 |
@@ -223,7 +223,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ## 10. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | Task 状态机设计验证 | TLA+ / TLC | 不变量与活性报告 |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 状态转移与消息一致性 | TLAPS（可选） | 形式化证明 |
 | DO-333 §6.3.2（形式化分析替代测试） | 状态机活性穷举 | TLC 模型检验 | 模型检查报告 |
@@ -242,7 +242,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ## 12. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-08 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-08 |
 | TLA+ Examples Repository | <https://github.com/tlaplus/Examples> | 2026-07-08 |
@@ -284,7 +284,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ### 2.1 已完成的初始案例
 
 | 编号 | 案例名称 | 规约文件 | 说明文档 | 核心状态机 | 不变量数 | 活性数 |
-|------|----------|----------|----------|------------|----------|--------|
+| ------ | ---------- | ---------- | ---------- | ------------ | ---------- | -------- |
 | T06 | 分布式支付服务组件 | `payment-service.tla` | `payment-service.md` | Idle → Reserved → Committed/Aborted | 5 | 1 |
 | T07 | MCP Server 能力协商协议 | `mcp-capability-negotiation.tla` | `mcp-capability-negotiation.md` | Disconnected → Initializing → Negotiating → Active → Terminated | 5 | 2 |
 | T08 | A2A Task 状态机 | `a2a-task-lifecycle.tla` | `a2a-task-lifecycle.md` | submitted → working → input-required → completed/failed/canceled | 5 | 2 |
@@ -340,7 +340,7 @@ MODULE <case_name>
 本案例库在规约设计和说明文档中引用了以下权威来源：
 
 | 来源 | 作者/机构 | 引用场景 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | *Specifying Systems* (2002) | Leslie Lamport, Microsoft Research | TLA+ 语法基础、状态机建模、公平性语义 |
 | *Practical TLA+* (2018) | Hillel Wayne, Apress | 工程实践模式、PlusCal 对照、故障建模 |
 | "How AWS Uses Formal Methods" (2015) | Newcombe et al., CACM | 工业级形式化验证动机、分布式系统缺陷案例 |
@@ -401,7 +401,7 @@ MODULE <case_name>
 下表汇总 T06–T10 四个案例的初始状态谓词、下一步关系、核心不变量与活性性质，便于读者快速对照 `.tla` 文件进行 TLC 配置。
 
 | 编号 | Init | Next | 核心不变量 (Safety) | 活性 (Liveness) |
-|------|------|------|---------------------|-----------------|
+| ------ | ------ | ------ | --------------------- | ----------------- |
 | **T06** 支付服务 | `balances ∈ [Accounts→Nat]`，`reservedFunds = 0`，`txStatus = [tx↦"idle"]`，`initialTotalBalance = AccountBalanceTotal` | `∃ tx: CreateTx(tx,...) ∨ Commit(tx) ∨ Abort(tx) ∨ TimeoutAbort(tx)` | `FundConservationInv`、`NoDoubleSpending`、`CommittedBalanceCorrect`、`ReservedFundsConsistent`、`TypeOK` | `AllRequestsProcessed` |
 | **T07** MCP 协商 | `clientState = serverState = "disconnected"`，`agreedCaps = {}`，`networkStatus = "up"`，`messageQueue = <<>>` | `ClientConnect ∨ ServerRespondInit ∨ ClientReceiveInitAck ∨ ServerReceiveNegotiate ∨ ClientActivate ∨ ServerActivate ∨ ClientTerminate ∨ ServerTerminate ∨ NetworkFailure ∨ ClientRetry` | `ActiveImpliesCommonCaps`、`ConsistentProtocolVersion`、`NegotiationSubset`、`ErrorImpliesNetworkDown`、`TerminatedImpliesNoCaps`、`TypeOK` | `EventuallyActive`、`EventuallyTerminatedOrError` |
 | **T08** A2A Task | `taskState = [t↦"submitted"]`，`taskMessages = [t↦<<>>]`，`taskArtifacts = [t↦{}]`，`taskStepCount = [t↦0]` | `StartWork ∨ RequestInput ∨ ProvideInput ∨ CompleteTask ∨ FailTask ∨ CancelTask ∨ TimeoutTask` | `TerminalNoMessages`、`CompletedHasArtifact`、`NonTerminalHasMessages`、`InputRequiredImpliesPending`、`FailedCanceledNoArtifacts`、`CompletedLastMessageIsComplete`、`TypeOK` | `WorkingEventuallyTerminates`、`InputRequiredEventuallyResolved` |
@@ -450,8 +450,8 @@ PROPERTIES
 ### 8.2 各案例推荐配置与预期输出
 
 | 编号 | 常量赋值 | 预期状态数 | 预期结果 |
-|------|----------|-----------|----------|
-| **T06** | `Accounts={a1,a2,a3}, TxIds={tx1,tx2}, MaxAmount=5, balances=[a1|->10,a2|->10,a3|->10]` | 约 5×10⁴–2×10⁵ 个不同状态（取决于 TLC 优化） | 所有不变量与活性通过，`No error` |
+| ------ | ---------- | ----------- | ---------- |
+| **T06** | `Accounts={a1,a2,a3}, TxIds={tx1,tx2}, MaxAmount=5, balances=[a1 | ->10,a2 | ->10,a3 | ->10]` | 约 5×10⁴–2×10⁵ 个不同状态（取决于 TLC 优化） | 所有不变量与活性通过，`No error` |
 | **T07** | `AllCapabilities={"tools","resources","prompts"}, ProtocolVersions={"2025-03-26"}, MaxRetries=2` | 约 1×10⁴–5×10⁴ 个不同状态 | 所有不变量与活性通过 |
 | **T08** | `Tasks={t1,t2}, Agents={client,server}, Artifacts={art1,art2}, MaxMessages=5, TimeoutThreshold=10` | 约 1×10⁵–5×10⁵ 个不同状态 | 所有不变量与活性通过 |
 | **T10** | `Axes={axis1}, MaxTimeoutSteps=5, ErrorIDs={0,0x8A01,0x8A02,0x9001}` | 约 890 个不同状态（单轴） | 所有不变量与活性通过 |
@@ -541,7 +541,7 @@ Model Context Protocol（MCP）是由 Anthropic 于 2024 年 11 月发布、现�
 MCP 的能力协商涉及两个独立的参与者：Client 和 Server。因此，我们的规约维护两个状态变量 `clientState` 和 `serverState`，分别追踪各自的生命周期：
 
 | Client 状态 | Server 状态 | 语义 |
-|-------------|-------------|------|
+| ------------- | ------------- | ------ |
 | `disconnected` | `disconnected` | 初始状态，未建立连接 |
 | `initializing` | `initializing` | 已发送/收到 `initialize` 消息 |
 | `negotiating` | `negotiating` | 正在交换能力集合和协议版本 |
@@ -674,7 +674,7 @@ clientState = "active", serverState = "active", agreedCaps = {}
 本规约严格对应 MCP 2025-03-26 规范中的初始化流程[^6]：
 
 | 规约动作 | MCP 规范对应 | JSON-RPC 方法 |
-|----------|-------------|---------------|
+| ---------- | ------------- | --------------- |
 | `ClientConnect` | Client 发送 initialize 请求 | `initialize` |
 | `ServerRespondInit` | Server 返回 initialize 结果 | `initialize` response |
 | `ClientReceiveInitAck` | Client 处理 Server 能力，计算交集 | 内部状态转移 |
@@ -694,7 +694,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ## 10. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | 能力协商状态机设计验证 | TLA+ / TLC | 不变量证明、反例轨迹 |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 协商守卫与实现一致性 | TLAPS（可选） | 形式化证明 |
 | DO-333 §6.3.2（形式化分析替代测试） | 协议安全性质穷举 | TLC 模型检验 | 模型检查报告 |
@@ -703,7 +703,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ### 10.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | TLA+ Language / TLC | TLA+ v2.18 (Toolbox 1.7.x) | IEEE 1012-2024 §9.3/§9.6 | 状态空间有限，需评估 scope |
 | TLAPS | TLAPS 1.5.x | DO-333 §6.3.2 | 用于不变式归纳证明 |
 | Apalache | 0.44.x | IEEE 1012-2024 §9.3 | 基于 SMT 的符号模型检查 |
@@ -723,7 +723,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ## 12. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-09 |
 | TLA+ Foundation | <https://foundation.tlapl.us/> | 2026-07-09 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-09 |
@@ -762,7 +762,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 每笔交易 `tx \in TxIds` 的状态机由三个核心变量 `txStatus`、`txFrom`、`txTo`、`txAmount` 共同刻画：
 
 | 状态 | 语义 | 资金影响 |
-|------|------|----------|
+| ------ | ------ | ---------- |
 | `idle` | 交易尚未创建或已重置 | 无 |
 | `reserved` | 资金已从出金账户预扣，等待最终确认 | 出金账户余额减少 |
 | `committed` | 交易最终确认，资金已转移至入金账户 | 入金账户余额增加 |
@@ -865,7 +865,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ### 8.1 形式化规格
 
 | 要素 | 定义 |
-|------|------|
+| ------ | ------ |
 | **Init** | `balances ∈ [Accounts → Nat]`，`reservedFunds = [tx ∈ TxIds ↦ 0]`，`txStatus = [tx ∈ TxIds ↦ "idle"]`，`txAmount = [tx ∈ TxIds ↦ 1]`，`initialTotalBalance = AccountBalanceTotal`，且所有 `txFrom[tx] ≠ txTo[tx]` |
 | **Next** | `∃ tx ∈ TxIds: (∃ from,to ∈ Accounts, amt ∈ 1..MaxAmount: CreateTx(tx,from,to,amt)) ∨ Commit(tx) ∨ Abort(tx) ∨ TimeoutAbort(tx)` |
 | **TypeOK** | 所有状态变量类型正确，`balances`、`reservedFunds` 为非负函数，`txStatus` 取值合法 |
@@ -923,7 +923,7 @@ Model Checking Results:
 ### 8.4 边界条件与常见反例
 
 | 缺陷类型 | TLC 报告 | 修复思路 |
-|----------|----------|----------|
+| ---------- | ---------- | ---------- |
 | **资金泄漏** | `FundConservationInv` 违反 | 检查 `Commit`/`Abort`/`TimeoutAbort` 是否正确更新 `balances` 与 `reservedFunds` |
 | **双重支付** | `NoDoubleSpending` 违反 | 强化 `CreateTx` 的前置条件，确保 `balances[from] ≥ amt` |
 | **冻结资金不一致** | `ReservedFundsConsistent` 违反 | 确保状态转移时同步清零或赋值 `reservedFunds[tx]` |
@@ -1088,7 +1088,7 @@ fact DependencyInversion {
 本规约定义了三个断言，覆盖组件级、模块级和架构局部性三个维度：
 
 | 断言 | 目的 | Scope |
-|------|------|-------|
+| ------ | ------ | ------- |
 | `NoCircularDependencies` | 验证组件依赖图 DAG | 5 Component |
 | `NoCircularModuleImports` | 验证模块导入图 DAG | 4 Module |
 | `DependencyLocality` | 验证跨模块依赖必须通过导入声明 | 5 Component, 3 Module |
@@ -1183,7 +1183,7 @@ check DependencyLocality for 5 but 3 Module
 **命令含义**：
 
 | 命令 | 搜索空间 | 验证目标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | `check NoCircularDependencies for 5` | 最多 5 个 `Component` 实例 | 组件依赖图无环 |
 | `check NoCircularModuleImports for 4` | 最多 4 个 `Module` 实例 | 模块导入图无环 |
 | `check DependencyLocality for 5 but 3 Module` | 最多 5 个组件、3 个模块 | 跨模块依赖必须通过导入声明 |
@@ -1213,7 +1213,7 @@ run ShowValidSystem for 5 but 3 Module
 ## 9. 标准条款与工具映射
 
 | 标准 / 条款 | 本规约对应内容 | 工具/后端 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | 组件依赖结构正确性 | Alloy Analyzer | 无反例报告 |
 | IEEE 1012-2024 §9.4（软件构建 V&V） | 模块导入关系一致性 | Alloy / SAT4J / MiniSat | 模型实例 / 反例 |
 | DO-333 §6.3.2（形式化分析替代测试） | 无环性等结构性质 | Alloy 模型查找 | 检查命令输出 |
@@ -1222,7 +1222,7 @@ run ShowValidSystem for 5 but 3 Module
 ### 9.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 备注 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | Alloy Analyzer | 6.2.0 (2025-01-09) | IEEE 1012-2024 §9.3 | 内置 SAT4J / MiniSat |
 | Kodkod / Pardinus | 随 Alloy 6 分发 | 结构约束求解 | 底层模型查找引擎 |
 | nuXmv | 2.x | Alloy 6 时态性质 | 支持无界模型检查 |
@@ -1235,7 +1235,7 @@ run ShowValidSystem for 5 but 3 Module
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Alloy Tools / Alloy Analyzer 6.2.0 | <https://alloytools.org> | 2026-07-09 |
 | Alloy 6 GitHub Releases | <https://github.com/AlloyTools/org.alloytools.alloy/releases> | 2026-07-09 |
 | *Software Abstractions* (Daniel Jackson) | <https://alloytools.org/book.html> | 2026-07-09 |
@@ -1401,7 +1401,7 @@ fact VersionCompatibility {
 ISA-95（IEC 62264）定义了从 L0（现场设备）到 L4（企业管理层）的五层功能层次模型。将 ISA-95 的五层映射到本知识体系的四层抽象时，存在以下对应关系：
 
 | ISA-95 层级 | 四层抽象映射 | 关键特征 |
-|------------|------------|---------|
+| ------------ | ------------ | --------- |
 | **L4 企业** (Enterprise) | BusinessLayer | ERP、PLM、CRM；批处理；天-月时间尺度 |
 | **L3 制造运营** (MES) | BusinessLayer / ApplicationLayer 边界 | MES、QMS、WMS；混合批处理与事件驱动；小时-天时间尺度 |
 | **L2 监控** (SCADA) | ApplicationLayer | HMI、数据采集、报警管理；秒-分钟时间尺度 |
@@ -1438,7 +1438,7 @@ fact InformationFlowDirection {
 ISA-95 各层的时间尺度差异是架构复用中最难处理的非功能性约束之一：
 
 | 层级 | 典型周期 | 容忍延迟 | 复用挑战 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | L0 | 1–10 ms | 无 | 功能代码通常不可跨硬件复用（不同传感器的驱动 ABI 不同） |
 | L1 | 10–100 ms | < 1 ms | PLC 程序可在同厂商设备间复用，跨厂商需 IEC 61131-3 标准化 |
 | L2 | 1–10 s | 秒级 | SCADA 画面、报警规则可在同平台项目间复用 |
@@ -1487,7 +1487,7 @@ fact SILDegradationConstraint {
 ### 5.1 四层架构断言
 
 | 断言 | 约束内容 | 对应公理 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | `AllMappingsAreAdjacent` | 映射仅发生在相邻层 | S.4 Abstraction Layering |
 | `NoConcernConflicts` | 同一关注点不映射到冲突实现 | M.1 Architecture-Reuse Duality |
 | `NoReverseMapping` | 映射方向只能从高层到低层 | M.3 Hierarchy Non-Reduction |
@@ -1496,7 +1496,7 @@ fact SILDegradationConstraint {
 ### 5.2 ISA-95 扩展断言
 
 | 断言 | 约束内容 | 对应 ISA-95 条款 |
-|------|---------|-----------------|
+| ------ | --------- | ----------------- |
 | `ISA95FlowDirectionValid` | 所有数据流符合向上汇总/向下指令模式 | IEC 62264-1 第 5.3 节 |
 | `SILNeverDegraded` | 无隐式 SIL 降级映射 | IEC 61508-2 第 7.4.4.2 节 |
 | `TimeCompatibilityHolds` | 所有映射满足时间特性兼容 | ISA-95.00.03 作业调度 |
@@ -1518,7 +1518,7 @@ fact SILDegradationConstraint {
 ### 6.2 常见违规模式
 
 | 违规模式 | 违反约束 | 检测方式 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | **L0 直接访问 L4** | `InformationFlowDirection` + `AdjacentLayerMapping` | Alloy 反例：L0 传感器 `DataFlow` 直接指向 L4 ERP |
 | **SIL 隐式降级** | `SILDegradationConstraint` | Alloy 反例：SIL 3 的安全网关映射到 SIL 1 的普通服务 |
 | **时间特性失配** | `TimeCompatibility` | Alloy 反例：L1 PLC（10ms 周期）映射到 L3 MES（无实时保证）未声明 `AsyncAdapter` |
@@ -1586,7 +1586,7 @@ check NoReverseMapping for 3 but 6 Mapping
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | `check AllMappingsAreAdjacent` | 每层 3 个实例，最多 6 个 Mapping、4 个 Concern | 映射仅发生在相邻层 |
 | `check NoConcernConflicts` | 同上 | 同一关注点不映射到冲突目标 |
 | `check NoReverseMapping` | 同上 | 映射方向只能从高层到低层 |
@@ -1750,7 +1750,7 @@ Enterprise -> Site -> Area -> Production Line -> Work Cell -> Equipment Module -
 本规约将其映射为七个子签名，每个子签名严格绑定到对应的 ISA-95 层级：
 
 | Alloy 签名 | ISA-95 概念 | 层级 |
-|-----------|------------|------|
+| ----------- | ------------ | ------ |
 | `EnterpriseResource` | Enterprise | L4 |
 | `SiteResource` | Site | L4 |
 | `AreaResource` | Area | L3 |
@@ -1804,7 +1804,7 @@ fact CrossLayerInterfaceRequired {
 ## 4. 断言与验证
 
 | 断言 | 验证目标 | 对应 ISA-95 条款 |
-|------|---------|-----------------|
+| ------ | --------- | ----------------- |
 | `AllParentsAreAdjacent` | 父子节点必须相邻 | IEC 62264-1 第 5.3 节功能层次 |
 | `CrossLayerRequiresInterface` | 非相邻层引用必须有接口 | IEC 62264-2 对象与属性交换 |
 | `AcyclicResourceHierarchy` | 资源层次无环 | 层次模型的基本公理 |
@@ -1862,7 +1862,7 @@ check ProcessCellAtL2OrL3 for 3 but 2 ProcessCell
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | `check AllParentsAreAdjacent for 3` | 每层最多 3 个 `Resource` | 父子节点必须位于相邻层 |
 | `check CrossLayerRequiresInterface for 3 but 4 InterfaceDef` | 最多 4 个接口定义 | 非相邻层引用必须通过接口 |
 | `check AcyclicResourceHierarchy for 3` | 同上 | 资源层次无环 |
@@ -2062,7 +2062,7 @@ fact CapabilityClosure {
 ## 4. 断言与验证
 
 | 断言 | 验证目标 | 教学意义 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | `NoCyclicToolCalls` | 调用图 DAG | 防止协议层死循环 |
 | `CapabilityContainment` | 能力子集关系 | 最小权限原则 |
 | `ResourceBoundary` | 资源所有者匹配 | 数据隔离与防泄漏 |
@@ -2115,7 +2115,7 @@ check ResourceBoundary for 4 but 8 MCPTool, 5 Resource
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | `check NoCyclicToolCalls` | 最多 4 个 Server、8 个 Tool、6 个 Capability | 工具调用图无环 |
 | `check CapabilityContainment` | 同上 + 最多 5 个 Resource | 被调用工具能力是调用者 Server 能力的子集 |
 | `check ResourceBoundary` | 同上 | 工具只能访问所属 Server 的资源 |
@@ -2356,7 +2356,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 7. 与 AI 的集成趋势
 
 | 工具 | 用途 |
-|------|------|
+| ------ | ------ |
 | **CoqPilot / RocqStar** | LLM 填充 `admit` 证明洞 |
 | **Sledgehammer** | Isabelle 自动调用外部 ATP |
 | **AutoCorrode** | AWS 开发的 Isabelle LLM 助手 |
@@ -2369,7 +2369,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 8. 标准条款与工具映射
 
 | 标准 / 条款 | 本目录对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 函数级正确性证明 | Coq/Rocq, Isabelle/HOL | `.v` / `.thy` 证明脚本 |
 | IEEE 1012-2024 SIL 4 | 高完整性组件验证 | 定理证明器 | 形式化证明证书 |
 | DO-178C / DO-333（DAL A） | 航电级软件验证 | SPARK/Ada + Isabelle 辅助 | DO-333 证据包 |
@@ -2378,7 +2378,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ### 8.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 典型证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | Rocq Prover | 9.0+ / Coq 8.20 兼容 | IEEE 1012-2024 §9.5 | `.v` 证明脚本、`rocqchk` 校验 |
 | Isabelle/HOL | Isabelle2025 | IEEE 1012-2024 §9.5 | `.thy` 证明脚本、会话记录 |
 | SMT 后端 | cvc5 / Z3 / Alt-Ergo | DO-178C / DO-333 | 自动证明步骤日志 |
@@ -2399,7 +2399,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | The Rocq Prover 9.0 (原 Coq) | <https://rocq-prover.org/> | 2026-07-09 |
 | Rocq Prover Releases | <https://rocq-prover.org/releases> | 2026-07-09 |
 | ANSSI Requirements on the Use of Rocq (CC evaluations) | <https://inria.hal.science/hal-04452421v1/document> | 2026-07-09 |
@@ -2472,7 +2472,7 @@ docker run --rm -v "$PWD/isabelle-theories":/project -w /project \
 Classical theorem-proving courses introduce induction over `nat`, list reversal, or a toy imperative language (WHILE).  Industrial verification must deal with C semantics, unbounded heap models, concurrency, and machine-code equivalence.  The table below maps the gap along seven dimensions.
 
 | Dimension | Teaching Example | Industrial Target | Consequence for Proof Architecture |
-|-----------|------------------|-------------------|-----------------------------------|
+| ----------- | ------------------ | ------------------- | ----------------------------------- |
 | **State space** | Small finite record (e.g., `pc :: nat`, `stk :: int list`) | Entire physical memory + device registers + MMU page tables | Need separation logic (VCC, Iris) or explicit memory model (seL4) |
 | **Language** | Custom WHILE grammar with big-step SOS | Subset of C11 / C17, or ARM assembly | Deeply embedded operational semantics in Coq/Isabelle |
 | **Abstraction layers** | 1–2 (e.g., spec + implementation) | 4–6 (abstract spec → executable spec → design → C → binary) | Layered refinement (Refinement Framework, Armada, L4.verified) |
@@ -2619,7 +2619,7 @@ lemma kernelEntry_invariant:
 ### 2.4 Mapping to `struct/` Topics
 
 | seL4 Concept | Maps to `struct/` Node |
-|--------------|------------------------|
+| -------------- | ------------------------ |
 | Capability model (Layer 0) | `struct/04-component-architecture-reuse/01-capability-model/` |
 | Refinement proof stack (Layers 0->3) | `struct/07-formal-verification/01-refinement-calculus/` |
 | C semantics / memory model | `struct/07-formal-verification/02-separation-logic/` |
@@ -2697,7 +2697,7 @@ Each compiler pass (e.g., `RTL -> LTL`) instantiates `fsim_match_states` with a 
 ### 3.4 Mapping to `struct/` Topics
 
 | CompCert Concept | Maps to `struct/` Node |
-|------------------|------------------------|
+| ------------------ | ------------------------ |
 | Semantic preservation theorem | `struct/07-formal-verification/01-refinement-calculus/` |
 | C semantics (Clight) | `struct/07-formal-verification/03-coq-isabelle/` (this file) |
 | Separation logic for memory model | `struct/07-formal-verification/02-separation-logic/` |
@@ -2790,7 +2790,7 @@ Admitted.
 ### 4.3 Alignment with Industrial Standards
 
 | Standard | Relevant Clause / Objective | How Formal Proof Helps |
-|----------|----------------------------|------------------------|
+| ---------- | ---------------------------- | ------------------------ |
 | **DO-178C** (Avionics) | Supplement DO-333 (Formal Methods) | Machine-checked proof replaces some tests, satisfies MC/5 (mitigation of compiler errors via CompCert) |
 | **ISO 26262** (Automotive) | ASIL D: Table A.4 (semi-formal methods), Table A.5 (formal design & verification) | RM schedulability proof satisfies "freedom from interference" (Part 6, 7.4.4) |
 | **IEC 61508** (General) | SIL 4: Table A.3 (formal methods), Table B.3 (static analysis) | Theorem-prover output is a "highly recommended" technique; reduces diagnostic-coverage demands |
@@ -2826,7 +2826,7 @@ Layer 3 — Concrete Implementation / Binary
 ### 5.2 Coq vs Isabelle Selection Guide
 
 | Criterion | Coq | Isabelle/HOL |
-|-----------|-----|--------------|
+| ----------- | ----- | -------------- |
 | **Foundations** | Dependent types + Calculus of Inductive Constructions (CIC) | Simply-typed HOL + axiomatic type classes + locales |
 | **Proof style** | Tactic scripts (Ltac, Ltac2, ssreflect) or proof terms | Tactic scripts (Isar, Eisbach) + ATP integration (Sledgehammer, Nitpick) |
 | **Automation** | `auto`, `eauto`, `tauto`, limited ATP (coq-hammer) | Strong SMT/ATP bridge (Sledgehammer, z3, vampire, e) |
@@ -2841,7 +2841,7 @@ Layer 3 — Concrete Implementation / Binary
 ### 5.3 Authoritative Sources and Further Reading
 
 | Source | Role | Link / Reference |
-|--------|------|------------------|
+| -------- | ------ | ------------------ |
 | **seL4 proofs** | Complete Isabelle/HOL proof stack for an OS kernel | `https://github.com/seL4/l4v` |
 | **CompCert** | Verified C compiler in Coq | `https://compcert.org/` |
 | **Isabelle/HOL** | System and documentation | `https://www.cl.cam.ac.uk/research/hvg/Isabelle/` |
@@ -2858,7 +2858,7 @@ Layer 3 — Concrete Implementation / Binary
 ## 6. Cross-References to Other `struct/` Topics
 
 | This File (T18b) | Related `struct/` Node | Relationship |
-|------------------|------------------------|--------------|
+| ------------------ | ------------------------ | -------------- |
 | `security-critical-components.md` | `struct/07-formal-verification/01-refinement-calculus/` | Refinement calculus provides the *method*; this file provides the *industrial instances* (seL4, CompCert). |
 | `security-critical-components.md` | `struct/07-formal-verification/02-separation-logic/` | seL4 C semantics and Iris-style reasoning for heap safety. |
 | `security-critical-components.md` | `struct/07-formal-verification/04-binary-verification/` | Layer 4 of seL4; CompCert produces Asm but does not verify the assembler/linker (see binary verification for that gap). |
@@ -2954,7 +2954,7 @@ Layer 3 — Concrete Implementation / Binary
 形式化验证工具谱系中，Coq/Isabelle 位于**演绎证明**（deductive proof）的顶端，与 TLA+（行为规约/模型检验）和 Alloy（约束求解/结构验证）形成互补三角：
 
 | 维度 | TLA+ | Alloy | Coq / Isabelle |
-|------|------|-------|----------------|
+| ------ | ------ | ------- | ---------------- |
 | 验证对象 | 时序行为、活性/安全性 | 结构约束、架构一致性 | 功能正确性、数学性质 |
 | 自动化 | 有限状态模型检验 | SAT 求解（有界） | 交互式 + 部分自动化 |
 | 保证强度 | 有限实例上的保证 | 有界 scope 内的保证 | **数学上绝对的正确性** |
@@ -2988,7 +2988,7 @@ seL4（Klein et al., 2009）是首个经过完整功能正确性证明的 OS 内
 关键性质（按证明依赖排序）：
 
 | 性质 | 含义 | 安全等级 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | **无空指针解引用** | 内核代码永不访问无效地址 | SIL 2+ |
 | **内存隔离** | 进程 A 无法读写进程 B 的物理页帧 | SIL 3+ |
 | **能力传递完整性** | 能力（capability）的创建/撤销/转移符合授权图 | SIL 4 |
@@ -3014,7 +3014,7 @@ Level 3: 安全定理 —— 从不变量推导信息流安全（非干涉性, n
 ```
 
 | 策略 | 适用层级 | Coq  tactic 示例 |
-|------|---------|-----------------|
+| ------ | --------- | ----------------- |
 | 结构归纳法 | Level 0-2 | `induction p as […] using page_table_ind` |
 | 反演/注入 | Level 1 | `inversion H; subst; clear H` |
 | 重写 + `lia`/`nia` | Level 1-2 | `rewrite addr_offset_comm; lia` |
@@ -3060,7 +3060,7 @@ Proof. (* 对系统调用轨迹进行共归纳，引用 L1-L3 *) Qed.
 #### 可信计算基（TCB）分析
 
 | TCB 组件 | 风险 | 缓解措施 |
-|----------|------|---------|
+| ---------- | ------ | --------- |
 | Coq 内核 (~30k LOC OCaml) | 证明检查器 bug 导致"假正确" | 独立 proof checker (Coqchk) + `coqchk` 交叉验证 |
 | CompCert C 语义 | 语义与实际硬件不符 | 官方测试套件覆盖 ARMv8/x86_64；与硬件模拟器对比测试 |
 | VST 内存模型 | 内存模型过强/过弱 | 使用 CompCert 的精细内存模型（非简化大堆模型） |
@@ -3077,7 +3077,7 @@ Proof. (* 对系统调用轨迹进行共归纳，引用 L1-L3 *) Qed.
 关键性质：
 
 | 不变量 | 含义 | 失效后果 |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | **俯仰角有界** | $\|\theta\| \leq \theta_{\max}$ | 失速或结构过载 |
 | **滚转角速率可控** | $\|\dot{\phi}\| \leq \dot{\phi}_{\max}$ | 螺旋失速 |
 | **控制模式一致性** | 当前模式 $\in$ {NORMAL, DIRECT, ALTERNATE} 的合法转移图 | 模式混乱导致误操作 |
@@ -3104,7 +3104,7 @@ Level 3: 代码生成 —— Simulink/SCADE → C 代码的精化证明
 ```
 
 | 策略 | 适用层级 | Isabelle 方法 |
-|------|---------|--------------|
+| ------ | --------- | -------------- |
 | 重写 (`simp`, `auto`) | Level 2-3 | 控制律代数式的符号化简 |
 | Sledgehammer | Level 0-1 | 实数不等式、矩阵正定性证明 |
 | 归纳法 (`induct`) | Level 2 | 控制周期上的不变量保持 |
@@ -3178,7 +3178,7 @@ end
 #### 可信计算基（TCB）分析
 
 | TCB 组件 | 风险 | 缓解措施 |
-|----------|------|---------|
+| ---------- | ------ | --------- |
 | Isabelle 内核 (~200k ML) | 证明检查器 bug | 独立内核 `HOL-Light` 交叉验证关键定理；归档证明（AFP）社区审查 |
 | 自动定理证明器（Z3, E, Vampire） | ATP 返回错误证明 | Isabelle 对 ATP 返回的 proof sketch 进行独立重放验证 |
 | 实数理论（HOL-Analysis） | 分析学公理不一致 | 基于 ZFC 的标准分析学；独立数学审查 |
@@ -3200,7 +3200,7 @@ Proof. intros l. induction l. (* 基例 + 归纳步 *) … Qed.
 在安全关键证明中的扩展路径：
 
 | 教学概念 | 安全关键扩展 | 案例 A / B 对应 |
-|----------|-------------|----------------|
+| ---------- | ------------- | ---------------- |
 | 列表结构归纳 | 页表层级深度归纳 | 案例 A: `walk_page_table_terminates` |
 | `sorted` 谓词 | `kernel_invariant` / `inv_pitch_bounded` | 案例 A/B 的不变量定义 |
 | `insert_sorted` 引理 | `map_page_preserves_isolation` | 案例 A: 操作保持不变量 |
@@ -3373,7 +3373,7 @@ PubGrub 是由 Natalie Weizenbaum 为 Dart 的 Pub 包管理器设计的版本�
 标准 CDCL SAT 求解器操作于布尔变量上的 CNF 公式。PubGrub 将这一框架映射到版本求解领域：
 
 | CDCL 概念 | PubGrub 版本求解映射 |
-|-----------|---------------------|
+| ----------- | --------------------- |
 | 布尔变量 x | "包 p 选择版本 v" 的赋值决策 |
 | 子句 (Clause) | 不兼容性 (Incompatibility): 版本组合的冲突描述 |
 | 单元传播 (Unit Propagation) | 约束推导: 若 p@v 被选择，则其依赖必须满足 |
@@ -3562,7 +3562,7 @@ $$
 ## 4. 与主流包管理器的解析策略对比
 
 | 维度 | Cargo (PubGrub) | npm (v11) / pnpm | Go Modules (MVS) | Python (uv / Poetry) |
-|------|----------------|------------------|------------------|---------------------|
+| ------ | ---------------- | ------------------ | ------------------ | --------------------- |
 | **算法族** | CDCL SAT | 图遍历 + 严格隔离 | Minimal Version Selection | PubGrub (uv) / resolvelib (pip) |
 | **时间复杂度** | NP-完全（实践毫秒级） | 多项式（但可能非终止） | **O(n) 线性** | NP-完全 |
 | **版本范围支持** | ✅ `^`, `~`, `>=`, 复杂组合 | ✅ `^`, `~`, 范围 | ❌ 仅最小版本声明 | ✅ `^`, `>=`, 复杂组合 |
@@ -3632,7 +3632,7 @@ uv (Astral, 2026) 使用 `pubgrub-rs` crate 直接实现 PubGrub 算法，是算
 可复用组件的一致性包含三个层面：
 
 | 一致性层级 | 保证机制 | Cargo 实现 |
-|-----------|---------|-----------|
+| ----------- | --------- | ----------- |
 | **语法一致性** | 编译通过 | 统一版本消除类型签名冲突 |
 | **语义一致性** | 行为可预测 | Lockfile 固定精确版本 |
 | **构建一致性** | 产物可复现 | SHA-256 哈希 + 供应商化 |
@@ -3642,7 +3642,7 @@ uv (Astral, 2026) 使用 `pubgrub-rs` crate 直接实现 PubGrub 算法，是算
 ### 5.3 攻击面与防御
 
 | 攻击向量 | 原理 | Cargo 防御 |
-|---------|------|-----------|
+| --------- | ------ | ----------- |
 | Lockfile 注入 | 篡改 `Cargo.lock` 指向恶意版本 | PR 审查 + CI 中 `cargo vet` 扫描 |
 | 哈希碰撞 | 伪造满足 sha256 的恶意包 | SHA-256 抗碰撞性 |
 | 传递依赖劫持 | 通过合法包的依赖注入恶意传递包 | `cargo tree` 审查 + `cargo audit` |
@@ -3850,7 +3850,7 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 ### Trait 复用的五种模式
 
 | 模式 | 说明 | 复用价值 | 代价 |
-|------|------|---------|------|
+| ------ | ------ | --------- | ------ |
 | **接口抽象** | 通过 Trait 定义行为契约 | 多后端可替换 | 静态分发 |
 | **Trait 组合** | `Readable + Writable => ReadWrite` | 灵活组合行为 | 类型签名复杂 |
 | **默认实现** | 基于核心方法构建辅助方法 | 减少样板代码 | 隐藏复杂性 |
@@ -3993,7 +3993,7 @@ Verus 使用 SMT 后端与 Rust 语法内联的规约，已在 Microsoft、Amazo
 ## 8. 标准条款与工具映射
 
 | 标准 / 条款 | 本文件对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | Rust 类型系统保证内存安全 | rustc | 编译通过 |
 | IEEE 1012-2024 §9.5 | unsafe 边界人工/形式化验证 | Miri / Kani / Aeneas | UB 检测报告 / 证明 |
 | DO-178C / DO-333（DAL A） | 高安全 Rust 组件验证 | Kani / Prusti | 模型检查 / 契约证明报告 |
@@ -4003,7 +4003,7 @@ Verus 使用 SMT 后端与 Rust 语法内联的规约，已在 Microsoft、Amazo
 ### 8.1 工具链版本与标准映射
 
 | 工具/组件 | 推荐版本 | 适用标准/场景 | 典型证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | rustc | 1.85+ (2025) | IEEE 1012-2024 §9.5 | 编译通过、测试覆盖率 |
 | Miri | nightly (POPL 2026) | unsafe 边界 UB 检测 | Miri 运行日志、CI 报告 |
 | Kani | 0.64.x+ | DO-178C / DO-333 形式化分析 | 模型检查/契约证明报告 |
@@ -4018,7 +4018,7 @@ Verus 使用 SMT 后端与 Rust 语法内联的规约，已在 Microsoft、Amazo
 ## 9. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | The Rust Programming Language | <https://doc.rust-lang.org/book/> | 2026-07-09 |
 | The Rust RFC Book | <https://rust-lang.github.io/rfcs/> | 2026-07-09 |
 | Rust Compiler Development Guide (MIR) | <https://rustc-dev-guide.rust-lang.org/mir/index.html> | 2026-07-09 |
@@ -4068,7 +4068,7 @@ Amazon 的 s2n-quic 使用 Kani 与 Bolero 联合验证。`try_fit` 函数根据
 ## 附录：所有权-借用-生命周期决策矩阵
 
 | 场景 | 所有权转移 | 不可变借用 `&T` | 可变借用 `&mut T` | 复制 `Copy` | 克隆 `Clone` | 选择依据 |
-|------|-----------|----------------|------------------|-------------|-------------|----------|
+| ------ | ----------- | ---------------- | ------------------ | ------------- | ------------- | ---------- |
 | 函数消费输入 | ✓ | ✗ | ✗ | ✗ | ✗ | 输入不再需要 |
 | 函数读取输入 | ✗ | ✓ | ✗ | ✗ | ✗ | 输入仍需使用 |
 | 函数修改输入 | ✗ | ✗ | ✓ | ✗ | ✗ | 输入需被修改 |
@@ -4450,7 +4450,7 @@ Polonius 对组件复用的影响体现在**表达能力**和**API 设计**两�
 ### 5.1 使更多组件模式合法化
 
 | 模式 | NLL 状态 | Polonius 状态 | 复用价值 |
-|------|---------|--------------|---------|
+| ------ | --------- | -------------- | --------- |
 | **get_or_insert** | ❌ 被拒绝 | ✅ 合法 | 集合 API 的惯用模式（如 `HashMap::entry` 的简化） |
 | **Lending Iterator** | ❌ 完全不可表达 | ✅ 合法 | 流式解析器、字符迭代器、内存映射遍历 |
 | **链表/树遍历** | ⚠️ 部分受限 | ✅ 显著改善 | 自引用数据结构、游标模式 |
@@ -4511,7 +4511,7 @@ $$
 Rust Project Goals 2026 明确接受 **10–20% 的编译时间开销**以换取表达能力提升。
 
 | 分析阶段 | NLL 开销 | Polonius Alpha 开销 | 优化策略 |
-|---------|---------|-------------------|---------|
+| --------- | --------- | ------------------- | --------- |
 | 约束生成 | O(n) | O(n) | 共享 NLL 的前端 |
 | 子集传播 | O(n²) 最坏情况 | O(n × m) 可达性 | 惰性约束图重写 |
 | 冲突检测 | 单次遍历 | 组合图遍历 | 限制传播到受影响块 |
@@ -4686,7 +4686,7 @@ Miri 的核心优势是**语义保真**：它直接解释 MIR，而非翻译到�
 ## 3. 概念说明与对比
 
 | 维度 | Kani | Prusti | Miri |
-|------|------|--------|------|
+| ------ | ------ | -------- | ------ |
 | **验证目标** | 内存安全、panic 自由、用户断言、功能正确性（有界） | 功能正确性（requires/ensures）、内存安全、终止性 | 未定义行为（UB）检测：越界、未初始化、别名违规、数据竞争 |
 | **技术基础** | CBMC（有界模型检验）；GOTO-C 中间表示 | Viper（分离逻辑 + Boogie/Z3）；符号执行 + 自动定理证明 | MIR 解释器；动态执行 + 运行时检查 |
 | **自动化程度** | 高 —— 编写 harness 后全自动验证，自动生成反例 | 中 —— 需手动编写契约（requires/ensures），证明过程自动 | 高 —— 直接运行测试，无需额外注解 |
@@ -4776,7 +4776,7 @@ Rust 的所有权-借用-生命周期系统（OBL）已经是工业编程语言�
 ### 5.1 所有权系统已保证的 → 无需额外验证
 
 | 安全属性 | OBL 保证机制 | 额外工具需求 |
-|---------|-------------|------------|
+| --------- | ------------- | ------------ |
 | 悬垂引用（use-after-free） | 所有权移动 + 生命周期检查 | 无 |
 | 双重释放 | `Drop`  trait 的唯一调用 | 无 |
 | 数据竞争（safe Rust） | `&mut T` 的排他性 + `&T` 的不可变性 | 无 |
@@ -4788,7 +4788,7 @@ Rust 的所有权-借用-生命周期系统（OBL）已经是工业编程语言�
 ### 5.2 所有权系统无法保证的 → 需要 Kani / Prusti / Miri
 
 | 安全属性 | 为何 OBL 无法保证 | 推荐工具 |
-|---------|------------------|---------|
+| --------- | ------------------ | --------- |
 | `unsafe` 块内的内存安全 | OBL 不检查原始指针操作 | Kani（验证）+ Miri（检测） |
 | 数组/切片越界 | `vec[i]` 在运行时检查，OBL 不保证无 panic | Kani（证明 panic 自由） |
 | 整数溢出（debug 模式 panic） | `overflow-checks` 是运行时行为 | Kani / Prusti（证明无溢出） |
@@ -4877,7 +4877,7 @@ cargo semver-checks
 ## 8. 文件索引
 
 | 文件 | 说明 |
-|------|------|
+| ------ | ------ |
 | `examples/miri_ub_demo.rs` | Miri 越界检测示例 |
 | `examples/kani_abs_proof.rs` | Kani 绝对值证明 harness |
 | `examples/prusti_add_contract.rs` | Prusti requires/ensures 示例 |
@@ -5040,7 +5040,7 @@ unsafe {
 **核心能力**（截至 2026，POPL'26 论文）：
 
 | 检测能力 | 状态 |
-|---------|------|
+| --------- | ------ |
 | Use-after-free | 完整检测 |
 | Double-free | 完整检测 |
 | 未初始化内存读取 | 完整检测 |
@@ -5096,7 +5096,7 @@ fn test_unaligned_write() {
 **核心能力**（截至 Kani 0.66, 2026-01）：
 
 | 能力 | 状态 |
-|------|------|
+| ------ | ------ |
 | 内存安全断言 | 自动推导 |
 | 用户指定属性 | 属性宏方式 |
 | 动态 trait 对象 | 40+ 测试用例 |
@@ -5133,7 +5133,7 @@ fn deref_or_panic(ptr: *mut i32) -> i32 {
 **核心能力**:
 
 | 能力 | 状态 |
-|------|------|
+| ------ | ------ |
 | 分离逻辑验证 | Viper 后端 |
 | 契约宏 | 支持 |
 | Panic 自由验证 | 支持 |
@@ -5163,7 +5163,7 @@ fn swap<T>(a: &mut T, b: &mut T) {
 **核心能力**:
 
 | 能力 | 状态 |
-|------|------|
+| ------ | ------ |
 | Safe Rust 完整翻译 | LLBC |
 | 多后端证明器 (F*, Coq, Lean, HOL4) | 支持 |
 | 借用模式自动处理 | 优于 Prusti 的循环重借用 |
@@ -5200,7 +5200,7 @@ verus! {
 ### 2.7 其他工具概览
 
 | 工具 | 机构 | 技术路线 | 最新状态 (2026) |
-|------|------|---------|----------------|
+| ------ | ------ | --------- | ---------------- |
 | RefinedRust | MPI-SWS | 类型系统 + Iris 分离逻辑 | PLDI'24, 基础验证框架 |
 | RustHorn | 东北大学 | CHC 约束 + 自动验证 | TOPLAS'21, 维护中 |
 | Crux-MIR | Galois | 符号执行 | 持续开发 |
@@ -5214,7 +5214,7 @@ verus! {
 ## 3. 工具链综合对比矩阵
 
 | 维度 | Miri | Kani | Prusti | Aeneas | Verus | Creusot |
-|------|------|------|--------|--------|-------|---------|
+| ------ | ------ | ------ | -------- | -------- | ------- | --------- |
 | **验证范式** | 动态解释执行 | 有界模型检测 | 契约 + 分离逻辑 | 函数式翻译 + 交互证明 | SMT + 证明型 Rust | 演绎验证 (WhyML) |
 | **分析范围** | 单条执行路径 | 所有路径（有界） | 所有路径 | 所有路径 | 所有路径 | 所有路径 |
 | **Safe Rust** | 支持 | 支持 | 支持 | 支持 | 支持 | 支持 |
@@ -5292,7 +5292,7 @@ unsafe fn my_unsafe_fn<T>(ptr: *mut T, count: usize) { ... }
 针对不同风险等级的组件，采用差异化的验证深度：
 
 | 风险等级 | 示例场景 | 最小验证 | 推荐增强 |
-|---------|---------|---------|---------|
+| --------- | --------- | --------- | --------- |
 | **L0: 无 unsafe** | 纯 safe Rust 工具库 | cargo test + cargo audit | Miri 抽检 |
 | **L1: 少量 unsafe** | 封装系统调用 | L0 + Miri 全覆盖 | Kani 关键路径 |
 | **L2: 核心 unsafe** | 内存分配器、数据结构 | L1 + SAFETY 文档审查 | Kani + Fuzz |
@@ -5332,11 +5332,11 @@ Layer 4: 源码审查 + Vendoring
 对于包含 unsafe 的组件，建议在 comparison-matrix-2026.md 的评分基础上进行安全等级调整：
 
 | 验证深度 | 评分调整 |
-|---------|---------|
+| --------- | --------- |
 | 无验证 + 大量 unsafe | -1.0 |
 | Miri 通过 + SAFETY 文档 | -0.3 |
 | Kani/Prusti 验证通过 | -0.1 |
-| 形式化证明（RustBelt / Iris）| 0.0（完全补偿） |
+| 形式化证明（RustBelt / Iris） | 0.0（完全补偿） |
 
 ---
 
@@ -5609,8 +5609,8 @@ SPARK 的契约验证属于 DO-333 中的**演绎方法（Deductive Methods）**
 DO-333 将形式化方法可替代的验证目标分为三类：
 
 | DO-333 目标类别 | 具体目标 | SPARK 覆盖方式 |
-|----------------|---------|---------------|
-| 低级需求（LLR）| 准确性、一致性、可验证性 | 形式化契约精确表达 LLR，自动证明排除冲突 |
+| ---------------- | --------- | --------------- |
+| 低级需求（LLR） | 准确性、一致性、可验证性 | 形式化契约精确表达 LLR，自动证明排除冲突 |
 | 源代码 | 符合 LLR、数据依赖性、标准符合性 | `Pre`/`Post` 证明代码满足契约；`Global`/`Depends` 证明数据依赖 |
 | 可执行目标代码 | 与源代码对应 | 编译器资格论证 + 契约作为运行时断言的集成测试 |
 
@@ -5916,7 +5916,7 @@ end Flap_Interlock;
 `07-formal-verification/04-rust-type-system/` 中详细介绍了 Rust 的类型系统、所有权模型及其形式化验证工具链（Kani、Prusti、Aeneas、RustBelt）。SPARK Ada 与 Rust 在安全关键软件开发中代表了两种不同但互补的形式化路径：
 
 | 维度 | SPARK Ada | Rust |
-|------|-----------|------|
+| ------ | ----------- | ------ |
 | **安全模型** | 契约 + 演绎证明 | 所有权 + 借用检查 |
 | **验证时机** | 编译期 + 独立证明工具链（GNATprove） | 编译期（rustc）+ 可选外部工具 |
 | **内存安全** | 语言子集限制（无指针算术、无显式释放） | 所有权-借用-生命周期系统 |
@@ -6023,7 +6023,7 @@ GNATprove 会分别验证每个 case：
 DO-333 / ED-216 将形式化方法可替代的 DO-178C 目标分为三类，下表给出 SPARK 契约与具体目标的映射：
 
 | DO-178C / DO-333 目标 | 目标描述 | SPARK 覆盖方式 | 适航证据 |
-|----------------------|---------|---------------|---------|
+| ---------------------- | --------- | --------------- | --------- |
 | FM.A-1 | 软件需求正确且完整 | 形式化契约精确表达 LLR | `Pre`/`Post` 规格 |
 | FM.A-2 | 软件需求无冲突 | 契约一致性自动证明 | GNATprove 报告 |
 | FM.A-3 | 软件需求可验证 | 每个契约对应可证明的 VC | VC 清单与证明日志 |
@@ -6059,7 +6059,7 @@ gnatprove -P autopilot.gpr --report=all
 GNATprove 为每个子程序生成以下类别的 VC：
 
 | VC 类别 | 说明 | 示例 |
-|---------|------|------|
+| --------- | ------ | ------ |
 | **VC_PRE** | 调用点满足被调用子程序的前置条件 | `Compute_Next_Mode` 调用前 `State_Invariant` 成立 |
 | **VC_POST** | 子程序实现满足后置条件 | `Compute_Vertical_Speed` 返回值在 `Min_VS..Max_VS` |
 | **VC_LOOP_INVARIANT** | 循环不变式初始化与保持 | `Simulate_Altitude_Tracking` 的高度误差不发散 |
@@ -6227,7 +6227,7 @@ Allow_AH := System_OK and then (Alt >= 1000) and then (Alt <= 45000);
 MC/DC 要求为每个条件构造独立影响对：
 
 | 条件 | 场景 1 | 场景 2 | 其他条件固定值 |
-|------|--------|--------|---------------|
+| ------ | -------- | -------- | --------------- |
 | `C₁` | T, T, T → T | F, T, T → F | `C₂=T`, `C₃=T` |
 | `C₂` | T, T, T → T | T, F, T → F | `C₁=T`, `C₃=T` |
 | `C₃` | T, T, T → T | T, T, F → F | `C₁=T`, `C₂=T` |
@@ -6251,9 +6251,9 @@ MC/DC 的本质是：对于判定中的每个条件 `Cᵢ`，`Indep(Cᵢ, D)` �
 DO-178C Table A-7 定义了 A 级软件的结构覆盖率目标[^1]：
 
 | 目标 | 说明 | 传统方法 |
-|------|------|---------|
-| 目标 1 | 语句覆盖（Statement Coverage）| 测试执行 |
-| 目标 2 | 判定覆盖（Decision Coverage）| 测试执行 |
+| ------ | ------ | --------- |
+| 目标 1 | 语句覆盖（Statement Coverage） | 测试执行 |
+| 目标 2 | 判定覆盖（Decision Coverage） | 测试执行 |
 | 目标 3 | MC/DC | 测试执行 |
 
 DO-333 补充件允许在满足以下条件时，用形式化方法替代 MC/DC 测试[^2]：
@@ -6457,9 +6457,9 @@ SPARK 是 Ada 的子集/衍生语言，专为**高完整性系统**设计：
 ### 1.2 核心能力
 
 | 能力 | 说明 |
-|-----|------|
+| ----- | ------ |
 | 函数合同（Contracts） | Pre/Post 条件、数据依赖、流依赖 |
-| 自动化证明 | 基于 SMT 求解器（Alt-Ergo, Z3, CVC5）|
+| 自动化证明 | 基于 SMT 求解器（Alt-Ergo, Z3, CVC5） |
 | 运行时检查生成 | 合同可作为运行时断言编译 |
 | 信息流分析 | 自动验证数据保密性与完整性 |
 | 无运行时错误证明 | 消除溢出、除零、数组越界、未初始化读取 |
@@ -6489,7 +6489,7 @@ DO-178C/ED-12C（2012 发布）及其补充件 DO-333/ED-216 定义了三种形�
 #### 源代码相关目标（FM.A-5）
 
 | 目标 | SPARK 覆盖方式 |
-|-----|---------------|
+| ----- | --------------- |
 | 源代码符合 LLR | 自动证明源代码满足函数合同 |
 | 数据依赖性 | 合同中的 `Global`/`Depends` 子句 |
 | 标准符合性 | SPARK 代码按设计语言标准可验证 |
@@ -6516,7 +6516,7 @@ EOC 合规性目标（目标 3, 4）可通过源代码对应目标实现，前�
 ### 3.1 航空电子
 
 | 项目 | 组织 | SPARK 应用 |
-|-----|------|-----------|
+| ----- | ------ | ----------- |
 | C-130J 控制软件 | Lockheed Martin (1997) | 飞行控制软件开发 |
 | C-130J 维护验证 | BAE Systems | 关键属性持续形式证明 |
 | A380 低级需求验证 | Airbus (2002, Caveat→Frama-C) | 替代单元测试的形式证明 |
@@ -6566,7 +6566,7 @@ Low_Level_Service (Ada)
 ### 5.3 跨项目验证策略复用
 
 | 策略 | 复用内容 |
-|-----|---------|
+| ----- | --------- |
 | 逐级证明（Cascading Proof） | 同一行业项目的证明策略模板 |
 | 假设管理框架 | Test & Proof 集成模式 |
 | 工具资格包 | DO-333 工具资格证据复用 |
@@ -6618,14 +6618,14 @@ Low_Level_Service (Ada)
 ### 1.1 历史演进
 
 | 阶段 | 时间 | 特征 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | B Method | 1990s– | 软件开发形式化方法，集合论+逻辑，Atelier B / B-Toolkit |
 | Event-B | 2004– | 系统行为建模，更灵活的精化概念，Rodin 平台 |
 
 ### 1.2 核心工具链
 
 | 工具 | 类型 | 工业应用 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **Atelier B** | 商业工具（CLEARSY, FR） | 铁路行业主导，SIL4 认证平台 |
 | **Rodin Platform** | 开源 Eclipse 插件 | Event-B 建模、证明、动画 |
 | **ProB** | 模型检验器 | Rodin 插件，LTL 属性检验 |
@@ -6642,9 +6642,9 @@ Low_Level_Service (Ada)
 ### 2.1 两大构造
 
 | 构造 | 角色 | 内容 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **Context（上下文）** | 静态部分 | 载体集、常量、公理、定理 |
-| **Machine（机器）** | 动态部分 | 状态变量、守卫事件（Guarded Events）|
+| **Machine（机器）** | 动态部分 | 状态变量、守卫事件（Guarded Events） |
 
 ### 2.2 关键机制
 
@@ -6663,7 +6663,7 @@ Low_Level_Service (Ada)
 典型教学案例（课程管理系统）证明分布：
 
 | 构造 | 证明义务 | 自动(%) | 手动(%) |
-|-----|---------|--------|--------|
+| ----- | --------- | -------- | -------- |
 | Contexts | 3 | 100% | 0% |
 | 抽象 Machine (m0) | 11 | 73% | 27% |
 | 第一次精化 (m1) | 14 | 93% | 7% |
@@ -6727,7 +6727,7 @@ EN 50128（铁路领域软件安全标准）推荐使用形式化方法，尤其
 ### 5.1 精化模式库
 
 | 模式 | 描述 | 复用场景 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | 抽象引入模式 | 从非形式需求到抽象 Machine | 新项目启动模板 |
 | 数据精化模式 | 集合→函数→数组的逐步替换 | 内存优化设计 |
 | 事件拆分模式 | 一个抽象事件→多个具体事件 | 并发行为建模 |
@@ -6805,12 +6805,12 @@ Event-B 是 B Method 的系统级扩展，于 2004 年伴随 Rodin 平台一同�
 两者共享相同的数学基础（Zermelo-Fraenkel 集合论 + 谓词逻辑），但 Event-B 放宽了 B Method 中对软件实现的严格约束，允许更灵活地建模系统行为。
 
 | 核心构造 | 英文术语 | 语义说明 |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | **Machine（机器）** | Machine | 动态行为单元，封装状态变量、不变量与事件 |
 | **Context（上下文）** | Context | 静态知识单元，定义载体集（Carrier Sets）、常量、公理与定理 |
 | **Refinement（精化）** | Refinement | 从抽象规格逐步细化到具体实现的形式化关系 |
 | **Invariant（不变量）** | Invariant | 在所有可达状态下必须保持的全局性质 |
-| **Event（事件）** | Event |  guarded 的状态转换，由守卫（Guard）和动作（Action）组成 |
+| **Event（事件）** | Event | guarded 的状态转换，由守卫（Guard）和动作（Action）组成 |
 | **Guard（守卫）** | Guard | 事件触发的先决条件，为谓词公式 |
 | **Action（动作）** | Action | 状态变量的并行赋值（并行替代），描述事件对状态的修改 |
 | **Proof Obligation（证明义务）** | PO | 由工具自动生成的待证引理，确保精化正确性 |
@@ -6840,7 +6840,7 @@ forall s, s', t' . J(s, s') & evt'(s', t') => exists t . evt(s, t) & J(t, t')
 - **EN 50129:2018**《铁路应用 — 通信、信号和处理系统 — 铁路控制和防护系统的安全相关电子系统》
 
 | 安全完整性等级 | 风险降低因子 | 典型应用 | 形式化方法要求 |
-|-------------|------------|---------|-------------|
+| ------------- | ------------ | --------- | ------------- |
 | SIL 0 | — | 非安全相关 | 无 |
 | SIL 1 | 10^1–10^2 | 乘客信息系统 | 推荐 |
 | SIL 2 | 10^2–10^3 | 自动列车运行（非关键） | 强烈推荐 |
@@ -6889,7 +6889,7 @@ Event-B 的精化链天然映射到 V 模型的左侧验证活动：抽象 Machi
 ### 3.2 精化策略：三层精化链
 
 | 层级 | 文件名 | 抽象关注点 | 精化内容 |
-|-----|--------|----------|---------|
+| ----- | -------- | ---------- | --------- |
 | **M0** | `M0_Route_Safety` | 进路整体安全状态 | 抽象进路概念，仅区分"已建立"与"未建立" |
 | **M1** | `M1_Track_Switch` | 区段占用与道岔位置 | 将进路精化为区段集合+道岔位置约束 |
 | **M2** | `M2_Signal_Interlocking` | 信号机控制与联锁逻辑 | 加入信号机状态、锁闭表、敌对进路检查 |
@@ -7380,7 +7380,7 @@ Route_Revoke/SIM
 在 Rodin 平台中，上述三层精化链的典型证明义务分布如下：
 
 | 层级 | 证明义务总数 | 自动证明 | 交互证明 | 自动率 |
-|-----|-----------|---------|---------|-------|
+| ----- | ----------- | --------- | --------- | ------- |
 | C0 + M0 | 18 | 16 | 2 | 89% |
 | C1 + M1 | 42 | 38 | 4 | 90% |
 | C2 + M2 | 78 | 69 | 9 | 88% |
@@ -7397,7 +7397,7 @@ Route_Revoke/SIM
 铁路信号系统的 Event-B 模型不仅是**验证制品**（Verification Artifact），更是**可复用架构资产**。其复用价值体现在三个层面：
 
 | 复用层次 | 复用对象 | 复用机制 | 价值 |
-|---------|---------|---------|------|
+| --------- | --------- | --------- | ------ |
 | **数学理论层** | Context（载体集、常量、公理） | `extends` 继承 | 避免重复定义轨道拓扑基础概念 |
 | **安全模式层** | Machine（进路互斥、联锁检查） | `refines` 精化 + 复制修改 | 将"敌对进路互斥"作为通用安全模式复用 |
 | **项目实例层** | 具体线路的道岔、信号机配置 | 替换常量、扩展 Context | 新线路只需修改静态数据，无需重证动态行为 |
@@ -7521,7 +7521,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ### 2.1 标准演进
 
 | 版本 | 发布时间 | 核心变化 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | IEEE 1012-1986 | 1986 | 初始版本 |
 | IEEE 1012-1998 | 1998 | 引入软件完整性等级 (SIL) |
 | IEEE 1012-2005 | 2005 | 扩展至系统和硬件 |
@@ -7542,7 +7542,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ### 3.1 软件完整性等级（SIL）
 
 | 等级 | 名称 | 风险场景 | 复用 V&V 强度 |
-|:---|:---|:---|:---:|
+| :--- | :--- | :--- | :---: |
 | **SIL 1** | 低完整性 | 低风险、低影响 | 基本审查 |
 | **SIL 2** | 中完整性 | 中等风险、局部影响 | 标准测试 + 文档审查 |
 | **SIL 3** | 高完整性 | 高风险、显著影响 | 全面测试 + 独立验证 |
@@ -7570,7 +7570,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ### 4.1 复用项分类
 
 | 类别 | 定义 | V&V 重点 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **COTS** | 商业现成产品 | 供应商资质 + 文档审查 + 接受测试 |
 | **NDI** | 非自主开发项（含开源、政府合同件） | 来源验证 + 配置审计 + 集成测试 |
 | **Legacy** | 遗留系统组件 | 逆向工程 + 兼容性验证 + 退役计划 |
@@ -7588,7 +7588,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ### 4.3 AI/ML 组件特殊 V&V 要求
 
 | V&V 任务 | 方法 |
-|:---|:---|
+| :--- | :--- |
 | 训练数据验证 | 数据质量分析 + 偏见检测 |
 | 模型性能验证 | 独立测试集评估 + 交叉验证 |
 | 鲁棒性验证 | 对抗测试 + 分布外检测 |
@@ -7600,7 +7600,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ## 5. 标准条款与工具映射
 
 | IEEE 1012-2024 活动 | 本项目复用工程对应活动 | 推荐工具/方法 | 产出证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | §7 通用 V&V 管理 | 复用资产目录、V&V 计划、SIL 判定 | 资产目录模板、风险矩阵 | V&V 计划、SIL 评估表 |
 | §8.2 利益相关方需求 V&V | 复用需求评审、适用性分析 | 需求追踪工具、评审记录 | 需求评审报告 |
 | §9.3 软件设计 V&V | 架构约束建模、接口规格验证 | Alloy / TLA+ / SysML | 模型文件、反例报告 |
@@ -7615,7 +7615,7 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活动的**独立性**应随完整性等级提升。下表将 SIL、DO-178C DAL、推荐工具链与证据类型进行映射，便于复用工程快速选型。
 
 | 完整性等级 | DO-178C DAL | IEC 61508 独立性要求 | 推荐形式化工具链 | 典型证据 |
-|:---|:---:|:---|:---|:---|
+| :--- | :---: | :--- | :--- | :--- |
 | SIL 1 | DAL D | 同行评审 | Alloy 草模、静态分析、代码评审 | 评审记录、检查单 |
 | SIL 2 | DAL C | 独立部门/角色 | TLA+ / TLC、Miri、单元测试框架 | 模型检查报告、UB 检测报告 |
 | SIL 3 | DAL B | 独立团队/第三方 | Coq/Rocq 9.0+、Isabelle/HOL、Kani Contracts | 证明脚本、契约验证报告 |
@@ -7634,7 +7634,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 ### 6.1 与 ISO 25040:2024 的协同
 
 | IEEE 1012-2024 | ISO 25040:2024 | 协同点 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | V&V 过程定义 | 质量评估过程 | V&V 是质量评估的核心输入 |
 | SIL 分级 | 评估上下文确定 | SIL 决定评估深度和范围 |
 | 测试用例设计 | 质量度量选择 | 测试覆盖质量特性度量 |
@@ -7643,7 +7643,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 ### 6.2 与 DO-178C / IEC 61508 的对应
 
 | IEEE 1012 SIL | DO-178C DAL | IEC 61508 SIL |
-|:---:|:---:|:---:|
+| :---: | :---: | :---: |
 | SIL 4 | DAL A | SIL 4 |
 | SIL 3 | DAL B | SIL 3 |
 | SIL 2 | DAL C | SIL 2 |
@@ -7722,7 +7722,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 ## 10. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | IEEE 1012-2024 | <https://standards.ieee.org/ieee/1012/7324/> | 2026-07-09 |
 | IEEE 1012-2024 (IEEE Xplore) | <https://ieeexplore.ieee.org/document/11134780> | 2026-07-09 |
 | IEEE 1012-2024 Overview (All-Standards) | <https://www.en-standard.eu/ieee-1012-2024-ieee-standard-for-system-software-and-hardware-verification-and-validation/> | 2026-07-09 |
@@ -7809,7 +7809,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 2025-2026 年，将大语言模型用于形式化验证成为活跃研究方向：
 
 | 项目/论文 | 目标系统 | 核心方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **LeanDojo** | Lean 4 | 基于检索的定理证明，从库中检索相关引理 |
 | **Copra** | Coq/Rocq | LLM 引导的证明搜索，结合环境反馈 |
 | **DeepSeek-Prover-V1.5/V2** | Lean 4 | 强化学习 + 形式化验证的闭环训练 |
@@ -7849,7 +7849,7 @@ ISO/IEC/IEEE 1012:2024 与 IEC 61508-1:2025 草案 Annex B 均要求：V&V 活�
 将软件工程中的 **Design-by-Contract** 理念扩展到自主智能体（Agent）运行时：
 
 | 合约要素 | 传统 Design-by-Contract | Agent Behavioral Contract |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **Precondition** | 函数调用前必须满足的条件 | Agent 执行前环境和输入的约束 |
 | **Invariant** | 执行过程中必须保持的条件 | Agent 行为全程的安全/伦理约束 |
 | **Postcondition** | 函数返回后必须满足的条件 | Agent 执行后的状态和输出约束 |
@@ -7889,7 +7889,7 @@ Agent Behavioral Contract 形式化框架
 ### 4.1 证明架构复用模式的形式化属性
 
 | 复用模式 | 可证明属性 | 适用形式化方法 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **分层架构** | 层间依赖无环、信息隐藏 | Alloy、TLA+ |
 | **插件架构** | 插件隔离性、宿主安全性 | Coq/Rocq、Isabelle |
 | **微服务组合** | 组合正确性、事务一致性 | TLA+、Event-B |
@@ -7925,7 +7925,7 @@ Agent Behavioral Contract 形式化框架
 截至 2026 年，全球 110+ 高校开设形式化方法课程，主流工具分布：
 
 | 工具 | 课程数量 | 主要应用领域 |
-|:---|:---:|:---|
+| :--- | :---: | :--- |
 | **TLA+** | 35+ | 分布式系统、并发算法 |
 | **Alloy** | 30+ | 软件设计、架构建模 |
 | **Coq/Rocq** | 25+ | 程序验证、密码学证明 |
@@ -7936,7 +7936,7 @@ Agent Behavioral Contract 形式化框架
 ### 5.2 工业应用扩展
 
 | 公司/组织 | 应用 | 工具 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Amazon AWS | 验证分布式服务协议 | TLA+ |
 | Microsoft | 验证 Hyper-V 和 Azure 组件 | VCC、Boogie |
 | Google / DeepMind | 数学定理证明、Agent 行为验证 | AlphaProof Nexus、Lean |
@@ -8037,7 +8037,7 @@ mod safe_queue {
 ## 8. 标准条款与工具映射
 
 | 标准 / 框架 | 本文件对应内容 | 工具 | 证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | ETSI TR 119 540 | 电子签名/信任服务形式化规范 | TLA+ / Isabelle | 形式化规约 |
 | IEEE 1012-2024 §9.5 | AI 生成代码的正确性验证 | Verus / Dafny / Kani | 验证报告 |
 | ISO/IEC 25010:2023 | AI 组件功能正确性与可靠性 | LLM + 证明助理 | 形式化证书 |
@@ -8049,7 +8049,7 @@ mod safe_queue {
 ## 9. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | ETSI TR 119 540 | <https://www.etsi.org/deliver/etsi_tr/119500_119599/119540/> | 2026-07-08 |
 | LeanDojo | <https://leandojo.org/> | 2026-07-08 |
 | Copra (Coq + LLM) | <https://arxiv.org/abs/2310.04383> | 2026-07-08 |
@@ -8087,53 +8087,53 @@ mod safe_queue {
 ## 1. 语言与验证范式概览
 
 | 维度 | SPARK Ada | Rust |
-|-----|-----------|------|
-| **语言族** | Ada 子集（命令式，Pascal 风格）| 系统编程语言（C++ 替代）|
-| **主要验证范式** | 演绎式程序验证（Contracts + SMT）| 类型系统保证 + 可选形式化验证 |
+| ----- | ----------- | ------ |
+| **语言族** | Ada 子集（命令式，Pascal 风格） | 系统编程语言（C++ 替代） |
+| **主要验证范式** | 演绎式程序验证（Contracts + SMT） | 类型系统保证 + 可选形式化验证 |
 | **核心安全保证** | 无运行时错误 + 功能正确性 | 内存安全 + 数据竞争自由 |
 | **工业认证** | DO-178C/DO-333 FAA/EASA 认可 | 尚无航空级 DO-178C 认证路径 |
-| **代码可读性** | 显式合同（Pre/Post/Global/Depends）| 隐式类型约束（所有权/生命周期）|
+| **代码可读性** | 显式合同（Pre/Post/Global/Depends） | 隐式类型约束（所有权/生命周期） |
 
 ## 2. 安全保证对比矩阵
 
 | 安全属性 | SPARK Ada | Rust | 说明 |
-|---------|-----------|------|------|
-| **内存安全** | ✅ 编译期 + 证明期 | ✅ 编译期（所有权系统）| 两者均保证无 use-after-free、double-free |
-| **数据竞争自由** | ✅ 信息流分析 | ✅ 编译期（&mut T 唯一性）| Rust 通过类型系统；SPARK 通过 Global/Depends |
+| --------- | ----------- | ------ | ------ |
+| **内存安全** | ✅ 编译期 + 证明期 | ✅ 编译期（所有权系统） | 两者均保证无 use-after-free、double-free |
+| **数据竞争自由** | ✅ 信息流分析 | ✅ 编译期（&mut T 唯一性） | Rust 通过类型系统；SPARK 通过 Global/Depends |
 | **数组越界** | ✅ 证明 + 运行时检查 | ⚠️ 需 `assert!` 或 `unsafe` | Rust 标准库 `get()` 安全，`[]` 运行时检查 |
 | **整数溢出** | ✅ 证明期检测 | ⚠️ Debug 模式 panic，Release 模式 wrap | Rust `checked_add` 可安全处理 |
 | **除零** | ✅ 证明期检测 | ⚠️ 运行时 panic | Rust 需显式检查 |
-| **未初始化变量** | ✅ 证明期检测 | ✅ 编译期（移动语义）| Rust 更严格：未初始化变量无法使用 |
-| **空指针/空引用** | ✅ 排除（Ada 无空指针）| ✅ 编译期（`Option<T>` 显式处理）| Rust `&T` 永不为空，`Option` 强制处理 |
-| **别名分析** | ✅ 显式 Global/Depends | ✅ 编译期（借用检查器）| Rust 自动推断；SPARK 显式声明 |
+| **未初始化变量** | ✅ 证明期检测 | ✅ 编译期（移动语义） | Rust 更严格：未初始化变量无法使用 |
+| **空指针/空引用** | ✅ 排除（Ada 无空指针） | ✅ 编译期（`Option<T>` 显式处理） | Rust `&T` 永不为空，`Option` 强制处理 |
+| **别名分析** | ✅ 显式 Global/Depends | ✅ 编译期（借用检查器） | Rust 自动推断；SPARK 显式声明 |
 | **并发死锁** | ⚠️ 需额外证明 | ⚠️ 编译期不保证 | 两者均需运行时分析或模型检测 |
-| **功能正确性** | ✅ 合同证明（Post 条件）| ⚠️ 需外部工具（Prusti/Kani）| SPARK 原生；Rust 需附加形式化工具 |
+| **功能正确性** | ✅ 合同证明（Post 条件） | ⚠️ 需外部工具（Prusti/Kani） | SPARK 原生；Rust 需附加形式化工具 |
 
 ## 3. 形式化验证工具链对比
 
 | 工具/能力 | SPARK Ada | Rust |
-|----------|-----------|------|
+| ---------- | ----------- | ------ |
 | **编译器** | GNAT Pro (AdaCore) | rustc (开源) |
 | **证明器** | Alt-Ergo, Z3, CVC5 (SMT) | 无原生；Kani (CBMC), Prusti (Viper), Aeneas |
-| **证明语言** | SPARK 合同（Pre/Post/Loop_Invariant）| 外部注解（`#[requires]`, `#[ensures]`, `kani::proof`）|
-| **自动化程度** | 高（80%+ 自动证明）| 中（需人工干预和辅助引理）|
-| **证明覆盖** | 完整（可达性、无 RTE、合同满足）| 取决于工具：Kani 属性检测；Prusti 合同验证 |
-| **工具资格** | DO-330 TQL-1 工具资格包 | 无（Kani/Prusti 未获航空工具资格）|
+| **证明语言** | SPARK 合同（Pre/Post/Loop_Invariant） | 外部注解（`#[requires]`, `#[ensures]`, `kani::proof`） |
+| **自动化程度** | 高（80%+ 自动证明） | 中（需人工干预和辅助引理） |
+| **证明覆盖** | 完整（可达性、无 RTE、合同满足） | 取决于工具：Kani 属性检测；Prusti 合同验证 |
+| **工具资格** | DO-330 TQL-1 工具资格包 | 无（Kani/Prusti 未获航空工具资格） |
 | **IDE 集成** | GNAT Studio, VS Code (AdaCore) | VS Code, IntelliJ, rust-analyzer |
 | **调试体验** | 合同失败定位精确 | Miri 可检测 UB；形式化工具错误报告较晦涩 |
 
 ## 4. 工业应用生态对比
 
 | 应用领域 | SPARK Ada | Rust |
-|---------|-----------|------|
-| **航空电子** | ✅ 成熟（Airbus, Dassault, Lockheed Martin）| ⚠️ 探索阶段（无人系统、地面支持）|
-| **铁路信号** | ✅ 使用（Alstom, Siemens）| ⚠️ 早期试点 |
-| **汽车 (AUTOSAR)** | ⚠️ 有限（部分 OEM 研究）| ⚠️ 研究项目（AUTOSAR Adaptive 探讨）|
-| **航天** | ✅ 传统优势（ESA, NASA）| ⚠️ SpaceX 部分地面软件 |
+| --------- | ----------- | ------ |
+| **航空电子** | ✅ 成熟（Airbus, Dassault, Lockheed Martin） | ⚠️ 探索阶段（无人系统、地面支持） |
+| **铁路信号** | ✅ 使用（Alstom, Siemens） | ⚠️ 早期试点 |
+| **汽车 (AUTOSAR)** | ⚠️ 有限（部分 OEM 研究） | ⚠️ 研究项目（AUTOSAR Adaptive 探讨） |
+| **航天** | ✅ 传统优势（ESA, NASA） | ⚠️ SpaceX 部分地面软件 |
 | **医疗设备** | ✅ IEC 62304 合规 | ⚠️ 尚无 FDA 认证案例 |
 | **核工业** | ✅ 传统使用 | ❌ 无已知应用 |
-| **操作系统内核** | ✅ 微内核（seL4 用 Haskell 验证）| ✅ 活跃（Rust for Linux, Redleaf, Theseus）|
-| **嵌入式实时** | ✅ Ravenscar Profile（确定性并发）| ⚠️ `no_std` + RTIC 框架 |
+| **操作系统内核** | ✅ 微内核（seL4 用 Haskell 验证） | ✅ 活跃（Rust for Linux, Redleaf, Theseus） |
+| **嵌入式实时** | ✅ Ravenscar Profile（确定性并发） | ⚠️ `no_std` + RTIC 框架 |
 
 ## 5. 代码示例对比：安全关键函数
 
@@ -8207,19 +8207,19 @@ let (tx, rx) = channel::<DataType>();
 ## 6. 复用与生态系统
 
 | 维度 | SPARK Ada | Rust |
-|-----|-----------|------|
-| **标准库复用** | Ada 标准库（严格，航空级）| crates.io（丰富，质量参差）|
-| **包管理** | GPRbuild / Alire（较新）| Cargo（成熟，依赖解析强）|
-| **开源生态规模** | 小（ niche，高完整性 ）| 大（活跃，但安全关键库少）|
-| **第三方库信任** | 高（来源有限，审查严格）| 需额外审查（cargo-audit, cargo-deny）|
-| **代码生成** | 受限（避免未验证代码）| 宏系统强大（但宏安全需审查）|
+| ----- | ----------- | ------ |
+| **标准库复用** | Ada 标准库（严格，航空级） | crates.io（丰富，质量参差） |
+| **包管理** | GPRbuild / Alire（较新） | Cargo（成熟，依赖解析强） |
+| **开源生态规模** | 小（ niche，高完整性 ） | 大（活跃，但安全关键库少） |
+| **第三方库信任** | 高（来源有限，审查严格） | 需额外审查（cargo-audit, cargo-deny） |
+| **代码生成** | 受限（避免未验证代码） | 宏系统强大（但宏安全需审查） |
 | **FFI（外部函数接口）** | Ada ↔ C 绑定规范 | `unsafe` FFI，需手动保证前置条件 |
-| **生成式 AI 支持** | 良好（合同作为规范，AI 生成后验证）| 良好（类型系统约束 AI 输出）|
+| **生成式 AI 支持** | 良好（合同作为规范，AI 生成后验证） | 良好（类型系统约束 AI 输出） |
 
 ## 7. 决策矩阵
 
 | 场景 | 推荐 | 理由 |
-|-----|------|------|
+| ----- | ------ | ------ |
 | **DO-178C DAL A/B 航空软件** | SPARK Ada | 唯一有完整认证路径和工具资格的形式化方法 |
 | **需要替代单元测试（DO-333）** | SPARK Ada | 证明替代测试已获 FAA/EASA 认可 |
 | **操作系统/内核开发** | Rust | 内存安全 + 活跃生态 + Linux 内核集成 |
@@ -8309,7 +8309,7 @@ System
 ## 资产清单
 
 | 工具/方法 | 文件数 | 主题覆盖 | 内容状态 | 权威来源对齐 |
-|-----------|--------|----------|----------|-------------|
+| ----------- | -------- | ---------- | ---------- | ------------- |
 | **TLA+** | 7 | 支付服务 (T06)、MCP 能力协商 (T07)、A2A Task 生命周期 (T08) | 初始案例完整，跨主题 T09/T10 在 `11-industrial-iot-otit/` 中交付 | Lamport《Specifying Systems》、Wayne《Practical TLA+》、AWS CACM'15 |
 | **Alloy** | 8 | 组件依赖无环 (T11)、MCP Tool 图 (T12)、跨层映射 (T13)、ISA-95 层次 (T14) | 全部完成，均有配套 `.als` + `.md` | Jackson《Software Abstractions》、ISO 42010:2022、ISA-95 |
 | **Coq/Isabelle** | 6 | 插入排序、有界计数器、旋转门状态机 | 教学示例完成 (T18a)，安全关键组件证明 (T18b) 待启动 | Software Foundations、Isabelle AFP |
@@ -8331,7 +8331,7 @@ System
 ### 1. 文件缺失与目录不一致
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **ci-workflows.md 缺失** | `03-coq-isabelle/README.md` 目录结构中列出 | 实际文件不存在；README 中描述的 Docker 验证流程无独立 CI 文档支撑 |
 | **T10 本地文件缺失** | `01-tla-plus/case-library.md` 案例索引 | 索引声称 `plcopen-motion.tla` 与 `tla-verification.md` 位于 `01-tla-plus/`，但本地不存在；T10 规约实际在 `11-industrial-iot-otit/04-plcopen-motion/plcopen-motion.tla`，且**无对应说明文档** |
 | **T09 本地无索引** | `01-tla-plus/case-library.md` | T09 规约仅在跨主题目录存在，`01-tla-plus/` 下无本地入口或链接说明 |
@@ -8339,7 +8339,7 @@ System
 ### 2. 版本号与前瞻性声明未区分
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **Rust 1.93 前瞻性声明** | `04-rust-type-system/cargo-sat-resolution.md` §3 伪代码后 | 声称 "Rust 1.93 (2026) 的 PubGrub 实现增加了 MSRV 感知"，但对齐标准仅声明 Rust 1.85+；**Rust 1.93 在 2026-06-08 尚未发布**，文档未明确标注此为预测性内容 |
 | **Polonius "2026 稳定化"预测** | `04-rust-type-system/polonius-vs-nll.md` §1、§6.2 | 声称 "Polonius Alpha (Rust 1.85+ nightly, 目标 2026 稳定化)"；Rust 1.85 已于 2025-02 发布，Polonius 截至本报告日仍在 nightly，**"2026 稳定化"是项目目标而非既成事实**，文档未加预测性免责声明 |
 | **Rocq 9.0+ 版本** | `03-coq-isabelle/README.md` | 声称环境为 "Rocq 9.0+"；Rocq 9.0 在 2026-06-08 可能尚未正式发布，属于前瞻性版本声明 |
@@ -8348,7 +8348,7 @@ System
 ### 3. 引用来源权威性存疑
 
 | 问题 | 位置 | 详情 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **A2A 非官方域名** | `01-tla-plus/a2a-task-lifecycle.md` 参考文献 [^8] | 引用 `https://a2a-protocol.org` 作为 "Google A2A Protocol Specification v1.0" 来源；Google A2A 的官方发布渠道为 GitHub 仓库 (`google/A2A`)，该域名权威性需核实 |
 | **第三方博客替代官方规范** | `01-tla-plus/a2a-task-lifecycle.md` [^7] | 引用 PickAxe 博客 "MCP vs A2A Protocol" 作为 A2A 背景来源，非权威规范文档 |
 | **第三方博客替代官方规范** | `01-tla-plus/mcp-capability-negotiation.md` [^6] | 引用 DevelopersDigest 博客 "What Is the Model Context Protocol? A 2026 Primer" 作为 MCP 规范说明；官方规范来源应为 `https://spec.modelcontextprotocol.io` |
@@ -8490,7 +8490,7 @@ System
 **形式化验证（Formal Verification）** 指使用数学方法（逻辑、自动机、类型论、集合论等）严格证明系统模型满足给定规约的过程。与测试只能证明“存在错误”不同，形式化验证在模型范围内可以证明“不存在违反规约的行为”。
 
 | 方法 | 核心思想 | 典型工具 |
-|------|----------|----------|
+| ------ | ---------- | ---------- |
 | **TLA+** | 时序逻辑动作（TLA）描述状态与状态迁移，模型检验穷举状态空间 | TLC, Apalache |
 | **Alloy** | 关系一阶逻辑 + SAT 求解，在小范围内寻找反例 | Alloy Analyzer |
 | **Coq/Isabelle** | 交互式定理证明，从公理出发构造机器可检查证明 | Coq/Rocq, Isabelle/HOL |
@@ -8584,7 +8584,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 ## 5. 形式化验证决策矩阵
 
 | 复用场景 | 推荐方法 | 关键收益 | 主要成本 |
-|----------|----------|----------|----------|
+| ---------- | ---------- | ---------- | ---------- |
 | 分布式共识/事务 | TLA+ | 发现并发边界缺陷 | 学习曲线与状态空间爆炸 |
 | 授权/依赖结构 | Alloy | 快速发现结构反例 | 范围限制，非完备证明 |
 | 密码/编译器 | Coq/Isabelle | 最高置信度 | 专家依赖、周期长 |
@@ -8602,7 +8602,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | TLA+ Home Page (Leslie Lamport) | <https://lamport.azurewebsites.net/tla/tla.html> | 2026-07-09 |
 | TLA+ Foundation | <https://foundation.tlapl.us/> | 2026-07-09 |
 | *Specifying Systems* (Lamport) | <https://lamport.azurewebsites.net/tla/book.html> | 2026-07-09 |
@@ -8634,7 +8634,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 ## 8. 标准条款与工具映射
 
 | 标准 / 条款 | 本项目对应活动 | 形式化工具/方法 | 产出证据 |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | IEEE 1012-2024 §7 / §9（软件 V&V 管理、需求分析 V&V） | 复用资产目录与 SIL 判定 | 风险分析 + 完整性等级表 | V&V 计划、SIL 评估记录 |
 | IEEE 1012-2024 §9.3（软件设计 V&V） | 架构约束建模 | Alloy / TLA+ | 模型文件、反例报告 |
 | IEEE 1012-2024 §9.5（软件实现 V&V） | 组件契约证明 | Coq/Rocq、Isabelle/HOL、SPARK Pro | 证明脚本、GNATprove 报告 |
@@ -8648,7 +8648,7 @@ Airbus A380 飞控团队使用 SPARK/Ada 证明“襟翼控制函数在任意输
 IEC 61508-1:2025 草案 Annex B 以及 ISO/IEC/IEEE 1012:2024 均强调：验证与确认活动的**独立性等级**应随完整性等级提升。下表将 SIL / DAL 与推荐形式化工具、证据类型进行映射，便于复用资产选型时快速定位。
 
 | 完整性等级 | IEC 61508 / DO-178C 对应 | 独立性要求 | 推荐形式化工具/方法 | 典型证据 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | SIL 1 / DAL D | 低风险/轻微影响 | 同行评审 | Alloy 草模、静态分析、评审记录 | 检查单、评审报告 |
 | SIL 2 / DAL C | 中风险/局部影响 | 独立部门/角色 | TLA+ / TLC、Miri、Kani（有界模型检验） | 模型检查报告、UB 检测报告 |
 | SIL 3 / DAL B | 高风险/显著影响 | 独立团队/第三方 | Coq/Rocq 9.0+、Isabelle/HOL、Kani Contracts | 证明脚本、契约验证报告 |
@@ -8688,7 +8688,7 @@ IEC 61508-1:2025 草案 Annex B 以及 ISO/IEC/IEEE 1012:2024 均强调：验证
 ## 11. 工具链与资源矩阵
 
 | 工具 | 适用方法 | 学习曲线 | 工业案例 |
-|------|----------|----------|----------|
+| ------ | ---------- | ---------- | ---------- |
 | TLC / Apalache | TLA+ 模型检验 | 中等 | AWS DynamoDB, Azure Cosmos DB |
 | Alloy Analyzer | Alloy 结构分析 | 低 | 多个学术与初创项目 |
 | Coq/Rocq | 定理证明 | 高 | CompCert 编译器, Fiat Crypto |
