@@ -1,6 +1,6 @@
 # COCOMO II 复用模型 2026 校准版
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/09-value-quantification` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 09-value-quantification --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -2865,5 +2865,6 @@ graph LR
 - 2026-07-09：对齐国际化权威来源（COCOMO II USC、FinOps Unit Economics、GSF SCI/SCI for AI、ISO/IEC 21031:2024、NASA RRL、CMMI），补充可运行工具引用，删除重复段落。
 - 2026-07-07：补充 COCOMO II、ROI/NPV、实物期权与碳强度 SCI 的概念定义、示例、反例与权威来源。
 - 2026-06-08：初始版本，梳理成本估算与 ROI 模型文件导航。
+
 
 ---

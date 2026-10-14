@@ -1,6 +1,6 @@
 # Phase C 对齐矩阵与 A+B+C 累计汇总
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/99-reference` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 99-reference --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -46,7 +46,7 @@
 33. [软件架构复用知识体系问答索引 (QA Index)](../struct/99-reference/knowledge-index/qa-index.md)
 34. [Phase C 质量检查报告](../struct/99-reference/quality-check-phase-c.md)
 35. [99 参考索引](../struct/99-reference/README.md)
-36. [国际标准与权威来源索引 v2.9](../struct/99-reference/standards-index/authoritative-sources-v2.md)
+36. [国际标准与权威来源索引 v3.0](../struct/99-reference/standards-index/authoritative-sources-v2.md)
 37. [国际标准对齐多维总矩阵](../struct/99-reference/standards-index/master-alignment-matrix.md)
 38. [学术/技术白皮书引用模板](../struct/99-reference/templates/academic-citation-template.md)
 39. [复用资产质量检查清单模板](../struct/99-reference/templates/checklist-template.md)
@@ -82,7 +82,7 @@
 ## 一、Phase C 文档 × 标准/框架对齐矩阵
 
 | 文档名称 | 对齐标准 | 覆盖领域 | 与已有文档的互补关系 | 引用规范（URL + 日期） |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **C-01 SysML v2 复用映射** | OMG SysML v2 (2023), ISO/IEC 42010:2022, OMG RAS 2.0, ISO/IEC 26550:2015, IEEE 1471 | 元模型标准层 / 模型驱动系统工程 | 与 C-02 MBSE 整合互补：C-01 聚焦语言级复用语义，C-02 聚焦方法论与工具链；与 01/03 PLE 整合文档形成标准族互补 | OMG SysML v2: <https://www.omg.org/spec/SysML/> (2023-06)<br>ISO 42010:2022: <https://www.iso.org/obp/ui> (2022)<br>OMG RAS: <https://www.omg.org/spec/RAS/> (2024) |
 | **C-02 MBSE 与 PLE 整合** | INCOSE SE Vision 2035, ISO/IEC 26550:2015, ISO/IEC 42010:2022, IEC 63278 (AAS), ISO 15288:2023, OMG SysML v2 | 元模型标准层 / 系统工程与产品线工程 | 与 C-01 形成"语言-方法"双轴；与 11/05 AAS-OPC UA 映射形成工业-系统工程桥梁 | INCOSE: <https://www.incose.org/SEVision2035> (2023)<br>ISO 26550: <https://www.iso.org/standard/69529.html> (2023)<br>ISO 15288: <https://www.iso.org/standard/81702.html> (2023) |
 | **C-03 数字孪生通用参考架构** | ISO 23247, AEDT, Gartner 数字孪生框架, IEC 63278 (AAS 对比参考) | 工业物联网 / 数字孪生（非工业场景） | 与 11/05 AAS-OPC UA 映射互补：C-03 覆盖通用/商业数字孪生，11/05 聚焦工业自动化；与 C-02 MBSE 形成模型-孪生闭环 | ISO 23247: <https://www.iso.org/standard/77378.html> (2021)<br>AEDT: <https://www.digitaltwinconsortium.org/> (2026-06) |
@@ -97,7 +97,7 @@
 ## 二、Phase A+B+C 累计对齐矩阵（简化汇总）
 
 | 阶段 | 主题领域 | 新增对齐标准/框架 | 交付物数量 | 与前期内容的互补关系 |
-|------|----------|-------------------|------------|----------------------|
+| ------ | ---------- | ------------------- | ------------ | ---------------------- |
 | **Phase A** | 元模型 / 治理 / 供应链 / 应用架构 | ISO 12207:2026, ISO 26565/26566, EU CRA, SLSA 1.2 | 7 项 | **修复与更新**：纠正 ArchiMate 4.0 误报、MCP 版本勘误，补全 03 应用架构基础子目录（分层/微服务/Serverless/事件驱动） |
 | **Phase B** | 元模型 / 业务架构 / 治理 / 新兴趋势 | DoDAF/UAF, Zachman, SPICE (ISO 33000), BIAN, GreenArch, OMG RAS v2.2, IEEE 1517, FAIR4RS, ISO 25010:2023 AI 质量 | 12 项 | **横向扩展**：引入国防、金融、可持续软件等 5 个外部视角；标准覆盖从 30 扩展至 35+；工具链补充术语查询、COCOMO 计算器、成熟度问卷 |
 | **Phase C** | 元模型 / 工业 IoT / 供应链 / 业务架构 / 工具链 | SysML v2, MBSE/PLE, ISO 23247, AEDT, OWASP SCVS, GUAC, TMForum, NAF/MODAF | 8 项 | **纵深扩展**：填补 MBSE/数字孪生通用架构/电信/国防北约视角空白；升级决策工具至 v2.0；与 Phase 1-5 形成"通用+垂直+工具"完整闭环 |
@@ -180,6 +180,28 @@ Phase C（纵深扩展）
 > **统计周期**: 2026-06-06 00:00 ~ 2026-06-06 23:59
 > **数据来源**: Git 提交历史 (`git log --since/--until`)
 > **统计维度**: 新增/更新文件数量、代码规模、按主题分布
+
+---
+
+## 概念定位：完成统计报告是什么
+
+**完成统计报告**是 `99-reference/audit/` 下的一个审计文种：它以 Git 提交历史为唯一数据源，对某一时间窗口内知识体系的产出进行量化盘点，回答"本轮实际交付了多少内容、分布在哪些主题"这一事实问题。它只陈述可复核的仓库事实（提交数、文件数、行数），不做质量评价——质量评价由 `quality-gate-v2.py` 与差距分析报告承担。
+
+### 示例：统计口径的实际应用
+
+例如：下表"07-formal-verification 唯一文件数 12"的口径是 `git log --since/--until` 时间窗内该主题下被新增或修改的去重文件数，其中 5 个 `.tla` 与 4 个 `.als` 形式化规约文件与 Markdown 文档按同一口径计入，因此该数值可直接用 `git diff --stat` 复算验证。
+
+### 反例：不应纳入本报告统计的内容
+
+- 未提交到 Git 的工作区草稿（不在 `git log` 数据源内，无法复核）；
+- `.venv/`、`__pycache__/`、`dist/` 等生成产物（非知识交付物）；
+- 对其他轮次产出的回顾性评价（属于相应轮次的报告，避免重复计数）。
+
+### 权威来源与数据核查
+
+> **权威来源**: 本仓库 Git 提交历史（`git log --since=2026-06-06 --until=2026-06-07`），所有数值均可由该命令复算。
+> **核查日期**: 2026-06-06
+> **参见**: `struct/MASTER_PLAN.md`（轮次规划）、`struct/99-reference/CHANGELOG.md`（同期勘误记录）
 
 ---
 
@@ -329,9 +351,28 @@ Phase C（纵深扩展）
 
 ---
 
+## 概念定位：差距分析的定义与方法
+
+**差距分析（Gap Analysis）** 在本报告中的定义是：将项目知识体系的实际内容集合与两个基准集合——（a）项目自身规划（roadmap/MASTER_PLAN）承诺的交付物、（b）国际权威机构发布的标准与技术状态——分别求**对称差**（A Δ B = (A\B) ∪ (B\A)），从而同时暴露"规划了但未做""做了但版本滞后""权威强调但项目缺失"三类问题。本报告遵循集合论严格定义，所有缺失项均标注权威来源以便复核。
+
+### 示例：对称差方法的应用
+
+例如：第二部分 2.1 节 B 类中"EU CRA 2024/2847 未系统覆盖"这一条目，属于"权威已生效（2024-12 通过）而项目缺失"的对称差元素，因此被列入 Phase 补全计划并给出 P1 优先级——这是差距分析从"发现"到"行动"的标准转化路径。
+
+### 反例：不属于差距分析的发现
+
+- 纯排版或 Markdown 格式问题（属于 lint/structure 检查范畴，不涉及内容差距）；
+- 项目有意暂缓的主题（如决策 4A 暂缓的量子计算），应记为"范围决策"而非"差距"；
+- 无法定位到任何权威来源的主观评价（不满足本报告的可复核要求）。
+
+---
+
 ## 目录
 
 - [《软件工程架构复用视角》全面差距分析报告](#软件工程架构复用视角全面差距分析报告)
+  - [概念定位：差距分析的定义与方法](#概念定位差距分析的定义与方法)
+    - [示例：对称差方法的应用](#示例对称差方法的应用)
+    - [反例：不属于差距分析的发现](#反例不属于差距分析的发现)
   - [目录](#目录)
   - [执行摘要](#执行摘要)
   - [第一部分：内部完成度审计](#第一部分内部完成度审计)
@@ -1012,6 +1053,28 @@ Phase C（纵深扩展）
 
 ---
 
+## 概念定位：交叉引用有效性审查
+
+**交叉引用有效性审查**是指对知识体系内 Markdown 文件之间的相对路径链接进行存在性与正确性验证的审计活动：它回答"读者点击任一内部链接时是否能到达真实存在的目标文件"这一问题。该审查是自动化链接检查（`scripts/link-checker.py`，覆盖 struct/、view/、reports/ 全量死链检测）的人工抽查补充——自动化负责全量，本报告负责抽样验证引用密度与导航质量。
+
+### 示例：一次链接验证的判定过程
+
+例如：样本 2 中 `metrics-framework.md` 引用 `../03-maturity-models/reuse-maturity-models-rcmm-rise.md`，审查时先解析相对路径（同级主题下的兄弟目录），再在文件系统中确认目标存在且大小非零，方记为 ✅——任一环节失败即记为失效链接并进入修复清单。
+
+### 反例：不属于本审查范围的对象
+
+- 外部 HTTP(S) 链接（由 `standard-status-checker.py` 与人工事实核查负责）；
+- 纯文本形式书写、未做成 Markdown 链接的路径（本身不构成"引用"，但会在"改进建议"中记录）；
+- 代码块内的示例路径（渲染时不可点击，不产生导航义务）。
+
+### 权威来源与工具依据
+
+> **权威来源**: 本仓库文件系统实际状态（审查时点快照）与 `scripts/link-checker.py` 的链接解析规则。
+> **核查日期**: 2026-06-06
+> **参见**: `struct/99-reference/audit/readme-consistency-audit.md`（同期 README 路径审查）
+
+---
+
 ## 审查方法
 
 1. 使用 ripgrep 扫描全部 `struct/**/*.md` 中的内部链接（`](./` 和 `](../` 模式）
@@ -1145,9 +1208,28 @@ Phase C（纵深扩展）
 
 ---
 
+## 概念定位：网络权威内容对齐报告
+
+**网络权威内容对齐**是指将项目知识体系的全部主题逐一与互联网上一手权威来源（ISO/IEC/IEEE 官网、The Open Group、NIST、Linux Foundation、OpenSSF 等）发布的最新状态进行比对，并记录"深度对齐 / 版本滞后 / 缺失 / 独创"四种对齐状态的审计方法。与 `comprehensive-gap-analysis-2026-06-08.md` 偏重内部完成度不同，本报告的基准完全外部化：结论只取决于官方来源可查证的事实。
+
+### 示例：一条对齐判定的形成
+
+例如：2.1 节中"ISO/IEC 12207:2026 于 2026-04-29 刚发布而项目仍引用 2017 版"，是访问 ISO 官网确认发布状态后与项目引用文本逐条比对得出的结论，因此被标为 ❌ 缺失并进入 Phase A 任务 A-01——每条对齐判定都必须能回溯到具体的官方页面。
+
+### 反例：不构成对齐发现的情形
+
+- 仅凭二手博客或社区讨论得出的版本判断（无一手来源，不予采信）；
+- 项目明确决策暂缓的主题（属于范围决策而非对齐缺口）；
+- 与本项目复用主题无关的标准动态（超出对齐范围）。
+
+---
+
 ## 目录
 
 - [《软件工程架构复用视角》网络权威内容全面对齐报告](#软件工程架构复用视角网络权威内容全面对齐报告)
+  - [概念定位：网络权威内容对齐报告](#概念定位网络权威内容对齐报告)
+    - [示例：一条对齐判定的形成](#示例一条对齐判定的形成)
+    - [反例：不构成对齐发现的情形](#反例不构成对齐发现的情形)
   - [目录](#目录)
   - [执行摘要](#执行摘要)
   - [一、当前项目主题子主题全盘点](#一当前项目主题子主题全盘点)
@@ -1629,6 +1711,30 @@ Phase C（纵深扩展）
 
 ---
 
+## 概念定位：README 一致性审查
+
+**README 一致性审查**是指核对各主题 README.md 中"当前状态"声明（`[x]`/`[ ]` 标记与文件路径列表）与文件系统实际状态是否一致的审计活动。README 是读者进入每个主题的第一入口，其状态声明若与实际文件脱节，会直接误导后续维护者对完成度的判断，因此该审查被列为知识体系可信度的基础检查项之一。
+
+### 示例：一条不一致项的判定
+
+例如：问题汇总表第 1 行——`01-meta-model-standards` 的"标准族谱梳理"标记为 `[x]` 却未给出文件路径，而 `alignment-matrix.md` 实际存在且未被 README 引用；该条目同时违反"状态可验证"与"导航可达"两条要求，因此被记为 🟡 中严重度并给出补充路径引用的修复建议。
+
+### 反例：不计为一致性问题的情形
+
+- README 中明确标注为规划/预留的 `[ ]` 项（状态声明与事实一致，本就未完成）；
+- 路径存在但链接文本措辞不同（不影响可达性，属编辑风格问题）；
+- 生成产物目录（`dist/` 等）未在 README 列出（不属主题内容声明范围）。
+
+### 权威来源与数据核查
+
+> **权威来源**: 审查时点 `struct/` 文件系统的实际状态；全部 36 条路径的存在性均可通过文件系统直接复核。
+> **核查日期**: 2026-06-06
+> **参见**: `struct/99-reference/audit/cross-reference-audit.md`（同期交叉引用审查）、`struct/99-reference/audit/roadmap-consistency-audit.md`（同期 roadmap 状态审查）
+
+因此，本报告与上述两份同期审查共同构成 2026-06-06 的"声明-事实一致性"审计闭环：README 声明、roadmap 状态、交叉引用三个入口交叉验证同一批文件。
+
+---
+
 ## 审查方法
 
 1. 逐主题读取 README.md 的"当前状态"章节
@@ -1710,6 +1816,28 @@ Phase C（纵深扩展）
 > **审查日期**: 2026-06-06
 > **审查范围**: struct/01-meta-model-standards、struct/07-formal-verification、struct/11-industrial-iot-otit 的 roadmap.md
 > **审查维度**: 任务状态与文件存在性一致性、时间线合理性
+
+---
+
+## 概念定位：Roadmap 进度一致性审查
+
+**Roadmap 进度一致性审查**是指核对各主题 roadmap.md 中任务的 `[x]`/`[ ]` 状态标记与其交付物文件的实际存在性、以及任务时间线是否已过期的审计活动。Roadmap 是项目进度的对外承诺，状态标记滞后会使已完成工作被重复排期、使逾期任务失去预警，因此本审查以"文件存在性"这一最客观的事实为基准校正状态声明。
+
+### 示例：一条状态滞后的判定
+
+例如：问题汇总表第 1 行——`01-meta-model-standards` T05 标记为 `[ ]`，但交付物 `02-togaf-10-alignment/detailed-mapping.md` 已存在且达 25,266 bytes，文件事实强于状态声明，因此判定为 🔴 高严重度的状态滞后，修复动作是将 roadmap 标记更新为 `[x]`（该修复已在本报告"修复记录"一节确认执行）。
+
+### 反例：不计为一致性问题的情形
+
+- 交付物存在但内容深度未达验收标准而有意保留 `[ ]`（需在 roadmap 中注明原因，属合理状态管理）；
+- 跨主题存放的交付物（如 T09/T10 的 TLA+ 规约实际位于 11 主题）已添加路径说明的（属合理归属决策，而非状态错误）；
+- 尚未到达计划时间的 `[ ]` 任务（时间线未过期，无滞后）。
+
+### 权威来源与数据核查
+
+> **权威来源**: 审查时点 `struct/` 文件系统的实际状态与各主题 roadmap.md 文本；"修复记录"一节已经用户确认后执行。
+> **核查日期**: 2026-06-06
+> **参见**: `struct/99-reference/audit/readme-consistency-audit.md`（同期 README 审查）、`struct/MASTER_PLAN.md`（总计划）
 
 ---
 
@@ -1990,7 +2118,7 @@ reuse-framework v0.1.0
 本书使用 Markdown 兼容的 LaTeX 子集（通过 KaTeX 或 MathJax 渲染）。支持的语法：
 
 | 元素 | LaTeX | 示例 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 行内公式 | `$...$` | `$AAF = 0.4 \times AAF_{design} + 0.3 \times AAF_{code} + 0.3 \times AAF_{test}$` |
 | 独立编号公式 | `$$...$$` + 手动编号 | 见 3.2 节 |
 | 上标/下标 | `^` / `_` | `$x^2$`, `$x_i$` |
@@ -2236,7 +2364,7 @@ v2.0 在 v1.0 基础上，引入 Phase B 新增的 5 个外部架构视角（DoD
 ## 2. 章节总表
 
 | 章 | 标题 | 核心主题 | 合并来源 | 预计字数 | 关键标准 |
-|:---|:---|:---|:---|:---:|:---|
+| :--- | :--- | :--- | :--- | :---: | :--- |
 | 1 | 导论：复用的本质与演进 | 复用定义、历史演进、本书结构 | 全书统领 | 15,000 | ISO/IEC 26550:2015 |
 | 2 | 元模型与标准对齐 | 概念地基、术语体系、标准映射 | `01-meta-model-standards` + B-01/B-02 | 36,000 | ISO 42010:2022, TOGAF 10, ArchiMate 3.2, DoDAF/UAF/NAF, Zachman, GERAM |
 | 3 | 业务架构复用 | 能力、价值流、BPMN/DMN、国防/金融 | `02-business-architecture-reuse` + B-01/B-06 | 28,000 | BPMN 2.0, DMN 1.5, FEA BRM, BIAN 7.0 |
@@ -2674,7 +2802,7 @@ flowchart TB
 ## 6. 与 MASTER PLAN 阶段对齐
 
 | 章节 | MASTER PLAN 阶段 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 第1-2章 | Phase 0（2026-Q2） | 基础奠基：标准族谱、术语体系、本书结构；v2.0 新增 DoDAF/UAF/NAF、Zachman、GERAM 映射 |
 | 第3-6章 | Phase 1（2026-Q3） | 核心层次深化：业务→应用→组件→功能四层框架；v2.0 新增国防/BIAN 业务案例 |
 | 第7-9章 | Phase 2（2026-Q4） | 形式化与量化：验证、认知、ROI 方法论；v2.0 新增 SPICE、ISO 25040、DORA 2025 |
@@ -2805,7 +2933,7 @@ flowchart TB
 ## 2. 章节总表
 
 | 章 | 标题 | 核心主题 | 合并来源 | 预计字数 | 关键标准 |
-|:---|:---|:---|:---|:---:|:---|
+| :--- | :--- | :--- | :--- | :---: | :--- |
 | 1 | 导论：复用的本质与演进 | 复用定义、历史演进、本书结构 | 全书统领 | 15,000 | ISO/IEC 26550:2015 |
 | 2 | 元模型与标准对齐 | 概念地基、术语体系、标准映射 | `01-meta-model-standards` | 30,000 | ISO 42010:2022, TOGAF 10, ArchiMate 3.2 |
 | 3 | 业务架构复用 | 能力、价值流、BPMN/DMN | `02-business-architecture-reuse` | 25,000 | BPMN 2.0, DMN 1.5, FEA BRM |
@@ -3207,7 +3335,7 @@ flowchart TB
 ## 6. 与 MASTER PLAN 阶段对齐
 
 | 章节 | MASTER PLAN 阶段 | 说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 第1-2章 | Phase 0（2026-Q2） | 基础奠基：标准族谱、术语体系、本书结构 |
 | 第3-6章 | Phase 1（2026-Q3） | 核心层次深化：业务→应用→组件→功能四层框架 |
 | 第7-9章 | Phase 2（2026-Q4） | 形式化与量化：验证、认知、ROI 方法论 |
@@ -4749,7 +4877,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 - [T07: MCP Server 能力协商协议的 TLA+ 规约说明](../struct/07-formal-verification/01-tla-plus/mcp-capability-negotiation.md)
 - [T06: 分布式支付服务组件的 TLA+ 规约说明](../struct/07-formal-verification/01-tla-plus/payment-service.md)
 - [T11: 组件依赖无环性验证 (Alloy)](../struct/07-formal-verification/02-alloy/component-dependency.md)
-- … 共 26 个文件
+- … 共 28 个文件
 
 ### 08 认知架构与复用决策
 
@@ -4945,7 +5073,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 评分标准
 
 | 题型 | 分值 |
-|------|------|
+| ------ | ------ |
 | 单选 | 每题 5 分，共 10 分 |
 | 多选 | 每题 10 分，共 20 分 |
 | 简答 | 每题 15 分，共 45 分 |
@@ -5006,7 +5134,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 交付物清单
 
 | 文件 | 说明 |
-|------|------|
+| ------ | ------ |
 | [learning-path.md](../struct/99-reference/course/learning-path.md) | 4 条递进式学习路径 + 13 主题索引 |
 | [syllabus.md](../struct/99-reference/course/syllabus.md) | 16 周课程大纲、考核方式 |
 | [quiz.md](../struct/99-reference/course/quiz.md) | 课程测验与参考答案 |
@@ -5092,7 +5220,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 统计概览
 
 | 类别 | 数量 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | Markdown 文档 | 332 | 知识体系核心载体（struct/ 309 + view/ 23） |
 | Python 工具 | 12+ | CLI / Streamlit / 分析脚本 |
 | TLA+ 规约 | 3 | 时序逻辑形式化规约 |
@@ -5213,7 +5341,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 参考索引层（99-reference）
 
 | 子目录 | 内容 | 关键文件 |
-|--------|------|----------|
+| -------- | ------ | ---------- |
 | `book-outline.md` | 全书 12 章框架 | 12 章 + 附录 + 读者分层 |
 | `glossary/` | 术语与推理体系 | `axiom-theorem-tree.md`（20 公理 + 35 定理） |
 | `standards-index/` | 标准对齐总矩阵 | `master-alignment-matrix.md`（30 标准 × 5 层次） |
@@ -5230,7 +5358,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 交互式工具清单
 
 | 工具 | 类型 | 功能 | 路径 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | `terminology-query.py` | CLI | 跨标准术语查询（34+ 术语） | `99-reference/tools/` |
 | `reuse-toolkit-dashboard.py` | Streamlit | Web 仪表盘（术语+成熟度+决策树） | `99-reference/tools/` |
 | `standard-tracker.py` | CLI | 标准状态监控与报告生成 | `99-reference/tools/` |
@@ -5281,7 +5409,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## Phase 6 整合输出物
 
 | 交付物 | 路径 | 说明 |
-|--------|------|------|
+| -------- | ------ | ------ |
 | 全书聚合稿 | `dist/book-full.md` | 由 `scripts/build-deliverables.py` 生成 |
 | 主题分卷 | `dist/book-volumes/volume-*.md` | 14 个主题卷册 |
 | HTML 幻灯片 | `dist/slides/*.html` | 由 `scripts/build-slides.py` 生成（reveal.js） |
@@ -5313,7 +5441,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 国际标准
 
 | 标准 | 链接 | 用途 |
-|------|------|------|
+| ------ | ------ | ------ |
 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/standard/74393.html> | 架构描述 |
 | ISO/IEC 25010:2023 | <https://www.iso.org/standard/78176.html> | 产品质量模型 |
 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | 产品线工程 |
@@ -5326,7 +5454,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 架构框架
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TOGAF 10 | <https://pubs.opengroup.org/togaf-standard/> |
 | ArchiMate 3.2 | <https://pubs.opengroup.org/architecture/archimate32-doc/> |
 | SWEBOK V4 | <https://www.computer.org/education/bodies-of-knowledge/software-engineering> |
@@ -5335,7 +5463,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 供应链安全
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | SLSA 1.2 | <https://slsa.dev/spec/v1.2/> |
 | SLSA 1.1 | <https://slsa.dev/spec/v1.1/> |
 | SLSA 1.0 | <https://slsa.dev/spec/v1.0/> |
@@ -5349,7 +5477,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 工业 IoT
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | OPC Foundation | <https://opcfoundation.org/> |
 | IDTA (AAS) | <https://industrialdigitaltwin.org/> |
 | IEC/IEEE 60802 TSN Profile | <https://1.ieee802.org/tsn/iec-ieee-60802/> |
@@ -5360,7 +5488,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 形式化方法
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TLA+ | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy | <https://alloytools.org/> |
 | Coq | <https://coq.inria.fr/> |
@@ -5371,7 +5499,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## AI 原生协议
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | MCP Spec 2025-11-25 | <https://modelcontextprotocol.io/specification/2025-11-25/> |
 | MCP Official | <https://modelcontextprotocol.io/> |
 | A2A Protocol | <https://a2a-protocol.org/latest/> |
@@ -5381,7 +5509,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 其他
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | COCOMO II | <https://boehmcsse.org/tools/cocomo-models/> |
 | WebAssembly | <https://webassembly.org/> |
 | WebAssembly Component Model | <https://component-model.bytecodealliance.org/> |
@@ -5391,7 +5519,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 形式化验证
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | TLA+ Home Page | <https://lamport.azurewebsites.net/tla/tla.html> |
 | Alloy Tools | <https://alloytools.org/> |
 | Coq Proof Assistant | <https://coq.inria.fr/> |
@@ -5406,7 +5534,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 工业自动化
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | OPC Foundation | <https://opcfoundation.org/> |
 | OPC UA FX 1.0 | <https://reference.opcfoundation.org/specs/OPC-10000-80> |
 | PLCopen Motion Control | <https://www.plcopen.org/standards/motion-control/> |
@@ -5418,7 +5546,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 供应链安全
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | SLSA.dev | <https://slsa.dev/> |
 | OpenSSF | <https://openssf.org/> |
 | Sigstore | <https://www.sigstore.dev/> |
@@ -5430,7 +5558,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 认知科学与 AI
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | ACT-R Cognitive Architecture | <https://act-r.psy.cmu.edu/> |
 | NASA-TLX | <https://humansystems.arc.nasa.gov/groups/TLX/> |
 | Conformal Prediction Book | <https://arxiv.org/abs/2107.07511> |
@@ -5440,7 +5568,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ## 平台工程与云原生
 
 | 资源 | 链接 |
-|------|------|
+| ------ | ------ |
 | CNCF Platforms White Paper | <https://tag-app-delivery.cncf.io/whitepapers/platforms/> |
 | Backstage IDP | <https://backstage.io/> |
 | FinOps Foundation | <https://www.finops.org/> |
@@ -5545,7 +5673,7 @@ AI 功能（LLM 调用、RAG 管道、Agent 技能）的非确定性要求复用
 ### 统计
 
 | 类别 | 数量 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 01 主题严格公理 | 10 | ✅ 已确立 |
 | 01 主题工程启发式 | 5 | ⚠️ S.4, P.1-P.4 |
 | 01 主题派生定理 | 17 | ✅ 已推导 |
@@ -6022,7 +6150,7 @@ M.3 (层次不可约性)
 ## 7. 待证明猜想
 
 | 编号 | 猜想 | 相关领域 | 难度 | 预计证明时间 |
-|------|------|---------|------|------------|
+| ------ | ------ | --------- | ------ | ------------ |
 | **C.1** | 存在一个最优复用粒度，使得组织级的总体认知负荷最小 | 08 认知架构, 06 治理 | 高 | 2027 |
 | **C.2** | AI 辅助复用系统的采纳率达到 60% 时，组织的复用成熟度可自动提升一级 | 12 AI原生, 06 治理 | 中 | 2026-Q4 |
 | **C.3** | 形式化验证的成本在摩尔定律下每 5 年降低一个数量级 | 07 形式化验证 | 中 | 2027 |
@@ -6144,7 +6272,7 @@ M.3 (层次不可约性)
 ## 3. 按复用层次的交叉引用
 
 | 复用层次 | 代表文档 |
-|---------|---------|
+| --------- | --------- |
 | **元模型/标准** | `01-meta-model-standards/` 全部 |
 | **业务架构** | `02-business-architecture-reuse/` + BPMN/DMN 文件 |
 | **应用架构** | `03-application-architecture-reuse/` + Data Mesh + EDA/CQRS + Service Mesh |
@@ -6163,7 +6291,7 @@ M.3 (层次不可约性)
 ## 4. 快速查找表：常见问题 → 文档
 
 | 问题 | 推荐文档 |
-|-----|---------|
+| ----- | --------- |
 | "ISO 42010:2022 改了什么术语？" | `iso-42010-2022-update.md` |
 | "如何评估复用成熟度？" | `reuse-maturity-models-rcmm-rise.md` |
 | "MCP 官方稳定版是哪个？" | `mcp-2025-11-25-authoritative.md` |
@@ -6310,7 +6438,7 @@ M.3 (层次不可约性)
 ### A
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Agent-to-Agent Protocol | Agent 间协议 | A2A | 用于 Agent 之间发现能力、协商任务与交付结果的开放协议。 |
 | Architecture Description | 架构描述 | AD | 对系统及其环境进行架构化表达的工作产物集合（ISO/IEC/IEEE 42010）。 |
 | Architecture Evaluation | 架构评估 | — | 系统性地判断架构满足利益相关者关注点的程度。 |
@@ -6320,7 +6448,7 @@ M.3 (层次不可约性)
 ### B
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Business Capability | 业务能力 | — | 企业为达成特定结果而具备的稳定能力，独立于组织与实现。 |
 | Business Process | 业务流程 | BP | 为达成业务目标而执行的一组结构化活动。 |
 | Black Channel | 黑通道 | — | 在标准通信网络上实现安全相关数据传输的方法。 |
@@ -6328,7 +6456,7 @@ M.3 (层次不可约性)
 ### C
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Component | 组件 | — | 具有明确接口、可独立部署与替换的软件单元。 |
 | Component Model | 组件模型 | — | 对组件本质特征及组件间关系的抽象描述。 |
 | Conformal Prediction | 共形预测 | CP | 构造具有边际覆盖保证的预测集的方法。 |
@@ -6337,21 +6465,21 @@ M.3 (层次不可约性)
 ### D
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Decision Model and Notation | 决策模型与符号 | DMN | 用于建模业务决策逻辑与规则的 OMG 标准。 |
 | Digital Twin | 数字孪生 | DT | 物理实体或系统的实时数字化映射。 |
 
 ### E
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Enterprise Architecture | 企业架构 | EA | 描述企业整体结构、流程、信息系统与技术基线的蓝图。 |
 | Event-Driven Architecture | 事件驱动架构 | EDA | 以事件产生、检测与消费为核心模式的架构风格。 |
 
 ### F
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Formal Verification | 形式化验证 | FV | 使用数学方法证明系统满足规约的技术。 |
 | Functional Safety | 功能安全 | — | 避免由 E/E/PE 系统故障导致的不合理风险（IEC 61508）。 |
 
@@ -6364,14 +6492,14 @@ M.3 (层次不可约性)
 ### I
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Industrial Automation and Control Systems | 工业自动化与控制系统 | IACS | 过程控制、制造自动化等工业控制系统的统称。 |
 | Initial Public Draft | 初始公开草案 | IPD | 标准机构发布的早期公开征求意见稿。 |
 
 ### M
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Maturity Model | 成熟度模型 | — | 评估组织能力演进阶段的分级框架。 |
 | Meta-Model | 元模型 | — | 对模型元素、关系与规则的抽象规约。 |
 | Microservices Architecture | 微服务架构 | — | 将应用构建为一组小型、独立部署服务的架构风格。 |
@@ -6380,14 +6508,14 @@ M.3 (层次不可约性)
 ### O
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Open Platform Communications Unified Architecture | OPC 统一架构 | OPC UA | 工业互操作性信息交换框架。 |
 | Open Source Security Foundation | 开源安全基金会 | OpenSSF | 致力于提升开源软件安全性的 Linux Foundation 项目。 |
 
 ### P
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Platform Engineering | 平台工程 | — | 通过内部开发者平台提升软件交付效率与标准化的实践。 |
 | Probabilistic Contract | 概率契约 | — | 对 AI 服务输出质量边界的概率承诺。 |
 | Provenance | 来源 | — | 记录软件工件产生过程与依赖链的信息。 |
@@ -6401,7 +6529,7 @@ M.3 (层次不可约性)
 ### R
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Reference Architecture | 参考架构 | RA | 针对特定领域或问题的标准化架构模板。 |
 | Reusable Asset Specification | 可复用资产规范 | RAS | OMG 定义的软件资产封装与交换标准。 |
 | Return on Investment | 投资回报率 | ROI | 衡量复用投资经济效益的指标。 |
@@ -6409,7 +6537,7 @@ M.3 (层次不可约性)
 ### S
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Safety Element out of Context | 上下文外安全元素 | SEooC | 在未知具体应用环境下开发、需集成时验证假设的安全元素。 |
 | Safety Integrity Level | 安全完整性等级 | SIL | IEC 61508 中定义的离散等级，用于规定安全功能所需风险降低程度。 |
 | Serverless | 无服务器 | — | 由云提供商管理基础设施、按事件计费的计算模式。 |
@@ -6421,21 +6549,21 @@ M.3 (层次不可约性)
 ### T
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Time-Sensitive Networking | 时间敏感网络 | TSN | IEEE 802.1 工作组定义的确定性以太网技术。 |
 | The Open Group Architecture Framework | 开放组织架构框架 | TOGAF | The Open Group 的企业架构框架。 |
 
 ### V
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Value Stream | 价值流 | — | 为客户创造价值的一系列端到端活动。 |
 | Verification and Validation | 验证与确认 | V&V | 确认产品满足规约并满足用户需求的系列活动。 |
 
 ### W
 
 | English Term | 中文术语 | Abbreviation | 一句话定义 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | WebAssembly | WebAssembly | WASM | 可移植、高性能的二进制指令格式。 |
 | WebAssembly System Interface | WebAssembly 系统接口 | WASI | 为 WASM 提供标准化系统接口的模块化 API。 |
 | Web Interface Type | Web 接口类型 | WIT | WebAssembly Component Model 的接口定义语言。 |
@@ -6552,6 +6680,66 @@ M.3 (层次不可约性)
 - **反例**: 架构仅以一组无视点约定、无对应关系的演示图表达，视图间一致性无法验证，复用时语义歧义频出。
 - **权威来源**:
   - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture description）
+  - 核查日期：2026-07-12
+
+### Architecture Description Framework / ADF (架构描述框架)
+
+- **定义**: 在特定应用领域或利益相关者社群中描述架构所遵循的约定、原则与实践的集合，规定所用的视点（Viewpoint）、模型种类（Model Kind）、对应关系规则及架构决策记录方式（ISO/IEC/IEEE 42010:2022，第 3 章）。
+- **属性**:
+  - 面向特定领域或社群，而非单一系统
+  - 规定视点库与模型种类库
+  - 定义对应关系（Correspondence）规则
+  - 可实例化为组织的架构描述模板
+- **关系**:
+  - 规范：Architecture Description（AD 的"元级"约定）
+  - 组成：Viewpoint、Model Kind、Correspondence
+  - 关联：Architecture Decision / ADR
+  - 实例：TOGAF 内容元模型、DoDAF/MODAF 视点集
+- **解释**: ADF 是架构复用在"元级"的载体：复用一套 ADF（视点库 + 模型约定 + 对应规则）比复用单个 AD 更稳定，新项目只需在既有 ADF 下产出本系统的视图与决策。
+- **示例**: 某集团定义企业级 ADF，规定业务/应用/技术三视点及各自模型种类（ArchiMate 图、BPMN、部署图），所有子公司架构描述遵循同一 ADF，视图可直接横向对比与复用。
+- **反例**: 各项目组自创视图记号与视点划分，无统一 ADF，跨项目复用架构描述时需要逐图重新解释符号语义。
+- **权威来源**:
+  - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：architecture description framework；标准全文需购买，链接为已验证的官方目录页）
+  - 核查日期：2026-07-12
+
+### Architecture Development Method / ADM (架构开发方法)
+
+- **定义**: TOGAF Standard 10th Edition 的核心方法，提供开发企业架构的可迭代、可裁剪的逐步过程，覆盖从预备阶段（Preliminary）、架构愿景（A）到业务/信息系统/技术架构（B–D）、机会与解决方案（E）、迁移规划（F）、实施治理（G）与架构变更管理（H）的完整循环，以需求管理为持续中心。
+- **属性**:
+  - 迭代循环（阶段可回退、可嵌套迭代）
+  - 每阶段有明确输入、步骤与输出
+  - 可裁剪（ tailoring ）适配组织语境
+  - 以需求管理贯穿全程
+- **关系**:
+  - 属于：TOGAF Standard 10 的核心组成部分
+  - 产出：Architecture Description、ABB/SBB，存入 Architecture Repository
+  - 分类支撑：Enterprise Continuum
+  - 治理：架构治理框架与能力框架
+- **解释**: ADM 是架构复用的"过程侧"保障：B–D 阶段以 ABB 沉淀可复用架构，E–F 阶段映射 SBB 选型，阶段 G 通过合规评审确保实现未偏离复用决策。
+- **示例**: 某企业按 ADM 开展支付平台架构：阶段 B 复用行业业务能力模型，阶段 C–D 定义 ABB，阶段 E 将 ABB 映射到候选 SBB 并记录选型 ADR。
+- **反例**: 跳过 ADM 阶段直接编写技术方案，架构愿景与业务驱动力缺失，方案无法回溯到利益相关者关注点，复用评估无从谈起。
+- **权威来源**:
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（ADM 各阶段定义）
+  - 核查日期：2026-07-12
+
+### Architecture Repository / Enterprise Continuum / Foundation Architecture (架构存储库/企业连续体/基础架构)
+
+- **定义**: TOGAF Standard 10 中架构资产管理的三个关联概念：Architecture Repository 是保存全部架构相关产出（交付物、模型、模式、标准）的逻辑存储；Enterprise Continuum 是对架构与解决方案制品进行分类的方法视图，沿"基础→通用→行业→组织特定"连续谱组织；Foundation Architecture 位于连续谱最通用端，由通用构建块及其相互关系和配套标准构成，定义通用基础平台。
+- **属性**:
+  - Repository：逻辑而非物理存储，含架构元模型、能力、景观与参考库
+  - Continuum：按抽象度/通用度分类架构与解决方案制品
+  - Foundation Architecture：最通用、跨组织可复用
+  - 三者共同支撑"越通用越可复用"的资产分层
+- **关系**:
+  - 属于：TOGAF Standard 10 架构内容框架
+  - 存储对象：Architecture Description、ABB/SBB、ADR
+  - 过程：ADM 各阶段产出入库、复用时出库
+  - 关联：Asset、Reusable Asset
+- **解释**: 三者构成架构复用的"存储与分类"机制：资产按通用度沿连续谱分层存放，复用时优先从更通用层选取，避免重复发明行业已有方案。
+- **示例**: 某银行将技术参考模型归入 Foundation 层，行业支付参考架构归入行业层，本行渠道架构归入组织特定层；新项目沿连续谱自上而下检索可复用制品。
+- **反例**: 架构制品散落各项目共享盘、无分类无版本，复用全靠"问老员工"，资产库形同虚设。
+- **权威来源**:
+  - [TOGAF® Standard, 10th Edition](https://www.opengroup.org/togaf) — The Open Group（Architecture Repository、Enterprise Continuum、Foundation Architecture 定义）
   - 核查日期：2026-07-12
 
 ### Artifact (制品)
@@ -6682,6 +6870,26 @@ M.3 (层次不可约性)
   - [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — ISO（第 3 章术语：concern）
   - 核查日期：2026-07-12
 
+### Commonality (共性)
+
+- **定义**: 产品线全体成员共享、不随产品变异的属性集合，是产品线工程（PLE）中与可变性（Variability）相对的核心概念（ISO/IEC 26550:2015）。
+- **属性**:
+  - 跨产品稳定不变
+  - 由领域工程识别并固化为核心资产
+  - 决定产品线的经济收益边界
+  - 与可变性共同刻画产品族范围
+- **关系**:
+  - 对立互补：Variability（共性之外的部分）
+  - 产出过程：Domain Engineering / Domain Analysis
+  - 载体：Feature Model（共性通常建模为必选特征）
+  - 上位：Product Line Engineering
+- **解释**: 复用收益来自共性：共性越大，核心资产被越多产品复用；但过度扩大共性会牺牲产品差异化，需在领域分析阶段与市场定位共同权衡。
+- **示例**: 车载信息娱乐产品线中，CAN 总线接入与系统启动流程为共性，UI 主题与导航地图为可变性；共性部分沉淀为平台核心资产被全系车型复用。
+- **反例**: 未显式识别共性，各产品团队各自实现本可共享的启动与通信模块，代码重复率居高不下，缺陷修复需多点同步。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（软件与系统工程——产品线工程参考模型，commonality 定义；官方目录页）
+  - 核查日期：2026-07-12
+
 ### Component (组件)
 
 - **定义**: 系统中具有明确接口、可独立部署、可替换的软件单元，是组件级复用的基本对象。在本知识体系中，组件是架构约束在模块层的载体。
@@ -6762,6 +6970,27 @@ M.3 (层次不可约性)
 ---
 
 ## D
+
+### Domain Engineering / Application Engineering / Domain Analysis (领域工程/应用工程/领域分析)
+
+- **定义**: 产品线工程（PLE）的两个互补过程及其前端活动（ISO/IEC 26550:2015；IEEE 1517-2010）：Domain Engineering 是定义并实现产品线共性与可变性、产出可复用领域资产的过程；Application Engineering 是通过复用领域资产并利用已捕获的可变性来构建单个产品的过程；Domain Analysis 是领域工程的前端活动，基于对现有系统及其开发历史的研究，识别、收集、组织并表达领域内的相关信息（IEEE 1517-2010）。
+- **属性**:
+  - 领域工程：面向产品族，产出核心资产与特征模型
+  - 应用工程：面向单个产品，消费并绑定可变性
+  - 领域分析：研究现有系统与历史，划定领域范围
+  - 两过程持续反馈：应用工程的问题回流改进领域资产
+- **关系**:
+  - 上位：Product Line Engineering（PLE 三大子过程之二）
+  - 输入/输出：Domain Analysis → Domain Engineering → Application Engineering
+  - 管理对象：Commonality、Variability、Feature Model
+  - 支撑设施：Reuse Library
+- **解释**: “为复用而开发（领域工程）”与“通过复用而开发（应用工程）”的分离是系统化复用的核心机制；领域分析决定复用的经济边界——范围过窄收益不足，过宽则共性难以维持。
+- **示例**: 某工业软件厂商领域工程团队维护控制算法核心资产库与特征模型；各项目应用工程团队按特征选择派生产品，仅开发产品特有逻辑。
+- **反例**: 无领域工程角色，所有“复用”靠应用工程师复制粘贴旧项目代码，分支逐渐发散，复用退化为克隆。
+- **权威来源**:
+  - [ISO/IEC 26550:2015](https://www.iso.org/standard/69529.html) — ISO（产品线工程参考模型：domain engineering、application engineering；官方目录页）
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程：domain analysis、domain engineering、application engineering）
+  - 核查日期：2026-07-12
 
 ### Digital Twin (数字孪生)
 
@@ -6960,6 +7189,28 @@ M.3 (层次不可约性)
   - [MCP Authorization](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization) — MCP
   - 核查日期：2026-07-07
 
+### MCP Primitives (Server, Client, Tool, Resource, Prompt, Sampling, MCP 原语)
+
+- **定义**: MCP（Model Context Protocol）Host-Client-Server 架构中的角色与能力原语集合（MCP 2025-11-25 规范）：Server 是向 Client 暴露能力的程序；Client 是 Host 应用内与 Server 保持 1:1 连接、聚合其能力的连接器；Tool 是 Server 暴露的、供模型执行动作（查询、调用 API）的模型可控函数；Resource 是 Server 暴露的、为模型提供上下文数据的应用可控只读数据；Prompt 是 Server 暴露的、帮助用户完成特定任务的用户可控预定义模板；Sampling 是 Server 反向请求 Client 生成模型补全的机制，支持服务端编排。
+- **属性**:
+  - 角色：Host / Client / Server 三元模型，Client-Server 1:1 连接
+  - 三类暴露能力：Tools（模型控制）、Resources（应用控制）、Prompts（用户控制）
+  - Sampling 使 Server 可发起 LLM 请求，需用户同意门控
+  - 全部基于 JSON-RPC 2.0 消息与能力协商（capability negotiation）
+- **关系**:
+  - 上位：MCP（Model Context Protocol）
+  - 依赖：JSON-RPC 2.0、JSON Schema、OAuth 2.1（远程 Server）
+  - 安全：OWASP MCP Top 10（tool poisoning、prompt injection 等）
+  - 类比：A2A 的 Agent Card / Task / Message（Agent 间原语）
+- **解释**: 原语集合定义了 AI 能力复用的最小语义单元：工具、数据、模板三类能力以统一接口暴露，任何兼容 Client 均可复用任何 Server，集成成本从 M×N 降为 M+N。
+- **示例**: 数据库 MCP Server 暴露 `query`（Tool）、表结构（Resource）、常用分析模板（Prompt），并通过 Sampling 请求模型生成 SQL 解释；IDE 内置 Client 聚合多个 Server 供编码助手使用。
+- **反例**: Server 将所有能力不分类型地摊平为 Tool，把只读数据也包装成函数调用，模型误把数据读取当动作执行，且丧失 Resource 的 URI 寻址与订阅能力。
+- **权威来源**:
+  - [MCP Specification 2025-11-25 — Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture) — MCP（Host/Client/Server 角色）
+  - [MCP Specification 2025-11-25 — Server](https://modelcontextprotocol.io/specification/2025-11-25/server) — MCP（Tools/Resources/Prompts）
+  - [MCP Specification 2025-11-25 — Client](https://modelcontextprotocol.io/specification/2025-11-25/client) — MCP（Sampling）
+  - 核查日期：2026-07-12
+
 ### Microservices (微服务)
 
 - **定义**: 一种将应用构建为围绕业务能力组织的小型、自治服务的架构风格；每个服务独立部署、独立扩展，通过轻量级机制通信。
@@ -7107,6 +7358,30 @@ M.3 (层次不可约性)
 - **反例**: 制品仅标注版本号而无构建来源记录，发生恶意代码注入事件后无法确定受影响批次。
 - **权威来源**:
   - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF（Terminology：provenance）
+  - 核查日期：2026-07-12
+
+---
+
+## Q
+
+### Qualification / Certification (资产资格认定与认证)
+
+- **定义**: 软件复用资产管理中两个递进的评估过程（IEEE 1517-2010）：Qualification（资格认定）是评估一个可复用资产是否满足在给定语境下复用的指定要求的过程；Certification（认证）是正式确认一个可复用资产满足复用所需指定标准或要求的过程。资格认定回答"这个资产能不能在当前场景复用"，认证回答"这个资产是否达到入库/发布标准"。
+- **属性**:
+  - Qualification：语境相关（面向具体复用场景）
+  - Certification：标准相关（面向组织级复用标准）
+  - 通常先 Certification 入库，再 Qualification 选型
+  - 均产出可追溯的评估记录
+- **关系**:
+  - 对象：Asset / Reusable Asset
+  - 设施：Reuse Library（认证决定入库资格）
+  - 互补：Adaptation（认定通过后可能仍需适配）
+  - 供应链类比：SLSA 的 provenance/attestation 验证
+- **解释**: 资格认定与认证是复用质量的"双闸门"：没有认证的资产库会沦为代码垃圾场，没有资格认定的选型会把"高质量但不适用"的资产强加给项目。
+- **示例**: 组织规定入复用库的资产须通过认证（测试覆盖率 ≥80%、有 API 文档、SBOM 完整）；某项目复用前再做资格认定，确认该加密库满足本系统的合规算法清单。
+- **反例**: 复用库无认证门槛，任何人可上传代码片段；使用者引用了一个看似匹配但未经资格认定的组件，生产环境暴露许可证与安全漏洞问题。
+- **权威来源**:
+  - [IEEE 1517-2010](https://standards.ieee.org/ieee/1517/4603/) — IEEE（软件生命周期复用过程：asset qualification、certification）
   - 核查日期：2026-07-12
 
 ---
@@ -7279,6 +7554,26 @@ M.3 (层次不可约性)
   - [SLSA Specification v1.2](https://slsa.dev/spec/v1.2/) — OpenSSF
   - [OpenSSF Secure Open Source Software Vision Brief 2025](https://openssf.org/wp-content/uploads/2025/02/OpenSSF_2025_Vision_Brief.pdf) — OpenSSF
   - 核查日期：2026-07-07
+
+### Source Integrity / Build Level (源码完整性/构建等级)
+
+- **定义**: SLSA 1.2 框架中度量与保障软件构建可信度的两个关联概念：Source Integrity（源码完整性）指用于构建制品的源代码未被篡改且可追溯至其来源的属性；Build Level（构建等级）是 SLSA 构建轨道的编号等级（Build L1–L3），表示构建完整性保证的强度——L1 要求来源证明（provenance）存在，L2 要求由托管构建平台签发防篡改 provenance，L3 要求强化（hardened）构建平台提供更强隔离与防伪造保证。
+- **属性**:
+  - Source Integrity：版本控制、不可变引用、篡改可追溯
+  - Build Level：L1/L2/L3 递进，覆盖 provenance 存在性、签发隔离与平台加固
+  - 等级越高，对构建基础设施的要求越严格
+  - 两者均以 Attestation 为机器可验证载体
+- **关系**:
+  - 上位：SLSA（Build Track）
+  - 载体：Provenance、Attestation
+  - 对象：Artifact；生态：SBOM（成分维度互补）
+  - 复用治理类比：IEEE 1517 的 Certification
+- **解释**: 复用第三方制品时，Build Level 给出"该信到什么程度"的量化依据：L1 只能确认有构建记录，L3 才能对抗构建平台内部的篡改与伪造；源码完整性是这一切的起点——来源不可信，等级再高也无意义。
+- **示例**: 企业制品仓库准入策略要求外部依赖至少 SLSA Build L2（托管 CI 签发 provenance），核心安全组件要求 L3，并校验源码仓库的签名提交以保证源码完整性。
+- **反例**: 仅检查依赖是否有 provenance 文件（满足 L1）即引入生产，未验证签发者与构建平台隔离，攻击者通过被入侵的开发者自托管 runner 伪造构建记录。
+- **权威来源**:
+  - [SLSA Specification v1.2 — Build Track](https://slsa.dev/spec/v1.2/about) — OpenSSF（Build L1–L3 等级与源码完整性要求）
+  - 核查日期：2026-07-12
 
 ### Stakeholder (利益相关者)
 
@@ -7548,16 +7843,21 @@ M.3 (层次不可约性)
 | ArchiMate | A | 01-元模型 | TOGAF、ISO 42010 |
 | Architecture | A | 01-元模型 | AD、Viewpoint、View |
 | Architecture Description | A | 01-元模型 | ADL、ADF、Model Kind |
+| Architecture Description Framework / ADF | A | 01-元模型 | ISO 42010、Viewpoint、Model Kind |
+| Architecture Development Method / ADM | A | 01-元模型 | TOGAF、Architecture Repository |
+| Architecture Repository / Enterprise Continuum / Foundation Architecture | A | 01-元模型 | TOGAF、ADM、ABB/SBB |
 | Artifact | A | 10-供应链安全 | Provenance、Attestation、SBOM |
 | Attestation | A | 10-供应链安全 | Provenance、SLSA、in-toto |
 | Business Capability | B | 02-业务架构 | TOGAF、FEA BRM |
 | Business Process | B | 02-业务架构 | BPMN、DMN |
 | Component | C | 04-组件架构 | Interface Contract、Component Model |
+| Commonality | C | 01-元模型/02-业务 | Variability、PLE、Feature Model |
 | Concern | C | 01-元模型 | Stakeholder、Viewpoint、View |
 | Component Model | C | 04-组件架构 | WASM、CORBA、OSGi |
 | Conformal Prediction | C | 12-AI 原生复用 | Probabilistic Contract |
 | Correspondence | C | 01-元模型 | View、Model Kind |
 | Digital Twin | D | 11-工业 IoT | AAS、OPC UA |
+| Domain Engineering / Application Engineering / Domain Analysis | D | 01-元模型/02-业务 | PLE、ISO 26550、Reuse Library |
 | EDA | E | 03-应用架构 | Kafka、CQRS |
 | FaaS | F | 05-功能架构 | Serverless、Lambda |
 | Feature Model | F | 01-元模型/02-业务 | Variability、PLE、Variation Point |
@@ -7566,6 +7866,7 @@ M.3 (层次不可约性)
 | Interface Contract | I | 04-组件架构 | Design-by-Contract |
 | ISA-95 | I | 11-工业 IoT | AAS、OPC UA |
 | MCP | M | 12-AI 原生复用 | A2A、Tool、Resource |
+| MCP Primitives | M | 12-AI 原生复用 | MCP、A2A、JSON-RPC |
 | Microservices | M | 03-应用架构 | Service Mesh、API Gateway |
 | Model Kind | M | 01-元模型 | Viewpoint、AD |
 | OPC UA | O | 11-工业 IoT | AAS、ISA-95 |
@@ -7573,6 +7874,7 @@ M.3 (层次不可约性)
 | Product Line Engineering | P | 01-元模型/02-业务 | ISO 26550、Feature Model |
 | Probabilistic Contract | P | 12-AI 原生复用 | Conformal Prediction |
 | Provenance | P | 10-供应链安全 | Attestation、Artifact、SLSA |
+| Qualification / Certification | Q | 01-元模型 | IEEE 1517、Reusable Asset |
 | Reuse | R | 01-元模型 | Reusable Asset、PLE |
 | Reusable Asset | R | 01-元模型 | RAS、SLSA |
 | ROI | R | 09-价值量化 | COCOMO II、NPV |
@@ -7581,6 +7883,7 @@ M.3 (层次不可约性)
 | Service | S | 跨层（02–05） | Microservices、Service Mesh、API |
 | Service Mesh | S | 03-应用架构 | Istio、Linkerd |
 | SLSA | S | 10-供应链安全 | SBOM、Sigstore |
+| Source Integrity / Build Level | S | 10-供应链安全 | SLSA、Provenance、Attestation |
 | Stakeholder | S | 01-元模型 | Concern、Viewpoint |
 | Supply Chain | S | 10-供应链安全 | SBOM、SLSA、Sigstore |
 | System | S | 01-元模型 | Architecture Description、ISO 15288 |
@@ -7609,7 +7912,7 @@ M.3 (层次不可约性)
 ## ISO 42010 vs TOGAF 10
 
 | ISO 42010:2022 | TOGAF 10 | 说明 |
-|-----------|---------|------|
+| ----------- | --------- | ------ |
 | Entity of Interest (EoI) | System of Interest | 2022 版新术语 |
 | Architecture Description (AD) | Architecture Repository / Catalog | 架构描述的载体 |
 | Stakeholder | Stakeholder | 利益相关者 |
@@ -7625,7 +7928,7 @@ M.3 (层次不可约性)
 ## ArchiMate vs UML
 
 | ArchiMate | UML | 说明 |
-|-----------|-----|------|
+| ----------- | ----- | ------ |
 | Business Actor | Actor | 业务参与者 |
 | Business Role | Role | 业务角色 |
 | Business Process | Activity Diagram | 业务流程 |
@@ -7640,7 +7943,7 @@ M.3 (层次不可约性)
 ## ISO 26550 vs 本体系
 
 | ISO 26550 | 本体系对应主题 | 说明 |
-|-----------|--------------|------|
+| ----------- | -------------- | ------ |
 | Domain Engineering | 01-元模型, 02-业务架构 | 领域工程产生可复用资产 |
 | Application Engineering | 03-应用架构, 04-组件架构 | 应用工程使用可复用资产 |
 | Product Line | 06-跨层治理 | 产品线管理复用资产 |
@@ -7650,7 +7953,7 @@ M.3 (层次不可约性)
 ## SLSA vs NIST SSDF
 
 | SLSA 1.2 | NIST SSDF 1.2 | 说明 |
-|-----------|-----------|------|
+| ----------- | ----------- | ------ |
 | Build L1 Provenance | PO.1 Secure Software | 保护软件 |
 | Build L2 Source-aware | PW.4 Reusable Code | 安全复用代码 |
 | Build L3 Hardened | PW.6 Configure Compiler | 配置编译器 |
@@ -7663,7 +7966,7 @@ M.3 (层次不可约性)
 ## Industrial Standards Crosswalk
 
 | IEC 63278 (AAS) | OPC UA | ISA-95 | 说明 |
-|-----------------|--------|--------|------|
+| ----------------- | -------- | -------- | ------ |
 | AssetAdministrationShell | Server / Object | Enterprise / Site / Area | 资产的管理壳 |
 | Submodel | ObjectType / Folder | Work Unit / Cell | 子模型 |
 | Property | Variable | Tag / Attribute | 属性 |
@@ -7674,7 +7977,7 @@ M.3 (层次不可约性)
 ## TSN 标准映射
 
 | 标准 | 功能 | 应用场景 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | IEEE 802.1AS | 时间同步 | 所有 TSN 应用 |
 | IEEE 802.1Qbv | 门控调度 | 硬实时流量 |
 | IEEE 802.1Qbu/802.3br | 帧抢占 | 降低非实时流量对实时流量的影响 |
@@ -7685,7 +7988,7 @@ M.3 (层次不可约性)
 ## AI Native Terminology
 
 | MCP 2025-11-25 | A2A v1.0 | 通用含义 |
-|----------|---------|---------|
+| ---------- | --------- | --------- |
 | Server | Agent | 提供服务/能力的实体 |
 | Tool | Skill | 可调用的具体能力 |
 | Resource | Artifact | 可被访问的数据/内容 |
@@ -7696,7 +7999,7 @@ M.3 (层次不可约性)
 ## 形式化验证术语映射
 
 | TLA+ | Alloy | Coq/Isabelle | 通用含义 |
-|------|-------|--------------|---------|
+| ------ | ------- | -------------- | --------- |
 | State | Atom/Signature | Term/Type | 系统状态/元素 |
 | Action | Predicate/Fact | Lemma/Theorem | 状态转移/性质 |
 | Invariant | Assertion | Invariant | 不变量 |
@@ -7709,7 +8012,7 @@ M.3 (层次不可约性)
 ## 认知架构术语
 
 | ACT-R | BDI | 双系统理论 | 通用含义 |
-|-------|-----|-----------|---------|
+| ------- | ----- | ----------- | --------- |
 | Chunk | Belief | Memory/Pattern | 知识单元 |
 | Production | Desire-Intention | System 1 (Fast) | 行为规则 |
 | Goal | Intention | System 2 (Slow) | 目标导向 |
@@ -7719,7 +8022,7 @@ M.3 (层次不可约性)
 ## 平台工程与 WASM 术语
 
 | 平台工程 | WASM | 通用含义 |
-|---------|------|---------|
+| --------- | ------ | --------- |
 | IDP (Internal Developer Platform) | WASM Runtime | 内部开发者平台 / 运行时 |
 | Golden Path | WIT (Wasm Interface Types) | 标准化路径 / 接口类型 |
 | Software Catalog | Component Registry | 软件目录 / 组件注册表 |
@@ -7729,7 +8032,7 @@ M.3 (层次不可约性)
 ## 供应链安全术语
 
 | SLSA | SBOM | 零信任 | 通用含义 |
-|------|------|--------|---------|
+| ------ | ------ | -------- | --------- |
 | Provenance | SPDX Document | Identity Verification | 来源证明 |
 | Attestation | CycloneDX BOM | Device Health | 证明/声明 |
 | Build Integrity | Component Hash | Least Privilege | 构建完整性 |
@@ -7740,7 +8043,7 @@ M.3 (层次不可约性)
 ## 质量标准版本对照
 
 | 标准 | 旧版 | 新版 | 关键变化 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | ISO 42010 | 2011 | 2022 | EoI, ADF, View Component, Aspect, Perspective |
 | ISO 25010 | 2011 | 2023 | 9 特性，新增 Safety/Flexibility/Interaction Capability |
 | SLSA | v0.1 | v1.2 | Multi-Track: Build/Source/Environment |
@@ -7797,7 +8100,7 @@ M.3 (层次不可约性)
 ## 1. 核心概念定义
 
 | 概念 | 定义 | 对应 RDF 元素 |
-|------|------|---------------|
+| ------ | ------ | --------------- |
 | **知识图谱（Knowledge Graph）** | 以图形式组织的语义知识集合，节点为实体，边为关系，支持机器可读与推理。 | `kg.ttl` 中的三元组集合 |
 | **本体（Ontology）** | 对领域概念及其关系的显式形式化规范，用于统一实体类型与属性。 | `arch-reuse-ontology.ttl` 中的 `owl:Class` / `owl:ObjectProperty` |
 | **实体（Entity）** | 知识图谱中的节点，如术语、标准、文件、主题、案例、组织等。 | `ar:entity/*` 资源 |
@@ -7821,7 +8124,7 @@ kg-relations.jsonl# 8,194 关系（机器真源）
 ### 2.1 实体类型分布
 
 | 类型 | 数量 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `Term` | 10,451 | 从标题、加粗术语、定义/示例章节中抽取的核心概念 |
 | `File` | 695 | Markdown 源文件节点 |
 | `Standard` | 165 | ISO、TOGAF、ArchiMate 等标准/框架（canonical 归一后） |
@@ -7834,7 +8137,7 @@ kg-relations.jsonl# 8,194 关系（机器真源）
 ### 2.2 关系类型分布
 
 | 关系 | 数量 | 含义 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `defines` | 2,017 | 文件定义了某术语 |
 | `providesNegativeExample` | 1,684 | 文件提供反例/反模式 |
 | `providesPositiveExample` | 1,426 | 文件提供正向案例 |
@@ -7958,7 +8261,7 @@ python struct/99-reference/tools/kg-query.py sparql "SELECT ?s ?label WHERE { ?s
 ## 设计论证：为何采用 RDF/OWL + SHACL
 
 | 方案 | 优点 | 缺点 | 本项目选择 |
-|------|------|------|-----------|
+| ------ | ------ | ------ | ----------- |
 | 纯 JSON 关系表 | 简单、易读 | 缺乏语义标准，难以跨工具复用与推理 | ❌ |
 | 关系型数据库 | 事务与查询成熟 | 模式 rigid，难以表达任意实体关系 | ❌ |
 | RDF/OWL + SHACL | 语义标准、可扩展、支持 SPARQL 与推理、可验证 | 学习曲线略高 | ✅ |
@@ -8087,7 +8390,7 @@ flowchart LR
 ## 2. 主题分组索引
 
 | 主题 | 覆盖概念 | 项目目录 |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | 软件工程基础 | Software Architecture、Software Reuse、CBSE、Design Pattern、Software Product Line | `01-meta-model-standards/`、`04-component-architecture-reuse/` |
 | 架构模式与企业架构 | Enterprise Architecture、SOA、Microservices、Serverless、EDA、DDD、Clean/Onion/Hexagonal | `02-business-architecture-reuse/`、`03-application-architecture-reuse/` |
 | 形式化方法与安全 | Functional Safety、Supply Chain Security、Formal Methods、Model Checking | `07-formal-verification/`、`10-supply-chain-security/`、`11-industrial-iot-otit/06-functional-safety/` |
@@ -8403,7 +8706,7 @@ flowchart LR
 ## 13. 权威来源与核查记录
 
 | 来源类别 | 名称 | URL | 机构 | 核查日期 |
-|----------|------|-----|------|----------|
+| ---------- | ------ | ----- | ------ | ---------- |
 | 标准 | ISO/IEC/IEEE 42010:2022 | <https://www.iso.org/obp/ui/#iso:std:iso-iec-ieee:42010:ed-2:v1:en> | ISO/IEC/IEEE | 2026-07-07 |
 | 标准 | ISO/IEC 26550:2015 | <https://www.iso.org/standard/69529.html> | ISO/IEC | 2026-07-07 |
 | 标准 | IEC 63278-1:2023 | <https://webstore.iec.ch/en/publication/65628> | IEC | 2026-07-07 |
@@ -8473,7 +8776,7 @@ graph TD
 ```
 
 | 层次 | 核心复用资产 | 粒度 | 主要标准/框架 | 典型失败模式 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **业务架构** | 业务能力、价值流、业务服务、BPMN/DMN 流程 | 最粗 | TOGAF、FEA BRM、BIAN、BPMN/DMN、Zachman | 业务定义错误向下传递为应用服务冗余 |
 | **应用架构** | 架构模式、应用服务、微服务、Serverless、EDA、数据架构 | 系统级 | ISO 42010、Cloud Native Patterns、Service Mesh | 模式误用导致组件接口耦合 |
 | **组件架构** | 组件模型、设计模式、接口契约、语言生态包 | 模块级 | Component Model、Design Patterns、OpenAPI | 组件版本不兼容导致 API 破坏 |
@@ -8486,7 +8789,7 @@ graph TD
 ### 2.1 上层资产 → 下层支撑资产
 
 | 上层复用资产 | 下层支撑资产 | 映射关系 | 关键接口 | 失败传递模式 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 业务能力 | 应用服务 | 1:N 实现 | 服务契约 | 业务定义错误 → 应用服务冗余 |
 | 价值流 | 工作流编排 + API 组合 | N:M 编排 | 编排 DSL / Temporal | 价值流断裂 → 长事务失败 |
 | 业务服务 | 微服务 / Serverless | 1:N 实现 | REST/gRPC/事件 | 服务边界不清 → 分布式单体 |
@@ -8497,7 +8800,7 @@ graph TD
 ### 2.2 下层资产 → 上层约束来源
 
 | 下层资产 | 上层约束 | 约束类型 | 示例 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 功能/API | 业务规则 | 语义约束 | 支付 API 必须满足财务审计规则 |
 | 组件 | 应用架构模式 | 结构约束 | 微服务组件必须无共享数据库 |
 | 应用服务 | 业务能力 | 范围约束 | 客户认证服务必须覆盖所有渠道 |
@@ -8510,7 +8813,7 @@ graph TD
 ### 3.1 业务层内模型对比
 
 | 模型 | 关注点 | 主要元素 | 复用场景 | 与相邻模型关系 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 业务能力 | 企业能做什么 | 能力、子能力、能力地图 | 跨组织共享业务能力 | 被价值流消费，被应用服务实现 |
 | 价值流 | 如何交付价值 | 阶段、活动、价值增量 | 端到端流程标准化 | 由业务能力组成，由业务流程实现 |
 | 业务流程 | 具体执行步骤 | 任务、网关、事件、泳道 | 流程模板复用 | 被 BPMN 建模，被应用系统支撑 |
@@ -8519,7 +8822,7 @@ graph TD
 ### 3.2 应用层内模型对比
 
 | 模型 | 关注点 | 主要元素 | 复用场景 | 与相邻模型关系 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 分层架构 | 职责分离 | 表示层、业务层、数据层 | 传统应用快速复用模式 | 模式被微服务/Serverless 演进 |
 | 微服务 | 业务能力自治 | 服务、API、数据库、事件 | 独立团队复用服务 | 需要服务网格/网关支撑 |
 | Serverless | 事件驱动函数 | 函数、触发器、事件源 | 按调用付费的细粒度复用 | 函数可被微服务调用 |
@@ -8528,7 +8831,7 @@ graph TD
 ### 3.3 组件层内模型对比
 
 | 模型 | 关注点 | 主要元素 | 复用场景 | 与相邻模型关系 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 组件模型 | 接口与生命周期 | 组件、接口、装配、部署 | 跨平台组件复用 | 被语言生态实现 |
 | 设计模式 | 可复用解决方案 | 类/对象结构、行为 | 代码级设计复用 | 被组件内部实现使用 |
 | 接口契约 | 交互约定 | 前置/后置条件、不变量 | 跨组件安全集成 | 是组件复用的法律基础 |
@@ -8537,7 +8840,7 @@ graph TD
 ### 3.4 功能层内模型对比
 
 | 模型 | 关注点 | 主要元素 | 复用场景 | 与相邻模型关系 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | API | 同步调用契约 | 端点、方法、Schema | 跨系统功能调用 | 被组件实现，被应用编排 |
 | FaaS | 事件触发函数 | 函数、触发器 | 短时任务复用 | 函数可被 API 网关暴露 |
 | 工作流编排 | 长事务协调 | 工作流、活动、补偿 | 跨服务业务流程 | 编排 API/函数/事件 |
@@ -8561,7 +8864,7 @@ graph LR
 ```
 
 | 失败模式 | 触发层 | 影响层 | 典型症状 | 缓解策略 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 业务定义漂移 | 业务 | 应用/组件/功能 | 同一能力多系统重复实现 | 能力治理委员会、能力目录 |
 | 价值流过度泛化 | 业务 | 应用 | 流程模板无法适配具体场景 | 变性点管理、绑定时间明确 |
 | 模式误用 | 应用 | 组件 | 分布式单体、共享数据库 | 架构评审、模式选择框架 |
@@ -8575,7 +8878,7 @@ graph LR
 ## 5. 跨层治理要点
 
 | 治理维度 | 业务层 | 应用层 | 组件层 | 功能层 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **发现** | 能力目录 | 服务目录/架构存储库 | 组件注册表 | API 门户/Tool Registry |
 | **版本** | 能力版本 | 架构蓝图版本 | SemVer | API 版本/函数版本 |
 | **质量** | 业务价值验证 | ATAM/架构评估 | 单元测试/集成测试 | 契约测试/模糊测试 |
@@ -8705,7 +9008,7 @@ $$
 ### 1.1 关系类型定义
 
 | 关系类型 | 符号 | 含义 | 示例 |
-|---------|------|------|------|
+| --------- | ------ | ------ | ------ |
 | **依赖** | `D` / `→` | 主题 A 的定义、方法或工件需要引用主题 B 的内容 | 02 业务架构复用依赖 01 元模型与标准对齐 |
 | **被依赖** | `R` | 主题 B 被主题 A 依赖的反向表述 | 01 被 02/03/04/05/06 依赖 |
 | **支撑/横向** | `S` | 主题 A 跨层为基础服务、约束或验证机制 | 07 形式化验证支撑所有层 |
@@ -8716,7 +9019,7 @@ $$
 ### 1.2 主题编码表
 
 | 编码 | 一级主题 | 英文标识 | 核心关注点 |
-|------|---------|---------|-----------|
+| ------ | --------- | --------- | ----------- |
 | 01 | 元模型与标准对齐 | meta-model-standards | 概念、术语、标准族谱、公理体系 |
 | 02 | 业务架构复用 | business-architecture-reuse | 业务能力、价值流、BPMN/DMN |
 | 03 | 应用架构复用 | application-architecture-reuse | 系统级模式、云原生、服务网格 |
@@ -8944,7 +9247,7 @@ flowchart LR
 **映射规则**:
 
 | 步骤 | 关系 | 说明 | 复用单元 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | 02 → 03 | realizes / maps-to | 业务能力由应用系统实现 | 能力目录 → 系统蓝图 |
 | 03 → 04 | decomposes-to | 应用系统分解为组件 | 系统蓝图 → 组件图 |
 | 04 → 05 | implements | 组件实现具体功能 | 组件图 → API 规范 |
@@ -8962,7 +9265,7 @@ flowchart LR
 **07 形式化验证**不是层次层的一部分，而是横向正确性基础设施。其在各层的作用如下：
 
 | 目标层 | 形式化验证对象 | 典型方法 | 收益 |
-|--------|---------------|---------|------|
+| -------- | --------------- | --------- | ------ |
 | 02 业务架构 | 业务流程不变式、价值流一致性 | BPMN 形式语义、Alloy | 保证业务规则无歧义 |
 | 03 应用架构 | 分布式协议、事件一致性 | TLA+、Coq | 避免分布式系统竞态条件 |
 | 04 组件架构 | 接口契约、类型安全、内存安全 | Rust 类型系统、SPARK/Ada | 消除空指针、数据竞争 |
@@ -8978,7 +9281,7 @@ flowchart LR
 **对 04 组件架构的影响**:
 
 | 安全机制 | 对组件架构的要求 | 示例 |
-|---------|-----------------|------|
+| --------- | ----------------- | ------ |
 | SBOM | 每个组件必须记录依赖图谱 | CycloneDX/SPDX 组件清单 |
 | SLSA | 构建过程需满足来源可验证、构建环境隔离 | 组件需来自 SLSA L3+ 流水线 |
 | 签名与校验 | 组件发布需附带 Sigstore/cosign 签名 | 拉取组件时校验 provenance |
@@ -8987,7 +9290,7 @@ flowchart LR
 **对 12 AI 原生复用的影响**:
 
 | 安全机制 | 对 AI 原生复用的要求 | 示例 |
-|---------|---------------------|------|
+| --------- | --------------------- | ------ |
 | 模型供应链 | 模型权重、训练数据需 SBOM 化 | MLflow 模型血缘 |
 | Agent 运行时 | MCP/A2A 工具链需权限最小化 | OWASP MCP Top 10 控制 |
 | 提示注入防护 | 功能单元（05）需输入过滤 | 提示词沙箱、输出审查 |
@@ -9026,7 +9329,7 @@ MCP 协议从 2025-11-25 版本升级时，影响路径如下：
 ### 6.2 变更影响速查表
 
 | 变更主题 | 直接影响 | 间接影响 | 建议响应 |
-|---------|---------|---------|---------|
+| --------- | --------- | --------- | --------- |
 | 01 元模型更新 | 02/03/04/05/06 术语对齐 | 11/12 标准映射 | 更新术语表、重审跨主题引用 |
 | 02 业务能力调整 | 03 应用系统边界 | 04/05/06 复用范围 | 重跑价值量化（09） |
 | 03 架构范式迁移 | 04 组件粒度 | 05/06/13 技术栈 | 评估微服务 vs 模块化单体 |
@@ -9046,7 +9349,7 @@ MCP 协议从 2025-11-25 版本升级时，影响路径如下：
 互斥关系并不意味着完全不能共存，而是在同一上下文或同一阶段存在显著张力，需要显式架构决策。
 
 | 互斥对 | 所属主题 | 张力描述 | 决策依据 |
-|--------|---------|---------|---------|
+| -------- | --------- | --------- | --------- |
 | 微服务 vs 模块化单体 | 03 / 13 | 微服务强调独立部署与团队自治；模块化单体强调内部一致性与低运维负担 | 团队规模、业务能力边界、运维成熟度 |
 | 强一致性 vs 最终一致性 | 03 / 05 | 强一致性简化推理但牺牲可用性；最终一致性提升扩展性但增加验证复杂度 | 业务容忍窗口、形式化验证能力 |
 | 通用组件 vs 领域专用组件 | 04 / 02 | 通用组件复用率高但语义抽象；领域专用组件语义精准但复用范围窄 | 业务能力稳定性、跨领域需求 |
@@ -9409,7 +9712,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ## 附录：快速检索标签
 
 | 关键词 | 相关主题 | 问答对编号范围 |
-|--------|---------|---------------|
+| -------- | --------- | --------------- |
 | TLA+ | 07 | Q1–Q5 (07节) |
 | Alloy | 07 | Q4–Q5 (07节) |
 | Coq / Isabelle | 07 | Q6 (07节) |
@@ -9479,7 +9782,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ## 1. 文档格式合规检查
 
 | 文档 | 版本头部 | 定位声明 | 状态标记 | 权威来源(URL+日期) | 结果 |
-|------|----------|----------|----------|-------------------|------|
+| ------ | ---------- | ---------- | ---------- | ------------------- | ------ |
 | C-01 SysML v2 复用映射 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
 | C-02 MBSE/PLE 整合 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
 | C-03 数字孪生通用架构 | ✅ | ✅ | ✅ 已完成 | ✅ | **通过** |
@@ -9497,7 +9800,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 **结果分布**:
 
 | 状态 | 数量 | 占比 | 说明 |
-|------|------|------|------|
+| ------ | ------ | ------ | ------ |
 | ✅ OK (200) | 63 | 60.6% | 正常访问 |
 | ⚠️ WARN (403) | 18 | 17.3% | WAF/Cloudflare 拦截，浏览器可正常访问 |
 | ❌ FAIL (404) | 9 | 8.7% | **需要修复** |
@@ -9508,7 +9811,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ## 3. 需要修复的 URL（404）
 
 | # | URL | 所在文档 | 建议修复 |
-|---|-----|----------|----------|
+| --- | ----- | ---------- | ---------- |
 | 1 | `https://biglever.com/solution/featured-articles/` | C-01 | 替换为 `https://biglever.com/`（已验证可达）或 Gears PLE 产品页 |
 | 2 | `https://www.gov.uk/modaf` | C-07 | 替换为 `https://www.gov.uk/guidance/mod-architecture-framework` 或 UK MOD 架构框架最新入口 |
 | 3 | `https://www.incose.org/publications/se-handbook` | C-02 | 替换为 `https://www.incose.org/docs/default-source/se-handbook/` 或 INCOSE 官方商店链接 |
@@ -9526,7 +9829,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 以下 URL 返回连接错误（000ERR），**可能因网络环境或 TLS 配置导致 curl 失败，不代表 URL 本身无效**。建议通过浏览器人工复核：
 
 | URL | 所在文档 | 复核建议 |
-|-----|----------|----------|
+| ----- | ---------- | ---------- |
 | `https://github.com/Systems-Modeling/SysML-v2-API-Java-Client` | C-01 | GitHub 仓库，浏览器复核 |
 | `https://github.com/Systems-Modeling/SysML-v2-Release` | C-01 | GitHub 仓库，浏览器复核 |
 | `https://biglever.com/` | C-02 | 主站有时 200 有时 ERR，建议复核 |
@@ -9548,7 +9851,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 ### C-08 复用决策工具 v2.0
 
 | 检查项 | 结果 |
-|--------|------|
+| -------- | ------ |
 | 单元测试 | 25/25 通过 ✅ |
 | CLI 命令 | decide / check-standard / assess-maturity / card 全部可用 ✅ |
 | Streamlit Web | 结构完整，含输入面板、决策结果、风险热力图、导出功能 ✅ |
@@ -9564,7 +9867,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 **修复时间**: 2026-06-10（验证后立即修复）
 
 | # | 原 URL | 修复后 URL | 状态 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 1 | `biglever.com/solution/featured-articles/` | `https://biglever.com/` | ✅ 已修复 |
 | 2 | `www.gov.uk/modaf` | `https://www.gov.uk/guidance/mod-architecture-framework` | ✅ 已修复 |
 | 3 | `incose.org/publications/se-handbook` | `https://www.incose.org/docs/default-source/se-handbook/` | ✅ 已修复 |
@@ -9646,7 +9949,7 @@ AI 原生复用的核心机制（MCP 工具调用、A2A Agent 协作、概率契
 **参考层（Reference Layer）** 是结构化知识体系的“地图”与“信任锚点”。它本身不替代各主题的深度内容，而是通过术语表、标准索引、外部链接、审计报告与可视化资源，确保知识体系内部一致、来源可验证、演进可追踪。
 
 | 子目录 | 定义 | 内容示例 |
-|--------|------|----------|
+| -------- | ------ | ---------- |
 | `glossary/` | 术语表与同义词对照 | 跨标准术语映射、公理-定理树 |
 | `standards-index/` | 标准索引与对齐矩阵 | ISO/IEC/IEEE、SLSA、OPC UA 等 |
 | `external-links/` | 外部权威资源链接 | authoritative-sources.md |
@@ -9738,7 +10041,7 @@ graph TD
 ## 5. 标准索引总览
 
 | 标准 | 主题 | 状态 | 链接 | 核查日期 |
-|------|------|------|------|------|
+| ------ | ------ | ------ | ------ | ------ |
 | ISO/IEC/IEEE 42010:2022 | 01-元模型 | 生效 | [ISO](https://www.iso.org/standard/74393.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42020:2019 | 01-元模型/复用 | 生效 | [ISO](https://www.iso.org/standard/68982.html) | 2026-07-09 |
 | ISO/IEC/IEEE 42030:2019 | 01-元模型/评估 | 生效 | [ISO](https://www.iso.org/standard/73436.html) | 2026-07-09 |
@@ -9892,12 +10195,12 @@ graph TD
 
 <!-- SOURCE: struct/99-reference/standards-index/authoritative-sources-v2.md -->
 
-# 国际标准与权威来源索引 v2.9
+# 国际标准与权威来源索引 v3.0
 
-> **版本**: 2026-07-11 v2.9
+> **版本**: 2026-07-12 v3.0
 > **定位**: 全项目引用的事实基准。所有 Markdown 文件引用标准、框架、协议时，应优先以本表为准。
 > **维护节奏**: 每季度（3 月、6 月、9 月、12 月）对照官方来源复核一次。
-> **上次复核**: 2026-07-11
+> **上次复核**: 2026-07-12
 > **下次复核**: 2026-09-30
 > **关联勘误**: [`99-reference/audit/content-fact-fix-2026-07.md`](../struct/99-reference/audit/content-fact-fix-2026-07.md)
 
@@ -9905,7 +10208,7 @@ graph TD
 
 ## 目录
 
-- [国际标准与权威来源索引 v2.3](#国际标准与权威来源索引-v23)
+- [国际标准与权威来源索引 v3.0](#国际标准与权威来源索引-v30)
   - [目录](#目录)
   - [使用说明](#使用说明)
   - [架构与软件工程标准](#架构与软件工程标准)
@@ -9959,6 +10262,14 @@ graph TD
 | **SWEBOK** | V4 | 已发布 | <https://www.computer.org/education/bodies-of-knowledge/software-engineering> | 软件工程知识体系 |
 | **ISO/IEC 5338** | 2023 | 已发布 | <https://www.iso.org/standard/81118.html> | AI 系统生命周期过程 |
 | **ISO/IEC 42001** | 2023 | 已发布 | <https://www.iso.org/standard/81230.html> | AI 管理体系 |
+| **ISO/IEC 19510** | 2013 | 已发布 | <https://www.iso.org/standard/62652.html> | OMG BPMN 2.0 的 ISO/IEC 采纳版；URL 经 iso.org 直连实测确认 |
+| **ISO 15704** | 2019 | 已发布（Ed.2；90.20 系统复审中） | <https://www.iso.org/standard/71890.html> | 企业建模与架构 — 企业参考架构与方法论要求（GERAM 基础）；URL 实测确认 |
+| **IEEE 1471** | 2000 | 已发布；已被 ISO/IEC/IEEE 42010 取代 | <https://standards.ieee.org/standard/1471-2000.html> | 软件密集型系统架构描述推荐实践（42010 前身） |
+| **ISO/IEC 33001** | 2015 | 已发布（2026 复审确认，stage 90.93） | <https://www.iso.org/standard/54175.html> | 过程评估 — 概念与术语（ISO/IEC 330xx 家族入口） |
+| **ISO/IEC 33004** | 2015 | 已发布（2026 复审确认，stage 90.93）；**注意：不存在 :2022 版** | <https://www.iso.org/standard/54178.html> | 过程评估 — 过程参考模型/评估模型/成熟度模型要求 |
+| **ISO/IEC 33020** | 2019 | 已发布（Ed.2，取代 2015 版） | <https://www.iso.org/standard/78526.html> | 过程能力测量框架（SPICE 能力等级 0–5）；URL 实测确认 |
+| **ISO/IEC 19770-1** | 2017 | 已发布 | <https://www.iso.org/standard/68531.html> | IT 资产管理 — 资产管理系统要求 |
+| **ISO 9001** | 2015 | 现行 | <https://www.iso.org/standard/62085.html> | 质量管理体系 — 要求 |
 
 ---
 
@@ -9973,6 +10284,7 @@ graph TD
 | **BPMN** | 2.0 | 现行 | <https://www.omg.org/spec/BPMN/2.0> | 业务流程建模符号 |
 | **DMN** | 1.5 | 2024 发布 | <https://www.omg.org/spec/DMN/1.5> | 决策模型与符号 |
 | **OMG SysML v2** | v2 | 已发布 | <https://www.omg.org/spec/SysML/> | 系统建模语言第二版 |
+| **ISO 20022-1** | 2013（Ed.2，Withdrawn；Ed.3 DIS 中） | 系列滚动修订 | <https://www.iso.org/standard/55005.html> | 金融业通用报文方案 — 元模型；系列新版陆续发布（如 -4:2026=84857）；注册机构门户 <https://www.iso20022.org/> |
 
 ---
 
@@ -10000,6 +10312,9 @@ graph TD
 | **IEC 62443-4-1** | 2018 | 现行 | <https://webstore.iec.ch/en/publication/33615> | IACS 安全产品开发生命周期要求 |
 | **IEC 62443-4-2** | **2019** | 现行 | <https://webstore.iec.ch/en/publication/34421> | IACS 组件技术安全要求；**注意：不是 2025 版** |
 | **IEC TS 62443-6-2** | 2025 | 已发布 | <https://webstore.iec.ch/en/publication/67463> | IACS 组件评估方法论 |
+| **ISO/IEC 27001** | 2022 | 已发布（Ed.3；+Amd 1:2024=88435 气候行动修订） | <https://www.iso.org/standard/82875.html> | 信息安全管理体系（ISMS）— 要求；URL 实测确认 |
+| **ISO/IEC 5230** | 2020 | 已发布 | <https://www.iso.org/standard/81039.html> | OpenChain 规范（开源许可证合规流程）；URL 实测确认 |
+| **ISO/IEC 5962** | 2021 | 已发布 | <https://www.iso.org/standard/81870.html> | SPDX® Specification V2.2.1（SBOM 交换格式）；URL 实测确认 |
 
 ---
 
@@ -10010,7 +10325,8 @@ graph TD
 | **ISA-95 / IEC 62264** | — | 现行 | <https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95> | 企业-控制系统集成 |
 | **ISO/IEC 30141** | **2024** | **已发布** | <https://www.iso.org/standard/88800.html> | IoT 参考架构；**2024-08 发布，取代 2018 版** |
 | **IEC 61508** | **Ed.3（CDV 投票完成，RVC 2026-05-15 发布：65A/1231~1234/RVC；IEC 官方 Fcst. Publ. Date 2026-07）** | **CDV 投票完成；TÜV Rheinland 等主要认证机构于 2026-06 起已可按 IEC 61508-3:2026 执行 SIL 2+ 认证** | <https://iec.ch/dyn/www/f?p=103:23:::::FSP_ORG_ID:1369> | 功能安全基础标准；需区分“认证机构按 61508-3:2026 执行”与“IEC 国际标准正式出版（官方预测 2026-07）” |
-| **ISO 21448** | 2022 | Ed.2 修订中（ISO/AWI 21448，AWI 阶段） | <https://www.iso.org/standard/93071.html> | 预期功能安全 (SOTIF)；Ed.2 扩展覆盖 SAE L1-L5 驾驶自动化及远程用户操作/后台通信；发布时点未官宣 |
+| **ISO 21448** | 2022 | 已发布（现行版） | <https://www.iso.org/standard/77490.html> | 预期功能安全 (SOTIF)；URL 经 iso.org 直连实测确认：77490=2022 已发布版页面，93071=Ed.2 工作项页面 |
+| **ISO/WD 21448** | Ed.2 | 修订中（WD 阶段，2026-07 实测；项目已从 AWI 推进至 WD） | <https://www.iso.org/standard/93071.html> | SOTIF Ed.2 工作项；扩展覆盖 SAE L1-L5 驾驶自动化及远程用户操作/后台通信；发布时点未官宣 |
 | **ISO 26262** | 2018 | 现行；Ed.3 新工作项注册（目标 ~2029） | <https://www.iso.org/standard/68383.html> | 道路车辆功能安全 |
 | **IEC 63278-1** | 2023 | 已发布 | <https://webstore.iec.ch/en/publication/65628> | 资产管理壳（AAS）结构 |
 | **OPC UA FX** | 1.0 (Parts 80–84) | 已发布 | <https://reference.opcfoundation.org/specs/OPC-10000-80> | 现场级通信；OPC Foundation 主站对自动化访问限制较严，规范参考页（Parts 80–84）可正常访问 |
@@ -10032,6 +10348,18 @@ graph TD
 | **IEC 63365** | **2022** | 已发布 | <https://webstore.iec.ch/en/publication/67436> | 数字铭牌（Digital Nameplate）；**年份订正 2024→2022** |
 | **IEC 60870-5-104** | 2006 | 已发布（+AMD1:2016 CSV Ed.2.1，含 COR1:2023） | <https://webstore.iec.ch/en/publication/25035> | 电力远动传输 104 规约（TCP/IP 网络访问） |
 | **IEC 60068-1** | 2013 | 已发布（Ed.7） | <https://webstore.iec.ch/en/publication/501> | 环境试验 第 1 部分：总则与指南 |
+| **IEC TR 62541-1** | 2020 | 已发布（Ed.3） | <https://webstore.iec.ch/en/publication/61109> | OPC 统一架构（OPC UA）概览与概念；系列含 -14:2020 PubSub=61108；URL 实测确认 |
+| **IEC 61512-1** | 2026 | 已发布（Ed.2，2026-02-20 发布，取代 1997 版=5528） | <https://webstore.iec.ch/en/publication/75287> | 批控制 — 模型与术语（ISA-88）；URL 实测确认 |
+| **ISO 23247** | -1:2021 / -2:2021 | 已发布 | <https://www.iso.org/standard/75066.html> | 制造业数字孪生框架；链接为 -1（Overview，实测确认）；-2=78743 |
+| **ISO/IEC 30173** | 2023 | 已发布 | <https://www.iso.org/standard/81442.html> | 数字孪生 — 概念与术语；URL 实测确认 |
+| **ISO 21434（ISO/SAE 21434）** | 2021 | 已发布 | <https://www.iso.org/standard/70918.html> | 道路车辆 — 网络安全工程；URL 实测确认 |
+| **ISO 13849-1** | 2023 | 已发布（Ed.4，取代 2015 版=69883） | <https://www.iso.org/standard/73481.html> | 机械安全 — 控制系统安全相关部件 第 1 部分：设计通则 |
+| **IEC 61800-5-2** | 2016 | 已发布（Ed.2；RLV 合订=24555） | <https://webstore.iec.ch/en/publication/24555> | 调速电气传动系统 — 功能安全（STO 等指定安全子功能）；URL 实测确认 |
+| **IEC 61804-2** | 2018 | 已发布（Ed.3，整合已撤销的 61804-1） | <https://webstore.iec.ch/en/publication/28131> | 过程控制功能块（FB）与 EDDL — FB 概念规范；URL 实测确认 |
+| **ISO 22400-2** | 2014 | 已发布 | <https://www.iso.org/standard/54497.html> | 制造运营管理 KPI — 第 2 部分：定义与描述 |
+| **ISO 50001** | 2018 | 现行 | <https://www.iso.org/standard/69426.html> | 能源管理体系 — 要求与使用指南 |
+| **ISO 14064-1** | 2018 | 已发布 | <https://www.iso.org/standard/66453.html> | 温室气体 — 第 1 部分：组织层面排放与清除的量化与报告规范 |
+| **IEEE 802.1** | 系列（802.1AS / 802.1Qbv 等） | 现行（滚动修订） | <https://1.ieee802.org/tsn/> | 时间敏感网络（TSN）任务组；OPC UA FX 确定性传输基础；URL 实测确认 |
 
 ---
 
@@ -10095,6 +10423,7 @@ graph TD
 | 2026-07-11 | 更新为 v2.7（联网核对）：GSF SCI for AI 订正为 2025-12 ratified（GSF 公告 2025-12-17，基于 ISO/IEC 21031:2024）；ISO/IEC 21838 系列补全为 -1:2021/-2:2021(BFO)/-3:2023(DOLCE)/-4:2023(TUpper)，-5(UFO) 2025-12 进入 DIS；复核 OMG RAS v2.2（2005-11）、FAIR4RS v1.0（2022-06 RDA 批准）、CNCF Platform Engineering Maturity Model（2023-11 首版，无 v1.0 编号）、Microsoft Agent Governance Toolkit（2026-04-02 开源）、OSPS Baseline v2026.02.19、OPC UA FX Part 80-84 v1.00.03（2026-05-23）、ISO/IEC/IEEE 12207:2026（2026-04-29 发布）、ISO/IEC 25010:2023（现行）均一致 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.8（iso.org 全表链接实测复核，Mozilla UA 直连成功，23 条中 4 条纠错）：ISO/IEC 21838 链接 74307（实为 ISO 17889-2 瓷砖）→ 71954（-1:2021）；ISO/IEC/IEEE 42010 链接 74296（实为 ISO/IEC 22989:2022）→ 74393；ISO/IEC 25010 链接 78175（实为 ISO/IEC 25002:2024）→ 78176；ISO/IEC 26580 链接 71883（实为 ISO 10204 铁矿石）→ 43139；ISO/IEC 26564 链接 81622（实为 ISO/TS 24560-1 医疗）→ 43123；ISO/IEC 26565/26566（81436/81437）、26550（69529）复核确认 | 自动对齐代理 |
 | 2026-07-11 | 更新为 v2.9（IEC webstore 直连实测，16 条工业自动化标准补全 publication 号，全部经 `<title>` 实测确认）：IEC 61511-1:2016=24241（+AMD1:2017 CSV=61289、-2:2016=25510、:2026 SER 系列合订=5527）、IEC 61513:2011=5532、IEC 61131-3:2025 Ed.4=68533（2025-05 发布，UTF-8 字符串纳入、IL 移除，取代 2013 版）、IEC 62061:2021=59927、IEC 62304:2006=6792（AMD1:2015=22790）、IEC 61000-4-2:2008=4189、IEC 61784-1/-2:2019=59887/59888、IEC 61499-1/-2:2012=5506/5507、IEC 61360-1:2017=28560（-7:2024=72956）、IEC 62682:2022=65543、IEC 63339:2024=iso.org/standard/82374、IEC 63365 年份订正 2024→2022（=67436）、IEC 60870-5-104:2006+AMD1:2016 CSV=25035、IEC 60068-1:2013=501 | 自动对齐代理 |
+| 2026-07-12 | 更新为 v3.0（R5 基准完备性补录 24 条 + ISO 21448 悬案澄清，全部 URL 经 iso.org/IEC webstore 直连 `<title>` 实测确认）：补录 ISO/IEC 19510:2013=62652、ISO 15704:2019=71890、IEEE 1471:2000、ISO/IEC 33001:2015=54175、ISO/IEC 33004:2015=54178（注：不存在 :2022 版）、ISO/IEC 33020:2019=78526、ISO/IEC 19770-1:2017=68531、ISO 9001:2015=62085、ISO 20022-1:2013=55005（Withdrawn，Ed.3 DIS）、ISO/IEC 27001:2022=82875、ISO/IEC 5230:2020=81039、ISO/IEC 5962:2021=81870、IEC TR 62541-1:2020=61109、IEC 61512-1:2026=75287（Ed.2，2026-02-20 发布，取代 1997 版）、ISO 23247-1:2021=75066、ISO/IEC 30173:2023=81442、ISO/SAE 21434:2021=70918、ISO 13849-1:2023=73481、IEC 61800-5-2:2016=24555、IEC 61804-2:2018=28131、ISO 22400-2:2014=54497、ISO 50001:2018=69426、ISO 14064-1:2018=66453、IEEE 802.1（TSN）；**ISO 21448 悬案**：iso.org 实测 77490=ISO 21448:2022 已发布版页面、93071=ISO/WD 21448（Ed.2 工作项，已从 AWI 推进至 WD 阶段），正文 6 处 77490 引用正确，基准表拆为“2022 已发布版（77490）+ Ed.2 工作项（93071）”两条 | 自动对齐代理 |
 
 ---
 
@@ -10144,7 +10473,7 @@ graph TD
 ## 矩阵 A：复用层次 × 标准族
 
 | 复用层次 | 核心标准 | 辅助标准 | 架构框架 | 建模语言 | 质量度量 | 过程标准 | 协议/接口 | 2026 新增 |
-|----------|----------|----------|----------|----------|----------|----------|-----------|-----------|
+| ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ----------- | ----------- |
 | **元模型** | ISO/IEC/IEEE 42010:2022 | ISO/IEC/IEEE 24765, ISO/IEC/IEEE 15288, **OMG RAS**, **FAIR4RS**, **IEEE 1517** | TOGAF 10, Zachman | ArchiMate 3.2+ | ISO 25010:2023 | ISO/IEC/IEEE 42020 | N/A | DIS 42024/42042 |
 | **业务** | FEA BRM 2.0 | ISO/IEC/IEEE 15288, BPMN 2.0 | TOGAF Phase B | ArchiMate Business, BPMN | ISO 25010 | 42020 | REST/GraphQL | DMN 1.5, ArchiMate 3.2 |
 | **应用** | FEA ARM/SRM | ISO/IEC 26550, C4 | TOGAF Phase C/D | ArchiMate Application | ISO 25010 | 42020/1517 | gRPC/REST/Gateway API | Service Mesh, WASM, TOSCA v2.0, OASIS TOSCA v2.0 |
@@ -10169,7 +10498,7 @@ graph TD
 ## 矩阵 B：标准 × 主题覆盖度
 
 | 标准/框架 | 元模型 | 业务 | 应用 | 组件 | 功能 | 治理 | 安全 | 工业 |
-|-----------|--------|------|------|------|------|------|------|------|
+| ----------- | -------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | **ISO 42010:2022** | ★★★★★ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★☆☆☆ |
 | **TOGAF 10** | ★★★★☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ |
 | **ArchiMate 3.2+** | ★★★☆☆ | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★☆☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
@@ -10213,7 +10542,7 @@ graph TD
 ### 表 C-1：核心架构术语
 
 | 本体系概念 | ISO 42010:2022 | TOGAF 10 | ArchiMate 3.2+ | ISO 26550:2015 | ISA-95 |
-|-----------|---------------|----------|----------------|----------------|--------|
+| ----------- | --------------- | ---------- | ---------------- | ---------------- | -------- |
 | **架构描述** | Architecture Description (AD) | Architecture Repository / ADM 产物 | Architecture View / Model | Product Line Asset Documentation | Operations Definition |
 | **视点** | Viewpoint | Architecture Viewpoint | Viewpoint | Stakeholder Concern View | Functional Hierarchy |
 | **视图** | View | Architecture View | View | Architecture Description View | Operations Schedule |
@@ -10225,7 +10554,7 @@ graph TD
 ### 表 C-2：AI 原生协议术语映射
 
 | 本体系概念 | MCP 2025-11-25 | A2A v1.0 | 通用含义 / 跨标准说明 |
-|-----------|-------------------|-----------|----------------------|
+| ----------- | ------------------- | ----------- | ---------------------- |
 | **MCP Tool** | Tool (Schema + Implementation, optional Icons) | Skill | 可被 LLM/Agent 调用的具体功能单元；A2A 中通过 Skill 字段声明，MCP 中通过 `tools/list` 与 `tools/call` 暴露；2025-11-25 支持 icons |
 | **Agent Card** | — (Host-Client-Server 模型) | Agent Card (Signed JSON) | 智能体能力广告与信任锚；A2A 的核心发现机制，MCP 中无对等概念（能力通过运行时协商） |
 | **Capability** | Capability (Negotiation) | Capability (Advertisement) | 声明可执行的操作集合；MCP 强调运行时协商，A2A 强调预发布目录 |
@@ -10237,7 +10566,7 @@ graph TD
 ### 表 C-3：工业数字孪生与组件接口术语映射
 
 | 本体系概念 | IEC 63278 (AAS) | OPC UA FX / Part 14 | WIT / WASM | TSN / IEEE 802.1 |
-|-----------|-----------------|---------------------|------------|------------------|
+| ----------- | ----------------- | --------------------- | ------------ | ------------------ |
 | **AAS Submodel** | Submodel | ObjectType / Folder | — | 资产的管理壳子模型；AAS 中语义定义，OPC UA 中映射为对象类型 |
 | **WIT Interface** | — | — | Interface (WIT IDL) | WebAssembly Interface Types：跨语言组件的契约层，等价于 AAS 的 Asset Interface 或 OPC UA 的 Method Signature |
 | **GCL** | — | — | — | Gate Control List (IEEE 802.1Qbv)：TSN 门控调度表；配置交换机出端口 8 个队列的开/关时序 |
@@ -10255,7 +10584,7 @@ graph TD
 > **新增矩阵**（2026-06-28）: 覆盖主要协议和接口标准在六类典型场景中的适用性评估
 
 | 协议/接口 | 业务编排 | 应用集成 | 组件复用 | 功能调用 | 工业通信 | AI 协作 |
-|-----------|:--------:|:--------:|:--------:|:--------:|:--------:|:-------:|
+| ----------- | :--------: | :--------: | :--------: | :--------: | :--------: | :-------: |
 | **MCP 2025-11-25** | ★☆☆☆☆ | ★★☆☆☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ | ★★★★☆ |
 | **A2A v1.0.0** | ★★★★☆ | ★★★★☆ | ★★★☆☆ | ★★★★☆ | ☆☆☆☆☆ | ★★★★★ |
 | **OPC UA FX** | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★☆☆ | ★★★★★ | ☆☆☆☆☆ |
@@ -10266,7 +10595,7 @@ graph TD
 | **DMN 1.5** | ★★★★★ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★★ | ★★☆☆☆ | ★★☆☆☆ |
 
 | 协议/接口 | 业务编排说明 | 应用集成说明 | 组件复用说明 | 功能调用说明 | 工业通信说明 | AI 协作说明 |
-|-----------|-------------|-------------|-------------|-------------|-------------|------------|
+| ----------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------ |
 | **MCP** | 无状态协议，不适合长流程编排 | Streamable HTTP 可穿透网关 | WIT 风格接口可嵌入 WASM | 函数级 Tool Call 为设计核心 | 无实时/确定性保证 | 工具发现与调用是 Agent 基础能力 |
 | **A2A** | Task 生命周期天然支持工作流编排 | Agent Card 支持服务目录集成 | Agent 可封装为可复用服务 | Skill 调用粒度适中 | 无工业实时特性 | Agent-to-Agent 协作是协议首要目标 |
 | **OPC UA FX** | C2C 支持产线级协调 | C2C 跨控制器数据交换 | C2D/D2D 支持驱动级组件复用 | Method Call 支持功能调用 | UADP + TSN 实现确定性通信 | 无原生 AI 语义 |
@@ -10285,7 +10614,7 @@ graph TD
 > **新增矩阵**（2026-06-28）: 覆盖主流形式化方法在七类验证目标中的适用性与工具成熟度
 
 | 形式化方法 | 分布式协议 | 架构约束 | 定理证明 | 安全关键软件 | 铁路信号 | 内存安全 | 并发安全 |
-|-----------|:----------:|:--------:|:--------:|:------------:|:--------:|:--------:|:--------:|
+| ----------- | :----------: | :--------: | :--------: | :------------: | :--------: | :--------: | :--------: |
 | **TLA+** | ★★★★★ | ★★★★☆ | ★★☆☆☆ | ★★★☆☆ | ★★★☆☆ | ☆☆☆☆☆ | ★★★★★ |
 | **Alloy** | ★★★☆☆ | ★★★★★ | ★★☆☆☆ | ★★☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★☆☆ |
 | **Coq** | ★★★☆☆ | ★★☆☆☆ | ★★★★★ | ★★★★★ | ★★★★☆ | ★★★★☆ | ★★★★☆ |
@@ -10297,7 +10626,7 @@ graph TD
 | **Miri** | ☆☆☆☆☆ | ☆☆☆☆☆ | ☆☆☆☆☆ | ★★☆☆☆ | ☆☆☆☆☆ | ★★★★★ | ★★★★☆ |
 
 | 形式化方法 | 工具成熟度 | 学习曲线 | 代表工具/项目 | 典型应用场景 |
-|-----------|:----------:|:--------:|---------------|-------------|
+| ----------- | :----------: | :--------: | --------------- | ------------- |
 | **TLA+** | ★★★★☆ | 中 | TLC, TLAPS, Apalache | 分布式一致性协议（Raft, Paxos）、MCP 能力协商、A2A Task 状态机、OPC UA FX Connection Manager |
 | **Alloy** | ★★★★☆ | 低–中 | Alloy Analyzer, Alloy* | 组件依赖无环性、架构视图一致性、MCP Tool 能力依赖图验证 |
 | **Coq** | ★★★★★ | 高 | CoqIDE, VST, CompCert, Iris | 操作系统内核正确性（seL4）、编译器验证（CompCert）、RustBelt (Iris) |
@@ -10323,7 +10652,7 @@ graph TD
 > **原矩阵 D**，现顺延为矩阵 F，保留历史追踪功能并更新状态
 
 | 标准 | 当前状态 | 预期更新 | 对体系的影响 | 跟踪责任人 |
-|------|---------|---------|-------------|-----------|
+| ------ | --------- | --------- | ------------- | ----------- |
 | ISO/IEC/IEEE DIS 42024 | 草案 | 预计 2026–2027 发布 | 元模型层定义需更新 | TBD |
 | ISO/IEC/IEEE DIS 42042 | 草案 | 预计 2026–2027 发布 | 参考架构规范补充 | TBD |
 | **ArchiMate 4.0** | **[已正式发布（2026-04-27，Document C260）](https://www.opengroup.org/archimate-licensed-downloads)** | **正式发布内容包含 Common Domain + Business/Application/Technology + Motivation/Implementation；与 3.2 向后兼容** | 已更新对应映射文档 | TBD |
@@ -10982,7 +11311,7 @@ graph TD
 ## 一、接口与契约 (Interface & Contract) — 权重 25%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 1.1 | 接口命名符合领域术语 | ☐ | 名称直观，无需额外解释即可猜测功能 |
 | 1.2 | 输入参数有完整的类型约束 | ☐ | JSON Schema / 类型签名 / 契约完备 |
 | 1.3 | 输出结果有明确的结构定义 | ☐ | 返回值类型、错误码、异常场景 |
@@ -10998,7 +11327,7 @@ graph TD
 ## 二、文档与示例 (Documentation & Examples) — 权重 20%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 2.1 | 快速开始 (Quick Start) ≤ 5 分钟 | ☐ | 新用户可在 5 分钟内成功运行第一个示例 |
 | 2.2 | API 参考文档完整 | ☐ | 所有公共接口都有文档 |
 | 2.3 | 示例覆盖正常场景 | ☐ | 至少 1 个典型使用示例 |
@@ -11014,7 +11343,7 @@ graph TD
 ## 三、可测试性 (Testability) — 权重 15%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 3.1 | 单元测试覆盖率 ≥ 80% | ☐ | 核心逻辑有充分测试 |
 | 3.2 | 集成测试存在 | ☐ | 与典型依赖的集成场景 |
 | 3.3 | 测试可在隔离环境运行 | ☐ | 不依赖外部服务/数据库 |
@@ -11028,7 +11357,7 @@ graph TD
 ## 四、安全性 (Security) — 权重 15%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 4.1 | SBOM 生成 | ☐ | 可自动生成 SPDX/CycloneDX |
 | 4.2 | 依赖漏洞扫描通过 | ☐ | 无已知高危漏洞 |
 | 4.3 | 敏感数据不泄露 | ☐ | 日志/错误消息中不含敏感信息 |
@@ -11042,7 +11371,7 @@ graph TD
 ## 五、可维护性 (Maintainability) — 权重 15%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 5.1 | 代码/结构清晰 | ☐ | 模块化、低耦合、高内聚 |
 | 5.2 | 依赖树深度 ≤ 3 | ☐ | 传递依赖可控 |
 | 5.3 | 有活跃的维护者 | ☐ | 最近 6 个月有更新 |
@@ -11056,7 +11385,7 @@ graph TD
 ## 六、可复用性 (Reusability) — 权重 10%
 
 | # | 检查项 | 评分 (0-5) | 说明 |
-|---|--------|-----------|------|
+| --- | -------- | ----------- | ------ |
 | 6.1 | 上下文依赖少 | ☐ | 不绑定特定框架/平台 |
 | 6.2 | 配置化程度高 | ☐ | 关键行为可通过配置调整 |
 | 6.3 | 扩展点设计合理 | ☐ | 支持插件/钩子/回调机制 |
@@ -11070,7 +11399,7 @@ graph TD
 ## 评分汇总
 
 | 维度 | 权重 | 小计 | 加权得分 |
-|------|------|------|---------|
+| ------ | ------ | ------ | --------- |
 | 接口与契约 | 25% | ___ / 35 | ___ |
 | 文档与示例 | 20% | ___ / 35 | ___ |
 | 可测试性 | 15% | ___ / 25 | ___ |
@@ -11082,7 +11411,7 @@ graph TD
 ### 评级标准
 
 | 总分 | 评级 | 建议 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 90-100 | ★★★★★ 卓越 | 可立即推广为组织级标准资产 |
 | 80-89 | ★★★★☆ 优秀 | 推荐复用，小幅优化即可 |
 | 70-79 | ★★★☆☆ 良好 | 可以复用，需针对性改进 |
@@ -11220,12 +11549,12 @@ graph TD
 ## 3. 核查日期规则
 
 | 标准状态 | 核查频率 | 示例 |
-|:---|:---:|:---|
+| :--- | :---: | :--- |
 | **已发布且稳定**（如 42010:2022） | 每年复审一次 | 每年 1 月统一核查 |
 | **已发布但预计更新**（如 42030:2019 → AWI 修订中） | 每季度跟踪 | 3/6/9/12 月核查 |
 | **草案/DIS/FDIS**（如 DIS 42042） | 每月跟踪 | 持续跟踪至发布 |
 | **技术规范/社区标准**（如 MCP, SLSA） | 每月跟踪 | 关注官方 Changelog |
-| **法规**（如 EU CRA） | 每季度或按事件触发 |  deadlines 前密集跟踪 |
+| **法规**（如 EU CRA） | 每季度或按事件触发 | deadlines 前密集跟踪 |
 
 ### 3.1 核查操作步骤
 
@@ -11239,7 +11568,7 @@ graph TD
 ## 4. 标准来源分级
 
 | 优先级 | 来源类型 | 示例 | 说明 |
-|:---|:---:|:---|:---|
+| :--- | :---: | :--- | :--- |
 | **P0** | 官方标准组织 | ISO.org, IEC.ch, IEEE.org, The Open Group, OMG | 必须优先引用 |
 | **P1** | 官方技术委员会文档 | JTC 1/SC 7 工作报告, WG 会议纪要 | 可作为过程引用 |
 | **P2** | 权威第三方验证 | NIST, ENISA, CNCF, OpenSSF, Linux Foundation | 技术框架引用 |
@@ -11258,7 +11587,7 @@ graph TD
 ## 5. 常见标准核查入口
 
 | 标准/框架 | 官方核查 URL | 备注 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | ISO 全部标准 | <https://www.iso.org/obp/ui/> | 使用标准号搜索 |
 | IEC 全部标准 | <https://webstore.iec.ch/> | 可查看预览 |
 | IEEE 标准 | <https://standards.ieee.org/> | 需订阅查看全文 |
@@ -11416,7 +11745,7 @@ def check_standard_version(standard_name, cited_version):
 ## 规则速查表
 
 | 检查项 | 正确做法 | 错误做法 |
-|---|---|---|
+| --- | --- | --- |
 | 概念定义 | 与正文主题直接相关，1–3 句话精确定义 | 复制通用定义或正文已有内容 |
 | 示例 | 具体场景、可复现、说明复用价值 | 空洞陈述，如「组件可以被复用」 |
 | 反例 | 真实失败模式、后果、避免建议 | 与示例简单对立，缺乏场景 |
@@ -11654,7 +11983,7 @@ def check_standard_version(standard_name, cited_version):
 以下要素根据主题重要性选择性添加：
 
 | 要素 | 适用场景 | 检查点 |
-|---|---|---|
+| --- | --- | --- |
 | **Wikipedia 结构梳理** | 核心概念 | 给出 Wikipedia 定义摘要、概念结构图、差异说明 |
 | **历史演进** | 有多个版本的框架/协议 | 说明版本变化与迁移路径 |
 | **工具/实现** | 有成熟工具链 | 列出代表性工具与选型建议 |
@@ -11670,7 +11999,7 @@ def check_standard_version(standard_name, cited_version):
 每个核心文件按以下标准评分（满分 100）：
 
 | 要素 | 分值 | 评分规则 |
-|---|---|---|
+| --- | --- | --- |
 | 概念定义 | 15 | 定义清晰、有形式化表达、链接权威来源 |
 | 属性/特征 | 10 | 属性完整、表格化、可观察 |
 | 关系 | 10 | 层次关系与标准映射明确 |
@@ -11777,7 +12106,7 @@ python scripts/quality-gate-v2.py struct/ --report report.md
 #### 2.1 表格规范
 
 | 列名 | 说明 | 数据类型 |
-|------|------|---------|
+| ------ | ------ | --------- |
 | 左对齐 | 默认 | 文本 |
 | 数值 | 右对齐建议 | 数字 |
 | 状态 | 居中 | 布尔/枚举 |
@@ -12067,7 +12396,7 @@ def example():
 ## 核心公理速查
 
 | 编号 | 名称 | 一句话摘要 |
-|------|------|-----------|
+| ------ | ------ | ----------- |
 | M.1 | Reusability as Architectural Concern | 复用性是架构关注点，必须显式表达 |
 | 2.1 | Capability Atomicity | 业务能力是可复用的最小业务语义单元 |
 | 3.2 | Data-Application Coupling | 数据与应用复用独立 ⟺ 抽象数据服务 |
@@ -12097,7 +12426,7 @@ AAF ≥ 0.9 (AAF_REBUILD_CEILING)   → REBUILD（重新实现）
 ### 选择哪个架构模式？
 
 | 条件 | 推荐模式 |
-|------|---------|
+| ------ | --------- |
 | 团队 < 50人, 部署 < 1天/次 | 模块化单体 |
 | 多团队, 独立部署, 技术多样性 | 微服务 + 服务网格 |
 | 事件驱动, 高吞吐, 最终一致 | EDA |
@@ -12107,7 +12436,7 @@ AAF ≥ 0.9 (AAF_REBUILD_CEILING)   → REBUILD（重新实现）
 ### 选择哪个形式化方法？
 
 | 场景 | 方法 | 成本 |
-|------|------|------|
+| ------ | ------ | ------ |
 | 分布式协议 | TLA+ | 中 |
 | 架构约束 | Alloy | 低 |
 | 定理证明 | Coq/Isabelle | 高 |
@@ -12120,7 +12449,7 @@ AAF ≥ 0.9 (AAF_REBUILD_CEILING)   → REBUILD（重新实现）
 ## 标准索引速查
 
 | 标准 | 主题 | 状态 |
-|------|------|------|
+| ------ | ------ | ------ |
 | ISO 42010:2022 | 01 元模型 | 生效 |
 | ISO 26565:2026 / 26566:2026 | 06 治理 / 产品线纹理 | 最新 |
 | SLSA 1.2 | 10 安全 | 生效 |
@@ -12152,7 +12481,7 @@ COCOMO II 复用调整:
 ## 紧急联系（虚构）
 
 | 问题类型 | 参考文档 |
-|---------|---------|
+| --------- | --------- |
 | 架构模式选择 | `03/07-cloud-native-patterns/reusability-matrix-2026.md` |
 | 供应链攻击响应 | `10/03-attack-vectors/attack-tree.md` |
 | MCP 协议问题 | `05/06-mcp-a2a-protocols/protocol-analysis.md` |

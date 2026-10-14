@@ -1,6 +1,6 @@
 # MCP 2025-11-25 权威规范解读
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/12-ai-native-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 12-ai-native-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -530,6 +530,7 @@ data: {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Final 
 > - [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-11-25)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -854,6 +855,7 @@ AAIF 治理下，MCP 获得了类同 HTTP、Kubernetes 的稳定性预期：
 
 > **最后更新**: 2026-07-08
 > **文档状态**: P5-T1 交付物，与 [mcp-2025-11-25-deep-dive.md](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-deep-dive.md) 和 [mcp-2025-11-25-authoritative.md](../struct/12-ai-native-reuse/01-mcp-protocol/mcp-2025-11-25-authoritative.md) 构成 MCP 规范三层文档体系
+
 
 ---
 
@@ -1578,6 +1580,7 @@ Extensions 注册机制
 > - [MCP Introduction](https://modelcontextprotocol.io/introduction)
 > - 核查日期：2026-07-07
 
+
 ---
 
 
@@ -1704,6 +1707,7 @@ MCP 2026-07-28 的 stateless 化是一次架构范式迁移，其本质是复用
 | MCP 2025-11-25 规范 | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
 | MCP 2026-07-28 RC | <https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28-RC> | 2026-07-08 |
 | MCP Specification repo | <https://github.com/modelcontextprotocol/specification> | 2026-07-08 |
+
 
 ---
 
@@ -3156,6 +3160,7 @@ OWASP Agentic AI Top 10 与 MCP Top 10 提供了可落地的风险清单；AGT �
 
 > 最后更新：2026-07-08
 
+
 ---
 
 
@@ -3579,6 +3584,7 @@ Agent A: "请 Agent B 再次检查..."
 > - [A2A Protocol](https://a2aproject.github.io/)
 > - [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/)
 > - 核查日期：2026-07-07
+
 
 ---
 
@@ -5314,7 +5320,7 @@ python calibration-tool.py --test
 ## 1. 服务概述
 
 | 项目 | 内容 |
-| ------ | ------ |
+|------|------|
 | 服务名称 | `{service_name}` |
 | 服务描述 | `{service_description}` |
 | 契约 ID | `{contract_id}` |
@@ -5327,7 +5333,7 @@ python calibration-tool.py --test
 ## 2. 服务等级目标（SLO）
 
 | SLO 项 | 目标值 | 测量方法 | 观测窗口 |
-| -------- | -------- | ---------- | ---------- |
+|--------|--------|----------|----------|
 | 正确率（Correctness） | `≥ {correctness_rate}` | 人工/规则/验证器判定输出正确 | 1 天 / 7 天 / 30 天 |
 | 可用性（Availability） | `≥ {availability}` | 服务成功响应比例 | 30 天 |
 | 延迟 P99（Latency） | `≤ {latency_p99_ms} ms` | 端到端调用耗时 | 1 天 |
@@ -5340,7 +5346,7 @@ python calibration-tool.py --test
 ## 3. 概率契约参数
 
 | 参数 | 设定值 | 说明 |
-| ------ | -------- | ------ |
+|------|--------|------|
 | 模型版本 | `{model_version}` | 版本变更需重新校准 |
 | Temperature | `{temperature}` | 关键任务建议 ≤ 0.2 |
 | Top-p | `{top_p}` | 与 temperature 联合约束 |
@@ -5358,7 +5364,7 @@ python calibration-tool.py --test
 ```
 
 | 触发动作 | 责任方 | 恢复时间目标（RTO） |
-| ---------- | -------- | --------------------- |
+|----------|--------|---------------------|
 | 立即熔断 / 拒绝复用 | 平台团队 | 15 分钟 |
 | 切换至备用模型或人工兜底 | 值班工程师 | 30 分钟 |
 | 生成事故报告并归档 | SRE | 24 小时 |
@@ -5370,7 +5376,7 @@ python calibration-tool.py --test
 ```
 
 | 触发动作 | 责任方 | 处理时限 |
-| ---------- | -------- | ---------- |
+|----------|--------|----------|
 | 增加一致性检查或重新采样 | 模型团队 | 1 小时 |
 | 降低置信度并扩大人在回路范围 | 产品团队 | 4 小时 |
 | 纳入下次校准周期重点观察 | 数据团队 | 7 天 |
@@ -5382,7 +5388,7 @@ python calibration-tool.py --test
 ```
 
 | 动作 | 说明 |
-| ------ | ------ |
+|------|------|
 | 强制人工复核 | 输出在上线或提交前必须经过人工确认 |
 | 记录复核结果 | 用于下一轮校准与模型改进 |
 | 动态调整 θ | 每月根据 C_review / C_error 重新计算 |
@@ -5399,7 +5405,7 @@ python calibration-tool.py --test
 错误预算消耗达以下比例时触发治理动作：
 
 | 消耗比例 | 动作 |
-| ---------- | ------ |
+|----------|------|
 | 50% | 发送预警通知 |
 | 75% | 冻结非紧急功能发布 |
 | 100% | 启动熔断或降级策略 |
@@ -5409,7 +5415,7 @@ python calibration-tool.py --test
 ## 6. 补偿与问责
 
 | 违约级别 | 条件 | 补偿/问责 |
-| ---------- | ------ | ----------- |
+|----------|------|-----------|
 | 轻微 | 单日内 SLO 未达成但仍在错误预算内 | 记录事件，无需补偿 |
 | 中等 | 连续 3 日未达成或单月错误预算超支 | 服务积分/延迟修复承诺 |
 | 严重 | 硬阈值触发导致生产事故 | 事故复盘 + 改进计划 |
@@ -5419,7 +5425,7 @@ python calibration-tool.py --test
 ## 7. 复核与更新
 
 | 触发条件 | 动作 |
-| ---------- | ------ |
+|----------|------|
 | 模型版本升级 | 7 天内重新校准并更新 SLO 基线 |
 | 输入分布显著漂移 | 触发漂移检测流程，必要时重新校准 |
 | 季度复盘 | 评审 SLO 达成率、错误预算消耗、违约记录 |
@@ -5483,7 +5489,7 @@ python calibration-tool.py --test
 ## 1. 数据摘要
 
 | 指标 | 数值 |
-| ------ | ------ |
+|------|------|
 | 校准样本量 | `{calibration_size}` |
 | 目标错误率 α | `{alpha}` |
 | 目标覆盖率 `1 − α` | `{target_coverage}` |
@@ -5504,7 +5510,7 @@ python calibration-tool.py --test
 ```
 
 | 指标 | 数值 |
-| ------ | ------ |
+|------|------|
 | Conformal 阈值 q | `{q}` |
 | 经验覆盖率 | `{empirical_coverage}` |
 | 平均预测集合大小 | `{avg_prediction_set_size}` |
@@ -5512,7 +5518,7 @@ python calibration-tool.py --test
 ### 2.2 校准质量指标
 
 | 指标 | 数值 | 说明 |
-| ------ | ------ | ------ |
+|------|------|------|
 | ECE（Expected Calibration Error） | `{ece}` | 期望校准误差，越小越好 |
 | Brier Score | `{brier_score}` | 概率预测综合误差，越小越好 |
 | Brier 分解 - 可靠性 | `{brier_reliability}` | 校准曲线与对角线的偏离 |
@@ -5526,7 +5532,7 @@ python calibration-tool.py --test
 以下按预测概率等宽分桶，展示每个桶内的平均预测分数与实际准确率：
 
 | Bin 区间 | 样本数 | 平均预测分数 | 实际准确率 | 置信度-准确率偏差 |
-| ---------- | -------- | -------------- | ------------ | ------------------- |
+|----------|--------|--------------|------------|-------------------|
 | `{bin_1}` | `{count_1}` | `{avg_conf_1}` | `{acc_1}` | `{gap_1}` |
 | `{bin_2}` | `{count_2}` | `{avg_conf_2}` | `{acc_2}` | `{gap_2}` |
 | ... | ... | ... | ... | ... |
@@ -5540,7 +5546,7 @@ python calibration-tool.py --test
 按 `{stratify_by}` 分层后的校准结果：
 
 | 分层值 | 样本量 | ECE | Brier Score | 经验覆盖率 | 推荐 q |
-| -------- | -------- | ----- | ------------- | ------------ | -------- |
+|--------|--------|-----|-------------|------------|--------|
 | `{stratum_1}` | `{n_1}` | `{ece_1}` | `{brier_1}` | `{cov_1}` | `{q_1}` |
 | `{stratum_2}` | `{n_2}` | `{ece_2}` | `{brier_2}` | `{cov_2}` | `{q_2}` |
 | ... | ... | ... | ... | ... | ... |
@@ -5550,7 +5556,7 @@ python calibration-tool.py --test
 ## 5. 覆盖率分析
 
 | 指标 | 数值 |
-| ------ | ------ |
+|------|------|
 | 预测集合为 `[1]`（接受）的样本比例 | `{accept_rate}` |
 | 预测集合为 `[0]`（拒绝）的样本比例 | `{reject_rate}` |
 | 预测集合为 `[0, 1]`（不确定）的样本比例 | `{uncertain_rate}` |
@@ -5563,7 +5569,7 @@ python calibration-tool.py --test
 基于本次校准数据，推荐以下运行时阈值：
 
 | 阈值类型 | 推荐值 | 依据 |
-| ---------- | -------- | ------ |
+|----------|--------|------|
 | 置信度基线 γ_base | `{recommended_gamma_base}` | 目标覆盖率与 ECE 平衡 |
 | 人在回路阈值 θ_hitl | `{recommended_hitl_threshold}` | `C_review / C_error` 或不确定性区间比例 |
 | 硬违约阈值 δ_hard | `{recommended_hard_delta}` | 生产关键路径容忍度 |
@@ -5584,7 +5590,7 @@ python calibration-tool.py --test
 ### 7.2 后续行动
 
 | 优先级 | 行动项 | 负责人 | 截止日期 |
-| -------- | -------- | -------- | ---------- |
+|--------|--------|--------|----------|
 | P0 | 将校准阈值 q 写入契约 YAML | 平台工程师 | `{due_date_1}` |
 | P1 | 部署运行时监控面板 | SRE | `{due_date_2}` |
 | P2 | 按推荐阈值配置告警规则 | 值班工程师 | `{due_date_3}` |

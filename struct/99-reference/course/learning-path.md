@@ -6,38 +6,10 @@
 
 ---
 
-## 概念定位：学习路径的设计原则
-
-**学习路径（Learning Path）** 在本知识库中的定义是：按读者角色（架构师/工程师/安全工程师/AI 平台工程师）组织的递进式阅读序列，每条路径以"可验证的产出物"为终点，而非以"读完若干文档"为终点。路径设计遵循两个原则：一是**先元模型后领域**——任何角色都先经过 01 主题建立标准与公理的共同语言；二是**学用闭环**——每个阶段都对应 `struct/` 中可运行或可填写的交付物（评估问卷、决策工具、ROI 计算等）。
-
-### 示例：架构师路径的第一程
-
-例如：架构师路径的读者首先阅读 [核心标准对齐矩阵](../../01-meta-model-standards/01-iso-420xx-family/alignment-matrix.md) 建立 ISO 420xx 族谱认知，再进入 02 主题的业务能力映射，最终产出一份基于 `struct/99-reference/templates/document-template.md` 的可复用架构设计文档——每一步都能在下文"按主题学习索引"中定位到具体文件。
-
-### 反例：本路径不适合的情形
-
-- 只需要某一具体标准（如仅需 SLSA 1.2 条款）的查阅型读者——应直接使用 `struct/99-reference/standards-index/` 而非按路径通读；
-- 期望视频/直播形式的学习者——本路径仅为文档序列，不含多媒体课程；
-- 跳过 01 元模型直接进入垂直领域（如 11 工业 IoT）的读法——会因缺少共同术语而误解后续章节的复用边界声明。
-
-因此，四条路径虽然入口不同，但都强制以 01 主题为第一程，这是路径设计的硬性约束而非建议。
-
-### 权威来源
-
-> **权威来源**（路径内容所依据的课程体系与标准）：
->
-> - SWEBOK V4（软件工程知识体系）：<https://www.computer.org/education/bodies-of-knowledge/software-engineering>
-> - ISO/IEC/IEEE 42010:2022（架构描述）：<https://www.iso.org/standard/74393.html>
-> - The Open Group TOGAF Standard：<https://pubs.opengroup.org/togaf-standard/>
->
-> **核查日期**: 2026-07-08
-
----
-
 ## 路径总览
 
 | 路径 | 适合人群 | 预计学时 | 关键产出 |
-| ------ | ---------- | ---------- | ---------- |
+|------|----------|----------|----------|
 | 🏗️ 架构师路径 | 企业架构师、技术负责人 | 40h | 可复用架构设计文档 |
 | 💻 工程师路径 | 软件工程师、DevOps | 35h | 复用组件/服务设计 |
 | 🔒 安全工程师路径 | 安全架构师、合规专员 | 25h | 供应链安全评估报告 |
@@ -108,7 +80,7 @@
 - [T07: MCP Server 能力协商协议的 TLA+ 规约说明](../../07-formal-verification/01-tla-plus/mcp-capability-negotiation.md)
 - [T06: 分布式支付服务组件的 TLA+ 规约说明](../../07-formal-verification/01-tla-plus/payment-service.md)
 - [T11: 组件依赖无环性验证 (Alloy)](../../07-formal-verification/02-alloy/component-dependency.md)
-- … 共 26 个文件
+- … 共 28 个文件
 
 ### 08 认知架构与复用决策
 

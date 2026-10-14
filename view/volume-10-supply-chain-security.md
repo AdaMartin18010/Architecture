@@ -1,6 +1,6 @@
 # SLSA 1.1 / 1.2 更新与多轨道模型
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/10-supply-chain-security` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 10-supply-chain-security --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -5131,6 +5131,8 @@ NIST SSDF 1.2 Draft（SP 800-218r1）明确将供应链风险管理作为基础�
 
 ## 12. 参考索引
 
+[^1]: NIST, "Zero Trust Architecture" (SP 800-207), 2020
+[^2]: Google, "BeyondCorp: A New Approach to Enterprise Security", 2014; "BeyondCorp 6: Building a Healthy Fleet", 2023
 [^3]: NIST, "Secure Software Development Framework (SSDF) Version 1.2" (SP 800-218r1 Draft), 2025-12-17
 
 ---

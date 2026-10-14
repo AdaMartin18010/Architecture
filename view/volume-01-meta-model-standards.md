@@ -1,6 +1,6 @@
 # 核心标准对齐矩阵
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/01-meta-model-standards` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 01-meta-model-standards --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -4648,7 +4648,7 @@ $$
 
 该命题声称：业务、应用、组件、功能四个层次之间不存在保持复用语义的函数映射，因此层次不可约化。这是一个非常强的**存在性否定命题**：它要求证明在所有可能的函数集合中，没有任何函数能满足特定等式。
 
-在当前框架中，M.3 面临三个严格性问题。第一，**论域未封闭**。\mathcal{R}*{L_i} 和 \mathcal{R}*{L_j} 的元素是什么？是架构描述？实现制品？还是抽象概念？若论域不封闭，则「所有函数 f」的量化没有意义。第二，**Reuse(L_i) 的语义不明确**。左侧是一个层次，右侧是一个复用谓词，两者类型不匹配。形式化中应写作 \mathrm{Reuse}(r_i, \mathit{ctx}) 对于 r_i \in \mathcal{R}_{L_i}，而非直接对层次应用复用谓词。第三，**「保持复用语义」未定义**。什么是语义保持？是观察行为等价？是价值流等价？还是约束集同构？在没有精确定义的情况下，无法构造否证或证明。
+在当前框架中，M.3 面临三个严格性问题。第一，**论域未封闭**。\mathcal{R}_{L_i} 和 \mathcal{R}_{L_j} 的元素是什么？是架构描述？实现制品？还是抽象概念？若论域不封闭，则「所有函数 f」的量化没有意义。第二，**Reuse(L_i) 的语义不明确**。左侧是一个层次，右侧是一个复用谓词，两者类型不匹配。形式化中应写作 \mathrm{Reuse}(r_i, \mathit{ctx}) 对于 r_i \in \mathcal{R}_{L_i}，而非直接对层次应用复用谓词。第三，**「保持复用语义」未定义**。什么是语义保持？是观察行为等价？是价值流等价？还是约束集同构？在没有精确定义的情况下，无法构造否证或证明。
 
 从工程直觉看，M.3 的合理性来自 ISO/IEC 21838 顶层本体论（TLO）与领域本体论不可相互还原的思想。但本体论中的「不可还原」通常指概念范畴的不可定义性，而非工程层次间不存在任何映射。事实上，**层次之间存在大量映射**：业务能力的实现可映射到应用服务（如 BPMN → SOA），应用服务可映射到组件接口（如 OpenAPI → Java Interface）。这些映射并不保持完整的复用语义，但 M.3 的强否定形式排除了它们的存在。
 
@@ -5038,31 +5038,31 @@ Linux 内核的文件系统层（VFS）直接操作块设备层，跳过了若�
 本次审计参考了以下数学逻辑、软件工程形式化方法与认知科学领域的权威来源：
 
 1. **数学逻辑与证明理论**
-   - Enderton, H. B. (2001). *A Mathematical Introduction to Logic* (2nd ed.). Academic Press.
-   - Mendelson, E. (2015). *Introduction to Mathematical Logic* (6th ed.). CRC Press.
+   - Enderton, H. B. (2001). _A Mathematical Introduction to Logic_ (2nd ed.). Academic Press.
+   - Mendelson, E. (2015). _Introduction to Mathematical Logic_ (6th ed.). CRC Press.
 
 2. **形式化方法与组合推理**
-   - Hoare, C. A. R. (1969). An axiomatic basis for computer programming. *Communications of the ACM*, 12(10), 576-580.
-   - Abadi, M., & Lamport, L. (1993). Composing specifications. *ACM Transactions on Programming Languages and Systems*, 15(1), 73-132.
-   - Pnueli, A. (1985). In transition from global to modular temporal reasoning about programs. *Logics and Models of Concurrent Systems*, 123-144.
+   - Hoare, C. A. R. (1969). An axiomatic basis for computer programming. _Communications of the ACM_, 12(10), 576-580.
+   - Abadi, M., & Lamport, L. (1993). Composing specifications. _ACM Transactions on Programming Languages and Systems_, 15(1), 73-132.
+   - Pnueli, A. (1985). In transition from global to modular temporal reasoning about programs. _Logics and Models of Concurrent Systems_, 123-144.
 
 3. **本体论与信息系统理论基础**
-   - Bunge, M. (1977). *Treatise on Basic Philosophy: Ontology I: The Furniture of the World*. D. Reidel Publishing.
-   - Wand, Y., & Weber, R. (1993). On the ontological expressiveness of information systems analysis and design grammars. *Information Systems Journal*, 3(4), 217-237.
-   - ISO/IEC 21838-3:2023. *Information technology — Top-level ontologies (TLO) — Part 3: DOLCE*.
+   - Bunge, M. (1977). _Treatise on Basic Philosophy: Ontology I: The Furniture of the World_. D. Reidel Publishing.
+   - Wand, Y., & Weber, R. (1993). On the ontological expressiveness of information systems analysis and design grammars. _Information Systems Journal_, 3(4), 217-237.
+   - ISO/IEC 21838-3:2023. _Information technology — Top-level ontologies (TLO) — Part 3: DOLCE_.
 
 4. **组件化软件工程与 Liskov 替换原则**
-   - Liskov, B. (1987). Data abstraction and hierarchy. *OOPSLA 1987*.
-   - Meyer, B. (1988). *Object-Oriented Software Construction*. Prentice Hall. (Design by Contract)
+   - Liskov, B. (1987). Data abstraction and hierarchy. _OOPSLA 1987_.
+   - Meyer, B. (1988). _Object-Oriented Software Construction_. Prentice Hall. (Design by Contract)
 
 5. **软件经济学**
-   - Boehm, B., et al. (2000). *Software Cost Estimation with COCOMO II*. Prentice Hall.
+   - Boehm, B., et al. (2000). _Software Cost Estimation with COCOMO II_. Prentice Hall.
 
 6. **认知负荷理论**
-   - Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. *Cognitive Science*, 12(2), 257-285.
+   - Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. _Cognitive Science_, 12(2), 257-285.
 
 7. **供应链安全**
-   - OpenSSF. *SLSA Framework*. <https://slsa.dev/>
+   - OpenSSF. _SLSA Framework_. <https://slsa.dev/>
    - Sigstore / in-toto Attestation Framework.
 
 ---
@@ -5359,6 +5359,8 @@ $$
 **可证伪条件**
 若存在大规模实证研究显示：即使 $C_{\text{reuse}} > C_{\text{build}} + V_{\text{reuse}}$，组织仍持续复用且获得正向净收益，则 E.2 失效。
 
+> **机器验证**：本公理的 Alloy 公理级形式化见 [`struct/07-formal-verification/02-alloy/reuse-economics.als`](../struct/07-formal-verification/02-alloy/reuse-economics.als)（2026-07-12 Alloy Analyzer 6.2.0 复验：`RationalImpliesViable`/`AAFThresholdIsStrict` 均无反例，含负对照实验；阈值口径同 `threshold-registry.yaml` 登记项 THR-ECON-AAF-FLOOR）。
+
 ---
 
 ### E.3 Contextual Fitness (上下文适配性)
@@ -5472,6 +5474,8 @@ $$
 
 **可证伪条件**
 若存在技术手段（如形式化验证的隔离层）使得 $A$ 可以依赖 $B$ 而不继承 $B$ 对 $C$ 的信任需求，且该技术被广泛部署，则 S.3 需增加"隔离例外"条款。
+
+> **机器验证**：本公理的 Alloy 公理级形式化见 [`struct/07-formal-verification/02-alloy/trust-transitivity.als`](../struct/07-formal-verification/02-alloy/trust-transitivity.als)（2026-07-12 Alloy Analyzer 6.2.0 复验：`TrustBoundaryExtends`/`TrustIsClosedUnderDependents` 均无反例，含负对照实验）。
 
 ---
 
@@ -5676,7 +5680,7 @@ $L_{\infty}$ 为资产的**本质认知成本** (Essential Cognitive Cost)，对
 | P.3 Governance Complexity Law | 组织理论 / 信息论 | 规模与复杂度增长规律 | 复用规模与治理复杂度满足 $N \cdot \log(N)$ |
 | P.4 Learning Curve Monotonicity | Sweller (1988) 认知负荷理论 | 内在负荷与图式获取 | 学习成本随复用次数单调不增 |
 
-> **公理→形式化规约映射**：15 条公理与 17 条定理对应的形式化规约（TLA+/Alloy/Coq/Isabelle）、机器验证状态与缺口分析，见 [`formalization-mapping.md`](../struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md)（2026-07-12 建立；截至该日仅 S.4 已机器验证）。
+> **公理→形式化规约映射**：15 条公理与 17 条定理对应的形式化规约（TLA+/Alloy/Coq/Isabelle）、机器验证状态与缺口分析，见 [`formalization-mapping.md`](../struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md)（2026-07-12 建立；截至该日 S.4、S.3、E.2 已机器验证）。
 
 ### 示例
 
@@ -6793,12 +6797,12 @@ P.4                                                                             
 
 | 类别 | 总数 | ✅ 已机器验证 | 🟡 部分形式化 | ⬜ 仅自然语言 |
 | ------ | ------ | -------------- | --------------- | --------------- |
-| 严格公理（M.1–M.4, E.1–E.3, S.1–S.3） | 10 | 0 | 1（S.3） | 9 |
+| 严格公理（M.1–M.4, E.1–E.3, S.1–S.3） | 10 | 2（E.2, S.3） | 0 | 8 |
 | 工程启发式（S.4, P.1–P.4） | 5 | 1（S.4） | 0 | 4 |
-| **命题合计** | **15** | **1** | **1** | **13** |
+| **命题合计** | **15** | **3** | **0** | **12** |
 | 定理（Th.1–Th.17） | 17 | 0 | 0 | 17 |
 
-形式化兑现率：命题 1/15（6.7%）已机器验证，定理 0/17。这与第一轮批判报告（`reports/critical-review-semantic-consistency-2026-07.md` §2.2 "形式化代码零编码公理"）的结论一致；截至 2026-07-12，唯一已机器验证的公理形式化是 S.4（见下表）。
+形式化兑现率：命题 3/15（20%）已机器验证，定理 0/17。第一轮批判报告（`reports/critical-review-semantic-consistency-2026-07.md` §2.2 "形式化代码零编码公理"）指出时兑现率为 0；2026-07-12 先后完成 S.4、S.3（信任传递性）、E.2（成本-收益阈值）三条公理的 Alloy 公理级形式化并机器复验（均含 run 可满足性见证与负对照实验，见下表）。
 
 ---
 
@@ -6811,11 +6815,11 @@ P.4                                                                             
 | M.3 | 层次不可约：层间不存在保持复用语义的双射 | ⬜ | 无 | 无 | 该命题是元层否定存在性陈述，Alloy/TLA+ 难以直接编码；`cross-layer-mapping.md` 仅叙事提及"与 M.3 一致"；`axiom-rigor-audit.md` 自承当前框架内不可证 |
 | M.4 | 同一性保持：复用不改变资产本体标识 | ⬜ | 无 | 无 | 无规约建模 Id 函数与复用链（Th.4 的归纳结构适合 Coq/Isabelle，见路线图） |
 | E.1 | 复用资产存在性：稳定 ∧ 通用 ∧ 封装 | ⬜ | 无 | 无 | 三谓词（Stable/General/Encapsulated）均无可操作定义，无法直接编码 |
-| E.2 | 成本-收益阈值：C_reuse < C_build + V_reuse | ⬜ | 无 | 无 | 数值不等式本身易编码，但成本/价值量纲与 AAF 阈值口径跨文档不统一（批判报告 §4.2：AAF 五套口径），需先收口阈值注册表 |
+| E.2 | 成本-收益阈值：C_reuse < C_build + V_reuse | ✅ | [`reuse-economics.als`](../struct/07-formal-verification/02-alloy/reuse-economics.als) | Alloy Analyzer 6.2.0（SAT4J），2026-07-12 机器复验 | 两条 check（`RationalImpliesViable`/`AAFThresholdIsStrict`）均无反例，`run ShowRationalReuse` 可生成实例（非空虚真）；负对照（弱化 V_reuse ≥ 0 前提）检出反例。AAF 阈值口径已收口至 `threshold-registry.yaml` 登记项 THR-ECON-AAF-FLOOR（0.7，operator `<`） |
 | E.3 | 上下文适配性：Reuse ⇒ Fit ≥ τ | ⬜ | 无 | 无 | Fit 函数无可操作定义（`critique-and-boundaries.md` 自承），权重 w₁/w₂/w₃ 无校准来源 |
 | S.1 | 接口可替换性：可观察行为等价 ⇔ 可替换 | ⬜ | 无 | 无 | `component-dependency.als` 验证的是依赖无环与依赖倒置，**不是**可观察行为等价；Obs 函数未在任何规约中编码 |
 | S.2 | 组合性：局部正确 + 接口兼容 ⇒ 组合满足弱化规约 | ⬜ | 无 | 无 | `theorem-proving-guidelines.md` 将 Assume-Guarantee 作为指导思想引用，但无规约编码组合算子 ∘_I |
-| S.3 | 信任传递性：Trust(A) ⊇ 依赖闭包 | 🟡 | [`mcp-tool-graph.als`](../struct/07-formal-verification/02-alloy/mcp-tool-graph.als) | Alloy（断言已编写：**无机器复验记录**） | `CapabilityClosure`/`CapabilityContainment` 验证"被调用工具必须在 Server 能力闭包内"，是依赖闭包性质的领域实例（MCP 工具调用图），结构类比信任传递闭包，但未直接编码 Trust 谓词；且 `check` 命令未见 TLC/Alloy 复验记录 |
+| S.3 | 信任传递性：Trust(A) ⊇ 依赖闭包 | ✅ | [`trust-transitivity.als`](../struct/07-formal-verification/02-alloy/trust-transitivity.als) | Alloy Analyzer 6.2.0（SAT4J），2026-07-12 机器复验 | 两条 check（`TrustBoundaryExtends`/`TrustIsClosedUnderDependents`）均无反例，`run ShowTrustChain` 可生成实例（非空虚真）；负对照（弱化传递闭包为直接依赖）两条 check 均检出反例。另：[`mcp-tool-graph.als`](../struct/07-formal-verification/02-alloy/mcp-tool-graph.als) 是 S.3 在 MCP 工具调用图上的领域实例（能力闭包≈依赖闭包），🟡 辅助，无机器复验记录 |
 | S.4（启发式） | 抽象分层：资产只能依赖同层或直接下层 | ✅ | [`cross-layer-mapping.als`](../struct/07-formal-verification/02-alloy/cross-layer-mapping.als) | Alloy Analyzer 6.2.0（SAT4J），2026-07-12 机器复验 | 三条 check（`AllMappingsAreAdjacent`/`NoConcernConflicts`/`NoReverseMapping`）均无反例，`run ShowValidMapping` 可生成实例（非空虚真），负对照实验确认修复有效。另：[`isa95-hierarchy.als`](../struct/07-formal-verification/02-alloy/isa95-hierarchy.als) 是分层思想在 ISA-95 的领域实例（相邻层父子约束），🟡 辅助，无机器复验记录 |
 | P.1（启发式） | 演化独立性：资产生命周期不受单一消费者绑架 | ⬜ | 无 | 无 | 生命周期状态机可建模（TLA+ 适合），但无对应规约 |
 | P.2（启发式） | 反馈收敛：改进须经治理函数过滤 | ⬜ | 无 | 无 | 依赖 Th.13 的不动点语义，而 Th.13 证明待补强（见 §5） |
@@ -6890,6 +6894,8 @@ P.4                                                                             
 | [`a2a-task-lifecycle.tla`](../struct/07-formal-verification/01-tla-plus/a2a-task-lifecycle.tla) | 终止态无消息、Completed 必有 Artifact、状态转移合法等 5 条不变量 + 2 条活性 | 案例规约，非公理形式化 |
 | [`component-dependency.als`](../struct/07-formal-verification/02-alloy/component-dependency.als) | 组件依赖无环、模块导入无环、依赖局部性、依赖倒置 | 案例规约；DIP 与 S.1 语义不同，不计入 |
 | [`cross-layer-mapping.als`](../struct/07-formal-verification/02-alloy/cross-layer-mapping.als) | 跨层映射相邻性、关注点一致性、无反向映射 | ✅ S.4 的形式化（2026-07-12 机器复验） |
+| [`trust-transitivity.als`](../struct/07-formal-verification/02-alloy/trust-transitivity.als) | 信任边界=依赖自反传递闭包、信任边界扩展、闭包单调收缩 | ✅ S.3 的公理级形式化（2026-07-12 机器复验，含负对照） |
+| [`reuse-economics.als`](../struct/07-formal-verification/02-alloy/reuse-economics.als) | AAF 阈值判定蕴含经济可行性、AAF 阈值严格性（有界整数编码） | ✅ E.2 的公理级形式化（2026-07-12 机器复验，含负对照） |
 | [`isa95-hierarchy.als`](../struct/07-formal-verification/02-alloy/isa95-hierarchy.als) | ISA-95 资源层次相邻性、无环、跨层须经接口 | 🟡 S.4 的工业领域实例，无机器复验记录 |
 | [`mcp-tool-graph.als`](../struct/07-formal-verification/02-alloy/mcp-tool-graph.als) | 工具调用无环、能力闭包容纳、资源访问边界 | 🟡 S.3 的领域实例（能力闭包≈依赖闭包），无机器复验记录 |
 | [`insertion_sort.v`](../struct/07-formal-verification/03-coq-isabelle/coq-examples/insertion_sort.v) | 插入排序输出有序且为输入的排列 | 教学示例，非公理形式化 |
@@ -6904,10 +6910,10 @@ P.4                                                                             
 ## 7. 缺口分析
 
 1. **元公理层（M.1–M.4）全部未形式化**：M.1 的 `⊨`、M.3 的否定存在性、M.4 的 Id 函数均缺可操作语义，是形式化的最大障碍；其中 M.3 在 `axiom-rigor-audit.md` 中已自承"当前框架内不可证"。
-2. **存在性公理（E.1–E.3）依赖未定义原语**：Stable/General/Encapsulated/Fit 等谓词无量化定义，编码前需先补原语定义（呼应批判报告 Phase 3 的"补全核心原语精确定义"任务）。
-3. **结构性公理仅 S.4 兑现、S.3 半兑现**：S.1（可观察行为等价）和 S.2（Assume-Guarantee 组合）是形式化方法的经典可编码对象（迹等价、契约组合），却无任何规约，是性价比最高的补强方向。
+2. **存在性公理 E.1/E.3 依赖未定义原语**：Stable/General/Encapsulated/Fit 等谓词无量化定义，编码前需先补原语定义（呼应批判报告 Phase 3 的"补全核心原语精确定义"任务）；E.2 已于 2026-07-12 以有界整数编码完成机器验证。
+3. **结构性公理 S.4、S.3 已兑现（均公理级 Alloy 形式化 + 机器复验 + 负对照）**：S.1（可观察行为等价）和 S.2（Assume-Guarantee 组合）是形式化方法的经典可编码对象（迹等价、契约组合），仍无任何规约，是性价比最高的补强方向。E.2 已随阈值注册表收口同步兑现。
 4. **定理层 0/17**：最易机械化的 Th.4（归纳）、Th.8（等价关系）尚未做；Th.1/Th.13 证明有漏洞（§5），Th.12/Th.15/Th.16 含未声明的经验假设。
-5. **验证记录缺失**：除 `cross-layer-mapping.als` 外，其余 3 个 `.als` 与 3 个 `.tla` 均无 TLC/Alloy 复验记录（工具版本、日期、结果），"已验证"无法复核。
+5. **验证记录缺失**：`cross-layer-mapping.als`、`trust-transitivity.als`、`reuse-economics.als` 已有完整复验记录；其余 2 个 `.als`（`component-dependency.als`、`isa95-hierarchy.als`、`mcp-tool-graph.als` 共 3 个）与 3 个 `.tla` 仍无 TLC/Alloy 复验记录（工具版本、日期、结果），"已验证"无法复核。
 6. **教学示例未标注**：Coq/Isabelle 四个文件此前未声明"非公理形式化"，易被误读为公理兑现（已于 2026-07-12 在文件头部与 README 补注）。
 
 ---

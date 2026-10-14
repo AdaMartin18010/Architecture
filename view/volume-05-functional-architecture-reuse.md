@@ -1,6 +1,6 @@
 # API 设计模式与功能复用
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/05-functional-architecture-reuse` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 05-functional-architecture-reuse --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -180,7 +180,7 @@ REST API 设计检查清单
 ### 3.1 版本策略对比
 
 | 策略 | 实现方式 | 优点 | 缺点 | 适用场景 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **URL 版本** | `/v1/users`, `/v2/users` | 简单直观 | URL 污染 | 公共 API |
 | **Header 版本** | `Accept: application/vnd.api.v2+json` | URL 干净 | 不够直观 | 内部 API |
 | **内容协商** | `Content-Type` + `Accept` | HTTP 标准 | 复杂 | 需细粒度控制 |
@@ -233,7 +233,7 @@ API 弃用时间线
 ### 5.1 评估维度
 
 | 维度 | 权重 | 评估标准 |
-|:---|:---:|:---|
+| :--- | :---: | :--- |
 | **一致性** | 20% | 命名规范、错误格式、分页方式统一 |
 | **可发现性** | 20% | 文档完整、有 OpenAPI/AsyncAPI、支持内省 |
 | **稳定性** | 20% | 版本策略清晰、变更记录完整、弃用通知及时 |
@@ -280,7 +280,7 @@ API 复用评分卡（满分 100）
 Stripe 被广泛认为是 REST API 设计的典范，其设计原则直接支持功能复用：
 
 | 原则 | 实现 | 复用价值 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **资源导向** | `/customers`, `/charges`, `/subscriptions` | 清晰的资源模型，易于理解和复用 |
 | **幂等性** | `Idempotency-Key` 头 | 安全重试，消费者无需复杂去重逻辑 |
 | **扩展性** | 所有对象包含 `metadata` 字典 | 消费者可扩展数据模型而不破坏接口 |
@@ -400,7 +400,7 @@ flowchart TD
 ### 6.10 API 复用设计模式核心属性
 
 | 属性 | 说明 | 重要性 | 可观察性 |
-|------|------|--------|----------|
+| ------ | ------ | -------- | ---------- |
 | **接口契约稳定性** | 资源路径、字段、错误格式在版本周期内保持稳定 | 高 | ISR ≥ 85% |
 | **可发现性** | 通过 OpenAPI/GraphQL introspection/gRPC reflection 暴露能力 | 高 | 文档完整度 100% |
 | **可组合性** | 接口可被编排、聚合为更高阶业务能力 | 高 | 组合调用占比 |
@@ -447,7 +447,7 @@ flowchart LR
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | OpenAPI 3.1 | <https://spec.openapis.org/oas/v3.1.0> | 2026-06-10 |
 | GraphQL Spec | <https://spec.graphql.org/> | 2026-06-10 |
 | gRPC | <https://grpc.io/> | 2026-06-10 |
@@ -519,7 +519,7 @@ flowchart LR
 ### 1.1 主流 FaaS 平台
 
 | 平台 | 提供商 | 运行时支持 | 冷启动 | 最大执行时间 | 特色功能 |
-|:---|:---|:---|:---:|:---:|:---|
+| :--- | :--- | :--- | :---: | :---: | :--- |
 | **AWS Lambda** | Amazon | 15+ 语言 | ~100ms | 15 分钟 | Lambda Layers, Provisioned Concurrency |
 | **Azure Functions** | Microsoft | .NET, Node, Python, Java, Go | ~200ms | 10 分钟 | Durable Functions, Premium Plan |
 | **Google Cloud Functions** | Google | Node, Python, Go, Java, Ruby, PHP | ~200ms | 60 分钟 | CloudEvents 原生支持 |
@@ -530,7 +530,7 @@ flowchart LR
 ### 1.2 FaaS 核心特征
 
 | 特征 | 描述 | 复用影响 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **无状态** | 函数不保存请求间的状态 | 函数可被任意实例执行，天然可复用 |
 | **事件驱动** | 由事件触发执行 | 函数可与多种事件源组合复用 |
 | **短生命周期** | 执行完成后资源释放 | 快速迭代，版本更新成本低 |
@@ -585,7 +585,7 @@ FaaS 函数复用层次
 ### 3.1 粒度选择矩阵
 
 | 粒度 | 示例 | 优点 | 缺点 | 复用场景 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | **单函数** | 发送邮件 | 简单、独立 | 功能有限 | 通用工具函数 |
 | **函数链** | 验证 → 处理 → 存储 | 模块化 | 编排复杂 | 业务流程 |
 | **函数工作流** | 订单处理全流程 | 端到端 | 紧耦合 | 完整业务场景 |
@@ -630,7 +630,7 @@ states:
 ### 4.1 可移植性挑战
 
 | 维度 | 平台差异 | 可移植方案 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | **触发器** | HTTP / S3 / Kafka / Timer | CloudEvents 抽象 |
 | **上下文** | 平台特定的上下文对象 | 标准化上下文接口 |
 | **状态管理** | DynamoDB / Cosmos DB / Firestore | 外部状态存储（Redis、数据库） |
@@ -668,7 +668,7 @@ states:
 ### 5.2 运行时隔离
 
 | 隔离级别 | 实现 | 安全性 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | **进程隔离** | 传统容器 | 🟡 中 |
 | **沙箱隔离** | gVisor, Firecracker | 🟢 高 |
 | **WASM 隔离** | Wasmtime, WasmEdge | 🟢 高 |
@@ -751,7 +751,7 @@ spec:
 ### 7.2 FaaS 复用核心属性
 
 | 属性 | 说明 | 重要性 | 可观察性 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **无状态性** | 函数不保留请求间状态，便于水平扩展与复用 | 高 | 每次调用独立 |
 | **事件触发** | 由 HTTP、消息队列、存储事件等触发 | 高 | 触发器配置可审计 |
 | **细粒度计费** | 按调用次数与执行时长付费 | 高 | 账单可拆分 |
@@ -762,7 +762,7 @@ spec:
 ### 7.3 事件触发模式详解
 
 | 触发类型 | 典型源 | 复用场景 | 注意事项 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **HTTP/网关触发** | API Gateway、Application Load Balancer | 通用 API 后端、Webhook 处理 | 需处理并发与限流 |
 | **对象存储触发** | S3、Blob Storage、GCS | 图片处理、日志分析、ETL | 事件顺序不保证 |
 | **消息队列触发** | SQS、Event Hubs、Pub/Sub | 异步任务、事件驱动微服务 | 需幂等性设计 |
@@ -791,7 +791,7 @@ T_cold = T_init + T_runtime + T_handler
 **冷启动缓解策略**：
 
 | 策略 | 适用场景 | 成本影响 | 复杂度 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Provisioned Concurrency** | 延迟敏感、流量可预测 | 固定成本增加 | 低 |
 | **Keep-alive ping** | 中低频但需稳定延迟 | 少量调用费用 | 低 |
 | **精简依赖包** | 所有场景 | 无额外成本 | 中 |
@@ -925,7 +925,7 @@ flowchart TD
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CNCF Serverless Workflow | <https://serverlessworkflow.io/> | 2026-06-10 |
 | Knative | <https://knative.dev/> | 2026-06-10 |
 | CloudEvents | <https://cloudevents.io/> | 2026-06-10 |
@@ -1023,7 +1023,7 @@ flowchart TD
 ### 2.1 Schema 演进策略
 
 | 策略 | 描述 | 兼容性 |
-|:---|:---|:---:|
+| :--- | :--- | :---: |
 | **后向兼容** | 新增可选字段 | ✅ 旧消费者可用 |
 | **前向兼容** | 消费者忽略未知字段 | ✅ 新消费者可用 |
 | **完全兼容** | 同时支持前后向 | ✅✅ 最佳 |
@@ -1092,7 +1092,7 @@ Event Router Pattern
 ### 3.2 可复用的事件处理中间件
 
 | 功能 | 工具 | 复用方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 事件过滤 | AWS EventBridge Rules | 规则模板复用 |
 | 事件转换 | Kafka Streams / Flink | 拓扑模板复用 |
 | 事件聚合 | Kafka Streams Windowing | 窗口策略复用 |
@@ -1218,7 +1218,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ### 6.2 可复用组件
 
 | 组件 | 复用内容 | 复用方式 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CloudEvents 包装器 | 事件格式标准化 | 共享库 |
 | Kafka Producer | 发布事件 | 共享库/模板 |
 | Knative Trigger | 事件路由规则 | YAML 模板 |
@@ -1236,7 +1236,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ## 7. 权威来源
 
 | 来源 | URL | 核查日期 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | CloudEvents | <https://cloudevents.io/> | 2026-07-08 |
 | AsyncAPI | <https://www.asyncapi.com/> | 2026-07-08 |
 | Apache Kafka | <https://kafka.apache.org/> | 2026-07-08 |
@@ -1253,7 +1253,7 @@ def project_order_summary(events: List[OrderEvent]) -> OrderSummary:
 ## 8. 标准条款映射
 
 | 本主题概念 | 对应标准/文献 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 事件封装格式 | CloudEvents 1.0 Specification | 跨平台事件元数据标准（specversion, type, source, id, data） |
 | 异步 API 契约 | AsyncAPI 3.x | 事件驱动 API 的通道、消息、Schema 定义标准 |
 | 消息路由模式 | Enterprise Integration Patterns (Hohpe & Woolf) | Content-Based Router, Message Filter, Recipient List, Aggregator |
@@ -1353,7 +1353,7 @@ Workflow := ⟨Id, Definition, State, History, Signals, Queries⟩
 **与传统工作流引擎的对比**:
 
 | 特性 | Temporal | 传统 BPMN 引擎 | 传统定时任务 (Cron) |
-|------|----------|---------------|-------------------|
+| ------ | ---------- | --------------- | ------------------- |
 | **持久化** | 自动（事件溯源） | 需配置数据库 | 无（进程内存） |
 | **容错** | 进程崩溃自动恢复 | 依赖外部事务 | 需手动重试 |
 | **可复用性** | 代码级复用（函数/库） | 模型级复用（XML/BPMN） | 脚本级复用 |
@@ -1542,7 +1542,7 @@ func QueryHandler(state *WorkflowState) (WorkflowStatus, error) {
 Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表支持从业务层到功能层的**降维复用**：
 
 | BPMN 元素 | Temporal 对应 | 复用差异 |
-|----------|--------------|---------|
+| ---------- | -------------- | --------- |
 | **任务 (Task)** | Activity | BPMN: 可视化配置；Temporal: 代码实现，更灵活但需工程能力 |
 | **网关 (Gateway)** | `if/switch` 或 Selector | BPMN: 可视化分支；Temporal: 代码控制流 |
 | **事件 (Event)** | Signal / Timer | 语义等价，Temporal 信号更灵活 |
@@ -1561,7 +1561,7 @@ Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表�
 ## 4. 工作流复用的粒度-成本-收益分析
 
 | 复用粒度 | 示例 | 创建成本 | 维护成本 | 复用收益 | 适用场景 |
-|---------|------|---------|---------|---------|---------|
+| --------- | ------ | --------- | --------- | --------- | --------- |
 | **Activity** | `SendEmail`, `QueryDatabase` | 低 (2-4h) | 低 | 高 (高频使用) | 通用基础设施操作 |
 | **Child Workflow** | `CodeReviewWorkflow` | 中 (1-2d) | 中 | 高 (跨项目复用) | 独立业务单元 |
 | **Parent Workflow** | `CICDPipelineWorkflow` | 高 (3-5d) | 高 | 中 (特定场景) | 端到端编排 |
@@ -1573,7 +1573,7 @@ Temporal 工作流是 BPMN 业务流程在代码层的实现。以下映射表�
 ## 5. 反模式与陷阱
 
 | 反模式 | 描述 | 后果 | 修正策略 |
-|--------|------|------|---------|
+| -------- | ------ | ------ | --------- |
 | **God Workflow** | 单个工作流包含过多 Activity (>20) | 难以测试、版本管理复杂 | 分解为 Child Workflow |
 | **Non-Deterministic Code** | 工作流中使用随机数、时间.Now()、外部 API | 重放不一致，状态损坏 | 使用 `workflow.Now()`, `workflow.SideEffect` |
 | **Deep Nesting** | 多层 Child Workflow 嵌套 (>3层) | 调试困难、延迟累积 | 扁平化设计，使用 Signal 协调 |
@@ -1615,7 +1615,7 @@ DurableExecution := ⟨ActivityInvocations, Timers, Signals, Queries, Compensati
 Temporal 中的 Saga 实现有两种策略：
 
 | 策略 | 适用场景 | 实现方式 | 风险 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **正向补偿（Forward Recovery）** | 临时性失败可重试 | Activity 失败时不断重试，直到成功 | 可能导致长时间阻塞 |
 | **反向补偿（Backward Recovery）** | 业务失败需回滚 | 执行补偿 Activity 撤销已完成的操作 | 补偿本身可能失败，需设计补偿的补偿 |
 
@@ -1676,7 +1676,7 @@ flowchart TD
 ### 5.7 Temporal Workflow 复用核心属性
 
 | 属性 | 说明 | 重要性 | 可观察性 |
-|------|------|--------|----------|
+| ------ | ------ | -------- | ---------- |
 | **确定性（Determinism）** | 给定相同事件历史，工作流必须产生一致的 Activity 调用序列 | 高 | 重放测试通过率 100% |
 | **持久性（Durability）** | 执行状态持久化为不可变事件历史，支持崩溃恢复 | 高 | 事件历史完整率 |
 | **可组合性** | 子工作流、Saga、Parallel 等模式可组合为复杂业务 | 高 | 模式复用次数 |
@@ -1771,7 +1771,7 @@ flowchart TD
 ### 1.1 三代函数复用范式
 
 | 世代 | 时间 | 范式 | 代表技术 |
-|-----|------|------|---------|
+| ----- | ------ | ------ | --------- |
 | **Gen 1** | 2023–2024 | 原生 Function Calling | OpenAI Tools, Anthropic Tool Use |
 | **Gen 2** | 2024–2025 | 框架抽象层 | LangChain Tools, Semantic Kernel Plugins, LlamaIndex Agents |
 | **Gen 3** | 2025–2026 | 标准化协议层 | MCP (agent↔tool), A2A (agent↔agent), MAF (企业编排) |
@@ -1803,10 +1803,10 @@ flowchart TD
 ### 2.2 工具注册与发现
 
 | 层级 | 机制 | 复用范围 |
-|-----|------|---------|
+| ----- | ------ | --------- |
 | **本地** | `stdio` 传输，本地进程 | 单用户/单会话 |
 | **远程** | Streamable HTTP，OAuth 2.1 | 团队/企业 |
-| **市场** | 社区 Registry（未来）| 跨组织生态 |
+| **市场** | 社区 Registry（未来） | 跨组织生态 |
 
 ### 2.3 工具组合模式
 
@@ -1838,9 +1838,9 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 3.2 复用层次
 
 | 层次 | 复用单元 | 说明 |
-|-----|---------|------|
+| ----- | --------- | ------ |
 | **Kernel Plugin** | 函数集合 | 封装 API 调用、数据库查询、文件操作 |
-| **Agent** | 角色 + 工具 + 记忆 | 可复用的智能体模板（如"客服代理"、"代码审查代理"）|
+| **Agent** | 角色 + 工具 + 记忆 | 可复用的智能体模板（如"客服代理"、"代码审查代理"） |
 | **Team** | 多智能体编排 | Group Chat 模式、层级汇报模式、竞争评审模式 |
 
 ## 4. A2A（Agent-to-Agent）能力复用
@@ -1869,7 +1869,7 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 4.2 A2A 与 MCP 的互补复用
 
 | 维度 | MCP | A2A |
-|-----|-----|-----|
+| ----- | ----- | ----- |
 | 关系 | Agent ↔ Tool | Agent ↔ Agent |
 | 协议 | JSON-RPC 2.0 | HTTP + JSON-RPC + SSE |
 | 能力描述 | Tool Schema | Agent Card |
@@ -1882,11 +1882,11 @@ MAF 将 Semantic Kernel 与 AutoGen 融合：
 ### 5.1 函数设计原则
 
 | 原则 | 说明 |
-|-----|------|
+| ----- | ------ |
 | **单一职责** | 每个函数只做一件事，便于 LLM 组合 |
 | **自描述** | `description` 必须精确说明功能、输入、输出、副作用 |
 | **幂等性** | 函数应尽可能幂等，支持重试 |
-| **确定性** | 相同输入产生相同输出（或明确标记不确定性）|
+| **确定性** | 相同输入产生相同输出（或明确标记不确定性） |
 | **防御性** | 参数校验、范围检查、优雅降级 |
 
 ### 5.2 版本与兼容性
@@ -1904,21 +1904,21 @@ Agent 声明依赖：
 ### 5.3 安全边界
 
 | 风险 | 缓解 |
-|-----|------|
+| ----- | ------ |
 | 提示注入通过工具参数 | 输入净化、参数类型严格校验 |
-| 工具过度授权 | 最小权限原则、能力证明（Capability Attestation）|
+| 工具过度授权 | 最小权限原则、能力证明（Capability Attestation） |
 | 工具版本漂移 | 版本锁定、兼容性测试 |
 | 敏感数据泄漏 | 输出过滤、审计日志、数据分类 |
 
 ## 6. 与功能架构复用的映射
 
 | 传统功能复用 | LLM 时代映射 | 协议/标准 |
-|------------|------------|----------|
-| 共享库（Library）| Kernel Plugin / MCP Tool | MCP 2025-11-25 |
-| 服务 API（Service）| Agent Skill / Agent Card | A2A v1.0 |
-| 工作流（Workflow）| Agent Team / Group Chat | MAF / AutoGen |
-| 业务规则（Business Rule）| LLM Prompt + Tool Guardrails | 自定义 |
-| 数据访问（DAO）| Retrieval Resource | MCP Resource |
+| ------------ | ------------ | ---------- |
+| 共享库（Library） | Kernel Plugin / MCP Tool | MCP 2025-11-25 |
+| 服务 API（Service） | Agent Skill / Agent Card | A2A v1.0 |
+| 工作流（Workflow） | Agent Team / Group Chat | MAF / AutoGen |
+| 业务规则（Business Rule） | LLM Prompt + Tool Guardrails | 自定义 |
+| 数据访问（DAO） | Retrieval Resource | MCP Resource |
 
 ## 7. 参考索引
 
@@ -2000,7 +2000,7 @@ Tool := ⟨Name, Description, InputSchema, OutputSchema, Annotations, ErrorModel
 为 MCP Tool 设计的扩展原则：
 
 | 原则 | 说明 | 实践 |
-|------|------|------|
+| ------ | ------ | ------ |
 | **S - Single Responsibility** | 每个 Tool 做一件事 | Tool 粒度应等同于单一业务操作 |
 | **O - Open/Closed** | 对扩展开放，对修改关闭 | 新增可选参数而非修改现有参数结构 |
 | **L - Literal Clarity** | 描述必须字面准确 | 避免歧义动词，使用领域术语 |
@@ -2091,7 +2091,7 @@ MCP Tool 分类
 ## 6. Tool 复用质量指标
 
 | 指标 | 说明 | 目标值 |
-|------|------|--------|
+| ------ | ------ | -------- |
 | **Tool Clarity Score** | 描述清晰度和示例覆盖度 | ≥ 0.85 |
 | **Schema Completeness** | JSON Schema 的约束完整性 | ≥ 0.90 |
 | **Example Coverage** | 示例覆盖正常/边界/错误场景 | ≥ 3 个/Tool |
@@ -2202,7 +2202,7 @@ AI 原生复用协议栈
 ## 2. 协议栈层次对比
 
 | 对比维度 | MCP 2025-11-25 | A2A v1.0.0 | 复用语义差异 |
-|----------|-------------------|-----------|-------------|
+| ---------- | ------------------- | ----------- | ------------- |
 | **核心抽象** | Capability (能力) | Agent (智能体) | MCP 复用「功能单元」；A2A 复用「自主决策单元」 |
 | **通信模型** | 无状态请求/响应 (Stateless) | 有状态任务生命周期 (Stateful) | MCP 适合高频、短周期调用；A2A 适合长周期、多轮协作 |
 | **发现机制** | 能力协商 (Capability Negotiation) | Agent Card (能力广告 JSON) | MCP 运行时协商；A2A 预发布目录 |
@@ -2301,7 +2301,7 @@ Invariant:
 ## 5. 复用场景矩阵
 
 | 复用场景 | 主导协议 | 复用单元 | 关键设计模式 | 示例 |
-|----------|---------|---------|-------------|------|
+| ---------- | --------- | --------- | ------------- | ------ |
 | **工具复用** | MCP | Tool Schema + 实现 | 函数即服务 (FaaS) | 数据库查询工具、文件操作工具 |
 | **Agent 技能复用** | A2A | Agent Card + Skills | 微服务化 Agent | 代码审查 Agent、安全扫描 Agent |
 | **工作流复用** | A2A + MCP | Task 模板 + Tool 链 | 编排模式 (Orchestration) | 报告生成流水线：数据提取(MCP) → 分析(A2A) → 格式化(MCP) |
@@ -2386,7 +2386,7 @@ Step 6 (A2A - 完成):
 ### 6.3 复用价值量化
 
 | 层次 | 复用单元 | 创建成本 | 复用收益 | ROI 阈值 |
-|------|---------|---------|---------|---------|
+| ------ | --------- | --------- | --------- | --------- |
 | MCP Tool | 函数级封装 | 低 (小时级) | 高 (每次调用节省分钟) | 10+ 次调用即回本 |
 | MCP Resource | 数据资产 | 中 (天级) | 中 (减少信息检索时间) | 跨 3+ 项目复用 |
 | MCP Prompt | 提示模板 | 低 (小时级) | 高 (标准化输出质量) | 5+ 次使用即回本 |
@@ -2400,7 +2400,7 @@ Step 6 (A2A - 完成):
 ### 7.1 MCP 复用质量指标
 
 | 指标 | 定义 | 目标值 | 测量方法 |
-|------|------|--------|---------|
+| ------ | ------ | -------- | --------- |
 | **Tool Clarity Score** | 描述清晰度与示例覆盖度 | ≥ 0.85 | LLM 调用成功率 |
 | **Schema Completeness** | JSON Schema 约束完整性 | ≥ 0.90 | 必填字段覆盖率 |
 | **Capability Cache Hit** | tools/list 缓存命中率 | ≥ 70% | ttlMs 有效性 |
@@ -2409,7 +2409,7 @@ Step 6 (A2A - 完成):
 ### 7.2 A2A 复用质量指标
 
 | 指标 | 定义 | 目标值 | 测量方法 |
-|------|------|--------|---------|
+| ------ | ------ | -------- | --------- |
 | **Agent Card Completeness** | 能力描述完整度 | ≥ 0.90 | Schema 验证 |
 | **Task Success Rate** | 任务成功完成率 | ≥ 85% | 状态机统计 |
 | **Signature Validity** | Agent Card 签名有效比例 | 100% | 密码学验证 |
@@ -2443,7 +2443,7 @@ MCP + A2A 联合治理
 ## 8. 2026 路线图与演进预测
 
 | 时间 | MCP 演进 | A2A 演进 | 联合影响 |
-|------|---------|---------|---------|
+| ------ | --------- | --------- | --------- |
 | **2025-12** | MCP 2025-11-25 正式发布（Linux Foundation Agentic AI Foundation 接管） | A2A v1.0 稳定化 | 企业级 Agent 互操作元年 |
 | **2026-Q3** | MCP Apps (服务器渲染 UI) | A2A Agent 市场启动 | 交互式工具 + 自动化 Agent 交易 |
 | **2026-Q4** | Extensions 生态爆发 | A2A v1.1 (多 Agent 协商) | 复杂多智能体系统标准化 |
@@ -2545,7 +2545,7 @@ SideEffect: 无；或仅允许显式声明的副作用（如审计日志）
 ## 2. 领域函数 vs. 应用服务 vs. 基础设施函数
 
 | 维度 | 领域函数 | 应用服务 | 基础设施函数 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 关注点 | 领域规则、计算、不变量 | 用例编排、事务边界 | 技术实现（存储、消息、HTTP） |
 | 副作用 | 无（或显式声明） | 可协调多个领域操作 | 通常有 I/O 副作用 |
 | 复用范围 | 跨用例、跨应用、跨服务 | 限定于特定用例 | 限定于特定技术栈 |
@@ -2559,7 +2559,7 @@ SideEffect: 无；或仅允许显式声明的副作用（如审计日志）
 ## 3. 领域函数目录模板
 
 | 字段 | 说明 | 示例 |
-|---|---|---|
+| --- | --- | --- |
 | 函数 ID | 唯一标识 | DF-ORDER-001 |
 | 函数名称 | 动词+名词，来自统一语言 | calculateOrderTotal |
 | 所属领域 | 限界上下文 | 订单域 / Order Context |
@@ -2637,7 +2637,7 @@ def validate_inventory_reservation(reservation: InventoryReservation) -> Validat
 ## 5. 与权威框架/标准的条款映射
 
 | 本主题概念 | 对应标准/文献 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 领域函数 | DDD (Evans, 2003) | 战术设计中的领域逻辑单元，对应 Entity / Value Object / Domain Service 中的行为 |
 | 统一语言 | DDD Strategic Design | 函数命名必须来自领域专家与开发者共享的语言 |
 | 限界上下文 | DDD Strategic Design | 函数复用边界由 Bounded Context 决定 |
@@ -2813,7 +2813,7 @@ def validate_inventory_reservation(reservation: InventoryReservation) -> Validat
 ### 各层核心特征
 
 | 粒度层 | 复用单元 | 边界定义 | 变更频率 | 技术约束 | 认知负荷 |
-|--------|---------|---------|---------|---------|---------|
+| -------- | --------- | --------- | --------- | --------- | --------- |
 | **L1 算法** | 数据结构/算法实现 | 时间/空间复杂度契约 | 极低（数学稳定） | 语言绑定 | 低（标准化接口） |
 | **L2 函数** | 函数签名 + 实现 | 输入/输出/异常契约 | 低（API 兼容） | 运行时/框架绑定 | 低-中 |
 | **L3 规则** | 规则集/策略包 | 业务条件-动作对 | 中（业务变化） | 规则引擎绑定 | 中 |
@@ -2856,7 +2856,7 @@ B_reuse = (C_rebuild - C_reuse) × N_use + B_quality + B_consistency
 ### 2.3 各层量化参考值
 
 | 粒度层 | C_create (人时) | C_reuse/次 (人时) | C_rebuild (人时) | 盈亏平衡点 N_use | 质量提升系数 |
-|--------|----------------|-------------------|------------------|-----------------|-------------|
+| -------- | ---------------- | ------------------- | ------------------ | ----------------- | ------------- |
 | **L1 算法** | 8-40 | 0.5-2 | 8-40 | 2-5 次 | 1.2x |
 | **L2 函数** | 4-20 | 0.5-4 | 4-20 | 2-8 次 | 1.3x |
 | **L3 规则** | 16-80 | 2-8 | 16-80 | 3-10 次 | 1.5x |
@@ -2975,7 +2975,7 @@ flowchart TD
 ## 5. 反模式与修正
 
 | 反模式 | 症状 | 根因 | 修正策略 |
-|--------|------|------|---------|
+| -------- | ------ | ------ | --------- |
 | **过度工程化** | L1 算法封装为 L4 工作流 | 未正确识别粒度 | 回到决策树 Q1，重新评估 |
 | **粒度不匹配** | 将业务规则硬编码为 L2 函数 | 规则变更频繁导致代码腐烂 | 升级到 L3，使用 DMN/OPA |
 | **AI 功能滥用** | 将确定性计算委托给 LLM | 未区分概率性与确定性边界 | 确定性计算用 L2，仅不确定性任务用 L5 |
@@ -3049,7 +3049,7 @@ flowchart TD
 ## 权威对齐
 
 | 标准/框架 | 版本 | 核心条款/内容 | URL | 核查日期 |
-|:---|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- | :--- |
 | MCP Specification | 2025-11-25 | Tools, Resources, Prompts, Sampling, Transports | <https://modelcontextprotocol.io/specification/2025-11-25> | 2026-07-08 |
 | A2A Protocol | v1.0.0 | Agent-to-Agent Protocol (Google / Linux Foundation) | <https://a2a-protocol.org/latest/> | 2026-07-08 |
 | DMN | 1.5 | §6 Decision Requirements, §8 Decision Table | <https://www.omg.org/spec/DMN/1.5/> | 2026-07-08 |
@@ -3072,7 +3072,7 @@ flowchart TD
 ## 标准条款映射
 
 | 本主题概念 | 对应标准条款 | 映射说明 |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | 纯函数 / 无副作用 | DDD Tactical Design | 领域逻辑的可复用单元应保持无副作用，便于测试与组合 |
 | 业务规则复用 | DMN 1.5 §6 Decision Service | 规则封装为决策服务，可被流程、应用、AI Agent 调用 |
 | 工作流复用 | BPMN 2.0 §8 Process / Temporal Workflows | 长事务、 Saga、定时任务等由工作流引擎编排 |

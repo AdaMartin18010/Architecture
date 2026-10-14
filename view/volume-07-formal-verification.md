@@ -1,6 +1,6 @@
 # T08: A2A Task 状态机的 TLA+ 规约说明
 
-> **版本**: 2026-07-12
+> **版本**: 2026-10-14
 > **定位**: 由 `struct/07-formal-verification` 自动聚合生成的视角卷册（view volume）
 > **生成命令**: `python scripts/sync-view-from-struct.py --topic 07-formal-verification --generate`
 > **说明**: 本文件为 struct/ 的只读聚合视角，修改请直接在 struct/ 对应文件进行。
@@ -19,24 +19,26 @@
 6. [T13: 跨层复用映射的约束验证 (Alloy)](../struct/07-formal-verification/02-alloy/cross-layer-mapping.md)
 7. [T14: ISA-95 资源层次一致性验证 (Alloy)](../struct/07-formal-verification/02-alloy/isa95-hierarchy.md)
 8. [T12: MCP Tool 能力依赖图验证 (Alloy)](../struct/07-formal-verification/02-alloy/mcp-tool-graph.md)
-9. [Coq/Rocq & Isabelle/HOL 可复用组件验证案例](../struct/07-formal-verification/03-coq-isabelle/README.md)
-10. [Coq / Isabelle Theorem Proving for Safety-Critical Components](../struct/07-formal-verification/03-coq-isabelle/security-critical-components.md)
-11. [Coq/Isabelle 安全关键组件定理证明纲要](../struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md)
-12. [Cargo 依赖解析的 SAT 求解：PubGrub 算法与复用一致性](../struct/07-formal-verification/04-rust-type-system/cargo-sat-resolution.md)
-13. [Rust 类型系统：编译期复用安全的形式化语义](../struct/07-formal-verification/04-rust-type-system/formal-semantics.md)
-14. [Rust Polonius 借用检查器 vs NLL：形式化对比与复用影响](../struct/07-formal-verification/04-rust-type-system/polonius-vs-nll.md)
-15. [Rust 形式化验证工具链实践（2025‑2026）](../struct/07-formal-verification/04-rust-type-system/toolchain-practice.md)
-16. [Rust unsafe 边界的验证策略：工具链对比与可复用组件检查清单](../struct/07-formal-verification/04-rust-type-system/unsafe-verification.md)
-17. [SPARK Ada 飞控软件契约验证案例](../struct/07-formal-verification/05-spark-ada/flight-control-contracts.md)
-18. [DO-178C MC/DC 的形式化定义与 SPARK 验证](../struct/07-formal-verification/05-spark-ada/mcdc-formalization.md)
-19. [SPARK Ada 形式化验证与工业复用](../struct/07-formal-verification/05-spark-ada/spark-ada-do333-industrial.md)
-20. [Event-B 与 B Method：铁路信号系统的精化复用](../struct/07-formal-verification/06-b-method/event-b-railway-refinement.md)
-21. [B Method / Event-B 铁路信号系统精化链案例](../struct/07-formal-verification/06-b-method/railway-signaling-refinement.md)
-22. [IEEE 1012-2024 验证与确认标准在复用工程中的应用](../struct/07-formal-verification/07-vv-standards/ieee-1012-2024-reuse-vv.md)
-23. [形式化验证前沿：LLM + 定理证明与 Agent 行为合约](../struct/07-formal-verification/08-emerging-trends/llm-formal-verification-frontier.md)
-24. [SPARK Ada vs Rust：安全关键系统验证方法对比矩阵](../struct/07-formal-verification/09-comparative-matrices/spark-ada-vs-rust-verification-matrix.md)
-25. [07 形式化验证 — 内容梳理报告](../struct/07-formal-verification/content-audit-2026-06-08.md)
-26. [07 形式化验证与复用正确性](../struct/07-formal-verification/README.md)
+9. [公理 E.2 成本-收益阈值的 Alloy 形式化验证](../struct/07-formal-verification/02-alloy/reuse-economics.md)
+10. [公理 S.3 信任传递性的 Alloy 形式化验证](../struct/07-formal-verification/02-alloy/trust-transitivity.md)
+11. [Coq/Rocq & Isabelle/HOL 可复用组件验证案例](../struct/07-formal-verification/03-coq-isabelle/README.md)
+12. [Coq / Isabelle Theorem Proving for Safety-Critical Components](../struct/07-formal-verification/03-coq-isabelle/security-critical-components.md)
+13. [Coq/Isabelle 安全关键组件定理证明纲要](../struct/07-formal-verification/03-coq-isabelle/theorem-proving-guidelines.md)
+14. [Cargo 依赖解析的 SAT 求解：PubGrub 算法与复用一致性](../struct/07-formal-verification/04-rust-type-system/cargo-sat-resolution.md)
+15. [Rust 类型系统：编译期复用安全的形式化语义](../struct/07-formal-verification/04-rust-type-system/formal-semantics.md)
+16. [Rust Polonius 借用检查器 vs NLL：形式化对比与复用影响](../struct/07-formal-verification/04-rust-type-system/polonius-vs-nll.md)
+17. [Rust 形式化验证工具链实践（2025‑2026）](../struct/07-formal-verification/04-rust-type-system/toolchain-practice.md)
+18. [Rust unsafe 边界的验证策略：工具链对比与可复用组件检查清单](../struct/07-formal-verification/04-rust-type-system/unsafe-verification.md)
+19. [SPARK Ada 飞控软件契约验证案例](../struct/07-formal-verification/05-spark-ada/flight-control-contracts.md)
+20. [DO-178C MC/DC 的形式化定义与 SPARK 验证](../struct/07-formal-verification/05-spark-ada/mcdc-formalization.md)
+21. [SPARK Ada 形式化验证与工业复用](../struct/07-formal-verification/05-spark-ada/spark-ada-do333-industrial.md)
+22. [Event-B 与 B Method：铁路信号系统的精化复用](../struct/07-formal-verification/06-b-method/event-b-railway-refinement.md)
+23. [B Method / Event-B 铁路信号系统精化链案例](../struct/07-formal-verification/06-b-method/railway-signaling-refinement.md)
+24. [IEEE 1012-2024 验证与确认标准在复用工程中的应用](../struct/07-formal-verification/07-vv-standards/ieee-1012-2024-reuse-vv.md)
+25. [形式化验证前沿：LLM + 定理证明与 Agent 行为合约](../struct/07-formal-verification/08-emerging-trends/llm-formal-verification-frontier.md)
+26. [SPARK Ada vs Rust：安全关键系统验证方法对比矩阵](../struct/07-formal-verification/09-comparative-matrices/spark-ada-vs-rust-verification-matrix.md)
+27. [07 形式化验证 — 内容梳理报告](../struct/07-formal-verification/content-audit-2026-06-08.md)
+28. [07 形式化验证与复用正确性](../struct/07-formal-verification/README.md)
 
 ---
 
@@ -284,7 +286,7 @@ TLC 将验证所有安全不变量和活性性质。若实现者意外允许从 
 ### 2.1 已完成的初始案例
 
 | 编号 | 案例名称 | 规约文件 | 说明文档 | 核心状态机 | 不变量数 | 活性数 |
-| ------ | ---------- | ---------- | ---------- | ------------ | ---------- | -------- |
+|------|----------|----------|----------|------------|----------|--------|
 | T06 | 分布式支付服务组件 | `payment-service.tla` | `payment-service.md` | Idle → Reserved → Committed/Aborted | 5 | 1 |
 | T07 | MCP Server 能力协商协议 | `mcp-capability-negotiation.tla` | `mcp-capability-negotiation.md` | Disconnected → Initializing → Negotiating → Active → Terminated | 5 | 2 |
 | T08 | A2A Task 状态机 | `a2a-task-lifecycle.tla` | `a2a-task-lifecycle.md` | submitted → working → input-required → completed/failed/canceled | 5 | 2 |
@@ -340,7 +342,7 @@ MODULE <case_name>
 本案例库在规约设计和说明文档中引用了以下权威来源：
 
 | 来源 | 作者/机构 | 引用场景 |
-| ------ | ---------- | ---------- |
+|------|----------|----------|
 | *Specifying Systems* (2002) | Leslie Lamport, Microsoft Research | TLA+ 语法基础、状态机建模、公平性语义 |
 | *Practical TLA+* (2018) | Hillel Wayne, Apress | 工程实践模式、PlusCal 对照、故障建模 |
 | "How AWS Uses Formal Methods" (2015) | Newcombe et al., CACM | 工业级形式化验证动机、分布式系统缺陷案例 |
@@ -401,7 +403,7 @@ MODULE <case_name>
 下表汇总 T06–T10 四个案例的初始状态谓词、下一步关系、核心不变量与活性性质，便于读者快速对照 `.tla` 文件进行 TLC 配置。
 
 | 编号 | Init | Next | 核心不变量 (Safety) | 活性 (Liveness) |
-| ------ | ------ | ------ | --------------------- | ----------------- |
+|------|------|------|---------------------|-----------------|
 | **T06** 支付服务 | `balances ∈ [Accounts→Nat]`，`reservedFunds = 0`，`txStatus = [tx↦"idle"]`，`initialTotalBalance = AccountBalanceTotal` | `∃ tx: CreateTx(tx,...) ∨ Commit(tx) ∨ Abort(tx) ∨ TimeoutAbort(tx)` | `FundConservationInv`、`NoDoubleSpending`、`CommittedBalanceCorrect`、`ReservedFundsConsistent`、`TypeOK` | `AllRequestsProcessed` |
 | **T07** MCP 协商 | `clientState = serverState = "disconnected"`，`agreedCaps = {}`，`networkStatus = "up"`，`messageQueue = <<>>` | `ClientConnect ∨ ServerRespondInit ∨ ClientReceiveInitAck ∨ ServerReceiveNegotiate ∨ ClientActivate ∨ ServerActivate ∨ ClientTerminate ∨ ServerTerminate ∨ NetworkFailure ∨ ClientRetry` | `ActiveImpliesCommonCaps`、`ConsistentProtocolVersion`、`NegotiationSubset`、`ErrorImpliesNetworkDown`、`TerminatedImpliesNoCaps`、`TypeOK` | `EventuallyActive`、`EventuallyTerminatedOrError` |
 | **T08** A2A Task | `taskState = [t↦"submitted"]`，`taskMessages = [t↦<<>>]`，`taskArtifacts = [t↦{}]`，`taskStepCount = [t↦0]` | `StartWork ∨ RequestInput ∨ ProvideInput ∨ CompleteTask ∨ FailTask ∨ CancelTask ∨ TimeoutTask` | `TerminalNoMessages`、`CompletedHasArtifact`、`NonTerminalHasMessages`、`InputRequiredImpliesPending`、`FailedCanceledNoArtifacts`、`CompletedLastMessageIsComplete`、`TypeOK` | `WorkingEventuallyTerminates`、`InputRequiredEventuallyResolved` |
@@ -450,8 +452,8 @@ PROPERTIES
 ### 8.2 各案例推荐配置与预期输出
 
 | 编号 | 常量赋值 | 预期状态数 | 预期结果 |
-| ------ | ---------- | ----------- | ---------- |
-| **T06** | `Accounts={a1,a2,a3}, TxIds={tx1,tx2}, MaxAmount=5, balances=[a1 | ->10,a2 | ->10,a3 | ->10]` | 约 5×10⁴–2×10⁵ 个不同状态（取决于 TLC 优化） | 所有不变量与活性通过，`No error` |
+|------|----------|-----------|----------|
+| **T06** | `Accounts={a1,a2,a3}, TxIds={tx1,tx2}, MaxAmount=5, balances=[a1|->10,a2|->10,a3|->10]` | 约 5×10⁴–2×10⁵ 个不同状态（取决于 TLC 优化） | 所有不变量与活性通过，`No error` |
 | **T07** | `AllCapabilities={"tools","resources","prompts"}, ProtocolVersions={"2025-03-26"}, MaxRetries=2` | 约 1×10⁴–5×10⁴ 个不同状态 | 所有不变量与活性通过 |
 | **T08** | `Tasks={t1,t2}, Agents={client,server}, Artifacts={art1,art2}, MaxMessages=5, TimeoutThreshold=10` | 约 1×10⁵–5×10⁵ 个不同状态 | 所有不变量与活性通过 |
 | **T10** | `Axes={axis1}, MaxTimeoutSteps=5, ErrorIDs={0,0x8A01,0x8A02,0x9001}` | 约 890 个不同状态（单轴） | 所有不变量与活性通过 |
@@ -477,6 +479,7 @@ PROPERTIES
 
 [^1]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 
+[^2]: Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., & Deardeuff, M. (2015). How Amazon Web Services Uses Formal Methods. *Communications of the ACM*, 58(4), 66-73.
 
 
 ---
@@ -713,6 +716,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 
 ## 11. 参考文献
 
+[^2]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley. <https://lamport.azurewebsites.net/tla/book.html>
 
 [^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
@@ -762,7 +766,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 每笔交易 `tx \in TxIds` 的状态机由三个核心变量 `txStatus`、`txFrom`、`txTo`、`txAmount` 共同刻画：
 
 | 状态 | 语义 | 资金影响 |
-| ------ | ------ | ---------- |
+|------|------|----------|
 | `idle` | 交易尚未创建或已重置 | 无 |
 | `reserved` | 资金已从出金账户预扣，等待最终确认 | 出金账户余额减少 |
 | `committed` | 交易最终确认，资金已转移至入金账户 | 入金账户余额增加 |
@@ -865,7 +869,7 @@ TLC 将穷举所有可能的能力声明组合（Client 和 Server 各声明 `2^
 ### 8.1 形式化规格
 
 | 要素 | 定义 |
-| ------ | ------ |
+|------|------|
 | **Init** | `balances ∈ [Accounts → Nat]`，`reservedFunds = [tx ∈ TxIds ↦ 0]`，`txStatus = [tx ∈ TxIds ↦ "idle"]`，`txAmount = [tx ∈ TxIds ↦ 1]`，`initialTotalBalance = AccountBalanceTotal`，且所有 `txFrom[tx] ≠ txTo[tx]` |
 | **Next** | `∃ tx ∈ TxIds: (∃ from,to ∈ Accounts, amt ∈ 1..MaxAmount: CreateTx(tx,from,to,amt)) ∨ Commit(tx) ∨ Abort(tx) ∨ TimeoutAbort(tx)` |
 | **TypeOK** | 所有状态变量类型正确，`balances`、`reservedFunds` 为非负函数，`txStatus` 取值合法 |
@@ -923,7 +927,7 @@ Model Checking Results:
 ### 8.4 边界条件与常见反例
 
 | 缺陷类型 | TLC 报告 | 修复思路 |
-| ---------- | ---------- | ---------- |
+|----------|----------|----------|
 | **资金泄漏** | `FundConservationInv` 违反 | 检查 `Commit`/`Abort`/`TimeoutAbort` 是否正确更新 `balances` 与 `reservedFunds` |
 | **双重支付** | `NoDoubleSpending` 违反 | 强化 `CreateTx` 的前置条件，确保 `balances[from] ≥ amt` |
 | **冻结资金不一致** | `ReservedFundsConsistent` 违反 | 确保状态转移时同步清零或赋值 `reservedFunds[tx]` |
@@ -942,9 +946,13 @@ Model Checking Results:
 
 ## 10. 参考文献
 
+[^1]: Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., & Deardeuff, M. (2015). How Amazon Web Services Uses Formal Methods. *Communications of the ACM*, 58(4), 66-73.
 
+[^2]: Lamport, L. (2002). *Specifying Systems: The TLA+ Language and Tools for Hardware and Software Engineers*. Addison-Wesley.
 
+[^3]: Wayne, H. (2018). *Practical TLA+: Planning Driven Development*. Apress.
 
+[^4]: TLA+ Examples Repository. Two-Phase Commit Specification. <https://github.com/tlaplus/Examples>
 
 
 ---
@@ -1401,7 +1409,7 @@ fact VersionCompatibility {
 ISA-95（IEC 62264）定义了从 L0（现场设备）到 L4（企业管理层）的五层功能层次模型。将 ISA-95 的五层映射到本知识体系的四层抽象时，存在以下对应关系：
 
 | ISA-95 层级 | 四层抽象映射 | 关键特征 |
-| ------------ | ------------ | --------- |
+|------------|------------|---------|
 | **L4 企业** (Enterprise) | BusinessLayer | ERP、PLM、CRM；批处理；天-月时间尺度 |
 | **L3 制造运营** (MES) | BusinessLayer / ApplicationLayer 边界 | MES、QMS、WMS；混合批处理与事件驱动；小时-天时间尺度 |
 | **L2 监控** (SCADA) | ApplicationLayer | HMI、数据采集、报警管理；秒-分钟时间尺度 |
@@ -1438,7 +1446,7 @@ fact InformationFlowDirection {
 ISA-95 各层的时间尺度差异是架构复用中最难处理的非功能性约束之一：
 
 | 层级 | 典型周期 | 容忍延迟 | 复用挑战 |
-| ------ | --------- | --------- | --------- |
+|------|---------|---------|---------|
 | L0 | 1–10 ms | 无 | 功能代码通常不可跨硬件复用（不同传感器的驱动 ABI 不同） |
 | L1 | 10–100 ms | < 1 ms | PLC 程序可在同厂商设备间复用，跨厂商需 IEC 61131-3 标准化 |
 | L2 | 1–10 s | 秒级 | SCADA 画面、报警规则可在同平台项目间复用 |
@@ -1487,7 +1495,7 @@ fact SILDegradationConstraint {
 ### 5.1 四层架构断言
 
 | 断言 | 约束内容 | 对应公理 |
-| ------ | --------- | --------- |
+|------|---------|---------|
 | `AllMappingsAreAdjacent` | 映射仅发生在相邻层 | S.4 Abstraction Layering |
 | `NoConcernConflicts` | 同一关注点不映射到冲突实现 | M.1 Architecture-Reuse Duality |
 | `NoReverseMapping` | 映射方向只能从高层到低层 | M.3 Hierarchy Non-Reduction |
@@ -1496,7 +1504,7 @@ fact SILDegradationConstraint {
 ### 5.2 ISA-95 扩展断言
 
 | 断言 | 约束内容 | 对应 ISA-95 条款 |
-| ------ | --------- | ----------------- |
+|------|---------|-----------------|
 | `ISA95FlowDirectionValid` | 所有数据流符合向上汇总/向下指令模式 | IEC 62264-1 第 5.3 节 |
 | `SILNeverDegraded` | 无隐式 SIL 降级映射 | IEC 61508-2 第 7.4.4.2 节 |
 | `TimeCompatibilityHolds` | 所有映射满足时间特性兼容 | ISA-95.00.03 作业调度 |
@@ -1518,7 +1526,7 @@ fact SILDegradationConstraint {
 ### 6.2 常见违规模式
 
 | 违规模式 | 违反约束 | 检测方式 |
-| --------- | --------- | --------- |
+|---------|---------|---------|
 | **L0 直接访问 L4** | `InformationFlowDirection` + `AdjacentLayerMapping` | Alloy 反例：L0 传感器 `DataFlow` 直接指向 L4 ERP |
 | **SIL 隐式降级** | `SILDegradationConstraint` | Alloy 反例：SIL 3 的安全网关映射到 SIL 1 的普通服务 |
 | **时间特性失配** | `TimeCompatibility` | Alloy 反例：L1 PLC（10ms 周期）映射到 L3 MES（无实时保证）未声明 `AsyncAdapter` |
@@ -1586,7 +1594,7 @@ check NoReverseMapping for 3 but 6 Mapping
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-| ------ | ---------- | ---------- |
+|------|----------|----------|
 | `check AllMappingsAreAdjacent` | 每层 3 个实例，最多 6 个 Mapping、4 个 Concern | 映射仅发生在相邻层 |
 | `check NoConcernConflicts` | 同上 | 同一关注点不映射到冲突目标 |
 | `check NoReverseMapping` | 同上 | 映射方向只能从高层到低层 |
@@ -1750,7 +1758,7 @@ Enterprise -> Site -> Area -> Production Line -> Work Cell -> Equipment Module -
 本规约将其映射为七个子签名，每个子签名严格绑定到对应的 ISA-95 层级：
 
 | Alloy 签名 | ISA-95 概念 | 层级 |
-| ----------- | ------------ | ------ |
+|-----------|------------|------|
 | `EnterpriseResource` | Enterprise | L4 |
 | `SiteResource` | Site | L4 |
 | `AreaResource` | Area | L3 |
@@ -1804,7 +1812,7 @@ fact CrossLayerInterfaceRequired {
 ## 4. 断言与验证
 
 | 断言 | 验证目标 | 对应 ISA-95 条款 |
-| ------ | --------- | ----------------- |
+|------|---------|-----------------|
 | `AllParentsAreAdjacent` | 父子节点必须相邻 | IEC 62264-1 第 5.3 节功能层次 |
 | `CrossLayerRequiresInterface` | 非相邻层引用必须有接口 | IEC 62264-2 对象与属性交换 |
 | `AcyclicResourceHierarchy` | 资源层次无环 | 层次模型的基本公理 |
@@ -1862,7 +1870,7 @@ check ProcessCellAtL2OrL3 for 3 but 2 ProcessCell
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-| ------ | ---------- | ---------- |
+|------|----------|----------|
 | `check AllParentsAreAdjacent for 3` | 每层最多 3 个 `Resource` | 父子节点必须位于相邻层 |
 | `check CrossLayerRequiresInterface for 3 but 4 InterfaceDef` | 最多 4 个接口定义 | 非相邻层引用必须通过接口 |
 | `check AcyclicResourceHierarchy for 3` | 同上 | 资源层次无环 |
@@ -2062,7 +2070,7 @@ fact CapabilityClosure {
 ## 4. 断言与验证
 
 | 断言 | 验证目标 | 教学意义 |
-| ------ | --------- | --------- |
+|------|---------|---------|
 | `NoCyclicToolCalls` | 调用图 DAG | 防止协议层死循环 |
 | `CapabilityContainment` | 能力子集关系 | 最小权限原则 |
 | `ResourceBoundary` | 资源所有者匹配 | 数据隔离与防泄漏 |
@@ -2115,7 +2123,7 @@ check ResourceBoundary for 4 but 8 MCPTool, 5 Resource
 **命令说明**：
 
 | 命令 | 搜索空间 | 验证目标 |
-| ------ | ---------- | ---------- |
+|------|----------|----------|
 | `check NoCyclicToolCalls` | 最多 4 个 Server、8 个 Tool、6 个 Capability | 工具调用图无环 |
 | `check CapabilityContainment` | 同上 + 最多 5 个 Resource | 被调用工具能力是调用者 Server 能力的子集 |
 | `check ResourceBoundary` | 同上 | 工具只能访问所属 Server 的资源 |
@@ -2210,6 +2218,293 @@ MCPServer$1 (capabilities: {executeSQL})
 > - [Alloy Analyzer](https://alloytools.org)
 > - [Alloy Tools](https://alloytools.org)
 > - 核查日期：2026-07-07
+
+
+---
+
+
+<!-- SOURCE: struct/07-formal-verification/02-alloy/reuse-economics.md -->
+
+# 公理 E.2 成本-收益阈值的 Alloy 形式化验证
+
+> **版本**: 2026-07-12
+> **对应规约**: [`reuse-economics.als`](../struct/07-formal-verification/02-alloy/reuse-economics.als)
+> **对应公理**: E.2 Cost-Benefit Threshold（[`axiom-system.md`](../struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) §2）
+> **交叉引用**: [`cross-layer-mapping.als`](../struct/07-formal-verification/02-alloy/cross-layer-mapping.als)（S.4 形式化）、[`trust-transitivity.als`](../struct/07-formal-verification/02-alloy/trust-transitivity.als)（S.3 形式化）、`struct/09-value-quantification/`（价值量化）、[`threshold-registry.yaml`](../struct/99-reference/tools/threshold-registry.yaml)（阈值登记项 THR-ECON-AAF-FLOOR）
+> **理论来源**: Boehm, B. et al. *Software Cost Estimation with COCOMO II*; NASA RRL 实证
+
+---
+
+## 目录
+
+- [公理 E.2 成本-收益阈值的 Alloy 形式化验证](#公理-e2-成本-收益阈值的-alloy-形式化验证)
+  - [目录](#目录)
+  - [概念定义](#概念定义)
+  - [1. 模型说明](#1-模型说明)
+    - [1.1 签名与谓词设计](#11-签名与谓词设计)
+    - [1.2 整数编码与溢出防护](#12-整数编码与溢出防护)
+    - [1.3 断言设计](#13-断言设计)
+  - [2. 验证结果](#2-验证结果)
+    - [2.1 机器验证输出](#21-机器验证输出)
+    - [2.2 负对照实验](#22-负对照实验)
+  - [3. 示例与反例](#3-示例与反例)
+    - [3.1 示例：理性复用决策](#31-示例理性复用决策)
+    - [3.2 反例：负长期价值（弱化 F2 后 Alloy 检出）](#32-反例负长期价值弱化-f2-后-alloy-检出)
+  - [4. 边界条件](#4-边界条件)
+  - [5. 与既有规约的关系](#5-与既有规约的关系)
+  - [6. 权威来源](#6-权威来源)
+
+## 概念定义
+
+**定义**：成本-收益阈值（Cost-Benefit Threshold）是公理体系存在性公理 E.2 的核心命题：复用在经济上合理当且仅当复用成本严格小于自研成本与复用长期价值之和；进一步，当复用成本与自研成本之比（COCOMO II 改编调整因子 AAF）低于阈值 θ=0.7 时，复用是理性选择。本规约用 Alloy 有界整数将两层定义编码为谓词，验证"AAF 阈值判定蕴含经济可行性判定"这一一致性性质无反例。
+
+---
+
+## 1. 模型说明
+
+### 1.1 签名与谓词设计
+
+```alloy
+sig ReuseCase { cReuse, cBuild, vReuse: one Int }
+
+pred Viable[r: ReuseCase]   { r.cReuse < r.cBuild.plus[r.vReuse] }   -- E.2 第一式
+pred Rational[r: ReuseCase] { r.cReuse.mul[10] < r.cBuild.mul[7] }   -- E.2 第二式（AAF < 0.7）
+```
+
+`ReuseCase` 建模对某候选资产的一次复用经济评估，三个字段分别对应公理的 $C_{\text{reuse}}$、$C_{\text{build}}$、$V_{\text{reuse}}$。`Viable` 是 E.2 第一式的逐字编码；`Rational` 是第二式 $\frac{C_{\text{reuse}}}{C_{\text{build}}} < 0.7$ 的等价改写——因 Alloy 整数除法会截断，改用交叉相乘 `C_reuse·10 < C_build·7`（由 F2 保证 $C_{\text{build}}>0$，不等号方向不变）。阈值 0.7 与 [`threshold-registry.yaml`](../struct/99-reference/tools/threshold-registry.yaml) 登记项 **THR-ECON-AAF-FLOOR**（canonical value 0.7，operator `<`）一致，未引入未登记阈值。
+
+### 1.2 整数编码与溢出防护
+
+Alloy 的 `Int` 是有界位宽整数（本规约用 8-bit，取值 -128..127），溢出会回绕并产生伪反例。为此 F3 将三个量限制在 [0, 12]：
+
+- `cReuse·10 ≤ 120`、`cBuild·7 ≤ 84`、`cBuild+vReuse ≤ 24`，全部落在 8-bit 范围内；
+- F1/F2 分别声明 `cReuse ≥ 0`、`cBuild > 0 ∧ vReuse ≥ 0`——后者既是 AAF 比率良定义的前提，也是公理"长期价值"语义的应有之义（价值为负意味着复用造成长期损害，不属 E.2 讨论的复用场景）。
+
+### 1.3 断言设计
+
+| 断言 | 内容 | 验证意图 |
+|------|------|---------|
+| `RationalImpliesViable` | `Rational[r] ⇒ Viable[r]` | E.2 两层定义的一致性：AAF 阈值判定不会放行经济不可行的复用 |
+| `AAFThresholdIsStrict` | 不存在 `cReuse·10 = cBuild·7` 且 `Rational[r]` 的案例 | 阈值严格性（operator `<`）：比率恰为 0.7 时不构成理性选择 |
+
+A1 的推理链：$C_{\text{reuse}} < 0.7 \cdot C_{\text{build}} \le C_{\text{build}} \le C_{\text{build}} + V_{\text{reuse}}$，末步依赖 F2 的 $V_{\text{reuse}} \ge 0$——这也是负对照的切入点。
+
+---
+
+## 2. 验证结果
+
+### 2.1 机器验证输出
+
+2026-07-12 使用 Alloy Analyzer 6.2.0（org.alloytools.alloy.dist，SAT4J 后端，Java 21）通过 `.tmp/RunAlloy.java` 逐条执行全部命令：
+
+| 命令 | scope | 结果 |
+|------|-------|------|
+| `check RationalImpliesViable` | 3 ReuseCase, 8-bit Int | **no counterexample found**（断言成立） |
+| `check AAFThresholdIsStrict` | 3 ReuseCase, 8-bit Int | **no counterexample found**（断言成立） |
+| `run ShowRationalReuse` | 3 ReuseCase, 8-bit Int | **instance found**（事实集可满足） |
+
+`run ShowRationalReuse` 找到见证实例（如 cBuild=10, cReuse=6, vReuse=2：60<70 且 6<12），证明事实集非空，两条 check 非空虚真。
+
+### 2.2 负对照实验
+
+临时注释 F2 中的 `vReuse ≥ 0` 后重跑全部命令：
+
+| 命令 | 弱化后结果 |
+|------|-----------|
+| `check RationalImpliesViable` | **COUNTEREXAMPLE FOUND**（检出反例） |
+| `check AAFThresholdIsStrict` | no counterexample found（该断言不依赖 vReuse，符合预期） |
+| `run ShowRationalReuse` | instance found |
+
+弱化后 A1 立即检出反例，证明"AAF ⇒ Viable"的成立确实依赖"长期价值非负"这一公理前提；而 A2 不受影响，说明两条断言各自承载了独立的语义——原模型验证通过不是空虚真。负对照副本存于 `.tmp/reuse-economics-negctrl.als`（未入库）。
+
+---
+
+## 3. 示例与反例
+
+### 3.1 示例：理性复用决策
+
+**示例**：某团队评估复用开源消息队列组件：自研成本 $C_{\text{build}}=10$（万人天），复用成本 $C_{\text{reuse}}=6$，长期价值 $V_{\text{reuse}}=2$。AAF = 0.6 < 0.7，且 6 < 10+2——两层判定一致放行，复用是理性且经济可行的选择。对应 `axiom-system.md` 正向示例 2（RabbitMQ→Kafka 切换）的决策依据。
+
+### 3.2 反例：负长期价值（弱化 F2 后 Alloy 检出）
+
+**反例**：弱化 F2 后 Alloy 给出反例：$C_{\text{build}}=10, C_{\text{reuse}}=6, V_{\text{reuse}}=-5$。AAF 判定 60 < 70 通过，但经济可行性 6 ≮ 10+(−5)=5 失败。工程含义：若复用引入长期损害（如绑定即将 EOL 的技术栈，$V_{\text{reuse}}<0$），AAF 比率可能仍"好看"，单看比率会做出错误决策——因此 E.2 的两层定义缺一不可，且 `axiom-system.md` 反模型示例（$C_{\text{reuse}}=600 \not< 400+100$ 的 ERP 复用）正是 A1 结论的反向应用。
+
+---
+
+## 4. 边界条件
+
+- **有界整数近似**：成本/价值以整数人天建模，比率以交叉相乘代替除法。F3 的幅度约束保证无溢出，但也意味着验证域是 [0,12]³——反例若存在必出现在阈值边界（比率接近 0.7）处，该边界已被 scope 覆盖（7/10、5/7 等临界组合均可表示），故小范围验证充分。
+- **AAF 单向性**：本规约只验证 `Rational ⇒ Viable`；逆向不成立（Viable 不要求 AAF 达标，如 $V_{\text{reuse}}$ 巨大时）——这是公理原文的语义而非建模缺陷，A1 刻意不写成等价。
+- **θ=0.7 是经验值**：阈值来自 COCOMO II/NASA RRL 实证，属可证伪的经验常量（E.2 可证伪条件）。本规约验证的是"给定 θ=0.7 时两层定义的逻辑一致性"，不验证 0.7 本身的正确性；若登记项 THR-ECON-AAF-FLOOR 修订，只需改 `mul[10]/mul[7]` 两个系数。
+- **货币量纲**：模型假设三个量同量纲（如人天）。跨量纲比较（如直接成本 vs 机会成本）需先折算，折算模型属 `09-value-quantification` 主题，不在本规约范围。
+
+---
+
+## 5. 与既有规约的关系
+
+- 本规约是继 `cross-layer-mapping.als`（S.4）、`trust-transitivity.als`（S.3）之后第三条公理级 Alloy 形式化，沿用同一验证范式（公理原文引用 + check/run + 负对照 + 机器复验记录）。
+- E.2 在统一复用决策栈中定位为 L1 战略判定层，其阈值与决策引擎的登记口径一致性由 [`threshold-registry.yaml`](../struct/99-reference/tools/threshold-registry.yaml) 保证。
+- 公理→规约映射与兑现率统计见 [`formalization-mapping.md`](../struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md)。
+
+---
+
+## 6. 权威来源
+
+> **权威来源**:
+>
+> - [Boehm, B. et al., Software Cost Estimation with COCOMO II](https://csse.usc.edu/tools/cocomoii.php) — AAF 改编调整因子的来源（核查日期：2026-07-12）
+> - [NASA Technical Reports Server (NTRS)](https://ntrs.nasa.gov/) — NASA RRL 复用经济实证（核查日期：2026-07-12）
+> - [Alloy Analyzer 6 (org.alloytools.alloy.dist)](https://github.com/AlloyTools/org.alloytools.alloy) — 本次验证所用工具（核查日期：2026-07-12）
+> - [Daniel Jackson, Software Abstractions](https://alloytools.org/book/) — 有界整数建模与溢出分析（核查日期：2026-07-12）
+
+---
+
+> 最后更新: 2026-07-12
+
+
+---
+
+
+<!-- SOURCE: struct/07-formal-verification/02-alloy/trust-transitivity.md -->
+
+# 公理 S.3 信任传递性的 Alloy 形式化验证
+
+> **版本**: 2026-07-12
+> **对应规约**: [`trust-transitivity.als`](../struct/07-formal-verification/02-alloy/trust-transitivity.als)
+> **对应公理**: S.3 Dependency Transitivity of Trust（[`axiom-system.md`](../struct/01-meta-model-standards/06-formal-axioms/axiom-system.md) §3）
+> **交叉引用**: [`cross-layer-mapping.als`](../struct/07-formal-verification/02-alloy/cross-layer-mapping.als)（S.4 形式化）、[`mcp-tool-graph.als`](../struct/07-formal-verification/02-alloy/mcp-tool-graph.als)（S.3 的 MCP 领域实例）、`struct/10-supply-chain-security/`
+> **理论来源**: Jackson, D. *Software Abstractions*; SLSA 1.2; OpenSSF 供应链安全研究
+
+---
+
+## 目录
+
+- [公理 S.3 信任传递性的 Alloy 形式化验证](#公理-s3-信任传递性的-alloy-形式化验证)
+  - [目录](#目录)
+  - [概念定义](#概念定义)
+  - [1. 模型说明](#1-模型说明)
+    - [1.1 签名设计](#11-签名设计)
+    - [1.2 核心事实：信任闭包 F1](#12-核心事实信任闭包-f1)
+    - [1.3 断言设计](#13-断言设计)
+  - [2. 验证结果](#2-验证结果)
+    - [2.1 机器验证输出](#21-机器验证输出)
+    - [2.2 负对照实验](#22-负对照实验)
+  - [3. 示例与反例](#3-示例与反例)
+    - [3.1 示例：合法依赖链](#31-示例合法依赖链)
+    - [3.2 反例：信任盲区（弱化 F1 后 Alloy 检出）](#32-反例信任盲区弱化-f1-后-alloy-检出)
+  - [4. 边界条件](#4-边界条件)
+  - [5. 与既有规约的关系](#5-与既有规约的关系)
+  - [6. 权威来源](#6-权威来源)
+
+## 概念定义
+
+**定义**：信任传递性（Dependency Transitivity of Trust）是公理体系结构性公理 S.3 的核心命题：若组件 A 依赖 B、B 依赖 C，则 A 的信任边界必须扩展至 C；等价地，信任边界是依赖关系的自反传递闭包。本规约用 Alloy 将该命题编码为可机器检验的关系约束，验证"信任边界沿依赖链传递"这一性质在有界实例空间内无反例。
+
+---
+
+## 1. 模型说明
+
+### 1.1 签名设计
+
+```alloy
+sig Component {
+    depends: set Component,        -- 直接依赖关系（公理中的 →）
+    trustBoundary: set Component   -- 信任边界 Trust(c)
+}
+```
+
+模型刻意保持最小：只有一个签名、两个关系。`depends` 对应公理的依赖箭头 →，`trustBoundary` 对应信任边界函数 Trust。这种"最小充分模型"风格与 `cross-layer-mapping.als` 一致——只捕获公理断言所依赖的结构，不引入无关概念。
+
+### 1.2 核心事实：信任闭包 F1
+
+```alloy
+fact TrustClosure {
+    all c: Component | c.trustBoundary = c.*depends
+}
+```
+
+F1 直接采用公理的**等价形式** `Trust(A) = {x : A →* x}`：`*depends` 是 Alloy 的自反传递闭包算子。自反性保证组件自身在边界内，传递性保证任意深度的间接依赖都被纳入信任评估范围——这正是 SLSA 1.2 要求"所有传递依赖都必须进入 SBOM 审计范围"的形式化表达。
+
+### 1.3 断言设计
+
+| 断言 | 内容 | 对应公理表述 |
+|------|------|-------------|
+| `TrustBoundaryExtends` | A→B ∧ B→C ⇒ Trust(A) ⊇ Trust(B) ∪ Trust(C) | S.3 蕴含形式原文 |
+| `TrustIsClosedUnderDependents` | B ∈ Trust(A) ⇒ Trust(B) ⊆ Trust(A) | 传递闭包的单调收缩性质 |
+
+两条断言分工：A1 是公理原文的逐字编码；A2 是闭包定义的推论性质，用于交叉验证 F1 的语义强度。若 F1 仅要求 `trustBoundary ⊇ depends`（超集而非等式），A1 仍可能通过但 A2 失败，因此 A2 能捕获"边界定义过松"的建模缺陷。
+
+---
+
+## 2. 验证结果
+
+### 2.1 机器验证输出
+
+2026-07-12 使用 Alloy Analyzer 6.2.0（org.alloytools.alloy.dist，SAT4J 后端，Java 21）通过 `.tmp/RunAlloy.java` 逐条执行全部命令：
+
+| 命令 | scope | 结果 |
+|------|-------|------|
+| `check TrustBoundaryExtends` | 5 | **no counterexample found**（断言成立） |
+| `check TrustIsClosedUnderDependents` | 5 | **no counterexample found**（断言成立） |
+| `run ShowTrustChain` | 5 | **instance found**（事实集可满足） |
+
+`run ShowTrustChain` 找到实例（如链 a→b→c，a.trustBoundary={a,b,c}），证明事实集非空，两条 check 的"无反例"是真实蕴涵而非前提不可满足导致的空虚真。
+
+### 2.2 负对照实验
+
+临时将 F1 弱化为 `trustBoundary = depends`（信任边界仅含直接依赖，丧失传递性）后重跑全部命令：
+
+| 命令 | 弱化后结果 |
+|------|-----------|
+| `check TrustBoundaryExtends` | **COUNTEREXAMPLE FOUND**（检出反例） |
+| `check TrustIsClosedUnderDependents` | **COUNTEREXAMPLE FOUND**（检出反例） |
+| `run ShowTrustChain` | instance found |
+
+两条断言在弱化后均被检出反例，证明它们确实依赖 F1 的传递闭包语义——原模型的验证通过不是空虚真。负对照副本存于 `.tmp/trust-transitivity-negctrl.als`（未入库）。
+
+---
+
+## 3. 示例与反例
+
+### 3.1 示例：合法依赖链
+
+**示例**：`run ShowTrustChain` 生成的见证实例——AI 平台依赖链：应用组件 a → 模型库 b → 数值计算库 c，c 无依赖。由 F1 得 Trust(a)={a,b,c}、Trust(b)={b,c}、Trust(c)={c}。逐条核验：A1 中 Trust(b)∪Trust(c)={b,c} ⊆ Trust(a) ✓；A2 中 b ∈ Trust(a) 且 Trust(b)={b,c} ⊆ Trust(a) ✓。该实例对应"审计范围沿依赖链自动扩展"的正确实践。
+
+### 3.2 反例：信任盲区（弱化 F1 后 Alloy 检出）
+
+**反例**：弱化 F1 为 `trustBoundary = depends` 后，Alloy 对 A1 给出反例：a.depends={b}、b.depends={c}，但 Trust(a)={b} 不含 c——即"只审计直接依赖"的团队。这正是 `axiom-system.md` 反模式 2 的形式化再现：AI 平台仅审计直接依赖的模型库 A，未将训练框架 B、数值库 C 纳入信任边界，结果 C 的后门导致推理数据泄露。该反例同时印证 S.3 的**可证伪条件**方向：除非存在"形式化验证的隔离层"（本模型未建模），否则信任不可不传递。
+
+---
+
+## 4. 边界条件
+
+- **有界性**：check 在 scope 5 内验证（最多 5 个组件），依赖链深度 ≤ 4。小范围定理（Small Scope Hypothesis）保证该结论对典型供应链深度有充分覆盖；更深的链不构成新的反例模式（反例必出现在最短违反路径上，长度 ≤ 2）。
+- **隔离例外未建模**：S.3 原文可证伪条件提及"形式化验证的隔离层"可使 A 依赖 B 而不继承 B 的信任需求。本规约不建模隔离层——若引入，应增加 `isolated: set Component` 签名并将 F1 修正为 `trustBoundary = c.*depends - isolated.*depends` 之类的形式，A1 也需相应弱化。
+- **循环依赖**：模型未禁止 `depends` 成环。环上组件的信任边界因自反传递闭包而相等（互为闭包），A1/A2 仍成立——这符合"循环依赖的组件属于同一信任域"的工程直觉，无需额外约束。
+- **与 M.1 的分工**：信任边界是"约束集合"的安全子集（M.1 中 V 的实例），但本规约只验证传递性，不验证约束在上下文中的语义有效性（`⊨` 不可判定，见 `formalization-mapping.md` §3 M.1 行）。
+
+---
+
+## 5. 与既有规约的关系
+
+- [`mcp-tool-graph.als`](../struct/07-formal-verification/02-alloy/mcp-tool-graph.als)：S.3 在 MCP 工具调用图上的**领域实例**（`CapabilityClosure` 断言"被调用工具必须在 Server 能力闭包内"），结构类比信任传递闭包，但不直接编码 Trust 谓词且无机器复验记录；本规约是 S.3 的**公理级**编码，二者互补而非替代。
+- [`cross-layer-mapping.als`](../struct/07-formal-verification/02-alloy/cross-layer-mapping.als)：S.4 的公理级形式化（2026-07-12 复验），本规约沿用其"公理原文引用 + check/run + 负对照"的验证范式。
+- 公理→规约映射与兑现率统计见 [`formalization-mapping.md`](../struct/01-meta-model-standards/06-formal-axioms/formalization-mapping.md)。
+
+---
+
+## 6. 权威来源
+
+> **权威来源**:
+>
+> - [SLSA 1.2 — Supply-chain Levels for Software Artifacts](https://slsa.dev/) — 传递依赖纳入信任评估（核查日期：2026-07-12）
+> - [OpenSSF — Open Source Security Foundation](https://openssf.org/) — 供应链安全研究（核查日期：2026-07-12）
+> - [Daniel Jackson, Software Abstractions](https://alloytools.org/book/) — 自反传递闭包建模范式（核查日期：2026-07-12）
+> - [Alloy Analyzer 6 (org.alloytools.alloy.dist)](https://github.com/AlloyTools/org.alloytools.alloy) — 本次验证所用工具（核查日期：2026-07-12）
+
+---
+
+> 最后更新: 2026-07-12
 
 
 ---
@@ -6135,9 +6430,13 @@ medium: postcondition might fail, cannot prove Compute_Next_Mode'Result /= Appro
 
 ## 11. 权威来源
 
+[^1]: AdaCore. *SPARK Pro — Introduction to Formal Verification with SPARK*. [https://www.adacore.com/about-spark](https://www.adacore.com/about-spark). 官方文档涵盖契约语法、证明工具链、工业案例。
 
+[^2]: RTCA DO-178C / EUROCAE ED-12C. *Software Considerations in Airborne Systems and Equipment Certification*. RTCA Inc., 2012. 民用航空软件适航审定核心标准。
 
+[^3]: RTCA DO-333 / EUROCAE ED-216. *Formal Methods Supplement to DO-178C and DO-278A*. RTCA Inc., 2012. 定义形式化方法替代测试的合规路径与额外目标。
 
+[^4]: Moy, Y., Ledinot, E., Delseny, H., Wiels, V., & Monate, B. (2013). Testing or Formal Verification: DO-178C Alternatives and Industrial Experience. *IEEE Software*, 30(3), 50-57. 记录了 Airbus 和 Dassault Aviation 使用 SPARK 替代测试的工业经验。
 
 
 ---
@@ -6377,8 +6676,11 @@ SPARK 组件的 MC/DC 形式化证据（GNATprove 证明日志 + GNATcoverage �
 
 ## 4. 权威来源
 
+[^1]: RTCA DO-178C / EUROCAE ED-12C. *Software Considerations in Airborne Systems and Equipment Certification*. RTCA Inc., 2012. Table A-7 定义 A 级软件的结构覆盖率目标，包括 MC/DC。
 
+[^2]: RTCA DO-333 / EUROCAE ED-216. *Formal Methods Supplement to DO-178C and DO-278A*. RTCA Inc., 2012. 第 FM.A-7 节定义形式化方法替代结构覆盖率测试的条件与额外验证目标。
 
+[^3]: AdaCore. *GNATcoverage User's Guide — DO-178C / ED-12C Qualifiable Coverage Analysis*. [https://github.com/AdaCore/gnatcoverage](https://github.com/AdaCore/gnatcoverage). 详细说明 GNATcoverage 的 MC/DC 提取、分析和报告机制。
 
 
 
@@ -7431,9 +7733,13 @@ CLEARSY 在法国巴黎地铁（RATP）和新线路建设项目中采用了以�
 
 ## 7. 参考索引
 
+[^1]: Abrial, J.-R. (1996). *The B-Book: Assigning Programs to Meanings*. Cambridge University Press. ISBN 978-0-521-49619-3. —— B Method 的奠基性著作，定义了广义替代（Generalised Substitution）、抽象机语法和精化的数学基础。
 
+[^2]: Abrial, J.-R. (2010). *Modeling in Event-B: System and Software Engineering*. Cambridge University Press. ISBN 978-0-521-89556-9. —— Event-B 的权威教材，系统阐述了 Context/Machine 分离、逐步精化、证明义务生成和模型分解技术。
 
+[^3]: CENELEC (2011). *EN 50128:2011 — Railway applications — Communication, signalling and processing systems — Software for railway control and protection systems*. European Committee for Electrotechnical Standardization. —— 铁路控制软件 SIL 等级划分的核心标准，表 A.1 将形式化方法列为 SIL 3–4 的强烈推荐技术。
 
+[^4]: CLEARSY / Atelier B. *Atelier B — Formal Method for Software Engineering*. <https://www.atelierb.eu>. —— 工业级 B Method 工具链，拥有 SIL 4 认证（Certifer 9594/0262），广泛应用于阿尔斯通、泰雷兹、西门子等铁路信号项目。
 
 
 
