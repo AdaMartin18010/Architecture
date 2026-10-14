@@ -1,6 +1,6 @@
 # 软件工程架构复用视角 · 结构化知识体系
 
-> **版本**: 2026-07-08 Phase 1.5 修复完成 · 质量门控 100%
+> **版本**: 2026-07-12 Hermes 本地规范落地（AGENTS.md + HERMES-TASKS.md）· 质量门控 100%
 > **定位**: 将 ~31 万字源文档转化为结构化、可验证、可输出的知识产品；已完成内容深度补齐、模板污染清理、权威来源对齐、可视化图库填充、全局质量验证与 struct/view 同步
 > **对齐标准**: ISO/IEC/IEEE 42010:2022, TOGAF 10, SLSA 1.2, IEC 61508, MCP 2025-11-25, A2A v1.0 等 25+ 国际标准
 > **健康状态**: `python scripts/health-check.py` 全部通过（struct/ 288/288 · view/ 14/14 · 死链 0 · 交叉索引 0 冲突）
@@ -13,13 +13,13 @@
 
 | 指标 | 数据 |
 | ------ | ------ |
-| **Markdown 文件** | **355** 个（`struct/` 332 + `view/` 23；含 14 主题卷册与 9 历史快照；真源 `reports/stats.json`） |
+| **Markdown 文件** | **359** 个（`struct/` 335 + `view/` 24；含 14 主题卷册与 9 历史快照；真源 `reports/stats.json`） |
 | **形式化规约/代码** | **93** 个（TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 75 + SVG × 75, Python × 7） |
-| **累计内容** | **~111.3 万词**（中文字 + 英文词，`struct/`；真源 1,112,540） |
+| **累计内容** | **~112.6 万词**（中文字 + 英文词，`struct/`；真源 1,126,479） |
 | **一级主题** | **13** 个（01-13）+ **99-reference** 参考层 |
 | **形式化规约** | TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2；严格公理 10 + 启发式 5 + 定理 17 |
 | **权威来源对齐** | 30+ 国际标准与行业框架 |
-| **质量门控** | `struct/` 288/288 通过，`view/` 14/14 通过，死链 0，模板重复 0 |
+| **质量门控** | `struct/` 311/311 通过，`view/` 15/15 通过，死链 0，模板重复 0 |
 | **交叉索引** | 公理 0 未定义 / 0 重复；标准版本冲突 0；术语定义冲突 0 |
 
 > **口径说明**（2026-07-12 起）：上表“冲突 0” = `cross-index-check.py` 现行口径（公理引用闭合为硬门禁；标准版本/术语定义为跨文件语义比对 + 豁免语境的报告型检查，详见 `reports/cross-index-report.md`）。语义层另有硬门禁守护：`threshold-check.py`（阈值单一事实源）、`structure-lint.py`（目录结构）、`errata-lint.py`（勘误规则）、`figure-check.py`（图库完整性）、`kg-shacl-validate.py`（KG 语义约束）、`terminology-crosscheck.py`（术语双库），均纳入 `health-check.py`。
@@ -275,7 +275,7 @@ struct/
 
 ---
 
-> **最后更新**: 2026-07-08（Phase 1.5 收尾：health-check 100% 通过、报告路径统一、view 同步刷新）
+> **最后更新**: 2026-07-12（Hermes 本地规范落地：新建 AGENTS.md / struct/HERMES-TASKS.md / view/README.md，三处统计口径统一至 `reports/stats.json`，health-check 修复 WSL 环境跳过与同步重生成）
 > **本轮目标**: 全面修复质量门控、完成可视化图库、统一报告输出、确保 struct/view 一致性
 > **维护者**: 软件工程架构复用知识体系项目组
 >

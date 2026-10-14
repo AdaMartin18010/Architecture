@@ -1,6 +1,6 @@
 # Software Engineering Architecture Reuse — Structured Knowledge System
 
-> **Version**: 2026-07-08 Phase 8 in progress · Health Check 100%
+> **Version**: 2026-07-12 Hermes local spec landed (AGENTS.md + HERMES-TASKS.md) · Health Check 100%
 > **Mission**: Transform ~790,000 Chinese characters of source documents into a structured, verifiable, and exportable knowledge product; complete authoritative international content alignment, toolchain integration, and global output.
 > **Aligned Standards**: ISO/IEC/IEEE 42010:2022, TOGAF 10, SLSA 1.2, IEC 61508, MCP 2025-11-25, A2A v1.0, and 30+ international standards
 > **Health Status**: `python scripts/health-check.py` — all checks passing
@@ -11,13 +11,13 @@
 
 | Metric | Value |
 | -------- | ------- |
-| **Markdown files** | **330** (`struct/` 307 + `view/` 23, including 14 aggregated volumes and 9 historical snapshots) |
+| **Markdown files** | **359** (`struct/` 335 + `view/` 24, including 14 aggregated volumes, 9 historical snapshots, and the view README; truth source `reports/stats.json`) |
 | **Formal specs / code** | **93** (TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, Mermaid × 75 + SVG × 75, Python × 7) |
-| **Content volume** | **~790k Chinese characters** / **~977k total words** / **~2.94m characters** (`struct/` main repository) |
-| **Top-level topics** | **13** (01–13) + **99-reference** layer |
-| **Formal specifications** | TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2, 20+ axiom-theorem systems |
+| **Content volume** | **~1.13M total words** (Chinese chars + English words, `struct/`; truth source 1,126,479) |
+| **Top-level topics** | **14** (01–13 + 99-reference layer) |
+| **Formal specifications** | TLA+ × 3, Alloy × 4, Coq × 2, Isabelle × 2; 10 strict axioms + 5 heuristics + 17 theorems |
 | **Authoritative sources** | 30+ international standards and industry frameworks |
-| **Quality gates** | `struct/` 300/300 passing, `view/` 14/14 passing, 0 dead links, 0 template padding issues |
+| **Quality gates** | `struct/` 311/311 passing, `view/` 15/15 passing, 0 dead links, 0 template padding issues |
 | **Cross-index** | 0 undefined axioms / 0 duplicates; 0 standard version conflicts; 0 terminology conflicts |
 
 ---
@@ -176,5 +176,5 @@ See [`LICENSE`](LICENSE).
 
 ---
 
-> **Last updated**: 2026-07-08 (Phase 8: frontier tracking, standard tracker upgrade, i18n output)
+> **Last updated**: 2026-07-12 (Hermes local spec: AGENTS.md charter, HERMES-TASKS pool, view README, stats unified to reports/stats.json)
 > **Maintained by**: Software Engineering Architecture Reuse Knowledge System Project
