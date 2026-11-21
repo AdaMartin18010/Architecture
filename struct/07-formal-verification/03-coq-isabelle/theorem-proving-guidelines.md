@@ -89,7 +89,7 @@ seL4（Klein et al., 2009）是首个经过完整功能正确性证明的 OS 内
 选择 Coq（而非 Isabelle）的核心原因：
 
 1. **CompCert 生态兼容性**：Leroy (2009) 的 CompCert 编译器已在 Coq 中完成证明，使得"C 代码 → 汇编代码"的编译正确性可被纳入同一信任链。
-2. **Verdi 框架**：Inria 的 Verdi 提供了分布式系统形式化的 Coq 基础设施，其"网络语义提取"技术可直接复用。
+2. **Verdi 框架**：Inria 的 Verdi 提供了分布式系统形式化的 Coq 基础设施，其"网络语义提取"技术可直接复用。 ⚠️T1.2-G(2026-11-21): Verdi=UW uwplse PLDI'15 非 Inria; "内核直接复用"过度延伸 禁照引
 3. **依赖类型表达力**：内核中页表、能力等数据结构的不变量天然适合用依赖类型（`vect n A` 而非 `list A`）表达。
 
 #### 证明策略概述
@@ -372,3 +372,12 @@ Step 5: 跨工具信任链（CompCert + Coq / Isabelle 代码生成）
 > - [Coq Proof Assistant](https://coq.inria.fr)
 > - [Isabelle/HOL](https://www.cl.cam.ac.uk/research/hvg/Isabelle)
 > - 核查日期：2026-07-07
+
+
+---
+
+## 勘误（T1.2-G 家族轮 · 2026-11-21 主会话注入 · 源卡 C17，当日 web 实核）
+
+1. **"Inria 的 Verdi 框架" ✗ 归属错**：Verdi = **University of Washington**（uwplse 组，Wilcox/Dinger/Paxia/Chong et al., **PLDI 2015**）——非 Inria。
+2. "其网络语义提取技术可直接复用于内核内存安全" ✗ 过度延伸：Verdi 面向**分布式共识协议**参数化验证，与内核内存安全无直接复用关系。
+3. 工具裁决冲突留痕：本文件 Case A 选 Coq（CompCert/VST 论据），而最强内核锚 seL4 属 Isabelle 生态（FormalSoftwareDesign 决策矩阵据此选 Isabelle）——两库互不知情、无调和文档（C17 记录，调和归后续卡）。
